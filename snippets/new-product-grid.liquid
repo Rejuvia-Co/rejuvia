@@ -1,0 +1,50 @@
+<div class="product-recommendation">
+    <a href="{{ product.url }}" class="eg-product-link">
+        {%- assign label_tag = '' -%}
+
+        {%- for tag in product.tags -%}
+            {%- if tag contains 'label:' -%}
+                {%- assign label_tag = tag | split: ':' | last | strip -%}
+                {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+        <span class="product-grid__label">{{ label_tag }}</span>
+        <div class="eg-productR-image">
+            <div class="eg-background-product"></div>
+            {% if product.metafields.custom.collection_card_text != blank %}
+                <div class="product-grid-image__label">
+                    {{ product.metafields.custom.collection_card_text }}
+                </div>
+            {% endif %}
+            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+            {% if block.settings.show_savings %}
+                <div class="eg-savings-text">
+                    <b>{{ block.settings.savings_text }}</b>
+                </div>
+            {% endif %}
+        </div>
+        <div class="eg-productR-info">
+            <div class="eg-reviews">
+                {{ product.metafields.okendo.StarRatingSnippet }}
+                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px"/>
+            </div>
+            <div class="productR-info_title">
+                <span>{{ product.title }}</span>
+                <span>{{ product.price | money }}</span>
+            </div>
+            <div class="productR-info_description">
+                {% if product.metafields.custom.card_description != blank %}
+                    {{ product.metafields.custom.card_description }}
+                {% else %}
+                    For the best sleep of your life
+                {% endif %}
+            </div>
+            <div class="productR-info_tags">
+                {%- assign values = product.metafields.custom.tags -%}
+                {%- for item in values.value -%}
+                    <span>{{ item | strip }}</span>
+                {%- endfor -%}
+            </div>
+        </div>
+    </a>
+</div>

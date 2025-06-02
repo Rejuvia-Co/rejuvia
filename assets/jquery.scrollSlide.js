@@ -1,0 +1,2 @@
+(function(e){e.fn.scrollSlide=function(r){var i=e.extend({direction:"right",speed:1e3,scrollstart:200,slideback:!1},r);return this.each(function(){var s=e(this);s.css("display","none"),e(window).scroll(function(c){var t=e(this).scrollTop();t>=i.scrollstart&&s.show("slide",{direction:i.direction},i.speed),t<i.scrollstart&&i.slideback==!0&&s.hide("slide",{direction:i.direction},i.speed)})})}})(jQuery);
+//# sourceMappingURL=/s/files/1/0418/7085/2258/t/34/assets/jquery.scrollSlide.js.map?v=1638376250

@@ -1,0 +1,113 @@
+.ingredients-info-section {
+    background: linear-gradient(258deg, #EDE0EC -1.34%, #EAC78B 237.07%);
+}
+
+.sleepspray-new {
+    .ingredients-info-section {
+        background: none;
+
+        .section-subheading,
+        .description {
+            color: #5C5C5C;
+        }
+    }
+    .grid-item-card--ingredient {
+        background: #F0E9EF;
+    }
+}
+
+.ingredients-info-container {
+    padding: 40px 24px;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.ingredients-info-container .section-title--h2 {
+    margin-bottom: 16px;
+}
+
+.ingredients-info-container .section-subheading {
+    color: #171512;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    margin: 0;
+}
+
+
+.ingredients-grid-container {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 24px;
+}
+
+/* Estilos para Mobile */
+@media (max-width: 839px) {
+    .ingredients-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .grid-item-card--ingredient:nth-child(5) {
+        grid-column: span 2;
+    }
+}
+
+/* Desktop Styles */
+
+@media (min-width: 840px) {
+    .ingredients-grid-container {
+        grid-template-columns: repeat(5, 1fr);
+        margin-top: 40px;
+    }
+}
+
+@media screen and (min-width: 901px) {
+    .ingredients-info-container {
+        padding: 88px 85px;
+    }
+}
+
+.grid-item-card--ingredient {
+    background: white;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    text-align: center;
+    padding: 24px 16px;
+}
+
+.grid-item-card--ingredient img {
+    margin-bottom: 16px;
+}
+
+.grid-item-card--ingredient .item-title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 23.4px */
+    margin-bottom: 8px;
+}
+
+.grid-item-card--ingredient .description {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    margin: 0;
+}
+
+@media (min-width: 750px) {
+    .section-title--h2, .section-subheading {
+        text-align: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .section-subheading {
+        padding: 0px 240px;
+    }
+}

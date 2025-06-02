@@ -1,0 +1,207 @@
+<style>
+    #shopify-section-{{section.id}}{
+      background:{{ section.settings.background }}
+    }
+    .section-faqs{ width: 80vw;
+      margin: auto;
+      padding: 72px 64px;
+    width: 100%;}
+
+    .section-faqs .container {
+      padding: 0px!important;
+    }
+    .panel-custom {
+      padding: 0px 0 0;
+      opacity: 0;
+      height: 0;
+      transition: opacity .3s ease,height .3s ease;
+    }
+    .panel-inner {
+      visibility: hidden;
+      letter-spacing: 0.4px;
+    }
+    .accordion.active .toggle-open {
+      transform: rotate(0);
+  }
+   .accordion.active .toggle-open {background-size: contain !important;}
+    .toggle-open {
+        display: flex;    margin-left: 30px;
+        /* background-image: url(https://cdn.shopify.com/s/files/1/0418/7085/2258/files/down-arrow-download-svgrepo-com.svg?v=1699838519);
+        background-repeat: no-repeat;
+        background-size: contain; */
+        width: 18px;
+        height: 18px;
+    }
+    .accordion{display: flex;
+      font-size: 18px;
+      clear: both;
+      font-weight: 500;
+      line-height: 130%; /* 23.4px */
+      letter-spacing: 0.36px;
+      color:{{ section.settings.text_color }};
+      width: 100%;
+      text-align: left;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0px;}
+    .accordion.active{color:{{ section.settings.title_color }}}
+    .heading-faqs{
+      font-weight: 600;font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%; /* 57.6px */
+      letter-spacing: -0.48px;
+      padding-bottom:30px;
+    }
+    .faq-item {
+      width: 100%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+      /* padding-bottom: 35px;
+      margin-bottom: 35px; */
+      padding: 24px 16px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .faq-item {
+        padding: 32px 16px;
+      }
+    }
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.20);
+    }
+    .faq-item:last-child {
+      margin-bottom: 20px;
+  }
+  @media only screen and (max-width: 749px) {
+    .section-faqs {
+      padding: 32px 16px;
+    }
+  body .faq-item {
+      width: 100%;
+  }
+    body .heading-faqs{font-size: 32px;}
+    body .faq-item:last-child{margin-bottom:10px;}
+  }
+</style>
+
+<section id="section-{{ section.id }}" class="section-faqs {{ section.settings.customClass }}" style="">
+  <div
+    {% unless section.settings.full_width %}
+      class="container"
+    {% endunless %}
+  >
+    <div class="grid">
+      <div class="grid__item four-tenths small--one-whole medium--one-whole">
+        {% if section.settings.heading != blank %}
+          <div class="heading-faqs" style="color:{{ section.settings.title_color }}">
+            {{ section.settings.heading }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="grid__item six-tenths small--one-whole medium--one-whole">
+        {% for block in section.blocks %}
+          {% if block.settings.heading != blank %}
+            <div class="faq-item ">
+              <button class="accordion" style="">
+                {{ block.settings.heading -}}
+                <span class="toggle-open">{% render 'chevron-down' %}</span>
+              </button>
+              <div class="panel-custom" style="color:{{ section.settings.text_color }}">
+                <div class="panel-inner" style="padding-top:18px;">{{ block.settings.subheading }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if section.settings.customTextBottom != blank %}
+        <div class="customTextBottom">{{ section.settings.customTextBottom }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<script>
+  $('#section-{{ section.id }} .accordion').click(function (e) {
+    e.preventDefault();
+    let $this = $(this);
+    if ($this.next().hasClass('show')) {
+      $this.next().removeClass('show');
+      $this.removeClass('active');
+      $this.next().css('height', `0px`)
+      // $this.next().slideUp(350);
+    } else {
+      /* $this.parent().parent().find('.panel-custom').removeClass('show'); */
+      let innerHeight = $this.next().find('.panel-inner').height();
+      console.log('innetheigth', innerHeight);
+      $this.next().css('height', `${innerHeight}px`)
+      $this.next().toggleClass('show');
+      $this.addClass('active');
+      // $this.next().slideToggle(350);
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Homepage FAQs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "customClass",
+      "label": "Custom Class"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Color"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Faqs Title"
+    },
+    {
+      "type": "textarea",
+      "id": "customTextBottom",
+      "label": "Custom Text Bottom"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faqs",
+      "name": "Items",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Our Values"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "We like to keep it clean and transparent."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Faqs",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

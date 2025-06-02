@@ -1,0 +1,32 @@
+<style>
+  #collections-listing {margin: 1em auto; text-align: center;}
+  #collections-listing .bg_img {padding-top: 65%; margin-bottom: 20px; background-size: cover; background-repeat: no-repeat; background-position: center; position: relative;}
+  #collections-listing .col {width: 100%; padding-top: 60%; position: relative; overflow: hidden; margin-bottom: 1.5em;}
+  #collections-listing .col .bg {position: absolute; left:0; top:0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;}
+  #collections-listing .col .overlay {color: #fff; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);}
+  #collections-listing .col .overlay .title {font-size: 1.5em;}
+  #collections-listing .col .overlay .qty {display: block;}
+  .isNotMobile #collections-listing .col:hover .bg {box-shadow: 0 12px 20px rgba(0,0,0,0.2); -ms-transform: scale(1.05, 1.05); -webkit-transform: scale(1.05, 1.05); transform: scale(1.05, 1.05);}
+  .isNotMobile #collections-listing .col:hover .overlay {background: rgba(0,0,0,0); color: {{settings.content_main_color}};}
+</style>
+<div id="collections-listing" class="container">
+  <div class="grid justify-content-center">
+    {%- for collection in collections -%}
+    {%- unless collection.handle == "all" or collection.handle contains "featured" -%}
+    <div class="grid__item one-third small--one-whole">
+      <a href="{{ collection.url }}">
+        <div class="col">
+          <div class="bg ease-animation-slow lazyload" style="background-image: url({{ 'placeholder.png' | asset_url }})" {% if collection.image != blank %}data-bgset="{% include 'lazy_src', image: collection.image %}"{% else %}data-bgset="{% include 'lazy_src', image: collection.products.first.images.first %}"{% endif %}></div>
+          <div class="overlay ease-animation-slow  flex justify-content-center align-items-center">
+            <div class="wrap">
+              <div class="title">{{collection.title}}</div>
+              <span class="qty">{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'product', 'products' }}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>

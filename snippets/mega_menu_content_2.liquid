@@ -1,0 +1,91 @@
+<style>
+</style>
+
+<div class="submenu mega-menu mega-menu-2 position-{{settings.mega_menu_position}} width-{{settings.mega_menu_width}}">
+  <div class="mega-menu-content container body_font" id="mega-menu-content-2">
+    {%- for block in section.blocks -%}
+    <div class="column text-{{block.settings.textalign}}" style="width: {{block.settings.width}}%; padding: 1.5em {{block.settings.padding}}em;">
+      {%- if block.settings.richtext_top != "" -%}
+      <div class="richtext">
+        {{ block.settings.richtext_top }}
+      </div>
+      {%- endif -%}
+
+      {%- if block.settings.image_top != nil or block.settings.image_caption_top != blank -%}
+      <div class="image-caption-link">
+        {%- if block.settings.image_link_top != blank -%}<a href="{{ block.settings.image_link_top }}">{%- endif -%}
+        {%- if block.settings.image_top != nil -%}
+        <img src="{% include 'image_placeholder', image: block.settings.image_top %}" class="lazyload" data-sizes="auto" data-srcset="{% include 'lazy_src', image: block.settings.image_top %}" alt="{{ block.settings.image_top.alt | escape }}" />
+        {%- endif -%}
+        {%- if block.settings.image_caption_top != "" -%}
+        <p class="img-caption">{{ block.settings.image_caption_top }}</p>
+        {%- endif -%}
+        {%- if block.settings.image_link_top != blank -%}</a>{%- endif -%}
+      </div>
+      {%- endif -%}
+
+      {%- if block.settings.feat_prod != blank -%}
+      <div class="feat-prod">
+        {%- assign featprod = all_products[block.settings.feat_prod] -%}
+        <a href="{{featprod.url}}">
+          <img src="{% include 'image_placeholder', image: featprod.images.first %}" class="lazyload" data-sizes="auto" data-srcset="{% include 'lazy_src', image: featprod.images.first %}" alt="{{ featprod.title | escape }}" />
+          <div class="info">
+            <div class="prod-title">{{featprod.title}}</div>
+            <div class="prod-price">{{featprod.price_min | money}}</div>
+          </div>
+          <div class="btn animation">BUY NOW</div>
+        </a>
+      </div>
+      {%- endif -%}
+
+      {%- for i in (1..8) -%}
+      {%- assign menu = 'menu_' | append: i -%}
+      {%- assign menuTitle = 'menu_' | append: i | append: '_title' -%}
+      {%- assign menuLink = 'menu_' | append: i | append: '_link' -%}
+      {%- if block.settings[menu] != blank or block.settings[menuTitle] != blank -%}
+      <div class="column-menu">
+        {%- if block.settings[menuTitle] != blank -%}
+        <div class="linklist-title custom_subtitle_font">
+          {%- if block.settings[menuLink] -%}
+          <a href="{{ block.settings[menuLink] }}">
+            {{ block.settings[menuTitle] }}
+          </a>
+          {%- else -%}
+          {{ block.settings[menuTitle] }}
+          {%- endif -%}
+        </div>
+        {%- endif -%}
+        {%- if linklists[block.settings[menu]] != empty -%}
+        <div class="links">
+          {%- for sublink in linklists[block.settings[menu]].links -%}
+          <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+      {%- endfor -%}
+
+      {%- if block.settings.image_bottom != nil or block.settings.image_caption_bottom != blank -%}
+      <div class="image-caption-link">
+        {%- if block.settings.image_link_bottom != blank -%}<a href="{{ block.settings.image_link_bottom }}">{%- endif -%}
+        {%- if block.settings.image_bottom != nil -%}
+        <img src="{% include 'image_placeholder', image: block.settings.image_top %}" class="lazyload" data-srcset="{% include 'lazy_src', image: block.settings.image_bottom %}" alt="{{ block.settings.image_bottom.alt | escape }}" />
+        {%- endif -%}
+        {%- if block.settings.image_caption_bottom != "" -%}
+        <p class="img-caption">{{ block.settings.image_caption_bottom }}</p>
+        {%- endif -%}
+        {%- if block.settings.image_link_bottom != blank -%}</a>{%- endif -%}
+      </div>
+      {%- endif -%}
+
+      {%- if block.settings.richtext_bottom != "" -%}
+      <div class="richtext">
+        {{ block.settings.richtext_bottom }}
+      </div>
+      {%- endif -%}
+
+    </div>
+    {%- endfor -%}
+  </div>
+</div>

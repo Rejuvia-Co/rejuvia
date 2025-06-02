@@ -1,0 +1,33 @@
+{%- if paginate.pages > 1 -%}
+<div class="pagination">
+  <div class="flex align-items-center justify-content-center">
+    {% comment %}
+    {%- if paginate.previous -%}
+      <a class="prev" href="{{paginate.previous.url}}">&laquo; Prev</a>
+    {%- else -%}
+      <a class="prev disabled" href="#" onclick="return false;">&laquo; Prev</a>
+    {%- endif -%}
+    {% endcomment %}
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+    	<a href="{{part.url}}">{{ part.title }}</a>
+      {%- else -%}
+        {%- if part.title == '&hellip;' -%}
+        <a class="ellipsis disabled" href="#" onclick="return false;">{{ part.title }}</a>
+        {%- else -%}
+        <a class="active" href="{{part.url}}">{{ part.title }}</a>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}     
+
+    {% comment %}
+    {%- if paginate.next -%}
+      <a class="next" href="{{paginate.next.url}}">Next &raquo;</a>
+    {%- else -%}
+      <a href="#" class="next disabled" onclick="return false;">Next &raquo;</a>
+    {%- endif -%} 
+    {% endcomment %}   
+  </div>
+  <div class="pagination-num-showing text-center hide">Showing: {{ paginate.current_offset | plus: 1 }}-{%- if paginate.next -%}{{ paginate.current_offset | plus: paginate.page_size }}{%- else -%}{{ paginate.items }}{%- endif -%} of {{ paginate.items }}</div>
+</div>
+{%- endif -%}

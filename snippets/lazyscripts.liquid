@@ -1,0 +1,34 @@
+<script>
+  const scriptsToLoad = [
+    {
+      src: '…'
+    }
+  ]
+
+  function loadScript(src) {
+    const script = document.createElement('script')
+    script.src = src
+    script.async = true
+    document.head.appendChild(script)
+  }
+
+  function loadScriptsOnInteraction() {
+    for (const scriptInfo of scriptsToLoad) {
+      const loadScriptOnce = () => {
+        loadScript(scriptInfo.src)
+        // Detach event listeners after running the function once
+        document.removeEventListener('mousemove', loadScriptOnce)
+        document.removeEventListener('click', loadScriptOnce)
+        document.removeEventListener('touchstart', loadScriptOnce)
+        document.removeEventListener('scroll', loadScriptOnce)
+      }
+
+      document.addEventListener('mousemove', loadScriptOnce)
+      document.addEventListener('click', loadScriptOnce)
+      document.addEventListener('touchstart', loadScriptOnce)
+      document.addEventListener('scroll', loadScriptOnce)
+    }
+  }
+
+  loadScriptsOnInteraction()
+</script>

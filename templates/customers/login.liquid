@@ -1,0 +1,179 @@
+<div class="login-page account">
+  <div class="container">
+    <div class="customer-login">
+      <h1>Login To Your Subscription</h1>
+      <div class="subheading">Manage your Rejuvia subscription with a passwordless login.</div>
+      <a class="btn subscription-link" href="/a/account/login"
+        >Manage Subscriptions</a
+      >
+      <div class="divider"></div>
+    </div>
+    <div class="customer-login" >
+      <h1>Login</h1>
+      {%- form 'customer_login' -%}
+        <div class="error-msg"></div>
+        {{ form.errors | default_errors }}
+        <input
+          type="email"
+          name="customer[email]"
+          id="customer-email"
+          class="email required"
+          aria-required="true"
+          autocomplete="email"
+          placeholder="Email Address"
+        >
+        {%- if form.password_needed -%}
+          <input
+            type="password"
+            name="customer[password]"
+            id="customer-password"
+            class="password required"
+            aria-required="true"
+            placeholder="Password"
+          >
+          <div class="note">
+            <a class="create-acc" href="/account/register">Create account</a><span class="dot-spacer">•</span>
+            <a href="#" onclick="showRecoverPassword(); return false;">Forgot password?</a>
+          </div>
+        {%- endif -%}
+        <button class="btn custom_button_font" type="submit">Log In</button>
+      {%- endform -%}
+    </div>
+    <!-- Password Recovery -->
+    <div id="recover-password" style="display: none;">
+      <h1>Reset Password</h1>
+      <div class="note">
+        Enter your email address below and we'll send you an email with instructions to reset your password.
+      </div>
+      {%- form 'recover_customer_password' -%}
+        {{ form.errors | default_errors }}
+        <div class="error-msg"></div>
+        {%- if form.posted_successfully? -%}
+          <div class="success-msg" style="display: block;">
+            Check your inbox for an email about how to change your password.
+          </div>
+        {%- endif -%}
+        <input
+          type="email"
+          name="email"
+          id="recover-email"
+          class="email required"
+          aria-required="true"
+          autocomplete="email"
+          placeholder="Email Address"
+        >
+        <button class="btn custom_button_font" type="submit">Submit</button>
+        <div class="note">or <a href="#" onclick="hideRecoverPassword(); return false;">Cancel</a></div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+<style>
+  @media (min-width: 768px) {
+    .login-page {
+      display: flex;
+    }
+  }
+  body .content-wrapper,
+  body #page {
+    background: #f8f7f7;
+  }
+
+  .customer-login {
+    padding: 3rem;
+    background: #fff;
+  }
+
+  .customer-login h1 {
+    margin-bottom: 24px;
+  }
+
+  .customer-login:first-of-type {
+    padding-bottom: 0;
+  }
+
+  .customer-login:first-of-type h1 {
+    margin-bottom: 0;
+  }
+
+  .subheading {
+    margin: 8px 0 12px;
+  }
+
+  .subscription-link {
+    line-height: 1.2;
+  }
+
+  .divider {
+    margin-top: 3rem;
+    background: black;
+    height: 1px;
+    width: 100%;
+  }
+</style>
+<script>
+  function showRecoverPassword() {
+    $('#recover-password').show();
+    $('#customer-login').hide();
+    window.location.hash = '#recover';
+    return false;
+  }
+  function hideRecoverPassword() {
+    $('#recover-password').hide();
+    $('#customer-login').show();
+    return false;
+  }
+  $(function () {
+    var resizePage = function () {
+      var headerHeight = 0;
+      var footerHeight = 0;
+      if ($('#header').length > 0) {
+        var headerHeight = $('#header').outerHeight();
+      }
+      if ($('#footer').length > 0) {
+        var footerHeight = $('#footer').outerHeight();
+      }
+      var minHeight = window.innerHeight - headerHeight - footerHeight;
+      $('.login-page').css('min-height', minHeight);
+    };
+    resizePage();
+    $(window).resize(
+      $.throttle(50, function () {
+        resizePage();
+      })
+    );
+
+    if (window.location.hash == '#recover') {
+      showRecoverPassword();
+    }
+
+    $('.login-page form').each(function () {
+      var form = $(this);
+      form.submit(function (e) {
+        var error = false;
+
+        form.find('.error-msg').hide();
+        form.find('.error').removeClass('error');
+
+        form.find('.required').each(function () {
+          if ($(this).val() == '') {
+            error = true;
+            $(this).addClass('error');
+          }
+        });
+        if (error) {
+          form.find('.error-msg').show().text('Please complete all the required fields.');
+        } else {
+          if (!Simplistic.validateEmail(form.find('.email').val())) {
+            error = true;
+            form.find('.email').addClass('error');
+            form.find('.error-msg').show().text('Please provide a valid email address.');
+          }
+        }
+        if (error) {
+          return false;
+        }
+      });
+    });
+  });
+</script>

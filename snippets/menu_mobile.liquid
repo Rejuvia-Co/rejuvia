@@ -1,0 +1,707 @@
+<style>
+
+  #menu-mobile > .wrapper{
+    z-index: 0 !important;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  #menu-mobile > .wrapper > .content {
+    z-index: 0 !important;
+  }
+
+  .menu-mobile{
+    z-index: 0 !important;
+    height: 100% !important;
+    padding: 0 20px !important;
+  }
+  
+  .custom-nav-links-container{
+    margin-top: 20px;
+    background-color: red;
+  }
+  .free-shipping-text{
+  	color: #404040;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+  .custom-mobile-link{
+     letter-spacing: 0.08em;
+    color: #464646;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .row-sub-menu{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+  }
+  .colored{
+  	color:#8d8d8d !important;
+  }
+  .custom-mobile-divider{
+  	border-top: 2px solid #e1e1e1;
+    width: 80%;
+    margin:25px 0;}
+
+  .shop-routine-btn{
+  	padding:10px;
+    border-radius:50px;
+    color:white !important;
+    background: black;  
+    font-weight: 700;
+    margin:20px;
+  }
+  .shop-routine-btn:hover{
+  	    background-color: #eac78b!important;   
+    	
+  }
+  .custom-review{
+  	margin-bottom:20px;
+    padding: 4px 19px;
+    font-style: italic;
+    font-weight: 600;
+    font-size:15px;
+  }
+  .custom-review-stars{
+  	margin-top: 0;
+  }
+
+  /* estilos añadidos actualizacion nav*/
+
+
+
+  .eg-cart-button{
+    display: flex;
+    align-items: center;
+    
+  }
+
+  #mobile-header-container{
+  height: 1px;
+
+  opacity: 0;
+}
+  .eg-content{
+    height: 100%;
+    background-color: red;
+    overflow: scroll;
+  }
+
+  .eg-marginY{
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+</style>
+<div id="menu-mobile" class="ease-animation-slow" role="dialog" aria-modal="true">
+  <div class="wrapper">
+    <!--
+    <div class="head clearfix">
+      <div class="title"><div class="inner"></div></div>
+      <button class="close" aria-label="Close Menu">
+        {% include 'icons', icon: 'close' %}
+      </button>
+    </div>
+  -->
+    <div class="content">
+      <nav class="menu-mobile" role="navigation">
+
+        
+        <header id="mobile-header-container">
+        
+      
+        </header>
+  
+        <!--Estilos-->
+        {% style %}
+            .product-recommendations{
+              width: 100%;
+            }
+
+            .product-recommendation{
+              width: 100%;
+              display: flex;
+              border: 1px solid rgb(0,0,0, 0.1);
+              border-radius: 8px;
+              padding: 10px;
+              margin-bottom: 10px;
+            }
+            
+            .eg-product-link{
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
+            .eg-productR-image{
+              min-width: 112px;
+              width: 112px;
+              height: 120px;
+              display: flex;
+              align-items: center;
+              position: relative;
+              border-radius: 2px;
+            }
+
+            @media(max-width: 380px){
+              .eg-productR-image{
+              min-width: 95px;
+              width: 100px;
+              height: 120px;
+              display: flex;
+              align-items: center;
+              position: relative;
+              border-radius: 2px;
+            }
+            }
+            .eg-savings-text{
+              position: absolute;
+              top: 0;
+              left: 0;
+              
+              background-color: #F2DDB9;
+              padding: 0px 10px;
+              padding-top: 5px;
+              padding-bottom: 2px;
+              border-top-left-radius: 2px;
+              font-size:12px;
+              font-weight: 500;
+              line-height: 12px;
+
+            }
+            .eg-background-product{
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              background-color: #FFF;
+              border-radius: 2px;
+                position: relative;
+            z-index: 0;
+            }
+            .eg-productR-image img{
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+              border-radius: 2px;
+            }
+
+            .eg-productR-info{
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              margin-left: 20px;
+              padding-right: 10px;
+            }
+
+            .productR-info_title {
+              width: 100%;
+              display: flex;
+              align-items: flex-start;
+            }
+
+            @media(max-width: 400px){
+              .productR-info_title span{
+                max-width: 200px;
+            }
+            }
+
+            .productR-info_title span{
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 24px;
+              margin-right: 10px;
+            }
+
+            .productR-info_description {
+              width: 100%;
+              display: -webkit-box;        /* Flexbox para aplicar -webkit-line-clamp */
+              -webkit-box-orient: vertical; /* Orientación vertical de las líneas */
+              overflow: hidden;            /* Oculta el desbordamiento del texto */
+              -webkit-line-clamp: 2;       /* Número de líneas a mostrar */
+              font-size: 13px;
+              font-weight: 400;
+              line-height: 19.5px;
+              
+            }
+
+            
+
+            .productR-info_description   > p{
+              margin: 0;
+              padding: 0;
+            }
+
+            .eg-reviews{
+              width: 100%;
+              margin: 5px 0;
+            }
+
+            .eg-reviews span{
+              font-size: 13px;
+              font-weight: 400;
+              line-height: 19.5px;
+            }
+
+            /*
+            .eg-reviews > div > div > div.oke-sr-rating{
+              display: flex ;
+            }
+            */
+            .eg-reviews > div > div > div.oke-sr-stars > div.oke-stars > div.oke-stars-background > svg{
+              width: 80px;
+              height: 16px;
+            }
+
+            .eg-reviews > div > div > div.oke-sr-stars > div.oke-stars > div.oke-stars-foreground > svg{
+              width: 80px;
+              height: 16px;
+            }
+
+            
+
+            .eg-reviews > div > div > div.oke-sr-count {
+              
+              position: relative; /* Asegúrate de que el elemento padre tenga una posición */
+              margin-left: 7px;
+            }
+
+            .eg-reviews > div > div > div.oke-sr-count::before {
+              content: "(";
+              position: absolute;
+              left: -5px; /* Ajusta según sea necesario */
+            }
+
+            .eg-reviews > div > div > div.oke-sr-count::after {
+              content: ")";
+              position: absolute;
+              right: -5px; /* Ajusta según sea necesario */
+            }
+
+           
+            
+        {% endstyle %}
+        <div class="eg-marginY">
+          <div class="product-recommendations">
+            {% for block in section.blocks %}
+              {% if block.type == 'products-menu_mobile' %}
+                <div class="product-recommendation">
+                  {% if block.settings.selected_product %}
+                    {% assign product = all_products[block.settings.selected_product] %}
+                    <a href="{{ product.url }}" class="eg-product-link">
+                      <div class="eg-productR-image">
+                        <div class="eg-background-product"></div>
+                        <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+                        {% if block.settings.show_savings %}
+                          <div class="eg-savings-text">
+                            <b>{{ block.settings.savings_text }}</b>
+                          </div>
+                        {% endif %}
+                      </div>
+                      <div class="eg-productR-info">
+                        <div class="productR-info_title">
+                        <span>{{ product.title }}</span>
+                        <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" />
+                        </div>
+                        <div class="eg-reviews">
+                          
+                          {{ product.metafields.okendo.StarRatingSnippet }}
+                          
+                        </div>
+                        <div class="productR-info_description">
+                          {{ block.settings.product_description}}
+                        </div>
+                      </div>
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        
+
+        {% style %}
+
+          
+          .collection-products-header{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 30px;
+           
+          }
+          .collection-products-header span{
+            font-size: 24px;
+            font-weight: 500 ;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          .collection-products-header img{
+            margin-bottom: 7px;
+            margin-left:10px;
+          }
+
+
+          .collection-products-list {
+          display: none; /* Oculta la lista por defecto */
+          overflow: hidden;
+          padding-top: 10px;
+          /* Puedes agregar más estilos aquí si es necesario */
+        }
+        .collection-products-container {
+          /* Puedes definir el tamaño y otros estilos del contenedor aquí */
+        }
+        .collection-products-header {
+          cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+          /* Estilos para el encabezado, si es necesario */
+        }
+
+        .collection-product-item{
+          width: 100%;
+          
+        }
+        .collection-product-item a{
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        .eg-product-title{
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-left: 10px;
+          }
+
+        .eg-product-image{
+          width: 72px;
+          height: 72px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .eg-product-image img{
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        {% endstyle %}
+
+
+        {% assign show_collection_container = false %}
+        {% assign collection_name = '' %}
+
+        {% for block in section.blocks %}
+          {% if block.type == 'mobile-collection' %}
+            {% if block.settings.selected_collection %}
+              {% assign collection = collections[block.settings.selected_collection] %}
+              {% if collection.products.size > 0 %}
+                {% assign show_collection_container = true %}
+                {% assign collection_name = collection.title %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {% if show_collection_container %}
+          {% style %}
+            .my-top-eg{
+              margin-top: 35px;
+            }
+          {% endstyle %}
+          <div class="eg-marginY my-top-eg">
+            <div class="collection-products-container" id="collection-products-container">
+              <div class="collection-products-header" id="collection-products-header">
+                <span><b>{{ collection_name }}</b></span>
+                <img src="{{ 'Plus.svg' | asset_url }}" width="20px" height="20px" id="plus-icon" />
+                <img src="{{ 'Less.svg' | asset_url }}" width="20px" height="20px" id="less-icon" style="display: none;" />
+              </div>
+              <div class="collection-products-list" id="products-list">
+                {% for block in section.blocks %}
+                  {% if block.type == 'mobile-collection' %}
+                    {% if block.settings.selected_collection %}
+                      {% assign collection = collections[block.settings.selected_collection] %}
+                      {% if collection.products.size > 0 %}
+                        {% for product in collection.products %}
+                          <div class="collection-product-item">
+                            <a href="{{ product.url }}" class="product-link">
+                              <div class="eg-product-image">
+                                <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+                              </div>
+                              <div class="eg-product-title">
+                                <span>{{ product.title }}</span>
+                              </div>
+                            </a>
+                          </div>
+                        {% endfor %}
+                      {% else %}
+                        <p>No products found in this collection.</p>
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+    
+    <!--Estilos -->
+    {% style %}
+        .eg-menu-links{
+          width: 100%;
+          padding: 15px 0;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          border-top: 1px solid rgb(0,0,0, 0.1);
+          border-bottom: 1px solid rgb(0,0,0, 0.1);
+        }
+        .eg-menu-links a{
+          width: 50%;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 24px;
+          margin: 15px 0;
+        }
+    {% endstyle %}
+    <div class="eg-menu-links eg-marginY">
+      {% for block in section.blocks %}
+        {% if block.type == 'mobile-menu-links' %}
+          {% assign link_labels = '' %}
+          {% assign link_urls = '' %}
+          {% if block.settings.first_label %}
+            <a href="{{ block.settings.first_url }}">{{ block.settings.first_label }}</a>
+          {% endif %}
+          {% if block.settings.second_label %}
+            <a href="{{ block.settings.second_url }}">{{ block.settings.second_label }}</a>
+          {% endif %}
+          {% if block.settings.third_label %}
+            <a href="{{ block.settings.third_url }}">{{ block.settings.third_label }}</a>
+          {% endif %}
+          {% if block.settings.fourth_label  %}
+            <a href="{{ block.settings.fourth_url }}">{{ block.settings.fourth_label }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      </div>
+
+        {% style %}
+        .eg-mb{
+          margin-bottom: 10px;
+        }
+        .eg-btn{
+          width: 100%;
+        }
+        .eg-btn > .btn{
+          max-width: 100%;
+          
+          display: flex;
+          align-items: center;
+        }
+        .eg-btn > .btn > span{
+          
+          font-size: 20px !important;
+          font-weight: 700;
+          line-height: 30px;
+          align: center;
+          margin: 0;
+        }
+        .eg-btn > .btn > svg{
+          
+          margin-bottom: 3px;
+        }
+        .all-footer-menu_mobile{
+          width: 100%;
+        }
+        .eg-menu-mobile_account{
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+        }
+        .eg-menu-mobile_account span{
+          font-size: 20px;
+          margin-left: 10px;
+        }
+
+        .menu-bottom-information{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          
+        }
+        .menu-bottom-information-item{
+            display: flex;
+            align-items: flex-end;
+        }
+        .menu-bottom-information-item span{
+          font-size: 14px;
+          line-height: 16.7px;
+          font-weight: 400;
+          text-transform: uppercase;
+          margin-left: 10px;
+          
+        }
+      {% endstyle %}
+
+      <div class="all-footer-menu_mobile"> 
+        <a href="/a/account/login" class="eg-menu-mobile_account eg-marginY">
+          <img src="{{ 'menu-mobile-account.svg' | asset_url }}" width="32px" height="32px" />
+          <span>Manage Subscription</span>
+        </a>
+        <div class="eg-btn eg-marginY">
+        <a href="{{ section.settings.cta_url }}" class="btn"><span>{{ section.settings.cta_label }}</span> {% render 'icon-arrow-left' %} </a>
+        </div>
+        <div class="menu-bottom-information eg-marginY">
+         
+            {% for block in section.blocks %}
+              {% if block.type == 'bottom-menu-mobile-info' %}
+                {% if block.settings.first_label %}
+                  <div class="menu-bottom-information-item eg-mb">
+                  <img src="{{ 'Package.svg' | asset_url }}" width="20px" height="20px" />
+                  <span>{{ block.settings.first_label }}</span>
+                  </div>
+                {% endif %}
+                {% if block.settings.second_label %}
+                  <div class="menu-bottom-information-item">
+                  <img src="{{ 'ArrowUDownLeft.svg' | asset_url }}" width="20px" height="20px" />
+                  <span>{{ block.settings.second_label }}</span>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          
+        </div>
+
+      </div>
+
+    </nav>
+
+  </div>
+</div>
+
+<script>
+  $(function() {
+    let scrollPosition = 0;
+
+    function toggleMenuButtons() {
+        $(".btn-open-mobile-menu").toggleClass('hidden');
+        $(".close").toggleClass('hidden');
+    }
+
+    function calculateMenuHeight(scrollTop) {
+        const bannerHeight = 35.8;
+        const headerHeight = 55;
+        let menuHeight;
+
+        if (scrollTop > bannerHeight) {
+            menuHeight = `calc(100vh - ${headerHeight}px)`;
+        } else {
+            menuHeight = `calc(100vh - ${headerHeight + (bannerHeight - scrollTop)}px)`;
+        }
+
+        return menuHeight;
+    }
+
+    $(".btn-open-mobile-menu").click(function(e) {
+        e.preventDefault();
+        if (!$('#menu-mobile').hasClass('open')) {
+            scrollPosition = $(window).scrollTop();
+            $('#menu-mobile').css('height', calculateMenuHeight(scrollPosition));
+            $('#menu-mobile').addClass('open');
+            $('body').css({
+                'position': 'fixed',
+                'top': -scrollPosition + 'px',
+                'width': '100%'
+            });
+
+            
+                $('#header > .container').addClass('header-open');
+           
+            toggleMenuButtons(); // Alternar botones
+        } else {
+            closeMenuMobile();
+        }
+        Simplistic.trapFocus({
+            $container: $('#menu-mobile'),
+            namespace: 'menu-mobile'
+        });
+        return false;
+    });
+
+    function closeMenuMobile() {
+        $('#menu-mobile').removeClass('open');
+        $('body').css({
+            'position': '',
+            'top': '',
+            'width': ''
+        });
+        $(window).scrollTop(scrollPosition);
+        $('#header > .container').removeClass('header-open');
+        Simplistic.removeTrapFocus({
+            $container: $('#menu-mobile'),
+            namespace: 'menu-mobile'
+        });
+        toggleMenuButtons(); // Alternar botones
+        return false;
+    }
+
+    $("#menu-mobile .menu-mobile .has-dropdown .icon").click(function() {
+        console.log($(this).siblings('.icon').first());
+        $(this).parent().toggleClass('active');
+        $(this).parent().find('.submenu:first').slideToggle();
+        
+        $(this).toggle();
+        $(this).siblings('.icon').first().toggle();
+        return false;
+    });
+
+    $(".close").click(function(e) {
+        e.preventDefault();
+        closeMenuMobile();
+    });
+
+    $(".head").click(function() {
+        closeMenuMobile();
+    });
+
+    $(document).on('keydown', function(e) {
+        if (e.which == 27) { // Escape key
+            if ($('#menu-mobile').hasClass('open')) {
+                e.preventDefault();
+                closeMenuMobile();
+                return false;
+            }
+        }
+    });
+});
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('collection-products-header');
+    const productsList = document.getElementById('products-list');
+    const plusIcon = document.getElementById('plus-icon');
+    const lessIcon = document.getElementById('less-icon');
+  
+    header.addEventListener('click', function() {
+      if (productsList.style.display === 'none' || productsList.style.display === '') {
+        // Mostrar la lista de productos
+        productsList.style.display = 'block';
+        plusIcon.style.display = 'none'; // Ocultar el icono de más
+        lessIcon.style.display = 'block'; // Mostrar el icono de menos
+      } else {
+        // Ocultar la lista de productos
+        productsList.style.display = 'none';
+        plusIcon.style.display = 'block'; // Mostrar el icono de más
+        lessIcon.style.display = 'none'; // Ocultar el icono de menos
+      }
+    });
+  });
+</script>

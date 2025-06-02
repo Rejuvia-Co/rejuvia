@@ -1,0 +1,61 @@
+<head>
+</head>
+<style>
+  .page {
+    max-width: 800px;
+    background-color: #FFFFFF;
+    margin: 1em auto;
+    padding-left: 3em; /* Add padding to the left */
+    padding-right: 3em; /* Add padding to the right */
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  .page .title {
+    font-size: 0em;
+    text-transform: none;
+  }
+  .page h5 {
+    font-size: 1.5em;
+    font-family: 'Helvetica'!important;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 2px;
+    margin: 10em 3em 2em 1em;
+  }
+  .page p {
+    font-size: 16px; /* Set paragraph font size */
+  }
+  .page p strong {
+    font-family: 'Helvetica'!important;
+    text-align: left;
+  }
+  .page ul {
+    list-style: none;
+    margin-left: 2em;
+    overflow-wrap: anywhere;
+  }
+  .page a:not(.btn) {
+    font-weight: 900;
+  }
+  @media all and (max-width: 900px) {
+    .page {
+      padding: 1.5em;
+      padding-top: 1em; /* Reduce top padding on mobile */
+      margin: 2em auto; /* Adjust margin on mobile */
+    }
+    .page .title {
+      font-size: 2.7em;
+    }
+    .page ul {
+      margin-left: 0;
+    }
+    .page h5 {
+      font-size: 1em;
+    }
+  }
+</style>
+<div class="page page-{{page.handle}} container">
+  <div class="content custom_text_font">
+    {{ page.content }}
+  </div>
+</div>

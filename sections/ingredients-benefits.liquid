@@ -1,0 +1,259 @@
+
+
+<style>
+    .ingredients-benefits-section{
+        padding: 64px 35px 64px 35px;
+        background-color: {{section.settings.background_color}};
+        display: flex;
+        justify-content: center;
+    }
+
+    @media(max-width: 900px){
+        .ingredients-benefits-section{
+            padding: 20px 25px 40px 25px;
+        }
+    }
+
+    .ingredients-benefits-container{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1360px;
+    }
+
+    
+
+
+    .ingredients-benefits_info{
+        width: 63%;
+        background-color: {{ section.settings.background_color_info}};
+        padding:  40px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ingredients-benefits_img{
+        width: 36%;
+        min-height: 557px;
+        background-image: url({{ section.settings.background_image | image_url }});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-radius: 8px;
+    }
+
+    @media(max-width: 790px){
+        .ingredients-benefits_img{
+        display: none}
+        .ingredients-benefits_info{
+            width: 100%;
+            
+        }
+    }
+
+
+
+    .eg-section-title--custom{
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 36px;
+        font-family: inherit;
+        letter-spacing: -0.4px;
+        margin-bottom: 15px;
+    }
+
+    .eg-section-description--custom{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+        color: #171512;
+        opacity: 0.8;
+        margin-bottom: 25px;
+    }
+
+ 
+
+  .eg-subscription-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }
+  .benefit-item {
+    display: flex;
+    width: 50%;
+    min-width: 340px;
+    padding: 10px 0;
+    padding-right: 10px;
+    align-items: center;
+    
+  }
+
+  .benefit-item svg{
+        width: 40px;
+        height: 40px;
+    }
+
+  .benefit-item p {
+    color: #171512;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 39px; /* 216.667% */
+    margin-bottom: -5px;
+    margin-left: 10px;
+  }
+
+  @media screen and (min-width: 900px) {
+    .subscribe-save-container {
+      padding: 43px 0px;
+    }
+    .subscription-benefits {
+      flex-direction: row;
+      max-width: 856px;
+      flex-wrap: wrap;
+    }
+    .subscribe-save-container .section-title--custom {
+      font-size: 40px;
+    }
+  }
+  @media(max-width: 789px){
+    .ingredients-benefits_img{
+        background-position: top;
+        width: 100%;
+        min-height: 400px;
+        display: flex;
+        margin-bottom: 2.5vw;
+    }
+    .ingredients-benefits-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+  @media(max-width: 600px){
+    .ingredients-benefits_img{
+        background-position: top;
+        width: 100%;
+        min-height: 300px;
+        display: flex;
+        margin-bottom: 2.5vw;
+    }
+        .ingredients-benefits_info{
+            width: 100%;
+            padding: 24px;
+            
+        }
+    .ingredients-benefits-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .benefit-item p {
+        font-size: 24px;
+
+      }
+
+      .benefit-item svg{
+        width: 32px;
+        height: 32px;
+    }
+
+      
+}
+
+@media(max-width: 495px){
+  .benefit-item p {
+    font-size: 20px;
+
+  }
+}
+</style>
+
+<div id="ingredients-oral-sprays" class="ingredients-benefits-container">
+
+    <div class="ingredients-benefits_img">
+
+        
+    </div>
+    <div class="ingredients-benefits_info">
+        <div class="ingredients-benefits_info-header">
+            <h4 class="eg-section-title--custom">
+                  {{ section.settings.title }}
+            </h4>
+            <p class="eg-section-description--custom">
+                {{ section.settings.description }}
+            </p>
+        </div>
+        <div class="ingredients-benefist_info-body">
+            <div class="eg-subscription-benefits">
+                {% for item in section.blocks %}
+                  <div class="benefit-item">
+                    {% render 'check-circle-p' %}
+                    <p class="description">{{ item.settings.description }}</p>
+                  </div>
+                {% endfor %}
+              </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% schema %}
+{
+  "name": "Ingredients Benefits",
+  "tag": "section",
+  "class": "ingredients-benefits-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+    },
+    {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Image"
+      },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Section",
+        "default": "#FAFAF9"
+    },
+    {
+        "type": "color",
+        "id": "background_color_info",
+        "label": "Background Info Block",
+        "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients Benefits"
+    }
+  ]
+}
+{% endschema %}

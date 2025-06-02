@@ -1,0 +1,18 @@
+{%- for child_link in parent_link.links -%}
+  <div class="item{% if child_link.links != blank %} has-dropdown{% endif %}"{% if child_link.links != blank %} aria-haspopup="true"{% endif %}>
+    <a href="{{ child_link.url }}" class="menu-item" {% if child_link.url == "#" %}onclick="$(this).next('.icon').click(); return false;"{% endif %}>
+      {% if child_link.url contains 'product' %}
+      <img src="{% include 'image_placeholder', image: child_link.object.featured_image %}" class="lazyload" data-sizes="auto" data-srcset="{% include 'lazy_src', image: child_link.object.featured_image %}" alt="" />
+      {% endif %}
+      <p class="menu-item-title">{{ child_link.title | escape }}<br>
+      <span class="item-subtitle custom_text_font">{{ child_link.object.metafields.global.subheading }}</span></p>
+    </a>
+    {%- if child_link.links != blank -%}
+    {%- include 'icons', icon: 'plus' -%}
+    {%- include 'icons', icon: 'minus', iconClass: 'hide' -%}
+    <div class="submenu">
+      {%- include 'menu_mobile_level', parent_link: child_link -%}
+    </div>
+    {%- endif -%}
+  </div>
+{%- endfor -%}

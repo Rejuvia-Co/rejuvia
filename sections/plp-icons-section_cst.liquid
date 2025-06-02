@@ -1,0 +1,100 @@
+<style>
+.pdp-middle-section {font-family: "Nexa"; padding: 3em 0 0;}
+.pdp-middle-section .icons-section {padding: 0em 0;background-color: #ffffff;}
+.pdp-middle-section .icon-item {max-width: 15em; margin: 0 3em;}
+.pdp-middle-section .icon-item .heading {font-size: 1.286em; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; max-width: 10em; padding: 1em 0;}
+.pdp-middle-section h2 {color: #000000; text-align: center; font-size: 1.786em; font-family: "Nexa"; font-weight: 800; font-style: none; text-transform: none; line-height: 1.4em;}
+.pdp-middle-section .icon-item .text {color: #000000; font-size: 1em; letter-spacing: normal;}
+.pdp-middle-section .btn {background-color: #f4f4f4; font-weight: 700; letter-spacing: normal; color: #000000; text-transform: none; border-radius: 2em; padding: 1.2em 4em;}
+
+@media all and (max-width: 900px) {
+.pdp-middle-section .icons-section {flex-direction: column; align-items: center;}
+.pdp-middle-section h2 {max-width: 19em; margin: 1em auto 0; font-size: 1.286em;}
+.pdp-middle-section .icon-item .heading {font-size: 1em; max-width: none; margin-top: 1em;}
+.pdp-middle-section .icon-item {max-width: 20em;}
+}
+</style>
+
+<section class="pdp-middle-section container cst_icon_col_sec">
+<h2 class="cst_icon_col_sec_title">{{ section.settings.heading }}</h2>
+<div class="icons-section flex justify-content-center cst_icon_col_sec_grid">
+{% for icon in section.blocks %}
+    <div class="icon-item flex justify-content-start align-items-center direction-column cst_icon_col_sec_grid_item">
+    {% if icon.settings.image != nil %}
+        <div class="image" data-aos="zoom-in">
+        <img class="lazyload cst_icon_col_item_img" data-sizes="auto" src="{% render 'image_placeholder', image: icon.settings.image %}" data-srcset="{% render 'lazy_src', image: icon.settings.image %}" />
+        </div>
+    {% endif %}
+    <div class="heading text-center cst_icon_col_item_head">
+        {{ icon.settings.heading }}
+    </div>
+    <div class="text text-center cst_icon_col_item_text">
+        {{ icon.settings.text }}
+    </div>
+    </div>
+{% endfor %}
+</div>
+{% if section.settings.button_text != "" %}
+<div class="text-center">
+<a href="{{ section.settings.button_url }}" class="btn">{{ section.settings.button_text }}</a>
+</div>
+{% endif %}
+</section>
+
+<script>
+$(function() {
+$(document).ready(function() {
+    $('html').removeClass('no-js');
+    AOS.init();
+})
+})
+</script>
+
+{% schema %}
+{
+"name": "Custom Icons Section",
+"settings": [
+    {
+    "type": "richtext",
+    "id": "heading",
+    "label": "Heading"
+    },
+    {
+    "type": "text",
+    "id": "button_text",
+    "label": "Button Text",
+    "default": "Lab Reports"
+    },
+    {
+    "type": "url",
+    "id": "button_url",
+    "label": "Button URL"
+    }
+],
+"blocks": [
+    {
+    "type": "icon",
+    "name": "Icon",
+    "settings": [
+        {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Heading"
+        },
+        {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+        },
+        {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Text</p>"
+        }
+    ]
+    }
+]
+}
+{% endschema %}

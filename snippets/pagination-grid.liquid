@@ -1,0 +1,83 @@
+{%- if paginate.pages > 1 -%}
+  <div class="pagination">
+    <div class="flex align-items-center justify-content-center">
+
+      {%- if paginate.previous -%}
+        <a class="prev" href="{{ paginate.previous.url }}">
+          {% render 'icon-arrow-pagination-grid' %}
+        </a>
+      {%- else -%}
+        <a
+          class="prev disabled"
+          href="#"
+          onclick="return false;">
+          {% render 'icon-arrow-pagination-grid' %}
+        </a>
+      {%- endif -%}
+
+      <div class="blog-grid__pagination--desktop">
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}"><span>{{ part.title }}</span></a>
+          {%- else -%}
+            {%- if part.title == '&hellip;' -%}
+              <a
+                class="ellipsis disabled"
+                href="#"
+                onclick="return false;"><span>{{ part.title }}</span></a>
+            {%- else -%}
+              <a class="active" href="{{ part.url }}"><span>{{ part.title }}</span></a>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="blog-grid__pagination--mobile">
+        {%- assign current_page = paginate.current_page -%}
+        {%- assign total_pages = paginate.pages -%}
+
+        {%- assign previous_page = current_page | minus: 1 -%}
+        {%- assign next_page = current_page | plus: 1 -%}
+        {%- assign before_previous_page = current_page | minus: 2 -%}
+        {%- assign after_next_page = current_page | plus: 2 -%}
+
+        {%- for part in (1..total_pages) -%}
+          {%- if total_pages <= 4 -%}
+
+            <a href="{{ '/blogs/' | append: blog.title | downcase | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
+              <span>{{ part }}</span>
+            </a>
+          {%- else -%}
+            {%- if part == 1 or part == total_pages or part == current_page or part == previous_page or part == next_page -%}
+              <a href="{{ '/blogs/' | append: blog.title | downcase | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
+                <span>{{ part }}</span>
+              </a>
+            {%- elsif part == before_previous_page or part == after_next_page -%}
+              <a class="ellipsis disabled" href="">...</a>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.next -%}
+        <a class="next" href="{{ paginate.next.url }}">
+          {% render 'icon-arrow-pagination-grid' %}
+        </a>
+      {%- else -%}
+        <a
+          href="#"
+          class="next disabled"
+          onclick="return false;">
+          {% render 'icon-arrow-pagination-grid' %}
+        </a>
+      {%- endif -%}
+
+    </div>
+    <div class="pagination-num-showing text-center hide">Showing: {{ paginate.current_offset | plus: 1 }}-{%- if paginate.next -%}
+        {{ paginate.current_offset | plus: paginate.page_size }}
+      {%- else -%}
+        {{ paginate.items }}{%- endif -%}
+      of {{ paginate.items }}</div>
+  </div>
+
+{%- endif -%}

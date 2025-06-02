@@ -1,0 +1,386 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_ingredients_xJ8tR9": {
+      "type": "hero-ingredients",
+      "blocks": {
+        "description_block_Gw8zxT": {
+          "type": "description_block",
+          "settings": {
+            "label": "Science",
+            "href": "#science-ingredients"
+          }
+        },
+        "description_block_tcF8NF": {
+          "type": "description_block",
+          "settings": {
+            "label": "Ingredients",
+            "href": "#ingredients-benefits"
+          }
+        },
+        "description_block_Q6kMQQ": {
+          "type": "description_block",
+          "settings": {
+            "label": "Oral Sprays",
+            "href": "#ingredients-oral-sprays"
+          }
+        },
+        "description_block_XDR8ag": {
+          "type": "description_block",
+          "settings": {
+            "label": "Founders",
+            "href": "#ourners-ingredients"
+          }
+        }
+      },
+      "block_order": [
+        "description_block_Gw8zxT",
+        "description_block_tcF8NF",
+        "description_block_Q6kMQQ",
+        "description_block_XDR8ag"
+      ],
+      "settings": {
+        "header": "Best-In-Class, Natural Ingredients For Your Best Sleep Yet",
+        "description": "Our innovative oral sleep spray combines 13+ all-natural, science-backed sleep ingredients for quicker absorption, higher bioavailability, and customizable dosing.",
+        "image": "shopify://shop_images/49ccbd1b8eba45a9d7d8802e6b410d46.png"
+      }
+    },
+    "faqs_ingredients_Xnytn6": {
+      "type": "FAQS-ingredients",
+      "blocks": {
+        "faq_qekAtq": {
+          "type": "faq",
+          "settings": {
+            "question": "Extensive Product Testing",
+            "answer": "We test our ingredient blends in all of our products three different times throughout our manufacturing process for purity and potency.",
+            "image": "shopify://shop_images/Rectangle_1226.png"
+          }
+        },
+        "faq_TUFpj8": {
+          "type": "faq",
+          "settings": {
+            "question": "Formulated By Doctors",
+            "answer": "We partner with leading doctors, scientists and researchers from across the country to develop and formulate our products.",
+            "image": "shopify://shop_images/ICON_4_2X_ab2f024d-952f-430b-977c-60cc84afceb0.png"
+          }
+        },
+        "faq_DjhCC6": {
+          "type": "faq",
+          "settings": {
+            "question": "Clean & Pure Ingredients",
+            "answer": "We source only the cleanest and purest ingredients, ensuring that every product is free from harmful chemicals and packed with efficacious blends.",
+            "image": "shopify://shop_images/ICON_1_2X_c3a0576c-d78f-493f-ba5b-fa337bf1105a.png"
+          }
+        },
+        "faq_meCEhj": {
+          "type": "faq",
+          "settings": {
+            "question": "Innovative Delivery Method",
+            "answer": "We are constantly striving to bring the latest, most effective delivery methods to market.",
+            "image": "shopify://shop_images/ICON_3_2X_99d15415-0dbe-46b3-bef6-c66bf9a77ad8.png"
+          }
+        }
+      },
+      "block_order": [
+        "faq_qekAtq",
+        "faq_TUFpj8",
+        "faq_DjhCC6",
+        "faq_meCEhj"
+      ],
+      "settings": {
+        "bg_color_section": "#fafaf9",
+        "bg_color": "#f6f5f9",
+        "testimonial": "<p>“<strong>We’ve meticulously formulated </strong>our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
+        "name": "RC WILLIAMS",
+        "position": "FOUNDER"
+      }
+    },
+    "second_customer_testimonial_VMaxpw": {
+      "type": "second-customer-testimonial",
+      "blocks": {
+        "testimonial_CekMqJ": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Organic Valerian Root",
+            "description": "Helps improve sleep quality",
+            "text": "<p>Focus Areas:</p><ul><li>Improve sleep quality</li><li>Reduce stress</li><li>Reduce headaches</li></ul>",
+            "image": "shopify://shop_images/valerian_root.png"
+          }
+        },
+        "testimonial_RnmXaC": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Organic Feverfew Leaf",
+            "description": "Helps promote stress-relief",
+            "text": "<p>Focus Areas:</p><ul><li>Stress relief</li><li>Elevated mood</li><li>Pain relief</li></ul>",
+            "image": "shopify://shop_images/feverfew_leaf.png"
+          }
+        },
+        "testimonial_nUpUBV": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Organic Ginkgo Biloba",
+            "description": "Helps promote relaxation",
+            "text": "<p>Focus Areas:</p><ul><li>Memory</li><li>Energy</li><li>Boost Circulation</li></ul>",
+            "image": "shopify://shop_images/gingko_biloba.png"
+          }
+        },
+        "testimonial_GGnkbb": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Hops Flower Head",
+            "description": "Helps promote calmness",
+            "text": "<p>Focus Areas:</p><ul><li>Calmness</li><li>Reduce stress</li><li>Reduce inflammation</li></ul>",
+            "image": "shopify://shop_images/hops_flower.png"
+          }
+        },
+        "testimonial_Dp8R6G": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Natural Melatonin",
+            "description": "Deep sleep promoting",
+            "text": "<p>Focus Areas:</p><ul><li>REM Sleep</li><li>Sleep Quality</li><li>Sleep Soundness</li></ul>",
+            "image": "shopify://shop_images/melatonin.png"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_CekMqJ",
+        "testimonial_RnmXaC",
+        "testimonial_nUpUBV",
+        "testimonial_GGnkbb",
+        "testimonial_Dp8R6G"
+      ],
+      "settings": {
+        "header": "Ingredients With Purpose.",
+        "description": "For all of our formulations, we source top-quality, organic ingredients from around the world."
+      }
+    },
+    "separator_ingredients_eQrU4m": {
+      "type": "separator-ingredients",
+      "settings": {
+        "background_color_section": "#fafaf9",
+        "background_color": "#672666",
+        "color_font": "#ffffff",
+        "principal_label": "3",
+        "second_label": "THIRD-PARTY TESTED",
+        "description_text": "<p>Our products are<strong> third-party tested over three times </strong>throughout our manufacturing and production process.  This helps ensure unequivocally the <strong>quality, potency and purity</strong> in all of our products and ingredient blends.</p>"
+      }
+    },
+    "ingredients_benefits_tBdFHz": {
+      "type": "ingredients-benefits",
+      "blocks": {
+        "benefit_PKnwkF": {
+          "type": "benefit",
+          "settings": {
+            "description": "Higher Absorption Rates"
+          }
+        },
+        "benefit_iYd4JA": {
+          "type": "benefit",
+          "settings": {
+            "description": "Higher Bioavailability"
+          }
+        },
+        "benefit_YEa88g": {
+          "type": "benefit",
+          "settings": {
+            "description": "Faster Acting"
+          }
+        },
+        "benefit_TUbUdQ": {
+          "type": "benefit",
+          "settings": {
+            "description": "Stronger Than Capsules"
+          }
+        },
+        "benefit_83hLBN": {
+          "type": "benefit",
+          "settings": {
+            "description": "Easy To Use"
+          }
+        },
+        "benefit_HwFBjx": {
+          "type": "benefit",
+          "settings": {
+            "description": "Stronger Than Oils"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_PKnwkF",
+        "benefit_iYd4JA",
+        "benefit_YEa88g",
+        "benefit_TUbUdQ",
+        "benefit_83hLBN",
+        "benefit_HwFBjx"
+      ],
+      "settings": {
+        "title": "Why Oral Sprays?",
+        "description": "Since the ingredients are largely absorbed directly under your tongue, rather than through your digestive system like with capsules and oils, the sprays are able to have stronger and faster effects.",
+        "background_image": "shopify://shop_images/howtouserejuviaspray.png",
+        "background_color": "#fafaf9",
+        "background_color_info": "#ffffff"
+      }
+    },
+    "ourners_ingredients_pJXiRR": {
+      "type": "ourners-ingredients",
+      "blocks": {
+        "testimonial_LhqNRL": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Kristen_Williams.png",
+            "testimonial": "“Our mission is to provide a safe, non-addictive solution for quality sleep, formulated with top experts to ensure you wake up feeling truly refreshed.”",
+            "name": "Kristen WILLIAMS",
+            "role": "CO-FOUNDER"
+          }
+        },
+        "testimonial_UPf9nz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/RC_Williams.png",
+            "testimonial": "“Driven by our commitment to improving your quality of sleep, our Sleep Spray combines carefully chosen, all-natural ingredients to deliver safe and powerful results.”",
+            "name": "RC WILLIAMS",
+            "role": "CO-FOUNDER"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_LhqNRL",
+        "testimonial_UPf9nz"
+      ],
+      "settings": {
+        "section_header": "Our Family Founders",
+        "background_color": "#f5f5f5"
+      }
+    },
+    "product_features_ingredients_LU8faw": {
+      "type": "product-features-ingredients",
+      "blocks": {
+        "icon_9TmrNK": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/FlowerLotus.svg",
+            "description": "Calm Racing Thoughts"
+          }
+        },
+        "icon_nHf3fh": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/MoonStars.svg",
+            "description": "Sleep Better  & Faster"
+          }
+        },
+        "icon_6Bq4gX": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Sun.svg",
+            "description": "No Morning Grogginess"
+          }
+        },
+        "icon_ExPrXx": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Flask.svg",
+            "description": "3rd-Party TripleLab Tested"
+          }
+        }
+      },
+      "block_order": [
+        "icon_9TmrNK",
+        "icon_nHf3fh",
+        "icon_6Bq4gX",
+        "icon_ExPrXx"
+      ],
+      "settings": {
+        "product": "sleep-spray",
+        "heading": "The Oral Spray for a Faster, Deeper Sleep",
+        "text": "Our innovative oral spray combines 9+ natural, science-backed ingredients for quicker absorption, higher bioavailability, and customizable dosing, ensuring you wake up refreshed.",
+        "btn": "Shop Rejuvia Now",
+        "guarantee": "Free Shipping on Orders $69+",
+        "image": "shopify://shop_images/Rejuvia_oral_spray_bundle.png"
+      }
+    },
+    "1723222708df7fb081": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_carousel_H8gEKB": {
+          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "show_heading": true,
+            "heading": "3,000+ 5-Star Reviews  From Our Customers",
+            "badge_link": "",
+            "product": "sleep-spray"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_carousel_H8gEKB"
+      ],
+      "settings": {}
+    },
+    "section_choose_product_FFgLbm": {
+      "type": "section-choose-product",
+      "blocks": {
+        "product_NqrJbj": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray",
+            "short_description": ""
+          }
+        },
+        "product_ykfj7P": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-stress-spray",
+            "short_description": ""
+          }
+        },
+        "product_YFwVCi": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-sprays",
+            "short_description": ""
+          }
+        },
+        "product_Vx7Rd9": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray-6-pack",
+            "short_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_NqrJbj",
+        "product_ykfj7P",
+        "product_YFwVCi",
+        "product_Vx7Rd9"
+      ],
+      "name": "Select Product",
+      "settings": {
+        "title": "Shop All Rejuvia Products",
+        "sub_title": "Better sleep and less stress are now just a few sprays away."
+      }
+    }
+  },
+  "order": [
+    "hero_ingredients_xJ8tR9",
+    "faqs_ingredients_Xnytn6",
+    "second_customer_testimonial_VMaxpw",
+    "separator_ingredients_eQrU4m",
+    "ingredients_benefits_tBdFHz",
+    "ourners_ingredients_pJXiRR",
+    "product_features_ingredients_LU8faw",
+    "1723222708df7fb081",
+    "section_choose_product_FFgLbm"
+  ]
+}

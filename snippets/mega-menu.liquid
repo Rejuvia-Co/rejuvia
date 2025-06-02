@@ -1,0 +1,31 @@
+{%- for link in menu -%}
+    <div class="item custom_text_font {% if link.active %}active{% endif %}{% if link.links != blank %} has-dropdown has-dropdown--mega{% endif %}"{% if link.links != blank %} aria-haspopup="true"{% endif %} data-parent="{{link.handle}}">
+        <a href="{{ link.url }}" class="custom_text_font {% if link.active %}active-menu-item{% endif %}" {% if link.url == '#' %}onclick="return false;"{% endif %}>
+            <span>{{ link.title | escape }} {% if link.title contains '6-Pack' %} <span class="header-boundle-tag">Over 55% OFF</span> {% endif %}</span>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 1.6 1.6" enable-background="new 0 0 64 64" xml:space="preserve">
+                <g>
+                    <path fill="none" class="vertical-plus" stroke="#000000" stroke-width="0.05" stroke-miterlimit="10" x1="32" y1="50" x2="32" y2="14" d="M0.8 1.25L0.8 0.35"/>
+                    <path fill="none" class="horizontal-plus" stroke="#000000" stroke-width="0.05" stroke-miterlimit="10" x1="14" y1="32" x2="50" y2="32" d="M0.35 0.8L1.25 0.8"/>
+                </g>
+            </svg>
+        </a>
+        {%- if link.links != blank -%}
+            <div class="submenu">
+                {%- for level2_link in link.links -%}
+                    <div class="item {% if level2_link.active %}active{% endif %} {% if level2_link.links != blank %}has-dropdown{% endif %}"{% if level2_link.links != blank %} aria-haspopup="true"{% endif %}>
+                        <a href="{{ level2_link.url }}" class="custom_text_font">{{ level2_link.title | escape }} {% render 'icons', icon: 'arrow-right' %}</a>
+                        {%- if level2_link.links != blank -%}
+                            <div class="submenu">
+                                {%- for level3_link in level2_link.links -%}
+                                    <div class="item {% if level3_link.active %}active{% endif %}">
+                                        <a href="{{ level3_link.url }}" class="custom_text_font">{{ level3_link.title | escape }}</a>
+                                    </div>
+                                {%- endfor -%}
+                            </div>
+                        {%- endif -%}
+                    </div>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+    </div>
+{%- endfor -%}

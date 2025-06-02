@@ -1,0 +1,99 @@
+{% style %}
+  .main-faq-new.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.65 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .main-faq-new.section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .main-faq-new__heading {
+    margin: 0;
+    color: #040404;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.48px;
+    font-family: HelveticaNeueL, sans-serif;
+  }
+
+  .main-faq-new .container {
+    padding: 0 21px;
+    max-width: 1344px;
+  }
+
+  @media only screen and (max-width: 749px) {
+    .main-faq-new__heading {
+      font-size: 32px;
+      letter-spacing: -0.32px;
+    }
+
+    .main-faq-new.section-{{ section.id }} .container {
+      padding: 0 16px;
+    }
+  }
+{% endstyle %}
+
+<div class="main-faq-new section-{{ section.id }}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="main-faq-new__heading" style="color: {{ section.settings.title_color }};">
+				{{ page.title }}
+			</h1>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Main FAQ new",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Faqs Title"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title Color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Section padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 24
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 24
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "Main FAQ new"
+      }
+    ]
+  }
+{% endschema %}

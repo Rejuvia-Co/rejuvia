@@ -1,0 +1,385 @@
+{% style %}
+.hero-ingredients-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.hero-ingredients-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    padding-left: 50px;
+}
+
+
+@media(max-width: 900px) {
+    .hero-ingredients-container {
+        padding-left: 35px;
+    }
+}
+
+@media(max-width: 600px){
+    .hero-ingredients-container {
+        padding-left: 20px;
+    }
+}
+
+.hero-ingredients-info-container {
+    width: 53%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
+
+@media(max-width: 1150px){
+    .hero-ingredients-info-container {
+    width: 55%;
+}
+}
+
+
+.hero-ingredients-info-container h2 {
+    font-size: 52px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 62px;
+    margin-bottom: 20px;
+}
+@media(max-width: 1100px){
+    .hero-ingredients-info-container h2 {
+    font-size: 40px;
+
+    }
+}
+@media(max-width: 1000px){
+    .hero-ingredients-info-container h2 {
+    font-size: 35px;
+
+}
+}
+.description-hero-ingredients {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+}
+.hero-ingredients-image-container {
+    width: 40%;
+    min-height: 602px;
+    background-image: url({{ section.settings.image | image_url }});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.hero-ingredients-label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 17px 26px;
+    border: 1px solid #00000040;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #672666;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+
+.hero-ingredients-label.active {
+    border: 1px solid #672666;
+    background-color: #F6F5F9;
+}
+
+@media(max-width: 700px){
+
+.hero-ingredients-container{
+    flex-direction :column-reverse;
+    padding-left: 0;
+}
+.hero-ingredients-image-container {
+width: 100%;
+min-height: 500px;
+max-height: 550px;
+background-image: url({{ section.settings.image | image_url }});
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top 40% center;
+
+}
+.hero-ingredients-info-container {
+width: 100%;
+padding: 30px 20px;
+}
+.hero-ingredients-info-container h2 {
+    font-size: 32px;
+    line-height: 38.4px;
+}
+}
+
+@media(max-width: 500px){
+
+    .hero-ingredients-container{
+        flex-direction :column-reverse;
+        padding-left: 0;
+    }
+    .hero-ingredients-image-container {
+    width: 100%;
+    min-height: 400px;
+    max-height: 450px;
+    background-image: url({{ section.settings.image | image_url }});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top 40% center;
+}
+    .hero-ingredients-info-container {
+    width: 100%;
+    padding: 30px 12px;
+    }
+    .hero-ingredients-info-container h2 {
+        font-size: 32px;
+        line-height: 38.4px;
+    }
+}
+
+.eg-labels-container {
+    
+width: 100%;
+max-width: 1440px;
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+margin-top: 60px;
+
+}
+
+@media(max-width: 600px) {
+    .eg-labels-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-top: 40px;
+    }
+    .hero-ingredients-label {
+    display:flex;
+    cursor: pointer;
+    padding: 17px 26px;
+    border: 1px solid #00000040;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #672666;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    min-width: max-content;
+}
+
+}
+
+        .hero-ingredients-label{
+            transition: border 0.4s ease, background-color 0.4s ease;
+
+        }
+
+    .hero-ingredients-label:hover {
+        border: 1px solid #672666;
+    background-color: #F6F5F9;
+        color:#672666 !important;
+    }
+
+
+    .eg-sticky {
+    position: fixed;
+
+    top: 93.4px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    background-color: white; /* Ajusta el color según tu diseño */
+    border-top: 1px solid #0000001A;
+}
+.eg-labels-all-container{
+    width: 100%;
+    
+}
+
+.eg-labels-all-container.eg-sticky .eg-labels-container {
+    margin-top: 20px; /* Establece margin-top a 0 cuando el contenedor sea sticky */
+}
+
+@media(min-width: 701px){
+    .eg-labels-all-container.eg-sticky .eg-labels-container {
+        padding-left: 35px;
+    }
+}
+
+@media(min-width: 901px) and (max-width:975px){
+    .eg-sticky {
+    top: 117px;
+}
+}
+
+@media(max-width: 900px){
+    .eg-sticky {
+    top: 56px;
+}
+}
+
+@media(max-width: 700px){
+    .eg-labels-all-container.eg-sticky  {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media(max-width: 500px){
+    .eg-labels-all-container.eg-sticky  {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+
+{% endstyle %}
+
+<div class="hero-ingredients-container">
+    <div class="hero-ingredients-info-container">
+        <h2>{{ section.settings.header }}</h2>
+        <div class="hero-ingredients-description-container">
+            
+            <div class="description-hero-ingredients" >
+                {{ section.settings.description }}
+            </div>
+           
+        </div>
+
+        <div class="eg-labels-all-container">
+            <div class="eg-labels-container">
+                
+                {% for block in section.blocks %}
+                <a class="hero-ingredients-label"  href="{{ block.settings.href }}" style="cursor: pointer;">
+                    
+                    {{ block.settings.label }}
+                </a>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <div class="hero-ingredients-image-container"></div>
+</div>
+
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const AlllabelsContainer = document.querySelector('.eg-labels-all-container');
+        const labelsContainer = document.querySelector('.eg-labels-container');
+    
+        let originalOffset = labelsContainer.offsetTop; // Almacena la posición original
+    
+        function updateStickyOffset() {
+            return labelsContainer.offsetTop;
+        }
+    
+        window.addEventListener('scroll', function() {
+            const stickyOffset = updateStickyOffset();
+    
+            if (window.scrollY > originalOffset) { // Usa originalOffset para manejar el sticky
+                AlllabelsContainer.classList.add('eg-sticky');
+            } else {
+                AlllabelsContainer.classList.remove('eg-sticky');
+            }
+        });
+    
+        // Actualizar stickyOffset y originalOffset cuando se redimensione la ventana
+        window.addEventListener('resize', function() {
+            originalOffset = updateStickyOffset(); // Recalcula y almacena la nueva posición original
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const labels = document.querySelectorAll('.eg-labels-container .hero-ingredients-label');
+    
+        labels.forEach(label => {
+            label.addEventListener('click', function(event) {
+                event.preventDefault();  // Previene el comportamiento por defecto del enlace
+                const targetId = this.getAttribute('href'); // Obtén el href del enlace
+    
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100, // Desplazarse 100px antes de la posición superior del elemento objetivo
+                        behavior: 'smooth' // Hacerlo de manera suave
+                    });
+                }
+    
+                labels.forEach(label => {
+                    label.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Hero Ingredients",
+    "class": "hero-ingredients-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "header",
+            "label": "Header"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "description_block",
+            "name": "Description Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label"
+                },
+                {
+                    "type":"text",
+                    "id": "href",
+                    "label": "ID Section"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Ingredients",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

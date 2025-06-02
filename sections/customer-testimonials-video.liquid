@@ -1,0 +1,197 @@
+{{ 'customer-testimonials-video.css' | asset_url | stylesheet_tag }}
+
+<!-- Required Core Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  onload="this.media='all'"
+>
+<!-- Optional Theme Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+  onload="this.media='all'"
+>
+
+<div class="customer-testimonials customer-testimonials-video customer-testimonials-container container">
+  {%- if section.settings.stars_reating != blank or section.settings.stars_label != blank -%}
+    <div class="testimonial-social-proof">
+      {% comment %} {% render 'five-stars-icon' %} {% endcomment %}
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+        <path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="#EAC78B"/>
+      </svg>
+      <span class="customer-testimonials-reating">{{ section.settings.stars_reating }}</span>
+      <span class="customer-testimonials-stars__label">{{ section.settings.stars_label }}</span>
+    </div>
+  {%- endif -%} 
+    {%- if section.settings.header != blank -%} 
+      <h3 class="reviews_section-title">
+        {{ section.settings.header }}
+      </h3>
+    {%- endif -%} 
+    <div id="glide-testimonials-video" class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          {% for item in section.blocks %}
+            <li class="glide__slide">
+              <div class="customer-review-box">
+                <div class="customer-review-image">
+                  {% if item.settings.image %}
+                    {{ item.settings.image | image_url: width: 350, height: 410 | image_tag }}
+                  {% endif %}
+                  {% if item.settings.video %}
+                    {{ item.settings.video | video_tag: image_size: '1100x', autoplay: false, loop: false, controls: false, muted: false }}
+                    <div class="customer-review-play">
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="ic/tabler-icon-player-play-filled">
+                          <path id="Vector" d="M10 6.66714V33.3338C9.99992 33.6304 10.079 33.9216 10.229 34.1774C10.379 34.4332 10.5945 34.6443 10.8534 34.789C11.1122 34.9337 11.405 35.0068 11.7015 35.0006C11.998 34.9944 12.2874 34.9092 12.54 34.7538L34.2067 21.4205C34.4493 21.2714 34.6497 21.0625 34.7888 20.814C34.9278 20.5654 35.0008 20.2853 35.0008 20.0005C35.0008 19.7157 34.9278 19.4356 34.7888 19.187C34.6497 18.9384 34.4493 18.7296 34.2067 18.5805L12.54 5.24714C12.2874 5.09174 11.998 5.00656 11.7015 5.00036C11.405 4.99417 11.1122 5.0672 10.8534 5.2119C10.5945 5.35661 10.379 5.56777 10.229 5.82357C10.079 6.07938 9.99992 6.37059 10 6.66714Z" fill="white"/>
+                        </g>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="review_content">
+                  {% comment %} {% render 'five-stars-icon' %} {% endcomment %}
+                  <p class="review-title">{{ item.settings.text }}</p>
+                  <p class="review-para">
+                    {{ item.settings.review_body }}
+                  </p>
+                  <p class="review-name">{{ item.settings.name }}</p>
+
+                  {% comment %} <p class="review-check">Verified customer <span></span></p> {% endcomment %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="glide-arrows-bullet__box">
+      
+      <div class="glide__bullets" data-glide-el="controls[nav]">
+        {% for item in section.blocks %}
+          <button class="glide__bullet" data-glide-dir="={{ forloop.index | minus: 1 }}">
+            <span></span>
+          </button>
+        {% endfor %}
+      </div>
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12L3 12" stroke="#672666" stroke-linecap="round"/>
+            <path d="M9 6L3 12L9 18" stroke="#672666" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M21 12L15 18M21 12L15 6" stroke="#672666" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+  </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js" defer></script>
+
+<script src="{{ 'customer-testimonials-video.js' | asset_url }}" defer="defer"></script>
+
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const playButtons = document.querySelectorAll('.customer-review-play');
+
+  playButtons.forEach((button) => {
+    const video = button.previousElementSibling;
+
+    if (video && video.tagName === 'VIDEO') {
+      button.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          button.style.visibility = 'hidden';
+        } else {
+          video.pause();
+          button.style.visibility = 'visible';
+        }
+      });
+
+      video.addEventListener('click', () => {
+        if (!video.paused) {
+          video.pause();
+          button.style.visibility = 'visible';
+        } else {
+          video.play();
+          button.style.visibility = 'hidden';
+        }
+      });
+
+      video.addEventListener('pause', () => {
+        button.style.visibility = 'visible';
+      });
+
+      video.addEventListener('play', () => {
+        button.style.visibility = 'hidden';
+      });
+    }
+  });
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Video Testimonials",
+  "tag": "section",
+  "class": "customer-testimonials-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+      "type": "text",
+      "id": "stars_reating",
+      "label": "Stars reating"
+    },
+    {
+      "type": "text",
+      "id": "stars_label",
+      "label": "Stars Label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Review"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonials"
+    }
+  ]
+}
+{% endschema %}

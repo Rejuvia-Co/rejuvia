@@ -1,0 +1,420 @@
+{% style %}
+  .eg-text-underline p {
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+{% endstyle %}
+<div class="header-top" style="background: {{section.settings.header_color}};">
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'utility_bar' -%}
+      {%- if block.settings.show -%}
+        <div class="utility-bar" style="color: {{section.settings.text_color}};">
+          <div class="utility-bar-items">
+            {{ block.settings.text }}
+          </div>
+          {%- if block.settings.info_title != blank or block.settings.info_text != blank -%}
+            <div style="display: none;" class="header-top__hide">
+              <button aria-label="Learn More" class="utility-bar-info">
+                <svg
+                  class="utility-bar-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="21"
+                  height="20"
+                  viewBox="0 0 21 20"
+                  fill="none">
+                  <g>
+                    <path
+                      d="M10.4987 12.5V10"
+                      stroke="{{ block.settings.info_background }}"
+                      stroke-width="0.833333"
+                      stroke-linecap="round" />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10.4987 6.66683C10.0385 6.66683 9.66536 7.03993 9.66536 7.50016C9.66536 7.9604 10.0385 8.3335 10.4987 8.3335C10.9589 8.3335 11.332 7.9604 11.332 7.50016C11.332 7.03993 10.9589 6.66683 10.4987 6.66683Z"
+                      fill="{{ block.settings.info_background }}" />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10.5013 18.3332C15.1037 18.3332 18.8346 14.6022 18.8346 9.99984C18.8346 5.39746 15.1037 1.6665 10.5013 1.6665C5.89893 1.6665 2.16797 5.39746 2.16797 9.99984C2.16797 14.6022 5.89893 18.3332 10.5013 18.3332Z"
+                      stroke="{{ block.settings.info_background }}"
+                      stroke-width="0.833333" />
+                  </g>
+                </svg>
+                <div style="background-color: {{ block.settings.info_background }};" class="utility-bar-info__content">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="6"
+                    viewBox="0 0 12 6"
+                    fill="none">
+                    <defs>
+                      <filter
+                        id="triangle-shadow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%">
+                        <feDropShadow
+                          dx="0"
+                          dy="0"
+                          stdDeviation="1"
+                          flood-color="#04040426" />
+                        <feDropShadow
+                          dx="0"
+                          dy="12"
+                          stdDeviation="4"
+                          flood-color="#04040414" />
+                        <feDropShadow
+                          dx="0"
+                          dy="4"
+                          stdDeviation="2"
+                          flood-color="#04040408" />
+                      </filter>
+                    </defs>
+                    <path
+                      d="M12 6L6.70711 0.707107C6.31658 0.316583 5.68342 0.316583 5.29289 0.707107L0 6H12Z"
+                      fill="{{ section.settings.text_color }}"
+                      filter="url(#triangle-shadow)" />
+                  </svg>
+                  {%- if block.settings.info_title != blank -%}
+                    <h5 style="color: {{ block.settings.info_title_color }};">
+                      {{- block.settings.info_title -}}
+                    </h5>
+                  {%- endif -%}
+                  {%- if block.settings.info_text != blank -%}
+                    <p style="color: {{ block.settings.info_text_color }};">
+                      {{- block.settings.info_text -}}
+                    </p>
+                  {%- endif -%}
+                </div>
+                <svg
+                  class="utility-bar-info__arrow--mobile"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="6"
+                  viewBox="0 0 12 6"
+                  fill="none">
+                  <defs>
+                    <filter
+                      id="triangle-shadow"
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%">
+                      <feDropShadow
+                        dx="0"
+                        dy="0"
+                        stdDeviation="1"
+                        flood-color="#04040426" />
+                      <feDropShadow
+                        dx="0"
+                        dy="12"
+                        stdDeviation="4"
+                        flood-color="#04040414" />
+                      <feDropShadow
+                        dx="0"
+                        dy="4"
+                        stdDeviation="2"
+                        flood-color="#04040408" />
+                    </filter>
+                  </defs>
+                  <path d="M12 6L6.70711 0.707107C6.31658 0.316583 5.68342 0.316583 5.29289 0.707107L0 6H12Z" fill="{{ section.settings.text_color }}" />
+                </svg>
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <div class="header-top__close" style="display: none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="10"
+      viewBox="0 0 12 12"
+      fill="none">
+      <path
+        d="M10.7133 10.7137L1.28522 1.28564M10.7132 1.28564L1.28516 10.7137"
+        stroke=" {{ section.settings.text_color }}"
+        stroke-width="0.833333"
+        stroke-linecap="round" />
+    </svg>
+  </div>
+</div>
+
+<script>
+    let headerTop = document.querySelector('.header-top');
+    let closeIcon = document.querySelector('.header-top__close');
+
+    if (headerTop && closeIcon) {
+      closeIcon.addEventListener('click', () => {
+        headerTop.style.display = 'none';
+      });
+    }
+
+  window.addEventListener('DOMContentLoaded', () => {
+
+  const headerTopHide = document.querySelector('.header-top__hide');
+  const utilityBarItems = document.querySelector('.utility-bar-items');
+  const lastParagraph = utilityBarItems.querySelector('p:last-of-type');
+
+  if (headerTopHide && lastParagraph) {
+    const clonedContent = headerTopHide.innerHTML;
+    lastParagraph.innerHTML += clonedContent;
+  }
+  });
+
+
+  function updateUtilityBarPosition() {
+  if (window.innerWidth < 750) {
+    const headerTop = document.querySelector('.header-top');
+    const utilityBar = document.querySelector('.utility-bar-info__content');
+
+    if (headerTop && utilityBar) {
+      const headerTopHeight = headerTop.offsetHeight;
+      utilityBar.style.top = `${headerTopHeight + 2}px`;
+    }
+  } else {
+    const utilityBar = document.querySelector('.utility-bar-info__content');
+    if (utilityBar) {
+      utilityBar.style.top = '';
+    }
+  }
+  }
+
+  window.addEventListener('load', updateUtilityBarPosition);
+  window.addEventListener('resize', updateUtilityBarPosition);
+</script>
+
+{% schema %}
+  {
+    "name": "Header Top",
+    "presets": [
+      {
+        "name": "Header",
+        "category": "Header"
+      }
+    ],
+    "settings": [
+
+        {
+          "type": "paragraph",
+          "content": "*** Colors (Desktop) ***"
+        },
+        {
+          "type": "color",
+          "id": "header_color",
+          "label": "Background color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "header_border_color",
+          "label": "Border-bottom Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text and Icons Color",
+          "default": "#000000"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "utility_bar",
+        "name": "Utility Bar",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show utility bar?"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text in the top bar",
+            "default": "<p>Check out our <strong>Collections</strong>!</p>"
+          },
+          {
+            "type": "header",
+            "content": "Info hover content"
+          },
+          {
+            "type": "color",
+            "id": "info_background",
+            "label": "Background color",
+            "default": "#ffffff"
+          }, {
+            "type": "text",
+            "id": "info_title",
+            "label": "Title"
+          }, {
+            "type": "color",
+            "id": "info_title_color",
+            "label": "Title color",
+            "default": "#ffffff"
+          }, {
+            "type": "textarea",
+            "id": "info_text",
+            "label": "Text"
+          }, {
+            "type": "color",
+            "id": "info_text_color",
+            "label": "Text color",
+            "default": "#ffffff"
+          }
+        ]
+      }, {
+        "type": "top_utils",
+        "name": "Top Utils",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show Top Utils?",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "top_utils_size",
+            "label": "Font Size",
+            "default": "0.9em"
+          },
+          {
+            "type": "select",
+            "id": "top_utils_weight",
+            "label": "Font Weight",
+            "options": [
+              {
+                "value": "100",
+                "label": "Extra Light"
+              },
+              {
+                "value": "300",
+                "label": "Light"
+              },
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "600",
+                "label": "Semi Bold"
+                },
+              {
+                "value": "700",
+                "label": "Bold"
+              },
+              {
+                "value": "900",
+                "label": "Extra Bold"
+              }
+            ],
+            "default": "400"
+          },
+          {
+            "type": "select",
+            "id": "top_utils_transform",
+            "label": "Text transform",
+            "options": [
+              {
+                "value": "none",
+                "label": "Normal"
+              },
+              {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "default": "none"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_social",
+            "label": "Show Social Links?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_search",
+            "label": "Show Search?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_newsletter",
+            "label": "Show Newsletter?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_user",
+            "label": "Show Account Link?",
+            "default": true,
+            "info": "Customer Accounts must be enabled at /admin/settings/checkout"
+          },
+          {
+            "type": "header",
+            "content": "Fullscreen Newsletter and Search"
+          },
+          {
+            "type": "text",
+            "id": "search_mailing_bg",
+            "label": "Background Color",
+            "default": "0,0,0,0.8",
+            "info": "R,G,B,Alpha. The last value is the alpha\/opacity, from 0 to 1."
+          },
+          {
+            "type": "color",
+            "id": "search_mailing_text",
+            "label": "Text Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "select",
+            "id": "search_mailing_effect",
+            "label": "Appearance Effect",
+            "options": [
+              {
+                "value": "fadeInLeft",
+                "label": "Fade in Left"
+              },
+              {
+                "value": "fadeIn",
+                "label": "Fade In"
+              },
+              {
+                "value": "zoomIn",
+                "label": "Zoom In"
+              },
+              {
+                "value": "flipInX",
+                "label": "Flip In X"
+              },
+              {
+                "value": "flipInY",
+                "label": "Flip In Y"
+              },
+              {
+                "value": "bounceIn",
+                "label": "Bounce In"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "Light Speed In"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "Zoom In Down"
+              }
+            ],
+            "default": "fadeInLeft"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

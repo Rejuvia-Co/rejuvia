@@ -1,0 +1,114 @@
+{{ 'customer-testimonials.css' | asset_url | stylesheet_tag }}
+
+<!-- Required Core Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  onload="this.media='all'"
+>
+<!-- Optional Theme Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+  onload="this.media='all'"
+>
+
+<div class="customer-testimonials-container">
+    <div class="testimonial-social-proof">
+      {% render 'five-stars-icon' %}
+      <span>{{ section.settings.stars_label }}</span>
+    </div>
+    <h3 class="reviews_section-title">
+      {{ section.settings.header }}
+    </h3>
+    <div id="glide-testimonials" class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          {% for item in section.blocks %}
+            <li class="glide__slide">
+              <div class="customer-review-box">
+                <div class="customer-review-image">
+                  {% if item.settings.image %}
+                    {{ item.settings.image | image_url: width: 350, height: 410 | image_tag }}
+                  {% endif %}
+                </div>
+
+                <div class="review_content">
+                  {% comment %} {% render 'five-stars-icon' %} {% endcomment %}
+                  <p class="review-title">{{ item.settings.text }}</p>
+                  <p class="review-para">
+                    {{ item.settings.review_body }}
+                  </p>
+                  <p class="review-name">{{ item.settings.name }}</p>
+
+                  {% comment %} <p class="review-check">Verified customer <span></span></p> {% endcomment %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'arrow-circle-left' %}</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'arrow-circle-right' %}</button>
+      </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js" defer></script>
+
+<script src="{{ 'customer-testimonials.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Customer Testimonials",
+  "tag": "section",
+  "class": "customer-testimonials-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+      "type": "text",
+      "id": "stars_label",
+      "label": "Stars Label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Review"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Testimonials"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,319 @@
+{% style %}
+.faq-ingredients-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 25px ;
+    background-color: {{ section.settings.bg_color_section }};
+}
+@media(min-width: 900px) {
+    .faq-ingredients-section {
+        padding: 64px 35px;
+    }
+}
+.all-faq-accordion-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1360px;
+}
+
+
+
+.eg-faq-testimonial{
+    width: 49%;
+    border-radius: 8px;
+    padding: 35px 30px;
+    background-color: {{ section.settings.bg_color }};
+
+}
+.faq-accordion {
+    width: 50%;
+    
+}
+
+.faq-testimonial-firma img{
+    width: 241px;
+    height: 82px;
+}
+
+
+
+.faq-item {
+    cursor: pointer;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.faq-question {
+    
+    font-weight: bold;
+    display: block;
+    position: relative;
+    
+}
+
+.faq-question-into{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.faq-content {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    display: none; /* Hide by default */
+}
+.faq-image {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+.faq-answer {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #171512;
+    padding-right: 40px;
+}
+.faq-testimonial-description > p  {
+    font-size: 28px;
+    line-height: 42px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.faq-testimonial-description > p > strong {
+    color: #672666;
+}
+
+.icon-faq-ingredients{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.faq-testimonial-person{
+    margin-top: 60px;
+}
+.faq-testimonial-persona{
+    margin-top: 15px;
+}
+.faq-testimonial-persona p{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.faq-testimonial-persona span{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.3px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+@media(max-width: 950px){
+    .all-faq-accordion-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.eg-faq-testimonial{
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+.faq-accordion {
+    width: 100%;
+    
+}
+}
+
+@media(max-width: 600px){
+    .faq-testimonial-description > p  {
+    font-size: 24px;
+    line-height: 36px;
+}
+.faq-image {
+    display: none;
+}
+
+.faq-testimonial-firma img{
+    width: 168px;
+    height: 57.15px;
+}
+.faq-answer {
+    font-size: 16px;
+    line-height: 22.4px;
+    padding-right: 30px;
+}
+}
+
+.faq-question-into {
+    transition: background-color 0.1s ease, font-weight 0.1s ease, font-size 0.1s ease , color 0.1s ease; /* Añadido font-size */
+}
+
+.faq-item:hover .faq-question-into {
+    font-size: 20.5px;
+    font-weight: 700;
+    color: black;
+}
+
+
+
+{% endstyle %}
+
+<div id="science-ingredients" class="all-faq-accordion-container">
+    <div class="eg-faq-testimonial">
+        <div class="faq-testimonial-description">
+            {{ section.settings.testimonial }}
+        </div>
+        <div class="faq-testimonial-person">
+            <div class="faq-testimonial-firma">
+                <img src="{{ 'signature.svg' | asset_url }}" width="" height="" />
+            </div>
+            <div class="faq-testimonial-persona">
+                <p>- {{ section.settings.name }}</p>
+                <span>{{ section.settings.position }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="faq-accordion">
+        {% for block in section.blocks %}
+        <div class="faq-item" data-faq-id="faq-{{ block.id }}">
+            <div class="faq-question" >
+                <div class="faq-question-into">
+                    {{ block.settings.question }}
+                </div>
+                <img src="{{ 'Plus.svg' | asset_url }}" width="20px" height="20px" class="plus-icon icon-faq-ingredients" />
+                <img src="{{ 'Less.svg' | asset_url }}" width="20px" height="20px" class="less-icon icon-faq-ingredients" style="display: none;" />
+                
+                <div class="faq-content" id="faq-{{ block.id }}" style="{% if forloop.first %}display: flex;{% else %}display: none;{% endif %}">
+                    <div class="faq-image" style="background-image: url({{ block.settings.image | img_url: '80x80' }});"></div>
+                    <div class="faq-answer">
+                        {{ block.settings.answer }}
+                    </div>
+                </div>
+           
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-item').forEach(function(question) {
+        question.addEventListener('click', function() {
+            const answerId = this.getAttribute('data-faq-id');
+            const answer = document.getElementById(answerId);
+            const plusIcon = this.querySelector('.plus-icon');
+            const lessIcon = this.querySelector('.less-icon');
+
+            // Toggle the visibility of the answer
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'flex';
+                plusIcon.style.display = 'none';
+                lessIcon.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+                plusIcon.style.display = 'block';
+                lessIcon.style.display = 'none';
+            }
+        });
+    });
+
+    // Display the first block by default
+    const firstQuestion = document.querySelector('.faq-item');
+    if (firstQuestion) {
+        const firstAnswerId = firstQuestion.getAttribute('data-faq-id');
+        const firstAnswer = document.getElementById(firstAnswerId);
+        const firstPlusIcon = firstQuestion.querySelector('.plus-icon');
+        const firstLessIcon = firstQuestion.querySelector('.less-icon');
+
+        firstAnswer.style.display = 'flex';
+        firstPlusIcon.style.display = 'none';
+        firstLessIcon.style.display = 'block';
+    }
+});
+</script>
+
+{% schema %}
+{
+    "name": "FAQ Ingredients",
+    "class": "faq-ingredients-section",
+    "settings": [
+        {
+            "type": "color",
+            "id": "bg_color_section",
+            "label": "Section Background Color"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Testimonial Background Color"
+        },
+        {
+            "type": "richtext",
+            "id": "testimonial",
+            "label": "Testimonial"
+        },
+        {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+        },
+        {
+            "type": "text",
+            "id": "position",
+            "label": "Position/Role"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "faq",
+            "name": "FAQ",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question"
+                },
+                {
+                    "type": "textarea",
+                    "id": "answer",
+                    "label": "Answer"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQ Ingredients",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

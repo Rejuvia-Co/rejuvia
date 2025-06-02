@@ -1,0 +1,63 @@
+{{ 'how-it-works-section.css' | asset_url | stylesheet_tag }}
+
+<div class="how-it-word-section_container">
+  <h4 class="section-title--h1">
+    {{ section.settings.heading }}
+  </h4>
+  <p class="section-subheading">{{ section.settings.subheading }}</p>
+  <div class="card-container">
+    {% for item in section.blocks %}
+      <div class="card">
+        {{ item.settings.image | image_url: width: 400 | image_tag: alt: item.settings.description }}
+        <div class="description_card_container">
+            <p class="step_idicator">STEP {{ forloop.index }}</p>
+            <p class="description">{{ item.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "how-it-works-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}

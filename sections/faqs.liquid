@@ -1,0 +1,51 @@
+<h3 class="title custom_subtitle_font text-center">{{ section.settings.title }}</h3>
+{%- for block in section.blocks -%}
+  {% assign titleNumber = 0 %}
+  {%- if block.type == 'faq_question' -%}
+    <li>
+      <a href="javascript:void(0);" class="toggle-description toggler flex justify-content-between align-items-center">
+        {{ block.settings.title }}
+        <span class="arrow">
+          <span class="arrow-down">{% render 'icons', icon: 'arrow-down' %}</span>
+          <span class="arrow-up">{% render 'icons', icon: 'arrow-up' %}</span>
+        </span>
+      </a>
+      <div class="description hide">
+        {{ block.settings.answer }}
+      </div>
+    </li>
+  {% endif %}
+{%- endfor -%}
+
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_question",
+        "name": "Question",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Question",
+            "placeholder": "Lorem ipsum dolor?"
+          },
+          {
+            "id": "answer",
+            "type": "richtext",
+            "label": "Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

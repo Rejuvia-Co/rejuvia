@@ -1,0 +1,249 @@
+.product-features-section{
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.eg-product_features_container {
+    width: 100%;
+    background: #FFF;
+    max-width: 1360px;
+    
+}
+
+.eg-product_features_container > .inner_container {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.eg-product_image_container {
+    width: 49%;
+   
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.eg-product_image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.eg-pd_info-container{
+    width: 40.5%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media(max-width: 1200px){
+    .eg-product_image_container {
+        width: 47%;
+    }
+    
+    .eg-pd_info-container{
+        width: 47%;
+    }
+}
+
+@media(max-width: 1000px){
+    .eg-product_features_container > .inner_container { 
+        flex-direction: column;
+        
+    }
+
+
+    .eg-product_image_container {
+        width: 100%;
+        max-height: 550px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+    
+    .eg-product_image_container img {
+        object-fit: cover;
+        object-position: top;
+    }
+
+    
+    .eg-pd_info-container{
+        width: 100%;
+    }
+}
+
+.eg-product_features_container .section-title--h1 {
+    margin-bottom: 16px;
+}
+
+.eg-product_features_container .btn {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+
+
+.eg-pd_info-container p {
+    color: #171512;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    margin-bottom: 20px;
+}
+
+
+.eg-product_features_container .features_icons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
+    color: #672666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+}
+
+.eg-product_features_container .features_icons div{
+
+    padding-bottom: 10px;
+}
+
+.eg-product_features_container .features_icons div {
+    max-width: 120px;
+    
+}
+.eg-product_features_container .features_icons div  img{
+    width: 56px;
+    height: 56px;
+}
+
+@media(max-width: 530px){
+    .eg-product_features_container .features_icons div {
+        min-width: 50%;
+    }
+}
+
+@media(min-width: 900px){
+    .product-features-section{
+        padding: 64px 35px;
+    }
+    
+}
+
+@media screen and (min-width: 750px) {
+
+    .eg-pd_info-container p {
+        font-size: 18px;
+    }
+}
+
+/*Estilos para el rating*/
+
+.eg-reviews-ingredients{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .eg-reviews-ingredients > .okeReviews > div{
+    display: flex;
+  }
+
+  .eg-reviews-ingredients > .okeReviews > div > .oke-sr-rating {
+    order: 2; /* Coloca el rating en el medio */
+  }
+  
+  .eg-reviews-ingredients > .okeReviews > div > .oke-sr-stars {
+    order: 1; /* Coloca las estrellas al principio */
+  }
+  
+  .eg-reviews-ingredients > .okeReviews > div > .oke-sr-count {
+    order: 3; /* Coloca el count al final */
+  }
+
+  .eg-reviews-ingredients span{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22.5px;
+    
+  }
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-stars > div.oke-stars > div.oke-stars-background > svg{
+    width: 100px;
+    height: 20px;
+  }
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-stars > div.oke-stars > div.oke-stars-foreground > svg{
+    width: 100px;
+    height: 20px;
+  }
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-rating {
+    display: block;
+    
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22.5px;
+    margin-left: 3px;
+    margin-top: 1.5px;
+  }
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-count {
+    
+    position: relative; /* Asegúrate de que el elemento padre tenga una posición */
+    margin-left: 16px;
+    
+  }
+
+  @media(max-width: 750px){
+
+    .eg-reviews-ingredients > div > div > div.oke-sr-count {   
+            margin-top: 0.8px;
+      }
+
+  }
+
+
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-count::before {
+    content: "(";
+    position: absolute;
+    left: -6px; /* Ajusta según sea necesario */
+  }
+
+  .eg-reviews-ingredients > div > div > div.oke-sr-count::after {
+    content: ")";
+    position: absolute;
+    right: -6px; /* Ajusta según sea necesario */
+  }
+
+
+  /*Estilos garantia*/
+
+  .ingredients-guarantee-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.ingredients-guarantee-item span{
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-bottom: -7px;
+  
+}
+

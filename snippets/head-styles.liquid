@@ -1,0 +1,14 @@
+{% if template.name == 'index' %}
+	{% render 'critical-css-index' %}
+{% elsif template.name == 'product' %}
+	{% render 'critical-css-product' %}
+{% elsif template.name == 'collection' %}
+	{% render 'critical-css-collection' %}
+{% else %}
+	{{ 'custom.css' | asset_url | stylesheet_tag }}
+	{% comment %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{% endif %}
+
+<link rel="preload" href="{{ 'custom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'style.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+

@@ -1,0 +1,364 @@
+{{ 'faq-new.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .faq-new.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.65 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.65 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .faq-new.section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div id="{{- section.settings.id -}}" class="faq-new section-{{ section.id }}">
+  <div class="container">
+    <div class="faq-new__box">
+      <div class="faq-new__left{% if section.settings.table_show %} faq-new__left--after{% endif %}">
+        {%- if section.settings.table_show -%}
+          <div class="table-content">
+            <h5 class="table-content__title">
+              Topics
+            </h5>
+            <div class="table-content__links">
+              {%- if section.settings.first_table_link != blank -%}
+                <a href="#{{ section.settings.first_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.first_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.second_table_link != blank -%}
+                <a href="#{{ section.settings.second_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.second_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.third_table_link != blank -%}
+                <a href="#{{ section.settings.third_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.third_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.fourth_table_link != blank -%}
+                <a href="#{{ section.settings.fourth_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.fourth_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.fifth_table_link != blank -%}
+                <a href="#{{ section.settings.fifth_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.fifth_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.sixth_table_link != blank -%}
+                <a href="#{{ section.settings.sixth_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.sixth_table_text -}}
+                </a>
+              {%- endif -%}
+
+              {%- if section.settings.seventh_table_link != blank -%}
+                <a href="#{{ section.settings.seventh_table_link }}" class="table-content__link">
+                  <span>
+                    {% render 'icon-article-new-arrow' %}
+                  </span>
+                  {{- section.settings.seventh_table_text -}}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+          <select
+            class="table-content__select"
+            id="tableOfContents"
+            onchange="goToLink(this)">
+            <option value="">Select topic</option>
+            {%- if section.settings.first_table_link != blank -%}
+              <option value="#{{ section.settings.first_table_link }}">{{ section.settings.first_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.second_table_link != blank -%}
+              <option value="#{{ section.settings.second_table_link }}">{{ section.settings.second_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.third_table_link != blank -%}
+              <option value="#{{ section.settings.third_table_link }}">{{ section.settings.third_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.fourth_table_link != blank -%}
+              <option value="#{{ section.settings.fourth_table_link }}">{{ section.settings.fourth_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.fifth_table_link != blank -%}
+              <option value="#{{ section.settings.fifth_table_link }}">{{ section.settings.fifth_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.sixth_table_link != blank -%}
+              <option value="#{{ section.settings.sixth_table_link }}">{{ section.settings.sixth_table_text }}</option>
+            {%- endif -%}
+            {%- if section.settings.seventh_table_link != blank -%}
+              <option value="#{{ section.settings.seventh_table_link }}">{{ section.settings.seventh_table_text }}</option>
+            {%- endif -%}
+          </select>
+        {%- endif -%}
+      </div>
+      <div class="faq-new__right">
+        <h2 class="faq-new__right--title">
+          {{- section.settings.heading -}}
+        </h2>
+        <div class="faq-new__right--items">
+          {% for block in section.blocks %}
+            <div class="faq-new__right--item">
+              <button class="accordion">
+                <div class="faq-new__right--item-box">
+                  {% if forloop.index > 9 %}
+                    <span>
+                      {{ forloop.index }}
+                    </span>
+                  {% else %}
+                    <span>
+                      0{{ forloop.index }}</span>
+                  {% endif %}
+
+                  <h5>
+                    {{- block.settings.heading -}}
+                  </h5>
+                </div>
+                <span class="faq-new__right--item-toggle">
+                  {% render 'icon-arrow-tabs' %}
+                </span>
+              </button>
+              <div class="panel-custom">
+                <p class="panel-inner faq-new__right--item-text">
+                  {{ block.settings.subheading }}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.section-{{ section.id }} .accordion').click(function (e) {
+    e.preventDefault();
+    let $this = $(this);
+    if ($this.next().hasClass('show')) {
+      $this.next().removeClass('show');
+      $this.removeClass('active');
+      $this.next().css('height', `0px`)
+      // $this.next().slideUp(350);
+    } else {
+      /* $this.parent().parent().find('.panel-custom').removeClass('show'); */
+      let innerHeight = $this.next().find('.panel-inner').height();
+      console.log('innetheigth', innerHeight);
+      $this.next().css('height', `${innerHeight}px`)
+      $this.next().toggleClass('show');
+      $this.addClass('active');
+      // $this.next().slideToggle(350);
+    }
+  });
+  
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  });
+  });
+  
+  function goToLink(select) {
+        const value = select.value;
+        if (value.startsWith("#")) {
+            const target = document.querySelector(value);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        }
+    }
+</script>
+
+{% schema %}
+  {
+    "name": "FAQ new",
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "Section id",
+        "info": "The ID must be unique for each partition"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Heading"
+      },
+      {
+        "type": "header",
+        "content": "Table of contents"
+      },
+      {
+        "type": "checkbox",
+        "id": "table_show",
+        "label": "Show table of contents",
+        "info": "There can only be one per page",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "First table"
+      }, {
+        "type": "text",
+        "id": "first_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "first_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Second table"
+      }, {
+        "type": "text",
+        "id": "second_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "second_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Third table"
+      }, {
+        "type": "text",
+        "id": "third_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "third_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Fourth table"
+      }, {
+        "type": "text",
+        "id": "fourth_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "fourth_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Fifth table"
+      }, {
+        "type": "text",
+        "id": "fifth_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "fifth_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Sixth table"
+      }, {
+        "type": "text",
+        "id": "sixth_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "sixth_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Seventh table"
+      }, {
+        "type": "text",
+        "id": "seventh_table_text",
+        "label": "Table text"
+      }, {
+        "type": "text",
+        "id": "seventh_table_link",
+        "label": "Table link",
+        "info": "Bring the section id here"
+      }, {
+        "type": "header",
+        "content": "Section padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 24
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 24
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "Items",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Our Values"
+          }, {
+            "type": "textarea",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "We like to keep it clean and transparent."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ new"
+      }
+    ]
+  }
+{% endschema %}

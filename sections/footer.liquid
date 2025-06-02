@@ -1,0 +1,754 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100 %%;
+    text-transform: none;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.border_color != blank %}border-top: 1px solid{{ section.settings.border_color }};
+  {% endif %}
+  }
+  #shopify-section-{{ section.id }}
+  #footer {
+    border-top: 1px solid #0A0A0A;
+  }
+
+  #shopify-section-{{ section.id }} .footer-container {
+    padding-top: {{ section.settings.section_padding_top_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .footer-bottom {
+    padding-bottom: {{ section.settings.section_padding_bottom_mobile }}px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    #shopify-section-{{ section.id }} .footer-container {
+      padding-top: {{ section.settings.section_padding_top_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .footer-bottom {
+      padding-bottom: {{ section.settings.section_padding_bottom_desktop }}px;
+    }
+  }
+
+  #shopify-section-{{ section.id }}
+  .logo {
+    line-height: 100%;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .logo {
+    width: {{ section.settings.logo_max_width }}px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .logo a
+  , #shopify-section-{{ section.id }}
+  .logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }}
+  .links a {
+    display: block;
+    margin: 0 0 0.5em;
+    white-space: nowrap;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .social-links {
+    display: none;
+    justify-content: start;
+  }
+  #shopify-section-{{ section.id }}
+  .social-links a {
+    display: none;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+    margin-left: 13px;
+    height: 2em;
+    border-radius: 100%;
+    color: {{ section.settings.bg_color }};
+    background: transparent;
+  }
+  #shopify-section-{{ section.id }}.social-links a:not(:last-child) {
+    margin-right: 0;
+  }
+  #shopify-section-{{ section.id }}
+  .social-links svg path {
+    display: none;
+    fill: transparent;
+    stroke: #FFFFFF;
+    stroke-width: 1.5px;
+  }
+  .isNotMobile #shopify-section-{{ section.id }}.social-links a:hover {
+    background: {{ settings.content_main_color }};
+  }
+
+  #shopify-section-{{ section.id }}
+  .copyright {
+    padding-left: 0;
+    font-style: normal;
+    font-family: "Helvetica Neue";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  #shopify-section-{{ section.id }}
+  .links {
+    padding: 30px 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.349);
+    border-top: 1px solid rgba(255, 255, 255, 0.349);
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    justify-content: space-between;
+  }
+
+  .custom-text {
+    font-style: italic
+  }
+
+  #shopify-section-{{ section.id }} .bottom {
+    /* padding: {{ section.settings.bottom_padding_desktop }}; */
+    color: {{ section.settings.bottom_text_color }};
+    background-color: {{ section.settings.bottom_bg_color }};
+    {% if section.settings.bottom_border_color != blank %}border-top: 1px solid{{ section.settings.bottom_border_color }};
+  {% endif %}}
+  #shopify-section-{{ section.id }}
+  .bottom a {
+    display: inline-block;
+    text-decoration: underline;
+    padding: 0 0.5em;
+  }
+  #shopify-section-{{ section.id }}.bottom a:first-child {
+    padding-left: 0;
+  }
+  #shopify-section-{{ section.id }}.bottom a:last-child {
+    padding-right: 0;
+  }
+
+  #shopify-section-{{ section.id }}
+  #payment-methods {
+    margin-top: 1em;
+  }
+  #shopify-section-{{ section.id }}
+  #payment-methods img {
+    margin: 0 3px;
+    max-width: 35px;
+  }
+
+  */.footer {
+      position: relative;
+    }
+
+  /*.footer-bottom-background {*/
+  /*  background: url('https://cdn.shopify.com/s/files/1/0694/2821/6102/files/Group_1.svg?v=1739491233') no-repeat 100%;*/
+  /*  background-position: center bottom;*/
+  /*  background-size: contain;*/
+  /*  opacity: 0.1;*/
+  /*  width: 100%;*/
+  /*  height: 100%;*/
+  /*  position: absolute;*/
+  /*  right: 0;*/
+  /*  left: 0;*/
+  /*  bottom: 0;*/
+  /*  z-index: -1;*/
+  /*}*/
+  .footer-middle__logo {
+    margin-bottom: 58px;
+  }
+  .footer-menu-item-details summary{
+    margin-bottom: 58px;
+  }
+  .footer-menu-item-details summary .menu-title{
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .footer__payment .list-payment {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer__payment .list-payment__item {
+    display: flex;
+  }
+
+  .footer__payment .list-payment__item svg {
+    height: auto;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .social-icons span.icon svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  ul.social-icons {
+    list-style-type: none;
+  }
+
+  @media all and (max-width: 900px) {
+    #shopify-section-{{ section.id }} .logo {
+      margin-right: 0;
+    }
+    #shopify-section-{{ section.id }}
+    .social-links {
+      justify-content: center;
+      margin: 1.5em;
+    }
+    #shopify-section-{{ section.id }}
+    .copyright {
+      padding-left: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 150%;
+      /* 21px */
+    }
+  }
+  @media all and (max-width: 1200px) {
+    form.klaviyo-form {
+      max-width: 100% !important;
+    }
+  }
+</style>
+
+<div id="footer" class="footer-container">
+  <div class="top">
+    <div class="container">
+      <div class="footer-middle__logo">
+        {%- if section.settings.logo != blank -%}
+          <div class="logo">
+            <a href="/">
+              {{ section.settings.logo | image_url: width: 300 | image_tag:
+              widths: '150, 300, 450',
+              sizes: '150px'
+              }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="footer-middle">
+        <div class="footer-menu">
+          <details class="footer-menu-item-details">
+            <summary>
+              <a class="menu-title">{{ section.settings['menu_title_1'] }}</a>
+              {% render 'icon-caret-down-new' %}
+            </summary>
+            <div>
+              <ul class="submenu-list">
+                {% for link in linklists[section.settings.section_linklist].links %}
+                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+              </ul>
+            </div>
+          </details>
+          <details class="footer-menu-item-details">
+            <summary>
+              <a class="menu-title">{{ section.settings['menu_title_2'] }}</a>
+              {% render 'icon-caret-down-new' %}
+            </summary>
+            <div>
+              <ul class="submenu-list">
+                {% for link in linklists[section.settings.section_linklist_2].links %}
+                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+              </ul>
+            </div>
+          </details>
+          <details class="footer-menu-item-details">
+            <summary>
+              <a class="menu-title">{{ section.settings['menu_title_3'] }}</a>
+              {% render 'icon-caret-down-new' %}
+            </summary>
+            <div>
+              <ul class="submenu-list">
+                {% for link in linklists[section.settings.section_linklist_3].links %}
+                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="mailing-list" {{ block.shopify_attributes }}>
+          {%- if section.settings.mailing_title != blank -%}
+            <h5 class="mailing-list__title">
+              {{- section.settings.mailing_title -}}
+            </h5>
+          {%- endif -%}
+          {%- if section.settings.mailing_text != blank -%}
+            <p class="mailing-list__text">
+              {{- section.settings.mailing_text -}}
+            </p>
+          {%- endif -%}
+          {% form 'customer'
+                  , class: 'mailing-list__form' %}
+            <input
+                    type="hidden"
+                    name="contact[tags]"
+                    value="newsletter">
+            <div class="mailing-list__field-wrapper">
+              <div class="field">
+                <input
+                        id="MailingListForm--{{ section.id }}"
+                        type="email"
+                        name="contact[email]"
+                        class="mailing-list__input field__input"
+                        value="{{ form.email }}"
+                        aria-required="true"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        autocomplete="email"
+                        {% if form.errors %}
+                          autofocus
+                          aria-invalid="true"
+                          aria-describedby="MailingList-error--{{ section.id }}"
+                        {% elsif form.posted_successfully? %}
+                          aria-describedby="MailingList-success--{{ section.id }}"
+                        {% endif %}
+                        placeholder="Your Email"
+                        required>
+                {%- if section.settings.mailing_button != blank -%}
+                  <button
+                          type="submit"
+                          class="mailing-list__btn btn"
+                          name="commit"
+                          id="MailingListSubscribe"
+                          aria-label="Subscribe">
+                    <span>
+                      {{- section.settings.mailing_button -}}
+                    </span>
+                  </button>
+                {%- endif -%}
+              </div>
+              {%- if form.errors -%}
+                <small class="mailing-list__message mailing-list__message--error" id="MailingList-error--{{ section.id }}">
+                  There was an error. Please try again.
+                </small>
+              {%- endif -%}
+            </div>
+            {%- if form.posted_successfully? -%}
+              <h3
+                      class="mailing-list__message mailing-list__message--success"
+                      id="MailingList-success--{{ section.id }}"
+                      tabindex="-1"
+                      autofocus>
+                Thank you for subscribing!
+              </h3>
+            {%- endif -%}
+          {% endform %}
+        </div>
+      </div>
+      {%- if settings.instagram_link != blank or settings.facebook_link != blank or settings.twitter_link != blank -%}
+        <div class="social-icons_container social-icons_container--mobile">
+          <ul class="social-icons is-flex is-flex-wrap ">
+            {%- if settings.instagram_link != blank -%}
+              <li>
+                <a
+                        href="{{ settings.instagram_link }}"
+                        title="Rejuvia on Instagram"
+                        rel="noopener"
+                        target="_blank"
+                        class="icon-instagram"
+                        aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="instagram">
+                        {% render 'icon-instagram' %}
+                      </span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.facebook_link != blank -%}
+              <li>
+                <a
+                        href="{{ settings.facebook_link }}"
+                        title="Rejuvia on Facebook"
+                        rel="noopener"
+                        target="_blank"
+                        class="icon-facebook"
+                        aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="facebook">
+                        {% render 'icon-facebook' %}
+                      </span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.twitter_link != blank -%}
+              <li>
+                <a
+                        href="{{ settings.twitter_link }}"
+                        title="Rejuvia on X"
+                        rel="noopener"
+                        target="_blank"
+                        class="icon-twitter"
+                        aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="twitter">
+                        {% render 'icon-x' %}
+                      </span>
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </div>
+        <p class="footer-bottom__left--text hide-desk show-mob">
+          {{ section.settings.custom_footer }}
+        </p>
+      {%- endif -%}
+      <div class="footer-middle__decor">
+        {{ section.settings.decor_image | image_url: width: 474 | image_tag:
+        widths: '237, 474, 711',
+        sizes: '(max-width: 480px) 237px, (max-width: 768px) 474px, 711px'
+        }}
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__left">
+          <div class="logo-social__box">
+            {%- if settings.instagram_link != blank or settings.facebook_link != blank or settings.twitter_link != blank -%}
+              <div class="social-icons_container social-icons_container--desktop">
+                <ul class="social-icons is-flex is-flex-wrap ">
+                  {%- if settings.instagram_link != blank -%}
+                    <li>
+                      <a
+                              href="{{ settings.instagram_link }}"
+                              title="Rejuvia on Instagram"
+                              rel="noopener"
+                              target="_blank"
+                              class="icon-instagram"
+                              aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="instagram">
+                        {% render 'icon-instagram' %}
+                      </span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+                  {%- if settings.facebook_link != blank -%}
+                    <li>
+                      <a
+                              href="{{ settings.facebook_link }}"
+                              title="Rejuvia on Facebook"
+                              rel="noopener"
+                              target="_blank"
+                              class="icon-facebook"
+                              aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="facebook">
+                        {% render 'icon-facebook' %}
+                      </span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+                  {%- if settings.twitter_link != blank -%}
+                    <li>
+                      <a
+                              href="{{ settings.twitter_link }}"
+                              title="Rejuvia on X"
+                              rel="noopener"
+                              target="_blank"
+                              class="icon-twitter"
+                              aria-describedby="a11y-new-window-external-message">
+                      <span class="icon " data-icon="twitter">
+                        {% render 'icon-x' %}
+                      </span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="copyright copyright-desktop custom_text_font">
+            <p>
+              Copyright © {{ 'now' | date: '%Y' }}
+              {{ shop.name }}. All rights reserved.
+            </p>
+            <div class="footer-bottom__right--links">
+              <a class="footer_link_url_a" href="{{ section.settings.privacy_url }}">
+                {{- section.settings.privacy_label -}}
+              </a>
+              <a class="footer_link_url_a" href="{{ section.settings.terms_url }}">{{ section.settings.terms_label }}</a>
+            </div>
+          </div>
+          <p class="footer-bottom__left--text hide-mob show-desk">
+            {{ section.settings.custom_footer }}
+          </p>
+        </div>
+        <div class="footer-bottom__right">
+          <div class="copyright copyright-mobile custom_text_font">
+            <p>
+              Copyright © {{ 'now' | date: '%Y' }}
+              {{ shop.name }}. All rights reserved.
+            </p>
+          </div>
+          {%- if section.settings.show_payment_methods -%}
+            <div class="footer__payment">
+              <ul class="list list-payment" role="list">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li class="list-payment__item">
+                    {% case type %}
+                      {% when 'american_express' %}
+                        {% render 'icon-amex' %}
+                      {% when 'jcb' %}
+                        {% render 'icon-jcb' %}
+                      {% when 'apple_pay' %}
+                        {% render 'icon-applepay' %}
+                      {% when 'diners_club' %}
+                        {% render 'icon-dinersclub' %}
+                      {% when 'discover' %}
+                        {% render 'icon-discover' %}
+                      {% when 'master' %}
+                        {% render 'icon-mastercard' %}
+                      {% when 'paypal' %}
+                        {% render 'icon-paypal' %}
+                      {% when 'shopify_pay' %}
+                        {% render 'icon-shopify' %}
+                      {% when 'visa' %}
+                        {% render 'icon-visa' %}
+                      {% when 'google_pay' %}
+                        {% render 'google_pay' %}
+                      {% when 'venmo' %}
+                        {% render 'venmo' %}
+                      {% else %}
+                        {% comment %} Render default icon or handle other cases {% endcomment %}
+                        {{ type }}
+                    {% endcase %}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="footer-bottom-background"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function handleResize() {
+      if (window.innerWidth >= 767) {
+        const detailsElements = document.querySelectorAll('.footer-menu-item-details');
+
+        detailsElements.forEach(function (detailsElement) {
+          detailsElement.setAttribute('open', 'open');
+        });
+      } else {
+        const detailsElements = document.querySelectorAll('.footer-menu-item-details');
+
+        detailsElements.forEach(function (detailsElement) {
+          detailsElement.removeAttribute('open');
+        });
+      }
+    }
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Footer",
+  "presets": [
+    {
+      "name": "Footer",
+      "category": "Footer"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top - Padding (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom - Padding (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top - Padding (Mobile)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom - Padding (Mobile)",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Top - Background",
+      "default": "#ffffff"
+    }, {
+      "type": "color",
+      "id": "border_color",
+      "label": "Top - Border Color",
+      "default": "#ffffff"
+    }, {
+      "type": "color",
+      "id": "text_color",
+      "label": "Top - Text Color",
+      "default": "#000000"
+    }, {
+      "type": "text",
+      "id": "menu_title_1",
+      "label": "First Menu Heading"
+    }, {
+      "type": "link_list",
+      "id": "section_linklist",
+      "label": "Top - Linklist",
+      "default": "footer"
+    }, {
+      "type": "text",
+      "id": "menu_title_2",
+      "label": "Second Menu Heading"
+    }, {
+      "type": "link_list",
+      "id": "section_linklist_2",
+      "label": "Top - Linklist",
+      "default": "footer"
+    }, {
+      "type": "text",
+      "id": "menu_title_3",
+      "label": "Third Menu Heading"
+    }, {
+      "type": "link_list",
+      "id": "section_linklist_3",
+      "label": "Top - Linklist",
+      "default": "footer"
+    }, {
+      "type": "header",
+      "content": "Logo"
+    }, {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 100,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo max width (Desktop)",
+      "default": 200
+    },
+    {
+      "type": "image_picker",
+      "id": "decor_image",
+      "label": "Decor image on the right"
+    },
+    {
+      "type": "header",
+      "content": "Social Links"
+    }, {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show Social Icons?",
+      "default": true
+    }, {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Privacy Label"
+    }, {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy URL"
+    }, {
+      "type": "text",
+      "id": "terms_label",
+      "label": "Terms Label"
+    }, {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms URL"
+    }, {
+      "type": "header",
+      "content": "Mailing list"
+    }, {
+      "type": "text",
+      "id": "mailing_title",
+      "label": "Mailing title",
+      "default": "Save 10% on Your Order"
+    }, {
+      "type": "textarea",
+      "id": "mailing_text",
+      "label": "Mailing text"
+    }, {
+      "type": "text",
+      "id": "mailing_button",
+      "label": "Mailing button",
+      "default": "Save 10% Now"
+    }, {
+      "type": "header",
+      "content": "Custom text"
+    }, {
+      "type": "textarea",
+      "id": "custom_footer",
+      "label": "Custom Text"
+    }, {
+      "type": "header",
+      "content": "Payment Methods"
+    }, {
+      "type": "checkbox",
+      "id": "show_payment_methods",
+      "label": "Show payment methods in the footer?"
+    }
+  ]
+}
+{% endschema %}

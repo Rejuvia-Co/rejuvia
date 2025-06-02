@@ -1,0 +1,6 @@
+{%- if image == blank -%}
+  {%- capture size -%}{%- if image.aspect_ratio < 1 -%}10x{{10 | divided_by: image.aspect_ratio | round}}{%- else -%}100x{{100 | divided_by: image.aspect_ratio | round}}{%- endif -%}{%- endcapture -%}
+  {{ 'placeholder.png' | asset_img_url: size, crop: 'left' }}
+{%- else -%}
+  {{ image |  image_url: width: 200 }}
+{%- endif -%}

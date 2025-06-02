@@ -1,0 +1,50 @@
+
+<style>
+  @font-face {
+    font-family: 'HelveticaNeueL';
+    src: url('https://cdn.shopify.com/s/files/1/0418/7085/2258/files/HelveticaNeueLTPro-Roman.woff?v=1710206529');
+    font-weight:400;
+}
+
+  @font-face {
+    font-family: 'HelveticaNeueL';
+    src: url('https://cdn.shopify.com/s/files/1/0418/7085/2258/files/HelveticaNeueLTPro-Bd.woff?v=1710206280');
+    font-weight:600;
+}
+  @font-face {
+    font-family: 'HelveticaNeueL';
+    src: url('https://cdn.shopify.com/s/files/1/0418/7085/2258/files/HelveticaNeueLTPro-LtIt.woff?v=1710206281');
+    font-style:italic;
+}
+</style>
+{%- if settings.font_icons_awesome -%}
+<script>
+   function loadStylesheet(url) {
+       var link = document.createElement('link');
+       link.rel = 'stylesheet';
+       link.href = url;
+       document.head.appendChild(link);
+   }
+
+   // Defer loading the Font Awesome stylesheet
+   var fontAwesomeUrl = '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+   window.onload = function () {
+       loadStylesheet(fontAwesomeUrl);
+   };
+</script>
+{%- endif -%}
+{%- if settings.font_icons_linear -%}
+<link rel="stylesheet" href="//cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+{%- endif -%}
+{%- if settings.font_icons_ion -%}
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+{%- endif -%}
+{%- if settings.font_icons_drip -%}
+{{ 'dropicons-v2.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if settings.font_icons_stroke -%}
+{{ 'Pe-icon-7-stroke.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if settings.font_icons_themify -%}
+{{ 'themify.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

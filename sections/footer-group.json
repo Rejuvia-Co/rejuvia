@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer Section",
+  "type": "footer",
+  "sections": {
+    "footer_ktHiKk": {
+      "type": "footer",
+      "settings": {
+        "section_padding_top_desktop": 56,
+        "section_padding_bottom_desktop": 32,
+        "section_padding_top_mobile": 40,
+        "section_padding_bottom_mobile": 24,
+        "bg_color": "#000000",
+        "border_color": "#000000",
+        "text_color": "#ffffff",
+        "menu_title_1": "Shop",
+        "section_linklist": "footer-menu-2",
+        "menu_title_2": "Learn More",
+        "section_linklist_2": "learn",
+        "menu_title_3": "Resources",
+        "section_linklist_3": "more",
+        "logo": "shopify://shop_images/REJUVIA_Logo_Wordmark_Gold-01_1_11e12cc9-012a-4de8-b2b1-291d89f43452.png",
+        "logo_max_width": 200,
+        "decor_image": "shopify://shop_images/REJUVIA_Logo_Icon_Gold-01_1.png",
+        "show_social": true,
+        "privacy_label": "Privacy Policy",
+        "privacy_url": "shopify://policies/privacy-policy",
+        "terms_label": "Terms of Service",
+        "terms_url": "shopify://policies/terms-of-service",
+        "mailing_title": "Get 15% OFF Your First Order",
+        "mailing_text": "Sign up for news and exclusive discounts, plus 15% off your first order.",
+        "mailing_button": "Sign Up",
+        "custom_footer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
+        "show_payment_methods": true
+      }
+    }
+  },
+  "order": [
+    "footer_ktHiKk"
+  ]
+}

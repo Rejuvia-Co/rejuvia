@@ -1,0 +1,120 @@
+<div id="mailing-fullscreen" class="search-mailing clearfix hide" role="dialog" aria-modal="true">
+  <div class="form-wrap">
+    {%- if settings.use_mailchimp_form -%}
+      <form class="form animated" method="post" action="//{{settings.mailchimp_domain}}/subscribe/post-json?u={{settings.mailchimp_user}}&id={{settings.mailchimp_id}}&c=?">
+        <input type="email" placeholder="Email address" name="EMAIL" class="required email" aria-label="Enter your Email Address" aria-required="true" autocomplete="email" />
+        <button type="submit" aria-label="Subscribe">
+          {%- include 'icons', icon: 'arrow-right' -%}
+        </button>
+      </form>
+    {%- elsif settings.use_klaviyo_form -%}
+      <form class="clearfix" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+        <input type="hidden" name="g" value="{{settings.klaviyo_list_id}}">
+        <input type="hidden" name="$fields" value="source">
+        <input type="hidden" name="source" value="Shopify header newsletter">
+        <input type="email" placeholder="Email address" id="email-input" name="email" class="required email" aria-label="Enter your email address to subscribe to our mailing list" aria-required="true" autocomplete="email" />
+        <button type="submit" aria-label="Subscribe">
+          {%- include 'icons', icon: 'arrow-right' -%}
+        </button>
+      </form>
+    {%- else -%}
+      <form class="form animated" method="post" action="/contact">
+        <input type="hidden" value="customer" name="form_type">
+        <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+        <input type="email" class="email required" placeholder="Email address" name="contact[email]" aria-label="Enter your Email Address" aria-required="true" autocomplete="email" />
+        <button type="submit" aria-label="Subscribe">
+          {%- include 'icons', icon: 'arrow-right' -%}
+        </button>
+      </form>
+    {%- endif -%}
+    <div class="success-msg hide">Thank you!</div>
+    <div class="error-msg"></div>
+  </div>
+  <button class="close" aria-label="Close popup">
+    {%- include 'icons', icon: 'close' -%}
+  </button>
+</div>
+<script>
+  $(function(){
+    var openNewsletter = function(){
+      $('body').css({'overflow': 'hidden'});
+      $('#mailing-fullscreen').fadeIn();
+      $('#mailing-fullscreen .form').show().addClass('{{settings.search_mailing_effect}}');
+      $('#mailing-fullscreen .close').fadeIn();
+      Simplistic.trapFocus({
+        $container: $('#mailing-fullscreen'), 
+        namespace: 'mailing-fullscreen', 
+        $elementToFocus: $('#mailing-fullscreen .input-text')
+      });
+      $(document).bind('keyup.search', function(e) {
+        if(e.key === "Escape") {closeSearch();}
+      });
+    };
+    var closeSearch = function(){
+      $('body').css({'overflow': 'auto'});
+      $('#mailing-fullscreen .form').fadeOut().removeClass('{{settings.search_mailing_effect}}');
+      $('#mailing-fullscreen .close').fadeOut();
+      $('#mailing-fullscreen').fadeOut();
+      Simplistic.removeTrapFocus({
+        $container: $('#mailing-fullscreen'), 
+        namespace: 'mailing-fullscreen'
+      });
+      $(document).unbind('keyup.search');
+    };
+    $('.newsletter-target').click( function(){
+      openNewsletter();
+      return false;
+    });
+    $('#mailing-fullscreen .close').click( function(){
+      closeSearch();
+      $('.search-mailing .success-msg').hide();
+      return false;
+    });
+
+    $('#mailing-fullscreen form').submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var form = $(this);
+      var error = false;
+      
+      form.parent().find('.error-msg').hide();
+      form.find('.error').removeClass('error');
+
+      form.find('.required').each(function(){
+        if($(this).val()=="") {
+          error = true;
+          $(this).addClass('error');
+        }
+      });
+      if(error){
+          form.parent().find('.error-msg').show().text('Please complete all the required fields.');
+      }else{
+        if(!Simplistic.validateEmail(form.find('.email').val())) {
+          error = true;
+          form.find('.email').addClass('error');
+          form.parent().find('.error-msg').show().text('Please provide a valid email address.');
+        }
+      }
+      if(!error) {
+        $.ajax({
+          data: form.serialize(),
+          {%- if settings.use_mailchimp_form -%}
+          url: form.attr('action'),
+          dataType: 'jsonp',
+          {%- elsif settings.use_klaviyo_form -%}
+          url: form.data('ajax-submit'),
+          {%- else -%}
+          url: form.attr('action'),
+          {%- endif -%}
+          type: 'POST'
+        }).done(function(){
+          form.hide();
+          form.parent().find('.success-msg').show();
+        }).error(function(){
+          form.unbind("submit");
+          form.submit();
+        });
+      }
+    });
+  });
+</script>

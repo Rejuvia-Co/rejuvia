@@ -1,0 +1,59 @@
+<div id="search-fullscreen" class="search-mailing animated" role="dialog" aria-modal="true">
+  <div class="form-wrap">
+    <form class="form animated search-form" action="/search" method="get" role="search">
+      <input type="text" class="input-search animation" name="q" value="" autocomplete="off" placeholder="Search" aria-label="Enter your Search terms">
+      <input type="hidden" name="type" value="product" />
+      <button type="submit" aria-label="Submit">
+        {%- include 'icons', icon: 'search' -%}
+      </button>
+    </form>
+  </div>
+  <button class="close" aria-label="Close search">
+    {%- include 'icons', icon: 'close' -%}
+  </button>
+</div>
+{%- include 'search_autocomplete' -%}
+<script>
+  $(function(){
+    var openSearch = function(){
+      $('body').css({'overflow': 'hidden'});
+      $('#search-fullscreen').fadeIn();
+      $('#search-fullscreen .form').show().addClass('{{settings.search_mailing_effect}}');
+	  $('#search-fullscreen .close').fadeIn();
+      Simplistic.trapFocus({
+        $container: $('#search-fullscreen'), 
+        namespace: 'search-fullscreen', 
+        $elementToFocus: $('#search-fullscreen .input-search')
+      });
+      $(document).bind('keyup.search', function(e) {
+        if(e.key === "Escape") {closeSearch();}
+      });
+    };
+    var closeSearch = function(){
+      $('body').css({'overflow': 'auto'});
+      $('#search-fullscreen .form').fadeOut().removeClass('{{settings.search_mailing_effect}}');
+	  $('#search-fullscreen .close').fadeOut();
+      $('#search-fullscreen').fadeOut();
+      Simplistic.removeTrapFocus({
+        $container: $('#search-fullscreen'), 
+        namespace: 'search-fullscreen'
+      });
+      $(document).unbind('keyup.search');
+    };
+    $('.search-target').click(function(){
+      openSearch();
+      return false;
+    });
+    $('#search-fullscreen .close').click(function(){
+      closeSearch();
+      return false;
+    });
+
+    $('.search-form').on('submit', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      var query = $(this).serialize();
+      window.location = '/search?'+query;
+    });
+  });
+</script>

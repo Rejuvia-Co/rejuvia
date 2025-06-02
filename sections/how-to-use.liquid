@@ -1,0 +1,81 @@
+{{ 'how-touse-section.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .how-to-use-section#shopify-section-{{section.id}}{
+    background: {{ section.settings.background }};
+    background: linear-gradient(81deg, rgba(255, 255, 255, 0.50) -17.54%, rgba(225, 212, 224, 0.50) 86.05%), #FFF;
+  }
+</style>
+
+<div class="how-to-use-container" id="section-{{section.id}}">
+  <div class="how-to-image-container">
+    <div class="how-to-image-content">{{ section.settings.image | image_url: width: 700 | image_tag }}</div>
+  </div>
+  <div class="info-container">
+    <h3 class="section-title--h1">{{ section.settings.heading }}</h3>
+    <p class="subheading">{{ section.settings.subheading }}</p>
+    <div class="steps-block-container">
+      {% for item in section.blocks %}
+        <div>
+          <span class="step_indicator">STEP {{ forloop.index }}</span>
+          <div class="step_description">{{ item.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How To Use",
+  "tag": "section",
+  "class": "how-to-use-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How To Use"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subeading",
+      "default": "Use sleep spray 15-20 minutes before bed."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How To Use",
+      "blocks": [
+        {
+          "type": "step"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

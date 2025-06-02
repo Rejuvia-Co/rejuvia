@@ -1,0 +1,81 @@
+<div id="menu-mobile" class="ease-animation-slow" role="dialog" aria-modal="true">
+    <div class="wrapper">
+      <!--
+      <div class="head clearfix">
+        <div class="title"><div class="inner"></div></div>
+        <button class="close" aria-label="Close Menu">
+          {% include 'icons', icon: 'close' %}
+        </button>
+      </div>
+    -->
+      <div class="content">
+        <h1>Hola mundo</h1>
+  
+
+    </div>
+  </div>
+  
+<script>
+    $(function() {
+        $(".btn-open-mobile-menu").click(function(e){
+          e.preventDefault()
+          $('#menu-mobile').toggleClass('open');
+          $('body, html').css({overflow: 'hidden'});
+          //$('#page').addClass('mode-overlay anim');
+          Simplistic.trapFocus({
+            $container: $('#menu-mobile'),
+            namespace: 'menu-mobile'
+          });
+          return false;
+        });
+        function closeMenuMobile(){
+          $('#menu-mobile').removeClass('open');
+          $('body, html').css({overflow: 'auto'});
+          //$('#page').removeClass('mode-overlay anim');
+          Simplistic.removeTrapFocus({
+            $container: $('#menu-mobile'),
+            namespace: 'menu-mobile'
+          });
+          return false;
+        }
+        $("#menu-mobile .menu-mobile .has-dropdown .icon").click(function(){
+          console.log($(this).siblings('.icon').first());
+          $(this).parent().toggleClass('active');
+          $(this).parent().find('.submenu:first').slideToggle();
+          
+          $(this).toggle();
+          $(this).siblings('.icon').first().toggle();
+          return false;
+        });
+        
+        $("#menu-mobile .close").click(function(){
+          closeMenuMobile();
+        });
+        
+        $(".head").click(function(){
+          closeMenuMobile();
+        });
+  
+      
+  //       $("#menu-mobile .item").click(function(){
+  //         if ($(this).hasClass('active') && $(this).hasClass('has-dropdown')) {
+  //           $(this).find('.icon-plus').addClass('hide');
+  //           $(this).find('.icon-minus').removeClass('hide');
+  //         } else {
+  //           $(this).find('.icon-minus').removeClass('hide');
+  //           $(this).find('.icon-plus').addClass('hide');
+  //         }
+  //         return false;
+  //       });
+      
+        $(document).on('keydown', function(e){
+          if (e.which == 27) { //Exit
+            if($('#menu-mobile').hasClass('open')){
+              e.preventDefault();
+              closeMenuMobile();
+              return false;
+            }
+          }
+        });
+    });
+  </script>

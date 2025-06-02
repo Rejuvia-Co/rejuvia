@@ -1,0 +1,109 @@
+{{- 'blog-new.css' | asset_url | stylesheet_tag -}}
+
+<div class="blog-new">
+  <div class="container">
+    <h2 class="blog-new__title">
+      {{- section.settings.heading -}}
+    </h2>
+    <div class="blog-new__items">
+      {% assign selected_blog = section.settings.blog %}
+      {% if selected_blog %}
+        {%- liquid
+          assign mainArticle = article.id
+          assign is_double_article = false
+          for selectArticle in blogs[selected_blog].articles limit: 3
+            if mainArticle == selectArticle.id
+             assign is_double_article = true
+            endif
+          endfor
+          if is_double_article
+            assign limit = 4
+          else
+            assign limit = 3
+          endif
+        -%}
+        {% for selectArticle in blogs[selected_blog].articles limit: limit %}
+          {% if mainArticle != selectArticle.id %}
+            <div class="blog-new__item">
+              <a href="{{ selectArticle.url }}" class="blog-new__link">
+                <div class="blog-new__image">
+                  <img
+                    src="{{ selectArticle.image | image_url: width: 870 }}"
+                    alt="{{ selectArticle.title }}"
+                    loading="lazy">
+                </div>
+                <div class="blog-new__content">
+                  <div class="blog-new__tags">
+                    {% if section.settings.show_tags %}
+                      {% for tag in selectArticle.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                  <h3 class="blog-new__item--title">{{ selectArticle.title }}</h3>
+                  {%- if section.settings.show_text -%}
+                    <p class="blog-new__excerpt">
+                      {%- if selectArticle.excerpt.size > 0 -%}
+                        {{ selectArticle.excerpt | strip_html }}
+                      {%- else -%}
+                        {{ selectArticle.content | strip_html }}
+                      {%- endif -%}
+                    </p>
+                  {%- endif -%}
+                  <div class="blog-new__read-more">
+                    <span>Read more</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none">
+                      <path
+                        d="M3 12H21M21 12L15 18M21 12L15 6"
+                        stroke="#672666"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Similar articles",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Similar articles"
+      }, {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      }, {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_text",
+        "label": "Show text",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Similar articles"
+      }
+    ]
+  }
+{% endschema %}

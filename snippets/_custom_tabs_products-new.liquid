@@ -1,0 +1,384 @@
+<style>
+  #custom_tabs_product ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #custom_tabs_product ul li:nth-of-type(1) {
+    animation-delay: 0.5s;
+  }
+
+  #custom_tabs_product ul li:nth-of-type(2) {
+    animation-delay: 0.75s;
+  }
+
+  #custom_tabs_product ul li:nth-of-type(3) {
+    animation-delay: 1s;
+  }
+
+  #custom_tabs_product ul li i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 10px;
+    right: 0;
+  }
+
+  #custom_tabs_product ul li i:before,
+  #custom_tabs_product ul li i:after {
+    content: "";
+    position: absolute;
+    background-color: #2f358e;
+    width: 2px;
+    height: 10px;
+  }
+
+  #custom_tabs_product ul li i:before {
+    transform: translate(0px, 0) rotate(90deg);
+  }
+
+  #custom_tabs_product ul li i:after {
+    transform: translate(0px, 0) rotate(90deg);
+  }
+
+  #custom_tabs_product ul li input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+  }
+
+  #custom_tabs_product ul li input[type=checkbox]:checked~div.tab_content {
+    max-height: 0;
+    opacity: 0;
+    transform: translate(0, 50%);
+    margin-top: 0;
+  }
+
+  #custom_tabs_product ul li input[type=checkbox]:not(:checked) ~div.tab_content {
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  #custom_tabs_product ul li input[type=checkbox]:checked~i:before {
+    transform: translate(0px, 0) rotate(90deg);
+  }
+
+  #custom_tabs_product ul li input[type=checkbox]:checked~i:after {
+    transform: translate(0px, 0) rotate(0deg);
+  }
+
+  @keyframes flipdown {
+    0% {
+      opacity: 0;
+      transform-origin: top center;
+      transform: rotateX(-90deg);
+    }
+    5% {
+      opacity: 1;
+    }
+    80% {
+      transform: rotateX(8deg);
+    }
+    83% {
+      transform: rotateX(6deg);
+    }
+    92% {
+      transform: rotateX(-3deg);
+    }
+    100% {
+      transform-origin: top center;
+      transform: rotateX(0deg);
+    }
+  }
+
+  .bg-ligth-blue {
+    background-color: #f5f5f5;
+  }
+
+  .title-color {
+    color: #000000;
+  }
+
+  .mb-70 {
+    margin-bottom: 70px;
+  }
+
+  .sans--large {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  #custom_tabs_product .custom-container {
+    padding-top: 32px;
+    max-width: 1370px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #custom_tabs_product .custom-container {
+    padding: 0 6rem;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+  .w-400 {
+    width: 35%;
+  }
+
+  .w-600 {
+    width: 65%;
+  }
+
+  .p-20 {
+    padding: 20px;
+  }
+
+  .img-shadow {
+    box-shadow: -8px 10px 0 2px #000000
+  }
+
+  #custom_tabs_product .section-padding {
+    margin-top: 150px;
+    padding-top: 140px;
+    padding-bottom: 150px;
+  }
+
+  .pt-50 {
+    padding-top: 50px;
+  }
+
+  @media(max-width: 576px) {
+    #custom_tabs_product .custom-container {
+      padding: 0 1.2em;
+    }
+    .w-400 {
+      width: 100%;
+    }
+    .w-600 {
+      width: 100%;
+    }
+    .flex {
+      display: block;
+    }
+    .pt-50 {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 50px
+    }
+  }
+  .tab_content img {
+    max-width: 100%;
+  }
+
+  #custom_tabs_product .custom-container {
+    padding: 0;
+  }
+
+  .custom-tabs-product-new li {
+    padding: 20px 0;
+    border-top: 1px solid #B7B7B7;
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  .custom-tabs-product-new li h2 {
+    color: var(--Black, #040404);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    text-transform: unset;
+    font-family: HelveticaNeueL, sans-serif;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+
+  .custom-tabs-product-new li:last-child {
+    border-bottom: 1px solid #B7B7B7;
+  }
+
+  .custom-tabs-product-new li input {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .custom-tabs-product-new li .tab_content {
+    color: var(--gray-added, #5C5C5C);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-tabs-product-new li svg {
+    position: absolute;
+    right: 0;
+    top: 23px;
+  }
+
+  .custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~svg {
+    transform: rotate(180deg);
+  }
+
+  @media only screen and (max-width: 749px) { 
+    .custom-tabs-product-new li {
+      padding: 16px 0;
+    }
+
+    .custom-tabs-product-new li .tab_content {
+      margin: 0;
+    }
+
+    #custom_tabs_product ul li input[type=checkbox]:not(:checked) ~div.tab_content {
+      margin-top: 8px;
+    }
+  }
+</style>
+
+<section class="custom-tabs-product-new" id="custom_tabs_product">
+  <div class="custom-container flex">
+    <div class="w-100">
+      <ul>
+          {% if product.metafields.custom.boundle_product_included != blank %}
+              <li>
+                  <input type="checkbox" checked>
+                  {% render 'icon-arrow-tabs' %}
+                  <h2 class="faq-title title-color">What's Included</h2>
+                  <div class="title-color tab_content" style="font-size:16px;">
+                      {{ product.metafields.custom.boundle_product_included }}
+                  </div>
+              </li>
+          {% endif %}
+          {% if product.metafields.custom.boundle_product_details != blank %}
+              <li>
+                  <input type="checkbox" checked>
+                  {% render 'icon-arrow-tabs' %}
+                  <h2 class="faq-title title-color">Product Details</h2>
+                  <div class="title-color tab_content" style="font-size:16px;">
+                      {{ product.metafields.custom.boundle_product_details }}
+                  </div>
+              </li>
+          {% endif %}
+        {% if product.metafields.tabs.key_benefits != blank %}
+          <li>
+            <input type="checkbox" checked>
+            {% render 'icon-arrow-tabs' %}
+            <h2 class="faq-title title-color">Ingredients</h2>
+
+            <div class="title-color tab_content" style="font-size:16px;">
+              {% if product.metafields.custom.ingredients_image.value != blank %}
+                <img src="{{ product.metafields.custom.ingredients_image.value  | img_url: 'master'}}" />
+              {% else %}
+                {{ product.metafields.tabs.ingredients }}
+              {% endif %}
+            </div>
+
+          </li>
+        {% endif %}
+        {% if product.metafields.tabs.directions_for_use != blank %}
+          <li>
+            <input type="checkbox" checked>
+            {% render 'icon-arrow-tabs' %}
+            <h2 class="faq-title title-color">How To Use</h2>
+            <div class="title-color tab_content" style="font-size:16px;">
+              {{ product.metafields.tabs.directions_for_use }}
+            </div>
+          </li>
+        {% endif %}
+        {% if product.metafields.tabs.ingredients != blank %}
+          <li>
+            <input type="checkbox" checked>
+            {% render 'icon-arrow-tabs' %}
+            <h2 class="faq-title title-color">Shipping & Returns</h2>
+            <div class="title-color tab_content" style="font-size:16px;">
+              {{ product.metafields.tabs.key_benefits }}
+            </div>
+          </li>
+        {% endif %}
+        {% if product.metafields.tabs.dosing != blank %}
+          <li>
+            <input type="checkbox" checked>
+            {% render 'icon-arrow-tabs' %}
+            <h2 class="faq-title title-color">Dosing</h2>
+            <div class="title-color tab_content" style="font-size:16px;">
+              {{ product.metafields.tabs.dosing }}
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+    {% if product.metafields.custom.boundle_related_product != blank %}
+        {% assign relatedProduct = product.metafields.custom.boundle_related_product.value %}
+        <div class="boundle-related hide-desktop show-mobile">
+            <div class="boundle-related__text">
+                <div class="boundle-related__text--heading">
+                    Sleep + Calm Spray Bundle
+                </div>
+                <div class="boundle-related__text--description">
+                    Why choose one when you can have both?
+                </div>
+            </div>
+            <div class="product-recommendation">
+                <a href="{{ relatedProduct.url }}" class="eg-product-link">
+                    {% if relatedProduct.metafields.custom.bboundle_product_card_tag_label != blank %}
+                        <div class="boundle-related--label">
+                            {{ relatedProduct.metafields.custom.bboundle_product_card_tag_label }}
+                        </div>
+                    {% endif %}
+                    <div class="eg-productR-image">
+                        <div class="eg-background-product"></div>
+                        <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}">
+                    </div>
+                    <div class="eg-productR-info">
+                        <div class="eg-reviews">
+                            {{ relatedProduct.metafields.okendo.StarRatingSnippet }}
+                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" />
+                        </div>
+                        <div class="productR-info_title">
+                            <span>{{ relatedProduct.title }}</span>
+                            <div class="productR-info_title--price">
+                                {% if  relatedProduct.compare_at_price != blank %}
+                                    <div class="productR-info_title--price--compared">
+                                        {{ relatedProduct.compare_at_price | money }}
+                                    </div>
+                                {% endif %}
+                                <div class="productR-info_title--price--regular">
+                                    {{ relatedProduct.price | money }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productR-info_description">
+                            {{ relatedProduct.description}}
+                        </div>
+                        <div class="boundle-related__products">
+                            <div class="boundle-related__products--title">
+                                What’s Included:
+                            </div>
+                            <div class="boundle-related__products--wrap">
+                                {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
+                                    <div class="boundle-related__products--product">
+                                        <img src="{{ product_ref.featured_image | img_url: '50x50' }}" >
+                                        <div>
+                                            {{ product_ref.title }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</section>

@@ -1,0 +1,43 @@
+<div class="blog-new__item">
+  <a href="{{ article.url }}" class="blog-new__link">
+    <div class="blog-new__image">
+      <img
+        src="{{ article.image | image_url: width: 870 }}"
+        alt="{{ article.title }}"
+        loading="lazy">
+    </div>
+    <div class="blog-new__content">
+      <div class="blog-new__tags">
+        {% if section.settings.show_tags %}
+          {% for tag in article.tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <h3 class="blog-new__item--title">{{ article.title }}</h3>
+      {%- if section.settings.show_text -%}
+        <p class="blog-new__excerpt">
+          {%- if article.excerpt.size > 0 -%}
+            {{ article.excerpt | strip_html }}
+          {%- else -%}
+            {{ article.content | strip_html }}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+      <div class="blog-new__read-more">
+        <span>Read more</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none">
+          <path
+            d="M3 12H21M21 12L15 18M21 12L15 6"
+            stroke="#672666"
+            stroke-linecap="round" />
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>

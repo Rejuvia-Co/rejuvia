@@ -1,0 +1,215 @@
+<style>
+  #shopify-section-{{ section.id }} .container {max-width: 96em;}
+  #shopify-section-{{ section.id }} .content-wrapper {overflow: hidden;}
+
+  #shopify-section-{{ section.id }} .image-text {position: relative; background-size: cover; background-position: center; background-repeat: no-repeat;}
+  #shopify-section-{{ section.id }} .image-text .container {max-width: 80em;}
+  #shopify-section-{{ section.id }} .image-text img {width: 100%;}
+  #shopify-section-{{ section.id }} .image-text .captions {position: relative; z-index: 1;}
+  #shopify-section-{{ section.id }} .image-text .title {display: block; color: inherit; line-height: 110%; letter-spacing: 0; font-size: 2.6em; margin-bottom: 0em;}
+  #shopify-section-{{ section.id }} .image-text .text {margin-top: 1.5em; line-height: 40px; letter-spacing: 0px;}
+  #shopify-section-{{ section.id }} .image-text .wrap {max-width: 80%; position: relative;}
+  #shopify-section-{{ section.id }} .image-text p {color: inherit; font-size: 1.3em; text-transform: none; font-weight: 50;}
+  #shopify-section-{{ section.id }} .image-text p:last-child {margin: 0;}
+  #shopify-section-{{ section.id }} .image-text .buttons {display: inline-block; margin-top: 2em;}
+  #shopify-section-{{ section.id }} .image-text .btn {display: inline-block; margin-bottom: 0em; padding-left: 2em; padding-right: 2em;}
+  #shopify-section-{{ section.id }} .image-text .btn:not(:last-child) {margin-right: 1em;}
+  #shopify-section-{{ section.id }} .image-text .btn:last-child:not(:hover) {background-color: #18583c; color: #f9f5f1; }
+  #shopify-section-{{ section.id }} .image-text .btn:last-child:hover {background-color: #f9f5f1; color: #18583c; }
+  #shopify-section-{{ section.id }} .image-text .btn:first-child:not(:hover) {background-color: #f9f5f1; color: #18583c; }
+
+  @media all and (max-width: 900px) and (min-width: 601px){
+    #shopify-section-{{ section.id }} .image-text {font-size: 1.68vw}
+  }
+
+  @media all and (max-width: 900px){
+    #shopify-section-{{ section.id }} .image-text p {font-size: 1em;}
+  }
+
+  @media all and (max-width: 600px){
+    #shopify-section-{{ section.id }} .image-text {background-image: none !important;}
+    #shopify-section-{{ section.id }} .image-text .container {padding: none;}
+    #shopify-section-{{ section.id }} .image-text .title {font-size: 2.2em; width: 100%;}
+    #shopify-section-{{ section.id }} .image-text .wrap {max-width: 100%; width: 100% !important;}
+    #shopify-section-{{ section.id }} .image-text .btn {width: 100%; margin-bottom: 0em; margin-right: 0 !important; max-width: 20em;}
+  }
+
+</style>
+
+<section class="image-text lazyload" id="section-{{section.id}}" {%- if section.settings.image != blank -%}{% if section.settings.image_alt != blank %} aria-label="{{section.settings.image_alt}}"{% endif %} style="background-image: url({{"placeholder.png" | asset_url}})" data-bgset="{% include 'lazy_src', image: section.settings.image %}"{% endif %}>
+    <style>
+      #section-{{section.id}} {z-index: {{section.settings.zindex}}; background-color: {{section.settings.bg_color}}; color: {{section.settings.text_color}};}
+      #section-{{section.id}} .wrap {padding: {{section.settings.text_padding_desktop}};}
+      @media all and (max-width: 600px) {
+        #section-{{section.id}} .wrap {padding: {{section.settings.text_padding_mobile}};}
+      }
+    </style>
+    <div class="captions">
+      <div class="container flex flex-wrap align-items-left justify-content-{{section.settings.text_position}} text-{{section.settings.text_align}} small--text-{{section.settings.text_align_mobile}}">
+        <div class="wrap">
+            {%- if section.settings.title != "" -%}
+              <h2 class="custom_title_font title">{{section.settings.title}}</h2>
+            {%- endif -%}
+          {%- if section.settings.text != blank -%}
+          <div class="text custom_text_font">{{section.settings.text}}</div>
+            {%- endif -%}
+          {%- if section.settings.button != "" or section.settings.button2 != "" -%}
+            <div class="buttons clearfix">
+              {%- if section.settings.button != "" -%}
+                  <a href="{{section.settings.link}}" class="btn">{{section.settings.button}}</a>
+              {%- endif -%}
+            </div>
+           {%- endif -%}
+        </div>
+        {%- if section.settings.image_mobile != blank -%}
+            <img alt="{{section.settings.image_mobile_alt}}" class="lazyload hide small--show" src="{{"placeholder.png" | asset_url}}" data-srcset="{% include 'lazy_src', image: section.settings.image_mobile %}" />
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+{% schema %}
+{
+    "name": "Text Banner",
+    "presets": [
+      {
+        "name": "Text Banner",
+        "category": "Home"
+      }
+    ],
+    "settings": [
+          {
+            "type": "text",
+            "id": "zindex",
+            "label": "Z Index",
+            "default": "1"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background Image (Desktop)"
+          },
+          {
+            "type": "text",
+            "id": "image_alt",
+            "label": "Background Image ALT (Desktop)"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Background Image (Mobile)"
+          },
+          {
+            "type": "text",
+            "id": "image_mobile_alt",
+            "label": "Background Image ALT (Mobile)"
+          },
+          {
+            "type": "text",
+            "id": "section_padding_desktop",
+            "label": "Section Padding (Desktop)",
+            "default": "5em 0"
+          },
+          {
+            "type": "text",
+            "id": "section_padding_mobile",
+            "label": "Section Padding (Mobile)",
+            "default": "1em 0"
+          },
+          {
+            "type": "header",
+            "content": "Text"
+          },
+          {
+            "type": "select",
+            "id": "text_position",
+            "label": "Text Position",
+            "options": [
+              {"value": "start", "label": "Left"},
+              {"value": "center", "label": "Center"},
+              {"value": "end", "label": "Right"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text Alignment (Desktop)",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Center"},
+              {"value": "right", "label": "Right"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "text_align_mobile",
+            "label": "Text Alignment (Mobile)",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Center"},
+              {"value": "right", "label": "Right"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "range",
+            "id": "text_width",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "em",
+            "label": "Text Width",
+            "default": 50
+          },
+          {
+            "type": "text",
+            "id": "text_padding_desktop",
+            "label": "Text Padding (Desktop)",
+            "default": "0 3em 0 0"
+          },
+          {
+            "type": "text",
+            "id": "text_padding_mobile",
+            "label": "Text Padding (Mobile)",
+            "default": "3em 0 1em"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+          "default": "#ffffff"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title",
+            "default": "Lorem ipsum dolor."
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Lorem ipsum dolor sit amet, consectur adipiscing elit. Nunc eu eros augue. Cras tempus finibus mi, at aliquet orci vestibulum sit amet.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Button",
+            "default": "Button"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,91 @@
+{%- assign current_variant = currentProduct.selected_or_first_available_variant -%}
+{% assign split_sku = current_variant.sku | split: '-' | last %}
+{% assign remove_sku = split_sku | prepend: '-' %}
+{% assign final_sku = current_variant.sku | remove:" " | remove:"+"%}
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "{{- currentProduct.title | escape -}}",
+  "url": "{{- shop.url -}}{{- currentProduct.url -}}",
+  {%- if currentProduct.featured_image -%}
+    {%- assign image_size = currentProduct.featured_image.width | append: 'x' -%}
+    "image": [
+      "https:{{- currentProduct.featured_image.src | img_url: image_size -}}"
+    ],
+  {%- endif -%}
+  "description": "{{- currentProduct.description | strip_html | strip_newlines | escape -}}",
+  "sku": "{{- final_sku -}}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Rejuvia"
+  },
+  {% if product.metafields.okendo.summaryData != nil %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.okendo.summaryData.reviewAverageValue }}",
+    "ratingCount": "{{ product.metafields.okendo.summaryData.reviewCount }}"
+  },
+  {% else %}
+  ,"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "1"
+  },
+  {% endif %}
+  {%- if currentProduct.variants -%}
+    "offers": [
+      {%- for variant in currentProduct.variants -%}
+        {
+          "@type" : "Offer",
+          "availability" : "http://schema.org/{%- if currentProduct.available -%}InStock{%- else -%}OutOfStock{%- endif -%}",
+          "price" : "{{- variant.price | divided_by: 100.00 -}}",
+          "priceCurrency" : "{{- shop.currency -}}",
+          "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
+          {%- if variant.image -%}
+			{%- assign variant_image_size = variant.image.width | append: 'x' -%}
+		    "image": "http:{{- variant.image.src | img_url: variant_image_size -}}",
+		  {%- endif -%}
+          {%- if variant.title != blank -%}
+          	"name" : "{{- variant.title | escape -}}",
+          {%- endif -%}
+          {%- if variant.sku != blank -%}
+          	"sku": "{{- final_sku -}}",
+          {%- endif -%}
+          "url" : "{{- shop.url -}}{{- variant.url -}}"
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  {%- endif -%}
+}
+</script>
+
+<script>
+  
+  setTimeout(function(){
+    let authorName = document.querySelector('.oke-w-reviewer-name').innerHTML
+  var schema = {
+        "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": authorName
+            }
+          }    
+      }      
+    var script = document.createElement('script');
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(schema);
+    document.querySelector('body').appendChild(script);
+  }, 1000);
+
+  
+</script>

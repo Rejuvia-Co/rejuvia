@@ -1,0 +1,103 @@
+<script>
+  $(function(){
+
+    /********* SPECIAL INSTRUCTIONS NOTE *********/
+    var checkInstructions = function() {
+      if($('#chk-instructions').is(':checked')) {
+        $('#instructions-note').show();
+      } else {
+        $('#instructions-note').hide();
+        $('#instructions-note').find('textarea').val("");
+      }
+    }
+    $(document).on('click', '#chk-instructions',function(){
+      checkInstructions();
+    });
+    checkInstructions();
+
+    $(document).on('click', '#cart .remove-from-cart', function(){
+      $(this).closest('.item').find('input[type=number]').val(0);
+      updateCart();
+      return false;
+    });
+
+    $(document).on('change', '#cart input[type=number]', function(){
+      updateCart();
+    });
+
+
+    /********* UPDATE QUANTITY WITHOUT REFRESHING *********/
+    function updateCart(){
+      $('#loading-overlay').show();
+
+      $.ajax({
+        type: 'POST',
+        url: '/cart/update.js',
+        data: $('#cart .main-form').serialize(),
+        dataType: 'json'
+      }).fail(function(){console.log('error');}).done(function(){
+        $.ajax({
+          type: 'GET',
+          url: '/cart?view=update',
+          cache: false,
+          success: function(data){
+            $('#loading-overlay').hide();
+            $('#cart').remove();
+            $('.content-wrapper').prepend(data);
+            checkInstructions();
+            location.reload();
+          }
+        });
+        updateCartDesc();
+        $('#add-cart-overlay').fadeOut();
+      });
+    }
+
+    {%- if settings.allow_quick_view -%}
+    /********* EDIT ITEM *********/
+    $(document).on('click', '#cart .edit-item', function(){
+      var url = $(this).data('url');
+      var qty = $(this).data('qty');
+      var variantId = $(this).data('variant');
+      var itemKey = $(this).data('item-key');
+
+      $('#loading-overlay').show();
+
+      $.ajax({
+        url: url,
+        cache: false
+      }).success(function(data){
+        $('#loading-overlay').hide();
+        Simplistic.openModal(data, 'quick-view');
+        $('.quick-view [name=quantity]').val(qty).change();
+        $('.quick-view #add-to-cart-button').text('SAVE CHANGES');
+        $('.quick-view .initialized').on('productLoaded', function(){
+          $('.quick-view .initialized').data('productjs').setVariant(variantId);
+        });
+
+        $('.quick-view .add-to-cart-form').submit(function(){
+          $('#loading-overlay').show();
+          if(modal) modal.close();
+
+          var form = $(this);
+          $.ajax({
+            type: 'POST',
+            url: '/cart/change.js',
+            dataType: 'json',
+            data: {id: itemKey, quantity: 0}
+          }).success(function(){
+            addToCart(form, function(){
+              location.reload();
+            });
+          });
+          return false;
+        });
+      });
+      return false;
+    });
+    {%- endif -%}
+
+  });
+</script>
+
+{%- include 'cart_content' -%}

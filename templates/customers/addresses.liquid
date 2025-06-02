@@ -1,0 +1,131 @@
+  <style>
+  .my-account h1 , .my-account h2 {text-transform: none; font-size: 1.75em;}
+  .my-account-menu .links a {text-transform: none; font-size: 1.3em; font-weight: 500;}
+  .my-account .content h2 {font-size: 1.75em;}
+  .my-account table .head {background-color: #000;}
+  .my-account table th {background-color:transparent; color:#fff; font-weight:500; border: none; text-transform: uppercase; padding: 1em;}
+  .my-account table td {padding-left:1em;}
+  .my-account table .order_name span {background-color: {{settings.content_main_color}};}
+  .my-account .highlight {background-color: {{settings.content_main_color}}; font-weight: 800;}
+  .my-account .btn-address {text-transform: uppercase;}
+  .mobile-orders {}
+  .mobile-orders .order-item {font-size: 1.15em; border-bottom: 1px solid; padding: 1.5em 0;}
+  .mobile-orders .order-item:first-child {border-top: 1px solid;}
+  .mobile-orders .order-item p {margin-bottom: 0.5em;}
+
+  @media all and (max-width: 900px) {
+    .my-account .orders {margin-bottom: 3em;}
+    .my-account .container {padding: 0 2em;}
+    .my-account .content h2 {font-size: 1.3em;}
+    .my-account .btn-address {width: 100%;}
+  }
+</style>
+
+<div class="my-account account">
+
+  <div class="container flex flex-wrap justify-content-between">
+
+    {%- include 'account_menu' -%}
+
+    <div class="content customer-addresses two-thirds medium-down--one-whole"> 
+      <div class="heading flex flex-wrap justify-content-between align-items-start">
+        <h1 class="custom_subtitle_font">Manage Addresses</h1>
+        <a href="#" class="btn btn-address custom_button_font medium-down--hide" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">Add New Address</a>
+      </div>
+
+      <div id="add_address" class="customer_address edit_address add-address" style="display:none;">
+        {%- form 'customer_address', customer.new_address -%}
+          <h2 id="add_address_title">Add a new address</h2>
+          <div class="customer_address_table">
+            <input type="text" autocomplete="shipping given-name" placeholder="First Name*" id="address_first_name_new" name="address[first_name]" value="{{form.first_name}}" aria-label="First Name" aria-required="true" class="required" />
+            <input type="text" autocomplete="shipping family-name" placeholder="Last Name*" id="address_last_name_new" name="address[last_name]" value="{{form.last_name}}" aria-label="Last Name" aria-required="true" class="required" />
+            <input type="text" autocomplete="shipping organization" placeholder="Company" id="address_company_new" name="address[company]" value="{{form.company}}" aria-label="Company" />
+            <input type="text" autocomplete="shipping address-line1" placeholder="Address1*" id="address_address1_new" name="address[address1]" value="{{form.address1}}" aria-label="Address 1" aria-required="true" class="required" />
+            <input type="text" autocomplete="shipping address-line2" placeholder="Address2" id="address_address2_new" name="address[address2]" value="{{form.address2}}" aria-label="Address 2" />
+            <input type="text" autocomplete="shipping address-level2" placeholder="City*" id="address_city_new" name="address[city]" value="{{form.city}}" aria-label="City" />
+            <select id="address_country_new" name="address[country]" data-default="{{form.country}}" aria-label="Country" aria-required="true" class="required">{{ country_option_tags }}</select>
+            <div id="address_province_container_new" style="display: none;">
+              <select id="address_province_new" name="address[province]" data-default="{{form.province}}" aria-label="Province"></select>
+            </div>
+            <input type="text" autocomplete="shipping postal-code" id="address_zip_new" placeholder="Postal Code*" name="address[zip]" value="{{form.zip}}" aria-label="Postal Code" aria-required="true" class="required" />
+            <input type="text" autocomplete="tel" id="address_phone_new" placeholder="Phone Number" name="address[phone]" value="{{form.phone}}" aria-label="Phone Number" />
+            <div class="default-address">
+              {{ form.set_as_default_checkbox }} <label for="address_default_address_{{form.id}}" class="flex align-items-center">Set as Default Address?</label>
+            </div>
+          </div>
+          <button class="btn btn-address" type="submit">Add Address</button>
+          <span class="note" style="margin-left: 1em;"> or <a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">Cancel</a></span>
+        {%- endform -%}
+      </div>
+
+      {%- paginate customer.addresses by 10 -%}
+
+      {%- for address in customer.addresses -%}
+        <div class="address-item">
+          <div id="view_address_{{address.id}}">
+            <div class="view_address">
+              <p class="custom_text_font">{{ address.street }} (Default Address)<br />
+                {{ address.city }}, {{ address.country }} <br />
+                {{ address.zip }}<br />
+                {{ address.phone }}</p>
+                <div class="address-actions flex align-items-center custom_button_font">
+                <span class="edit action flex align-items-center">{{ "Edit" | edit_customer_address_link: address.id }}</span>
+                <span class="delete action flex align-items-center">{{ "Delete" | delete_customer_address_link: address.id }}</span>
+                </div>
+            </div>
+          </div>    
+          <div id="edit_address_{{address.id}}" class="edit-address" style="display:none;">
+            {%- form 'customer_address', address -%}
+              <input type="text" autocomplete="shipping given-name" placeholder="First Name*" id="address_first_name_{{form.id}}" name="address[first_name]" value="{{form.first_name}}" aria-required="true" class="required" />
+              <input type="text" autocomplete="shipping family-name" placeholder="Last Name*" id="address_last_name_{{form.id}}" name="address[last_name]" value="{{form.last_name}}" aria-required="true" class="required" />
+              <input type="text" autocomplete="shipping organization" placeholder="Company" id="address_company_{{form.id}}" name="address[company]" value="{{form.company}}" />
+              <input type="text" autocomplete="shipping address-line1" placeholder="Address1*" id="address_address1_{{form.id}}" name="address[address1]" value="{{form.address1}}" aria-required="true" class="required" />
+              <input type="text" autocomplete="shipping address-line2" placeholder="Address2" id="address_address2_{{form.id}}" name="address[address2]" value="{{form.address2}}" />
+              <input type="text" autocomplete="shipping address-level2" placeholder="City" id="address_city_{{form.id}}" name="address[city]" value="{{form.city}}" />
+              <select id="address_country_{{form.id}}" name="address[country]" data-default="{{form.country}}" aria-required="true" class="required">{{ country_option_tags }}</select>
+              <div id="address_province_container_{{form.id}}" style="display: none;">
+                <select id="address_province_{{form.id}}" name="address[province]" data-default="{{form.province}}"></select>
+              </div>
+              <input autocomplete="shipping postal-code" type="text" placeholder="Postal Code*" id="address_zip_{{form.id}}" name="address[zip]" value="{{form.zip}}" aria-required="true" class="required" />
+              <input autocomplete="tel" type="text" placeholder="Phone" id="address_phone_{{form.id}}" name="address[phone]" value="{{form.phone}}" />
+              <div class="default-address">
+                {{ form.set_as_default_checkbox }} <label for="address_default_address_{{form.id}}" class="flex align-items-center">Set as Default Address?</label>
+              </div>
+              <button class="btn" type="submit">Update Address</button>
+              <span class="note" style="margin-left: 1em;"> or <a href="#" onclick="Shopify.CustomerAddress.toggleForm({{form.id}}); return false;">Cancel</a></span>      
+            {%- endform -%}
+          </div>
+        </div>
+      {%- endfor -%}
+      <a href="#" class="btn btn-address custom_button_font large--hide" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">Add New Address</a>
+      {%- include 'pagination' -%}
+      {%- endpaginate -%}
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      // initialize observers on address selectors
+      new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {hideElement: 'address_province_container_new'});  
+      {%- for address in customer.addresses -%}
+      	new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_province_{{address.id}}', {hideElement: 'address_province_container_{{address.id}}'});
+      {%- endfor -%}
+                                            
+      //Validate address form
+	  $(function(){
+          $('.customer-addresses form').submit(function(){
+            $(this).find('.error').removeClass('error');
+            var valid = true;
+            
+            $(this).find('.required').each(function(){
+              if($(this).val()=="" || $(this).val()=="---") {
+              	valid = false;
+                $(this).addClass('error');
+              }
+            });
+            
+            return valid;
+          });
+      });
+    </script>
+  </div>
+
+</div>

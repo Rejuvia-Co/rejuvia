@@ -1,0 +1,43 @@
+{%- unless template == 'index' or template == 'cart' -%}
+<nav class="breadcrumb flex align-items-center" role="navigation" aria-label="breadcrumbs">
+  <a href="/" title="Home">Home</a>
+  {%- if template contains 'page' -%}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    <span>{{ page.title }}</span>
+  {%- elsif template contains 'product' -%}
+    {%- if collection.url -%}
+      {%- include 'icons', icon: 'arrow-right' -%}
+      {{ collection.title | link_to: collection.url }}
+    {%- endif -%}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    <span>{{ product.title }}</span>
+  {%- elsif template contains 'collection' and collection.handle -%}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    {%- if current_tags -%}
+      {%- capture url -%}/collections/{{ collection.handle }}{%- endcapture -%}
+      {{ collection.title | link_to: url }}
+      {%- include 'icons', icon: 'arrow-right' -%}
+      <span>{{ current_tags | join: " + " }}</span>
+    {%- else -%}
+      <span>{{ collection.title }}</span>
+    {%- endif -%}
+  {%- elsif template == 'blog' -%}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    {%- if current_tags -%}
+      {{ blog.title | link_to: blog.url }}
+      {%- include 'icons', icon: 'arrow-right' -%}
+      <span>{{ current_tags | join: " + " }}</span>
+    {%- else -%}
+    <span>{{ blog.title }}</span>
+    {%- endif -%}
+  {%- elsif template == 'article' -%}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    {{ blog.title | link_to: blog.url }}
+    {%- include 'icons', icon: 'arrow-right' -%}
+    <span>{{ article.title }}</span>
+  {%- else -%}
+   {%- include 'icons', icon: 'arrow-right' -%}
+   <span>{{ page_title }}</span>
+  {%- endif -%}
+</nav>
+{%- endunless -%}

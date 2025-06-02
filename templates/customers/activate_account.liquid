@@ -1,0 +1,241 @@
+ <div class="login-page account">
+  <div class="container">
+    <div id="customer-login">
+      <h1>Activate Account</h1>
+      <p class="note">Create your password to activate your account</p>
+      {%- form 'activate_customer_password' -%}
+      	<div class="error-msg"></div>
+        {{ form.errors | default_errors }}
+      	<label for="customer-password">Password *</label>
+        <input type="password" name="customer[password]" id="customer-password" class="password required" aria-required="true" />
+      	<label for="customer-confirm-password">Confirm Password *</label>
+        <input type="password" name="customer[password_confirmation]" id="customer-confirm-password" class="password-confirm required" aria-required="true" />
+        <button class="btn custom_button_font" type="submit">Activate Account</button>
+        <span class="note">or <input type="submit" name="decline" value="Decline Invitation" /></span>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){    
+    var resizePage = function(){
+      var headerHeight = 0;
+      var footerHeight = 0;
+      if($('#header').length > 0){
+        var headerHeight = $('#header').outerHeight();
+      }
+      if($('#footer').length > 0){
+        var footerHeight = $('#footer').outerHeight();
+      }
+      var minHeight = window.innerHeight - headerHeight - footerHeight;
+      $('.login-page').css('min-height', minHeight);
+    };
+    resizePage();
+    $(window).resize($.throttle(50, function(){     
+      resizePage();
+    }));
+    
+    $('.login-page form').each(function(){
+      var form = $(this);
+      form.submit(function(e){
+        var error = false;
+
+        form.find('.error-msg').hide();
+        form.find('.error').removeClass('error');
+
+        form.find('.required').each(function(){
+          if($(this).val()=="") {
+            error = true;
+            $(this).addClass('error');
+          }
+        });
+        if(error){
+          form.find('.error-msg').show().text('Please complete all the required fields.');
+        }else{
+          if(form.find('[name="customer[password]"]').val()!=form.find('[name="customer[password_confirmation]"]').val()) {
+            error = true;
+            form.find('.password, .password-confirm').addClass('error');
+            form.find('.error-msg').show().text('Password do not match its confirmation');
+          }
+        }
+        if(error) {
+          return false;
+        }
+      });
+      
+    });    
+  });
+</script>
+<!-- BEGIN SMARTRR SNIPPET -->{% render 'smartrr-account' %}<!-- END SMARTRR SNIPPET -->
+<script>
+$(function(){
+    $('.scroll').click(function(){
+      $.scrollTo($(this).attr('href'), 1000, {offset: -100});
+      	return false;
+    });
+});
+</script>
+
+<style>
+  .my-account h1 , .my-account h2 {text-transform: none; font-size: 1.75em;}
+  .my-account-menu .links a {text-transform: none; font-size: 1.3em; font-weight: 500;}
+  .my-account .content h2 {font-size: 1.75em;}
+  .my-account table .head {background-color: #000;}
+  .my-account table th {background-color:transparent; color:#fff; font-weight:500; border: none; text-transform: uppercase; padding: 1em;}
+  .my-account table td {padding-left:1em;}
+  .my-account table .order_name span {background-color: {{settings.content_main_color}};}
+  .my-account .highlight {background-color: {{settings.content_main_color}}; font-weight: 800; color:#000!important}
+  .mobile-orders {}
+  .mobile-orders .order-item {font-size: 1.15em; border-bottom: 1px solid; padding: 1.5em 0;}
+  .mobile-orders .order-item:first-child {border-top: 1px solid;}
+  .mobile-orders .order-item p {margin-bottom: 0.5em;}
+
+  @media all and (max-width: 900px) {
+    .my-account .orders {margin-bottom: 3em;}
+    .my-account .container {padding: 0 2em;}
+    .my-account .content h2 {font-size: 1.3em;}
+  }
+</style>
+
+<div class="my-account account">
+  
+  <div class="container flex flex-wrap justify-content-between">
+  
+  {%- include 'account_menu' -%}
+  
+  <div class="content two-thirds medium-down--one-whole">
+      
+    <h1 class="custom_subtitle_font">Hello, {{ customer.name }}</h1>
+
+    <p>From your dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+
+    <div class="grid columns">
+      <div class="grid__item one-half small--one-whole">
+        <h2 class="custom_subtitle_font">Account Information</h2>
+        <p>{{ customer.name }}<br/>
+        <span class="highlight">{{ customer.email }}</span></p>
+      </div>
+
+      <div class="grid__item one-half small--one-whole">
+        <h2 class="custom_subtitle_font">Address Book</h2>
+          {%- if customer.default_address != nil -%}
+          <p>
+            {{ customer.default_address.address1 }}<br/>
+            {%- if customer.default_address.address2 != "" -%}
+            {{ customer.default_address.address2 }}<br/>
+            {%- endif -%}
+            {{ customer.default_address.city}}, {% if customer.default_address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}<br/>
+            {{ customer.default_address.zip}}<br/>
+            {{ customer.default_address.phone }}
+          </p>
+          {%- endif -%}
+        <a id="view_address" href="/account/addresses" class="custom_subtitle_font highlight">Manage Addresses ({{ customer.addresses_count }})</a>
+      </div>
+    </div>
+    
+    <div id="customer_orders" class="orders">
+      <h2 class="custom_subtitle_font">My orders</h2>
+      {%- if customer.orders.size != 0 -%}
+      <table>
+        <thead>
+          <tr class="head">
+            <th class="order_number first">Order</th>
+            <th class="date">Date</th>
+            <th class="payment_status">Payment Status</th>
+            <th class="fulfillment_status">Fulfillment Status</th>
+            <th class="total">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for order in customer.orders -%}
+          <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %} custom_text_font">
+            <td class="custom_button_font order_name"><span>{{ order.name | link_to: order.customer_url }}</span></td>
+            <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
+            <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
+            <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
+            <td><span class="total money">{{ order.total_price | money }}</span></td>
+          </tr>
+          {%- endfor -%}
+          
+        </tbody>
+      </table>
+      <div class="mobile-orders large--hide medium-down--flex justify-content-start direction-column custom_text_font">
+        {%- for order in customer.orders -%}
+          <div class="order-item one-whole">
+            <p class="first"><span>Order:</span><span class="highlight">{{ order.name | link_to: order.customer_url }}</span></p>
+            <p class="note"><span>Date:</span>{{ order.created_at | date: "%b %d, %Y" }}</p>
+            <p class="status_canceled"><span>Payment Status:</span>{{ order.financial_status }}</p>
+            <p class="status_unfullfilled"><span>Fullfillment Status:</span>{{ order.fulfillment_status }}</p>
+            <p class="total"><span>Total:</span>{{ order.total_price | money }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+      {%- else -%}
+        <p>You haven't placed any orders yet.</p>
+        <!-- SAMPLE ORDERS -->
+<!--         <table class="medium-down--hide">
+        <thead>
+          <tr class="head custom_text_font">
+            <th class="order_number first">Order</th>
+            <th class="date">Date</th>
+            <th class="payment_status">Payment Status</th>
+            <th class="fulfillment_status">Fulfillment Status</th>
+            <th class="total">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %} custom_text_font">
+            <td class="custom_button_font order_name"><span>#1001</span></td>
+            <td><span class="note">Mar 20, 2018</span></td>
+            <td><span class="status_{{ order.financial_status }}">pending</span></td>
+            <td><span class="status_{{ order.fulfillment_status }}">unfullfilled</span></td>
+            <td><span class="total money">$250</span></td>
+          </tr>
+          <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %} custom_text_font">
+            <td class="custom_button_font order_name"><span>#1001</span></td>
+            <td><span class="note">Mar 20, 2018</span></td>
+            <td><span class="status_{{ order.financial_status }}">pending</span></td>
+            <td><span class="status_{{ order.fulfillment_status }}">unfullfilled</span></td>
+            <td><span class="total money">$250</span></td>
+          </tr>
+          <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %} custom_text_font">
+            <td class="custom_button_font order_name"><span>#1001</span></td>
+            <td><span class="note">Mar 20, 2018</span></td>
+            <td><span class="status_{{ order.financial_status }}">pending</span></td>
+            <td><span class="status_{{ order.fulfillment_status }}">unfullfilled</span></td>
+            <td><span class="total money">$250</span></td>
+          </tr>
+          </tbody>
+      </table>
+      <div class="mobile-orders large--hide medium-down--flex justify-content-start direction-column custom_text_font">
+          <div class="order-item one-whole">
+            <p class="first"><span>Order:</span><span class="highlight">#0001</span></p>
+            <p class="note"><span>Date:</span>Mar 20, 2018</p>
+            <p class="status_canceled"><span>Payment Status:</span>Pending</p>
+            <p class="status_unfullfilled"><span>Fullfillment Status:</span>Unfullfilled</p>
+            <p class="total"><span>Total:</span>$45.95</p>
+          </div>
+          <div class="order-item one-whole">
+            <p class="first"><span>Order:</span><span class="highlight">#0001</span></p>
+            <p class="note"><span>Date:</span>05/07/2020</p>
+            <p class="status_canceled"><span>Payment Status:</span>Pending</p>
+            <p class="status_unfullfilled"><span>Fullfillment Status:</span>Unfullfilled</p>
+            <p class="total"><span>Total:</span>$45.95</p>
+          </div>
+          <div class="order-item one-whole last">
+            <p class="first"><span>Order:</span><span class="highlight">#0001</span></p>
+            <p class="note"><span>Date:</span>05/07/2020</p>
+            <p class="status_canceled"><span>Payment Status:</span>Pending</p>
+            <p class="status_unfullfilled"><span>Fullfillment Status:</span>Unfullfilled</p>
+            <p class="total"><span>Total:</span>$45.95</p>
+          </div>
+        </div> -->
+      {%- endif -%}
+    </div>
+    
+   </div>
+    
+    
+  </div>
+    
+</div>

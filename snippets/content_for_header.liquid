@@ -1,0 +1,55 @@
+{% if template contains 'collection' or template contains 'blog' %}
+
+  {% else %}
+    <img
+    width="99999"
+    height="99999"
+    style="pointer-events: none; position: absolute; top: 0; left: 0; width: 96vw; height: 96vh; max-width: 99vw; max-height: 99vh;"
+    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI5OTk5OXB4IiBoZWlnaHQ9Ijk5OTk5cHgiIHZpZXdCb3g9IjAgMCA5OTk5OSA5OTk5OSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBzdHJva2U9Im5vbmUiIGZpbGw9Im5vbmUiIGZpbGwtb3BhY2l0eT0iMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9Ijk5OTk5IiBoZWlnaHQ9Ijk5OTk5Ij48L3JlY3Q+IDwvZz4gPC9zdmc+">
+{% endif %}
+
+
+<link
+  rel="preconnect"
+  href="//fonts.shopifycdn.com/"
+  crossorigin>
+<link
+  rel="preconnect"
+  href="//cdn.shopify.com/"
+  crossorigin>
+<link
+  rel="preconnect"
+  href="//v.shopify.com/"
+  crossorigin>
+<link
+  rel="dns-prefetch"
+  href="//{{shop.domain}}"
+  crossorigin>
+<link
+  rel="dns-prefetch"
+  href="//{{shop.permanent_domain}}"
+  crossorigin>
+<link
+  rel="dns-prefetch"
+  href="//cdn.shopify.com"
+  crossorigin>
+<link
+  rel="dns-prefetch"
+  href="//v.shopify.com"
+  crossorigin>
+<link
+  rel="dns-prefetch"
+  href="//fonts.shopifycdn.com"
+  crossorigin>
+
+{% capture modified_content_for_header %}{{ content_for_header }}{% endcapture %}
+    
+{% comment %}
+{% assign modified_content_for_header = modified_content_for_header | remove: "…" %}
+{% endcomment %}
+
+{% assign yhIj = "document.addEventListener('DOMContentLoaded" %}{% assign uhJi = "document.addEventListener('asyncLazyLoad" %}{% assign kGxh = "if(window.attachEvent)" %}{% assign snOi = "document.addEventListener('asyncLazyLoad',function(event){asyncLoad();});if(window.attachEvent)" %}{% assign rapp = ", asyncLoad" %}{% assign napp = ", function(){}" %}
+{% if template == 'cart' or request.design_mode %}
+  {{ modified_content_for_header }}
+{% else %}
+  {{ modified_content_for_header | replace: 'src=', 'data-src=' | replace_first: 'data-src', 'src' | replace: yhIj, uhJi | replace: rapp, napp | replace: kGxh, snOi }}{% endif %}

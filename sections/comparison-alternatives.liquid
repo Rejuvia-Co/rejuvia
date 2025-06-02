@@ -1,0 +1,202 @@
+{{ 'comparison-alternatives.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .comparison-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(80px, 1fr));
+    /* gap: 10px; */
+    width: 100%;
+    border-radius: 8px;
+    /* background: #F0E9EF; */
+    /* overflow: hidden; */
+    margin-top: 21px;
+  }
+  .header-table-column {
+    background-color: #fff;
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .comparison-item {
+    border-bottom: 1px solid #fff;
+    background-color: #f0e9ef;
+    padding: 16px 8px;
+    text-align: left;
+    /* border-radius: 8px; */
+
+    color: #383838;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 15.6px */
+    letter-spacing: 0.24px;
+  }
+  .comparison-item--concept {
+    color: #672666;
+    border: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 15.6px */
+    letter-spacing: 0.24px;
+    text-transform: uppercase;
+  }
+
+  .border-top-left {
+    border-top-left-radius: 8px;
+    padding-top: 22px;
+  }
+  .header-table-column img {
+    width: 100%;
+    object-fit: contain;
+    max-height: 65px;
+  }
+  .highlight {
+    background-color: #672666;
+    font-weight: bold;
+    border: 2px solid #672666;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 15.6px */
+    letter-spacing: 0.24px;
+  }
+
+  .highlight-header {
+    background-color: #fff;
+    border: 2px solid #672666;
+    font-weight: bold;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-weight: 500;
+    line-height: 130%; /* 13px */
+  }
+
+  .empty-header {
+    background-color: #fff;
+  }
+
+  .increased-height {
+    height: calc(100% + 16px);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .comparison-item {
+        font-size: 14px;
+        text-align: center;
+    }
+    .highlight {
+        font-size: 15px;
+    }
+    .comparison-item--concept {
+        font-size: 13px;
+    }
+}
+
+</style>
+
+<div class="comparison-alternatives-container">
+  <div class="comparison-info-container">
+    <h3 class="section-title--h1">{{ section.settings.header }}</h3>
+    <p class="comparison-paragraph">{{ section.settings.paragraph }}</p>
+    <div style="margin-top: 24px; margin-bottom: 8px;">
+        {% render 'product-key-traits' %}
+    </div>
+  </div>
+
+  <div class="comparison-container">
+    <div class="empty-header"></div>
+    <div class="header-table-column highlight-header">
+      {{ images['rejuvia-spray-mini.PNG'] | image_url: width: 112 | image_tag -}}
+      <br>
+      Sleep Spray
+    </div>
+    <div class="header-table-column">
+      {{ images['Sleep_Pills.svg'] | image_url: width: 112 | image_tag -}}
+      <br>
+      Melatonin Gummies
+    </div>
+    <div class="header-table-column">
+      {{ images['Sleep_Gummies.svg'] | image_url: width: 112 | image_tag -}}
+      <br>
+      Sleeping Pills
+    </div>
+
+    <div class="comparison-item comparison-item--concept border-top-left">Absorbs Fast</div>
+    <div class="comparison-item highlight">10-15 minutes</div>
+    <div class="comparison-item">20-40 minutes </div>
+    <div class="comparison-item">30-60 minutes</div>
+
+    <div class="comparison-item comparison-item--concept">100% All-Natural</div>
+    <div class="comparison-item highlight">All-natural ingredients</div>
+    <div class="comparison-item">Can contain additives</div>
+    <div class="comparison-item">Can contain additives</div>
+
+    <div class="comparison-item comparison-item--concept">Wake Up Refreshed</div>
+    <div class="comparison-item highlight">No morning grogginess</div>
+    <div class="comparison-item">Often causes grogginess</div>
+    <div class="comparison-item">Often causes grogginess</div>
+
+    <div class="comparison-item comparison-item--concept">Customize Dose</div>
+    <div class="comparison-item highlight">Easy to adjust with spray</div>
+    <div class="comparison-item">Limited to take more or less</div>
+    <div class="comparison-item">Limited to take more or less</div>
+
+    <div class="comparison-item comparison-item--concept">Long Term Use</div>
+    <div class="comparison-item highlight increased-height">Safe, No Dependency</div>
+    <div class="comparison-item">Unclear, Potential Dependency</div>
+    <div class="comparison-item">Unclear, Potential Dependency</div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Comparison alternatives",
+  "tag": "section",
+  "class": "comparison-alternatives-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Preferably use SVG format [view example](https://www.svgrepo.com/svg/365402/flower-lotus-thin)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison of alternatives"
+    }
+  ]
+}
+{% endschema %}

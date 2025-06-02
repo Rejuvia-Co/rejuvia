@@ -1,0 +1,23 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+</head>  
+<style>
+  #error-page {margin: 80px auto; text-align: center;}
+  #error-page .head {font-size: 7em; margin-bottom: 0.3em; line-height: 100%; letter-spacing: -0.1em;}
+  #error-page .title {font-size: 1.2em; margin-bottom: 2em;}
+  #error-page a:not(.btn) {display: inline-block; margin: 1em; text-decoration: underline; filter: alpha(opacity=60); opacity: 0.6;}
+  #error-page .btn {margin-bottom: 1em;}
+</style>
+
+<div id="error-page" class="container">
+  <div class="head">Uh oh - this page is not active.</div>
+  <div class="title">Sorry that you got lost. It's our fault. Our website manager is already fixing it! In the meantime, you can click the back button to go back to where you were or continue shopping Rejuvia below.</div>
+  <div class="links">
+    {%- for link in linklists.main-menu.links -%}
+    <a href="{{ link.url }}">{{ link.title | escape }}</a>
+    {%- endfor -%}
+  </div>
+</div>
+{% section 'section-choose-product' %}

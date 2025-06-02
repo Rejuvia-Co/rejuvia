@@ -1,0 +1,267 @@
+<div id="cart" class="two-columns container">
+  <style>
+    #cart .empty {/*margin: 120px 0;*/ text-align: center;}
+    #cart .empty .head {font-size: 6em; margin-bottom: 0.3em;} 
+    #cart .empty .title {font-size: 1.2em; margin-bottom: 2em;}
+
+    #cart .column-title{font-size: 2.1em; text-transform: none;}
+
+    #cart .summary {padding: 2em 2em 2em; text-align: center;}
+    #cart .summary .column-title {margin-bottom: 0;}
+    #cart .summary .subtotal {font-size:1.15em; text-align: center; padding: 0.8em 0 0.1em; border-bottom: 2px solid;}
+    #cart .summary .total {border:none;}
+    #cart .summary .addnote {margin: 2em 0;}
+    #cart .summary .addnote label {text-transform: none; font-weight: 400;}
+    #cart .summary .addnote textarea {margin-top: 1em; height: 8em; padding: 0.5em; }
+    #cart .summary .additional-message {margin-bottom: 2em;}
+    #cart .summary .return-policy-button {font-weight: bold; margin-bottom: 2em; color: {{ settings.content_main_color}}; }
+    .isNotMobile #cart .summary .return-policy-button:hover {color: {{ settings.content_text_color}} }
+    #return-policy {max-width: 700px; text-align: center; padding: 30px;} 
+    #return-policy .title {font-size: 1.2em; text-transform: {{settings.heading_font_transform}}; color: {{ settings.content_heading_color}}; padding-bottom: 1em; margin-bottom: 1.5em; border-bottom: 1px solid #eee; }
+    #cart .summary .additional-checkout-buttons {margin-top: 2em; position: relative; z-index: 1;}
+    #cart .summary .additional-checkout-buttons span {display: block; font-size: 0.7em; text-transform: uppercase; font-weight: 700; color: #999; margin-bottom: 1em;}
+    #cart .summary .buttons {margin-top:2em;}
+    #cart .summary .buttons .secondary {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5;}
+    #cart .summary .buttons .btn {margin-bottom: 0.5em;}
+
+    #cart .items {background-color: #f4f4f4; padding: 1em 1em 1em;}
+    #cart .item {position: relative; padding: 1em; background: #ffffff; margin-bottom: 2em;}
+    #cart .item:last-child {margin-bottom: 0;}
+    #cart .item img {width: 120%; display: block;}
+    #cart .item .title {margin-bottom: 0.5em;}
+    #cart .item .name {font-weight: 700; font-size: 1.2em; margin-bottom: 0.3em;}
+    #cart .item .remove {position: absolute; top: 1em; right: 1em;}
+    #cart .item .remove svg {font-size: 1em;}
+    #cart .item .quantity {display: inline-block;}
+    #cart .item .quantity-box > div {background: #fff;}
+    #cart .item .price {margin-bottom: 1em; font-size: 1.4em;}
+    {%- if settings.allow_quick_view -%}
+    #cart .item .edit-item {position: absolute; bottom: 2em; right: 2em; text-decoration: underline; font-size: 1.1em; display: block; line-height: 150%; padding-left: 1em; font-weight: 500;}
+    {%- endif -%}
+    #cart .clear-cart-div {margin: 2em 0 6em;}
+    #cart .clear-cart {background-color: {{settings.content_main_color}};}
+    #cart .clear-cart:hover {color: #000;}
+    
+    #cart .foot-bottom div {margin-top:2em; width: 100%;}
+    #cart .foot-icon img {max-width: 12%; margin-right: 0.5em;}
+    @media all and (max-width:{{settings.breakpoint_tablet}}){
+      #cart {padding-top: 2em;}
+      #cart .summary {margin-top: 2em; padding: 2em 1.5em;}
+      #cart .foot-bottom div {width: auto;}
+      #cart .column-title {font-size: 1.3em;}
+      #cart .item .price {font-size: 1em;}
+      #cart .foot-icon img {margin-right: 1em;}
+      #cart .return img {margin-left: 1.5em;}      
+    }
+  </style>
+
+  {{ 'cart.css' | asset_url | stylesheet_tag }}
+
+  {%- if cart.items == empty -%}
+
+    <div class="empty-cart__items">
+      <h2 class="empty-cart__items--text">
+        Your Cart
+      </h2>
+      <span>{{ cart.item_count }} item</span>
+    </div>
+
+    <div class="empty empty-cart custom_subtitle_font">
+      <div class="head">
+        {% comment %} {% include 'icons', icon: 'product-tag' %} {% endcomment %}
+        <svg class="empty-cart__icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 14C16 9.58172 19.5817 6 24 6C28.4183 6 32 9.58172 32 14M10 14H38V38H10V14Z" stroke="#672666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <div class="title">Your Cart is Empty</div>
+      <div class="second-title">Shop our best-selling wellness products today.</div>
+      <div class="btn-outline-container" align="center">
+          <a href="https://www.rejuvia.co/collections/all" class="btn {-moz-box-shadow: 7px 5px 0px 0px #0c1b26; -webkit-box-shadow: 7px 5px 0px 0px #0c1b26; -moz-border-radius: 0px !important; -webkit-border-radius: 0px !important; box-shadow: 7px 5px 0px 0px #0c1b26; background-color:#ffffff !important; border:1px solid #000000; display:inline-block; cursor:pointer; color:#0c1b26 !important; font-size:17px; letter-spacing: {{settings.button_spacing}}; 	font-weight: {{settings.button_weight}}; padding:30px 10px; text-decoration:none;}">
+            <span>SHOP REJUVIA</span>
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="arrow-down">
+                <path id="Vector" d="M3.5 12H21.5M21.5 12L15.5 18M21.5 12L15.5 6" stroke="white" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </a>
+      </div>
+      
+    {% comment %} <div class="footer-title"> 
+      <span> Free Shipping on All Orders </span>
+      </div> {% endcomment %}
+      
+    </div>
+    {%- else -%}
+    <form action="/cart" method="post" id="cartform" class="main-form main-form__cart--unempty">
+
+      <div class="cart-unempty__items--box">
+        <div class="empty-cart__items">
+          <h2 class="empty-cart__items--text">
+            Order Summary
+          </h2>
+          <span>{{ cart.item_count }} 
+            {% if cart.item_count > 1 %}
+              items
+            {% else %}
+              item
+            {% endif %}
+          </span>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="cart-unempty__items">
+          <h5 class="cart-unempty__items--text">
+            Continue Shopping
+          </h5>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="arrow-down">
+              <path id="Vector" d="M3 12H21M21 12L15 18M21 12L15 6" stroke="#672666" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </a>
+      </div>
+      <div class="grid main cart-unempty__main">
+        
+        <div class="grid__item two-thirds medium--one-whole small--one-whole">
+          {% comment %} <h2 class="column-title custom_subtitle_font medium-down--hide"></h2> {% endcomment %}
+          <div class="items">
+            {%- for item in cart.items -%}
+              {%- include 'cart_item' -%}
+            {%- endfor -%}
+          </div>
+          {% if settings.show_empty_cart_btn %}
+            <div class="clear-cart-div text-left medium-down--text-center">
+              <a href="/cart/clear" class="clear-cart custom_button_font"><span>Empty Cart</span></a>
+            </div>
+          {% endif %}
+          {%- comment -%}
+          <!-- Use this to show the items in a TABLE
+          <table class="items">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Unit $</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody> 
+              {%- for item in cart.items -%}
+                {%- include 'cart_item_table' -%}
+              {%- endfor -%}
+            </tbody>
+          </table>-->
+          {%- endcomment -%}
+        </div>
+        <div class="grid__item one-third medium--one-whole small--one-whole">
+          <div class="summary text-left medium-down--text-center">
+            <h2 class="column-title custom_subtitle_font text-left">Your Cart</h2>
+            <div class="flex subtotal align-items-center justify-content-between custom_subtitle_font">
+              <div class="column cart-unempty__column">
+                Subtotal:
+              </div>
+              <div class="column custom_text_font">
+                {% assign subtotal = 0 %}
+                {% for item in cart.items %}
+                  {% assign discount = item.variant.price | times: item.quantity %}
+                  {% if item.variant.compare_at_price != blank %}
+                    {% assign subtotal = subtotal | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+                  {% elsif item.line_price != discount %}
+                    {% assign subtotal = subtotal | plus: discount | minus: item.line_price | times: item.quantity %}
+                  {% endif %}
+                {% endfor %}
+                {{ cart.items_subtotal_price | plus: subtotal | money }}
+              </div>
+            </div>
+
+            <div class="flex sale align-items-center justify-content-between custom_subtitle_font">
+              <div class="column cart-unempty__column">
+                Discount:
+              </div>
+                {%- for item in cart.items -%}
+                  {% assign discount = item.variant.price | times: item.quantity %}
+                  {% if item.variant.compare_at_price != blank %}
+                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
+                  {% elsif item.line_price != discount %}
+                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: discount | minus: item.line_price | money | remove: ',' }}">
+                  {% endif %}
+                {%- endfor -%}
+              <div class="column custom_text_font cart-unempty__sale"></div>
+            </div>
+
+            <div class="flex shipping align-items-center justify-content-between custom_subtitle_font">
+              <div class="column cart-unempty__column"></div>
+              <div class="column cart-unempty__column">
+                Shipping Calculated at Checkout
+              </div>
+            </div>
+
+            <div class="flex subtotal total align-items-center justify-content-between custom_subtitle_font">
+              <div class="column cart-unempty__column">
+                Total:
+              </div>
+              <div class="column custom_text_font">
+                {{ cart.total_price | money }}
+              </div>
+            </div>
+            <div id="corso-protection-placeholder-pr"></div>
+
+            {%- if settings.cart_additional_msg != "" -%}
+            <div class="additional-message">{{ settings.cart_additional_msg }}</div>
+            {%- endif -%}
+
+            {%- if settings.cart_return_policy != "" -%}
+            <div class="hide"><div id="return-policy"><div class="title">Return Policy</div>{{ settings.cart_return_policy }}</div></div>
+            <div class="return-policy-button"><a href="#" onclick="Simplistic.openModal($('#return-policy')); return false;">Return Policy</a></div>
+            {%- endif-%}
+
+            <div class="buttons custom_button_font text-stretch-to-fill">
+              <button type="submit" class="btn custom_button_font" name="checkout">
+                <span>CONTINUE TO CHECKOUT</span>
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="arrow-down">
+                    <path id="Vector" d="M3.5 12H21.5M21.5 12L15.5 18M21.5 12L15.5 6" stroke="white" stroke-linecap="round"/>
+                  </g>
+                </svg>
+              </button>
+              {%- if additional_checkout_buttons -%}
+              <div class="additional-checkout-buttons">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+              {%- endif -%}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let inputs = document.querySelectorAll('.input-hidden__price');
+    let total = 0;
+    let currencySymbol = '';
+
+    inputs.forEach((input, index) => {
+      let value = input.value;
+
+      if (index === 0) {
+        currencySymbol = value.match(/[^0-9.]/g)?.join('') || '';
+      }
+
+      let numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+
+      if (!isNaN(numericValue)) {
+        total += numericValue;
+      }
+    });
+
+    let formattedTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.querySelector('.cart-unempty__sale').innerHTML = `-${currencySymbol}${formattedTotal}`;
+  });
+</script>

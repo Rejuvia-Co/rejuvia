@@ -1,0 +1,16 @@
+<a href="{{ article.url }}" class="article grid__item one-third medium-down--one-whole">
+  <div class="pic-wrapper">
+    <div class="img {% if article.image %}lazyload{% endif %}" {% if article.image %}data-bgset="{% include 'lazy_src', image: article.image  %}"{% endif %}></div>
+  </div>
+  <div class="text-wrapper">
+    <div class="content">
+      <h2 class="custom_title_font title">{{ article.title }}</h2>
+      {%- if article.excerpt.size > 0 -%}
+      <p class="custom_text_font">{{ article.excerpt | strip_html | truncatewords: 24 }}</p>
+      {%- else -%}
+      <p class="custom_text_font">{{ article.content | strip_html | truncatewords: 24 }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+  <hr />
+</a>

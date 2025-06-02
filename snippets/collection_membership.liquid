@@ -1,0 +1,82 @@
+{%- section 'plp-icons-section_cst' -%}
+<style>
+  {% comment %}
+    .product-item {
+      margin: 1em;
+    }
+  {% endcomment %}
+  .product-item .title {
+    margin: 1em 0;
+    font-size: 1.3em;
+  }
+  .product-item .image .img {
+    padding-top: 70%;
+  }
+  .product-item .subheading {
+    font-size: 1.2em;
+  }
+  .product-item .subheading .isNotMobile a:hover .check-icon svg.icon path {
+    fill: #000000;
+  }
+  .product-item .info {
+    background: #f4f4f4;
+    padding: 1em 0;
+  }
+  .product-item .btn {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 1em 1.2em;
+    text-transform: uppercase;
+  }
+  .product-item .price {
+    margin-top: 0;
+    color: unset;
+  }
+  <div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+  <a class="grid-view-item__link" href="{{ product.url | within: collection }}">
+    <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: grid_image_width, scale: grid_image_scale }}" alt="{{ product.featured_image.alt }}">
+    <div class="h4 grid-view-item__title">{{ product.title }}</div>
+    {% if section.settings.show_vendor %}
+      <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+    {% endif %}
+    <div class="grid-view-item__meta">
+      {% include 'product-price' %}
+    </div>
+    {% render 'okendo-reviews-product-rating-summary', product: product %}
+    </span>
+  </a>
+</div>
+.product-item .dash {margin:0 1em;}
+.product-item .learn-more {margin-top:2.5em;}
+.product-item .learn-more a {font-size:1.1em; text-decoration: underline; font-weight: 1000;}
+
+@media all and (max-width:900px){
+  .product-item {margin:25px 0;}
+}
+</style>
+
+
+<div class="collection-wrapper container">
+  
+
+{%- paginate collection.products by 50 -%}
+{%- if collection.products.size > 0 -%}
+  <div class="grid">
+    {%- for product in collection.products -%}
+      {%- include 'product_item_plp', currentProduct: product, quickview: settings.allow_quick_view, is_membership_page:true -%}
+    {%- endfor -%}
+  </div>
+  {%- include 'pagination' -%}
+{%- else -%}    
+<div class="empty">
+  <div class="head">{% include 'icons', icon: 'product-tag' %}</div>
+  <div class="title">This Collection is currently empty. Please come back later.</div>
+  <a href="collections/all" class="btn">Check out our products</a>
+</div>
+  {%- endif -%}
+{%- endpaginate -%}
+</div>
+{%- section 'testimonials-membership' %}
+{%- section 'membership-faqs' %}

@@ -1,0 +1,42 @@
+.comparison-alternatives-container {
+    padding: 40px 16px;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.comparison-alternatives-container .section-title--h1 {
+    margin-bottom: 16px;
+}
+
+.comparison-paragraph {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    margin: 0;
+}
+
+.comparison-container .highlight:last-of-type {
+    height: calc(100% + 16px);
+}
+
+@media screen and (min-width: 750px) {
+    .comparison-alternatives-container {
+        padding: 88px 64px;
+        gap: 50px;
+    }
+    .comparison-info-container {
+        max-width: 480px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .comparison-alternatives-container {
+        display: flex;
+        padding: 88px 64px;
+        gap: 50px;
+    }
+    .comparison-container {
+        width: 60% !important;
+    }
+}

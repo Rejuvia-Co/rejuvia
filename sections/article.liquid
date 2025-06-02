@@ -1,0 +1,304 @@
+<style>
+  #article {
+    letter-spacing: normal !important;
+  }
+  #article h1 {
+    text-align: left;
+    font-size: 3.25em;
+    text-transform: none;
+    margin-bottom: 0.5em;
+    letter-spacing: normal;
+  }
+  #article img {
+    width: 100%;
+  }
+  #article hr {
+    border: none;
+    border-bottom: 1px solid #999;
+    width: 10%;
+    margin: 2em auto;
+  }
+  #article .author {
+    text-align: left;
+    color: #0A0A0A;
+    font-size: 1.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+  }
+  #article .content {
+    margin-top: 2em;
+  }
+  #article .content a {
+    text-decoration: underline;
+  }
+  #article .featured-image {
+    margin-top: 0.5em;
+  }
+  #article .heading {
+    position: relative;
+  }
+
+  #article .heading .sharing {
+    text-align: center;
+    border: 0;
+    padding: 0;
+  }
+  #article .heading .sharing .social-meta {
+    float: none;
+    text-align: center;
+  }
+  #article .heading .sharing a {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    color: {{ section.settings.bg_color }}
+    ;
+    background: transparent;
+    margin: 0;
+  }
+  #article .heading .sharing svg path {
+    fill: transparent;
+    stroke: #001B71;
+    stroke-width: 1.5px;
+  }
+
+  #article .foot {
+    padding-top: 1.5em;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    margin-top: 5em;
+  }
+  #article .foot a {
+    margin-bottom: 1.5em;
+    min-width: 0;
+    color: #808080;
+    font-size: 0.75em;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  #article .foot a svg {
+    display: block;
+    margin-right: 0.5em;
+    font-size: 1rem;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+  #article .foot a svg path {
+    fill: #808080;
+  }
+  #article .foot .nav a:last-child:not(:first-child) {
+    margin-left: 1.5em;
+    padding-left: 1.5em;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  #article .foot a.next svg {
+    margin-left: 0.5em;
+    margin-right: 0;
+  }
+  .isNotMobile #article .foot a:hover svg {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  .isNotMobile #article .foot a.next:hover svg {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  #article .foot .btn {
+    min-width: 11em;
+  }
+
+  #article-comments {
+    margin: 2em 0;
+  }
+  #article-comments h3 {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  /* #article-comments form {text-align: center;} */
+  /* #article-comments form .btn {padding: 1em 6em;} */
+  #article-comments .sharing {
+    border: 0;
+    padding-top: 1em;
+  }
+  #article-comments .comment {
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  #article-comments .comment.last {
+    margin-bottom: 2em;
+    padding: 0;
+    border: none;
+  }
+  #article-comments .comment .comment_author {
+    font-weight: 700;
+  }
+  #article-comments .new-comment input,
+  #article-comments .new-comment textarea {
+    margin-bottom: 2.5em;
+  }
+  #article-comments .form-success {
+    margin-bottom: 40px;
+    color: green;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='date'],
+  input[type="tel"],
+  input[type="phone"],
+  input[type='password'] {
+    border-radius: 10em;
+    border: 2px solid;
+    font-family: 'NexaRegular';
+  }
+  textarea {
+    border: 2px solid;
+    border-radius: 2em;
+    font-family: 'NexaRegular';
+  }
+
+  @media all and (max-width: {{settings.breakpoint_tablet}}) {
+    #article h1 {
+      font-size: 1.7em;
+    }
+    #article .heading .sharing a:not(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+
+  @media all and (max-width: {{settings.breakpoint_mobile}}) {
+    #article .wrapper {
+      width: 100%
+    }
+    #page .header-spacer {
+      display: none !important;
+    }
+    #header {
+      margin-bottom: 57px;
+    }
+  }
+
+  @media all and (min-width: 900px) {
+
+    #page .header-spacer {
+      display: none;
+    }
+    .featured-image {
+      min-height: 400px;
+      height: auto;
+    }
+    #shopify-section-article {
+      min-height: 700px;
+    }
+    #article {
+      min-height: 700px;
+    }
+    .blog-container {
+      min-height: 700px;
+      height: auto;
+    }
+    #article .content{
+      min-height: 700px;
+    }
+    .templateArticle #main-content{
+      min-height: 700px;
+    }
+    .templateArticle #page{
+      min-height: 700px;
+    }
+
+    .templateArticle{
+      min-height: 700px;
+    }
+
+    .templateArticle .post{
+      min-height: 700px;
+    }
+
+    .templateArticle #_goober{
+      display: none;
+    }
+    
+  }
+</style>
+
+<div id="article">
+  <article class="post clearfix">
+    <div class="heading flex medium-down--direction-column align-items-start">
+      <div class="eight-tenths medium-down--one-whole">
+        <h1 id="page-title" class="custom_subtitle_font">{{ article.title }}</h1>
+        <p class="author">Written by {{ article.author }} &mdash; {{ article.published_at | date: "%B %d, %Y" }}</p>
+      </div>
+      <div class="sharing flex align-items-center justify-content-center two-tenths medium-down--one-whole">
+        <a
+          class="facebook-share"
+          target="_blank"
+          aria-label="Share this post on Facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url }}&text={{ article.title }}">{% include 'icons', icon: 'facebook' %}</a>
+        <a
+          class="twitter-share"
+          target="_blank"
+          aria-label="Share this post on Twitter"
+          href="https://twitter.com/share?url={{ shop.url }}{{ article.url }}&title={{ article.title }}&description={{ article.content | strip_html }}">{% include 'icons', icon: 'twitter' %}</a>
+        <a
+          class="pinterest-share"
+          target="_blank"
+          aria-label="Share this post on Pinterest"
+          href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ article.url }}&media={{ article.image.src | img_url: 'master' }}&description={{ article.title | strip_html }}">{% include 'icons', icon: 'pinterest' %}</a>
+      </div>
+    </div>
+    {% if article.image %}
+      <img
+        class="featured-image "
+        fetchpirority="high"
+        loading="eager"
+        src="{{ article.image | img_url: '1296x' }}"
+        alt="{{ article.title }}" />
+    {% endif %}
+    <div class="content">
+      {{ article.content }}
+    </div>
+    <!-- <div class="foot flex flex-wrap align-items-center justify-content-between">
+      <a href="{{blog.url}}" class="back flex align-items-center">{%- include 'icons', icon: 'arrow-left' -%}Back to {{blog.title}}</a>
+      <div class="nav flex align-items-center justify-content-between">
+      {%- if blog.previous_article -%}
+      <a href="{{ blog.previous_article }}" class="flex align-items-center justify-content-center">{%- include 'icons', icon: 'arrow-left' -%} Previous Post</a>
+      {%- endif -%}
+      {%- if blog.next_article -%}
+      <a href="{{ blog.next_article }}" class="flex align-items-center justify-content-center next">Next Post {%- include 'icons', icon: 'arrow-right' -%}</a>
+      {%- endif -%}
+      </div>
+    </div> -->
+    {%- if blog.comments_enabled? -%}
+      {%- include 'blog_comments' -%}
+    {%- endif -%}
+  </article>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Article",
+    "presets": [
+      {
+        "name": "Article",
+        "category": "Blog"
+      }
+    ],
+    "settings": [],
+    "blocks": []
+  }
+{% endschema %}

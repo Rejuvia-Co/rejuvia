@@ -1,0 +1,39 @@
+{%- render 'structured_data', data: 'collection' -%}
+{% comment %} <div class="collection-top container">
+  <div class="wrap flex flex-wrap flex-align-center justify-content-between">
+    {%- include 'breadcrumb' -%}
+    <div class="sort-select flex align-items-center">
+      <label for="sort-by">Sort by</label> 
+      <select id="sort-by">
+        <option value="manual">Featured</option>
+        <option value="price-ascending">Price: Low to High</option>
+        <option value="price-descending">Price: High to Low</option>
+        <option value="title-ascending">A-Z</option>
+        <option value="title-descending">Z-A</option>
+        <option value="created-ascending">Oldest to Newest</option>
+        <option value="created-descending">Newest to Oldest</option>
+        <option value="best-selling">Best Selling</option>
+      </select>
+    </div>
+    <script>
+      $(function(){
+        Shopify.queryParams = {};
+        if (location.search.length) {
+          for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+            aKeyValue = aCouples[i].split('=');
+            if (aKeyValue.length > 1) {
+              Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+            }
+          }
+        }
+        $('#sort-by').val('{{ collection.sort_by | best-selling: collection.best-selling_sort_by | escape }}').bind('change', function() {
+          Shopify.queryParams.sort_by = jQuery(this).val();
+          delete Shopify.queryParams.page;
+          location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+        });
+      });
+    </script>
+  </div>
+</div> {% endcomment %}
+{% comment %}{%- include '_collection' -%}{% endcomment %}
+{%- section 'new-product-grid' -%}

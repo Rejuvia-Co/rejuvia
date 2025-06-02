@@ -1,0 +1,113 @@
+<div class="item {{ item.product.handle }}">
+  <div class="wrap">
+    <div class="grid align-items-center">
+      <div class="grid__item one-quarter image">
+        <a href="{{ item.product.url }}">
+        {%- if item.variant.image -%}
+        {%- assign variantImg = item.variant.image -%}
+        {%- else -%}
+        {%- assign variantImg = item.product.featured_image -%}
+        {%- endif -%}
+        <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" />
+        </a>
+      </div>
+      <div class="grid__item three-quarters info">
+        <div class="cart-unempty__name flex justify-content-between medium-down--direction-column" style="max-width: 25em;">
+        <div class="title custom_subtitle_font">
+          <a href="{{ item.url }}">
+            {%- assign titlePart = item.product.title | split: ' - ' -%}
+            <div class="name">{{ titlePart[0] }}{% if item.selling_plan_allocation %}{{item.selling_plan_allocation.selling_plan.name | prepend: ' - '}}{% endif %}</div>
+
+            {%- unless item.variant.title contains 'Default' -%}
+            <div class="variants hide">
+              {%- for option in item.options_with_values -%}
+              <strong>{{ option.name }}</strong>: {{ option.value }}{%- unless forloop.last -%}<br/>{%- endunless -%}
+              {%- endfor -%}
+            </div>
+            {%- endunless -%}
+            
+            {% if item.product.title contains 'Auto renew' %}
+            {%- for p in item.properties -%}
+            {% if p.first == "shipping_interval_unit_type" %}
+            <div class="properties custom_text_font">
+              <span class="hide">{{ p.first }}:</span>
+              {%- if p.last contains '/uploads/' -%}
+              <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+              {%- else -%}
+<!--               {{ p.last | replace: "Months", "Monthly" }} -->
+              {%- endif -%}
+            </div>
+            {% endif %}
+            <div class="properties custom_text_font">
+            {% if p.first == "shipping_interval_frequency"%}{{ p.last }} Weeks{% endif %}
+            </div>
+            {%- endfor -%}
+            {% endif %}
+            
+          </a>
+        </div>
+        <div class="remove">
+          <a class="remove-from-cart" href="/cart" aria-label="Remove Item">
+            {% comment %} {% include 'icons', icon: 'close' %} {% endcomment %}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="bin">
+                <path id="Vector" d="M19 6H5M14 5H10M6 10V21H18V10" stroke="#5C5C5C" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cart-unempty__box">
+        <div class="quantity">
+          <div class="quantity-box">
+            <div class="flex">
+              <input type="button" value="" class="minus animation" aria-label="Decrease the quantity" />
+              <input type="number" step="1" class="cart-unempty__number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" title="Qty" min="0" aria-label="Quantity" />
+              <input type="button" value="" class="plus animation" aria-label="Increase the quantity" />
+            </div>
+          </div>
+        </div>
+        <div class="price custom_title_font">
+          {% assign discount = item.variant.price | times: item.quantity %}
+          {% if item.variant.compare_at_price != blank %}
+            {% assign full_price = item.variant.compare_at_price | money_without_currency | remove: ',' %}
+            {% assign sale_price = item.variant.price | money_without_currency | remove: ',' %}
+            {% assign total_price = (full_price | minus: sale_price) | divided_by: full_price | times: 100 %}
+            {% assign total_price_percent = total_price | remove: '.0' %}
+
+            <span class="cart-unempty__discount">
+              <span>
+                -{{ total_price_percent | round }}%
+              </span>
+            </span>
+            <span class="cart-unempty__full--price">
+              {{ item.variant.compare_at_price | times: item.quantity | money }}
+            </span>
+            <span class="cart-unempty__sale--price">
+              {{ item.line_price | money }}
+            </span>
+          {% elsif item.line_price != discount %}
+            {% assign full_price = discount | money_without_currency | remove: ',' %}
+            {% assign sale_price = item.line_price | money_without_currency | remove: ',' %}
+            {% assign total_price = (full_price | minus: sale_price) | divided_by: full_price | times: 100 %}
+            {% assign total_price_percent = total_price | remove: '.0' %}
+            <span class="cart-unempty__discount">
+              <span>
+                -{{ total_price_percent | round }}%
+              </span>
+            </span>
+            <span class="cart-unempty__full--price">
+              {{ discount | money }}
+            </span>
+            <span class="cart-unempty__sale--price">
+              {{ item.line_price | money }}
+            </span>
+          {% else %}
+            {{ item.line_price | money }}
+          {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,220 @@
+{%- if section.settings.show -%}
+<style>
+  .blog-container {margin: 2em auto; letter-spacing: normal;}
+  .blog-container > .grid {margin-left: -4%;}
+  .blog-container > .grid > .grid__item {padding-left: 4%;}
+
+  .blog-sidebar h2 {font-size: 1.3em; text-align: left; border-bottom: 1px solid #eee; padding-bottom: 0.5em; margin-bottom: 0.5em; letter-spacing: normal;}
+  .blog-sidebar > div {margin-bottom: 3em;}
+  .blog-sidebar a {display: block; font-size: 1.3em; margin-bottom: 1em;}
+  .blog-sidebar .art-sub {font-size: 0.85em; margin-top: 1em;}
+  .blog-sidebar span {display: block;}
+  .blog-sidebar form {position: relative;}
+  .blog-sidebar form input[type="text"] {padding-right: 3em;}
+  .blog-sidebar form button {position: absolute; font-size: 1.3em; top: 50%; right: 1em; line-height: 100%; -webkit-transform: translateY(-50%); transform: translateY(-50%);}
+  .blog-sidebar form button svg {display: block;}
+  
+  .blog-sidebar .featured-posts {padding-bottom:0; padding-right:0;}
+  .blog-sidebar .featured-posts li {margin-bottom: 20px;}
+  .blog-sidebar .featured-posts li a {display: block;}
+  .blog-sidebar .featured-posts .art-thumb {display: block; width: 20%; max-width: 20%; padding-top: 20%; max-height: 54px; float:left;background-repeat: no-repeat; background-size: cover; background-position: center;}
+  .blog-sidebar .featured-posts .art-info {padding-left: 10px;}
+  .blog-sidebar .featured-posts .art-sub {font-size: 0.85em;}
+</style>
+
+{%- unless blog -%}
+	{%- assign blog = blogs['news'] -%}
+{%- endunless -%}
+
+<aside class="blog-sidebar">
+  {%- for block in section.blocks -%}
+  {%- if block.type == "featured_posts" -%}
+    {%- if block.settings.article1 != blank -%}
+      <div class="featured-posts">
+        <h2 class="custom_title_font">{{block.settings.title}}</h2>
+        <div class="wrap">
+          {%- for i in (1..5) -%}
+          {%- assign featuredArticle = "article" | append: i -%}
+            {%- if block.settings[featuredArticle] != blank -%}
+              {%- assign featured = articles[block.settings[featuredArticle]] -%}
+              <a href="{{ featured.url }}" class="flex align-items-center">
+                <div class="art-info custom_text_font flex-1">
+                  <span class="art-title">{{featured.title}}</span>
+                  <span class="art-sub">{{ featured.published_at | date: "%B %d, %Y" }}</span>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- elsif block.type == "search" -%}
+    <div class="search">
+      <h2 class="custom_title_font">{{block.settings.title}}</h2>
+      <form class="wrap" method="get" action="/search" class="clearfix" role="search">
+        <input class="searchBox field" type="text" name="q"{% if search.performed %} value="{{ search.terms | escape | downcase }}"{% endif %} placeholder="Search" /> 
+        <input type="hidden" name="type" value="article" />
+        <input type="hidden" name="view" value="blog" />
+        <button type="submit" aria-label="Submit">
+          {%- include 'icons', icon: 'search' -%}
+        </button>
+      </form>
+    </div>
+  {%- elsif block.type == "recent_posts" -%}
+    <div class="recent-posts">
+      <h2 class="custom_title_font">{{block.settings.title}}</h2>
+      <div class="wrap">
+        {%- for art in blog.articles limit:5 -%}
+        <a href="{{ art.url }}">
+          <span class="art-title">{{ art.title }}</span>
+          <span class="art-sub">{{ art.published_at | date: "%a, %b %d, %y" }}</span>
+        </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- elsif block.type == "categories" -%}
+  	{%- if blog.all_tags.size > 0 -%}
+      <div class="categories">
+        <h2 class="custom_title_font">{{block.settings.title}}</h2>
+        <div class="wrap">
+          <a href="{{ blog.url }}">All</a>
+          {%- for tag in blog.all_tags -%}
+            {%- if current_tags contains tag -%}
+              {{ tag }}
+            {%- else -%}
+              {{ tag | link_to_tag: tag }}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+  {%- endfor -%}
+</aside>
+{%- endif -%}
+{%- unless section.settings.show -%}
+<script>
+  $(function(){
+  	$('#shopify-section-{{ section.id }}').remove();
+  });
+</script>
+{%- endunless -%}
+
+{% schema %}
+  {
+    "name": "Blog Sidebar",
+    "class": "grid__item one-quarter medium-down--hide",
+    "presets": [
+      {
+        "name": "Blog Sidebar",
+        "category": "Blog"
+      }
+    ],
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show",
+        "label": "Show sidebar?",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "search",
+        "name": "Search",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show section?",
+        	"default": true
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+        	"default": "Search"
+          }          
+        ]
+      },
+      {
+        "type": "categories",
+        "name": "Categories",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show section?",
+        	"default": true
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+        	"default": "Categories"
+          }          
+        ]
+      },
+      {
+        "type": "recent_posts",
+        "name": "Recent Posts",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show section?",
+        	"default": true
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+        	"default": "Recent Posts"
+          }
+        ]
+      },
+	  {
+        "type": "featured_posts",
+        "name": "Featured Posts",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+        	"default": "Featured Posts"
+          },
+          {
+            "type": "article",
+            "id": "article1",
+            "label": "Article #1"
+          },
+          {
+            "type": "article",
+            "id": "article2",
+            "label": "Article #2"
+          },
+          {
+            "type": "article",
+            "id": "article3",
+            "label": "Article #3"
+          },
+          {
+            "type": "article",
+            "id": "article4",
+            "label": "Article #4"
+          },
+          {
+            "type": "article",
+            "id": "article5",
+            "label": "Article #5"
+          },
+          {
+            "type": "article",
+            "id": "article6",
+            "label": "Article #6"
+          }
+		]
+      }
+    ]
+  }
+{% endschema %}

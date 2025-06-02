@@ -1,0 +1,52 @@
+<div id="article-comments">
+{%- if article.comments_count > 0 -%}
+  <h3>Comments ({{ article.comments_count }})</h3>
+{%- endif -%}
+{%- paginate article.comments by 5 -%}
+  {%- if comment and comment.created_at -%}
+  <p class="note form-success">
+    {%- if blog.moderated? -%}
+    Thank you for submitting a comment! You will see it posted soon!
+    {%- else -%}
+    Thank you, your comment was posted successfully!
+    {%- endif -%}
+  </p>
+  {%- endif -%}
+  {%- if article.comments_count > 0 -%}
+    {%- for comment in article.comments -%}
+    <div id="{{ comment.id }}" class="comment{% if forloop.first %} first{% endif %}{% if forloop.last %} last {% endif %}">
+      <span class="comment_author">{{ comment.author }}_</span>
+      <time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}" class="comment-date">{{ comment.created_at | date: '%b %d, %Y' }}</time>
+      <div class="content">
+        {{ comment.content }}
+      </div>
+      <div class="sharing flex align-items-center">
+        <label>Share this comment:</label>
+        <a class="facebook-share" target="_blank" aria-label="Share this comment on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url }}&title={{ article.title }}&description=Comment by {{ comment.author }}: {{ comment.content | strip_html }}">{% include 'icons', icon: 'facebook' %}</a>
+        <a class="twitter-share" target="_blank" aria-label="Share this post on Twitter" href="https://twitter.com/share?url={{ shop.url }}{{ article.url }}&text={{ article.title }}. Comment by {{ comment.author }}: {{ comment.content | strip_html }}">{% include 'icons', icon: 'twitter' %}</a>
+        <a class="pinterest-share" target="_blank" aria-label="Share this post on Pinterest" href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ article.url }}&media={{ article.image.src | img_url: 'master' }}&description={{ article.title }}. Comment by {{ comment.author }}: {{ comment.content | strip_html }}">{% include 'icons', icon: 'pinterest' %}</a>
+      </div>
+    </div>
+    {%- endfor -%}
+  {%- include 'pagination' -%}
+  {%- endif -%}
+
+  <div class="new-comment">
+    <div class="form">
+      {%- form 'new_comment', article -%}
+      {{ form.errors | default_errors }}
+      <div class="grid">
+        <div class="grid__item one-half small--one-whole">
+          <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" placeholder="Name" autocapitalize="words">
+        </div>
+        <div class="grid__item one-half small--one-whole">
+          <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" placeholder="Email Address" autocorrect="off" autocapitalize="off" autocomplete="email" />
+        </div>
+      </div>
+      <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody" placeholder="Type a message">{{ form.body }}</textarea>
+      <button type="submit" class="btn custom_button_font">Post Comment</button>
+      {%- endform -%}
+    </div>
+  </div>
+{%- endpaginate -%}
+</div>

@@ -1,0 +1,10 @@
+{%- if settings.product_thumbs_group_by != blank -%}
+    data-index="{{index}}"
+    {%- assign altOptions = media.alt | split: ';' -%}
+    {%- for altOption in altOptions -%}
+      {%- assign keyValue = altOption | split: ':' -%}
+      {%- assign altKey = keyValue.first | strip -%}
+      {%- assign altValue = keyValue.last | strip -%}
+      data-{{altKey | handleize}}="_{{ altValue | replace: ',', '_' | replace: '&', '_' | handleize | replace: '_-', '_' | replace: '-_', '_' }}_"
+    {%- endfor -%}
+{%- endif -%}

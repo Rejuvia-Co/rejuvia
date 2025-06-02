@@ -1,0 +1,31 @@
+<div class="my-account-menu one-fifth medium-down--one-whole">
+  <div class="medium-down--flex">
+    <h2 class="medium-down--hide custom_subtitle_font">My Account</h2>
+    <div class="goto flex-1">
+      <button class="trigger hide medium-down--show medium-down--flex align-items-center">{{ template.name }} {% include 'icons', icon: 'arrow-down' %}</button>
+      <div class="links">
+        
+        <a class="btn subscription-link" href="/a/account/login"
+          >Manage Subscriptions</a
+        >
+
+        <a href="/account" class="custom_text_font">My Account</a>
+        <a href="/account/addresses" class="custom_text_font">Addresses</a>
+        <a href="{% unless template == "customers/account" %}/account{% endunless %}#customer_orders" class="scroll custom_text_font">My Orders</a>
+        {% if customer.metafields.subscriptions.customer_string %}
+        <a href="/tools/recurring/login" class="custom_text_font">Manage Subscriptions</a>
+        {% endif %}
+        <a class="large--hide" href="/account/logout">Logout</a>
+      </div>
+      <div class="logout medium-down--hide"><a href="/account/logout"><div class="btn">Logout</div></a></div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.my-account-menu .goto .trigger').click(function(){
+      $(this).siblings('.links').slideToggle();
+      $(this).toggleClass('open');
+    });
+  });
+</script>

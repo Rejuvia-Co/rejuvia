@@ -1,0 +1,216 @@
+<style>
+/*  .transition, ul.faqs_list li i:before, ul.faqs_list li i:after, p {
+  transition: all 0.55s ease-in-out;
+}
+
+.flipIn, ul.faqs_list li, h1 {
+  animation: flipdown 0.5s ease both;
+}
+*/
+
+ul.faqs_list {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+}
+ul.faqs_list li {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 4px;
+  padding-top: 18px;
+  border-bottom: 1px solid #c2c2c2;
+}
+ul.faqs_list li:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+ul.faqs_list li:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+ul.faqs_list li:nth-of-type(3) {
+  animation-delay: 1s;
+}
+ul.faqs_list li:last-of-type {
+  padding-bottom: 0;
+}
+ul.faqs_list li i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+}
+ul.faqs_list li i:before, ul.faqs_list li i:after {
+  content: "";
+  position: absolute;
+  background-color: #2f358e;
+  width: 3px;
+  height: 9px;
+}
+ul.faqs_list li i:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+ul.faqs_list li i:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+ul.faqs_list li input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+ul.faqs_list li input[type=checkbox]:checked ~ p {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+}
+ul.faqs_list li input[type=checkbox]:checked ~ i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+ul.faqs_list li input[type=checkbox]:checked ~ i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+  
+  .bg-ligth-blue{
+  background-color:#f5f5f5;
+  }
+  .title-color{
+  color:#000000;
+  }
+  .mb-70{  margin-bottom:70px;}
+  .sans--large {
+    font-size: 40px;
+    line-height: 44px;
+}
+  
+  .custom-container {
+    padding-top: 5px;
+    max-width: 1370px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-container {
+    padding: 0 6rem;
+}
+  .flex{ display:flex;}
+  .w-400{ width:35%;}
+  .w-600{ width:65%;}
+  .p-20{  padding:0px;
+  }
+  .img-shadow{ box-shadow:-8px 10px 0px 2px #000000}
+  .section-padding{
+  	margin-top: 150px;
+    padding-top: 140px;
+    padding-bottom: 150px;
+  }
+  .faq-title{
+    font-size:18px;
+    font-weight:600;
+  }
+  .pt-50{ padding-top:10px; }
+  
+  @media(max-width:576px){
+  .custom-container { padding: 0 1rem;}
+  .w-400{ width:100%;}
+  .w-600{ width:100%;}
+  .flex{ display:block;}  
+  .pt-50{padding-left: 20px; padding-right: 20px;   padding-top:50px}
+    .custom-img-responsive{
+    display:none;}
+  }
+   
+   
+</style>
+
+<section class="bg-ligth-blue section-padding">
+  
+  <h3 class="title-color sans--large text-center mb-70 ">{{ section.settings.title }}</h3>
+  <div class="custom-container flex  p-50">   
+
+	<div class="w-36 p-10">
+    </div>
+    <div class="w-64 pt-50">
+     <ul class="faqs_list">
+      {%- for block in section.blocks -%}
+          {% assign titleNumber = 0 %}
+          {%- if block.type == 'faq_question' -%}
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2 class="faq-title title-color">{{ block.settings.title }}</h2>
+          <p class="title-color" style="font-size:16px;"> {{ block.settings.answer }} </p>
+        </li>
+      {% endif %}
+    {%- endfor -%}
+
+    </ul>
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+{% schema %}
+  {
+    "name": "Custom FAQ",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_question",
+        "name": "Question",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Question",
+            "placeholder": "Lorem ipsum dolor?"
+          },
+          {
+            "id": "answer",
+            "type": "richtext",
+            "label": "Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+
+

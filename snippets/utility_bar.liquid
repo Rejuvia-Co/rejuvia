@@ -1,0 +1,86 @@
+{%- if block.settings.show -%}
+  <div class="utility-bar" style="color: {{section.settings.text_color}}; fill: {{section.settings.close_color}}; font-size: {{section.settings.text_size}};">
+    <div class="utility-bar-items flex flex-wrap justify-content-center">
+      <div>{{ block.settings.text }}</div>
+      {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+      <div class="eg-text-underline">{{ block.settings.text_url }}</div>
+      {%- if block.settings.link != blank -%}</a>{%- endif -%}
+      <div class="utility-bar-info">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="21"
+          height="20"
+          viewBox="0 0 21 20"
+          fill="none">
+          <g>
+            <path
+              d="M10.4987 12.5V10"
+              stroke="{{ block.settings.info_background }}"
+              stroke-width="0.833333"
+              stroke-linecap="round" />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M10.4987 6.66683C10.0385 6.66683 9.66536 7.03993 9.66536 7.50016C9.66536 7.9604 10.0385 8.3335 10.4987 8.3335C10.9589 8.3335 11.332 7.9604 11.332 7.50016C11.332 7.03993 10.9589 6.66683 10.4987 6.66683Z"
+              fill="{{ block.settings.info_background }}" />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M10.5013 18.3332C15.1037 18.3332 18.8346 14.6022 18.8346 9.99984C18.8346 5.39746 15.1037 1.6665 10.5013 1.6665C5.89893 1.6665 2.16797 5.39746 2.16797 9.99984C2.16797 14.6022 5.89893 18.3332 10.5013 18.3332Z"
+              stroke="{{ block.settings.info_background }}"
+              stroke-width="0.833333" />
+          </g>
+        </svg>
+
+        <div style="background-color: {{ block.settings.info_background }};" class="utility-bar-info__content">
+          <div class="utility-bar-info__box"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="6"
+            viewBox="0 0 12 6"
+            fill="none">
+            <defs>
+              <filter
+                id="triangle-shadow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%">
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="1"
+                  flood-color="#04040426" />
+                <feDropShadow
+                  dx="0"
+                  dy="12"
+                  stdDeviation="4"
+                  flood-color="#04040414" />
+                <feDropShadow
+                  dx="0"
+                  dy="4"
+                  stdDeviation="2"
+                  flood-color="#04040408" />
+              </filter>
+            </defs>
+            <path
+              d="M12 6L6.70711 0.707107C6.31658 0.316583 5.68342 0.316583 5.29289 0.707107L0 6H12Z"
+              fill="{{ section.settings.text_color }}"
+              filter="url(#triangle-shadow)" />
+          </svg>
+          {%- if block.settings.info_title != blank -%}
+            <h5 style="color: {{ block.settings.info_title_color }};">
+              {{- block.settings.info_title -}}
+            </h5>
+          {%- endif -%}
+          {%- if block.settings.info_text != blank -%}
+            <p style="color: {{ block.settings.info_text_color }};">
+              {{- block.settings.info_text -}}
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

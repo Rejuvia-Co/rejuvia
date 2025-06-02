@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+
+<!-- Dash.Fi Alpha -->
+<script async src="https://pixel.dashfi.dev/static/js/pixel.dash.fi.js"></script>
+<script>window.dashFiTracker = window.dashFiTracker ||
+{};window.dashFiTracker['siteIdentifier'] = '1f02c2f1-0506-6484-97db-2189a63d0814';
+</script>
+<!-- End Dash.Fi Alpha -->
+  
+{% render 'skio-head' %}
+
+<script>
+  window.ALBSS = {
+    event_key: '«52c03e6a-eb7a-466a-bca5-856b00ea3ddf»'
+  };
+</script>
+<script src="https://res4.applovin.com/p/l/loader.iife.js" async></script>
+  
+  <!-- BlackCrow Script -->
+  <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/rejuviamedical.js?shopify_app_version=1.0.234&shop=rejuviamedical.myshopify.com"></script>
+  <!-- End BlackCrow Script Tag -->
+  {% render 'replo-head' %}
+  <link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+  {% include 'dataLayer-allPages' %}
+  
+  <meta name="robots" content="index,follow" />
+  <meta name="p:domain_verify" content="5bf1b1953f372700ea99b8077d51896f" />
+  <meta name="facebook-domain-verification" content="83oi8yqil0ha2pgr9sit7bgxfv8dcr" />
+  <meta name="google-site-verification" content="XM6h9jLMM-HNdEytyhvpQtsP3_rgxIxUHyL6FS3qGmY" />
+  <meta charset="UTF-8">
+  <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+
+  {%- if template == 'index' -%}
+    <title>{{ page_title }}</title>
+  {%- elsif template == '404' -%}
+    <title>{{ shop.name }} | Page Not Found</title>
+  {%- else -%}
+    <title>{{ shop.name }} | {{ page_title }}</title>
+  {%- endif -%}
+
+  <meta name="description" content="{{ page_description | default: page_title }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  {%- include 'fb_open_graph' -%}
+  {%- include 'fonts' -%}
+  {% render 'head-styles' %}
+
+  <script>
+    var jq = [];
+    var $;
+    $ = function(f) {
+      jq.push(f)
+    };
+  </script>
+
+  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'simplistic.js' | asset_url }}"></script>
+  <script src="{{ 'vendor.js' | asset_url }}"></script>
+  <script src="{{ 'ProductJs.js' | asset_url }}"></script>
+  <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>
+
+  {{ content_for_header }}
+
+  {%- if template contains 'customers' -%}
+    {{ 'customer-account.scss.css' | asset_url | stylesheet_tag }}
+    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+    {{ "customer_area.js" | shopify_asset_url | script_tag }}
+  {%- endif -%}
+
+  {%- render 'structured_data', data: 'shop' -%}
+
+  <script src="{{ 'jquery.scrollSlide.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+
+  {% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
+
+  {% if template contains 'page.ingredients' %}
+  <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
+  {% endif %}
+
+</head>
+
+<body class="template{{ template | split: '.' | first | camelize }}{% if customer %} customer-logged-in{% endif %} {{ template.suffix }}">
+  <a href="#main-content" class="skip-to-main-content">Skip to Main Content</a>
+  <div id="page">
+    {% comment %}{%- section 'header-top' -%}{% endcomment %}
+    <header role="banner" class="{% if settings.sticky_header_desktop %}sticky_header_desktop {% endif %}{% if settings.sticky_header_mobile %}sticky_header_mobile{% endif %}">
+      {%- section 'header' -%}
+    </header>
+    <main class="content-wrapper" id="main-content" role="main">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+
+    {%- if settings.allow_side_cart -%}
+      {%- include 'side_cart' -%}
+    {%- endif -%}
+
+    <div id="loading-overlay">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+    {%- if template == 'product' and settings.show_related_products -%}
+      {%- include 'thumbs_swatches_js' -%}
+    {%- elsif template == "index" or template == 'search' or template == 'collection' -%}
+      {%- include 'thumbs_swatches_js' -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if template contains 'product' or template contains 'collection' or template == "index" -%}
+    {%- include 'photoswipe' -%}
+  {%- endif -%}
+
+  {% include 'smile-initializer' %}
+  {% render 'content_for_footer' %}
+  <script src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
+{% render 'rebuy-extensions' %}
+  <script defer>
+
+    window.customSkio = {};
+    window.customSkio.skio_one_time_text = {{ settings.skio_one_time_text | json }}
+    $(document).ready(function() {
+      $('.menu-desktop').removeClass('hidden');
+
+        // $('.menu-desktop').removeClass('hidden');
+
+        var header = $('#header');
+        var $utilityBar = $('.utility-bar');
+        var barHeight = $utilityBar.outerHeight();
+
+        $(window).on('scroll', function () {
+        var scrollTop = $(this).scrollTop();
+
+        var translateValue = Math.min(scrollTop, barHeight);
+        let height = translateValue - scrollTop;
+        header.css('transform', `translateY(-${translateValue}px)`);
+      });
+    });
+  </script>
+</body>
+</html>

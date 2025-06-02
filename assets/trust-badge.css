@@ -1,0 +1,65 @@
+.trustb-section {
+    padding-top: 33px;
+    padding-bottom: 33px;
+    max-width: 1130px;
+    margin: auto;
+    background: #FEFEFE;
+}
+
+@media screen and (min-width: 750px) {
+    .trustb-section {
+        padding: 50px 0px 60px 0px;
+    }
+}
+
+.trustb-section  .section-title {
+    color: #171512;
+
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+@media screen and (min-width: 750px) {
+    .trustb-section  .section-title {
+        font-size: 24px;
+    }
+}
+
+.trustb-section #trust-badges-slider {
+    position: relative;
+}
+
+
+.trust-logo-item {
+    height: 50px;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media screen and (min-width: 750px) {
+    .trust-logo-item {
+        /* max-width: 90%; */
+    }
+}
+
+.trust-logo-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    /* transform: scale(0.8); */
+}
+
+.scale_up_image {
+    /* object-fit: cover; */
+    /* transform: scale(1.5)!important; */
+}
+
+.scale_down_image {
+    transform: scale(0.8)!important;
+}

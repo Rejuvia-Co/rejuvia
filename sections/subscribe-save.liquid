@@ -1,0 +1,110 @@
+{{ 'ingredients-info.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .subscribe-save-section {
+    background: var(--Rejuvia---Secondary-1, #672666);
+  }
+  .subscribe-save-container {
+    padding: 32px 16px;
+  }
+  .subscribe-save-container .section-title--custom {
+    color: #fff;
+
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 38.4px */
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+  }
+  .save-tag {
+    color: var(--Rejuvia---Secondary-2, #eac78b);
+  }
+  .subscription-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: fit-content;
+    margin: auto;
+  }
+  .benefit-item {
+    display: flex;
+    padding: 0px 24px 0px 12px;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .benefit-item p {
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 39px; /* 216.667% */
+    letter-spacing: 0.18px;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 900px) {
+    .subscribe-save-container {
+      padding: 43px 0px;
+    }
+    .subscription-benefits {
+      flex-direction: row;
+      max-width: 856px;
+      flex-wrap: wrap;
+    }
+    .subscribe-save-container .section-title--custom {
+      font-size: 40px;
+    }
+  }
+</style>
+
+<div class="subscribe-save-container">
+  <h4 class="section-title--custom">
+    Subscribe & <span class="save-tag">Save {{ section.settings.discount }}</span>
+  </h4>
+
+  <div class="subscription-benefits">
+    {% for item in section.blocks %}
+      <div class="benefit-item">
+        {% render 'check-circle' %}
+        <p class="description">{{ item.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Subscribe & Save 30%",
+  "tag": "section",
+  "class": "subscribe-save-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "discount",
+      "label": "Discount"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe & Save"
+    }
+  ]
+}
+{% endschema %}

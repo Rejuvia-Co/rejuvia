@@ -1,0 +1,53 @@
+<div class="social-links flex align-items-center justify-content-center">
+  {%- if settings.instagram_link != '' -%}
+      <a target="_blank" href="{{ settings.instagram_link }}" aria-label="Follow us on Instagram" title="Opens new window" rel="noopener">
+        <img class="social-icon" src="//cdn.shopify.com/s/files/1/0264/4076/1399/t/35/assets/instagram.png?v=16022470498243670041639678693">
+      </a>
+  {%- endif -%}
+  {%- if settings.facebook_link != '' -%}
+      <a target="_blank" href="{{ settings.facebook_link }}" aria-label="Follow us on Facebook" title="Opens new window" rel="noopener">
+       <img src="https://cdn.shopify.com/s/files/1/0264/4076/1399/t/35/assets/facebook.png?v=93351186260751199581639679041" />
+      </a>
+  {%- endif -%}
+  {%- if settings.twitter_link != '' -%}
+      <a target="_blank" href="{{ settings.twitter_link }}" aria-label="Follow us on Twitter" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'twitter' %}
+      </a>
+  {%- endif -%}
+  {%- if settings.pinterest_link != '' -%}
+      <a target="_blank" href="{{ settings.pinterest_link }}" aria-label="Follow us on Pinterest" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'pinterest' %}
+      </a>
+  {%- endif -%}
+  {%- if settings.linkedin_link != '' -%}
+      <a target="_blank" href="{{ settings.linkedin_link }}" aria-label="Follow us on Linkedin" title="Opens new window" rel="noopener">
+       <img class="social-icon" src="//cdn.shopify.com/s/files/1/0264/4076/1399/t/35/assets/linkedin-logo.png?v=5699091876449446321639678694">
+      </a>
+  {%- endif -%}
+  
+  {%- if settings.ticktock != '' -%}
+      <a target="_blank" href="{{ settings.ticktock }}" aria-label="Follow us on Flickr" title="Opens new window" rel="noopener">
+       <img class="social-icon" src="//cdn.shopify.com/s/files/1/0264/4076/1399/t/35/assets/tiktok.png?v=9113702446366620411639678695">
+      </a>
+  {%- endif -%}
+  {%- if settings.vimeo_link != '' -%}
+      <a target="_blank" href="{{ settings.vimeo_link }}" aria-label="Follow us on Vimeo" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'vimeo' %}
+      </a>
+  {%- endif -%}
+  {%- if settings.youtube_link != '' -%}
+      <a target="_blank" href="{{ settings.youtube_link }}" aria-label="Follow us on Youtube" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'youtube' %}
+      </a>
+  {%- endif -%}
+  {%- if settings.tumblr_link != '' -%}
+      <a target="_blank" href="{{ settings.tumblr_link }}" aria-label="Follow us on Tumblr" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'tumblr' %}
+      </a>
+  {%- endif -%}
+  {%- if settings.mailing_link != '' -%}
+      <a target="_blank" href="{{ settings.flickr_link }}" aria-label="Follow us on Flickr" title="Opens new window" rel="noopener">
+        {% include 'icons', icon: 'envelope' %}
+      </a>
+  {%- endif -%}
+</div>

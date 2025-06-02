@@ -1,0 +1,40 @@
+<div class="top-utils">
+  <div class="flex">
+    {%- if block.settings.show_newsletter -%}
+    <a href="#" class="newsletter-target small--hide" {% if headerDrop %}aria-hidden="true" focusable="false" tabindex="-1"{% endif %}>
+      {% include 'icons', icon: 'envelope' %}
+      <span>Newsletter</span>
+    </a>
+    {%- endif -%}
+    {%- if block.settings.show_search -%}
+    <a href="#" class="search-target" {% if headerDrop %}aria-hidden="true" focusable="false" tabindex="-1"{% endif %}>
+      {% include 'icons', icon: 'search' %}
+      <span>Search</span>
+    </a>
+	{%- endif -%}
+    {%- if shop.customer_accounts_enabled and block.settings.show_user -%}
+      {%- if customer -%}
+      <a href="/account" class="user" {% if headerDrop %}aria-hidden="true" focusable="false" tabindex="-1"{% endif %}> 
+        {% include 'icons', icon: 'user' %}
+        <span>My Account</span>
+      </a>
+      <a href="/account/logout" class="logout medium-down--hide">
+        <span>Logout</span>
+      </a>
+      {%- else -%}
+      <a href="/account/login" class="user" {% if headerDrop %}aria-hidden="true" focusable="false" tabindex="-1"{% endif %}>
+        {% include 'icons', icon: 'user' %}
+        <span>Login</span>
+      </a>
+      {%- endif -%}
+    {%- endif -%}
+    <a class="cart-wrap" href="/cart" {% if headerDrop %}aria-hidden="true" focusable="false" tabindex="-1"{% endif %}>
+      {% include 'icons', icon: 'cart' %}
+      <span class="text">Cart</span>
+      <span class="count"></span>
+    </a>
+  </div>
+  <div class="hide medium-down--show">
+    <a href="#menu-mobile" class="menu-mobile-button" aria-label="Open Menu">{% include 'icons', icon: 'hamburger' %}</a>
+  </div>
+</div>

@@ -1,0 +1,479 @@
+.swatch2 .saleOff {
+	border-radius: 3.016px 3.016px 0px 0px;
+	background: rgba(234, 199, 139, 0.6);
+	padding: 1px 8px 11px 8px !important;
+	margin-bottom: -11px;
+	margin-right: 6px;
+	float: none;
+	display: block;
+	align-self: flex-end;
+	max-width: fit-content;
+
+	color: #171512;
+
+	text-align: center;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%; /* 16.5px */
+}
+
+.product-wrap .swatch-element {
+	position: relative;
+	margin: 0 12px 12px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.product-wrap .swatch2 .swatch-element {
+	width: calc(33% - 12px);
+}
+
+.product-wrap .swatch2 .swatch-element.size-two {
+	width: calc(50% - 12px);
+}
+
+.swatch-element .name-variant {
+	color: #171512;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%; /* 21px */
+}
+
+.swatch-element .price-variant {
+	color: #171512;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+	letter-spacing: 0.39px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .group{
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.product-wrap .swatch2 .swatch {
+	margin: 0;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-element {
+	width: 100%;
+	height: inherit;
+	letter-spacing: normal;
+	margin: 0;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-element > div {
+	height: 100%;
+}
+
+.product-wrap .swatch-element label {
+	letter-spacing: normal;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch label.swatch-label {
+	display: flex;
+	align-items: flex-start;
+    height: 100%;
+	padding: 15px;
+	gap: 12px;
+	border: 1px solid #BFBFBF;
+	margin-bottom: 0;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch input:checked+label {
+	border: 2px solid #672666;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch label>span.image-variant {
+	padding: 0;
+	margin: 0;
+	width: 126px;
+	height: 126px;
+	display: block;
+}
+
+body .product-wrap .swatch2 .swatch.custom-swatch input:checked+label {
+	/*background: #67266615;*/
+}
+
+body .product-wrap .swatch2 .swatch.custom-swatch input:checked+label .swatch-price__box {
+	border-bottom: none;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .image-variant img {
+	display: block;
+	width: 126px;
+	height: 126px;
+	object-fit: cover;
+	max-width: unset;
+	border-radius: 6.981px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box {
+	width: 100%;
+	text-align: left;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box span {
+	display: block;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .name-variant {
+	padding: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 120%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 4px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent {
+	padding: 4px 10px;
+	height: 28px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100px;
+	background:#F0E9EF;
+	width: fit-content;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent span {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 100%;
+	margin-top: 4px;
+	color:#672666;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__ul {
+	list-style-type: none;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__ul li {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 100%;
+	display: flex;
+	gap: 6px;
+	align-items: flex-start;
+	margin-bottom: 4px;
+	color:#040404;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__ul li span {
+	margin-top: 5px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__ul li:last-child {
+	margin-bottom: 0;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 100%;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price--sale {
+	color: #9B9B9B;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 100%;
+	text-decoration-line: line-through;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving {
+	color: #5C5C5C;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 100%;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .price-variant {
+	display: flex;
+	gap: 4px;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 4px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .price-variant__box {
+	display: flex;
+}
+
+.swatch-price__box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 7px;
+	border-bottom:none;
+	flex-direction: column;
+}
+
+.price-variant__box {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: auto;
+}
+
+.swatch-name__variant--box {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.swatch__title {
+	font-size: 18px;
+	font-weight: 700;
+	text-align: left;
+	margin-bottom: 14px;
+}
+.swatch__title span {
+	font-weight: 400;
+}
+
+@media (max-width: 1350px) {
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent {
+		margin-top: 4px;
+	}
+
+	.swatch-name__variant--box {
+		display: block;
+	}
+}
+
+@media (max-width: 1150px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .price-variant {
+		flex-direction: unset;     
+	}
+
+	.price-variant__box {
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 749px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch label>span.image-variant, .product-wrap .swatch2 .swatch.custom-swatch .image-variant img {
+		width: 80px;
+		height: 80px;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch label.swatch-label {
+		align-items: flex-start;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent {
+		height: 24px;
+		margin-top: 4px;
+	}
+
+	.swatch-name__variant--box {
+		display: block;
+		margin-bottom: 0;
+	}
+
+	.swatch-price__box {
+		display: flex;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .price-variant {
+		flex-direction: column;   
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch label.swatch-label {
+		padding: 12px;
+	}
+
+	.price-variant__box {
+		margin-left: auto;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .group {
+		gap: 8px;
+	}
+
+	.swatch__title {
+		margin-bottom: 20px;
+	}
+}
+
+.swatch-radio-button {
+	background-color: inherit;
+	border: 1px solid rgb(229 221 228);
+	width: 16px;
+	height: 16px;
+	min-width: 16px;
+	min-height: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: none;
+	margin: 0;
+	padding: 0;
+	border-radius: 50%;
+	margin-bottom: auto;
+}
+
+.swatch-radio-button span {
+	width: 10px;
+	height: 10px;
+	display: block;
+	border-radius: 50%;
+	background-color: #fff;
+}
+
+.swatch-radio-button-hidden[type="radio"]:checked + label .swatch-radio-button {
+	border-color: #672666;
+}
+
+.swatch-radio-button-hidden[type="radio"]:checked + label .swatch-radio-button span {
+	background-color: #672666;
+}
+
+.swatch-price__box {
+	justify-content: center;
+	gap: 8px;
+}
+
+.swatch-radio-button {
+	margin-bottom: 2px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .group {
+	flex-direction: unset;
+	justify-content: space-between;
+	gap: 8px;
+	flex-wrap: nowrap;
+	align-items: stretch;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent {
+	margin-top: 8px;
+	background: #672666;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent span {
+	color: #fff;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving {
+	color: #686365;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 120%;
+	display: flex;
+	gap: 4px;
+	justify-content: center;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving span {
+	font-weight: 400;
+}
+
+.swatch-price__box {
+	padding-bottom: 14px;
+}
+
+.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-mobile {
+	display: none;
+}
+
+@media only screen and (max-width: 1150px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .group {
+		flex-wrap: wrap;
+	}
+}
+
+@media only screen and (max-width: 900px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .group {
+	  	flex-wrap: nowrap;
+	}
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving {
+		font-size: 10px!important;
+	}
+	.swatch-name__variant--pack {
+		font-size: 12px!important;
+		text-align: center!important;
+		color: #171512;
+	}
+	.swatch-name__variant--box .name-variant {
+		font-size: 10px!important;
+		justify-content: center !important;
+	}
+}
+
+@media only screen and (max-width: 749px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-desktop {
+	  	display: block;
+	}
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent span {
+		font-size: 10px;
+		margin-top: 0;
+	}
+
+	.swatch-price__box {
+	  	display: block;
+	}
+
+	.swatch-radio-button__box {
+		min-height: 24px;
+		display: flex;
+		display: none;
+		gap: 8px;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+
+	.swatch-radio-button {
+	  	margin-bottom: 0;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .name-variant {
+	  	font-size: 15px;
+	}
+
+	.swatch-price__box {
+		padding-bottom: 8px;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-mobile {
+		padding: 3px 8px;
+		margin-top: 0;
+		display: flex;
+	}
+
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-mobile span {
+		font-size: 12px;
+		margin-top: 2px;
+	}
+}
+
+@media only screen and (max-width: 425px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-mobile {
+	  	width: max-content;
+	}
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving {
+		font-size: 15px;
+	}
+	.product-wrap .swatch2 .swatch.custom-swatch label.swatch-label {
+		padding: 10px;
+	}
+}
+@media only screen and (max-width: 398px) { 
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__sale--percent-mobile span {
+		font-size: 11px;
+	}
+	.product-wrap .swatch2 .swatch.custom-swatch .swatch-label__box .swatch-label__price_per_serving {
+		font-size: 14px;
+	}
+}

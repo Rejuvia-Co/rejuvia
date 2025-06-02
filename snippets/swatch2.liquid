@@ -1,0 +1,223 @@
+{%- assign found_option = false -%}
+{%- assign is_color = false -%}
+{%- assign option_index = 0 -%}
+
+{% if section.settings.swatch_tag_content != blank %}
+  {% assign tagContent = section.settings.swatch_tag_content %}
+{% else %}
+  {% assign tagContent = 'Best Value -' %}
+{% endif %}
+
+<style>
+  .swatch2 .saleOff {
+    border-radius: 3.016px 3.016px 0px 0px;
+    background: rgba(234, 199, 139, 0.6);
+    padding: 1px 8px 11px 8px !important;
+    margin-bottom: -11px;
+    margin-right: 6px;
+    float: none;
+    display: block;
+    align-self: flex-end;
+    max-width: fit-content;
+
+    color: #171512;
+
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 16.5px */
+  }
+
+  .product-wrap .swatch-element {
+    position: relative;
+    margin: 0 12px 12px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-wrap .swatch2 .swatch-element {
+    width: calc(33% - 12px);
+  }
+
+  .product-wrap .swatch2 .swatch-element.size-two {
+    width: calc(50% - 12px);
+  }
+
+  .swatch-element .name-variant {
+    color: #171512;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+  }
+
+  .swatch-element .price-variant {
+    color: #171512;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.39px;
+  }
+</style>
+
+{%- for option in currentProduct.options -%}
+  {%- if option == swatch -%}
+    {%- assign found_option = true -%}
+    {%- assign option_index = forloop.index0 -%}
+    <style>
+      label[for="product-select-option-{{ option_index }}"] { display: none; }
+      #product-select-option-{{ option_index }} { display: none; }
+      #product-select-option-{{ option_index }} + .custom-style-select-box { display: none !important; }
+    </style>
+    <script>
+      $(function () {
+        $('.selector-wrapper:eq({{ option_index }})').hide();
+      });
+    </script>
+    {%- assign downcased_option = swatch | downcase -%}
+    {%- if downcased_option contains 'color' or downcased_option contains 'colour' -%}
+      {%- assign is_color = true -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div
+  class="swatch clearfix"
+  data-option-index="{{ option_index }}"
+  role="group"
+  aria-label="{{ swatch }} selection group"
+>
+  {% comment %} <div class="head" aria-hidden="true">SELECT YOUR QUANTITY:</div> {% endcomment %}
+  <div class="group flex flex-wrap">
+    {%- assign values = '' -%}
+    {% assign base_serving = currentProduct.variants[0] %}
+    {%- for variant in currentProduct.variants -%}
+      {% assign price = variant.price %}
+      {% assign servings = base_serving.title | replace: ' Servings', '' | plus: 0 %}
+
+      {% assign actual_servings = variant.title | replace: ' Servings', '' | plus: 0 %}
+
+      {% comment %} {% assign price_per_serving = price | divided_by: servings %} {% endcomment %}
+
+      {% assign actual_servings_portions = actual_servings | divided_by: servings %}
+
+      {% assign price_per_serving = price | divided_by: actual_servings %}
+
+      {% comment %}
+        {%- assign servings_count = variant.option1 | remove: " Servings" |  sum -%}
+        {%- assign price = variant.price | divided_by: 100 -%}
+      {% endcomment %}
+
+      {%- assign value = variant.options[option_index] -%}
+      {%- unless values contains value -%}
+        {%- assign values = values | join: '*|*' -%}
+        {%- assign values = values | append: '*|*' | append: value -%}
+        {%- assign values = values | split: '*|*' -%}
+
+        {% assign get_number = variant.title | slice: 0 %}
+        
+        
+        {% assign compare_at_price = variant.price | divided_by: get_number %}
+        {% assign get_number = variant.title | slice: 0 %}
+        {% assign get_numbers_of_sprays = get_number | first %}
+        
+        {% assign variant_original_price_per_spray = compare_at_price | times: get_numbers_of_sprays %}
+        
+        {% assign current_variant_price = variant.price |  money_without_currency %}
+        {% assign save_price = current_variant_price | minus: variant_original_price_per_spray %}
+        
+        {% comment %} calc of the best discount tag {% endcomment %}
+        {% assign one_spray_price = base_serving.price |  money_without_currency %}
+
+        {% assign cost_per_spray_in_three_sprays = current_variant_price | divided_by: actual_servings_portions %}
+        {% assign savings_per_spray = one_spray_price | minus: cost_per_spray_in_three_sprays %}
+        {% assign percentage_savings = savings_per_spray | divided_by: one_spray_price | times: 100 %}
+
+        {% assign off_to_show = percentage_savings |  round: 0 %}
+        
+        <div class="swatch-element {% if size == 2 %} size-two {% endif %}">
+          {% if forloop.last %}
+            <span class="saleOff">
+              {{ tagContent }}
+              {{ off_to_show }}
+              % OFF
+            </span>
+          {% endif %}
+          <div
+            data-number="{{ get_number }}"
+            data-value="{{ value | escape }}"
+            class=" {% if is_color and settings.enable_color_swatches %}color {% endif %} {{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}"
+          >
+            {%- if is_color and settings.enable_color_swatches -%}
+              <div class="tooltip" aria-hidden="true">{{ value }}</div>
+              <input
+                class="visuallyhidden"
+                id="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}"
+                type="radio"
+                name="option-{{ option_index }}"
+                value="{{ value | escape }}"
+                
+                {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %}
+                aria-hidden="true"
+              >
+              <label
+                class="animation color"
+                role="button"
+                for="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}"
+                style="background-color: {{ value | split: ' ' | last | handle }};"
+              >
+                <span class="visuallyhidden"
+                  >Select {{ value }}
+                  {{ swatch -}}
+                </span>
+                <div class="cross"></div>
+              </label>
+            {%- else -%}
+              <input
+                class="visuallyhidden"
+                id="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}-{{ currentProduct.id }}-{{ sufix }}"
+                type="radio"
+                name="option-{{ option_index }}"
+                value="{{ value | escape }}"
+                {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %}
+                aria-hidden="true"
+              >
+
+              <label
+                class="swatch-label animation {% if save_price == 0 %}hide-info {% endif %}"
+                role="button"
+                for="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}-{{ currentProduct.id }}-{{ sufix }}"
+              >
+                <span class="image-variant"><img src="{{ variant.featured_image.src | img_url:'master'  }}"></span>
+                <span class="visuallyhidden">Select </span>
+                <span class="name-variant">{{ value }}</span><span class="visuallyhidden"> {{ swatch }}</span>
+                <span class="price-variant"
+                  >({{price_per_serving | money}}
+                  <span class="text">/ night)</span></span
+                >
+                {% comment %}
+                  <span>{{ compare_at_price }}|{{variant.price }} | {{get_number}}</span>
+                  <span>{{price_per_serving}} {{ servings }}</span>
+                {% endcomment %}
+                {% comment %} <span class="product-save"><small>SAVE</small> {{ PriceSave | money  }}</span> {% endcomment %}
+                <div class="cross"></div>
+              </label>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+    {% if product.metafields.more_info.tooltip_variant != '' %}
+      <!--
+        <div class="card_prompt_variants">
+          <span>Not sure? Let us help.</span>
+        </div>
+      -->
+    {% endif %}
+  </div>
+  {% if product.metafields.more_info.tooltip_variant != '' %}
+    <div class="prompt_variants hide"><span></span> {{ product.metafields.more_info.tooltip_variant }}</div>
+  {% endif %}
+</div>

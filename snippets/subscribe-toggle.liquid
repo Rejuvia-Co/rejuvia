@@ -1,0 +1,85 @@
+<style>
+  .subscribe-toggle {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .subscribe-toggle__switch {
+    background: white;
+    border: 2px solid black;
+    border-radius: 60px;
+    height: 28px;
+    width: 60px;
+    position: relative;
+    cursor: pointer;
+    transition: 500ms;
+  }
+
+  .subscribe-toggle__switch::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: 80%;
+    aspect-ratio: 1;
+    border-radius: 50px;
+    background: black;
+    transition: 500ms;
+  }
+  
+  .subscribe-toggle__switch.active {
+    background: black;
+  }
+
+  .subscribe-toggle__switch.active::before {
+    background: white;
+    left: calc(100% - 22px);
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .subscribe-toggle__text {
+    text-align: center;
+    letter-spacing: 0;
+  }
+</style>
+
+{% liquid
+  assign plan_found = false
+  for group in product.selling_plan_groups
+    assign plan_found = true
+  endfor
+%}
+
+{% if plan_found %}
+  <div class="subscribe-toggle">
+    <div data-subscribe-switch class="subscribe-toggle__switch"></div>
+    <input type="hidden" data-subscribe-input name="selling_plan" disabled value="28090499292" form="{{ product_form_id }}">
+    <div class="subscribe-toggle__text">
+      <div class="bold">Upgrade To a Subscription & Save 20% </div>
+      <div>Free Shipping &#x2022; Cancel Anytime</div>
+    </div>
+  </div>
+  
+  <script>
+    const toggle = document.querySelector("[data-subscribe-switch]");
+    const toggleInput = document.querySelector("[data-subscribe-input]")
+    toggle.addEventListener("click", function() {
+      toggle.classList.toggle("active")
+      if (toggle.classList.contains("active")) {
+        toggleInput.removeAttribute("disabled")
+      }
+      else {
+        toggleInput.setAttribute("disabled", "")
+      }
+    })
+  </script>
+{% endif %}

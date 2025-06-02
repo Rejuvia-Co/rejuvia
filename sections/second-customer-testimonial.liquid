@@ -1,0 +1,276 @@
+{{ 'customer-testimonials.css' | asset_url | stylesheet_tag }}
+
+<!-- Required Core Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  onload="this.media='all'"
+>
+
+{% style %}
+
+    .second-customer-testimonials-section {
+        background: #FAFAF9;
+    }
+
+    .eg-customer-testimonials-container {
+    padding: 20px 25px 90px 25px;
+  }
+
+
+    @media screen and (min-width: 900px) {
+        .eg-customer-testimonials-container {
+            margin: auto;
+            max-width: 1440px;
+            padding: 64px 35px 64px 35px;
+        }
+
+    }
+
+    @media screen and (min-width: 1280px) {
+        .eg-customer-testimonials-container {
+            padding: 64px 35px 64px 35px;
+        }
+    }
+
+    .eg-item-carousel_content h4{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 38px;
+        margin: 0;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .eg-carrousel-card-description{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    .eg-item-carousel_content > span > p{
+        font-size: 16px;
+        line-height: 25px;
+        font-weight: 500;
+        margin: 0;
+        margin-bottom:5px;
+    }
+
+    .eg-item-carousel_content > span > ul{
+        list-style-type: disc;
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+
+
+    .glide__slide {
+    width: 100%; /* Para asegurarte de que el slide ocupe todo el contenedor */
+    height: auto; /* Ajusta según tu diseño */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho y alto */
+        }
+
+        .eg-customer-review-box {
+            width: 100%; /* Ajusta este valor según el diseño */
+            min-height: 401px; /* Ajusta la altura según tus necesidades */
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .eg-customer-review-image{
+      width: 50%;
+      height: 32%;
+      overflow:hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .eg-customer-review-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+
+    .eg-item-carousel_content{
+        position: absolute;
+        bottom: 0;
+        padding: 10px 20px;
+    }
+
+    
+
+    .new-costumer-testimonials h3{
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 57.6px;
+      margin-bottom: 20px;
+      font-family: inherit;
+    }
+
+    .new-costumer-testimonials p{
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      margin-bottom: 0;
+      color: #171512;
+    }
+
+    @media(max-width: 900px){
+      .new-costumer-testimonials h3{
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .new-costumer-testimonials p{
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 25.2px;
+    }
+    }
+
+    .eg-glide__arrows {
+      min-width: 115.5px;
+      position: absolute;
+      top: -26%;
+      right: 0;
+    }
+
+    @media(max-width: 980px){
+      .eg-glide__arrows {
+      top: 105%;
+      right: calc(50% - 57.7px);
+    }
+    }
+
+    .glide__arrow {
+    transition: transform 0.4s ease, stroke 0.4s ease;
+}
+
+.glide__arrow:hover {
+    transform: scale(1.07); /* Agranda el botón ligeramente */
+}
+
+.glide__arrow:hover svg path {
+    stroke: #d1ac70; /* Cambia este color al que prefieras */
+}
+{% endstyle %}
+
+<div id="ingredients-benefits" class="eg-customer-testimonials-container">
+
+  <div class="new-costumer-testimonials">
+    <h3>
+      {{ section.settings.header }}
+    </h3>
+    <p>
+      {{ section.settings.description }}
+    </p>
+  </div>
+    <div id="glide-testimonials" class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          {% for item in section.blocks %}
+            <li class="glide__slide">
+              <div class="eg-customer-review-box">
+                <div class="eg-customer-review-image">
+                  {% if item.settings.image %}
+                    <img src="{{ item.settings.image | image_url: width: 1500 }}" width="" height="" >
+                  {% endif %}
+                </div>
+
+                <div class="eg-item-carousel_content">
+                  {% comment %} {% render 'five-stars-icon' %} {% endcomment %}
+                  <h4 class="eg-carrousel-card-title">{{ item.settings.title }}</h4>
+                  <p class="eg-carrousel-card-description">{{ item.settings.description }}</p>
+                  <span class="eg-carrousel-card-content">{{ item.settings.text }}</span>
+                
+
+                  {% comment %} <p class="review-check">Verified customer <span></span></p> {% endcomment %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="eg-glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'arrow-circle-left' %}</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'arrow-circle-right' %}</button>
+      </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js" defer></script>
+
+<script src="{{ 'customer-testimonials2.js' | asset_url }}" defer="defer"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const titles = document.querySelectorAll('.eg-carrousel-card-title');
+        
+        titles.forEach(function(title) {
+            let words = title.textContent.split(' ');
+            if (words.length > 1) {
+                title.innerHTML = `<span>${words[0]}</span><br>${words.slice(1).join(' ')}`;
+            }
+        });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Snd Customer Testimonials",
+  "tag": "section",
+  "class": "second-customer-testimonials-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Review"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Snd Customer Testimonials"
+    }
+  ]
+}
+{% endschema %}

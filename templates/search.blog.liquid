@@ -1,0 +1,64 @@
+<style>
+  .articles-wrapper .article {position: relative; display: inline-block;}
+  .isNotMobile .articles-wrapper .articles-wrapper > a:hover {color: inherit;}
+  .articles-wrapper .article hr {border: none; border-bottom: 1px solid {{settings.bg_color}}; margin: 20px 0;}
+  .articles-wrapper .pic-wrapper {width: 100%; position: relative;}
+  .articles-wrapper .pic-wrapper .img {width: 100%; height: 1px; padding-top: 45%; background-size: cover; background-position: center; background-repeat: no-repeat;}
+  .articles-wrapper .text-wrapper {width: 100%; margin: 1.2em 0 0 0;}
+  .articles-wrapper .text-wrapper .content {margin-bottom: 1.2em;}
+  .articles-wrapper .article-date {background-color: #fff; border: 4px solid {{settings.content_main_color}}; position: absolute; left: -20px;  top: 6em; text-transform: uppercase;  color: {{settings.content_main_color}};  width: 5em;  height: 5em; font-size: 1em;  text-align: center; display: flex; display: -webkit-flex; flex-wrap: wrap; justify-content: center; align-content: center;}
+  .articles-wrapper .article-date span {display: block; width: 100%; position: relative; line-height: 100%;}
+  .articles-wrapper .article-date span.day {font-size: 2em; margin-bottom: 2px;}
+  .isNotMobile .articles-wrapper .article:hover .article-date {background-color: {{settings.content_main_color}}; color: #fff;}
+
+  .articles-wrapper .article .text-wrapper .title {font-size: 1.3em; margin-bottom: 0.5em;}
+  .articles-wrapper .article:hover {color: #000;}
+
+  input[type='text'], input[type='email'], input[type='number'], input[type='search'], input[type='date'], input[type="tel"], input[type="phone"], input[type='password'] {border-radius: 10em; border: 2px solid; font-family: 'NexaRegular';}
+
+  @media all and (max-width: {{settings.breakpoint_tablet}}){
+    .articles-wrapper .text-wrapper .continue {display: block;} 
+    .articles-wrapper .article .text-wrapper .title {font-size: 1em; text-align: left;}
+  }
+
+  @media all and (max-width: {{settings.breakpoint_mobile}}){
+    .articles-wrapper h2 {text-align: center;}
+    .articles-wrapper .articles-wrapper {width: 100%; float: none;}
+    .articles-wrapper .article-date {display: none;}
+  }
+</style>
+
+<div class="blog-container container">
+  <h1 class="visuallyhidden">{{blog.title}}</h1>
+  <div class="grid">
+    <div class="grid__item large--flex-1 medium--flex-1 small--one-whole">
+      {%- if search.results == empty -%}
+      <div class="blog">
+        <div class="articles-wrapper">
+          <div class="article">
+            <h2 class="animation">Search Results</h2>
+            <div class="text-wrapper">
+              <div class="content">
+                <p class="note">Your search for "{{search.terms | escape}}" did not yield any results.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%- else -%} 
+        <div class="blog">
+          {%- paginate search.results by 6 -%}
+          <div class="articles-wrapper template-list">
+            {%- for item in search.results -%}
+            {%- assign article = item -%}
+              {%- include 'blog_item' -%}
+            {%- endfor -%}
+          </div>
+          {%- include 'pagination' -%}
+          {%- endpaginate -%}
+        </div>
+      {%- endif -%} 
+    </div>
+    {%- section 'blog_sidebar' -%}
+  </div>
+</div>

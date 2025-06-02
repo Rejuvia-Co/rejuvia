@@ -1,0 +1,127 @@
+<style>
+  .popup-wrapper {text-align:center; position: relative; width:58em; max-width:100%; background-color: {{settings.subscription_bg_color}}; color: {{settings.subscription_text_color}};}
+  .popup-wrapper .wrap {position: relative; z-index: 5; padding: 5em 3em}
+  .popup-wrapper .img {background: {{settings.content_third_color}}; position: absolute; left: 0; top: 0; height: 100%; background-repeat: no-repeat; background-position: center; background-size: cover;}
+  .popup-wrapper .logo {width: 100%; max-width: 12em; margin-bottom: 2em;}
+  .popup-wrapper h2 {color: inherit;}
+  .popup-wrapper p {color: inherit; font-size: 1em; margin-bottom:1em;}
+  .popup-wrapper .btn {margin-top: 1em;}
+  .popup-wrapper .success-msg {color: inherit;}
+  
+  @media all and (max-width: {{settings.breakpoint_mobile}}){
+    .popup-wrapper .img {position: relative; width: 100%; padding-top: 50%;}
+    .popup-wrapper .wrap {padding: 3em 20px;}
+  }
+</style>
+
+<div class="hide">
+  <div id="subscription-pop-up" aria-labelledby="subscription-popup-title">
+    <div class="popup-wrapper">
+      <div class="grid-full">
+        <div class="image grid__item one-half small--one-whole">
+          <div class="img one-half small--one-whole {% if settings.subscription_bg != blank %}lazyload{% endif %}" {% if settings.subscription_bg != blank %}data-bgset="{% include 'lazy_src', image: settings.subscription_bg %}"{% endif %}></div>
+        </div>
+        <div class="grid__item one-half small--one-whole">
+          <div class="wrap">
+            <div class="form-wrap">
+              {%- if settings.subscription_title != "" -%}<h2 id="subscription-popup-title">{{settings.subscription_title}}</h2>{%- endif -%}
+              {%- if settings.subscription_text != "" -%}<p>{{settings.subscription_text}}</p>{%- endif -%}
+              <div class="error-msg"></div>
+              {%- if settings.use_mailchimp_form -%}
+              <form class="form animated" method="post" action="//{{settings.mailchimp_domain}}/subscribe/post-json?u={{settings.mailchimp_user}}&id={{settings.mailchimp_id}}&c=?">
+                <input type="email" placeholder="Enter your email" name="EMAIL" class="required email" aria-label="Enter your Email Address" aria-required="true" autocomplete="email" />
+                <button class="btn" type="submit">Submit</button>
+              </form>
+              {%- elsif settings.use_klaviyo_form -%}
+              <form class="clearfix" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+                <input type="hidden" name="g" value="{{settings.klaviyo_list_id}}">
+                <input type="hidden" name="$fields" value="source">
+                <input type="hidden" name="source" value="Shopify header newsletter">
+                <input type="email" placeholder="Enter your email" id="email-input" name="email" class="required email" aria-label="Enter your email address to subscribe to our mailing list" aria-required="true" autocomplete="email" />
+                <button class="btn" type="submit">Submit</button>
+              </form>
+              {%- else -%}
+              <form class="form animated" method="post" action="/contact">
+                <input type="hidden" value="customer" name="form_type">
+                <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+                <input type="email" class="email required" placeholder="Enter your email" name="contact[email]" aria-label="Enter your Email Address" aria-required="true" autocomplete="email" />
+                <button class="btn" type="submit">Submit</button>
+              </form>
+              {%- endif -%}
+            </div>
+            <div class="success-msg">
+              {%- if settings.subscription_success != "" -%}<h2>{{settings.subscription_success}}</h2>{%- endif -%}
+              {%- if settings.subscription_success_msg != "" -%}<p>{{settings.subscription_success_msg}}</p>{%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $(document).ready(function(){
+      {%- if settings.subscription_first_time -%}
+      if(!Cookies.get('subscription_special_showed')) {
+      {%- endif -%}
+        setTimeout(function(){
+          Simplistic.openModal($('#subscription-pop-up'), 'quick-view');
+          
+          {%- if settings.subscription_first_time -%}
+          Cookies.set('subscription_special_showed', '1');
+          {%- endif -%}
+        }, 2000);
+      {%- if settings.subscription_first_time -%}
+      }
+      {%- endif -%}
+    });
+
+    $('#subscription-pop-up form').submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var form = $(this);
+      var error = false;
+      
+      form.parent().find('.error-msg').hide();
+      form.find('.error').removeClass('error');
+
+      form.find('.required').each(function(){
+        if($(this).val()=="") {
+          error = true;
+          $(this).addClass('error');
+        }
+      });
+      if(error){
+          form.parent().find('.error-msg').show().text('Please complete all the required fields.');
+      }else{
+        if(!Simplistic.validateEmail(form.find('.email').val())) {
+          error = true;
+          form.find('.email').addClass('error');
+          form.parent().find('.error-msg').show().text('Please provide a valid email address.');
+        }
+      }
+      if(!error) {
+        $.ajax({
+          data: form.serialize(),
+          {%- if settings.use_mailchimp_form -%}
+          url: form.attr('action'),
+          dataType: 'jsonp',
+          {%- elsif settings.use_klaviyo_form -%}
+          url: form.data('ajax-submit'),
+          {%- else -%}
+          url: form.attr('action'),
+          {%- endif -%}
+          type: 'POST'
+        }).done(function(){
+          form.parent().hide();
+          form.parent().parent().find('.success-msg').show();
+        }).error(function(){
+          form.unbind("submit");
+          form.submit();
+        });
+      }
+    });
+  });  
+</script>

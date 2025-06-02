@@ -1,0 +1,217 @@
+<div id="side-cart" class="ease-animation-fast" role="dialog" aria-modal="true">
+  <style>
+    #side-cart {visibility: hidden; outline: none; width: 400px; right: -415px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.2); background-color: {{settings.sidecart_bg_color}}; position: fixed; top: 0; bottom: 0; z-index: 9999;}
+    #side-cart.open {visibility: visible; right: 0;}
+    #side-cart .head {margin-top: 0; box-sizing: border-box; padding: 1.3em 2rem; line-height: 100%; position: relative; margin-bottom: 0; background: {{settings.sidecart_title_bg_color}}; border-bottom: 1px solid {{settings.sidecart_title_border_bottom}};}
+    #side-cart .head .title {text-transform: {{settings.sidecart_title_transform}}; line-height: 100%; margin: 0; padding: 0; border: none; font-size:1.3em; font-weight: {{settings.sidecart_title_weight}}; color: {{settings.sidecart_title_color}};  }
+    #side-cart .head .close {cursor: pointer; position: absolute; right: 1.5rem; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); display: flex; display: -webkit-flex; align-items: center; color: {{settings.sidecart_title_color}}; }
+    #side-cart .head .close svg {font-size: 1.8em;}
+    #side-cart .head .close svg path {fill: {{settings.sidecart_title_color}};}
+    #side-cart .content {color: {{settings.sidecart_text_color}}; padding: 0; height: 100%;}
+    #side-cart .content .wrap {overflow-y: auto;}
+    #side-cart .cart-items {padding: 0.5em; background-color:#F4F4F4;}
+    #side-cart .cart-items .item {position:relative; margin-bottom: 1.5em; padding: 2em 0em 2em; border-bottom: 1px solid {{settings.sidecart_borders_color}}; background-color: #ffffff;}
+    #side-cart .cart-items .item:last-child {margin-bottom: 0;}
+    #side-cart .cart-items .item img {max-height: 10em; max-width: 110%; padding: 5px 5px; display: block; }
+    #side-cart .cart-items .item .title {display: block; font-size: 1.2em;}
+    #side-cart .cart-items .item .variants {font-size: 0.8em; opacity: 0.5; filter: alpha(opacity=50);}
+    #side-cart .cart-items .item .price {position: relative; margin: 0em 0;;}
+    #side-cart .cart-items .item .price div {display: inline-block; }
+    #side-cart .cart-items .item .price .pri {position: relative; top: 0; margin-right: 0; font-size: 1em;}
+    #side-cart .cart-items .item .remove {position:absolute; top:0; right:0; margin-right:1em; margin-top:1em; cursor: pointer; display: block; line-height: 100%;}
+    #side-cart .cart-items .item .remove svg {font-size: 1.3em;}
+    #side-cart .cart-items .item .remove svg path {fill: {{settings.sidecart_text_color}};}
+    #side-cart .clear-cart-div {margin-top: 2em;}
+    #side-cart .clear-cart {background-color: {{settings.content_main_color}};}
+    #side-cart .clear-cart:hover {color: #000;}
+    #side-cart .foot {padding: 2em;}
+    #side-cart .foot .title {font-size: 1.3em; text-transform: none;}
+    #side-cart .foot .buttons-wrapper {margin-top: 2em;}
+    #side-cart .foot .btn-checkout {width: 100%; }
+    #side-cart .foot .subtotal {font-size:1.15em; text-align: center; padding: 0.8em 0 0.1em; border-bottom: 2px solid;}
+    #side-cart .foot .see-cart {text-decoration: underline; display: inline-block; margin-bottom: 1em; letter-spacing: 0.04em;}
+    #side-cart .foot .foot-bottom {margin-top:1em;}
+    .foot .foot-bottom p:first-child {margin-bottom: 0.5em;}
+    #side-cart .empty {padding: 2em;}
+    #side-cart .empty .title {margin-bottom: 1.5em;}
+    #side-cart .empty svg {font-size: 2em; margin-bottom: 0.5em;}
+    
+    #side-cart .foot-icon img {max-width: 12%; margin-right: 1em;}
+    #side-cart .return img {margin-left: 1.5em;}
+
+    @media all and (max-width: {{settings.breakpoint_mobile}}){
+      #side-cart {width: 90%; right: -102%;}
+      #side-cart .cart-items .item .remove svg, #side-cart .cart-items .item .title {font-size: 1em;}
+    }
+  </style>
+  <script>
+    $(function() {
+      var itemsCount = 0;
+      $('#side-cart .quantity-box input[type=number]').each(function(){
+        itemsCount += parseInt($(this).val());
+      });
+      $('.header .cart-wrap .count').html(itemsCount);
+      $('.header-drop .count').html(itemsCount);
+
+      function updateCart(){
+        setTimeout(function(){$('#loading-overlay').show()}, 100);
+
+        $.ajax({
+          type: 'POST',
+          url: '/cart/update.js',
+          data: $('#side-cart form').serialize(),
+          dataType: 'json'
+        }).fail(function(){console.log('error');}).done(function(){addToCartSuccess();$('#add-cart-overlay').fadeOut();});
+      }
+
+      $('#side-cart .remove').click(function(e){
+        e.preventDefault();
+        $(this).closest('.item').find('input[type=number]').val(0);
+        updateCart();
+        return false;
+      });
+
+      $('#side-cart input[type=number]').change(function(){
+        updateCart();
+      });
+      
+      $(document).on('keydown', function(e){
+        if (e.which == 27) { //Exit
+          if($('#side-cart').hasClass('open')){
+            e.preventDefault();
+            hideSideCart();
+            return false;
+          }
+        }
+      });
+    });
+  </script>
+  <div class="content flex direction-column">
+    <div class="head">
+      <div class="title custom_subtitle_font">Your Cart</div>
+      <button class="close" onclick="hideSideCart();return false;" aria-label="Close Cart">
+        {% include 'icons', icon: 'close' %}
+      </button>
+    </div>
+    <div class="wrap">
+      {%- if cart.items == empty -%}
+      <div class="empty text-center">
+        <div class="title">
+          {% include 'icons', icon: 'product-tag' %}<br/>
+          Boooo. Your cart is empty. We think you should grab some of our oral sprays. Maybe two. Or three. Heck, why not four of each?
+        </div>
+        <a href="/collections/all" class="btn">Buy Our Oral Sprays</a>
+      </div>
+      {%- else -%}
+      <div class="cart-items">
+        <form>
+          {%- for item in cart.items -%}
+          <div class="item">
+            <button class="text-right remove" aria-label="Remove Item">{% include 'icons', icon: 'close' %}</button>
+            <div class="grid">
+              <div class="grid__item one-third small--two-fifths">
+                <a href="{{ item.product.url }}">
+                  {%- if item.variant.image -%}
+                  {%- assign variantImg = item.variant.image -%}
+                  {%- else -%}
+                  {%- assign variantImg = item.product.featured_image -%}
+                  {%- endif -%}
+                  <img class="lazyload" src="{% include 'image_placeholder', image: variantImg %}"  alt="{{ item.product.title }}" data-srcset="{% include 'lazy_src', image: variantImg %}" />
+                </a>
+              </div>
+              <div class="grid__item two-thirds small--three-fifths">
+                <a href="{{ item.url }}" class="title custom_subtitle_font">{{ item.product.title }}</a>
+                {%- unless item.variant.title contains 'Default' -%}
+                <div class="variants">
+                  {%- for option in item.options_with_values -%}
+                  <strong>{{ option.name }}</strong>: {{ option.value }}{%- unless forloop.last -%}<br/>{%- endunless -%}
+                  {%- endfor -%}
+                </div>
+                {%- endunless -%}
+                {% if item.product.title contains 'Auto renew' %}
+                {%- for p in item.properties -%}
+                <script>
+                  console.log('{{ p.first }} : {{ p.last }}');
+                </script>
+                {% if p.first == "shipping_interval_unit_type" %}
+                <div class="properties custom_text_font">
+                  <span class="hide">{{ p.first }}:</span>
+                  {%- if p.last contains '/uploads/' -%}
+                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                  {%- else -%}
+					<!-- {{ p.last | replace: "Months", "Monthly" }} -->
+                  {%- endif -%}
+                </div>
+                {% endif %}
+                <div class="properties custom_text_font">
+                	{% if p.first == "shipping_interval_frequency" and p.last != "" %}{{ p.last }} Weeks{% endif %}
+                </div>
+                {%- endfor -%}
+                {% endif %}
+                <div class="price">
+                  <div class="pri custom_subtitle_font">{% if item.original_line_price and item.original_line_price != item.line_price %}<span style="text-decoration:line-through;">{{ item.original_line_price | money  }}</span><br>{% endif %}{{ item.line_price | money }}{% if item.message and item.message != "" %}<br><span>({{ item.message }})</span>{% endif %}</div>
+                </div>
+                <div class="flex align-items-center justify-content-between">
+                  <div class="column">
+                    <div class="quantity-box">
+                      <div class="flex align-items-center justify-content-center">
+                        <input type="button" value="-" class="minus animation" aria-label="Decrease the quantity" />
+                        <input type="number" step="1" name="updates[]" value="{{ item.quantity }}" title="Qty" min="0" max="" aria-label="Quantity"/>
+                        <input type="button" value="+" class="plus animation" aria-label="Increase the quantity" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </form>
+      </div>
+      {% if settings.show_empty_cart_btn %}
+      <div class="clear-cart-div text-center">
+      <a href="#" class="clear-cart custom_button_font"><span>Empty Cart</span></a>
+      </div>
+      {% endif %}
+      <div class="foot">
+        <h2 class="title custom_subtitle_font">Your Cart</h2>
+        <div class="flex subtotal align-items-center justify-content-between custom_subtitle_font">
+          <div class="column">
+            Items:
+          </div>
+          <div class="column custom_text_font">
+            {{ cart.item_count }}
+          </div>
+        </div>
+        <div class="flex subtotal align-items-center justify-content-between custom_subtitle_font">
+          <div class="column">
+            Total:
+          </div>
+          <div class="column custom_text_font">
+            {{ cart.total_price | money }}
+          </div>
+        </div>
+        <div class="buttons-wrapper text-center">
+			<a href="/checkout" class="btn btn-checkout custom_button_font" add> CONTINUE TO CHECKOUT →</a>
+        </div>
+        <div class="foot-bottom flex justify-content-center text-center">
+          <div class="flex direction-column text-left justify-content-center custom_text_font">
+              <p class="flex align-items-center justify-content-center foot-icon"><img src="{{ 'padlock.png' | file_url }}"><span>Safe and Secure Checkout</span></p>
+              <p class="flex align-items-center justify-content-center foot-icon"><img src="{{ 'free-shipping.png' | file_url }}"><span>Free Same-Day Shipping</span></p>
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $(document).on('click', '#side-cart .clear-cart', function(e){
+      e.preventDefault();
+      $('#side-cart input[name="updates[]"]').val(0);
+      $('#side-cart input[name="updates[]"]').first().change();
+    });
+  });
+</script>

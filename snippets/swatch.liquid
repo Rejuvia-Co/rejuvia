@@ -1,0 +1,61 @@
+{%- assign found_option = false -%}
+{%- assign is_color = false -%}
+{%- assign option_index = 0 -%}
+
+{%- for option in currentProduct.options -%}
+  {%- if option == swatch -%}
+    {%- assign found_option = true -%}
+    {%- assign option_index = forloop.index0 -%}
+    <style>
+      label[for="product-select-option-{{ option_index }}"] { display: none; }
+      #product-select-option-{{ option_index }} { display: none; }
+      #product-select-option-{{ option_index }} + .custom-style-select-box { display: none !important; }
+    </style>
+    <script>$(function() { $('.selector-wrapper:eq({{ option_index }})').hide(); });</script>
+    {%- assign downcased_option = swatch | downcase -%}
+    {%- if downcased_option contains 'color' or downcased_option contains 'colour' -%}
+      {%- assign is_color = true -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="swatch clearfix" data-option-index="{{ option_index }}" role="group" aria-label="{{ swatch }} selection group">
+  <div class="head" aria-hidden="true">{{ swatch }}</div>
+  <div class="group flex flex-wrap"> 
+  {%- assign values = '' -%}
+  {%- for variant in currentProduct.variants -%}
+      {%- assign value = variant.options[option_index] -%}
+      {%- unless values contains value -%}
+        {%- assign values = values | join: '*|*' -%}
+        {%- assign values = values | append: '*|*' | append: value -%} 
+        {%- assign values = values | split: '*|*' -%}
+        
+    	<div data-value="{{ value | escape }}" class="swatch-element {% if is_color and settings.enable_color_swatches %}color {% endif %} {{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
+          {%- if is_color and settings.enable_color_swatches -%}
+          	<div class="tooltip" aria-hidden="true">{{ value }}</div>
+            <input class="visuallyhidden" id="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %} aria-hidden="true" />
+            <label class="animation color" role="button" for="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }};">
+              <span class="visuallyhidden">Select {{ value }} {{ swatch }}</span>
+              <div class="cross"></div>
+            </label>
+          {%- else -%}
+            <input class="visuallyhidden" id="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}-{{ currentProduct.id }}-{{ sufix }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}" {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %} aria-hidden="true" />
+            <label class="animation" role="button" for="swatch-{{ currentProduct.id }}-{{ option_index }}-{{ value | handle }}-{{ currentProduct.id }}-{{ sufix }}">
+              <span class="visuallyhidden">Select </span>{{ value }}<span class="visuallyhidden"> {{ swatch }}</span>
+              <div class="cross"></div>
+            </label>
+          {%- endif -%}
+        </div>
+      {%- endunless -%}
+  {%- endfor -%}
+    {% if product.metafields.more_info.tooltip_variant != '' %}
+      <div class="card_prompt_variants">
+        <span>Not sure? Let us help.</span>
+      </div>
+    {% endif %}
+  </div>
+{% if product.metafields.more_info.tooltip_variant != '' %}
+    <div class="prompt_variants hide">
+      <span></span>  {{product.metafields.more_info.tooltip_variant}} </div>
+  </div>
+{% endif %}

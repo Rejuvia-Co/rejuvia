@@ -1,0 +1,176 @@
+{% style %}
+
+  .separator-ingredients-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 25px;
+    background-color: {{ section.settings.background_color_section }};
+  }
+
+  @media(min-width: 900px){
+    .separator-ingredients-section{
+    padding: 32px 35px;
+  }
+  }
+
+  .separator-ingredients{
+    width: 100%;
+    max-width: 1360px;
+    min-height: 296px;
+    background-color: {{ section.settings.background_color }};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+
+
+  .separator-ingredients-into{
+    display: flex;
+    color: {{ section.settings.color_font }};
+    justify-content: center;
+    
+  }
+
+  .separator-labels-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 260px;
+    justify-content: center;
+    
+  }
+
+  @media(max-width: 950px){
+    .separator-labels-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+    justify-content: center;
+    
+  }
+
+
+
+  }
+  .separator-principal-label{
+    font-size: 148px;
+    font-weight: 700;
+    line-height: 100px;
+    margin-bottom: 0;
+    margin-top: 25px;
+  }
+  .separator-principal-label span{
+    
+    font-weight: 400;
+
+  }
+
+ .separator-second-label {
+    margin-bottom: 0px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+
+
+
+  #separator-description-container > p {
+    max-width: 800px;
+    font-weight: 300 !important;
+    font-size: 32px;
+    line-height: 41.6px;
+    margin-bottom: 0;
+  }
+
+  @media(max-width: 750px){
+    .separator-ingredients-into{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .separator-ingredients{
+    padding: 45px;
+  }
+
+  .separator-labels-container {
+    margin-bottom: 30px;
+  }
+
+  #separator-description-container > p {
+    font-size: 24px;
+    line-height: 31.2px;
+
+  }
+
+  }
+{% endstyle %}
+
+<div class="separator-ingredients">
+    <div class="separator-ingredients-into">
+      <div class="separator-labels-container">
+        <div class="separator-principal-label">{{ section.settings.principal_label }}<span>x</span></div>
+        <div class="separator-second-label">{{ section.settings.second_label }}</div>
+      </div>
+      <div class="separator-description-container" id="separator-description-container">
+        {{ section.settings.description_text }}
+      </div>
+    </div>
+  </div>
+  
+
+
+{% schema %}
+{
+  "name": "Separator Ingredients",
+  "class": "separator-ingredients-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color_section",
+      "label": "Background Color Section",
+      "default": "#FAFAF9"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_font",
+      "label": "Font Color",
+      "default": "#FFF"
+    },
+    {
+      "type": "text",
+      "id": "principal_label",
+      "label": "Principal Label",
+      "default": "Principal Label Text"
+    },
+    {
+      "type": "text",
+      "id": "second_label",
+      "label": "Second Label",
+      "default": "Second Label Text"
+    },
+    {
+      "type": "richtext",
+      "id": "description_text",
+      "label": "Description Text",
+      "default": "<p>Description goes here.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Separator Ingredients",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,24 @@
+<script>
+  $(function(){  
+    function imageSwatch(element){
+      var thumbs = element.closest('.thumbs-swatches-wrap').find('div');
+      var item = element.closest('.product-item');
+      var index = thumbs.index(element);
+
+      thumbs.removeClass('active');
+      element.addClass('active');
+      item.find('.image .img').hide();
+      item.find('.image .img:eq('+index+')').show();
+    }
+
+    if(!isMobile.any) {
+      $(document).on('mouseenter', '.thumbs-swatches-wrap div', function(){  /* HOVER ON DESKTOP */
+          imageSwatch($(this));
+      });
+    } else {
+      $(document).on('click', '.thumbs-swatches-wrap div', function(){  /* CLICK ON MOBILE */
+          imageSwatch($(this));
+      });
+    }
+  });
+</script>

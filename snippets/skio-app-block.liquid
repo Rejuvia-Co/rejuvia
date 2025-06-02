@@ -1,0 +1,63 @@
+{% liquid
+  assign product_form_id_default = product_form_id | json
+  assign product_form_id = product_form_id | default: product_form_id_default
+%}
+<style>
+  skio-plan-picker {
+      --skio-group-border-radius: 8px;
+      --skio-group-border-width: 1.5px;
+      --skio-group-border-selected-width: 2px;
+      --skio-group-border-color: #BFBFBF;
+      --skio-group-border-selected-color: #672666;
+      --skio-group-background-color: transparent;
+      --skio-group-background-selected-color: transparent;
+      --skio-group-text-color: #000;
+      --skio-group-text-selected-color: #000;
+      --skio-discount-color: #c2f1bd;
+      --skio-discount-text-color: #000;
+    }
+</style>
+
+{% assign block_s = block_i.settings %}
+
+{% capture settings %}
+  {
+    "form_id": {{ product_form_id | json }},
+    "show_without_subscription": false,
+    "show_compare_price": true,
+    "legend_content": "Select your order",
+    "show_legend": false,
+    "layout": "vertical",
+    "start_onetime": {{  block_s.start_onetime }},
+    "onetime_first": {{  block_s.onetime_first }},
+    "show_radio_selector": true,
+    "onetime_title": "One Time Purchase",
+    "subscription_title": "Subscribe & ",
+    "prepaid_title": "Prepaid",
+    "discount_format": "percentage",
+    "discount_style": "bubble",
+    "discount_text": "[discount]",
+    "additional_subscription_content": "",
+    "selector_type": "dropdown",
+    "default_subscription": "",
+    "future_price_adjustments_text": "<small>Then [discount] off after the [order_count_ordinal] order</small>",
+    "combine_groups": false,
+    "combined_group_name": "Subscription",
+    "show_details": false,
+    "dropdownPosition": "inside",
+    "external_price_selector": ".skio-update-price"
+  }
+{% endcapture %}
+
+<skio-plan-picker
+  key="plan-picker-{{ product.id }}"
+  options='{{ settings | strip_newlines }}'
+  product='{{ product | json | escape }}'
+  productHandle='{{ product_handle }}'
+  layout="vertical"
+  selectedVariant='{{ product.selected_or_first_available_variant | json | escape }}'
+>
+  <input type='hidden' name='selling_plan' form='{{ product_form_id }}'>
+</skio-plan-picker>
+
+<script src='{{ 'skio-plan-picker-component.js' | asset_url }}' type='module'></script>

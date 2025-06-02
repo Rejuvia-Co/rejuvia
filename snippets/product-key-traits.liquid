@@ -1,0 +1,73 @@
+<style>
+    .key-traits-container {
+        display: flex;
+        padding: 8px 0px;
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: 16px 24px;
+        flex-wrap: wrap;
+    }
+
+    .key-trait-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        color: #672666;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 24px */
+        width: calc(50% - 12px);
+    }
+    .key-trait-item p { 
+        margin: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        .key-traits-container {
+            gap: 0px 2px;
+            margin-bottom: 32px;
+        }
+
+        .key-trait-item {
+            width: calc(25% - 2px);
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @media screen and (min-width: 901px) and (max-width: 1150px) {
+        .key-trait-item {
+            width: calc(50% - 2px);
+        }
+    }
+</style>
+
+
+<div class="key-traits-container">
+    {% comment %} <div class="key-trait-item">
+        {{ images['Plant.svg'] | image_url: width: 32 | image_tag }}
+        <p>100% Vegan</p>
+    </div>
+    <div class="key-trait-item">
+        {{ images['SealCheck.svg'] | image_url: width: 32 | image_tag }}
+        <p>Non-Gmo</p>
+    </div>
+    <div class="key-trait-item">
+        {{ images['Flask.svg'] | image_url: width: 32 | image_tag }}
+        <p>Lab-Tested</p>
+    </div>
+    <div class="key-trait-item">
+        {{ images['Wind.svg'] | image_url: width: 32 | image_tag }}
+        <p>Mint Flavor</p>
+    </div> {% endcomment %}
+    {% for icon in section.blocks %}
+        {% if icon.type == 'text' %}
+            <div class="key-trait-item">
+                {{ icon.settings.icon | image_url: width: 32 | image_tag }}
+                <p>{{ icon.settings.title }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

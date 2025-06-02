@@ -1,0 +1,60 @@
+{% assign lable_sale = false %}
+{% if product.compare_at_price_min > product.price_min %}
+{% assign lable_sale = true %}
+{% endif %}
+
+{% comment %}
+Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+
+{% assign lable_out = true %}
+{% if product.available  %}
+{% assign lable_out = false %}
+{% endif %}
+<style>
+  .product-item1 .title {    display: flex;
+    justify-content: space-between;}
+</style>
+<div class="product-item1 product-item animation large--one-third small--one-half items-{{ forloop }}">
+  <div class="items-wapper">
+    <div class="image-wrapper" style="position: relative;">
+      {%- if product.images.size > 1 -%}
+        {%- assign showSecondImage = true -%}
+      {%- else -%}
+        {%- assign showSecondImage = false -%}
+      {%- endif -%}	
+      <div class="image {% if showSecondImage %}show-second-image{% endif %}">
+        <a href="{{ product.url }}">
+        <div class="img animation lazyload" data-bgset=" {{ product.images.first | img_url: 'master' }}"></div>
+        </a>
+        {%- if showSecondImage -%}
+<!--         	<div class="img second-img animation lazyload lazypreload" data-bgset="{{ product.images.last | img_url: 'master' }}"></div> -->
+        {%- endif -%}
+       
+        {%- unless product.available -%}
+        	<div class="sold-out">sold<br />out</div>
+        {%- endunless -%}
+      </div>
+    </div>
+    <div class="offerInner_6dAby">
+      <div class="title animation {{ product.tags }} "> <span><a href="{{ product.url }}">{% if Lable != blank %} {{ Lable }} {% else %}{{ product.title }} {% endif %}</a></span>  {% render 'okendo-reviews-product-rating-summary', product: product %}</div>
+      
+      <div class="subprice">{{ customPrices }}</div>
+      <div class="subheading custom_text_font">{% if short_description != blank %} {{ short_description }} {% else %}{{ product.description }} {% endif %}</div>
+       <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ product.id }}" method="post" class="variants add-to-cart-form" enctype="multipart/form-data">
+       
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <button class="btn" type="submit" style="background-color:{{ button_color }}">
+           <span>{% if customButton != blank %} {{ customButton }} {% else %}Add To Your Cart{% endif %}</span>
+        </button>
+      </form>
+ 
+<!--       <div class="price-box custom-prices">
+        <p class="sale">
+          <span class="regular-product">{{ product.price_min | money }}</span>
+          <span class="old-price" style="text-decoration: line-through;"> {{ comparePrices }}</span>
+        </p>
+      </div> -->
+    </div>
+    </div>
+</div>

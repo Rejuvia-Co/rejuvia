@@ -1,0 +1,130 @@
+{{ 'trust-badge.css' | asset_url | stylesheet_tag }}
+
+<!-- Required Core Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  onload="this.media='all'"
+>
+<!-- Optional Theme Stylesheet -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+  onload="this.media='all'"
+>
+
+<div class="trustb-section">
+  <div class="heading-reviews">
+    <h4 class="section-title">
+      {{ section.settings.hero_heading }}
+    </h4>
+    <div id="trust-badges-slider" class="glide-press">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <li class="glide__slide">
+            <div class="trust-logo-item">
+              {% assign classImg = '' %}
+              {% if section.settings.scale_image_1 == true %}
+                {% assign classImg = 'scale_up_image' %}
+              {% endif %}
+              {{ section.settings['image-1'] | image_url: width: 100 | image_tag: class: classImg }}
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="trust-logo-item">
+              {{ section.settings['image-2'] | image_url: width: 100 | image_tag }}
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="trust-logo-item">
+              {{ section.settings['image-3'] | image_url: width: 100 | image_tag }}
+            </div>
+          </li>
+          <li class="glide__slide">
+            {% assign classImg = '' %}
+            {% if section.settings.scale_down_image_4 == true %}
+              {% assign classImg = 'scale_down_image' %}
+            {% endif %}
+            <div class="trust-logo-item ">
+              {{ section.settings['image-4'] | image_url: width: 100 | image_tag: class: classImg }}
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="trust-logo-item">
+              {{ section.settings['image-5'] | image_url: width: 100 | image_tag }}
+            </div>
+          </li>
+          <li class="glide__slide">
+            <div class="trust-logo-item">
+              {{ section.settings['image-6'] | image_url: width: 100 | image_tag }}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js" defer></script>
+
+<script src="{{ 'trust-badge.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Press Logos",
+  "tag": "section",
+  "class": "Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "“Just a few sprays, to make the insomnia go away.”"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-1",
+      "label": "Image 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "scale_image_1",
+      "label": "Increase size Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-4",
+      "label": "Image 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "scale_down_image_4",
+      "label": "Decrease size Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-6",
+      "label": "Image 6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Logos"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+<div class="product-item animation {% unless isCarousel %}grid__item large--{{settings.grid_items_per_row}} medium--{{ settings.grid_items_per_row_medium }} small--{{ settings.grid_items_per_row_small }}{% endunless %}">
+  <a href="{{ currentProduct.url }}{% if fromSearch %}#search{% endif %}">
+    <div class="image-wrapper" style="position: relative;">
+      {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+          {%- include 'product_item_img_swatches' -%}
+      {%- elsif settings.grid_product_image_behavior == "alternate_image" -%}
+          {%- include 'product_item_img_alternate' -%}
+      {%- else -%}
+          {%- include 'product_item_img' -%}
+      {%- endif -%}
+
+      {%- if quickview -%}
+        <div class="layer quick-view-btn ease-animation" data-url="{{ currentProduct.url | within: collection }}?view=quick-view">
+          <div>Quick View</div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+      {%- include 'thumbs_swatches' -%}
+    {%- endif -%}
+
+    <div class="info">
+      <div class="title animation {{ currentProduct.tags }} custom_title_font">{{ currentProduct.title }}</div>
+      <div class="price clearfix">
+        {% comment %} {%- if currentProduct.price_min < currentProduct.compare_at_price_min -%}
+          <div class="retail">
+            <span data-price="retail">{{ currentProduct.compare_at_price | money | remove: '.00' }}</span>
+          </div>
+        {%- endif -%} {% endcomment %}
+        <div class="deal">
+          <span class="red-price" data-price="deal">{{ currentProduct.price_min | money | remove: '.00' }}</span>
+        </div>
+      </div>
+      <div class="subheading custom_text_font">{{ currentProduct.metafields.global.subheading }}</div>
+      <div class="shop-now">
+        <a class="btn custom_button_font" href="{{ currentProduct.url }}">Shop Now</a>
+      </div>
+    </div>
+  </a>
+</div>

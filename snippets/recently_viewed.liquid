@@ -1,0 +1,50 @@
+{{ 'jquery.products.js' | asset_url | script_tag }}
+<div class="recently-viewed">
+  <div class="container">
+    <h2>{{settings.recently_viewed_title}}</h2>
+	<div id="recently-viewed-products"></div>
+  </div>
+</div>
+<script>
+  $(function(){
+    Shopify.Products.showRecentlyViewed({
+      howManyToShow: 6, 
+      onComplete: function(){
+        if($('#recently-viewed-products .product-item').length > 0) {
+          $('.recently-viewed').show();
+          $('#recently-viewed-products').slick({
+            autoplay: true,
+            speed: 700,
+            slidesToShow: 5,
+            pauseOnHover: false,
+            slidesToScroll: 5,
+            prevArrow: '{% include 'icons', icon: 'arrow-left' %}',
+            nextArrow: '{% include 'icons', icon: 'arrow-right' %}',
+            responsive: [
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '20%'
+                }
+              },
+              {
+                breakpoint: 900,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '15%'
+                }
+              }
+            ]
+          });
+        }
+      }
+    });
+  });
+</script>

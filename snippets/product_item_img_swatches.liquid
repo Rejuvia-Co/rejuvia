@@ -1,0 +1,16 @@
+<div class="image">
+  <div class="img lazyload" style="display: block;" data-bgset="{% include 'lazy_src', image: currentProduct.images.first %}"></div>
+  {%- assign totalImages = 0 -%}
+  {%- for img in currentProduct.images -%}
+    {%- if img.variants.size > 0 and totalImages < 4 and img != currentProduct.featured_image -%}
+      <div class="img lazyload" style="display: none;" data-bgset="{% include 'lazy_src', image: img %}"></div>
+      {%- assign totalImages = totalImages | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {% comment %} {%- if currentProduct.available and currentProduct.price_min < currentProduct.compare_at_price_min -%}
+  	<div class="sale">sale</div>
+  {%- endif -%} {% endcomment %}
+  {%- unless currentProduct.available -%}
+  	<div class="sold-out">sold<br />out</div>
+  {%- endunless -%}
+</div>

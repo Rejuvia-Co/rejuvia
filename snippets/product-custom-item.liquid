@@ -1,0 +1,48 @@
+<div class="product-item animation {% unless isCarousel %}grid__item large--{{settings.grid_items_per_row}} medium--{{ settings.grid_items_per_row_medium }} small--{{ settings.grid_items_per_row_medium }}{% endunless %}">
+<a href="{{ currentProduct.url }}{% if fromSearch %}#search{% endif %}">
+  <div class="image-wrapper" style="position: relative;">
+    {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+        {%- render 'product_item_img_swatches' currentProduct: currentProduct -%}
+    {%- elsif settings.grid_product_image_behavior == "alternate_image" -%}
+        {%- render 'product_item_img_alternate' currentProduct: currentProduct -%}
+    {%- else -%}
+        {%- render 'product_item_img' currentProduct: currentProduct -%}
+    {%- endif -%}
+
+    {%- if quickview -%}
+      <div class="layer quick-view-btn ease-animation" data-url="{{ currentProduct.url | within: collection }}?view=quick-view">
+        <div>Quick View</div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+    {%- render 'thumbs_swatches' -%}
+  {%- endif -%}
+
+  <div class="info">
+    {% render 'okendo-reviews-product-rating-summary', product: currentProduct %}
+    <div class="title animation {{ currentProduct.tags }} custom_title_font">{{ currentProduct.title }}</div>
+    <div class="subheading custom_text_font">{{ currentProduct.metafields.custom.card_description }}</div>
+    <div style="display: flex; align-items: center;" class="price clearfix">
+      {% comment %} {%- if currentProduct.price_min < currentProduct.compare_at_price_min -%}
+        <div class="retail">
+          <span data-price="retail">{{ currentProduct.compare_at_price | money | remove: '.00' }}</span>
+        </div>
+      {%- endif -%} {% endcomment %}
+      <div class="deal">
+        <span class="red-price card_regular-price" data-price="deal">{{ currentProduct.price_min | money | remove: '.00' }}</span>
+      </div>
+      {% if currentProduct.metafields.custom.discount != blank %}
+        <div class="deal">
+            <span class="discount_tag_price">{{ currentProduct.metafields.custom.discount }}</span>
+        </div>
+      {% endif %}
+    </div>
+    {% comment %} <div class="subheading custom_text_font">{{ currentProduct.metafields.global.subheading }}</div> {% endcomment %}
+    {% comment %} <div class="shop-now">
+      <a class="btn custom_button_font" href="{{ currentProduct.url }}">Shop Now</a>
+    </div> {% endcomment %}
+  </div>
+</a>
+</div>

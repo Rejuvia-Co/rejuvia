@@ -1,0 +1,256 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_widget_6p4fVc": {
+      "type": "product-widget",
+      "blocks": {
+        "text_yDnBNe": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Plant.svg",
+            "title": "All-Natural"
+          }
+        },
+        "text_FFyKCH": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/SealCheck.svg",
+            "title": "USA Made"
+          }
+        },
+        "text_YtYqLw": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Flask.svg",
+            "title": "Lab Tested"
+          }
+        },
+        "text_weyETr": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Wind.svg",
+            "title": "Mint Flavor"
+          }
+        },
+        "skio_plan_picker_bBL3GV": {
+          "type": "skio-plan-picker",
+          "settings": {
+            "start_onetime": true,
+            "onetime_first": true
+          }
+        }
+      },
+      "block_order": [
+        "text_yDnBNe",
+        "text_FFyKCH",
+        "text_YtYqLw",
+        "text_weyETr",
+        "skio_plan_picker_bBL3GV"
+      ],
+      "settings": {
+        "hero_heading": "",
+        "selected_product": "",
+        "guarantee_label": "FREE SHIPPING OVER $59",
+        "swatch_tag_content": "",
+        "preselected_item": 3
+      }
+    },
+    "how_it_works_iekrPr": {
+      "type": "how-it-works",
+      "blocks": {
+        "card_9LiBNi": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_11055_copy.jpg",
+            "description": "Spray 6-8 times under your tongue."
+          }
+        },
+        "card_zUMeG8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_11107_copy.jpg",
+            "description": "Swish around your mouth for 5-10 seconds."
+          }
+        },
+        "card_CNBzWA": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_10992_copy.jpg",
+            "description": "Swallow and get ready to feel the benefits."
+          }
+        }
+      },
+      "block_order": [
+        "card_9LiBNi",
+        "card_zUMeG8",
+        "card_CNBzWA"
+      ],
+      "settings": {
+        "heading": "How To Use Rejuvia",
+        "subheading": "Use your Calm Spray throughout the day as needed."
+      }
+    },
+    "1717460916cf4757a6": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_Uc3pqP": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_Uc3pqP"
+      ],
+      "settings": {}
+    },
+    "main_page_4Q6KQH": {
+      "type": "main-page",
+      "blocks": {
+        "faqs_Bzr9Mf": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Why are Rejuvia sprays better than oils & pills?",
+            "subheading": "Oral sprays are more effective than gummy and capsule supplements because they allow for direct absorption of nutrients through the mucous membranes in the mouth, bypassing the digestive system. This leads to quicker and more efficient uptake of vitamins and minerals, ensuring significantly higher bioavailability."
+          }
+        },
+        "faqs_kbjgEW": {
+          "type": "faqs",
+          "settings": {
+            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Calm Spray?",
+            "subheading": "Our Sleep Spray is intended for use before bedtime. Our Calm Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."
+          }
+        },
+        "faqs_f39Ji6": {
+          "type": "faqs",
+          "settings": {
+            "heading": "When should I use the Calm Spray?",
+            "subheading": "The calm spray can be used during the day or evening when you need to calm down and alleviate stress. The Calm Spray will not make you feel tired or induce sleep, but it will help you feel mentally relaxed and calm."
+          }
+        },
+        "faqs_8mP9YQ": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Will the Calm Spray make me tired during the day?",
+            "subheading": "The calm spray is primarily designed to reduce stress and promote relaxation without necessarily making you feel tired. However, since it helps reduce stress and creates a sense of calmness, it might make some people feel more relaxed and potentially a bit drowsy, especially if they are already tired or use it in the evening."
+          }
+        },
+        "faqs_eDxDNH": {
+          "type": "faqs",
+          "settings": {
+            "heading": "What do Rejuvia's sprays taste like?",
+            "subheading": "Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."
+          }
+        },
+        "faqs_NitEKm": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Are Rejuvia's sprays third-party tested?",
+            "subheading": "All of our products are indepdently triple lab-tested for purity and potency each batch. Each prodcut comes with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency."
+          }
+        },
+        "faqs_K9Fkbt": {
+          "type": "faqs",
+          "settings": {
+            "heading": "How long will one Calm Spray last?",
+            "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per day, so one Rejuvia Calm Spray will last you 30-35 days on average."
+          }
+        },
+        "faqs_rVdn8m": {
+          "type": "faqs",
+          "settings": {
+            "heading": "How many sprays should I use?",
+            "subheading": "Our recommended dose is 6-8 sprays under your tongue or on the inside of your cheek. You can adjust your dose to find the perfect balance, though. You might do better with just 4-6 sprays or you might do better with 8-10. It’s all about finding what works best for your body and the metered spray makes it very easy to do so."
+          }
+        },
+        "faqs_9MQKrh": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Can I use the Calm Spray multiple times in one day?",
+            "subheading": "It is fine to use the calm spray more than once a day. The majority of our customers utilize our calm spray once per day, but some use it twice. The most popular time to use the Calm Spray is in the late morning. Each dosage of the Calm Spray should last you 4-6 hours."
+          }
+        }
+      },
+      "block_order": [
+        "faqs_Bzr9Mf",
+        "faqs_kbjgEW",
+        "faqs_f39Ji6",
+        "faqs_8mP9YQ",
+        "faqs_eDxDNH",
+        "faqs_NitEKm",
+        "faqs_K9Fkbt",
+        "faqs_rVdn8m",
+        "faqs_9MQKrh"
+      ],
+      "settings": {
+        "customClass": "",
+        "background": "#f0e9ef",
+        "heading": "Frequently Asked Questions",
+        "customTextBottom": "",
+        "title_color": "#000000",
+        "text_color": "#000000"
+      }
+    },
+    "section_choose_product_UUJBY4": {
+      "type": "section-choose-product",
+      "blocks": {
+        "product_yTNPFt": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray",
+            "short_description": ""
+          }
+        },
+        "product_Mc3T43": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-stress-spray",
+            "short_description": ""
+          }
+        },
+        "product_GzhtQB": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-sprays",
+            "short_description": ""
+          }
+        },
+        "product_DzCK9Y": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray-6-pack",
+            "short_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_yTNPFt",
+        "product_Mc3T43",
+        "product_GzhtQB",
+        "product_DzCK9Y"
+      ],
+      "name": "Select Product",
+      "settings": {
+        "title": "Shop All Rejuvia Products",
+        "sub_title": "Better sleep and less stress are now just a few sprays away."
+      }
+    }
+  },
+  "order": [
+    "product_widget_6p4fVc",
+    "how_it_works_iekrPr",
+    "1717460916cf4757a6",
+    "main_page_4Q6KQH",
+    "section_choose_product_UUJBY4"
+  ]
+}

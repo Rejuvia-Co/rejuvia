@@ -1,0 +1,139 @@
+<div class="product-item {% unless isCarousel %}grid__item large--{{settings.grid_items_per_row}} medium--{{ settings.grid_items_per_row_medium }} small--{{ settings.grid_items_per_row_small }}{% endunless %}">
+  <div>
+    <a href="{{ currentProduct.url }}{% if fromSearch %}#search{% endif %}">
+      <div class="title  {{ currentProduct.tags }} custom_title_font">{{ currentProduct.title }}</div>
+  
+      <div class="image-wrapper" style="position: relative;">
+        {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+          {%- include 'product_item_img_swatches' -%}
+        {%- elsif settings.grid_product_image_behavior == "alternate_image" -%}
+          {%- include 'product_item_img_alternate' -%}
+        {%- else -%}
+          {%- include 'product_item_img' -%}
+        {%- endif -%}
+  
+        {%- if quickview -%}
+          <div class="layer quick-view-btn ease-animation" data-url="{{ currentProduct.url | within: collection }}?view=quick-view">
+            <div>Quick View</div>
+          </div>
+        {%- endif -%}
+      </div>
+    </a>
+
+    {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
+      {%- include 'thumbs_swatches' -%}
+    {%- endif -%}
+
+    <div class="info custom_text_font">
+      <form
+        id="add-to-cart-form"
+        action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}"
+        method="post"
+        class="variants add-to-cart-form"
+        enctype="multipart/form-data">
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.variants.first.id }}" />
+        <div class="selling-plan-boxes" data-selling-boxes>
+          {% assign skioSellingPlanAllocations = product.variants[0].selling_plan_allocations | where: "selling_plan_group_id", "d1c31b7d875f371afdda85ee0906e6c15aee403a" %}
+
+          {% if skioSellingPlanAllocations.size > 0 %}
+            {% assign default_allocation = skioSellingPlanAllocations[0] %}
+            <input type="hidden" name="selling_plan" value="{{ default_allocation.selling_plan.id }}" />
+            <div class="selling-plans-heading">
+              <div>{% render 'okendo-reviews-product-rating-summary', product: product %}</div>
+              <div data-selling-plan-type>Subscription</div>
+            </div>
+            <div class="subscription-boxes selling-plan-box selected">
+              <div class="selling-plan-title">
+                <div>Subscribe & Save</div>
+                <div data-subscribe-price>{{ default_allocation.price | money }}</div>
+              </div>
+              <select data-subscription-select>
+                {% for allocation in skioSellingPlanAllocations %}
+                  {% assign plan = allocation.selling_plan %}
+                  <option data-price="{{ allocation.price | money }}" value="{{ plan.id }}">{{ plan.name }}</option>
+                {% endfor %}
+              </select>
+              <div class="subscription-point">
+                {% render 'icon-check' %}
+                <div>30% Off Every Order</div>
+              </div>
+              <div class="subscription-point">
+                {% render 'icon-check' %}
+                <div>Easily Cancel, Pause or Skip</div>
+              </div>
+            </div>
+          {% endif %}
+          <div class="one-time-box selling-plan-box">
+            <div class="selling-plan-title">
+              <div>One-Time Purchase</div>
+              <div>{{ product.variants[0].price | money }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-quantity">
+            <div class="card-quantity__minus" data-quantity-dec>-</div>
+            <input class="card-quantity__input" name="quantity" value=1 data-quantity-input>
+            <div class="card-quantity__plus" data-quantity-inc>+</div>
+          </div>
+          <button class="btn" type="submit">
+            {% if is_membership_page %}
+              <span data-smartrr-product-id="{{ product.id }}" data-smartrr-price-style="overwrite">
+                <span></span>
+                <span></span>
+                <span>{{ currentProduct.price_min | money | remove: '.00' }}</span>
+              </span>
+            {% endif %}
+            <span>Add To Cart</span>
+          </button>
+        </div>
+      </form>
+      <div class="learn-more custom_button_font">
+        <a href="{{ currentProduct.url }}">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media all and (min-width: 900px) {
+
+    .collection-wrapper .image-wrapper img {
+      min-height: 250px;
+      min-width: 400px;
+    }
+    .collection-wrapper .image-wrapper {
+      min-height: 280px;
+      max-height: 300px;
+      height: auto;
+    }
+
+    .collection-wrapper .image {
+      min-height: 280px;
+      max-height: 300px;
+      height: auto;
+    }
+
+    .collection-wrapper .image img {
+      min-height: 280px;
+      max-height: 300px;
+      height: auto;
+
+    }
+
+    .product-item .info {
+      min-height: 160px;
+    }
+
+
+    .product-item {
+      min-height: 450px;
+      height: auto;
+      min-width: 420px;
+    }
+
+  }
+</style>

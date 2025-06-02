@@ -1,0 +1,27 @@
+<div class="image">
+  {% if template contains 'collection' %}
+    <div class="img" style="background-image: url('{{currentProduct.images.first | img_url: '600x'}}')"></div>
+    
+    <link
+      rel="preload"
+      fetchpirority="high"
+      href="{{currentProduct.images.first | img_url: '600x'}}"
+      as="image">
+    
+      
+    
+
+
+
+  {% else %}
+    <div class="img lazyload" data-bgset="{% render 'lazy_src', image: currentProduct.images.first %}"></div>
+
+  {% endif %}
+
+  {% comment %} {%- if currentProduct.available and currentProduct.price_min < currentProduct.compare_at_price_min -%}
+    <div class="sale">sale</div>
+  {%- endif -%} {% endcomment %}
+  {%- unless currentProduct.available -%}
+    <div class="sold-out">sold<br/>out</div>
+  {%- endunless -%}
+</div>

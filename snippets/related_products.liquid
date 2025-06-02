@@ -1,0 +1,74 @@
+<style>
+  .related-products {font-family: "Nexa";}
+  .related-products h2 {font-size: 3.214em; text-transform: none; font-family: "Nexa"; font-weight: 800; letter-spacing: normal;}
+  .related-products .product-item .info .title {font-size: 1.286em; font-weight: 600; text-transform: uppercase; padding: 2em 1em 1em;}
+  .related-products .product-item .info .subheading {font-size: 1.286em; font-style: italic; padding-bottom: 1.2em;}
+  .related-products .product-item .info .price {display: none;}
+  .related-products .product-item .info {background-color: #F5F5F5}
+  .related-products .product-item .btn {margin-bottom: 2em;}
+  
+  @media all and (max-width: 600px) {
+    .slick-dots li:not(.slick-active) button {width: 6px; height: 6px;}
+    .slick-dots li button {background-color: #001b71 !important;}
+    .related-products h2 {font-size: 1.714em;}
+  }
+</style>
+{%- assign showed = 0 -%}
+{%- if collection != blank -%}
+	{%- assign relatedCollection = collection -%}
+{%- else -%}
+	{%- assign relatedCollection = currentProduct.collections.last -%}
+{%- endif -%}
+{%- if relatedCollection != blank and relatedCollection.products.size > 1 -%}
+<div class="related-products">
+  <div class="container">
+    <h2>{{settings.related_products_title}}</h2>
+	<div class="product-carousel slick-pending">
+      {%- for relprod in relatedCollection.products -%}
+      	{%- if relprod.available -%}
+          {%- if showed < 10 and relprod.handle != product.handle -%}
+        	{%- include 'product_item', currentProduct: relprod, quickview: false, collection: relatedCollection, isCarousel: true -%}
+            {%- assign showed = showed | plus: 1 -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    $('.product-carousel').slick({
+      autoplay: false,
+      speed: 700,
+      slidesToShow: 4,
+      pauseOnHover: false,
+      slidesToScroll: 2,
+      prevArrow: '{% include 'icons', icon: 'arrow-left' %}',
+      nextArrow: '{% include 'icons', icon: 'arrow-right' %}',
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+      		arrows: false,
+      		dots: true
+//             centerMode: false,
+//             centerPadding: '20%'
+          }
+        },
+        {
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+      		arrows: false,
+            centerMode: true,
+            centerPadding: '15%'
+          }
+        }
+      ]
+    });
+  });
+</script>
+{%- endif -%}

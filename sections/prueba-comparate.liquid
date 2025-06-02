@@ -1,0 +1,1404 @@
+<style>
+    #page > header{z-index: 110;    transition: all 0.4s;}
+  body.sticky-header .header .main-content{background:#fff;}
+#page  #shopify-section-header-top{   
+}
+  .utility-bar-items p{margin-bottom:0;font-size:14px;}
+.sticky-header #page > #shopify-section-header-top{top:0px!important;    z-index: 111;}
+.sticky-none #page > #shopify-section-header-top {position:sticky;top:-100%}
+  .utility-bar{padding: 6px;}
+html, body{overflow: visible!important;}
+  
+  /* Custom style  for menu open button*/
+ 
+{% unless section.settings.enableSticky %}
+.is-ticky .header-top{display: none;}
+{% endunless %}
+  
+  .header {width: 100%; position: relative; color: {{section.settings.header_text_color}}; background: {{section.settings.header_color}}; {% if section.settings.header_border_color != 'rgba(0,0,0,0)' %}border-bottom: 1px solid {{section.settings.header_border_color}};{% else %}border: none;{% endif %} }
+  .header svg {width: 20px; height: 20px;}
+  .header svg path {fill: #000000/*{{section.settings.header_text_color}}*/;}
+  
+  .header .logo {line-height: 100%; width: 100%; max-width: {{section.settings.logo_max_width}}; margin-right: 24px;}
+
+  @media screen and (min-width: 901px) {
+    .header .logo {
+      margin-bottom: 10px;
+    }
+  }
+
+  .header .nav-wrapper, .header .navigator {width: calc(50% - {{section.settings.logo_max_width}}/2);}
+
+  .header .logo img {width: 100%; display: block;}
+  .header .logo .shop-name {font-size: 2em; text-transform: {{ settings.heading_font_transform }}; color: {{ settings.content_heading_color }}; letter-spacing: {{settings.heading_font_letter_spacing}}; line-height: 100%; }
+  .header .main-content {position: relative; padding: 0em 0em 0em;}
+  
+  {%- if section.settings.drop_header or section.settings.drop_header_mobile -%}
+  /**** header drop ****/
+  .header-drop {position: fixed; visibility: hidden; width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.1); color: {{section.settings.drop_header_text_color}}; background: {{section.settings.drop_header_color}}; {% if section.settings.drop_header_border_color != 'rgba(0,0,0,0)' %}border-bottom: 1px solid {{section.settings.drop_header_border_color}};{% else %}border: none;{% endif %} top: 0; z-index: 999; -webkit-transform: translateY(-150%); transform: translateY(-150%);}
+  .header-drop svg path {fill: {{section.settings.drop_header_text_color}};}
+  .header-drop.scroll {z-index: 2000; visibility: visible; -webkit-transform: translateY(0); transform: translateY(0);}
+  .header-drop .main-content {position: relative; padding: 0em 0; }
+  .header-drop .logo {max-width: {{section.settings.drop_logo_max_width}};}
+  .header-drop .utility-bar {margin: 0;}
+  .header-drop .top-utils a:not(:last-child) {margin-right: 2em;}
+  .header-drop .top-utils svg {margin-right: 0;}
+  .header-drop .top-utils span:not(.count) {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px;}
+  .header-drop .top-utils .logout {display: none;}
+  .header-drop .main-menu {margin: 0 2em;}
+  .header-drop .main-menu .item:hover {border-bottom: 2px solid #979797;}
+  .header-drop .main-menu .item a {padding: 1.2em 0; font-weight: 500;}
+  .header-drop .navigator-right ul {padding: 1.5em 0;}
+  {%- endif -%}
+  
+  /**** menu ****/
+  .main-menu .item {position: relative; font-family: inherit; margin: 0; letter-spacing: {{section.settings.menu_letter_spacing}}; text-transform: {{ section.settings.menu_text_transform }}; font-size: {{section.settings.menu_font_size}}; font-weight: {{section.settings.menu_font_weight}}; margin-right: 0; border-bottom: 2px solid transparent;text-decoration: none;}
+  .main-menu .item a {display: flex!important; display: -webkit-flex!important; align-items: center!important; padding: 34px 0px 34px 50px;}
+  .main-menu .item .active-menu-item {
+     /*text-decoration: underline;*/
+  }
+  .main-menu .item a:hover {color:#EAC78B;text-decoration: none;}
+  .main-menu .item a svg {display: none !important;}
+  .main-menu .item:first-child a {padding-left: 0;}
+  .main-menu .item:last-child a {padding-right: 0;}
+  .main-menu svg.icon {display: none; margin-left: 0.5em;}
+
+  /* dropdown menus */
+  .main-menu .submenu {display: none; font-size: 1em; background: {{ section.settings.dropdown_bg_color }}; color: #000;}
+  .main-menu .has-dropdown > a {position: relative;}
+  .main-menu .has-dropdown > a > svg.icon {display: inline-block;}
+  .main-menu .has-dropdown .submenu {top: 100%; left: -0.5em; padding: .3em 1em .3em 0; position: absolute; z-index: 30; margin-top: 1em; 
+  -webkit-box-shadow: -2px 3px 9px 0px rgba(60,60,60,1);
+  -moz-box-shadow: -2px 3px 9px 0px rgba(60,60,60,1);
+  box-shadow: -2px 3px 9px 0px rgba(60,60,60,1);
+  -webkit-transition: padding 0.2s ease-out; -moz-transition: padding 0.2s ease-out; -o-transition: padding 0.2s ease-out; -ms-transition: padding 0.2s ease-out; transition: padding 0.2s ease-out; box-shadow:none; border-top:1px solid #ddd;
+  }
+  .main-menu .has-dropdown .submenu.mega-menu,
+  body.scroll .main-menu .has-dropdown .submenu { margin-top: 0;}
+  .main-menu .has-dropdown .item {font-size: 1em; text-align: left; display: block; margin: 0; }
+  .main-menu .has-dropdown .item:last-child {border-bottom: 0px;}
+  .main-menu .has-dropdown .item a {position: relative; margin: 0; min-width: 270px; padding: 0.3em 1.5em; border: none; padding-right: 0px; color: #000; font-weight: 400; text-transform: capitalize; }
+  .main-menu .has-dropdown .item a:hover {color:#fff;text-decoration: underline;}
+  .main-menu .has-dropdown .has-dropdown svg.icon {position: absolute; right: 20px; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%);}
+
+  /* level 3 */
+  .main-menu .has-dropdown .submenu .has-dropdown .submenu {top: 0; left: 100%;}
+
+  {%- if settings.mega_menu_width == "adjust" -%}
+  .mega-menu .column {background: {{ section.settings.dropdown_bg_color }};}
+  {%- endif -%}
+  {%- if settings.mega_menu_width == "container" -%}
+  .mega-menu .mega-menu-content {background: {{ section.settings.dropdown_bg_color }};}
+  {%- endif -%}
+  {%- if settings.mega_menu_width == "adjust" and settings.mega_menu_position == "parent" -%}
+  .mega-menu {background: {{ section.settings.dropdown_bg_color }} !important;}
+  {%- endif -%}  
+  
+  /* menu mobile */
+  .btn-open-mobile-menu {display: flex; align-items: left; justify-content: left; margin-top: 3px!important;}
+  .btn-open-mobile-menu svg {width: 32px; height: 32px;}
+  .menu-mobile-button {width: 2.5em; font-size: 18px; position: absolute; top: 0; right: 0; height: 100%; background: {{settings.mobile_menu_button_color}}; fill: {{settings.mobile_menu_button_icon}}; display: flex; display: -webkit-flex; justify-content: center; align-items: center; }
+  .menu-mobile-button svg path {fill: inherit !important;}
+
+
+  #menu-mobile {background: transparent; display: none; outline: none; visibility: hidden; width: 400px; right: -415px; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0); background-color: {{settings.mobile_menu_bg_color}}; position: fixed; top: 0; bottom: 0; z-index: 9999;}
+  #menu-mobile.open {right: 0.1em; visibility: visible; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+  #menu-mobile .wrapper {display: flex; display: -webkit-flex; flex-direction: column; height: 100%;}
+  #menu-mobile .head {margin-top: 0px; box-sizing: border-box; padding: .3em 2rem; line-height: 100%; position: relative; margin-bottom: 0; background: {{settings.mobile_menu_title_bg_color}}; border-bottom: 0px solid {{settings.mobile_menu_borders_color}};}
+  #menu-mobile .logo img {max-width: 70%;}
+  /**/
+  #menu-mobile .head {position: absolute; right: 0; width: 40%; height: 100vh;}
+  #menu-mobile .head .title {text-transform:{{settings.mobile_menu_title_transform}}; line-height: 100%; margin: 0; padding: 0; border: none; font-weight: {{settings.mobile_menu_title_weight}}; color: {{settings.mobile_menu_title_color}};  }
+  #menu-mobile .custom-nav-links-container a {
+    color: {{settings.mobile_menu_text_color}};
+    display: block;
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid black;
+  }
+
+  #menu-mobile .custom-nav-links-container a:last-of-type {
+    border-bottom: none;
+  }
+
+  #menu-mobile .close {
+    cursor: pointer;
+    position: absolute;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    right: 24px;
+    top: 30px;
+  }
+  #menu-mobile .close svg {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  #menu-mobile .close svg path {
+    fill: {{settings.mobile_menu_title_color}};
+  }
+  #menu-mobile .content {width: 100%; background: #fff; overflow-y: auto; flex: 1;}
+  #menu-mobile ul {list-style-type: none;}
+  #menu-mobile .menu-mobile {font-size: {{settings.mobile_menu_font_size}}; }
+  #menu-mobile .item-link {font-size: 16px; text-transform: normal; font-weight: 500;}
+  #menu-mobile .submenu a {font-size: 18px; text-transform: none;}
+  #menu-mobile .menu-mobile .item {position: relative;  margin-top:.5em; padding: 1em 0.9em; text-transform: {{settings.mobile_menu_transform}};}
+  #menu-mobile .menu-mobile .item:last-child {border-bottom: 0px;}
+  #menu-mobile .menu-mobile .item svg {cursor: pointer; position: absolute; top: 0; right: -0.5em; font-size: 1.8em; box-sizing: content-box; padding: 0.5em;}
+  #menu-mobile .menu-mobile .item svg path {fill: {{settings.mobile_menu_arrows_color}};}
+  #menu-mobile .menu-mobile .item.active > a + svg {-ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg);}
+  #menu-mobile .icon {display: none!important;}
+  #menu-mobile .menu-mobile .submenu {display: none; padding: 1em 0 0 0; margin-bottom: -1em;}
+  #menu-mobile .menu-mobile .submenu .item:first-child {border-top: 1px solid {{settings.mobile_menu_borders_color}};}
+  #menu-mobile .top-utils {position: static; display: inline-block;}
+  #menu-mobile .top-utils .svg {font-size: 1.2em; margin-top: 3em; }
+  #menu-mobile .foot {padding: 2rem; padding-top: 0;}
+  #menu-mobile .search-form {position: relative;}
+  #menu-mobile .search-form .input-search {padding-right: 3em;}
+  #menu-mobile .search-form button {position: absolute; font-size: 1.3em; top: 50%; right: 1em; line-height: 100%; -webkit-transform: translateY(-50%); transform: translateY(-50%);}
+  #menu-mobile .social-links {margin-top: 2rem; justify-content: flex-start;}
+  #menu-mobile .social-links a {margin-right: 1em;}
+  #menu-mobile .social-links a:last-child {margin-right: 0;}
+  #menu-mobile .menu-mobile .item { font-weight: 600; font-size: 1.1em; text-transform: none;}
+  #menu-mobile .menu-mobile .submenu .item { font-weight: 300; text-transform: normal; font-size: 1.3em; margin:0;} 
+  #menu-mobile .menu-mobile .submenu .item .submenu .item { font-weight: 300; text-transform: capitalize; font-size: .9em; } 
+  #menu-mobile .menu-mobile .item svg { font-size: 1em; top: 6px; }
+  #menu-mobile .menu-mobile .item svg path { fill: #444; }
+  #menu-mobile .menu-mobile .submenu .item svg { font-size: .8em; }
+  #menu-mobile .menu-mobile .submenu .item:first-child { border: none; }
+  #menu-mobile .head { background: transparent; border-bottom: none; padding: 0; }
+  #menu-mobile .head .title { width: 80%; background: #fff; height: 0; }
+
+  {%- if settings.mobile_menu_position == "left" -%}
+  #menu-mobile {right: auto; left: -415px;}
+  #menu-mobile.open {right: auto; left: 0;}
+  {%- endif -%}
+
+  #menu-mobile .menu-item {display: flex; justify-content:flex-start; align-items: center;}
+  #menu-mobile .menu-item .menu-item-title {margin: 0;}
+  #menu-mobile .menu-item .item-subtitle {font-size: 0.75em;}
+  #menu-mobile .menu-item img {max-width: 25%;}
+
+  #menu-mobile .content { display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; }
+  #menu-mobile .menu-mobile {
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+  }
+  #menu-mobile .foot {
+  padding: 0 1em;
+  color: #fff;
+  height: 50px;}
+  #menu-mobile .foot .btn {
+    color: #ffffff;
+    /* height: 100%; */
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+  }
+  #menu-mobile .foot .btn:hover {color: #fff;}
+  .header .topbadge {font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: 0; top: -.7em; display: inline-block;}
+  
+
+  #menu-mobile header {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  #menu-mobile header .logo img {
+    max-width: 100%;
+  }
+
+  #menu-mobile nav,
+  #menu-mobile footer {
+    padding: 0 calc(2rem + 15px);
+  }
+
+  #menu-mobile footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #menu-mobile a {
+    font-size: 1.5rem;
+  }
+
+  #menu-mobile a.mobile-menu-footer-link-account {
+        border: 1px solid black;
+    padding: 15px 2rem 12px;
+    border-radius: 32px;
+    position: relative;
+    top: -0.5rem;
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  #menu-mobile a.mobile-menu-footer-link-contact {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+    height: fit-content;
+  }
+
+
+  {%- assign utilityCount = 0 -%}
+  {%- for block in section.blocks -%}
+  {%- if block.type == 'utility_bar' and utilityCount == 0 -%}
+      {%- assign utilityCount = utilityCount | plus: 1 -%}
+        /**** utility bar ****/
+        .utility-bar {line-height: 100%; position: relative; overflow: hidden; padding: 12px 0; text-align: center; {% if template == 'index' %}margin-top:0em;{% endif %}}
+        .utility-bar .container {padding: 0em 0em; max-width: 100%;}
+        .utility-bar p {margin: 0; color: inherit;}      
+        .utility-bar .close {position: absolute; right: 0em; top: 0%; font-size: 0px; -webkit-transform: translateY(-50%);  transform: translateY(-50%);}
+        .utility-bar .close svg {display: block;}   
+        .utility-bar .close svg path {fill: inherit;}
+    {%- endif -%}
+  {%- endfor -%}
+  
+  {%- assign topUitlsCount = 0 -%}
+  {%- for block in section.blocks -%}
+  {%- if block.type == 'top_utils' and topUitlsCount == 0 -%}
+      {%- assign topUitlsCount = topUitlsCount | plus: 1 -%}
+      .utils-wrap {padding: 0em 0; font-size: {{block.settings.top_utils_size}}; font-weight: {{block.settings.top_utils_weight}}; text-transform: {{block.settings.top_utils_transform}};}
+      .utils-wrap * {line-height: 100%;}
+      .utils-wrap .social-links {margin-right: 3em;}
+      .utils-wrap .social-links a:not(:last-child) {margin-right: 1.5em;}
+      .utils-wrap .social-links svg {display: block;}
+      .top-utils a {margin-right: 1.5em; display: flex; display: -webkit-flex; align-items: center;}
+      .top-utils a:last-child {margin: 0;}
+      .top-utils svg {margin-right: 0.8em; font-size: 1.1em;}
+      .top-utils .count {padding-left: 0.5em;}
+      {%- if block.settings.show_newsletter or block.settings.show_search -%}
+      /**** full screen search and mailing ****/
+        .search-mailing {position: fixed; z-index: 4000; width: 100%; height: 100%; display: none; top: 0; left: 0; background: rgba({{block.settings.search_mailing_bg}});}
+        .search-mailing .close {position: fixed; display: none; z-index: 99997; top: 30px; right: 30px; font-size: 35px; cursor: pointer}
+        .search-mailing .form-wrap {position: fixed; z-index: 99997; width: 80%; max-width: 600px; left: 50%; top: 45%; -webkit-transform: translateX(-50%) translateY(-50%);  transform: translateX(-50%) translateY(-50%);}
+        .search-mailing svg path {fill: {{block.settings.search_mailing_text}};}
+        .search-mailing form {display: none; width: 100%;}
+        .search-mailing form button {cursor: pointer; position: absolute; font-size: 35px; right: 0; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%);}
+        .search-mailing form input:not(.btn), .search-mailing form input:not(.btn):focus {color: {{block.settings.search_mailing_text}}; font-size: 50px; padding: 5px 40px 5px 0; width: 100%; border: none; border-bottom: 1px solid {{block.settings.search_mailing_text}}; background: transparent;}
+        .search-mailing form ::-webkit-input-placeholder {color: {{block.settings.search_mailing_text}};}
+        .search-mailing form :-moz-placeholder {color: {{block.settings.search_mailing_text}}; opacity: 1;}
+        .search-mailing form ::-moz-placeholder {color: {{block.settings.search_mailing_text}}; opacity: 1;}
+        .search-mailing form :-ms-input-placeholder {color: {{block.settings.search_mailing_text}};}
+        .search-mailing .success-msg {margin: 0; color: {{block.settings.search_mailing_text}}; font-size: 50px; padding: 0; width: 100%; line-height: 100%; border: 0; background: transparent;}
+      .search-mailing .error-msg {position: absolute; top: 120%; left: 0;}
+      {%- endif -%}
+      @media all and (max-width: 900px){
+        .top-utils {padding-right: 2.5em;}
+        .top-utils svg {margin: 0;}
+        .top-utils span:not(.count) {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px;}
+        {%- if block.settings.show_newsletter or block.settings.show_search -%}
+          .search-mailing svg.icon-close {font-size: 30px; top: 15px; right: 15px}
+          .search-mailing .form svg {font-size: 25px;}
+          .search-mailing .form input {font-size: 40px;}
+        {%- endif -%}
+      }
+      @media all and (max-width: 600px){
+        .top-utils .newsletter {display: none;}
+        {%- if block.settings.show_newsletter or block.settings.show_search -%}
+          .search-mailing .form input {font-size: 20px;}
+          .search-mailing .form svg {font-size: 18px;}
+        {%- endif -%}
+      }
+    {%- endif -%}
+  {%- endfor -%}
+  
+  @media all and (min-width: 901px){
+    {%- if section.settings.over_carousel -%}
+      .hero-carousel {margin-top: -25px;}
+      #header.over-carousel-desktop {background: {% if section.settings.over_carousel_bg_color == blank %}transparent{% else %}{{section.settings.over_carousel_bg_color}}{% endif %}; color: {{section.settings.over_carousel_text_color}}; position: absolute; z-index: 100;}
+      body:not(.scroll) #header.over-carousel-desktop {border-color: {% if section.settings.over_carousel_bg_color == blank %}transparent{% else %}{{section.settings.over_carousel_bg_color}}{% endif %} }  
+      #header.over-carousel-desktop :not(.utility-bar) a:not(:hover) svg path {fill: {{section.settings.over_carousel_text_color}};}
+    {%- endif -%}
+    {%- if section.settings.behavior == "fixed" -%}
+      #header.fixed-desktop {position: fixed; z-index: 100; top: 0; left: 0;}
+      body.scroll .header .main-content {padding-top: 0; padding-bottom: 0;}
+    {%- endif -%}
+    {%- if section.settings.over_carousel and section.settings.behavior == "fixed" -%}
+      #header.over-carousel-desktop.fixed-desktop + .header-spacer {display: none !important;}
+    {%- endif -%}
+    {%- if section.settings.change_header_colors_scroll -%}
+      #header.change-scroll-desktop {-webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out; -o-transition: all 0.5s ease-out; -ms-transition: all 0.5s ease-out; transition: all 0.5s ease-out;}
+      #header.change-scroll-desktop a {-webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none;}
+      .scroll #header.change-scroll-desktop {background: {{section.settings.scroll_bg_color}} !important; color: {{section.settings.scroll_text_color}} !important;}
+      .scroll #header.change-scroll-desktop :not(.utility-bar) a:not(:hover) svg path {fill: {{section.settings.scroll_text_color}} !important;}
+    {%- endif -%}
+    
+  }
+
+  /* fixes issue with header positioning */
+  @media all and (min-width: 601px) {
+    .header-spacer {height: 100px;} 
+  }
+  @media all and (max-width: 600px) {
+    .header .main-content {padding-top: 1em; padding-bottom: 1em;}
+  }
+  
+  
+  /* iPad Pro Portrait */
+ @media only screen 
+ and (min-device-width: 1024px) 
+ and (max-device-height: 1366px) 
+ and (-webkit-min-device-pixel-ratio:2) 
+ and (orientation: portrait) {
+   .header-spacer {height: 130px;}
+ }
+ /* iPad Pro Landscape */
+ @media only screen 
+ and (min-device-width: 1024px)
+ and (max-device-height: 1366px) 
+ and (-webkit-min-device-pixel-ratio: 2) 
+ and (orientation: landscape) {
+   .header-spacer {height: 130px;}
+ }
+  
+  @media all and (max-width: 900px) {
+    #menu-mobile .menu-mobile .item > .submenu > .item > a:hover {text-decoration: underline;}
+
+    {%- unless section.settings.drop_header_mobile -%}
+    .header-drop {display: none;}
+    {%- endunless -%}
+    .header .topbadge {display: none !important;}
+
+    .header {color: {{section.settings.header_text_color_mobile}}; background: {{section.settings.header_color_mobile}}; {% if section.settings.header_border_color_mobile != 'rgba(0,0,0,0)' %}border-bottom: none {{section.settings.header_border_color_mobile}};{% else %}border: none;{% endif %} }
+    /*.header :not(.menu-mobile-button) svg path {fill: {{section.settings.header_text_color_mobile}};}*/
+    .header .container {padding: 0;}
+    .header .main-content {position: relative; padding: 0.5em 14px 0.5em 20px;}
+    .header .navigator-mobile {width: 100%;}
+    .header .navigator-mobile .wishlist-link svg {transform: translateY(1px); margin: 0 0.2em;}
+    .header .logo {max-width: {{section.settings.logo_max_width_mobile}};}
+    .header .social-links {display: none !important;}
+    .utils-wrap {padding: 0;}
+    .utility-bar {margin-top: 0;}
+    
+    #menu-mobile {display: block;}
+    
+    {%- if section.settings.over_carousel_mobile -%}
+      #header.over-carousel-mobile {background: {% if section.settings.over_carousel_bg_color_mobile == blank %}transparent{% endif %}; color: {{section.settings.over_carousel_text_color_mobile}}; position: absolute; z-index: 100;}
+      body:not(.scroll) #header.over-carousel-mobile {border-color: {% if section.settings.over_carousel_bg_color_mobile == blank %}transparent{% endif %} }  
+      #header.over-carousel-mobile :not(.utility-bar) a:not(:hover) svg path {fill: {{section.settings.over_carousel_text_color_mobile}};}
+    {%- endif -%}
+    {%- if section.settings.behavior_mobile == "fixed" -%}
+      #header.fixed-mobile .header-top {position: fixed; z-index: 100;}
+    #header.fixed-mobile > .container{
+    	    position: relative;
+      top: 37px;}
+    .templateIndex #header.fixed-mobile > .container{
+    	    position: absolute;
+    top: 45px;
+    width: 100%;
+    z-index: 1;
+    }
+    {%- endif -%}
+    {%- if section.settings.over_carousel_mobile and section.settings.behavior_mobile == "fixed" -%}
+      #header.over-carousel-mobile.fixed-mobile + .header-spacer {display: none !important;}
+    {%- endif -%}
+    {%- if section.settings.change_header_colors_scroll_mobile -%}
+      #header.change-scroll-mobile {-webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out; -o-transition: all 0.5s ease-out; -ms-transition: all 0.5s ease-out; transition: all 0.5s ease-out;}
+      #header.change-scroll-mobile a {-webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none;}
+      .scroll #header.change-scroll-mobile {background: {{section.settings.scroll_bg_color_mobile}} !important; color: {{section.settings.scroll_text_color_mobile}} !important;}
+      .scroll #header.change-scroll-mobile :not(.utility-bar) a:not(:hover):not(.menu-mobile-button) svg path {fill: {{section.settings.scroll_text_color_mobile}} !important;}
+    {%- endif -%}
+  }
+  
+  @media all and (max-width: 767px) {
+    .mobile-right{    display: flex;
+    align-items: center;}
+    .mobile-right .cart-wrap{margin-right:15px;}
+    #header .social-top {display: none;}
+    
+    
+    #menu-mobile {width: 100%; right: -101%;}  
+    {%- if settings.mobile_menu_position == "left" -%}
+    #menu-mobile {left: -101%;}
+    {%- endif -%}
+    
+  }
+
+  .navigator ul li { list-style: none; }
+  .navigator ul li a {font-size:1.2em; text-transform: normal; font-weight: 400; }
+  .navigator ul li a:hover { color: #EAC78B; text-decoration: none;}
+  .navigator.navigator-right ul li { margin-left: 20px; border: none;}
+  .main-menu .submenu .item a:hover { color: #000; text-decoration: underline;}
+  .navigator .search input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    max-width: 150px;
+    padding: .5em 0;
+    text-transform: normal;
+    color: #fff;
+    background-image: url({{ 'ic-search.png' | asset_url }});
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+  }
+
+  .navigator-mobile a { margin: 0 .2em 0 0; font-size: 1.5em; }
+  .navigator-mobile a:last-child { margin-right: 0; }
+  .isNotMobile a:hover svg.icon path {fill: {{settings.content_main_color}};}
+
+  .header-drop .main-menu .has-dropdown .submenu { margin-top: 0; }
+  
+  .fixed-pending { display: static !important;}
+
+  @media all and (min-width: 901px) and (max-width: 1100px) {
+    .header .logo {max-width: 10em;}
+    .header .nav-wrapper, .header .navigator {width: calc(50% - 7.5em);}
+  }
+  @media all and (max-width: 480px) {
+    .header .logo {max-width: 8em;}
+    .header .main-content {padding: 0em 0px 2.5em 0px;}
+   
+  }
+  @media all and (max-width: 370px) {
+    .header .main-content {padding: 0em 0px 2.5em 0px;}
+    .navigator-mobile a {font-size: 6vw;}
+    .navigator-mobile a svg {width: 1.2em;}
+  }
+
+
+  /** edits to fix the menu trigger issue **/
+  .header .main-content { padding-top: 0; padding-bottom: 0; }
+  .main-menu .item > a { 
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.176px;
+  }
+  .header-drop .main-menu .item:last-child {margin-left: 2em;}
+  .header-drop .main-menu .item a {padding: 1.2em 0;}
+  .main-menu .has-dropdown .submenu { margin-top: 0; }
+  @media all and (min-width: 901px) {
+    body.scroll .main-menu .item > a { padding-top: 1.5em; padding-bottom: 1.5em; }
+    body.scroll .main-menu .submenu .item > a { padding-top: .3em; padding-bottom: .3em; }
+  }
+
+{% if section.settings.enablemovedesktop %}
+
+  @media only screen and (min-width: 750px) {
+  .utility-bar {
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: ticker;
+      animation-duration: 10s;
+      display: flex;
+      width: max-content;
+      will-change: transform,padding,width;
+    }
+    .header-top:hover .utility-bar {
+      animation-play-state: paused;
+    }
+    .header-top .utility-bar{
+      animation-play-state: running;
+    }
+    .header-top .utility-bar {
+      display: flex;
+      flex-flow: row nowrap;    min-width: 50%;
+      align-items: center;
+    }
+  }
+  {% else %}
+      @media only screen and (min-width: 749px) {
+      .mobiles{display:none!Important}
+      .header-top .utility-bar:first-child{display:block;}
+      .header-top .utility-bar{display:none;}
+    }
+  {% endif %}
+  
+{% if section.settings.enablemovemobile %}
+
+  @media only screen and (max-width: 749px) {
+  .utility-bar {
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: ticker;
+      animation-duration: 10s;
+      display: flex;
+      width: max-content;
+      will-change: transform,padding,width;
+    }
+    .header-top:hover .utility-bar {
+      animation-play-state: paused;
+    }
+    .header-top .utility-bar{
+      animation-play-state: running;
+    }
+    .header-top .utility-bar {
+      display: flex;
+      flex-flow: row nowrap;    min-width: 100%;
+      align-items: center;
+    }
+  }
+  {% else %}
+  @media only screen and (max-width: 749px) {
+    .header-top .utility-bar:first-child{display:block;}
+    .header-top .utility-bar{display:none;}
+  }
+  {% endif %}
+
+  @media only screen and (max-width: 500px) {
+    #header {
+      background-color: transparent !important;
+      transition: background-color 0.3s ease;
+    }
+    #header.sticky_add_color {
+      background-color: #fff !important;
+    }
+  }
+
+</style>
+
+
+<div id="header" class="custom_text_font header{% if section.settings.over_carousel and template == "index" %} over-carousel-desktop{% endif %}{% if section.settings.over_carousel_mobile and template == "index" %} over-carousel-mobile{% endif %}{% if section.settings.change_header_colors_scroll %} change-scroll-desktop{% endif %}{% if section.settings.change_header_colors_scroll_mobile %} change-scroll-mobile{% endif %} {{section.settings.behavior}}-desktop {{section.settings.behavior_mobile}}-mobile fixed-pending">
+    {%- for block in section.blocks -%}
+    {%- if block.type == 'utility_bar' -%}
+        {%- if block.settings.show -%}
+            <div class="utility-bar" style="color: red">
+                <div class="utility-bar-items">
+                    {{ block.settings.text }}
+                </div>
+            </div>
+        {%- endif -%}
+    {%- endif -%}
+    {% endfor %}
+  <div class="container">
+    <div
+      class="main-content animation flex justify-content-between align-items-center medium--justify-content-between small--justify-content-between">
+      
+      <a href="/" class="logo medium-down--hide">
+        {%- if section.settings.logo != blank -%}
+        <img
+          src="{{section.settings.logo | img_url: 'master'}}"
+          width="140"
+          height="47"
+          alt="{{shop.name}}"
+        />
+        {%- else -%}
+        <div class="shop-name heading_font">{{shop.name}}</div>
+        {%- endif -%}
+      </a>
+
+      <div class="nav-wrapper medium--hide small--hide">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'top_utils' -%}
+            {%- if block.settings.show -%}
+              <div class="utils-wrap flex justify-content-start align-items-center">
+                {%- if block.settings.show_social -%}
+                  {%- include 'social_links' -%}
+                {%- endif -%}
+                {%- include 'top_utils' -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <nav class="main-menu flex align-items-center justify-content-start medium-down--hide {{ section.settings.menu_font}}" role="navigation">
+            {%- render 'menu_main', menu: section.settings.menu.links  -%}
+        </nav>
+      </div>
+
+
+      {%- assign total_items = 0 -%}
+      {%- for item in cart.items -%}
+      {%- assign total_items = total_items | plus: item.quantity -%}
+      {%- endfor -%}
+
+      <div class="navigator-mobile flex direction-row align-items-center justify-content-around large--hide">
+        <div class="mobile-right">
+          <a href="#" class="btn-open-mobile-menu">{% comment %} {% include 'icons', icon: 'hamburger', color: '#ffffff' %} {% endcomment %} {% render 'icon-hamburger' %}</a>
+          <a href="/" class="logo large--hide">
+            {%- if section.settings.logo != blank -%}
+            <img src="{{section.settings.logo | img_url: 'master'}}" width="168" height="57" alt="{{shop.name}}" />
+            {%- else -%}
+            <div class="shop-name heading_font">{{shop.name}}</div>
+            {%- endif -%}
+          </a>
+        </div>
+        <div class="mobile-right">
+          <a class="cart-wrap" href="/cart" title="Bag" style="position: relative;">{% include 'dlicons', icon: 'bag', color:
+            '#ffffff' %} <span
+              style="color: rgb(0, 0, 0); background-color: rgba(0,0,0,0); padding: 0px; display: inline-block;font-size: 8px; line-height: 1.5em; margin-left: 0; margin-right: -1.2em; width: 1.5em; height: 1.5em; position: absolute; right: .3em; top: -.4em; text-align: center; border-radius: 10px; font-weight: 400;"
+              class="count">{{total_items}}</span></a>
+          
+        </div>
+      </div>
+
+      <div class="navigator navigator-right flex direction-row align-items-center justify-content-end small--hide medium--hide">
+        <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_label }} {% render 'icon-arrow-left' %} </a>
+        <ul class=" flex direction-row align-items-center justify-content-end">
+
+            
+          {% if customer %}
+          <li><a class="flex" href="/account" title="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
+          </a></li>
+          {% else %}
+          <li><a class="flex" href="https://www.rejuvia.co/account/login" title="">{% render 'icon-user-circle' %}</a></li>
+          {% endif %}
+       
+          <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{%- if section.settings.behavior == "fixed" or section.settings.behavior_mobile == "fixed" -%}
+{% if blog.handle != nil %}
+<div class="header-spacer {% if section.settings.behavior == "fixed" %} large--show{% endif %}{% if section.settings.behavior_mobile == "fixed" %} medium-down--show{% endif %}"></div>
+{% else  %}
+<div class="header-spacer ease-animation hide{% if section.settings.behavior == "fixed" %} large--show{% endif %}{% if section.settings.behavior_mobile == "fixed" %} medium-down--show{% endif %}"></div>
+{% endif  %}
+<script>
+  $(function(){
+    {% if section.settings.enableSticky %}
+      jQuery(window).scroll(function() {    
+        var scroll = jQuery(window).scrollTop();
+    	if (scroll > 1) {
+          
+            jQuery(" #header").addClass("is-ticky");
+        }else{
+          jQuery(" #header").removeClass("is-ticky");
+        }
+    });
+          
+    {% else %}
+      jQuery(window).scroll(function() {    
+        var scroll = jQuery(window).scrollTop();
+    	if (scroll > 41) {
+          
+            jQuery(" #header").addClass("is-ticky");
+        }else{
+          jQuery(" #header").removeClass("is-ticky");
+        }
+    });
+    {% endif %}
+    function contentPaddingTop(){
+      var utilityBar = $('#header .utility-bar');
+      var height = $('#header').height() -(utilityBar.hasClass('closed') ? utilityBar.outerHeight(): 0);
+      
+      if (!isMobile.tablet) {
+        $('.header-spacer').height(height - 15);
+      }
+      
+      // alert(isMobile.tablet)
+      $('#header').removeClass('fixed-pending')
+    }
+    setTimeout(function(){
+      contentPaddingTop();
+    }, 200);
+    $(window).resize(function(){          
+      contentPaddingTop();
+    });
+    {% unless template contains 'collection' or template contains 'product' %}
+    $(document).on('click', '.utility-bar .close', function(e) {
+      if (!isMobile.phone) {
+        $('.content-wrapper').attr('style', 'margin-top: -50px')
+      }
+      
+    })
+    {% endunless %}
+    {% if template contains 'product' %}
+    $(document).on('click', '.utility-bar .close', function(e) {
+      setTimeout(function(){
+        console.log($(window).scrollTop())
+        if ($(window).scrollTop() > 30) {
+          $('.header-spacer').height('75px')
+        }
+        
+      }, 500)
+    })
+    {% endif %}
+  });
+</script>
+{%- endif -%}
+
+{%- if section.settings.drop_header or section.settings.drop_header_mobile -%}
+  {%- include 'header_drop' -%}
+{%- endif -%}
+
+{%- include 'menu_mobile' -%}
+
+{%- assign topUitlsCount = 0 -%}
+{%- for block in section.blocks -%}
+   {%- if block.type == 'top_utils' and topUitlsCount == 0 -%}
+      {%- assign topUitlsCount = topUitlsCount | plus: 1 -%}
+      {%- if block.settings.show_search -%}
+        {%- include 'fullscreen_search' -%}
+      {%- endif -%}
+      {%- if block.settings.show_newsletter -%}
+        {%- include 'fullscreen_mailing' -%}
+      {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<script>
+  jQuery(window).scroll(function() {    
+    var scroll = jQuery(window).scrollTop();
+    if (scroll > 120) {
+      $('body').addClass('sticky-none');
+    }else{
+      $('body').removeClass('sticky-none');
+    }
+  });
+  window.onscroll = function(e) {
+    var scrolly = this.scrollY;
+    if(this.oldScroll > scrolly ){
+      // console.log('Scrolling up');
+       $('body').addClass('sticky-header');
+    }
+    else{
+      // console.log('Scrolling down');
+      
+       $('body').removeClass('sticky-header');
+    }
+    this.oldScroll = this.scrollY;
+  }
+  
+  function updateMobileHeaderSpacer() {
+      if (isMobile.any) {
+        setTimeout(function(){
+          // console.log('updating')
+          $('.header-spacer').attr('style', 'height: ' + $('.header').outerHeight() + 'px');
+        }, 500)
+      }
+  }
+  $(function () {
+    
+    updateMobileHeaderSpacer();
+    
+    $(window).on('resize', function() {
+      updateMobileHeaderSpacer();
+    })
+  })
+</script>
+
+<script type="text/javascript">
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header')
+    const headerHeight = document.getElementById('mobile-header-container').offsetHeight
+
+    if (window.scrollY > headerHeight) {
+      header.classList.add('sticky_add_color')
+    } else {
+      header.classList.remove('sticky_add_color')
+    }
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Header",
+    "presets": [
+      {
+        "name": "Header",
+        "category": "Header"
+      }
+    ],
+    "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu Link List"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "CTA Label"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Desktop"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Settings (Desktop) ***"
+        },
+        {
+          "type": "select",
+          "id": "behavior",
+          "label": "Behavior",
+          "options": [
+            {
+              "value": "static",
+              "label": "Static"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed"
+            }
+          ],
+          "default": "static"
+        },
+        {
+          "type": "checkbox",
+          "id": "drop_header",
+          "label": "Show Drop Header on Scroll?",
+          "default": true
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Colors (Desktop) ***"
+        },
+        {
+          "type": "color",
+          "id": "header_color",
+          "label": "Background color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "header_border_color",
+          "label": "Border-bottom Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "header_text_color",
+          "label": "Text and Icons Color",
+          "default": "#000000"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Over Carousel (Desktop) ***"
+        },
+        {
+          "type": "checkbox",
+          "id": "over_carousel",
+          "label": "Overlap with the top section? (Homepage)",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "over_carousel_bg_color",
+          "label": "Background Color"
+        },
+        {
+          "type": "color",
+          "id": "over_carousel_text_color",
+          "label": "Text and Icons Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** On scroll (Desktop) ***"
+        },
+        {
+          "type": "checkbox",
+          "id": "change_header_colors_scroll",
+          "label": "Change header colors on scroll?",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "scroll_bg_color",
+          "label": "Scroll Background and Icons Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "scroll_text_color",
+          "label": "Scroll Text and Icons Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Settings (Mobile) ***"
+        },
+        {
+          "type": "select",
+          "id": "behavior_mobile",
+          "label": "Behavior - Mobile",
+          "options": [
+            {
+              "value": "static",
+              "label": "Static"
+            },
+            {
+              "value": "fixed",
+              "label": "Fixed"
+            }
+          ],
+          "default": "fixed"
+        },
+        {
+          "type": "checkbox",
+          "id": "drop_header_mobile",
+          "label": "Show Drop Header on Scroll - Mobile?",
+          "default": false
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Colors (Mobile) ***"
+        },
+        {
+          "type": "color",
+          "id": "header_color_mobile",
+          "label": "Background color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "header_border_color_mobile",
+          "label": "Border-bottom Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "header_text_color_mobile",
+          "label": "Text and Icons Color",
+          "default": "#000000"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** Over Carousel (Mobile) ***"
+        },
+        {
+          "type": "checkbox",
+          "id": "over_carousel_mobile",
+          "label": "Overlap with the top section (Mobile - Homepage)",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "over_carousel_bg_color_mobile",
+          "label": "Background Color"
+        },
+        {
+          "type": "color",
+          "id": "over_carousel_text_color_mobile",
+          "label": "Text and Icons Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "paragraph",
+          "content": "_______________________________________"
+        },
+        {
+          "type": "paragraph",
+          "content": "*** On scroll (Mobile) ***"
+        },
+        {
+          "type": "checkbox",
+          "id": "change_header_colors_scroll_mobile",
+          "label": "Change header colors on scroll?",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "scroll_bg_color_mobile",
+          "label": "Scroll Background and Icons Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "scroll_text_color_mobile",
+          "label": "Scroll Text and Icons Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Utility Bar Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "enablemovemobile",
+          "label": "Enable Scrolling Text Mobile",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "enablemovedesktop",
+          "label": "Enable Scrolling Text Desktop",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "enableSticky",
+          "label": "Enable Sticky",
+          "default": false
+        },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Bar Color",
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#fff"
+          },
+          {
+            "type": "text",
+            "id": "text_size",
+            "label": "Text Size",
+            "default": "0.9em"
+          },
+          {
+            "type": "color",
+            "id": "close_color",
+            "label": "Close Icon Color",
+            "default": "#fff"
+          },
+        {
+          "type": "header",
+          "content": "Drop Header"
+        },
+    {
+          "type": "color",
+          "id": "drop_header_color",
+          "label": "Background color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "drop_header_border_color",
+          "label": "Border-bottom Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "drop_header_text_color",
+          "label": "Text and Icons Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Main Menu Settings"
+        },
+        {
+            "type": "select",
+            "id": "menu_font",
+            "label": "Font Family",
+            "options": [
+              {
+                "value": "body_font",
+                "label": "Use the Body Font"
+              },
+              {
+                "value": "heading_font",
+                "label": "Use the Heading Font"
+              }
+            ],
+            "default": "body_font"
+        },
+        {
+          "type": "text",
+          "id": "menu_font_size",
+          "label": "Font Size",
+          "default": "1em"
+        },
+        {
+            "type": "select",
+            "id": "menu_font_weight",
+            "label": "Font Weight",
+            "options": [
+              {
+                "value": "100",
+                "label": "Extra Light"
+              },
+              {
+                "value": "300",
+                "label": "Light"
+              },
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "600",
+                "label": "Semi Bold"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              },
+              {
+                "value": "900",
+                "label": "Extra Bold"
+              }
+            ],
+            "default": "400"
+        },
+        {
+          "type": "text",
+          "id": "menu_letter_spacing",
+          "label": "Letter Spacing",
+          "default": "0em"
+        },
+        {
+            "type": "select",
+            "id": "menu_text_transform",
+            "label": "Text transform",
+            "options": [
+              {
+                "value": "none",
+                "label": "Normal"
+              },
+              {
+                "value": "Uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "default": "none"
+        },
+        {
+          "type": "color",
+          "id": "dropdown_bg_color",
+          "label": "Sub Menu Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_mobile",
+          "label": "Logo Mobile"
+        },
+        {
+          "type": "text",
+          "id": "logo_max_width",
+          "label": "Logo max width (Desktop)",
+          "default": "15em"
+        },
+        {
+          "type": "text",
+          "id": "logo_max_width_mobile",
+          "label": "Logo max width (Mobile)",
+          "default": "8em"
+        },
+        {
+          "type": "text",
+          "id": "drop_logo_max_width",
+          "label": "Logo max width (Drop Header)",
+          "default": "10em"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "utility_bar",
+        "name": "Utility Bar",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show utility bar?"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text in the top bar",
+      "default": "<p>Check out our <strong>Collections</strong>!</p>"
+          }
+        ]
+      },
+    {
+        "type": "top_utils",
+        "name": "Top Utils",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Show Top Utils?",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "top_utils_size",
+            "label": "Font Size",
+            "default": "0.9em"
+          },
+          {
+            "type": "select",
+            "id": "top_utils_weight",
+            "label": "Font Weight",
+            "options": [
+              {
+                "value": "100",
+                "label": "Extra Light"
+              },
+              {
+                "value": "300",
+                "label": "Light"
+              },
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "600",
+                "label": "Semi Bold"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              },
+              {
+                "value": "900",
+                "label": "Extra Bold"
+              }
+            ],
+            "default": "400"
+          },
+          {
+            "type": "select",
+            "id": "top_utils_transform",
+            "label": "Text transform",
+            "options": [
+              {
+                "value": "none",
+                "label": "Normal"
+              },
+              {
+                "value": "uppercase",
+                "label": "Uppercase"
+              }
+            ],
+            "default": "none"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_social",
+            "label": "Show Social Links?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_search",
+            "label": "Show Search?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_newsletter",
+            "label": "Show Newsletter?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_user",
+            "label": "Show Account Link?",
+            "default": true,
+            "info": "Customer Accounts must be enabled at /admin/settings/checkout"
+          },
+          {
+            "type": "header",
+            "content": "Fullscreen Newsletter and Search"
+          },
+          {
+            "type": "text",
+            "id": "search_mailing_bg",
+            "label": "Background Color",
+            "default": "0,0,0,0.8",
+            "info": "R,G,B,Alpha. The last value is the alpha\/opacity, from 0 to 1."
+          },
+          {
+            "type": "color",
+            "id": "search_mailing_text",
+            "label": "Text Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "select",
+            "id": "search_mailing_effect",
+            "label": "Appearance Effect",
+            "options": [
+              {
+                "value": "fadeInLeft",
+                "label": "Fade in Left"
+              },
+              {
+                "value": "fadeIn",
+                "label": "Fade In"
+              },
+              {
+                "value": "zoomIn",
+                "label": "Zoom In"
+              },
+              {
+                "value": "flipInX",
+                "label": "Flip In X"
+              },
+              {
+                "value": "flipInY",
+                "label": "Flip In Y"
+              },
+              {
+                "value": "bounceIn",
+                "label": "Bounce In"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "Light Speed In"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "Zoom In Down"
+              }
+            ],
+            "default": "fadeInLeft"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

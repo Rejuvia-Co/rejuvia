@@ -1,0 +1,77 @@
+<div class="login-page account">
+  <div class="container">
+    <div id="customer-register">
+      <h1>Register</h1>
+      {%- form 'create_customer' -%}
+        <div class="error-msg"></div>
+        {{ form.errors | default_errors }}
+<!--         <label for="customer-first-name">First Name *</label> -->
+        <input placeholder="First Name" type="text" value="{{ form.first_name }}" name="customer[first_name]" id="customer-first-name" class="name required" aria-required="true" autocomplete="given-name" placeholder="Email Address" />
+<!--         <label for="customer-last-name">Last Name *</label> -->
+        <input placeholder="Last Name" type="text" value="{{ form.last_name }}" name="customer[last_name]" id="customer-last-name" class="last-name required" aria-required="true" autocomplete="family-name" placeholder="Email Address" />
+<!--         <label for="customer-email">Email Address *</label> -->
+        <input placeholder="Email Address" type="email" value="{{ form.email }}" name="customer[email]" id="customer-email" class="email required" aria-required="true" autocomplete="email" placeholder="Email Address" />
+<!--         <label for="password">Password *</label>   -->
+        <input placeholder="Password" type="password" name="customer[password]" id="password" class="password required" aria-required="true" />
+        <button class="btn" type="submit">Create Account</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+<style>
+  @media   (min-width: 768px) {
+  .login-page{display:flex;}
+      }
+  body .content-wrapper,
+  body #page{background: #f8f7f7;}
+</style>
+<script>
+  $(function(){  
+    var resizePage = function(){
+      var headerHeight = 0;
+      var footerHeight = 0;
+      if($('#header').length > 0){
+        var headerHeight = $('#header').outerHeight();
+      }
+      if($('#footer').length > 0){
+        var footerHeight = $('#footer').outerHeight();
+      }
+      var minHeight = window.innerHeight - headerHeight - footerHeight;
+      $('.login-page').css('min-height', minHeight);
+    };
+    resizePage();
+    $(window).resize($.throttle(50, function(){     
+      resizePage();
+    }));
+    
+    $('.login-page form').each(function(){
+      var form = $(this);
+      form.submit(function(e){
+        var error = false;
+
+        form.find('.error-msg').hide();
+        form.find('.error').removeClass('error');
+
+        form.find('.required').each(function(){
+          if($(this).val()=="") {
+            error = true;
+            $(this).addClass('error');
+          }
+        });
+        if(error){
+          form.find('.error-msg').show().text('Please complete all the required fields.');
+        }else{
+          if(!Simplistic.validateEmail(form.find('.email').val())) {
+            error = true;
+            form.find('.email').addClass('error');
+            form.find('.error-msg').show().text('Please provide a valid email address.');
+          }
+        }
+        if(error) {
+          return false;
+        }
+      });
+      
+    });    
+  });
+</script>

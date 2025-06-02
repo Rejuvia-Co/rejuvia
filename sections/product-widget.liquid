@@ -1,0 +1,115 @@
+<style>
+  .product-widget-container .product-gallery {
+    padding: 0px 16px !important;
+  }
+
+  .product-widget-container .thumbs-wrapper {
+    padding: 0px 36px;
+  }
+
+  .product-widget-container {
+    padding-top: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-widget-container {
+      padding: 32px 64px;
+    }
+  }
+</style>
+
+<div class="templateProduct product-widget-container">
+  {% assign currentProduct = section.settings.selected_product %}
+  {% if currentProduct == blank %}
+    {% assign currentProduct = product %}
+  {% endif %}
+  {%- render '_product-new', product: currentProduct, preselected_item: section.settings.preselected_item -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product Widget",
+  "tag": "section",
+  "class": "product-widget-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "“Just a few sprays, to make the insomnia go away.”"
+    },
+    {
+      "type": "product",
+      "id": "selected_product",
+      "label": "Product: "
+    },
+    {
+      "type": "text",
+      "id": "guarantee_label",
+      "label": "Guarantee Label: ",
+      "default": "30-Day Guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Swatches"
+    },
+    {
+      "type": "text",
+      "id": "swatch_tag_content",
+      "label": "Best Value Tag content"
+    },
+    {
+      "type": "number",
+      "id": "preselected_item",
+      "label": "Preselected Item",
+      "default": 3,
+      "info": "Indicates the position number of the variant, The first available one is selected if the field is empty"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "skio-plan-picker",
+      "name": "Skio Plan Picker",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "start_onetime",
+          "label": "Preselect One Time",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "onetime_first",
+          "label": "Show One Time first",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Preferably use SVG format [view example](https://www.svgrepo.com/svg/365402/flower-lotus-thin)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Widget"
+    }
+  ]
+}
+{% endschema %}

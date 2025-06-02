@@ -1,0 +1,28 @@
+<div class="product-item animation large--one-quarter medium--{{ settings.grid_items_per_row_medium }} small--one-half">
+  <a href="{{ currentProduct.url }}{% if fromSearch %}#search{% endif %}">
+    <div class="image-wrapper" style="position: relative;">
+    {%- if currentProduct.images.size > 1 -%}
+      {%- assign showSecondImage = true -%}
+    {%- else -%}
+      {%- assign showSecondImage = false -%}
+    {%- endif -%}	
+    <div class="image {% if showSecondImage %}show-second-image{% endif %}">
+      <div class="img animation lazyload" data-bgset=" {{ currentProduct.images.first | img_url: 'master' }}"></div>
+      {%- if showSecondImage -%}
+      	<div class="img second-img animation lazyload lazypreload" data-bgset="{{ currentProduct.images.last | img_url: 'master' }}"></div>
+      {%- endif -%}
+     
+      {%- unless currentProduct.available -%}
+      	<div class="sold-out">sold<br />out</div>
+      {%- endunless -%}
+    </div>
+
+    </div>
+
+
+    <div class="info">
+      <div class="title animation {{ currentProduct.tags }} custom_title_font">{{ currentProduct.title }}</div>
+  <div class="subheading custom_text_font">{{ short_description }}</div>
+    </div>
+  </a>
+</div>

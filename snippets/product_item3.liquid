@@ -1,0 +1,73 @@
+{% assign lable_sale = false %}
+{% if currentProduct.compare_at_price_min > currentProduct.price_min %}
+{% assign lable_sale = true %}
+{% endif %}
+
+{% comment %}
+Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+
+{% assign lable_out = true %}
+{% if currentProduct.available  %}
+{% assign lable_out = false %}
+{% endif %}
+<style>
+  .product-item1 .title {    display: flex;
+    justify-content: space-between;}
+</style>
+<div class="product-item1 product-item animation large--one-third small--one-half items-{{ forloop }}">
+  <div class="items-wapper">
+    <div class="offerInner_6dAby">
+    {% if Lable != blank %}
+    <div class="lable-text">{{ Lable }}</div>
+    {% endif %}
+       <a href="{{ currentProduct.url }}">
+   <div class="title animation {{ currentProduct.tags }} "><span>{{ currentProduct.title }}</span>  {% render 'okendo-reviews-product-rating-summary', product: currentProduct %}</div>
+   <div class="price-box custom-prices">
+      <p class="sale">
+        <span class="regular-product">{{ currentProduct.price_min | money }}</span>
+        <span class="old-price" style="text-decoration: line-through;"> {{ comparePrices }}</span>
+      </p>
+     
+    </div>
+       </a>
+    <div class="subprice">{{ customPrices }}</div>
+    <div class="image-wrapper" style="position: relative;">
+      {%- if currentProduct.images.size > 1 -%}
+        {%- assign showSecondImage = true -%}
+      {%- else -%}
+        {%- assign showSecondImage = false -%}
+      {%- endif -%}	
+       <a href="{{ currentProduct.url }}">
+      <div class="image {% if showSecondImage %}show-second-image{% endif %}">
+        <div class="img animation lazyload" data-bgset=" {{ currentProduct.images.first | img_url: 'master' }}"></div>
+        {%- if showSecondImage -%}
+<!--         	<div class="img second-img animation lazyload lazypreload" data-bgset="{{ currentProduct.images.last | img_url: 'master' }}"></div> -->
+        {%- endif -%}
+       
+        {%- unless currentProduct.available -%}
+        	<div class="sold-out">sold<br />out</div>
+        {%- endunless -%}
+      </div>
+       </a>
+    </div>
+      <div class="offerSeparator_r4S-M"></div>
+  
+      <div class="subheading custom_text_font">{{ short_description }}</div>
+      <form id="add-to-cart-form" action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" method="post" class="variants add-to-cart-form" enctype="multipart/form-data">
+<div>
+</div>       
+
+ <input type="hidden" name="id" value="{{ currentProduct.variants.first.id }}" />
+        <button class="btn" type="submit">
+           <span>Add To Cart</span></button>
+        </form>
+      <div class="custom-bottom">{{ customBottom }}</div>
+
+    </div>
+    </div>
+</div>
+
+<script>
+  console.log("FAf")
+</script>

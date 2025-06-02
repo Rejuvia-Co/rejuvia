@@ -1,0 +1,24 @@
+<div class="product-recommendation">
+    {% if section.settings.selected_product %}
+      {% assign product = all_products[section.settings.selected_product] %}
+      <div class="product-image">
+        <img src="{{ product.featured_image | image_url: '400px' }}" alt="{{ product.title }}" width="" height="" />
+      </div>
+      <div class="product-title">
+        <h3>{{ product.title }}</h3>
+      </div>
+    {% endif %}
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Product Recommendation",
+    "settings": [
+      {
+        "type": "product",
+        "id": "selected_product",
+        "label": "Select a Product"
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,101 @@
+{{ 'eg-product-features.css' | asset_url | stylesheet_tag }}
+
+{% assign product = section.settings.product %}
+
+<div class="eg-product_features_container">
+  <div class="inner_container">
+    <div class="eg-product_image_container">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 700 | image_tag }}
+      {% endif %}
+      
+    </div>
+    <div class="eg-pd_info-container">
+        <div class="eg-reviews-ingredients"> 
+            {{ product.metafields.okendo.StarRatingSnippet }}
+        </div>
+      <h4 class="section-title--h1">
+        {{ section.settings.heading }}
+      </h4>
+      <p>
+        {{ section.settings.text }}
+      </p>
+      <div class="features_icons">
+        {% for item in section.blocks %}
+          <div>
+            <div>{{ item.settings.icon | image_url: width: 80 | image_tag }}</div>
+            <div>{{ item.settings.description }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <a href="{{ product.url }}" class="btn eg-btn-features">{{ section.settings.btn }}</a>
+      <div class="ingredients-guarantee-item">
+        <img src="{{ 'ArrowUDownLeft.svg' | asset_url }}" width="20px" height="20px" />
+        <span>{{ section.settings.guarantee}}</span>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Features Ingredients",
+  "tag": "section",
+  "class": "product-features-section",
+  "settings": [
+    {
+        "type": "product",
+        "id": "product",
+        "label": "Select Product"
+      },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button Label"
+    },
+    {
+        "type": "text",
+        "id": "guarantee",
+        "label": "Guarantee Label"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Ingredients"
+    }
+  ]
+}
+{% endschema %}

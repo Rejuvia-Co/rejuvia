@@ -370,7 +370,6 @@
     "subscription_success_msg": "Don't forget to check your email to confirm your membership and get your discount code.",
     "gift_card_title": "Here is your [[shop.name]] e-Gift Card!",
     "gift_card_subtitle": "Use this code at checkout to redeem your gift card",
-    "skio_one_time_text": "$121 OFF – 45% savings vs. buying separatelyddd",
     "checkout_use_storefront_logo": false,
     "checkout_logo_image": "shopify://shop_images/rEJUVIA_lOGO.png",
     "checkout_logo_position": "center",

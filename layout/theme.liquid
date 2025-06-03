@@ -124,9 +124,6 @@
   <script src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
 {% render 'rebuy-extensions' %}
   <script defer>
-
-    window.customSkio = {};
-    window.customSkio.skio_one_time_text = {{ settings.skio_one_time_text | json }}
     $(document).ready(function() {
       $('.menu-desktop').removeClass('hidden');
 

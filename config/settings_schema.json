@@ -2086,16 +2086,5 @@
         "label": "Image"
       }
     ]
-  },
-  {
-    "name": "Skio subscription option text",
-    "settings": [
-      {
-        "type": "text",
-        "id": "skio_one_time_text",
-        "label": "Skio subscription option text",
-        "default": "$121 OFF – 45% savings vs. buying separately"
-      }
-    ]
   }
 ]

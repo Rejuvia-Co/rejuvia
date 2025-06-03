@@ -2615,9 +2615,6 @@ body .product-wrap .swatch2 .swatch input:checked + label {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 8px;
   }
-  .product-recommendation a {
-    flex-direction: column;
-  }
   .boundle-related--label {
     padding: 10px;
   }

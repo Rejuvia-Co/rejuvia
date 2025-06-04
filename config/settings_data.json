@@ -1358,15 +1358,6 @@
           "title": "FAQs"
         }
       },
-      "hero-contact-us": {
-        "type": "hero-contact-us",
-        "settings": {
-          "image": "shopify://shop_images/HERO_DESKTOP.png",
-          "image_mobile": "shopify://shop_images/HERO_MOBILE.png",
-          "heading": "Help Center",
-          "subheading": "We are here to help. Check out our FAQs first and then if you still have a question, then send us a note below!"
-        }
-      },
       "hero": {
         "type": "hero",
         "blocks": {
@@ -1823,6 +1814,13 @@
       "section-choose-product": {
         "type": "section-choose-product",
         "blocks": {
+          "5aef66fd-d961-4219-855c-73a6e8ec8bc2": {
+            "type": "product",
+            "settings": {
+              "featured_product": "sleep-spray",
+              "short_description": "Achieve deep relaxation and calmness daily."
+            }
+          },
           "85dc2b1a-ae3e-4445-b852-0f28f7fb8f8d": {
             "type": "product",
             "settings": {
@@ -1837,25 +1835,18 @@
               "short_description": "Our classic, best-selling oral spray bundle."
             }
           },
-          "5aef66fd-d961-4219-855c-73a6e8ec8bc2": {
-            "type": "product",
-            "settings": {
-              "featured_product": "sleep-capsules",
-              "short_description": "Achieve deep relaxation and calmness daily."
-            }
-          },
           "a733a6fa-fdbb-4740-875b-b27e688e51f8": {
             "type": "product",
             "settings": {
-              "featured_product": "calm-drops",
+              "featured_product": "sleep-spray-6-pack",
               "short_description": "Enhanced relaxation"
             }
           }
         },
         "block_order": [
+          "5aef66fd-d961-4219-855c-73a6e8ec8bc2",
           "85dc2b1a-ae3e-4445-b852-0f28f7fb8f8d",
           "79f56b89-3828-4e03-a197-d44f7c8b6938",
-          "5aef66fd-d961-4219-855c-73a6e8ec8bc2",
           "a733a6fa-fdbb-4740-875b-b27e688e51f8"
         ],
         "settings": {
@@ -1920,28 +1911,6 @@
           "section_padding_mobile": "2em 0",
           "title": "Reviews",
           "autoplay": false
-        }
-      },
-      "blogtextbanner": {
-        "type": "blogtextbanner",
-        "settings": {
-          "zindex": "1",
-          "bg_color": "#ffffff",
-          "image_alt": "",
-          "image_mobile_alt": "",
-          "section_padding_desktop": "5em 1em",
-          "section_padding_mobile": "1em 0",
-          "text_position": "center",
-          "text_align": "center",
-          "text_align_mobile": "center",
-          "text_width": 50,
-          "text_padding_desktop": "3em 3em 0 0",
-          "text_padding_mobile": "3em 0 1em",
-          "text_color": "#000000",
-          "title": "Rejuvia Sleep Blog",
-          "text": "<p>Learn more about sleep, health, nutrition and oral sprays on our official blog.</p>",
-          "button": "",
-          "link": ""
         }
       },
       "header-top": {
@@ -3018,33 +2987,9 @@
           "position": "Co-Founder, CEO of Rejuvia"
         }
       },
-      "replo-productcomparison": {
-        "type": "replo-productcomparison",
-        "settings": {
-          "replo_text_7267cf55-e8bd-4183-b246-749012aa03a1": "<p>REJUVIA VS. GUMMIES AND PILLS</p>",
-          "replo_text_909a71b8-c271-4730-b797-b4dcb9b10f33": "<p>Rejuvia vs. Gummies and Pills</p>",
-          "replo_text_68c1c16e-5de6-4e1e-a546-fd4b321308c6": "<p>Rejuvia Spray</p>",
-          "replo_text_981579cd-02ca-485d-955e-87d899709080": "<p>Gummies and Pills</p>",
-          "replo_text_5dd72fea-9609-48b5-9352-0139a87586db": "<p>ABSORBS IN 10-15 MINUTES</p>",
-          "replo_text_a95634c3-dedb-40cd-8373-6d3a0ec1b35a": "<p>FALL ASLEEP FASTER</p>",
-          "replo_text_e5ea12c8-814a-4e65-bc98-184535f4afe2": "<p>SLEEP THROUGH THE NIGHT</p>",
-          "replo_text_ca90df6c-4574-45e2-9d12-a0dca3303a2d": "<p>NO PRESCRIPTION NEEDED</p>",
-          "replo_text_c9d1aaf8-a514-4f94-b1c8-a6b59cc20e24": "<p>NON-HABIT FORMING</p>",
-          "replo_text_6c832ac4-a809-4b36-8525-93ecd571a2ef": "<p>100% ALL-NATURAL</p>"
-        }
-      },
       "article-new": {
         "type": "article-new",
         "settings": {}
-      },
-      "articles-similar": {
-        "type": "articles-similar",
-        "settings": {
-          "heading": "Similar articles",
-          "blog": "the-sleep-guide",
-          "show_tags": true,
-          "show_text": true
-        }
       },
       "blog-grid": {
         "type": "blog-grid",

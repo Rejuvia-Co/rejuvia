@@ -79,8 +79,6 @@
   <script src="{{ 'jquery.scrollSlide.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
-  {% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
-
   {% if template contains 'page.ingredients' %}
   <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
   {% endif %}

@@ -69,6 +69,9 @@
       },
       "order_payment_collection": {
         "pay_now": "Add To My Order!"
+      },
+      "subscriptions": {
+        "recurring_totals": " "
       }
     },
     "article": {

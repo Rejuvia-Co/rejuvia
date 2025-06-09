@@ -66,28 +66,36 @@
     "customer_testimonials_n4yKPj": {
       "type": "customer-testimonials-video",
       "blocks": {
-        "testimonial_ACCAJM": {
+        "testimonial_nhHLVz": {
           "type": "testimonial",
           "settings": {
-            "text": "\"Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.\"",
-            "image": "shopify://shop_images/scott_s.png",
-            "name": "Scott S. (Customer Since 2024)"
+            "text": "I spray 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!",
+            "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
+            "name": "Tracey F. (Verified Buyer)"
           }
         },
         "testimonial_A4AHUA": {
           "type": "testimonial",
           "settings": {
-            "text": "\"I have been really enjoying my Rejuvia and always sleep very well when I use it.\"",
+            "text": "I have been really enjoying my Rejuvia and always sleep very well when I use it.",
             "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
-            "name": "Betty M. (Customer Since 2024)"
+            "name": "Betty M. (Verified Buyer)"
+          }
+        },
+        "testimonial_ACCAJM": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.",
+            "image": "shopify://shop_images/scott_s.png",
+            "name": "Scott S. (Verified Buyer)"
           }
         },
         "testimonial_Wrbdd9": {
           "type": "testimonial",
           "settings": {
-            "text": "\"Absolutely puts me to sleep quickly each night and I love the taste.\"",
+            "text": "Absolutely puts me to sleep quickly each night and I love the taste.",
             "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
-            "name": "Kimberly W. (Customer Since 2024)"
+            "name": "Kimberly W. (Verified Buyer)"
           }
         },
         "testimonial_Eccbfe": {
@@ -95,7 +103,7 @@
           "settings": {
             "text": "\"Excellent product, recommend it. Tastes good and helps me fall asleep quickly.\"",
             "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
-            "name": "Timothy G. (Customer Since 2023)"
+            "name": "Timothy G. (Verified Buyer)"
           }
         },
         "testimonial_FgaL8G": {
@@ -103,7 +111,7 @@
           "settings": {
             "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
             "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
-            "name": "Mandie N. (Customer Since 2022)"
+            "name": "Mandie N. (Verified Buyer)"
           }
         },
         "testimonial_C9Hxkg": {
@@ -111,15 +119,15 @@
           "settings": {
             "text": "\" I will continue to use Rejuvia as it seems to really work for me at night!\"",
             "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
-            "name": "Andrew H. (Customer Since 2022)"
+            "name": "Andrew H. (Verified Buyer)"
           }
         },
         "testimonial_KFgHFp": {
           "type": "testimonial",
           "settings": {
-            "text": "\"The Rejuvia sleep spray has been a blessing for me! Many thanks!!\"",
-            "image": "shopify://shop_images/Screenshot_2025-01-29_at_10.56.20_AM.png",
-            "name": "John S. (Customer Since 2024)"
+            "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
+            "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
+            "name": "Eldonna M. (Verified Buyer)"
           }
         },
         "testimonial_wq6Ep8": {
@@ -129,31 +137,23 @@
             "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
             "name": "Kelly G. (Customer Since 2023)"
           }
-        },
-        "testimonial_nhHLVz": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"This spray really works. I get a much deeper sleep with less wake ups.\"",
-            "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.16.17_PM.png",
-            "name": "Robert S. (Customer Since 2024)"
-          }
         }
       },
       "block_order": [
-        "testimonial_ACCAJM",
+        "testimonial_nhHLVz",
         "testimonial_A4AHUA",
+        "testimonial_ACCAJM",
         "testimonial_Wrbdd9",
         "testimonial_Eccbfe",
         "testimonial_FgaL8G",
         "testimonial_C9Hxkg",
         "testimonial_KFgHFp",
-        "testimonial_wq6Ep8",
-        "testimonial_nhHLVz"
+        "testimonial_wq6Ep8"
       ],
       "settings": {
-        "header": "Trusted By 200,000+ Sleepers",
+        "header": "Join The Rejuvia Revolution",
         "stars_reating": "4.6",
-        "stars_label": "(3,500+ 5-Star Customer Reviews)"
+        "stars_label": "Trusted By 200,000+ Sleepers"
       }
     },
     "ingredients_section_H4HeNP": {

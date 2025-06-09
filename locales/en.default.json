@@ -14,8 +14,8 @@
         "offsite_gateway_redirect_hint": "Click on the \"Complete Order\" button at the bottom of the page to complete your order securely through {{ gateway_label }}.",
         "title": "Payment",
         "billing_address_description": "Select the address that matches your card.",
-        "subscription_agreement_label_html": "By clicking \"Place Order,\" you agree to Rejuvia's terms of sale and privacy policy.",
-        "purchase_options_agreement_label": "By clicking \"Place Order\" you agree to Rejuvia's privacy policy and sale policy.",
+        "subscription_agreement_label_html": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
+        "purchase_options_agreement_label": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
         "card_security_notice": "All transactions are safe, secure and encrypted."
       },
       "contact": {
@@ -34,10 +34,10 @@
         "terms_of_service": "Terms of Service"
       },
       "general": {
-        "pay_now_button_label": "Place Order",
+        "pay_now_button_label": "Pay Now",
         "continue_to_shipping_method": "Continue To Shipping →",
         "continue_to_payment_method": "Continue To Payment →",
-        "complete_purchase_button_label": "Place Order",
+        "complete_purchase_button_label": "Pay Now",
         "back_to_contact_information": "Return to Information",
         "back_to_shipping_method": "Return to Shipping"
       },

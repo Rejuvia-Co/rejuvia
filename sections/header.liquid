@@ -504,19 +504,19 @@ html, body{overflow: visible!important;}
 
   @media only screen and (min-width: 750px) {
   .utility-bar {
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-name: ticker;
-      animation-duration: 10s;
-      display: flex;
-      width: max-content;
-      will-change: transform,padding,width;
+      /*animation-iteration-count: infinite;*/
+      /*animation-timing-function: linear;*/
+      /*animation-name: ticker;*/
+      /*animation-duration: 10s;*/
+      /*display: flex;*/
+      /*width: max-content;*/
+      /*will-change: transform,padding,width;*/
     }
     .header-top:hover .utility-bar {
-      animation-play-state: paused;
+      /*animation-play-state: paused;*/
     }
     .header-top .utility-bar{
-      animation-play-state: running;
+      /*animation-play-state: running;*/
     }
     .header-top .utility-bar {
       display: flex;
@@ -531,7 +531,6 @@ html, body{overflow: visible!important;}
       .header-top .utility-bar{display:none;}
     }
   {% endif %}
-
 {% if section.settings.enablemovemobile %}
 
   @media only screen and (max-width: 749px) {
@@ -692,11 +691,11 @@ html, body{overflow: visible!important;}
 
 
           {% if customer %}
-          <li><a class="flex" href="{% if customer %}/a/account/shopify-login{% else %}/a/account/login{% endif %}" title="">
+          <li><a class="flex" href="{% if customer %}/account/login{% else %}/account/login{% endif %}" title="">
             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
           </a></li>
           {% else %}
-          <li><a class="flex" href="{% if customer %}/a/account/shopify-login{% else %}/a/account/login{% endif %}" title="">{% render 'icon-user-circle' %}</a></li>
+          <li><a class="flex" href="{% if customer %}/account/login{% else %}/account/login{% endif %}" title="">{% render 'icon-user-circle' %}</a></li>
           {% endif %}
 
           <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>

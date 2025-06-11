@@ -1358,15 +1358,6 @@
           "title": "FAQs"
         }
       },
-      "hero-contact-us": {
-        "type": "hero-contact-us",
-        "settings": {
-          "image": "shopify://shop_images/HERO_DESKTOP.png",
-          "image_mobile": "shopify://shop_images/HERO_MOBILE.png",
-          "heading": "Help Center",
-          "subheading": "We are here to help. Check out our FAQs first and then if you still have a question, then send us a note below!"
-        }
-      },
       "hero": {
         "type": "hero",
         "blocks": {
@@ -1632,7 +1623,7 @@
               "social_proof_fontSizeDesk": 18,
               "show_stars": true,
               "title": "Better Sleep Starts With Rejuvia",
-              "text": "<p>Rejuvia is the first oral sleep spray designed to help you fall asleep faster, stay asleep longer, and wake up feeling like yourself again.</p>",
+              "text": "<p>Rejuvia is the first oral sleep spray that helps you fall asleep faster, stay asleep longer, and wake up feeling like yourself again.</p>",
               "fontSize": 22,
               "fontSizem": 17,
               "button": "TRY REJUVIA NOW",
@@ -1823,6 +1814,13 @@
       "section-choose-product": {
         "type": "section-choose-product",
         "blocks": {
+          "5aef66fd-d961-4219-855c-73a6e8ec8bc2": {
+            "type": "product",
+            "settings": {
+              "featured_product": "sleep-spray",
+              "short_description": "Achieve deep relaxation and calmness daily."
+            }
+          },
           "85dc2b1a-ae3e-4445-b852-0f28f7fb8f8d": {
             "type": "product",
             "settings": {
@@ -1837,25 +1835,18 @@
               "short_description": "Our classic, best-selling oral spray bundle."
             }
           },
-          "5aef66fd-d961-4219-855c-73a6e8ec8bc2": {
-            "type": "product",
-            "settings": {
-              "featured_product": "sleep-capsules",
-              "short_description": "Achieve deep relaxation and calmness daily."
-            }
-          },
           "a733a6fa-fdbb-4740-875b-b27e688e51f8": {
             "type": "product",
             "settings": {
-              "featured_product": "calm-drops",
+              "featured_product": "sleep-spray-6-pack",
               "short_description": "Enhanced relaxation"
             }
           }
         },
         "block_order": [
+          "5aef66fd-d961-4219-855c-73a6e8ec8bc2",
           "85dc2b1a-ae3e-4445-b852-0f28f7fb8f8d",
           "79f56b89-3828-4e03-a197-d44f7c8b6938",
-          "5aef66fd-d961-4219-855c-73a6e8ec8bc2",
           "a733a6fa-fdbb-4740-875b-b27e688e51f8"
         ],
         "settings": {
@@ -1920,28 +1911,6 @@
           "section_padding_mobile": "2em 0",
           "title": "Reviews",
           "autoplay": false
-        }
-      },
-      "blogtextbanner": {
-        "type": "blogtextbanner",
-        "settings": {
-          "zindex": "1",
-          "bg_color": "#ffffff",
-          "image_alt": "",
-          "image_mobile_alt": "",
-          "section_padding_desktop": "5em 1em",
-          "section_padding_mobile": "1em 0",
-          "text_position": "center",
-          "text_align": "center",
-          "text_align_mobile": "center",
-          "text_width": 50,
-          "text_padding_desktop": "3em 3em 0 0",
-          "text_padding_mobile": "3em 0 1em",
-          "text_color": "#000000",
-          "title": "Rejuvia Sleep Blog",
-          "text": "<p>Learn more about sleep, health, nutrition and oral sprays on our official blog.</p>",
-          "button": "",
-          "link": ""
         }
       },
       "header-top": {
@@ -2497,7 +2466,7 @@
             "settings": {
               "image": "shopify://shop_images/Flower.svg",
               "title": "Hops Flower",
-              "description": "Promotes deep, restful sleep and reduces stress"
+              "description": "Helps you unwind and sleep more deeply, especially when stress is high"
             }
           },
           "card_VcrFig": {
@@ -2505,7 +2474,7 @@
             "settings": {
               "image": "shopify://shop_images/FlowerLotus.svg",
               "title": "Gingko Biloba",
-              "description": "Enhances relaxation and improves sleep quality"
+              "description": "Supports calm and mental clarity, so your mind can finally rest"
             }
           },
           "card_4FwcxD": {
@@ -2513,7 +2482,7 @@
             "settings": {
               "image": "shopify://shop_images/SmileyWink.svg",
               "title": "Skullcap Root",
-              "description": "All-natural sedative that relaxes & calms the mind"
+              "description": "Naturally soothes the nervous system to help you let go at night"
             }
           },
           "card_cqHMUk": {
@@ -2521,7 +2490,7 @@
             "settings": {
               "image": "shopify://shop_images/MoonStars.svg",
               "title": "Melatonin",
-              "description": "Naturally supports quicker onset of deep sleep"
+              "description": "Signals your body it’s time for sleep — fast and gently"
             }
           },
           "card_VMT8Pe": {
@@ -2529,7 +2498,7 @@
             "settings": {
               "image": "shopify://shop_images/ApproximateEquals.svg",
               "title": "Passionflower",
-              "description": "Boosts GABA production to alleviate insomnia and anxiety"
+              "description": "Eases tension and boosts GABA, your body’s natural sleep switch"
             }
           }
         },
@@ -2541,8 +2510,8 @@
           "card_VMT8Pe"
         ],
         "settings": {
-          "heading": "13+ Premium Sleep Ingredients",
-          "subheading": "Our Sleep Spray is made with 100% all-natural ingredients free of fillers, synthetic additives and added sugar. It’s 100% made in the United States in cGMP compliant facilities and only contains the highest quality of ingredients. Each batch is triple lab-tested for purity, potency and additives by independent testing centers."
+          "heading": "Natural Ingredients With a Purpose",
+          "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
         }
       },
       "comparison-alternatives": {
@@ -2656,7 +2625,7 @@
       "press-logos": {
         "type": "press-logos",
         "settings": {
-          "hero_heading": "Rejuvia is the sleep solution you’ve been waiting for: fast-acting, natural, and trusted.",
+          "hero_heading": "“Rejuvia is the only sleep aid that helped me fall asleep fast without making me groggy.\"",
           "image-1": "shopify://shop_images/forbes_rejuvia_logo.png",
           "scale_image_1": false,
           "image-2": "shopify://shop_images/rejuvia_healthline_logo.png",
@@ -2691,39 +2660,11 @@
               "subheading": "We suggest uses 6-8 spritzes under your tongue each night, though we have customers who have success using only 4 and some using up to 10. It's all about finding the perfect dosage that works for you and the metered oral spray makes it very easy to customize!"
             }
           },
-          "faqs_aMBJfP": {
-            "type": "faqs",
-            "settings": {
-              "heading": "How does Rejuvia’s melatonin level compare to melatonin gummies?",
-              "subheading": "Rejuvia’s Sleep Spray contains 2mg of melatonin per dose, which aligns closely with the recommended nightly amount of 2–3mg. Many popular melatonin gummies have 6–10mg, which can certainly help you fall asleep—but often at the cost of feeling groggy or hungover the next morning. By using just 2mg of melatonin (alongside other natural sleep-enhancing ingredients), Rejuvia offers effective sleep support without the typical “melatonin hangover” that comes from taking too much."
-            }
-          },
-          "faqs_kYnBQx": {
-            "type": "faqs",
-            "settings": {
-              "heading": "Do I have to use Rejuvia every night?",
-              "subheading": "No. You can use Rejuvia as needed. Many customers love using Rejuvia nightly and add it into their routine, while many only need Rejuvia for a couple nights per week. It's all about finding what works best for you and your body's needs."
-            }
-          },
-          "faqs_bm6MAj": {
-            "type": "faqs",
-            "settings": {
-              "heading": "Can I use Rejuvia again if I wake up to use the bathroom?",
-              "subheading": "Yes you can. We would suggest using another 3-4 spritzes if you happen to wake up to use the bathroom and would like a boost to help you get back to sleep."
-            }
-          },
           "faqs_y3TKfq": {
             "type": "faqs",
             "settings": {
               "heading": "What do the sleep sprays taste like?",
               "subheading": "Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."
-            }
-          },
-          "faqs_79LnFM": {
-            "type": "faqs",
-            "settings": {
-              "heading": "Should I use Rejuvia before or after brushing my teeth?",
-              "subheading": "It's up to you. Most of our customers use our sprays about 20 minutes before they head to bed, which usually falls before brushing their teeth. You can feel comfortable using them after you brush your teeth, though."
             }
           },
           "faqs_VRYAV4": {
@@ -2754,13 +2695,6 @@
               "subheading": "We do our best to ship out all orders within 24 hours after they are placed from our warehouse in Chicago. You typically can expect your order to get to you within 3 business days after you place it."
             }
           },
-          "faqs_6JNLFW": {
-            "type": "faqs",
-            "settings": {
-              "heading": "What is Rejuvia's return policy?",
-              "subheading": "Here at Rejuvia, we stand behind our products proudly, which is why we offer a happiness guarantee. If by chance you are not happy with your Rejuvia product, then please email us at hello@rejuvia.co or chat with us. If you are within the first 30 days of your first purchase, then we will honor a full refund of your first Rejuvia Sleep Spray."
-            }
-          },
           "faqs_4DK9KL": {
             "type": "faqs",
             "settings": {
@@ -2773,16 +2707,11 @@
           "faqs_BYmxwX",
           "faqs_JfpDee",
           "faqs_Wb8nxL",
-          "faqs_aMBJfP",
-          "faqs_kYnBQx",
-          "faqs_bm6MAj",
           "faqs_y3TKfq",
-          "faqs_79LnFM",
           "faqs_VRYAV4",
           "faqs_jnNHJe",
           "faqs_yP86Ky",
           "faqs_XayQz8",
-          "faqs_6JNLFW",
           "faqs_4DK9KL"
         ],
         "settings": {
@@ -2879,7 +2808,7 @@
         ],
         "custom_css": [],
         "settings": {
-          "title": "Why Rejuvia?",
+          "title": "Finally, Better Sleep Is Here",
           "description": "Say goodbye to ineffective pills and gummies. Rejuvia’s Sleep Spray works faster, absorbing under your tongue for maximum effectiveness in just 10–15 minutes. Drift off sooner, sleep more deeply, and wake up energized—all with a safe, natural spray.",
           "background_image": "shopify://shop_images/rejuvia_sleep_spray_nin_sky.png",
           "background_color": "#fafaf9",
@@ -3018,33 +2947,9 @@
           "position": "Co-Founder, CEO of Rejuvia"
         }
       },
-      "replo-productcomparison": {
-        "type": "replo-productcomparison",
-        "settings": {
-          "replo_text_7267cf55-e8bd-4183-b246-749012aa03a1": "<p>REJUVIA VS. GUMMIES AND PILLS</p>",
-          "replo_text_909a71b8-c271-4730-b797-b4dcb9b10f33": "<p>Rejuvia vs. Gummies and Pills</p>",
-          "replo_text_68c1c16e-5de6-4e1e-a546-fd4b321308c6": "<p>Rejuvia Spray</p>",
-          "replo_text_981579cd-02ca-485d-955e-87d899709080": "<p>Gummies and Pills</p>",
-          "replo_text_5dd72fea-9609-48b5-9352-0139a87586db": "<p>ABSORBS IN 10-15 MINUTES</p>",
-          "replo_text_a95634c3-dedb-40cd-8373-6d3a0ec1b35a": "<p>FALL ASLEEP FASTER</p>",
-          "replo_text_e5ea12c8-814a-4e65-bc98-184535f4afe2": "<p>SLEEP THROUGH THE NIGHT</p>",
-          "replo_text_ca90df6c-4574-45e2-9d12-a0dca3303a2d": "<p>NO PRESCRIPTION NEEDED</p>",
-          "replo_text_c9d1aaf8-a514-4f94-b1c8-a6b59cc20e24": "<p>NON-HABIT FORMING</p>",
-          "replo_text_6c832ac4-a809-4b36-8525-93ecd571a2ef": "<p>100% ALL-NATURAL</p>"
-        }
-      },
       "article-new": {
         "type": "article-new",
         "settings": {}
-      },
-      "articles-similar": {
-        "type": "articles-similar",
-        "settings": {
-          "heading": "Similar articles",
-          "blog": "the-sleep-guide",
-          "show_tags": true,
-          "show_text": true
-        }
       },
       "blog-grid": {
         "type": "blog-grid",
@@ -3137,6 +3042,99 @@
           "title": "Shop All Rejuvia Products",
           "sub_title": "Better sleep and less stress are now just a few sprays away."
         }
+      },
+      "customer-testimonials-video": {
+        "type": "customer-testimonials-video",
+        "blocks": {
+          "testimonial_whPBcJ": {
+            "type": "testimonial",
+            "settings": {
+              "text": "I spray Rejuvia 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!",
+              "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
+              "name": "Tracey F. (Verified Buyer)"
+            }
+          },
+          "testimonial_tcPjib": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"I've been really enjoying my Rejuvia Sleep Spray and always sleep very well when I use it.\"",
+              "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
+              "name": "Betty M. (Verified Buyer)"
+            }
+          },
+          "testimonial_zRrpqp": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"Rejuvia really WORKS for me! It's lights out for me after just 15-20 minutes after using Rejuvia.\"",
+              "image": "shopify://shop_images/rejuvia_sleep_review_1.png",
+              "name": "Scott S. (Verified Buyer)"
+            }
+          },
+          "testimonial_YHXbR4": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"This little spray absolutely puts me to sleep quickly each night and I love the taste.\"",
+              "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
+              "name": "Kim W. (Verified Buyer)"
+            }
+          },
+          "testimonial_dQ3MeY": {
+            "type": "testimonial",
+            "settings": {
+              "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me! Highly suggest it.\"”",
+              "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
+              "name": "Mandie N. (Verified Buyer)"
+            }
+          },
+          "testimonial_Vm7GbP": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"I've been using Rejuvia for a few months and it more effective than everything we've ever tried before!\"",
+              "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
+              "name": "Kelly G. (Verified Buyer)"
+            }
+          },
+          "testimonial_pfyeUq": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
+              "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
+              "name": "Eldonna M. (Verified Buyer)"
+            }
+          },
+          "testimonial_gznJPD": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\"Truly amazing. Any questions about whether it’d work vanished the first night!\"",
+              "image": "shopify://shop_images/ff2dd570-7ef4-44ef-a8f0-973dbb949bb9.webp",
+              "name": "Mike B. (Verified Buyer)"
+            }
+          },
+          "testimonial_w6GPKT": {
+            "type": "testimonial",
+            "settings": {
+              "text": "\" I've suffered with sleeplessness for over a decade. Rejuvia sleep spray has changed my life!\"",
+              "image": "shopify://shop_images/fdabd1d6-7dc1-4db5-ad62-1e91fa4dcc7d.webp",
+              "name": "Angela L. (Verified Buyer)"
+            }
+          }
+        },
+        "block_order": [
+          "testimonial_whPBcJ",
+          "testimonial_tcPjib",
+          "testimonial_zRrpqp",
+          "testimonial_YHXbR4",
+          "testimonial_dQ3MeY",
+          "testimonial_Vm7GbP",
+          "testimonial_pfyeUq",
+          "testimonial_gznJPD",
+          "testimonial_w6GPKT"
+        ],
+        "settings": {
+          "header": "Join 200,000+ Sleepers Today",
+          "stars_reating": "4.6",
+          "stars_label": "From Over 6,500+ Reviews"
+        }
       }
     },
     "content_for_index": [
@@ -3193,6 +3191,11 @@
       "855628211100114053": {
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": true,
+        "settings": {}
+      },
+      "11560147490181472608": {
+        "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/app-embed/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
+        "disabled": false,
         "settings": {}
       }
     }

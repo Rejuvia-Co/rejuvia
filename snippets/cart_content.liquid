@@ -98,13 +98,13 @@
       <div class="cart-unempty__items--box">
         <div class="empty-cart__items">
           <h2 class="empty-cart__items--text">
-            Order Summary
+            Your Cart
           </h2>
           <span>{{ cart.item_count }} 
             {% if cart.item_count > 1 %}
-              items
+              Products
             {% else %}
-              item
+              Product
             {% endif %}
           </span>
         </div>
@@ -155,10 +155,10 @@
         </div>
         <div class="grid__item one-third medium--one-whole small--one-whole">
           <div class="summary text-left medium-down--text-center">
-            <h2 class="column-title custom_subtitle_font text-left">Your Cart</h2>
+            <h2 class="column-title custom_subtitle_font text-left">Summary</h2>
             <div class="flex subtotal align-items-center justify-content-between custom_subtitle_font">
               <div class="column cart-unempty__column">
-                Subtotal:
+                Total:
               </div>
               <div class="column custom_text_font">
                 {% assign subtotal = 0 %}
@@ -198,7 +198,7 @@
 
             <div class="flex subtotal total align-items-center justify-content-between custom_subtitle_font">
               <div class="column cart-unempty__column">
-                Total:
+                Subtotal:
               </div>
               <div class="column custom_text_font">
                 {{ cart.total_price | money }}

@@ -388,6 +388,20 @@
     "section_choose_product_3Gy6dc": {
       "type": "section-choose-product",
       "blocks": {
+        "product_YwGUyc": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray-6-pack",
+            "short_description": ""
+          }
+        },
+        "product_hmU6Mw": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-sprays",
+            "short_description": ""
+          }
+        },
         "product_NtTCVx": {
           "type": "product",
           "settings": {
@@ -401,27 +415,13 @@
             "featured_product": "oral-stress-spray",
             "short_description": ""
           }
-        },
-        "product_hmU6Mw": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-sprays",
-            "short_description": ""
-          }
-        },
-        "product_YwGUyc": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-spray-6-pack",
-            "short_description": ""
-          }
         }
       },
       "block_order": [
-        "product_NtTCVx",
-        "product_dxPmTB",
+        "product_YwGUyc",
         "product_hmU6Mw",
-        "product_YwGUyc"
+        "product_NtTCVx",
+        "product_dxPmTB"
       ],
       "settings": {
         "title": "Shop All Rejuvia Products",

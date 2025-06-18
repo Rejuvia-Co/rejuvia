@@ -2166,9 +2166,17 @@
           "review_cHyWiw": {
             "type": "review",
             "settings": {
-              "text": "“Tastes good and helps me fall asleep quickly. Well worth the money if you're second guessing yourself.”",
-              "image": "shopify://shop_images/timothy_g.png",
-              "name": "Timothy G."
+              "text": "“I’ve tried everything. This was the first time I actually felt calm and fell asleep without waking up groggy.”",
+              "image": "shopify://shop_images/bett_m.png",
+              "name": "Betty M."
+            }
+          },
+          "review_p9p63r": {
+            "type": "review",
+            "settings": {
+              "text": "“I use it after stressful days when I can’t shut my brain off. 6 sprays and I’m OUT for the night.\"",
+              "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
+              "name": "Tracey F."
             }
           },
           "review_x3hiFf": {
@@ -2179,14 +2187,6 @@
               "name": "Scott S."
             }
           },
-          "review_p9p63r": {
-            "type": "review",
-            "settings": {
-              "text": "“It took about a week for the full effect to build up and when it did WOW I get great sleep!! I highly recommend these sprays!”",
-              "image": "shopify://shop_images/bett_m.png",
-              "name": "Betty M."
-            }
-          },
           "review_i6cXLm": {
             "type": "review",
             "settings": {
@@ -2194,13 +2194,31 @@
               "image": "shopify://shop_images/kimberly_w.png",
               "name": "Kimberly W."
             }
+          },
+          "review_Mm4Bjm": {
+            "type": "review",
+            "settings": {
+              "text": "“It’s a little pricey, but nothing else worked this well for me. I’ve already re-ordered twice.”",
+              "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
+              "name": "Eldonna M."
+            }
+          },
+          "review_WiG7C9": {
+            "type": "review",
+            "settings": {
+              "text": "Rejuvia is the only product I didn’t give up on. I still use it months later and that says everything.”",
+              "image": "shopify://shop_images/ff2dd570-7ef4-44ef-a8f0-973dbb949bb9.webp",
+              "name": "Robert G."
+            }
           }
         },
         "block_order": [
           "review_cHyWiw",
-          "review_x3hiFf",
           "review_p9p63r",
-          "review_i6cXLm"
+          "review_x3hiFf",
+          "review_i6cXLm",
+          "review_Mm4Bjm",
+          "review_WiG7C9"
         ],
         "settings": {
           "hero_heading": "Used By 200,000 Sleepers"

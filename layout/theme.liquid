@@ -126,10 +126,6 @@
 
   {% render 'content_for_footer' %}
 
-  {%- if settings.allow_side_cart -%}
-    <script src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
-    {% render 'rebuy-extensions' %}
-  {% endif %}
   <script defer>
     $(document).ready(function() {
       $('.menu-desktop').removeClass('hidden');

@@ -2649,3 +2649,10 @@ body .product-wrap .swatch2 .swatch input:checked + label {
     font-size: 13px;
   }
 }
+
+#shopify-buyer-consent {
+  display: none!important;
+}
+.cart__variant {
+  font-size: 14px;
+}

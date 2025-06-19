@@ -16,7 +16,12 @@
         <div class="title custom_subtitle_font">
           <a href="{{ item.url }}">
             {%- assign titlePart = item.product.title | split: ' - ' -%}
-            <div class="name">{{ titlePart[0] }}{% if item.selling_plan_allocation %}{{item.selling_plan_allocation.selling_plan.name | prepend: ' - '}}{% endif %}</div>
+            <div class="name">{{ titlePart[0] }}</div>
+            {% if item.variant.title != "Default Title" %}
+              <div class="cart__variant">
+                {{ item.variant.title }}
+              </div>
+            {% endif %}
 
             {%- unless item.variant.title contains 'Default' -%}
             <div class="variants hide">
@@ -49,11 +54,12 @@
         <div class="remove">
           <a class="remove-from-cart" href="/cart" aria-label="Remove Item">
             {% comment %} {% include 'icons', icon: 'close' %} {% endcomment %}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="bin">
-                <path id="Vector" d="M19 6H5M14 5H10M6 10V21H18V10" stroke="#5C5C5C" stroke-linecap="round"/>
-              </g>
-            </svg>
+            {% comment %}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">{% endcomment %}
+              {% comment %}<g id="bin">{% endcomment %}
+                {% comment %}<path id="Vector" d="M19 6H5M14 5H10M6 10V21H18V10" stroke="#5C5C5C" stroke-linecap="round"/>{% endcomment %}
+              {% comment %}</g>{% endcomment %}
+            {% comment %}</svg>{% endcomment %}
+            Remove
           </a>
         </div>
       </div>

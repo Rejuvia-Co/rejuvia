@@ -3176,18 +3176,8 @@
           "show_preview_data": false
         }
       },
-      "10641372206048101839": {
-        "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-global-embed/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
-        "disabled": false,
-        "settings": {}
-      },
       "12509190167029697241": {
         "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
-        "disabled": false,
-        "settings": {}
-      },
-      "1291562577487733835": {
-        "type": "shopify://apps/black-crow-more-new-customers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
         "disabled": false,
         "settings": {}
       },
@@ -3214,6 +3204,11 @@
       "11560147490181472608": {
         "type": "shopify://apps/rivo-loyalty-rewards-referrals/blocks/app-embed/580e9665-b2cd-4dbc-b6ba-6445ac9e6871",
         "disabled": false,
+        "settings": {}
+      },
+      "1291562577487733835": {
+        "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
+        "disabled": true,
         "settings": {}
       }
     }

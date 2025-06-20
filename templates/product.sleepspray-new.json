@@ -337,25 +337,11 @@
             "subheading": "The majority of customers notice the benefits of our sleep sprays within the first few nights of using them. Some customers need to consistently use them for 5-7 days before enjoying the full benefits. Everyone's body is different and it might take more or less time depending on how your body responds to them."
           }
         },
-        "faqs_eDxDNH": {
-          "type": "faqs",
-          "settings": {
-            "heading": "What do Rejuvia's sprays taste like?",
-            "subheading": "Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."
-          }
-        },
         "faqs_w9ktrY": {
           "type": "faqs",
           "settings": {
             "heading": "How long will it take my order to arrive?",
             "subheading": "We do our best to ship out all orders within 24 hours after they are placed from our warehouse in Chicago. You typically can expect your order to get to you within a maximum of 3 business days after you place it."
-          }
-        },
-        "faqs_UW7bDR": {
-          "type": "faqs",
-          "settings": {
-            "heading": "Is it easy to cancel or pause my subscription?",
-            "subheading": "Yes! Very easy. Once you purchase your subscription, you will be able to log into your subscription account and manage it however you would like (pause, cancel, skip, etc.)."
           }
         },
         "faqs_fph4VV": {
@@ -371,9 +357,7 @@
         "faqs_f39Ji6",
         "faqs_NitEKm",
         "faqs_8mP9YQ",
-        "faqs_eDxDNH",
         "faqs_w9ktrY",
-        "faqs_UW7bDR",
         "faqs_fph4VV"
       ],
       "settings": {

@@ -2092,27 +2092,6 @@
       "main_page_mU9tFC": {
         "type": "main-page",
         "blocks": {
-          "faqs_Bzr9Mf": {
-            "type": "faqs",
-            "settings": {
-              "heading": "Why are Rejuvia sprays better than oils & pills?",
-              "subheading": "Oral sprays offer greater effectiveness compared to gummy and capsule supplements by enabling direct absorption through the mucous membranes in the mouth, bypassing the digestive system. This results in quicker and more efficient uptake of our sleep botanicals and amino acids, ensuring significantly higher bioavailability."
-            }
-          },
-          "faqs_f39Ji6": {
-            "type": "faqs",
-            "settings": {
-              "heading": "How many sprays do I use?",
-              "subheading": "We suggest uses 6-8 spritzes under your tongue each night, though we have customers who have success using only 4 and some using up to 10. It's all about finding the perfect dosage that works for you and the metered oral spray makes it very easy to customize!"
-            }
-          },
-          "faqs_jaFTqh": {
-            "type": "faqs",
-            "settings": {
-              "heading": "How do I use the oral sprays?",
-              "subheading": "To use our sprays, simply spritz 6-8 times either under your tongue or on the inside of your cheek, swish around your mouth and swallow. Use our sleep spray 20 minutes before bed and our stress spray throughout the day as needed. For the first usage, you might have to activate the spray by pumping it a few times before the liquid is ready to go."
-            }
-          },
           "faqs_NitEKm": {
             "type": "faqs",
             "settings": {
@@ -2125,6 +2104,20 @@
             "settings": {
               "heading": "How long do the sleep sprays take to work?",
               "subheading": "Most of our customers notice the positive effects of our sleep spray within the first or second night of use. For some, consistent use over 5-7 days is all it takes to experience significant improvements in their sleep. Since everyone's body responds uniquely, results may vary, but our spray is designed to help you achieve better sleep quickly and effectively."
+            }
+          },
+          "faqs_f39Ji6": {
+            "type": "faqs",
+            "settings": {
+              "heading": "How many sprays do I use each night?",
+              "subheading": "We suggest uses 6-8 spritzes under your tongue each night, though we have customers who have success using only 4 and some using up to 10. It's all about finding the perfect dosage that works for you and the metered oral spray makes it very easy to customize!"
+            }
+          },
+          "faqs_jaFTqh": {
+            "type": "faqs",
+            "settings": {
+              "heading": "How do I use the oral sprays?",
+              "subheading": "To use our sprays, simply spritz 6-8 times either under your tongue or on the inside of your cheek, swish around your mouth and swallow. Use our sleep spray 20 minutes before bed and our stress spray throughout the day as needed. For the first usage, you might have to activate the spray by pumping it a few times before the liquid is ready to go."
             }
           },
           "faqs_eDxDNH": {
@@ -2140,16 +2133,23 @@
               "heading": "Should I use Rejuvia before or after brushing my teeth?",
               "subheading": "It's up to you. Most of our customers use our sprays about 20 minutes before they head to bed, which usually falls before brushing their teeth. You can feel comfortable using them after you brush your teeth, though."
             }
+          },
+          "faqs_Bzr9Mf": {
+            "type": "faqs",
+            "settings": {
+              "heading": "Why are Rejuvia sprays better than oils & pills?",
+              "subheading": "Oral sprays offer greater effectiveness compared to gummy and capsule supplements by enabling direct absorption through the mucous membranes in the mouth, bypassing the digestive system. This results in quicker and more efficient uptake of our sleep botanicals and amino acids, ensuring significantly higher bioavailability."
+            }
           }
         },
         "block_order": [
-          "faqs_Bzr9Mf",
-          "faqs_f39Ji6",
-          "faqs_jaFTqh",
           "faqs_NitEKm",
           "faqs_8mP9YQ",
+          "faqs_f39Ji6",
+          "faqs_jaFTqh",
           "faqs_eDxDNH",
-          "faqs_4h3xJC"
+          "faqs_4h3xJC",
+          "faqs_Bzr9Mf"
         ],
         "settings": {
           "customClass": "",

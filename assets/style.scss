@@ -1527,7 +1527,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {-web
     left: 0;
     width: 100%;
     z-index: 999;
-    //transition: 0.3s ease-in-out all;
 
   }
 
@@ -2658,5 +2657,5 @@ body .product-wrap .swatch2 .swatch input:checked + label {
 }
 
 .utility-bar, .utility-bar-items, .utility-bar-items p {
-  transition: none;
+  transition: none!important;
 }

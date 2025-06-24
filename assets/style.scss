@@ -1588,6 +1588,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {-web
   font-size: 14px;
   margin-left: 18px;
   text-decoration: underline;
+  transition: none;
 }
 .footer-middle__decor img {
   max-width: 488px;

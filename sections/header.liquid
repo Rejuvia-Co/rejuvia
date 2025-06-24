@@ -105,11 +105,11 @@ html, body{overflow: visible!important;}
 
   .header-open {
     background-color: #ffffff !important;
-    /* transition: background-color 0.7s ease-in-out; */
+    transition: background-color 0.7s ease-in-out;
 }
 
   #header > .container{
-    /* transition: background-color 0.7s ease-in-out; */
+    transition: background-color 0.7s ease-in-out;
   }
 
   @media(min-width: 500px){
@@ -344,9 +344,7 @@ html, body{overflow: visible!important;}
       #header.over-carousel-desktop.fixed-desktop + .header-spacer {display: none !important;}
     {%- endif -%}
     {%- if section.settings.change_header_colors_scroll -%}
-      #header.change-scroll-desktop {-webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out; -o-transition: all 0.5s ease-out; -ms-transition: all 0.5s ease-out; transition: all 0.5s ease-out;}
-      #header.change-scroll-desktop a {-webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none;}
-      .scroll #header.change-scroll-desktop {background: {{section.settings.scroll_bg_color}} !important; color: {{section.settings.scroll_text_color}} !important;}
+            .scroll #header.change-scroll-desktop {background: {{section.settings.scroll_bg_color}} !important; color: {{section.settings.scroll_text_color}} !important;}
       .scroll #header.change-scroll-desktop :not(.utility-bar) a:not(:hover) svg path {fill: {{section.settings.scroll_text_color}} !important;}
     {%- endif -%}
 

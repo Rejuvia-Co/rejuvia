@@ -2659,3 +2659,6 @@ body .product-wrap .swatch2 .swatch input:checked + label {
 .utility-bar, .utility-bar-items, .utility-bar-items p {
   transition: none!important;
 }
+.utility-bar-items p {
+  letter-spacing: -.4px
+}

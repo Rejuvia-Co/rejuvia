@@ -2657,6 +2657,6 @@ body .product-wrap .swatch2 .swatch input:checked + label {
   font-size: 14px;
 }
 
-.utility-bar {
+.utility-bar, .utility-bar-items, .utility-bar-items p {
   transition: none;
 }

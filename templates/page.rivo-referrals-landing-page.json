@@ -9,49 +9,6 @@
  */
 {
   "sections": {
-    "rivo-loyalty-landing-page": {
-      "type": "rivo-loyalty-landing-page",
-      "settings": {
-        "primary_color": "#000000",
-        "secondary_color": "#672666",
-        "page_background_color": "#fff",
-        "rivo_icon_color": "#000000",
-        "title_font_style": "inherit",
-        "title_font_family": "HelveticaNeueL, sans-serif;",
-        "subtitle_font_family": "HelveticaNeueL, sans-serif;",
-        "section_title_font_color": "#000000",
-        "section_subtitle_font_color": "#000000",
-        "page_max_width": 1200,
-        "section_title_font_size": 36,
-        "section_title_font_weight": 600,
-        "section_subtitle_font_size": 18,
-        "section_subtitle_font_weight": 400,
-        "section_padding": 60,
-        "card_background_color": "#ffffff",
-        "card_font_color": "#000000",
-        "card_title_font_size": 18,
-        "card_title_font_weight": 600,
-        "card_subtitle_font_size": 16,
-        "card_subtitle_font_weight": 500,
-        "card_icon_size": 44,
-        "card_container_max_width": 960,
-        "card_order": "stacked",
-        "corner_type": "rounded",
-        "modal_background_color": "#ffffff",
-        "modal_font_color": "#000000",
-        "modal_icon_color": "#000000",
-        "modal_icon_position_top": 15,
-        "modal_icon_position_right": 15,
-        "modal_login_title_font_size": 22,
-        "modal_title_font_size": 22,
-        "modal_subtitle_font_size": 16,
-        "modal_body_font_size": 16,
-        "modal_icon_size": 44,
-        "vip_desktop_progress_bar_width": 50,
-        "vip_table_tier_td_border_top": "none",
-        "custom_css": ":root {\n  --rivo-color-light: #f5edf0;\n}\n\niframe.rivo-referral {\n  max-width: 1400px;\n  margin: 0 auto;\n  border-radius: 20px;\n  background: var(--rivo-color-light);\n}\n\n/* --- HOW IT WORKS --- */\n.rivo-how-it-works-steps {\n  background: var(--rivo-secondary-color);\n  border-radius: 20px;\n  padding-top: 50px;\n  padding-bottom: 50px;\n  margin-top: 75px;\n}\n\n.rivo-step-item {\n  position: relative;\n}\n\n.rivo-how-it-works-step-title {\n  text-transform: capitalize;\n  margin-top: 35px;\n}\n\n.rivo-first-step.rivo-step-item:after,\n.rivo-second-step.rivo-step-item:after {\n  border: 1px solid var(--rivo-color-light);\n  bottom: 30px;\n  content: \"\";\n  display: block;\n  position: absolute;\n  right: 0;\n  top: 20px;\n  height: 100%;\n}\n\n.rivo-how-it-works-step-image img {\n  margin: 0 auto;\n}\n\n@media (min-width: 769px) {\n  img.rivo-how-it-works-step-image {\n    position: absolute;\n    top: -130px;\n    left: 50%;\n    transform: translateX(-50%);\n  }\n}\n\n.rivo-content-wrapper {\n  padding-left: 15px;\n  padding-right: 15px;\n}\n\n.rivo-lp-content {\n  max-width: 1300px;\n}\n\n/* --- MOBILE ---  */\n\n@media (max-width: 749px) {\n  .rivo-content-wrapper {\n    padding-left: 10px;\n    padding-right: 10px;\n  }\n\n  .rivo-lp-section-title {\n    font-size: 32px;\n  }\n  .rivo-first-step.rivo-step-item:after,\n  .rivo-second-step.rivo-step-item:after {\n    content: \"\";\n    display: block;\n    position: static;\n    width: 100%;\n    height: 1px;\n    border: none;\n    border-top: 1px solid var(--rivo-color-light);\n    margin: 20px 0;\n  }\n  .rivo-how-it-works-steps {\n    padding-top: 25px;\n    padding-bottom: 25px;\n  }\n  .rivo-second-step.rivo-step-item,\n  .rivo-third-step.rivo-step-item {\n    margin-top: 0;\n  }\n  .rivo-first-step .rivo-how-it-works-step-title {\n    margin-top: -15px;\n  }\n  .rivo-second-step .rivo-how-it-works-step-title,\n  .rivo-third-step .rivo-how-it-works-step-title {\n    margin-top: 10px;\n  }\n  .rivo-first-step img.rivo-how-it-works-step-image {\n    position: absolute;\n    top: -120px;\n    left: 50%;\n    transform: translateX(-50%);\n  }\n  .rivo-how-it-works-step-subtitle {\n    font-size: 16px !important;\n    margin: 0 auto;\n    text-align: center;\n  }\n  #rivo-lp-referral-campaign {\n    padding: 0;\n  }\n  #rivo-lp-referral-campaign .rivo-lp-content {\n    padding: 0;\n  }\n  iframe.rivo-referral {\n    border-radius: 0;\n  }\n}\n\n.footer-container {\n  background: #000;\n}"
-      }
-    },
     "1748883920981863af": {
       "type": "apps",
       "blocks": {
@@ -70,6 +27,7 @@
     },
     "rivo_how_it_works_RARxAW": {
       "type": "rivo-how-it-works",
+      "disabled": true,
       "custom_css": [
         ".rivo-content-wrapper {background: #fff;}"
       ],
@@ -167,7 +125,6 @@
     }
   },
   "order": [
-    "rivo-loyalty-landing-page",
     "1748883920981863af",
     "rivo_how_it_works_RARxAW",
     "main_page_Tkg8KQ"

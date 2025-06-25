@@ -43,7 +43,7 @@
         "skio_plan_picker_gpx3rU": {
           "type": "skio-plan-picker",
           "settings": {
-            "start_onetime": true,
+            "start_onetime": false,
             "onetime_first": true
           }
         }

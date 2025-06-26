@@ -11,6 +11,17 @@
   
 {% render 'skio-head' %}
 
+  <script>
+(function() {
+  var script = document.createElement('script');
+  script.id = 'minty-onsite-script';
+  script.src = 'https://cdn.addshoppers.com/minty/shopify-onsite/executeminty.js';
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+})();
+</script>
+
 <script>
   window.ALBSS = {
     event_key: '«52c03e6a-eb7a-466a-bca5-856b00ea3ddf»'

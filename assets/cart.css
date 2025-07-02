@@ -216,7 +216,7 @@ main:has(#cart) {
 
 #cart .main-form__cart--unempty .cart-unempty__main {
 	justify-content: space-between;
-	margin-bottom: 80px;
+	/*margin-bottom: 80px;*/
 	gap: 16px;
 	flex-wrap: nowrap;
 }
@@ -325,8 +325,9 @@ main:has(#cart) {
 #cart .main-form__cart--unempty .cart-unempty__items {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	gap: 8px;
+	justify-content: center;
+	margin-top: 16px;
 }
 
 #cart .main-form__cart--unempty .cart-unempty__items--text {
@@ -460,6 +461,8 @@ main:has(#cart) {
 
 #cart:has(.main-form__cart--unempty) {
 	letter-spacing: normal;
+	background: #FAFAF9;
+	/*padding-bottom: 80px;*/
 }
 
 @media only screen and (max-width: 749px) {
@@ -542,7 +545,8 @@ main:has(#cart) {
 	}
 
 	#cart .main-form__cart--unempty .cart-unempty__main {
-		margin-bottom: 48px;
+		margin-bottom: 0;
+
 	}
 
 	#cart .main-form__cart--unempty .items {
@@ -581,10 +585,28 @@ main:has(#cart) {
 	}
 
 	#cart .main-form__cart--unempty .cart-unempty__items {
-		margin-top: -2px;
+		margin-top: 10px;
 	}
 }
 
 #cart .additional-checkout-buttons {
 	display: none!important;
+}
+.oke-reviewCarousel-header .okeReviews {
+	display: none!important;
+}
+.oke-reviewCarousel-header h2 {
+	font-weight: 400 !important;
+	font-size: 48px !important;
+	text-align: left!important;
+	line-height: 120% !important;
+	margin-left: 48px !important;
+}
+
+.templateCart .okeReviews {
+	margin-top: 80px!important;
+	padding-top: 80px;
+}
+.templateCart .okeReviews .oke-reviewCard-content .oke-reviewContent-body p {
+	line-height: 140%!important;
 }

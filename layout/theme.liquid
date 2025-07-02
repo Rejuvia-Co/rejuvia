@@ -93,7 +93,7 @@
 
 </head>
 
-<body class="template{{ template | split: '.' | first | camelize }}{% if customer %} customer-logged-in{% endif %} {{ template.suffix }}">
+<body class="template{{ template | split: '.' | first | camelize }}{% if customer %} customer-logged-in{% endif %} {{ template.suffix }} template--{{ template.name }} {% if template.name == 'cart' and cart.item_count == 0 %} template--{{ template.name }}--empty {% endif %}">
   <a href="#main-content" class="skip-to-main-content">Skip to Main Content</a>
   <div id="page">
     {% comment %}{%- section 'header-top' -%}{% endcomment %}

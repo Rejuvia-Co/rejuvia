@@ -595,7 +595,7 @@ main:has(#cart) {
 .oke-reviewCarousel-header .okeReviews {
 	display: none!important;
 }
-.oke-reviewCarousel-header h2 {
+.shopify-app-block .oke-reviewCarousel-header h2 {
 	font-weight: 400 !important;
 	font-size: 48px !important;
 	text-align: left!important;
@@ -603,10 +603,10 @@ main:has(#cart) {
 	margin-left: 48px !important;
 }
 
-.templateCart .okeReviews {
+.templateCart .shopify-app-block .okeReviews {
 	margin-top: 80px!important;
 	padding-top: 80px;
 }
-.templateCart .okeReviews .oke-reviewCard-content .oke-reviewContent-body p {
+.templateCart .okeReviews .shopify-app-block .oke-reviewCard-content .oke-reviewContent-body p {
 	line-height: 140%!important;
 }

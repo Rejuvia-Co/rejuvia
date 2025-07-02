@@ -12,7 +12,7 @@
     "cart_main": {
       "type": "cart-main",
       "settings": {
-        "title_1": "Free Shipping Over $49+",
+        "title_1": "Free Shipping Over $69+",
         "icon_1": "shopify://shop_images/Wind.svg",
         "title_2": "30-Day Money Back Guarantee",
         "icon_2": "shopify://shop_images/SealCheck.svg",
@@ -36,6 +36,7 @@
       "block_order": [
         "okendo_reviews_carousel_pPkKLh"
       ],
+      "disabled": true,
       "settings": {}
     }
   },

@@ -57,7 +57,10 @@
       },
       "shipping": {
         "shipping_method_title": "Shipping",
-        "delivery_title": "Delivery"
+        "delivery_title": "Delivery",
+        "shipping_method_recurring_shipments_group_title": {
+          "other": "Future Shipments"
+        }
       },
       "delivery_options": {
         "shipping_address": "Shipping Address"

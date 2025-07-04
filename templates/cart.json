@@ -11,6 +11,9 @@
   "sections": {
     "cart_main": {
       "type": "cart-main",
+      "custom_css": [
+        ".cart-icons {margin-bottom: 40px;}"
+      ],
       "settings": {
         "title_1": "Free Shipping Over $69+",
         "icon_1": "shopify://shop_images/Wind.svg",

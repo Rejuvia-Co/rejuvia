@@ -1397,6 +1397,31 @@ export class SkioPlanPicker extends LitElement {
   selectSellingPlanGroup(group) {
     this.selectedSellingPlanGroup = group
     this.selectedSellingPlan = group?.selected_selling_plan
+
+    if(group){
+      console.log("It is subscription");
+      const additional_product = document.querySelector(".additional-product__wrap");
+      const variantsFree = document.querySelectorAll(".subscription-text");
+      if(additional_product){
+        additional_product.classList.remove('hidden')
+      }
+      if(variantsFree){
+        variantsFree.forEach((item)=>{
+          item.classList.remove('hidden')
+        })
+      }
+    } else {
+      const additional_product = document.querySelector(".additional-product__wrap");
+      const variantsFree = document.querySelectorAll(".subscription-text");
+      if(additional_product){
+        additional_product.classList.add('hidden')
+      }
+      if(variantsFree){
+        variantsFree.forEach((item)=>{
+          item.classList.add('hidden')
+        })
+      }
+    }
   }
 
   // Update selected selling plan; called on change of skio-frequency select element
@@ -1559,6 +1584,7 @@ export class SkioPlanPicker extends LitElement {
 
   // Runs a fetch request to add the selectedVariant to the cart with the passed quantity and selectedSellingPlan
   addToCart(quantity) {
+    console.log("addToCart(quantity)", "TEEEEEEEESSSSSSSSSTTTTTTTTT")
     const items = [
       {
         id: this.selectedVariant.id,

@@ -64,17 +64,17 @@
         {%- assign values = values | split: '*|*' -%}
 
         {% assign get_number = variant.title | slice: 0 %}
-        
-        
+
+
         {% assign compare_at_price = variant.price | divided_by: get_number %}
         {% assign get_number = variant.title | slice: 0 %}
         {% assign get_numbers_of_sprays = get_number | first %}
-        
+
         {% assign variant_original_price_per_spray = compare_at_price | times: get_numbers_of_sprays %}
-        
+
         {% assign current_variant_price = variant.price |  money_without_currency %}
         {% assign save_price = current_variant_price | minus: variant_original_price_per_spray %}
-        
+
         {% comment %} calc of the best discount tag {% endcomment %}
         {% assign one_spray_price = base_serving.price |  money_without_currency %}
 
@@ -83,7 +83,7 @@
         {% assign percentage_savings = savings_per_spray | divided_by: one_spray_price | times: 100 %}
 
         {% assign off_to_show = percentage_savings |  round: 0 %}
-        
+
         <div class="swatch-element {% if size == 2 %} size-two {% endif %}">
           <div
             data-number="{{ get_number }}"
@@ -98,7 +98,7 @@
                 type="radio"
                 name="option-{{ option_index }}"
                 value="{{ value | escape }}"
-                
+
                 {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %}
                 aria-hidden="true"
               >
@@ -169,7 +169,7 @@
                   <div class="swatch-name__variant--pack">
                     {{ variant.metafields.custom.variant_pack_size }}
                   </div>
-                  <div class="swatch-name__variant--box"> 
+                  <div class="swatch-name__variant--box">
                     <span class="name-variant">
                       {{ value }}
                     </span>
@@ -179,6 +179,11 @@
                   <span class="swatch-label__price_per_serving">
                     {{ price_per_serving | money | replace: '.00', '' }}<span>/night</span>
                   </span>
+                    {% if settings.additional_product != blank and currentProduct.metafields.custom.enable_additional_subscription_product %}
+                        <span class="subscription-text">
+                            + FREE SPRAY
+                        </span>
+                    {% endif %}
                   <div class="cross"></div>
                 </div>
               </label>
@@ -189,6 +194,111 @@
     {%- endfor -%}
   </div>
   {% if product.metafields.more_info.tooltip_variant != '' %}
-    <div class="prompt_variants hide"><span></span> {{ product.metafields.more_info.tooltip_variant }}</div>
+    <div class="prompt_variants hide"><span></span> {{ currentProduct.metafields.more_info.tooltip_variant }}</div>
   {% endif %}
 </div>
+{% if settings.additional_product != blank and currentProduct.metafields.custom.enable_additional_subscription_product  %}
+        <script>
+            window.additionalProduct = {};
+            window.additionalProduct.id = {{ settings.additional_product.selected_or_first_available_variant.id | json }};
+            window.additionalProduct.currentProduct = {{ currentProduct | json }};
+            window.additionalProduct.product = {{ settings.additional_product | json }};
+        </script>
+  <div class="additional-product__wrap" data-productid="{{ currentProduct.id }}">
+    <div class="additional-product__item">
+      <div class="additional-product__item--image">
+          {% if currentProduct.metafields.custom.additional_subscription_product_image != blank %}
+              <img src="{{ currentProduct.metafields.custom.additional_subscription_product_image | img_url: 'master' }}"
+                   alt="{{ settings.additional_product.title }}">
+          {% else %}
+              <img src="{{ settings.additional_product.featured_image | img_url: 'master' }}"
+                   alt="{{ settings.additional_product.title }}">
+          {% endif %}
+      </div>
+      <div class="additional-product__item--content">
+        <div class="additional-product__item--review">
+          <a href="#" onclick="window.history.back(); return false;" class="return_search hide">&laquo; Return to Search
+            Results</a>
+          <div class="mobile-title-and-reviews  justify-content-between">
+            <a id="okendo-product-reviews" href="#shopify-block-okendo_reviews_widget_Uc3pqP">
+              {% assign reviewRating = settings.additional_product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
+              {% assign reviewCount = settings.additional_product.metafields.okendo.summaryData.reviewCount | plus: 0 %}
+              {% assign fullStars = reviewRating | floor %}
+              {% assign remainder = reviewRating | minus: fullStars %}
+
+              {% assign hasHalfStar = 0 %}
+              {% if remainder >= 0.25 and remainder < 0.75 %}
+                {% assign hasHalfStar = 1 %}
+              {% elsif remainder >= 0.75 %}
+                {% assign fullStars = fullStars | plus: 1 %}
+              {% endif %}
+
+              {% assign emptyStars = 5 | minus: fullStars | minus: hasHalfStar %}
+
+              <div class="custom-review-stars">
+                {% for i in (1..fullStars) %}
+                  <span class="star full">★</span>
+                {% endfor %}
+
+                {% if hasHalfStar == 1 %}
+                  <span class="star half">★</span>
+                {% endif %}
+
+                {% for i in (1..emptyStars) %}
+                  <span class="star empty">★</span>
+                {% endfor %}
+
+                <span class="rating-text">
+    {{ reviewRating }}
+  </span>
+              </div>
+
+              <style>
+                .custom-review-stars {
+                  display: flex;
+                  align-items: center;
+                  gap: 1px;
+                  font-size: 18px;
+                }
+
+                .custom-review-stars .star {
+                  color: #d8b46e; /* default star color */
+                  position: relative;
+                  display: inline-block;
+                }
+
+                .custom-review-stars .star.empty {
+                  color: #ddd;
+                }
+
+                .custom-review-stars .star.half {
+                  color: #ddd;
+                }
+
+                .custom-review-stars .star.half::before {
+                  content: "★";
+                  color: #d8b46e;
+                  position: absolute;
+                  left: 0;
+                  width: 50%;
+                  overflow: hidden;
+                }
+
+              </style>
+            </a>
+          </div>
+        </div>
+        <div class="additional-product__item--title">
+            {% if currentProduct.metafields.custom.additional_subscription_product_title != blank %}
+                {{ currentProduct.metafields.custom.additional_subscription_product_title }}
+            {% else %}
+                {{ settings.additional_product.title }}
+            {% endif %}
+        </div>
+        <div class="additional-product__item--price">
+          {% if currentProduct.metafields.custom.additional_subscription_product_price != blank %} {{ currentProduct.metafields.custom.additional_subscription_product_price }} {% else %}Valued {{ settings.additional_product.price | money }} {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

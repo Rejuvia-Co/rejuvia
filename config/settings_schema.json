@@ -1,5 +1,29 @@
 [
   {
+    "name": "Additional product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Additional Free product for subscription"
+      },
+      {
+        "type": "product",
+        "id": "additional_product",
+        "label": "Additional product"
+      },
+      {
+        "type": "text",
+        "id": "additional_product_title",
+        "label": "Additional product title"
+      },
+      {
+        "type": "text",
+        "id": "additional_product_price",
+        "label": "Additional product price text"
+      }
+    ]
+  },
+  {
     "name": "General",
     "settings": [
       {

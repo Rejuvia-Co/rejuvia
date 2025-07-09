@@ -2751,3 +2751,58 @@ div.okeReviews[data-oke-container] .oke-w-reviewer>div {
 .template--cart--empty div[data-oke-carousel] {
   display: none!important;
 }
+
+.additional-product__item--image img {
+  max-width: 70px;
+  object-fit: cover;
+  border-radius: 2.67px;
+}
+.additional-product__wrap {
+  background: #672666;
+  margin-top: 16px;
+  border-radius: 5px;
+}
+.additional-product__item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.additional-product__item--content {
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.additional-product__item--review #okendo-product-reviews {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.additional-product__item--review .rating-text {
+  color: white;
+  margin-left: 8px;
+}
+.additional-product__item--title {
+  color: white;
+  font-size: 16px;
+  line-height: 120%;
+  margin-bottom: 18px;
+  font-weight: 700;
+  text-align: start;
+}
+.additional-product__item--review .custom-review-stars {
+  font-size: 14px;
+  line-height: 150%;
+}
+.additional-product__item--price {
+  font-size: 14px;
+  line-height: 120%;
+  color: white;
+}
+span.subscription-text {
+  font-size: 10px;
+  font-weight: bold;
+  color: #672666;
+  text-align: center;
+}

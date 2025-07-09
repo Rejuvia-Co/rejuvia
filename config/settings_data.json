@@ -731,8 +731,8 @@
             "type": "utility_bar",
             "settings": {
               "show": true,
-              "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>Get Up To 55% OFF <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
+              "link": "shopify://products/sleep-spray",
+              "text": "<p>FREE Calm Spray + 20% OFF Your Order <a href=\"/products/sleep-spray\" title=\"Sleep Spray\">Shop Now</a></p>"
             }
           },
           "right_content_block_7LwdNX": {
@@ -3194,13 +3194,6 @@
         "type": "shopify://apps/intelligems-a-b-testing/blocks/intelligems-script/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
         "disabled": true,
         "settings": {}
-      },
-      "10605408327587305396": {
-        "type": "shopify://apps/eg-auto-add-to-cart/blocks/app-embed/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
-        "disabled": false,
-        "settings": {
-          "version": "v3"
-        }
       }
     }
   }

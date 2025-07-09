@@ -89,9 +89,14 @@
             <span class="cart-unempty__full--price">
               {{ item.variant.compare_at_price | times: item.quantity | money }}
             </span>
-            <span class="cart-unempty__sale--price">
-              {{ item.line_price | money }}
-            </span>
+  <span class="cart-unempty__sale--price">
+    {% if item.line_price == 0 %}
+      FREE
+    {% else %}
+      {{ item.line_price | money }}
+    {% endif %}
+  </span>
+
           {% elsif item.line_price != discount %}
             {% assign full_price = discount | money_without_currency | remove: ',' %}
             {% assign sale_price = item.line_price | money_without_currency | remove: ',' %}

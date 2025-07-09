@@ -839,10 +839,16 @@ export class SkioPlanPicker extends LitElement {
               20% OFF Every Order
             </span>
           </li>
+           <li>
+            <svg width="6px" height="6px" viewBox="0 0 0.12 0.12" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" d="M0.06 0.022a0.037 0.037 0 1 0 0 0.075A0.037 0.037 0 0 0 0.06 0.022"/></svg>
+            <span>
+             FREE Calm Spray
+            </span>
+          </li>
           <li>
             <svg width="6px" height="6px" viewBox="0 0 0.12 0.12" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" d="M0.06 0.022a0.037 0.037 0 1 0 0 0.075A0.037 0.037 0 0 0 0.06 0.022"/></svg>
             <span>
-              Always FREE, Fast Shipping
+             FREE U.S. Shipping
             </span>
           </li>
           <li>

@@ -687,7 +687,8 @@ export class SkioPlanPicker extends LitElement {
         <!-- Subscription bullet points copied with styling from Loop -->
         <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; display: inline-flex">
           <li style="color: black; font-size: 16px; font-weight: 400; line-height: 24px; word-wrap: break-word">20% OFF Every Order</li>
-          <li style="color: black; font-size: 16px; font-weight: 400; line-height: 24px; word-wrap: break-word">Always Free, Fast Shipping</li>
+          <li style="color: black; font-size: 16px; font-weight: 400; line-height: 24px; word-wrap: break-word">FREE Calm Spray</li>
+          <li style="color: black; font-size: 16px; font-weight: 400; line-height: 24px; word-wrap: break-word">FREE U.S. Shipping</li>
           <li style="color: black; font-size: 16px; font-weight: 400; line-height: 24px; word-wrap: break-word">Easily Pause, Skip or Cancel</li>
         </ul>
       </div>

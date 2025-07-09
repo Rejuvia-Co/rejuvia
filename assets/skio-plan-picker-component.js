@@ -740,7 +740,7 @@ export class SkioPlanPicker extends LitElement {
   sellingPlanDropdown(group) {
     return html`
       <div class="selling-plan-dropdown-container">
-        <span>Delivery every: </span>
+        <span>Frequency: </span>
         <select
             class="selling-plan-dropdown ${this.getAvailableSellingPlans(group).length == 1 ? 'selling-plan-dropdown--one' : ''}"
             @change=${e => {

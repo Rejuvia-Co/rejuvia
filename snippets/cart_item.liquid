@@ -108,9 +108,13 @@
             <span class="cart-unempty__sale--price">
               {{ item.line_price | money }}
             </span>
-          {% else %}
-            {{ item.line_price | money }}
-          {% endif %}
+         {% else %}
+  {% if item.line_price == 0 %}
+    FREE
+  {% else %}
+    {{ item.line_price | money }}
+  {% endif %}
+{% endif %}
         </div>
         </div>
       </div>

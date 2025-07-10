@@ -712,8 +712,8 @@
             "settings": {
               "first_label": "Reviews",
               "first_url": "shopify://pages/reviews",
-              "second_label": "About Us",
-              "second_url": "shopify://pages/ingredients",
+              "second_label": "Refer a Friend",
+              "second_url": "shopify://pages/refer-a-friend",
               "third_label": "FAQS",
               "third_url": "shopify://pages/rejuvia-faqs",
               "fourth_label": "Support",

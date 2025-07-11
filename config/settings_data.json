@@ -3061,45 +3061,11 @@
           "stars_reating": "4.6",
           "stars_label": "From 6,500+ Reviews"
         }
-      },
-      "icons_row_ihr7RT": {
-        "type": "icons-row",
-        "blocks": {
-          "icon_text_Yr8PdM": {
-            "type": "icon-text",
-            "settings": {
-              "icon": "shopify://shop_images/Wind.svg",
-              "text": "Fall Asleep Faster"
-            }
-          },
-          "icon_text_ngfhVa": {
-            "type": "icon-text",
-            "settings": {
-              "icon": "shopify://shop_images/MoonStars.svg",
-              "text": "Sleep Through The Night"
-            }
-          },
-          "icon_text_FT3tUn": {
-            "type": "icon-text",
-            "settings": {
-              "icon": "shopify://shop_images/SmileyWink.png",
-              "text": "Wake Up Refreshed"
-            }
-          }
-        },
-        "block_order": [
-          "icon_text_Yr8PdM",
-          "icon_text_ngfhVa",
-          "icon_text_FT3tUn"
-        ],
-        "name": "Icons row",
-        "settings": {}
       }
     },
     "content_for_index": [
       "161352637973a49ebc",
       "press_logos_YiWTgA",
-      "icons_row_ihr7RT",
       "product_features_p6FHhD",
       "featured_customer_reviews_96PMKt",
       "how_it_works_Qwdx49",

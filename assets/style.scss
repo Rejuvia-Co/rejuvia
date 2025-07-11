@@ -2806,3 +2806,33 @@ span.subscription-text {
   color: #672666;
   text-align: center;
 }
+.icons-row-container {
+  padding: 40px 16px;
+  max-width: 1440px;
+  margin: auto;
+}
+.icons-row__wrap {
+  display: flex;
+  column-gap: 100px;
+  justify-content: center;
+}
+.icons-row__image {
+  max-width: 40px;
+}
+.icons-row__item {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+.icons-row__text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.16px;
+}
+@media all and (max-width: 769px) {
+  .icons-row__wrap {
+    flex-direction: column;
+    row-gap: 12px;
+  }
+}

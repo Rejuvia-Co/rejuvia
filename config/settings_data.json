@@ -1471,75 +1471,6 @@
           "autoplay": true
         }
       },
-      "plp-icons-section_cst": {
-        "type": "plp-icons-section_cst",
-        "blocks": {
-          "dfb532ce-c0fc-4a18-839a-dea7da90a8ba": {
-            "type": "icon",
-            "settings": {
-              "heading": "Free shipping",
-              "image": "shopify://shop_images/free-shipping.png",
-              "text": "<p>We offer free same-day USPS shipping on all orders</p>"
-            }
-          },
-          "665dd4db-424b-4728-a186-de6825ec39f0": {
-            "type": "icon",
-            "settings": {
-              "heading": "30% off",
-              "image": "shopify://shop_images/icons8-smiling-50.png",
-              "text": "<p>We reward your commitment to living a healthier lifestyle with monthly savings. </p>"
-            }
-          },
-          "59239937-bcb5-48ad-a558-38c01753513a": {
-            "type": "icon",
-            "settings": {
-              "heading": "Easily Pause & Swap",
-              "image": "shopify://shop_images/return.png",
-              "text": "<p>Our account portal makes it easy to pause your subscription or swap products!</p>"
-            }
-          },
-          "d4b87e0a-7906-486b-86d5-c95ef83c3cef": {
-            "type": "icon",
-            "settings": {
-              "heading": "Community Access",
-              "image": "shopify://shop_images/icons8-sparkling-50.png",
-              "text": "<p>Get invited to our exclusive Facebook Community Group.</p>"
-            }
-          },
-          "7e6d1d9e-0cb0-41ed-871f-e5c3ac7ea0f3": {
-            "type": "icon",
-            "settings": {
-              "heading": "Easy cancellation",
-              "image": "shopify://shop_images/icons8-xbox-x-50.png",
-              "text": "<p>Free and easy cancellation. Your subscripton, your terms!</p>"
-            }
-          },
-          "0c6d47e6-990e-4c90-93bb-c6c06978033b": {
-            "type": "icon",
-            "settings": {
-              "heading": "Exclusive Launches",
-              "image": "shopify://shop_images/favorites.png",
-              "text": "<p>You'll be the first to know about our member-only product and merch launches.</p>"
-            }
-          }
-        },
-        "block_order": [
-          "dfb532ce-c0fc-4a18-839a-dea7da90a8ba",
-          "665dd4db-424b-4728-a186-de6825ec39f0",
-          "59239937-bcb5-48ad-a558-38c01753513a",
-          "d4b87e0a-7906-486b-86d5-c95ef83c3cef",
-          "7e6d1d9e-0cb0-41ed-871f-e5c3ac7ea0f3",
-          "0c6d47e6-990e-4c90-93bb-c6c06978033b"
-        ],
-        "custom_css": [
-          "p {color: black;}"
-        ],
-        "settings": {
-          "heading": "<p>Subscribe To Rejuvia</p>",
-          "button_text": "",
-          "button_url": ""
-        }
-      },
       "collection-hero-cst": {
         "type": "collection-hero-cst",
         "settings": {
@@ -3192,7 +3123,7 @@
       },
       "1877152918344802950": {
         "type": "shopify://apps/intelligems-a-b-testing/blocks/intelligems-script/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     }

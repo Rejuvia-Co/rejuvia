@@ -600,7 +600,7 @@ html, body{overflow: visible!important;}
     {% endfor %}
   <div class="container relative">
     <div
-      class="main-content animation flex justify-content-between align-items-center medium--justify-content-between small--justify-content-between ">
+      class="main-content flex justify-content-between align-items-center medium--justify-content-between small--justify-content-between ">
 
       <a href="/" class="logo medium-down--hide">
         {%- if section.settings.logo != blank -%}
@@ -837,7 +837,7 @@ html, body{overflow: visible!important;}
 {% if blog.handle != nil %}
 <div class="header-spacer {% if section.settings.behavior == "fixed" %} large--show{% endif %}{% if section.settings.behavior_mobile == "fixed" %} medium-down--show{% endif %}"></div>
 {% else  %}
-<div class="header-spacer ease-animation hide{% if section.settings.behavior == "fixed" %} large--show{% endif %}{% if section.settings.behavior_mobile == "fixed" %} medium-down--show{% endif %}"></div>
+<div class="header-spacer hide{% if section.settings.behavior == "fixed" %} large--show{% endif %}{% if section.settings.behavior_mobile == "fixed" %} medium-down--show{% endif %}"></div>
 {% endif  %}
 
 <!--Añadir color al header despues de cierot scroll-->

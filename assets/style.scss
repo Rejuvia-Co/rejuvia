@@ -335,7 +335,7 @@ input.error, textarea.error {border-color: #ff0202 !important;}
 
 
 @media (prefers-reduced-motion: reduce) {
-  a, .animation, .ease-animation, .ease-animation-slow, .animated,
+  a:not(.logo), .animation, .ease-animation, .ease-animation-slow, .animated,
   .btn, a.btn, input.btn, button.btn,
   svg.icon path,
   .slick-track, .slick-slider .slick-slide, .slick-slider .slick-arrow, .slick-dots li button, .slick-slider .slick-arrow,

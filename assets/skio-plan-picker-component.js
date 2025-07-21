@@ -869,7 +869,7 @@ export class SkioPlanPicker extends LitElement {
         <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
           <li>
             <span>
-              $Over 50% OFF vs. Buying Seperately
+              Over 55% OFF vs. Buying Seperately
             </span>
           </li>
         </ul>

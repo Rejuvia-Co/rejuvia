@@ -731,8 +731,8 @@
             "type": "utility_bar",
             "settings": {
               "show": true,
-              "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>Get Up To 55% OFF <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
+              "link": "shopify://products/sleep-spray-copy",
+              "text": "<p>FREE Calm Spray + 20% OFF on Your First Order</p>"
             }
           },
           "right_content_block_7LwdNX": {

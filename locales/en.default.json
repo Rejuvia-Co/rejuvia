@@ -53,7 +53,8 @@
         "subtotal_label_with_quantity": {
           "one": "Subtotal",
           "other": "Subtotal"
-        }
+        },
+        "recurring_subtotal_label": "Subtotal"
       },
       "shipping": {
         "shipping_method_title": "Shipping",

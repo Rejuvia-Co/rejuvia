@@ -100,7 +100,7 @@ p {margin: 0 0 1em 0;}
 /* a {@include animation(0.2s);} */
 //.animation {@include animation(0.2s);}
 //.ease-animation {@include ease-animation(0.2s); }
-//.ease-animation-slow {@include ease-animation(0.5s); }
+.ease-animation-slow {@include ease-animation(0.5s); }
 .isNotMobile a:hover { color: #eac78b }
 input, textarea {font-family: 'Roboto', sans-serif; color: #000000;}
 

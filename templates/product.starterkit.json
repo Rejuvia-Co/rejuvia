@@ -163,40 +163,40 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/Flower.svg",
-            "title": "Hops Flower",
-            "description": "Helps you unwind and sleep more deeply, especially when stress is high"
+            "title": "Vitamin D3",
+            "description": "Supports calcium absorption to help maintain strong bones."
           }
         },
         "card_E3x3nY": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/FlowerLotus.svg",
-            "title": "Gingko Biloba",
-            "description": "Supports calm and mental clarity, so your mind can finally rest"
+            "title": "K2Vital®",
+            "description": "Supports bone and cardiovascular health."
           }
         },
         "card_8fFBbk": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/SmileyWink.svg",
-            "title": "Skullcap Root",
-            "description": "Naturally soothes the nervous system to help you let go at night"
+            "title": "Lutein",
+            "description": "Helps protect eyes from oxidative stress and blue light exposure."
           }
         },
         "card_yjCNz6": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/MoonStars.svg",
-            "title": "Melatonin",
-            "description": "Signals your body it’s time for sleep — fast and gently"
+            "title": "Ashwagandha",
+            "description": "Helps your body manage stress and promotes a calm mood."
           }
         },
         "card_TtMCFP": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/ApproximateEquals.svg",
-            "title": "Passionflower",
-            "description": "Eases tension and boosts GABA, your body’s natural sleep switch"
+            "title": "Melatonin",
+            "description": "Signals your body it’s time for sleep — fast and gently."
           }
         }
       },
@@ -207,7 +207,6 @@
         "card_yjCNz6",
         "card_TtMCFP"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Natural Ingredients With a Purpose",
         "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
@@ -219,7 +218,7 @@
         "card_zFAN8g": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.png",
+            "image": "shopify://shop_images/Rejuvia_How_To_11055_copy.jpg",
             "description": "Spray 6-8 times under your tongue or inside your cheek."
           }
         },
@@ -233,8 +232,8 @@
         "card_kDJ3KT": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/howtouse3_a1d61e7b-1169-49ef-bc1b-95d019170256.png",
-            "description": "Swallow  and get ready for the best sleep of your life."
+            "image": "shopify://shop_images/Rejuvia_How_To_10992_copy.jpg",
+            "description": "Swallow and go about your day or night."
           }
         }
       },
@@ -244,52 +243,8 @@
         "card_kDJ3KT"
       ],
       "settings": {
-        "heading": "How Rejuvia Works",
-        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."
-      }
-    },
-    "comparison_alternatives_w4tHaq": {
-      "type": "comparison-alternatives",
-      "blocks": {
-        "text_ynik6A": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Plant.svg",
-            "title": "All-Natural"
-          }
-        },
-        "text_BFYrrF": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "Non-GMO"
-          }
-        },
-        "text_JA4hJE": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Flask.svg",
-            "title": "Lab-Tested"
-          }
-        },
-        "text_mCdfmG": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Flower.svg",
-            "title": "Mint Flavor"
-          }
-        }
-      },
-      "block_order": [
-        "text_ynik6A",
-        "text_BFYrrF",
-        "text_JA4hJE",
-        "text_mCdfmG"
-      ],
-      "disabled": true,
-      "settings": {
-        "header": "Finally, The Better Way to Sleep",
-        "paragraph": "Rejuvia delivers deep, natural sleep without the heavy side effects of pills or gummies with just 6–8 calming sprays before bed."
+        "heading": "How To Use Rejuvia",
+        "subheading": "For best results, use your sprays consistently as part of your daily routine."
       }
     },
     "1717460916cf4757a6": {
@@ -314,43 +269,43 @@
         "faqs_Bzr9Mf": {
           "type": "faqs",
           "settings": {
-            "heading": "Why are Rejuvia sprays better than gummies & pills?",
-            "subheading": "Oral sprays are more effective than gummy and capsule supplements because they allow for direct absorption of nutrients through the mucous membranes in the mouth, bypassing the digestive system. This leads to quicker and more efficient uptake of vitamins and minerals, ensuring significantly higher bioavailability."
+            "heading": "What’s included in the Rejuvia Starter Kit and who is it for?",
+            "subheading": "The Starter Kit includes one Sleep Spray, one Calm Spray, one Vitamin D3 + K2Vital® Spray, and one Lutein Spray. It’s ideal for those looking to support better sleep, daily calm, bone and heart wellness, and eye health—without having to buy each product separately."
           }
         },
         "faqs_f39Ji6": {
           "type": "faqs",
           "settings": {
-            "heading": "How many sprays should I use each night?",
-            "subheading": "We suggest uses 6-8 spritzes under your tongue each night, though we have customers who have success using only 4 and some using up to 10. It's all about finding the perfect dosage that works for you and the metered oral spray makes it very easy to customize!"
+            "heading": "How and when should I use each spray?",
+            "subheading": "Spray 6–8 times under your tongue or on the inside of your cheek, hold briefly, then swallow. Use the Sleep Spray about 15–20 minutes before bedtime, the Calm Spray throughout the day as needed, and take the Vitamin D3 + K2Vital and Lutein sprays once daily with a meal or at a consistent time to build a routine."
           }
         },
         "faqs_NitEKm": {
           "type": "faqs",
           "settings": {
-            "heading": "Are Rejuvia's sprays third-party tested?",
-            "subheading": "All of our products are indepdently triple lab-tested for purity and potency each batch. Each prodcut comes with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency."
+            "heading": "What key ingredients are in each spray and why are they included?",
+            "subheading": "The Sleep Spray combines 13 all‑natural ingredients like passionflower, valerian root, gingko biloba, and a small dose of melatonin to help ease you into sleep . The Calm Spray includes Vitamin B complex, magnesium, 5‑HTP, passionflower, and ashwagandha for daily relaxation. The D3 + K2Vital pairing supports calcium absorption (D3) and guides it to bones rather than soft tissues (K2), supporting bone and vascular health. Lutein is an antioxidant known to support eye health and screen‑stress protection (common supplement knowledge)."
           }
         },
         "faqs_8mP9YQ": {
           "type": "faqs",
           "settings": {
-            "heading": "How long do the sleep sprays take to work?",
-            "subheading": "The majority of customers notice the benefits of our sleep sprays within the first few nights of using them. Some customers need to consistently use them for 5-7 days before enjoying the full benefits. Everyone's body is different and it might take more or less time depending on how your body responds to them."
+            "heading": "How long does each bottle last?",
+            "subheading": "Each spray bottle contains about 240 sprays, which lasts roughly 30–35 days when used as directed."
           }
         },
         "faqs_w9ktrY": {
           "type": "faqs",
           "settings": {
-            "heading": "How long will it take my order to arrive?",
-            "subheading": "We do our best to ship out all orders within 24 hours after they are placed from our warehouse in Chicago. You typically can expect your order to get to you within a maximum of 3 business days after you place it."
+            "heading": "Is it safe to use these sprays?",
+            "subheading": "Yes, our sprays are safe to use and not habit-forming. Our sprays are made with non-GMO, vegan, triple-lab-tested ingredients. If you are pregnant, nursing, or taking medications like blood thinners, consult a healthcare provider before use, as individual responses can vary."
           }
         },
         "faqs_fph4VV": {
           "type": "faqs",
           "settings": {
-            "heading": "Should I use Rejuvia before or after brushing my teeth?",
-            "subheading": "It's up to you. Most of our customers use our sprays about 20 minutes before they head to bed, which usually falls before brushing their teeth. You can feel comfortable using them after you brush your teeth, though."
+            "heading": "What is your return policy?",
+            "subheading": "All orders are backed by our 30-day money-back guarantee. If you’re not satisfied for any reason, you can return your order within 30 days of delivery for a full refund. Just contact us through our website and our team will walk you through the process."
           }
         }
       },
@@ -411,7 +366,7 @@
       ],
       "settings": {
         "title": "Shop All Rejuvia Products",
-        "sub_title": "Better sleep and less stress are now just a few sprays away."
+        "sub_title": "Join the Rejuvia Revolution today."
       }
     }
   },
@@ -420,7 +375,6 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "how_it_works_4YVLwU",
-    "comparison_alternatives_w4tHaq",
     "1717460916cf4757a6",
     "main_page_4Q6KQH",
     "section_choose_product_3Gy6dc"

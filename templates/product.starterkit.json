@@ -209,12 +209,12 @@
       "type": "separator-ingredients",
       "name": "Separator Ingredients",
       "settings": {
-        "background_color_section": "#FAFAF9",
+        "background_color_section": "#fafaf9",
         "background_color": "#672666",
-        "color_font": "#FFF",
+        "color_font": "#ffffff",
         "principal_label": "3",
         "second_label": "THIRD-PARTY TESTED",
-        "description_text": "<p>Our products are<strong> third-party tested over three times </strong>throughout our manufacturing and production process.  This helps ensure unequivocally the <strong>quality, potency and purity</strong> in all of our products and ingredient blends.</p>"
+        "description_text": "<p>Our sprays are third-party tested over <strong>three times</strong> during production. This ensures the quality, potency, and purity of every batch, so you can feel confident knowing exactly what you’re putting in your body.</p>"
       }
     },
     "1717460916cf4757a6": {

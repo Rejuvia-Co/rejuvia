@@ -207,6 +207,7 @@
         "card_yjCNz6",
         "card_TtMCFP"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Natural Ingredients With a Purpose",
         "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
@@ -285,6 +286,7 @@
         "text_JA4hJE",
         "text_mCdfmG"
       ],
+      "disabled": true,
       "settings": {
         "header": "Finally, The Better Way to Sleep",
         "paragraph": "Rejuvia delivers deep, natural sleep without the heavy side effects of pills or gummies with just 6–8 calming sprays before bed."
@@ -372,20 +374,6 @@
     "section_choose_product_3Gy6dc": {
       "type": "section-choose-product",
       "blocks": {
-        "product_YwGUyc": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-spray-6-pack",
-            "short_description": ""
-          }
-        },
-        "product_hmU6Mw": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-sprays",
-            "short_description": ""
-          }
-        },
         "product_NtTCVx": {
           "type": "product",
           "settings": {
@@ -399,13 +387,27 @@
             "featured_product": "oral-stress-spray",
             "short_description": ""
           }
+        },
+        "product_YwGUyc": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray-6-pack",
+            "short_description": ""
+          }
+        },
+        "product_hmU6Mw": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-sprays",
+            "short_description": ""
+          }
         }
       },
       "block_order": [
-        "product_YwGUyc",
-        "product_hmU6Mw",
         "product_NtTCVx",
-        "product_dxPmTB"
+        "product_dxPmTB",
+        "product_YwGUyc",
+        "product_hmU6Mw"
       ],
       "settings": {
         "title": "Shop All Rejuvia Products",

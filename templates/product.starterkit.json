@@ -63,100 +63,6 @@
         "preselected_item": 1
       }
     },
-    "customer_testimonials_n4yKPj": {
-      "type": "customer-testimonials-video",
-      "blocks": {
-        "testimonial_nhHLVz": {
-          "type": "testimonial",
-          "settings": {
-            "text": "I spray 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!",
-            "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
-            "name": "Tracey F. (Verified Buyer)"
-          }
-        },
-        "testimonial_A4AHUA": {
-          "type": "testimonial",
-          "settings": {
-            "text": "I have been really enjoying my Rejuvia and always sleep very well when I use it.",
-            "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
-            "name": "Betty M. (Verified Buyer)"
-          }
-        },
-        "testimonial_ACCAJM": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.",
-            "image": "shopify://shop_images/scott_s.png",
-            "name": "Scott S. (Verified Buyer)"
-          }
-        },
-        "testimonial_Wrbdd9": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Absolutely puts me to sleep quickly each night and I love the taste.",
-            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
-            "name": "Kimberly W. (Verified Buyer)"
-          }
-        },
-        "testimonial_Eccbfe": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"Excellent product, recommend it. Tastes good and helps me fall asleep quickly.\"",
-            "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
-            "name": "Timothy G. (Verified Buyer)"
-          }
-        },
-        "testimonial_FgaL8G": {
-          "type": "testimonial",
-          "settings": {
-            "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
-            "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
-            "name": "Mandie N. (Verified Buyer)"
-          }
-        },
-        "testimonial_C9Hxkg": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\" I will continue to use Rejuvia as it seems to really work for me at night!\"",
-            "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
-            "name": "Andrew H. (Verified Buyer)"
-          }
-        },
-        "testimonial_KFgHFp": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
-            "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
-            "name": "Eldonna M. (Verified Buyer)"
-          }
-        },
-        "testimonial_wq6Ep8": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"We've been using Rejuvia for a few months and it better than anything we've tried!!\"",
-            "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
-            "name": "Kelly G. (Customer Since 2023)"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_nhHLVz",
-        "testimonial_A4AHUA",
-        "testimonial_ACCAJM",
-        "testimonial_Wrbdd9",
-        "testimonial_Eccbfe",
-        "testimonial_FgaL8G",
-        "testimonial_C9Hxkg",
-        "testimonial_KFgHFp",
-        "testimonial_wq6Ep8"
-      ],
-      "disabled": true,
-      "settings": {
-        "header": "Join The Rejuvia Revolution",
-        "stars_reating": "4.5",
-        "stars_label": "Trusted By 200,000+ Sleepers"
-      }
-    },
     "ingredients_section_H4HeNP": {
       "type": "ingredients-section",
       "blocks": {
@@ -246,6 +152,69 @@
       "settings": {
         "heading": "How To Use Rejuvia",
         "subheading": "For best results, use your sprays consistently as part of your daily routine."
+      }
+    },
+    "faqs_ingredients_gVDK3H": {
+      "type": "FAQS-ingredients",
+      "blocks": {
+        "faq_tMP96F": {
+          "type": "faq",
+          "settings": {
+            "question": "Extensive Product Testing",
+            "answer": "We test our ingredient blends in all of our products three different times throughout our manufacturing process for purity and potency.",
+            "image": "shopify://shop_images/Rectangle_1226.png"
+          }
+        },
+        "faq_7KFcET": {
+          "type": "faq",
+          "settings": {
+            "question": "Formulated By Doctors",
+            "answer": "We partner with leading doctors, scientists and researchers from across the country to develop and formulate our products.",
+            "image": "shopify://shop_images/ICON_4_2X_ab2f024d-952f-430b-977c-60cc84afceb0.png"
+          }
+        },
+        "faq_7Rp4cU": {
+          "type": "faq",
+          "settings": {
+            "question": "Clean & Pure Ingredients",
+            "answer": "We source only the cleanest and purest ingredients, ensuring that every product is free from harmful chemicals and packed with efficacious blends.",
+            "image": "shopify://shop_images/ICON_1_2X_c3a0576c-d78f-493f-ba5b-fa337bf1105a.png"
+          }
+        },
+        "faq_xzJU9x": {
+          "type": "faq",
+          "settings": {
+            "question": "Innovative Delivery Method",
+            "answer": "We are constantly striving to bring the latest, most effective delivery methods to market.",
+            "image": "shopify://shop_images/ICON_3_2X_99d15415-0dbe-46b3-bef6-c66bf9a77ad8.png"
+          }
+        }
+      },
+      "block_order": [
+        "faq_tMP96F",
+        "faq_7KFcET",
+        "faq_7Rp4cU",
+        "faq_xzJU9x"
+      ],
+      "name": "FAQ Ingredients",
+      "settings": {
+        "bg_color_section": "",
+        "bg_color": "",
+        "testimonial": "<p>“<strong>We’ve meticulously formulated </strong>our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
+        "name": "RC WILLIAMS",
+        "position": "Co-Founder"
+      }
+    },
+    "separator_ingredients_dFiEby": {
+      "type": "separator-ingredients",
+      "name": "Separator Ingredients",
+      "settings": {
+        "background_color_section": "#FAFAF9",
+        "background_color": "#672666",
+        "color_font": "#FFF",
+        "principal_label": "3",
+        "second_label": "THIRD-PARTY TESTED",
+        "description_text": "<p>Our products are<strong> third-party tested over three times </strong>throughout our manufacturing and production process.  This helps ensure unequivocally the <strong>quality, potency and purity</strong> in all of our products and ingredient blends.</p>"
       }
     },
     "1717460916cf4757a6": {
@@ -369,74 +338,10 @@
         "title": "Shop All Rejuvia Products",
         "sub_title": "Join the Rejuvia Revolution today."
       }
-    },
-    "faqs_ingredients_gVDK3H": {
-      "type": "FAQS-ingredients",
-      "blocks": {
-        "faq_tMP96F": {
-          "type": "faq",
-          "settings": {
-            "question": "Extensive Product Testing",
-            "answer": "We test our ingredient blends in all of our products three different times throughout our manufacturing process for purity and potency.",
-            "image": "shopify://shop_images/Rectangle_1226.png"
-          }
-        },
-        "faq_7KFcET": {
-          "type": "faq",
-          "settings": {
-            "question": "Formulated By Doctors",
-            "answer": "We partner with leading doctors, scientists and researchers from across the country to develop and formulate our products.",
-            "image": "shopify://shop_images/ICON_4_2X_ab2f024d-952f-430b-977c-60cc84afceb0.png"
-          }
-        },
-        "faq_7Rp4cU": {
-          "type": "faq",
-          "settings": {
-            "question": "Clean & Pure Ingredients",
-            "answer": "We source only the cleanest and purest ingredients, ensuring that every product is free from harmful chemicals and packed with efficacious blends.",
-            "image": "shopify://shop_images/ICON_1_2X_c3a0576c-d78f-493f-ba5b-fa337bf1105a.png"
-          }
-        },
-        "faq_xzJU9x": {
-          "type": "faq",
-          "settings": {
-            "question": "Innovative Delivery Method",
-            "answer": "We are constantly striving to bring the latest, most effective delivery methods to market.",
-            "image": "shopify://shop_images/ICON_3_2X_99d15415-0dbe-46b3-bef6-c66bf9a77ad8.png"
-          }
-        }
-      },
-      "block_order": [
-        "faq_tMP96F",
-        "faq_7KFcET",
-        "faq_7Rp4cU",
-        "faq_xzJU9x"
-      ],
-      "name": "FAQ Ingredients",
-      "settings": {
-        "bg_color_section": "",
-        "bg_color": "",
-        "testimonial": "<p>“<strong>We’ve meticulously formulated </strong>our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
-        "name": "RC WILLIAMS",
-        "position": "Co-Founder"
-      }
-    },
-    "separator_ingredients_dFiEby": {
-      "type": "separator-ingredients",
-      "name": "Separator Ingredients",
-      "settings": {
-        "background_color_section": "#FAFAF9",
-        "background_color": "#672666",
-        "color_font": "#FFF",
-        "principal_label": "3",
-        "second_label": "THIRD-PARTY TESTED",
-        "description_text": "<p>Our products are<strong> third-party tested over three times </strong>throughout our manufacturing and production process.  This helps ensure unequivocally the <strong>quality, potency and purity</strong> in all of our products and ingredient blends.</p>"
-      }
     }
   },
   "order": [
     "product_widget_6p4fVc",
-    "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "how_it_works_4YVLwU",
     "faqs_ingredients_gVDK3H",

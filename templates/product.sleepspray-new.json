@@ -16,14 +16,14 @@
           "type": "text",
           "settings": {
             "icon": "shopify://shop_images/Plant.svg",
-            "title": "100% Vegan"
+            "title": "Vegan"
           }
         },
         "text_AP4eNX": {
           "type": "text",
           "settings": {
             "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "Non-Gmo"
+            "title": "Non-GMO"
           }
         },
         "text_HEHibt": {

@@ -1,7 +1,7 @@
 {%- for link in menu -%}
     <div class="item custom_text_font {% if link.active %}active{% endif %}{% if link.links != blank %} has-dropdown has-dropdown--mega{% endif %}"{% if link.links != blank %} aria-haspopup="true"{% endif %} data-parent="{{link.handle}}">
         <a href="{{ link.url }}" class="custom_text_font {% if link.active %}active-menu-item{% endif %}" {% if link.url == '#' %}onclick="return false;"{% endif %}>
-            <span>{{ link.title | escape }} {% if link.title contains 'Starter Kit' %} <span class="header-boundle-tag">53% OFF</span> {% endif %}</span>
+            <span>{{ link.title | escape }} {% if link.title contains 'Starter Kit' %} <span class="header-boundle-tag">49% OFF</span> {% endif %}</span>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 1.6 1.6" enable-background="new 0 0 64 64" xml:space="preserve">
                 <g>
                     <path fill="none" class="vertical-plus" stroke="#000000" stroke-width="0.05" stroke-miterlimit="10" x1="32" y1="50" x2="32" y2="14" d="M0.8 1.25L0.8 0.35"/>

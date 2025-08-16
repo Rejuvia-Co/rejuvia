@@ -2052,6 +2052,13 @@
               "subheading": "Our oral sprays feature a delicious, all-natural mint flavor that's refreshed and balanced, but not overpowering. Even customers who aren't typically fans of mint flavors enjoy our sprays."
             }
           },
+          "faqs_6MV7Wr": {
+            "type": "faqs",
+            "settings": {
+              "heading": "What is Rejuvia's return policy?",
+              "subheading": "We offer a 30-day money-back guarantee on your first Rejuvia order, no questions asked. All subsequent orders are not eligible for returns or refunds. Customers are responsible for return shipping costs. To start a return, simply email us at hello@rejuvia.co for easy instructions."
+            }
+          },
           "faqs_4h3xJC": {
             "type": "faqs",
             "settings": {
@@ -2072,6 +2079,7 @@
           "faqs_8mP9YQ",
           "faqs_f39Ji6",
           "faqs_eDxDNH",
+          "faqs_6MV7Wr",
           "faqs_4h3xJC",
           "faqs_Bzr9Mf"
         ],

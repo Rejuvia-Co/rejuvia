@@ -82,7 +82,7 @@
       ],
       "settings": {
         "id": "section-1",
-        "heading": "Usage",
+        "heading": "Using Rejuvia",
         "table_show": true,
         "first_table_text": "Usage",
         "first_table_link": "section-1",
@@ -150,7 +150,7 @@
       ],
       "settings": {
         "id": "section-2",
-        "heading": "Product",
+        "heading": "Product Information",
         "table_show": false,
         "first_table_text": "",
         "first_table_link": "",
@@ -218,7 +218,7 @@
       ],
       "settings": {
         "id": "section-3",
-        "heading": "Manufacturing",
+        "heading": "Product Quality",
         "table_show": false,
         "first_table_text": "",
         "first_table_link": "",
@@ -241,6 +241,13 @@
     "faq_new_geQLMc": {
       "type": "faq-new",
       "blocks": {
+        "faq_Rfnhy4": {
+          "type": "faq",
+          "settings": {
+            "heading": "Does Rejuvia have any side effects?",
+            "subheading": "Rejuvia is made with natural, gentle ingredients and is generally very well tolerated. There are no common side effects. Everyone’s body is different, so while most people don’t experience any side effects, it’s always a good idea to start with the recommended serving and see how your body responds."
+          }
+        },
         "faq_eNmtjw": {
           "type": "faq",
           "settings": {
@@ -269,6 +276,20 @@
             "subheading": "We advise you to consult with your doctor or medical professional about using Rejuvia while breastfeeding or pregnant."
           }
         },
+        "faq_KmHGim": {
+          "type": "faq",
+          "settings": {
+            "heading": "Does Rejuvia contain any THC?",
+            "subheading": "No, Rejuvia does not contain THC or any psychoactive compounds. Our sprays are completely THC-free."
+          }
+        },
+        "faq_jzDUnD": {
+          "type": "faq",
+          "settings": {
+            "heading": "Do Rejuvia's products contain any alcohol?",
+            "subheading": "No, Rejuvia does not contain alcohol. Our sprays are crafted with purified water and natural flavoring ingredients."
+          }
+        },
         "faq_kk4DU8": {
           "type": "faq",
           "settings": {
@@ -278,15 +299,18 @@
         }
       },
       "block_order": [
+        "faq_Rfnhy4",
         "faq_eNmtjw",
         "faq_aVRbxH",
         "faq_j467JN",
         "faq_hyG7H3",
+        "faq_KmHGim",
+        "faq_jzDUnD",
         "faq_kk4DU8"
       ],
       "settings": {
         "id": "section-4",
-        "heading": "Safety",
+        "heading": "Product Safety",
         "table_show": false,
         "first_table_text": "",
         "first_table_link": "",

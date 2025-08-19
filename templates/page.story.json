@@ -164,7 +164,7 @@
         "product_NgKnbk": {
           "type": "product",
           "settings": {
-            "featured_product": "oral-sprays",
+            "featured_product": "vitamin-d3-k2-spray",
             "short_description": ""
           }
         },
@@ -184,8 +184,8 @@
       ],
       "name": "Select Product",
       "settings": {
-        "title": "Shop All Rejuvia Products",
-        "sub_title": "Better sleep and less stress are now just a few sprays away."
+        "title": "Shop All Rejuvia Sprays",
+        "sub_title": "Clean, fast-absorbing sprays designed to support your mind and body"
       }
     },
     "subscribe_save_MRCQ3x": {

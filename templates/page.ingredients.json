@@ -225,7 +225,7 @@
       ],
       "settings": {
         "title": "Why Oral Sprays?",
-        "description": "Since the ingredients are largely absorbed directly under your tongue, rather than through your digestive system like with capsules and oils, the sprays are able to have stronger and faster effects.",
+        "description": "Unlike capsules, oils, or gummies that must pass through your digestive system, our sprays are absorbed largely under your tongue. This allows nutrients to enter your bloodstream more efficiently, leading to faster, stronger, and more consistent effects without the hassle of swallowing pills.",
         "background_image": "shopify://shop_images/howtouserejuviaspray.png",
         "background_color": "#fafaf9",
         "background_color_info": "#ffffff"
@@ -269,28 +269,28 @@
           "type": "icon",
           "settings": {
             "icon": "shopify://shop_images/FlowerLotus.svg",
-            "description": "Calm Racing Thoughts"
+            "description": "Clean, Natural Ingredients"
           }
         },
         "icon_nHf3fh": {
           "type": "icon",
           "settings": {
             "icon": "shopify://shop_images/MoonStars.svg",
-            "description": "Sleep Better  & Faster"
+            "description": "Fast-Absorbing & Effective"
           }
         },
         "icon_6Bq4gX": {
           "type": "icon",
           "settings": {
             "icon": "shopify://shop_images/Sun.svg",
-            "description": "No Morning Grogginess"
+            "description": "Customizable Dosing"
           }
         },
         "icon_ExPrXx": {
           "type": "icon",
           "settings": {
             "icon": "shopify://shop_images/Flask.svg",
-            "description": "3rd-Party TripleLab Tested"
+            "description": "3rd-Party Triple Lab Tested"
           }
         }
       },
@@ -302,10 +302,10 @@
       ],
       "settings": {
         "product": "sleep-spray",
-        "heading": "The Oral Spray for a Faster, Deeper Sleep",
-        "text": "Our innovative oral spray combines 9+ natural, science-backed ingredients for quicker absorption, higher bioavailability, and customizable dosing, ensuring you wake up refreshed.",
+        "heading": "Oral Sprays For a Healthier Lifestyle",
+        "text": "Our innovative oral sprays combine natural, science-backed ingredients with faster absorption, higher bioavailability, and customizable dosing to support your health and wellness without the hassle of pills or gummies.",
         "btn": "Shop Rejuvia Now",
-        "guarantee": "Free Shipping on Orders $69+",
+        "guarantee": "Free Shipping on Orders $59+",
         "image": "shopify://shop_images/Rejuvia_oral_spray_bundle.png"
       }
     },
@@ -325,6 +325,7 @@
       "block_order": [
         "okendo_reviews_carousel_H8gEKB"
       ],
+      "disabled": true,
       "settings": {}
     },
     "section_choose_product_FFgLbm": {

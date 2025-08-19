@@ -180,6 +180,13 @@
             "subheading": "Yes, all of our products are triple lab-tested for purity and potency. They come with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency. Shoot us an email at hello@rejuvia.co if you have any questions!"
           }
         },
+        "faq_6pe4XW": {
+          "type": "faq",
+          "settings": {
+            "heading": "How quickly does Rejuvia start to work?",
+            "subheading": "Many people feel the effects within minutes since the ingredients are absorbed directly under the tongue. For best results, we recommend using Rejuvia consistently for 10–14 days to allow the ingredients to build up and deliver their full benefits."
+          }
+        },
         "faq_yhhrGk": {
           "type": "faq",
           "settings": {
@@ -211,6 +218,7 @@
       },
       "block_order": [
         "faq_D8QCfn",
+        "faq_6pe4XW",
         "faq_yhhrGk",
         "faq_FQ6XQU",
         "faq_QbthDG",

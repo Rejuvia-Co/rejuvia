@@ -15,35 +15,35 @@
         "text_yDnBNe": {
           "type": "text",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Plant.svg",
+            "icon": "shopify://shop_images/Plant.svg",
             "title": "All-Natural"
           }
         },
         "text_FFyKCH": {
           "type": "text",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/SealCheck.svg",
+            "icon": "shopify://shop_images/SealCheck.svg",
             "title": "USA Made"
           }
         },
         "text_YtYqLw": {
           "type": "text",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Flask.svg",
+            "icon": "shopify://shop_images/Flask.svg",
             "title": "Lab Tested"
           }
         },
         "text_weyETr": {
           "type": "text",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Wind.svg",
+            "icon": "shopify://shop_images/Wind.svg",
             "title": "Mint Flavor"
           }
         },
         "skio_plan_picker_h3aWpK": {
           "type": "skio-plan-picker",
           "settings": {
-            "start_onetime": true,
+            "start_onetime": false,
             "onetime_first": true
           }
         }
@@ -77,7 +77,7 @@
         "card_Rzpjin": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Flower.svg",
+            "image": "shopify://shop_images/Flower.svg",
             "title": "",
             "description": "Promotes deep, restful sleep and reduces stress"
           }
@@ -85,7 +85,7 @@
         "card_7NPndB": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/FlowerLotus.svg",
+            "image": "shopify://shop_images/FlowerLotus.svg",
             "title": "Gingko Biloba",
             "description": "Enhances relaxation and improves sleep quality"
           }
@@ -93,7 +93,7 @@
         "card_7d398A": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SmileyWink.svg",
+            "image": "shopify://shop_images/SmileyWink.svg",
             "title": "Skullcap Root",
             "description": "All-natural sedative that relaxes & calms the mind"
           }
@@ -101,7 +101,7 @@
         "card_KJN3cP": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/MoonStars.svg",
+            "image": "shopify://shop_images/MoonStars.svg",
             "title": "Melatonin",
             "description": "Naturally supports quicker onset of deep sleep"
           }
@@ -109,7 +109,7 @@
         "card_YnWUXh": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ApproximateEquals.svg",
+            "image": "shopify://shop_images/ApproximateEquals.svg",
             "title": "Passionflower",
             "description": "Boosts GABA to alleviate insomnia and anxiety"
           }
@@ -133,19 +133,19 @@
         "step_rcAYDM": {
           "type": "step",
           "settings": {
-            "text": "<p><strong>Spray<\/strong> 6-8 times under your tongue.<\/p>"
+            "text": "<p><strong>Spray</strong> 6-8 times under your tongue.</p>"
           }
         },
         "step_HXq8xF": {
           "type": "step",
           "settings": {
-            "text": "<p><strong>Swish<\/strong> around your mouth for 5-10 seconds.<\/p>"
+            "text": "<p><strong>Swish</strong> around your mouth for 5-10 seconds.</p>"
           }
         },
         "step_xMdzqf": {
           "type": "step",
           "settings": {
-            "text": "<p><strong>Swallow <\/strong>and get ready to feel the benefits.<\/p>"
+            "text": "<p><strong>Swallow </strong>and get ready to feel the benefits.</p>"
           }
         }
       },
@@ -157,7 +157,7 @@
       "settings": {
         "heading": "How To Use",
         "subheading": "Use your Calm Spray throughout the day as needed and your sleep spray 15-20 minutes before bedtime.",
-        "image": "shopify:\/\/shop_images\/Rejuvia_oral_spray_bundle.png",
+        "image": "shopify://shop_images/Rejuvia_oral_spray_bundle.png",
         "background": ""
       }
     },
@@ -165,7 +165,7 @@
       "type": "apps",
       "blocks": {
         "okendo_reviews_widget_Uc3pqP": {
-          "type": "shopify:\/\/apps\/okendo\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
             "product": "{{product}}",
             "widget_type": "reviews_widget"

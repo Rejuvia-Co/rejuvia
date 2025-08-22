@@ -309,25 +309,6 @@
         "image": "shopify://shop_images/Rejuvia_oral_spray_bundle.png"
       }
     },
-    "1723222708df7fb081": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_carousel_H8gEKB": {
-          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "show_heading": true,
-            "heading": "3,000+ 5-Star Reviews  From Our Customers",
-            "badge_link": "",
-            "product": "sleep-spray"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_carousel_H8gEKB"
-      ],
-      "disabled": true,
-      "settings": {}
-    },
     "section_choose_product_FFgLbm": {
       "type": "section-choose-product",
       "blocks": {
@@ -355,7 +336,7 @@
         "product_Vx7Rd9": {
           "type": "product",
           "settings": {
-            "featured_product": "sleep-spray-6-pack",
+            "featured_product": "lutein",
             "short_description": ""
           }
         }
@@ -381,7 +362,6 @@
     "ingredients_benefits_tBdFHz",
     "ourners_ingredients_pJXiRR",
     "product_features_ingredients_LU8faw",
-    "1723222708df7fb081",
     "section_choose_product_FFgLbm"
   ]
 }

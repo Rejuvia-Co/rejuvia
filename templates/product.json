@@ -44,7 +44,7 @@
           "type": "skio-plan-picker",
           "settings": {
             "start_onetime": false,
-            "onetime_first": true
+            "onetime_first": false
           }
         }
       },

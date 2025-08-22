@@ -18,3 +18,114 @@
   </select>
   <input type="hidden" name="id" data-productid="{{ product.id }}" id="product-{{ currentProduct.id }}-variant" value="" />
 </div>
+
+{% if settings.additional_product != blank and currentProduct.metafields.custom.enable_additional_subscription_product  %}
+    <script>
+        window.additionalProduct = {};
+        window.additionalProduct.id = {{ settings.additional_product.selected_or_first_available_variant.id | json }};
+        window.additionalProduct.currentProduct = {{ currentProduct | json }};
+        window.additionalProduct.product = {{ settings.additional_product | json }};
+    </script>
+    <div class="additional-product__wrap" data-productid="{{ currentProduct.id }}">
+        <div class="additional-product__item">
+            <div class="additional-product__item--image">
+                {% if currentProduct.metafields.custom.additional_subscription_product_image != blank %}
+                    <img src="{{ currentProduct.metafields.custom.additional_subscription_product_image | img_url: 'master' }}"
+                         alt="{{ settings.additional_product.title }}">
+                {% else %}
+                    <img src="{{ settings.additional_product.featured_image | img_url: 'master' }}"
+                         alt="{{ settings.additional_product.title }}">
+
+                {% endif %}
+            </div>
+            <div class="additional-product__item--content">
+                <div class="additional-product__item--review">
+                    <a href="#" onclick="window.history.back(); return false;" class="return_search hide">&laquo; Return to Search
+                        Results</a>
+                    <div class="mobile-title-and-reviews  justify-content-between">
+                        <a id="okendo-product-reviews" href="#shopify-block-okendo_reviews_widget_Uc3pqP">
+                            {% assign reviewRating = settings.additional_product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
+                            {% assign reviewCount = settings.additional_product.metafields.okendo.summaryData.reviewCount | plus: 0 %}
+                            {% assign fullStars = reviewRating | floor %}
+                            {% assign remainder = reviewRating | minus: fullStars %}
+
+                            {% assign hasHalfStar = 0 %}
+                            {% if remainder >= 0.25 and remainder < 0.75 %}
+                                {% assign hasHalfStar = 1 %}
+                            {% elsif remainder >= 0.75 %}
+                                {% assign fullStars = fullStars | plus: 1 %}
+                            {% endif %}
+
+                            {% assign emptyStars = 5 | minus: fullStars | minus: hasHalfStar %}
+
+                            <div class="custom-review-stars">
+                                {% for i in (1..fullStars) %}
+                                    <span class="star full">★</span>
+                                {% endfor %}
+
+                                {% if hasHalfStar == 1 %}
+                                    <span class="star half">★</span>
+                                {% endif %}
+
+                                {% for i in (1..emptyStars) %}
+                                    <span class="star empty">★</span>
+                                {% endfor %}
+
+                                <span class="rating-text">
+    {{ reviewRating }}
+  </span>
+                            </div>
+
+                            <style>
+                                .custom-review-stars {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 1px;
+                                    font-size: 18px;
+                                }
+
+                                .custom-review-stars .star {
+                                    color: #d8b46e; /* default star color */
+                                    position: relative;
+                                    display: inline-block;
+                                }
+
+                                .custom-review-stars .star.empty {
+                                    color: #ddd;
+                                }
+
+                                .custom-review-stars .star.half {
+                                    color: #ddd;
+                                }
+
+                                .custom-review-stars .star.half::before {
+                                    content: "★";
+                                    color: #d8b46e;
+                                    position: absolute;
+                                    left: 0;
+                                    width: 50%;
+                                    overflow: hidden;
+                                }
+
+                            </style>
+                        </a>
+                    </div>
+                </div>
+                <div class="additional-product__item--title">
+                    {% if currentProduct.metafields.custom.additional_subscription_product_title != blank %}
+                        {{ currentProduct.metafields.custom.additional_subscription_product_title }}
+                    {% else %}
+                        {{ settings.additional_product.title }}
+                    {% endif %}
+                </div>
+                <div class="additional-product__item--price">
+                    {% if currentProduct.metafields.custom.additional_subscription_product_price != blank %}
+                        {{ currentProduct.metafields.custom.additional_subscription_product_price }}
+                    {% else %}
+                        Valued {{ settings.additional_product.price | money }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

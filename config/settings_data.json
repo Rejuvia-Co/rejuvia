@@ -3065,8 +3065,8 @@
           "testimonial_w6GPKT"
         ],
         "settings": {
-          "header": "Join The Rejuvia Revolution",
-          "stars_reating": "4.6",
+          "header": "Join 200,000+ Getting Their Best Sleep Yet",
+          "stars_reating": "4.5",
           "stars_label": "Trusted By 200,000+ Sleepers"
         }
       }
@@ -3096,16 +3096,6 @@
         "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
         "disabled": false,
         "settings": {}
-      },
-      "2796060547760304683": {
-        "type": "shopify://apps/skio-subscriptions-yc-s20/blocks/family-plan-block/de50f7a4-0bb0-4d4c-84e2-c03dce83436d",
-        "disabled": false,
-        "settings": {
-          "familyPlanBannerBGColor": "#ffffff",
-          "familyPlanBannerBorderColor": "#000000",
-          "familyPlanBannerTextColor": "#000000",
-          "message": "Join {firstName}s' family plan and save an extra {percentage}% on your subscription! Discount will automatically apply during checkout as discount code {code}."
-        }
       },
       "10840395464443086010": {
         "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",

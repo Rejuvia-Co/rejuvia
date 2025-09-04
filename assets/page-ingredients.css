@@ -64,7 +64,7 @@
 
 div.okeReviews[data-oke-container] .oke-w-reviewer>div {
     display: flex;
-    flex-direction: column !important;
+    flex-direction: row !important;
 }
 
 .okeReviews[data-oke-container] .oke-reviewCarousel .oke-reviewCard, .okeReviews[data-oke-container] .oke-reviewCarousel .oke-reviewCardMinimalCentered, .okeReviews[data-oke-container] .oke-reviewCarousel .oke-testimonialCard, div.okeReviews .oke-reviewCarousel .oke-reviewCard, div.okeReviews .oke-reviewCarousel .oke-reviewCardMinimalCentered, div.okeReviews .oke-reviewCarousel .oke-testimonialCard{

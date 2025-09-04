@@ -2734,7 +2734,7 @@ body .product-wrap .swatch2 .swatch input:checked + label {
   display: none!important;
 }
 div.okeReviews[data-oke-container] .oke-w-reviewer>div {
-  flex-direction: column!important;
+  flex-direction: row!important;
   row-gap: 4px;
 }
 .templateCart .okeReviews[data-oke-container] .oke-reviewCard--below .oke-reviewCard-head, .templateCart div.okeReviews .oke-reviewCard--below .oke-reviewCard-head {

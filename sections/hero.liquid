@@ -135,12 +135,29 @@
                   <{% if forloop.first %}h1{% else %}h2{% endif %} class="title custom_title_font{% unless forloop.first %} invisible{% endunless %}" data-effect="{{block.settings.title_effect}}" >{{ block.settings.title }}</{% if forloop.first %}h1{% else %}h2{% endif %}>
                   {%- endif -%}
                   {%- if block.settings.text != "" -%}
-                  <div class="text custom_text_font{% unless forloop.first %} invisible{% endunless %}" data-effect="{{block.settings.text_effect}}">{{ block.settings.text }}</div>
+                  <div class="text custom_text_font {% unless forloop.first %} invisible{% endunless %}" data-effect="{{block.settings.text_effect}}">{{ block.settings.text }}</div>
                   {%- endif -%}
                   {%- if block.settings.button != "" -%}
                   <a href="{{ block.settings.link }}" class="btn custom_button_font{% unless forloop.first %} invisible{% endunless %}" data-effect="{{block.settings.button_effect}}">
                     {{ block.settings.button }}
                   </a>
+
+                    <div class="guarantee-label-container">
+
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <g clip-path="url(#clip0_3009_8122)">
+                          <path d="M6.25 9.375L2.5 13.125L6.25 16.875" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M6.25 4.375H13.125C14.2853 4.375 15.3981 4.83594 16.2186 5.65641C17.0391 6.47688 17.5 7.58968 17.5 8.75C17.5 9.91032 17.0391 11.0231 16.2186 11.8436C15.3981 12.6641 14.2853 13.125 13.125 13.125H2.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_3009_8122">
+                            <rect width="20" height="20" fill="white"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      30-Day Guarantee
+
+                    </div>
                   {%- endif -%}
                 </div>
                 {%- endif -%}

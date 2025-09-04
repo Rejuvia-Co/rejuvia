@@ -44,10 +44,12 @@
           <h2 class="title custom_subtitle_font">{{section.settings.title}}</h2>
           {%- endif -%}
           {%- if section.settings.text != blank -%}
-          <div class="text custom_text_font">{{section.settings.text}}</div>
+          <div class="text custom_text_font ">{{section.settings.text}}</div>
           {%- endif -%}
           {%- if section.settings.button != "" -%}
-          <a href="{{section.settings.link}}" class="btn custom_button_font">{{section.settings.button}}</a>
+          <a href="{{section.settings.link}}" class="btn custom_button_font">
+              {{section.settings.button}}
+          </a>
           {%- endif -%}
         </div>
       </div>

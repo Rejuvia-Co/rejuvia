@@ -731,8 +731,8 @@
             "type": "utility_bar",
             "settings": {
               "show": true,
-              "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>FREE D3+K2 Spray w/ Sleep Spray <a href=\"/products/sleep-spray-copy\" title=\"Sleep Spray\">Claim Your Offer</a></p>"
+              "link": "shopify://products/sleep-spray",
+              "text": "<p>FREE D3+K2 Spray w/ Sleep Spray <a href=\"/products/sleep-spray\" title=\"Sleep Spray\">Claim Your Offer</a></p>"
             }
           },
           "right_content_block_7LwdNX": {

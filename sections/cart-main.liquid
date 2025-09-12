@@ -302,45 +302,53 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="price custom_title_font">
-                                                    {% assign discount = item.variant.price | times: item.quantity %}
-                                                    {% if item.variant.compare_at_price != blank %}
-                                                        {% assign full_price = item.variant.compare_at_price | money_without_currency | remove: ',' %}
-                                                        {% assign sale_price = item.variant.price | money_without_currency | remove: ',' %}
-                                                        {% assign total_price = full_price | minus: sale_price | divided_by: full_price | times: 100 %}
-                                                        {% assign total_price_percent = total_price | remove: '.0' %}
+                                               <div class="price custom_title_font">
+  {%- comment -%}
+    Пояснення:
+    - unit_compare = variant.compare_at_price (якщо є)
+    - unit_price = variant.price
+    - full_total = (unit_compare або unit_price) * quantity
+    - sale_total = item.line_price
+    - Показуємо знижку тільки якщо full_total > sale_total і full_total > 0
+  {%- endcomment -%}
 
-                                                        <span class="cart-unempty__discount 111">
-              <span>
-                -{{ total_price_percent | round }}%
-              </span>
-            </span>
-                                                        <span class="cart-unempty__full--price">
-              {{ item.variant.compare_at_price | times: item.quantity | money }}
-            </span>
-                                                        <span class="cart-unempty__sale--price">
-              {{ item.line_price | money }}
-            </span>
-                                                    {% elsif item.line_price != discount %}
-                                                        {% assign full_price = discount | money_without_currency | remove: ',' %}
-                                                        {% assign sale_price = item.line_price | money_without_currency | remove: ',' %}
-                                                        {% assign total_price = full_price | minus: sale_price | divided_by: full_price | times: 100 %}
-                                                        {% assign total_price_percent = total_price | remove: '.0' %}
-                                                        <span class="cart-unempty__discount 222">
-              <span>
-                -{{ total_price_percent | round }}%
-              </span>
-            </span>
-                                                        <span class="cart-unempty__full--price">
-              {{ discount | money }}
-            </span>
-                                                        <span class="cart-unempty__sale--price">
-              {{ item.line_price | money }}
-            </span>
-                                                    {% else %}
-                                                        {{ item.line_price | money }}
-                                                    {% endif %}
-                                                </div>
+  {% assign unit_compare = item.variant.compare_at_price | default: 0 %}
+  {% assign unit_price = item.variant.price | default: 0 %}
+  {% assign qty = item.quantity | default: 1 %}
+
+  {% if unit_compare > 0 %}
+    {% assign full_total = unit_compare | times: qty %}
+  {% else %}
+    {% assign full_total = unit_price | times: qty %}
+  {% endif %}
+
+  {% assign sale_total = item.line_price | default: 0 %}
+
+  {% if full_total > sale_total and full_total > 0 %}
+    {% assign discount_amount = full_total | minus: sale_total %}
+    {% assign discount_percent = discount_amount | times: 100 | divided_by: full_total %}
+    {% assign discount_percent_rounded = discount_percent | round %}
+
+    <span class="cart-unempty__discount">
+      <span>-{{ discount_percent_rounded }}%</span>
+    </span>
+
+    <span class="cart-unempty__full--price">
+      {{ full_total | money }}
+    </span>
+
+    <span class="cart-unempty__sale--price">
+      {{ sale_total | money }}
+    </span>
+
+  {% else %}
+    {%- comment -%} Немає знижки — показуємо тільки ціну. {%- endcomment -%}
+    <span class="cart-unempty__sale--price">
+      {{ sale_total | money }}
+    </span>
+  {% endif %}
+</div>
+
                                             </div>
                                         </div>
                                     </div>

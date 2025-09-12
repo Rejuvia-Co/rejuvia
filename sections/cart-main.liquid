@@ -310,7 +310,7 @@
                                                         {% assign total_price = full_price | minus: sale_price | divided_by: full_price | times: 100 %}
                                                         {% assign total_price_percent = total_price | remove: '.0' %}
 
-                                                        <span class="cart-unempty__discount">
+                                                        <span class="cart-unempty__discount 111">
               <span>
                 -{{ total_price_percent | round }}%
               </span>
@@ -326,7 +326,7 @@
                                                         {% assign sale_price = item.line_price | money_without_currency | remove: ',' %}
                                                         {% assign total_price = full_price | minus: sale_price | divided_by: full_price | times: 100 %}
                                                         {% assign total_price_percent = total_price | remove: '.0' %}
-                                                        <span class="cart-unempty__discount">
+                                                        <span class="cart-unempty__discount 222">
               <span>
                 -{{ total_price_percent | round }}%
               </span>

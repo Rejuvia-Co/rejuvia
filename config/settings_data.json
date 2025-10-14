@@ -3065,9 +3065,9 @@
           "testimonial_w6GPKT"
         ],
         "settings": {
-          "header": "Join 200,000+ Getting Their Best Sleep Yet",
-          "stars_reating": "4.5",
-          "stars_label": "Trusted By 200,000+ Sleepers"
+          "header": "Join 300,000+ Getting Their Best Sleep Yet",
+          "stars_reating": "4.6",
+          "stars_label": "Trusted By 300,000+ Sleepers"
         }
       }
     },
@@ -3113,11 +3113,6 @@
         "settings": {
           "version": "v3"
         }
-      },
-      "2786716548061469553": {
-        "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
-        "disabled": false,
-        "settings": {}
       }
     }
   }

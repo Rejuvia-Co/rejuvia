@@ -694,10 +694,10 @@
           "products_menu_mobile_GTJ8dN": {
             "type": "products-menu_mobile",
             "settings": {
-              "selected_product": "starter-kit",
-              "product_description": "All four of our core daily wellness sprays with big savings",
+              "selected_product": "sleep-spray-6-pack",
+              "product_description": "Get up to 66% off with our 6-pack and a FREE D3+K2 spray.",
               "show_savings": false,
-              "savings_text": "",
+              "savings_text": "66% OFF",
               "tags": "All-Natural,USA Made,Lab-Tested,Mint Flavor"
             }
           },
@@ -732,7 +732,7 @@
             "settings": {
               "show": true,
               "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>66% OFF + FREE D3+K2 Spray <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Our 6-Pack</a></p>"
+              "text": "<p>66% OFF + FREE Spray <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
             }
           },
           "right_content_block_7LwdNX": {

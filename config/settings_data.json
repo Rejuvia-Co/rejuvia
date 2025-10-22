@@ -696,7 +696,7 @@
             "settings": {
               "selected_product": "sleep-spray-6-pack",
               "product_description": "Get 66% off with a 6-pack and a FREE Vitamin D3+K2 spray.",
-              "show_savings": false,
+              "show_savings": true,
               "savings_text": "66% OFF",
               "tags": "All-Natural,USA Made,Lab-Tested,Mint Flavor"
             }

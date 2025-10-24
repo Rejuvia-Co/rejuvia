@@ -3113,6 +3113,11 @@
         "settings": {
           "version": "v3"
         }
+      },
+      "2786716548061469553": {
+        "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
+        "disabled": false,
+        "settings": {}
       }
     }
   }

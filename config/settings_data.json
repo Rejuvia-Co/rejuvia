@@ -3109,9 +3109,9 @@
             "type": "feature_row",
             "settings": {
               "feature_name": "Absorption Speed",
-              "value_type_col_1": "text",
+              "value_type_col_1": "custom",
               "text_col_1": "",
-              "main_text_col_1": "Rapid",
+              "main_text_col_1": "<strong>Rapid</strong>",
               "sub_text_col_1": "(5-10 min)",
               "text_color_col_1": "",
               "value_type_col_2": "text",

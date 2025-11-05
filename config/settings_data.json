@@ -3110,9 +3110,9 @@
             "settings": {
               "feature_name": "Absorption Speed",
               "value_type_col_1": "text",
-              "text_col_1": "Rapid (5-10 min)",
-              "main_text_col_1": "",
-              "sub_text_col_1": "",
+              "text_col_1": "",
+              "main_text_col_1": "Rapid",
+              "sub_text_col_1": "(5-10 min)",
               "text_color_col_1": "",
               "value_type_col_2": "text",
               "text_col_2": "Slow (up to 90 min)",

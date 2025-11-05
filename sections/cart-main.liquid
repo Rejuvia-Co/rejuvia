@@ -16,8 +16,40 @@
         checkInstructions();
 
         $(document).on('click', '#cart .remove-from-cart', function(){
-            $(this).closest('.item').find('input[type=number]').val(0);
-            updateCart();
+            var $item = $(this).closest('.item');
+            var $input = $item.find('input[type=number]');
+            var lineIndex = $input.attr('id').replace('updates_', '');
+
+            $('#loading-overlay').show();
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/cart/change.js',
+                data: {
+                    id: lineIndex,
+                    quantity: 0
+                },
+                dataType: 'json'
+            }).fail(function(xhr){
+                console.log('error', xhr.responseText);
+                $('#loading-overlay').hide();
+            }).done(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/cart?view=update',
+                    cache: false,
+                    success: function(data){
+                        $('#loading-overlay').hide();
+                        $('#cart').remove();
+                        $('.content-wrapper').prepend(data);
+                        checkInstructions();
+                        location.reload();
+                    }
+                });
+                updateCartDesc();
+            });
+
             return false;
         });
 

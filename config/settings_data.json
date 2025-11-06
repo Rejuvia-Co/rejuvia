@@ -3124,7 +3124,7 @@
           "feature_row_3gYJXX": {
             "type": "feature_row",
             "settings": {
-              "feature_name": "Average Price",
+              "feature_name": "Low Price Per Night",
               "value_type_col_1": "text",
               "text_col_1": "$0.89/night",
               "value_type_col_2": "text",
@@ -3145,9 +3145,9 @@
               "text_col_1": "",
               "value_type_col_2": "cross",
               "text_col_2": "",
-              "value_type_col_3": "cross",
+              "value_type_col_3": "check",
               "text_col_3": "",
-              "value_type_col_4": "cross",
+              "value_type_col_4": "check",
               "text_col_4": "",
               "value_type_col_5": "cross",
               "text_col_5": ""
@@ -3159,9 +3159,9 @@
               "feature_name": "Non-Habit Forming",
               "value_type_col_1": "check",
               "text_col_1": "",
-              "value_type_col_2": "check",
+              "value_type_col_2": "cross",
               "text_col_2": "",
-              "value_type_col_3": "cross",
+              "value_type_col_3": "check",
               "text_col_3": "",
               "value_type_col_4": "cross",
               "text_col_4": "",
@@ -3219,6 +3219,7 @@
           },
           "feature_row_iw9FyR": {
             "type": "feature_row",
+            "disabled": true,
             "settings": {
               "feature_name": "Customize Dose",
               "value_type_col_1": "check",
@@ -3235,6 +3236,7 @@
           },
           "feature_row_4CNnnJ": {
             "type": "feature_row",
+            "disabled": true,
             "settings": {
               "feature_name": "Safe for Long-Term Use",
               "value_type_col_1": "check",

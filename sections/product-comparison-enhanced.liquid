@@ -1,4 +1,10 @@
 <style>
+  .section_container {
+    padding: 40px 16px;
+    max-width: 1440px;
+    margin: auto;
+  }
+
   .product-comparison-section {
     padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_horizontal }}px {{ section.settings.section_padding_bottom }}px;
     background-color: {{ section.settings.bg_color }};
@@ -7,348 +13,533 @@
   .product-comparison-section .container {
     max-width: {{ section.settings.container_width }}px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    align-items: center;
   }
 
   .product-comparison-section .section-heading {
-    text-align: {{ section.settings.heading_alignment }};
-    font-size: {{ section.settings.heading_size }}px;
-    color: {{ section.settings.heading_color }};
-    margin-bottom: {{ section.settings.heading_margin }}px;
-    font-weight: {{ section.settings.heading_weight }};
-    line-height: 1.2;
-  }
-
-  .comparison-table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .comparison-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: {{ section.settings.column_spacing }}px;
+    text-align: center;
+    font-size: 40px;
+    color: #171512;
+    font-weight: 700;
+    line-height: 1.3;
     margin: 0;
   }
 
-  .comparison-table thead th {
-    padding: {{ section.settings.header_padding }}px;
-    text-align: center;
-    vertical-align: top;
-    background-color: {{ section.settings.header_bg_color }};
-    border-radius: {{ section.settings.cell_border_radius }}px {{ section.settings.cell_border_radius }}px 0 0;
-    {% if section.settings.enable_shadow %}
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    {% endif %}
+  .comparison-table-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
   }
 
-  .comparison-table thead th:first-child {
-    background-color: transparent;
-    box-shadow: none;
+  .comparison-table {
+    display: flex;
+    width: 1000px;
+    max-width: 100%;
   }
 
-  .comparison-table .product-header {
+  /* Properties Column (First Column) */
+  .properties-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .properties-column .header-cell {
+    height: 117px;
+    border-radius: 30px 0 0 0;
+  }
+
+  .properties-column .feature-cell {
+    height: 65px;
+    border: 1.2px solid #e4e4e4;
+    border-right: none;
+    border-top: 1.2px solid #e4e4e4;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #672666;
+    line-height: 1.4;
+  }
+
+  .properties-column .feature-cell:first-of-type {
+    border-radius: 10px 0 0 0;
+  }
+
+  .properties-column .feature-cell:last-child {
+    border-radius: 0 0 0 6px;
+  }
+
+  /* Product Columns */
+  .product-columns {
+    display: flex;
+    gap: 0;
+  }
+
+  .product-column {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  /* Product Header */
+  .product-header {
+    height: 117px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: {{ section.settings.header_icon_gap }}px;
+    justify-content: flex-end;
+    padding: 0 0 22px 0;
+    gap: 20px;
   }
 
-  .comparison-table .product-icon {
-    width: {{ section.settings.product_icon_size }}px;
-    height: {{ section.settings.product_icon_size }}px;
+  .product-header .product-icon {
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
   }
 
-  .comparison-table .product-icon img {
-    max-width: 100%;
+  .product-header .product-icon img {
     max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
   }
 
-  .comparison-table .product-name {
-    font-size: {{ section.settings.product_name_size }}px;
-    font-weight: {{ section.settings.product_name_weight }};
-    color: {{ section.settings.product_name_color }};
+  .product-header .product-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #672666;
     text-align: center;
+    line-height: 1.4;
   }
 
-  .comparison-table thead th.featured-column {
-    background-color: {{ section.settings.featured_header_bg }};
+  /* Featured Column */
+  .product-column.featured {
+    background-color: #672666;
+    border-radius: 12px;
+    padding-top: 5px;
+    padding-bottom: 0;
+    align-self: stretch;
+  }
+
+  .product-column.featured .product-header {
+    height: 112px;
+    padding-top: 0;
+  }
+
+  .product-column.featured .product-name {
+    color: #FFFFFF;
+  }
+
+  .product-column.featured .feature-cell {
+    background-color: #672666;
+    border: none;
+    color: #FFFFFF;
+  }
+
+  /* Regular Product Columns */
+  .product-column:not(.featured) .feature-cell {
+    background-color: transparent;
+    border-top: 1.2px solid #e4e4e4;
+    border-bottom: 1.2px solid #e4e4e4;
+    border-left: none;
+    border-right: none;
+    color: #171512;
+  }
+
+  /* Last Column Right Border and Corners */
+  .product-column:last-child:not(.featured) .product-header {
+    border-radius: 0 6px 0 0;
+  }
+
+  .product-column:last-child:not(.featured) .feature-cell {
+    border-right: 1.2px solid #e4e4e4;
+  }
+
+  .product-column:last-child:not(.featured) .feature-cell:first-of-type {
+    border-radius: 0 6px 0 0;
+  }
+
+  .product-column:last-child:not(.featured) .feature-cell:last-child {
+    border-radius: 0 0 6px 0;
+  }
+
+  /* Feature Cells */
+  .feature-cell {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Icons */
+  .icon-check,
+  .icon-cross {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .icon-check {
+    width: 24px;
+    height: 24px;
+    background-color: #672666;
+  }
+
+  .product-column.featured .icon-check {
+    background-color: #FFFFFF;
+  }
+
+  .icon-check svg {
+    width: 16px;
+    height: 16px;
+    fill: #FFFFFF;
+  }
+
+  .product-column.featured .icon-check svg {
+    fill: #672666;
+  }
+
+  .icon-cross {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #672666;
     position: relative;
   }
 
-  .comparison-table thead th.featured-column .product-name {
-    color: {{ section.settings.featured_product_name_color }};
-  }
-
-  {% if section.settings.featured_badge_enabled %}
-  .comparison-table thead th.featured-column::before {
-    content: "{{ section.settings.featured_badge_text }}";
+  .icon-cross::before,
+  .icon-cross::after {
+    content: '';
     position: absolute;
-    top: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #672666;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: {{ section.settings.featured_badge_bg }};
-    color: {{ section.settings.featured_badge_color }};
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  {% endif %}
-
-  .comparison-table tbody tr {
-    background-color: transparent;
   }
 
-  .comparison-table tbody td {
-    padding: {{ section.settings.cell_padding }}px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: {{ section.settings.cell_font_size }}px;
-    color: {{ section.settings.cell_text_color }};
-    background-color: {{ section.settings.cell_bg_color }};
-    {% if section.settings.enable_shadow %}
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    {% endif %}
+  .icon-cross::before {
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
-  .comparison-table tbody td:first-child {
-    text-align: left;
-    font-weight: {{ section.settings.feature_name_weight }};
-    color: {{ section.settings.feature_name_color }};
-    background-color: transparent;
-    box-shadow: none;
-    font-size: {{ section.settings.feature_name_size }}px;
+  .icon-cross::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  .comparison-table tbody td.featured-cell {
-    background-color: {{ section.settings.featured_cell_bg }};
+  /* Scroll Progress Bar */
+  .scroll-progress-bar {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
-  .comparison-table tbody tr:last-child td {
-    border-radius: 0 0 {{ section.settings.cell_border_radius }}px {{ section.settings.cell_border_radius }}px;
+  .scroll-progress-bar .progress-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #672666;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.1s ease-out;
   }
 
-  .comparison-table tbody tr:last-child td:first-child {
-    border-radius: 0;
-  }
-
-  .comparison-table .checkmark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: {{ section.settings.icon_size }}px;
-    height: {{ section.settings.icon_size }}px;
-    background-color: {{ section.settings.checkmark_bg_color }};
-    border-radius: 50%;
-  }
-
-  .comparison-table .checkmark svg {
-    width: 60%;
-    height: 60%;
-    fill: {{ section.settings.checkmark_icon_color }};
-  }
-
-  .comparison-table .cross {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: {{ section.settings.icon_size }}px;
-    height: {{ section.settings.icon_size }}px;
-    background-color: {{ section.settings.cross_bg_color }};
-    border-radius: 50%;
-    opacity: 0.6;
-  }
-
-  .comparison-table .cross svg {
-    width: 60%;
-    height: 60%;
-    fill: {{ section.settings.cross_icon_color }};
-  }
-
-  .comparison-table .empty-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: {{ section.settings.icon_size }}px;
-    height: {{ section.settings.icon_size }}px;
-    border: 2px solid {{ section.settings.empty_icon_border_color }};
-    border-radius: 50%;
-    opacity: 0.3;
-  }
-
-  .comparison-table .cell-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .comparison-table .main-text {
-    font-weight: 600;
-    font-size: {{ section.settings.main_text_size }}px;
-    line-height: 1.3;
-  }
-
-  .comparison-table .sub-text {
-    font-size: {{ section.settings.sub_text_size }}px;
-    color: {{ section.settings.sub_text_color }};
-    line-height: 1.3;
-  }
-
-  @media all and (max-width: {{ section.settings.mobile_breakpoint }}px) {
-    .product-comparison-section {
-      padding: {{ section.settings.mobile_section_padding }}px {{ section.settings.mobile_padding_horizontal }}px;
+  /* Tablet Styles (768px - 999px) */
+  @media all and (min-width: 768px) and (max-width: 999px) {
+    .product-column {
+      max-width: 140px;
+      min-width: 100px;
+      flex: 0 0 auto;
     }
 
-    .product-comparison-section .section-heading {
-      font-size: {{ section.settings.mobile_heading_size }}px;
-      margin-bottom: {{ section.settings.mobile_heading_margin }}px;
-    }
-
-    .comparison-table {
-      font-size: 11px;
-      border-spacing: {{ section.settings.mobile_column_spacing }}px;
-    }
-
-    .comparison-table thead th,
-    .comparison-table tbody td {
-      padding: {{ section.settings.mobile_cell_padding }}px;
-      font-size: 11px;
-    }
-
-    .comparison-table tbody td:first-child {
+    .product-header .product-name {
       font-size: 12px;
     }
 
-    .comparison-table .product-icon {
-      width: {{ section.settings.mobile_product_icon_size }}px;
-      height: {{ section.settings.mobile_product_icon_size }}px;
+    .feature-cell {
+      font-size: 13px;
+      padding: 0 10px;
+    }
+  }
+
+  /* Mobile Styles */
+  @media all and (max-width: 767px) {
+    .product-comparison-section {
+      padding: 40px 16px;
     }
 
-    .comparison-table .product-name {
-      font-size: {{ section.settings.mobile_product_name_size }}px;
+    .product-comparison-section .container {
+      gap: 80px;
     }
 
-    .comparison-table .checkmark,
-    .comparison-table .cross,
-    .comparison-table .empty-icon {
-      width: {{ section.settings.mobile_icon_size }}px;
-      height: {{ section.settings.mobile_icon_size }}px;
+    .product-comparison-section .section-heading {
+      font-size: 32px;
+      max-width: 296px;
     }
 
-    .comparison-table .main-text {
-      font-size: {{ section.settings.mobile_main_text_size }}px;
+    .comparison-table-wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 16px;
     }
 
-    .comparison-table .sub-text {
-      font-size: {{ section.settings.mobile_sub_text_size }}px;
+    .comparison-table {
+      width: 100%;
+      position: relative;
+    }
+
+    /* Fixed Properties Column */
+    .properties-column {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      min-width: 143px;
+      flex: 0 0 143px;
+      background-color: #FFFFFF;
+    }
+
+    .properties-column .header-cell {
+      height: 117px;
+    }
+
+    .properties-column .feature-cell {
+      height: 65px;
+      font-size: 14px;
+      padding: 0 12px;
+    }
+
+    /* Scrollable Product Columns */
+    .product-columns {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .product-columns::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-column {
+      min-width: 100px;
+      flex: 0 0 30%;
+    }
+
+    /* Fixed Featured Column */
+    .product-column.featured {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background-color: #672666;
+    }
+
+    .product-header {
+      height: 117px;
+      padding-bottom: 22px;
+      gap: 20px;
+    }
+
+    .product-column.featured .product-header {
+      height: 112px;
+    }
+
+    .product-header .product-icon {
+      height: 60px;
+    }
+
+    .product-header .product-name {
+      font-size: 10px;
+      padding: 0 4px;
+    }
+
+    .feature-cell {
+      height: 65px;
+      font-size: 11px;
+      padding: 0 8px;
+    }
+
+    .icon-check {
+      width: 24px;
+      height: 24px;
+    }
+
+    .icon-check svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .icon-cross {
+      width: 22px;
+      height: 22px;
+    }
+
+    .icon-cross::before,
+    .icon-cross::after {
+      width: 10px;
+    }
+
+    /* Show Progress Bar */
+    .scroll-progress-bar {
+      display: block;
+    }
+  }
+
+  /* Small Mobile Styles */
+  @media all and (max-width: 424px) {
+    /* Fixed Properties Column - narrower */
+    .properties-column {
+      min-width: 114px;
+      flex: 0 0 114px;
+    }
+
+    .properties-column .feature-cell {
+
+      padding: 0 8px;
+    }
+    .product-comparison-section .container {
+        padding: 0px!Important;
+    }
+    .comparison-table-wrapper {
+        padding: 0px!Important;
     }
   }
 </style>
 
-<div class="product-comparison-section">
+<div class="product-comparison-section _section_container">
   <div class="container">
     {% if section.settings.show_heading %}
       <h2 class="section-heading">{{ section.settings.heading }}</h2>
     {% endif %}
 
     <div class="comparison-table-wrapper">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th></th>
-            {% for block in section.blocks %}
-              {% if block.type == 'product_column' %}
-                <th class="{% if block.settings.is_featured %}featured-column{% endif %}">
-                  <div class="product-header">
-                    {% if block.settings.product_icon %}
-                      <div class="product-icon">
-                        <img
-                          src="{{ block.settings.product_icon | img_url: 'master' }}"
-                          alt="{{ block.settings.product_name }}"
-                          loading="lazy"
-                        >
-                      </div>
-                    {% endif %}
-                    <div class="product-name">{{ block.settings.product_name }}</div>
-                  </div>
-                </th>
-              {% endif %}
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
+      <div class="comparison-table">
+        <!-- Properties Column -->
+        <div class="properties-column">
+          <div class="header-cell"></div>
           {% for feature_block in section.blocks %}
             {% if feature_block.type == 'feature_row' %}
-              <tr>
-                <td>{{ feature_block.settings.feature_name }}</td>
+              <div class="feature-cell">
+                {{ feature_block.settings.feature_name }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
 
-                {% assign column_index = 0 %}
-                {% for product_block in section.blocks %}
-                  {% if product_block.type == 'product_column' %}
-                    {% assign column_index = column_index | plus: 1 %}
-                    {% assign column_id = 'col_' | append: column_index %}
+        <!-- Product Columns -->
+        <div class="product-columns" data-scroll-container>
+          {% for product_block in section.blocks %}
+            {% if product_block.type == 'product_column' %}
+              <div class="product-column {% if product_block.settings.is_featured %}featured{% endif %}">
+                <!-- Product Header -->
+                <div class="product-header">
+                  {% if product_block.settings.product_icon %}
+                    <div class="product-icon">
+                      <img
+                        src="{{ product_block.settings.product_icon | img_url: 'master' }}"
+                        alt="{{ product_block.settings.product_name }}"
+                        loading="lazy"
+                      >
+                    </div>
+                  {% endif %}
+                  <div class="product-name">{{ product_block.settings.product_name }}</div>
+                </div>
+
+                <!-- Feature Cells -->
+                {% assign column_index = forloop.index %}
+                {% assign column_id = 'col_' | append: column_index %}
+
+                {% for feature_block in section.blocks %}
+                  {% if feature_block.type == 'feature_row' %}
                     {% assign value_type_key = 'value_type_' | append: column_id %}
                     {% assign text_key = 'text_' | append: column_id %}
-                    {% assign main_text_key = 'main_text_' | append: column_id %}
-                    {% assign sub_text_key = 'sub_text_' | append: column_id %}
-                    {% assign text_color_key = 'text_color_' | append: column_id %}
-
                     {% assign value_type = feature_block.settings[value_type_key] %}
 
-                    <td class="{% if product_block.settings.is_featured %}featured-cell{% endif %}">
+                    <div class="feature-cell">
                       {% case value_type %}
                         {% when 'check' %}
-                          <span class="checkmark">
+                          <span class="icon-check">
                             <svg viewBox="0 0 24 24">
                               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                           </span>
 
                         {% when 'cross' %}
-                          <span class="cross">
-                            <svg viewBox="0 0 24 24">
-                              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                            </svg>
-                          </span>
-
-                        {% when 'empty' %}
-                          <span class="empty-icon"></span>
+                          <span class="icon-cross"></span>
 
                         {% when 'text' %}
-                          <div class="cell-content">
-                            <span style="{% if feature_block.settings[text_color_key] != blank %}color: {{ feature_block.settings[text_color_key] }};{% endif %}">
-                              {{ feature_block.settings[text_key] }}
-                            </span>
-                          </div>
-
-                        {% when 'custom' %}
-                          <div class="cell-content">
-                            <span class="main-text" style="{% if feature_block.settings[text_color_key] != blank %}color: {{ feature_block.settings[text_color_key] }};{% endif %}">
-                              {{ feature_block.settings[main_text_key] }}
-                            </span>
-                            {% if feature_block.settings[sub_text_key] != blank %}
-                              <span class="sub-text">{{ feature_block.settings[sub_text_key] }}</span>
-                            {% endif %}
-                          </div>
+                          {{ feature_block.settings[text_key] }}
                       {% endcase %}
-                    </td>
+                    </div>
                   {% endif %}
                 {% endfor %}
-              </tr>
+              </div>
             {% endif %}
           {% endfor %}
-        </tbody>
-      </table>
+        </div>
+      </div>
+
+      <!-- Scroll Progress Bar -->
+      <div class="scroll-progress-bar">
+        <div class="progress-indicator" data-progress-indicator></div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    function initScrollProgress() {
+      const scrollContainer = document.querySelector('[data-scroll-container]');
+      const progressIndicator = document.querySelector('[data-progress-indicator]');
+
+      if (!scrollContainer || !progressIndicator) return;
+
+      function updateProgress() {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const scrollWidth = scrollContainer.scrollWidth;
+        const clientWidth = scrollContainer.clientWidth;
+        const maxScroll = scrollWidth - clientWidth;
+
+        if (maxScroll > 0) {
+          const scrollPercentage = (scrollLeft / maxScroll) * 100;
+          progressIndicator.style.width = scrollPercentage + '%';
+        }
+      }
+
+      scrollContainer.addEventListener('scroll', updateProgress);
+      window.addEventListener('resize', updateProgress);
+
+      // Initial update
+      updateProgress();
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollProgress);
+    } else {
+      initScrollProgress();
+    }
+  })();
+</script>
 
 {% schema %}
 {
@@ -369,75 +560,6 @@
       "id": "heading",
       "label": "Section Heading",
       "default": "Finally, The Better Way to Sleep"
-    },
-    {
-      "type": "select",
-      "id": "heading_alignment",
-      "label": "Heading Alignment",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "range",
-      "id": "heading_size",
-      "min": 24,
-      "max": 72,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading Font Size",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "mobile_heading_size",
-      "min": 20,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Heading Font Size",
-      "default": 28
-    },
-    {
-      "type": "select",
-      "id": "heading_weight",
-      "label": "Heading Font Weight",
-      "options": [
-        { "value": "400", "label": "Normal" },
-        { "value": "500", "label": "Medium" },
-        { "value": "600", "label": "Semi Bold" },
-        { "value": "700", "label": "Bold" }
-      ],
-      "default": "700"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading Color",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "heading_margin",
-      "min": 20,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Heading Bottom Margin",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "mobile_heading_margin",
-      "min": 15,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "label": "Mobile Heading Bottom Margin",
-      "default": 30
     },
     {
       "type": "header",
@@ -461,7 +583,7 @@
       "step": 5,
       "unit": "px",
       "label": "Section Padding Top",
-      "default": 80
+      "default": 65
     },
     {
       "type": "range",
@@ -471,7 +593,7 @@
       "step": 5,
       "unit": "px",
       "label": "Section Padding Bottom",
-      "default": 80
+      "default": 65
     },
     {
       "type": "range",
@@ -481,388 +603,13 @@
       "step": 5,
       "unit": "px",
       "label": "Section Padding Horizontal",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "mobile_section_padding",
-      "min": 20,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Mobile Section Padding Vertical",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "mobile_padding_horizontal",
-      "min": 15,
-      "max": 40,
-      "step": 5,
-      "unit": "px",
-      "label": "Mobile Padding Horizontal",
-      "default": 15
+      "default": 70
     },
     {
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
       "default": "#ffffff"
-    },
-    {
-      "type": "header",
-      "content": "Table Layout"
-    },
-    {
-      "type": "range",
-      "id": "column_spacing",
-      "min": 0,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "label": "Column Spacing",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "mobile_column_spacing",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Column Spacing",
-      "default": 6
-    },
-    {
-      "type": "range",
-      "id": "cell_border_radius",
-      "min": 0,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "label": "Cell Border Radius",
-      "default": 12
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_shadow",
-      "label": "Enable Cell Shadow",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Product Header Settings"
-    },
-    {
-      "type": "range",
-      "id": "product_icon_size",
-      "min": 40,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "label": "Product Icon Size",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "mobile_product_icon_size",
-      "min": 30,
-      "max": 80,
-      "step": 5,
-      "unit": "px",
-      "label": "Mobile Product Icon Size",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "header_icon_gap",
-      "min": 4,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "label": "Gap Between Icon and Name",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "product_name_size",
-      "min": 12,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Product Name Font Size",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "mobile_product_name_size",
-      "min": 10,
-      "max": 18,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Product Name Size",
-      "default": 12
-    },
-    {
-      "type": "select",
-      "id": "product_name_weight",
-      "label": "Product Name Font Weight",
-      "options": [
-        { "value": "400", "label": "Normal" },
-        { "value": "500", "label": "Medium" },
-        { "value": "600", "label": "Semi Bold" },
-        { "value": "700", "label": "Bold" }
-      ],
-      "default": "600"
-    },
-    {
-      "type": "color",
-      "id": "product_name_color",
-      "label": "Product Name Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "header_bg_color",
-      "label": "Header Background Color",
-      "default": "#F9FAFB"
-    },
-    {
-      "type": "range",
-      "id": "header_padding",
-      "min": 14,
-      "max": 50,
-      "step": 2,
-      "unit": "px",
-      "label": "Header Cell Padding",
-      "default": 24
-    },
-    {
-      "type": "header",
-      "content": "Featured Product Settings"
-    },
-    {
-      "type": "color",
-      "id": "featured_header_bg",
-      "label": "Featured Header Background",
-      "default": "#6B46C1"
-    },
-    {
-      "type": "color",
-      "id": "featured_product_name_color",
-      "label": "Featured Product Name Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "featured_cell_bg",
-      "label": "Featured Cell Background",
-      "default": "#F3F0FF"
-    },
-    {
-      "type": "checkbox",
-      "id": "featured_badge_enabled",
-      "label": "Show Featured Badge",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "featured_badge_text",
-      "label": "Featured Badge Text",
-      "default": "BEST VALUE"
-    },
-    {
-      "type": "color",
-      "id": "featured_badge_bg",
-      "label": "Featured Badge Background",
-      "default": "#10B981"
-    },
-    {
-      "type": "color",
-      "id": "featured_badge_color",
-      "label": "Featured Badge Text Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "header",
-      "content": "Table Cell Settings"
-    },
-    {
-      "type": "color",
-      "id": "cell_bg_color",
-      "label": "Cell Background Color",
-      "default": "#F9FAFB"
-    },
-    {
-      "type": "range",
-      "id": "cell_padding",
-      "min": 10,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "label": "Cell Padding",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "mobile_cell_padding",
-      "min": 8,
-      "max": 24,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Cell Padding",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "cell_font_size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Cell Font Size",
-      "default": 14
-    },
-    {
-      "type": "color",
-      "id": "cell_text_color",
-      "label": "Cell Text Color",
-      "default": "#374151"
-    },
-    {
-      "type": "header",
-      "content": "Feature Name Settings"
-    },
-    {
-      "type": "range",
-      "id": "feature_name_size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Feature Name Font Size",
-      "default": 14
-    },
-    {
-      "type": "color",
-      "id": "feature_name_color",
-      "label": "Feature Name Color",
-      "default": "#111827"
-    },
-    {
-      "type": "select",
-      "id": "feature_name_weight",
-      "label": "Feature Name Font Weight",
-      "options": [
-        { "value": "400", "label": "Normal" },
-        { "value": "500", "label": "Medium" },
-        { "value": "600", "label": "Semi Bold" }
-      ],
-      "default": "400"
-    },
-    {
-      "type": "header",
-      "content": "Icon Settings"
-    },
-    {
-      "type": "range",
-      "id": "icon_size",
-      "min": 20,
-      "max": 50,
-      "step": 2,
-      "unit": "px",
-      "label": "Check/Cross Icon Size",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "mobile_icon_size",
-      "min": 18,
-      "max": 36,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile Icon Size",
-      "default": 24
-    },
-    {
-      "type": "color",
-      "id": "checkmark_bg_color",
-      "label": "Checkmark Background Color",
-      "default": "#6B46C1"
-    },
-    {
-      "type": "color",
-      "id": "checkmark_icon_color",
-      "label": "Checkmark Icon Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "cross_bg_color",
-      "label": "Cross Background Color",
-      "default": "#D1D5DB"
-    },
-    {
-      "type": "color",
-      "id": "cross_icon_color",
-      "label": "Cross Icon Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "empty_icon_border_color",
-      "label": "Empty Icon Border Color",
-      "default": "#D1D5DB"
-    },
-    {
-      "type": "header",
-      "content": "Text Content Settings"
-    },
-    {
-      "type": "range",
-      "id": "main_text_size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Main Text Size",
-      "default": 14
-    },
-    {
-      "type": "range",
-      "id": "mobile_main_text_size",
-      "min": 10,
-      "max": 16,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Main Text Size",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "sub_text_size",
-      "min": 10,
-      "max": 16,
-      "step": 1,
-      "unit": "px",
-      "label": "Sub Text Size",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "mobile_sub_text_size",
-      "min": 9,
-      "max": 14,
-      "step": 1,
-      "unit": "px",
-      "label": "Mobile Sub Text Size",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "sub_text_color",
-      "label": "Sub Text Color",
-      "default": "#6B7280"
     },
     {
       "type": "header",
@@ -925,9 +672,7 @@
           "options": [
             { "value": "check", "label": "Checkmark ✓" },
             { "value": "cross", "label": "Cross ✗" },
-            { "value": "empty", "label": "Empty Circle" },
-            { "value": "text", "label": "Simple Text" },
-            { "value": "custom", "label": "Custom (Main + Sub)" }
+            { "value": "text", "label": "Text" }
           ],
           "default": "check"
         },
@@ -935,24 +680,7 @@
           "type": "text",
           "id": "text_col_1",
           "label": "Text",
-          "info": "For 'Simple Text' type"
-        },
-        {
-          "type": "text",
-          "id": "main_text_col_1",
-          "label": "Main Text",
-          "info": "For 'Custom' type"
-        },
-        {
-          "type": "text",
-          "id": "sub_text_col_1",
-          "label": "Sub Text",
-          "info": "For 'Custom' type (e.g., '(10 min)')"
-        },
-        {
-          "type": "color",
-          "id": "text_color_col_1",
-          "label": "Text Color (Optional)"
+          "info": "For 'Text' type"
         },
         {
           "type": "header",
@@ -965,9 +693,7 @@
           "options": [
             { "value": "check", "label": "Checkmark ✓" },
             { "value": "cross", "label": "Cross ✗" },
-            { "value": "empty", "label": "Empty Circle" },
-            { "value": "text", "label": "Simple Text" },
-            { "value": "custom", "label": "Custom (Main + Sub)" }
+            { "value": "text", "label": "Text" }
           ],
           "default": "cross"
         },
@@ -975,21 +701,6 @@
           "type": "text",
           "id": "text_col_2",
           "label": "Text"
-        },
-        {
-          "type": "text",
-          "id": "main_text_col_2",
-          "label": "Main Text"
-        },
-        {
-          "type": "text",
-          "id": "sub_text_col_2",
-          "label": "Sub Text"
-        },
-        {
-          "type": "color",
-          "id": "text_color_col_2",
-          "label": "Text Color (Optional)"
         },
         {
           "type": "header",
@@ -1002,9 +713,7 @@
           "options": [
             { "value": "check", "label": "Checkmark ✓" },
             { "value": "cross", "label": "Cross ✗" },
-            { "value": "empty", "label": "Empty Circle" },
-            { "value": "text", "label": "Simple Text" },
-            { "value": "custom", "label": "Custom (Main + Sub)" }
+            { "value": "text", "label": "Text" }
           ],
           "default": "cross"
         },
@@ -1012,21 +721,6 @@
           "type": "text",
           "id": "text_col_3",
           "label": "Text"
-        },
-        {
-          "type": "text",
-          "id": "main_text_col_3",
-          "label": "Main Text"
-        },
-        {
-          "type": "text",
-          "id": "sub_text_col_3",
-          "label": "Sub Text"
-        },
-        {
-          "type": "color",
-          "id": "text_color_col_3",
-          "label": "Text Color (Optional)"
         },
         {
           "type": "header",
@@ -1039,9 +733,7 @@
           "options": [
             { "value": "check", "label": "Checkmark ✓" },
             { "value": "cross", "label": "Cross ✗" },
-            { "value": "empty", "label": "Empty Circle" },
-            { "value": "text", "label": "Simple Text" },
-            { "value": "custom", "label": "Custom (Main + Sub)" }
+            { "value": "text", "label": "Text" }
           ],
           "default": "cross"
         },
@@ -1049,21 +741,6 @@
           "type": "text",
           "id": "text_col_4",
           "label": "Text"
-        },
-        {
-          "type": "text",
-          "id": "main_text_col_4",
-          "label": "Main Text"
-        },
-        {
-          "type": "text",
-          "id": "sub_text_col_4",
-          "label": "Sub Text"
-        },
-        {
-          "type": "color",
-          "id": "text_color_col_4",
-          "label": "Text Color (Optional)"
         },
         {
           "type": "header",
@@ -1076,9 +753,7 @@
           "options": [
             { "value": "check", "label": "Checkmark ✓" },
             { "value": "cross", "label": "Cross ✗" },
-            { "value": "empty", "label": "Empty Circle" },
-            { "value": "text", "label": "Simple Text" },
-            { "value": "custom", "label": "Custom (Main + Sub)" }
+            { "value": "text", "label": "Text" }
           ],
           "default": "cross"
         },
@@ -1086,21 +761,6 @@
           "type": "text",
           "id": "text_col_5",
           "label": "Text"
-        },
-        {
-          "type": "text",
-          "id": "main_text_col_5",
-          "label": "Main Text"
-        },
-        {
-          "type": "text",
-          "id": "sub_text_col_5",
-          "label": "Sub Text"
-        },
-        {
-          "type": "color",
-          "id": "text_color_col_5",
-          "label": "Text Color (Optional)"
         }
       ]
     }
@@ -1140,55 +800,103 @@
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Absorption Speed"
+            "feature_name": "Absorption Speed",
+            "value_type_col_1": "text",
+            "text_col_1": "Rapid (5-10 min)",
+            "value_type_col_2": "text",
+            "text_col_2": "Slow (up to 90 min)",
+            "value_type_col_3": "text",
+            "text_col_3": "Slow (up to 90 min)",
+            "value_type_col_4": "text",
+            "text_col_4": "Slow (up to 90 min)"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Average Price"
+            "feature_name": "Average Price",
+            "value_type_col_1": "text",
+            "text_col_1": "$0.89/night",
+            "value_type_col_2": "text",
+            "text_col_2": "$3.00/night",
+            "value_type_col_3": "text",
+            "text_col_3": "$1.83/night",
+            "value_type_col_4": "text",
+            "text_col_4": "$0.93/night"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Proven Natural Ingredients"
+            "feature_name": "Proven Natural Ingredients",
+            "value_type_col_1": "check",
+            "value_type_col_2": "check",
+            "value_type_col_3": "check",
+            "value_type_col_4": "cross"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Non-Habit Forming"
+            "feature_name": "Non-Habit Forming",
+            "value_type_col_1": "check",
+            "value_type_col_2": "cross",
+            "value_type_col_3": "cross",
+            "value_type_col_4": "cross"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "No Groggy Mornings"
+            "feature_name": "No Groggy Mornings",
+            "value_type_col_1": "check",
+            "value_type_col_2": "check",
+            "value_type_col_3": "check",
+            "value_type_col_4": "check"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Tastes Great"
+            "feature_name": "Tastes Great",
+            "value_type_col_1": "check",
+            "value_type_col_2": "check",
+            "value_type_col_3": "check",
+            "value_type_col_4": "check"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Free From Additives & Fillers"
+            "feature_name": "Free From Additives & Fillers",
+            "value_type_col_1": "check",
+            "value_type_col_2": "check",
+            "value_type_col_3": "check",
+            "value_type_col_4": "check"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Customize Dose"
+            "feature_name": "Customize Dose",
+            "value_type_col_1": "text",
+            "text_col_1": "Easy spray control",
+            "value_type_col_2": "text",
+            "text_col_2": "Limited",
+            "value_type_col_3": "text",
+            "text_col_3": "Limited",
+            "value_type_col_4": "text",
+            "text_col_4": "Limited"
           }
         },
         {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Safe for Long-Term Use"
+            "feature_name": "Safe for Long-Term Use",
+            "value_type_col_1": "check",
+            "value_type_col_2": "cross",
+            "value_type_col_3": "cross",
+            "value_type_col_4": "cross"
           }
         }
       ]
@@ -1196,14 +904,3 @@
   ]
 }
 {% endschema %}
-
-{% javascript %}
-  // Dynamic schema generation for feature row settings
-  (function() {
-    const section = document.currentScript.closest('[data-section-type]');
-    if (!section) return;
-
-    // This script helps generate dynamic settings for each product column
-    // in the Shopify theme editor
-  })();
-{% endjavascript %}

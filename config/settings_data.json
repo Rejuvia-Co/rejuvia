@@ -2894,6 +2894,7 @@
       },
       "replo_table_comparison_RibDqG": {
         "type": "replo-table-comparison",
+        "disabled": true,
         "settings": {}
       },
       "new-product-grid": {
@@ -3124,7 +3125,7 @@
           "feature_row_3gYJXX": {
             "type": "feature_row",
             "settings": {
-              "feature_name": "Low Price Per Night",
+              "feature_name": "Price Per Night",
               "value_type_col_1": "text",
               "text_col_1": "$0.89/night",
               "value_type_col_2": "text",
@@ -3219,9 +3220,8 @@
           },
           "feature_row_iw9FyR": {
             "type": "feature_row",
-            "disabled": true,
             "settings": {
-              "feature_name": "Customize Dose",
+              "feature_name": "Customize Dosage",
               "value_type_col_1": "check",
               "text_col_1": "",
               "value_type_col_2": "cross",
@@ -3267,7 +3267,6 @@
           "feature_row_iw9FyR",
           "feature_row_4CNnnJ"
         ],
-        "disabled": true,
         "name": "Product Comparison",
         "settings": {
           "show_heading": true,

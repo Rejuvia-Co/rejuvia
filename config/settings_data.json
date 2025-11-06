@@ -3125,7 +3125,7 @@
           "feature_row_3gYJXX": {
             "type": "feature_row",
             "settings": {
-              "feature_name": "Price Per Night",
+              "feature_name": "Average Cost",
               "value_type_col_1": "text",
               "text_col_1": "$0.89/night",
               "value_type_col_2": "text",
@@ -3222,21 +3222,20 @@
             "type": "feature_row",
             "settings": {
               "feature_name": "Customize Dosage",
-              "value_type_col_1": "check",
-              "text_col_1": "",
-              "value_type_col_2": "cross",
-              "text_col_2": "",
-              "value_type_col_3": "cross",
-              "text_col_3": "",
-              "value_type_col_4": "cross",
-              "text_col_4": "",
+              "value_type_col_1": "text",
+              "text_col_1": "Easy Spray Control",
+              "value_type_col_2": "text",
+              "text_col_2": "Limited",
+              "value_type_col_3": "text",
+              "text_col_3": "Limited",
+              "value_type_col_4": "text",
+              "text_col_4": "Limited",
               "value_type_col_5": "cross",
               "text_col_5": ""
             }
           },
           "feature_row_4CNnnJ": {
             "type": "feature_row",
-            "disabled": true,
             "settings": {
               "feature_name": "Safe for Long-Term Use",
               "value_type_col_1": "check",
@@ -3270,7 +3269,7 @@
         "name": "Product Comparison",
         "settings": {
           "show_heading": true,
-          "heading": "How Rejuvia Compares To Alternatives",
+          "heading": "The Better Way To Sleep Is Here",
           "container_width": 1300,
           "section_padding_top": 80,
           "section_padding_bottom": 80,

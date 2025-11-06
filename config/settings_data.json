@@ -3069,6 +3069,215 @@
           "stars_reating": "4.6 Stars",
           "stars_label": "From 7,518+ Reviews"
         }
+      },
+      "product_comparison_enhanced_DecUrt": {
+        "type": "product-comparison-enhanced",
+        "blocks": {
+          "product_column_Erenph": {
+            "type": "product_column",
+            "settings": {
+              "product_name": "Rejuvia Sleep Spray",
+              "product_icon": "shopify://shop_images/Rejuvia_Sleep_Spray.png",
+              "is_featured": true
+            }
+          },
+          "product_column_bYEwMD": {
+            "type": "product_column",
+            "settings": {
+              "product_name": "Sleeping Pills",
+              "product_icon": "shopify://shop_images/Sleeping_Pills.png",
+              "is_featured": false
+            }
+          },
+          "product_column_ixPxRW": {
+            "type": "product_column",
+            "settings": {
+              "product_name": "Sleep Gummies",
+              "product_icon": "shopify://shop_images/Sleep_Gummies.png",
+              "is_featured": false
+            }
+          },
+          "product_column_cKi3pm": {
+            "type": "product_column",
+            "settings": {
+              "product_name": "Melatonin Supplements",
+              "product_icon": "shopify://shop_images/Melatonin_Supplements.png",
+              "is_featured": false
+            }
+          },
+          "feature_row_GCXD3Y": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Absorption Speed",
+              "value_type_col_1": "text",
+              "text_col_1": "Rapid (10 minutes)",
+              "value_type_col_2": "text",
+              "text_col_2": "Slow (up to 90 min)",
+              "value_type_col_3": "text",
+              "text_col_3": "Slow (up to 90 min)",
+              "value_type_col_4": "text",
+              "text_col_4": "Slow (up to 90 min)",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_3gYJXX": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Low Price Per Night",
+              "value_type_col_1": "text",
+              "text_col_1": "$0.89/night",
+              "value_type_col_2": "text",
+              "text_col_2": "$3.00/night",
+              "value_type_col_3": "text",
+              "text_col_3": "$1.83/night",
+              "value_type_col_4": "text",
+              "text_col_4": "$0.93/night",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_WnixrW": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Proven Natural Ingredients",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "check",
+              "text_col_3": "",
+              "value_type_col_4": "check",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_jFD38z": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Non-Habit Forming",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "check",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_TQUwyE": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "No Groggy Mornings",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "cross",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_XWABeq": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Tastes Great",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "cross",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_zjA37G": {
+            "type": "feature_row",
+            "settings": {
+              "feature_name": "Free From Additives & Fillers",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "cross",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_iw9FyR": {
+            "type": "feature_row",
+            "disabled": true,
+            "settings": {
+              "feature_name": "Customize Dose",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "cross",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          },
+          "feature_row_4CNnnJ": {
+            "type": "feature_row",
+            "disabled": true,
+            "settings": {
+              "feature_name": "Safe for Long-Term Use",
+              "value_type_col_1": "check",
+              "text_col_1": "",
+              "value_type_col_2": "cross",
+              "text_col_2": "",
+              "value_type_col_3": "cross",
+              "text_col_3": "",
+              "value_type_col_4": "cross",
+              "text_col_4": "",
+              "value_type_col_5": "cross",
+              "text_col_5": ""
+            }
+          }
+        },
+        "block_order": [
+          "product_column_Erenph",
+          "product_column_bYEwMD",
+          "product_column_ixPxRW",
+          "product_column_cKi3pm",
+          "feature_row_GCXD3Y",
+          "feature_row_3gYJXX",
+          "feature_row_WnixrW",
+          "feature_row_jFD38z",
+          "feature_row_TQUwyE",
+          "feature_row_XWABeq",
+          "feature_row_zjA37G",
+          "feature_row_iw9FyR",
+          "feature_row_4CNnnJ"
+        ],
+        "name": "Product Comparison",
+        "settings": {
+          "show_heading": true,
+          "heading": "How Rejuvia Compares To Alternatives",
+          "container_width": 1300,
+          "section_padding_top": 80,
+          "section_padding_bottom": 80,
+          "section_padding_horizontal": 20,
+          "bg_color": "#ffffff",
+          "mobile_breakpoint": 750
+        }
       }
     },
     "content_for_index": [
@@ -3078,6 +3287,7 @@
       "featured_customer_reviews_96PMKt",
       "how_it_works_Qwdx49",
       "replo_table_comparison_RibDqG",
+      "product_comparison_enhanced_DecUrt",
       "ingredients_section_xJDwEy",
       "product_widget_gC6JFH",
       "subscribe_save_qXLDcT",

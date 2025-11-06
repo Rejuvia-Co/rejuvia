@@ -3267,6 +3267,7 @@
           "feature_row_iw9FyR",
           "feature_row_4CNnnJ"
         ],
+        "disabled": true,
         "name": "Product Comparison",
         "settings": {
           "show_heading": true,

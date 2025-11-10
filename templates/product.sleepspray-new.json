@@ -208,7 +208,7 @@
         "card_TtMCFP"
       ],
       "settings": {
-        "heading": "Natural Ingredients With a Purpose",
+        "heading": "All-Natural, Powerful Ingredients",
         "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
       }
     },
@@ -247,47 +247,211 @@
         "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."
       }
     },
-    "comparison_alternatives_w4tHaq": {
-      "type": "comparison-alternatives",
+    "product_comparison_enhanced_tRzrDn": {
+      "type": "product-comparison-enhanced",
       "blocks": {
-        "text_ynik6A": {
-          "type": "text",
+        "product_column_kK7cmm": {
+          "type": "product_column",
           "settings": {
-            "icon": "shopify://shop_images/Plant.svg",
-            "title": "All-Natural"
+            "product_name": "Rejuvia Sleep Spray",
+            "product_icon": "shopify://shop_images/Rejuvia_Sleep_Spray.png",
+            "is_featured": true
           }
         },
-        "text_BFYrrF": {
-          "type": "text",
+        "product_column_XtAWXa": {
+          "type": "product_column",
           "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "Non-GMO"
+            "product_name": "Sleeping Pills",
+            "product_icon": "shopify://shop_images/Sleeping_Pills.png",
+            "is_featured": false
           }
         },
-        "text_JA4hJE": {
-          "type": "text",
+        "product_column_DmkEEd": {
+          "type": "product_column",
           "settings": {
-            "icon": "shopify://shop_images/Flask.svg",
-            "title": "Lab-Tested"
+            "product_name": "Sleep Gummies",
+            "product_icon": "shopify://shop_images/Sleep_Gummies.png",
+            "is_featured": false
           }
         },
-        "text_mCdfmG": {
-          "type": "text",
+        "product_column_exVCF4": {
+          "type": "product_column",
           "settings": {
-            "icon": "shopify://shop_images/Flower.svg",
-            "title": "Mint Flavor"
+            "product_name": "Melatonin Supplements",
+            "product_icon": "shopify://shop_images/Melatonin_Supplements.png",
+            "is_featured": false
+          }
+        },
+        "feature_row_cVbgrm": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Absorption Speed",
+            "value_type_col_1": "text",
+            "text_col_1": "Rapid (5-10 min)",
+            "value_type_col_2": "text",
+            "text_col_2": "Slow (up to 90 min)",
+            "value_type_col_3": "text",
+            "text_col_3": "Slow (up to 90 min)",
+            "value_type_col_4": "text",
+            "text_col_4": "Slow (up to 90 min)",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_jKEpUJ": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Average Price",
+            "value_type_col_1": "text",
+            "text_col_1": "$0.89/night",
+            "value_type_col_2": "text",
+            "text_col_2": "$3.00/night",
+            "value_type_col_3": "text",
+            "text_col_3": "$1.83/night",
+            "value_type_col_4": "text",
+            "text_col_4": "$0.93/night",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_K7ci8H": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Proven Natural Ingredients",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_WaAFPC": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Non-Habit Forming",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "cross",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_xqACC6": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "No Groggy Mornings",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "check",
+            "text_col_2": "",
+            "value_type_col_3": "cross",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_4dDq6U": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Tastes Great",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "check",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_FdTWRh": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Free From Additives & Fillers",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_Ji4EjM": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Customize Dose",
+            "value_type_col_1": "text",
+            "text_col_1": "Easy spray control",
+            "value_type_col_2": "text",
+            "text_col_2": "Limited",
+            "value_type_col_3": "text",
+            "text_col_3": "Limited",
+            "value_type_col_4": "text",
+            "text_col_4": "Limited",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_Xr8xyT": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Safe for Long-Term Use",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "cross",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
           }
         }
       },
       "block_order": [
-        "text_ynik6A",
-        "text_BFYrrF",
-        "text_JA4hJE",
-        "text_mCdfmG"
+        "product_column_kK7cmm",
+        "product_column_XtAWXa",
+        "product_column_DmkEEd",
+        "product_column_exVCF4",
+        "feature_row_cVbgrm",
+        "feature_row_jKEpUJ",
+        "feature_row_K7ci8H",
+        "feature_row_WaAFPC",
+        "feature_row_xqACC6",
+        "feature_row_4dDq6U",
+        "feature_row_FdTWRh",
+        "feature_row_Ji4EjM",
+        "feature_row_Xr8xyT"
       ],
+      "name": "Product Comparison",
       "settings": {
-        "header": "Finally, The Better Way to Sleep",
-        "paragraph": "Rejuvia delivers deep, natural sleep without the heavy side effects of pills or gummies with just 6–8 calming sprays before bed."
+        "show_heading": true,
+        "heading": "Finally, The Better Way to Sleep",
+        "container_width": 1300,
+        "section_padding_top": 65,
+        "section_padding_bottom": 65,
+        "section_padding_horizontal": 70,
+        "bg_color": "#ffffff",
+        "mobile_breakpoint": 750
       }
     },
     "1717460916cf4757a6": {
@@ -426,7 +590,7 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "how_it_works_4YVLwU",
-    "comparison_alternatives_w4tHaq",
+    "product_comparison_enhanced_tRzrDn",
     "1717460916cf4757a6",
     "main_page_4Q6KQH",
     "section_choose_product_3Gy6dc"

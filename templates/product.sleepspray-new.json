@@ -540,49 +540,6 @@
         "title_color": "#000000",
         "text_color": "#000000"
       }
-    },
-    "section_choose_product_3Gy6dc": {
-      "type": "section-choose-product",
-      "blocks": {
-        "product_NtTCVx": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-spray",
-            "short_description": ""
-          }
-        },
-        "product_dxPmTB": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-stress-spray",
-            "short_description": ""
-          }
-        },
-        "product_YwGUyc": {
-          "type": "product",
-          "settings": {
-            "featured_product": "vitamin-d3-k2-spray",
-            "short_description": ""
-          }
-        },
-        "product_hmU6Mw": {
-          "type": "product",
-          "settings": {
-            "featured_product": "lutein",
-            "short_description": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_NtTCVx",
-        "product_dxPmTB",
-        "product_YwGUyc",
-        "product_hmU6Mw"
-      ],
-      "settings": {
-        "title": "Shop All Rejuvia Products",
-        "sub_title": "Better sleep and less stress are now just a few sprays away."
-      }
     }
   },
   "order": [
@@ -592,7 +549,6 @@
     "how_it_works_4YVLwU",
     "product_comparison_enhanced_tRzrDn",
     "1717460916cf4757a6",
-    "main_page_4Q6KQH",
-    "section_choose_product_3Gy6dc"
+    "main_page_4Q6KQH"
   ]
 }

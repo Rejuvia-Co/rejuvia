@@ -3,8 +3,7 @@
    ======================================== */
 
 .product-fb-reviews-section {
-  background: linear-gradient(90deg, rgba(235, 237, 246, 1) 0%, rgba(235, 237, 246, 1) 100%),
-              linear-gradient(90deg, rgba(250, 250, 249, 1) 0%, rgba(250, 250, 249, 1) 100%);
+  background: linear-gradient(258deg, #EDE0EC -1.34%, #EAC78B 237.07%);
 }
 
 .product-fb-reviews__container {
@@ -88,6 +87,10 @@
   overflow: hidden;
 }
 
+.product-fb-reviews__profile-image--mobile {
+  display: none;
+}
+
 .product-fb-reviews__profile-img {
   width: 100%;
   height: 100%;
@@ -158,15 +161,7 @@
    ======================================== */
 
 .product-fb-reviews__comment-footer {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #171512;
-  opacity: 0.4;
+  display: none;
 }
 
 .product-fb-reviews__footer-item {
@@ -245,11 +240,6 @@
     gap: 40px;
   }
 
-  .product-fb-reviews__heading {
-    text-align: left;
-    align-items: flex-start;
-  }
-
   .product-fb-reviews__title {
     font-size: 32px;
   }
@@ -289,20 +279,31 @@
 
   .product-fb-reviews__card-inner {
     padding: 20px 18px;
-    gap: 0;
   }
 
-  .product-fb-reviews__profile-image {
+  /* Hide desktop profile image on mobile */
+  .product-fb-reviews__profile-image--desktop {
+    display: none;
+  }
+
+  /* Show mobile profile image */
+  .product-fb-reviews__profile-image--mobile {
+    display: block;
     width: 45px;
     height: 45px;
   }
 
   .product-fb-reviews__comment {
-    gap: 20px;
+    gap: 18px;
   }
 
   .product-fb-reviews__comment-header {
     gap: 10px;
+  }
+
+  .product-fb-reviews__person-info {
+    flex: 1;
+    min-width: 0;
   }
 
   /* Show scroll indicator on mobile */

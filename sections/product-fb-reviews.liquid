@@ -18,9 +18,9 @@
         {%- for review in fb_reviews.value -%}
           <div class="product-fb-reviews__card">
             <div class="product-fb-reviews__card-inner">
-              {%- comment -%} Profile Image {%- endcomment -%}
+              {%- comment -%} Profile Image (Desktop Only) {%- endcomment -%}
               {%- if review.icon -%}
-                <div class="product-fb-reviews__profile-image">
+                <div class="product-fb-reviews__profile-image product-fb-reviews__profile-image--desktop">
                   {{ review.icon | image_url: width: 100 | image_tag:
                     loading: 'lazy',
                     widths: '50, 100',
@@ -32,8 +32,20 @@
 
               {%- comment -%} Comment Content {%- endcomment -%}
               <div class="product-fb-reviews__comment">
-                {%- comment -%} Header: Name + Facebook Icon {%- endcomment -%}
+                {%- comment -%} Header: Profile Image (Mobile) + Name + Facebook Icon {%- endcomment -%}
                 <div class="product-fb-reviews__comment-header">
+                  {%- comment -%} Profile Image (Mobile Only) {%- endcomment -%}
+                  {%- if review.icon -%}
+                    <div class="product-fb-reviews__profile-image product-fb-reviews__profile-image--mobile">
+                      {{ review.icon | image_url: width: 100 | image_tag:
+                        loading: 'lazy',
+                        widths: '50, 100',
+                        class: 'product-fb-reviews__profile-img',
+                        alt: review.person
+                      }}
+                    </div>
+                  {%- endif -%}
+
                   <div class="product-fb-reviews__person-info">
                     {%- if review.person -%}
                       <p class="product-fb-reviews__person-name">{{ review.person }}</p>

@@ -435,6 +435,14 @@
         "title": "Shop All Rejuvia Products",
         "sub_title": "Better sleep and less stress are now just a few sprays away."
       }
+    },
+    "product_fb_reviews_CzBpqF": {
+      "type": "product-fb-reviews",
+      "name": "Product FB Reviews",
+      "settings": {
+        "title": "Latest Reviews",
+        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
+      }
     }
   },
   "order": [
@@ -443,6 +451,7 @@
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
     "founder_story_nxLjwx",
+    "product_fb_reviews_CzBpqF",
     "how_it_works_4YVLwU",
     "comparison_alternatives_w4tHaq",
     "1717460916cf4757a6",

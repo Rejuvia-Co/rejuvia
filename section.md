@@ -56,6 +56,17 @@ the layout between 768-1200px.
    4. Consider gap adjustments between image and steps
 
 
-
+Create new product section - design the same as in figma 
    FB Reviews section
-   desktop figma - 
+   desktop figma - https://www.figma.com/design/Sp22vNhMpvPWh0SUqCyyZn/Rejuvia-Main?node-id=1656-13901&m=dev
+   mobile figma - https://www.figma.com/design/Sp22vNhMpvPWh0SUqCyyZn/Rejuvia-Main?node-id=1656-13856&m=dev
+
+   - tittle and subtitle from section settings 
+   - reviews from product metafield - metaobjects list custom.fb_reviews_list
+   - metaobjects fields: 
+   person (single line text)
+   icon file image 
+   review (multiline text)
+
+   - hide section id reviews from product metafield blank
+   - On mobile add in a toggle or scroll so that it's clear user can scroll through?

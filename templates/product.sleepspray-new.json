@@ -419,12 +419,18 @@
         "title": "Shop All Rejuvia Products",
         "sub_title": "Better sleep and less stress are now just a few sprays away."
       }
+    },
+    "product_how_to_use_HiYxBX": {
+      "type": "product-how-to-use",
+      "name": "Product How To Use",
+      "settings": {}
     }
   },
   "order": [
     "product_widget_6p4fVc",
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
+    "product_how_to_use_HiYxBX",
     "how_it_works_4YVLwU",
     "comparison_alternatives_w4tHaq",
     "1717460916cf4757a6",

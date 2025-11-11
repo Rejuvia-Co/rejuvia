@@ -2,40 +2,46 @@
 
 {%- assign how_to_use = product.metafields.custom.how_to_use -%}
 
-{%- if how_to_use and how_to_use.steps.count > 0 -%}
+{%- if how_to_use.value != blank -%}
+
 <section class="product-how-to-use-section" id="section-{{ section.id }}">
   <div class="product-how-to-use__container">
     {%- comment -%} Heading {%- endcomment -%}
     <div class="product-how-to-use__heading">
-      <h2 class="product-how-to-use__title">{{ how_to_use.title | default: 'How To Use Rejuvia' }}</h2>
-      <p class="product-how-to-use__subtitle">{{ how_to_use.subtitle | default: 'Sleep made simple. Just spray, relax, and drift off.' }}</p>
+      <h2 class="product-how-to-use__title">{{ how_to_use.value.title }}</h2>
+      <p class="product-how-to-use__subtitle">{{ how_to_use.value.subtitle }}</p>
     </div>
 
     {%- comment -%} Content: Image + Steps {%- endcomment -%}
     <div class="product-how-to-use__content">
-      {%- comment -%} Image Container {%- endcomment -%}
-      {%- if how_to_use.steps.first.file -%}
-        <div class="product-how-to-use__image-wrapper">
-          <div class="product-how-to-use__image-container">
-            {{ how_to_use.steps.first.file | image_url: width: 1200 | image_tag:
-              loading: 'lazy',
-              widths: '375, 550, 750, 1100, 1500',
-              class: 'product-how-to-use__image',
-              alt: how_to_use.steps.first.step_title
-            }}
-          </div>
-          <div class="product-how-to-use__decorative-icon" aria-hidden="true">
-            {%- if how_to_use.steps.first.svg_icon -%}
-              {{ how_to_use.steps.first.svg_icon }}
-            {%- endif -%}
-          </div>
-        </div>
-      {%- endif -%}
+      {%- comment -%} Image Container with all step images {%- endcomment -%}
+      <div class="product-how-to-use__image-wrapper">
+        {%- for step in how_to_use.value.steps.value -%}
+          {%- assign step_index = forloop.index -%}
+          {%- if step.image -%}
+            <div class="product-how-to-use__image-container {% if forloop.first %}is-active{% endif %}"
+                 data-step-image="{{ step_index }}">
+              {{ step.image | image_url: width: 1200 | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 1100, 1500',
+                class: 'product-how-to-use__image',
+                alt: step.step_title
+              }}
+              <div class="product-how-to-use__decorative-icon {% if step.left_side_svg %}product-how-to-use__decorative-icon--left{% else %}product-how-to-use__decorative-icon--right{% endif %}" aria-hidden="true">
+                {%- if step.svg_icon -%}
+                  {{ step.svg_icon }}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
 
       {%- comment -%} Steps Container {%- endcomment -%}
       <div class="product-how-to-use__steps">
-        {%- for step in how_to_use.steps -%}
+        {%- for step in how_to_use.value.steps.value -%}
           {%- assign step_index = forloop.index -%}
+
           <div class="product-how-to-use__step {% if forloop.first %}is-active{% endif %}"
                data-step="{{ step_index }}">
 
@@ -48,17 +54,11 @@
               data-step-toggle>
 
               <span class="product-how-to-use__step-title">
-                Step {{ step_index }}:
                 {%- if step.step_title -%}
                   <span class="product-how-to-use__step-name">{{ step.step_title }}</span>
                 {%- endif -%}
               </span>
 
-              {%- if step.svg_icon and step.left_side_svg -%}
-                <span class="product-how-to-use__step-icon" aria-hidden="true">
-                  {{ step.svg_icon }}
-                </span>
-              {%- endif -%}
             </button>
 
             {%- comment -%} Step Content (accordion panel) {%- endcomment -%}
@@ -89,7 +89,7 @@
                       <span class="product-how-to-use__tip-title">{{ step.first_tip_title }}</span>
                     </div>
                     {%- if step.first_tip_description -%}
-                      <p class="product-how-to-use__tip-description">{{ step.first_tip_description }}</p>
+                      <p class="product-how-to-use__tip-description">{{ step.first_tip_description | newline_to_br }}</p>
                     {%- endif -%}
                   </div>
 
@@ -105,7 +105,7 @@
                         <span class="product-how-to-use__tip-title">{{ step.second_tip_title }}</span>
                       </div>
                       {%- if step.second_tip_description -%}
-                        <p class="product-how-to-use__tip-description">{{ step.second_tip_description }}</p>
+                        <p class="product-how-to-use__tip-description">{{ step.second_tip_description | newline_to_br }}</p>
                       {%- endif -%}
                     </div>
                   {%- endif -%}
@@ -125,12 +125,14 @@
     if (!section) return;
 
     const stepToggles = section.querySelectorAll('[data-step-toggle]');
+    const stepImages = section.querySelectorAll('[data-step-image]');
 
     stepToggles.forEach(toggle => {
       toggle.addEventListener('click', function() {
         const step = this.closest('.product-how-to-use__step');
         const content = this.nextElementSibling;
         const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        const stepNumber = step.getAttribute('data-step');
 
         // Close all other steps
         stepToggles.forEach(otherToggle => {
@@ -149,6 +151,15 @@
           step.classList.add('is-active');
           this.setAttribute('aria-expanded', 'true');
           content.removeAttribute('hidden');
+
+          // Change the active image
+          stepImages.forEach(img => {
+            if (img.getAttribute('data-step-image') === stepNumber) {
+              img.classList.add('is-active');
+            } else {
+              img.classList.remove('is-active');
+            }
+          });
         }
       });
     });
@@ -168,7 +179,7 @@
     },
     {
       "type": "paragraph",
-      "content": "**Metafield structure:** custom.how_to_use (metaobject) contains: Title, Subtitle, and Steps (list of step metaobjects). Each step includes: step_title, description, image, svg_icon, left_side_svg, and optional tips with icons."
+      "content": "**Metafield structure:** custom.how_to_use (metaobject) contains: title, subtitle, and steps (list of step metaobjects). Each step includes: step_title, description, image (file field), svg_icon, left_side_svg, and optional tips (first_tip_title, first_tip_icon_svg, first_tip_description, second_tip_title, second_tip_icon_svg, second_tip_description)."
     }
   ],
   "presets": [

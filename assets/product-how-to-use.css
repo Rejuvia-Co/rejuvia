@@ -5,7 +5,7 @@
 .product-how-to-use-section {
   background: linear-gradient(90deg, rgba(235, 237, 246, 1) 0%, rgba(235, 237, 246, 1) 100%),
               linear-gradient(90deg, rgba(250, 250, 249, 1) 0%, rgba(250, 250, 249, 1) 100%);
-  padding: 80px 1.5em;
+  
 }
 
 .product-how-to-use__container {
@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
+  padding: 80px;
 }
 
 /* ========================================
@@ -48,7 +49,7 @@
 .product-how-to-use__content {
   display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* ========================================
@@ -59,6 +60,8 @@
   flex-shrink: 0;
   width: 545px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-how-to-use__image-container {
@@ -66,23 +69,45 @@
   border-radius: 20px;
   overflow: hidden;
   background: white;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-how-to-use__image-container.is-active {
+  opacity: 1;
 }
 
 .product-how-to-use__image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .product-how-to-use__decorative-icon {
   position: absolute;
-  top: 15px;
-  left: 380px;
+  top: 10px;
   width: 150px;
   height: 150px;
-  opacity: 0.2;
+  opacity: 0.3;
   pointer-events: none;
+}
+
+.product-how-to-use__decorative-icon--left {
+  left: 10px;
+  right: auto;
+}
+
+.product-how-to-use__decorative-icon--right {
+  left: auto;
+  right: 10px;
 }
 
 .product-how-to-use__decorative-icon svg {
@@ -107,7 +132,7 @@
   border: 1px solid transparent;
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .product-how-to-use__step.is-active {
@@ -170,10 +195,17 @@
 
 .product-how-to-use__step-content {
   padding: 0 30px 30px 30px;
+  max-height: 1000px;
+  overflow: hidden;
+  opacity: 1;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
 }
 
 .product-how-to-use__step-content[hidden] {
-  display: none;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .product-how-to-use__step-description {
@@ -258,16 +290,41 @@
 }
 
 /* ========================================
-   Tablet Styles (600px - 900px)
+   Medium Screens (768px - 1200px)
    ======================================== */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .product-how-to-use__container {
+    padding: 64px 0px;
+  }
+
+  .product-how-to-use__content {
+    align-items: center;
+  }
+
+  .product-how-to-use__image-wrapper {
+    width: 40%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .product-how-to-use__image-container {
+    aspect-ratio: 1;
+  }
+}
+
+/* ========================================
+   Tablet Styles (< 768px)
+   ======================================== */
+
+@media screen and (max-width: 767px) {
   .product-how-to-use-section {
-    padding: 64px 1.2em;
+    padding: 64px 24px;
   }
 
   .product-how-to-use__container {
     gap: 50px;
+    padding: 0;
   }
 
   .product-how-to-use__title {
@@ -286,13 +343,28 @@
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    aspect-ratio: 400 / 427;
+  }
+
+  .product-how-to-use__image-container {
+    aspect-ratio: 400 / 427;
   }
 
   .product-how-to-use__decorative-icon {
-    left: auto;
-    right: 30px;
     width: 100px;
     height: 100px;
+  }
+
+  .product-how-to-use__decorative-icon--left {
+    left: 30px;
+  }
+
+  .product-how-to-use__decorative-icon--right {
+    right: 30px;
+  }
+
+  .product-how-to-use__tips--two-column {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -302,7 +374,7 @@
 
 @media screen and (max-width: 600px) {
   .product-how-to-use-section {
-    padding: 64px 1em;
+    padding: 64px 24px;
   }
 
   .product-how-to-use__container {
@@ -324,6 +396,7 @@
 
   .product-how-to-use__image-wrapper {
     width: 100%;
+    aspect-ratio: 400 / 427;
   }
 
   .product-how-to-use__image-container {
@@ -331,10 +404,16 @@
   }
 
   .product-how-to-use__decorative-icon {
-    left: auto;
-    right: 16px;
     width: 80px;
     height: 80px;
+  }
+
+  .product-how-to-use__decorative-icon--left {
+    left: 16px;
+  }
+
+  .product-how-to-use__decorative-icon--right {
+    right: 16px;
   }
 
   .product-how-to-use__steps {
@@ -352,6 +431,11 @@
 
   .product-how-to-use__step-content {
     padding: 0 24px 28px 24px;
+  }
+
+  .product-how-to-use__step-content[hidden] {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .product-how-to-use__step-description {

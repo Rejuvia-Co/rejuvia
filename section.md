@@ -37,3 +37,20 @@ In section schema add infor that all content is availible for edition in product
 
 
 
+7. **Pending Tasks:**
+   - Implement responsive design improvements for 768-1200px breakpoint based on Playwright testing feedback
+
+8. **Current Work:**
+   Immediately before this summary request, I was testing the responsive design of the "How To Use" section using Playwright MCP at different screen widths (1000px, 900px, 800px) to evaluate 
+the layout between 768-1200px. 
+
+   After taking screenshots, I identified issues with the current medium screen implementation:
+   - The 40% image width feels cramped, especially at 800px
+   - The 1:1 aspect ratio makes portrait-oriented photos look awkward
+   - There's underutilized white space in the layout
+   
+   I suggested improvements:
+   1. Increase image width from 40% to 50%
+   2. Change aspect ratio from 1:1 to 4:3 or 400/427
+   3. Adjust padding for better breathing room
+   4. Consider gap adjustments between image and steps

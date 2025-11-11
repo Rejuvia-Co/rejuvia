@@ -54,3 +54,8 @@ the layout between 768-1200px.
    2. Change aspect ratio from 1:1 to 4:3 or 400/427
    3. Adjust padding for better breathing room
    4. Consider gap adjustments between image and steps
+
+
+
+   FB Reviews section
+   desktop figma - 

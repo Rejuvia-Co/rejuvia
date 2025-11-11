@@ -295,21 +295,22 @@
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   .product-how-to-use__container {
-    padding: 64px 0px;
+    padding: 64px 48px;
   }
 
   .product-how-to-use__content {
     align-items: center;
+    gap: 32px;
   }
 
   .product-how-to-use__image-wrapper {
-    width: 40%;
+    width: 50%;
     height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 400 / 427;
   }
 
   .product-how-to-use__image-container {
-    aspect-ratio: 1;
+    aspect-ratio: 400 / 427;
   }
 }
 

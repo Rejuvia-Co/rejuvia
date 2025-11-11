@@ -212,6 +212,22 @@
         "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
       }
     },
+    "product_how_to_use_HiYxBX": {
+      "type": "product-how-to-use",
+      "name": "Product How To Use",
+      "settings": {}
+    },
+    "founder_story_nxLjwx": {
+      "type": "founder-story",
+      "name": "Founder Story",
+      "settings": {
+        "heading": "Originally Built For My Mom, Now For Everyone",
+        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
+        "founder_name": "RC Williams",
+        "founder_title": "Founder of Rejuvia",
+        "image": "shopify://shop_images/founder_story.png"
+      }
+    },
     "how_it_works_4YVLwU": {
       "type": "how-it-works",
       "blocks": {
@@ -419,11 +435,6 @@
         "title": "Shop All Rejuvia Products",
         "sub_title": "Better sleep and less stress are now just a few sprays away."
       }
-    },
-    "product_how_to_use_HiYxBX": {
-      "type": "product-how-to-use",
-      "name": "Product How To Use",
-      "settings": {}
     }
   },
   "order": [
@@ -431,6 +442,7 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
+    "founder_story_nxLjwx",
     "how_it_works_4YVLwU",
     "comparison_alternatives_w4tHaq",
     "1717460916cf4757a6",

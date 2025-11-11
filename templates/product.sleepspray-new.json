@@ -221,11 +221,19 @@
       "type": "founder-story",
       "name": "Founder Story",
       "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
+        "heading": "Originally Made For My Mom, Now For Everyone",
+        "text": "When my mom was in her 50s, she could never sleep. And I mean never.\n\nShe tried everything: the gummies, the pills, the teas, the powders. Anything her doctor or the internet suggested, she gave it a shot. But nothing ever worked, and when it did, it was either made her feel groggy in the morning or have nasty side effects.\n\nIt was awful to watch my mom suffer from bad sleep and watch her lose hope because everything she tried failed. So when I left for college at UPenn in 2017, I made it my mission to come home with a real solution for her — something she could trust, something that actually worked, and something that would help her feel like herself again.\n\nThat’s when the idea for an oral sleep spray was born. She had never even heard of a sleep spray before, but it made perfect sense. It offered much faster absorption, and using her chemical engineering background, she and I could put together an incredibly powerful, all-natural sleep formula that worked like no one's business!\n\nAnd that's how Rejuvia started. It was a way to help my mom finally get a good night’s sleep. Now, she and I run the business together and are on a mission to share the same formula that changed her nights with people who just want to feel rested again.",
         "founder_name": "RC Williams",
         "founder_title": "Founder of Rejuvia",
-        "image": "shopify://shop_images/founder_story.png"
+        "image": "shopify://shop_images/IMG_2412.webp"
+      }
+    },
+    "product_fb_reviews_CzBpqF": {
+      "type": "product-fb-reviews",
+      "name": "Product FB Reviews",
+      "settings": {
+        "title": "Latest Reviews",
+        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
       }
     },
     "how_it_works_4YVLwU": {
@@ -434,14 +442,6 @@
       "settings": {
         "title": "Shop All Rejuvia Products",
         "sub_title": "Better sleep and less stress are now just a few sprays away."
-      }
-    },
-    "product_fb_reviews_CzBpqF": {
-      "type": "product-fb-reviews",
-      "name": "Product FB Reviews",
-      "settings": {
-        "title": "Latest Reviews",
-        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
       }
     }
   },

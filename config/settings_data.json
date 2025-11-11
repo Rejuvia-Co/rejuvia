@@ -2892,11 +2892,6 @@
           "show_text": true
         }
       },
-      "replo_table_comparison_RibDqG": {
-        "type": "replo-table-comparison",
-        "disabled": true,
-        "settings": {}
-      },
       "new-product-grid": {
         "type": "new-product-grid",
         "blocks": {
@@ -3285,7 +3280,6 @@
       "product_features_p6FHhD",
       "featured_customer_reviews_96PMKt",
       "how_it_works_Qwdx49",
-      "replo_table_comparison_RibDqG",
       "product_comparison_enhanced_DecUrt",
       "ingredients_section_xJDwEy",
       "product_widget_gC6JFH",

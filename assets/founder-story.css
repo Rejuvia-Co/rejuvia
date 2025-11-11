@@ -4,7 +4,12 @@
 
 .founder-story-section {
   background-color: #ebedf6;
-  width: 100%;
+  width: 100% !important;
+  display: block !important;
+  visibility: visible !important;
+  min-height: 100px;
+  position: relative;
+  z-index: 1;
 }
 
 .founder-story__container {
@@ -19,7 +24,7 @@
 .founder-story__card {
   display: flex;
   flex: 1 0 0;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   position: relative;
   box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
@@ -121,7 +126,6 @@
 
 .founder-story__image-wrapper {
   flex: 1 0 0;
-  height: 100%;
   min-height: 550px;
   position: relative;
   border-radius: 0 20px 20px 0;
@@ -130,10 +134,10 @@
 
 .founder-story__image {
   position: absolute;
-  height: 100%;
+  inset: 0;
   width: 130.24%;
   left: -15.12%;
-  top: 0;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
@@ -143,26 +147,29 @@
    Tablet Styles (768px - 1200px)
    ======================================== */
 
-@media screen and (max-width: 1200px) and (min-width: 768px) {
+@media screen and (max-width: 1200px) {
   .founder-story__container {
     padding: 64px 40px;
   }
 
   .founder-story__card {
-    flex-direction: column;
-    min-height: auto;
+    flex-direction: column-reverse;
+    gap: 0px;
+    min-height: fit-content;
   }
 
   .founder-story__content {
-    border-radius: 20px 20px 0 0;
-    min-height: auto;
+    border-radius:  0 0 20px 20px;
+    min-height: fit-content;
     width: 100%;
+    padding: 16px;
+    gap: 28px;
   }
 
   .founder-story__image-wrapper {
-    border-radius: 0 0 20px 20px;
-    min-height: 400px;
+    min-height: fit-content;
     width: 100%;
+    border-radius: 20px 20px  0 0;
   }
 
   .founder-story__image {
@@ -181,35 +188,23 @@
    ======================================== */
 
 @media screen and (max-width: 767px) {
+
   .founder-story__container {
-    padding: 64px 16px;
+    padding: 16px;
   }
-
-  .founder-story__card {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .founder-story__content {
-    border-radius: 20px 20px 0 0;
-    padding: 32px 24px;
-    gap: 32px;
-    min-height: auto;
-    width: 100%;
-  }
-
   .founder-story__heading {
-    gap: 20px;
+    gap: 0;
   }
 
   .founder-story__title {
-    font-size: 32px;
-    line-height: 1.3;
+    font-size: 24px;
+    line-height: 1.2;
   }
 
   .founder-story__text {
-    font-size: 16px;
-    gap: 24px;
+    font-size: 14px;
+    gap: 28px;
+    align-items: center;
   }
 
   .founder-story__text p {
@@ -217,29 +212,15 @@
   }
 
   .founder-story__founder {
-    gap: 12px;
+    gap: 14px;
   }
 
   .founder-story__founder-name {
-    font-size: 20px;
-  }
-
-  .founder-story__founder-title {
     font-size: 18px;
   }
 
-  .founder-story__image-wrapper {
-    border-radius: 0 0 20px 20px;
-    min-height: 300px;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-
-  .founder-story__image {
-    width: 100%;
-    left: 0;
-    position: relative;
-    height: 100%;
+  .founder-story__founder-title {
+    font-size: 16px;
   }
 }
 

@@ -220,7 +220,6 @@
     },
     "founder_story_nxLjwx": {
       "type": "founder-story",
-      "disabled": true,
       "name": "Founder Story",
       "settings": {
         "heading": "Originally Made For My Mom, Now For Everyone",
@@ -574,9 +573,9 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
-    "founder_story_nxLjwx",
     "product_fb_reviews_CzBpqF",
     "how_it_works_4YVLwU",
+    "founder_story_nxLjwx",
     "product_comparison_enhanced_tRzrDn",
     "1717460916cf4757a6",
     "main_page_4Q6KQH"

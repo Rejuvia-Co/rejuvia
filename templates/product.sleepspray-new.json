@@ -214,11 +214,13 @@
     },
     "product_how_to_use_HiYxBX": {
       "type": "product-how-to-use",
+      "disabled": true,
       "name": "Product How To Use",
       "settings": {}
     },
     "founder_story_nxLjwx": {
       "type": "founder-story",
+      "disabled": true,
       "name": "Founder Story",
       "settings": {
         "heading": "Originally Made For My Mom, Now For Everyone",
@@ -230,6 +232,7 @@
     },
     "product_fb_reviews_CzBpqF": {
       "type": "product-fb-reviews",
+      "disabled": true,
       "name": "Product FB Reviews",
       "settings": {
         "title": "Latest Reviews",

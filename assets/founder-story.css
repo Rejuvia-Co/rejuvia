@@ -39,7 +39,7 @@
 
 .founder-story__content {
   background-color: #672666;
-  flex: 1 0 auto;
+  flex: 1 0 0;
   display: flex;
   flex-direction: column;
   gap: 48px;

@@ -1,0 +1,226 @@
+/* ========================================
+   Founder Story Section
+   ======================================== */
+
+.founder-story-section {
+  background-color: #ebedf6;
+  width: 100% !important;
+  display: block !important;
+  visibility: visible !important;
+  min-height: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.founder-story__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founder-story__card {
+  display: flex;
+  flex: 1 0 0;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 550px;
+}
+
+/* ========================================
+   Content Section (Left - Purple)
+   ======================================== */
+
+.founder-story__content {
+  background-color: #672666;
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+  padding: 40px 50px;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+  min-height: 550px;
+  justify-content: center;
+}
+
+.founder-story__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.founder-story__title {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.founder-story__text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ffffff;
+  white-space: pre-wrap;
+}
+
+.founder-story__text p {
+  margin: 0;
+  width: 100%;
+  max-width: 528px;
+}
+
+.founder-story__founder {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #ffffff;
+}
+
+.founder-story__founder-name {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  width: 100%;
+}
+
+.founder-story__founder-title {
+  font-family: 'Helvetica Neue LT Pro', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0;
+  width: 100%;
+}
+
+/* ========================================
+   Image Section (Right)
+   ======================================== */
+
+.founder-story__image-wrapper {
+  flex: 1 0 0;
+  min-height: 550px;
+  position: relative;
+  border-radius: 0 20px 20px 0;
+  overflow: hidden;
+}
+
+.founder-story__image {
+  position: absolute;
+  inset: 0;
+  width: 130.24%;
+  left: -15.12%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ========================================
+   Tablet Styles (768px - 1200px)
+   ======================================== */
+
+@media screen and (max-width: 1200px) {
+  .founder-story__container {
+    padding: 64px 40px;
+  }
+
+  .founder-story__card {
+    flex-direction: column-reverse;
+    gap: 0px;
+    min-height: fit-content;
+  }
+
+  .founder-story__content {
+    border-radius:  0 0 20px 20px;
+    min-height: fit-content;
+    width: 100%;
+    padding: 16px;
+    gap: 28px;
+  }
+
+  .founder-story__image-wrapper {
+    min-height: fit-content;
+    width: 100%;
+    border-radius: 20px 20px  0 0;
+  }
+
+  .founder-story__image {
+    width: 100%;
+    left: 0;
+    position: relative;
+  }
+
+  .founder-story__text p {
+    max-width: 100%;
+  }
+}
+
+/* ========================================
+   Mobile Styles (< 768px)
+   ======================================== */
+
+@media screen and (max-width: 767px) {
+
+  .founder-story__container {
+    padding: 16px;
+  }
+  .founder-story__heading {
+    gap: 0;
+  }
+
+  .founder-story__title {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .founder-story__text {
+    font-size: 14px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .founder-story__text p {
+    max-width: 100%;
+  }
+
+  .founder-story__founder {
+    gap: 14px;
+  }
+
+  .founder-story__founder-name {
+    font-size: 18px;
+  }
+
+  .founder-story__founder-title {
+    font-size: 16px;
+  }
+}
+

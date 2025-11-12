@@ -1,0 +1,7 @@
+# Claude Code configuration
+.claude/
+claude.md
+CLAUDE.md
+
+# All markdown files
+*.md

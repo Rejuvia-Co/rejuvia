@@ -1,0 +1,192 @@
+{{ 'product-how-to-use.css' | asset_url | stylesheet_tag }}
+
+{%- assign how_to_use = product.metafields.custom.how_to_use -%}
+
+{%- if how_to_use.value != blank -%}
+
+<section class="product-how-to-use-section" id="section-{{ section.id }}">
+  <div class="product-how-to-use__container">
+    {%- comment -%} Heading {%- endcomment -%}
+    <div class="product-how-to-use__heading">
+      <h2 class="product-how-to-use__title">{{ how_to_use.value.title }}</h2>
+      <p class="product-how-to-use__subtitle">{{ how_to_use.value.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Content: Image + Steps {%- endcomment -%}
+    <div class="product-how-to-use__content">
+      {%- comment -%} Image Container with all step images {%- endcomment -%}
+      <div class="product-how-to-use__image-wrapper">
+        {%- for step in how_to_use.value.steps.value -%}
+          {%- assign step_index = forloop.index -%}
+          {%- if step.image -%}
+            <div class="product-how-to-use__image-container {% if forloop.first %}is-active{% endif %}"
+                 data-step-image="{{ step_index }}">
+              {{ step.image | image_url: width: 1200 | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 1100, 1500',
+                class: 'product-how-to-use__image',
+                alt: step.step_title
+              }}
+              <div class="product-how-to-use__decorative-icon {% if step.left_side_svg %}product-how-to-use__decorative-icon--left{% else %}product-how-to-use__decorative-icon--right{% endif %}" aria-hidden="true">
+                {%- if step.svg_icon -%}
+                  {{ step.svg_icon }}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Steps Container {%- endcomment -%}
+      <div class="product-how-to-use__steps">
+        {%- for step in how_to_use.value.steps.value -%}
+          {%- assign step_index = forloop.index -%}
+
+          <div class="product-how-to-use__step {% if forloop.first %}is-active{% endif %}"
+               data-step="{{ step_index }}">
+
+            {%- comment -%} Step Header (always visible) {%- endcomment -%}
+            <button
+              class="product-how-to-use__step-header"
+              type="button"
+              aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="step-content-{{ section.id }}-{{ step_index }}"
+              data-step-toggle>
+
+              <span class="product-how-to-use__step-title">
+                {%- if step.step_title -%}
+                  <span class="product-how-to-use__step-name">{{ step.step_title }}</span>
+                {%- endif -%}
+              </span>
+
+            </button>
+
+            {%- comment -%} Step Content (accordion panel) {%- endcomment -%}
+            <div
+              class="product-how-to-use__step-content"
+              id="step-content-{{ section.id }}-{{ step_index }}"
+              {% unless forloop.first %}hidden{% endunless %}>
+
+              {%- if step.description -%}
+                <div class="product-how-to-use__step-description">
+                  {{ step.description | newline_to_br }}
+                </div>
+              {%- endif -%}
+
+              {%- comment -%} Tips Section {%- endcomment -%}
+              {%- if step.first_tip_title -%}
+                <div class="product-how-to-use__divider"></div>
+
+                <div class="product-how-to-use__tips {% if step.second_tip_title %}product-how-to-use__tips--two-column{% endif %}">
+                  {%- comment -%} First Tip {%- endcomment -%}
+                  <div class="product-how-to-use__tip">
+                    <div class="product-how-to-use__tip-label">
+                      {%- if step.first_tip_icon_svg -%}
+                        <span class="product-how-to-use__tip-icon" aria-hidden="true">
+                          {{ step.first_tip_icon_svg }}
+                        </span>
+                      {%- endif -%}
+                      <span class="product-how-to-use__tip-title">{{ step.first_tip_title }}</span>
+                    </div>
+                    {%- if step.first_tip_description -%}
+                      <p class="product-how-to-use__tip-description">{{ step.first_tip_description | newline_to_br }}</p>
+                    {%- endif -%}
+                  </div>
+
+                  {%- comment -%} Second Tip (if present) {%- endcomment -%}
+                  {%- if step.second_tip_title -%}
+                    <div class="product-how-to-use__tip">
+                      <div class="product-how-to-use__tip-label">
+                        {%- if step.second_tip_icon_svg -%}
+                          <span class="product-how-to-use__tip-icon" aria-hidden="true">
+                            {{ step.second_tip_icon_svg }}
+                          </span>
+                        {%- endif -%}
+                        <span class="product-how-to-use__tip-title">{{ step.second_tip_title }}</span>
+                      </div>
+                      {%- if step.second_tip_description -%}
+                        <p class="product-how-to-use__tip-description">{{ step.second_tip_description | newline_to_br }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.getElementById('section-{{ section.id }}');
+    if (!section) return;
+
+    const stepToggles = section.querySelectorAll('[data-step-toggle]');
+    const stepImages = section.querySelectorAll('[data-step-image]');
+
+    stepToggles.forEach(toggle => {
+      toggle.addEventListener('click', function() {
+        const step = this.closest('.product-how-to-use__step');
+        const content = this.nextElementSibling;
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        const stepNumber = step.getAttribute('data-step');
+
+        // Close all other steps
+        stepToggles.forEach(otherToggle => {
+          if (otherToggle !== this) {
+            const otherStep = otherToggle.closest('.product-how-to-use__step');
+            const otherContent = otherToggle.nextElementSibling;
+
+            otherStep.classList.remove('is-active');
+            otherToggle.setAttribute('aria-expanded', 'false');
+            otherContent.setAttribute('hidden', '');
+          }
+        });
+
+        // Toggle current step
+        if (!isExpanded) {
+          step.classList.add('is-active');
+          this.setAttribute('aria-expanded', 'true');
+          content.removeAttribute('hidden');
+
+          // Change the active image
+          stepImages.forEach(img => {
+            if (img.getAttribute('data-step-image') === stepNumber) {
+              img.classList.add('is-active');
+            } else {
+              img.classList.remove('is-active');
+            }
+          });
+        }
+      });
+    });
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product How To Use",
+  "tag": "section",
+  "class": "product-how-to-use",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section displays the 'How To Use' instructions from the product's custom.how_to_use metafield. To edit the content, go to the product page in the admin and edit the 'How To Use' metafield. The section will be hidden if no steps are defined."
+    },
+    {
+      "type": "paragraph",
+      "content": "**Metafield structure:** custom.how_to_use (metaobject) contains: title, subtitle, and steps (list of step metaobjects). Each step includes: step_title, description, image (file field), svg_icon, left_side_svg, and optional tips (first_tip_title, first_tip_icon_svg, first_tip_description, second_tip_title, second_tip_icon_svg, second_tip_description)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product How To Use"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

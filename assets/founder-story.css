@@ -23,7 +23,7 @@
 
 .founder-story__card {
   display: flex;
-  flex: 1 0 0;
+  flex: 1 0 auto;
   align-items: stretch;
   justify-content: space-between;
   position: relative;

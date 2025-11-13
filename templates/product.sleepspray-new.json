@@ -214,7 +214,6 @@
     },
     "product_how_to_use_HiYxBX": {
       "type": "product-how-to-use",
-      "disabled": true,
       "name": "Product How To Use",
       "settings": {}
     },
@@ -257,6 +256,7 @@
         "card_VnMz6Q",
         "card_kDJ3KT"
       ],
+      "disabled": true,
       "settings": {
         "heading": "How Rejuvia Works",
         "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."

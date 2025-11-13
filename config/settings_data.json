@@ -1549,13 +1549,13 @@
           "4100f4cb-8422-4045-bf32-355313ee079a": {
             "type": "slide",
             "settings": {
-              "social_proof": "Trusted by 200,000+ Deep Sleepers",
+              "social_proof": "Used Night By 300,000+ Deep Sleepers",
               "social_proof_color_mobile": "#672666",
               "social_proof_fontSizem": 16,
               "social_proof_fontSizeDesk": 18,
               "show_stars": true,
               "title": "Spray Into Better Sleep Tonight",
-              "text": "<p>Rejuvia is a fast-acting oral spray that helps you calm stress, fall asleep in minutes, and wake up clear-minded.</p>",
+              "text": "<p>Meet Rejuvia, a fast-acting oral sleep spray that helps you calm stress, fall asleep in minutes, and wake up clear-minded.</p>",
               "fontSize": 22,
               "fontSizem": 17,
               "button": "TRY REJUVIA NOW",
@@ -2153,7 +2153,7 @@
           "review_WiG7C9"
         ],
         "settings": {
-          "hero_heading": "Used By 200,000 Sleepers"
+          "hero_heading": "Used By 300,000 Sleepers"
         }
       },
       "product_widget_gC6JFH": {
@@ -2957,7 +2957,7 @@
           "product_wLULcF": {
             "type": "product",
             "settings": {
-              "featured_product": "lutein",
+              "featured_product": "starter-kit",
               "short_description": ""
             }
           }

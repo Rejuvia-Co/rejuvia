@@ -112,8 +112,8 @@
       "sale": "Sale"
     },
     "cart": {
-      "cart_clear_button": "Clear All",
-      "free": "Free"
+      "cart_clear_button": "Clear Cart",
+      "free": "FREE"
     }
   },
   "customer_accounts": {

@@ -610,3 +610,16 @@ main:has(#cart) {
 .templateCart .okeReviews .shopify-app-block .oke-reviewCard-content .oke-reviewContent-body p {
 	line-height: 140%!important;
 }
+
+.cart-header--clear_all {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap:5px;
+	color: #672666;
+    font-size: 16px;
+    font-weight: 500;
+}
+.cart-header--clear_all span {
+	padding-top: 7px;
+}

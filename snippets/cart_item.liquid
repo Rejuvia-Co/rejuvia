@@ -90,7 +90,7 @@
               {{ item.variant.compare_at_price | times: item.quantity | money }}
             </span>
             <span class="cart-unempty__sale--price">
-              {{ item.line_price | money }}
+              {{ item.line_price | money }} 
             </span>
           {% elsif item.line_price != discount %}
             {% assign full_price = discount | money_without_currency | remove: ',' %}

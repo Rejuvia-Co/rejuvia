@@ -257,6 +257,12 @@
 
                 <div class="grid__item two-thirds medium--one-whole small--one-whole">
                     {% comment %} <h2 class="column-title custom_subtitle_font medium-down--hide"></h2> {% endcomment %}
+
+                    <a href="{{  routes.cart_clear_url }}" class="cart-header--clear_all" >
+                        {% render 'icon-close-small' %}
+                        <span>{{ 'sections.cart.cart_clear_button' | t }}</span>
+                        </a>
+                   
                     <div class="items">
                         {%- for item in cart.items -%}
                             <div class="item {{ item.product.handle }}">
@@ -370,11 +376,18 @@
     </span>
 
     <span class="cart-unempty__sale--price">
-      {{ sale_total | money }}
+      {%comment%}{{ sale_total | money }} {%endcomment%}
+
+
+        {%- if sale_total == 0 -%}
+            {{- 'sections.cart.free' | t -}}
+        {%- else -%}
+             {{ sale_total | money }}
+        {%- endif -%}
     </span>
 
   {% else %}
-    {%- comment -%} Немає знижки — показуємо тільки ціну. {%- endcomment -%}
+    
     <span class="cart-unempty__sale--price">
       {{ sale_total | money }}
     </span>

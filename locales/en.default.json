@@ -110,6 +110,10 @@
     "wonderment-featured-collection": {
       "sold_out": "Sold Out",
       "sale": "Sale"
+    },
+    "cart": {
+      "cart_clear_button": "Clear All",
+      "free": "Free"
     }
   },
   "customer_accounts": {

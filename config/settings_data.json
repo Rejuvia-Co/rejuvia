@@ -1873,7 +1873,7 @@
       "press_logos_YiWTgA": {
         "type": "press-logos",
         "settings": {
-          "hero_heading": "\"Rejuvia helps you naturally fall asleep faster, stay asleep longer, and wake up refreshed.\"",
+          "hero_heading": "\"Rejuvia is not only incredibly effective at night, but it's also 100% safe and made with all-natural ingredients.",
           "image-1": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
           "scale_image_1": false,
           "image-2": "shopify://shop_images/rejuvia_fabfitfun.png",
@@ -3498,11 +3498,6 @@
         "settings": {
           "version": "v3"
         }
-      },
-      "2786716548061469553": {
-        "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
-        "disabled": false,
-        "settings": {}
       }
     }
   }

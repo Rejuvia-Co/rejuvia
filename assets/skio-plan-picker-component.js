@@ -753,9 +753,11 @@ export class SkioPlanPicker extends LitElement {
         .subscription__image span {
           margin-top: 12px;
         }
+        /* Commented out to keep subscription details open when toggling to OTP
         .group-container:not(.subs-group-container.group-container--selected) .group-content {
           display: none;
         }
+        */
         .group-container:not(.subs-group-container.group-container--selected)  .group-topline {
             margin-bottom: 0;
             padding-bottom: 0;

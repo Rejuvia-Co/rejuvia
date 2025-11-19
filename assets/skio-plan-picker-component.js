@@ -547,7 +547,7 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .group-container {
-            border: 1px solid #BFBFBF;
+            border: 2px solid #BFBFBF;
       }
 
       .skio-plan-picker .subs-group-container .group-title      {
@@ -611,13 +611,19 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .subs-group-container .group-topline {
-        padding-bottom: 12px;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #672666;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-bottom: 12px!Important;
+        margin-bottom: 12px!Important;
+        border-bottom: 1px solid #672666!Important;
+        padding-left: 16px!Important;
+        padding-right: 16px!Important;
       }
-
+      .group-container:not(.subs-group-container.group-container--selected) .group-topline {
+          padding-bottom: 12px;
+          margin-bottom: 12px;
+          border-bottom: 1px solid #672666;
+          padding-left: 16px;
+          padding-right: 16px;
+      }
       .skio-plan-picker .subs-group-container .selling-plan-dropdown-container > span {
         font-size: 16px;
         font-weight: 400;

@@ -217,15 +217,6 @@
       "name": "Product How To Use",
       "settings": {}
     },
-    "product_fb_reviews_CzBpqF": {
-      "type": "product-fb-reviews",
-      "disabled": true,
-      "name": "Product FB Reviews",
-      "settings": {
-        "title": "Latest Reviews",
-        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
-      }
-    },
     "how_it_works_4YVLwU": {
       "type": "how-it-works",
       "blocks": {
@@ -496,6 +487,14 @@
       ],
       "settings": {}
     },
+    "product_fb_reviews_CzBpqF": {
+      "type": "product-fb-reviews",
+      "name": "Product FB Reviews",
+      "settings": {
+        "title": "Read More Customer Reviews",
+        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
+      }
+    },
     "main_page_4Q6KQH": {
       "type": "main-page",
       "blocks": {
@@ -560,7 +559,7 @@
       ],
       "settings": {
         "customClass": "",
-        "background": "#f0e9ef",
+        "background": "#ffffff",
         "heading": "Frequently Asked Questions",
         "customTextBottom": "",
         "title_color": "#000000",
@@ -573,11 +572,11 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
-    "product_fb_reviews_CzBpqF",
     "how_it_works_4YVLwU",
     "founder_story_nxLjwx",
     "product_comparison_enhanced_tRzrDn",
     "1717460916cf4757a6",
+    "product_fb_reviews_CzBpqF",
     "main_page_4Q6KQH"
   ]
 }

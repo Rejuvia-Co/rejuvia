@@ -154,7 +154,7 @@
   .founder-story__card {
     flex: none;
     flex-direction: column-reverse;
-    gap: 0px;
+    gap: 0;
     min-height: fit-content;
     width: 100%;
     max-width: 100%;
@@ -164,7 +164,7 @@
     flex: none;
     display: flex !important;
     flex-direction: column;
-    border-radius:  0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
     min-height: fit-content;
     width: 100%;
     max-width: 100%;
@@ -178,7 +178,7 @@
     min-height: fit-content;
     width: 100%;
     max-width: 100%;
-    border-radius: 20px 20px  0 0;
+    border-radius: 20px 20px 0 0;
   }
 
   .founder-story__image {
@@ -187,6 +187,7 @@
     left: 0;
     position: relative;
     object-fit: cover;
+    display: block;
   }
 
   .founder-story__text p {

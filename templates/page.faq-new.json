@@ -215,6 +215,13 @@
             "heading": "Is Rejuvia made in the United States?",
             "subheading": "Yes, all of our products are produced and manufactured in the United States."
           }
+        },
+        "faq_y9pjBJ": {
+          "type": "faq",
+          "settings": {
+            "heading": "Does Rejuvia contain CBD?",
+            "subheading": "No. Rejuvia does not contain any CBD, THC, or hemp-derived ingredients. Our formulas are made with natural sleep-supporting herbs and a gentle amount of melatonin, so you get effective results without cannabinoids or anything that would appear on a drug test."
+          }
         }
       },
       "block_order": [
@@ -222,7 +229,8 @@
         "faq_yhhrGk",
         "faq_FQ6XQU",
         "faq_QbthDG",
-        "faq_8wLDd9"
+        "faq_8wLDd9",
+        "faq_y9pjBJ"
       ],
       "settings": {
         "id": "section-3",

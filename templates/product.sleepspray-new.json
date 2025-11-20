@@ -67,7 +67,7 @@
       "type": "product-benefits",
       "name": "Product Benefits",
       "settings": {
-        "gradient_size_desktop": 300,
+        "gradient_size_desktop": 130,
         "gradient_size_mobile": 200
       }
     },

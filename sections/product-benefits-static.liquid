@@ -1,0 +1,201 @@
+{{ 'product-benefits.css' | asset_url | stylesheet_tag }}
+
+<section class="product-benefits-section" id="product-benefits-{{ section.id }}">
+  <div class="product-benefits__container">
+    <h2 class="product-benefits__heading">{{ section.settings.heading }}</h2>
+
+    <div class="product-benefits__content">
+      {%- comment -%} Left Benefits Column {%- endcomment -%}
+      <div class="product-benefits__left">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.position == 'left' -%}
+            <div class="product-benefits__item" {{ block.shopify_attributes }}>
+              <div class="product-benefits__item-header">
+                <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
+                  </svg>
+                </span>
+                <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+              </div>
+              {%- if block.settings.description != blank -%}
+                <p class="product-benefits__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Center Image {%- endcomment -%}
+      <div class="product-benefits__image-container">
+        <div class="product-benefits__decorative-dots" style="background-image: radial-gradient(circle, {{ section.settings.dots }} 1.5px, transparent 1.5px);"></div>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right Benefits Column {%- endcomment -%}
+      <div class="product-benefits__right">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.position == 'right' -%}
+            <div class="product-benefits__item" {{ block.shopify_attributes }}>
+              <div class="product-benefits__item-header">
+                <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
+                  </svg>
+                </span>
+                <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+              </div>
+              {%- if block.settings.description != blank -%}
+                <p class="product-benefits__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Layout - All Benefits Stacked {%- endcomment -%}
+    <div class="product-benefits__mobile-content">
+      {%- for block in section.blocks -%}
+        <div class="product-benefits__item" {{ block.shopify_attributes }}>
+          <div class="product-benefits__item-header">
+            <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
+              </svg>
+            </span>
+            <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+          </div>
+          {%- if block.settings.description != blank -%}
+            <p class="product-benefits__description">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      {%- comment -%} Mobile Image {%- endcomment -%}
+      {%- if section.settings.image != blank -%}
+        <div class="product-benefits__image-container product-benefits__image-container--mobile">
+          <div class="product-benefits__decorative-dots" style="background-image: radial-gradient(circle, {{ section.settings.dots }} 1.5px, transparent 1.5px);"></div>
+          {{ section.settings.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Benefits (Static)",
+  "tag": "section",
+  "class": "product-benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Better Sleep Starts Tonight"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "color",
+      "id": "dots",
+      "label": "Dots Color",
+      "default": "#B8A5D0"
+    },
+    {
+      "type": "color",
+      "id": "check_mark",
+      "label": "Check Mark Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "check_bg",
+      "label": "Check Background Color",
+      "default": "#672666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Benefit description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefits (Static)",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "position": "left",
+            "title": "Fall Asleep Faster",
+            "description": "Helps you drift off in about 15–20 minutes with a natural blend of calming herbs."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "position": "left",
+            "title": "Sleep Through The Night",
+            "description": "Supports deeper, more restful sleep cycles so you stay asleep until morning."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "position": "right",
+            "title": "Wake Up Refreshed",
+            "description": "Wake clear and energized without the grogginess that comes with pills or gummies."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "position": "right",
+            "title": "Fast-Acting",
+            "description": "Sublingual delivery absorbs quickly, giving you reliable sleep support right when you need it."
+          }
+        }
+      ]
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

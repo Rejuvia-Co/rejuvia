@@ -10,14 +10,19 @@
     {%- endif -%}
 
     <div class="product-benefits__content">
-      {%- assign benefits_list = benefits_section.value.benefits.value -%}
-      {%- assign total_benefits = benefits_list.size -%}
+      {%- comment -%} Access benefits list {%- endcomment -%}
+      {%- assign benefits_list = benefits_section.value.benefits -%}
+
+      {%- comment -%} Debug: Show count {%- endcomment -%}
+      <!-- Benefits count: {{ benefits_list.size }} -->
+
       {%- assign left_benefits = benefits_list | slice: 0, 2 -%}
       {%- assign right_benefits = benefits_list | slice: 2, 2 -%}
 
       {%- comment -%} Left Benefits Column {%- endcomment -%}
       <div class="product-benefits__left">
         {%- for benefit in left_benefits -%}
+          <!-- Benefit title: "{{ benefit.title }}" -->
           <div class="product-benefits__item">
             <div class="product-benefits__item-header">
               <span class="product-benefits__checkmark">
@@ -92,30 +97,26 @@
 
   <style>
     #product-benefits-{{ section.id }} {
-      {%- if benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
-        background: linear-gradient(180deg, {{ benefits_section.value.gradient_1 }} 0%, {{ benefits_section.value.gradient_2 }} 100%);
-      {%- endif -%}
+      background-color: #FFFFFF;
     }
 
     #product-benefits-{{ section.id }} .product-benefits__checkmark {
-      {%- if benefits_section.value.check_bg != blank -%}
-        background-color: {{ benefits_section.value.check_bg }};
+      {%- if benefits_section.value.heck_bg != blank -%}
+        background-color: {{ benefits_section.value.heck_bg }};
       {%- endif -%}
     }
 
     #product-benefits-{{ section.id }} .product-benefits__checkmark svg {
-      {%- if benefits_section.value.check_mark != blank -%}
-        fill: {{ benefits_section.value.check_mark }};
+      {%- if benefits_section.value.heck_mark != blank -%}
+        fill: {{ benefits_section.value.heck_mark }};
       {%- endif -%}
     }
 
     #product-benefits-{{ section.id }} .product-benefits__decorative-dots {
       {%- if benefits_section.value.dots != blank -%}
-        background: radial-gradient(circle, {{ benefits_section.value.dots }} 2px, transparent 2px);
-        background-size: 20px 20px;
-      {%- elsif benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
-        background: radial-gradient(circle, {{ benefits_section.value.gradient_1 }} 2px, transparent 2px);
-        background-size: 20px 20px;
+        background-image: radial-gradient(circle, {{ benefits_section.value.dots }} 1.5px, transparent 1.5px);
+      {%- elsif benefits_section.value.gradient_1 != blank -%}
+        background-image: radial-gradient(circle, {{ benefits_section.value.gradient_1 }} 1.5px, transparent 1.5px);
       {%- endif -%}
     }
   </style>

@@ -237,6 +237,7 @@
         "product_GzhtQB",
         "product_DzCK9Y"
       ],
+      "disabled": true,
       "name": "Select Product",
       "settings": {
         "title": "Shop All Rejuvia Products",

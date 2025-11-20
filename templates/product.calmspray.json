@@ -93,6 +93,7 @@
         "card_zUMeG8",
         "card_CNBzWA"
       ],
+      "disabled": true,
       "settings": {
         "heading": "How To Use Rejuvia",
         "subheading": "Use your Calm Spray throughout the day as needed."
@@ -100,20 +101,8 @@
     },
     "product_how_to_use_MUF43f": {
       "type": "product-how-to-use",
-      "disabled": true,
       "name": "Product How To Use",
       "settings": {}
-    },
-    "founder_story_3bEmk8": {
-      "type": "founder-story",
-      "disabled": true,
-      "name": "Founder Story",
-      "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
-        "founder_name": "RC Williams",
-        "founder_title": "Founder of Rejuvia"
-      }
     },
     "product_fb_reviews_fbddPH": {
       "type": "product-fb-reviews",
@@ -276,7 +265,6 @@
     "product_widget_6p4fVc",
     "how_it_works_iekrPr",
     "product_how_to_use_MUF43f",
-    "founder_story_3bEmk8",
     "product_fb_reviews_fbddPH",
     "1717460916cf4757a6",
     "main_page_4Q6KQH",

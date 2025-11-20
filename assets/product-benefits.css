@@ -168,6 +168,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .product-benefits__decorative-dots-svg {

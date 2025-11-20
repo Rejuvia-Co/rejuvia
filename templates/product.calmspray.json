@@ -63,40 +63,14 @@
         "preselected_item": 3
       }
     },
-    "how_it_works_iekrPr": {
-      "type": "how-it-works",
-      "blocks": {
-        "card_9LiBNi": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Rejuvia_How_To_11055_copy.jpg",
-            "description": "Spray 6-8 times under your tongue."
-          }
-        },
-        "card_zUMeG8": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Rejuvia_How_To_11107_copy.jpg",
-            "description": "Swish around your mouth for 5-10 seconds."
-          }
-        },
-        "card_CNBzWA": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Rejuvia_How_To_10992_copy.jpg",
-            "description": "Swallow and get ready to feel the benefits."
-          }
-        }
-      },
-      "block_order": [
-        "card_9LiBNi",
-        "card_zUMeG8",
-        "card_CNBzWA"
-      ],
+    "customer_testimonials_video_caghmG": {
+      "type": "customer-testimonials-video",
       "disabled": true,
+      "name": "Video Testimonials",
       "settings": {
-        "heading": "How To Use Rejuvia",
-        "subheading": "Use your Calm Spray throughout the day as needed."
+        "header": "",
+        "stars_reating": "",
+        "stars_label": ""
       }
     },
     "product_how_to_use_MUF43f": {
@@ -209,7 +183,7 @@
       ],
       "settings": {
         "customClass": "",
-        "background": "#f0e9ef",
+        "background": "#ffffff",
         "heading": "Frequently Asked Questions",
         "customTextBottom": "",
         "title_color": "#000000",
@@ -263,7 +237,7 @@
   },
   "order": [
     "product_widget_6p4fVc",
-    "how_it_works_iekrPr",
+    "customer_testimonials_video_caghmG",
     "product_how_to_use_MUF43f",
     "product_fb_reviews_fbddPH",
     "1717460916cf4757a6",

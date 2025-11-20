@@ -1,34 +1,25 @@
 {{ 'product-benefits.css' | asset_url | stylesheet_tag }}
 
-{%- assign benefits_section = product.metafields.custom.product_benefits -%}
+{%- assign benefits_section = product.metafields.custom.product_benefits.value -%}
 
-{%- if benefits_section.value != blank -%}
+{%- if benefits_section != blank -%}
 <section class="product-benefits-section" id="product-benefits-{{ section.id }}">
   <div class="product-benefits__container">
-    {%- if benefits_section.value.heading != blank -%}
-      <h2 class="product-benefits__heading">{{ benefits_section.value.heading }}</h2>
+    {%- if benefits_section.heading != blank -%}
+      <h2 class="product-benefits__heading">{{ benefits_section.heading }}</h2>
     {%- endif -%}
 
     <div class="product-benefits__content">
       {%- comment -%} Access benefits list {%- endcomment -%}
-      {%- assign benefits_list = benefits_section.value.benefits -%}
-
-      {%- comment -%} Debug: Show count {%- endcomment -%}
-      <!-- Benefits count: {{ benefits_list.size }} -->
-
-      {%- assign left_benefits = benefits_list | slice: 0, 2 -%}
-      {%- assign right_benefits = benefits_list | slice: 2, 2 -%}
+      {%- assign benefits_list = benefits_section.benefits.value -%}
 
       {%- comment -%} Left Benefits Column {%- endcomment -%}
       <div class="product-benefits__left">
-        {%- for benefit in left_benefits -%}
-          <!-- Benefit title: "{{ benefit.title }}" -->
+        {%- for benefit in benefits_list limit: 2 -%}
           <div class="product-benefits__item">
             <div class="product-benefits__item-header">
               <span class="product-benefits__checkmark">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
+                {% render 'checkmark' %}
               </span>
               <h3 class="product-benefits__title">{{ benefit.title }}</h3>
             </div>
@@ -44,20 +35,18 @@
         <div class="product-benefits__decorative-dots">
           {% render 'dots' %}
         </div>
-        {%- if benefits_section.value.image != blank -%}
-          {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        {%- if benefits_section.image != blank -%}
+          {{ benefits_section.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         {%- endif -%}
       </div>
 
       {%- comment -%} Right Benefits Column {%- endcomment -%}
       <div class="product-benefits__right">
-        {%- for benefit in right_benefits -%}
+        {%- for benefit in benefits_list limit: 2 offset: 2 -%}
           <div class="product-benefits__item">
             <div class="product-benefits__item-header">
               <span class="product-benefits__checkmark">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
+                {% render 'checkmark' %}
               </span>
               <h3 class="product-benefits__title">{{ benefit.title }}</h3>
             </div>
@@ -69,15 +58,14 @@
       </div>
     </div>
 
-    {%- comment -%} Mobile Layout - All Benefits Stacked {%- endcomment -%}
+    {%- comment -%} Mobile Layout - 2 Benefits, Image, 2 Benefits {%- endcomment -%}
     <div class="product-benefits__mobile-content">
-      {%- for benefit in benefits_list -%}
+      {%- comment -%} First 2 benefits {%- endcomment -%}
+      {%- for benefit in benefits_list limit: 2 -%}
         <div class="product-benefits__item">
           <div class="product-benefits__item-header">
             <span class="product-benefits__checkmark">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
+              {% render 'checkmark' %}
             </span>
             <h3 class="product-benefits__title">{{ benefit.title }}</h3>
           </div>
@@ -88,14 +76,29 @@
       {%- endfor -%}
 
       {%- comment -%} Mobile Image {%- endcomment -%}
-      {%- if benefits_section.value.image != blank -%}
+      {%- if benefits_section.image != blank -%}
         <div class="product-benefits__image-container product-benefits__image-container--mobile">
           <div class="product-benefits__decorative-dots">
             {% render 'dots' %}
           </div>
-          {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+          {{ benefits_section.image | image_url: width: 300 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         </div>
       {%- endif -%}
+
+      {%- comment -%} Last 2 benefits {%- endcomment -%}
+      {%- for benefit in benefits_list limit: 2 offset: 2 -%}
+        <div class="product-benefits__item">
+          <div class="product-benefits__item-header">
+            <span class="product-benefits__checkmark">
+              {% render 'checkmark' %}
+            </span>
+            <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+          </div>
+          {%- if benefit.description != blank -%}
+            <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 
@@ -105,26 +108,26 @@
     }
 
     #product-benefits-{{ section.id }} .product-benefits__checkmark {
-      {%- if benefits_section.value.heck_bg != blank -%}
-        background-color: {{ benefits_section.value.heck_bg }};
+      {%- if benefits_section.heck_bg != blank -%}
+        color: {{ benefits_section.heck_bg }};
       {%- endif -%}
     }
 
-    #product-benefits-{{ section.id }} .product-benefits__checkmark svg {
-      {%- if benefits_section.value.heck_mark != blank -%}
-        fill: {{ benefits_section.value.heck_mark }};
+    #product-benefits-{{ section.id }} .product-benefits__checkmark-check {
+      {%- if benefits_section.heck_mark != blank -%}
+        stroke: {{ benefits_section.heck_mark }};
       {%- endif -%}
     }
 
     #product-benefits-{{ section.id }} .product-benefits__decorative-dots-svg {
-      {%- if benefits_section.value.dots != blank -%}
-        color: {{ benefits_section.value.dots }};
+      {%- if benefits_section.dots != blank -%}
+        color: {{ benefits_section.dots }};
       {%- endif -%}
     }
 
-    {%- if benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
-    {%- assign gradient_size = benefits_section.value.gradient_size | default: 150 -%}
-    {%- assign gradient_blur = benefits_section.value.gradient_blur | default: 35 -%}
+    {%- if benefits_section.gradient_1 != blank and benefits_section.gradient_2 != blank -%}
+    {%- assign gradient_size = benefits_section.gradient_size | default: 150 -%}
+    {%- assign gradient_blur = benefits_section.gradient_blur | default: 35 -%}
     #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
       content: '';
       position: absolute;
@@ -132,8 +135,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: {{ gradient_size }}%;
-      height: {{ gradient_size }}%;
-      background: linear-gradient(258deg, {{ benefits_section.value.gradient_1 }} -3.86%, {{ benefits_section.value.gradient_2 }} 121.76%);
+      aspect-ratio: 1;
+      background: linear-gradient(258deg, {{ benefits_section.gradient_1 }} -3.86%, {{ benefits_section.gradient_2 }} 121.76%);
       border-radius: 50%;
       filter: blur({{ gradient_blur }}px);
       z-index: 2;

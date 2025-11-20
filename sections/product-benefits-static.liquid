@@ -11,10 +11,8 @@
           {%- if block.settings.position == 'left' -%}
             <div class="product-benefits__item" {{ block.shopify_attributes }}>
               <div class="product-benefits__item-header">
-                <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
-                  </svg>
+                <span class="product-benefits__checkmark">
+                  {% render 'checkmark' %}
                 </span>
                 <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
               </div>
@@ -42,10 +40,8 @@
           {%- if block.settings.position == 'right' -%}
             <div class="product-benefits__item" {{ block.shopify_attributes }}>
               <div class="product-benefits__item-header">
-                <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
-                  </svg>
+                <span class="product-benefits__checkmark">
+                  {% render 'checkmark' %}
                 </span>
                 <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
               </div>
@@ -58,22 +54,23 @@
       </div>
     </div>
 
-    {%- comment -%} Mobile Layout - All Benefits Stacked {%- endcomment -%}
+    {%- comment -%} Mobile Layout - 2 Benefits, Image, 2 Benefits {%- endcomment -%}
     <div class="product-benefits__mobile-content">
+      {%- comment -%} First 2 benefits (left position) {%- endcomment -%}
       {%- for block in section.blocks -%}
-        <div class="product-benefits__item" {{ block.shopify_attributes }}>
-          <div class="product-benefits__item-header">
-            <span class="product-benefits__checkmark" style="background-color: {{ section.settings.check_bg }};">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" style="fill: {{ section.settings.check_mark }};"/>
-              </svg>
-            </span>
-            <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+        {%- if block.settings.position == 'left' -%}
+          <div class="product-benefits__item" {{ block.shopify_attributes }}>
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                {% render 'checkmark' %}
+              </span>
+              <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+            </div>
+            {%- if block.settings.description != blank -%}
+              <p class="product-benefits__description">{{ block.settings.description }}</p>
+            {%- endif -%}
           </div>
-          {%- if block.settings.description != blank -%}
-            <p class="product-benefits__description">{{ block.settings.description }}</p>
-          {%- endif -%}
-        </div>
+        {%- endif -%}
       {%- endfor -%}
 
       {%- comment -%} Mobile Image {%- endcomment -%}
@@ -82,9 +79,26 @@
           <div class="product-benefits__decorative-dots">
             {% render 'dots' %}
           </div>
-          {{ section.settings.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+          {{ section.settings.image | image_url: width: 300 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         </div>
       {%- endif -%}
+
+      {%- comment -%} Last 2 benefits (right position) {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.settings.position == 'right' -%}
+          <div class="product-benefits__item" {{ block.shopify_attributes }}>
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                {% render 'checkmark' %}
+              </span>
+              <h3 class="product-benefits__title">{{ block.settings.title }}</h3>
+            </div>
+            {%- if block.settings.description != blank -%}
+              <p class="product-benefits__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -95,11 +109,11 @@
   }
 
   #product-benefits-{{ section.id }} .product-benefits__checkmark {
-    background-color: {{ section.settings.check_bg }};
+    color: {{ section.settings.check_bg }};
   }
 
-  #product-benefits-{{ section.id }} .product-benefits__checkmark svg {
-    fill: {{ section.settings.check_mark }};
+  #product-benefits-{{ section.id }} .product-benefits__checkmark-check {
+    stroke: {{ section.settings.check_mark }};
   }
 
   #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
@@ -109,7 +123,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: {{ section.settings.gradient_size }}%;
-    height: {{ section.settings.gradient_size }}%;
+    aspect-ratio: 1;
     background: linear-gradient(258deg, {{ section.settings.gradient_1 }} -3.86%, {{ section.settings.gradient_2 }} 121.76%);
     border-radius: 50%;
     filter: blur({{ section.settings.gradient_blur }}px);
@@ -145,13 +159,13 @@
       "type": "color",
       "id": "check_mark",
       "label": "Check Mark Color",
-      "default": "#FFFFFF"
+      "default": "#672666"
     },
     {
       "type": "color",
       "id": "check_bg",
       "label": "Check Background Color",
-      "default": "#672666"
+      "default": "#EAEAF7"
     },
     {
       "type": "color",

@@ -63,57 +63,6 @@
         "preselected_item": 1
       }
     },
-    "product_benefits_static_GBKVwL": {
-      "type": "product-benefits-static",
-      "blocks": {
-        "benefit_wFf6bT": {
-          "type": "benefit",
-          "settings": {
-            "position": "left",
-            "title": "Fall Asleep Faster",
-            "description": "Helps you drift off in about 15–20 minutes with a natural blend of calming herbs."
-          }
-        },
-        "benefit_HgBr4f": {
-          "type": "benefit",
-          "settings": {
-            "position": "left",
-            "title": "Sleep Through The Night",
-            "description": "Supports deeper, more restful sleep cycles so you stay asleep until morning."
-          }
-        },
-        "benefit_8NHUjQ": {
-          "type": "benefit",
-          "settings": {
-            "position": "right",
-            "title": "Wake Up Refreshed",
-            "description": "Wake clear and energized without the grogginess that comes with pills or gummies."
-          }
-        },
-        "benefit_KfG4MN": {
-          "type": "benefit",
-          "settings": {
-            "position": "right",
-            "title": "Fast-Acting",
-            "description": "Sublingual delivery absorbs quickly, giving you reliable sleep support right when you need it."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_wFf6bT",
-        "benefit_HgBr4f",
-        "benefit_8NHUjQ",
-        "benefit_KfG4MN"
-      ],
-      "name": "Product Benefits (Static)",
-      "settings": {
-        "heading": "Better Sleep Starts Tonight",
-        "image": "shopify://shop_images/IMG.png",
-        "dots": "#B8A5D0",
-        "check_mark": "#FFFFFF",
-        "check_bg": "#672666"
-      }
-    },
     "product_benefits_g6QKab": {
       "type": "product-benefits",
       "name": "Product Benefits",
@@ -625,7 +574,6 @@
   },
   "order": [
     "product_widget_6p4fVc",
-    "product_benefits_static_GBKVwL",
     "product_benefits_g6QKab",
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",

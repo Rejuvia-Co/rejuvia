@@ -73,6 +73,15 @@
         "stars_label": ""
       }
     },
+    "ingredients_section_Mcnkac": {
+      "type": "ingredients-section",
+      "disabled": true,
+      "name": "Ingredients Info Section",
+      "settings": {
+        "heading": "",
+        "subheading": ""
+      }
+    },
     "product_how_to_use_MUF43f": {
       "type": "product-how-to-use",
       "name": "Product How To Use",
@@ -238,6 +247,7 @@
   "order": [
     "product_widget_6p4fVc",
     "customer_testimonials_video_caghmG",
+    "ingredients_section_Mcnkac",
     "product_how_to_use_MUF43f",
     "product_fb_reviews_fbddPH",
     "1717460916cf4757a6",

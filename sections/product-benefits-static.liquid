@@ -26,6 +26,7 @@
 
       {%- comment -%} Center Image {%- endcomment -%}
       <div class="product-benefits__image-container">
+        <div class="product-benefits__gradient"></div>
         <div class="product-benefits__decorative-dots">
           {% render 'dots' %}
         </div>
@@ -76,6 +77,7 @@
       {%- comment -%} Mobile Image {%- endcomment -%}
       {%- if section.settings.image != blank -%}
         <div class="product-benefits__image-container product-benefits__image-container--mobile">
+          <div class="product-benefits__gradient"></div>
           <div class="product-benefits__decorative-dots">
             {% render 'dots' %}
           </div>
@@ -122,8 +124,7 @@
   {%- assign gradient_px_tablet = 220 | times: gradient_size_desktop | divided_by: 100 -%}
   {%- assign gradient_px_mobile = 131 | times: gradient_size_mobile | divided_by: 100 -%}
 
-  #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
-    content: '';
+  #product-benefits-{{ section.id }} .product-benefits__gradient {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -133,19 +134,19 @@
     background: linear-gradient(258deg, {{ section.settings.gradient_1 }} -3.86%, {{ section.settings.gradient_2 }} 121.76%);
     border-radius: 50%;
     filter: blur({{ section.settings.gradient_blur }}px);
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
   }
 
   @media screen and (max-width: 900px) {
-    #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
+    #product-benefits-{{ section.id }} .product-benefits__gradient {
       width: {{ gradient_px_tablet }}px;
       height: {{ gradient_px_tablet }}px;
     }
   }
 
   @media screen and (max-width: 768px) {
-    #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
+    #product-benefits-{{ section.id }} .product-benefits__gradient {
       width: {{ gradient_px_mobile }}px;
       height: {{ gradient_px_mobile }}px;
     }
@@ -203,8 +204,8 @@
       "type": "range",
       "id": "gradient_size_desktop",
       "label": "Gradient Size Desktop (%)",
-      "min": 100,
-      "max": 300,
+      "min": 50,
+      "max": 150,
       "step": 10,
       "default": 150,
       "unit": "%"
@@ -213,8 +214,8 @@
       "type": "range",
       "id": "gradient_size_mobile",
       "label": "Gradient Size Mobile (%)",
-      "min": 100,
-      "max": 300,
+      "min": 50,
+      "max": 150,
       "step": 10,
       "default": 150,
       "unit": "%"

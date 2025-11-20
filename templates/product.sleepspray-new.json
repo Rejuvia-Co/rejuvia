@@ -565,10 +565,16 @@
         "title_color": "#000000",
         "text_color": "#000000"
       }
+    },
+    "product_benefits_g6QKab": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {}
     }
   },
   "order": [
     "product_widget_6p4fVc",
+    "product_benefits_g6QKab",
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",

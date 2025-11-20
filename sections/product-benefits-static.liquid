@@ -116,14 +116,15 @@
     stroke: {{ section.settings.check_mark }};
   }
 
+  {%- assign gradient_px = 280 | times: section.settings.gradient_size | divided_by: 100 -%}
   #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: {{ section.settings.gradient_size }}%;
-    aspect-ratio: 1;
+    width: {{ gradient_px }}px;
+    height: {{ gradient_px }}px;
     background: linear-gradient(258deg, {{ section.settings.gradient_1 }} -3.86%, {{ section.settings.gradient_2 }} 121.76%);
     border-radius: 50%;
     filter: blur({{ section.settings.gradient_blur }}px);

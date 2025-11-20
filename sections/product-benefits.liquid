@@ -1,0 +1,151 @@
+{{ 'product-benefits.css' | asset_url | stylesheet_tag }}
+
+{%- assign benefits_section = product.metafields.custom.product_benefits -%}
+
+{%- if benefits_section.value != blank -%}
+<section class="product-benefits-section" id="product-benefits-{{ section.id }}">
+  <div class="product-benefits__container">
+    {%- if benefits_section.value.heading != blank -%}
+      <h2 class="product-benefits__heading">{{ benefits_section.value.heading }}</h2>
+    {%- endif -%}
+
+    <div class="product-benefits__content">
+      {%- assign benefits_list = benefits_section.value.benefits.value -%}
+      {%- assign total_benefits = benefits_list.size -%}
+      {%- assign left_benefits = benefits_list | slice: 0, 2 -%}
+      {%- assign right_benefits = benefits_list | slice: 2, 2 -%}
+
+      {%- comment -%} Left Benefits Column {%- endcomment -%}
+      <div class="product-benefits__left">
+        {%- for benefit in left_benefits -%}
+          <div class="product-benefits__item">
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              </span>
+              <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+            </div>
+            {%- if benefit.description != blank -%}
+              <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Center Image {%- endcomment -%}
+      <div class="product-benefits__image-container">
+        <div class="product-benefits__decorative-dots"></div>
+        {%- if benefits_section.value.image != blank -%}
+          {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right Benefits Column {%- endcomment -%}
+      <div class="product-benefits__right">
+        {%- for benefit in right_benefits -%}
+          <div class="product-benefits__item">
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              </span>
+              <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+            </div>
+            {%- if benefit.description != blank -%}
+              <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Layout - All Benefits Stacked {%- endcomment -%}
+    <div class="product-benefits__mobile-content">
+      {%- for benefit in benefits_list -%}
+        <div class="product-benefits__item">
+          <div class="product-benefits__item-header">
+            <span class="product-benefits__checkmark">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+            </span>
+            <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+          </div>
+          {%- if benefit.description != blank -%}
+            <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      {%- comment -%} Mobile Image {%- endcomment -%}
+      {%- if benefits_section.value.image != blank -%}
+        <div class="product-benefits__image-container product-benefits__image-container--mobile">
+          <div class="product-benefits__decorative-dots"></div>
+          {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <style>
+    #product-benefits-{{ section.id }} {
+      {%- if benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
+        background: linear-gradient(180deg, {{ benefits_section.value.gradient_1 }} 0%, {{ benefits_section.value.gradient_2 }} 100%);
+      {%- endif -%}
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__checkmark {
+      {%- if benefits_section.value.check_bg != blank -%}
+        background-color: {{ benefits_section.value.check_bg }};
+      {%- endif -%}
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__checkmark svg {
+      {%- if benefits_section.value.check_mark != blank -%}
+        fill: {{ benefits_section.value.check_mark }};
+      {%- endif -%}
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__decorative-dots {
+      {%- if benefits_section.value.dots != blank -%}
+        background: radial-gradient(circle, {{ benefits_section.value.dots }} 2px, transparent 2px);
+        background-size: 20px 20px;
+      {%- elsif benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
+        background: radial-gradient(circle, {{ benefits_section.value.gradient_1 }} 2px, transparent 2px);
+        background-size: 20px 20px;
+      {%- endif -%}
+    }
+  </style>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Benefits",
+  "tag": "section",
+  "class": "product-benefits",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section displays product benefits from the product metafield 'custom.product_benefits'. The section will be hidden if the metafield is empty."
+    },
+    {
+      "type": "header",
+      "content": "Instructions"
+    },
+    {
+      "type": "paragraph",
+      "content": "Configure benefits data in the product metafield: custom.product_benefits (metaobject type: benefits_section)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefits"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

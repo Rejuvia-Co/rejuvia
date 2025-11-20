@@ -41,7 +41,9 @@
 
       {%- comment -%} Center Image {%- endcomment -%}
       <div class="product-benefits__image-container">
-        <div class="product-benefits__decorative-dots"></div>
+        <div class="product-benefits__decorative-dots">
+          {% render 'dots' %}
+        </div>
         {%- if benefits_section.value.image != blank -%}
           {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         {%- endif -%}
@@ -88,7 +90,9 @@
       {%- comment -%} Mobile Image {%- endcomment -%}
       {%- if benefits_section.value.image != blank -%}
         <div class="product-benefits__image-container product-benefits__image-container--mobile">
-          <div class="product-benefits__decorative-dots"></div>
+          <div class="product-benefits__decorative-dots">
+            {% render 'dots' %}
+          </div>
           {{ benefits_section.value.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         </div>
       {%- endif -%}
@@ -112,13 +116,30 @@
       {%- endif -%}
     }
 
-    #product-benefits-{{ section.id }} .product-benefits__decorative-dots {
+    #product-benefits-{{ section.id }} .product-benefits__decorative-dots-svg {
       {%- if benefits_section.value.dots != blank -%}
-        background-image: radial-gradient(circle, {{ benefits_section.value.dots }} 1.5px, transparent 1.5px);
-      {%- elsif benefits_section.value.gradient_1 != blank -%}
-        background-image: radial-gradient(circle, {{ benefits_section.value.gradient_1 }} 1.5px, transparent 1.5px);
+        color: {{ benefits_section.value.dots }};
       {%- endif -%}
     }
+
+    {%- if benefits_section.value.gradient_1 != blank and benefits_section.value.gradient_2 != blank -%}
+    {%- assign gradient_size = benefits_section.value.gradient_size | default: 150 -%}
+    {%- assign gradient_blur = benefits_section.value.gradient_blur | default: 35 -%}
+    #product-benefits-{{ section.id }} .product-benefits__decorative-dots::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: {{ gradient_size }}%;
+      height: {{ gradient_size }}%;
+      background: linear-gradient(258deg, {{ benefits_section.value.gradient_1 }} -3.86%, {{ benefits_section.value.gradient_2 }} 121.76%);
+      border-radius: 50%;
+      filter: blur({{ gradient_blur }}px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    {%- endif -%}
   </style>
 </section>
 {%- endif -%}

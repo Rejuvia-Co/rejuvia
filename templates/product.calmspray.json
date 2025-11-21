@@ -63,6 +63,14 @@
         "preselected_item": 3
       }
     },
+    "product_benefits_MEbMKY": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
+      }
+    },
     "customer_testimonials_video_caghmG": {
       "type": "customer-testimonials-video",
       "disabled": true,
@@ -242,14 +250,6 @@
       "settings": {
         "title": "Shop All Rejuvia Products",
         "sub_title": "Better sleep and less stress are now just a few sprays away."
-      }
-    },
-    "product_benefits_MEbMKY": {
-      "type": "product-benefits",
-      "name": "Product Benefits",
-      "settings": {
-        "gradient_size_desktop": 150,
-        "gradient_size_mobile": 150
       }
     }
   },

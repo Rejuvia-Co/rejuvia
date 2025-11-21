@@ -58,7 +58,7 @@
       "settings": {
         "hero_heading": "",
         "selected_product": "",
-        "guarantee_label": "90-Day Money Back Guarantee",
+        "guarantee_label": "FREE SHIPPING OVER $59",
         "swatch_tag_content": "BEST VALUE",
         "preselected_item": 1
       }
@@ -224,42 +224,6 @@
       "type": "product-how-to-use",
       "name": "Product How To Use",
       "settings": {}
-    },
-    "how_it_works_4YVLwU": {
-      "type": "how-it-works",
-      "blocks": {
-        "card_zFAN8g": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.png",
-            "description": "Spray 6-8 times under your tongue or inside your cheek."
-          }
-        },
-        "card_VnMz6Q": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/howtouse2_e0d97c1c-e10a-49ec-8c8e-9d27c72aa50d.png",
-            "description": "Hold in your mouth for at least 5-10 seconds."
-          }
-        },
-        "card_kDJ3KT": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/howtouse3_a1d61e7b-1169-49ef-bc1b-95d019170256.png",
-            "description": "Swallow  and get ready for the best sleep of your life."
-          }
-        }
-      },
-      "block_order": [
-        "card_zFAN8g",
-        "card_VnMz6Q",
-        "card_kDJ3KT"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "How Rejuvia Works",
-        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."
-      }
     },
     "founder_story_nxLjwx": {
       "type": "founder-story",
@@ -581,7 +545,6 @@
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
-    "how_it_works_4YVLwU",
     "founder_story_nxLjwx",
     "product_comparison_enhanced_tRzrDn",
     "1717460916cf4757a6",

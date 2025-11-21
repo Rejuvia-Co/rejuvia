@@ -685,7 +685,7 @@
             "type": "products-menu_mobile",
             "settings": {
               "selected_product": "sleep-spray",
-              "product_description": "Our best-selling spray for the best sleep of your life",
+              "product_description": "Shop our best-selling Sleep Spray for the best sleep of your life",
               "show_savings": false,
               "savings_text": "",
               "tags": "100% Vegan,Non-Gmo,Lab-Tested,Mint Flavor"
@@ -695,7 +695,7 @@
             "type": "products-menu_mobile",
             "settings": {
               "selected_product": "sleep-spray-6-pack",
-              "product_description": "Get 66% off with a 6-pack and a FREE Vitamin D3+K2 spray.",
+              "product_description": "Get 66% in savings when you purchase our 6-pack.",
               "show_savings": true,
               "savings_text": "66% OFF",
               "tags": "All-Natural,USA Made,Lab-Tested,Mint Flavor"
@@ -714,7 +714,7 @@
               "first_url": "shopify://pages/reviews",
               "second_label": "Refer a Friend",
               "second_url": "shopify://pages/refer-a-friend",
-              "third_label": "FAQS",
+              "third_label": "FAQs",
               "third_url": "shopify://pages/rejuvia-faqs",
               "fourth_label": "About Us",
               "fourth_url": "shopify://pages/ingredients"
@@ -724,7 +724,7 @@
             "type": "bottom-menu-mobile-info",
             "settings": {
               "first_label": "Free Shipping Over $59+",
-              "second_label": "Trusted By 200,000+ Sleepers"
+              "second_label": "Used Nightly By 300,000+ Sleepers"
             }
           },
           "utility_bar_aywzQL": {
@@ -732,7 +732,7 @@
             "settings": {
               "show": true,
               "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>66% OFF + FREE Spray <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
+              "text": "<p>Get Over 66% OFF Today  <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
             }
           },
           "right_content_block_7LwdNX": {
@@ -742,8 +742,8 @@
               "heading": "Free U.S. Shipping",
               "description": "You get free shipping on all subscriptions and orders over $59.",
               "icon_svg1": "<svg width=\"28\" height=\"29\" viewbox=\"0 0 28 29\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                          <g clip-path=\"url(#clip0_776_12229)\">\n                              <path d=\"M13.9989 21.507L19.9839 25.1874C20.1392 25.2817 20.3189 25.3278 20.5004 25.32C20.6819 25.3121 20.857 25.2506 21.0036 25.1433C21.1501 25.0359 21.2616 24.8876 21.3238 24.7169C21.3861 24.5463 21.3963 24.361 21.3533 24.1845L19.7258 17.3168L25.0523 12.7231C25.1882 12.6038 25.2861 12.4474 25.334 12.2732C25.3819 12.0989 25.3778 11.9144 25.3221 11.7425C25.2663 11.5706 25.1615 11.4187 25.0205 11.3057C24.8794 11.1927 24.7084 11.1234 24.5284 11.1065L17.5383 10.5378L14.8455 4.01901C14.7768 3.85083 14.6596 3.70691 14.5089 3.60561C14.3581 3.5043 14.1806 3.4502 13.9989 3.4502C13.8173 3.4502 13.6397 3.5043 13.489 3.60561C13.3382 3.70691 13.221 3.85083 13.1523 4.01901L10.4595 10.5378L3.46938 11.1065C3.28822 11.1224 3.11576 11.1914 2.97355 11.3047C2.83134 11.4181 2.72569 11.5708 2.66979 11.7439C2.61389 11.9169 2.61023 12.1026 2.65926 12.2777C2.70829 12.4529 2.80784 12.6097 2.94547 12.7285L8.27203 17.3223L6.64453 24.1845C6.60151 24.361 6.61177 24.5463 6.67402 24.7169C6.73627 24.8876 6.84771 25.0359 6.99426 25.1433C7.14082 25.2506 7.3159 25.3121 7.49739 25.32C7.67888 25.3278 7.85862 25.2817 8.01391 25.1874L13.9989 21.507Z\" stroke=\"#171512\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                          </g>\n                          <defs>\n                              <clippath id=\"clip0_776_12229\">\n                                  <rect width=\"28\" height=\"28\" fill=\"white\" transform=\"translate(0 0.825195)\"></rect>\n                              </clippath>\n                          </defs>\n                      </svg>",
-              "heading1": "3,500+ 5-Star Reviews",
-              "description1": "Rejuvia is trusted and loved by 200,000+ sleepers like you.",
+              "heading1": "5,500+ 5-Star Reviews",
+              "description1": "Rejuvia is trusted and loved by 300,000+ sleepers like you.",
               "icon_svg2": "<svg width=\"28\" height=\"29\" viewbox=\"0 0 28 29\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                          <g clip-path=\"url(#clip0_776_12236)\">\n                              <path d=\"M14 25.3252C14 25.3252 2.625 19.2002 2.625 11.9814C2.625 10.415 3.24726 8.91273 4.3549 7.8051C5.46254 6.69746 6.96482 6.0752 8.53125 6.0752C11.002 6.0752 13.1184 7.4216 14 9.5752C14.8816 7.4216 16.998 6.0752 19.4688 6.0752C21.0352 6.0752 22.5375 6.69746 23.6451 7.8051C24.7527 8.91273 25.375 10.415 25.375 11.9814C25.375 19.2002 14 25.3252 14 25.3252Z\" stroke=\"#171512\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                          </g>\n                          <defs>\n                              <clippath id=\"clip0_776_12236\">\n                                  <rect width=\"28\" height=\"28\" fill=\"white\" transform=\"translate(0 0.825195)\"></rect>\n                              </clippath>\n                          </defs>\n                      </svg>",
               "heading2": "Family-Founded Brand",
               "description2": "We're proud to be a family-founded business based in Philadelphia, PA."
@@ -2205,7 +2205,7 @@
         "settings": {
           "hero_heading": "",
           "selected_product": "sleep-spray",
-          "guarantee_label": "FREE SHIPPING OVER $69",
+          "guarantee_label": "FREE SHIPPING OVER $59",
           "swatch_tag_content": "BEST VALUE",
           "preselected_item": 1
         }

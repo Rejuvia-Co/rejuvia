@@ -63,14 +63,6 @@
         "preselected_item": 1
       }
     },
-    "product_benefits_g6QKab": {
-      "type": "product-benefits",
-      "name": "Product Benefits",
-      "settings": {
-        "gradient_size_desktop": 100,
-        "gradient_size_mobile": 150
-      }
-    },
     "customer_testimonials_n4yKPj": {
       "type": "customer-testimonials-video",
       "blocks": {
@@ -162,6 +154,14 @@
         "header": "Join 300,000 Getting Better Sleep",
         "stars_reating": "4.5",
         "stars_label": "Trusted By 300,000+ Sleepers"
+      }
+    },
+    "product_benefits_g6QKab": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
       }
     },
     "ingredients_section_H4HeNP": {
@@ -541,8 +541,8 @@
   },
   "order": [
     "product_widget_6p4fVc",
-    "product_benefits_g6QKab",
     "customer_testimonials_n4yKPj",
+    "product_benefits_g6QKab",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",
     "founder_story_nxLjwx",

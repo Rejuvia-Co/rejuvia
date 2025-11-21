@@ -36,8 +36,8 @@
         <div class="product-benefits__decorative-dots">
           {% render 'dots' %}
         </div>
-        {%- if benefits_section.image != blank -%}
-          {{ benefits_section.image | image_url: width: 600 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        {%- if benefits_section.desktop_image != blank -%}
+          {{ benefits_section.desktop_image | image_url: width: 840 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         {%- endif -%}
       </div>
 
@@ -77,13 +77,13 @@
       {%- endfor -%}
 
       {%- comment -%} Mobile Image {%- endcomment -%}
-      {%- if benefits_section.image != blank -%}
+      {%- if benefits_section.mobile_image != blank -%}
         <div class="product-benefits__image-container product-benefits__image-container--mobile">
           <div class="product-benefits__gradient"></div>
           <div class="product-benefits__decorative-dots">
             {% render 'dots' %}
           </div>
-          {{ benefits_section.image | image_url: width: 300 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+          {{ benefits_section.mobile_image | image_url: width: 400 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
         </div>
       {%- endif -%}
 

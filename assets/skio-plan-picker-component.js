@@ -971,18 +971,23 @@ export class SkioPlanPicker extends LitElement {
     `
   }
 
+  // groupContentOneTime() {
+  //   return html`
+  //     <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
+  //       <!-- Subscription bullet points copied with styling from Loop -->
+  //       <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
+  //         <li>
+  //           <span>
+  //             Over 55% OFF vs. Buying Seperately
+  //           </span>
+  //         </li>
+  //       </ul>
+  //     </div>
+  //   `
+  // }
   groupContentOneTime() {
     return html`
-      <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
-        <!-- Subscription bullet points copied with styling from Loop -->
-        <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
-          <li>
-            <span>
-              Over 55% OFF vs. Buying Seperately
-            </span>
-          </li>
-        </ul>
-      </div>
+     <div></div>
     `
   }
 

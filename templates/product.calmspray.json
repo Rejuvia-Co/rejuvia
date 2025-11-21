@@ -63,6 +63,44 @@
         "preselected_item": 3
       }
     },
+    "product_benefits_ce6Fap": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
+      }
+    },
+    "how_it_works_iekrPr": {
+      "type": "how-it-works",
+      "blocks": {
+        "card_9LiBNi": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_11055_copy.jpg",
+            "description": "Spray 6-8 times under your tongue."
+          }
+        },
+        "card_zUMeG8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_11107_copy.jpg",
+            "description": "Swish around your mouth for 5-10 seconds."
+          }
+        },
+        "card_CNBzWA": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_How_To_10992_copy.jpg",
+            "description": "Swallow and get ready to feel the benefits."
+          }
+        }
+      },
+      "block_order": [
+        "card_9LiBNi",
+        "card_zUMeG8",
+        "card_CNBzWA"
+      ],
     "customer_testimonials_video_caghmG": {
       "type": "customer-testimonials-video",
       "disabled": true,
@@ -247,6 +285,8 @@
   },
   "order": [
     "product_widget_6p4fVc",
+    "product_benefits_ce6Fap",
+    "how_it_works_iekrPr",
     "customer_testimonials_video_caghmG",
     "ingredients_section_Mcnkac",
     "product_how_to_use_MUF43f",

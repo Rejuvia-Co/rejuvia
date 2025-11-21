@@ -63,6 +63,14 @@
         "preselected_item": 1
       }
     },
+    "product_benefits_g6QKab": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
+      }
+    },
     "customer_testimonials_n4yKPj": {
       "type": "customer-testimonials-video",
       "blocks": {
@@ -533,6 +541,7 @@
   },
   "order": [
     "product_widget_6p4fVc",
+    "product_benefits_g6QKab",
     "customer_testimonials_n4yKPj",
     "ingredients_section_H4HeNP",
     "product_how_to_use_HiYxBX",

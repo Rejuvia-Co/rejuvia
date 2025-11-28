@@ -1636,3 +1636,15 @@ main:has(.shopify-policy__container) {
   color: #171512;
   font-size: 16px;
 }
+
+/* Scroll animation replacement for AOS zoom-in */
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.zoom-in.animate {
+  opacity: 1;
+  transform: scale(1);
+}

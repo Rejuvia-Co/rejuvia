@@ -109,37 +109,28 @@
         "testimonial_CekMqJ": {
           "type": "testimonial",
           "settings": {
-            "title": "Organic Valerian Root",
+            "title": "Valerian Root",
             "description": "Helps improve sleep quality",
             "text": "<p>Focus Areas:</p><ul><li>Improve sleep quality</li><li>Reduce stress</li><li>Reduce headaches</li></ul>",
-            "image": "shopify://shop_images/valerian_root.png"
+            "image": "shopify://shop_images/rejuvia_valerian_root.webp"
           }
         },
         "testimonial_RnmXaC": {
           "type": "testimonial",
           "settings": {
-            "title": "Organic Feverfew Leaf",
+            "title": "Feverfew Leaf",
             "description": "Helps promote stress-relief",
             "text": "<p>Focus Areas:</p><ul><li>Stress relief</li><li>Elevated mood</li><li>Pain relief</li></ul>",
-            "image": "shopify://shop_images/feverfew_leaf.png"
+            "image": "shopify://shop_images/rejuvia_feverfew_leaf.webp"
           }
         },
         "testimonial_nUpUBV": {
           "type": "testimonial",
           "settings": {
-            "title": "Organic Ginkgo Biloba",
+            "title": "Ginkgo Biloba",
             "description": "Helps promote relaxation",
             "text": "<p>Focus Areas:</p><ul><li>Memory</li><li>Energy</li><li>Boost Circulation</li></ul>",
-            "image": "shopify://shop_images/gingko_biloba.png"
-          }
-        },
-        "testimonial_GGnkbb": {
-          "type": "testimonial",
-          "settings": {
-            "title": "Hops Flower Head",
-            "description": "Helps promote calmness",
-            "text": "<p>Focus Areas:</p><ul><li>Calmness</li><li>Reduce stress</li><li>Reduce inflammation</li></ul>",
-            "image": "shopify://shop_images/hops_flower.png"
+            "image": "shopify://shop_images/rejuvia_gingko_biloba.webp"
           }
         },
         "testimonial_Dp8R6G": {
@@ -148,7 +139,16 @@
             "title": "Natural Melatonin",
             "description": "Deep sleep promoting",
             "text": "<p>Focus Areas:</p><ul><li>REM Sleep</li><li>Sleep Quality</li><li>Sleep Soundness</li></ul>",
-            "image": "shopify://shop_images/melatonin.png"
+            "image": "shopify://shop_images/rejuvia_melatonin.webp"
+          }
+        },
+        "testimonial_GGnkbb": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Hops Flower",
+            "description": "Helps promote calmness",
+            "text": "<p>Focus Areas:</p><ul><li>Calmness</li><li>Reduce stress</li><li>Reduce inflammation</li></ul>",
+            "image": "shopify://shop_images/rejuvia_hops_flower_head.webp"
           }
         }
       },
@@ -156,8 +156,8 @@
         "testimonial_CekMqJ",
         "testimonial_RnmXaC",
         "testimonial_nUpUBV",
-        "testimonial_GGnkbb",
-        "testimonial_Dp8R6G"
+        "testimonial_Dp8R6G",
+        "testimonial_GGnkbb"
       ],
       "settings": {
         "header": "Ingredients With Purpose.",

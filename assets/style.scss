@@ -2551,3 +2551,20 @@ span.subscription-text {
     row-gap: 12px;
   }
 }
+
+.section-heading {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  margin-bottom: 24px;
+  font-style: normal;
+  text-transform: none;
+}
+@media (max-width: 768px) {
+  .section-heading {
+      font-size: 32px;
+      margin-bottom: 16px;
+      letter-spacing: -0.32px;
+  }
+}

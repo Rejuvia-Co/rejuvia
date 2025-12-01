@@ -47,7 +47,7 @@ body #our-quality .icon-item{display:flex;gap:15px; border-right:none;border-bot
     {% for icon in section.blocks %}
       <div class="icon-item  cst-home-icon-sec-item">
         {% if icon.settings.image != nil %}
-          <div class="image" data-aos="zoom-in">
+          <div class="image zoom-in">
             <img class="lazyload cst-home-icon-sec-item-img" data-sizes="auto" src="{% render 'image_placeholder', image: icon.settings.image %}" data-srcset="{% render 'lazy_src', image: icon.settings.image %}" />
           </div>
         {% endif %}
@@ -64,6 +64,25 @@ body #our-quality .icon-item{display:flex;gap:15px; border-right:none;border-bot
   </div>
   </div>
 </section>
+
+<script>
+  $(function() {
+    $(document).ready(function() {
+      // Simple scroll animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('#our-quality .zoom-in').forEach(el => {
+        observer.observe(el);
+      });
+    })
+  })
+</script>
 
 {% schema %}
   {

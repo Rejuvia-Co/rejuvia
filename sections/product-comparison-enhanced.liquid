@@ -494,12 +494,31 @@
       padding: 0 8px !important;
     }
   }
+
+  .product-comparison-section  .section-heading-t {
+  color: #040404;
+  font-family: Inter, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  margin-bottom: 24px;
+  font-style: normal;
+  text-transform: none;
+}
+@media (max-width: 768px) {
+  .product-comparison-section .section-heading-t {
+      font-size: 32px;
+      margin-bottom: 16px;
+      letter-spacing: -0.32px;
+  }
+}
 </style>
 
 <div class="product-comparison-section _section_container">
   <div class="container">
     {% if section.settings.show_heading %}
-      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      <h2 class="section-heading section-heading-t">{{ section.settings.heading }}</h2>
     {% endif %}
 
     <div class="comparison-table-wrapper">

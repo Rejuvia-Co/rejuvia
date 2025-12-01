@@ -48,7 +48,7 @@
         "description_block_XDR8ag"
       ],
       "settings": {
-        "header": "We Only Use Clean, All-Natural Ingredients",
+        "header": "Powerful, All-Natural Ingredients",
         "description": "Our oral sprays use the highest quality, USA-made ingredients and are triple lab-tested for purity and potency. Every product includes a QR code linking to its lab report, so you can always feel confident that what's on the label is what's in the bottle.",
         "image": "shopify://shop_images/Rejuvia_Ecomm_8-6-255845_copy.webp"
       }
@@ -136,7 +136,7 @@
         "testimonial_Dp8R6G": {
           "type": "testimonial",
           "settings": {
-            "title": "Natural Melatonin",
+            "title": "Melatonin",
             "description": "Deep sleep promoting",
             "text": "<p>Focus Areas:</p><ul><li>REM Sleep</li><li>Sleep Quality</li><li>Sleep Soundness</li></ul>",
             "image": "shopify://shop_images/rejuvia_melatonin.webp"
@@ -160,8 +160,8 @@
         "testimonial_GGnkbb"
       ],
       "settings": {
-        "header": "Ingredients With Purpose.",
-        "description": "For all of our formulations, we source top-quality, organic ingredients from around the world."
+        "header": "Obsessively Formulated",
+        "description": "We source top-quality, organic ingredients from around the world that deliver powerful results."
       }
     },
     "separator_ingredients_eQrU4m": {

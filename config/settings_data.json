@@ -731,8 +731,8 @@
             "type": "utility_bar",
             "settings": {
               "show": true,
-              "link": "shopify://collections/bundles",
-              "text": "<p>Black Friday 30% OFF Sitewide | Enter Code <strong>BF30</strong></p>"
+              "link": "shopify://products/sleep-spray-6-pack",
+              "text": "<p>Get Over 66% OFF Today  <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
             }
           },
           "right_content_block_7LwdNX": {

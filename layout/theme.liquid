@@ -37,13 +37,6 @@
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
 
-  <script>
-    var jq = [];
-    var $;
-    $ = function(f) {
-      jq.push(f)
-    };
-  </script>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
   <script src="{{ 'simplistic.js' | asset_url }}"></script>

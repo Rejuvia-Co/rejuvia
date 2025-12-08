@@ -1,17 +1,23 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
-<!-- Required Core Stylesheet -->
+<!-- Required Core Stylesheet - Async loaded -->
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  media="print"
   onload="this.media='all'"
 >
-<!-- Optional Theme Stylesheet -->
+<!-- Optional Theme Stylesheet - Async loaded -->
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+  media="print"
   onload="this.media='all'"
 >
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+</noscript>
 
 <div class="customer-testimonials-container">
     <div class="testimonial-social-proof">

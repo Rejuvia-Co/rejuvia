@@ -4,9 +4,9 @@
   {%- assign showSecondImage = false -%}
 {%- endif -%}	
 <div class="image {% if showSecondImage %}show-second-image{% endif %}">
-  <div class="img animation lazyload" data-bgset="{% render 'lazy_src_webp', image: currentProduct.images.first %}"></div>
+  <div class="img animation lazyload" data-bgset="{% render 'lazy_src', image: currentProduct.images.first %}"></div>
   {%- if showSecondImage -%}
-  	<div class="img second-img animation lazyload lazypreload" data-bgset="{% render 'lazy_src_webp', image: currentProduct.images.last %}"></div>
+  	<div class="img second-img animation lazyload lazypreload" data-bgset="{% render 'lazy_src', image: currentProduct.images.last %}"></div>
   {%- endif -%}
   {% comment %} {%- if currentProduct.available and currentProduct.price_min < currentProduct.compare_at_price_min -%}
   	<div class="sale">sale</div>

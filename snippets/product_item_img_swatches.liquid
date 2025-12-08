@@ -1,9 +1,9 @@
 <div class="image">
-  <div class="img lazyload" style="display: block;" data-bgset="{% render 'lazy_src_webp', image: currentProduct.images.first %}"></div>
+  <div class="img lazyload" style="display: block;" data-bgset="{% render 'lazy_src', image: currentProduct.images.first %}"></div>
   {%- assign totalImages = 0 -%}
   {%- for img in currentProduct.images -%}
     {%- if img.variants.size > 0 and totalImages < 4 and img != currentProduct.featured_image -%}
-      <div class="img lazyload" style="display: none;" data-bgset="{% render 'lazy_src_webp', image: img %}"></div>
+      <div class="img lazyload" style="display: none;" data-bgset="{% render 'lazy_src', image: img %}"></div>
       {%- assign totalImages = totalImages | plus: 1 -%}
     {%- endif -%}
   {%- endfor -%}

@@ -1,11 +1,11 @@
 <div class="image">
   {% if template contains 'collection' %}
-    <div class="img" style="background-image: url('{{currentProduct.images.first | img_url: '600x', format: 'pjpg'}}')"></div>
+    <div class="img" style="background-image: url('{{currentProduct.images.first | img_url: '600x'}}')"></div>
 
     <link
       rel="preload"
       fetchpirority="high"
-      href="{{currentProduct.images.first | img_url: '600x', format: 'pjpg'}}"
+      href="{{currentProduct.images.first | img_url: '600x'}}"
       as="image">
 
 
@@ -13,7 +13,7 @@
 
 
   {% else %}
-    <div class="img lazyload" data-bgset="{% render 'lazy_src_webp', image: currentProduct.images.first %}"></div>
+    <div class="img lazyload" data-bgset="{% render 'lazy_src', image: currentProduct.images.first %}"></div>
 
   {% endif %}
 

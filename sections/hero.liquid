@@ -1,5 +1,15 @@
+{%- comment -%} Preload first hero image for LCP optimization {%- endcomment -%}
+{%- for block in section.blocks limit: 1 -%}
+  {%- if block.settings.image_mb != blank -%}
+    <link rel="preload" as="image" href="{{ block.settings.image_mb | img_url: '800x' }}" media="(max-width: 768px)" fetchpriority="high">
+  {%- endif -%}
+  {%- if block.settings.image != blank -%}
+    <link rel="preload" as="image" href="{{ block.settings.image | img_url: '1920x' }}" media="(min-width: 769px)" fetchpriority="high">
+  {%- endif -%}
+{%- endfor -%}
+
 <style>
- 
+
   .hero-carousel {overflow: hidden; box-sizing: initial;}
   .hero-carousel.slick-pending {display: block; max-height: 90vh;}
   .hero-carousel.slick-initialized {max-height: none;}

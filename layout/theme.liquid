@@ -20,11 +20,12 @@
   <meta charset="UTF-8">
 
   <!-- Preconnect to improve CDN connection times (300-900ms faster) -->
+  <link rel="preconnect" href="https://api.skio.com" crossorigin>
   <link rel="preconnect" href="https://cdn.skio.com" crossorigin>
-  <link rel="preconnect" href="https://assets.replocdn.com" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://cdn.addshoppers.com" crossorigin>
+  <link rel="preconnect" href="https://aca.506.io" crossorigin>
+  <link rel="preconnect" href="https://surveys.okendo.io" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <script src="{{ 'jquery.min.js' | asset_url }}"></script>
 
@@ -44,6 +45,18 @@
   {%- include 'fb_open_graph' -%}
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
+
+  {%- comment -%} Preload LCP image for homepage hero {%- endcomment -%}
+  {%- if template == 'index' -%}
+    {%- for block in section.settings.blocks limit: 1 -%}
+      {%- if block.settings.image_mb != blank -%}
+        <link rel="preload" as="image" href="{{ block.settings.image_mb | img_url: '800x' }}" media="(max-width: 768px)" fetchpriority="high">
+      {%- endif -%}
+      {%- if block.settings.image != blank -%}
+        <link rel="preload" as="image" href="{{ block.settings.image | img_url: '1920x' }}" media="(min-width: 769px)" fetchpriority="high">
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 <script src="{{ 'simplistic.js' | asset_url }}" defer></script>

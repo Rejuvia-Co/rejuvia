@@ -755,7 +755,7 @@ export class SkioPlanPicker extends LitElement {
         .li-images {
           flex-direction: column;
               align-items: flex-start !important;
-              display:none;
+              display:none!Important;
         }
         .subscription__image span {
           margin-top: 12px;

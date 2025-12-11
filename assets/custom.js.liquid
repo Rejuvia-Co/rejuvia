@@ -74,32 +74,44 @@ productCards.forEach(card => {
   const subscriptionSelect = card.querySelector("[data-subscription-select]")
   const sellingTypeDisplay = card.querySelector("[data-selling-plan-type]")
   const quantityInput = card.querySelector("[data-quantity-input]")
+  const quantityDec = card.querySelector("[data-quantity-dec]")
+  const quantityInc = card.querySelector("[data-quantity-inc]")
 
-  subBoxes.addEventListener("click", function() {
-    oneTimeBox.classList.remove("selected");
-    subBoxes.classList.add("selected")
-    sellingPlanInput.value = subscriptionSelect.value;
-    sellingTypeDisplay.innerText = "Subscription"
-  })
+  if (subBoxes) {
+    subBoxes.addEventListener("click", function() {
+      if (oneTimeBox) oneTimeBox.classList.remove("selected");
+      subBoxes.classList.add("selected")
+      if (sellingPlanInput && subscriptionSelect) sellingPlanInput.value = subscriptionSelect.value;
+      if (sellingTypeDisplay) sellingTypeDisplay.innerText = "Subscription"
+    })
+  }
 
-  oneTimeBox.addEventListener("click", function() {
-    oneTimeBox.classList.add("selected");
-    subBoxes.classList.remove("selected")
-    sellingPlanInput.value = null;
-    sellingTypeDisplay.innerText = "One Time"
-  })
+  if (oneTimeBox) {
+    oneTimeBox.addEventListener("click", function() {
+      oneTimeBox.classList.add("selected");
+      if (subBoxes) subBoxes.classList.remove("selected")
+      if (sellingPlanInput) sellingPlanInput.value = null;
+      if (sellingTypeDisplay) sellingTypeDisplay.innerText = "One Time"
+    })
+  }
 
-  subscriptionSelect.addEventListener("change", function() {
-    sellingPlanInput.value = this.value;
-    card.querySelector("[data-subscribe-price]").innerText = this.options[this.selectedIndex].dataset.price;
-  })
+  if (subscriptionSelect) {
+    subscriptionSelect.addEventListener("change", function() {
+      if (sellingPlanInput) sellingPlanInput.value = this.value;
+      const priceElement = card.querySelector("[data-subscribe-price]");
+      if (priceElement) priceElement.innerText = this.options[this.selectedIndex].dataset.price;
+    })
+  }
 
-  console.log( card.querySelector("[data-quantity-dec]"))
-  card.querySelector("[data-quantity-dec]").addEventListener("click", function() {
-    if (quantityInput.value > 1) quantityInput.value = Number(quantityInput.value) - 1;
-  })
-  
-  card.querySelector("[data-quantity-inc]").addEventListener("click", function() {
-    quantityInput.value = Number(quantityInput.value) + 1;
-  })
+  if (quantityDec && quantityInput) {
+    quantityDec.addEventListener("click", function() {
+      if (quantityInput.value > 1) quantityInput.value = Number(quantityInput.value) - 1;
+    })
+  }
+
+  if (quantityInc && quantityInput) {
+    quantityInc.addEventListener("click", function() {
+      quantityInput.value = Number(quantityInput.value) + 1;
+    })
+  }
 })

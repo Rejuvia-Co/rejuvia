@@ -22,29 +22,9 @@
         "title_3": "Trusted By 300,000+ Customers",
         "icon_3": "shopify://shop_images/SmileyWink.svg"
       }
-    },
-    "1751365969547df512": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_carousel_pPkKLh": {
-          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "show_heading": true,
-            "heading": "4,600+ Verified 5-Star Reviews",
-            "badge_link": "",
-            "product": "sleep-spray"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_carousel_pPkKLh"
-      ],
-      "disabled": true,
-      "settings": {}
     }
   },
   "order": [
-    "cart_main",
-    "1751365969547df512"
+    "cart_main"
   ]
 }

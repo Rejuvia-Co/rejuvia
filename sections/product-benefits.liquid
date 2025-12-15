@@ -1,0 +1,225 @@
+{{ 'product-benefits.css' | asset_url | stylesheet_tag }}
+
+{%- assign benefits_section = product.metafields.custom.product_benefits.value -%}
+
+{%- if benefits_section != blank -%}
+<section class="product-benefits-section" id="product-benefits-{{ section.id }}">
+  <div class="product-benefits__container">
+    {%- if benefits_section.heading != blank -%}
+      <h2 class="product-benefits__heading section-heading">{{ benefits_section.heading }}</h2>
+    {%- endif -%}
+
+    <div class="product-benefits__content">
+      {%- comment -%} Access benefits list {%- endcomment -%}
+      {%- assign benefits_list = benefits_section.benefits.value -%}
+
+      {%- comment -%} Left Benefits Column {%- endcomment -%}
+      <div class="product-benefits__left">
+        {%- for benefit in benefits_list limit: 2 -%}
+          <div class="product-benefits__item">
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                {% render 'checkmark' %}
+              </span>
+              <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+            </div>
+            {%- if benefit.description != blank -%}
+              <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Center Image {%- endcomment -%}
+      <div class="product-benefits__image-container">
+        <div class="product-benefits__gradient"></div>
+        <div class="product-benefits__decorative-dots">
+          {% render 'dots' %}
+        </div>
+        {%- if benefits_section.desktop_image != blank -%}
+          {{ benefits_section.desktop_image | image_url: width: 840 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right Benefits Column {%- endcomment -%}
+      <div class="product-benefits__right">
+        {%- for benefit in benefits_list limit: 2 offset: 2 -%}
+          <div class="product-benefits__item">
+            <div class="product-benefits__item-header">
+              <span class="product-benefits__checkmark">
+                {% render 'checkmark' %}
+              </span>
+              <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+            </div>
+            {%- if benefit.description != blank -%}
+              <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Layout - 2 Benefits, Image, 2 Benefits {%- endcomment -%}
+    <div class="product-benefits__mobile-content">
+      {%- comment -%} First 2 benefits {%- endcomment -%}
+      {%- for benefit in benefits_list limit: 2 -%}
+        <div class="product-benefits__item">
+          <div class="product-benefits__item-header">
+            <span class="product-benefits__checkmark">
+              {% render 'checkmark' %}
+            </span>
+            <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+          </div>
+          {%- if benefit.description != blank -%}
+            <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      {%- comment -%} Mobile Image {%- endcomment -%}
+      {%- if benefits_section.mobile_image != blank -%}
+        <div class="product-benefits__image-container product-benefits__image-container--mobile">
+          <div class="product-benefits__gradient"></div>
+          <div class="product-benefits__decorative-dots">
+            {% render 'dots' %}
+          </div>
+          {{ benefits_section.mobile_image | image_url: width: 400 | image_tag: class: 'product-benefits__image', loading: 'lazy' }}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Last 2 benefits {%- endcomment -%}
+      {%- for benefit in benefits_list limit: 2 offset: 2 -%}
+        <div class="product-benefits__item">
+          <div class="product-benefits__item-header">
+            <span class="product-benefits__checkmark">
+              {% render 'checkmark' %}
+            </span>
+            <h3 class="product-benefits__title">{{ benefit.title }}</h3>
+          </div>
+          {%- if benefit.description != blank -%}
+            <p class="product-benefits__description">{{ benefit.description | newline_to_br }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <style>
+    #product-benefits-{{ section.id }} {
+      background-color: #FFFFFF;
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__checkmark {
+      {%- if benefits_section.heck_bg != blank -%}
+        color: {{ benefits_section.heck_bg }};
+      {%- endif -%}
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__checkmark-check {
+      {%- if benefits_section.heck_mark != blank -%}
+        stroke: {{ benefits_section.heck_mark }};
+      {%- endif -%}
+    }
+
+    #product-benefits-{{ section.id }} .product-benefits__decorative-dots-svg {
+      {%- if benefits_section.dots != blank -%}
+        color: {{ benefits_section.dots }};
+      {%- endif -%}
+    }
+
+    {%- if benefits_section.gradient_1 != blank and benefits_section.gradient_2 != blank -%}
+    {%- comment -%} Use metafield values first, then section settings, then hardcoded defaults {%- endcomment -%}
+    {%- assign gradient_size_desktop = benefits_section.gradient_size_desktop | default: section.settings.gradient_size_desktop | default: 150 -%}
+    {%- assign gradient_size_mobile = benefits_section.gradient_size_mobile | default: section.settings.gradient_size_mobile | default: 150 -%}
+    {%- assign gradient_blur = benefits_section.gradient_blur | default: 35 -%}
+    {%- assign gradient_px_desktop = 280 | times: gradient_size_desktop | divided_by: 100 -%}
+    {%- assign gradient_px_tablet = 220 | times: gradient_size_desktop | divided_by: 100 -%}
+    {%- assign gradient_px_mobile = 131 | times: gradient_size_mobile | divided_by: 100 -%}
+
+    #product-benefits-{{ section.id }} .product-benefits__gradient {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: {{ gradient_px_desktop }}px;
+      height: {{ gradient_px_desktop }}px;
+      background: linear-gradient(258deg, {{ benefits_section.gradient_1 }} -3.86%, {{ benefits_section.gradient_2 }} 121.76%);
+      border-radius: 50%;
+      filter: blur({{ gradient_blur }}px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: 900px) {
+      #product-benefits-{{ section.id }} .product-benefits__gradient {
+        width: {{ gradient_px_tablet }}px;
+        height: {{ gradient_px_tablet }}px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      #product-benefits-{{ section.id }} .product-benefits__gradient {
+        width: {{ gradient_px_mobile }}px;
+        height: {{ gradient_px_mobile }}px;
+      }
+    }
+    {%- endif -%}
+  </style>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Benefits",
+  "tag": "section",
+  "class": "product-benefits",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section displays product benefits from the product metafield 'custom.product_benefits'. The section will be hidden if the metafield is empty."
+    },
+    {
+      "type": "header",
+      "content": "Instructions"
+    },
+    {
+      "type": "paragraph",
+      "content": "Configure benefits data in the product metafield: custom.product_benefits (metaobject type: benefits_section)"
+    },
+    {
+      "type": "header",
+      "content": "Fallback Gradient Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "These settings will be used if gradient values are not set in the product metafield."
+    },
+    {
+      "type": "range",
+      "id": "gradient_size_desktop",
+      "label": "Gradient Size Desktop (%)",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 150,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "gradient_size_mobile",
+      "label": "Gradient Size Mobile (%)",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 150,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefits"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

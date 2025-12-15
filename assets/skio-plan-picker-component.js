@@ -547,7 +547,7 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .group-container {
-            border: 1px solid #BFBFBF;
+            border: 2px solid #BFBFBF;
       }
 
       .skio-plan-picker .subs-group-container .group-title      {
@@ -611,13 +611,19 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .subs-group-container .group-topline {
-        padding-bottom: 12px;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #672666;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-bottom: 12px!Important;
+        margin-bottom: 12px!Important;
+        border-bottom: 1px solid #672666!Important;
+        padding-left: 16px!Important;
+        padding-right: 16px!Important;
       }
-
+      .group-container:not(.subs-group-container.group-container--selected) .group-topline {
+          padding-bottom: 12px;
+          margin-bottom: 12px;
+          border-bottom: 1px solid #672666;
+          padding-left: 16px;
+          padding-right: 16px;
+      }
       .skio-plan-picker .subs-group-container .selling-plan-dropdown-container > span {
         font-size: 16px;
         font-weight: 400;
@@ -753,9 +759,11 @@ export class SkioPlanPicker extends LitElement {
         .subscription__image span {
           margin-top: 12px;
         }
+        /* Commented out to keep subscription details open when toggling to OTP
         .group-container:not(.subs-group-container.group-container--selected) .group-content {
           display: none;
         }
+        */
         .group-container:not(.subs-group-container.group-container--selected)  .group-topline {
             margin-bottom: 0;
             padding-bottom: 0;
@@ -924,6 +932,12 @@ export class SkioPlanPicker extends LitElement {
               Fast, <span class="text-bold">FREE</span> Shipping On Every Order
             </span>
           </li>
+              <li>
+            <svg width="6px" height="6px" viewBox="0 0 0.12 0.12" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" d="M0.06 0.022a0.037 0.037 0 1 0 0 0.075A0.037 0.037 0 0 0 0.06 0.022"/></svg>
+            <span>
+              Easily Pause, Skip or Cancel Anytime
+            </span>
+          </li>
           <li class="li-images">
             <div>
               <svg width="6px" height="6px" viewBox="0 0 0.12 0.12" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" d="M0.06 0.022a0.037 0.037 0 1 0 0 0.075A0.037 0.037 0 0 0 0.06 0.022"/></svg>
@@ -952,29 +966,28 @@ export class SkioPlanPicker extends LitElement {
               </div>
             </div>
           </li>
-          <li>
-            <svg width="6px" height="6px" viewBox="0 0 0.12 0.12" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" d="M0.06 0.022a0.037 0.037 0 1 0 0 0.075A0.037 0.037 0 0 0 0.06 0.022"/></svg>
-            <span>
-               Easily Pause, Skip or Cancel Anytime
-            </span>
-          </li>
         </ul>
       </div>
     `
   }
 
+  // groupContentOneTime() {
+  //   return html`
+  //     <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
+  //       <!-- Subscription bullet points copied with styling from Loop -->
+  //       <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
+  //         <li>
+  //           <span>
+  //             Over 55% OFF vs. Buying Seperately
+  //           </span>
+  //         </li>
+  //       </ul>
+  //     </div>
+  //   `
+  // }
   groupContentOneTime() {
     return html`
-      <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
-        <!-- Subscription bullet points copied with styling from Loop -->
-        <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
-          <li>
-            <span>
-              Over 55% OFF vs. Buying Seperately
-            </span>
-          </li>
-        </ul>
-      </div>
+     <div></div>
     `
   }
 

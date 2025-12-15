@@ -1,0 +1,167 @@
+{{ 'product-fb-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- assign fb_reviews = product.metafields.custom.fb_reviews_list -%}
+
+{%- if fb_reviews.value != blank -%}
+
+<section class="product-fb-reviews-section" id="section-{{ section.id }}">
+  <div class="product-fb-reviews__container">
+    {%- comment -%} Heading {%- endcomment -%}
+    <div class="product-fb-reviews__heading">
+      <h2 class="product-fb-reviews__title section-heading">{{ section.settings.title }}</h2>
+      <p class="product-fb-reviews__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Reviews Grid/Scroll Container {%- endcomment -%}
+    <div class="product-fb-reviews__reviews-wrapper">
+      <div class="product-fb-reviews__reviews">
+        {%- for review in fb_reviews.value -%}
+          <div class="product-fb-reviews__card">
+            <div class="product-fb-reviews__card-inner">
+              {%- comment -%} Profile Image (Desktop Only) {%- endcomment -%}
+              {%- if review.icon -%}
+                <div class="product-fb-reviews__profile-image product-fb-reviews__profile-image--desktop">
+                  {{ review.icon | image_url: width: 100 | image_tag:
+                    loading: 'lazy',
+                    widths: '50, 100',
+                    class: 'product-fb-reviews__profile-img',
+                    alt: review.person
+                  }}
+                </div>
+              {%- endif -%}
+
+              {%- comment -%} Comment Content {%- endcomment -%}
+              <div class="product-fb-reviews__comment">
+                {%- comment -%} Header: Profile Image (Mobile) + Name + Facebook Icon {%- endcomment -%}
+                <div class="product-fb-reviews__comment-header">
+                  {%- comment -%} Profile Image (Mobile Only) {%- endcomment -%}
+                  {%- if review.icon -%}
+                    <div class="product-fb-reviews__profile-image product-fb-reviews__profile-image--mobile">
+                      {{ review.icon | image_url: width: 100 | image_tag:
+                        loading: 'lazy',
+                        widths: '50, 100',
+                        class: 'product-fb-reviews__profile-img',
+                        alt: review.person
+                      }}
+                    </div>
+                  {%- endif -%}
+
+                  <div class="product-fb-reviews__person-info">
+                    {%- if review.person -%}
+                      <p class="product-fb-reviews__person-name">{{ review.person }}</p>
+                    {%- endif -%}
+                  </div>
+
+                  {%- comment -%} Facebook Icon {%- endcomment -%}
+                  <div class="product-fb-reviews__facebook-icon" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 17.9895 4.3882 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9701 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.34 7.875 13.875 8.80008 13.875 9.75V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6118 22.954 24 17.9895 24 12Z" fill="#1877F2"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {%- comment -%} Review Text {%- endcomment -%}
+                {%- if review.review -%}
+                  <p class="product-fb-reviews__review-text">{{ review.review | newline_to_br }}</p>
+                {%- endif -%}
+
+                {%- comment -%} Footer: Like, Reply, Time {%- endcomment -%}
+                <div class="product-fb-reviews__comment-footer">
+                  <span class="product-fb-reviews__footer-item">Like</span>
+                  <span class="product-fb-reviews__footer-item">Reply</span>
+                  <span class="product-fb-reviews__footer-item">25m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Mobile Scroll Indicator {%- endcomment -%}
+      <div class="product-fb-reviews__scroll-indicator" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.getElementById('section-{{ section.id }}');
+    if (!section) return;
+
+    const reviewsWrapper = section.querySelector('.product-fb-reviews__reviews-wrapper');
+    const reviewsContainer = section.querySelector('.product-fb-reviews__reviews');
+    const scrollIndicator = section.querySelector('.product-fb-reviews__scroll-indicator');
+
+    if (!reviewsContainer || !scrollIndicator) return;
+
+    // Function to update scroll indicator visibility
+    function updateScrollIndicator() {
+      const isScrollable = reviewsContainer.scrollWidth > reviewsContainer.clientWidth;
+      const isAtEnd = reviewsContainer.scrollLeft + reviewsContainer.clientWidth >= reviewsContainer.scrollWidth - 10;
+
+      if (isScrollable && !isAtEnd) {
+        scrollIndicator.classList.add('is-visible');
+      } else {
+        scrollIndicator.classList.remove('is-visible');
+      }
+    }
+
+    // Check on load and scroll
+    updateScrollIndicator();
+    reviewsContainer.addEventListener('scroll', updateScrollIndicator);
+    window.addEventListener('resize', updateScrollIndicator);
+
+    // Optional: Auto-hide after first interaction
+    let hasScrolled = false;
+    reviewsContainer.addEventListener('scroll', function() {
+      if (!hasScrolled) {
+        hasScrolled = true;
+        setTimeout(() => {
+          scrollIndicator.classList.add('has-scrolled');
+        }, 1000);
+      }
+    }, { once: true });
+  })();
+</script>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product FB Reviews",
+  "tag": "section",
+  "class": "product-fb-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Latest Reviews"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
+    },
+    {
+      "type": "paragraph",
+      "content": "This section displays Facebook-style reviews from the product's custom.fb_reviews_list metafield. The section will be hidden if no reviews are defined."
+    },
+    {
+      "type": "paragraph",
+      "content": "**Metafield structure:** custom.fb_reviews_list (metaobject list) contains review items with: person (single line text), icon (file image), review (multiline text)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FB Reviews"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

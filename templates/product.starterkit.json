@@ -63,6 +63,14 @@
         "preselected_item": 1
       }
     },
+    "product_benefits_3R3VMx": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
+      }
+    },
     "ingredients_section_H4HeNP": {
       "type": "ingredients-section",
       "blocks": {
@@ -152,6 +160,32 @@
       "settings": {
         "heading": "How To Use Rejuvia",
         "subheading": "For best results, use your sprays consistently as part of your daily routine."
+      }
+    },
+    "product_how_to_use_qBgYzh": {
+      "type": "product-how-to-use",
+      "disabled": true,
+      "name": "Product How To Use",
+      "settings": {}
+    },
+    "founder_story_ttnFwX": {
+      "type": "founder-story",
+      "disabled": true,
+      "name": "Founder Story",
+      "settings": {
+        "heading": "Originally Built For My Mom, Now For Everyone",
+        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
+        "founder_name": "RC Williams",
+        "founder_title": "Founder of Rejuvia"
+      }
+    },
+    "product_fb_reviews_Tz39mq": {
+      "type": "product-fb-reviews",
+      "disabled": true,
+      "name": "Product FB Reviews",
+      "settings": {
+        "title": "Latest Reviews",
+        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
       }
     },
     "faqs_ingredients_gVDK3H": {
@@ -342,8 +376,12 @@
   },
   "order": [
     "product_widget_6p4fVc",
+    "product_benefits_3R3VMx",
     "ingredients_section_H4HeNP",
     "how_it_works_4YVLwU",
+    "product_how_to_use_qBgYzh",
+    "founder_story_ttnFwX",
+    "product_fb_reviews_Tz39mq",
     "faqs_ingredients_gVDK3H",
     "separator_ingredients_dFiEby",
     "1717460916cf4757a6",

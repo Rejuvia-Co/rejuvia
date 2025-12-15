@@ -1,22 +1,16 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
+  <!-- Dash.Fi -->
+<script async src="https://pixel.dashfi.dev/static/js/pixel.dash.fi.js"></script>
+<script>window.dashFiTracker = window.dashFiTracker ||
+{};window.dashFiTracker['siteIdentifier'] = '1f02c2f1-0506-6484-97db-2189a63d0814';
+</script>
+<!-- End Dash.Fi -->
   
 {% render 'skio-head' %}
-
-  <script>
-(function() {
-  var script = document.createElement('script');
-  script.id = 'minty-onsite-script';
-  script.src = 'https://cdn.addshoppers.com/minty/shopify-onsite/executeminty.js';
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
-})();
-</script>
   
   {% render 'replo-head' %}
-  <link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
   {% include 'dataLayer-allPages' %}
   
   <meta name="robots" content="index,follow" />
@@ -24,7 +18,8 @@
   <meta name="facebook-domain-verification" content="83oi8yqil0ha2pgr9sit7bgxfv8dcr" />
   <meta name="google-site-verification" content="XM6h9jLMM-HNdEytyhvpQtsP3_rgxIxUHyL6FS3qGmY" />
   <meta charset="UTF-8">
-  <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+
+<script src="{{ 'jquery.min.js' | asset_url }}" ></script>
 
   {%- if template == 'index' -%}
     <title>{{ page_title }}</title>
@@ -39,23 +34,12 @@
   <link rel="canonical" href="{{ canonical_url }}" />
   <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
 
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
   {%- include 'fb_open_graph' -%}
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
 
-  <script>
-    var jq = [];
-    var $;
-    $ = function(f) {
-      jq.push(f)
-    };
-  </script>
-
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-  <script src="{{ 'simplistic.js' | asset_url }}"></script>
+<script src="{{ 'simplistic.js' | asset_url }}" defer></script>
   <script src="{{ 'vendor.js' | asset_url }}"></script>
   <script src="{{ 'ProductJs.js' | asset_url }}"></script>
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>

@@ -1,0 +1,118 @@
+@mixin opacity($value) {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$value)"; filter: alpha(opacity=$value); -moz-opacity: $value/100; -khtml-opacity: $value/100; opacity: $value/100;}
+@mixin animation($duration){-webkit-transition: all $duration linear; -moz-transition: all $duration linear; -o-transition: all $duration linear; -ms-transition: all $duration linear; transition: all $duration linear;}
+@mixin ease-animation($duration){-webkit-transition: all $duration ease-out; -moz-transition: all $duration ease-out; -o-transition: all $duration ease-out; -ms-transition: all $duration ease-out; transition: all $duration ease-out;}
+@mixin transition($value){-webkit-transition: $value; -moz-transition: $value; -o-transition: $value; -ms-transition: $value; transition: $value;}
+
+@mixin rotate($value) {-ms-transform: rotate($value); -webkit-transform: rotate($value); transform: rotate($value);}
+@keyframes spin45L {0% {-ms-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); transform: rotate(-45deg);}}
+@keyframes spin45R {0% {-ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg);}}
+@mixin rotateFix($spinName){animation: $spinName 1ms; animation-play-state: paused;} /*useful to rotate elements that contains emoji and other special things that doesn't work with native 'transform: rotate...' */
+header{background:#fff;}
+.account .note a {display: inline-block; margin-bottom: 1em; font-size: 100%; text-decoration: underline;}
+.account .note input {display: inline-block; width: auto; margin: 0; text-decoration: underline;}
+.login-page.reset-password div.note {margin-top: 2em;}
+.new-customer-cta {margin-top: 2em;}
+
+.login-page {padding: 50px 0; text-align: center;}
+.login-page .container {max-width: 520px;}
+.login-page input {width: 100%; margin-bottom: 1em;padding-left:15px;}
+.login-page .social_front {overflow: hidden;}
+.login-page .social {padding: 0;}
+.login-page .social ul {overflow: hidden;}
+.login-page .social h4 {font-size: 1.5em; margin: 0 0 1em;}
+.login-page .social ul li {list-style: none;}
+.login-page .social ul li a {color: #fff; font-size: 14px !important; text-align: center;}
+.isNotMobile .login-page .social ul li a:hover {color: #fff;}
+.login-page .register-btn {width: 100%;}
+#recover-password .note{margin-bottom:10px;    margin-top: 10px;}
+#recover-password,
+#customer-register,
+#customer-login{
+      padding: 3rem 1rem;
+    margin: 3rem 0;
+    background: #fff;
+}
+  @media   (max-width: 768px) {
+body .account .note a{letter-spacing:0;}
+
+body .btn, body input.btn{width:100%;}
+  }
+  @media   (min-width: 768px) {
+body #recover-password,
+body #customer-register,
+body #customer-login{
+      padding: 3rem;
+    margin: 3rem 0;
+    background: #fff;
+}
+  }
+.dot-spacer{
+      margin: 0 10px;
+    font-size: 20px;
+    line-height: 10px;
+    position: relative;
+    top: 3px;
+  
+}
+.login-page{    min-height: calc(100vh - 100px)!important;}
+
+.my-account {margin-bottom:2em;}
+.my-account .content h2 {font-size: 1.4em; margin-bottom: 1em;}
+.my-account .content {width:75%; padding: 40px 5%; margin-top: 0; background: #F5F5F5; text-align: left;}
+.my-account .content input, .my-account .content select {margin-bottom: 1em;}
+.my-account .content a:not(.btn) {text-decoration: underline;}
+.my-account .grid {margin-top: 4em;}
+.my-account .orders {margin-top: 3em;}
+.my-account table th {font-weight: 700; border-bottom: 1px solid #ddd;}
+.my-account table td {padding: 0.75em 0 0 0;}
+.my-account table tbody tr:first-child td {padding-top: 1.5em;}
+.my-account table td a {text-decoration: underline;}
+.my-account table tfoot td {padding: 0.3em 0;}
+.my-account table tfoot tr:first-child td {padding-top: 2em;}
+.my-account table tfoot .total {font-size: 1.3em; font-weight: 700; padding-top: 1.1em;}
+.my-account .note-default {font-size: 0.8em; text-transform: none; color: #eac78b;}
+.my-account .address-item {margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid #ddd;}
+.my-account .address-item:last-child {margin: 0; border: 0; padding: 0;}
+.my-account .address-title {float: left; font-weight: 700; margin-bottom: 1em;}
+.my-account .address-actions{ float: none; font-weight: 700; text-align: right; }
+.my-account .address-actions a {background-color: #eac78b; text-decoration:none!important; font-size: 0.9em;}
+.my-account .address-actions a:hover {color: #000;}
+.my-account .address-actions .action.edit {padding-right: 1em; margin-right: 1em; }
+.my-account .action {display: inline-block;}
+.my-account .action svg {margin-right: 0.5em;}
+.isNotMobile .my-account .action:hover svg path {color: #eac78b;}
+.my-account .view_address {font-size:1.15em;}
+.my-account .edit-address {margin-bottom: 1em;}
+.my-account .add-address {margin-bottom: 3em; padding-bottom: 2em; border-bottom: 1px solid #ddd;}
+.my-account .customer-addresses .error {color: red; border-color: red;}
+
+.default-address {margin: 1em 0 2em;}
+.default-address input {@include opacity(0); position: absolute;}
+.default-address input, .default-address label {display: inline-block; vertical-align: middle; cursor: pointer;}
+.default-address label { position: relative;}
+.default-address label:before {content: ''; background: #fff url(//www.rejuvia.co/cdn/shop/t/183/assets/checked.png?v=129865969628936296241749653363) no-repeat center; background-size: 0%; border: 2px solid #ddd; width: 18px; height: 18px; margin-right: 15px; text-align: center; @include animation(0.2s); }
+.default-address input:checked + label:before {background-color: #ddd; background-size: 70%;}
+
+/******** menu *******/
+.my-account-menu {width:20%; margin-top: 40px;}
+.my-account-menu .links a {display: block; width: 100%; padding: 0.5em 0; text-transform: uppercase; font-weight: 700; }
+.my-account-menu .btn {margin-top: 2em;}
+
+@media all and (max-width: 900px) {
+  .my-account .content {width: 100%; margin: 0; background: none; padding: 3em 0 0; border: none;}
+  .my-account .content h1 {font-size: 1.5em;}
+  .my-account .heading .btn {font-size: 0.6em;}
+  .my-account table {font-size: 0.8em; }
+  .my-account .grid .grid__item {margin-bottom: 2em;}
+  .my-account .address-title {width: 60%; line-height: 160%;}
+  .my-account .address-actions {width: 40%; font-size: 0.8em; line-height: 120%;}
+  .my-account .address-item p, .my-account .info p {font-size: 0.9em;}
+  .my-account-menu {width: 100%; padding: 2em 0 0; margin: 0; }
+  .my-account-menu .goto {position: relative;}
+  .my-account-menu .goto .trigger {cursor: pointer; width: 100%; height: 100%; text-transform: uppercase; border: 2px solid; border-radius:10em; padding: 1em 3em 1em 2em; position: relative;}
+  .my-account-menu .goto .trigger svg {position: absolute; right: 25px; top: 50%; margin-top: -0.5em; display: flex; align-items: center; font-size: 1.6em;}
+  .my-account-menu .goto .trigger.open svg {@include rotate(180deg);}
+  .my-account-menu .goto .links {display: none; background: #fff; box-sizing: border-box; position: absolute; left: 0; top: 100%; width: 100%; padding: 1em 0 1em 2em; border: 1px solid #ddd; border-top: 0; }
+  .my-account-menu .logout {width: 35%; padding: 0; margin: 0; padding-left: 1em;}
+  .my-account-menu .logout .btn {margin: 0; padding: 0.9em 0; width: 100%; max-width: 100%;}
+}

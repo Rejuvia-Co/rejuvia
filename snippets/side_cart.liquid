@@ -66,8 +66,29 @@
 
       $('#side-cart .remove').click(function(e){
         e.preventDefault();
-        $(this).closest('.item').find('input[type=number]').val(0);
-        updateCart();
+        var $item = $(this).closest('.item');
+        var $input = $item.find('input[type=number]');
+        var lineIndex = $input.attr('name').match(/\[(\d+)\]/)[1];
+
+        setTimeout(function(){$('#loading-overlay').show()}, 100);
+
+        // Use change.js instead of update.js for removing items with subscriptions
+        $.ajax({
+          type: 'POST',
+          url: '/cart/change.js',
+          data: {
+            line: parseInt(lineIndex) + 1,
+            quantity: 0
+          },
+          dataType: 'json'
+        }).fail(function(xhr){
+          console.log('error', xhr.responseText);
+          $('#loading-overlay').hide();
+        }).done(function(){
+          addToCartSuccess();
+          $('#add-cart-overlay').fadeOut();
+        });
+
         return false;
       });
 

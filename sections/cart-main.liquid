@@ -16,8 +16,40 @@
         checkInstructions();
 
         $(document).on('click', '#cart .remove-from-cart', function(){
-            $(this).closest('.item').find('input[type=number]').val(0);
-            updateCart();
+            var $item = $(this).closest('.item');
+            var $input = $item.find('input[type=number]');
+            var lineIndex = $input.attr('id').replace('updates_', '');
+
+            $('#loading-overlay').show();
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/cart/change.js',
+                data: {
+                    id: lineIndex,
+                    quantity: 0
+                },
+                dataType: 'json'
+            }).fail(function(xhr){
+                console.log('error', xhr.responseText);
+                $('#loading-overlay').hide();
+            }).done(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/cart?view=update',
+                    cache: false,
+                    success: function(data){
+                        $('#loading-overlay').hide();
+                        $('#cart').remove();
+                        $('.content-wrapper').prepend(data);
+                        checkInstructions();
+                        location.reload();
+                    }
+                });
+                updateCartDesc();
+            });
+
             return false;
         });
 
@@ -225,6 +257,12 @@
 
                 <div class="grid__item two-thirds medium--one-whole small--one-whole">
                     {% comment %} <h2 class="column-title custom_subtitle_font medium-down--hide"></h2> {% endcomment %}
+
+                    <a href="{{  routes.cart_clear_url }}" class="cart-header--clear_all" >
+                        {% render 'icon-close-small' %}
+                        <span>{{ 'sections.cart.cart_clear_button' | t }}</span>
+                        </a>
+                   
                     <div class="items">
                         {%- for item in cart.items -%}
                             <div class="item {{ item.product.handle }}">
@@ -338,11 +376,18 @@
     </span>
 
     <span class="cart-unempty__sale--price">
-      {{ sale_total | money }}
+      {%comment%}{{ sale_total | money }} {%endcomment%}
+
+
+        {%- if sale_total == 0 -%}
+            {{- 'sections.cart.free' | t -}}
+        {%- else -%}
+             {{ sale_total | money }}
+        {%- endif -%}
     </span>
 
   {% else %}
-    {%- comment -%} Немає знижки — показуємо тільки ціну. {%- endcomment -%}
+    
     <span class="cart-unempty__sale--price">
       {{ sale_total | money }}
     </span>

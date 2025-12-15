@@ -1,0 +1,452 @@
+function handleFirstTab(e) {
+    if (e.keyCode === 9) { // tab
+        document.body.classList.add('user-is-tabbing');
+    }
+}
+window.addEventListener('keydown', handleFirstTab);
+document.addEventListener("click", function(){
+  document.body.classList.remove('user-is-tabbing');
+});
+
+$(function() {
+  	/* Reduced motion: Replace slideToggle(), slideDown(), slideUp() with toggle(), show(), hide() */
+  	var oSlideToggle = jQuery.fn.slideToggle;
+    jQuery.fn.slideToggle = function() {
+      if(Simplistic.reducedMotion()){
+       	return jQuery.fn.toggle.apply(this, arguments); 
+      }else{
+      	return oSlideToggle.apply(this, arguments);
+      }
+    };
+    var oSlideDown = jQuery.fn.slideDown;
+    jQuery.fn.slideDown = function() {
+      if(Simplistic.reducedMotion()){
+       	return jQuery.fn.show.apply(this, arguments); 
+      }else{
+      	return oSlideDown.apply(this, arguments);
+      }
+    };
+    var oSlideUp = jQuery.fn.slideUp;
+    jQuery.fn.slideUp = function() {
+      if(Simplistic.reducedMotion()){
+       	return jQuery.fn.hide.apply(this, arguments); 
+      }else{
+      	return oSlideUp.apply(this, arguments);
+      }
+    };
+  	/* End of Reduced Motion */
+  
+  	jQuery.fn.sortDomElements = (function() {
+        return function(comparator) {
+            return Array.prototype.sort.call(this, comparator).each(function(i) {
+                  this.parentNode.appendChild(this);
+            });
+        };
+    })();
+  
+  	if(!isMobile.any) {
+      $('body').addClass('isNotMobile'); 
+    }
+
+  	$(document).on("click", ".quantity-box .minus", function(e) {
+      	e.preventDefault();
+      	var input = $(this).parent().find('input[type=number]');
+    	try {
+          if(input.attr('min')<input.val()) {
+          	input.get(0).stepDown();
+          	input.change();
+          }
+        } catch(e) {
+          var value = (parseInt(input.val())-1);
+          input.val((value>=0 ? value : 0));
+          input.change();
+        }
+  	});
+  	$(document).on("click", ".quantity-box .plus", function(e) {
+      	e.preventDefault();
+      	var input = $(this).parent().find('input[type=number]');
+    	try {
+          input.get(0).stepUp();
+          input.change();
+        } catch(e) {
+          var value = (parseInt(input.val())+1);
+          input.val(value);
+          input.change();
+        }
+  	});
+
+  	/********* QUICK VIEW *********/
+  	$(document).on('click', '.product-item .quick-view-btn', function(){
+      var url = $(this).data('url');
+      $('#loading-overlay').show();
+
+      $.ajax({
+        url: url,
+        cache: false
+      }).success(function(data){
+        $('#loading-overlay').hide();
+        Simplistic.openModal(data, 'quick-view');
+      });
+
+      return false;
+    });
+
+  	if($('#side-cart').length > 0) {
+    	initSideCart();
+  	}$('body').delegate('.add-to-cart-form', 'submit', function(){
+            return validateAddCart($(this));
+        });// $(window).scroll($.throttle(15, function(){
+    //   if($(this).scrollTop()<=200) {
+    //     $('.scrollup').removeClass('fadein');
+    //   } else {
+    //     $('.scrollup').addClass('fadein');
+    //   }
+
+    ////     if( $(this).scrollTop()>=80 ) {
+    //       $('.header-drop').addClass('scroll');
+    //     } else {
+    //       $('.header-drop').removeClass('scroll');
+    //     }
+    ////   if( $(this).scrollTop()>=80 ) {
+    //     $('body').addClass('scroll');
+    //   } else {
+    //     $('body').removeClass('scroll');
+    //   }
+    // }));
+
+    $('.header-drop .main-menu').html($('#header .main-menu').html());
+    $('.header-drop .main-menu a').attr({'focusable':'false','tabindex':'-1','aria-hidden':'true'});
+  	setupDropdownMenus();
+});
+
+function setupDropdownMenus(){
+  var config = {
+    over: function () {
+      $(this).find('.submenu:first').slideDown();
+    }, 
+    timeout: 400, 
+    out: function () {
+      $(this).find('.submenu:first').slideUp();
+    }
+  };
+
+    const $trigger = $('.has-dropdown--mega');
+    const $menu = $('.menu-desktop');
+
+    $trigger.on('mouseenter', function() {
+        $menu.addClass('open');
+        $trigger.addClass('open');
+    });
+
+    $(document).on('mousemove', function(e) {
+        if (
+            !$menu.is(e.target) && $menu.has(e.target).length === 0 &&
+            !$trigger.is(e.target) && $trigger.has(e.target).length === 0
+        ) {
+            $menu.removeClass('open');
+            $trigger.removeClass('open');
+        }
+    });
+  //$('.main-menu .has-dropdown').hoverIntent(config);
+
+  $(document).on('keydown', '.main-menu .has-dropdown a:focus', function(e){
+    if (e.which == 32) { //Spacebar
+      e.preventDefault();
+      $(this).next().slideToggle();
+    }
+    if (e.which == 40) { //Arrow Down
+      e.preventDefault();
+      $(this).next().slideDown();
+    }
+    if (e.which == 38) { //Arrow Up
+      e.preventDefault();
+      $(this).next().slideUp();
+    }
+  });
+  $(document).on('keydown', '.main-menu .has-dropdown .has-dropdown a:focus', function(e){
+    if (e.which == 39) { //Arrow Right
+      e.preventDefault();
+      $(this).next().slideDown();
+    }
+    if (e.which == 37) { //Arrow Left
+      e.preventDefault();
+      $(this).next().slideUp();
+    }
+  });
+}
+
+function validateAddCart(form) {
+  if(form.find('input[name=id]').val()=='') {
+        var allOptionsSelected;
+      	if(form.find('.single-option-selector').length > 0) {
+            allOptionsSelected = true;
+            form.find('.single-option-selector').each(function(){
+                if($(this).val()=="") {
+                    allOptionsSelected = false;
+                    return false;
+                }
+            });
+        } else {
+          	allOptionsSelected = false;
+        }
+      	
+      	if(allOptionsSelected) {
+          	var errorMsg = form.find('.validation-msg').text();
+          	if(errorMsg) {
+          		alert(errorMsg);
+            } else {
+            	alert("The selected variant is sold out.");
+            }
+        } else {
+        	var labels = [];
+            form.find('.options label').each(function(key, obj){
+                labels.push($(obj).text().replace(':', '').trim());
+            });
+            alert("You must select a "+labels.join('/')+".");
+        }
+      	return false;
+    }
+  	return true;
+}
+
+function initSideCart() {
+	$('.header .cart-wrap').click(function(e){
+      e.stopPropagation();
+      showSideCart(true);
+      return false;
+    });
+
+    $(document).click(function(event){
+      if(!$(event.target).closest('#side-cart').length && $(event.target).attr('id')!="loading-overlay" && $('#side-cart').hasClass('open')) {
+        hideSideCart();
+      }
+    });
+}
+
+function addToCart(form, callback){
+	$('#loading-overlay').show();
+  	if(modal) modal.close();
+  
+  	var productJs = form.closest('.initialized').data('productjs');
+  	if(productJs) {
+    	$(document).trigger("addToCart", [productJs.getProduct(), productJs.getCurrentVariant(), form]);
+    } else {
+    	$(document).trigger("addToCart", [form]);
+    }
+  
+	$.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: form.serialize(),
+      dataType: 'json',
+      error: addToCartFail,
+      success: function(){
+        if(productJs) {
+          $(document).trigger("addToCartSuccess", [productJs.getProduct(), productJs.getCurrentVariant(), form]);
+        } else {
+          $(document).trigger("addToCartSuccess", [form]);
+        }
+        if(callback) {
+          callback();
+        } else {
+          addToCartSuccess();
+        }
+      },
+      cache: false
+	});
+}
+
+function addToCartSuccess(jqXHR, textStatus, errorThrown){
+	updateCartDesc(false);
+}
+
+function addToCartFail(jqXHR, textStatus, errorThrown){
+  	var response = $.parseJSON(jqXHR.responseText);
+  	$('#loading-overlay').hide();
+  	Simplistic.openModal('<div class="error-itemincart">'+response.description+'</div>', 'message');
+}
+
+function updateCartDesc(openSideCart){
+  	$.ajax({
+		type: 'GET',
+		url: '/cart?view=side-cart',
+		cache: false,
+      	success: function(data){
+          $('#loading-overlay').hide();
+
+          var animate = true;
+          if($('#side-cart').width()>0 && $('#side-cart').hasClass('open')) {
+            animate = false;
+          }
+          $('#side-cart').remove();
+          $('#page').append(data);
+          if(modal) modal.close();
+          if(openSideCart){
+            showSideCart(animate);
+          } else {
+            window.location.pathname = "/cart"
+          }
+      	}
+	});
+}
+
+function showSideCart(animate) {
+  $('body, html').css({overflow: 'hidden'});
+  $('#page').addClass('mode-overlay');
+  if(animate) {
+    setTimeout(function(){$('#side-cart').addClass('open')}, 100);
+  } else {
+    $('#side-cart').removeClass('ease-animation-slow');
+  	$('#side-cart').addClass('open');
+    setTimeout(function(){$('#side-cart').addClass('ease-animation-slow')}, 200);
+  }
+  Simplistic.trapFocus({
+    $container: $('#side-cart'), 
+    namespace: 'side-cart'
+  });
+}
+
+function hideSideCart() {
+  $('#side-cart').removeClass('open');
+  $('#page').removeClass('mode-overlay');
+  $('body, html').css({overflow: ''});
+  Simplistic.removeTrapFocus({
+    $container: $('#side-cart'), 
+    namespace: 'side-cart'
+  });
+}
+
+window.SimplisticJS = function (){
+  this.formatMoney = "$ \{\{amount\}\}";
+  this.beforeTrapFocus = false;
+  
+  /**
+   * Traps the focus in a particular container
+   *
+   * @param {object} options - Options to be used
+   * @param {jQuery} options.$container - Container to trap focus within
+   * @param {jQuery} options.$elementToFocus - Element to be focused when focus leaves container
+   * @param {string} options.namespace - Namespace used for new focus event handler
+   */
+  this.trapFocus = function(options) {
+    this.beforeTrapFocus = $(':focus');
+    var eventName = options.namespace
+      ? 'focusin.' + options.namespace
+      : 'focusin';
+
+    if (!options.$elementToFocus) {
+      options.$elementToFocus = options.$container;
+    }
+
+    options.$container.attr('tabindex', '-1');
+    options.$elementToFocus.focus();
+
+    $(document).on(eventName, function(evt) {
+      if (
+        options.$container[0] !== evt.target &&
+        !options.$container.has(evt.target).length
+      ) {
+        options.$container.focus();
+      }
+    });
+  },
+
+  /**
+   * Removes the trap of focus in a particular container
+   *
+   * @param {object} options - Options to be used
+   * @param {jQuery} options.$container - Container to trap focus within
+   * @param {string} options.namespace - Namespace used for new focus event handler
+   */
+  this.removeTrapFocus = function(options) {
+    var eventName = options.namespace
+      ? 'focusin.' + options.namespace
+      : 'focusin';
+
+    if (options.$container && options.$container.length) {
+      options.$container.removeAttr('tabindex');
+    }
+    if(this.beforeTrapFocus) {
+    	this.beforeTrapFocus.focus();
+      	this.beforeTrapFocus = false;
+    }
+
+    $(document).off(eventName);
+  }
+  
+  this.handleize = function (str) {
+    //source https://gist.github.com/dlindenkreuz/a439ec4b939f0561d6d9
+    return str.toLowerCase().replace(/[^\w\u00C0-\u024f]+/g, "-").replace(/^-+|-+$/g, "");
+  };
+  
+  this.reducedMotion = function() {
+  	return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  this.getQueryParam = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  this.randomstring = function(L){
+    var s= '';
+    var randomchar=function(){
+      var n= Math.floor(Math.random()*62);
+      if(n<10) return n; //1-10
+      if(n<36) return String.fromCharCode(n+55); //A-Z
+      return String.fromCharCode(n+61); //a-z
+    }
+    while(s.length< L) s+= randomchar();
+    return s;
+  }
+
+  this.validateEmail = function(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+  }
+
+  this.openModal = function(content, css) {
+    modal = new tingle.modal({
+      closeMethods: ['overlay', 'button', 'escape'],
+      closeLabel: "Close",
+      cssClass: [css],
+      beforeOpen: function() {
+        if(window.innerWidth > 600) {
+        	$(".tingle-modal__close").appendTo(".tingle-modal-box__content");
+        }
+      },
+      beforeClose: function() {
+    	$(".tingle-modal__close").prependTo(".tingle-modal");
+        return true;
+      }
+    });
+    modal.setContent(content);
+    modal.open();
+  }
+
+  this.onImagesLoaded = function(images, callback){
+    var imagesLoaded = 0;
+    var loadFunction = function() {
+      imagesLoaded++;
+      if(imagesLoaded==images.length) {
+        callback();
+      }
+    };
+    if(images.length>0) {
+      images.each(function(){
+        var img = new Image();
+        img.onload = loadFunction;
+        img.onerror = loadFunction;
+        img.src = $(this).attr('src');
+      });
+    } else {
+      callback();
+    }
+  };
+};
+window.Simplistic = new SimplisticJS();

@@ -21,7 +21,7 @@
     {% for icon in section.blocks %}
       <div class="icon-item flex justify-content-start align-items-center direction-column">
         {% if icon.settings.image != nil %}
-          <div class="image" data-aos="zoom-in">
+          <div class="image zoom-in">
             <img class="lazyload" data-sizes="auto" src="{% render 'image_placeholder', image: icon.settings.image %}" data-srcset="{% render 'lazy_src', image: icon.settings.image %}" />
           </div>
         {% endif %}
@@ -39,7 +39,19 @@
   $(function() {
     $(document).ready(function() {
       $('html').removeClass('no-js');
-      AOS.init();
+
+      // Simple scroll animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.pdp-middle-section .zoom-in').forEach(el => {
+        observer.observe(el);
+      });
     })
   })
 </script>

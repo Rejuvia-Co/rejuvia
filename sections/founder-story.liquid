@@ -1,0 +1,108 @@
+{{ 'founder-story.css' | asset_url | stylesheet_tag }}
+
+<section class="founder-story-section" id="section-{{ section.id }}" style="display: block; visibility: visible;">
+  <div class="founder-story__container">
+    <div class="founder-story__card">
+      {%- comment -%} Content Section (Left - Purple) {%- endcomment -%}
+      <div class="founder-story__content">
+        {%- if section.settings.heading != blank -%}
+          <div class="founder-story__heading">
+            <h2 class="founder-story__title section-heading">{{ section.settings.heading }}</h2>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="founder-story__text">
+            {%- assign text_paragraphs = section.settings.text | newline_to_br | split: '<br />' -%}
+            {%- for paragraph in text_paragraphs -%}
+              {%- assign trimmed_paragraph = paragraph | strip -%}
+              {%- if trimmed_paragraph != blank -%}
+                <p>{{ trimmed_paragraph }}</p>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.founder_name != blank or section.settings.founder_title != blank -%}
+          <div class="founder-story__founder">
+            {%- if section.settings.founder_name != blank -%}
+              <p class="founder-story__founder-name">{{ section.settings.founder_name }}</p>
+            {%- endif -%}
+            {%- if section.settings.founder_title != blank -%}
+              <p class="founder-story__founder-title">{{ section.settings.founder_title }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Image Section (Right) {%- endcomment -%}
+      {%- if section.settings.image != blank -%}
+        <div class="founder-story__image-wrapper">
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            widths: '375, 550, 750, 1100, 1500',
+            class: 'founder-story__image',
+            alt: section.settings.heading | default: 'Founder Story'
+          }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Story",
+  "tag": "section",
+  "class": "founder-story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Originally Built For My Mom, Now For Everyone"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night."
+    },
+    {
+      "type": "header",
+      "content": "Founder Information"
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "RC Williams"
+    },
+    {
+      "type": "text",
+      "id": "founder_title",
+      "label": "Founder Title",
+      "default": "Founder of Rejuvia"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Story"
+    }
+  ]
+}
+{% endschema %}
+

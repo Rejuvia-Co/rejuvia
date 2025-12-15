@@ -1636,3 +1636,31 @@ main:has(.shopify-policy__container) {
   color: #171512;
   font-size: 16px;
 }
+
+/* Scroll animation replacement for AOS zoom-in */
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.zoom-in.animate {
+  opacity: 1;
+  transform: scale(1);
+
+.section-heading {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  margin-bottom: 24px;
+  font-style: normal;
+  text-transform: none;
+}
+@media (max-width: 768px) {
+  .section-heading {
+      font-size: 32px;
+      margin-bottom: 16px;
+      letter-spacing: -0.32px;
+  }
+}

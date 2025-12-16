@@ -109,20 +109,23 @@ const Simplistic = {
   },
 
   onImagesLoaded(images, callback) {
+    // Convert jQuery object to array if needed
+    const imageArray = images.jquery ? Array.from(images) : (Array.isArray(images) ? images : [images]);
+
     let imagesLoaded = 0;
     const loadFunction = () => {
       imagesLoaded++;
-      if (imagesLoaded === images.length) {
+      if (imagesLoaded === imageArray.length) {
         callback();
       }
     };
 
-    if (images.length > 0) {
-      images.forEach(img => {
+    if (imageArray.length > 0) {
+      imageArray.forEach(img => {
         const image = new Image();
         image.onload = loadFunction;
         image.onerror = loadFunction;
-        image.src = img.getAttribute('src');
+        image.src = img.getAttribute ? img.getAttribute('src') : img.src;
       });
     } else {
       callback();

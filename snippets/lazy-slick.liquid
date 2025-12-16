@@ -1,0 +1,163 @@
+{% comment %}
+  Lazy-load Slick carousel and jQuery only when needed
+  This snippet should be included at the bottom of pages that use carousels
+{% endcomment %}
+
+<script>
+(function() {
+  'use strict';
+
+  // Check if any carousel elements exist on the page
+  const carouselSelectors = [
+    '.cst_logo_slider',
+    '.slider-for',
+    '.slider-nav',
+    '.slideReview'
+  ];
+
+  const hasCarousel = carouselSelectors.some(selector =>
+    document.querySelector(selector) !== null
+  );
+
+  if (!hasCarousel) {
+    return; // No carousels on this page, skip loading
+  }
+
+  let jQueryLoaded = false;
+  let slickLoaded = false;
+
+  // Function to initialize all carousels
+  function initializeCarousels() {
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.slick === 'undefined') {
+      return; // Not ready yet
+    }
+
+    // Logo slider (homepage + PDP)
+    const logoSlider = document.querySelector('.cst_logo_slider');
+    if (logoSlider && !jQuery(logoSlider).hasClass('slick-initialized')) {
+      jQuery('.cst_logo_slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false
+      });
+    }
+
+    // Product image slider
+    const sliderFor = document.querySelector('.slider-for');
+    if (sliderFor && !jQuery(sliderFor).hasClass('slick-initialized')) {
+      jQuery('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true,
+        fade: false,
+        asNavFor: '.slider-nav'
+      });
+    }
+
+    const sliderNav = document.querySelector('.slider-nav');
+    if (sliderNav && !jQuery(sliderNav).hasClass('slick-initialized')) {
+      jQuery('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+    }
+
+    // Review slider
+    const reviewSlider = document.querySelector('.slideReview');
+    if (reviewSlider && !jQuery(reviewSlider).hasClass('slick-initialized')) {
+      jQuery('.slideReview').slick({
+        autoplay: true,
+        speed: 700,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '0',
+        prevArrow: '<svg focusable="false" role="presentation" class="icon icon-arrow-left left-arrow slick-arrow" viewBox="0 0 32 32" style="display: flex;"><path fill="#000000" d="M24.333 28.205l-1.797 1.684L7.666 16l14.87-13.889 1.797 1.675L11.269 16z"></path></svg>',
+        nextArrow: '<svg focusable="false" role="presentation" class="icon icon-arrow-right right-arrow slick-arrow" viewBox="0 0 32 32" style="display: flex;"><path fill="#000000" d="M7.667 3.795l1.797-1.684L24.334 16 9.464 29.889l-1.797-1.675L20.731 16z"></path></svg>',
+        responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 2,
+              centerMode: true,
+              centerPadding: '0%',
+              dots: true
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              centerMode: true,
+              centerPadding: '0%',
+              dots: true
+            }
+          }
+        ]
+      });
+    }
+  }
+
+  // Load jQuery if not already loaded
+  function loadjQuery() {
+    if (typeof jQuery !== 'undefined') {
+      jQueryLoaded = true;
+      loadSlick();
+      return;
+    }
+
+    const jQueryScript = document.createElement('script');
+    jQueryScript.src = '{{ "jquery.min.js" | asset_url }}';
+    jQueryScript.onload = function() {
+      jQueryLoaded = true;
+      loadSlick();
+    };
+    document.head.appendChild(jQueryScript);
+  }
+
+  // Load Slick carousel
+  function loadSlick() {
+    if (!jQueryLoaded) return;
+
+    const slickScript = document.createElement('script');
+    slickScript.src = '{{ "slick.min.js" | asset_url }}';
+    slickScript.onload = function() {
+      slickLoaded = true;
+      initializeCarousels();
+    };
+    document.head.appendChild(slickScript);
+
+    // Also load Slick CSS if not already loaded
+    const slickCSS = document.createElement('link');
+    slickCSS.rel = 'stylesheet';
+    slickCSS.href = '{{ "slick.css" | asset_url }}';
+    document.head.appendChild(slickCSS);
+  }
+
+  // Start loading process when DOM is ready or on user interaction
+  function startLazyLoad() {
+    // Option 1: Load immediately if page is already interactive
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      loadjQuery();
+    } else {
+      // Option 2: Wait for DOM content loaded
+      document.addEventListener('DOMContentLoaded', loadjQuery);
+    }
+  }
+
+  // Start the lazy loading process
+  startLazyLoad();
+
+})();
+</script>

@@ -27,7 +27,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://assets.replocdn.com" crossorigin>
 
-<script src="{{ 'jquery.min.js' | asset_url }}"></script>
+<!-- Theme settings for JavaScript -->
+  <script>
+    window.THEME_SETTINGS = {
+      allow_side_cart: {{ settings.allow_side_cart | json }},
+      allow_ajax_cart: {{ settings.allow_ajax_cart | json }}
+    };
+  </script>
+
+  <!-- Modern interactions - vanilla JS, loads immediately -->
+  <script src="{{ 'modern-interactions.js' | asset_url }}"></script>
 
   {%- if template == 'index' -%}
     <title>{{ page_title }}</title>
@@ -47,7 +56,12 @@
   {% render 'head-styles' %}
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-  <script src="{{ 'simplistic.js' | asset_url }}"></script>
+
+  <!-- jQuery now deferred - loaded only for legacy compatibility -->
+  <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
+  <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+  <!-- Other scripts can remain deferred -->
   <script src="{{ 'vendor.js' | asset_url }}" defer></script>
   <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>
@@ -63,7 +77,6 @@
   {%- render 'structured_data', data: 'shop' -%}
 
   <script src="{{ 'jquery.scrollSlide.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'custom.js' | asset_url }}"></script>
 
   {% if template contains 'page.ingredients' %}
   <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
@@ -104,24 +117,16 @@
   {%- endif -%}
 
   {% render 'content_for_footer' %}
-  <script defer>
-    $(document).ready(function() {
-      $('.menu-desktop').removeClass('hidden');
 
-        // $('.menu-desktop').removeClass('hidden');
-
-        var header = $('#header');
-        var $utilityBar = $('.utility-bar');
-        var barHeight = $utilityBar.outerHeight();
-
-        $(window).on('scroll', function () {
-        var scrollTop = $(this).scrollTop();
-
-        var translateValue = Math.min(scrollTop, barHeight);
-        let height = translateValue - scrollTop;
-        header.css('transform', `translateY(-${translateValue}px)`);
-      });
-    });
+  <!-- Initialize add to cart with settings -->
+  <script>
+    if (window.ModernInteractions) {
+      {%- if settings.allow_ajax_cart -%}
+        window.ModernInteractions.initAddToCart(true);
+      {%- else -%}
+        window.ModernInteractions.initAddToCart(false);
+      {%- endif -%}
+    }
   </script>
 </body>
 </html>

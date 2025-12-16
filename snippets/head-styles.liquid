@@ -12,3 +12,12 @@
 <link rel="preload" href="{{ 'custom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="{{ 'style.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
+{% comment %} Consolidated component CSS for performance {% endcomment %}
+{% if template.name == 'index' %}
+	<link rel="preload" href="{{ 'home-components.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="{{ 'home-components.css' | asset_url }}"></noscript>
+{% elsif template.name == 'product' %}
+	<link rel="preload" href="{{ 'pdp-components.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="{{ 'pdp-components.css' | asset_url }}"></noscript>
+{% endif %}
+

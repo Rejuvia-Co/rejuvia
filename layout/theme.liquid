@@ -63,9 +63,11 @@
   <script src="{{ 'jquery.min.js' | asset_url }}"></script>
   <script src="{{ 'custom.js' | asset_url }}"></script>
 
-  <!-- Other scripts can remain deferred -->
-  <script src="{{ 'vendor.js' | asset_url }}" defer></script>
-  <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
+  <!-- ProductJs must load before inline product scripts -->
+  <script src="{{ 'vendor.js' | asset_url }}"></script>
+  <script src="{{ 'ProductJs.js' | asset_url }}"></script>
+
+  <!-- Shopify API can remain deferred -->
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>
 
   {{ content_for_header }}

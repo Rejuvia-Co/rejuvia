@@ -113,19 +113,35 @@ const Simplistic = {
     const imageArray = images.jquery ? Array.from(images) : (Array.isArray(images) ? images : [images]);
 
     let imagesLoaded = 0;
+    const totalImages = imageArray.length;
+
     const loadFunction = () => {
       imagesLoaded++;
-      if (imagesLoaded === imageArray.length) {
+      if (imagesLoaded === totalImages) {
         callback();
       }
     };
 
-    if (imageArray.length > 0) {
+    if (totalImages > 0) {
       imageArray.forEach(img => {
+        // Get src attribute safely
+        let src = null;
+        if (img.getAttribute) {
+          src = img.getAttribute('src');
+        } else if (img.src) {
+          src = img.src;
+        }
+
+        // Skip images with null, undefined, empty, or "null" src
+        if (!src || src === 'null' || src === 'undefined' || src.trim() === '') {
+          loadFunction(); // Count as loaded to prevent hanging
+          return;
+        }
+
         const image = new Image();
         image.onload = loadFunction;
         image.onerror = loadFunction;
-        image.src = img.getAttribute ? img.getAttribute('src') : img.src;
+        image.src = src;
       });
     } else {
       callback();

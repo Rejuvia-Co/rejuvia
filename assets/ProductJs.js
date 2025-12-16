@@ -215,7 +215,7 @@ var ProductJs = function( item, product, preselectedItem = null ) {
       ;if(product.variants.length==1) {
         selectCallback(product.variants[0], null);
       } else {productJs.setVariant(productJs.getFirstAvailableVariant());
-        
+        console.log('ghhghghghghghggh')}
     };
 
     productJs.getFirstAvailableVariant = function() {

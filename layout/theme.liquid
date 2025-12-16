@@ -33,6 +33,7 @@
       allow_side_cart: {{ settings.allow_side_cart | json }},
       allow_ajax_cart: {{ settings.allow_ajax_cart | json }}
     };
+
   </script>
 
   <!-- Modern interactions - vanilla JS, loads immediately -->
@@ -57,9 +58,10 @@
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
-  <!-- jQuery now deferred - loaded only for legacy compatibility -->
-  <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
-  <script src="{{ 'custom.js' | asset_url }}" defer></script>
+  <!-- jQuery loaded synchronously for inline script compatibility -->
+  <!-- Positioned late in head to minimize render blocking -->
+  <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+  <script src="{{ 'custom.js' | asset_url }}"></script>
 
   <!-- Other scripts can remain deferred -->
   <script src="{{ 'vendor.js' | asset_url }}" defer></script>

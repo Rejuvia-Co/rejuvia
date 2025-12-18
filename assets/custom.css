@@ -169,7 +169,7 @@ body .hero-carousel .overlay a:after {
 }
 
 .testimonials .testimonials-inner .image-section {
-  margin-botom: 5px;
+  margin-bottom: 5px;
 }
 
 .testimonials .testimonials-inner .image-section img {
@@ -1663,4 +1663,5 @@ main:has(.shopify-policy__container) {
       margin-bottom: 16px;
       letter-spacing: -0.32px;
   }
+}
 }

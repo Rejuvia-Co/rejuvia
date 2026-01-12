@@ -662,9 +662,9 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
             }
           {%endstyle %}
-          <a href="#" class="btn-open-mobile-menu ">{% comment %} {% include 'icons', icon: 'hamburger', color: '#ffffff' %} {% endcomment %} {% render 'icon-hamburger' %}</a>
+          <a href="#" class="btn-open-mobile-menu" aria-label="Open menu" role="button">{% comment %} {% include 'icons', icon: 'hamburger', color: '#ffffff' %} {% endcomment %} {% render 'icon-hamburger' %}</a>
 
-          <a  class="close hidden">{% comment %} {% include 'icons', icon: 'hamburger', color: '#ffffff' %} {% endcomment %} {% render 'icon-close_button' %}</a>
+          <a class="close hidden" aria-label="Close menu" role="button">{% comment %} {% include 'icons', icon: 'hamburger', color: '#ffffff' %} {% endcomment %} {% render 'icon-close_button' %}</a>
 
         </div>
 

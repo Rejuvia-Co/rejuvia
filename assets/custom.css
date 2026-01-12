@@ -1325,7 +1325,7 @@ main:has(.shopify-policy__container) {
 
 #footer .mailing-list__input {
   padding: 18px;
-  color: #FFFFFF48;
+  color: #FFFFFF;
   font-size: 16px;
   font-weight: 400;
   line-height: 100%;
@@ -1333,6 +1333,11 @@ main:has(.shopify-policy__container) {
   border: 1px solid #fff;
   margin-bottom: 16px;
   background: transparent;
+}
+
+#footer .mailing-list__input::placeholder {
+  color: #FFFFFFB3;
+  opacity: 1;
 }
 
 #footer .mailing-list__btn {

@@ -296,9 +296,9 @@
 
         <div class="mailing-list" {{ block.shopify_attributes }}>
           {%- if section.settings.mailing_title != blank -%}
-            <h5 class="mailing-list__title">
+            <h2 class="mailing-list__title">
               {{- section.settings.mailing_title -}}
-            </h5>
+            </h2>
           {%- endif -%}
           {%- if section.settings.mailing_text != blank -%}
             <p class="mailing-list__text">
@@ -313,6 +313,7 @@
                     value="newsletter">
             <div class="mailing-list__field-wrapper">
               <div class="field">
+                <label for="MailingListForm--{{ section.id }}" class="visuallyhidden">Email address</label>
                 <input
                         id="MailingListForm--{{ section.id }}"
                         type="email"

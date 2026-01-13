@@ -694,11 +694,11 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
 
           {% if customer %}
-          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
+          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" aria-hidden="true"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
           </a></li>
           {% else %}
-          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="">{% render 'icon-user-circle' %}</a></li>
+          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">{% render 'icon-user-circle' %}</a></li>
           {% endif %}
 
           <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>
@@ -758,7 +758,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
                     <div class="eg-productR-info">
                         <div class="eg-reviews">
                             {{ product.metafields.okendo.StarRatingSnippet }}
-                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" />
+                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" />
                         </div>
                       <div class="productR-info_title">
                         <span>{{ product.title }}</span>

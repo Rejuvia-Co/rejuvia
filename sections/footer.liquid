@@ -261,7 +261,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
@@ -274,7 +274,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist_2].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
@@ -287,7 +287,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist_3].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>

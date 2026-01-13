@@ -1,9 +1,9 @@
 {{ 'how-it-works-section.css' | asset_url | stylesheet_tag }}
 
 <div class="how-it-word-section_container">
-  <h4 class="section-title--h1">
+  <h2 class="section-title--h1">
     {{ section.settings.heading }}
-  </h4>
+  </h2>
   <p class="section-subheading">{{ section.settings.subheading }}</p>
   <div class="card-container">
     {% for item in section.blocks %}

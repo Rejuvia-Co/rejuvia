@@ -5,8 +5,8 @@ This document lists all accessibility improvements made to address PageSpeed Ins
 ## Summary
 
 - **Branch:** `fix/accessibility-issues`
-- **Total Files Modified:** 12
-- **Issues Fixed:** 8
+- **Total Files Modified:** 20
+- **Issues Fixed:** 14
 
 ---
 
@@ -112,22 +112,97 @@ This document lists all accessibility improvements made to address PageSpeed Ins
 - `sections/subscribe-save.liquid` (h4 → h2)
 - `sections/ingredients-section.liquid` (h4 → h2)
 - `sections/ingredients-benefits.liquid` (h4 → h2)
+- `sections/how-it-works.liquid` (h4 → h2)
+- `sections/press-logos.liquid` (h4 → h2)
+- `sections/product-features.liquid` (h4 → h2)
+- `sections/product-features-ingredients.liquid` (h4 → h2)
 
 **Solution:** Changed heading levels to maintain proper document outline.
 
 ---
 
-## Testing Recommendations
+### 9. Subscription Images Missing Alt Attributes
+**Issue:** Subscription gift images in plan picker had no alt text.
 
-1. Run PageSpeed Insights again to verify improvements
-2. Test with screen reader (VoiceOver, NVDA, or JAWS)
-3. Test keyboard navigation (Tab, Enter, Escape)
-4. Verify color contrast with browser DevTools or WAVE extension
+**Files Modified:**
+- `assets/skio-plan-picker-component.js`
+
+**Solution:** Added descriptive alt attributes to subscription benefit images.
+```html
+<img src="..." alt="Rejuvia Magnet">
+<img src="..." alt="Rejuvia Stickers">
+<img src="..." alt="Rejuvia Spray">
+```
 
 ---
 
-## Resources
+### 10. Product Gallery Slider Buttons Missing Accessible Names
+**Issue:** Product thumbnail slider buttons had no accessible names.
 
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [PageSpeed Insights](https://pagespeed.web.dev/)
-- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+**Files Modified:**
+- `assets/ProductJs.js`
+
+**Solution:** Added `aria-label` to slider navigation buttons and `aria-hidden="true"` to decorative SVGs.
+```html
+<button aria-label="Previous thumbnail">
+  <svg aria-hidden="true">...</svg>
+</button>
+<button aria-label="Next thumbnail">
+  <svg aria-hidden="true">...</svg>
+</button>
+```
+
+---
+
+### 11. Decorative Arrow Images Missing Alt Attributes
+**Issue:** Arrow icons used for decoration had no alt attributes.
+
+**Files Modified:**
+- `sections/header.liquid`
+- `snippets/_product-new.liquid`
+- `snippets/new-product-grid.liquid`
+- `snippets/menu_mobile.liquid`
+- `snippets/_custom_tabs_products-new.liquid`
+
+**Solution:** Added empty alt and aria-hidden for decorative images.
+```html
+<img src="ArrowLeft-Menu_mobile.svg" alt="" aria-hidden="true" />
+```
+
+---
+
+### 12. Account Link Missing Accessible Name
+**Issue:** Account/login icon link had no text alternative for screen readers.
+
+**Files Modified:**
+- `sections/header.liquid`
+
+**Solution:** Added `aria-label` and `title` attributes to account links, and `aria-hidden="true"` to decorative SVG.
+```html
+<a href="/a/account/login" title="My Account" aria-label="My Account">
+  <svg aria-hidden="true">...</svg>
+</a>
+```
+
+---
+
+### 13. Footer Submenu Invalid List Structure
+**Issue:** Footer submenu links were direct children of `<ul>` without `<li>` wrappers.
+
+**Files Modified:**
+- `sections/footer.liquid`
+
+**Solution:** Wrapped all submenu links in `<li>` elements.
+```html
+<ul class="submenu-list">
+  <li><a class="submenu-link" href="...">Link Text</a></li>
+</ul>
+```
+
+---
+
+### 14. iframe Without Title (Not Fixable)
+**Issue:** Shopify preview bar iframe lacks a title attribute.
+
+**Status:** Cannot fix - injected by Shopify CDN, only appears in development/preview mode.
+

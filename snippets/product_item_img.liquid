@@ -1,15 +1,14 @@
 <div class="image">
   {% if template contains 'collection' %}
     <div class="img" style="background-image: url('{{currentProduct.images.first | img_url: '600x'}}')"></div>
-    
+
     <link
       rel="preload"
       fetchpirority="high"
       href="{{currentProduct.images.first | img_url: '600x'}}"
       as="image">
-    
-      
-    
+
+
 
 
 

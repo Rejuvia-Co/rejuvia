@@ -5,10 +5,19 @@
 {% elsif template.name == 'collection' %}
 	{% render 'critical-css-collection' %}
 {% else %}
-	{{ 'custom.css' | asset_url | stylesheet_tag }}
+	{{ 'custom.min.css' | asset_url | stylesheet_tag }}
 	{% comment %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
 {% endif %}
 
-<link rel="preload" href="{{ 'custom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'custom.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="{{ 'style.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+{% comment %} Consolidated component CSS for performance {% endcomment %}
+{% if template.name == 'index' %}
+	<link rel="preload" href="{{ 'home-components.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="{{ 'home-components.min.css' | asset_url }}"></noscript>
+{% elsif template.name == 'product' %}
+	<link rel="preload" href="{{ 'pdp-components.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="{{ 'pdp-components.min.css' | asset_url }}"></noscript>
+{% endif %}
 

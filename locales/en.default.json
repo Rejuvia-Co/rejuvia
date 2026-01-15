@@ -1,1 +1,131 @@
-{"shopify":{"checkout":{"payment":{"offsite_gateway_redirect_hint":"Click on the \"Complete Order\" button at the bottom of the page to complete your order securely through {{ gateway_label }}.","title":"Payment","billing_address_description":"Select the address that matches your card.","subscription_agreement_label_html":"By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.","purchase_options_agreement_label":"By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.","card_security_notice":"All transactions are safe, secure and encrypted."},"contact":{"email_or_phone_label":"Email or mobile phone number","phone_label":"Phone or email - get updates on your order!","contact_method_title":"Contact","shipping_address_title":"Shipping Address"},"marketing":{"accept_marketing_checkbox_label":"Receive order updates and information","accept_sms_checkbox_label":"Get order updates via SMS"},"shop_policies":{"refund_policy":"Refund Policy","privacy_policy":"Privacy Policy","terms_of_service":"Terms of Service"},"general":{"pay_now_button_label":"Pay Now","continue_to_shipping_method":"Continue To Shipping →","continue_to_payment_method":"Continue To Payment →","complete_purchase_button_label":"Pay Now","back_to_contact_information":"Return to Information","back_to_shipping_method":"Return to Shipping"},"order_summary":{"discount_label":"Add Your Discount Code","discount_placeholder":"Your discount code","expand_order_summary":"Order Summary","discount_title":"Add Your Discount Code","gift_card_and_discount_placeholder":"Enter a Discount Code","recurring_total_label":"Total","title":"Order Summary","shipping_label":"Shipping","subtotal_label_with_quantity":{"one":"Subtotal","other":"Subtotal"},"recurring_subtotal_label":"Subtotal"},"shipping":{"shipping_method_title":"Shipping","delivery_title":"Delivery","shipping_method_recurring_shipments_group_title":{"other":"Future Shipments"}},"delivery_options":{"shipping_address":"Shipping Address"},"customer_account":{"save_my_information_label":"Save This Information For Next Time","have_an_account_label":"Returning Customer?"},"order_payment_collection":{"pay_now":"Add To My Order!"}},"article":{"tags":"Tags:","all_topics":"All topics","by_author":"by {{ author }}","posted_in":"Posted in","read_more":"Read more","back_to_blog":"Back to {{ title }}"},"comments":{"title":"Leave a comment","name":"Name","email":"Email","message":"Message","post":"Post comment","moderated":"Please note, comments must be approved before they are published","success_moderated":"Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.","success":"Your comment was posted successfully! Thank you!","comments_with_count":{"one":"{{ count }} comment","other":"{{ count }} comments"}},"password_page":{"login_form_message":"Enter store using password:","login_form_password_label":"Password","login_form_password_placeholder":"Your password","login_form_submit":"Enter","signup_form_email_label":"Email","signup_form_success":"We will send you an email right before we open!","password_link":"Enter using password"}},"sections":{"wonderment-featured-collection":{"sold_out":"Sold Out","sale":"Sale"},"cart":{"cart_clear_button":"Clear Cart","free":"FREE"}},"customer_accounts":{"payment_methods":{"card_fields":{"tooltip":{"card_security_notice":"All transactions are safe, secure and encrypted."}}},"order_details":{"summary_title":"Order Summary"}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "shopify": {
+    "checkout": {
+      "payment": {
+        "offsite_gateway_redirect_hint": "Click on the \"Complete Order\" button at the bottom of the page to complete your order securely through {{ gateway_label }}.",
+        "title": "Payment",
+        "billing_address_description": "Select the address that matches your card.",
+        "subscription_agreement_label_html": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
+        "purchase_options_agreement_label": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
+        "card_security_notice": "All transactions are safe, secure and encrypted."
+      },
+      "contact": {
+        "email_or_phone_label": "Email or mobile phone number",
+        "phone_label": "Phone or email - get updates on your order!",
+        "contact_method_title": "Contact",
+        "shipping_address_title": "Shipping Address"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Receive order updates and information",
+        "accept_sms_checkbox_label": "Get order updates via SMS"
+      },
+      "shop_policies": {
+        "refund_policy": "Refund Policy",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service"
+      },
+      "general": {
+        "pay_now_button_label": "Pay Now",
+        "continue_to_shipping_method": "Continue To Shipping →",
+        "continue_to_payment_method": "Continue To Payment →",
+        "complete_purchase_button_label": "Pay Now",
+        "back_to_contact_information": "Return to Information",
+        "back_to_shipping_method": "Return to Shipping"
+      },
+      "order_summary": {
+        "discount_label": "Add Your Discount Code",
+        "discount_placeholder": "Your discount code",
+        "expand_order_summary": "Order Summary",
+        "discount_title": "Add Your Discount Code",
+        "gift_card_and_discount_placeholder": "Enter a Discount Code",
+        "recurring_total_label": "Total",
+        "title": "Order Summary",
+        "shipping_label": "Shipping",
+        "subtotal_label_with_quantity": {
+          "one": "Subtotal",
+          "other": "Subtotal"
+        },
+        "recurring_subtotal_label": "Subtotal"
+      },
+      "shipping": {
+        "shipping_method_title": "Shipping",
+        "delivery_title": "Delivery",
+        "shipping_method_recurring_shipments_group_title": {
+          "other": "Future Shipments"
+        }
+      },
+      "delivery_options": {
+        "shipping_address": "Shipping Address"
+      },
+      "customer_account": {
+        "save_my_information_label": "Save This Information For Next Time",
+        "have_an_account_label": "Returning Customer?"
+      },
+      "order_payment_collection": {
+        "pay_now": "Add To My Order!"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  },
+  "sections": {
+    "wonderment-featured-collection": {
+      "sold_out": "Sold Out",
+      "sale": "Sale"
+    },
+    "cart": {
+      "cart_clear_button": "Clear Cart",
+      "free": "FREE"
+    }
+  },
+  "customer_accounts": {
+    "payment_methods": {
+      "card_fields": {
+        "tooltip": {
+          "card_security_notice": "All transactions are safe, secure and encrypted."
+        }
+      }
+    },
+    "order_details": {
+      "summary_title": "Order Summary"
+    }
+  }
+}

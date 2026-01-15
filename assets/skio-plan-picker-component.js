@@ -755,6 +755,7 @@ export class SkioPlanPicker extends LitElement {
         .li-images {
           flex-direction: column;
               align-items: flex-start !important;
+              display:none!Important;
         }
         .subscription__image span {
           margin-top: 12px;
@@ -1299,8 +1300,10 @@ export class SkioPlanPicker extends LitElement {
         mutations.forEach((mutation) => {
           if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
             const newVariantId = this.variantInput.value;
-            this.selectedVariant = this.product.variants.find(variant => variant.id == newVariantId);
-            this.variantChanged = true;
+            if (this.product && this.product.variants) {
+              this.selectedVariant = this.product.variants.find(variant => variant.id == newVariantId);
+              this.variantChanged = true;
+            }
             // this.requestUpdate(); // Trigger a re-render of the component
           }
         });

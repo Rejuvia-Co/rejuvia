@@ -1,1 +1,267 @@
-{"sections":{"product_widget_6p4fVc":{"type":"product-widget","blocks":{"text_yDnBNe":{"type":"text","settings":{"icon":"shopify:\/\/shop_images\/Plant.svg","title":"All-Natural"}},"text_FFyKCH":{"type":"text","settings":{"icon":"shopify:\/\/shop_images\/SealCheck.svg","title":"USA Made"}},"text_YtYqLw":{"type":"text","settings":{"icon":"shopify:\/\/shop_images\/Flask.svg","title":"Lab Tested"}},"text_weyETr":{"type":"text","settings":{"icon":"shopify:\/\/shop_images\/Wind.svg","title":"Mint Flavor"}},"skio_plan_picker_bBL3GV":{"type":"skio-plan-picker","settings":{"start_onetime":false,"onetime_first":true}}},"block_order":["text_yDnBNe","text_FFyKCH","text_YtYqLw","text_weyETr","skio_plan_picker_bBL3GV"],"settings":{"hero_heading":"","selected_product":"","guarantee_label":"FREE SHIPPING OVER $59","swatch_tag_content":"","preselected_item":3}},"product_benefits_MEbMKY":{"type":"product-benefits","name":"Product Benefits","settings":{"gradient_size_desktop":100,"gradient_size_mobile":150}},"customer_testimonials_video_caghmG":{"type":"customer-testimonials-video","disabled":true,"name":"Video Testimonials","settings":{"header":"","stars_reating":"","stars_label":""}},"ingredients_section_Mcnkac":{"type":"ingredients-section","disabled":true,"name":"Ingredients Info Section","settings":{"heading":"","subheading":""}},"product_how_to_use_MUF43f":{"type":"product-how-to-use","name":"Product How To Use","settings":{}},"product_fb_reviews_fbddPH":{"type":"product-fb-reviews","disabled":true,"name":"Product FB Reviews","settings":{"title":"Latest Reviews","subtitle":"Read real reviews and comments from 300,000+ happy Rejuvia customers."}},"1717460916cf4757a6":{"type":"apps","blocks":{"okendo_reviews_widget_Uc3pqP":{"type":"shopify:\/\/apps\/okendo\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29","settings":{"product":"{{product}}","widget_type":"reviews_widget"}}},"block_order":["okendo_reviews_widget_Uc3pqP"],"settings":{}},"main_page_4Q6KQH":{"type":"main-page","blocks":{"faqs_Bzr9Mf":{"type":"faqs","settings":{"heading":"Why are Rejuvia sprays better than oils & pills?","subheading":"Oral sprays are more effective than gummy and capsule supplements because they allow for direct absorption of nutrients through the mucous membranes in the mouth, bypassing the digestive system. This leads to quicker and more efficient uptake of vitamins and minerals, ensuring significantly higher bioavailability."}},"faqs_kbjgEW":{"type":"faqs","settings":{"heading":"What’s the difference between Rejuvia’s Sleep Spray and Stress Spray?","subheading":"Our Sleep Spray is intended for use before bedtime. Our Stress Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."}},"faqs_f39Ji6":{"type":"faqs","settings":{"heading":"When should I use the Stress Spray?","subheading":"The Stress Spray can be used during the day or evening when you need to calm down and alleviate stress. The Stress Spray will not make you feel tired or induce sleep, but it will help you feel mentally relaxed and calm."}},"faqs_8mP9YQ":{"type":"faqs","settings":{"heading":"Will the Stress Spray make me tired during the day?","subheading":"The Stress Spray is primarily designed to reduce stress and promote relaxation without necessarily making you feel tired. However, since it helps reduce stress and creates a sense of calmness, it might make some people feel more relaxed and potentially a bit drowsy, especially if they are already tired or use it in the evening."}},"faqs_eDxDNH":{"type":"faqs","settings":{"heading":"What do Rejuvia's sprays taste like?","subheading":"Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."}},"faqs_NitEKm":{"type":"faqs","settings":{"heading":"Are Rejuvia's sprays third-party tested?","subheading":"All of our products are indepdently triple lab-tested for purity and potency each batch. Each prodcut comes with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency."}},"faqs_K9Fkbt":{"type":"faqs","settings":{"heading":"How long will one Stress Spray last?","subheading":"One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per day, so one Rejuvia Stress Spray will last you 30-35 days on average."}},"faqs_rVdn8m":{"type":"faqs","settings":{"heading":"How many sprays should I use?","subheading":"Our recommended dose is 6-8 sprays under your tongue or on the inside of your cheek. You can adjust your dose to find the perfect balance, though. You might do better with just 4-6 sprays or you might do better with 8-10. It’s all about finding what works best for your body and the metered spray makes it very easy to do so."}},"faqs_9MQKrh":{"type":"faqs","settings":{"heading":"Can I use the Stress Spray multiple times in one day?","subheading":"It is fine to use the Stress Spray more than once a day. The majority of our customers utilize our Stress Spray once per day, but some use it twice. The most popular time to use the Stress Spray is in the late morning. Each dosage should last you 4-6 hours."}}},"block_order":["faqs_Bzr9Mf","faqs_kbjgEW","faqs_f39Ji6","faqs_8mP9YQ","faqs_eDxDNH","faqs_NitEKm","faqs_K9Fkbt","faqs_rVdn8m","faqs_9MQKrh"],"settings":{"customClass":"","background":"#ffffff","heading":"Frequently Asked Questions","customTextBottom":"","title_color":"#000000","text_color":"#000000"}},"section_choose_product_UUJBY4":{"type":"section-choose-product","blocks":{"product_yTNPFt":{"type":"product","settings":{"featured_product":"sleep-spray","short_description":""}},"product_Mc3T43":{"type":"product","settings":{"featured_product":"oral-stress-spray","short_description":""}},"product_GzhtQB":{"type":"product","settings":{"featured_product":"vitamin-d3-k2-spray","short_description":""}},"product_DzCK9Y":{"type":"product","settings":{"featured_product":"lutein","short_description":""}}},"block_order":["product_yTNPFt","product_Mc3T43","product_GzhtQB","product_DzCK9Y"],"disabled":true,"name":"Select Product","settings":{"title":"Shop All Rejuvia Products","sub_title":"Better sleep and less stress are now just a few sprays away."}}},"order":["product_widget_6p4fVc","product_benefits_MEbMKY","customer_testimonials_video_caghmG","ingredients_section_Mcnkac","product_how_to_use_MUF43f","product_fb_reviews_fbddPH","1717460916cf4757a6","main_page_4Q6KQH","section_choose_product_UUJBY4"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_widget_6p4fVc": {
+      "type": "product-widget",
+      "blocks": {
+        "text_yDnBNe": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Plant.svg",
+            "title": "All-Natural"
+          }
+        },
+        "text_FFyKCH": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/SealCheck.svg",
+            "title": "USA Made"
+          }
+        },
+        "text_YtYqLw": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Flask.svg",
+            "title": "Lab Tested"
+          }
+        },
+        "text_weyETr": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Wind.svg",
+            "title": "Mint Flavor"
+          }
+        },
+        "skio_plan_picker_bBL3GV": {
+          "type": "skio-plan-picker",
+          "settings": {
+            "start_onetime": false,
+            "onetime_first": true
+          }
+        }
+      },
+      "block_order": [
+        "text_yDnBNe",
+        "text_FFyKCH",
+        "text_YtYqLw",
+        "text_weyETr",
+        "skio_plan_picker_bBL3GV"
+      ],
+      "settings": {
+        "hero_heading": "",
+        "selected_product": "",
+        "guarantee_label": "FREE SHIPPING OVER $59",
+        "swatch_tag_content": "",
+        "preselected_item": 3
+      }
+    },
+    "product_benefits_MEbMKY": {
+      "type": "product-benefits",
+      "name": "Product Benefits",
+      "settings": {
+        "gradient_size_desktop": 100,
+        "gradient_size_mobile": 150
+      }
+    },
+    "customer_testimonials_video_caghmG": {
+      "type": "customer-testimonials-video",
+      "disabled": true,
+      "name": "Video Testimonials",
+      "settings": {
+        "header": "",
+        "stars_reating": "",
+        "stars_label": ""
+      }
+    },
+    "ingredients_section_Mcnkac": {
+      "type": "ingredients-section",
+      "disabled": true,
+      "name": "Ingredients Info Section",
+      "settings": {
+        "heading": "",
+        "subheading": ""
+      }
+    },
+    "product_how_to_use_MUF43f": {
+      "type": "product-how-to-use",
+      "name": "Product How To Use",
+      "settings": {}
+    },
+    "product_fb_reviews_fbddPH": {
+      "type": "product-fb-reviews",
+      "disabled": true,
+      "name": "Product FB Reviews",
+      "settings": {
+        "title": "Latest Reviews",
+        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
+      }
+    },
+    "1717460916cf4757a6": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_Uc3pqP": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_Uc3pqP"
+      ],
+      "settings": {}
+    },
+    "main_page_4Q6KQH": {
+      "type": "main-page",
+      "blocks": {
+        "faqs_Bzr9Mf": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Why are Rejuvia sprays better than oils & pills?",
+            "subheading": "Oral sprays are more effective than gummy and capsule supplements because they allow for direct absorption of nutrients through the mucous membranes in the mouth, bypassing the digestive system. This leads to quicker and more efficient uptake of vitamins and minerals, ensuring significantly higher bioavailability."
+          }
+        },
+        "faqs_kbjgEW": {
+          "type": "faqs",
+          "settings": {
+            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Stress Spray?",
+            "subheading": "Our Sleep Spray is intended for use before bedtime. Our Stress Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."
+          }
+        },
+        "faqs_f39Ji6": {
+          "type": "faqs",
+          "settings": {
+            "heading": "When should I use the Stress Spray?",
+            "subheading": "The Stress Spray can be used during the day or evening when you need to calm down and alleviate stress. The Stress Spray will not make you feel tired or induce sleep, but it will help you feel mentally relaxed and calm."
+          }
+        },
+        "faqs_8mP9YQ": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Will the Stress Spray make me tired during the day?",
+            "subheading": "The Stress Spray is primarily designed to reduce stress and promote relaxation without necessarily making you feel tired. However, since it helps reduce stress and creates a sense of calmness, it might make some people feel more relaxed and potentially a bit drowsy, especially if they are already tired or use it in the evening."
+          }
+        },
+        "faqs_eDxDNH": {
+          "type": "faqs",
+          "settings": {
+            "heading": "What do Rejuvia's sprays taste like?",
+            "subheading": "Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."
+          }
+        },
+        "faqs_NitEKm": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Are Rejuvia's sprays third-party tested?",
+            "subheading": "All of our products are indepdently triple lab-tested for purity and potency each batch. Each prodcut comes with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency."
+          }
+        },
+        "faqs_K9Fkbt": {
+          "type": "faqs",
+          "settings": {
+            "heading": "How long will one Stress Spray last?",
+            "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per day, so one Rejuvia Stress Spray will last you 30-35 days on average."
+          }
+        },
+        "faqs_rVdn8m": {
+          "type": "faqs",
+          "settings": {
+            "heading": "How many sprays should I use?",
+            "subheading": "Our recommended dose is 6-8 sprays under your tongue or on the inside of your cheek. You can adjust your dose to find the perfect balance, though. You might do better with just 4-6 sprays or you might do better with 8-10. It’s all about finding what works best for your body and the metered spray makes it very easy to do so."
+          }
+        },
+        "faqs_9MQKrh": {
+          "type": "faqs",
+          "settings": {
+            "heading": "Can I use the Stress Spray multiple times in one day?",
+            "subheading": "It is fine to use the Stress Spray more than once a day. The majority of our customers utilize our Stress Spray once per day, but some use it twice. The most popular time to use the Stress Spray is in the late morning. Each dosage should last you 4-6 hours."
+          }
+        }
+      },
+      "block_order": [
+        "faqs_Bzr9Mf",
+        "faqs_kbjgEW",
+        "faqs_f39Ji6",
+        "faqs_8mP9YQ",
+        "faqs_eDxDNH",
+        "faqs_NitEKm",
+        "faqs_K9Fkbt",
+        "faqs_rVdn8m",
+        "faqs_9MQKrh"
+      ],
+      "settings": {
+        "customClass": "",
+        "background": "#ffffff",
+        "heading": "Frequently Asked Questions",
+        "customTextBottom": "",
+        "title_color": "#000000",
+        "text_color": "#000000"
+      }
+    },
+    "section_choose_product_UUJBY4": {
+      "type": "section-choose-product",
+      "blocks": {
+        "product_yTNPFt": {
+          "type": "product",
+          "settings": {
+            "featured_product": "sleep-spray",
+            "short_description": ""
+          }
+        },
+        "product_Mc3T43": {
+          "type": "product",
+          "settings": {
+            "featured_product": "oral-stress-spray",
+            "short_description": ""
+          }
+        },
+        "product_GzhtQB": {
+          "type": "product",
+          "settings": {
+            "featured_product": "vitamin-d3-k2-spray",
+            "short_description": ""
+          }
+        },
+        "product_DzCK9Y": {
+          "type": "product",
+          "settings": {
+            "featured_product": "lutein",
+            "short_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_yTNPFt",
+        "product_Mc3T43",
+        "product_GzhtQB",
+        "product_DzCK9Y"
+      ],
+      "disabled": true,
+      "name": "Select Product",
+      "settings": {
+        "title": "Shop All Rejuvia Products",
+        "sub_title": "Better sleep and less stress are now just a few sprays away."
+      }
+    }
+  },
+  "order": [
+    "product_widget_6p4fVc",
+    "product_benefits_MEbMKY",
+    "customer_testimonials_video_caghmG",
+    "ingredients_section_Mcnkac",
+    "product_how_to_use_MUF43f",
+    "product_fb_reviews_fbddPH",
+    "1717460916cf4757a6",
+    "main_page_4Q6KQH",
+    "section_choose_product_UUJBY4"
+  ]
+}

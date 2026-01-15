@@ -1,11 +1,15 @@
 {{ 'customer-testimonials.css' | asset_url | stylesheet_tag }}
 
-<!-- Required Core Stylesheet -->
+<!-- Required Core Stylesheet - Async loaded -->
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+  media="print"
   onload="this.media='all'"
 >
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+</noscript>
 
 {% style %}
 

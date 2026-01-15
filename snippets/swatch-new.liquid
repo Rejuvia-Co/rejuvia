@@ -101,6 +101,7 @@
 
                 {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %}
                 aria-hidden="true"
+                tabindex="-1"
               >
               <label
                 class="animation color"
@@ -123,6 +124,7 @@
                 value="{{ value | escape }}"
                 {% comment %}{% unless variant.available %}disabled{% endunless %}{% endcomment %}
                 aria-hidden="true"
+                tabindex="-1"
                 {% if variant.metafields.custom.variant_pack_size != blank %}
                   data-packsize="{{ variant.metafields.custom.variant_pack_size }}"
                 {% endif %}

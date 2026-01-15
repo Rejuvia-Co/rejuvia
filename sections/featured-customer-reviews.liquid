@@ -15,14 +15,14 @@
   <div class="container-slider-reviews">
     <div style="min-width: 333px;">
         <div style="margin-bottom: 16px; display: flex; align-items: flex-end; gap: 8px;">{% render 'five-stars-icon' %} <span style="font-size: 18px;">3,193+ 5-Star Reviews</span></div>
-        <h4 class="section-title">
+        <h2 class="section-title">
             {{ section.settings.hero_heading }}
-        </h4>
+        </h2>
     </div>
     <div id="glide-customer-reviews" class="glide">
-        <ul class="slides-customer-reviews">
+        <div class="slides-customer-reviews" role="list" aria-label="Customer reviews">
           {% for item in section.blocks %}
-            <li class="glide__slide">
+            <div class="glide__slide" role="listitem">
               <div class="customer-review_item">
                 <p class="review-content">{{ item.settings.text }}</p>
                 <div class="review-info-container">
@@ -37,13 +37,13 @@
                     </div>
                 </div>
               </div>
-            </li>
+            </div>
           {% endfor %}
-        </ul>
+        </div>
 
       <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'arrow-circle-left' %}</button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'arrow-circle-right' %}</button>
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous review">{% render 'arrow-circle-left' %}</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Next review">{% render 'arrow-circle-right' %}</button>
       </div>
     </div>
   </div>

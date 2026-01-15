@@ -33,13 +33,13 @@ var ProductJs = function( item, product, preselectedItem = null ) {
           slidesToScroll: 1,
           infinite: false,
           arrows: true,
-          prevArrow: `<button>
-          <svg class=" slick-prev slick-arrow icon icon-arrow-left left-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+          prevArrow: `<button aria-label="Previous thumbnail">
+          <svg class=" slick-prev slick-arrow icon icon-arrow-left left-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
                   <path d="M28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7Z" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M36.75 28L19.25 28" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M26.25 35L19.25 28L26.25 21" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg></button>`,
-          nextArrow: `<svg class="icon icon-arrow-right right-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+          nextArrow: `<button aria-label="Next thumbnail"><svg class="icon icon-arrow-right right-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
                   <g clip-path="url(#clip0_3009_10343)">
                     <path d="M28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49Z" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M19.25 28H36.75" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -50,7 +50,7 @@ var ProductJs = function( item, product, preselectedItem = null ) {
                       <rect width="56" height="56" fill="white"/>
                     </clipPath>
                   </defs>
-                </svg>`,
+                </svg></button>`,
           responsive: [
             {
               breakpoint: 700,

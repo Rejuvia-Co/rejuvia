@@ -261,7 +261,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
@@ -274,7 +274,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist_2].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
@@ -287,7 +287,7 @@
             <div>
               <ul class="submenu-list">
                 {% for link in linklists[section.settings.section_linklist_3].links %}
-                  <a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a>
+                  <li><a class="submenu-link" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
@@ -296,9 +296,9 @@
 
         <div class="mailing-list" {{ block.shopify_attributes }}>
           {%- if section.settings.mailing_title != blank -%}
-            <h5 class="mailing-list__title">
+            <h2 class="mailing-list__title">
               {{- section.settings.mailing_title -}}
-            </h5>
+            </h2>
           {%- endif -%}
           {%- if section.settings.mailing_text != blank -%}
             <p class="mailing-list__text">
@@ -313,6 +313,7 @@
                     value="newsletter">
             <div class="mailing-list__field-wrapper">
               <div class="field">
+                <label for="MailingListForm--{{ section.id }}" class="visuallyhidden">Email address</label>
                 <input
                         id="MailingListForm--{{ section.id }}"
                         type="email"

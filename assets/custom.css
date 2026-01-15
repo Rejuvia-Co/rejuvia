@@ -1332,7 +1332,7 @@ main:has(.shopify-policy__container) {
   border-radius: 8px;
   border: 1px solid #fff;
   margin-bottom: 16px;
-  background: transparent;
+  background: rgba(103, 38, 102, 0.85);
 }
 
 #footer .mailing-list__input::placeholder {

@@ -1336,7 +1336,7 @@ main:has(.shopify-policy__container) {
 }
 
 #footer .mailing-list__input::placeholder {
-  color: #FFFFFFB3;
+  color: #FFFFFF;
   opacity: 1;
 }
 
@@ -1360,7 +1360,7 @@ main:has(.shopify-policy__container) {
 }
 
 #footer .mailing-list input::placeholder {
-  color: #5C5C5C;
+  color: #FFFFFF;
   font-family: HelveticaNeueL, sans-serif;
   line-height: 100%;
 }

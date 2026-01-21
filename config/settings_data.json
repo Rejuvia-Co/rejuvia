@@ -3454,6 +3454,17 @@
           "founder_title": "Co-Founder, CEO of Rejuvia",
           "image": "shopify://shop_images/IMG_2412.webp"
         }
+      },
+      "founder_story_qLxKiR": {
+        "type": "founder-story",
+        "name": "Founder Story",
+        "settings": {
+          "heading": "Originally For My Mom, Now For All",
+          "text": "When my mom was in her 50s, she could never sleep. And I mean never. She tried everything: the gummies, the pills, the teas, the powders. Anything her doctor or the internet suggested, she tried. But nothing ever worked. It was either made her feel groggy in the morning or had nasty side effects.\n\nIt was awful to watch my mom suffer from bad sleep and lose hope because everything she tried failed. So when I left for college at UPenn in 2017, I made it my mission to come home with a real solution for her — something she could trust, something that actually worked, and something that would help her feel like herself again.\n\nThat’s when the idea for an oral sleep spray was born. She had never even heard of a sleep spray before, but it made perfect sense. It offered much faster absorption, and using her medical background and engineering degree, she and I could put together an incredibly powerful, all-natural sleep formula that worked like no one's business!\n\nAnd that's how Rejuvia started. It was a way to help my mom finally get a good night’s sleep. Now, she and I run the business together and are on a mission to share the same formula that changed her nights with people who just want to feel rested again.",
+          "founder_name": "RC Williams",
+          "founder_title": "Founder of Rejuvia",
+          "image": "shopify://shop_images/IMG_2412.webp"
+        }
       }
     },
     "content_for_index": [
@@ -3466,6 +3477,7 @@
       "ingredients_section_xJDwEy",
       "product_widget_gC6JFH",
       "subscribe_save_qXLDcT",
+      "founder_story_qLxKiR",
       "section_choose_product_nMXmYH",
       "main_page_mU9tFC"
     ],
@@ -3502,11 +3514,6 @@
       "2786716548061469553": {
         "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
         "disabled": false,
-        "settings": {}
-      },
-      "1877152918344802950": {
-        "type": "shopify://apps/intelligems-a-b-testing/blocks/intelligems-script/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
-        "disabled": true,
         "settings": {}
       }
     }

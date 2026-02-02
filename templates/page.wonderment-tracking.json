@@ -204,107 +204,6 @@
         "swatch_tag_content": "",
         "preselected_item": 3
       }
-    },
-    "ingredients_section_UhNmPU": {
-      "type": "ingredients-section",
-      "blocks": {
-        "card_wJgbzA": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Flower.svg",
-            "title": "Hops Flower",
-            "description": "Promotes deep, restful sleep and reduces stress"
-          }
-        },
-        "card_TrBj88": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/FlowerLotus.svg",
-            "title": "Gingko Biloba",
-            "description": "Enhances relaxation and improves sleep quality"
-          }
-        },
-        "card_fCk6tE": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/SmileyWink.svg",
-            "title": "Skullcap Root",
-            "description": "All-natural sedative that relaxes & calms the mind"
-          }
-        },
-        "card_gVWKqW": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/MoonStars.svg",
-            "title": "Melatonin",
-            "description": "Naturally supports quicker onset of deep sleep"
-          }
-        },
-        "card_Gm9wDJ": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ApproximateEquals.svg",
-            "title": "Passionflower",
-            "description": "Boosts GABA to alleviate insomnia and anxiety"
-          }
-        }
-      },
-      "block_order": [
-        "card_wJgbzA",
-        "card_TrBj88",
-        "card_fCk6tE",
-        "card_gVWKqW",
-        "card_Gm9wDJ"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Clean, Natural and Powerful Ingredients",
-        "subheading": "Designed to work synergistically, our blend addresses a wide range of sleep issues, enhances each component's benefits, and reduces reliance on high doses for a more effective, well-rounded sleep solution."
-      }
-    },
-    "section_choose_product_zG3kTr": {
-      "type": "section-choose-product",
-      "blocks": {
-        "product_qYDLbj": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-spray",
-            "short_description": ""
-          }
-        },
-        "product_KUc8Jb": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-stress-spray",
-            "short_description": ""
-          }
-        },
-        "product_ULCNmq": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-sprays",
-            "short_description": ""
-          }
-        },
-        "product_xgzdbV": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-capsules",
-            "short_description": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_qYDLbj",
-        "product_KUc8Jb",
-        "product_ULCNmq",
-        "product_xgzdbV"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Shop All Rejuvia Products",
-        "sub_title": ""
-      }
     }
   },
   "order": [
@@ -312,8 +211,6 @@
     "main",
     "5297cfc4-8b11-4356-9be0-ae466343066c",
     "subscribe_save_DCQqJq",
-    "product_widget_NFTnaG",
-    "ingredients_section_UhNmPU",
-    "section_choose_product_zG3kTr"
+    "product_widget_NFTnaG"
   ]
 }

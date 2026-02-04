@@ -62,6 +62,13 @@
             "margin_bottom": 40
           }
         },
+        "skio_plan_picker_gHdWDa": {
+          "type": "skio-plan-picker",
+          "settings": {
+            "start_onetime": false,
+            "onetime_first": false
+          }
+        },
         "buy_buttons_LEaaXV": {
           "type": "buy-buttons",
           "settings": {
@@ -84,6 +91,7 @@
         "product_specs_LcCdTN",
         "description_w8x6H6",
         "variant_selector_Gp3yji",
+        "skio_plan_picker_gHdWDa",
         "buy_buttons_LEaaXV",
         "custom_tabs_Lh9WUN"
       ],

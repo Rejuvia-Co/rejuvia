@@ -10,8 +10,47 @@
 {
   "sections": {
     "product_widget_6p4fVc": {
-      "type": "product-widget-v2", 
+      "type": "product-widget-v2",
+      "blocks": {
+        "okendo_reviews_WAL7Lp": {
+          "type": "okendo-reviews",
+          "settings": {
+            "reviews_anchor": "shopify-product-reviews",
+            "star_color": "#d8b46e",
+            "empty_star_color": "#dddddd"
+          }
+        },
+        "title_XJy8Fq": {
+          "type": "title",
+          "settings": {
+            "show_specs": true
+          }
+        },
+        "description_w8x6H6": {
+          "type": "description",
+          "settings": {}
+        },
+        "buy_buttons_LEaaXV": {
+          "type": "buy-buttons",
+          "settings": {
+            "button_text": "Add to cart -"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_WAL7Lp",
+        "title_XJy8Fq",
+        "description_w8x6H6",
+        "buy_buttons_LEaaXV"
+      ],
       "settings": {
+        "hero_heading": "“Just a few sprays, to make the insomnia go away.”",
+        "selected_product": "",
+        "guarantee_label": "30-Day Guarantee",
+        "show_related_product": false,
+        "show_bundle_text": false,
+        "swatch_tag_content": "",
+        "preselected_item": 3
       }
     },
     "customer_testimonials_n4yKPj": {

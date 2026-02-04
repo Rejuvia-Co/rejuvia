@@ -118,21 +118,24 @@
                 {% case block.type %}
 
                 {% when 'title' %}
-                    <div class="block-title" {{ block.shopify_attributes }}>
-                        <div class="width_mobile_titles">
-                            <h1 class="title">{{ currentProduct.title }}</h1>
-                            {% if block.settings.show_specs %}
-                            <div class="product-specs">
-                                <span>{{ product.variants.first.metafields.custom.variant_grams }}</span>
-                                <span>•</span>
-                                <span>{{ product.variants.first.metafields.custom.variant_servings }}</span>
-                            </div>
+                    <div class="block-title" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <h1 class="title">{% if block.settings.custom_title != blank %}{{ block.settings.custom_title }}{% else %}{{ currentProduct.title }}{% endif %}</h1>
+                    </div>
+
+                {% when 'product-specs' %}
+                    <div class="block-product-specs" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <div class="product-specs">
+                            {% if block.settings.icon != blank %}
+                            <span class="specs-icon">{{ block.settings.icon | image_url: width: 18 | image_tag }}</span>
                             {% endif %}
+                            <span>{{ block.settings.custom_text_1 | default: product.variants.first.metafields.custom.variant_grams }}</span>
+                            <span>•</span>
+                            <span>{{ block.settings.custom_text_2 | default: product.variants.first.metafields.custom.variant_servings }}</span>
                         </div>
                     </div>
 
                 {% when 'okendo-reviews' %}
-                    <div class="block-reviews" {{ block.shopify_attributes }}>
+                    <div class="block-reviews" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <a id="okendo-product-reviews" href="#{{ block.settings.reviews_anchor }}">
                             {% assign reviewRating = product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
                             {% assign reviewCount = product.metafields.okendo.summaryData.reviewCount | plus: 0 %}
@@ -149,20 +152,40 @@
                             {% assign emptyStars = 5 | minus: fullStars | minus: hasHalfStar %}
 
                             <div class="custom-review-stars" style="--star-color: {{ block.settings.star_color }}; --empty-star-color: {{ block.settings.empty_star_color }};">
-                                {% for i in (1..fullStars) %}
-                                <span class="star full">★</span>
-                                {% endfor %}
+                                <span class="stars-container">
+                                    {% for i in (1..fullStars) %}
+                                    <span class="star full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    {% endfor %}
 
-                                {% if hasHalfStar == 1 %}
-                                <span class="star half">★</span>
-                                {% endif %}
+                                    {% if hasHalfStar == 1 %}
+                                    <span class="star half">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <defs>
+                                                <linearGradient id="half-star-{{ block.id }}">
+                                                    <stop offset="50%" stop-color="currentColor"/>
+                                                    <stop offset="50%" stop-color="var(--empty-star-color, #ddd)"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="url(#half-star-{{ block.id }})"/>
+                                        </svg>
+                                    </span>
+                                    {% endif %}
 
-                                {% for i in (1..emptyStars) %}
-                                <span class="star empty">★</span>
-                                {% endfor %}
+                                    {% for i in (1..emptyStars) %}
+                                    <span class="star empty">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    {% endfor %}
+                                </span>
 
                                 <span class="rating-text">
-                                    {{ reviewRating }} based on <span>{{ reviewCount }} Reviews</span>
+                                    <strong>{{ reviewRating }}</strong> Stars From <span class="reviews-count">{{ reviewCount }} Reviews</span>
                                 </span>
                             </div>
                         </a>
@@ -234,7 +257,7 @@
                             {%- render '_product_variants2', currentProduct: product -%}
 
                             <div class="qty-btn-wrap flex flex-wrap justify-content-between align-items-center">
-                                {% comment %} Find skio block settings {% endcomment %}
+                                <!-- {% comment %} Find skio block settings {% endcomment %}
                                 {% for inner_block in section.blocks %}
                                     {% if inner_block.type == "skio-plan-picker" %}
                                         {% assign block_skio = inner_block %}
@@ -253,7 +276,7 @@
                                         product_handle: product,
                                         product_form_id: product_form_id
                                     %}
-                                {% endif %}
+                                {% endif %} -->
 
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
@@ -429,17 +452,82 @@
       "limit": 1,
       "settings": [
         {
-          "type": "checkbox",
-          "id": "show_specs",
-          "label": "Show product specs",
-          "default": true,
-          "info": "Shows variant grams and servings"
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom title",
+          "default": "Sleep Spray",
+          "info": "Leave blank to use product title"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 24,
+          "unit": "px"
+        }
+      ]
+    },
+    {
+      "type": "product-specs",
+      "name": "Product Specs",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Optional icon before specs"
+        },
+        {
+          "type": "text",
+          "id": "custom_text_1",
+          "label": "Custom text 1",
+          "info": "Leave blank to use variant grams metafield"
+        },
+        {
+          "type": "text",
+          "id": "custom_text_2",
+          "label": "Custom text 2",
+          "info": "Leave blank to use variant servings metafield"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 24,
+          "unit": "px"
         }
       ]
     },
     {
       "type": "okendo-reviews",
-      "name": "Okendo Reviews",
+      "name": "Star Rating",
       "limit": 1,
       "settings": [
         {
@@ -453,13 +541,33 @@
           "type": "color",
           "id": "star_color",
           "label": "Star color",
-          "default": "#d8b46e"
+          "default": "#FAB851"
         },
         {
           "type": "color",
           "id": "empty_star_color",
           "label": "Empty star color",
           "default": "#dddddd"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 24,
+          "unit": "px"
         }
       ]
     },
@@ -568,6 +676,7 @@
       "name": "Product Widget",
       "blocks": [
         { "type": "title" },
+        { "type": "product-specs" },
         { "type": "okendo-reviews" },
         { "type": "description" },
         { "type": "key-traits" },

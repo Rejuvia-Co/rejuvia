@@ -35,6 +35,30 @@
     width: 50%;
   }
 
+  /* Block-specific spacing */
+  .product-widget-container .product-info .block-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-widget-container .product-info .block-title .title {
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .product-widget-container .product-info .block-buy-buttons form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   @media screen and (max-width: 768px) {
     .product-widget-container {
       padding: 32px 18px;
@@ -1693,33 +1717,50 @@
   }
 
   /* Custom Review Stars */
-  .custom-review-stars {
+  .product-widget-container .block-reviews a {
     display: flex;
     align-items: center;
-    gap: 1px;
-    font-size: 18px;
+    text-decoration: none;
   }
 
-  .custom-review-stars .star {
-    color: var(--star-color, #d8b46e);
-    position: relative;
-    display: inline-block;
+  .product-widget-container .custom-review-stars {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 16px;
   }
 
-  .custom-review-stars .star.empty {
+  .product-widget-container .custom-review-stars .stars-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px;
+  }
+
+  .product-widget-container .custom-review-stars .star {
+    color: var(--star-color, #FAB851);
+    align-items: center !important;
+  }
+
+  .product-widget-container .custom-review-stars .star svg {
+    width: 18px;
+    height: 16px;
+  }
+
+  .product-widget-container .custom-review-stars .star.empty {
     color: var(--empty-star-color, #ddd);
   }
 
-  .custom-review-stars .star.half {
-    color: var(--empty-star-color, #ddd);
+  .product-widget-container .custom-review-stars .rating-text {
+    color: #000;
+    font-size: 16px;
   }
 
-  .custom-review-stars .star.half::before {
-    content: "\2605";
-    color: var(--star-color, #d8b46e);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
+  .product-widget-container .custom-review-stars .rating-text strong {
+    font-weight: 600;
+  }
+
+  .product-widget-container .custom-review-stars .rating-text .reviews-count {
+    text-decoration: underline;
   }
   

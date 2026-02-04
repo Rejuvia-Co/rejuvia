@@ -67,6 +67,10 @@
           "settings": {
             "button_text": "Add to cart -"
           }
+        },
+        "custom_tabs_Lh9WUN": {
+          "type": "custom-tabs",
+          "settings": {}
         }
       },
       "block_order": [
@@ -75,7 +79,8 @@
         "product_specs_LcCdTN",
         "description_w8x6H6",
         "variant_selector_Gp3yji",
-        "buy_buttons_LEaaXV"
+        "buy_buttons_LEaaXV",
+        "custom_tabs_Lh9WUN"
       ],
       "settings": {
         "hero_heading": "“Just a few sprays, to make the insomnia go away.”",

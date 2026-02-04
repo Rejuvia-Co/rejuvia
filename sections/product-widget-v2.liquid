@@ -230,7 +230,7 @@
                     </div>
 
                 {% when 'buy-buttons' %}
-                    <div class="block-buy-buttons" {{ block.shopify_attributes }}>
+                    <div class="block-buy-buttons" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ product.id }}"
                             id="{{ product_form_id }}" method="post" class="layout-2 variants add-to-cart-form"
                             enctype="multipart/form-data">
@@ -739,6 +739,30 @@
           "id": "guarantee_label",
           "label": "Guarantee label text",
           "default": "30-Day Guarantee"
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 24,
+          "unit": "px"
         }
       ]
     },

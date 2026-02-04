@@ -1,0 +1,72 @@
+{%- liquid
+  case section.settings.width
+    when 'regular'
+      assign width_class = 'container'
+    when 'wide'
+      assign width_class = 'container-wide'
+    when 'full'
+      assign width_class = 'full-width'
+  endcase
+-%}
+
+{% if section.settings.show_when == 'always' or section.settings.show_when == blank %}
+<div class="wonderment-custom-html {{ width_class }}">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'html' %}
+        <div class="custom-html-block" {{ block.shopify_attributes }}>
+          {{ block.settings.section_html }}
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Wonderment Custom HTML",
+  "tag": "section",
+  "class": "wonderment-custom-html-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "show_when",
+      "label": "Show when",
+      "default": "always",
+      "options": [
+        { "value": "always", "label": "Always" },
+        { "value": "never", "label": "Never" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Section width",
+      "default": "regular",
+      "options": [
+        { "value": "regular", "label": "Regular" },
+        { "value": "wide", "label": "Wide" },
+        { "value": "full", "label": "Full width" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "html",
+          "id": "section_html",
+          "label": "Custom HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wonderment Custom HTML"
+    }
+  ]
+}
+{% endschema %}

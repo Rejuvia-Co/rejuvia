@@ -5,12 +5,19 @@
     - block: the block object with settings
 {%- endcomment -%}
 
-{%- assign hide_default_title = false -%}
-{%- if currentProduct.variants.size == 1 and currentProduct.variants.first.title contains 'Default' -%}
-  {%- assign hide_default_title = true -%}
-{%- endif -%}
+{%- if currentProduct.variants.size > 1 -%}
 
-<div class="variant-selector-v2 {% if hide_default_title %}hide{% endif %}" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;">
+{% assign default_variant_index = block.settings.default_variant | default: 2 %}
+{% assign popular_variant_index = block.settings.popular_variant | default: 2 %}
+{% assign best_price_variant_index = block.settings.best_price_variant | default: 3 %}
+
+<div class="variant-selector-v2"
+     data-default-variant="{{ default_variant_index }}"
+     style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;
+            --popular-badge-bg: {{ block.settings.popular_badge_bg | default: '#1a1a1a' }};
+            --popular-badge-text: {{ block.settings.popular_badge_text | default: '#ffffff' }};
+            --best-price-badge-bg: {{ block.settings.best_price_badge_bg | default: '#4a7c59' }};
+            --best-price-badge-text: {{ block.settings.best_price_badge_text | default: '#ffffff' }};">
 
   {% comment %} Section Header {% endcomment %}
   {% if block.settings.show_header %}
@@ -41,15 +48,16 @@
         {% assign discount_percentage = discount_fraction | times: 100 | round %}
       {% endif %}
 
-      <div class="variant-selector__option {% if forloop.index == 2 %}is-popular{% endif %}"
+      <div class="variant-selector__option"
            data-variant-id="{{ variant.id }}"
            data-variant-price="{{ variant.price }}"
-           data-variant-title="{{ variant.title }}">
+           data-variant-title="{{ variant.title }}"
+           data-variant-index="{{ forloop.index }}">
 
         {% comment %} Badge {% endcomment %}
-        {% if forloop.index == 2 and block.settings.popular_badge != blank %}
+        {% if forloop.index == popular_variant_index and block.settings.popular_badge != blank %}
           <span class="variant-selector__badge variant-selector__badge--popular">{{ block.settings.popular_badge }}</span>
-        {% elsif forloop.last and block.settings.best_price_badge != blank %}
+        {% elsif forloop.index == best_price_variant_index and block.settings.best_price_badge != blank %}
           <span class="variant-selector__badge variant-selector__badge--best">{{ block.settings.best_price_badge }}</span>
         {% endif %}
 
@@ -78,38 +86,34 @@
       </div>
     {%- endfor -%}
   </div>
-
-  {% comment %} Hidden select for form compatibility {% endcomment %}
-  <select class="variant-selector__select visually-hidden" id="variant-select-{{ currentProduct.id }}" style="display: none;">
-    {%- for variant in currentProduct.variants -%}
-      <option value="{{ variant.id }}" {% if forloop.index == 2 %}selected{% endif %}>{{ variant.title }}</option>
-    {%- endfor -%}
-  </select>
-  <input type="hidden" name="id" data-productid="{{ currentProduct.id }}" id="variant-input-{{ currentProduct.id }}" value="{{ currentProduct.variants[1].id | default: currentProduct.variants.first.id }}" />
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const selector = document.querySelector('.variant-selector-v2[data-product-id="{{ currentProduct.id }}"]') || document.querySelector('.variant-selector-v2');
+  const selector = document.querySelector('.variant-selector-v2');
   if (!selector) return;
 
   const options = selector.querySelectorAll('.variant-selector__option');
-  const hiddenInput = selector.querySelector('input[type="hidden"]');
-  const select = selector.querySelector('select');
+  const defaultVariantIndex = parseInt(selector.dataset.defaultVariant) || 2;
 
-  // Set initial active state
-  const initialVariantId = hiddenInput ? hiddenInput.value : null;
-  options.forEach(option => {
-    if (option.dataset.variantId === initialVariantId) {
-      option.classList.add('is-active');
+  // Find ProductJs elements
+  const productSelect = document.querySelector('.swatch2 .select-variant');
+  const productVariantInput = document.querySelector('.swatch2 input[name="id"]');
+
+  // Set initial active state based on settings
+  const targetIndex = Math.min(defaultVariantIndex - 1, options.length - 1);
+  if (options.length > 0 && targetIndex >= 0) {
+    options[targetIndex].classList.add('is-active');
+
+    // Also trigger initial selection
+    const initialVariantId = options[targetIndex].dataset.variantId;
+    if (productSelect) {
+      productSelect.value = initialVariantId;
+      productSelect.dispatchEvent(new Event('change', { bubbles: true }));
     }
-  });
-
-  // If no active, set second option (index 1) as active
-  if (!selector.querySelector('.variant-selector__option.is-active') && options.length > 1) {
-    options[1].classList.add('is-active');
-  } else if (!selector.querySelector('.variant-selector__option.is-active') && options.length > 0) {
-    options[0].classList.add('is-active');
+    if (productVariantInput) {
+      productVariantInput.value = initialVariantId;
+    }
   }
 
   options.forEach(option => {
@@ -119,14 +123,15 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add active to clicked
       this.classList.add('is-active');
 
-      // Update hidden input
       const variantId = this.dataset.variantId;
-      if (hiddenInput) {
-        hiddenInput.value = variantId;
+
+      // Update ProductJs select and trigger change
+      if (productSelect) {
+        productSelect.value = variantId;
+        productSelect.dispatchEvent(new Event('change', { bubbles: true }));
       }
-      if (select) {
-        select.value = variantId;
-        select.dispatchEvent(new Event('change', { bubbles: true }));
+      if (productVariantInput) {
+        productVariantInput.value = variantId;
       }
 
       // Trigger custom event for other scripts
@@ -141,3 +146,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+{%- endif -%}

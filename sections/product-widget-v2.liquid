@@ -18,11 +18,11 @@
     {% assign preselected_item_index = section.settings.preselected_item %}
 
 
-    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default">
+    <div id="product-item-{{ product.id }}" class="product-wrap container product-template-default">
         
             <div class="gallery-wrapper">
                 <div class="gallery-inner">
-                    {%- render '_product_gallery_v2', currentProduct: product, show_bundle_text: section.settings.show_bundle_text -%}
+                    {%- render '_product_gallery_v2', currentProduct: currentProduct, show_bundle_text: section.settings.show_bundle_text -%}
                     
                     {% if product.metafields.custom.boundle_related_product != blank and section.settings.show_related_product %}
                         {% assign relatedProduct = product.metafields.custom.boundle_related_product.value %}
@@ -259,7 +259,16 @@
 
                             <span class="validation-msg hide"></span>
                             {%- render '_product_price' -%}
-                            {%- render '_product_variants2', currentProduct: product -%}
+
+                            {% comment %} Hidden select for ProductJs compatibility {% endcomment %}
+                            <div class="swatch2 options" style="display: none;">
+                                <select class="select-variant" id="product-select-{{ product.id }}">
+                                    {%- for variant in product.variants -%}
+                                        <option value="{{ variant.id }}" {% if forloop.index == 2 %}selected{% endif %}>{{ variant.title | escape }}</option>
+                                    {%- endfor -%}
+                                </select>
+                                <input type="hidden" name="id" data-productid="{{ product.id }}" id="product-{{ product.id }}-variant" value="{{ product.variants[1].id | default: product.variants.first.id }}" />
+                            </div>
 
                             <div class="qty-btn-wrap flex flex-wrap justify-content-between align-items-center">
                                 <!-- {% comment %} Find skio block settings {% endcomment %}
@@ -373,11 +382,11 @@
 
 <script type="text/javascript">
     $(function () {
-        
-        var product = {{ all_products[currentProduct.handle] | json }};
+
+        var product = {{ product | json }};
         console.log('new ProductJS: ', product);
 
-        new ProductJs($('#product-item-{{ currentProduct.id }}'), product, {{ preselected_item_index }});
+        new ProductJs($('#product-item-{{ product.id }}'), product, {{ preselected_item_index }});
 
         if (window.location.hash.indexOf('search') >= 0) {
             $('.collection-nav .return_search').removeClass('hide');
@@ -619,16 +628,86 @@
           "default": "CHOOSE YOUR QUANTITY"
         },
         {
+          "type": "header",
+          "content": "Default Selection"
+        },
+        {
+          "type": "range",
+          "id": "default_variant",
+          "label": "Default selected variant",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 2,
+          "info": "Which variant is selected on page load (1 = first, 2 = second, etc.)"
+        },
+        {
+          "type": "header",
+          "content": "Popular Badge"
+        },
+        {
+          "type": "range",
+          "id": "popular_variant",
+          "label": "Popular badge position",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 2,
+          "info": "Which variant shows Popular badge (0 = none)"
+        },
+        {
           "type": "text",
           "id": "popular_badge",
           "label": "Popular badge text",
           "default": "POPULAR"
         },
         {
+          "type": "color",
+          "id": "popular_badge_bg",
+          "label": "Popular badge background",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "color",
+          "id": "popular_badge_text",
+          "label": "Popular badge text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Best Price Badge"
+        },
+        {
+          "type": "range",
+          "id": "best_price_variant",
+          "label": "Best price badge position",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 3,
+          "info": "Which variant shows Best Price badge (0 = none)"
+        },
+        {
           "type": "text",
           "id": "best_price_badge",
           "label": "Best price badge text",
           "default": "BEST PRICE"
+        },
+        {
+          "type": "color",
+          "id": "best_price_badge_bg",
+          "label": "Best price badge background",
+          "default": "#4a7c59"
+        },
+        {
+          "type": "color",
+          "id": "best_price_badge_text",
+          "label": "Best price badge text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
         },
         {
           "type": "range",

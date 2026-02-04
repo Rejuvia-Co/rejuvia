@@ -30,11 +30,12 @@
 
   {% comment %} Variant Options {% endcomment %}
   <div class="variant-selector__options">
-    {% assign base_variant = currentProduct.variants.first %}
-    {% assign base_servings = base_variant.title | remove: ' Servings' | plus: 0 %}
-
     {%- for variant in currentProduct.variants -%}
-      {% assign actual_servings = variant.title | remove: ' Servings' | plus: 0 %}
+      {% comment %} Get servings from metafield {% endcomment %}
+      {% assign servings_raw = variant.metafields.custom.variant_servings | default: '30 Servings' %}
+      {% assign actual_servings = servings_raw | remove: ' Servings' | remove: ' servings' | plus: 0 %}
+      {% if actual_servings == 0 %}{% assign actual_servings = 30 %}{% endif %}
+
       {% assign price_per_serving = variant.price | divided_by: actual_servings %}
       {% assign months = actual_servings | divided_by: 30 %}
 
@@ -99,6 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Find ProductJs elements
   const productSelect = document.querySelector('.swatch2 .select-variant');
   const productVariantInput = document.querySelector('.swatch2 input[name="id"]');
+  const priceDisplay = document.querySelector('.variant-price-display');
+
+  // Format price helper
+  function formatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2).replace('.00', '');
+  }
 
   // Set initial active state based on settings
   const targetIndex = Math.min(defaultVariantIndex - 1, options.length - 1);
@@ -107,12 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Also trigger initial selection
     const initialVariantId = options[targetIndex].dataset.variantId;
+    const initialPrice = options[targetIndex].dataset.variantPrice;
     if (productSelect) {
       productSelect.value = initialVariantId;
       productSelect.dispatchEvent(new Event('change', { bubbles: true }));
     }
     if (productVariantInput) {
       productVariantInput.value = initialVariantId;
+    }
+    if (priceDisplay && initialPrice) {
+      priceDisplay.textContent = formatMoney(initialPrice);
     }
   }
 
@@ -132,6 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       if (productVariantInput) {
         productVariantInput.value = variantId;
+      }
+
+      // Update price display
+      if (priceDisplay) {
+        priceDisplay.textContent = formatMoney(this.dataset.variantPrice);
       }
 
       // Trigger custom event for other scripts

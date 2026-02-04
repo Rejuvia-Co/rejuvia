@@ -139,10 +139,10 @@
     align-items: center;
     gap: 16px;
     padding: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #E5E5E5;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease;
     position: relative;
     background: #fff;
   }
@@ -152,7 +152,7 @@
   }
 
   .variant-selector__option.is-active {
-    border: 2px solid #672666;
+    border-color: #672666;
   }
 
   .variant-selector__badge {

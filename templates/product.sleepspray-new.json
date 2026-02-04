@@ -10,57 +10,8 @@
 {
   "sections": {
     "product_widget_6p4fVc": {
-      "type": "product-widget",
-      "blocks": {
-        "text_y3j3qV": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Plant.svg",
-            "title": "Vegan"
-          }
-        },
-        "text_AP4eNX": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "Non-GMO"
-          }
-        },
-        "text_HEHibt": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Flask.svg",
-            "title": "Lab-Tested"
-          }
-        },
-        "text_7UGPbh": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Wind.svg",
-            "title": "Mint Flavor"
-          }
-        },
-        "skio_plan_picker_gpx3rU": {
-          "type": "skio-plan-picker",
-          "settings": {
-            "start_onetime": false,
-            "onetime_first": false
-          }
-        }
-      },
-      "block_order": [
-        "text_y3j3qV",
-        "text_AP4eNX",
-        "text_HEHibt",
-        "text_7UGPbh",
-        "skio_plan_picker_gpx3rU"
-      ],
+      "type": "product-widget-v2", 
       "settings": {
-        "hero_heading": "",
-        "selected_product": "",
-        "guarantee_label": "FREE SHIPPING OVER $79",
-        "swatch_tag_content": "BEST VALUE",
-        "preselected_item": 1
       }
     },
     "customer_testimonials_n4yKPj": {

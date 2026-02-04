@@ -1,0 +1,583 @@
+
+{{ 'product-widget-v2.css' | asset_url | stylesheet_tag }}
+
+<div class="templateProduct product-widget-container">
+    {% assign currentProduct = section.settings.selected_product %}
+    {% if currentProduct == blank %}
+        {% assign currentProduct = product %}
+    {% endif %}
+
+    {% assign subscription_product = product.metafields.subscriptions %}
+    {% comment %}Discount settings{% endcomment %}
+    {% assign discount_percentage = subscription_product.discount_percentage | round: 2 %}
+    {% assign discount_floor = subscription_product.discount_percentage | floor %}
+    {% if discount_percentage == discount_floor %}
+        {% assign discount_percentage = discount_floor %}
+    {% endif %}
+
+    {% assign preselected_item_index = section.settings.preselected_item %}
+
+
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default">
+        
+            <div class="gallery-wrapper">
+                <div class="gallery-inner">
+                    {%- render '_product_gallery_v2', currentProduct: product, show_bundle_text: section.settings.show_bundle_text -%}
+                    
+                    {% if product.metafields.custom.boundle_related_product != blank and section.settings.show_related_product %}
+                        {% assign relatedProduct = product.metafields.custom.boundle_related_product.value %}
+                        <div class="boundle-related show-desktop hide-mobile">
+                        <div class="boundle-related__text">
+                            <div class="boundle-related__text--heading">
+                            Sleep + Calm Spray Bundle
+                            </div>
+                            <div class="boundle-related__text--description">
+                            Why choose one when you can have both?
+                            </div>
+                        </div>
+                        <div class="product-recommendation">
+                            <a href="{{ relatedProduct.url }}" class="eg-product-link">
+                            {% if relatedProduct.metafields.custom.bboundle_product_card_tag_label != blank %}
+                            <div class="boundle-related--label">
+                                {{ relatedProduct.metafields.custom.bboundle_product_card_tag_label }}
+                            </div>
+                            {% endif %}
+                            <div class="eg-productR-image">
+                                <div class="eg-background-product"></div>
+                                <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}">
+                            </div>
+                            <div class="eg-productR-info">
+                                <div class="eg-reviews">
+                                {{ relatedProduct.metafields.okendo.StarRatingSnippet }}
+                                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" />
+                                </div>
+                                <div class="productR-info_title">
+                                <span>{{ relatedProduct.title }}</span>
+                                <div class="productR-info_title--price">
+                                    {% if relatedProduct.compare_at_price != blank %}
+                                    <div class="productR-info_title--price--compared">
+                                    {{ relatedProduct.compare_at_price | money }}
+                                    </div>
+                                    {% endif %}
+                                    <div class="productR-info_title--price--regular">
+                                    {{ relatedProduct.price | money }}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="productR-info_description">
+                                {{ relatedProduct.description}}
+                                </div>
+                                <div class="boundle-related__products">
+                                <div class="boundle-related__products--title">
+                                    What’s Included:
+                                </div>
+                                <div class="boundle-related__products--wrap">
+                                    {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
+                                    <div class="boundle-related__products--product">
+                                    <img src="{{ product_ref.featured_image | img_url: '50x50' }}">
+                                    <div>
+                                        {{ product_ref.title }}
+                                    </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="product-info medium-down--text-center">
+
+            {%- if quickView != true -%}
+            {%- render 'structured_data', data: 'product' -%}
+            {%- endif -%}
+
+            {% comment %} Collection navigation - always visible {% endcomment %}
+            <div class="product-top">
+                <div class="flex flex-wrap flex-align-center justify-content-between">
+                    <div class="{% if collection != blank %}shown{% endif %} clearfix">
+                        {%- if collection.previous_product -%}
+                        <a href="{{ collection.previous_product }}" class="previous_product">&laquo; Prev</a>
+                        {%- endif -%}
+                        {%- if collection.next_product -%}
+                        <a href="{{ collection.next_product }}" class="next_product">Next &raquo;</a>
+                        {%- endif -%}
+                        <a href="#" onclick="window.history.back(); return false;" class="return_search hide">&laquo; Return to Search Results</a>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} Render blocks in order {% endcomment %}
+            {% assign product_form_id = product.id %}
+
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+                {% when 'title' %}
+                    <div class="block-title" {{ block.shopify_attributes }}>
+                        <div class="width_mobile_titles">
+                            <h1 class="title">{{ currentProduct.title }}</h1>
+                            {% if block.settings.show_specs %}
+                            <div class="product-specs">
+                                <span>{{ product.variants.first.metafields.custom.variant_grams }}</span>
+                                <span>•</span>
+                                <span>{{ product.variants.first.metafields.custom.variant_servings }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% when 'okendo-reviews' %}
+                    <div class="block-reviews" {{ block.shopify_attributes }}>
+                        <a id="okendo-product-reviews" href="#{{ block.settings.reviews_anchor }}">
+                            {% assign reviewRating = product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
+                            {% assign reviewCount = product.metafields.okendo.summaryData.reviewCount | plus: 0 %}
+                            {% assign fullStars = reviewRating | floor %}
+                            {% assign remainder = reviewRating | minus: fullStars %}
+
+                            {% assign hasHalfStar = 0 %}
+                            {% if remainder >= 0.25 and remainder < 0.75 %}
+                                {% assign hasHalfStar = 1 %}
+                            {% elsif remainder >= 0.75 %}
+                                {% assign fullStars = fullStars | plus: 1 %}
+                            {% endif %}
+
+                            {% assign emptyStars = 5 | minus: fullStars | minus: hasHalfStar %}
+
+                            <div class="custom-review-stars" style="--star-color: {{ block.settings.star_color }}; --empty-star-color: {{ block.settings.empty_star_color }};">
+                                {% for i in (1..fullStars) %}
+                                <span class="star full">★</span>
+                                {% endfor %}
+
+                                {% if hasHalfStar == 1 %}
+                                <span class="star half">★</span>
+                                {% endif %}
+
+                                {% for i in (1..emptyStars) %}
+                                <span class="star empty">★</span>
+                                {% endfor %}
+
+                                <span class="rating-text">
+                                    {{ reviewRating }} based on <span>{{ reviewCount }} Reviews</span>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                {% when 'description' %}
+                    <div class="block-description description-container" {{ block.shopify_attributes }}>
+                        <p>{{ currentProduct.description }}</p>
+                    </div>
+
+                {% when 'key-traits' %}
+                    <div class="block-key-traits" {{ block.shopify_attributes }}>
+                        {% render 'product-key-traits' %}
+                    </div>
+
+                {% when 'bundle-info' %}
+                    {% if product.metafields.custom.bundle_components != blank %}
+                    <div class="block-bundle-info bundle_info_block" {{ block.shopify_attributes }}>
+                        <p class="bundle_title">{{ block.settings.bundle_title }}</p>
+                        <div class="bundle_list">
+                            {% for component in product.metafields.custom.bundle_components.value %}
+                                {% assign bundle_product = component.product.value %}
+                                {% assign quantity = component.quantity %}
+                                {% if bundle_product %}
+                                <div class="bundle_item">
+                                    <div class="bundle_item_image">
+                                        {% if bundle_product.featured_image %}
+                                        <img src="{{ bundle_product.featured_image | img_url: '100x100' }}" alt="{{ bundle_product.title }}" loading="lazy">
+                                        {% endif %}
+                                    </div>
+                                    <p class="bundle_item_title">{{ quantity }}x {{ bundle_product.title }}</p>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                {% when 'buy-buttons' %}
+                    <div class="block-buy-buttons" {{ block.shopify_attributes }}>
+                        <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ product.id }}"
+                            id="{{ product_form_id }}" method="post" class="layout-2 variants add-to-cart-form"
+                            enctype="multipart/form-data">
+
+                            <div class="no-js-hidden" id="price-{{ product.id }}" role="status">
+                                {%- liquid
+                                    if use_variant
+                                        assign target = product.selected_or_first_available_variant
+                                    else
+                                        assign target = product
+                                    endif
+
+                                    assign compare_at_price = target.compare_at_price
+                                    assign price = target.price | default: 1999
+                                    assign available = target.available | default: false
+                                    assign money_price = price | money
+                                    if settings.currency_code_enabled
+                                        assign money_price = price | money_with_currency
+                                    endif
+
+                                    if target == product and product.price_varies
+                                        assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+                                    endif
+                                -%}
+                            </div>
+
+                            <span class="validation-msg hide"></span>
+                            {%- render '_product_price' -%}
+                            {%- render '_product_variants2', currentProduct: product -%}
+
+                            <div class="qty-btn-wrap flex flex-wrap justify-content-between align-items-center">
+                                {% comment %} Find skio block settings {% endcomment %}
+                                {% for inner_block in section.blocks %}
+                                    {% if inner_block.type == "skio-plan-picker" %}
+                                        {% assign block_skio = inner_block %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if request.path contains '/products' %}
+                                    {% render 'skio-app-block',
+                                        block_i: block_skio,
+                                        product: product,
+                                        product_form_id: product_form_id
+                                    %}
+                                {% else %}
+                                    {% render 'skio-app-block',
+                                        block_i: block_skio,
+                                        product_handle: product,
+                                        product_form_id: product_form_id
+                                    %}
+                                {% endif %}
+
+                                <div class="content-available">
+                                    <button type="submit" name="add" class="btn custom_button_font">
+                                        <span>{{ block.settings.button_text }} <span class="skio-update-price"></span></span>
+                                        <div class="price-button"></div>
+                                    </button>
+                                </div>
+
+                                <div class="guarantee-label-container">
+                                    {% if product.metafields.custom.boundle %}
+                                    <div class="guarantee-label-container__boundle">
+                                        <span>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.0026 16.6668C4.30816 16.6668 3.71788 16.4238 3.23177 15.9377C2.74566 15.4516 2.5026 14.8613 2.5026 14.1668H1.66927C1.43316 14.1668 1.23538 14.0868 1.07594 13.9268C0.916493 13.7668 0.836493 13.5691 0.835938 13.3335V5.00016C0.835938 4.54183 0.999271 4.14961 1.32594 3.8235C1.6526 3.49738 2.04483 3.33405 2.5026 3.3335H12.5026C12.9609 3.3335 13.3534 3.49683 13.6801 3.8235C14.0068 4.15016 14.1698 4.54238 14.1693 5.00016V6.66683H15.8359C16.0998 6.66683 16.3498 6.726 16.5859 6.84433C16.822 6.96266 17.0165 7.12572 17.1693 7.3335L19.0026 9.771C19.0582 9.84044 19.0998 9.91683 19.1276 10.0002C19.1554 10.0835 19.1693 10.1738 19.1693 10.271V13.3335C19.1693 13.5696 19.0893 13.7677 18.9293 13.9277C18.7693 14.0877 18.5715 14.1674 18.3359 14.1668H17.5026C17.5026 14.8613 17.2595 15.4516 16.7734 15.9377C16.2873 16.4238 15.697 16.6668 15.0026 16.6668C14.3082 16.6668 13.7179 16.4238 13.2318 15.9377C12.7457 15.4516 12.5026 14.8613 12.5026 14.1668H7.5026C7.5026 14.8613 7.25955 15.4516 6.77344 15.9377C6.28733 16.4238 5.69705 16.6668 5.0026 16.6668ZM5.0026 15.0002C5.23871 15.0002 5.43677 14.9202 5.59677 14.7602C5.75677 14.6002 5.83649 14.4024 5.83594 14.1668C5.83538 13.9313 5.75538 13.7335 5.59594 13.5735C5.43649 13.4135 5.23871 13.3335 5.0026 13.3335C4.76649 13.3335 4.56872 13.4135 4.40927 13.5735C4.24983 13.7335 4.16983 13.9313 4.16927 14.1668C4.16872 14.4024 4.24871 14.6004 4.40927 14.761C4.56983 14.9216 4.7676 15.0013 5.0026 15.0002ZM15.0026 15.0002C15.2387 15.0002 15.4368 14.9202 15.5968 14.7602C15.7568 14.6002 15.8365 14.4024 15.8359 14.1668C15.8354 13.9313 15.7554 13.7335 15.5959 13.5735C15.4365 13.4135 15.2387 13.3335 15.0026 13.3335C14.7665 13.3335 14.5687 13.4135 14.4093 13.5735C14.2498 13.7335 14.1698 13.9313 14.1693 14.1668C14.1687 14.4024 14.2487 14.6004 14.4093 14.761C14.5698 14.9216 14.7676 15.0013 15.0026 15.0002ZM14.1693 10.8335H17.7109L15.8359 8.3335H14.1693V10.8335Z" fill="black" />
+                                            </svg>
+                                            Free Shipping $59+
+                                        </span>
+                                        <span>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11.5891 2.425L9.85573 4.16667H11.6641C13.4322 4.16667 15.1279 4.86905 16.3781 6.11929C17.6284 7.36953 18.3307 9.06522 18.3307 10.8333H16.6641C16.6641 9.50725 16.1373 8.23548 15.1996 7.2978C14.2619 6.36012 12.9901 5.83333 11.6641 5.83333H9.85573L11.5974 7.575L10.4141 8.75L6.66406 5L7.83906 3.825L10.4141 1.25L11.5891 2.425ZM1.66406 10V18.3333H14.9974V10H1.66406ZM3.33073 15.4667V12.875C3.83166 12.5841 4.24812 12.1676 4.53906 11.6667H12.1224C12.4133 12.1676 12.8298 12.5841 13.3307 12.875V15.4667C12.837 15.7576 12.4265 16.1709 12.1391 16.6667H4.53906C4.24698 16.1688 3.83061 15.7553 3.33073 15.4667ZM8.33073 15.8333C9.02073 15.8333 9.58073 15.0875 9.58073 14.1667C9.58073 13.2458 9.02073 12.5 8.33073 12.5C7.64073 12.5 7.08073 13.2458 7.08073 14.1667C7.08073 15.0875 7.64073 15.8333 8.33073 15.8333Z" fill="black" />
+                                            </svg>
+                                            30-Day Guarantee
+                                        </span>
+                                    </div>
+                                    {% else %}
+                                        {% render 'icon-return' %}
+                                        {{ section.settings.guarantee_label }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                {% when 'custom-tabs' %}
+                    <div class="block-custom-tabs" {{ block.shopify_attributes }}>
+                        {%- render '_custom_tabs_products-new' -%}
+                    </div>
+
+                {% when 'social-sharing' %}
+                    <div class="block-social-sharing" {{ block.shopify_attributes }}>
+                        {%- render 'social_sharing' -%}
+                    </div>
+
+                {% when 'custom-image' %}
+                    {% if block.settings.image != blank %}
+                    <div class="block-custom-image custom-image-badge" {{ block.shopify_attributes }}>
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" />
+                    </div>
+                    {% elsif settings.CustomImage != blank %}
+                    <div class="block-custom-image custom-image-badge" {{ block.shopify_attributes }}>
+                        <img src="{{ settings.CustomImage | img_url: 'master' }}" />
+                    </div>
+                    {% endif %}
+
+                {% when '@app' %}
+                    {%- render block -%}
+
+                {% endcase %}
+            {% endfor %}
+
+            </div>
+     
+        {%- unless product.tags contains "hide" -%}
+        <div class="add-to-cart-navbar">
+            <div class="flex align-items-center justify-content-between">
+            <div>
+                <h1 class="title">{{ currentProduct.title }}</h1>
+                {% if product.metafields.more_info.info_float_bar != '' %}
+                <h4>{{product.metafields.more_info.info_float_bar}}</h4>
+                {% endif %}
+            </div>
+            <div>
+                <button type="button" class="btn custom_button_font">
+                Buy - {{currentProduct.price | money}}
+                <div class="product-price" style="display: inline">
+                    {{currentProduct.price | money}}
+                </div>
+                </button>
+            </div>
+            </div>
+        </div>
+        {%- endunless -%}
+        </div>
+  
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        
+        var product = {{ all_products[currentProduct.handle] | json }};
+        console.log('new ProductJS: ', product);
+
+        new ProductJs($('#product-item-{{ currentProduct.id }}'), product, {{ preselected_item_index }});
+
+        if (window.location.hash.indexOf('search') >= 0) {
+            $('.collection-nav .return_search').removeClass('hide');
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            var reviewsEl = document.getElementById('okendo-product-reviews');
+            if (reviewsEl) {
+                reviewsEl.removeAttribute('class');
+            }
+        }, 1500);
+    });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Product Widget V2",
+  "tag": "section",
+  "class": "product-widget-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "“Just a few sprays, to make the insomnia go away.”"
+    },
+    {
+      "type": "product",
+      "id": "selected_product",
+      "label": "Product: "
+    },
+    {
+      "type": "text",
+      "id": "guarantee_label",
+      "label": "Guarantee Label: ",
+      "default": "30-Day Guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_related_product",
+      "label": "Show related product from metafield",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bundle_text",
+      "label": "Show bundle text on gallery image",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Swatches"
+    },
+    {
+      "type": "text",
+      "id": "swatch_tag_content",
+      "label": "Best Value Tag content"
+    },
+    {
+      "type": "number",
+      "id": "preselected_item",
+      "label": "Preselected Item",
+      "default": 3,
+      "info": "Indicates the position number of the variant, The first available one is selected if the field is empty"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_specs",
+          "label": "Show product specs",
+          "default": true,
+          "info": "Shows variant grams and servings"
+        }
+      ]
+    },
+    {
+      "type": "okendo-reviews",
+      "name": "Okendo Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "reviews_anchor",
+          "label": "Reviews section anchor ID",
+          "default": "shopify-product-reviews",
+          "info": "ID of the reviews section to scroll to"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star color",
+          "default": "#d8b46e"
+        },
+        {
+          "type": "color",
+          "id": "empty_star_color",
+          "label": "Empty star color",
+          "default": "#dddddd"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Product Description",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "key-traits",
+      "name": "Key Traits",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "bundle-info",
+      "name": "Bundle Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "bundle_title",
+          "label": "Bundle title",
+          "default": "What's Included:"
+        }
+      ]
+    },
+    {
+      "type": "buy-buttons",
+      "name": "Buy Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Add to cart -"
+        }
+      ]
+    },
+    {
+      "type": "skio-plan-picker",
+      "name": "Skio Plan Picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "start_onetime",
+          "label": "Preselect One Time",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "onetime_first",
+          "label": "Show One Time first",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "custom-tabs",
+      "name": "Custom Tabs (Accordion)",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "social-sharing",
+      "name": "Social Sharing",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "custom-image",
+      "name": "Custom Image Badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "Leave blank to use global CustomImage from theme settings"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Preferably use SVG format [view example](https://www.svgrepo.com/svg/365402/flower-lotus-thin)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Widget",
+      "blocks": [
+        { "type": "title" },
+        { "type": "okendo-reviews" },
+        { "type": "description" },
+        { "type": "key-traits" },
+        { "type": "bundle-info" },
+        { "type": "buy-buttons" },
+        { "type": "skio-plan-picker" },
+        { "type": "custom-tabs" },
+        { "type": "social-sharing" }
+      ]
+    }
+  ]
+}
+{% endschema %}

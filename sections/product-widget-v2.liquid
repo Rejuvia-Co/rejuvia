@@ -125,8 +125,8 @@
                 {% when 'product-specs' %}
                     <div class="block-product-specs" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <div class="product-specs">
-                            {% if block.settings.icon != blank %}
-                            <span class="specs-icon">{{ block.settings.icon | image_url: width: 18 | image_tag }}</span>
+                            {% if block.settings.icon_svg != blank %}
+                            <span class="specs-icon">{{ block.settings.icon_svg }}</span>
                             {% endif %}
                             <span>{{ block.settings.custom_text_1 | default: product.variants.first.metafields.custom.variant_grams }}</span>
                             <span>•</span>
@@ -486,10 +486,10 @@
       "limit": 1,
       "settings": [
         {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon",
-          "info": "Optional icon before specs"
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG code",
+          "info": "Paste SVG code here (optional)"
         },
         {
           "type": "text",

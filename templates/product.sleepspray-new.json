@@ -44,6 +44,17 @@
           "type": "description",
           "settings": {}
         },
+        "variant_selector_Gp3yji": {
+          "type": "variant-selector",
+          "settings": {
+            "show_header": true,
+            "header_text": "CHOOSE YOUR QUANTITY",
+            "popular_badge": "POPULAR",
+            "best_price_badge": "BEST PRICE",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
         "buy_buttons_LEaaXV": {
           "type": "buy-buttons",
           "settings": {
@@ -56,6 +67,7 @@
         "title_XJy8Fq",
         "product_specs_LcCdTN",
         "description_w8x6H6",
+        "variant_selector_Gp3yji",
         "buy_buttons_LEaaXV"
       ],
       "settings": {

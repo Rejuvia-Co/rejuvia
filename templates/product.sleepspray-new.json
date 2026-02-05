@@ -62,21 +62,14 @@
             "margin_bottom": 40
           }
         },
-        "skio_plan_picker_gHdWDa": {
-          "type": "skio-plan-picker",
-          "settings": {
-            "start_onetime": false,
-            "onetime_first": false
-          }
-        },
         "skio_plan_picker_v2_Xk9mPq": {
           "type": "skio-plan-picker-v2",
           "settings": {
             "start_onetime": false,
             "onetime_first": false,
             "onetime_title": "One Time Purchase",
-            "subscription_title": "Subscribe & ",
-            "border_color": "#BFBFBF",
+            "subscription_title": "Subscribe &",
+            "border_color": "#bfbfbf",
             "selected_border_color": "#672666",
             "discount_badge_color": "#c2f1bd",
             "discount_text_color": "#000000",
@@ -106,7 +99,6 @@
         "product_specs_LcCdTN",
         "description_w8x6H6",
         "variant_selector_Gp3yji",
-        "skio_plan_picker_gHdWDa",
         "skio_plan_picker_v2_Xk9mPq",
         "buy_buttons_LEaaXV",
         "custom_tabs_Lh9WUN"

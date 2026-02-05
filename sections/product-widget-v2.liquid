@@ -333,6 +333,11 @@
                     </div>
                     {% endif %}
 
+                {% when 'skio-plan-picker-v2' %}
+                    <div class="block-skio-plan-picker-v2" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        {% render '_skio_plan_picker_v2', product: product, product_form_id: product_form_id, block: block %}
+                    </div>
+
                 {% when '@app' %}
                     {%- render block -%}
 
@@ -786,6 +791,93 @@
       ]
     },
     {
+      "type": "skio-plan-picker-v2",
+      "name": "Skio Plan Picker V2",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Plan Picker Options"
+        },
+        {
+          "type": "checkbox",
+          "id": "start_onetime",
+          "label": "Preselect One Time",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "onetime_first",
+          "label": "Show One Time first",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "onetime_title",
+          "label": "One-time purchase title",
+          "default": "One Time Purchase"
+        },
+        {
+          "type": "text",
+          "id": "subscription_title",
+          "label": "Subscription title",
+          "default": "Subscribe & "
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#BFBFBF"
+        },
+        {
+          "type": "color",
+          "id": "selected_border_color",
+          "label": "Selected border color",
+          "default": "#672666"
+        },
+        {
+          "type": "color",
+          "id": "discount_badge_color",
+          "label": "Discount badge background",
+          "default": "#c2f1bd"
+        },
+        {
+          "type": "color",
+          "id": "discount_text_color",
+          "label": "Discount badge text color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "default": 24,
+          "unit": "px"
+        }
+      ]
+    },
+    {
       "type": "custom-tabs",
       "name": "Custom Tabs (Accordion)",
       "limit": 1,
@@ -841,6 +933,7 @@
         { "type": "variant-selector" },
         { "type": "buy-buttons" },
         { "type": "skio-plan-picker" },
+        { "type": "skio-plan-picker-v2" },
         { "type": "custom-tabs" },
         { "type": "social-sharing" }
       ]

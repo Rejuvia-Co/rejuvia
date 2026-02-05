@@ -1,0 +1,66 @@
+{% comment %}
+  Skio Plan Picker V2 — standalone block for product-widget-v2
+  Uses `form` attribute on hidden input so it can live outside the <form> element.
+{% endcomment %}
+
+{% liquid
+  assign form_id = product_form_id | default: product.id
+%}
+
+<style>
+  skio-plan-picker {
+    --skio-group-border-radius: 8px;
+    --skio-group-border-width: 1.5px;
+    --skio-group-border-selected-width: 2px;
+    --skio-group-border-color: {{ block.settings.border_color }};
+    --skio-group-border-selected-color: {{ block.settings.selected_border_color }};
+    --skio-group-background-color: transparent;
+    --skio-group-background-selected-color: transparent;
+    --skio-group-text-color: #000;
+    --skio-group-text-selected-color: #000;
+    --skio-discount-color: {{ block.settings.discount_badge_color }};
+    --skio-discount-text-color: {{ block.settings.discount_text_color }};
+  }
+</style>
+
+{% capture skio_settings %}
+  {
+    "form_id": {{ form_id | json }},
+    "show_without_subscription": false,
+    "show_compare_price": true,
+    "legend_content": "Select your order",
+    "show_legend": false,
+    "layout": "vertical",
+    "start_onetime": {{ block.settings.start_onetime }},
+    "onetime_first": {{ block.settings.onetime_first }},
+    "show_radio_selector": true,
+    "onetime_title": {{ block.settings.onetime_title | json }},
+    "subscription_title": {{ block.settings.subscription_title | json }},
+    "prepaid_title": "Prepaid",
+    "discount_format": "percentage",
+    "discount_style": "bubble",
+    "discount_text": "[discount]",
+    "additional_subscription_content": "",
+    "selector_type": "dropdown",
+    "default_subscription": "",
+    "future_price_adjustments_text": "<small>Then [discount] off after the [order_count_ordinal] order</small>",
+    "combine_groups": false,
+    "combined_group_name": "Subscription",
+    "show_details": false,
+    "dropdownPosition": "inside",
+    "external_price_selector": ".skio-update-price"
+  }
+{% endcapture %}
+
+<skio-plan-picker
+  key="plan-picker-{{ product.id }}"
+  options='{{ skio_settings | strip_newlines }}'
+  product='{{ product | json | escape }}'
+  productHandle='{{ product.handle }}'
+  layout="vertical"
+  selectedVariant='{{ product.selected_or_first_available_variant | json | escape }}'
+>
+  <input type='hidden' name='selling_plan' form='{{ form_id }}'>
+</skio-plan-picker>
+
+<script src='{{ 'skio-plan-picker-component.js' | asset_url }}' type='module'></script>

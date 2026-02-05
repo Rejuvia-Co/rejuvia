@@ -59,7 +59,7 @@ var ProductJs = function( item, product, preselectedItem = null ) {
                 slidesToScroll: 1,
                 vertical: false,
                 verticalSwiping: false,
-                arrows: false
+                arrows: true
               }
             },
             {

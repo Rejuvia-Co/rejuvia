@@ -544,15 +544,22 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-sub-top__title {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 400;
         color: #000;
         line-height: 1.4;
+      }
+      .group-container--selected .skio-sub-top__title {
+        font-weight: 700;
       }
       .skio-sub-top__subtitle {
         font-size: 14px;
         font-weight: 400;
-        color: #000;
+        color: #707070;
         line-height: 1;
+      }
+      .group-container--selected .skio-sub-top__subtitle {
+        color: #000;
+        text-align: left;
       }
       .skio-sub-top__right {
         display: flex;
@@ -562,9 +569,12 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-sub-top__price {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 400;
         color: #000;
         line-height: 1;
+      }
+      .group-container--selected .skio-sub-top__price {
+        font-weight: 700;
       }
       .skio-sub-top__compare {
         font-size: 14px;
@@ -594,6 +604,7 @@ export class SkioPlanPicker extends LitElement {
         color: #000;
         text-transform: uppercase;
         line-height: 1;
+        text-align: left;
       }
       .skio-includes__item {
         display: flex;
@@ -715,49 +726,90 @@ export class SkioPlanPicker extends LitElement {
 
       @media only screen and (max-width: 749px) {
         .skio-plan-picker {
-          gap: 12px;
+          gap: 10px;
         }
         .skio-sub-top__title {
-          font-size: 14px;
+          font-size: 16px;
         }
         .skio-sub-top__subtitle {
-          font-size: 13px;
+          font-size: 12px;
+          text-align:left;
         }
         .skio-sub-top__price {
-          font-size: 14px;
+          font-size: 16px;
         }
         .skio-sub-top__compare {
-          font-size: 13px;
+          font-size: 12px;
+        }
+        .skio-includes__header {
+          font-size: 11px;
         }
         .skio-includes__item-name {
-          font-size: 14px;
+          font-size: 13px;
         }
         .skio-includes__item-image {
           width: 36px;
           height: 36px;
           min-width: 36px;
         }
+        .skio-includes__item-icon {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+        }
+        .skio-includes__item-original {
+          font-size: 11px;
+        }
+        .skio-includes__item-price {
+          font-size: 13px;
+        }
         .skio-plan-picker .group-label {
-          padding: 20px 14px;
-          gap: 14px;
+          padding: 16px 14px;
+          gap: 12px;
+        }
+        .skio-offer-header__title {
+          font-size: 12px;
+        }
+        .skio-sub-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            white-space: nowrap;
         }
       }
 
       @media only screen and (max-width: 415px) {
         .skio-plan-picker .group-label {
-          padding: 12px;
+          padding: 12px 10px;
         }
-      }
-
-      @media only screen and (max-width: 398px) {
-        .skio-plan-picker .group-label .group-title {
-          font-size: 14px;
+        .skio-includes__item-name {
+          font-size: 12px;
+        }
+        .skio-sub-top__title {
+          font-size: 16px;
+        }
+        .skio-sub-top__price {
+          font-size: 16px;
         }
       }
 
       @media only screen and (max-width: 380px) {
         .skio-plan-picker .group-label {
-          padding: 10px;
+          padding: 10px 8px;
+        }
+        .skio-includes__item-image {
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+        }
+        .skio-includes__item-icon {
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+        }
+        .skio-includes {
+          gap: 8px;
         }
       }
       .group-container:not(.subs-group-container.group-container--selected) .group-topline {
@@ -1152,7 +1204,10 @@ export class SkioPlanPicker extends LitElement {
               ${this.radioTemplate()}
               <div class="skio-sub-top__left">
                 <div class="skio-sub-top__title">${titleText}</div>
-                <div class="skio-sub-top__subtitle">${this.options?.subscription_subtitle || 'Skip or cancel anytime'}</div>
+                <div class="skio-sub-top__subtitle">${this.selectedSellingPlanGroup == group
+                  ? (this.options?.subscription_subtitle || 'Skip or cancel anytime')
+                  : this.getCollapsedSubtitle()
+                }</div>
               </div>
               <div class="skio-sub-top__right">
                 <div class="skio-sub-top__price" aria-live="polite">${salePrice}</div>
@@ -1183,6 +1238,14 @@ export class SkioPlanPicker extends LitElement {
         ${includes.map(item => this.renderIncludeItem(item, group))}
       </div>
     `;
+  }
+
+  getCollapsedSubtitle() {
+    const giftItem = this.options?.subscription_includes?.find(item => item.type === 'gift');
+    if (giftItem?.name) {
+      return `+ FREE ${giftItem.name}`;
+    }
+    return this.options?.subscription_subtitle || 'Skip or cancel anytime';
   }
 
   getVariantImage() {
@@ -1557,6 +1620,12 @@ export class SkioPlanPicker extends LitElement {
   // Update selected selling plan group; called on click of group-container element
   selectSellingPlanGroup(group) {
     this.selectedSellingPlanGroup = group
+
+    if (group && !group.selected_selling_plan) {
+      const availablePlans = this.getAvailableSellingPlans(group)
+      group.selected_selling_plan = availablePlans[0]
+    }
+
     this.selectedSellingPlan = group?.selected_selling_plan
 
     if(group){

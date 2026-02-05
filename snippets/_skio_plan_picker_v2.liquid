@@ -29,7 +29,7 @@
   {% if block.settings.show_variant_item %}
     {
       "type": "variant",
-      "name": {{ block.settings.variant_item_name | default: product.title | json }}
+      "name": {{ product.title | json }}
     }{% if free_gift != blank or block.settings.show_free_shipping %},{% endif %}
   {% endif %}
   {% if free_gift != blank %}

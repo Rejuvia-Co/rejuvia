@@ -294,7 +294,7 @@
 
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
-                                        <span>{{ block.settings.button_text }} <span class="variant-price-display">{{ product.variants[1].price | default: product.variants.first.price | money }}</span></span>
+                                        <span>{{ block.settings.button_text }} <span class="variant-price-display skio-update-price">{{ product.variants[1].price | default: product.variants.first.price | money }}</span></span>
                                     </button>
                                 </div>
 
@@ -848,23 +848,6 @@
           "id": "show_variant_item",
           "label": "Show current product in includes",
           "default": true
-        },
-        {
-          "type": "text",
-          "id": "variant_item_name",
-          "label": "Product item label override",
-          "info": "Leave blank to use product title"
-        },
-        {
-          "type": "product",
-          "id": "gift_product",
-          "label": "Free gift product"
-        },
-        {
-          "type": "text",
-          "id": "gift_original_price",
-          "label": "Gift original price text",
-          "default": "$45.00"
         },
         {
           "type": "checkbox",

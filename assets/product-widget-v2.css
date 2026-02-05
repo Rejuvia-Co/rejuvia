@@ -2242,18 +2242,6 @@
     width: 100%;
   }
 
-  .block-skio-plan-picker-v2 .skio-group-container,
-  .block-skio-plan-picker-v2 .skio-plan-picker-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .block-skio-plan-picker-v2 input[type="radio"]:checked {
-    accent-color: #000;
-  }
-
   @media only screen and (max-width: 749px) {
     .product-widget-container .product-info .block-skio-plan-picker-v2 {
       margin-bottom: 16px !important;

@@ -60,7 +60,7 @@
   .product-widget-container .product-info .block-product-specs .product-specs {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     margin: 0;
     color: #000;
     font-family: Inter, sans-serif;
@@ -112,13 +112,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .variant-selector__line {
     flex: 1;
     height: 1px;
-    background-color: #ccc;
+    background-color: #672666;
   }
 
   .variant-selector__title {
@@ -161,13 +161,14 @@
 
   .variant-selector__badge {
     position: absolute;
-    top: -8px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
     padding: 4px 8px;
     border-radius: 5px;
     font-family: Inter, sans-serif;
     font-size: 11px;
+    line-height: 14px;
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
@@ -192,7 +193,7 @@
   }
 
   .variant-selector__image img {
-    max-width: 100%;
+    max-width: auto;
     max-height: 100%;
     object-fit: contain;
   }
@@ -706,13 +707,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    /* 24px */
-    margin-bottom: 32px;
     text-align: left;
   }
 
   .product-wrap .product-info .description-container p {
     margin: 0;
+    font-size: 18px;
+    line-height: 140%;
+    font-weight: 400;
   }
 
   .product-wrap .product-info .description-container_bundle_includes {
@@ -1190,11 +1192,15 @@
     .product-widget-container .product-info .block-description,
     .product-widget-container .product-info .block-variant-selector,
     .product-widget-container .product-info .block-buy-buttons {
-      margin-bottom: 16px !important;
+      margin-bottom: 14px !important;
     }
+    .product-wrap .product-info .description-container p {font-size: 16px;}
 
     .product-widget-container .product-info .block-key-traits {
       margin-bottom: 0 !important;
+    }
+    .variant-selector-v2 {
+      margin-bottom: 32px!Important;
     }
   }
 
@@ -1665,6 +1671,7 @@
   .product-widget-container .custom-review-stars .star {
     color: var(--star-color, #FAB851);
     align-items: center !important;
+    height: 17px;
   }
 
   .product-widget-container .custom-review-stars .star svg {

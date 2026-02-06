@@ -46,7 +46,7 @@ export class SkioPlanPicker extends LitElement {
         width: 100%;
         margin-bottom: 1rem;
         font-family: inherit;
-        letter-spacing: 0.7px
+        letter-spacing: normal;
       }
       :host([layout='hidden']) .skio-plan-picker {
         display: none;
@@ -481,12 +481,12 @@ export class SkioPlanPicker extends LitElement {
         align-items: center;
         gap: 12px;
         width: 100%;
-        margin-bottom: 16px;
+        margin-bottom: 4px;
       }
       .skio-offer-header__line {
         flex: 1;
         height: 1px;
-        background-color: #ccc;
+        background-color: #672666;
       }
       .skio-offer-header__title {
         font-family: Inter, sans-serif;
@@ -520,7 +520,7 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .group-label {
-        padding: 24px 16px;
+        padding: 18px 16px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -537,7 +537,7 @@ export class SkioPlanPicker extends LitElement {
       .skio-sub-top__left {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 6px;
       }
       .skio-sub-top__right {
         margin-left: auto;
@@ -547,6 +547,7 @@ export class SkioPlanPicker extends LitElement {
         font-weight: 400;
         color: #000;
         line-height: 1.4;
+        letter-spacing: normal;
       }
       .group-container--selected .skio-sub-top__title {
         font-weight: 700;
@@ -556,6 +557,7 @@ export class SkioPlanPicker extends LitElement {
         font-weight: 400;
         color: #707070;
         line-height: 1;
+        letter-spacing:normal;
       }
       .group-container--selected .skio-sub-top__subtitle {
         color: #000;
@@ -564,7 +566,7 @@ export class SkioPlanPicker extends LitElement {
       .skio-sub-top__right {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 6px;
         align-items: flex-end;
       }
       .skio-sub-top__price {
@@ -682,7 +684,7 @@ export class SkioPlanPicker extends LitElement {
 
       /* One-time purchase card — simpler style */
       .skio-plan-picker .group-container:not(.subs-group-container) .group-label {
-        padding: 24px 16px;
+        padding: 18px 16px;
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .group-topline {
         border-bottom: none;
@@ -1181,7 +1183,7 @@ export class SkioPlanPicker extends LitElement {
           ? (this.options?.discount_format === 'absolute' ? this.money(discount.absolute) : discount.percent + '%')
           : '';
         const subTitle = this.options?.subscription_title || 'Subscribe & ';
-        const titleText = discountLabel ? `${subTitle}Save ${discountLabel}` : subTitle;
+        const titleText = discountLabel ? `${subTitle} Save ${discountLabel}` : subTitle;
         const comparePrice = this.selectedVariant?.compare_at_price || this.selectedVariant?.price;
         const salePrice = this.price(group.selected_selling_plan);
         const hasCompare = this.options?.show_compare_price && comparePrice > this.price(group.selected_selling_plan, false);

@@ -19,7 +19,7 @@
             "star_color": "#d8b46e",
             "empty_star_color": "#dddddd",
             "margin_top": 0,
-            "margin_bottom": 12
+            "margin_bottom": 8
           }
         },
         "title_XJy8Fq": {
@@ -69,6 +69,11 @@
             "onetime_first": false,
             "onetime_title": "One Time Purchase",
             "subscription_title": "Subscribe &",
+            "header_title": "Choose Your Offer",
+            "subscription_subtitle": "Skip or cancel anytime",
+            "show_variant_item": true,
+            "show_free_shipping": true,
+            "shipping_original_price": "$4.99",
             "border_color": "#bfbfbf",
             "selected_border_color": "#672666",
             "discount_badge_color": "#c2f1bd",

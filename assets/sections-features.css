@@ -374,7 +374,7 @@
 }
 
 .product_features_container .features_icons div {
-    max-width: 100px;
+    max-width: 120px;
 }
 
 @media screen and (min-width: 750px) {

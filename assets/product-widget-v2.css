@@ -299,8 +299,7 @@
 
     .product-widget-container .product-wrap .product-info {
       width: calc((100% / 2) - 50px);
-      min-width: 550px;
-      max-width: none;
+      max-width: 550px;
     }
   }
     .product-wrap .product-gallery .thumbs {
@@ -466,7 +465,7 @@
   }
 
   .product-wrap .product-top .title {
-    font-family: HelveticaNeueL, sans-serif;
+    font-family: Inter, sans-serif;
     margin-bottom: 0;
     font-size: 48px;
     font-style: normal;
@@ -485,8 +484,8 @@
 
   .product-wrap .subheading,
   .product-top .subheading {
-    font-family: "Nexa";
-    font-style: none;
+    font-family: Inter, sans-serif;
+    font-style: normal;
   }
 
   .product-wrap .desktop-reviews {
@@ -512,7 +511,7 @@
   }
 
   .accordion-title {
-    font-family: "Nexa";
+    font-family: Inter, sans-serif;
     font-weight: 600;
     position: relative;
     font-size: 1.286em;
@@ -1579,7 +1578,7 @@
   }
 
   .bundle_info_block .bundle_title {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: Inter, sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 1.6;
@@ -1624,7 +1623,7 @@
   }
 
   .bundle_info_block .bundle_item_title {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: Inter, sans-serif;
     font-weight: 500;
     font-size: 12px;
     line-height: normal;
@@ -1679,6 +1678,7 @@
 
   .product-widget-container .custom-review-stars .rating-text {
     color: #000;
+    font-family: Inter, sans-serif;
     font-size: 16px;
   }
 
@@ -1688,6 +1688,11 @@
 
   .product-widget-container .custom-review-stars .rating-text .reviews-count {
     text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .product-widget-container .block-reviews a:hover .reviews-count {
+    color: #672666;
   }
 
   /* Custom Tabs Styles */

@@ -390,6 +390,16 @@
             var reviewsEl = document.getElementById('okendo-product-reviews');
             if (reviewsEl) {
                 reviewsEl.removeAttribute('class');
+                reviewsEl.addEventListener('click', function(e) {
+                    if (e.target.closest('.reviews-count')) {
+                        e.preventDefault();
+                        var targetId = this.getAttribute('href').substring(1);
+                        var targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
             }
         }, 1500);
     });
@@ -549,9 +559,9 @@
           "id": "margin_top",
           "label": "Margin top (px)",
           "min": 0,
-          "max": 100,
-          "step": 4,
-          "default": 0,
+          "max": 60,
+          "step": 1,
+          "default": 10,
           "unit": "px"
         },
         {

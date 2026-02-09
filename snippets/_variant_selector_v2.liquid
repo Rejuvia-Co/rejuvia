@@ -80,10 +80,12 @@
           {% endif %}
         </div>
 
-        {% comment %} Price per serving {% endcomment %}
-        <div class="variant-selector__price-per">
-          {{ price_per_serving | money | remove: '.00' }}/night
-        </div>
+        {% comment %} Price per night {% endcomment %}
+        {% if variant.metafields.custom.price_per_night != blank %}
+          <div class="variant-selector__price-per">
+            {{ variant.metafields.custom.price_per_night }}
+          </div>
+        {% endif %}
       </div>
     {%- endfor -%}
   </div>

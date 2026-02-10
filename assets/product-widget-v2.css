@@ -48,7 +48,7 @@
 
   .product-widget-container .product-info .block-title .title {
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 36px;
     font-style: normal;
     font-weight: 600;
@@ -59,11 +59,11 @@
 
   .product-widget-container .product-info .block-product-specs .product-specs {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 4px;
     margin: 0;
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -82,7 +82,7 @@
 
   .product-widget-container .product-info .block-description {
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -95,7 +95,7 @@
 
   .product-widget-container .content--p {
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -122,7 +122,7 @@
   }
 
   .variant-selector__title {
-    font-family: Inter, sans-serif;
+
     font-size: 14px;
     font-weight: 600;
     color: #672666;
@@ -166,7 +166,7 @@
     transform: translateX(-50%);
     padding: 4px 8px;
     border-radius: 5px;
-    font-family: Inter, sans-serif;
+
     font-size: 11px;
     line-height: 14px;
     font-weight: 700;
@@ -191,7 +191,7 @@
   }
 
   .variant-selector__name {
-    font-family: Inter, sans-serif;
+
     font-size: 18px;
     font-weight: 400;
     color: #000;
@@ -204,7 +204,7 @@
   }
 
   .variant-selector__price-per {
-    font-family: Inter, sans-serif;
+
     font-size: 14px;
     font-weight: 400;
     color: #000;
@@ -458,7 +458,7 @@
   }
 
   .product-wrap .product-top .title {
-    font-family: Inter, sans-serif;
+
     margin-bottom: 0;
     font-size: 48px;
     font-style: normal;
@@ -477,7 +477,7 @@
 
   .product-wrap .subheading,
   .product-top .subheading {
-    font-family: Inter, sans-serif;
+
     font-style: normal;
   }
 
@@ -504,7 +504,7 @@
   }
 
   .accordion-title {
-    font-family: Inter, sans-serif;
+
     font-weight: 600;
     position: relative;
     font-size: 1.286em;
@@ -911,7 +911,7 @@
 
   .guarantee-label-container {
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -1026,7 +1026,7 @@
     .product-widget-container .product-info .block-title .title,
     .product-wrap .product-top .title {
       color: #000;
-      font-family: Inter, sans-serif;
+  
       font-size: 32px;
       font-style: normal;
       font-weight: 600;
@@ -1576,7 +1576,7 @@
   }
 
   .bundle_info_block .bundle_title {
-    font-family: Inter, sans-serif;
+
     font-weight: 700;
     font-size: 14px;
     line-height: 1.6;
@@ -1621,7 +1621,7 @@
   }
 
   .bundle_info_block .bundle_item_title {
-    font-family: Inter, sans-serif;
+
     font-weight: 500;
     font-size: 12px;
     line-height: normal;
@@ -1649,7 +1649,7 @@
   .product-widget-container .custom-review-stars {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
+    align-items: flex-start!Important;
     gap: 10px !important;
     font-size: 16px;
   }
@@ -1677,7 +1677,7 @@
 
   .product-widget-container .custom-review-stars .rating-text {
     color: #000;
-    font-family: Inter, sans-serif;
+
     font-size: 16px;
   }
 
@@ -1719,7 +1719,7 @@
 
   .block-custom-tabs .custom-tabs-product-new li h2 {
     color: #040404;
-    font-family: Inter, sans-serif;
+
     font-size: 17px;
     font-style: normal;
     font-weight: 500;
@@ -1761,7 +1761,7 @@
 
   .block-custom-tabs .custom-tabs-product-new .tab_content {
     color: #5C5C5C;
-    font-family: Inter, sans-serif;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

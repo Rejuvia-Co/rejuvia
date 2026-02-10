@@ -172,16 +172,8 @@
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
-  }
-
-  .variant-selector__badge--popular {
-    background-color: var(--popular-badge-bg, #1a1a1a);
-    color: var(--popular-badge-text, #fff);
-  }
-
-  .variant-selector__badge--best {
-    background-color: var(--best-price-badge-bg, #4a7c59);
-    color: var(--best-price-badge-text, #fff);
+    background-color: #61bd67;
+    color: #fff;
   }
 
   .variant-selector__image {

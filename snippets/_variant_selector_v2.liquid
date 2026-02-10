@@ -8,16 +8,10 @@
 {%- if currentProduct.variants.size > 1 -%}
 
 {% assign default_variant_index = block.settings.default_variant | default: 2 %}
-{% assign popular_variant_index = block.settings.popular_variant | default: 2 %}
-{% assign best_price_variant_index = block.settings.best_price_variant | default: 3 %}
 
 <div class="variant-selector-v2"
      data-default-variant="{{ default_variant_index }}"
-     style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;
-            --popular-badge-bg: {{ block.settings.popular_badge_bg | default: '#1a1a1a' }};
-            --popular-badge-text: {{ block.settings.popular_badge_text | default: '#ffffff' }};
-            --best-price-badge-bg: {{ block.settings.best_price_badge_bg | default: '#4a7c59' }};
-            --best-price-badge-text: {{ block.settings.best_price_badge_text | default: '#ffffff' }};">
+     style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;">
 
   {% comment %} Section Header {% endcomment %}
   {% if block.settings.show_header %}
@@ -55,11 +49,11 @@
            data-variant-title="{{ variant.title }}"
            data-variant-index="{{ forloop.index }}">
 
-        {% comment %} Badge {% endcomment %}
-        {% if forloop.index == popular_variant_index and block.settings.popular_badge != blank %}
-          <span class="variant-selector__badge variant-selector__badge--popular">{{ block.settings.popular_badge }}</span>
-        {% elsif forloop.index == best_price_variant_index and block.settings.best_price_badge != blank %}
-          <span class="variant-selector__badge variant-selector__badge--best">{{ block.settings.best_price_badge }}</span>
+        {% comment %} Badge from variant metafield {% endcomment %}
+        {% if variant.metafields.custom.variant_badge != blank %}
+          {% assign badge_text_color = variant.metafields.custom.badge_text_color | default: '#ffffff' %}
+          {% assign badge_bg_color = variant.metafields.custom.badge_bg_color | default: '#61bd67' %}
+          <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ variant.metafields.custom.variant_badge }}</span>
         {% endif %}
 
         {% comment %} Image {% endcomment %}

@@ -42,13 +42,6 @@
             "subheading": "Many people feel the effects within minutes since the ingredients are absorbed directly under the tongue. For best results, we recommend using Rejuvia consistently for 10–14 days to allow the ingredients to build up and deliver their full benefits."
           }
         },
-        "faq_7fqEmx": {
-          "type": "faq",
-          "settings": {
-            "heading": "Can I use Rejuvia after brushing my teeth?",
-            "subheading": "It’s up to you. We suggest using your spray 15-20 minutes before bed, so it depends when you brush your teeth. Rejuvia does not cause cavities or any harm to your teeth (there is a minuscule amount of natural sugar in Rejuvia). A few customers note that drinking a small glass of water after using Rejuvia before bed can help."
-          }
-        },
         "faq_XaATVV": {
           "type": "faq",
           "settings": {
@@ -73,7 +66,7 @@
         "faq_L6UwPf": {
           "type": "faq",
           "settings": {
-            "heading": "Should I use Rejuvia before or After brushing my teeth?",
+            "heading": "Should I use Rejuvia before or after brushing my teeth?",
             "subheading": "It's up to you. Most of our customers use our sprays about 20 minutes before they head to bed, which usually falls before brushing their teeth. You can feel comfortable using them after you brush your teeth, though."
           }
         }
@@ -82,7 +75,6 @@
         "faq_VVDhAf",
         "faq_b48WtH",
         "faq_Vy7NWQ",
-        "faq_7fqEmx",
         "faq_XaATVV",
         "faq_anJEUY",
         "faq_KR3c9m",
@@ -130,8 +122,8 @@
         "faq_WTGkwW": {
           "type": "faq",
           "settings": {
-            "heading": "How long does one Rejuvia Sleep Spray last?",
-            "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per night, so one Rejuvia spray will last you 30-35 days on average."
+            "heading": "How long does one Rejuvia spray last?",
+            "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per serving, so one Rejuvia spray will last you 30-35 days on average."
           }
         },
         "faq_tpmiqC": {
@@ -144,7 +136,7 @@
         "faq_QtYzDi": {
           "type": "faq",
           "settings": {
-            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Calm Spray?",
+            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Stress Spray?",
             "subheading": "Our Sleep Spray is intended for use before bedtime. Our Calm Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."
           }
         }

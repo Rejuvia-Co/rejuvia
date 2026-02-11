@@ -2606,6 +2606,86 @@
           "founder_title": "Founder of Rejuvia",
           "image": "shopify://shop_images/IMG_2412.webp"
         }
+      },
+      "faqs_Whjez9": {
+        "type": "faqs",
+        "blocks": {
+          "faqs_AUMgiP": {
+            "type": "faqs",
+            "settings": {
+              "heading": "Why are Rejuvia sprays better than gummies and pills?",
+              "subheading": "Oral sprays allow for direct absorption through the mucous membranes in your mouth, bypassing the digestive system entirely. That means faster uptake, higher bioavailability, and no fillers or added sugars that come with most gummies. You feel it working quicker and your body actually uses more of what you're taking."
+            }
+          },
+          "faqs_PkfdaH": {
+            "type": "faqs",
+            "settings": {
+              "heading": "What's in it? Is it safe to take with other products?",
+              "subheading": "We like to keep it clean and transparent."
+            }
+          },
+          "faqs_M3TK3h": {
+            "type": "faqs",
+            "settings": {
+              "heading": "Do I need to take Rejuvia every night?",
+              "subheading": "Nope. Rejuvia works on an as-needed basis — there's no buildup required. Use it nightly, on travel nights, or whenever you need help winding down. It's completely flexible."
+            }
+          },
+          "faqs_h3LV7C": {
+            "type": "faqs",
+            "settings": {
+              "heading": "How quickly does Rejuvia work, and how long will I sleep?",
+              "subheading": "Most customers feel the effects within 15–20 minutes. You don't need to block out a full 8 hours — it supports your natural sleep cycle whether you're getting 5 hours or 8. Some people notice results the first night; others need 5–7 days of consistent use for the full effect."
+            }
+          },
+          "faqs_iYNNjP": {
+            "type": "faqs",
+            "settings": {
+              "heading": "Will I feel groggy the next morning?",
+              "subheading": "No. That's actually one of the biggest reasons people switch to Rejuvia from melatonin gummies or OTC sleep aids. Our sublingual formula absorbs directly into your bloodstream, so your body processes it efficiently — no next-day fog. Nurses, travelers, and early risers use it specifically for this reason."
+            }
+          },
+          "faqs_HjQJMP": {
+            "type": "faqs",
+            "settings": {
+              "heading": "Will Rejuvia knock me out like a sleeping pill?",
+              "subheading": "No — Rejuvia isn't a sedative. It's designed to help your body wind down naturally so you fall asleep when you're ready. Think of it as support for your body's own sleep process, not an off switch. Most customers notice they simply drift off easier and stay asleep longer."
+            }
+          },
+          "faqs_QaUV8c": {
+            "type": "faqs",
+            "settings": {
+              "heading": "How does the subscription work? Can I cancel easily?",
+              "subheading": "Yes — you can skip, pause, or cancel anytime from your account dashboard. No commitments, no hoops. You'll always get an email before you're charged so there are no surprises."
+            }
+          },
+          "faqs_Aewc9h": {
+            "type": "faqs",
+            "settings": {
+              "heading": "What if Rejuvia doesn't work for me?",
+              "subheading": "We offer a 90-day money-back guarantee on your first order, no questions asked. If it's not for you, just email hello@rejuvia.co and we'll walk you through the return. You're only responsible for return shipping costs."
+            }
+          }
+        },
+        "block_order": [
+          "faqs_AUMgiP",
+          "faqs_PkfdaH",
+          "faqs_M3TK3h",
+          "faqs_h3LV7C",
+          "faqs_iYNNjP",
+          "faqs_HjQJMP",
+          "faqs_QaUV8c",
+          "faqs_Aewc9h"
+        ],
+        "name": "Homepage Faqs",
+        "settings": {
+          "customClass": "",
+          "background": "",
+          "heading": "Frequently Asked Questions",
+          "customTextBottom": "",
+          "title_color": "#000000",
+          "text_color": "#000000"
+        }
       }
     },
     "content_for_index": [
@@ -2619,6 +2699,7 @@
       "product_widget_gC6JFH",
       "subscribe_save_qXLDcT",
       "founder_story_qLxKiR",
+      "faqs_Whjez9",
       "section_choose_product_nMXmYH"
     ],
     "blocks": {

@@ -52,7 +52,7 @@
           "settings": {
             "show_header": true,
             "header_text": "CHOOSE YOUR QUANTITY",
-            "default_variant": 2,
+            "default_variant": 1,
             "margin_top": 0,
             "margin_bottom": 40
           }
@@ -65,10 +65,10 @@
             "onetime_title": "One Time Purchase",
             "subscription_title": "Subscribe &",
             "header_title": "Choose Your Offer",
-            "subscription_subtitle": "Skip or cancel anytime",
+            "subscription_subtitle": "Easily Pause or Cancel",
             "show_variant_item": true,
             "show_free_shipping": true,
-            "shipping_original_price": "$4.99",
+            "shipping_original_price": "$4.95",
             "border_color": "#bfbfbf",
             "selected_border_color": "#672666",
             "discount_badge_color": "#c2f1bd",

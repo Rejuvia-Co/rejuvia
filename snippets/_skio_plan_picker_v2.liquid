@@ -91,6 +91,7 @@
   productHandle='{{ product.handle }}'
   layout="vertical"
   selectedVariant='{{ product.selected_or_first_available_variant | json | escape }}'
+  data-preselected-plans='{% for variant in product.variants %}{% if variant.metafields.custom.preselected_selling_plan != blank %}{{ variant.id }}:{{ variant.metafields.custom.preselected_selling_plan }}{% unless forloop.last %},{% endunless %}{% endif %}{% endfor %}'
 >
   <input type='hidden' name='selling_plan' form='{{ form_id }}'>
 </skio-plan-picker>

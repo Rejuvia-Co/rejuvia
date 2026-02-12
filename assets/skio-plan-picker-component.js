@@ -229,8 +229,8 @@ export class SkioPlanPicker extends LitElement {
       }
       .selling-plan-dropdown-container {
         display: flex;
-        align-items: center;
-        margin-top: 15px;
+        align-items: flex-end;
+        margin-top: 0px;
       }
       .selling-plan-dropdown-container > span {
         font-weight: 700;
@@ -489,7 +489,7 @@ export class SkioPlanPicker extends LitElement {
         background-color: #672666;
       }
       .skio-offer-header__title {
-        font-family: Inter, sans-serif;
+        font-family: inherit;
         font-size: 14px;
         font-weight: 600;
         color: var(--skio-group-border-selected-color, #672666);
@@ -501,7 +501,7 @@ export class SkioPlanPicker extends LitElement {
       .skio-plan-picker {
         gap: 12px;
         margin: 0;
-        font-family: Inter, sans-serif;
+        font-family: inherit;
       }
 
       .skio-plan-picker .group-container {
@@ -964,9 +964,9 @@ export class SkioPlanPicker extends LitElement {
     return html`
       <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
         <span class="selling-plan-dropdown-label">${this.additionalFrequencyLabel()}</span>
-        ${this.options?.selector_type == 'dropdown' ? this.sellingPlanDropdown(group) : ''}
+        ${!this.hasPreselectedPlan && this.options?.selector_type == 'dropdown' ? this.sellingPlanDropdown(group) : ''}
 
-        ${this.options?.selector_type == 'button' ? this.sellingPlanButtons(group) : ''} ${this.additionalContentText()}
+        ${!this.hasPreselectedPlan && this.options?.selector_type == 'button' ? this.sellingPlanButtons(group) : ''} ${this.additionalContentText()}
 
         <!-- Subscription bullet points copied with styling from Loop -->
         <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
@@ -1211,6 +1211,7 @@ export class SkioPlanPicker extends LitElement {
                   : this.getCollapsedSubtitle()
                 }</div>
               </div>
+
               <div class="skio-sub-top__right">
                 <div class="skio-sub-top__price" aria-live="polite">${salePrice}</div>
                 ${hasCompare
@@ -1219,11 +1220,16 @@ export class SkioPlanPicker extends LitElement {
               </div>
             </div>
 
+            ${this.selectedSellingPlanGroup == group && !this.hasPreselectedPlan && this.getAvailableSellingPlans(group).length > 1
+              ? html`<div class="skio-frequency-selector">${this.sellingPlanDropdown(group)}</div>`
+              : ''}
+
             ${this.selectedSellingPlanGroup == group && this.options?.subscription_includes?.length
               ? html`
                 <div class="skio-divider"></div>
                 ${this.renderSubscriptionIncludes(group)}
               ` : ''}
+
           </label>
         </div>
       `})
@@ -1455,6 +1461,8 @@ export class SkioPlanPicker extends LitElement {
           )
       )
 
+      console.log('Skio selling_plans:', this.availableSellingPlanGroups.flatMap(g => g.selling_plans).map(p => ({id: p.id, name: p.name})));
+
       if (this.options?.combine_groups) {
         this.availableSellingPlanGroups = [
           {
@@ -1474,19 +1482,30 @@ export class SkioPlanPicker extends LitElement {
         const urlSelectedSellingPlanId = url.searchParams.get('selling_plan')
 
         //update each group with a default selected_selling_plan
+        // Parse preselected plans from data attribute (format: "variantId:planId,variantId:planId")
+        const preselectedAttr = this.getAttribute('data-preselected-plans') || ''
+        const preselectedMap = {}
+        preselectedAttr.split(',').forEach(entry => {
+          const [vid, pid] = entry.split(':')
+          if (vid && pid) preselectedMap[vid.trim()] = pid.trim()
+        })
+        const preselectedId = preselectedMap[String(this.selectedVariant.id)]
+        this.hasPreselectedPlan = !!preselectedId
+
         this.availableSellingPlanGroups.forEach(group => {
           const availableSellingPlans = this.getAvailableSellingPlans(group)
 
           const urlSelectedSellingPlan = availableSellingPlans.find(plan => plan.id == urlSelectedSellingPlanId)
           const nameSelectedSellingPlan = availableSellingPlans.find(plan => plan.name === this.selectedSellingPlan?.name)
+          const preselectedSellingPlan = preselectedId ? availableSellingPlans.find(plan => plan.id == preselectedId) : null
           const defaultSellingPlan =
               this.options?.default_subscription && this.options.default_subscription.trim() !== ''
                   ? availableSellingPlans.find(plan => plan.name.toLowerCase().includes(this.options.default_subscription.toLowerCase()))
                   : null
 
-          group.selected_selling_plan = urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
+          group.selected_selling_plan = urlSelectedSellingPlan || nameSelectedSellingPlan || preselectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
 
-          const isAnyPlanSelected = urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan
+          const isAnyPlanSelected = urlSelectedSellingPlan || nameSelectedSellingPlan || preselectedSellingPlan || defaultSellingPlan
 
           group.selected = !!isAnyPlanSelected
         })

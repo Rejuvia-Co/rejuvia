@@ -48,7 +48,7 @@
 
   .product-widget-container .product-info .block-title .title {
     color: #000;
-
+    font-family: HelveticaNeueL, sans-serif;
     font-size: 36px;
     font-style: normal;
     font-weight: 600;
@@ -1719,7 +1719,7 @@
 
   .block-custom-tabs .custom-tabs-product-new li h2 {
     color: #040404;
-
+    font-family: HelveticaNeueL, sans-serif;
     font-size: 17px;
     font-style: normal;
     font-weight: 500;
@@ -1761,7 +1761,7 @@
 
   .block-custom-tabs .custom-tabs-product-new .tab_content {
     color: #5C5C5C;
-
+    font-family: HelveticaNeueL, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

@@ -1496,24 +1496,25 @@ export class SkioPlanPicker extends LitElement {
           const availableSellingPlans = this.getAvailableSellingPlans(group)
 
           const urlSelectedSellingPlan = availableSellingPlans.find(plan => plan.id == urlSelectedSellingPlanId)
-          const nameSelectedSellingPlan = availableSellingPlans.find(plan => plan.name === this.selectedSellingPlan?.name)
           const preselectedSellingPlan = preselectedId ? availableSellingPlans.find(plan => plan.id == preselectedId) : null
+          const nameSelectedSellingPlan = !preselectedSellingPlan ? availableSellingPlans.find(plan => plan.name === this.selectedSellingPlan?.name) : null
           const defaultSellingPlan =
               this.options?.default_subscription && this.options.default_subscription.trim() !== ''
                   ? availableSellingPlans.find(plan => plan.name.toLowerCase().includes(this.options.default_subscription.toLowerCase()))
                   : null
 
-          group.selected_selling_plan = urlSelectedSellingPlan || nameSelectedSellingPlan || preselectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
+          group.selected_selling_plan = preselectedSellingPlan || urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
 
-          const isAnyPlanSelected = urlSelectedSellingPlan || nameSelectedSellingPlan || preselectedSellingPlan || defaultSellingPlan
+          const isAnyPlanSelected = preselectedSellingPlan || urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan
 
           group.selected = !!isAnyPlanSelected
         })
 
-        if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || this.selectedSellingPlan) {
+        if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || preselectedId || this.selectedSellingPlan) {
           let selectedSellingPlanGroup = this.availableSellingPlanGroups.find(group => group.selected) || this.availableSellingPlanGroups[0]
           let selectedSellingPlanId = selectedSellingPlanGroup.selected_selling_plan.id
           this.selectSellingPlan(selectedSellingPlanId)
+          if (preselectedId && !this.disableUrl) this.updateURLParams()
         } else {
           this.selectSellingPlanGroup(null)
         }

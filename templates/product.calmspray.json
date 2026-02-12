@@ -9,8 +9,111 @@
  */
 {
   "sections": {
+    "product_widget_v2": {
+      "type": "product-widget-v2",
+      "blocks": {
+        "title_1": {
+          "type": "title",
+          "settings": {
+            "custom_title": "",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "specs_1": {
+          "type": "product-specs",
+          "settings": {
+            "icon_svg": "",
+            "custom_text_1": "",
+            "custom_text_2": "",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "reviews_1": {
+          "type": "okendo-reviews",
+          "settings": {
+            "reviews_anchor": "shopify-product-reviews",
+            "star_color": "#FAB851",
+            "empty_star_color": "#dddddd",
+            "margin_top": 10,
+            "margin_bottom": 24
+          }
+        },
+        "description_1": {
+          "type": "description",
+          "settings": {
+            "margin_top": 10,
+            "margin_bottom": 20
+          }
+        },
+        "variant_selector_1": {
+          "type": "variant-selector",
+          "settings": {
+            "show_header": true,
+            "header_text": "CHOOSE YOUR QUANTITY",
+            "default_variant": 2,
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "skio_v2_1": {
+          "type": "skio-plan-picker-v2",
+          "settings": {
+            "start_onetime": false,
+            "onetime_first": false,
+            "onetime_title": "One Time Purchase",
+            "subscription_title": "Subscribe & ",
+            "header_title": "Choose Your Offer",
+            "subscription_subtitle": "Skip or cancel anytime",
+            "show_variant_item": true,
+            "show_free_shipping": true,
+            "shipping_original_price": "$4.99",
+            "border_color": "#BFBFBF",
+            "selected_border_color": "#672666",
+            "discount_badge_color": "#c2f1bd",
+            "discount_text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "buy_buttons_1": {
+          "type": "buy-buttons",
+          "settings": {
+            "button_text": "Add to cart -",
+            "show_guarantee": true,
+            "guarantee_icon_svg": "",
+            "guarantee_label": "30-Day Guarantee",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "custom_tabs_1": {
+          "type": "custom-tabs",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_1",
+        "specs_1",
+        "reviews_1",
+        "description_1",
+        "variant_selector_1",
+        "skio_v2_1",
+        "buy_buttons_1",
+        "custom_tabs_1"
+      ],
+      "settings": {
+        "selected_product": "",
+        "show_related_product": false,
+        "show_bundle_text": false,
+        "swatch_tag_content": "",
+        "preselected_item": 3
+      }
+    },
     "product_widget_6p4fVc": {
       "type": "product-widget",
+      "disabled": true,
       "blocks": {
         "text_yDnBNe": {
           "type": "text",
@@ -254,6 +357,7 @@
     }
   },
   "order": [
+    "product_widget_v2",
     "product_widget_6p4fVc",
     "product_benefits_MEbMKY",
     "customer_testimonials_video_caghmG",

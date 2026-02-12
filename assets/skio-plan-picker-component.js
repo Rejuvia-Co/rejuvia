@@ -1461,7 +1461,7 @@ export class SkioPlanPicker extends LitElement {
           )
       )
 
-      console.log('Skio selling_plans:', this.availableSellingPlanGroups.flatMap(g => g.selling_plans).map(p => ({id: p.id, name: p.name})));
+      console.log('Skio selling_plans:', this.availableSellingPlanGroups.flatMap(g => g.selling_plans).map(p => ({id: p.id, name: p.name, discount: this.discount(p).percent + '%'})));
 
       if (this.options?.combine_groups) {
         this.availableSellingPlanGroups = [

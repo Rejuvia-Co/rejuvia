@@ -2690,6 +2690,16 @@
       "product_widget_v2_Rdkqmc": {
         "type": "product-widget-v2",
         "blocks": {
+          "okendo_reviews_X6HEXh": {
+            "type": "okendo-reviews",
+            "settings": {
+              "reviews_anchor": "shopify-product-reviews",
+              "star_color": "#FAB851",
+              "empty_star_color": "#dddddd",
+              "margin_top": 10,
+              "margin_bottom": 24
+            }
+          },
           "title_7LehNt": {
             "type": "title",
             "settings": {
@@ -2705,16 +2715,6 @@
               "custom_text_1": "Fresh Mint",
               "custom_text_2": "30 Nights Per Spray",
               "margin_top": 0,
-              "margin_bottom": 24
-            }
-          },
-          "okendo_reviews_X6HEXh": {
-            "type": "okendo-reviews",
-            "settings": {
-              "reviews_anchor": "shopify-product-reviews",
-              "star_color": "#FAB851",
-              "empty_star_color": "#dddddd",
-              "margin_top": 10,
               "margin_bottom": 24
             }
           },
@@ -2772,15 +2772,16 @@
           }
         },
         "block_order": [
+          "okendo_reviews_X6HEXh",
           "title_7LehNt",
           "product_specs_ahdYe3",
-          "okendo_reviews_X6HEXh",
           "description_TYeMan",
           "variant_selector_WggaCM",
           "skio_plan_picker_v2_WwghRn",
           "buy_buttons_4mUcbG",
           "custom_tabs_iKCWP6"
         ],
+        "disabled": true,
         "name": "Product Widget V2",
         "settings": {
           "selected_product": "sleep-spray",

@@ -1,0 +1,67 @@
+<div class="product-gallery clearfix {% if settings.product_thumbs_slide == 'vertical' %}vertical {% endif %}{% if currentProduct.images.size > 0 %}{% if settings.main_image_display == 'Zoom-in' or settings.main_image_display == 'Both' %}zoom-in{% endif %}{% endif %}">
+    <div class="main-images slick-pending {% if settings.product_thumbs_slide == 'vertical' and currentProduct.images.size > 1 %}float-right five-sixths medium-down--one-whole{% endif %}">
+      {%- for media in currentProduct.media -%}
+    	{%- capture groupingData -%}
+          {%- render '_product_gallery_grouping_data', media: media, index: forloop.index -%}
+        {%- endcapture -%}
+
+      {% comment %} {% unless forloop.last or forloop.rindex0 == 1 %} {% endcomment %}
+        <div class="active-wrapper slide" {{ groupingData }} data-media-id="{{media.id}}">
+          {%- case media.media_type -%}
+              {% when 'video' %}
+                   <div class="video-wrap" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+                      {{ media | video_tag: controls: true, image_size: "1024x" }}
+                   </div>
+              {% when 'external_video' %}
+                  <div class="video-wrap" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+                    {{ media | external_video_tag }}
+                  </div>
+              {% when 'image' %}
+                  {%- if quickView != true -%}
+                      {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}
+                          <a href="{{ media | product_img_url: 'master' }}" class="productImage">
+                      {%- endif -%}
+                  {%- endif -%}
+                  <div class="image-text__wrapper">
+                      {% if currentProduct.metafields.custom.boundle and show_bundle_text %}
+                          <div class="boundle-text">
+                              {{ currentProduct.metafields.custom.boundle_text }}
+                          </div>
+                      {% endif %}
+                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" />
+                  </div>
+                  {%- if quickView != true -%}
+                      {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}
+                          </a>
+                      {%- endif -%}
+                  {%- endif -%}
+          {%- endcase -%}
+       	</div>
+      {% comment %} {% endunless %} {% endcomment %}
+
+    	
+    {%- endfor -%}
+  </div>
+
+  {%- if currentProduct.images.size > 1 -%}
+    <div class="thumbs-wrapper {% if settings.product_thumbs_slide == 'vertical' %}float-left one-sixth medium-down--one-whole{% endif %}">
+      <div class="thumbs slick-pending switch">
+        {%- for media in currentProduct.media -%}
+          {%- capture groupingData -%}
+            {%- render '_product_gallery_grouping_data', media: media, index: forloop.index -%}
+          {%- endcapture -%}
+          {%- assign image = media.preview_image -%}
+
+          
+            <div class="slide" {{ groupingData }}>
+              <a class="gallery" href="{{ image | img_url: 'master' }}" data-media-id="{{media.id}}" variant-id="{{ media.variants.first.id }}">
+                <img src="{{ image | img_url: '300x300' }}" srcset="{{ image | img_url: '150x150' }} 150w, {{ image | img_url: '300x300' }} 300w" sizes="122px" class="lazyload" alt="{{media.alt}}" />
+              </a>
+            </div>
+          
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>

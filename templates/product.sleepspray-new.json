@@ -1,66 +1,114 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "product_widget_6p4fVc": {
-      "type": "product-widget",
+      "type": "product-widget-v2",
       "blocks": {
-        "text_y3j3qV": {
-          "type": "text",
+        "okendo_reviews_WAL7Lp": {
+          "type": "okendo-reviews",
           "settings": {
-            "icon": "shopify://shop_images/Plant.svg",
-            "title": "Vegan"
+            "reviews_anchor": "shopify-product-reviews",
+            "star_color": "#d8b46e",
+            "empty_star_color": "#dddddd",
+            "margin_top": 0,
+            "margin_bottom": 5
           }
         },
-        "text_AP4eNX": {
-          "type": "text",
+        "title_XJy8Fq": {
+          "type": "title",
           "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "Non-GMO"
+            "custom_title": "Sleep Spray",
+            "margin_top": 0,
+            "margin_bottom": 10
           }
         },
-        "text_HEHibt": {
-          "type": "text",
+        "product_specs_LcCdTN": {
+          "type": "product-specs",
           "settings": {
-            "icon": "shopify://shop_images/Flask.svg",
-            "title": "Lab-Tested"
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewbox=\"0 0 18 18\" fill=\"none\">\n  <g clip-path=\"url(#clip0_1977_12499)\">\n    <path d=\"M8.80008 15.928C7.39533 15.9323 6.04028 15.4084 5.00369 14.4603C3.96711 13.5123 3.32469 12.2093 3.20387 10.8097C3.08304 9.41015 3.49263 8.0163 4.3514 6.90461C5.21017 5.79291 6.45538 5.04458 7.84008 4.80802C12.4001 3.92802 13.6001 3.51202 15.2001 1.52802C16.0001 3.12802 16.8001 4.87202 16.8001 7.92802C16.8001 12.328 12.9761 15.928 8.80008 15.928Z\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n    <path d=\"M1.59998 16.728C1.59998 14.328 3.07998 12.44 5.66398 11.928C7.59998 11.544 9.59998 10.328 10.4 9.52795\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_1977_12499\">\n      <rect width=\"18\" height=\"18\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+            "custom_text_1": "",
+            "custom_text_2": "",
+            "margin_top": 0,
+            "margin_bottom": 24
           }
         },
-        "text_7UGPbh": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Wind.svg",
-            "title": "Mint Flavor"
+        "description_w8x6H6": {
+          "type": "description",
+          "settings": 
+          {
+            "margin_top": 0,
+            "margin_bottom": 24
           }
         },
-        "skio_plan_picker_gpx3rU": {
-          "type": "skio-plan-picker",
+        "variant_selector_Gp3yji": {
+          "type": "variant-selector",
+          "settings": {
+            "show_header": true,
+            "header_text": "CHOOSE YOUR QUANTITY",
+            "default_variant": 2,
+            "popular_variant": 2,
+            "popular_badge": "POPULAR",
+            "popular_badge_bg": "#61bd67",
+            "popular_badge_text": "#ffffff",
+            "best_price_variant": 3,
+            "best_price_badge": "BEST PRICE",
+            "best_price_badge_bg": "#4a7c59",
+            "best_price_badge_text": "#ffffff",
+            "margin_top": 0,
+            "margin_bottom": 40
+          }
+        },
+        "skio_plan_picker_v2_Xk9mPq": {
+          "type": "skio-plan-picker-v2",
           "settings": {
             "start_onetime": false,
-            "onetime_first": false
+            "onetime_first": false,
+            "onetime_title": "One Time Purchase",
+            "subscription_title": "Subscribe &",
+            "header_title": "Choose Your Offer",
+            "subscription_subtitle": "Skip or cancel anytime",
+            "show_variant_item": true,
+            "show_free_shipping": true,
+            "shipping_original_price": "$4.99",
+            "border_color": "#bfbfbf",
+            "selected_border_color": "#672666",
+            "discount_badge_color": "#c2f1bd",
+            "discount_text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 24
           }
+        },
+        "buy_buttons_LEaaXV": {
+          "type": "buy-buttons",
+          "settings": {
+            "button_text": "Add to cart -",
+            "show_guarantee": true,
+            "guarantee_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"13\" viewbox=\"0 0 14 13\" fill=\"none\">\n  <path d=\"M11.3887 1.7555C11.6088 1.54595 11.9017 1.43011 12.2056 1.43241C12.5095 1.43471 12.8006 1.55497 13.0175 1.76783C13.2344 1.98068 13.3602 2.26948 13.3682 2.57327C13.3762 2.87707 13.2659 3.17211 13.0606 3.39613L6.82621 11.193C6.719 11.3085 6.58962 11.4011 6.44579 11.4655C6.30195 11.5298 6.14663 11.5644 5.9891 11.5673C5.83157 11.5703 5.67506 11.5414 5.52895 11.4824C5.38283 11.4235 5.25011 11.3357 5.1387 11.2243L1.00433 7.08988C0.889194 6.98259 0.796847 6.85322 0.732797 6.70947C0.668747 6.56572 0.634306 6.41054 0.63153 6.25319C0.628754 6.09585 0.657699 5.93955 0.716638 5.79363C0.775577 5.64771 0.863303 5.51516 0.974582 5.40388C1.08586 5.2926 1.21841 5.20488 1.36433 5.14594C1.51025 5.087 1.66655 5.05805 1.8239 5.06083C1.98124 5.0636 2.13642 5.09805 2.28017 5.1621C2.42392 5.22614 2.55329 5.31849 2.66058 5.43363L5.93246 8.70394L11.359 1.78988L11.3887 1.7555Z\" fill=\"#FAB851\"></path>\n</svg>",
+            "guarantee_label": "90-Day Money Back Guarantee",
+            "margin_top": 0,
+            "margin_bottom": 28
+          }
+        },
+        "custom_tabs_Lh9WUN": {
+          "type": "custom-tabs",
+          "settings": {}
         }
       },
       "block_order": [
-        "text_y3j3qV",
-        "text_AP4eNX",
-        "text_HEHibt",
-        "text_7UGPbh",
-        "skio_plan_picker_gpx3rU"
+        "okendo_reviews_WAL7Lp",
+        "title_XJy8Fq",
+        "product_specs_LcCdTN",
+        "description_w8x6H6",
+        "variant_selector_Gp3yji",
+        "skio_plan_picker_v2_Xk9mPq",
+        "buy_buttons_LEaaXV",
+        "custom_tabs_Lh9WUN"
       ],
       "settings": {
-        "hero_heading": "",
         "selected_product": "",
-        "guarantee_label": "FREE SHIPPING OVER $79",
-        "swatch_tag_content": "BEST VALUE",
-        "preselected_item": 1
+        "show_related_product": false,
+        "show_bundle_text": false,
+        "swatch_tag_content": "",
+        "preselected_item": 3
       }
     },
     "customer_testimonials_n4yKPj": {

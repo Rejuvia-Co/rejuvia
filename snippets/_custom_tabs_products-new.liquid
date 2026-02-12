@@ -58,8 +58,8 @@
   }
 
   #custom_tabs_product ul li input[type=checkbox]:not(:checked) ~div.tab_content {
-    margin-top: 14px;
-    margin-bottom: 0;
+    margin-top: 12px;
+    margin-bottom: 8px;
   }
 
   #custom_tabs_product ul li input[type=checkbox]:checked~i:before {
@@ -183,21 +183,25 @@
   }
 
   .custom-tabs-product-new li {
-    padding: 20px 0;
+    padding: 16px 0;
     border-top: 1px solid #B7B7B7;
     position: relative;
-    padding-bottom: 0;
+  }
+
+  .custom-tabs-product-new li:first-child {
+    border-top: none;
   }
 
   .custom-tabs-product-new li h2 {
-    color: var(--Black, #040404);
-    font-size: 18px;
+    color: #040404;
+    font-family: Inter, sans-serif;
+    font-size: 17px;
     font-weight: 500;
     line-height: 26px;
-    text-transform: unset;
-    font-family: HelveticaNeueL, sans-serif;
-    margin-bottom: 0;
-    margin-top: 4px;
+    letter-spacing: 0.36px;
+    text-transform: none;
+    margin: 0;
+    padding-right: 40px;
   }
 
   .custom-tabs-product-new li:last-child {
@@ -212,18 +216,19 @@
   }
 
   .custom-tabs-product-new li .tab_content {
-    color: var(--gray-added, #5C5C5C);
+    color: #5C5C5C;
+    font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .custom-tabs-product-new li svg {
     position: absolute;
     right: 0;
-    top: 23px;
+    top: 16px;
   }
 
   .custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~svg {

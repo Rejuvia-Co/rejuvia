@@ -46,7 +46,7 @@ export class SkioPlanPicker extends LitElement {
         width: 100%;
         margin-bottom: 1rem;
         font-family: inherit;
-        letter-spacing: 0.7px
+        letter-spacing: normal;
       }
       :host([layout='hidden']) .skio-plan-picker {
         display: none;
@@ -229,8 +229,8 @@ export class SkioPlanPicker extends LitElement {
       }
       .selling-plan-dropdown-container {
         display: flex;
-        align-items: center;
-        margin-top: 15px;
+        align-items: flex-end;
+        margin-top: 0px;
       }
       .selling-plan-dropdown-container > span {
         font-weight: 700;
@@ -474,119 +474,243 @@ export class SkioPlanPicker extends LitElement {
           margin-bottom: 16px!important;
         }
       }
-      .custom-picker-heading {
-        font-weight: 700;
-        font-size: 15.4px;
-        letter-spacing: -0.4px;
-        text-align: left;
-        margin-bottom: -6px;
+      /* === CHOOSE YOUR OFFER — Figma V2 Design === */
+
+      .skio-offer-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 4px;
       }
-      .custom-picker-heading > span {
-        font-weight: 400;
+      .skio-offer-header__line {
+        flex: 1;
+        height: 1px;
+        background-color: #672666;
+      }
+      .skio-offer-header__title {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--skio-group-border-selected-color, #672666);
+        text-transform: uppercase;
+        white-space: nowrap;
+        line-height: 1.4;
       }
 
       .skio-plan-picker {
-        gap: 0;
-        margin: 26px 0 24px 0;
-      }
-
-      .skio-plan-picker .custom-picker-heading {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 100%;
-        margin-bottom: 16px;
-      }
-
-    .skio-plan-picker .group-label {
-        padding: 16px;
-      }
-
-      .skio-plan-picker .subs-group-container .group-label {
-        padding: 16px 0;
-      }
-      
-
-      .skio-plan-picker .group-label .group-title {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 24px;
-        margin-bottom: -4px;
-        letter-spacing: normal;
-      }
-
-      .skio-plan-picker .group-label .skio-price {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 150%;
-        color: #006516;
-        margin-bottom: -4px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
-      
-      .skio-plan-picker .group-label .skio-price .skio-price__delivery {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 150%;
-        color: #000000;
-        margin-bottom: -4px;
-      }
-
-      .skio-plan-picker .subs-group-container {
-        margin: 0 0 12px 0;
-      }
-
-      .skio-plan-picker .group-container.group-container--selected {
-        border: 2px solid #672666;
-        background: #67266626;
-
-        .skio-plan-picker .subs-group-container .selling-plan-dropdown {
-          background-color: #F7F4F7;
-        }
+        gap: 12px;
+        margin: 0;
+        font-family: inherit;
       }
 
       .skio-plan-picker .group-container {
-            border: 2px solid #BFBFBF;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
       }
 
-      .skio-plan-picker .subs-group-container .group-title      {
-        display: flex;
-        align-items: center;
-        gap: 0px;
+      .skio-plan-picker .group-container.group-container--selected {
+        border: 2px solid var(--skio-group-border-selected-color, #672666);
+        background: transparent;
+      }
+
+      .skio-plan-picker .subs-group-container {
         margin: 0;
       }
 
-      .skio-plan-picker .savings.bubble {
-        color: black;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 26px;
-        padding: 0;
+      .skio-plan-picker .group-label {
+        padding: 18px 16px;
         display: flex;
-        // height: 21px !important;
-        // justify-content: center;
-        // align-items: center;
-        // display: flex;
-        // border-radius: 4px;
-        background: transparent;
-        // border: unset;
-        // margin-bottom: 2px;
-        // margin-left: 4px;
-        padding-top: 3px;
-        border: none;
+        flex-direction: column;
+        gap: 16px;
       }
 
-      .skio-plan-picker .savings.bubble span {
+      /* Subscription card top section */
+      .skio-sub-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+        white-space: nowrap;
+      }
+      .skio-sub-top__left {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .skio-sub-top__right {
+        margin-left: auto;
+      }
+      .skio-sub-top__title {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1.4;
+        letter-spacing: normal;
+      }
+      .group-container--selected .skio-sub-top__title {
+        font-weight: 700;
+      }
+      .skio-sub-top__subtitle {
+        font-size: 14px;
+        font-weight: 400;
+        color: #707070;
+        line-height: 1;
+        letter-spacing:normal;
+      }
+      .group-container--selected .skio-sub-top__subtitle {
+        color: #000;
+        text-align: left;
+      }
+      .skio-sub-top__right {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-end;
+      }
+      .skio-sub-top__price {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1;
+      }
+      .group-container--selected .skio-sub-top__price {
+        font-weight: 700;
+      }
+      .skio-sub-top__compare {
+        font-size: 14px;
+        font-weight: 400;
+        color: #707070;
+        text-decoration: line-through;
+        line-height: 1;
+      }
+
+      /* Divider inside subscription card */
+      .skio-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #E5E5E5;
+      }
+
+      /* First order includes section */
+      .skio-includes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+      .skio-includes__header {
+        font-size: 12px;
+        font-weight: 400;
+        color: #000;
+        text-transform: uppercase;
+        line-height: 1;
+        text-align: left;
+      }
+      .skio-includes__item {
         display: flex;
         align-items: center;
-        margin-left: 3px;
-        // flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .skio-includes__item-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .skio-includes__item-image {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
         align-items: center;
         justify-content: center;
       }
+      .skio-includes__item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .skio-includes__item-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .skio-includes__item-icon-inner {
+        width: 30px;
+        height: 30px;
+        background: #eee;
+        border-radius: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .skio-includes__item-name {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .skio-includes__item-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+      .skio-includes__item-original {
+        font-size: 12px;
+        font-weight: 400;
+        color: #707070;
+        text-decoration: line-through;
+        line-height: 1;
+      }
+      .skio-includes__item-price {
+        font-size: 14px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1;
+      }
+      .skio-includes__item-price--free {
+        font-weight: 600;
+        color: #018c0b;
+      }
 
-      .skio-plan-picker .extra-discount-text {
+      /* One-time purchase card — simpler style */
+      .skio-plan-picker .group-container:not(.subs-group-container) .group-label {
+        padding: 18px 16px;
+      }
+      .skio-plan-picker .group-container:not(.subs-group-container) .group-topline {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .skio-plan-picker .group-container:not(.subs-group-container) .group-title {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1.4;
+        letter-spacing: normal;
+      }
+      .skio-plan-picker .group-container:not(.subs-group-container) .skio-price {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1;
+      }
+
+      /* Hide elements not needed in new design */
+      .skio-plan-picker .extra-discount-text,
+      .skio-plan-picker .savings.bubble,
+      .skio-plan-picker .skio-price__delivery,
+      .skio-plan-picker .custom-picker-heading,
+      .skio-plan-picker .group-content {
         display: none;
       }
 
@@ -595,181 +719,106 @@ export class SkioPlanPicker extends LitElement {
         display: none;
       }
 
-      .skio-plan-picker .group-title__span {
-        line-height: 100%;
-      }
-
-      .skio-plan-picker .subs-group-container .selling-plan-dropdown-container {
-        margin-top: 0px;
-        margin-bottom: 18px;
-      }
-
-      .skio-plan-picker .subs-group-container .group-content.margin-left {
-        margin-left: 0px;
-        padding-left: 24px;
-        padding-right: 16px;
-      }
-
+      /* Subscription topline — no border in new design */
       .skio-plan-picker .subs-group-container .group-topline {
-        padding-bottom: 12px!Important;
-        margin-bottom: 12px!Important;
-        border-bottom: 1px solid #672666!Important;
-        padding-left: 16px!Important;
-        padding-right: 16px!Important;
-      }
-      .group-container:not(.subs-group-container.group-container--selected) .group-topline {
-          padding-bottom: 12px;
-          margin-bottom: 12px;
-          border-bottom: 1px solid #672666;
-          padding-left: 16px;
-          padding-right: 16px;
-      }
-      .skio-plan-picker .subs-group-container .selling-plan-dropdown-container > span {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 150%;
-        margin-right: 8px;
-  
-      }
-
-      .skio-plan-picker .subs-group-container .selling-plan-dropdown {
+        border-bottom: none;
         padding: 0;
-        border: 0;
-        padding-right: 30px;
-        color: #040404;
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 20px;
-        cursor: pointer;
-        background-position: right 15px top 0%;
-        letter-spacing: 0;
-      }
-
-      .skio-plan-picker .subs-group-container ul {
-        list-style-type: none;
-        font-size: 14px;
-        padding-top: 0px !important;
         margin: 0;
-      }
-
-      .skio-plan-picker .subs-group-container ul li {
-        font-size: 14px !important;
-        font-weight: 400 !important;
-        line-height: 100% !important;
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        color: #040404 !important;
-      }
-
-      .skio-plan-picker .subs-group-container ul li span {
-        // margin-top: 5px;
       }
 
       @media only screen and (max-width: 749px) {
         .skio-plan-picker {
-          margin: 24px 0 20px 0;
+          gap: 10px;
         }
-        .skio-plan-picker .savings.bubble {
-          font-size: 12px!important;
+        .skio-sub-top__title {
+          font-size: 16px;
         }
-        .skio-plan-picker .group-label .group-title {
-          font-size: 12px!important;
-          white-space: nowrap;
+        .skio-sub-top__subtitle {
+          font-size: 12px;
+          text-align:left;
         }
-        .subscription__label {
-          font-size: 10px!important;
+        .skio-sub-top__price {
+          font-size: 16px;
         }
-        .skio-plan-picker .savings.bubble span {
-          flex-direction: row;
+        .skio-sub-top__compare {
+          font-size: 12px;
         }
-        
-        .skio-plan-picker .subs-group-container .group-topline {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-
-        .skio-plan-picker .subs-group-container {
-          margin-bottom: 8px;
+        .skio-includes__header {
+          font-size: 11px;
+        }
+        .skio-includes__item-name {
+          font-size: 13px;
+        }
+        .skio-includes__item-image {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+        }
+        .skio-includes__item-icon {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+        }
+        .skio-includes__item-original {
+          font-size: 11px;
+        }
+        .skio-includes__item-price {
+          font-size: 13px;
+        }
+        .skio-plan-picker .group-label {
+          padding: 16px 14px;
+          gap: 12px;
+        }
+        .skio-offer-header__title {
+          font-size: 12px;
+        }
+        .skio-sub-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            white-space: nowrap;
         }
       }
 
       @media only screen and (max-width: 415px) {
         .skio-plan-picker .group-label {
-          padding: 12px;
+          padding: 12px 10px;
         }
-      }
-
-      @media only screen and (max-width: 398px) {
-        .skio-plan-picker .group-label .group-title {
-          font-size: 14px;
+        .skio-includes__item-name {
+          font-size: 12px;
+        }
+        .skio-sub-top__title {
+          font-size: 16px;
+        }
+        .skio-sub-top__price {
+          font-size: 16px;
         }
       }
 
       @media only screen and (max-width: 380px) {
         .skio-plan-picker .group-label {
-          padding: 10px;
+          padding: 10px 8px;
+        }
+        .skio-includes__item-image {
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+        }
+        .skio-includes__item-icon {
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+        }
+        .skio-includes {
+          gap: 8px;
         }
       }
-      .subscription__label {
-          background: #C2F1BD;
-          display: block;
-          border-radius: 99px;
-          text-transform: uppercase;
-          font-size: 14px;
-          font-weight: 700;
-          padding-top: 3px;
-          padding: 0 10px;
-          line-height: 100%;
-          max-height: 26px;
-          height: 26px;
-          padding-top: 3px;
-              margin-bottom: 3px;
-        }
-        
-        span.text-bold {
-            font-weight: 700;
-        }
-        .subscription__images {
-            display: flex;
-            column-gap: 16px;
-            margin-top: 13px;
-            margin-left: 15px;
-        }
-        .subscription__image {
-          text-align: center;
-        }
-        .subscription__image img {
-          max-width: 83px;
-          display: block;
-          line-height: 0;
-          margin-bottom: 12px;
-        }
-        .subscription__image span {
-          font-size: 12px;
-          line-height: 130%;
-          color: #040404;
-          margin-top: 12px;
-          font-weight: 400;
-        }
-        .li-images {
-          flex-direction: column;
-              align-items: flex-start !important;
-              display:none!Important;
-        }
-        .subscription__image span {
-          margin-top: 12px;
-        }
-        /* Commented out to keep subscription details open when toggling to OTP
-        .group-container:not(.subs-group-container.group-container--selected) .group-content {
-          display: none;
-        }
-        */
-        .group-container:not(.subs-group-container.group-container--selected)  .group-topline {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: 0;
-        }
+      .group-container:not(.subs-group-container.group-container--selected) .group-topline {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
     `,
   ]
 
@@ -915,9 +964,9 @@ export class SkioPlanPicker extends LitElement {
     return html`
       <div class="group-content ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector && this.options?.dropdownPosition == 'inside' ? 'margin-left' : ''}">
         <span class="selling-plan-dropdown-label">${this.additionalFrequencyLabel()}</span>
-        ${this.options?.selector_type == 'dropdown' ? this.sellingPlanDropdown(group) : ''}
+        ${!this.hasPreselectedPlan && this.options?.selector_type == 'dropdown' ? this.sellingPlanDropdown(group) : ''}
 
-        ${this.options?.selector_type == 'button' ? this.sellingPlanButtons(group) : ''} ${this.additionalContentText()}
+        ${!this.hasPreselectedPlan && this.options?.selector_type == 'button' ? this.sellingPlanButtons(group) : ''} ${this.additionalContentText()}
 
         <!-- Subscription bullet points copied with styling from Loop -->
         <ul style="width: 100%; height: 100%; padding-top: 4px; padding-inline-start: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; display: inline-flex">
@@ -1101,24 +1150,24 @@ export class SkioPlanPicker extends LitElement {
       return this.debug ? this.setupMode() : ''
     }
 
-    const isSleepSprayPack = this.product?.title === 'Sleep Spray 6-Pack';
-
     return html`
     ${this.debug ? this.setupMode() : null}
 
-    <fieldset class="skio-plan-picker ${isSleepSprayPack ? 'bundle-product' : ''} " role="radiogroup" aria-labelledby="skio-plan-picker-legend">
+    <fieldset class="skio-plan-picker" role="radiogroup" aria-labelledby="skio-plan-picker-legend">
       <legend id="skio-plan-picker-legend" class="${!this.options?.show_legend ? 'sr-only' : ''}">
         ${unsafeHTML(this.options?.legend_content)}
       </legend>
 
-      <div class="custom-picker-heading 33">
-        Choose Your Frequency: <span>Subscribe & Save 20%</span>
+      <div class="skio-offer-header">
+        <div class="skio-offer-header__line"></div>
+        <div class="skio-offer-header__title">${this.options?.header_title || 'Choose Your Offer'}</div>
+        <div class="skio-offer-header__line"></div>
       </div>
 
-      ${isSleepSprayPack
-        ? html`${this.renderOneTimePurchase('first-one-time')}${this.renderSubscriptionOptions()}`
+      ${this.options?.onetime_first
+        ? html`${this.renderOneTimePurchase()}${this.renderSubscriptionOptions()}`
         : html`${this.renderSubscriptionOptions()}${this.renderOneTimePurchase()}`
-    }
+      }
 
       ${this.options?.show_details === true ? this.showDetails() : ''}
     </fieldset>
@@ -1127,8 +1176,21 @@ export class SkioPlanPicker extends LitElement {
 
   renderSubscriptionOptions() {
     return this.availableSellingPlanGroups?.length
-        ? this.availableSellingPlanGroups.map((group, index) => html`
-        <div class="group-container subs-group-container ${this.selectedSellingPlanGroup == group ? 'group-container--selected' : ''}">
+        ? this.availableSellingPlanGroups.map((group, index) => {
+        const discount = this.discount(group.selected_selling_plan);
+        const hasDiscount = discount && discount.percent > 0 && discount.percent !== Infinity;
+        const discountLabel = hasDiscount
+          ? (this.options?.discount_format === 'absolute' ? this.money(discount.absolute) : discount.percent + '%')
+          : '';
+        const subTitle = this.options?.subscription_title || 'Subscribe & ';
+        const titleText = discountLabel ? `${subTitle} Save ${discountLabel}` : subTitle;
+        const comparePrice = this.selectedVariant?.compare_at_price || this.selectedVariant?.price;
+        const salePrice = this.price(group.selected_selling_plan);
+        const hasCompare = this.options?.show_compare_price && comparePrice > this.price(group.selected_selling_plan, false);
+
+        return html`
+        <div class="group-container subs-group-container ${this.selectedSellingPlanGroup == group ? 'group-container--selected' : ''}"
+             @click=${() => this.selectSellingPlanGroup(group)}>
           <input
             id="group-${index}-${this.key}"
             class="group-input"
@@ -1140,59 +1202,111 @@ export class SkioPlanPicker extends LitElement {
           />
 
           <label class="group-label" for="group-${index}-${this.key}">
-            <div class="group-topline">
-              ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector ? this.radioTemplate() : ''}
-
-              <div class="group-title 44"><span style="height: 22px;">
-                ${group.name !== 'Prepaid' && this.options?.subscription_title
-            ? this.options?.subscription_title
-            : group.name == 'Prepaid' && this.options?.prepaid_title
-                ? this.options?.prepaid_title
-                : group.name}
-              </span>
-                ${html`
-                  <span class="extra-discount-text">
-                    ${this.discountText(group.selected_selling_plan) || ''}
-                  </span>`}
-                ${this.discountText(group.selected_selling_plan)
-            ? html`<span class="savings bubble ${this.options?.discount_style}"><span>Save ${this.discountText(group.selected_selling_plan)} <span class="subscription__label">Best Price</span></span></span>`
-            : ''}
+            <div class="skio-sub-top">
+              ${this.radioTemplate()}
+              <div class="skio-sub-top__left">
+                <div class="skio-sub-top__title">${titleText}</div>
+                <div class="skio-sub-top__subtitle">${this.selectedSellingPlanGroup == group
+                  ? (this.options?.subscription_subtitle || 'Skip or cancel anytime')
+                  : this.getCollapsedSubtitle()
+                }</div>
               </div>
 
-              <div class="skio-price" aria-live="polite">
-                ${this.options?.show_compare_price &&
-        (this.selectedVariant?.compare_at_price > this.selectedVariant.price ||
-            this.selectedVariant.price > this.price(group.selected_selling_plan, false))
-            ? html`<s aria-hidden="true">${this.money(this.selectedVariant.compare_at_price || this.selectedVariant.price)}</s>`
-            : ''}
-                ${this.price(group.selected_selling_plan)}
-                <span class="skio-price__delivery">+ Free Shipping</span>
+              <div class="skio-sub-top__right">
+                <div class="skio-sub-top__price" aria-live="polite">${salePrice}</div>
+                ${hasCompare
+                  ? html`<div class="skio-sub-top__compare">${this.money(comparePrice)}</div>`
+                  : ''}
               </div>
             </div>
 
-            ${this.options?.layout == 'vertical' && this.options?.dropdownPosition == 'inside'
-            ? this.groupContent(group)
-            : ''}
+            ${this.selectedSellingPlanGroup == group && !this.hasPreselectedPlan && this.getAvailableSellingPlans(group).length > 1
+              ? html`<div class="skio-frequency-selector">${this.sellingPlanDropdown(group)}</div>`
+              : ''}
+
+            ${this.selectedSellingPlanGroup == group && this.options?.subscription_includes?.length
+              ? html`
+                <div class="skio-divider"></div>
+                ${this.renderSubscriptionIncludes(group)}
+              ` : ''}
+
           </label>
         </div>
-
-        ${this.selectedSellingPlanGroup == group
-            ? (this.options?.layout == 'horizontal' || this.options?.dropdownPosition == 'underneath'
-                ? this.groupContent(group)
-                : '')
-            : ''}
-      `)
+      `})
         : '';
   }
 
+  renderSubscriptionIncludes(group) {
+    const includes = this.options?.subscription_includes;
+    if (!includes || !includes.length) return '';
 
-  renderOneTimePurchase(classname) {
-    const isSleepSprayPack = this.product?.title === 'Sleep Spray 6-Pack';
+    return html`
+      <div class="skio-includes">
+        <div class="skio-includes__header">Your First Order Includes:</div>
+        ${includes.map(item => this.renderIncludeItem(item, group))}
+      </div>
+    `;
+  }
 
+  getCollapsedSubtitle() {
+    const giftItem = this.options?.subscription_includes?.find(item => item.type === 'gift');
+    if (giftItem?.name) {
+      return `+ FREE ${giftItem.name}`;
+    }
+    return this.options?.subscription_subtitle || 'Skip or cancel anytime';
+  }
+
+  getVariantImage() {
+    if (this.selectedVariant?.featured_image?.src) return this.selectedVariant.featured_image.src;
+    if (this.product?.featured_image) return this.product.featured_image;
+    return '';
+  }
+
+  renderIncludeItem(item, group) {
+    const isVariant = item.type === 'variant';
+    const image = isVariant ? this.getVariantImage() : item.image;
+    const variantTitle = this.selectedVariant?.title && this.selectedVariant.title !== 'Default Title'
+      ? this.selectedVariant.title
+      : (item.name || this.product?.title);
+    const name = isVariant ? variantTitle : item.name;
+    const originalPrice = isVariant ? this.money(this.selectedVariant?.compare_at_price || this.selectedVariant?.price) : item.original_price;
+    const salePrice = isVariant ? this.price(group.selected_selling_plan) : item.sale_price;
+    const isFree = !isVariant && item.sale_price === 'FREE';
+
+    return html`
+      <div class="skio-includes__item">
+        <div class="skio-includes__item-left">
+          ${image ? html`
+            <div class="skio-includes__item-image">
+              <img src="${image}" alt="${name}">
+            </div>
+          ` : item.icon === 'shipping' ? html`
+            <div class="skio-includes__item-icon">
+              <div class="skio-includes__item-icon-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M15.75 5.99993C15.7497 5.73688 15.6803 5.47853 15.5487 5.2508C15.417 5.02306 15.2278 4.83395 15 4.70243L9.75 1.70243C9.52197 1.57077 9.2633 1.50146 9 1.50146C8.7367 1.50146 8.47803 1.57077 8.25 1.70243L3 4.70243C2.7722 4.83395 2.58299 5.02306 2.45135 5.2508C2.31971 5.47853 2.25027 5.73688 2.25 5.99993V11.9999C2.25027 12.263 2.31971 12.5213 2.45135 12.7491C2.58299 12.9768 2.7722 13.1659 3 13.2974L8.25 16.2974C8.47803 16.4291 8.7367 16.4984 9 16.4984C9.2633 16.4984 9.52197 16.4291 9.75 16.2974L15 13.2974C15.2278 13.1659 15.417 12.9768 15.5487 12.7491C15.6803 12.5213 15.7497 12.263 15.75 11.9999V5.99993Z" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.4751 5.25L9.0001 9L15.5251 5.25" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 16.5V9" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          ` : ''}
+          <div class="skio-includes__item-name">${name}</div>
+        </div>
+        <div class="skio-includes__item-right">
+          <div class="skio-includes__item-original">${originalPrice}</div>
+          <div class="skio-includes__item-price ${isFree ? 'skio-includes__item-price--free' : ''}">${salePrice}</div>
+        </div>
+      </div>
+    `;
+  }
+
+
+  renderOneTimePurchase() {
     return !this.product.requires_selling_plan
         ? html`
         <div
-          class="group-container ${classname} ${this.selectedSellingPlanGroup == null ? ' group-container--selected' : ''} ${!this.options?.onetime_first ? 'group-container--last' : ''}"
+          class="group-container ${this.selectedSellingPlanGroup == null ? ' group-container--selected' : ''} ${!this.options?.onetime_first ? 'group-container--last' : ''}"
           @click=${() => this.selectSellingPlanGroup(null)}
         >
           <input
@@ -1207,20 +1321,15 @@ export class SkioPlanPicker extends LitElement {
 
           <label class="group-label" for="one-time-${this.key}">
             <div class="group-topline">
-              ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector ? this.radioTemplate() : ''}
-
-              <div class="group-title 33">
-                <span>${this.options?.onetime_title || 'One time purchase'}</span>
+              ${this.radioTemplate()}
+              <div class="group-title">
+                <span>${this.options?.onetime_title || 'One-Time Purchase'}</span>
               </div>
 
               <div class="skio-price" aria-live="polite">
-                ${this.options?.show_compare_price && this.selectedVariant?.compare_at_price > this.selectedVariant.price
-            ? html`<s aria-hidden="true">${this.money(this.selectedVariant.compare_at_price)}</s>`
-            : ''}
                 ${this.money(this.selectedVariant.price)}
               </div>
             </div>
-            ${isSleepSprayPack ? this.groupContentOneTime() : ''}
           </label>
         </div>
       `
@@ -1352,6 +1461,8 @@ export class SkioPlanPicker extends LitElement {
           )
       )
 
+      console.log('Skio selling_plans:', this.availableSellingPlanGroups.flatMap(g => g.selling_plans).map(p => ({id: p.id, name: p.name, discount: this.discount(p).percent + '%'})));
+
       if (this.options?.combine_groups) {
         this.availableSellingPlanGroups = [
           {
@@ -1371,27 +1482,39 @@ export class SkioPlanPicker extends LitElement {
         const urlSelectedSellingPlanId = url.searchParams.get('selling_plan')
 
         //update each group with a default selected_selling_plan
+        // Parse preselected plans from data attribute (format: "variantId:planId,variantId:planId")
+        const preselectedAttr = this.getAttribute('data-preselected-plans') || ''
+        const preselectedMap = {}
+        preselectedAttr.split(',').forEach(entry => {
+          const [vid, pid] = entry.split(':')
+          if (vid && pid) preselectedMap[vid.trim()] = pid.trim()
+        })
+        const preselectedId = preselectedMap[String(this.selectedVariant.id)]
+        this.hasPreselectedPlan = !!preselectedId
+
         this.availableSellingPlanGroups.forEach(group => {
           const availableSellingPlans = this.getAvailableSellingPlans(group)
 
           const urlSelectedSellingPlan = availableSellingPlans.find(plan => plan.id == urlSelectedSellingPlanId)
-          const nameSelectedSellingPlan = availableSellingPlans.find(plan => plan.name === this.selectedSellingPlan?.name)
+          const preselectedSellingPlan = preselectedId ? availableSellingPlans.find(plan => plan.id == preselectedId) : null
+          const nameSelectedSellingPlan = !preselectedSellingPlan ? availableSellingPlans.find(plan => plan.name === this.selectedSellingPlan?.name) : null
           const defaultSellingPlan =
               this.options?.default_subscription && this.options.default_subscription.trim() !== ''
                   ? availableSellingPlans.find(plan => plan.name.toLowerCase().includes(this.options.default_subscription.toLowerCase()))
                   : null
 
-          group.selected_selling_plan = urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
+          group.selected_selling_plan = preselectedSellingPlan || urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan || availableSellingPlans[0]
 
-          const isAnyPlanSelected = urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan
+          const isAnyPlanSelected = preselectedSellingPlan || urlSelectedSellingPlan || nameSelectedSellingPlan || defaultSellingPlan
 
           group.selected = !!isAnyPlanSelected
         })
 
-        if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || this.selectedSellingPlan) {
+        if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || preselectedId || this.selectedSellingPlan) {
           let selectedSellingPlanGroup = this.availableSellingPlanGroups.find(group => group.selected) || this.availableSellingPlanGroups[0]
           let selectedSellingPlanId = selectedSellingPlanGroup.selected_selling_plan.id
           this.selectSellingPlan(selectedSellingPlanId)
+          if (preselectedId && !this.disableUrl) this.updateURLParams()
         } else {
           this.selectSellingPlanGroup(null)
         }
@@ -1519,6 +1642,12 @@ export class SkioPlanPicker extends LitElement {
   // Update selected selling plan group; called on click of group-container element
   selectSellingPlanGroup(group) {
     this.selectedSellingPlanGroup = group
+
+    if (group && !group.selected_selling_plan) {
+      const availablePlans = this.getAvailableSellingPlans(group)
+      group.selected_selling_plan = availablePlans[0]
+    }
+
     this.selectedSellingPlan = group?.selected_selling_plan
 
     if(group){
@@ -1752,7 +1881,13 @@ export class SkioPlanPicker extends LitElement {
         .then(response => response.json())
         .then(product => {
           this.product = product
-          this.selectedVariant = product.variants[0]
+
+          // Try to match the variant from the form input or the attribute-passed selectedVariant
+          const formVariantId = this.variantInput?.value;
+          const attrVariantId = this.selectedVariant?.id;
+          const matchId = formVariantId || attrVariantId;
+          const matched = matchId ? product.variants.find(v => v.id == matchId) : null;
+          this.selectedVariant = matched || product.variants[0]
 
           return product
         })

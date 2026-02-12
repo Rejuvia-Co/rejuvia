@@ -1,0 +1,161 @@
+{%- comment -%}
+  Variant Selector V2 for Product Widget V2
+  Variables:
+    - currentProduct: the product object
+    - block: the block object with settings
+{%- endcomment -%}
+
+{%- if currentProduct.variants.size > 1 -%}
+
+{% assign default_variant_index = block.settings.default_variant | default: 2 %}
+
+<div class="variant-selector-v2"
+     data-default-variant="{{ default_variant_index }}"
+     style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;">
+
+  {% comment %} Section Header {% endcomment %}
+  {% if block.settings.show_header %}
+  <div class="variant-selector__header">
+    <div class="variant-selector__line"></div>
+    <span class="variant-selector__title">{{ block.settings.header_text }}</span>
+    <div class="variant-selector__line"></div>
+  </div>
+  {% endif %}
+
+  {% comment %} Variant Options {% endcomment %}
+  <div class="variant-selector__options">
+    {%- for variant in currentProduct.variants -%}
+      {% comment %} Get servings from metafield {% endcomment %}
+      {% assign servings_raw = variant.metafields.custom.variant_servings | default: '30 Servings' %}
+      {% assign actual_servings = servings_raw | remove: ' Servings' | remove: ' servings' | plus: 0 %}
+      {% if actual_servings == 0 %}{% assign actual_servings = 30 %}{% endif %}
+
+      {% assign price_per_serving = variant.price | divided_by: actual_servings %}
+      {% assign months = actual_servings | divided_by: 30 %}
+
+      {% comment %} Calculate discount percentage {% endcomment %}
+      {% assign discount_percentage = 0 %}
+      {% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+        {% assign compare_price = variant.compare_at_price | times: 1.0 %}
+        {% assign current_price = variant.price | times: 1.0 %}
+        {% assign price_difference = compare_price | minus: current_price %}
+        {% assign discount_fraction = price_difference | divided_by: compare_price %}
+        {% assign discount_percentage = discount_fraction | times: 100 | round %}
+      {% endif %}
+
+      <div class="variant-selector__option"
+           data-variant-id="{{ variant.id }}"
+           data-variant-price="{{ variant.price }}"
+           data-variant-title="{{ variant.title }}"
+           data-variant-index="{{ forloop.index }}">
+
+        {% comment %} Badge from variant metafield {% endcomment %}
+        {% if variant.metafields.custom.variant_badge != blank %}
+          {% assign badge_text_color = variant.metafields.custom.badge_text_color | default: '#ffffff' %}
+          {% assign badge_bg_color = variant.metafields.custom.badge_bg_color | default: '#61bd67' %}
+          <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ variant.metafields.custom.variant_badge }}</span>
+        {% endif %}
+
+        {% comment %} Image {% endcomment %}
+        <div class="variant-selector__image">
+          {% if variant.featured_image %}
+            <img src="{{ variant.featured_image | img_url: '150x150' }}" alt="{{ variant.title }}" loading="lazy">
+          {% else %}
+            <img src="{{ currentProduct.featured_image | img_url: '150x150' }}" alt="{{ variant.title }}" loading="lazy">
+          {% endif %}
+        </div>
+
+        {% comment %} Title {% endcomment %}
+        <div class="variant-selector__name">
+          {% if variant.metafields.custom.variant_pack_size != blank %}
+            {{ variant.metafields.custom.variant_pack_size }}
+          {% else %}
+            {{ months }} Month{% if months > 1 %}s{% endif %}
+          {% endif %}
+        </div>
+
+        {% comment %} Price per night {% endcomment %}
+        {% if variant.metafields.custom.price_per_night != blank %}
+          <div class="variant-selector__price-per">
+            {{ variant.metafields.custom.price_per_night }}
+          </div>
+        {% endif %}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const selector = document.querySelector('.variant-selector-v2');
+  if (!selector) return;
+
+  const options = selector.querySelectorAll('.variant-selector__option');
+  const defaultVariantIndex = parseInt(selector.dataset.defaultVariant) || 2;
+
+  // Find ProductJs elements
+  const productSelect = document.querySelector('.swatch2 .select-variant');
+  const productVariantInput = document.querySelector('.swatch2 input[name="id"]');
+  const priceDisplay = document.querySelector('.variant-price-display');
+
+  // Format price helper
+  function formatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2).replace('.00', '');
+  }
+
+  // Set initial active state based on settings
+  const targetIndex = Math.min(defaultVariantIndex - 1, options.length - 1);
+  if (options.length > 0 && targetIndex >= 0) {
+    options[targetIndex].classList.add('is-active');
+
+    // Also trigger initial selection
+    const initialVariantId = options[targetIndex].dataset.variantId;
+    const initialPrice = options[targetIndex].dataset.variantPrice;
+    if (productSelect) {
+      productSelect.value = initialVariantId;
+      productSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    if (productVariantInput) {
+      productVariantInput.value = initialVariantId;
+    }
+    if (priceDisplay && initialPrice) {
+      priceDisplay.textContent = formatMoney(initialPrice);
+    }
+  }
+
+  options.forEach(option => {
+    option.addEventListener('click', function() {
+      // Remove active from all
+      options.forEach(o => o.classList.remove('is-active'));
+      // Add active to clicked
+      this.classList.add('is-active');
+
+      const variantId = this.dataset.variantId;
+
+      // Update ProductJs select and trigger change
+      if (productSelect) {
+        productSelect.value = variantId;
+        productSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (productVariantInput) {
+        productVariantInput.value = variantId;
+      }
+
+      // Update price display
+      if (priceDisplay) {
+        priceDisplay.textContent = formatMoney(this.dataset.variantPrice);
+      }
+
+      // Trigger custom event for other scripts
+      document.dispatchEvent(new CustomEvent('variant:changed', {
+        detail: {
+          variantId: variantId,
+          price: this.dataset.variantPrice,
+          title: this.dataset.variantTitle
+        }
+      }));
+    });
+  });
+});
+</script>
+{%- endif -%}

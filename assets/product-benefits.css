@@ -184,6 +184,12 @@
   fill: currentColor;
 }
 
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+  .product-benefits__content {
+    gap: 20px;
+  }
+}
+
 /* ========================================
    Tablet Styles (600px - 900px)
    ======================================== */

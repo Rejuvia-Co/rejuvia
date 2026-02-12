@@ -12,6 +12,16 @@
     "product_widget_v2": {
       "type": "product-widget-v2",
       "blocks": {
+        "reviews_1": {
+          "type": "okendo-reviews",
+          "settings": {
+            "reviews_anchor": "shopify-product-reviews",
+            "star_color": "#fab851",
+            "empty_star_color": "#dddddd",
+            "margin_top": 0,
+            "margin_bottom": 4
+          }
+        },
         "title_1": {
           "type": "title",
           "settings": {
@@ -30,16 +40,6 @@
             "margin_bottom": 24
           }
         },
-        "reviews_1": {
-          "type": "okendo-reviews",
-          "settings": {
-            "reviews_anchor": "shopify-product-reviews",
-            "star_color": "#fab851",
-            "empty_star_color": "#dddddd",
-            "margin_top": 10,
-            "margin_bottom": 24
-          }
-        },
         "description_1": {
           "type": "description",
           "settings": {
@@ -54,7 +54,7 @@
             "header_text": "CHOOSE YOUR QUANTITY",
             "default_variant": 2,
             "margin_top": 0,
-            "margin_bottom": 24
+            "margin_bottom": 4
           }
         },
         "skio_v2_1": {
@@ -94,9 +94,9 @@
         }
       },
       "block_order": [
+        "reviews_1",
         "title_1",
         "specs_1",
-        "reviews_1",
         "description_1",
         "variant_selector_1",
         "skio_v2_1",

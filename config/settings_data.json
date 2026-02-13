@@ -1457,6 +1457,7 @@
           "text_efMtX4",
           "skio_plan_picker_MXC8X3"
         ],
+        "disabled": true,
         "settings": {
           "hero_heading": "",
           "selected_product": "sleep-spray",
@@ -2885,7 +2886,6 @@
           "buy_buttons_QNqxpJ",
           "custom_tabs_EHqYn3"
         ],
-        "disabled": true,
         "name": "Product Widget V2",
         "settings": {
           "selected_product": "sleep-spray",

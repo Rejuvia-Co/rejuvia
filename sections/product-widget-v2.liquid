@@ -7,7 +7,7 @@
         {% assign currentProduct = product %}
     {% endif %}
 
-    {% assign subscription_product = product.metafields.subscriptions %}
+    {% assign subscription_product = currentProduct.metafields.subscriptions %}
     {% comment %}Discount settings{% endcomment %}
     {% assign discount_percentage = subscription_product.discount_percentage | round: 2 %}
     {% assign discount_floor = subscription_product.discount_percentage | floor %}
@@ -18,14 +18,14 @@
     {% assign preselected_item_index = section.settings.preselected_item %}
 
 
-    <div id="product-item-{{ product.id }}" class="product-wrap container product-template-default">
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default">
         
             <div class="gallery-wrapper">
                 <div class="gallery-inner">
                     {%- render '_product_gallery_v2', currentProduct: currentProduct, show_bundle_text: section.settings.show_bundle_text -%}
                     
-                    {% if product.metafields.custom.boundle_related_product != blank and section.settings.show_related_product %}
-                        {% assign relatedProduct = product.metafields.custom.boundle_related_product.value %}
+                    {% if currentProduct.metafields.custom.boundle_related_product != blank and section.settings.show_related_product %}
+                        {% assign relatedProduct = currentProduct.metafields.custom.boundle_related_product.value %}
                         <div class="boundle-related show-desktop hide-mobile">
                         <div class="boundle-related__text">
                             <div class="boundle-related__text--heading">
@@ -112,7 +112,7 @@
             </div>
 
             {% comment %} Render blocks in order {% endcomment %}
-            {% assign product_form_id = product.id %}
+            {% assign product_form_id = currentProduct.id %}
 
             {% for block in section.blocks %}
                 {% case block.type %}
@@ -128,17 +128,17 @@
                             {% if block.settings.icon_svg != blank %}
                             <span class="specs-icon">{{ block.settings.icon_svg }}</span>
                             {% endif %}
-                            <span>{{ block.settings.custom_text_1 | default: product.variants.first.metafields.custom.variant_grams }}</span>
+                            <span>{{ block.settings.custom_text_1 | default: currentProduct.variants.first.metafields.custom.variant_grams }}</span>
                             <span>•</span>
-                            <span>{{ block.settings.custom_text_2 | default: product.variants.first.metafields.custom.variant_servings }}</span>
+                            <span>{{ block.settings.custom_text_2 | default: currentProduct.variants.first.metafields.custom.variant_servings }}</span>
                         </div>
                     </div>
 
                 {% when 'okendo-reviews' %}
                     <div class="block-reviews" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <a id="okendo-product-reviews" href="#{{ block.settings.reviews_anchor }}">
-                            {% assign reviewRating = product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
-                            {% assign reviewCount = product.metafields.okendo.summaryData.reviewCount | plus: 0 %}
+                            {% assign reviewRating = currentProduct.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
+                            {% assign reviewCount = currentProduct.metafields.okendo.summaryData.reviewCount | plus: 0 %}
                             {% assign fullStars = reviewRating | floor %}
                             {% assign remainder = reviewRating | minus: fullStars %}
 
@@ -202,11 +202,11 @@
                     </div>
 
                 {% when 'bundle-info' %}
-                    {% if product.metafields.custom.bundle_components != blank %}
+                    {% if currentProduct.metafields.custom.bundle_components != blank %}
                     <div class="block-bundle-info bundle_info_block" {{ block.shopify_attributes }}>
                         <p class="bundle_title">{{ block.settings.bundle_title }}</p>
                         <div class="bundle_list">
-                            {% for component in product.metafields.custom.bundle_components.value %}
+                            {% for component in currentProduct.metafields.custom.bundle_components.value %}
                                 {% assign bundle_product = component.product.value %}
                                 {% assign quantity = component.quantity %}
                                 {% if bundle_product %}
@@ -231,16 +231,16 @@
 
                 {% when 'buy-buttons' %}
                     <div class="block-buy-buttons" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                        <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ product.id }}"
+                        <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ currentProduct.id }}"
                             id="{{ product_form_id }}" method="post" class="layout-2 variants add-to-cart-form"
                             enctype="multipart/form-data">
 
-                            <div class="no-js-hidden" id="price-{{ product.id }}" role="status">
+                            <div class="no-js-hidden" id="price-{{ currentProduct.id }}" role="status">
                                 {%- liquid
                                     if use_variant
-                                        assign target = product.selected_or_first_available_variant
+                                        assign target = currentProduct.selected_or_first_available_variant
                                     else
-                                        assign target = product
+                                        assign target = currentProduct
                                     endif
 
                                     assign compare_at_price = target.compare_at_price
@@ -251,7 +251,7 @@
                                         assign money_price = price | money_with_currency
                                     endif
 
-                                    if target == product and product.price_varies
+                                    if target == currentProduct and currentProduct.price_varies
                                         assign money_price = 'products.product.price.from_price_html' | t: price: money_price
                                     endif
                                 -%}
@@ -262,12 +262,12 @@
 
                             {% comment %} Hidden select for ProductJs compatibility {% endcomment %}
                             <div class="swatch2 options" style="display: none;">
-                                <select class="select-variant" id="product-select-{{ product.id }}">
-                                    {%- for variant in product.variants -%}
+                                <select class="select-variant" id="product-select-{{ currentProduct.id }}">
+                                    {%- for variant in currentProduct.variants -%}
                                         <option value="{{ variant.id }}" {% if forloop.index == 2 %}selected{% endif %}>{{ variant.title | escape }}</option>
                                     {%- endfor -%}
                                 </select>
-                                <input type="hidden" name="id" data-productid="{{ product.id }}" id="product-{{ product.id }}-variant" value="{{ product.variants[1].id | default: product.variants.first.id }}" />
+                                <input type="hidden" name="id" data-productid="{{ currentProduct.id }}" id="product-{{ currentProduct.id }}-variant" value="{{ currentProduct.variants[1].id | default: currentProduct.variants.first.id }}" />
                             </div>
 
                             <div class="qty-btn-wrap flex flex-wrap justify-content-between align-items-center">
@@ -281,20 +281,20 @@
                                 {% if request.path contains '/products' %}
                                     {% render 'skio-app-block',
                                         block_i: block_skio,
-                                        product: product,
+                                        product: currentProduct,
                                         product_form_id: product_form_id
                                     %}
                                 {% else %}
                                     {% render 'skio-app-block',
                                         block_i: block_skio,
-                                        product_handle: product,
+                                        product_handle: currentProduct,
                                         product_form_id: product_form_id
                                     %}
                                 {% endif %} -->
 
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
-                                        <span>{{ block.settings.button_text }} <span class="variant-price-display skio-update-price">{{ product.variants[1].price | default: product.variants.first.price | money }}</span></span>
+                                        <span>{{ block.settings.button_text }} <span class="variant-price-display skio-update-price">{{ currentProduct.variants[1].price | default: currentProduct.variants.first.price | money }}</span></span>
                                     </button>
                                 </div>
 
@@ -314,7 +314,7 @@
 
                 {% when 'custom-tabs' %}
                     <div class="block-custom-tabs" {{ block.shopify_attributes }}>
-                        {%- render '_custom_tabs_products-new' -%}
+                        {%- render '_custom_tabs_products-new', product: currentProduct -%}
                     </div>
 
                 {% when 'social-sharing' %}
@@ -335,7 +335,7 @@
 
                 {% when 'skio-plan-picker-v2' %}
                     <div class="block-skio-plan-picker-v2" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                        {% render '_skio_plan_picker_v2', product: product, product_form_id: product_form_id, block: block %}
+                        {% render '_skio_plan_picker_v2', product: currentProduct, product_form_id: product_form_id, block: block %}
                     </div>
 
                 {% when '@app' %}
@@ -346,13 +346,13 @@
 
             </div>
      
-        {%- unless product.tags contains "hide" -%}
+        {%- unless currentProduct.tags contains "hide" -%}
         <div class="add-to-cart-navbar">
             <div class="flex align-items-center justify-content-between">
             <div>
                 <h1 class="title">{{ currentProduct.title }}</h1>
-                {% if product.metafields.more_info.info_float_bar != '' %}
-                <h4>{{product.metafields.more_info.info_float_bar}}</h4>
+                {% if currentProduct.metafields.more_info.info_float_bar != '' %}
+                <h4>{{currentProduct.metafields.more_info.info_float_bar}}</h4>
                 {% endif %}
             </div>
             <div>
@@ -376,10 +376,10 @@
 <script type="text/javascript">
     $(function () {
 
-        var product = {{ product | json }};
+        var product = {{ currentProduct | json }};
         console.log('new ProductJS: ', product);
 
-        new ProductJs($('#product-item-{{ product.id }}'), product, {{ preselected_item_index }});
+        new ProductJs($('#product-item-{{ currentProduct.id }}'), product, {{ preselected_item_index }});
 
         if (window.location.hash.indexOf('search') >= 0) {
             $('.collection-nav .return_search').removeClass('hide');

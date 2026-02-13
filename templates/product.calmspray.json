@@ -52,7 +52,7 @@
           "settings": {
             "show_header": true,
             "header_text": "CHOOSE YOUR QUANTITY",
-            "default_variant": 2,
+            "default_variant": 1,
             "margin_top": 0,
             "margin_bottom": 40
           }
@@ -107,61 +107,6 @@
         "selected_product": "",
         "show_related_product": false,
         "show_bundle_text": false,
-        "swatch_tag_content": "",
-        "preselected_item": 3
-      }
-    },
-    "product_widget_6p4fVc": {
-      "type": "product-widget",
-      "blocks": {
-        "text_yDnBNe": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Plant.svg",
-            "title": "All-Natural"
-          }
-        },
-        "text_FFyKCH": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "title": "USA Made"
-          }
-        },
-        "text_YtYqLw": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Flask.svg",
-            "title": "Lab Tested"
-          }
-        },
-        "text_weyETr": {
-          "type": "text",
-          "settings": {
-            "icon": "shopify://shop_images/Wind.svg",
-            "title": "Mint Flavor"
-          }
-        },
-        "skio_plan_picker_bBL3GV": {
-          "type": "skio-plan-picker",
-          "settings": {
-            "start_onetime": false,
-            "onetime_first": true
-          }
-        }
-      },
-      "block_order": [
-        "text_yDnBNe",
-        "text_FFyKCH",
-        "text_YtYqLw",
-        "text_weyETr",
-        "skio_plan_picker_bBL3GV"
-      ],
-      "disabled": true,
-      "settings": {
-        "hero_heading": "",
-        "selected_product": "",
-        "guarantee_label": "FREE SHIPPING OVER $59",
         "swatch_tag_content": "",
         "preselected_item": 3
       }
@@ -348,7 +293,6 @@
         "product_GzhtQB",
         "product_DzCK9Y"
       ],
-      "disabled": true,
       "name": "Select Product",
       "settings": {
         "title": "Shop All Rejuvia Products",
@@ -358,7 +302,6 @@
   },
   "order": [
     "product_widget_v2",
-    "product_widget_6p4fVc",
     "product_benefits_MEbMKY",
     "customer_testimonials_video_caghmG",
     "ingredients_section_Mcnkac",

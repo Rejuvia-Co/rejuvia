@@ -13,6 +13,7 @@
 
   .product-widget-container {
     padding: 32px 18px;
+    overflow: hidden;
   }
 
   .product-widget-container .product-wrap {

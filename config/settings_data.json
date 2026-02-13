@@ -1457,6 +1457,7 @@
           "text_efMtX4",
           "skio_plan_picker_MXC8X3"
         ],
+        "disabled": true,
         "settings": {
           "hero_heading": "",
           "selected_product": "sleep-spray",
@@ -2873,10 +2874,6 @@
           "custom_tabs_EHqYn3": {
             "type": "custom-tabs",
             "settings": {}
-          },
-          "social_sharing_fYjPkC": {
-            "type": "social-sharing",
-            "settings": {}
           }
         },
         "block_order": [
@@ -2887,8 +2884,7 @@
           "variant_selector_xWtJzL",
           "skio_plan_picker_v2_8H34HB",
           "buy_buttons_QNqxpJ",
-          "custom_tabs_EHqYn3",
-          "social_sharing_fYjPkC"
+          "custom_tabs_EHqYn3"
         ],
         "name": "Product Widget V2",
         "settings": {

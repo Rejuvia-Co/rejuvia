@@ -1457,7 +1457,6 @@
           "text_efMtX4",
           "skio_plan_picker_MXC8X3"
         ],
-        "disabled": true,
         "settings": {
           "hero_heading": "",
           "selected_product": "sleep-spray",
@@ -2799,7 +2798,7 @@
             "type": "okendo-reviews",
             "settings": {
               "reviews_anchor": "shopify-product-reviews",
-              "star_color": "#FAB851",
+              "star_color": "#fab851",
               "empty_star_color": "#dddddd",
               "margin_top": 0,
               "margin_bottom": 5
@@ -2852,7 +2851,7 @@
               "show_variant_item": true,
               "show_free_shipping": true,
               "shipping_original_price": "$4.99",
-              "border_color": "#BFBFBF",
+              "border_color": "#bfbfbf",
               "selected_border_color": "#672666",
               "discount_badge_color": "#c2f1bd",
               "discount_text_color": "#000000",
@@ -2886,6 +2885,7 @@
           "buy_buttons_QNqxpJ",
           "custom_tabs_EHqYn3"
         ],
+        "disabled": true,
         "name": "Product Widget V2",
         "settings": {
           "selected_product": "sleep-spray",

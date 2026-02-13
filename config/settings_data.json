@@ -2694,7 +2694,7 @@
             "type": "okendo-reviews",
             "settings": {
               "reviews_anchor": "shopify-product-reviews",
-              "star_color": "#FAB851",
+              "star_color": "#fab851",
               "empty_star_color": "#dddddd",
               "margin_top": 10,
               "margin_bottom": 24
@@ -2747,7 +2747,7 @@
               "show_variant_item": true,
               "show_free_shipping": true,
               "shipping_original_price": "$4.95",
-              "border_color": "#BFBFBF",
+              "border_color": "#bfbfbf",
               "selected_border_color": "#672666",
               "discount_badge_color": "#c2f1bd",
               "discount_text_color": "#000000",
@@ -2790,6 +2790,134 @@
           "swatch_tag_content": "",
           "preselected_item": 3
         }
+      },
+      "product_widget_v2_m3pTph": {
+        "type": "product-widget-v2",
+        "blocks": {
+          "title_q8haTq": {
+            "type": "title",
+            "settings": {
+              "custom_title": "Sleep Spray",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "product_specs_TprNq9": {
+            "type": "product-specs",
+            "settings": {
+              "icon_svg": "",
+              "custom_text_1": "",
+              "custom_text_2": "",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "okendo_reviews_zL8EQC": {
+            "type": "okendo-reviews",
+            "settings": {
+              "reviews_anchor": "shopify-product-reviews",
+              "star_color": "#FAB851",
+              "empty_star_color": "#dddddd",
+              "margin_top": 10,
+              "margin_bottom": 24
+            }
+          },
+          "description_DLmdKr": {
+            "type": "description",
+            "settings": {
+              "margin_top": 10,
+              "margin_bottom": 20
+            }
+          },
+          "key_traits_9dAGJT": {
+            "type": "key-traits",
+            "settings": {}
+          },
+          "bundle_info_QTTNm4": {
+            "type": "bundle-info",
+            "settings": {
+              "bundle_title": "What's Included:"
+            }
+          },
+          "variant_selector_xWtJzL": {
+            "type": "variant-selector",
+            "settings": {
+              "show_header": true,
+              "header_text": "CHOOSE YOUR QUANTITY",
+              "default_variant": 2,
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "buy_buttons_QNqxpJ": {
+            "type": "buy-buttons",
+            "settings": {
+              "button_text": "Add to cart -",
+              "show_guarantee": true,
+              "guarantee_icon_svg": "",
+              "guarantee_label": "30-Day Guarantee",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "skio_plan_picker_aiMcPc": {
+            "type": "skio-plan-picker",
+            "settings": {
+              "start_onetime": true,
+              "onetime_first": true
+            }
+          },
+          "skio_plan_picker_v2_8H34HB": {
+            "type": "skio-plan-picker-v2",
+            "settings": {
+              "start_onetime": false,
+              "onetime_first": false,
+              "onetime_title": "One Time Purchase",
+              "subscription_title": "Subscribe &",
+              "header_title": "Choose Your Offer",
+              "subscription_subtitle": "Skip or cancel anytime",
+              "show_variant_item": true,
+              "show_free_shipping": true,
+              "shipping_original_price": "$4.99",
+              "border_color": "#BFBFBF",
+              "selected_border_color": "#672666",
+              "discount_badge_color": "#c2f1bd",
+              "discount_text_color": "#000000",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "custom_tabs_EHqYn3": {
+            "type": "custom-tabs",
+            "settings": {}
+          },
+          "social_sharing_fYjPkC": {
+            "type": "social-sharing",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "title_q8haTq",
+          "product_specs_TprNq9",
+          "okendo_reviews_zL8EQC",
+          "description_DLmdKr",
+          "key_traits_9dAGJT",
+          "bundle_info_QTTNm4",
+          "variant_selector_xWtJzL",
+          "buy_buttons_QNqxpJ",
+          "skio_plan_picker_aiMcPc",
+          "skio_plan_picker_v2_8H34HB",
+          "custom_tabs_EHqYn3",
+          "social_sharing_fYjPkC"
+        ],
+        "name": "Product Widget V2",
+        "settings": {
+          "selected_product": "sleep-spray",
+          "show_related_product": false,
+          "show_bundle_text": false,
+          "swatch_tag_content": "",
+          "preselected_item": 1
+        }
       }
     },
     "content_for_index": [
@@ -2801,6 +2929,7 @@
       "product_comparison_enhanced_DecUrt",
       "ingredients_section_xJDwEy",
       "product_widget_gC6JFH",
+      "product_widget_v2_m3pTph",
       "subscribe_save_qXLDcT",
       "founder_story_qLxKiR",
       "faqs_Whjez9",

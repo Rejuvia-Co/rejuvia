@@ -1458,12 +1458,12 @@
       "featured-customer-reviews": {
         "type": "featured-customer-reviews",
         "blocks": {
-          "review_Lg4LCz": {
+          "review_AhPef4": {
             "type": "review",
             "settings": {
-              "text": "\"Nothing else worked for me—Rejuvia is the first one that truly delivers. I’m asleep in minutes and wake up feeling amazing.\"",
-              "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.16.17_PM.png",
-              "name": "Robert G."
+              "text": "\"This spray works wonders! In 1just 5 minutes I am out cold and no longer wake up at midnight.\"",
+              "image": "shopify://shop_images/rejuvia_sleep_review_1.png",
+              "name": "Scott S."
             }
           },
           "review_zayqDg": {
@@ -1474,20 +1474,20 @@
               "name": "Kimberly W."
             }
           },
+          "review_Lg4LCz": {
+            "type": "review",
+            "settings": {
+              "text": "\"Nothing else worked for me—Rejuvia is the first one that truly delivers. I’m asleep in minutes and wake up feeling amazing.\"",
+              "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.16.17_PM.png",
+              "name": "Robert G."
+            }
+          },
           "review_gT7h8w": {
             "type": "review",
             "settings": {
               "text": "\"It took a few days to kick in, but WOW—now I get amazing sleep every night! Highly recommend!\"",
               "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
               "name": "Betty M."
-            }
-          },
-          "review_AhPef4": {
-            "type": "review",
-            "settings": {
-              "text": "\"This spray works wonders! In 15-20 minutes, I’m out cold and no longer wake up during the night.\"",
-              "image": "shopify://shop_images/rejuvia_sleep_review_1.png",
-              "name": "Scott S."
             }
           },
           "review_jCxNgq": {
@@ -1508,10 +1508,10 @@
           }
         },
         "block_order": [
-          "review_Lg4LCz",
-          "review_zayqDg",
-          "review_gT7h8w",
           "review_AhPef4",
+          "review_zayqDg",
+          "review_Lg4LCz",
+          "review_gT7h8w",
           "review_jCxNgq",
           "review_rxg4yc"
         ],

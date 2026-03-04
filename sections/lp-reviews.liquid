@@ -1,0 +1,131 @@
+{{ 'section-rejuvia-sleep-listicle.css' | asset_url | stylesheet_tag }}
+
+<div class="rej-lp">
+  <section class="rej-lp__reviews">
+    <div class="rej-lp__container">
+      <h2 class="rej-lp__section-heading">{{ section.settings.heading }}</h2>
+      <div class="rej-lp__reviews-grid">
+        {%- for block in section.blocks -%}
+          <div class="rej-lp__review-card" {{ block.shopify_attributes }}>
+            <div class="rej-lp__review-stars">★★★★★</div>
+            <h4 class="rej-lp__review-title">{{ block.settings.title }}</h4>
+            <p class="rej-lp__review-quote">"{{ block.settings.quote }}"</p>
+            <p class="rej-lp__review-author">{{ block.settings.author }}</p>
+            {%- if block.settings.verified -%}
+              <span class="rej-lp__review-verified">✓ Verified Buyer</span>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LP - Reviews",
+  "tag": "section",
+  "class": "lp-reviews-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Join 300,000+ Getting Better Sleep"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Best Ever!"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Text",
+          "default": "I worked night shift for 27 years, so I have very bad insomnia. After using Rejuvia, I can't even get thru a chapter in a book before I am sleepy. And I sleep thru the night!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Sandra F."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show Verified Buyer Badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP - Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "title": "Best Ever!",
+            "quote": "I worked night shift for 27 years, so I have very bad insomnia. After using Rejuvia, I can't even get thru a chapter in a book before I am sleepy. And I sleep thru the night!",
+            "author": "Sandra F.",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "A Dream Come True",
+            "quote": "The 1st product we've ever tried that actually and weirdly works! We are so relieved to finally have a product that eases us to sleep and lets us wake up refreshed.",
+            "author": "Cher C.",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Off My Sleeping Pills",
+            "quote": "This is the first product I have found that finally managed to get me off my sleeping pills. I had taken them nightly for 30 years. I will be a forever customer.",
+            "author": "Belinda G.",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Lights Out in 15 Minutes",
+            "quote": "Rejuvia really WORKS for me! It's lights out for me after just 15-20 minutes. I've tried it all for sleep and this really works.",
+            "author": "Scott S.",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Changed My Life",
+            "quote": "I've suffered with bad sleep for a decade. This sleep spray has changed my life! I spray it 6 times and I'm sound asleep in 15 minutes.",
+            "author": "Angela L.",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Puts Me to Sleep Quickly",
+            "quote": "This little spray absolutely puts me to sleep quickly each night and I love the taste.",
+            "author": "Kim W.",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

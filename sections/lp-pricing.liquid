@@ -1,0 +1,191 @@
+{{ 'section-rejuvia-sleep-listicle.css' | asset_url | stylesheet_tag }}
+
+<div class="rej-lp">
+  <section class="rej-lp__pricing" id="offer">
+    <div class="rej-lp__container">
+      <p class="rej-lp__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="rej-lp__section-heading">{{ section.settings.heading }}</h2>
+      <p class="rej-lp__pricing-sub">{{ section.settings.subheading }}</p>
+      <div class="rej-lp__pricing-grid">
+        {%- for block in section.blocks -%}
+          <div class="rej-lp__pricing-card{% if block.settings.popular %} rej-lp__pricing-card--popular{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.badge != blank -%}
+              <span class="rej-lp__pricing-badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+            <h4 class="rej-lp__pricing-title">{{ block.settings.title }}</h4>
+            <div class="rej-lp__pricing-prices">
+              <span class="rej-lp__pricing-sale">{{ block.settings.sale_price }}</span>
+              {%- if block.settings.original_price != blank -%}
+                <span class="rej-lp__pricing-original">{{ block.settings.original_price }}</span>
+              {%- endif -%}
+            </div>
+            <p class="rej-lp__pricing-per-night">{{ block.settings.per_night }}</p>
+            <p class="rej-lp__pricing-detail">{{ block.settings.detail }}</p>
+            <a href="{{ block.settings.link }}" class="rej-lp__btn rej-lp__btn--primary rej-lp__btn--full">{{ block.settings.cta_text }}</a>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="rej-lp__pricing-trust">
+        {%- if section.settings.trust_1 != blank -%}<span>✓ {{ section.settings.trust_1 }}</span>{%- endif -%}
+        {%- if section.settings.trust_2 != blank -%}<span>✓ {{ section.settings.trust_2 }}</span>{%- endif -%}
+        {%- if section.settings.trust_3 != blank -%}<span>✓ {{ section.settings.trust_3 }}</span>{%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LP - Pricing",
+  "tag": "section",
+  "class": "lp-pricing-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Used Nightly By 300,000+ Sleepers"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Buy One, Get One FREE"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Try Rejuvia Risk-Free For 90 Nights"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust Badge 1",
+      "default": "90-Day Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust Badge 2",
+      "default": "Free Shipping on 6-Pack"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust Badge 3",
+      "default": "Cancel Anytime"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Pricing Tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tier Title",
+          "default": "Buy 1, Get 1 FREE"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale Price",
+          "default": "$37"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original Price (strikethrough)",
+          "default": "$74"
+        },
+        {
+          "type": "text",
+          "id": "per_night",
+          "label": "Per Night Text",
+          "default": "$0.56 Per Night"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail Text",
+          "default": "2 Bottles Total (2 Month-Supply)"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text (leave blank for none)"
+        },
+        {
+          "type": "checkbox",
+          "id": "popular",
+          "label": "Highlight as Popular",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Button Text",
+          "default": "BUY NOW →"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP - Pricing",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "title": "Buy 1, Get 1 FREE",
+            "sale_price": "$37",
+            "original_price": "$74",
+            "per_night": "$0.56 Per Night",
+            "detail": "2 Bottles Total (2 Month-Supply)",
+            "badge": "",
+            "popular": false,
+            "cta_text": "BUY NOW →"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "title": "Buy 2, Get 2 FREE",
+            "sale_price": "$74",
+            "original_price": "$148",
+            "per_night": "$0.56 Per Night",
+            "detail": "4 Bottles Total (4 Month-Supply)",
+            "badge": "MOST POPULAR",
+            "popular": true,
+            "cta_text": "BUY NOW →"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "title": "Buy 3, Get 3 FREE",
+            "sale_price": "$111",
+            "original_price": "$222",
+            "per_night": "$0.56 Per Night",
+            "detail": "6 Bottles Total (6 Month-Supply) + FREE Shipping",
+            "badge": "BEST VALUE",
+            "popular": false,
+            "cta_text": "BUY NOW →"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

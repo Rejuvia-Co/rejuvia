@@ -1,0 +1,110 @@
+{{ 'section-rejuvia-sleep-listicle.css' | asset_url | stylesheet_tag }}
+
+<div class="rej-lp">
+  <section class="rej-lp__compare">
+    <div class="rej-lp__container">
+      <h2 class="rej-lp__section-heading">{{ section.settings.heading }}</h2>
+      <div class="rej-lp__compare-table-wrap">
+        <table class="rej-lp__compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="rej-lp__compare-highlight">{{ section.settings.col1_heading }}</th>
+              <th>{{ section.settings.col2_heading }}</th>
+              <th>{{ section.settings.col3_heading }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}>
+                <td>{{ block.settings.label }}</td>
+                <td class="rej-lp__compare-highlight">{{ block.settings.col1 }}</td>
+                <td>{{ block.settings.col2 }}</td>
+                <td>{{ block.settings.col3 }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LP - Comparison Table",
+  "tag": "section",
+  "class": "lp-compare-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Finally, The Better Way to Sleep"
+    },
+    {
+      "type": "text",
+      "id": "col1_heading",
+      "label": "Column 1 Heading (Your Product)",
+      "default": "Rejuvia Sleep Spray"
+    },
+    {
+      "type": "text",
+      "id": "col2_heading",
+      "label": "Column 2 Heading",
+      "default": "Sleeping Pills"
+    },
+    {
+      "type": "text",
+      "id": "col3_heading",
+      "label": "Column 3 Heading",
+      "default": "Sleep Gummies"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Row Label",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "col1",
+          "label": "Your Product Value",
+          "default": "✓ Best"
+        },
+        {
+          "type": "text",
+          "id": "col2",
+          "label": "Competitor 1 Value",
+          "default": "✗ Worse"
+        },
+        {
+          "type": "text",
+          "id": "col3",
+          "label": "Competitor 2 Value",
+          "default": "✗ Worse"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP - Comparison Table",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Absorption Speed", "col1": "✓ Rapid (10 min)", "col2": "✗ Slow (up to 90 min)", "col3": "✗ Slow (up to 90 min)" } },
+        { "type": "row", "settings": { "label": "All-Natural Ingredients", "col1": "✓ 100% Natural", "col2": "✗ Synthetic", "col3": "✗ Often Artificial" } },
+        { "type": "row", "settings": { "label": "Morning Grogginess", "col1": "✓ None", "col2": "✗ Common", "col3": "✗ Sometimes" } },
+        { "type": "row", "settings": { "label": "Non-Habit Forming", "col1": "✓ Yes", "col2": "✗ No", "col3": "✓ Yes" } },
+        { "type": "row", "settings": { "label": "Dosage Control", "col1": "✓ Easy Spray Control", "col2": "✗ Limited", "col3": "✗ Limited" } },
+        { "type": "row", "settings": { "label": "Cost Per Night", "col1": "✓ $0.56/night", "col2": "✗ $3.00/night", "col3": "✗ $1.83/night" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

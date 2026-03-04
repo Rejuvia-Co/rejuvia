@@ -1,0 +1,62 @@
+{{ 'section-rejuvia-sleep-listicle.css' | asset_url | stylesheet_tag }}
+
+<div class="rej-lp">
+  <section class="rej-lp__final-cta" style="background:{{ section.settings.bg_color }};">
+    <div class="rej-lp__container rej-lp__final-cta-inner">
+      <h2 class="rej-lp__final-cta-heading">{{ section.settings.heading }}</h2>
+      <p class="rej-lp__final-cta-sub">{{ section.settings.subheading }}</p>
+      <a href="{{ section.settings.cta_link }}" class="rej-lp__btn rej-lp__btn--primary rej-lp__btn--lg">{{ section.settings.cta_text }}</a>
+      <p class="rej-lp__final-guarantee">{{ section.settings.guarantee_text }}</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LP - Final CTA",
+  "tag": "section",
+  "class": "lp-final-cta-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Best Sleep Is Just a Few Sprays Away"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The sleep you deserve is now just a few sprays away. Invest in your better sleep today risk-free and never look back."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "TRY REJUVIA 100% RISK-FREE →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "90-Day Money Back Guarantee · Free Shipping on 6-Pack · Cancel Anytime"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#6B21A8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP - Final CTA"
+    }
+  ]
+}
+{% endschema %}

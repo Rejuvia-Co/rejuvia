@@ -1,0 +1,204 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sticky-bar": {
+      "type": "lp-sticky-bar",
+      "settings": {
+        "text": "Buy One, Get One 100% FREE — Try Rejuvia Risk-Free",
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff"
+      }
+    },
+    "hero": {
+      "type": "lp-hero",
+      "settings": {
+        "eyebrow": "★★★★★ Used Nightly By 300,000+ Sleepers",
+        "heading": "5 Reasons Why 300,000+ Adults Are Ditching Pills For This Sleep Spray",
+        "subheading": "Thousands of adults who have tried everything to help them sleep at night have finally found an all-natural solution. It helps you fall asleep 3x faster, sleep through the full night, and wake up refreshed — not groggy.",
+        "rating_text": "4.6 | 6,020+ Reviews",
+        "cta_text": "TRY REJUVIA RISK-FREE →"
+      }
+    },
+    "credibility": {
+      "type": "lp-credibility",
+      "settings": {
+        "quote": "\"Rejuvia is not only incredibly effective at night, but it's also 100% safe and made with all-natural ingredients.\""
+      },
+      "blocks": {
+        "logo-1": { "type": "logo", "settings": { "name": "Forbes" } },
+        "logo-2": { "type": "logo", "settings": { "name": "Healthline" } },
+        "logo-3": { "type": "logo", "settings": { "name": "Women's Health" } },
+        "logo-4": { "type": "logo", "settings": { "name": "FabFitFun" } },
+        "logo-5": { "type": "logo", "settings": { "name": "Bustle" } },
+        "logo-6": { "type": "logo", "settings": { "name": "ScaryMommy" } }
+      },
+      "block_order": ["logo-1", "logo-2", "logo-3", "logo-4", "logo-5", "logo-6"]
+    },
+    "problem": {
+      "type": "lp-problem",
+      "settings": {
+        "heading": "If You've Tried Everything For Sleep, You Need to Read This.",
+        "body": "<p>Gummies. Melatonin. Sleeping pills. Ambien. Teas. Meditation. Yoga. Aromatherapy. Sound familiar?</p><p>If you've cycled through every sleep remedy on the shelf and still can't fall asleep, stay asleep, or wake up without feeling like you got hit by a truck — you're not alone. And you're not broken.</p><p>There's a reason none of those worked. They all rely on the same slow, inefficient delivery through your digestive system. By the time they kick in (if they kick in), you've already been staring at the ceiling for an hour.</p><p>Rejuvia takes a completely different approach — and that's exactly why it works.</p>"
+      }
+    },
+    "item-1": {
+      "type": "lp-listicle-item",
+      "settings": {
+        "number": "1",
+        "heading": "A Totally New Take on Sleep",
+        "body": "<p>Unlike pills and gummies that travel through your digestive system, Rejuvia is an oral spray that absorbs directly under your tongue. It bypasses your liver and digestive tract entirely, delivering 13 natural sleep ingredients straight into your bloodstream in minutes — not hours.</p><p>That's why most customers fall asleep in just 10-15 minutes after using Rejuvia.</p>",
+        "reverse_layout": false,
+        "alt_background": false,
+        "show_cta": true,
+        "cta_text": "Try Rejuvia Risk-Free →"
+      }
+    },
+    "item-2": {
+      "type": "lp-listicle-item",
+      "settings": {
+        "number": "2",
+        "heading": "Kicks In Minutes, Not Hours",
+        "body": "<p>Pills and gummies are absorbed through your stomach, which can take 60-90 minutes to kick in. Rejuvia is sprayed and absorbed directly under your tongue, so it kicks in within just 5-10 minutes.</p><p>Your body also absorbs 60% more of the sleep ingredients with Rejuvia since they don't get lost in digestion. Once you take it, it's absorbed and it kicks in right away.</p>",
+        "reverse_layout": true,
+        "alt_background": true,
+        "show_cta": true,
+        "cta_text": "Try Rejuvia Risk-Free →"
+      }
+    },
+    "item-3": {
+      "type": "lp-listicle-item",
+      "settings": {
+        "number": "3",
+        "heading": "13 Natural Ingredients, Zero Groggy Mornings",
+        "body": "<p>Rejuvia is 100% all-natural. No drugs, no chemicals, no mystery compounds — just 13+ natural sleep ingredients like chamomile, passionflower, and lemon balm that work with your body, not against it.</p><p>You wake up clear-headed and refreshed, not confused and reaching for coffee just to function. No morning hangover. No brain fog. Just real, restorative sleep.</p>",
+        "reverse_layout": false,
+        "alt_background": false,
+        "show_cta": true,
+        "cta_text": "Try Rejuvia Risk-Free →"
+      }
+    },
+    "item-4": {
+      "type": "lp-listicle-item",
+      "settings": {
+        "number": "4",
+        "heading": "Built by a Mom & Son Who Struggled With Sleep",
+        "body": "<p>Rejuvia wasn't created in a boardroom — it was created by a son for his mom. When she started struggling with sleep in her 50s, she tried everything: gummies, pills, Ambien, teas, meditation, aromatherapy. Nothing worked.</p><p>So her son spent years at the University of Pennsylvania researching and developing a better solution. Today, Rejuvia is a small family business trusted by over 300,000 customers — and his mom sleeps through the night.</p>",
+        "reverse_layout": true,
+        "alt_background": true,
+        "show_cta": true,
+        "cta_text": "Try Rejuvia Risk-Free →"
+      }
+    },
+    "item-5": {
+      "type": "lp-listicle-item",
+      "settings": {
+        "number": "5",
+        "heading": "It's 100% Guaranteed to Work — Or Your Money Back",
+        "body": "<p>We're so confident Rejuvia will help you sleep that we back every single order with a 90-day money-back guarantee. No questions asked. No hoops to jump through.</p><p>If it doesn't work for you, just send us an email and we'll personally refund you. We only make products to help people — and if it doesn't help, you're covered.</p>",
+        "reverse_layout": false,
+        "alt_background": false,
+        "show_cta": true,
+        "cta_text": "Try Rejuvia Risk-Free →"
+      }
+    },
+    "comparison": {
+      "type": "lp-comparison",
+      "settings": {
+        "heading": "Finally, The Better Way to Sleep",
+        "col1_heading": "Rejuvia Sleep Spray",
+        "col2_heading": "Sleeping Pills",
+        "col3_heading": "Sleep Gummies"
+      },
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "label": "Absorption Speed", "col1": "✓ Rapid (10 min)", "col2": "✗ Slow (up to 90 min)", "col3": "✗ Slow (up to 90 min)" } },
+        "row-2": { "type": "row", "settings": { "label": "All-Natural Ingredients", "col1": "✓ 100% Natural", "col2": "✗ Synthetic", "col3": "✗ Often Artificial" } },
+        "row-3": { "type": "row", "settings": { "label": "Morning Grogginess", "col1": "✓ None", "col2": "✗ Common", "col3": "✗ Sometimes" } },
+        "row-4": { "type": "row", "settings": { "label": "Non-Habit Forming", "col1": "✓ Yes", "col2": "✗ No", "col3": "✓ Yes" } },
+        "row-5": { "type": "row", "settings": { "label": "Dosage Control", "col1": "✓ Easy Spray Control", "col2": "✗ Limited", "col3": "✗ Limited" } },
+        "row-6": { "type": "row", "settings": { "label": "Cost Per Night", "col1": "✓ $0.56/night", "col2": "✗ $3.00/night", "col3": "✗ $1.83/night" } }
+      },
+      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5", "row-6"]
+    },
+    "pricing": {
+      "type": "lp-pricing",
+      "settings": {
+        "eyebrow": "Used Nightly By 300,000+ Sleepers",
+        "heading": "Buy One, Get One FREE",
+        "subheading": "Try Rejuvia Risk-Free For 90 Nights",
+        "trust_1": "90-Day Money Back Guarantee",
+        "trust_2": "Free Shipping on 6-Pack",
+        "trust_3": "Cancel Anytime"
+      },
+      "blocks": {
+        "tier-1": { "type": "tier", "settings": { "title": "Buy 1, Get 1 FREE", "sale_price": "$37", "original_price": "$74", "per_night": "$0.56 Per Night", "detail": "2 Bottles Total (2 Month-Supply)", "badge": "", "popular": false, "cta_text": "BUY NOW →" } },
+        "tier-2": { "type": "tier", "settings": { "title": "Buy 2, Get 2 FREE", "sale_price": "$74", "original_price": "$148", "per_night": "$0.56 Per Night", "detail": "4 Bottles Total (4 Month-Supply)", "badge": "MOST POPULAR", "popular": true, "cta_text": "BUY NOW →" } },
+        "tier-3": { "type": "tier", "settings": { "title": "Buy 3, Get 3 FREE", "sale_price": "$111", "original_price": "$222", "per_night": "$0.56 Per Night", "detail": "6 Bottles Total (6 Month-Supply) + FREE Shipping", "badge": "BEST VALUE", "popular": false, "cta_text": "BUY NOW →" } }
+      },
+      "block_order": ["tier-1", "tier-2", "tier-3"]
+    },
+    "reviews": {
+      "type": "lp-reviews",
+      "settings": {
+        "heading": "Join 300,000+ Getting Better Sleep"
+      },
+      "blocks": {
+        "review-1": { "type": "review", "settings": { "title": "Best Ever!", "quote": "I worked night shift for 27 years, so I have very bad insomnia. After using Rejuvia, I can't even get thru a chapter in a book before I am sleepy. And I sleep thru the night!", "author": "Sandra F.", "verified": true } },
+        "review-2": { "type": "review", "settings": { "title": "A Dream Come True", "quote": "The 1st product we've ever tried that actually and weirdly works! We are so relieved to finally have a product that eases us to sleep and lets us wake up refreshed.", "author": "Cher C.", "verified": true } },
+        "review-3": { "type": "review", "settings": { "title": "Off My Sleeping Pills", "quote": "This is the first product I have found that finally managed to get me off my sleeping pills. I had taken them nightly for 30 years. I will be a forever customer.", "author": "Belinda G.", "verified": true } },
+        "review-4": { "type": "review", "settings": { "title": "Lights Out in 15 Minutes", "quote": "Rejuvia really WORKS for me! It's lights out for me after just 15-20 minutes. I've tried it all for sleep and this really works.", "author": "Scott S.", "verified": true } },
+        "review-5": { "type": "review", "settings": { "title": "Changed My Life", "quote": "I've suffered with bad sleep for a decade. This sleep spray has changed my life! I spray it 6 times and I'm sound asleep in 15 minutes.", "author": "Angela L.", "verified": true } },
+        "review-6": { "type": "review", "settings": { "title": "Puts Me to Sleep Quickly", "quote": "This little spray absolutely puts me to sleep quickly each night and I love the taste.", "author": "Kim W.", "verified": true } }
+      },
+      "block_order": ["review-1", "review-2", "review-3", "review-4", "review-5", "review-6"]
+    },
+    "faq": {
+      "type": "lp-faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "faq-1": { "type": "faq", "settings": { "question": "What are the ingredients in Rejuvia?", "answer": "<p>Rejuvia contains 13+ all-natural sleep ingredients including Passionflower, Hops Flower Head, Organic Feverfew Leaf, Melatonin (2.0mg), 5-HTP, Peppermint Leaf, Valerian Root, Lemon Balm, Magnolia, Chamomile, Cramp Bark, Gingko Biloba Extract, Skullcap Root, and Natural Peppermint Flavor.</p>" } },
+        "faq-2": { "type": "faq", "settings": { "question": "How long does one spray last?", "answer": "<p>Each Rejuvia Sleep Spray bottle lasts approximately 30-35 days with nightly use (6-8 sprays per night).</p>" } },
+        "faq-3": { "type": "faq", "settings": { "question": "Will Rejuvia make me feel groggy?", "answer": "<p>No. Unlike sleeping pills and many gummies, Rejuvia is made with 100% natural ingredients that work with your body's natural sleep processes. You'll wake up feeling refreshed and clear-headed, not groggy or drugged.</p>" } },
+        "faq-4": { "type": "faq", "settings": { "question": "Is Rejuvia safe to use long-term?", "answer": "<p>Yes. Rejuvia is completely drug-free and non-habit forming, so it can be used nightly without worrying about dependency or withdrawal. It does not build tolerance over time.</p>" } },
+        "faq-5": { "type": "faq", "settings": { "question": "How do I use the sleep spray?", "answer": "<p>Spray 6-8 times under your tongue or on the inside of your cheek about 15-20 minutes before bed, then swallow. The spray has a delicious, all-natural mint flavor.</p>" } },
+        "faq-6": { "type": "faq", "settings": { "question": "What is Rejuvia's return policy?", "answer": "<p>Your first Rejuvia order is covered by our 90-day money-back guarantee. If it doesn't work for you, just send us an email and we'll personally refund you — no questions asked.</p>" } }
+      },
+      "block_order": ["faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6"]
+    },
+    "final-cta": {
+      "type": "lp-final-cta",
+      "settings": {
+        "heading": "Your Best Sleep Is Just a Few Sprays Away",
+        "subheading": "The sleep you deserve is now just a few sprays away. Invest in your better sleep today risk-free and never look back.",
+        "cta_text": "TRY REJUVIA 100% RISK-FREE →",
+        "guarantee_text": "90-Day Money Back Guarantee · Free Shipping on 6-Pack · Cancel Anytime",
+        "bg_color": "#6B21A8"
+      }
+    }
+  },
+  "order": [
+    "sticky-bar",
+    "hero",
+    "credibility",
+    "problem",
+    "item-1",
+    "item-2",
+    "item-3",
+    "item-4",
+    "item-5",
+    "comparison",
+    "pricing",
+    "reviews",
+    "faq",
+    "final-cta"
+  ]
+}

@@ -2793,7 +2793,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".trustb-section,.featured-customer-reviews-section,.product-widget-section {overflow-x: hidden;}"
+      ".trustb-section,.featured-customer-reviews-section {overflow-x: hidden;}"
     ]
   }
 }

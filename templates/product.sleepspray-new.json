@@ -566,6 +566,13 @@
             "heading": "What is Rejuvia's return policy?",
             "subheading": "We offer a 90-day money-back guarantee on your first Rejuvia order, no questions asked. All subsequent orders are not eligible for returns or refunds. Customers are responsible for return shipping costs. To start a return, simply email us at hello@rejuvia.co for easy instructions."
           }
+        },
+        "faqs_3Ed3gb": {
+          "type": "faqs",
+          "settings": {
+            "heading": "How many sprays should I take?",
+            "subheading": "Start with 4-6 sprays under your tongue, 30 minutes before bed. Less is more — most customers find their sweet spot here. If you feel groggy the next morning, reduce by 1–2 sprays. If you don't notice an effect after a week, increase gradually. The max is 6–8 sprays, but it's not the starting point."
+          }
         }
       },
       "block_order": [
@@ -575,7 +582,8 @@
         "faqs_8mP9YQ",
         "faqs_w9ktrY",
         "faqs_fph4VV",
-        "faqs_fLCT6J"
+        "faqs_fLCT6J",
+        "faqs_3Ed3gb"
       ],
       "settings": {
         "customClass": "",

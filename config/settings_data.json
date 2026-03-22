@@ -1987,13 +1987,6 @@
               "text": "Oral Spray Supplements"
             }
           },
-          "collection_header_C7E4t6": {
-            "type": "collection-header",
-            "settings": {
-              "heading": "Spray Bundles",
-              "text": "Spray Bundles"
-            }
-          },
           "content_card_fnfLfJ": {
             "type": "content_card",
             "settings": {
@@ -2010,7 +2003,6 @@
         },
         "block_order": [
           "collection_header_4qP9qh",
-          "collection_header_C7E4t6",
           "content_card_fnfLfJ"
         ],
         "settings": {}
@@ -2782,11 +2774,6 @@
           "version": "v3"
         }
       },
-      "10840395464443086010": {
-        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
-        "disabled": false,
-        "settings": {}
-      },
       "2786716548061469553": {
         "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
         "disabled": false,
@@ -2795,6 +2782,11 @@
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
+        "settings": {}
+      },
+      "10840395464443086010": {
+        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": true,
         "settings": {}
       }
     }

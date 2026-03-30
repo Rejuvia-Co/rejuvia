@@ -98,7 +98,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   {%- endif -%}
 
   /* menu mobile */
-
+  {% unless section.settings.use_new_nav_design %}
   .btn-open-mobile-menu {display: flex; align-items: left; justify-content: left; margin-top: 3px!important;}
   .btn-open-mobile-menu svg {width: 32px; height: 32px;}
 
@@ -263,7 +263,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
     border-bottom: 1px solid black;
     height: fit-content;
   }
-
+  {% endunless %}
 
 
   {%- assign utilityCount = 0 -%}
@@ -583,10 +583,253 @@ html, body{overflow: visible!important; overflow-x: hidden}
   }
   }
 
+  /* ===== Nav V2 Styles ===== */
+  {% if section.settings.use_new_nav_design %}
+
+  .nav-v2 .utility-bar {
+    display: none;
+  }
+
+  .nav-v2.header {
+    background: transparent;
+    border: none;
+    padding: 0 32px;
+    padding-bottom: 12px;
+  }
+
+  .nav-v2 .container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .nav-v2 .main-content {
+    background: #EAEAF7;
+    border-radius: 10px;
+    box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
+    padding: 12px 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .nav-v2 .logo {
+    margin-right: 0;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .nav-v2 .nav-wrapper {
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  .nav-v2 .nav-wrapper .utils-wrap {
+    display: none;
+  }
+
+  .nav-v2 .main-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+  }
+
+  .nav-v2 .main-menu .item {
+    margin: 0;
+    border-bottom: none;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .nav-v2 .main-menu .item a {
+    padding: 12px 24px !important;
+    border-radius: 80px;
+    color: #141414;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .nav-v2 .main-menu .item a:hover {
+    color: #141414;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .nav-v2 .main-menu .item.has-dropdown--mega.menu-open > a,
+  .nav-v2 .main-menu .item.has-dropdown--mega:hover > a {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
+  }
+
+  .nav-v2 .main-menu .item a svg.icon {
+    display: none !important;
+  }
+
+  .nav-v2 .main-menu .item .nav-chevron {
+    display: inline-flex;
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-v2 .main-menu .item.menu-open .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav-v2 .main-menu .has-dropdown .submenu {
+    display: none !important;
+  }
+
+  .nav-v2 .navigator-right {
+    width: auto !important;
+    flex-shrink: 0;
+  }
+
+  .nav-v2 .navigator-right ul {
+    gap: 24px;
+  }
+
+  .nav-v2 .navigator-right .btn {
+    display: none;
+  }
+
+  .nav-v2 .nav-v2-account {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 100px;
+    padding: 12px 24px;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
+    color: #141414;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: normal;
+    height: 44px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .nav-v2 .nav-v2-account:hover {
+    background: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    color: #141414;
+  }
+
+  .nav-v2 .nav-v2-account svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .nav-v2 .nav-v2-icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-v2 .nav-v2-icons .cart-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 901px) {
+    .nav-v2 .logo {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Mobile nav v2 */
+  @media all and (max-width: 900px) {
+    .nav-v2.header {
+      padding: 0 12px;
+      padding-bottom: 6px;
+    }
+
+    .nav-v2 .main-content {
+      display: none;
+    }
+
+    .nav-v2 .navigator-mobile {
+      background: #EAEAF7;
+      border-radius: 10px;
+      box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
+      height: 44px;
+      padding: 0 16px !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-v2 .navigator-mobile .logo {
+      max-width: 110px !important;
+      order: 1;
+      flex: 1;
+    }
+
+    .nav-v2 .navigator-mobile .logo img {
+      height: 14px;
+      width: auto;
+    }
+
+    .nav-v2 .navigator-mobile .mobile-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      order: 2;
+    }
+
+    .nav-v2 .navigator-mobile .mobile-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-v2 .navigator-mobile .eg-close-mobile-div {
+      order: 3;
+      min-width: auto !important;
+    }
+
+    .nav-v2 .navigator-mobile .cart-wrap {
+      position: relative;
+    }
+
+    .nav-v2 .navigator-mobile .btn-open-mobile-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0 !important;
+    }
+
+    .nav-v2 .navigator-mobile .btn-open-mobile-menu svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+
+    .nav-v2 .navigator-mobile .close svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+
+    .nav-v2 .header-spacer {
+      height: 56px !important;
+    }
+  }
+
+  {% endif %}
+  /* ===== End Nav V2 ===== */
+
 </style>
 
 
-<div id="header" class="custom_text_font header{% if section.settings.over_carousel and template == "index" %} over-carousel-desktop{% endif %}{% if section.settings.over_carousel_mobile and template == "index" %} over-carousel-mobile{% endif %}{% if section.settings.change_header_colors_scroll %} change-scroll-desktop{% endif %}{% if section.settings.change_header_colors_scroll_mobile %} change-scroll-mobile{% endif %} {{section.settings.behavior}}-desktop {{section.settings.behavior_mobile}}-mobile fixed-pending">
+<div id="header" class="custom_text_font header{% if section.settings.use_new_nav_design %} nav-v2{% endif %}{% if section.settings.over_carousel and template == "index" %} over-carousel-desktop{% endif %}{% if section.settings.over_carousel_mobile and template == "index" %} over-carousel-mobile{% endif %}{% if section.settings.change_header_colors_scroll %} change-scroll-desktop{% endif %}{% if section.settings.change_header_colors_scroll_mobile %} change-scroll-mobile{% endif %} {{section.settings.behavior}}-desktop {{section.settings.behavior_mobile}}-mobile fixed-pending">
     {%- for block in section.blocks -%}
     {%- if block.type == 'utility_bar' -%}
         {%- if block.settings.show -%}
@@ -689,23 +932,94 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
 
       <div class="navigator navigator-right flex direction-row align-items-center justify-content-end small--hide medium--hide">
-        <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_label }} {% render 'icon-arrow-left' %} </a>
-        <ul class=" flex direction-row align-items-center justify-content-end">
-
-
-          {% if customer %}
-          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" aria-hidden="true"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
-          </a></li>
-          {% else %}
-          <li><a class="flex" href="{% if customer %}/a/account/login{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">{% render 'icon-user-circle' %}</a></li>
-          {% endif %}
-
-          <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>
-        </ul>
+        {% if section.settings.use_new_nav_design %}
+          <div class="nav-v2-icons">
+            <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="8" r="4" stroke="#141414" stroke-width="1.5" fill="none"/>
+                <path d="M4 20c0-3.314 3.582-6 8-6s8 2.686 8 6" stroke="#141414" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              Account Log In
+            </a>
+            <a class="flex cart-wrap" href="/cart" title="Bag" aria-label="Cart">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <line x1="3" y1="6" x2="21" y2="6" stroke="#141414" stroke-width="1.5"/>
+                <path d="M16 10a4 4 0 01-8 0" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </a>
+          </div>
+        {% else %}
+          <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_label }} {% render 'icon-arrow-left' %} </a>
+          <ul class=" flex direction-row align-items-center justify-content-end">
+            {% if customer %}
+            <li><a class="flex" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" aria-hidden="true"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
+            </a></li>
+            {% else %}
+            <li><a class="flex" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">{% render 'icon-user-circle' %}</a></li>
+            {% endif %}
+            <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>
+          </ul>
+        {% endif %}
       </div>
       {%- include 'menu_mobile' -%}
     </div>
+    {% if section.settings.use_new_nav_design %}
+    {%- comment -%} Nav V2 Mega Menu {%- endcomment -%}
+    <div class="menu-desktop menu-desktop-v2 hidden">
+      <div class="mega-menu-v2__products">
+        {% for block in section.blocks %}
+          {% if block.type == 'products-menu_mobile' %}
+            {% if block.settings.selected_product %}
+              {% assign product = all_products[block.settings.selected_product] %}
+              <a href="{{ product.url }}" class="mega-menu-v2__card">
+                <div class="mega-menu-v2__card-image">
+                  <img
+                    src="{{ product.featured_image | img_url: '300x' }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                    width="175"
+                    height="175"
+                  />
+                </div>
+                <div class="mega-menu-v2__card-content">
+                  <div class="mega-menu-v2__card-rating">
+                    {{ product.metafields.okendo.StarRatingSnippet }}
+                  </div>
+                  <h3 class="mega-menu-v2__card-title">{{ product.title }}</h3>
+                  <p class="mega-menu-v2__card-desc">{{ block.settings.product_description }}</p>
+                </div>
+              </a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="mega-menu-v2__traits">
+        {% for block in section.blocks %}
+          {% if block.type == 'right-content-block' %}
+            <div class="mega-menu-v2__trait">
+              <span class="mega-menu-v2__trait-icon">{{ block.settings.icon_svg }}</span>
+              <span class="mega-menu-v2__trait-label">{{ block.settings.heading }}</span>
+            </div>
+            {% if block.settings.icon_svg1 != blank %}
+            <div class="mega-menu-v2__trait">
+              <span class="mega-menu-v2__trait-icon">{{ block.settings.icon_svg1 }}</span>
+              <span class="mega-menu-v2__trait-label">{{ block.settings.heading1 }}</span>
+            </div>
+            {% endif %}
+            {% if block.settings.icon_svg2 != blank %}
+            <div class="mega-menu-v2__trait">
+              <span class="mega-menu-v2__trait-icon">{{ block.settings.icon_svg2 }}</span>
+              <span class="mega-menu-v2__trait-label">{{ block.settings.heading2 }}</span>
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    {%- comment -%} Original Mega Menu {%- endcomment -%}
     <div class="menu-desktop hidden">
       <div class="menu-desktop__left">
         <div class="menu-desktop__left--products">
@@ -828,6 +1142,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
           </div>
       </div>
     </div>
+    {% endif %}
   </div>
 
 </div>
@@ -843,24 +1158,76 @@ html, body{overflow: visible!important; overflow-x: hidden}
 <!--Añadir color al header despues de cierot scroll-->
 
 
+{% if section.settings.use_new_nav_design %}
+{%- comment -%} V2: Vanilla JS scroll handlers with passive listeners {%- endcomment -%}
+<script>
+  (function() {
+    var header = document.getElementById('header');
+    if (!header) return;
+
+    var stickyThreshold = {% if section.settings.enableSticky %}1{% else %}41{% endif %};
+    var oldScrollY = 0;
+    var ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(function() {
+        var scrollY = window.scrollY;
+
+        /* Sticky header class */
+        if (scrollY > stickyThreshold) {
+          header.classList.add('is-ticky');
+        } else {
+          header.classList.remove('is-ticky');
+        }
+
+        /* Hide announcement on scroll down */
+        if (scrollY > 120) {
+          document.body.classList.add('sticky-none');
+        } else {
+          document.body.classList.remove('sticky-none');
+        }
+
+        /* Show header on scroll up */
+        if (oldScrollY > scrollY) {
+          document.body.classList.add('sticky-header');
+        } else {
+          document.body.classList.remove('sticky-header');
+        }
+
+        oldScrollY = scrollY;
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* Remove fixed-pending after layout */
+    requestAnimationFrame(function() {
+      header.classList.remove('fixed-pending');
+    });
+  })();
+</script>
+{%- endif -%}
+
+{% unless section.settings.use_new_nav_design %}
 <script>
   $(function(){
     {% if section.settings.enableSticky %}
       jQuery(window).scroll(function() {
         var scroll = jQuery(window).scrollTop();
     	if (scroll > 1) {
-
             jQuery(" #header").addClass("is-ticky");
         }else{
           jQuery(" #header").removeClass("is-ticky");
         }
     });
-
     {% else %}
       jQuery(window).scroll(function() {
         var scroll = jQuery(window).scrollTop();
     	if (scroll > 41) {
-
             jQuery(" #header").addClass("is-ticky");
         }else{
           jQuery(" #header").removeClass("is-ticky");
@@ -870,12 +1237,9 @@ html, body{overflow: visible!important; overflow-x: hidden}
     function contentPaddingTop(){
       var utilityBar = $('#header .utility-bar');
       var height = $('#header').height() -(utilityBar.hasClass('closed') ? utilityBar.outerHeight(): 0);
-
       if (!isMobile.tablet) {
         // $('.header-spacer').height(height - 15);
       }
-
-      // alert(isMobile.tablet)
       $('#header').removeClass('fixed-pending')
     }
     setTimeout(function(){
@@ -889,22 +1253,11 @@ html, body{overflow: visible!important; overflow-x: hidden}
       if (!isMobile.phone) {
         $('.content-wrapper').attr('style', 'margin-top: -50px')
       }
-
     })
     {% endunless %}
-    {% if template contains 'product' %}
-    // $(document).on('click', '.utility-bar .close', function(e) {
-    //   setTimeout(function(){
-    //     console.log($(window).scrollTop())
-    //     if ($(window).scrollTop() > 30) {
-    //       $('.header-spacer').height('75px')
-    //     }
-    //
-    //   }, 500)
-    // })
-    {% endif %}
   });
 </script>
+{% endunless %}
 {%- endif -%}
 
 {%- if section.settings.drop_header or section.settings.drop_header_mobile -%}
@@ -926,6 +1279,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   {%- endif -%}
 {%- endfor -%}
 
+{% unless section.settings.use_new_nav_design %}
 <script>
   jQuery(window).scroll(function() {
     var scroll = jQuery(window).scrollTop();
@@ -938,12 +1292,9 @@ html, body{overflow: visible!important; overflow-x: hidden}
   window.onscroll = function(e) {
     var scrolly = this.scrollY;
     if(this.oldScroll > scrolly ){
-      // console.log('Scrolling up');
        $('body').addClass('sticky-header');
     }
     else{
-      // console.log('Scrolling down');
-
        $('body').removeClass('sticky-header');
     }
     this.oldScroll = this.scrollY;
@@ -952,32 +1303,32 @@ html, body{overflow: visible!important; overflow-x: hidden}
   function updateMobileHeaderSpacer() {
       if (isMobile.any) {
         setTimeout(function(){
-          // console.log('updating')
           $('.header-spacer').attr('style', 'height: ' + $('.header').outerHeight() + 'px');
         }, 500)
       }
   }
   $(function () {
-
     updateMobileHeaderSpacer();
-
     $(window).on('resize', function() {
       updateMobileHeaderSpacer();
     })
   })
 </script>
+{% endunless %}
 
 <script type="text/javascript">
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('header')
-    const headerHeight = document.getElementById('mobile-header-container').offsetHeight
+  window.addEventListener('scroll', function() {
+    var header = document.getElementById('header');
+    if (!header) return;
+    var mobileHeaderEl = document.getElementById('mobile-header-container');
+    var headerHeight = mobileHeaderEl ? mobileHeaderEl.offsetHeight : 60;
 
     if (window.scrollY > headerHeight) {
-      header.classList.add('sticky_add_color')
+      header.classList.add('sticky_add_color');
     } else {
-      header.classList.remove('sticky_add_color')
+      header.classList.remove('sticky_add_color');
     }
-  })
+  }, { passive: true });
 </script>
 
 {% schema %}
@@ -991,6 +1342,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
       }
     ],
     "settings": [
+        {
+          "type": "checkbox",
+          "id": "use_new_nav_design",
+          "label": "Use new navigation design (v2)",
+          "default": true
+        },
         {
           "type": "link_list",
           "id": "menu",

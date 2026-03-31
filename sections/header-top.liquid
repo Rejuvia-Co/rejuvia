@@ -6,6 +6,7 @@
     padding: 0 32px;
     padding-top: 16px;
     box-sizing: border-box;
+    background-color: {{ section.settings.background_color }};
   }
 
   .announcement-bar__inner {
@@ -215,6 +216,12 @@
       }
     ],
     "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#FAFAFA"
+      },
       {
         "type": "checkbox",
         "id": "enable_carousel",

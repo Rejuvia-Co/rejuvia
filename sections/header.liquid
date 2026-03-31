@@ -591,7 +591,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   }
 
   .nav-v2.header {
-    background: transparent;
+    background: {{ section.settings.nav_background_color }};
     border: none;
     max-width: 1440px;
     margin-left: auto;
@@ -1350,6 +1350,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
           "id": "use_new_nav_design",
           "label": "Use new navigation design (v2)",
           "default": true
+        },
+        {
+          "type": "color",
+          "id": "nav_background_color",
+          "label": "Nav V2 Background color",
+          "default": "#FAFAFA"
         },
         {
           "type": "link_list",

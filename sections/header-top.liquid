@@ -26,20 +26,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
     flex-shrink: 0;
     width: 30px;
     height: 30px;
-    color: #141414;
-    opacity: 0.4;
-    transition: opacity 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
   }
 
-  .announcement-bar__dot:hover {
-    opacity: 0.8;
+  .announcement-bar__dot svg {
+    width: 44px;
+    height: 40px;
+    display: block;
   }
 
   .announcement-bar__dot--prev svg {
@@ -125,13 +124,16 @@
   {%- endfor -%}
 
   <div class="announcement-bar__inner">
-    {%- if slide_count > 1 -%}
-      <button class="announcement-bar__dot announcement-bar__dot--prev" aria-label="Previous announcement" data-announcement-prev>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M7.5 4L13.5 10L7.5 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    {%- endif -%}
+    <button class="announcement-bar__dot announcement-bar__dot--prev" aria-label="Previous announcement" data-announcement-prev>
+      <svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M25.3 8.5C25.3 8.5 28 14.2 32 17.5C36 20.8 42 22 42 22" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M22 2C22 2 22 12 22 20C22 28 22 38 22 38" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M18.7 8.5C18.7 8.5 16 14.2 12 17.5C8 20.8 2 22 2 22" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M25.3 31.5C25.3 31.5 28 25.8 32 22.5C36 19.2 42 18 42 18" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M18.7 31.5C18.7 31.5 16 25.8 12 22.5C8 19.2 2 18 2 18" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <circle cx="22" cy="20" r="2" fill="#141414" opacity="0.3"/>
+      </svg>
+    </button>
 
     <div class="announcement-bar__slides">
       {%- assign slide_index = 0 -%}
@@ -145,13 +147,16 @@
       {%- endfor -%}
     </div>
 
-    {%- if slide_count > 1 -%}
-      <button class="announcement-bar__dot announcement-bar__dot--next" aria-label="Next announcement" data-announcement-next>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M7.5 4L13.5 10L7.5 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    {%- endif -%}
+    <button class="announcement-bar__dot announcement-bar__dot--next" aria-label="Next announcement" data-announcement-next>
+      <svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M25.3 8.5C25.3 8.5 28 14.2 32 17.5C36 20.8 42 22 42 22" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M22 2C22 2 22 12 22 20C22 28 22 38 22 38" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M18.7 8.5C18.7 8.5 16 14.2 12 17.5C8 20.8 2 22 2 22" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M25.3 31.5C25.3 31.5 28 25.8 32 22.5C36 19.2 42 18 42 18" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <path d="M18.7 31.5C18.7 31.5 16 25.8 12 22.5C8 19.2 2 18 2 18" stroke="#141414" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+        <circle cx="22" cy="20" r="2" fill="#141414" opacity="0.3"/>
+      </svg>
+    </button>
   </div>
 </div>
 

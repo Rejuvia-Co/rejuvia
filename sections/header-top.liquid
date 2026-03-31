@@ -1,4 +1,9 @@
 {% style %}
+  .announcement-bar-wrap {
+    background-color: {{ section.settings.background_color }};
+    width: 100%;
+  }
+
   .announcement-bar {
     max-width: 1440px;
     margin-left: auto;
@@ -6,7 +11,6 @@
     padding: 0 32px;
     padding-top: 16px;
     box-sizing: border-box;
-    background-color: {{ section.settings.background_color }};
   }
 
   .announcement-bar__inner {
@@ -119,6 +123,7 @@
   }
 {% endstyle %}
 
+<div class="announcement-bar-wrap">
 <div class="announcement-bar" data-announcement-bar>
   {%- assign slide_count = 0 -%}
   {%- for block in section.blocks -%}
@@ -148,6 +153,7 @@
       {% render 'icon-announcement-dot', direction: 'next' %}
     </button>
   </div>
+</div>
 </div>
 
 <script>

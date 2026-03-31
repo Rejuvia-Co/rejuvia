@@ -626,6 +626,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
     flex-shrink: 0;
   }
 
+  .nav-v2 .logo .logo-rejuvia-svg {
+    width: 157px;
+    height: 20px;
+    display: block;
+  }
+
   .nav-v2 .nav-wrapper {
     width: auto !important;
     flex: 0 0 auto;
@@ -782,7 +788,8 @@ html, body{overflow: visible!important; overflow-x: hidden}
       flex: 1;
     }
 
-    .nav-v2 .navigator-mobile .logo img {
+    .nav-v2 .navigator-mobile .logo img,
+    .nav-v2 .navigator-mobile .logo .logo-rejuvia-svg {
       height: 14px;
       width: auto;
     }
@@ -853,15 +860,17 @@ html, body{overflow: visible!important; overflow-x: hidden}
       class="main-content flex justify-content-between align-items-center medium--justify-content-between small--justify-content-between ">
 
       <a href="/" class="logo medium-down--hide">
-        {%- if section.settings.logo != blank -%}
-        <img
-          src="{{section.settings.logo | img_url: 'master'}}"
-          width="140"
-          height="47"
-          alt="{{shop.name}}"
-        />
+        {% if section.settings.use_new_nav_design %}
+          {% render 'logo-rejuvia' %}
+        {% elsif section.settings.logo != blank %}
+          <img
+            src="{{section.settings.logo | img_url: 'master'}}"
+            width="140"
+            height="47"
+            alt="{{shop.name}}"
+          />
         {%- else -%}
-        <div class="shop-name heading_font">{{shop.name}}</div>
+          <div class="shop-name heading_font">{{shop.name}}</div>
         {%- endif -%}
       </a>
 
@@ -922,10 +931,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
 
         <a href="/" class="logo large--hide">
-          {%- if section.settings.logo != blank -%}
-          <img src="{{section.settings.logo | img_url: 'master'}}" width="168" height="57" alt="{{shop.name}}" />
+          {% if section.settings.use_new_nav_design %}
+            {% render 'logo-rejuvia' %}
+          {% elsif section.settings.logo != blank %}
+            <img src="{{section.settings.logo | img_url: 'master'}}" width="168" height="57" alt="{{shop.name}}" />
           {%- else -%}
-          <div class="shop-name heading_font">{{shop.name}}</div>
+            <div class="shop-name heading_font">{{shop.name}}</div>
           {%- endif -%}
         </a>
         <div class="mobile-right">

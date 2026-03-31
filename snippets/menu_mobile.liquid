@@ -346,8 +346,7 @@
     <div class="content">
       <nav class="menu-mobile" role="navigation">
 
-        {% if section.settings.use_new_nav_design %}
-          {%- comment -%} V2 Mobile Menu {%- endcomment -%}
+          {%- comment -%} Mobile Menu {%- endcomment -%}
           <div class="mobile-menu-v2__products">
             {% for block in section.blocks %}
               {% if block.type == 'products-menu_mobile' %}
@@ -457,99 +456,12 @@
             {% endfor %}
           </div>
 
-        {% else %}
-          {%- comment -%} Original Mobile Menu {%- endcomment -%}
-          <div class="eg-marginY">
-            <div class="product-recommendations">
-              {% for block in section.blocks %}
-                {% if block.type == 'products-menu_mobile' %}
-                  <div class="product-recommendation">
-                    {% if block.settings.selected_product %}
-                      {% assign product = all_products[block.settings.selected_product] %}
-                      <a href="{{ product.url }}" class="eg-product-link">
-                        <div class="eg-productR-image">
-                          <div class="eg-background-product"></div>
-                          <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
-                          {% if block.settings.show_savings %}
-                            <div class="eg-savings-text">
-                              <b>{{ block.settings.savings_text }}</b>
-                            </div>
-                          {% endif %}
-                        </div>
-                        <div class="eg-productR-info">
-                          <div class="productR-info_title">
-                            <span>{{ product.title }}</span>
-                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20" height="20" alt="" aria-hidden="true" />
-                          </div>
-                          <div class="eg-reviews">
-                            {{ product.metafields.okendo.StarRatingSnippet }}
-                          </div>
-                          <div class="productR-info_description">
-                            {{ block.settings.product_description }}
-                          </div>
-                        </div>
-                      </a>
-                    {% endif %}
-                  </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-
-          <div class="eg-menu-links eg-marginY">
-            {% for block in section.blocks %}
-              {% if block.type == 'mobile-menu-links' %}
-                {% if block.settings.first_label %}
-                  <a href="{{ block.settings.first_url }}">{{ block.settings.first_label }}</a>
-                {% endif %}
-                {% if block.settings.second_label %}
-                  <a href="{{ block.settings.second_url }}">{{ block.settings.second_label }}</a>
-                {% endif %}
-                {% if block.settings.third_label %}
-                  <a href="{{ block.settings.third_url }}">{{ block.settings.third_label }}</a>
-                {% endif %}
-                {% if block.settings.fourth_label %}
-                  <a href="{{ block.settings.fourth_url }}">{{ block.settings.fourth_label }}</a>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          </div>
-
-          <div class="all-footer-menu_mobile">
-            <a href="/a/account/login" class="eg-menu-mobile_account eg-marginY">
-              <img src="{{ 'menu-mobile-account.svg' | asset_url }}" width="32" height="32" />
-              <span>Manage Subscription</span>
-            </a>
-            <div class="eg-btn eg-marginY">
-              <a href="{{ section.settings.cta_url }}" class="btn"><span>{{ section.settings.cta_label }}</span> {% render 'icon-arrow-left' %}</a>
-            </div>
-            <div class="menu-bottom-information eg-marginY">
-              {% for block in section.blocks %}
-                {% if block.type == 'bottom-menu-mobile-info' %}
-                  {% if block.settings.first_label %}
-                    <div class="menu-bottom-information-item eg-mb">
-                      <img src="{{ 'Package.svg' | asset_url }}" width="20" height="20" />
-                      <span>{{ block.settings.first_label }}</span>
-                    </div>
-                  {% endif %}
-                  {% if block.settings.second_label %}
-                    <div class="menu-bottom-information-item">
-                      <img src="{{ 'ArrowUDownLeft.svg' | asset_url }}" width="20" height="20" />
-                      <span>{{ block.settings.second_label }}</span>
-                    </div>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
 
       </nav>
     </div>
   </div>
 </div>
 
-{% if section.settings.use_new_nav_design %}
 <script>
   (function() {
     var scrollPosition = 0;
@@ -619,77 +531,3 @@
     });
   })();
 </script>
-{% else %}
-<script>
-  (function($) {
-    var scrollPosition = 0;
-
-    function toggleMenuButtons() {
-      $(".btn-open-mobile-menu").toggleClass('hidden');
-      $(".close").toggleClass('hidden');
-    }
-
-    function calculateMenuHeight(scrollTop) {
-      var bannerHeight = 35.8;
-      var headerHeight = 55;
-      if (scrollTop > bannerHeight) {
-        return 'calc(100vh - ' + headerHeight + 'px)';
-      }
-      return 'calc(100vh - ' + (headerHeight + (bannerHeight - scrollTop)) + 'px)';
-    }
-
-    $(document).ready(function() {
-      $(".btn-open-mobile-menu").click(function(e) {
-        e.preventDefault();
-        if (!$('#menu-mobile').hasClass('open')) {
-          scrollPosition = $(window).scrollTop();
-          $('#menu-mobile').css('height', calculateMenuHeight(scrollPosition));
-          $('#menu-mobile').addClass('open');
-          $('body').css({
-            'position': 'fixed',
-            'top': -scrollPosition + 'px',
-            'width': '100%'
-          });
-          $('#header > .container').addClass('header-open');
-          toggleMenuButtons();
-        } else {
-          closeMenuMobile();
-        }
-        if (typeof Simplistic !== 'undefined' && Simplistic.trapFocus) {
-          Simplistic.trapFocus({
-            $container: $('#menu-mobile'),
-            namespace: 'menu-mobile'
-          });
-        }
-        return false;
-      });
-
-      function closeMenuMobile() {
-        $('#menu-mobile').removeClass('open');
-        $('body').css({ 'position': '', 'top': '', 'width': '' });
-        $(window).scrollTop(scrollPosition);
-        $('#header > .container').removeClass('header-open');
-        if (typeof Simplistic !== 'undefined' && Simplistic.removeTrapFocus) {
-          Simplistic.removeTrapFocus({
-            $container: $('#menu-mobile'),
-            namespace: 'menu-mobile'
-          });
-        }
-        toggleMenuButtons();
-      }
-
-      $(".close").click(function(e) {
-        e.preventDefault();
-        closeMenuMobile();
-      });
-
-      $(document).on('keydown', function(e) {
-        if (e.which == 27 && $('#menu-mobile').hasClass('open')) {
-          e.preventDefault();
-          closeMenuMobile();
-        }
-      });
-    });
-  })(jQuery);
-</script>
-{% endif %}

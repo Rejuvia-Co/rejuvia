@@ -97,8 +97,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   .mega-menu {background: {{ section.settings.dropdown_bg_color }} !important;}
   {%- endif -%}
 
-  /* menu mobile */
-  {% unless section.settings.use_new_nav_design %}
+  /* menu mobile - legacy (hidden by nav-v2) */
   .btn-open-mobile-menu {display: flex; align-items: left; justify-content: left; margin-top: 3px!important;}
   .btn-open-mobile-menu svg {width: 32px; height: 32px;}
 
@@ -263,7 +262,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
     border-bottom: 1px solid black;
     height: fit-content;
   }
-  {% endunless %}
 
 
   {%- assign utilityCount = 0 -%}
@@ -584,7 +582,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
   }
 
   /* ===== Nav V2 Styles ===== */
-  {% if section.settings.use_new_nav_design %}
 
   .nav-v2 .utility-bar {
     display: none;
@@ -845,13 +842,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
     }
   }
 
-  {% endif %}
   /* ===== End Nav V2 ===== */
 
 </style>
 
 
-<div id="header" class="custom_text_font header{% if section.settings.use_new_nav_design %} nav-v2{% endif %}{% if section.settings.over_carousel and template == "index" %} over-carousel-desktop{% endif %}{% if section.settings.over_carousel_mobile and template == "index" %} over-carousel-mobile{% endif %}{% if section.settings.change_header_colors_scroll %} change-scroll-desktop{% endif %}{% if section.settings.change_header_colors_scroll_mobile %} change-scroll-mobile{% endif %} {{section.settings.behavior}}-desktop {{section.settings.behavior_mobile}}-mobile fixed-pending">
+<div id="header" class="custom_text_font header nav-v2{% if section.settings.over_carousel and template == "index" %} over-carousel-desktop{% endif %}{% if section.settings.over_carousel_mobile and template == "index" %} over-carousel-mobile{% endif %}{% if section.settings.change_header_colors_scroll %} change-scroll-desktop{% endif %}{% if section.settings.change_header_colors_scroll_mobile %} change-scroll-mobile{% endif %} {{section.settings.behavior}}-desktop {{section.settings.behavior_mobile}}-mobile fixed-pending">
     {%- for block in section.blocks -%}
     {%- if block.type == 'utility_bar' -%}
         {%- if block.settings.show -%}
@@ -868,18 +864,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
       class="main-content flex justify-content-between align-items-center medium--justify-content-between small--justify-content-between ">
 
       <a href="/" class="logo medium-down--hide">
-        {% if section.settings.use_new_nav_design %}
-          {% render 'logo-rejuvia' %}
-        {% elsif section.settings.logo != blank %}
-          <img
-            src="{{section.settings.logo | img_url: 'master'}}"
-            width="140"
-            height="47"
-            alt="{{shop.name}}"
-          />
-        {%- else -%}
-          <div class="shop-name heading_font">{{shop.name}}</div>
-        {%- endif -%}
+        {% render 'logo-rejuvia' %}
       </a>
 
       <div class="nav-wrapper medium--hide small--hide">
@@ -939,13 +924,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
 
         <a href="/" class="logo large--hide">
-          {% if section.settings.use_new_nav_design %}
-            {% render 'logo-rejuvia' %}
-          {% elsif section.settings.logo != blank %}
-            <img src="{{section.settings.logo | img_url: 'master'}}" width="168" height="57" alt="{{shop.name}}" />
-          {%- else -%}
-            <div class="shop-name heading_font">{{shop.name}}</div>
-          {%- endif -%}
+          {% render 'logo-rejuvia' %}
         </a>
         <div class="mobile-right">
           <a class="cart-wrap" href="/cart" title="Bag" style="position: relative;">{% include 'dlicons', icon: 'bag', color:
@@ -958,7 +937,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
 
       <div class="navigator navigator-right flex direction-row align-items-center justify-content-end small--hide medium--hide">
-        {% if section.settings.use_new_nav_design %}
           <div class="nav-v2-icons">
             <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -976,24 +954,9 @@ html, body{overflow: visible!important; overflow-x: hidden}
               </svg>
             </a>
           </div>
-        {% else %}
-          <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_label }} {% render 'icon-arrow-left' %} </a>
-          <ul class=" flex direction-row align-items-center justify-content-end">
-            {% if customer %}
-            <li><a class="flex" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" aria-hidden="true"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05" style="    fill: none;"/></svg>
-            </a></li>
-            {% else %}
-            <li><a class="flex" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">{% render 'icon-user-circle' %}</a></li>
-            {% endif %}
-            <li><a class="flex cart-wrap" href="/cart" title="Bag">{% include 'dlicons', icon: 'bag', color: '#ffffff' %} <span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0px; display: inline-block;font-size: 12px; line-height: 1.5em; margin-left: 0; width: 1.5em; height: 1.5em; position: relative; right: .4em; top: -.7em; text-align: center; border-radius: 10px; font-weight: 500;" class="count">{{total_items}}</span></a></li>
-          </ul>
-        {% endif %}
       </div>
       {%- include 'menu_mobile' -%}
     </div>
-    {% if section.settings.use_new_nav_design %}
-    {%- comment -%} Nav V2 Mega Menu {%- endcomment -%}
     <div class="menu-desktop menu-desktop-v2 hidden">
       <div class="mega-menu-v2__products">
         {% for block in section.blocks %}
@@ -1045,131 +1008,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
         {% endfor %}
       </div>
     </div>
-    {% else %}
-    {%- comment -%} Original Mega Menu {%- endcomment -%}
-    <div class="menu-desktop hidden">
-      <div class="menu-desktop__left">
-        <div class="menu-desktop__left--products">
-          <div class="menu-desktop__left--title">
-            {{ section.settings.menu_desktop_opened_products_title }}
-          </div>
-          <a class="menu-desktop__left--products--link" href="{{ section.settings.desktop_left_all_links }}" title="Product">
-            <img src="{{ section.settings.desktop_left_image_products | img_url: 'master' }}" alt="Sleep Products">
-            <div class="menu-desktop__left--products--title">
-                {{ section.settings.desktop_left_image_products_text }}
-            </div>
-          </a>
-          <a class="menu-desktop__left--products--link" href="{{ section.settings.desktop_left_other_links }}" title="Product">
-            <img src="{{ section.settings.desktop_left_image_links | img_url: 'master' }}" alt="Sleep Products">
-            <div class="menu-desktop__left--products--title">
-                {{ section.settings.desktop_left_image_links_text }}
-            </div>
-          </a>
-        </div>
-        {% if section.settings.menu_desktop_menu_opened != blank %}
-        <div class="menu-desktop__left--menu">
-          <div class="menu-desktop__left--title">
-            {{ section.settings.menu_desktop_opened_menu_title }}
-          </div>
-          <div class="menu-desktop__left--menu-links">
-            {% for link in linklists[section.settings.menu_desktop_menu_opened].links %}
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-      </div>
-      <div class="eg-marginY">
-        <div class="product-recommendations">
-          {% for block in section.blocks %}
-            {% if block.type == 'products-menu_mobile' %}
-              <div class="product-recommendation">
-                {% if block.settings.selected_product %}
-                  {% assign product = all_products[block.settings.selected_product] %}
-                  <a href="{{ product.url }}" class="eg-product-link">
-                    <div class="eg-productR-image">
-                      <div class="eg-background-product"></div>
-                      <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
-                      {% if block.settings.show_savings %}
-                        <div class="eg-savings-text">
-                          <b>{{ block.settings.savings_text }}</b>
-                        </div>
-                      {% endif %}
-                    </div>
-                    <div class="eg-productR-info">
-                        <div class="eg-reviews">
-                            {{ product.metafields.okendo.StarRatingSnippet }}
-                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" />
-                        </div>
-                      <div class="productR-info_title">
-                        <span>{{ product.title }}</span>
-                          <span>{{ product.price | money }}</span>
-                      </div>
-                      <div class="productR-info_description">
-                        {{ block.settings.product_description}}
-                      </div>
-                        <div class="productR-info_tags">
-                            {% assign tags_array = block.settings.tags | split: ',' %}
-                            {% for tag in tags_array %}
-                                <span>{{ tag | strip }}</span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                  </a>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-          <div class="menu-desktop__right">
-              {% for block in section.blocks %}
-                  {% case block.type %}
-                  {% when 'right-content-block' %}
-                      <div class="menu-desktop__right--item">
-                          <div class="menu-desktop__right--logo">
-                              {{ block.settings.icon_svg }}
-                          </div>
-                          <div class="menu-desktop__right--content">
-                              <div class="menu-desktop__right--heading">
-                                  {{ block.settings.heading }}
-                              </div>
-                              <div class="menu-desktop__right--text">
-                                  {{ block.settings.description }}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="menu-desktop__right--item">
-                          <div class="menu-desktop__right--logo">
-                              {{ block.settings.icon_svg1 }}
-                          </div>
-                          <div class="menu-desktop__right--content">
-                              <div class="menu-desktop__right--heading">
-                                  {{ block.settings.heading1 }}
-                              </div>
-                              <div class="menu-desktop__right--text">
-                                  {{ block.settings.description1 }}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="menu-desktop__right--item">
-                          <div class="menu-desktop__right--logo">
-                              {{ block.settings.icon_svg2 }}
-                          </div>
-                          <div class="menu-desktop__right--content">
-                              <div class="menu-desktop__right--heading">
-                                  {{ block.settings.heading2 }}
-                              </div>
-                              <div class="menu-desktop__right--text">
-                                  {{ block.settings.description2 }}
-                              </div>
-                          </div>
-                      </div>
-                {% endcase %}
-              {% endfor %}
-          </div>
-      </div>
-    </div>
-    {% endif %}
   </div>
 
 </div>
@@ -1185,8 +1023,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
 <!--Añadir color al header despues de cierot scroll-->
 
 
-{% if section.settings.use_new_nav_design %}
-{%- comment -%} V2: Vanilla JS scroll handlers with passive listeners {%- endcomment -%}
 <script>
   (function() {
     var header = document.getElementById('header');
@@ -1203,21 +1039,18 @@ html, body{overflow: visible!important; overflow-x: hidden}
       requestAnimationFrame(function() {
         var scrollY = window.scrollY;
 
-        /* Sticky header class */
         if (scrollY > stickyThreshold) {
           header.classList.add('is-ticky');
         } else {
           header.classList.remove('is-ticky');
         }
 
-        /* Hide announcement on scroll down */
         if (scrollY > 120) {
           document.body.classList.add('sticky-none');
         } else {
           document.body.classList.remove('sticky-none');
         }
 
-        /* Show header on scroll up */
         if (oldScrollY > scrollY) {
           document.body.classList.add('sticky-header');
         } else {
@@ -1231,60 +1064,11 @@ html, body{overflow: visible!important; overflow-x: hidden}
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* Remove fixed-pending after layout */
     requestAnimationFrame(function() {
       header.classList.remove('fixed-pending');
     });
   })();
 </script>
-{%- endif -%}
-
-{% unless section.settings.use_new_nav_design %}
-<script>
-  $(function(){
-    {% if section.settings.enableSticky %}
-      jQuery(window).scroll(function() {
-        var scroll = jQuery(window).scrollTop();
-    	if (scroll > 1) {
-            jQuery(" #header").addClass("is-ticky");
-        }else{
-          jQuery(" #header").removeClass("is-ticky");
-        }
-    });
-    {% else %}
-      jQuery(window).scroll(function() {
-        var scroll = jQuery(window).scrollTop();
-    	if (scroll > 41) {
-            jQuery(" #header").addClass("is-ticky");
-        }else{
-          jQuery(" #header").removeClass("is-ticky");
-        }
-    });
-    {% endif %}
-    function contentPaddingTop(){
-      var utilityBar = $('#header .utility-bar');
-      var height = $('#header').height() -(utilityBar.hasClass('closed') ? utilityBar.outerHeight(): 0);
-      if (!isMobile.tablet) {
-        // $('.header-spacer').height(height - 15);
-      }
-      $('#header').removeClass('fixed-pending')
-    }
-    setTimeout(function(){
-      contentPaddingTop();
-    }, 200);
-    $(window).resize(function(){
-      contentPaddingTop();
-    });
-    {% unless template contains 'collection' or template contains 'product' %}
-    $(document).on('click', '.utility-bar .close', function(e) {
-      if (!isMobile.phone) {
-        $('.content-wrapper').attr('style', 'margin-top: -50px')
-      }
-    })
-    {% endunless %}
-  });
-</script>
-{% endunless %}
 {%- endif -%}
 
 {%- if section.settings.drop_header or section.settings.drop_header_mobile -%}
@@ -1306,42 +1090,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
   {%- endif -%}
 {%- endfor -%}
 
-{% unless section.settings.use_new_nav_design %}
-<script>
-  jQuery(window).scroll(function() {
-    var scroll = jQuery(window).scrollTop();
-    if (scroll > 120) {
-      $('body').addClass('sticky-none');
-    }else{
-      $('body').removeClass('sticky-none');
-    }
-  });
-  window.onscroll = function(e) {
-    var scrolly = this.scrollY;
-    if(this.oldScroll > scrolly ){
-       $('body').addClass('sticky-header');
-    }
-    else{
-       $('body').removeClass('sticky-header');
-    }
-    this.oldScroll = this.scrollY;
-  }
-
-  function updateMobileHeaderSpacer() {
-      if (isMobile.any) {
-        setTimeout(function(){
-          $('.header-spacer').attr('style', 'height: ' + $('.header').outerHeight() + 'px');
-        }, 500)
-      }
-  }
-  $(function () {
-    updateMobileHeaderSpacer();
-    $(window).on('resize', function() {
-      updateMobileHeaderSpacer();
-    })
-  })
-</script>
-{% endunless %}
 
 <script type="text/javascript">
   window.addEventListener('scroll', function() {
@@ -1370,15 +1118,9 @@ html, body{overflow: visible!important; overflow-x: hidden}
     ],
     "settings": [
         {
-          "type": "checkbox",
-          "id": "use_new_nav_design",
-          "label": "Use new navigation design (v2)",
-          "default": true
-        },
-        {
           "type": "color",
           "id": "nav_background_color",
-          "label": "Nav V2 Background color",
+          "label": "Background color",
           "default": "#FAFAFA"
         },
         {
@@ -1390,63 +1132,6 @@ html, body{overflow: visible!important; overflow-x: hidden}
           "type": "link_list",
           "id": "menu_desktop",
           "label": "Menu Link List Desktop"
-        },
-        {
-          "type": "text",
-          "id": "menu_desktop_opened_products_title",
-          "label": "Menu mega menu title"
-        },
-        {
-          "type": "text",
-          "id": "menu_desktop_opened_menu_title",
-          "label": "Menu mega menu title"
-        },
-        {
-          "type": "link_list",
-          "id": "menu_desktop_menu_opened",
-          "label": "Menu Link List mega menu"
-        },
-        {
-          "type": "image_picker",
-          "id": "desktop_left_image_products",
-          "label": "Desktop mega menu left image"
-        },
-      {
-        "type": "text",
-        "id": "desktop_left_image_products_text",
-        "label": "Desktop mega menu left text",
-        "default": "Sleep products"
-      },
-        {
-          "type": "image_picker",
-          "id": "desktop_left_image_links",
-          "label": "Desktop mega menu left image 2"
-        },
-      {
-        "type": "text",
-        "id": "desktop_left_image_links_text",
-        "label": "Desktop mega menu left other text",
-        "default": "Other products"
-      },
-      {
-        "type": "url",
-        "id": "desktop_left_all_links",
-        "label": "Desktop mega menu left other products link"
-      },
-      {
-        "type": "url",
-        "id": "desktop_left_other_links",
-        "label": "Desktop mega menu left other products link"
-      },
-        {
-          "type": "text",
-          "id": "cta_label",
-          "label": "CTA Label"
-        },
-        {
-          "type": "url",
-          "id": "cta_url",
-          "label": "CTA URL"
         },
         {
           "type": "header",

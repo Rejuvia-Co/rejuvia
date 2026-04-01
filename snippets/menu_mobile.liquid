@@ -346,45 +346,56 @@
     <div class="content">
       <nav class="menu-mobile" role="navigation">
 
-          {%- comment -%} Mobile Menu {%- endcomment -%}
+          {%- comment -%} Mobile Menu — products from first mega_menu block {%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'mega_menu' -%}
+              {%- assign mega_block = block -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {% if mega_block %}
           <div class="mobile-menu-v2__products">
-            {% for block in section.blocks %}
-              {% if block.type == 'products-menu_mobile' %}
-                {% if block.settings.selected_product %}
-                  {% assign product = all_products[block.settings.selected_product] %}
-                  <a href="{{ product.url }}" class="mobile-menu-v2__product-card">
-                    <div class="mobile-menu-v2__product-img">
-                      <img
-                        src="{{ product.featured_image | img_url: '200x' }}"
-                        alt="{{ product.title }}"
-                        loading="lazy"
-                        width="60"
-                        height="60"
-                      />
-                    </div>
-                    <div class="mobile-menu-v2__product-info">
-                      <div class="mobile-menu-v2__product-header">
-                        <p class="mobile-menu-v2__product-title">{{ product.title }}</p>
-                        <div class="mobile-menu-v2__product-rating">
-                          <svg class="rating-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                          </svg>
-                          <span class="mobile-menu-v2__product-rating-num">
-                            {% if product.metafields.okendo.summaryData.reviewCount > 0 %}
-                              {{ product.metafields.okendo.summaryData.reviewAverageValue | round: 1 }}
-                            {% else %}
-                              5.0
-                            {% endif %}
-                          </span>
-                        </div>
+            {%- assign product_fields = 'product_1,product_2,product_3,product_4,product_5' | split: ',' -%}
+            {%- assign desc_fields = 'product_1_desc,product_2_desc,product_3_desc,product_4_desc,product_5_desc' | split: ',' -%}
+            {%- for i in (0..4) -%}
+              {%- assign prod_field = product_fields[i] -%}
+              {%- assign desc_field = desc_fields[i] -%}
+              {%- if mega_block.settings[prod_field] != blank -%}
+                {%- assign product = all_products[mega_block.settings[prod_field]] -%}
+                <a href="{{ product.url }}" class="mobile-menu-v2__product-card">
+                  <div class="mobile-menu-v2__product-img">
+                    <img
+                      src="{{ product.featured_image | img_url: '200x' }}"
+                      alt="{{ product.title }}"
+                      loading="lazy"
+                      width="60"
+                      height="60"
+                    />
+                  </div>
+                  <div class="mobile-menu-v2__product-info">
+                    <div class="mobile-menu-v2__product-header">
+                      <p class="mobile-menu-v2__product-title">{{ product.title }}</p>
+                      <div class="mobile-menu-v2__product-rating">
+                        <svg class="rating-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="mobile-menu-v2__product-rating-num">
+                          {% if product.metafields.okendo.summaryData.reviewCount > 0 %}
+                            {{ product.metafields.okendo.summaryData.reviewAverageValue | round: 1 }}
+                          {% else %}
+                            5.0
+                          {% endif %}
+                        </span>
                       </div>
-                      <p class="mobile-menu-v2__product-desc">{{ block.settings.product_description }}</p>
                     </div>
-                  </a>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
+                    <p class="mobile-menu-v2__product-desc">{{ mega_block.settings[desc_field] }}</p>
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
           </div>
+          {% endif %}
 
           <div class="mobile-menu-v2__links">
             <div class="mobile-menu-v2__link-divider"></div>
@@ -431,30 +442,28 @@
             </a>
           </div>
 
+          {% if mega_block %}
           <div class="mobile-menu-v2__traits">
-            {% for block in section.blocks %}
-              {% if block.type == 'right-content-block' %}
-                {% if block.settings.icon_svg != blank %}
-                <div class="mobile-menu-v2__trait">
-                  <span class="mobile-menu-v2__trait-icon">{{ block.settings.icon_svg }}</span>
-                  <span class="mobile-menu-v2__trait-label">{{ block.settings.heading }}</span>
-                </div>
-                {% endif %}
-                {% if block.settings.icon_svg1 != blank %}
-                <div class="mobile-menu-v2__trait">
-                  <span class="mobile-menu-v2__trait-icon">{{ block.settings.icon_svg1 }}</span>
-                  <span class="mobile-menu-v2__trait-label">{{ block.settings.heading1 }}</span>
-                </div>
-                {% endif %}
-                {% if block.settings.icon_svg2 != blank %}
-                <div class="mobile-menu-v2__trait">
-                  <span class="mobile-menu-v2__trait-icon">{{ block.settings.icon_svg2 }}</span>
-                  <span class="mobile-menu-v2__trait-label">{{ block.settings.heading2 }}</span>
-                </div>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
+            {% if mega_block.settings.benefit_1_icon != blank %}
+            <div class="mobile-menu-v2__trait">
+              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_1_icon }}</span>
+              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_1_text }}</span>
+            </div>
+            {% endif %}
+            {% if mega_block.settings.benefit_2_icon != blank %}
+            <div class="mobile-menu-v2__trait">
+              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_2_icon }}</span>
+              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_2_text }}</span>
+            </div>
+            {% endif %}
+            {% if mega_block.settings.benefit_3_icon != blank %}
+            <div class="mobile-menu-v2__trait">
+              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_3_icon }}</span>
+              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_3_text }}</span>
+            </div>
+            {% endif %}
           </div>
+          {% endif %}
 
 
       </nav>

@@ -2727,6 +2727,7 @@
             "settings": {
               "title": "Melatonin Gummies",
               "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "image": "shopify://shop_images/melatonin_gummies.png",
               "badge_text": "80% lost to digestion"
             }
           },

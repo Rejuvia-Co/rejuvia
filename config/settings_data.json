@@ -701,8 +701,23 @@
             }
           }
         },
+          "mobile_menu_links_nav": {
+            "type": "mobile-menu-links",
+            "settings": {
+              "first_label": "Ingredients",
+              "first_url": "shopify://pages/ingredients",
+              "second_label": "Reviews",
+              "second_url": "shopify://pages/reviews",
+              "third_label": "Our Story",
+              "third_url": "",
+              "fourth_label": "",
+              "fourth_url": ""
+            }
+          }
+        },
         "block_order": [
-          "mega_menu_q8hRMc"
+          "mega_menu_q8hRMc",
+          "mobile_menu_links_nav"
         ],
         "settings": {
           "menu_desktop": "header-navigation",

@@ -23,16 +23,7 @@
     pointer-events: none;
   }
 
-  #header.header .container {
-    pointer-events: auto;
-  }
 
-  #header .container {
-    padding: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-    position: relative;
-  }
 
   #header .main-content {
     background: #EAEAF7;
@@ -312,7 +303,6 @@
 </style>
 
 <div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
-  <div class="container relative">
     <div class="main-content flex align-items-center justify-content-between">
 
       <a href="/" class="logo medium-down--hide">
@@ -436,7 +426,6 @@
     </div>
       {% endif %}
     {% endfor %}
-  </div>
 </div>
 
 <script>

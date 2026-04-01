@@ -58,32 +58,6 @@
   #menu-mobile.open { right: auto; left: 0; }
   {% endif %}
 
-  .header-open {
-    background-color: #ffffff !important;
-    transition: background-color 0.7s ease-in-out;
-  }
-
-  #header > .container {
-    transition: background-color 0.7s ease-in-out;
-  }
-
-  @media(min-width: 500px) {
-    #header > .container {
-      background-color: #ffffff !important;
-    }
-  }
-
-  .btn-open-mobile-menu {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    margin-top: 3px !important;
-  }
-
-  .btn-open-mobile-menu svg {
-    width: 32px;
-    height: 32px;
-  }
 
   .hidden {
     display: none !important;
@@ -289,6 +263,10 @@
     transition: background 0.2s ease;
   }
 
+  .mobile-menu-v2__links .mobile-menu-v2__account {
+    margin-top: 16px;
+  }
+
   .mobile-menu-v2__account:hover {
     background: #F5F5F5;
     text-decoration: none;
@@ -401,28 +379,28 @@
             <div class="mobile-menu-v2__link-divider"></div>
             {% for block in section.blocks %}
               {% if block.type == 'mobile-menu-links' %}
-                {% if block.settings.first_label %}
+                {% if block.settings.first_label != blank %}
                   <a href="{{ block.settings.first_url }}" class="mobile-menu-v2__link">
                     <span>{{ block.settings.first_label }}</span>
                     {% render 'icon-nav-arrow' %}
                   </a>
                   <div class="mobile-menu-v2__link-divider"></div>
                 {% endif %}
-                {% if block.settings.second_label %}
+                {% if block.settings.second_label != blank %}
                   <a href="{{ block.settings.second_url }}" class="mobile-menu-v2__link">
                     <span>{{ block.settings.second_label }}</span>
                     {% render 'icon-nav-arrow' %}
                   </a>
                   <div class="mobile-menu-v2__link-divider"></div>
                 {% endif %}
-                {% if block.settings.third_label %}
+                {% if block.settings.third_label != blank %}
                   <a href="{{ block.settings.third_url }}" class="mobile-menu-v2__link">
                     <span>{{ block.settings.third_label }}</span>
                     {% render 'icon-nav-arrow' %}
                   </a>
                   <div class="mobile-menu-v2__link-divider"></div>
                 {% endif %}
-                {% if block.settings.fourth_label %}
+                {% if block.settings.fourth_label != blank %}
                   <a href="{{ block.settings.fourth_url }}" class="mobile-menu-v2__link">
                     <span>{{ block.settings.fourth_label }}</span>
                     {% render 'icon-nav-arrow' %}
@@ -432,12 +410,8 @@
               {% endif %}
             {% endfor %}
 
-            <a href="{% if customer %}/account{% else %}/a/account/login{% endif %}" class="mobile-menu-v2__account" style="margin-top: 16px; margin-bottom: 0;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M15 16.6666C15 15.3405 14.4732 14.0688 13.5355 13.1311C12.5979 12.1934 11.3261 11.6666 10 11.6666C8.67392 11.6666 7.40215 12.1934 6.46447 13.1311C5.52678 14.0688 5 15.3405 5 16.6666" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.0001 11.6667C11.841 11.6667 13.3334 10.1743 13.3334 8.33333C13.3334 6.49238 11.841 5 10.0001 5C8.15913 5 6.66675 6.49238 6.66675 8.33333C6.66675 10.1743 8.15913 11.6667 10.0001 11.6667Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6025 1.66663 10.0001 1.66663C5.39771 1.66663 1.66675 5.39759 1.66675 9.99996C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+            <a href="{% if customer %}/account{% else %}/a/account/login{% endif %}" class="mobile-menu-v2__account">
+              {% render 'icon-account' %}
               Account Log In
             </a>
           </div>
@@ -473,7 +447,6 @@
 
 <script>
   (function() {
-    var scrollPosition = 0;
     var menuMobile = document.getElementById('menu-mobile');
     var headerEl = document.getElementById('header');
     if (!menuMobile) return;
@@ -486,10 +459,7 @@
     }
 
     function openMenu() {
-      scrollPosition = window.scrollY;
       menuMobile.classList.add('open');
-      var container = headerEl ? headerEl.querySelector('.container') : null;
-      if (container) container.classList.add('header-open');
       toggleMenuButtons();
 
       if (typeof Simplistic !== 'undefined' && Simplistic.trapFocus) {
@@ -502,8 +472,6 @@
 
     function closeMenu() {
       menuMobile.classList.remove('open');
-      var container = headerEl ? headerEl.querySelector('.container') : null;
-      if (container) container.classList.remove('header-open');
 
       if (typeof Simplistic !== 'undefined' && Simplistic.removeTrapFocus) {
         Simplistic.removeTrapFocus({

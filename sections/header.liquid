@@ -220,6 +220,15 @@
     display: none !important;
   }
 
+  /* Desktop: show nav, hide mobile */
+  #header .navigator-mobile {
+    display: none;
+  }
+
+  #header .logo-mobile {
+    display: none;
+  }
+
   .header-open {
     background-color: transparent !important;
   }
@@ -239,14 +248,20 @@
 
   /* ===== Mobile ===== */
   @media all and (max-width: 1024px) {
-    #header .main-content,
-    #header .nav-wrapper,
-    #header .navigator-right {
+    #header .main-content {
       display: none !important;
     }
 
     #header .navigator-mobile {
       display: flex !important;
+    }
+
+    #header .logo-desktop {
+      display: none;
+    }
+
+    #header .logo-mobile {
+      display: block;
     }
     #header.header {
       padding: 0 12px 6px;
@@ -313,11 +328,11 @@
 <div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
     <div class="main-content flex align-items-center justify-content-between">
 
-      <a href="/" class="logo medium-down--hide">
+      <a href="/" class="logo logo-desktop">
         {% render 'logo-rejuvia' %}
       </a>
 
-      <div class="nav-wrapper medium--hide small--hide">
+      <div class="nav-wrapper">
         <nav class="main-menu flex align-items-center" role="navigation">
           {% render 'mega-menu', menu: section.settings.menu_desktop.links %}
         </nav>
@@ -328,12 +343,12 @@
         {%- assign total_items = total_items | plus: item.quantity -%}
       {%- endfor -%}
 
-      <div class="navigator-mobile flex align-items-center large--hide">
+      <div class="navigator-mobile flex align-items-center">
         <div class="mobile-right eg-close-mobile-div">
           <a href="#" class="btn-open-mobile-menu" aria-label="Open menu" role="button">{% render 'icon-hamburger' %}</a>
           <a class="close hidden" aria-label="Close menu" role="button">{% render 'icon-close_button' %}</a>
         </div>
-        <a href="/" class="logo large--hide">
+        <a href="/" class="logo logo-mobile">
           {% render 'logo-rejuvia' %}
         </a>
         <div class="mobile-right">
@@ -347,7 +362,7 @@
         </div>
       </div>
 
-      <div class="navigator navigator-right flex align-items-center small--hide medium--hide">
+      <div class="navigator navigator-right flex align-items-center">
         <div class="nav-v2-icons">
           <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">

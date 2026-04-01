@@ -19,14 +19,10 @@ html, body{overflow: visible!important; overflow-x: hidden}
 {% endunless %}
 
   .header {width: 100%; position: relative; color: {{section.settings.header_text_color}}; background: {{section.settings.header_color}}; {% if section.settings.header_border_color != 'rgba(0,0,0,0)' %}border-bottom: 1px solid {{section.settings.header_border_color}};{% else %}border: none;{% endif %} }
-  .header svg {width: 20px; height: 20px;}
-  .header svg path {fill: #000000/*{{section.settings.header_text_color}}*/;}
-  .nav-v2 svg {width: auto; height: auto;}
-  .nav-v2 svg path {fill: none;}
+  .header:not(.nav-v2) svg {width: 20px; height: 20px;}
+  .header:not(.nav-v2) svg path {fill: #000000;}
   .nav-v2 .mega-menu-v2__trait-icon {min-width: 20px; min-height: 20px;}
-  .nav-v2 .mega-menu-v2__trait-icon svg {width: 20px !important; height: 20px !important; overflow: visible !important; display: block !important;}
-  .nav-v2 .mega-menu-v2__trait-icon svg > g > path,
-  .nav-v2 .mega-menu-v2__trait-icon svg > path {fill: none !important;}
+  .nav-v2 .mega-menu-v2__trait-icon svg {width: 20px; height: 20px;}
 
   .header .logo {line-height: 100%; width: 100%; max-width: {{section.settings.logo_max_width}}; margin-right: 24px;}
 

@@ -2,6 +2,7 @@
 .hero-v2-section {
     width: 100%;
     background-color: {{ section.settings.bg_color }};
+    overflow-x: clip;
 }
 
 .hero-v2-container {
@@ -145,6 +146,8 @@
     position: relative;
     width: 600px;
     flex-shrink: 0;
+    overflow: visible;
+    max-width: 50%;
 }
 
 .hero-v2-image-inner {
@@ -244,14 +247,10 @@
     display: none;
     align-items: center;
     gap: 16px;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.4s ease;
 }
 
 .hero-v2-testimonial-slide.is-active {
     display: flex;
-    opacity: 1;
 }
 
 /* ===================== Responsive ===================== */
@@ -270,12 +269,14 @@
 @media (max-width: 900px) {
     .hero-v2-container {
         flex-direction: column-reverse;
-        padding: 40px 35px 50px;
-        gap: 32px;
+        padding: 20px 16px 32px;
+        gap: 24px;
     }
     .hero-v2-copy {
         width: 100%;
-        gap: 24px;
+        gap: 32px;
+        align-items: center;
+        text-align: center;
     }
     .hero-v2-image-wrap {
         width: 100%;
@@ -283,52 +284,44 @@
         margin: 0 auto;
     }
     .hero-v2-heading {
-        font-size: 30px;
+        font-size: 28px;
+    }
+    .hero-v2-description {
+        display: none;
+    }
+    .hero-v2-rating {
+        justify-content: center;
     }
     .hero-v2-btn-block {
         max-width: 100%;
+        width: 100%;
+    }
+    .hero-v2-guarantee {
+        justify-content: center;
     }
     .hero-v2-testimonial {
-        width: 300px;
-        right: 10px;
-        bottom: -16px;
-    }
-}
-
-@media (max-width: 600px) {
-    .hero-v2-container {
-        padding: 30px 20px 40px;
-        gap: 24px;
-    }
-    .hero-v2-copy {
-        gap: 20px;
-    }
-    .hero-v2-heading {
-        font-size: 26px;
-    }
-    .hero-v2-description {
-        font-size: 15px;
-    }
-    .hero-v2-btn {
-        padding: 18px 20px;
-        font-size: 16px;
-    }
-    .hero-v2-testimonial {
-        width: 260px;
-        padding: 12px;
-        gap: 10px;
-        right: 8px;
-        bottom: -12px;
+        width: 258px;
+        padding: 13px;
+        gap: 13px;
+        right: 7px;
+        bottom: 0;
     }
     .hero-v2-testimonial-avatar {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
     }
     .hero-v2-testimonial-text {
-        font-size: 12px;
+        font-size: 11px;
     }
     .hero-v2-testimonial-name {
-        font-size: 11px;
+        font-size: 10px;
+    }
+    .hero-v2-testimonial-stars svg {
+        width: 11px;
+        height: 10px;
+    }
+    .hero-v2-rating-text {
+        font-size: 14px;
     }
 }
 {% endstyle %}

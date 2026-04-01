@@ -714,7 +714,7 @@
               "link": "shopify://products/sleep-spray-6-pack",
               "text": "<p>Get 53% OFF Today  <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
             }
-          },
+          }
         },
         "block_order": [
           "mobile_collection_4VLE8R",
@@ -723,19 +723,8 @@
           "utility_bar_aywzQL"
         ],
         "settings": {
-          "menu": "nav-menu-umd",
+          "nav_background_color": "#fafafa",
           "menu_desktop": "desktop-menu",
-          "menu_desktop_opened_products_title": "Shop Rejuvia",
-          "menu_desktop_opened_menu_title": "Learn More",
-          "menu_desktop_menu_opened": "mega-menu-left-menu",
-          "desktop_left_image_products": "shopify://shop_images/rejuviasleepspray_c6701081-d71c-4b7c-b6f9-19cd38e3fdb5.png",
-          "desktop_left_image_products_text": "Oral Sprays",
-          "desktop_left_image_links": "shopify://shop_images/RejuviasleepSpray6pack.webp",
-          "desktop_left_image_links_text": "Sleep Bundle",
-          "desktop_left_all_links": "shopify://collections/more-products",
-          "desktop_left_other_links": "shopify://products/sleep-spray-6-pack",
-          "cta_label": "TRY REJUVIA",
-          "cta_url": "shopify://products/sleep-spray",
           "behavior": "static",
           "drop_header": false,
           "header_color": "#ffffff",
@@ -1137,26 +1126,29 @@
       "header-top": {
         "type": "header-top",
         "blocks": {
+          "utility_bar_RhBmiE": {
+            "type": "utility_bar",
+            "settings": {
+              "show": true,
+              "text": "<p><strong>Shop Sleep Spray 6-Pack</strong></p>"
+            }
+          },
           "3e5c67c9-3921-450e-b05b-1a7d23e869f7": {
             "type": "utility_bar",
             "settings": {
               "show": true,
-              "text": "<p>Free Shipping Over $69 <a href=\"/collections/all\" title=\"All products\">Shop Now</a></p>",
-              "info_background": "#ffffff",
-              "info_title": "",
-              "info_title_color": "#000000",
-              "info_text": "",
-              "info_text_color": "#5c5c5c"
+              "text": "<p>Free Shipping Over $69 <a href=\"/collections/all\" title=\"All products\">Shop Now</a></p>"
             }
           }
         },
         "block_order": [
+          "utility_bar_RhBmiE",
           "3e5c67c9-3921-450e-b05b-1a7d23e869f7"
         ],
         "settings": {
-          "header_color": "#171512",
-          "header_border_color": "#ffffff",
-          "text_color": "#ffffff"
+          "background_color": "#fafafa",
+          "enable_carousel": true,
+          "carousel_speed": 5
         }
       },
       "press_logos_YiWTgA": {
@@ -2737,19 +2729,9 @@
           "version": "v3"
         }
       },
-      "2786716548061469553": {
-        "type": "shopify://apps/axon/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
-        "disabled": false,
-        "settings": {}
-      },
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
-        "settings": {}
-      },
-      "10840395464443086010": {
-        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
-        "disabled": true,
         "settings": {}
       }
     }

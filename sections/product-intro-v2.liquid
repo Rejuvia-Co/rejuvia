@@ -1,4 +1,4 @@
-{% style %}
+<style>
 .pi-v2-section {
     width: 100%;
     background-color: #fff;
@@ -113,8 +113,9 @@
     display: none;
     position: absolute;
     z-index: 2;
-    right: 10%;
     bottom: 50px;
+    right: 10%;
+    left: auto;
     background-color: #e15046;
     color: #fff;
     font-size: 14px;
@@ -321,16 +322,37 @@
     .pi-v2-nav {
         display: none;
     }
+    .pi-v2-image-col {
+        width: 100%;
+    }
+    .pi-v2-image-area {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+        width: 100%;
+    }
     .pi-v2-badge {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: 16px;
+        right: auto;
         font-size: 11px;
         padding: 6px 12px;
+        order: -1;
+    }
+    .pi-v2-tab-image {
+        align-self: center;
+    }
+    .pi-v2-image-bg {
+        top: 55%;
     }
     .pi-v2-badge svg {
         width: 7px;
         height: 9px;
     }
 }
-{% endstyle %}
+</style>
 
 <div class="pi-v2-container">
     {%- comment -%} === Copy Block === {%- endcomment -%}

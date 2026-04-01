@@ -1013,6 +1013,7 @@
         "block_order": [
           "4100f4cb-8422-4045-bf32-355313ee079a"
         ],
+        "disabled": true,
         "custom_css": [
           "h1 {letter-spacing: -0.4px;}",
           "p {letter-spacing: -0.4px;}"
@@ -1100,7 +1101,6 @@
           "3e5c67c9-3921-450e-b05b-1a7d23e869f7"
         ],
         "settings": {
-          "background_color": "#fafafa",
           "enable_carousel": true,
           "carousel_speed": 5
         }
@@ -2642,9 +2642,31 @@
           "swatch_tag_content": "",
           "preselected_item": 1
         }
+      },
+      "hero_v2_ypthhg": {
+        "type": "hero-v2",
+        "name": "Hero V2",
+        "settings": {
+          "bg_color": "#fafafa",
+          "accent_color": "#672666",
+          "rating_score": "4.6",
+          "rating_sold": "150K+",
+          "heading": "<p>Join 300,000 People <em>Sleeping Better</em> and <em>Through the Night</em></p>",
+          "description": "If you've tried gummies, pills, or prescriptions and still aren't sleeping – it's not you. Most sleep products lose up to 80% of their ingredients before they ever reach your bloodstream. Rejuvia was made to fix that.",
+          "btn_text": "Sleep Better Tonight",
+          "btn_url": "",
+          "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
+          "image": "shopify://shop_images/hero-v2-product.png",
+          "image_bg_color": "#f7f4f7",
+          "testimonial_avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+          "testimonial_name": "Betty M.",
+          "testimonial_text": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
+          "testimonial_stars": 5
+        }
       }
     },
     "content_for_index": [
+      "hero_v2_ypthhg",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

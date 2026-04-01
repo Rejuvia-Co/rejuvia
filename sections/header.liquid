@@ -239,6 +239,15 @@
 
   /* ===== Mobile ===== */
   @media all and (max-width: 1024px) {
+    #header .main-content,
+    #header .nav-wrapper,
+    #header .navigator-right {
+      display: none !important;
+    }
+
+    #header .navigator-mobile {
+      display: flex !important;
+    }
     #header.header {
       padding: 0 12px 6px;
     }

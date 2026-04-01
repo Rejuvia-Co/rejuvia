@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 100px 64px 64px;
+    padding: 22px 64px 64px;
     gap: 40px;
 }
 
@@ -23,23 +23,25 @@
     justify-content: center;
     width: 550px;
     flex-shrink: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Rating row */
 .hero-v2-rating {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
 }
 
 .hero-v2-stars {
     display: flex;
+    align-items: flex-start;
     gap: 2px;
 }
 
 .hero-v2-stars svg {
-    width: 18px;
-    height: 18px;
+    width: 17.066px;
+    height: 16px;
 }
 
 .hero-v2-rating-text {
@@ -56,11 +58,24 @@
 /* Heading */
 .hero-v2-heading {
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 500 !important;
     line-height: 1.4;
+    letter-spacing: 0 !important;
     color: #141414;
     text-transform: capitalize;
     margin: 0;
+}
+
+.hero-v2-heading p {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    text-transform: inherit;
 }
 
 .hero-v2-heading em,
@@ -92,7 +107,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 20px 24px;
+    padding: 24px 24px;
     background-color: {{ section.settings.accent_color }};
     color: #fff;
     font-size: 18px;
@@ -112,7 +127,7 @@
 
 .hero-v2-guarantee {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 6px;
     font-size: 14px;
     line-height: 1.4;
@@ -143,7 +158,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 82%;
+    height: 88%;
     background-color: {{ section.settings.image_bg_color }};
     border-radius: 20px;
 }
@@ -194,18 +209,19 @@
 
 .hero-v2-testimonial-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
 }
 
 .hero-v2-testimonial-stars {
     display: flex;
+    align-items: flex-start;
     gap: 1px;
 }
 
 .hero-v2-testimonial-stars svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 12px;
 }
 
 .hero-v2-testimonial-name {
@@ -221,6 +237,21 @@
     line-height: 1.4;
     color: #141414;
     margin: 0;
+}
+
+/* Testimonial slides */
+.hero-v2-testimonial-slide {
+    display: none;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hero-v2-testimonial-slide.is-active {
+    display: flex;
+    opacity: 1;
 }
 
 /* ===================== Responsive ===================== */
@@ -309,7 +340,7 @@
         <div class="hero-v2-rating">
             <div class="hero-v2-stars">
                 {% for i in (1..5) %}
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
                 {% endfor %}
             </div>
             <span class="hero-v2-rating-text">
@@ -321,7 +352,7 @@
         </div>
 
         {%- comment -%} Heading {%- endcomment -%}
-        <h2 class="hero-v2-heading">{{ section.settings.heading }}</h2>
+        <div class="hero-v2-heading">{{ section.settings.heading }}</div>
 
         {%- comment -%} Description {%- endcomment -%}
         <p class="hero-v2-description">{{ section.settings.description }}</p>
@@ -333,8 +364,8 @@
             </a>
             {% if section.settings.guarantee_text != blank %}
                 <div class="hero-v2-guarantee">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 11" fill="none">
-                        <path d="M1 5.5L5 9.5L13 1.5" stroke="#672666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+                        <path d="M11.6558 0.765634C11.8759 0.556086 12.1688 0.440239 12.4727 0.442538C12.7766 0.444838 13.0677 0.565104 13.2846 0.777959C13.5015 0.990814 13.6273 1.27961 13.6353 1.58341C13.6433 1.8872 13.533 2.18224 13.3277 2.40626L7.0933 10.2031C6.98609 10.3186 6.85671 10.4113 6.71288 10.4756C6.56904 10.5399 6.41372 10.5746 6.25619 10.5775C6.09866 10.5804 5.94215 10.5515 5.79604 10.4926C5.64992 10.4336 5.5172 10.3458 5.40579 10.2344L1.27142 6.10001C1.15628 5.99272 1.06394 5.86335 0.999887 5.7196C0.935837 5.57585 0.901396 5.42067 0.89862 5.26333C0.895844 5.10598 0.924789 4.94968 0.983728 4.80376C1.04267 4.65784 1.13039 4.52529 1.24167 4.41401C1.35295 4.30273 1.4855 4.21501 1.63142 4.15607C1.77734 4.09713 1.93364 4.06818 2.09099 4.07096C2.24833 4.07374 2.40351 4.10818 2.54726 4.17223C2.69101 4.23628 2.82038 4.32862 2.92767 4.44376L6.19954 7.71407L11.6261 0.80001L11.6558 0.765634Z" fill="#FAB851"/>
                     </svg>
                     <span>{{ section.settings.guarantee_text }}</span>
                 </div>
@@ -357,35 +388,72 @@
             {% endif %}
         </div>
 
-        {%- comment -%} Testimonial card {%- endcomment -%}
-        {% if section.settings.testimonial_text != blank %}
+        {%- comment -%} Testimonial cards {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
             <div class="hero-v2-testimonial">
-                {% if section.settings.testimonial_avatar != blank %}
-                    <img
-                        class="hero-v2-testimonial-avatar"
-                        src="{{ section.settings.testimonial_avatar | image_url: width: 120 }}"
-                        alt="{{ section.settings.testimonial_name }}"
-                        width="60"
-                        height="60"
-                        loading="eager"
-                    >
-                {% endif %}
-                <div class="hero-v2-testimonial-body">
-                    <div class="hero-v2-testimonial-header">
-                        <div class="hero-v2-testimonial-stars">
-                            {% assign star_count = section.settings.testimonial_stars | default: 5 %}
-                            {% for i in (1..star_count) %}
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-                            {% endfor %}
+                {% for block in section.blocks %}
+                    <div class="hero-v2-testimonial-slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+                        {% if block.settings.avatar != blank %}
+                            <img
+                                class="hero-v2-testimonial-avatar"
+                                src="{{ block.settings.avatar | image_url: width: 120 }}"
+                                alt="{{ block.settings.name }}"
+                                width="60"
+                                height="60"
+                                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                            >
+                        {% endif %}
+                        <div class="hero-v2-testimonial-body">
+                            <div class="hero-v2-testimonial-header">
+                                <div class="hero-v2-testimonial-stars">
+                                    {% assign star_count = block.settings.stars | default: 5 %}
+                                    {% for i in (1..star_count) %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
+                                    {% endfor %}
+                                </div>
+                                <span class="hero-v2-testimonial-name">{{ block.settings.name }}</span>
+                            </div>
+                            <p class="hero-v2-testimonial-text">{{ block.settings.quote }}</p>
                         </div>
-                        <span class="hero-v2-testimonial-name">{{ section.settings.testimonial_name }}</span>
                     </div>
-                    <p class="hero-v2-testimonial-text">{{ section.settings.testimonial_text }}</p>
-                </div>
+                {% endfor %}
             </div>
         {% endif %}
     </div>
 </div>
+
+<script>
+(function() {
+    var section = document.querySelector('.hero-v2-section');
+    if (!section) return;
+
+    /* --- Pull behind header --- */
+    function adjust() {
+        var main = document.querySelector('main, #main-content, .content-wrapper');
+        if (!main) return;
+        var offset = main.getBoundingClientRect().top + window.scrollY;
+        section.style.marginTop = '-' + offset + 'px';
+        section.style.paddingTop = offset + 'px';
+    }
+    adjust();
+    window.addEventListener('resize', adjust);
+
+    /* --- Testimonial rotation --- */
+    var slides = section.querySelectorAll('.hero-v2-testimonial-slide');
+    if (slides.length < 2) return;
+
+    var current = 0;
+    var speed = {{ section.settings.testimonial_speed | default: 5 }} * 1000;
+
+    function next() {
+        slides[current].classList.remove('is-active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+    }
+
+    setInterval(next, speed);
+})();
+</script>
 
 {% schema %}
 {
@@ -478,33 +546,51 @@
         },
         {
             "type": "header",
-            "content": "Testimonial"
-        },
-        {
-            "type": "image_picker",
-            "id": "testimonial_avatar",
-            "label": "Avatar"
-        },
-        {
-            "type": "text",
-            "id": "testimonial_name",
-            "label": "Name",
-            "default": "Betty M."
-        },
-        {
-            "type": "textarea",
-            "id": "testimonial_text",
-            "label": "Quote",
-            "default": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy."
+            "content": "Testimonials"
         },
         {
             "type": "range",
-            "id": "testimonial_stars",
-            "label": "Stars",
-            "min": 1,
-            "max": 5,
+            "id": "testimonial_speed",
+            "label": "Rotation speed (seconds)",
+            "min": 3,
+            "max": 10,
             "step": 1,
-            "default": 5
+            "default": 5,
+            "unit": "s"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "testimonial",
+            "name": "Testimonial",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "avatar",
+                    "label": "Avatar"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name",
+                    "default": "Betty M."
+                },
+                {
+                    "type": "textarea",
+                    "id": "quote",
+                    "label": "Quote",
+                    "default": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy."
+                },
+                {
+                    "type": "range",
+                    "id": "stars",
+                    "label": "Stars",
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "default": 5
+                }
+            ]
         }
     ],
     "presets": [

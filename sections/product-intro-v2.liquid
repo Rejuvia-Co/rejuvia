@@ -1,0 +1,524 @@
+{% style %}
+.pi-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.pi-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* --- Copy Block (left) --- */
+.pi-v2-copy {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+}
+
+.pi-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.pi-v2-heading p {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+.pi-v2-heading em {
+    color: {{ section.settings.accent_color }};
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.pi-v2-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+/* --- Image Block (center) --- */
+.pi-v2-image-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    position: relative;
+}
+
+.pi-v2-image-area {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pi-v2-image-bg {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(250,250,254,1) 59%, rgba(250,250,250,0) 100%);
+    filter: blur(4px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pi-v2-tab-image {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 240px;
+    position: relative;
+    z-index: 1;
+}
+
+.pi-v2-tab-image.is-active {
+    display: flex;
+}
+
+.pi-v2-tab-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.pi-v2-badge {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    right: 10%;
+    bottom: 50px;
+    background-color: #e15046;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.pi-v2-badge.is-active {
+    display: flex;
+}
+
+.pi-v2-badge svg {
+    width: 9px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+/* Nav arrows */
+.pi-v2-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pi-v2-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.pi-v2-nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.pi-v2-nav-counter {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.pi-v2-nav-counter strong {
+    font-weight: 700;
+}
+
+/* --- List/Accordion (right) --- */
+.pi-v2-list {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.pi-v2-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pi-v2-tab-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    font-family: inherit;
+}
+
+.pi-v2-tab:not(.is-active) .pi-v2-tab-header {
+    opacity: 0.6;
+    align-items: center;
+}
+
+.pi-v2-tab-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pi-v2-tab.is-active .pi-v2-tab-icon {
+    background-color: #e15046;
+}
+
+.pi-v2-tab:not(.is-active) .pi-v2-tab-icon {
+    background-color: #d3d3d3;
+}
+
+.pi-v2-tab-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+.pi-v2-tab-title {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #141414;
+    min-width: 0;
+}
+
+.pi-v2-tab.is-active .pi-v2-tab-title {
+    font-weight: 700;
+}
+
+.pi-v2-tab:not(.is-active) .pi-v2-tab-title {
+    font-weight: 400;
+}
+
+.pi-v2-tab-chevron {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.pi-v2-tab.is-active .pi-v2-tab-chevron {
+    transform: rotate(180deg);
+}
+
+.pi-v2-tab-content {
+    display: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.pi-v2-tab.is-active .pi-v2-tab-content {
+    display: block;
+}
+
+.pi-v2-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .pi-v2-container {
+        gap: 32px;
+        padding: 40px 32px;
+    }
+    .pi-v2-heading {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 900px) {
+    .pi-v2-container {
+        flex-direction: column;
+        padding: 40px 16px;
+        gap: 24px;
+    }
+    .pi-v2-copy {
+        gap: 24px;
+    }
+    .pi-v2-heading {
+        font-size: 24px;
+    }
+    .pi-v2-image-area {
+        height: 250px;
+    }
+    .pi-v2-image-bg {
+        width: 280px;
+        height: 280px;
+    }
+    .pi-v2-tab-image {
+        width: 177px;
+        height: 177px;
+    }
+    .pi-v2-nav {
+        display: none;
+    }
+    .pi-v2-badge {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+    .pi-v2-badge svg {
+        width: 7px;
+        height: 9px;
+    }
+}
+{% endstyle %}
+
+<div class="pi-v2-container">
+    {%- comment -%} === Copy Block === {%- endcomment -%}
+    <div class="pi-v2-copy">
+        <div class="pi-v2-heading">{{ section.settings.heading }}</div>
+        <div class="pi-v2-desc">{{ section.settings.description }}</div>
+    </div>
+
+    {%- comment -%} === Image Column === {%- endcomment -%}
+    <div class="pi-v2-image-col">
+        <div class="pi-v2-image-area">
+            <div class="pi-v2-image-bg"></div>
+            {% for block in section.blocks %}
+                <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}" data-pi-v2-index="{{ forloop.index0 }}">
+                    {% if block.settings.image != blank %}
+                        <img
+                            src="{{ block.settings.image | image_url: width: 600 }}"
+                            alt="{{ block.settings.title }}"
+                            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                        >
+                    {% endif %}
+                </div>
+                <div class="pi-v2-badge{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
+                        <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ block.settings.badge_text }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pi-v2-nav">
+            <button class="pi-v2-nav-btn" data-pi-v2-prev aria-label="Previous">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="11.5" stroke="#141414"/>
+                    <path d="M14 8L10 12L14 16" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <span class="pi-v2-nav-counter">
+                <strong data-pi-v2-current>1</strong> / {{ section.blocks.size }}
+            </span>
+            <button class="pi-v2-nav-btn" data-pi-v2-next aria-label="Next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="11.5" stroke="#141414"/>
+                    <path d="M10 8L14 12L10 16" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    {%- comment -%} === Accordion List === {%- endcomment -%}
+    <div class="pi-v2-list">
+        {% for block in section.blocks %}
+            {% if forloop.first == false %}
+                <div class="pi-v2-divider"></div>
+            {% endif %}
+            <div class="pi-v2-tab{% if forloop.first %} is-active{% endif %}" data-pi-v2-tab="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <button class="pi-v2-tab-header" type="button">
+                    <div class="pi-v2-tab-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6H10M6 2V10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="pi-v2-tab-title">{{ block.settings.title }}</span>
+                    <svg class="pi-v2-tab-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                        <path d="M5 8L10 13L15 8" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="pi-v2-tab-content">
+                    {{ block.settings.content }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.pi-v2-section');
+    if (!section) return;
+
+    var tabs = section.querySelectorAll('[data-pi-v2-tab]');
+    var images = section.querySelectorAll('[data-pi-v2-index]');
+    var badges = section.querySelectorAll('[data-pi-v2-badge]');
+    var counter = section.querySelector('[data-pi-v2-current]');
+    var total = tabs.length;
+    var current = 0;
+
+    function activate(index) {
+        current = ((index % total) + total) % total;
+        tabs.forEach(function(t, i) {
+            t.classList.toggle('is-active', i === current);
+        });
+        images.forEach(function(img, i) {
+            img.classList.toggle('is-active', i === current);
+        });
+        badges.forEach(function(b, i) {
+            b.classList.toggle('is-active', i === current);
+        });
+        if (counter) counter.textContent = current + 1;
+    }
+
+    tabs.forEach(function(tab, i) {
+        tab.querySelector('.pi-v2-tab-header').addEventListener('click', function() {
+            activate(i);
+        });
+    });
+
+    var prev = section.querySelector('[data-pi-v2-prev]');
+    var next = section.querySelector('[data-pi-v2-next]');
+    if (prev) prev.addEventListener('click', function() { activate(current - 1); });
+    if (next) next.addEventListener('click', function() { activate(current + 1); });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Product Intro V2",
+    "class": "pi-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>You've tried everything, <em>here's why none of it worked</em></p>"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#672666"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "tab",
+            "name": "Tab",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Melatonin Gummies"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content",
+                    "default": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "badge_text",
+                    "label": "Badge text",
+                    "default": "80% lost to digestion"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Intro V2",
+            "category": "Custom",
+            "blocks": [
+                {
+                    "type": "tab",
+                    "settings": {
+                        "title": "Melatonin Gummies",
+                        "badge_text": "80% lost to digestion"
+                    }
+                },
+                {
+                    "type": "tab",
+                    "settings": {
+                        "title": "The Prescription Trade-Off",
+                        "badge_text": "Risk of dependency"
+                    }
+                },
+                {
+                    "type": "tab",
+                    "settings": {
+                        "title": "The \"Natural\" Cycle",
+                        "badge_text": "Temporary relief only"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

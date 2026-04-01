@@ -225,10 +225,6 @@
     display: none;
   }
 
-  #header .logo-mobile {
-    display: none;
-  }
-
   .header-open {
     background-color: transparent !important;
   }
@@ -248,44 +244,27 @@
 
   /* ===== Mobile ===== */
   @media all and (max-width: 1024px) {
+    #header.header {
+      padding: 0 12px 6px;
+      margin-bottom: 0;
+    }
+
     #header .main-content {
       display: none !important;
     }
 
     #header .navigator-mobile {
       display: flex !important;
-    }
-
-    #header .logo-desktop {
-      display: none;
-    }
-
-    #header .logo-mobile {
-      display: block;
-    }
-    #header.header {
-      padding: 0 12px 6px;
-    }
-
-    #header .main-content {
-      display: none;
-    }
-
-    #header .navigator-mobile {
       background: #EAEAF7;
       border-radius: 10px;
       box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
       height: 44px;
       padding: 0 16px;
-      display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
     }
 
     #header .navigator-mobile .logo {
-      max-width: 110px;
-      order: 1;
       flex: 1;
     }
 
@@ -294,29 +273,20 @@
       width: auto;
     }
 
-    #header .navigator-mobile .mobile-right {
+    .navigator-mobile__right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .navigator-mobile__right .cart-wrap,
+    .navigator-mobile__right .btn-open-mobile-menu,
+    .navigator-mobile__right .close {
       display: flex;
       align-items: center;
     }
 
-    #header .navigator-mobile .eg-close-mobile-div {
-      order: 3;
-      min-width: auto;
-    }
-
-    #header .navigator-mobile .cart-wrap {
-      position: relative;
-    }
-
-    #header .navigator-mobile .btn-open-mobile-menu {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0;
-    }
-
-    #header .navigator-mobile .btn-open-mobile-menu svg,
-    #header .navigator-mobile .close svg {
+    .navigator-mobile__right svg {
       width: 20px;
       height: 20px;
     }
@@ -325,65 +295,61 @@
   }
 </style>
 
-<div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
-    <div class="main-content flex align-items-center justify-content-between">
+{%- assign total_items = 0 -%}
+{%- for item in cart.items -%}
+  {%- assign total_items = total_items | plus: item.quantity -%}
+{%- endfor -%}
 
-      <a href="/" class="logo logo-desktop">
+<div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
+    {%- comment -%} Desktop nav bar {%- endcomment -%}
+    <div class="main-content flex align-items-center justify-content-between">
+      <a href="/" class="logo">
         {% render 'logo-rejuvia' %}
       </a>
-
       <div class="nav-wrapper">
         <nav class="main-menu flex align-items-center" role="navigation">
           {% render 'mega-menu', menu: section.settings.menu_desktop.links %}
         </nav>
       </div>
-
-      {%- assign total_items = 0 -%}
-      {%- for item in cart.items -%}
-        {%- assign total_items = total_items | plus: item.quantity -%}
-      {%- endfor -%}
-
-      <div class="navigator-mobile flex align-items-center">
-        <div class="mobile-right eg-close-mobile-div">
-          <a href="#" class="btn-open-mobile-menu" aria-label="Open menu" role="button">{% render 'icon-hamburger' %}</a>
-          <a class="close hidden" aria-label="Close menu" role="button">{% render 'icon-close_button' %}</a>
-        </div>
-        <a href="/" class="logo logo-mobile">
-          {% render 'logo-rejuvia' %}
+      <div class="nav-v2-icons">
+        <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M15 16.6666C15 15.3405 14.4732 14.0688 13.5355 13.1311C12.5979 12.1934 11.3261 11.6666 10 11.6666C8.67392 11.6666 7.40215 12.1934 6.46447 13.1311C5.52678 14.0688 5 15.3405 5 16.6666" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.0001 11.6667C11.841 11.6667 13.3334 10.1743 13.3334 8.33333C13.3334 6.49238 11.841 5 10.0001 5C8.15913 5 6.66675 6.49238 6.66675 8.33333C6.66675 10.1743 8.15913 11.6667 10.0001 11.6667Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6025 1.66663 10.0001 1.66663C5.39771 1.66663 1.66675 5.39759 1.66675 9.99996C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Account Log In
         </a>
-        <div class="mobile-right">
-          <a class="cart-wrap" href="/cart" title="Bag" aria-label="Cart">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M6.66659 18.3333C7.12682 18.3333 7.49992 17.9602 7.49992 17.5C7.49992 17.0397 7.12682 16.6666 6.66659 16.6666C6.20635 16.6666 5.83325 17.0397 5.83325 17.5C5.83325 17.9602 6.20635 18.3333 6.66659 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M15.8333 18.3333C16.2936 18.3333 16.6667 17.9602 16.6667 17.5C16.6667 17.0397 16.2936 16.6666 15.8333 16.6666C15.3731 16.6666 15 17.0397 15 17.5C15 17.9602 15.3731 18.3333 15.8333 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M1.7085 1.70837H3.37516L5.59183 12.0584C5.67314 12.4374 5.88405 12.7763 6.18826 13.0166C6.49246 13.2569 6.87092 13.3837 7.2585 13.375H15.4085C15.7878 13.3744 16.1556 13.2444 16.451 13.0066C16.7465 12.7687 16.9519 12.4371 17.0335 12.0667L18.4085 5.87504H4.26683" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <a class="flex cart-wrap" href="/cart" title="Bag" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M6.66659 18.3333C7.12682 18.3333 7.49992 17.9602 7.49992 17.5C7.49992 17.0397 7.12682 16.6666 6.66659 16.6666C6.20635 16.6666 5.83325 17.0397 5.83325 17.5C5.83325 17.9602 6.20635 18.3333 6.66659 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15.8333 18.3333C16.2936 18.3333 16.6667 17.9602 16.6667 17.5C16.6667 17.0397 16.2936 16.6666 15.8333 16.6666C15.3731 16.6666 15 17.0397 15 17.5C15 17.9602 15.3731 18.3333 15.8333 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.7085 1.70837H3.37516L5.59183 12.0584C5.67314 12.4374 5.88405 12.7763 6.18826 13.0166C6.49246 13.2569 6.87092 13.3837 7.2585 13.375H15.4085C15.7878 13.3744 16.1556 13.2444 16.451 13.0066C16.7465 12.7687 16.9519 12.4371 17.0335 12.0667L18.4085 5.87504H4.26683" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
-
-      <div class="navigator navigator-right flex align-items-center">
-        <div class="nav-v2-icons">
-          <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M15 16.6666C15 15.3405 14.4732 14.0688 13.5355 13.1311C12.5979 12.1934 11.3261 11.6666 10 11.6666C8.67392 11.6666 7.40215 12.1934 6.46447 13.1311C5.52678 14.0688 5 15.3405 5 16.6666" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.0001 11.6667C11.841 11.6667 13.3334 10.1743 13.3334 8.33333C13.3334 6.49238 11.841 5 10.0001 5C8.15913 5 6.66675 6.49238 6.66675 8.33333C6.66675 10.1743 8.15913 11.6667 10.0001 11.6667Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.0001 18.3333C14.6025 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6025 1.66663 10.0001 1.66663C5.39771 1.66663 1.66675 5.39759 1.66675 9.99996C1.66675 14.6023 5.39771 18.3333 10.0001 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Account Log In
-          </a>
-          <a class="flex cart-wrap" href="/cart" title="Bag" aria-label="Cart">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M6.66659 18.3333C7.12682 18.3333 7.49992 17.9602 7.49992 17.5C7.49992 17.0397 7.12682 16.6666 6.66659 16.6666C6.20635 16.6666 5.83325 17.0397 5.83325 17.5C5.83325 17.9602 6.20635 18.3333 6.66659 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M15.8333 18.3333C16.2936 18.3333 16.6667 17.9602 16.6667 17.5C16.6667 17.0397 16.2936 16.6666 15.8333 16.6666C15.3731 16.6666 15 17.0397 15 17.5C15 17.9602 15.3731 18.3333 15.8333 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M1.7085 1.70837H3.37516L5.59183 12.0584C5.67314 12.4374 5.88405 12.7763 6.18826 13.0166C6.49246 13.2569 6.87092 13.3837 7.2585 13.375H15.4085C15.7878 13.3744 16.1556 13.2444 16.451 13.0066C16.7465 12.7687 16.9519 12.4371 17.0335 12.0667L18.4085 5.87504H4.26683" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      {%- include 'menu_mobile' -%}
     </div>
+
+    {%- comment -%} Mobile nav bar {%- endcomment -%}
+    <div class="navigator-mobile">
+      <a href="/" class="logo">
+        {% render 'logo-rejuvia' %}
+      </a>
+      <div class="navigator-mobile__right">
+        <a class="cart-wrap" href="/cart" title="Bag" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M6.66659 18.3333C7.12682 18.3333 7.49992 17.9602 7.49992 17.5C7.49992 17.0397 7.12682 16.6666 6.66659 16.6666C6.20635 16.6666 5.83325 17.0397 5.83325 17.5C5.83325 17.9602 6.20635 18.3333 6.66659 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15.8333 18.3333C16.2936 18.3333 16.6667 17.9602 16.6667 17.5C16.6667 17.0397 16.2936 16.6666 15.8333 16.6666C15.3731 16.6666 15 17.0397 15 17.5C15 17.9602 15.3731 18.3333 15.8333 18.3333Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.7085 1.70837H3.37516L5.59183 12.0584C5.67314 12.4374 5.88405 12.7763 6.18826 13.0166C6.49246 13.2569 6.87092 13.3837 7.2585 13.375H15.4085C15.7878 13.3744 16.1556 13.2444 16.451 13.0066C16.7465 12.7687 16.9519 12.4371 17.0335 12.0667L18.4085 5.87504H4.26683" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#" class="btn-open-mobile-menu" aria-label="Open menu" role="button">{% render 'icon-hamburger' %}</a>
+        <a class="close hidden" aria-label="Close menu" role="button">{% render 'icon-close_button' %}</a>
+      </div>
+    </div>
+
+    {%- comment -%} Mobile menu dropdown {%- endcomment -%}
+    {%- include 'menu_mobile' -%}
 
     {% for block in section.blocks %}
       {% if block.type == 'mega_menu' %}

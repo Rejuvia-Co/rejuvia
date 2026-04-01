@@ -1,0 +1,517 @@
+{% style %}
+.hero-v2-section {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+}
+
+.hero-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 64px 64px;
+    gap: 40px;
+}
+
+/* --- Copy Block --- */
+.hero-v2-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    width: 550px;
+    flex-shrink: 0;
+}
+
+/* Rating row */
+.hero-v2-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-v2-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.hero-v2-stars svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hero-v2-rating-text {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.hero-v2-rating-text .hero-v2-accent {
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
+}
+
+/* Heading */
+.hero-v2-heading {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.hero-v2-heading em,
+.hero-v2-heading .hero-v2-accent {
+    color: {{ section.settings.accent_color }};
+    font-style: normal;
+}
+
+/* Description */
+.hero-v2-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+/* Button block */
+.hero-v2-btn-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.hero-v2-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 24px;
+    background-color: {{ section.settings.accent_color }};
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+}
+
+.hero-v2-btn:hover {
+    opacity: 0.9;
+}
+
+.hero-v2-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.hero-v2-guarantee svg {
+    width: 14px;
+    height: 11px;
+    flex-shrink: 0;
+}
+
+/* --- Image Block --- */
+.hero-v2-image-wrap {
+    position: relative;
+    width: 600px;
+    flex-shrink: 0;
+}
+
+.hero-v2-image-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 600 / 568;
+}
+
+.hero-v2-image-bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 82%;
+    background-color: {{ section.settings.image_bg_color }};
+    border-radius: 20px;
+}
+
+.hero-v2-image-inner img {
+    position: relative;
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* --- Testimonial Card --- */
+.hero-v2-testimonial {
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 349px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
+}
+
+.hero-v2-testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.hero-v2-testimonial-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-v2-testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-v2-testimonial-stars {
+    display: flex;
+    gap: 1px;
+}
+
+.hero-v2-testimonial-stars svg {
+    width: 14px;
+    height: 14px;
+}
+
+.hero-v2-testimonial-name {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.hero-v2-testimonial-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+/* ===================== Responsive ===================== */
+
+@media (max-width: 1100px) {
+    .hero-v2-copy {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+    }
+    .hero-v2-image-wrap {
+        width: 45%;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-v2-container {
+        flex-direction: column-reverse;
+        padding: 40px 35px 50px;
+        gap: 32px;
+    }
+    .hero-v2-copy {
+        width: 100%;
+        gap: 24px;
+    }
+    .hero-v2-image-wrap {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .hero-v2-heading {
+        font-size: 30px;
+    }
+    .hero-v2-btn-block {
+        max-width: 100%;
+    }
+    .hero-v2-testimonial {
+        width: 300px;
+        right: 10px;
+        bottom: -16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-v2-container {
+        padding: 30px 20px 40px;
+        gap: 24px;
+    }
+    .hero-v2-copy {
+        gap: 20px;
+    }
+    .hero-v2-heading {
+        font-size: 26px;
+    }
+    .hero-v2-description {
+        font-size: 15px;
+    }
+    .hero-v2-btn {
+        padding: 18px 20px;
+        font-size: 16px;
+    }
+    .hero-v2-testimonial {
+        width: 260px;
+        padding: 12px;
+        gap: 10px;
+        right: 8px;
+        bottom: -12px;
+    }
+    .hero-v2-testimonial-avatar {
+        width: 44px;
+        height: 44px;
+    }
+    .hero-v2-testimonial-text {
+        font-size: 12px;
+    }
+    .hero-v2-testimonial-name {
+        font-size: 11px;
+    }
+}
+{% endstyle %}
+
+<div class="hero-v2-container">
+    {%- comment -%} === Copy Block === {%- endcomment -%}
+    <div class="hero-v2-copy">
+        {%- comment -%} Rating {%- endcomment -%}
+        <div class="hero-v2-rating">
+            <div class="hero-v2-stars">
+                {% for i in (1..5) %}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                {% endfor %}
+            </div>
+            <span class="hero-v2-rating-text">
+                <span class="hero-v2-accent">{{ section.settings.rating_score }}</span>
+                Stars |
+                <span class="hero-v2-accent">{{ section.settings.rating_sold }}</span>
+                Sold
+            </span>
+        </div>
+
+        {%- comment -%} Heading {%- endcomment -%}
+        <h2 class="hero-v2-heading">{{ section.settings.heading }}</h2>
+
+        {%- comment -%} Description {%- endcomment -%}
+        <p class="hero-v2-description">{{ section.settings.description }}</p>
+
+        {%- comment -%} Button + Guarantee {%- endcomment -%}
+        <div class="hero-v2-btn-block">
+            <a class="hero-v2-btn" href="{{ section.settings.btn_url }}">
+                {{ section.settings.btn_text }}
+            </a>
+            {% if section.settings.guarantee_text != blank %}
+                <div class="hero-v2-guarantee">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 11" fill="none">
+                        <path d="M1 5.5L5 9.5L13 1.5" stroke="#672666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ section.settings.guarantee_text }}</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {%- comment -%} === Image Block === {%- endcomment -%}
+    <div class="hero-v2-image-wrap">
+        <div class="hero-v2-image-inner">
+            <div class="hero-v2-image-bg"></div>
+            {% if section.settings.image != blank %}
+                <img
+                    src="{{ section.settings.image | image_url: width: 1200 }}"
+                    alt="{{ section.settings.image.alt | default: section.settings.heading }}"
+                    width="600"
+                    height="568"
+                    loading="eager"
+                >
+            {% endif %}
+        </div>
+
+        {%- comment -%} Testimonial card {%- endcomment -%}
+        {% if section.settings.testimonial_text != blank %}
+            <div class="hero-v2-testimonial">
+                {% if section.settings.testimonial_avatar != blank %}
+                    <img
+                        class="hero-v2-testimonial-avatar"
+                        src="{{ section.settings.testimonial_avatar | image_url: width: 120 }}"
+                        alt="{{ section.settings.testimonial_name }}"
+                        width="60"
+                        height="60"
+                        loading="eager"
+                    >
+                {% endif %}
+                <div class="hero-v2-testimonial-body">
+                    <div class="hero-v2-testimonial-header">
+                        <div class="hero-v2-testimonial-stars">
+                            {% assign star_count = section.settings.testimonial_stars | default: 5 %}
+                            {% for i in (1..star_count) %}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                            {% endfor %}
+                        </div>
+                        <span class="hero-v2-testimonial-name">{{ section.settings.testimonial_name }}</span>
+                    </div>
+                    <p class="hero-v2-testimonial-text">{{ section.settings.testimonial_text }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Hero V2",
+    "class": "hero-v2-section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#fafafa"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#672666"
+        },
+        {
+            "type": "header",
+            "content": "Rating bar"
+        },
+        {
+            "type": "text",
+            "id": "rating_score",
+            "label": "Rating score",
+            "default": "4.6"
+        },
+        {
+            "type": "text",
+            "id": "rating_sold",
+            "label": "Units sold",
+            "default": "150K+"
+        },
+        {
+            "type": "header",
+            "content": "Copy"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Join 300,000 People <em>Sleeping Better</em> and <em>Through the Night</em></p>"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "If you've tried gummies, pills, or prescriptions and still aren't sleeping – it's not you. Most sleep products lose up to 80% of their ingredients before they ever reach your bloodstream. Rejuvia was made to fix that."
+        },
+        {
+            "type": "header",
+            "content": "Button"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "Sleep Better Tonight"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button link"
+        },
+        {
+            "type": "text",
+            "id": "guarantee_text",
+            "label": "Guarantee text",
+            "default": "90-Day Risk-Free Money-Back Guarantee"
+        },
+        {
+            "type": "header",
+            "content": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Hero image"
+        },
+        {
+            "type": "color",
+            "id": "image_bg_color",
+            "label": "Image background color",
+            "default": "#f7f4f7"
+        },
+        {
+            "type": "header",
+            "content": "Testimonial"
+        },
+        {
+            "type": "image_picker",
+            "id": "testimonial_avatar",
+            "label": "Avatar"
+        },
+        {
+            "type": "text",
+            "id": "testimonial_name",
+            "label": "Name",
+            "default": "Betty M."
+        },
+        {
+            "type": "textarea",
+            "id": "testimonial_text",
+            "label": "Quote",
+            "default": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy."
+        },
+        {
+            "type": "range",
+            "id": "testimonial_stars",
+            "label": "Stars",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default": 5
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

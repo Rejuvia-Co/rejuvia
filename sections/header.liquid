@@ -772,6 +772,16 @@ html, body{overflow: visible!important; overflow-x: hidden}
     fill: #FAB851;
   }
 
+  .nav-v2 .mega-menu-v2__trait-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .nav-v2 .mega-menu-v2__trait-icon svg path {
+    fill: none;
+    stroke: #141414;
+  }
+
   .nav-v2 .nav-v2-icons {
     display: flex;
     align-items: center;
@@ -1025,21 +1035,27 @@ html, body{overflow: visible!important; overflow-x: hidden}
         {%- endfor -%}
       </div>
       <div class="mega-menu-v2__traits">
-        {% if block.settings.benefit_1_icon != blank %}
+        {% if block.settings.benefit_1_text != blank %}
         <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_1_icon }}</span>
+          {% if block.settings.benefit_1_icon != blank %}
+            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_1_icon }}</span>
+          {% endif %}
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_1_text }}</span>
         </div>
         {% endif %}
-        {% if block.settings.benefit_2_icon != blank %}
+        {% if block.settings.benefit_2_text != blank %}
         <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_2_icon }}</span>
+          {% if block.settings.benefit_2_icon != blank %}
+            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_2_icon }}</span>
+          {% endif %}
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_2_text }}</span>
         </div>
         {% endif %}
-        {% if block.settings.benefit_3_icon != blank %}
+        {% if block.settings.benefit_3_text != blank %}
         <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_3_icon }}</span>
+          {% if block.settings.benefit_3_icon != blank %}
+            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_3_icon }}</span>
+          {% endif %}
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_3_text }}</span>
         </div>
         {% endif %}

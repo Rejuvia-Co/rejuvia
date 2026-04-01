@@ -1,0 +1,294 @@
+<style>
+.iwt-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.iwt-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Copy block */
+.iwt-v2-copy {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.iwt-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.iwt-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.iwt-v2-heading em {
+    color: #672666;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.iwt-v2-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.iwt-v2-desc p { margin: 0 0 1em; }
+.iwt-v2-desc p:last-child { margin-bottom: 0; }
+.iwt-v2-desc strong { font-weight: 700; }
+
+/* Stats card */
+.iwt-v2-stats {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 359px;
+}
+
+.iwt-v2-stat {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.iwt-v2-stat-num {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    color: #672666;
+    white-space: nowrap;
+    min-width: 50px;
+}
+
+.iwt-v2-stat-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.iwt-v2-divider {
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+}
+
+/* Image block */
+.iwt-v2-image {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.iwt-v2-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.iwt-v2-badge {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    background: #672666;
+    color: #eaeaf7;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    padding: 15px 23px;
+    border-radius: 100px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 3.5px 19px rgba(0,0,0,0.06);
+    white-space: nowrap;
+}
+
+/* Mobile heading */
+.iwt-v2-heading-mobile {
+    display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .iwt-v2-container {
+        gap: 40px;
+        padding: 40px 32px;
+    }
+    .iwt-v2-heading { font-size: 26px; }
+    .iwt-v2-image img { height: 500px; }
+}
+
+@media (max-width: 900px) {
+    .iwt-v2-container {
+        flex-direction: column;
+        padding: 40px 16px;
+        gap: 24px;
+    }
+    .iwt-v2-heading-mobile {
+        display: block;
+        font-size: 24px;
+        font-weight: 500 !important;
+        line-height: 1.4;
+        color: #141414;
+        letter-spacing: 0 !important;
+        margin: 0;
+    }
+    .iwt-v2-heading-mobile p {
+        margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+    }
+    .iwt-v2-heading-mobile em {
+        color: #672666; font-style: normal; text-decoration: underline;
+    }
+    .iwt-v2-copy .iwt-v2-heading {
+        display: none;
+    }
+    .iwt-v2-image {
+        width: 100%;
+    }
+    .iwt-v2-image img {
+        height: 360px;
+        width: 100%;
+    }
+    .iwt-v2-badge {
+        font-size: 12px;
+        padding: 8px 12px;
+        bottom: 24px;
+        right: 16px;
+    }
+    .iwt-v2-stats {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+</style>
+
+<div class="iwt-v2-container">
+    {%- comment -%} Mobile heading {%- endcomment -%}
+    <div class="iwt-v2-heading-mobile">{{ section.settings.heading }}</div>
+
+    {%- comment -%} === Copy Block === {%- endcomment -%}
+    <div class="iwt-v2-copy">
+        <div class="iwt-v2-heading">{{ section.settings.heading }}</div>
+        <div class="iwt-v2-desc">{{ section.settings.description }}</div>
+
+        {%- comment -%} Stats card {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+            <div class="iwt-v2-stats">
+                {% for block in section.blocks %}
+                    {% if forloop.first == false %}
+                        <div class="iwt-v2-divider"></div>
+                    {% endif %}
+                    <div class="iwt-v2-stat" {{ block.shopify_attributes }}>
+                        <span class="iwt-v2-stat-num">{{ block.settings.number }}</span>
+                        <span class="iwt-v2-stat-label">{{ block.settings.label }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    {%- comment -%} === Image === {%- endcomment -%}
+    <div class="iwt-v2-image">
+        {% if section.settings.image != blank %}
+            <img
+                src="{{ section.settings.image | image_url: width: 1200 }}"
+                alt="{{ section.settings.image.alt | default: 'Product image' }}"
+                loading="lazy"
+            >
+        {% endif %}
+        {% if section.settings.badge_text != blank %}
+            <div class="iwt-v2-badge">{{ section.settings.badge_text }}</div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Image with Text V2",
+    "class": "iwt-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Here's why <em>Rejuvia works better</em></p>"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Rejuvia takes a completely different approach.</p><p>Instead of another pill or gummy, it's <strong>a sublingual oral spray.</strong></p><p>You spray it under your tongue, where it absorbs directly into your bloodstream – no stomach, no liver, no wasted ingredients.</p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "badge_text",
+            "label": "Badge text",
+            "default": "Higher absorption rate"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "stat",
+            "name": "Stat",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "number",
+                    "label": "Number",
+                    "default": "13+"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "Natural ingredients"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image with Text V2",
+            "category": "Custom",
+            "blocks": [
+                { "type": "stat", "settings": { "number": "13+", "label": "Natural ingredients" } },
+                { "type": "stat", "settings": { "number": "2mg", "label": "Low-dose melatonin" } },
+                { "type": "stat", "settings": { "number": "15", "label": "Minutes to sleep" } },
+                { "type": "stat", "settings": { "number": "0", "label": "Zero grogginess" } }
+            ]
+        }
+    ]
+}
+{% endschema %}

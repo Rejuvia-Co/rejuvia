@@ -3,7 +3,7 @@
   letter-spacing: -.4px
 }
     #page > header{z-index: 110;    transition: all 0.4s;}
-  body.sticky-header .header .main-content{background:#fff;}
+  body.sticky-header .header:not(.nav-v2) .main-content{background:#fff;}
 #page  #shopify-section-header-top{
 }
   .utility-bar-items p{margin-bottom:0;font-size:14px;}
@@ -117,7 +117,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   }
 
   @media(min-width: 500px){
-    #header > .container{
+    #header:not(.nav-v2) > .container{
       background-color: #ffffff !important;
     }
   }
@@ -594,7 +594,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
   }
 
   .nav-v2.header {
-    background: transparent;
+    background: transparent !important;
     border: none;
     width: 100%;
     max-width: 1440px;
@@ -602,7 +602,12 @@ html, body{overflow: visible!important; overflow-x: hidden}
     margin-right: auto;
     padding: 12px 32px 24px;
     box-sizing: border-box;
-    overflow: hidden;
+  }
+
+  .nav-v2 .container {
+    padding: 0;
+    max-width: 100%;
+    background: transparent !important;
   }
 
   .nav-v2 .container {

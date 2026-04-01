@@ -2759,12 +2759,22 @@
           "description": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>",
           "accent_color": "#672666"
         }
+      },
+      "listicle_v2_N8G8nM": {
+        "type": "listicle-v2",
+        "name": "Listicle V2",
+        "settings": {
+          "heading": "<p>The real issue was never what you took, it was <em>how your body absorbed it</em></p>",
+          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>",
+          "graph_image": "shopify://shop_images/Listicle.png"
+        }
       }
     },
     "content_for_index": [
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
       "product_intro_v2_mcmr7P",
+      "listicle_v2_N8G8nM",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

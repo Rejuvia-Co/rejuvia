@@ -444,21 +444,21 @@
 
           {% if mega_block %}
           <div class="mobile-menu-v2__traits">
-            {% if mega_block.settings.benefit_1_icon != blank %}
+            {% if mega_block.settings.benefit_1_text != blank %}
             <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_1_icon }}</span>
+              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-shipping' %}</span>
               <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_1_text }}</span>
             </div>
             {% endif %}
-            {% if mega_block.settings.benefit_2_icon != blank %}
+            {% if mega_block.settings.benefit_2_text != blank %}
             <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_2_icon }}</span>
+              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-reviews' %}</span>
               <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_2_text }}</span>
             </div>
             {% endif %}
-            {% if mega_block.settings.benefit_3_icon != blank %}
+            {% if mega_block.settings.benefit_3_text != blank %}
             <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{{ mega_block.settings.benefit_3_icon }}</span>
+              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-family' %}</span>
               <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_3_text }}</span>
             </div>
             {% endif %}

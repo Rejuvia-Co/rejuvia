@@ -1028,25 +1028,19 @@ html, body{overflow: visible!important; overflow-x: hidden}
       <div class="mega-menu-v2__traits">
         {% if block.settings.benefit_1_text != blank %}
         <div class="mega-menu-v2__trait">
-          {% if block.settings.benefit_1_icon != blank %}
-            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_1_icon }}</span>
-          {% endif %}
+          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-shipping' %}</span>
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_1_text }}</span>
         </div>
         {% endif %}
         {% if block.settings.benefit_2_text != blank %}
         <div class="mega-menu-v2__trait">
-          {% if block.settings.benefit_2_icon != blank %}
-            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_2_icon }}</span>
-          {% endif %}
+          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-reviews' %}</span>
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_2_text }}</span>
         </div>
         {% endif %}
         {% if block.settings.benefit_3_text != blank %}
         <div class="mega-menu-v2__trait">
-          {% if block.settings.benefit_3_icon != blank %}
-            <span class="mega-menu-v2__trait-icon">{{ block.settings.benefit_3_icon }}</span>
-          {% endif %}
+          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-family' %}</span>
           <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_3_text }}</span>
         </div>
         {% endif %}
@@ -1640,34 +1634,16 @@ html, body{overflow: visible!important; overflow-x: hidden}
             "content": "Footer Benefits"
           },
           {
-            "type": "textarea",
-            "id": "benefit_1_icon",
-            "label": "Benefit 1 SVG icon",
-            "info": "Paste raw SVG markup"
-          },
-          {
             "type": "text",
             "id": "benefit_1_text",
             "label": "Benefit 1 text",
             "default": "Free Same-Day Shipping"
           },
           {
-            "type": "textarea",
-            "id": "benefit_2_icon",
-            "label": "Benefit 2 SVG icon",
-            "info": "Paste raw SVG markup"
-          },
-          {
             "type": "text",
             "id": "benefit_2_text",
             "label": "Benefit 2 text",
             "default": "3,000+ 5-Star Reviews"
-          },
-          {
-            "type": "textarea",
-            "id": "benefit_3_icon",
-            "label": "Benefit 3 SVG icon",
-            "info": "Paste raw SVG markup"
           },
           {
             "type": "text",

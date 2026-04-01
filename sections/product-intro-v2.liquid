@@ -79,13 +79,14 @@
 .pi-v2-image-bg {
     position: absolute;
     width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(250,250,254,1) 59%, rgba(250,250,250,0) 100%);
-    filter: blur(4px);
+    height: 395px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-image: url({{ 'pi-v2-dotted-circle.svg' | asset_url }});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .pi-v2-tab-image {
@@ -153,11 +154,19 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    overflow: visible;
+    transition: opacity 0.3s ease;
+}
+
+.pi-v2-nav-btn.is-disabled {
+    opacity: 0.5;
+    cursor: default;
 }
 
 .pi-v2-nav-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
+    overflow: visible;
 }
 
 .pi-v2-nav-counter {
@@ -302,8 +311,8 @@
         height: 250px;
     }
     .pi-v2-image-bg {
-        width: 280px;
-        height: 280px;
+        width: 260px;
+        height: 270px;
     }
     .pi-v2-tab-image {
         width: 177px;
@@ -354,18 +363,34 @@
         </div>
         <div class="pi-v2-nav">
             <button class="pi-v2-nav-btn" data-pi-v2-prev aria-label="Previous">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="11.5" stroke="#141414"/>
-                    <path d="M14 8L10 12L14 16" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="5 2 50 50" fill="none" style="transform:rotate(180deg)">
+                    <g filter="url(#pi_prev_shadow)">
+                        <circle cx="29.6667" cy="26.6667" r="16.6667" fill="white"/>
+                    </g>
+                    <path d="M29.6665 33.3333L36.3332 26.6667L29.6665 20" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M23 26.6666H36.3333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <filter id="pi_prev_shadow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="#000" flood-opacity="0.06"/>
+                        </filter>
+                    </defs>
                 </svg>
             </button>
             <span class="pi-v2-nav-counter">
                 <strong data-pi-v2-current>1</strong> / {{ section.blocks.size }}
             </span>
             <button class="pi-v2-nav-btn" data-pi-v2-next aria-label="Next">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="11.5" stroke="#141414"/>
-                    <path d="M10 8L14 12L10 16" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="5 2 50 50" fill="none">
+                    <g filter="url(#pi_next_shadow)">
+                        <circle cx="29.6667" cy="26.6667" r="16.6667" fill="white"/>
+                    </g>
+                    <path d="M29.6665 33.3333L36.3332 26.6667L29.6665 20" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M23 26.6666H36.3333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <filter id="pi_next_shadow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="#000" flood-opacity="0.06"/>
+                        </filter>
+                    </defs>
                 </svg>
             </button>
         </div>
@@ -381,7 +406,7 @@
                 <button class="pi-v2-tab-header" type="button">
                     <div class="pi-v2-tab-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none">
-                            <path d="M2 6H10M6 2V10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M3 3L9 9M9 3L3 9" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <span class="pi-v2-tab-title">{{ block.settings.title }}</span>
@@ -409,8 +434,17 @@
     var total = tabs.length;
     var current = 0;
 
+    var prev = section.querySelector('[data-pi-v2-prev]');
+    var next = section.querySelector('[data-pi-v2-next]');
+
+    function updateNav() {
+        if (prev) prev.classList.toggle('is-disabled', current === 0);
+        if (next) next.classList.toggle('is-disabled', current === total - 1);
+    }
+
     function activate(index) {
-        current = ((index % total) + total) % total;
+        if (index < 0 || index >= total) return;
+        current = index;
         tabs.forEach(function(t, i) {
             t.classList.toggle('is-active', i === current);
         });
@@ -421,6 +455,7 @@
             b.classList.toggle('is-active', i === current);
         });
         if (counter) counter.textContent = current + 1;
+        updateNav();
     }
 
     tabs.forEach(function(tab, i) {
@@ -429,10 +464,9 @@
         });
     });
 
-    var prev = section.querySelector('[data-pi-v2-prev]');
-    var next = section.querySelector('[data-pi-v2-next]');
     if (prev) prev.addEventListener('click', function() { activate(current - 1); });
     if (next) next.addEventListener('click', function() { activate(current + 1); });
+    updateNav();
 })();
 </script>
 

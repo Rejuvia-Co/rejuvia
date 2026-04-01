@@ -132,9 +132,11 @@
   {%- endfor -%}
 
   <div class="announcement-bar__inner">
+    {%- if slide_count > 1 -%}
     <button class="announcement-bar__dot announcement-bar__dot--prev" aria-label="Previous announcement" data-announcement-prev>
       {% render 'icon-announcement-dot', direction: 'prev' %}
     </button>
+    {%- endif -%}
 
     <div class="announcement-bar__slides">
       {%- assign slide_index = 0 -%}
@@ -148,9 +150,11 @@
       {%- endfor -%}
     </div>
 
+    {%- if slide_count > 1 -%}
     <button class="announcement-bar__dot announcement-bar__dot--next" aria-label="Next announcement" data-announcement-next>
       {% render 'icon-announcement-dot', direction: 'next' %}
     </button>
+    {%- endif -%}
   </div>
 </div>
 </div>

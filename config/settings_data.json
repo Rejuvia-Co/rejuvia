@@ -2645,6 +2645,30 @@
       },
       "hero_v2_ypthhg": {
         "type": "hero-v2",
+        "blocks": {
+          "testimonial_yEEgca": {
+            "type": "testimonial",
+            "settings": {
+              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+              "name": "Betty M.",
+              "quote": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
+              "stars": 5
+            }
+          },
+          "testimonial_tJdwPf": {
+            "type": "testimonial",
+            "settings": {
+              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+              "name": "Betty K.",
+              "quote": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
+              "stars": 5
+            }
+          }
+        },
+        "block_order": [
+          "testimonial_yEEgca",
+          "testimonial_tJdwPf"
+        ],
         "name": "Hero V2",
         "settings": {
           "bg_color": "#fafafa",

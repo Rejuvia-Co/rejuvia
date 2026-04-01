@@ -681,50 +681,35 @@
       "header": {
         "type": "header",
         "blocks": {
-          "mobile_collection_4VLE8R": {
-            "type": "mobile-collection",
+          "mega_menu_q8hRMc": {
+            "type": "mega_menu",
             "settings": {
-              "selected_collection": "shop-more"
-            }
-          },
-          "mobile_menu_links_Q6eE6m": {
-            "type": "mobile-menu-links",
-            "settings": {
-              "first_label": "Reviews",
-              "first_url": "shopify://pages/reviews",
-              "second_label": "Ingredients",
-              "second_url": "shopify://pages/ingredients",
-              "third_label": "FAQs",
-              "third_url": "shopify://pages/rejuvia-faqs",
-              "fourth_label": "Shop All",
-              "fourth_url": "shopify://collections/more-products"
-            }
-          },
-          "bottom_menu_mobile_info_dQD8kV": {
-            "type": "bottom-menu-mobile-info",
-            "settings": {
-              "first_label": "Free U.S. Shipping $79+",
-              "second_label": "Used Nightly By 300,000+ Sleepers"
-            }
-          },
-          "utility_bar_aywzQL": {
-            "type": "utility_bar",
-            "settings": {
-              "show": true,
-              "link": "shopify://products/sleep-spray-6-pack",
-              "text": "<p>Get 53% OFF Today  <a href=\"/products/sleep-spray-6-pack\" title=\"Sleep Spray 6-Pack\">Shop Sleep Spray 6-Pack</a></p>"
+              "menu_item_handle": "products",
+              "product_1": "sleep-spray",
+              "product_1_desc": "",
+              "product_2": "oral-stress-spray",
+              "product_2_desc": "",
+              "product_3": "lutein",
+              "product_3_desc": "",
+              "product_4": "vitamin-d3-k2-spray",
+              "product_4_desc": "",
+              "product_5": "",
+              "product_5_desc": "",
+              "benefit_1_icon": "",
+              "benefit_1_text": "Free Same-Day Shipping",
+              "benefit_2_icon": "",
+              "benefit_2_text": "3,000+ 5-Star Reviews",
+              "benefit_3_icon": "",
+              "benefit_3_text": "Family-Founded Brand"
             }
           }
         },
         "block_order": [
-          "mobile_collection_4VLE8R",
-          "mobile_menu_links_Q6eE6m",
-          "bottom_menu_mobile_info_dQD8kV",
-          "utility_bar_aywzQL"
+          "mega_menu_q8hRMc"
         ],
         "settings": {
           "nav_background_color": "#fafafa",
-          "menu_desktop": "desktop-menu",
+          "menu_desktop": "header-navigation",
           "behavior": "static",
           "drop_header": false,
           "header_color": "#ffffff",

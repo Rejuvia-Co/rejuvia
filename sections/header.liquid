@@ -593,9 +593,14 @@ html, body{overflow: visible!important; overflow-x: hidden}
     background: transparent;
   }
 
-  .nav-v2.header {
+  .nav-v2.header,
+  .nav-v2.header.sticky_add_color,
+  .nav-v2.header.header-open,
+  body.sticky-header .nav-v2.header,
+  body.scroll .nav-v2.header {
     background: transparent !important;
-    border: none;
+    background-color: transparent !important;
+    border: none !important;
     width: 100%;
     max-width: 1440px;
     margin-left: auto;
@@ -604,10 +609,13 @@ html, body{overflow: visible!important; overflow-x: hidden}
     box-sizing: border-box;
   }
 
-  .nav-v2 .container {
+  .nav-v2 .container,
+  .nav-v2.header-open .container,
+  body.sticky-header .nav-v2 .container {
     padding: 0;
     max-width: 100%;
     background: transparent !important;
+    background-color: transparent !important;
   }
 
   .nav-v2 .container {

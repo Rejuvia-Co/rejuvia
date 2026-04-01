@@ -28,6 +28,22 @@
     position: relative;
   }
 
+  #header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 0;
+  }
+
+  #header .container {
+    position: relative;
+    z-index: 1;
+  }
+
   #header .main-content {
     background: #EAEAF7;
     border-radius: 10px;
@@ -37,12 +53,6 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    z-index: 2;
-  }
-
-  #header .container {
-    position: relative;
-    z-index: 2;
   }
 
 

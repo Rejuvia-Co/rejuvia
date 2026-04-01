@@ -2715,14 +2715,55 @@
         ],
         "name": "Guarantees V2",
         "settings": {
-          "bg_color": "#EAEAF7",
+          "bg_color": "#eaeaf7",
           "icon_color": "#672666"
+        }
+      },
+      "product_intro_v2_mcmr7P": {
+        "type": "product-intro-v2",
+        "blocks": {
+          "tab_MBEqta": {
+            "type": "tab",
+            "settings": {
+              "title": "Melatonin Gummies",
+              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "badge_text": "80% lost to digestion"
+            }
+          },
+          "tab_iLBcRm": {
+            "type": "tab",
+            "settings": {
+              "title": "The Prescription Trade-Off",
+              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "badge_text": "Risk of dependency"
+            }
+          },
+          "tab_TfaWen": {
+            "type": "tab",
+            "settings": {
+              "title": "The \"Natural\" Cycle",
+              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "badge_text": "Temporary relief only"
+            }
+          }
+        },
+        "block_order": [
+          "tab_MBEqta",
+          "tab_iLBcRm",
+          "tab_TfaWen"
+        ],
+        "name": "Product Intro V2",
+        "settings": {
+          "heading": "<p>You've tried everything, <em>here's why none of it worked</em></p>",
+          "description": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>",
+          "accent_color": "#672666"
         }
       }
     },
     "content_for_index": [
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
+      "product_intro_v2_mcmr7P",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

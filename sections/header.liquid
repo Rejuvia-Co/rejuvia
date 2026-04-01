@@ -21,6 +21,8 @@ html, body{overflow: visible!important; overflow-x: hidden}
   .header {width: 100%; position: relative; color: {{section.settings.header_text_color}}; background: {{section.settings.header_color}}; {% if section.settings.header_border_color != 'rgba(0,0,0,0)' %}border-bottom: 1px solid {{section.settings.header_border_color}};{% else %}border: none;{% endif %} }
   .header svg {width: 20px; height: 20px;}
   .header svg path {fill: #000000/*{{section.settings.header_text_color}}*/;}
+  .nav-v2 svg {width: auto; height: auto;}
+  .nav-v2 svg path {fill: revert;}
 
   .header .logo {line-height: 100%; width: 100%; max-width: {{section.settings.logo_max_width}}; margin-right: 24px;}
 
@@ -758,28 +760,17 @@ html, body{overflow: visible!important; overflow-x: hidden}
     flex-shrink: 0;
   }
 
-  .nav-v2 .nav-v2-icons svg path,
-  .nav-v2 .main-menu .icon svg path,
-  .nav-v2 .main-menu .icon-dropdown path {
-    fill: none;
-  }
-
   .nav-v2 .logo .logo-rejuvia-svg path {
     fill: #141414;
   }
 
-  .nav-v2 .mega-menu-v2__card-stars svg path {
-    fill: #FAB851;
+  .nav-v2 .nav-v2-icons svg path {
+    fill: none;
   }
 
   .nav-v2 .mega-menu-v2__trait-icon svg {
     width: 20px !important;
     height: 20px !important;
-  }
-
-  .nav-v2 .mega-menu-v2__trait-icon svg path {
-    fill: none;
-    stroke: #141414;
   }
 
   .nav-v2 .nav-v2-icons {

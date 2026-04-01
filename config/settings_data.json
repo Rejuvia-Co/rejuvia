@@ -2656,12 +2656,9 @@
           "btn_text": "Sleep Better Tonight",
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
-          "image": "shopify://shop_images/hero-v2-product.png",
+          "image": "shopify://shop_images/Image.png",
           "image_bg_color": "#f7f4f7",
-          "testimonial_avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
-          "testimonial_name": "Betty M.",
-          "testimonial_text": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
-          "testimonial_stars": 5
+          "testimonial_speed": 5
         }
       }
     },

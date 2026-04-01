@@ -1107,6 +1107,7 @@
       },
       "press_logos_YiWTgA": {
         "type": "press-logos",
+        "disabled": true,
         "settings": {
           "hero_heading": "\"Rejuvia is not only incredibly effective at night, but it's also 100% safe and made with all-natural ingredients.",
           "image-1": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
@@ -2684,10 +2685,44 @@
           "image_bg_color": "#f7f4f7",
           "testimonial_speed": 5
         }
+      },
+      "guarantees_v2_h3tcz4": {
+        "type": "guarantees-v2",
+        "blocks": {
+          "guarantee_brWbmN": {
+            "type": "guarantee",
+            "settings": {
+              "text": "5,000+ 5-Star Reviews"
+            }
+          },
+          "guarantee_dmXWWm": {
+            "type": "guarantee",
+            "settings": {
+              "text": "Free US Shipping over $79"
+            }
+          },
+          "guarantee_PLqc3a": {
+            "type": "guarantee",
+            "settings": {
+              "text": "150,000+ Happy Customers"
+            }
+          }
+        },
+        "block_order": [
+          "guarantee_brWbmN",
+          "guarantee_dmXWWm",
+          "guarantee_PLqc3a"
+        ],
+        "name": "Guarantees V2",
+        "settings": {
+          "bg_color": "#EAEAF7",
+          "icon_color": "#672666"
+        }
       }
     },
     "content_for_index": [
       "hero_v2_ypthhg",
+      "guarantees_v2_h3tcz4",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

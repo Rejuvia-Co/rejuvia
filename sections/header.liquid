@@ -16,7 +16,9 @@
     margin: 0 auto;
     padding: 12px 32px 24px;
     box-sizing: border-box;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 110;
   }
 
   #header .container {
@@ -38,20 +40,6 @@
     z-index: 1;
   }
 
-  #header .main-content::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background: #EAEAF7;
-    z-index: -1;
-  }
-
-  #header .container {
-    background: transparent !important;
-  }
 
   /* Logo */
   #header .logo {

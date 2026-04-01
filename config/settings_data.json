@@ -747,12 +747,7 @@
           "menu_font_weight": "700",
           "menu_letter_spacing": "-0.4px",
           "menu_text_transform": "none",
-          "dropdown_bg_color": "#ffffff",
-          "logo": "shopify://shop_images/REJUVIA_Logo_Wordmark_Black-01_51888cf8-03bd-42ff-be2d-076ef4bbc928.png",
-          "logo_mobile": "shopify://shop_images/REJUVIA_Logo_Wordmark_Black-01_51888cf8-03bd-42ff-be2d-076ef4bbc928.png",
-          "logo_max_width": "10em",
-          "logo_max_width_mobile": "8em",
-          "drop_logo_max_width": "12em"
+          "dropdown_bg_color": "#ffffff"
         }
       },
       "footer": {

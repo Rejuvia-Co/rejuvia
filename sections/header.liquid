@@ -25,9 +25,8 @@ html, body{overflow: visible!important; overflow-x: hidden}
   .nav-v2 svg path {fill: none;}
   .nav-v2 .mega-menu-v2__trait-icon {min-width: 20px; min-height: 20px;}
   .nav-v2 .mega-menu-v2__trait-icon svg {width: 20px !important; height: 20px !important; overflow: visible !important; display: block !important;}
-  .nav-v2 .mega-menu-v2__trait-icon svg * {fill: none !important;}
-  .nav-v2 .mega-menu-v2__trait-icon svg path {stroke: #141414 !important; stroke-width: 1.5 !important;}
-  .nav-v2 .mega-menu-v2__trait-icon svg rect[fill="white"] {fill: white !important;}
+  .nav-v2 .mega-menu-v2__trait-icon svg > g > path,
+  .nav-v2 .mega-menu-v2__trait-icon svg > path {fill: none !important;}
 
   .header .logo {line-height: 100%; width: 100%; max-width: {{section.settings.logo_max_width}}; margin-right: 24px;}
 

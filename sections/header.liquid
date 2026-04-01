@@ -1014,8 +1014,7 @@ html, body{overflow: visible!important; overflow-x: hidden}
                     {% render 'icon-star-rating' %}
                   </div>
                   <span class="mega-menu-v2__card-rating-text">
-                    <strong>{% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewAverageValue | round: 1 }}{% else %}5.0{% endif %}</strong>
-                    <span class="mega-menu-v2__card-rating-count">({% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewCount | append: ' Reviews' }}{% else %}Reviews{% endif %})</span>
+                    <strong>{% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewAverageValue | round: 1 }}{% else %}5.0{% endif %}</strong>&nbsp;<span class="mega-menu-v2__card-rating-count">({% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewCount | append: ' Reviews' }}{% else %}Reviews{% endif %})</span>
                   </span>
                 </div>
                 <h3 class="mega-menu-v2__card-title">{{ product.title }}</h3>

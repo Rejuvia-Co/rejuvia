@@ -2949,6 +2949,17 @@
           "trusted_count": "300,000+",
           "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
         }
+      },
+      "what_makes_different_v2_rRVmVL": {
+        "type": "what-makes-different-v2",
+        "name": "What Makes Different V2",
+        "settings": {
+          "heading": "<p>What makes Rejuvia <em>different?</em></p>",
+          "subtitle": "A fast-acting oral sleep spray with 13+ natural ingredients that absorb under your tongue in minutes.",
+          "image": "shopify://shop_images/IMG.png",
+          "card_title": "Why spraying works better",
+          "card_text": "<p>The tissue under your tongue is packed with blood vessels.</p><p>When something absorbs there, it goes directly into your bloodstream, <strong>skipping the digestive process</strong> that destroys most pills and gummies.</p><p><strong>More of the active ingredients</strong> reach your body intact, and you feel it <strong>working faster.</strong></p>"
+        }
       }
     },
     "content_for_index": [
@@ -2958,6 +2969,7 @@
       "listicle_v2_N8G8nM",
       "image_text_v2_EEfUyt",
       "real_stories_v2_CKGqJy",
+      "what_makes_different_v2_rRVmVL",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

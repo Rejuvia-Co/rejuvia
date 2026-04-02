@@ -3102,7 +3102,7 @@
               "name": "Sleep Pills",
               "image": "shopify://shop_images/sleeping_pill_1.png",
               "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
-              "colors": "||alt-v2-cell--red||||",
+              "colors": "|alt-v2-cell--red|||||",
               "subs": "(up to 90 minutes)||||||"
             }
           },
@@ -3112,7 +3112,7 @@
               "name": "Sleep Gummies",
               "image": "shopify://shop_images/single-sleep-gummy-closeup.png_1.png",
               "values": "Slow|$1.83/night|check|check|cross|cross|cross",
-              "colors": "||alt-v2-cell--orange||||",
+              "colors": "|alt-v2-cell--orange|||||",
               "subs": "(up to 90 minutes)||||||"
             }
           },
@@ -3122,7 +3122,7 @@
               "name": "Melatonin Supplements",
               "image": "shopify://shop_images/natrol-melatonin-60ct-10mgmaximum-tablet-fastdissolve-citrus-047469076689-size.jpg_1.png",
               "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
-              "colors": "||alt-v2-cell--orange||||",
+              "colors": "|alt-v2-cell--orange|||||",
               "subs": "(up to 90 minutes)||||||"
             }
           }

@@ -97,7 +97,6 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    opacity: 0.2;
     z-index: 2;
     display: none;
     pointer-events: none;
@@ -321,7 +320,7 @@
                     >
                 {% endif %}
                 {% if block.settings.watermark != blank %}
-                    <div class="uij-v2-watermark uij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-uij-v2-wm="{{ forloop.index0 }}">
+                    <div class="uij-v2-watermark uij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-uij-v2-wm="{{ forloop.index0 }}" style="opacity: {{ block.settings.watermark_opacity | default: 20 | times: 0.01 }};">
                         <img src="{{ block.settings.watermark | image_url: width: 300 }}" alt="" loading="lazy">
                     </div>
                 {% endif %}
@@ -484,6 +483,16 @@
                     "type": "image_picker",
                     "id": "watermark",
                     "label": "Watermark SVG"
+                },
+                {
+                    "type": "range",
+                    "id": "watermark_opacity",
+                    "label": "Watermark opacity",
+                    "min": 0,
+                    "max": 100,
+                    "step": 5,
+                    "default": 20,
+                    "unit": "%"
                 },
                 {
                     "type": "select",

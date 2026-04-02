@@ -2979,11 +2979,12 @@
             "type": "step",
             "settings": {
               "title": "Step 2: Settle In",
-              "description": "Lie down, relax, and let the spray go to work. Most people feel the effects within 10–15 minutes.",
-              "tip1_label": "When to use",
-              "tip1_text": "Right before bed, or again if you wake up during the night.",
-              "tip2_label": "While traveling",
-              "tip2_text": "TSA-approved and leak-proof, so you can keep your routine anywhere."
+              "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
+              "tip1_label": "Usage Tip",
+              "tip1_text": "If you wake up during the night, it’s completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+              "tip2_label": "Finding Your Dose",
+              "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that’s completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
+              "image": "shopify://shop_images/Step_3.webp"
             }
           },
           "step_cxFni4": {

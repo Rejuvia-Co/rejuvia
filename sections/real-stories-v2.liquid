@@ -1,0 +1,549 @@
+<style>
+.rs-v2-section {
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.rs-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Header */
+.rs-v2-rating {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.rs-v2-stars { display: flex; gap: 2px; }
+.rs-v2-stars svg { width: 17.066px; height: 16px; }
+
+.rs-v2-rating-text {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.rs-v2-rating-text .rs-v2-accent {
+    font-weight: 700;
+    color: #672666;
+}
+
+.rs-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+    text-align: center;
+}
+
+.rs-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.rs-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+/* Tabs */
+.rs-v2-tabs {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.rs-v2-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 32px;
+    border-radius: 80px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #141414;
+    background: transparent;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.rs-v2-tab.is-active {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+}
+
+.rs-v2-tab svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Reviews grid */
+.rs-v2-reviews {
+    display: none;
+    width: 100%;
+}
+
+.rs-v2-reviews.is-active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* FB reviews (images) */
+.rs-v2-fb-review {
+    max-width: 620px;
+    flex: 1 1 45%;
+    min-width: 300px;
+}
+
+.rs-v2-fb-review img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Trustpilot review cards */
+.rs-v2-tp-review {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 620px;
+}
+
+.rs-v2-tp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rs-v2-tp-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13.3px;
+    font-weight: 500;
+    color: #141414;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
+}
+
+.rs-v2-tp-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rs-v2-tp-stars { display: flex; gap: 1px; }
+.rs-v2-tp-stars svg { width: 13px; height: 12px; }
+
+.rs-v2-tp-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.rs-v2-tp-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.rs-v2-tp-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rs-v2-tp-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.rs-v2-tp-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 6px;
+    background: #ccc;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    align-self: flex-start;
+}
+
+/* FB text review (styled as FB comment) */
+.rs-v2-fb-text {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 620px;
+    align-items: flex-start;
+}
+
+.rs-v2-fb-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.rs-v2-fb-avatar-placeholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e4e6eb;
+    flex-shrink: 0;
+}
+
+.rs-v2-fb-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rs-v2-fb-bubble {
+    background: #f0f2f5;
+    border-radius: 18px;
+    padding: 10px 14px;
+}
+
+.rs-v2-fb-name {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #050505;
+}
+
+.rs-v2-fb-comment {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #050505;
+    margin: 2px 0 0;
+}
+
+.rs-v2-fb-actions {
+    display: flex;
+    gap: 12px;
+    padding-left: 14px;
+}
+
+.rs-v2-fb-action {
+    font-size: 12px;
+    font-weight: 600;
+    color: #65676b;
+    cursor: default;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .rs-v2-container {
+        padding: 40px 16px;
+        gap: 24px;
+        align-items: flex-start;
+    }
+    .rs-v2-heading {
+        font-size: 24px;
+        text-align: left;
+    }
+    .rs-v2-tabs {
+        width: 100%;
+    }
+    .rs-v2-tab {
+        flex: 1;
+        justify-content: center;
+        padding: 12px;
+    }
+    .rs-v2-reviews.is-active {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .rs-v2-fb-review,
+    .rs-v2-fb-text,
+    .rs-v2-tp-review {
+        min-width: 0;
+        max-width: 100%;
+        flex: none;
+        width: 100%;
+    }
+    .rs-v2-rating-text {
+        font-size: 14px;
+    }
+}
+</style>
+
+<div class="rs-v2-container">
+    {%- comment -%} Rating {%- endcomment -%}
+    <div class="rs-v2-rating">
+        <div class="rs-v2-stars">
+            {% for i in (1..5) %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
+            {% endfor %}
+        </div>
+        <span class="rs-v2-rating-text">
+            Trusted by <span class="rs-v2-accent">{{ section.settings.trusted_count }}</span> Sleepers
+        </span>
+    </div>
+
+    {%- comment -%} Heading {%- endcomment -%}
+    <div class="rs-v2-heading">{{ section.settings.heading }}</div>
+
+    {%- comment -%} Tabs {%- endcomment -%}
+    <div class="rs-v2-tabs">
+        <button class="rs-v2-tab is-active" data-rs-v2-tab="facebook" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="8" fill="#1877F2"/>
+                <path d="M11.1 10.3L11.45 8H9.25V6.5C9.25 5.85 9.56 5.22 10.56 5.22H11.55V3.24C11.55 3.24 10.66 3.09 9.81 3.09C8.03 3.09 6.86 4.17 6.86 6.13V8H4.84V10.3H6.86V16H9.25V10.3H11.1Z" fill="white"/>
+            </svg>
+            Facebook Reviews
+        </button>
+        <button class="rs-v2-tab" data-rs-v2-tab="trustpilot" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="8" fill="#00B67A"/>
+                <path d="M8 3L9.2 6.7H13L9.9 8.9L11.1 12.6L8 10.4L4.9 12.6L6.1 8.9L3 6.7H6.8L8 3Z" fill="white"/>
+            </svg>
+            Trustpilot Reviews
+        </button>
+    </div>
+
+    {%- comment -%} Facebook Reviews {%- endcomment -%}
+    <div class="rs-v2-reviews is-active" data-rs-v2-panel="facebook">
+        {% for block in section.blocks %}
+            {% if block.type == 'fb_review' %}
+                <div class="rs-v2-fb-review" {{ block.shopify_attributes }}>
+                    {% if block.settings.image != blank %}
+                        <img
+                            src="{{ block.settings.image | image_url: width: 1200 }}"
+                            alt="Facebook review"
+                            loading="lazy"
+                        >
+                    {% endif %}
+                </div>
+            {% elsif block.type == 'fb_text_review' %}
+                <div class="rs-v2-fb-text" {{ block.shopify_attributes }}>
+                    {% if block.settings.avatar != blank %}
+                        <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72 }}" alt="{{ block.settings.name }}" loading="lazy">
+                    {% else %}
+                        <div class="rs-v2-fb-avatar-placeholder"></div>
+                    {% endif %}
+                    <div class="rs-v2-fb-body">
+                        <div class="rs-v2-fb-bubble">
+                            <div class="rs-v2-fb-name">{{ block.settings.name }}</div>
+                            <p class="rs-v2-fb-comment">{{ block.settings.comment }}</p>
+                        </div>
+                        <div class="rs-v2-fb-actions">
+                            <span class="rs-v2-fb-action">Like</span>
+                            <span class="rs-v2-fb-action">Reply</span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {%- comment -%} Trustpilot Reviews {%- endcomment -%}
+    <div class="rs-v2-reviews" data-rs-v2-panel="trustpilot">
+        {% for block in section.blocks %}
+            {% if block.type == 'tp_review' %}
+                <div class="rs-v2-tp-review" {{ block.shopify_attributes }}>
+                    <div class="rs-v2-tp-header">
+                        <div class="rs-v2-tp-avatar" style="background-color: {{ block.settings.avatar_color | default: '#d0ffdd' }};">
+                            {{ block.settings.initials }}
+                        </div>
+                        <div class="rs-v2-tp-info">
+                            <div class="rs-v2-tp-stars">
+                                {% assign star_count = block.settings.stars | default: 5 %}
+                                {% for i in (1..star_count) %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
+                                {% endfor %}
+                            </div>
+                            <p class="rs-v2-tp-title">{{ block.settings.title }}</p>
+                        </div>
+                    </div>
+                    <p class="rs-v2-tp-text">{{ block.settings.text }}</p>
+                    <div class="rs-v2-tp-footer">
+                        <span class="rs-v2-tp-name">{{ block.settings.name }}</span>
+                        {% if block.settings.badge != blank %}
+                            <span class="rs-v2-tp-badge">{{ block.settings.badge }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.rs-v2-section');
+    if (!section) return;
+
+    var tabs = section.querySelectorAll('[data-rs-v2-tab]');
+    var panels = section.querySelectorAll('[data-rs-v2-panel]');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var target = tab.getAttribute('data-rs-v2-tab');
+            tabs.forEach(function(t) { t.classList.toggle('is-active', t === tab); });
+            panels.forEach(function(p) { p.classList.toggle('is-active', p.getAttribute('data-rs-v2-panel') === target); });
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Real Stories V2",
+    "class": "rs-v2-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "trusted_count",
+            "label": "Trusted count",
+            "default": "300,000+"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Real stories from people who <em>have tried everything</em></p>"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "fb_review",
+            "name": "Facebook Review",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Review screenshot"
+                }
+            ]
+        },
+        {
+            "type": "fb_text_review",
+            "name": "Facebook Review (text)",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "avatar",
+                    "label": "Avatar"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name",
+                    "default": "Karla Finney"
+                },
+                {
+                    "type": "textarea",
+                    "id": "comment",
+                    "label": "Comment",
+                    "default": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+                }
+            ]
+        },
+        {
+            "type": "tp_review",
+            "name": "Trustpilot Review",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "initials",
+                    "label": "Initials",
+                    "default": "LD"
+                },
+                {
+                    "type": "color",
+                    "id": "avatar_color",
+                    "label": "Avatar color",
+                    "default": "#d0ffdd"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Great company and product"
+                },
+                {
+                    "type": "textarea",
+                    "id": "text",
+                    "label": "Review text",
+                    "default": "Great company! The service is 10 stars and the product sleep spray is a godsend to me."
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name",
+                    "default": "Lynn D."
+                },
+                {
+                    "type": "text",
+                    "id": "badge",
+                    "label": "Badge",
+                    "default": "Unprompted review"
+                },
+                {
+                    "type": "range",
+                    "id": "stars",
+                    "label": "Stars",
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "default": 5
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Real Stories V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

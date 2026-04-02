@@ -1796,6 +1796,12 @@
     left: 0;
   }
 
+  /* Skio Plan Picker V2 - inactive option opacity */
+  skio-plan-picker [data-skio-one-time]:not([checked]),
+  skio-plan-picker [data-skio-subscribe]:not([checked]) {
+    opacity: 0.5;
+  }
+
   /* Skio Plan Picker V2 */
   .block-skio-plan-picker-v2 {
     width: 100%;

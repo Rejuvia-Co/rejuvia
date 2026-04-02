@@ -1,0 +1,232 @@
+<style>
+.cr-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.cr-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.cr-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+    text-align: center;
+}
+
+.cr-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.cr-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+/* Reviews grid */
+.cr-v2-grid {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Review card */
+.cr-v2-card {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+}
+
+.cr-v2-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cr-v2-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.cr-v2-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cr-v2-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.cr-v2-stars svg {
+    width: 17px;
+    height: 16px;
+}
+
+.cr-v2-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.cr-v2-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.cr-v2-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: auto;
+}
+
+.cr-v2-name {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.cr-v2-verified {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #737373;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .cr-v2-container {
+        padding: 40px 16px;
+        gap: 24px;
+    }
+    .cr-v2-heading {
+        font-size: 24px;
+        text-align: left;
+        width: 100%;
+    }
+    .cr-v2-grid {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+</style>
+
+<div class="cr-v2-container">
+    <div class="cr-v2-heading">{{ section.settings.heading }}</div>
+
+    <div class="cr-v2-grid">
+        {% for block in section.blocks %}
+            <div class="cr-v2-card" {{ block.shopify_attributes }}>
+                <div class="cr-v2-card-header">
+                    {% if block.settings.avatar != blank %}
+                        <img class="cr-v2-avatar" src="{{ block.settings.avatar | image_url: width: 100 }}" alt="{{ block.settings.name }}" loading="lazy">
+                    {% endif %}
+                    <div class="cr-v2-header-info">
+                        <div class="cr-v2-stars">
+                            {% assign star_count = block.settings.stars | default: 5 %}
+                            {% for i in (1..star_count) %}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
+                            {% endfor %}
+                        </div>
+                        <p class="cr-v2-title">{{ block.settings.title }}</p>
+                    </div>
+                </div>
+                <p class="cr-v2-text">{{ block.settings.text }}</p>
+                <div class="cr-v2-footer">
+                    <span class="cr-v2-name">{{ block.settings.name }}</span>
+                    <span class="cr-v2-verified">Verified Purchase</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Custom Reviews V2",
+    "class": "cr-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>6,000+ verified <em>5-star</em> reviews</p>"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "review",
+            "name": "Review",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "avatar",
+                    "label": "Avatar"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Puts me right to sleep"
+                },
+                {
+                    "type": "textarea",
+                    "id": "text",
+                    "label": "Review text",
+                    "default": "I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends."
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name",
+                    "default": "Judi M."
+                },
+                {
+                    "type": "range",
+                    "id": "stars",
+                    "label": "Stars",
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "default": 5
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Reviews V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

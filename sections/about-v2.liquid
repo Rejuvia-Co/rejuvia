@@ -156,13 +156,23 @@
 
 @media (max-width: 900px) {
     .about-v2-container { padding: 40px 16px; }
-    .about-v2-card { padding: 24px 16px; gap: 24px; }
+    .about-v2-card { padding: 32px 24px; gap: 24px; }
     .about-v2-row,
     .about-v2-row--reverse {
         flex-direction: column;
         gap: 24px;
     }
+    .about-v2-row:first-child .about-v2-copy {
+        display: contents;
+    }
+    .about-v2-row:first-child .about-v2-heading { order: 1; }
+    .about-v2-row:first-child .about-v2-img-col { order: 2; }
+    .about-v2-row:first-child .about-v2-text { order: 3; }
+    .about-v2-row:first-child .about-v2-products { order: 4; }
     .about-v2-heading { font-size: 24px; text-align: center; }
+    .about-v2-row:last-child .about-v2-img-col {
+        display: none;
+    }
     .about-v2-row:not(:first-child) .about-v2-photo {
         height: auto;
         max-height: 300px;

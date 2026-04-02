@@ -3202,6 +3202,13 @@
         ],
         "name": "About V2",
         "settings": {}
+      },
+      "ticker_v2_j6gkXE": {
+        "type": "ticker-v2",
+        "name": "Ticker V2",
+        "settings": {
+          "text": "<p><strong>LIMITED TIME OFFER:</strong> FREE Vitamin D3+K2 Spray When You Subscribe</p>"
+        }
       }
     },
     "content_for_index": [
@@ -3215,6 +3222,7 @@
       "use_in_just_v2_JAWTbF",
       "alternatives_v2_aVf4gw",
       "about_v2_Lx7Enx",
+      "ticker_v2_j6gkXE",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_widget_v2_m3pTph",

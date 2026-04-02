@@ -1,0 +1,263 @@
+<style>
+.faq-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.faq-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Left copy */
+.faq-v2-copy {
+    width: 400px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 120px;
+}
+
+.faq-v2-heading {
+    font-size: 30px;
+    font-weight: 700 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.faq-v2-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.faq-v2-link {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.faq-v2-link a {
+    color: #141414;
+    text-decoration: underline;
+}
+
+/* Right accordion */
+.faq-v2-list {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-v2-item {
+    background: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-v2-question {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+}
+
+.faq-v2-question-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.faq-v2-question-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-v2-item.is-active .faq-v2-question-icon {
+    transform: rotate(45deg);
+}
+
+.faq-v2-answer {
+    display: none;
+    padding: 0 24px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.faq-v2-answer p {
+    margin: 0 0 1em;
+}
+
+.faq-v2-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-v2-item.is-active .faq-v2-answer {
+    display: block;
+}
+
+/* Mobile link */
+.faq-v2-link-mobile {
+    display: none;
+    text-align: center;
+    font-size: 16px;
+    color: #141414;
+}
+
+.faq-v2-link-mobile a {
+    color: #141414;
+    text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .faq-v2-container {
+        flex-direction: column;
+        padding: 40px 16px;
+        gap: 24px;
+    }
+    .faq-v2-copy {
+        width: 100%;
+        position: static;
+    }
+    .faq-v2-heading { font-size: 24px; }
+    .faq-v2-link { display: none; }
+    .faq-v2-link-mobile { display: block; }
+}
+</style>
+
+<div class="faq-v2-container">
+    <div class="faq-v2-copy">
+        <h2 class="faq-v2-heading">{{ section.settings.heading }}</h2>
+        <p class="faq-v2-desc">{{ section.settings.description }}</p>
+        {% if section.settings.link_text != blank %}
+            <p class="faq-v2-link">{{ section.settings.link_text }} <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a></p>
+        {% endif %}
+    </div>
+
+    <div class="faq-v2-list">
+        {% for block in section.blocks %}
+            <div class="faq-v2-item" data-faq-v2-item {{ block.shopify_attributes }}>
+                <button class="faq-v2-question" type="button">
+                    <span class="faq-v2-question-text">{{ block.settings.question }}</span>
+                    <svg class="faq-v2-question-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 4V16M4 10H16" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="faq-v2-answer">
+                    {{ block.settings.answer }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% if section.settings.link_text != blank %}
+    <div class="faq-v2-link-mobile">
+        {{ section.settings.link_text }} <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
+    </div>
+{% endif %}
+
+<script>
+(function() {
+    var section = document.querySelector('.faq-v2-section');
+    if (!section) return;
+
+    section.querySelectorAll('[data-faq-v2-item]').forEach(function(item) {
+        item.querySelector('.faq-v2-question').addEventListener('click', function() {
+            item.classList.toggle('is-active');
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "FAQs V2",
+    "class": "faq-v2-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Got a question?"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "We've heard it all from people struggling with sleep. And here are the most common questions."
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link prefix",
+            "default": "Don't see your question?"
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link text",
+            "default": "Get in touch with our team"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "faq",
+            "name": "FAQ",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question",
+                    "default": "Will I feel groggy in the morning?"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer",
+                    "default": "<p>No. Rejuvia is designed to help you fall asleep naturally without next-day grogginess.</p>"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQs V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

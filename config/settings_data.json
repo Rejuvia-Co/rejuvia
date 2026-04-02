@@ -2969,11 +2969,15 @@
             "settings": {
               "title": "Step 1: Spray",
               "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+              "tip1_icon": "shopify://shop_images/Frame_1.svg",
               "tip1_label": "When to use",
               "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
+              "tip2_icon": "shopify://shop_images/Frame_2.svg",
               "tip2_label": "While traveling",
               "tip2_text": "Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule. A few sprays before you settle in can help your mind slow down and make unfamiliar environments feel a lot easier to fall asleep in.",
-              "image": "shopify://shop_images/Step_1.webp"
+              "image": "shopify://shop_images/Step_1.webp",
+              "watermark": "shopify://shop_images/Frame.svg",
+              "watermark_position": "top-right"
             }
           },
           "step_9t4thq": {
@@ -2985,7 +2989,8 @@
               "tip1_text": "If you wake up during the night, it’s completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
               "tip2_label": "Finding Your Dose",
               "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that’s completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
-              "image": "shopify://shop_images/Step_2.webp"
+              "image": "shopify://shop_images/Step_2.webp",
+              "watermark_position": "top-right"
             }
           },
           "step_cxFni4": {
@@ -2997,7 +3002,8 @@
               "tip1_text": "Using Rejuvia at the same time each night helps your body recognize it as a signal to wind down. The more consistent your routine, the faster and deeper your sleep becomes over time. Think of it as building momentum that makes falling asleep feel automatic.",
               "tip2_label": "",
               "tip2_text": "",
-              "image": "shopify://shop_images/Step_3.webp"
+              "image": "shopify://shop_images/Step_3.webp",
+              "watermark_position": "top-right"
             }
           }
         },
@@ -3009,7 +3015,6 @@
         "name": "Use In Just V2",
         "settings": {
           "heading": "<p>Use in <em>just 30 seconds</em></p>",
-          "image": "shopify://shop_images/image_1.png",
           "link_text": "View Supplement Label",
           "link_url": ""
         }

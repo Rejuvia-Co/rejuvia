@@ -2639,6 +2639,7 @@
           "buy_buttons_QNqxpJ",
           "custom_tabs_EHqYn3"
         ],
+        "disabled": true,
         "name": "Product Widget V2",
         "settings": {
           "selected_product": "sleep-spray",
@@ -3209,6 +3210,134 @@
         "settings": {
           "text": "<p><strong>LIMITED TIME OFFER:</strong> FREE Vitamin D3+K2 Spray When You Subscribe</p>"
         }
+      },
+      "product_widget_v3_Wdi4wi": {
+        "type": "product-widget-v3",
+        "blocks": {
+          "title_VQd3bp": {
+            "type": "title",
+            "settings": {
+              "custom_title": "Sleep Spray",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "product_specs_R7TWBA": {
+            "type": "product-specs",
+            "settings": {
+              "icon_svg": "",
+              "custom_text_1": "",
+              "custom_text_2": "",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "okendo_reviews_e6KBnh": {
+            "type": "okendo-reviews",
+            "settings": {
+              "reviews_anchor": "shopify-product-reviews",
+              "star_color": "#FAB851",
+              "empty_star_color": "#dddddd",
+              "margin_top": 10,
+              "margin_bottom": 24
+            }
+          },
+          "description_4ENGK4": {
+            "type": "description",
+            "settings": {
+              "margin_top": 10,
+              "margin_bottom": 20
+            }
+          },
+          "key_traits_k8zn3H": {
+            "type": "key-traits",
+            "settings": {}
+          },
+          "bundle_info_tWkMPe": {
+            "type": "bundle-info",
+            "settings": {
+              "bundle_title": "What's Included:"
+            }
+          },
+          "variant_selector_dn8XtD": {
+            "type": "variant-selector",
+            "settings": {
+              "show_header": true,
+              "header_text": "CHOOSE YOUR QUANTITY",
+              "default_variant": 2,
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "buy_buttons_8Ga9QL": {
+            "type": "buy-buttons",
+            "settings": {
+              "button_text": "Add to cart -",
+              "show_guarantee": true,
+              "guarantee_icon_svg": "",
+              "guarantee_label": "30-Day Guarantee",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "skio_plan_picker_CWxKHj": {
+            "type": "skio-plan-picker",
+            "settings": {
+              "start_onetime": true,
+              "onetime_first": true
+            }
+          },
+          "skio_plan_picker_v2_WzGkdG": {
+            "type": "skio-plan-picker-v2",
+            "settings": {
+              "start_onetime": false,
+              "onetime_first": false,
+              "onetime_title": "One Time Purchase",
+              "subscription_title": "Subscribe &",
+              "header_title": "Choose Your Offer",
+              "subscription_subtitle": "Skip or cancel anytime",
+              "show_variant_item": true,
+              "show_free_shipping": true,
+              "shipping_original_price": "$4.99",
+              "border_color": "#BFBFBF",
+              "selected_border_color": "#672666",
+              "discount_badge_color": "#c2f1bd",
+              "discount_text_color": "#000000",
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
+          "custom_tabs_KMiLQ8": {
+            "type": "custom-tabs",
+            "settings": {}
+          },
+          "social_sharing_McLwd4": {
+            "type": "social-sharing",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "title_VQd3bp",
+          "product_specs_R7TWBA",
+          "okendo_reviews_e6KBnh",
+          "description_4ENGK4",
+          "key_traits_k8zn3H",
+          "bundle_info_tWkMPe",
+          "variant_selector_dn8XtD",
+          "buy_buttons_8Ga9QL",
+          "skio_plan_picker_CWxKHj",
+          "skio_plan_picker_v2_WzGkdG",
+          "custom_tabs_KMiLQ8",
+          "social_sharing_McLwd4"
+        ],
+        "name": "Product Widget V3",
+        "settings": {
+          "selected_product": "",
+          "show_related_product": false,
+          "show_bundle_text": false,
+          "swatch_tag_content": "",
+          "preselected_item": 2
+        }
       }
     },
     "content_for_index": [
@@ -3223,6 +3352,7 @@
       "alternatives_v2_aVf4gw",
       "about_v2_Lx7Enx",
       "ticker_v2_j6gkXE",
+      "product_widget_v3_Wdi4wi",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_widget_v2_m3pTph",

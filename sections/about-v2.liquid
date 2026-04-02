@@ -1,0 +1,283 @@
+<style>
+.about-v2-section {
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.about-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.about-v2-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Row */
+.about-v2-row {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    width: 100%;
+}
+
+.about-v2-row--reverse {
+    flex-direction: row-reverse;
+}
+
+/* Copy */
+.about-v2-copy {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.about-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.about-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+.about-v2-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.about-v2-text p { margin: 0 0 1em; }
+.about-v2-text p:last-child { margin-bottom: 0; }
+.about-v2-text strong { font-weight: 700; }
+
+/* Crossed products image */
+.about-v2-products {
+    max-width: 290px;
+}
+
+.about-v2-products img {
+    width: 100%;
+    height: auto;
+}
+
+/* Image column */
+.about-v2-img-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-v2-photo {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+}
+
+.about-v2-row:not(:first-child) .about-v2-photo {
+    height: 381px;
+}
+
+.about-v2-caption {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: #737373;
+    text-align: center;
+}
+
+/* Signature */
+.about-v2-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-v2-signature img {
+    max-width: 176px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.about-v2-sig-name {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    color: #141414;
+    text-transform: uppercase;
+    letter-spacing: 0.84px;
+}
+
+.about-v2-sig-title {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    color: #141414;
+    text-transform: uppercase;
+    letter-spacing: 0.72px;
+    margin-left: 12px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .about-v2-container { padding: 40px 32px; }
+    .about-v2-card { padding: 40px; gap: 32px; }
+    .about-v2-row { gap: 32px; }
+    .about-v2-heading { font-size: 26px; }
+}
+
+@media (max-width: 900px) {
+    .about-v2-container { padding: 40px 16px; }
+    .about-v2-card { padding: 24px 16px; gap: 24px; }
+    .about-v2-row,
+    .about-v2-row--reverse {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .about-v2-heading { font-size: 24px; text-align: center; }
+    .about-v2-row:not(:first-child) .about-v2-photo {
+        height: auto;
+        max-height: 300px;
+    }
+    .about-v2-products {
+        max-width: 100%;
+    }
+}
+</style>
+
+<div class="about-v2-container">
+    <div class="about-v2-card">
+        {% for block in section.blocks %}
+            {% if block.type == 'story_row' %}
+                <div class="about-v2-row{% if block.settings.image_left %} about-v2-row--reverse{% endif %}" {{ block.shopify_attributes }}>
+                    <div class="about-v2-copy">
+                        {% if block.settings.heading != blank %}
+                            <div class="about-v2-heading">{{ block.settings.heading }}</div>
+                        {% endif %}
+                        <div class="about-v2-text">{{ block.settings.text }}</div>
+                        {% if block.settings.products_image != blank %}
+                            <div class="about-v2-products">
+                                <img src="{{ block.settings.products_image | image_url: width: 600 }}" alt="" loading="lazy">
+                            </div>
+                        {% endif %}
+                        {% if block.settings.signature_image != blank %}
+                            <div class="about-v2-signature">
+                                <img src="{{ block.settings.signature_image | image_url: width: 400 }}" alt="{{ block.settings.signature_name }}" loading="lazy">
+                                <div>
+                                    <span class="about-v2-sig-name">– {{ block.settings.signature_name }}</span><br>
+                                    <span class="about-v2-sig-title">{{ block.settings.signature_title }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if block.settings.image != blank %}
+                        <div class="about-v2-img-col">
+                            <img class="about-v2-photo" src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.caption }}" loading="lazy">
+                            {% if block.settings.caption != blank %}
+                                <span class="about-v2-caption">{{ block.settings.caption }}</span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "About V2",
+    "class": "about-v2-section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "story_row",
+            "name": "Story Row",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "heading",
+                    "label": "Heading (optional)"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Photo"
+                },
+                {
+                    "type": "text",
+                    "id": "caption",
+                    "label": "Photo caption"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "image_left",
+                    "label": "Image on left side",
+                    "default": false
+                },
+                {
+                    "type": "image_picker",
+                    "id": "products_image",
+                    "label": "Crossed products image (optional)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "signature_image",
+                    "label": "Signature image (optional)"
+                },
+                {
+                    "type": "text",
+                    "id": "signature_name",
+                    "label": "Signature name",
+                    "default": "RC Williams"
+                },
+                {
+                    "type": "text",
+                    "id": "signature_title",
+                    "label": "Signature title",
+                    "default": "Founder"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "About V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

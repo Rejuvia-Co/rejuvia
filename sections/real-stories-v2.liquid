@@ -19,7 +19,7 @@
 /* Header */
 .rs-v2-rating {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
 }
 
@@ -100,18 +100,15 @@
 }
 
 .rs-v2-reviews.is-active {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    align-items: flex-start;
+    display: block;
+    columns: 2;
+    column-gap: 30px;
 }
 
 /* FB reviews (images) */
 .rs-v2-fb-review {
-    max-width: 620px;
-    flex: 1 1 45%;
-    min-width: 300px;
+    break-inside: avoid;
+    margin-bottom: 30px;
 }
 
 .rs-v2-fb-review img {
@@ -122,6 +119,13 @@
 }
 
 /* Trustpilot review cards */
+.rs-v2-reviews--tp.is-active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    columns: unset;
+}
+
 .rs-v2-tp-review {
     background: #fff;
     border-radius: 10px;
@@ -129,9 +133,14 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    flex: 1 1 45%;
-    min-width: 300px;
-    max-width: 620px;
+    width: calc(33.333% - 20px);
+    flex-shrink: 0;
+}
+
+/* 3-2-3 pattern: items 4,5 (2nd row) are wider */
+.rs-v2-tp-review:nth-child(5n+4),
+.rs-v2-tp-review:nth-child(5n+5) {
+    width: calc(50% - 15px);
 }
 
 .rs-v2-tp-header {
@@ -214,10 +223,9 @@
     padding: 16px;
     display: flex;
     gap: 12px;
-    flex: 1 1 45%;
-    min-width: 300px;
-    max-width: 620px;
     align-items: flex-start;
+    break-inside: avoid;
+    margin-bottom: 30px;
 }
 
 .rs-v2-fb-avatar {
@@ -298,16 +306,20 @@
         padding: 12px;
     }
     .rs-v2-reviews.is-active {
+        columns: 1;
+    }
+    .rs-v2-fb-review,
+    .rs-v2-fb-text {
+        margin-bottom: 16px;
+    }
+    .rs-v2-reviews--tp.is-active {
         flex-direction: column;
         gap: 16px;
     }
-    .rs-v2-fb-review,
-    .rs-v2-fb-text,
     .rs-v2-tp-review {
-        min-width: 0;
-        max-width: 100%;
         flex: none;
         width: 100%;
+        min-width: 0;
     }
     .rs-v2-rating-text {
         font-size: 14px;
@@ -385,7 +397,7 @@
     </div>
 
     {%- comment -%} Trustpilot Reviews {%- endcomment -%}
-    <div class="rs-v2-reviews" data-rs-v2-panel="trustpilot">
+    <div class="rs-v2-reviews rs-v2-reviews--tp" data-rs-v2-panel="trustpilot">
         {% for block in section.blocks %}
             {% if block.type == 'tp_review' %}
                 <div class="rs-v2-tp-review" {{ block.shopify_attributes }}>

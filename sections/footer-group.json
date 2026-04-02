@@ -48,8 +48,8 @@
         "newsletter_desc": "Sign up for news and exclusive discounts, plus 10% off your first order!",
         "newsletter_btn": "Sign Up & Save 10%",
         "disclaimer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
-        "terms_url": "",
-        "privacy_url": ""
+        "terms_url": "shopify://policies/terms-of-service",
+        "privacy_url": "shopify://policies/privacy-policy"
       }
     }
   },

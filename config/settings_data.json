@@ -2539,6 +2539,7 @@
           "faqs_Aewc9h",
           "faqs_MFDKNB"
         ],
+        "disabled": true,
         "name": "Homepage Faqs",
         "settings": {
           "customClass": "",

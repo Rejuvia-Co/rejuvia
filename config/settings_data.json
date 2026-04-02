@@ -2811,8 +2811,117 @@
         "settings": {
           "heading": "<p>Here's why <em>Rejuvia works better</em></p>",
           "description": "<p>Rejuvia takes a completely different approach.</p><p>Instead of another pill or gummy, it's <strong>a sublingual oral spray.</strong></p><p>You spray it under your tongue, where it absorbs directly into your bloodstream – no stomach, no liver, no wasted ingredients.</p>",
-          "image": "shopify://shop_images/Higher-absorption-rate.png",
-          "badge_text": "Higher absorption rate"
+          "image": "shopify://shop_images/Higher-absorption-rate.png"
+        }
+      },
+      "real_stories_v2_CKGqJy": {
+        "type": "real-stories-v2",
+        "blocks": {
+          "fb_text_review_hFr4KQ": {
+            "type": "fb_text_review",
+            "settings": {
+              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+              "name": "Karla Finney",
+              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+            }
+          },
+          "fb_text_review_M6wKic": {
+            "type": "fb_text_review",
+            "settings": {
+              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+              "name": "Karla Finney",
+              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+            }
+          },
+          "tp_review_tedq9c": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_XAUKKi": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#8ec447",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_jRXKcN": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#eac78b",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_Q8VBFC": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "fb_review_L8tT8R": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_4.png"
+            }
+          },
+          "fb_review_iNWEtf": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_3.png"
+            }
+          },
+          "fb_review_9Nf3YL": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_2.png"
+            }
+          },
+          "fb_review_MQ7dHz": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_1.png"
+            }
+          }
+        },
+        "block_order": [
+          "fb_text_review_hFr4KQ",
+          "fb_text_review_M6wKic",
+          "tp_review_tedq9c",
+          "tp_review_XAUKKi",
+          "tp_review_jRXKcN",
+          "tp_review_Q8VBFC",
+          "fb_review_L8tT8R",
+          "fb_review_iNWEtf",
+          "fb_review_9Nf3YL",
+          "fb_review_MQ7dHz"
+        ],
+        "name": "Real Stories V2",
+        "settings": {
+          "trusted_count": "300,000+",
+          "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
         }
       }
     },
@@ -2822,6 +2931,7 @@
       "product_intro_v2_mcmr7P",
       "listicle_v2_N8G8nM",
       "image_text_v2_EEfUyt",
+      "real_stories_v2_CKGqJy",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

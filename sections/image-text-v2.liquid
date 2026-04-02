@@ -112,23 +112,6 @@
     border-radius: 10px;
 }
 
-.iwt-v2-badge {
-    position: absolute;
-    bottom: 40px;
-    right: 30px;
-    background: #672666;
-    color: #eaeaf7;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.4;
-    text-transform: uppercase;
-    padding: 15px 23px;
-    border-radius: 100px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 3.5px 19px rgba(0,0,0,0.06);
-    white-space: nowrap;
-}
 
 /* Mobile heading */
 .iwt-v2-heading-mobile {
@@ -176,13 +159,7 @@
         height: 360px;
         width: 100%;
     }
-    .iwt-v2-badge {
-        font-size: 12px;
-        padding: 8px 12px;
-        bottom: 24px;
-        right: 16px;
-    }
-    .iwt-v2-stats {
+.iwt-v2-stats {
         max-width: 100%;
         width: 100%;
     }
@@ -223,9 +200,6 @@
                 loading="lazy"
             >
         {% endif %}
-        {% if section.settings.badge_text != blank %}
-            <div class="iwt-v2-badge">{{ section.settings.badge_text }}</div>
-        {% endif %}
     </div>
 </div>
 
@@ -250,12 +224,6 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
-        },
-        {
-            "type": "text",
-            "id": "badge_text",
-            "label": "Badge text",
-            "default": "Higher absorption rate"
         }
     ],
     "blocks": [

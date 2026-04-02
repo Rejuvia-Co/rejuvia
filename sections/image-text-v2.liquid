@@ -142,6 +142,8 @@
         color: #141414;
         letter-spacing: 0 !important;
         margin: 0;
+        text-align: left;
+        width: 100%;
     }
     .iwt-v2-heading-mobile p {
         margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
@@ -152,14 +154,15 @@
     .iwt-v2-copy .iwt-v2-heading {
         display: none;
     }
-    .iwt-v2-image {
-        width: 100%;
+    .iwt-v2-copy {
+        display: contents;
     }
-    .iwt-v2-image img {
-        height: 360px;
-        width: 100%;
-    }
-.iwt-v2-stats {
+    .iwt-v2-heading-mobile { order: 1; }
+    .iwt-v2-image { order: 2; width: 100%; }
+    .iwt-v2-image img { height: 360px; width: 100%; }
+    .iwt-v2-desc { order: 3; }
+    .iwt-v2-stats {
+        order: 4;
         max-width: 100%;
         width: 100%;
     }

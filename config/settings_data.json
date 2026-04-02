@@ -2075,9 +2075,11 @@
             "settings": {
               "title": "The \"Natural\" Cycle",
               "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
-              "badge_text": "Temporary relief only",
-              "badge_position_desktop": "bottom-right",
-              "badge_position_mobile": "top-left"
+              "image": "shopify://shop_images/Frame_1948755839.png",
+              "badge_text": "Inconsistent results",
+              "badge_icon": "shopify://shop_images/Frame_4.svg",
+              "badge_position_desktop": "bottom-left",
+              "badge_position_mobile": "top-right"
             }
           }
         },

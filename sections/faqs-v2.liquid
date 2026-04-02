@@ -1,7 +1,7 @@
 <style>
 .faq-v2-section {
     width: 100%;
-    background-color: #fff;
+    background-color: #fafafa;
 }
 
 .faq-v2-container {
@@ -17,8 +17,8 @@
 
 /* Left copy */
 .faq-v2-copy {
-    width: 400px;
-    flex-shrink: 0;
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -28,7 +28,8 @@
 
 .faq-v2-heading {
     font-size: 30px;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     line-height: 1.4;
     color: #141414;
     letter-spacing: 0 !important;
@@ -50,8 +51,12 @@
     color: #141414;
 }
 
-.faq-v2-link a {
-    color: #141414;
+.faq-v2-link p {
+    margin: 0;
+}
+
+.faq-v2-link em {
+    font-style: normal;
     text-decoration: underline;
 }
 
@@ -61,12 +66,15 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .faq-v2-item {
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
     overflow: hidden;
 }
 
@@ -92,23 +100,32 @@
 }
 
 .faq-v2-question-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
 }
 
-.faq-v2-item.is-active .faq-v2-question-icon {
-    transform: rotate(45deg);
+.faq-v2-item.is-active .faq-v2-question-text {
+    font-weight: 500;
+}
+
+.faq-v2-item.is-active .faq-v2-icon-plus {
+    display: none;
+}
+
+.faq-v2-item:not(.is-active) .faq-v2-icon-minus {
+    display: none;
 }
 
 .faq-v2-answer {
-    display: none;
-    padding: 0 24px 20px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 24px;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
     color: #141414;
+    transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .faq-v2-answer p {
@@ -120,7 +137,8 @@
 }
 
 .faq-v2-item.is-active .faq-v2-answer {
-    display: block;
+    max-height: 500px;
+    padding: 0 24px 24px;
 }
 
 /* Mobile link */
@@ -129,11 +147,19 @@
     text-align: center;
     font-size: 16px;
     color: #141414;
+    padding: 24px 0 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 100%;
 }
 
-.faq-v2-link-mobile a {
-    color: #141414;
+.faq-v2-link-mobile p {
+    margin: 0;
+}
+
+.faq-v2-link-mobile em {
+    font-style: normal;
     text-decoration: underline;
+    display: block;
 }
 
 /* ===== Responsive ===== */
@@ -157,8 +183,8 @@
     <div class="faq-v2-copy">
         <h2 class="faq-v2-heading">{{ section.settings.heading }}</h2>
         <p class="faq-v2-desc">{{ section.settings.description }}</p>
-        {% if section.settings.link_text != blank %}
-            <p class="faq-v2-link">{{ section.settings.link_text }} <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a></p>
+        {% if section.settings.footer_text != blank %}
+            <div class="faq-v2-link">{{ section.settings.footer_text }}</div>
         {% endif %}
     </div>
 
@@ -167,8 +193,11 @@
             <div class="faq-v2-item" data-faq-v2-item {{ block.shopify_attributes }}>
                 <button class="faq-v2-question" type="button">
                     <span class="faq-v2-question-text">{{ block.settings.question }}</span>
-                    <svg class="faq-v2-question-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 4V16M4 10H16" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                    <svg class="faq-v2-question-icon faq-v2-icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="faq-v2-question-icon faq-v2-icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                 </button>
                 <div class="faq-v2-answer">
@@ -177,13 +206,10 @@
             </div>
         {% endfor %}
     </div>
+    {% if section.settings.footer_text != blank %}
+        <div class="faq-v2-link-mobile">{{ section.settings.footer_text }}</div>
+    {% endif %}
 </div>
-
-{% if section.settings.link_text != blank %}
-    <div class="faq-v2-link-mobile">
-        {{ section.settings.link_text }} <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
-    </div>
-{% endif %}
 
 <script>
 (function() {
@@ -216,21 +242,10 @@
             "default": "We've heard it all from people struggling with sleep. And here are the most common questions."
         },
         {
-            "type": "text",
-            "id": "link_text",
-            "label": "Link prefix",
-            "default": "Don't see your question?"
-        },
-        {
-            "type": "text",
-            "id": "link_label",
-            "label": "Link text",
-            "default": "Get in touch with our team"
-        },
-        {
-            "type": "url",
-            "id": "link_url",
-            "label": "Link URL"
+            "type": "richtext",
+            "id": "footer_text",
+            "label": "Footer text",
+            "default": "<p>Don't see your question? <em>Get in touch with our team</em></p>"
         }
     ],
     "blocks": [

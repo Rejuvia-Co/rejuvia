@@ -113,9 +113,6 @@
     display: none;
     position: absolute;
     z-index: 2;
-    bottom: 50px;
-    right: 10%;
-    left: auto;
     background-color: #e15046;
     color: #fff;
     font-size: 14px;
@@ -128,12 +125,21 @@
     white-space: nowrap;
 }
 
+/* Badge positions */
+.pi-v2-badge--bottom-right { bottom: 50px; right: 10%; }
+.pi-v2-badge--bottom-left { bottom: 50px; left: 10%; }
+.pi-v2-badge--bottom-center { bottom: 50px; left: 50%; transform: translateX(-50%); }
+.pi-v2-badge--top-right { top: 10px; right: 10%; }
+.pi-v2-badge--top-left { top: 10px; left: 10%; }
+.pi-v2-badge--top-center { top: 10px; left: 50%; transform: translateX(-50%); }
+
 .pi-v2-badge.is-active {
     display: flex;
 }
 
-.pi-v2-badge svg {
-    width: 9px;
+.pi-v2-badge svg,
+.pi-v2-badge-icon {
+    width: 12px;
     height: 12px;
     flex-shrink: 0;
 }
@@ -332,15 +338,23 @@
         width: 100%;
     }
     .pi-v2-badge {
-        position: relative;
-        top: auto;
-        bottom: auto;
-        left: 16px;
-        right: auto;
         font-size: 11px;
         padding: 6px 12px;
-        order: -1;
     }
+    .pi-v2-badge.pi-v2-badge--bottom-right,
+    .pi-v2-badge.pi-v2-badge--bottom-left,
+    .pi-v2-badge.pi-v2-badge--bottom-center,
+    .pi-v2-badge.pi-v2-badge--top-right,
+    .pi-v2-badge.pi-v2-badge--top-left,
+    .pi-v2-badge.pi-v2-badge--top-center {
+        top: auto; bottom: auto; left: auto; right: auto; transform: none;
+    }
+    .pi-v2-badge.pi-v2-badge-m--bottom-right { bottom: 10px; right: 10px; }
+    .pi-v2-badge.pi-v2-badge-m--bottom-left { bottom: 10px; left: 16px; }
+    .pi-v2-badge.pi-v2-badge-m--bottom-center { bottom: 10px; left: 50%; transform: translateX(-50%); }
+    .pi-v2-badge.pi-v2-badge-m--top-right { top: 10px; right: 10px; }
+    .pi-v2-badge.pi-v2-badge-m--top-left { top: 10px; left: 16px; }
+    .pi-v2-badge.pi-v2-badge-m--top-center { top: 10px; left: 50%; transform: translateX(-50%); }
     .pi-v2-tab-image {
         align-self: center;
     }
@@ -375,10 +389,14 @@
                         >
                     {% endif %}
                 </div>
-                <div class="pi-v2-badge{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
-                        <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="pi-v2-badge pi-v2-badge--{{ block.settings.badge_position_desktop }} pi-v2-badge-m--{{ block.settings.badge_position_mobile }}{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
+                    {% if block.settings.badge_icon != blank %}
+                        <img class="pi-v2-badge-icon" src="{{ block.settings.badge_icon | image_url: width: 32 }}" alt="" width="12" height="12">
+                    {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
+                            <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    {% endif %}
                     <span>{{ block.settings.badge_text }}</span>
                 </div>
             {% endfor %}
@@ -433,7 +451,7 @@
                     </div>
                     <span class="pi-v2-tab-title">{{ block.settings.title }}</span>
                     <svg class="pi-v2-tab-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
-                        <path d="M5 8L10 13L15 8" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 8L10 13L15 8" stroke="#E15046" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
                 <div class="pi-v2-tab-content">
@@ -543,6 +561,39 @@
                     "id": "badge_text",
                     "label": "Badge text",
                     "default": "80% lost to digestion"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "badge_icon",
+                    "label": "Badge icon (SVG)"
+                },
+                {
+                    "type": "select",
+                    "id": "badge_position_desktop",
+                    "label": "Badge position (desktop)",
+                    "options": [
+                        { "value": "bottom-right", "label": "Bottom Right" },
+                        { "value": "bottom-left", "label": "Bottom Left" },
+                        { "value": "bottom-center", "label": "Bottom Center" },
+                        { "value": "top-right", "label": "Top Right" },
+                        { "value": "top-left", "label": "Top Left" },
+                        { "value": "top-center", "label": "Top Center" }
+                    ],
+                    "default": "bottom-right"
+                },
+                {
+                    "type": "select",
+                    "id": "badge_position_mobile",
+                    "label": "Badge position (mobile)",
+                    "options": [
+                        { "value": "bottom-right", "label": "Bottom Right" },
+                        { "value": "bottom-left", "label": "Bottom Left" },
+                        { "value": "bottom-center", "label": "Bottom Center" },
+                        { "value": "top-right", "label": "Top Right" },
+                        { "value": "top-left", "label": "Top Left" },
+                        { "value": "top-center", "label": "Top Center" }
+                    ],
+                    "default": "top-left"
                 }
             ]
         }

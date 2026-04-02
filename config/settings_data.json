@@ -3168,10 +3168,37 @@
               "signature_name": "RC Williams",
               "signature_title": "Founder"
             }
+          },
+          "story_row_F8ygGj": {
+            "type": "story_row",
+            "settings": {
+              "heading": "",
+              "text": "<p>So I started researching. I was at the University of Pennsylvania at the time, and I spent months digging into sleep science and supplement absorption.<br/><br/>What I found changed everything:<strong> the problem wasn't the ingredients</strong>. It was how the body absorbed them.<br/><br/>We decided to build a sublingual spray. Together. <br/><br/>My mom was the first person to try it. <strong>She slept through the night for the first time in years.</strong></p>",
+              "image": "shopify://shop_images/Image_3.png",
+              "caption": "The first sketch of a Rejuvia product",
+              "image_left": true,
+              "signature_name": "RC Williams",
+              "signature_title": "Founder"
+            }
+          },
+          "story_row_PpyEkz": {
+            "type": "story_row",
+            "settings": {
+              "heading": "",
+              "text": "<p>We never planned to turn it into a business. We just wanted to fix her sleep. But after it worked for her, she realized there were hundreds of thousands of women going through the same thing.<br/><br/>Five years later, over 300,000 people use Rejuvia nightly. It's still a family business. <strong>My mom still takes it every night</strong>.</p>",
+              "image": "shopify://shop_images/Image_4.png",
+              "caption": "Receiving our first batch",
+              "image_left": false,
+              "signature_image": "shopify://shop_images/Frame_48101400.png",
+              "signature_name": "RC Williams",
+              "signature_title": "Founder"
+            }
           }
         },
         "block_order": [
-          "story_row_YrqtWg"
+          "story_row_YrqtWg",
+          "story_row_F8ygGj",
+          "story_row_PpyEkz"
         ],
         "name": "About V2",
         "settings": {}

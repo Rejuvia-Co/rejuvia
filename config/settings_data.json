@@ -3249,6 +3249,16 @@
               "margin_bottom": 24
             }
           },
+          "variant_selector_dn8XtD": {
+            "type": "variant-selector",
+            "settings": {
+              "show_header": true,
+              "header_text": "CHOOSE YOUR QUANTITY",
+              "default_variant": 2,
+              "margin_top": 0,
+              "margin_bottom": 40
+            }
+          },
           "key_traits_k8zn3H": {
             "type": "key-traits",
             "settings": {}
@@ -3257,16 +3267,6 @@
             "type": "bundle-info",
             "settings": {
               "bundle_title": "What's Included:"
-            }
-          },
-          "variant_selector_dn8XtD": {
-            "type": "variant-selector",
-            "settings": {
-              "show_header": true,
-              "header_text": "CHOOSE YOUR QUANTITY",
-              "default_variant": 2,
-              "margin_top": 0,
-              "margin_bottom": 24
             }
           },
           "buy_buttons_8Ga9QL": {
@@ -3321,9 +3321,9 @@
           "title_VQd3bp",
           "product_specs_R7TWBA",
           "description_4ENGK4",
+          "variant_selector_dn8XtD",
           "key_traits_k8zn3H",
           "bundle_info_tWkMPe",
-          "variant_selector_dn8XtD",
           "buy_buttons_8Ga9QL",
           "skio_plan_picker_CWxKHj",
           "skio_plan_picker_v2_WzGkdG",

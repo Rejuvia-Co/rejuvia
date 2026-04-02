@@ -2053,7 +2053,9 @@
               "title": "Melatonin Gummies",
               "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
               "image": "shopify://shop_images/melatonin_gummies.png",
-              "badge_text": "80% lost to digestion"
+              "badge_text": "80% lost to digestion",
+              "badge_position_desktop": "bottom-right",
+              "badge_position_mobile": "top-left"
             }
           },
           "tab_iLBcRm": {
@@ -2061,7 +2063,10 @@
             "settings": {
               "title": "The Prescription Trade-Off",
               "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
-              "badge_text": "Risk of dependency"
+              "image": "shopify://shop_images/Generated_Image_March_18_2026_-_6_12PM_1.png",
+              "badge_text": "FDA black box warnings",
+              "badge_position_desktop": "top-right",
+              "badge_position_mobile": "top-right"
             }
           },
           "tab_TfaWen": {
@@ -2069,7 +2074,9 @@
             "settings": {
               "title": "The \"Natural\" Cycle",
               "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
-              "badge_text": "Temporary relief only"
+              "badge_text": "Temporary relief only",
+              "badge_position_desktop": "bottom-right",
+              "badge_position_mobile": "top-left"
             }
           }
         },

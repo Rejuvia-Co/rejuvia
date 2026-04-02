@@ -18,48 +18,21 @@
           "type": "nav_column",
           "settings": {
             "title": "SHOP",
-            "link_1_text": "Sleep Spray",
-            "link_1_url": "",
-            "link_2_text": "Shop All",
-            "link_2_url": "",
-            "link_3_text": "",
-            "link_3_url": "",
-            "link_4_text": "",
-            "link_4_url": "",
-            "link_5_text": "",
-            "link_5_url": ""
+            "menu": "footer-menu-2"
           }
         },
         "nav_column_QjHMhH": {
           "type": "nav_column",
           "settings": {
             "title": "ABOUT",
-            "link_1_text": "Ingredients",
-            "link_1_url": "",
-            "link_2_text": "Reviews",
-            "link_2_url": "",
-            "link_3_text": "Our Story",
-            "link_3_url": "",
-            "link_4_text": "FAQs",
-            "link_4_url": "",
-            "link_5_text": "",
-            "link_5_url": ""
+            "menu": "learn"
           }
         },
         "nav_column_wyQjCR": {
           "type": "nav_column",
           "settings": {
             "title": "HELP",
-            "link_1_text": "Help Center",
-            "link_1_url": "",
-            "link_2_text": "Manage Subscription",
-            "link_2_url": "",
-            "link_3_text": "",
-            "link_3_url": "",
-            "link_4_text": "",
-            "link_4_url": "",
-            "link_5_text": "",
-            "link_5_url": ""
+            "menu": "more"
           }
         }
       },
@@ -71,9 +44,6 @@
       "name": "Footer V2",
       "settings": {
         "logo": "shopify://shop_images/Logo_1.svg",
-        "instagram_url": "",
-        "facebook_url": "",
-        "twitter_url": "",
         "newsletter_title": "Save 10% on Your Order",
         "newsletter_desc": "Sign up for news and exclusive discounts, plus 10% off your first order!",
         "newsletter_btn": "Sign Up & Save 10%",

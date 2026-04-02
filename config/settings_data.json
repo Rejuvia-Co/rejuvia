@@ -2817,6 +2817,30 @@
       "real_stories_v2_CKGqJy": {
         "type": "real-stories-v2",
         "blocks": {
+          "tp_review_NqL6Rk": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_nq4Umj": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "Great company and product",
+              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
           "fb_text_review_hFr4KQ": {
             "type": "fb_text_review",
             "settings": {
@@ -2907,6 +2931,8 @@
           }
         },
         "block_order": [
+          "tp_review_NqL6Rk",
+          "tp_review_nq4Umj",
           "fb_text_review_hFr4KQ",
           "fb_text_review_M6wKic",
           "tp_review_tedq9c",

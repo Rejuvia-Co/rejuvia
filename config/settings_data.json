@@ -3293,10 +3293,6 @@
           "custom_tabs_KMiLQ8": {
             "type": "custom-tabs",
             "settings": {}
-          },
-          "social_sharing_McLwd4": {
-            "type": "social-sharing",
-            "settings": {}
           }
         },
         "block_order": [
@@ -3307,8 +3303,7 @@
           "variant_selector_dn8XtD",
           "skio_plan_picker_v2_WzGkdG",
           "buy_buttons_8Ga9QL",
-          "custom_tabs_KMiLQ8",
-          "social_sharing_McLwd4"
+          "custom_tabs_KMiLQ8"
         ],
         "name": "Product Widget V3",
         "settings": {

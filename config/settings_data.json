@@ -1158,6 +1158,7 @@
           "icon_QAwF9m",
           "icon_V8gg3P"
         ],
+        "disabled": true,
         "custom_css": [],
         "settings": {
           "heading": "Finally, The Better Way To Sleep",
@@ -1218,6 +1219,7 @@
           "card_yjCNz6",
           "card_TtMCFP"
         ],
+        "disabled": true,
         "custom_css": [],
         "settings": {
           "heading": "Natural Ingredients With a Purpose",
@@ -1682,6 +1684,7 @@
           "card_yn9Wij",
           "card_xLhp3N"
         ],
+        "disabled": true,
         "settings": {
           "heading": "How Rejuvia Works",
           "subheading": "Use your Sleep Spray 15-20 minutes before bed for the best results."
@@ -2248,6 +2251,7 @@
           "feature_row_iw9FyR",
           "feature_row_4CNnnJ"
         ],
+        "disabled": true,
         "name": "Product Comparison",
         "settings": {
           "show_heading": true,
@@ -3148,6 +3152,29 @@
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
         }
+      },
+      "about_v2_Lx7Enx": {
+        "type": "about-v2",
+        "blocks": {
+          "story_row_YrqtWg": {
+            "type": "story_row",
+            "settings": {
+              "heading": "<p>“This all started with <em>my mom</em>”</p>",
+              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" <strong>Couldn't. Sleep</strong>.<br/><br/>She'd tried everything. Melatonin capsules, gummies, sleeping pills, Ambien, teas, every \"hack\" on the internet. Nothing worked. <strong>Or it left her feeling worse in the morning than the sleepless night did.</strong></p>",
+              "image": "shopify://shop_images/Image_2.png",
+              "caption": "RC & Kristen, Founders",
+              "image_left": false,
+              "products_image": "shopify://shop_images/4_55751.png",
+              "signature_name": "RC Williams",
+              "signature_title": "Founder"
+            }
+          }
+        },
+        "block_order": [
+          "story_row_YrqtWg"
+        ],
+        "name": "About V2",
+        "settings": {}
       }
     },
     "content_for_index": [
@@ -3159,15 +3186,16 @@
       "real_stories_v2_CKGqJy",
       "what_makes_different_v2_rRVmVL",
       "use_in_just_v2_JAWTbF",
+      "alternatives_v2_aVf4gw",
+      "about_v2_Lx7Enx",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
-      "alternatives_v2_aVf4gw",
+      "product_widget_v2_m3pTph",
       "product_features_p6FHhD",
       "featured_customer_reviews_96PMKt",
       "how_it_works_Qwdx49",
       "product_comparison_enhanced_DecUrt",
       "ingredients_section_xJDwEy",
-      "product_widget_v2_m3pTph",
       "subscribe_save_qXLDcT",
       "founder_story_qLxKiR",
       "faqs_Whjez9",

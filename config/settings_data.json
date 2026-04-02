@@ -3257,6 +3257,93 @@
         "settings": {
           "heading": "<p>6,000+ verified <em>5-star</em> reviews</p>"
         }
+      },
+      "faqs_v2_BYWkfd": {
+        "type": "faqs-v2",
+        "blocks": {
+          "faq_kPjUwi": {
+            "type": "faq",
+            "settings": {
+              "question": "Why are Rejuvia sprays better than gummies and pills?",
+              "answer": "<p>Oral sprays allow for direct absorption through the mucous membranes in your mouth, bypassing the digestive system entirely. That means faster uptake, higher bioavailability, and no fillers or added sugars that come with most gummies. You feel it working quicker and your body actually uses more of what you're taking.</p>"
+            }
+          },
+          "faq_GMGJEP": {
+            "type": "faq",
+            "settings": {
+              "question": "What's in it? Is it safe to take with other products?",
+              "answer": "<p>We like to keep it clean and transparent</p>"
+            }
+          },
+          "faq_bnfb6i": {
+            "type": "faq",
+            "settings": {
+              "question": "Do I need to take Rejuvia every night?",
+              "answer": "<p>Nope. Rejuvia works on an as-needed basis — there's no buildup required. Use it nightly, on travel nights, or whenever you need help winding down. It's completely flexible.</p>"
+            }
+          },
+          "faq_iaepJi": {
+            "type": "faq",
+            "settings": {
+              "question": "How quickly does Rejuvia work, and how long will I sleep?",
+              "answer": "<p>Most customers feel the effects within 15–20 minutes. You don't need to block out a full 8 hours — it supports your natural sleep cycle whether you're getting 5 hours or 8. Some people notice results the first night; others need 5–7 days of consistent use for the full effect.</p>"
+            }
+          },
+          "faq_Yd6Xga": {
+            "type": "faq",
+            "settings": {
+              "question": "Will I feel groggy the next morning?",
+              "answer": "<p>No. That's actually one of the biggest reasons people switch to Rejuvia from melatonin gummies or OTC sleep aids. Our sublingual formula absorbs directly into your bloodstream, so your body processes it efficiently — no next-day fog. Nurses, travelers, and early risers use it specifically for this reason.</p>"
+            }
+          },
+          "faq_tLDpaw": {
+            "type": "faq",
+            "settings": {
+              "question": "Will Rejuvia knock me out like a sleeping pill?",
+              "answer": "<p>No — Rejuvia isn't a sedative. It's designed to help your body wind down naturally so you fall asleep when you're ready. Think of it as support for your body's own sleep process, not an off switch. Most customers notice they simply drift off easier and stay asleep longer.</p>"
+            }
+          },
+          "faq_YArTEw": {
+            "type": "faq",
+            "settings": {
+              "question": "How does the subscription work? Can I cancel easily?",
+              "answer": "<p>Yes — you can skip, pause, or cancel anytime from your account dashboard. No commitments, no hoops. You'll always get an email before you're charged so there are no surprises.</p>"
+            }
+          },
+          "faq_Pthmj9": {
+            "type": "faq",
+            "settings": {
+              "question": "What if Rejuvia doesn't work for me?",
+              "answer": "<p>We offer a 90-day money-back guarantee on your first order, no questions asked. If it's not for you, just email hello@rejuvia.co and we'll walk you through the return. You're only responsible for return shipping costs.</p>"
+            }
+          },
+          "faq_hz8L79": {
+            "type": "faq",
+            "settings": {
+              "question": "How many sprays should I take?",
+              "answer": "<p>Start with 4-6 sprays under your tongue, 30 minutes before bed. Less is more — most customers find their sweet spot here. If you feel groggy the next morning, reduce by 1–2 sprays. If you don't notice an effect after a week, increase gradually. The max is 6–8 sprays, but it's not the starting point.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "faq_kPjUwi",
+          "faq_GMGJEP",
+          "faq_bnfb6i",
+          "faq_iaepJi",
+          "faq_Yd6Xga",
+          "faq_tLDpaw",
+          "faq_YArTEw",
+          "faq_Pthmj9",
+          "faq_hz8L79"
+        ],
+        "name": "FAQs V2",
+        "settings": {
+          "heading": "Got a question?",
+          "description": "We've heard it all from people struggling with sleep. And here are the most common questions.",
+          "link_text": "Don't see your question?",
+          "link_label": "Get in touch with our team",
+          "link_url": ""
+        }
       }
     },
     "content_for_index": [
@@ -3273,6 +3360,7 @@
       "ticker_v2_j6gkXE",
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
+      "faqs_v2_BYWkfd",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

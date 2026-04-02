@@ -3214,6 +3214,16 @@
       "product_widget_v3_Wdi4wi": {
         "type": "product-widget-v3",
         "blocks": {
+          "okendo_reviews_e6KBnh": {
+            "type": "okendo-reviews",
+            "settings": {
+              "reviews_anchor": "shopify-product-reviews",
+              "star_color": "#fab851",
+              "empty_star_color": "#dddddd",
+              "margin_top": 0,
+              "margin_bottom": 5
+            }
+          },
           "title_VQd3bp": {
             "type": "title",
             "settings": {
@@ -3229,16 +3239,6 @@
               "custom_text_1": "",
               "custom_text_2": "",
               "margin_top": 0,
-              "margin_bottom": 24
-            }
-          },
-          "okendo_reviews_e6KBnh": {
-            "type": "okendo-reviews",
-            "settings": {
-              "reviews_anchor": "shopify-product-reviews",
-              "star_color": "#fab851",
-              "empty_star_color": "#dddddd",
-              "margin_top": 10,
               "margin_bottom": 24
             }
           },
@@ -3317,9 +3317,9 @@
           }
         },
         "block_order": [
+          "okendo_reviews_e6KBnh",
           "title_VQd3bp",
           "product_specs_R7TWBA",
-          "okendo_reviews_e6KBnh",
           "description_4ENGK4",
           "key_traits_k8zn3H",
           "bundle_info_tWkMPe",

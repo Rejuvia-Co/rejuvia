@@ -1,0 +1,491 @@
+<style>
+.footer-v2 {
+    width: 100%;
+    background-color: #EAEAF7;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #141414;
+}
+
+.footer-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px;
+}
+
+/* Top section */
+.footer-v2-top {
+    display: flex;
+    gap: 64px;
+    padding-bottom: 48px;
+}
+
+/* Logo + socials */
+.footer-v2-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 180px;
+}
+
+.footer-v2-logo {
+    max-width: 164px;
+    height: auto;
+}
+
+.footer-v2-socials {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.footer-v2-socials a {
+    color: #141414;
+    display: flex;
+    text-decoration: none;
+}
+
+.footer-v2-socials svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Nav columns */
+.footer-v2-nav {
+    display: flex;
+    gap: 64px;
+    flex: 1;
+}
+
+.footer-v2-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-v2-nav-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #141414;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px;
+}
+
+.footer-v2-nav-col a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    text-decoration: none;
+}
+
+.footer-v2-nav-col a:hover {
+    text-decoration: underline;
+}
+
+/* Newsletter */
+.footer-v2-newsletter {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-v2-newsletter-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.footer-v2-newsletter-desc {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.footer-v2-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-v2-input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+    color: #141414;
+    outline: none;
+}
+
+.footer-v2-input::placeholder {
+    color: #999;
+}
+
+.footer-v2-submit {
+    width: 100%;
+    padding: 16px;
+    background: #672666;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+/* Divider */
+.footer-v2-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+}
+
+/* Disclaimer */
+.footer-v2-disclaimer {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #737373;
+    padding: 24px 0;
+}
+
+/* Bottom */
+.footer-v2-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    gap: 24px;
+}
+
+.footer-v2-bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    color: #141414;
+}
+
+.footer-v2-bottom-left a {
+    color: #141414;
+    text-decoration: underline;
+}
+
+.footer-v2-payment-icons {
+    display: flex;
+    gap: 8px;
+}
+
+.footer-v2-payment-icons img {
+    height: 24px;
+    width: auto;
+}
+
+/* Mobile accordion */
+.footer-v2-nav-toggle {
+    display: none;
+}
+
+.footer-v2-nav-chevron {
+    display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .footer-v2-container {
+        padding: 40px 16px;
+    }
+    .footer-v2-top {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .footer-v2-brand {
+        order: -1;
+    }
+    .footer-v2-newsletter {
+        max-width: 100%;
+        order: -2;
+    }
+    .footer-v2-nav {
+        flex-direction: column;
+        gap: 0;
+    }
+    .footer-v2-nav-col {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 16px 0;
+        gap: 0;
+    }
+    .footer-v2-nav-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        margin: 0;
+    }
+    .footer-v2-nav-chevron {
+        display: block;
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease;
+    }
+    .footer-v2-nav-col.is-open .footer-v2-nav-chevron {
+        transform: rotate(180deg);
+    }
+    .footer-v2-nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 12px;
+    }
+    .footer-v2-nav-col.is-open .footer-v2-nav-links {
+        display: flex;
+    }
+    .footer-v2-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .footer-v2-bottom-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+</style>
+
+<footer class="footer-v2">
+    <div class="footer-v2-container">
+        <div class="footer-v2-top">
+            {%- comment -%} Logo + Socials {%- endcomment -%}
+            <div class="footer-v2-brand">
+                {% if section.settings.logo != blank %}
+                    <a href="/">
+                        <img class="footer-v2-logo" src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}">
+                    </a>
+                {% endif %}
+                <div class="footer-v2-socials">
+                    {% if section.settings.instagram_url != blank %}
+                        <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    {% endif %}
+                    {% if section.settings.facebook_url != blank %}
+                        <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                    {% endif %}
+                    {% if section.settings.twitter_url != blank %}
+                        <a href="{{ section.settings.twitter_url }}" target="_blank" rel="noopener" aria-label="X">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            {%- comment -%} Nav columns {%- endcomment -%}
+            <div class="footer-v2-nav">
+                {% for block in section.blocks %}
+                    {% if block.type == 'nav_column' %}
+                        <div class="footer-v2-nav-col" data-footer-v2-col {{ block.shopify_attributes }}>
+                            <div class="footer-v2-nav-title" data-footer-v2-toggle>
+                                {{ block.settings.title }}
+                                <svg class="footer-v2-nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 8L10 13L15 8" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="footer-v2-nav-links">
+                                {% if block.settings.link_1_text != blank %}
+                                    <a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_text }}</a>
+                                {% endif %}
+                                {% if block.settings.link_2_text != blank %}
+                                    <a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_text }}</a>
+                                {% endif %}
+                                {% if block.settings.link_3_text != blank %}
+                                    <a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_text }}</a>
+                                {% endif %}
+                                {% if block.settings.link_4_text != blank %}
+                                    <a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_text }}</a>
+                                {% endif %}
+                                {% if block.settings.link_5_text != blank %}
+                                    <a href="{{ block.settings.link_5_url }}">{{ block.settings.link_5_text }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {%- comment -%} Newsletter {%- endcomment -%}
+            <div class="footer-v2-newsletter">
+                <h3 class="footer-v2-newsletter-title">{{ section.settings.newsletter_title }}</h3>
+                <p class="footer-v2-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
+                <form class="footer-v2-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
+                    <input type="hidden" name="form_type" value="customer">
+                    <input type="hidden" name="utf8" value="✓">
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <input class="footer-v2-input" type="email" name="contact[email]" placeholder="Your Email" required>
+                    <button class="footer-v2-submit" type="submit">{{ section.settings.newsletter_btn | default: 'Sign Up & Save 10%' }}</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-v2-divider"></div>
+
+        {%- comment -%} Disclaimer {%- endcomment -%}
+        {% if section.settings.disclaimer != blank %}
+            <p class="footer-v2-disclaimer">{{ section.settings.disclaimer }}</p>
+        {% endif %}
+
+        {%- comment -%} Bottom {%- endcomment -%}
+        <div class="footer-v2-bottom">
+            <div class="footer-v2-bottom-left">
+                <span>Copyright &copy; {{ 'now' | date: '%Y' }}. All rights reserved.</span>
+                {% if section.settings.terms_url != blank %}
+                    <a href="{{ section.settings.terms_url }}">Terms of Service</a>
+                {% endif %}
+                {% if section.settings.privacy_url != blank %}
+                    <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
+                {% endif %}
+            </div>
+            {% if section.settings.payment_icons != blank %}
+                <div class="footer-v2-payment-icons">
+                    <img src="{{ section.settings.payment_icons | image_url: width: 400 }}" alt="Payment methods" loading="lazy">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>
+
+<script>
+(function() {
+    document.querySelectorAll('[data-footer-v2-toggle]').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+            toggle.closest('[data-footer-v2-col]').classList.toggle('is-open');
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Footer V2",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Brand"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        },
+        {
+            "type": "url",
+            "id": "instagram_url",
+            "label": "Instagram URL"
+        },
+        {
+            "type": "url",
+            "id": "facebook_url",
+            "label": "Facebook URL"
+        },
+        {
+            "type": "url",
+            "id": "twitter_url",
+            "label": "X (Twitter) URL"
+        },
+        {
+            "type": "header",
+            "content": "Newsletter"
+        },
+        {
+            "type": "text",
+            "id": "newsletter_title",
+            "label": "Title",
+            "default": "Save 10% on Your Order"
+        },
+        {
+            "type": "text",
+            "id": "newsletter_desc",
+            "label": "Description",
+            "default": "Sign up for news and exclusive discounts, plus 10% off your first order!"
+        },
+        {
+            "type": "text",
+            "id": "newsletter_btn",
+            "label": "Button text",
+            "default": "Sign Up & Save 10%"
+        },
+        {
+            "type": "header",
+            "content": "Bottom"
+        },
+        {
+            "type": "textarea",
+            "id": "disclaimer",
+            "label": "FDA Disclaimer",
+            "default": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product."
+        },
+        {
+            "type": "url",
+            "id": "terms_url",
+            "label": "Terms of Service URL"
+        },
+        {
+            "type": "url",
+            "id": "privacy_url",
+            "label": "Privacy Policy URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "payment_icons",
+            "label": "Payment icons image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "nav_column",
+            "name": "Nav Column",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Column title",
+                    "default": "SHOP"
+                },
+                { "type": "text", "id": "link_1_text", "label": "Link 1 text" },
+                { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
+                { "type": "text", "id": "link_2_text", "label": "Link 2 text" },
+                { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
+                { "type": "text", "id": "link_3_text", "label": "Link 3 text" },
+                { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
+                { "type": "text", "id": "link_4_text", "label": "Link 4 text" },
+                { "type": "url", "id": "link_4_url", "label": "Link 4 URL" },
+                { "type": "text", "id": "link_5_text", "label": "Link 5 text" },
+                { "type": "url", "id": "link_5_url", "label": "Link 5 URL" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer V2",
+            "blocks": [
+                { "type": "nav_column", "settings": { "title": "SHOP", "link_1_text": "Sleep Spray", "link_2_text": "Shop All" } },
+                { "type": "nav_column", "settings": { "title": "ABOUT", "link_1_text": "Ingredients", "link_2_text": "Reviews", "link_3_text": "Our Story", "link_4_text": "FAQs" } },
+                { "type": "nav_column", "settings": { "title": "HELP", "link_1_text": "Help Center", "link_2_text": "Manage Subscription" } }
+            ]
+        }
+    ]
+}
+{% endschema %}

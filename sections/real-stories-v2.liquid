@@ -105,11 +105,12 @@
     column-gap: 30px;
 }
 
-/* FB reviews (images) */
+/* FB reviews (images) - staggered effect */
 .rs-v2-fb-review {
     break-inside: avoid;
     margin-bottom: 30px;
 }
+
 
 .rs-v2-fb-review img {
     width: 100%;
@@ -227,6 +228,7 @@
     break-inside: avoid;
     margin-bottom: 30px;
 }
+
 
 .rs-v2-fb-avatar {
     width: 36px;
@@ -365,7 +367,7 @@
     <div class="rs-v2-reviews is-active" data-rs-v2-panel="facebook">
         {% for block in section.blocks %}
             {% if block.type == 'fb_review' %}
-                <div class="rs-v2-fb-review" {{ block.shopify_attributes }}>
+                <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
                     {% if block.settings.image != blank %}
                         <img
                             src="{{ block.settings.image | image_url: width: 1200 }}"
@@ -375,7 +377,7 @@
                     {% endif %}
                 </div>
             {% elsif block.type == 'fb_text_review' %}
-                <div class="rs-v2-fb-text" {{ block.shopify_attributes }}>
+                <div class="rs-v2-fb-text" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
                     {% if block.settings.avatar != blank %}
                         <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72 }}" alt="{{ block.settings.name }}" loading="lazy">
                     {% else %}
@@ -409,7 +411,7 @@
                             <div class="rs-v2-tp-stars">
                                 {% assign star_count = block.settings.stars | default: 5 %}
                                 {% for i in (1..star_count) %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#FAB851"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#00B67A"/></svg>
                                 {% endfor %}
                             </div>
                             <p class="rs-v2-tp-title">{{ block.settings.title }}</p>
@@ -473,6 +475,36 @@
                     "type": "image_picker",
                     "id": "image",
                     "label": "Review screenshot"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_top",
+                    "label": "Top offset (px)",
+                    "min": -50,
+                    "max": 80,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_left",
+                    "label": "Left padding (px)",
+                    "min": 0,
+                    "max": 60,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_right",
+                    "label": "Right padding (px)",
+                    "min": 0,
+                    "max": 60,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
                 }
             ]
         },
@@ -496,6 +528,36 @@
                     "id": "comment",
                     "label": "Comment",
                     "default": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_top",
+                    "label": "Top offset (px)",
+                    "min": -50,
+                    "max": 80,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_left",
+                    "label": "Left padding (px)",
+                    "min": 0,
+                    "max": 60,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
+                },
+                {
+                    "type": "range",
+                    "id": "offset_right",
+                    "label": "Right padding (px)",
+                    "min": 0,
+                    "max": 60,
+                    "step": 5,
+                    "default": 0,
+                    "unit": "px"
                 }
             ]
         },

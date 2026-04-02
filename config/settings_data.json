@@ -2675,7 +2675,7 @@
           "bg_color": "#fafafa",
           "accent_color": "#672666",
           "rating_score": "4.6",
-          "rating_sold": "150K+",
+          "rating_sold": "1,500,000 Sprays",
           "heading": "<p>Join 300,000 People <em>Sleeping Better</em> and <em>Through the Night</em></p>",
           "description": "If you've tried gummies, pills, or prescriptions and still aren't sleeping – it's not you. Most sleep products lose up to 80% of their ingredients before they ever reach your bloodstream. Rejuvia was made to fix that.",
           "btn_text": "Sleep Better Tonight",
@@ -2768,6 +2768,52 @@
           "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>",
           "graph_image": "shopify://shop_images/Listicle.png"
         }
+      },
+      "image_text_v2_EEfUyt": {
+        "type": "image-text-v2",
+        "blocks": {
+          "stat_tDYqGy": {
+            "type": "stat",
+            "settings": {
+              "number": "13+",
+              "label": "Natural ingredients"
+            }
+          },
+          "stat_X9B8YY": {
+            "type": "stat",
+            "settings": {
+              "number": "2mg",
+              "label": "Low-dose melatonin"
+            }
+          },
+          "stat_X9xjwk": {
+            "type": "stat",
+            "settings": {
+              "number": "15",
+              "label": "Minutes to sleep"
+            }
+          },
+          "stat_pWVpj3": {
+            "type": "stat",
+            "settings": {
+              "number": "0",
+              "label": "Zero grogginess"
+            }
+          }
+        },
+        "block_order": [
+          "stat_tDYqGy",
+          "stat_X9B8YY",
+          "stat_X9xjwk",
+          "stat_pWVpj3"
+        ],
+        "name": "Image with Text V2",
+        "settings": {
+          "heading": "<p>Here's why <em>Rejuvia works better</em></p>",
+          "description": "<p>Rejuvia takes a completely different approach.</p><p>Instead of another pill or gummy, it's <strong>a sublingual oral spray.</strong></p><p>You spray it under your tongue, where it absorbs directly into your bloodstream – no stomach, no liver, no wasted ingredients.</p>",
+          "image": "shopify://shop_images/Higher-absorption-rate.png",
+          "badge_text": "Higher absorption rate"
+        }
       }
     },
     "content_for_index": [
@@ -2775,6 +2821,7 @@
       "guarantees_v2_h3tcz4",
       "product_intro_v2_mcmr7P",
       "listicle_v2_N8G8nM",
+      "image_text_v2_EEfUyt",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
       "product_features_p6FHhD",

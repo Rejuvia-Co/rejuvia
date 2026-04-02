@@ -1,0 +1,915 @@
+- generic [active] [ref=e1]:
+  - link "Skip to Main Content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e8]:
+      - paragraph [ref=e10]:
+        - strong [ref=e11]: Shop Sleep Spray 6-Pack
+      - generic:
+        - paragraph:
+          - text: Free Shipping Over $69
+          - link "Shop Now":
+            - /url: /collections/all
+    - banner [ref=e12]:
+      - generic [ref=e15]:
+        - link "Rejuvia" [ref=e16] [cursor=pointer]:
+          - /url: /
+          - img "Rejuvia" [ref=e17]
+        - generic [ref=e27]:
+          - link "Cart" [ref=e28] [cursor=pointer]:
+            - /url: /cart
+            - img [ref=e29]
+          - button "Open menu" [ref=e33] [cursor=pointer]:
+            - img [ref=e34]
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - generic [ref=e42]:
+                - img [ref=e43]
+                - img [ref=e45]
+                - img [ref=e47]
+                - img [ref=e49]
+                - img [ref=e51]
+              - generic [ref=e53]: 4.6 Stars | 1,500,000 Sprays Sold
+            - paragraph [ref=e55]:
+              - text: Join 300,000 People
+              - emphasis [ref=e56]: Sleeping Better
+              - text: and
+              - emphasis [ref=e57]: Through the Night
+            - generic [ref=e58]:
+              - link "Sleep Better Tonight" [ref=e59] [cursor=pointer]:
+                - /url: ""
+              - generic [ref=e60]:
+                - img [ref=e61]
+                - generic [ref=e63]: 90-Day Risk-Free Money-Back Guarantee
+          - generic [ref=e64]:
+            - img "<p>Join 300,000 People <em>Sleeping Better</em> and <em>Through the Night</em></p>" [ref=e67]
+            - generic [ref=e69]:
+              - img "Betty M." [ref=e70]
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - generic [ref=e73]:
+                    - img [ref=e74]
+                    - img [ref=e76]
+                    - img [ref=e78]
+                    - img [ref=e80]
+                    - img [ref=e82]
+                  - generic [ref=e84]: Betty M.
+                - paragraph [ref=e85]: I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - img [ref=e89]
+            - generic [ref=e92]: 5,000+ 5-Star Reviews
+          - generic [ref=e93]:
+            - img [ref=e94]
+            - generic [ref=e97]: Free US Shipping over $79
+          - generic [ref=e98]:
+            - img [ref=e99]
+            - generic [ref=e102]: 150,000+ Happy Customers
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - paragraph [ref=e107]:
+              - text: You've tried everything,
+              - emphasis [ref=e108]: here's why none of it worked
+            - generic [ref=e109]:
+              - paragraph [ref=e110]: Most sleep products are fighting an uphill battle before they even reach your bloodstream.
+              - paragraph [ref=e111]: Here's what's actually happening with the three most common options.
+          - generic [ref=e113]:
+            - img "Melatonin Gummies" [ref=e116]
+            - generic [ref=e117]:
+              - img [ref=e118]
+              - generic [ref=e120]: 80% lost to digestion
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - button "Melatonin Gummies" [ref=e123] [cursor=pointer]:
+                - img [ref=e125]
+                - generic [ref=e127]: Melatonin Gummies
+                - img [ref=e128]
+              - generic [ref=e130]:
+                - paragraph [ref=e131]:
+                  - text: Melatonin gummies have to
+                  - strong [ref=e132]: survive your entire digestive system
+                  - text: before they can help you sleep.
+                - paragraph [ref=e133]:
+                  - text: By the time they do,
+                  - strong [ref=e134]: up to 80%
+                  - text: of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.
+            - button "The Prescription Trade-Off" [ref=e137] [cursor=pointer]:
+              - img [ref=e139]
+              - generic [ref=e141]: The Prescription Trade-Off
+              - img [ref=e142]
+            - button "The \"Natural\" Cycle" [ref=e146] [cursor=pointer]:
+              - img [ref=e148]
+              - generic [ref=e150]: The "Natural" Cycle
+              - img [ref=e151]
+        - generic [ref=e154]:
+          - paragraph [ref=e156]:
+            - text: The real issue was never what you took, it was
+            - emphasis [ref=e157]: how your body absorbed it
+          - img "Absorption comparison chart" [ref=e159]
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.
+            - paragraph [ref=e163]: A 5mg melatonin gummy might deliver 1mg to where it's actually needed.
+            - paragraph [ref=e164]:
+              - strong [ref=e165]: That's not a bad product. It's a bad delivery system.
+        - generic [ref=e167]:
+          - paragraph [ref=e169]:
+            - text: Here's why
+            - emphasis [ref=e170]: Rejuvia works better
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - paragraph [ref=e173]: Rejuvia takes a completely different approach.
+              - paragraph [ref=e174]:
+                - text: Instead of another pill or gummy, it's
+                - strong [ref=e175]: a sublingual oral spray.
+              - paragraph [ref=e176]: You spray it under your tongue, where it absorbs directly into your bloodstream – no stomach, no liver, no wasted ingredients.
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - generic [ref=e179]: 13+
+                - generic [ref=e180]: Natural ingredients
+              - generic [ref=e182]:
+                - generic [ref=e183]: 2mg
+                - generic [ref=e184]: Low-dose melatonin
+              - generic [ref=e186]:
+                - generic [ref=e187]: "15"
+                - generic [ref=e188]: Minutes to sleep
+              - generic [ref=e190]:
+                - generic [ref=e191]: "0"
+                - generic [ref=e192]: Zero grogginess
+          - img "Product image" [ref=e194]
+        - generic [ref=e196]:
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - img [ref=e199]
+              - img [ref=e201]
+              - img [ref=e203]
+              - img [ref=e205]
+              - img [ref=e207]
+            - generic [ref=e209]: Trusted by 300,000+ Sleepers
+          - paragraph [ref=e211]:
+            - text: Real stories from people who
+            - emphasis [ref=e212]: have tried everything
+          - generic [ref=e213]:
+            - button "Facebook Reviews" [ref=e214] [cursor=pointer]:
+              - img [ref=e215]
+              - text: Facebook Reviews
+            - button "Trustpilot Reviews" [ref=e218] [cursor=pointer]:
+              - img [ref=e219]
+              - text: Trustpilot Reviews
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - img "Karla Finney" [ref=e224]
+              - generic [ref=e225]:
+                - generic [ref=e226]:
+                  - generic [ref=e227]: Karla Finney
+                  - paragraph [ref=e228]: Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!
+                - generic [ref=e229]:
+                  - generic [ref=e230]: Like
+                  - generic [ref=e231]: Reply
+            - generic [ref=e232]:
+              - img "Karla Finney" [ref=e233]
+              - generic [ref=e234]:
+                - generic [ref=e235]:
+                  - generic [ref=e236]: Karla Finney
+                  - paragraph [ref=e237]: Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!
+                - generic [ref=e238]:
+                  - generic [ref=e239]: Like
+                  - generic [ref=e240]: Reply
+            - generic:
+              - img "Facebook review"
+            - generic:
+              - img "Facebook review"
+            - generic:
+              - img "Facebook review"
+            - generic:
+              - img "Facebook review"
+        - generic [ref=e242]:
+          - paragraph [ref=e244]:
+            - text: What makes Rejuvia
+            - emphasis [ref=e245]: different?
+          - generic:
+            - img "Product"
+          - generic [ref=e248]:
+            - paragraph [ref=e249]: A fast-acting oral sleep spray with 13+ natural ingredients that absorb under your tongue in minutes.
+            - generic [ref=e250]:
+              - generic [ref=e251]: Why spraying works better
+              - generic [ref=e252]:
+                - img [ref=e253]
+                - generic [ref=e257]:
+                  - paragraph [ref=e258]: The tissue under your tongue is packed with blood vessels.
+                  - paragraph [ref=e259]:
+                    - text: When something absorbs there, it goes directly into your bloodstream,
+                    - strong [ref=e260]: skipping the digestive process
+                    - text: that destroys most pills and gummies.
+                  - paragraph [ref=e261]:
+                    - strong [ref=e262]: More of the active ingredients
+                    - text: reach your body intact, and you feel it
+                    - strong [ref=e263]: working faster.
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - paragraph [ref=e268]:
+              - text: Use in
+              - emphasis [ref=e269]: just 30 seconds
+            - link "View Supplement Label" [ref=e270] [cursor=pointer]:
+              - /url: ""
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - img "How to use" [ref=e273]
+              - 'img "Step 1: Spray" [ref=e274]'
+              - 'img "Step 2: Settle In" [ref=e275]'
+              - 'img "Step 3: Store & Repeat" [ref=e276]'
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - 'button "Step 1: Spray" [ref=e279] [cursor=pointer]':
+                  - generic [ref=e280]: "Step 1: Spray"
+                  - img [ref=e281]
+                - generic [ref=e283]:
+                  - paragraph [ref=e284]: Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.
+                  - generic [ref=e286]:
+                    - generic [ref=e287]:
+                      - generic [ref=e288]: When to use
+                      - paragraph [ref=e289]: Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.
+                    - generic [ref=e290]:
+                      - generic [ref=e291]: While traveling
+                      - paragraph [ref=e292]: Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule. A few sprays before you settle in can help your mind slow down and make unfamiliar environments feel a lot easier to fall asleep in.
+              - 'button "Step 2: Settle In" [ref=e294] [cursor=pointer]':
+                - generic [ref=e295]: "Step 2: Settle In"
+                - img [ref=e296]
+              - 'button "Step 3: Store & Repeat" [ref=e299] [cursor=pointer]':
+                - generic [ref=e300]: "Step 3: Store & Repeat"
+                - img [ref=e301]
+        - generic [ref=e304]:
+          - paragraph [ref=e306]:
+            - text: The
+            - emphasis [ref=e307]: most effective
+            - text: alternative to sleep aids
+          - generic [ref=e308]:
+            - generic [ref=e309]:
+              - generic [ref=e311]: Fast-absorbing formula
+              - generic [ref=e312]: Low price per use
+              - generic [ref=e313]: Proven natural ingredients
+              - generic [ref=e314]: Non-habit forming
+              - generic [ref=e315]: No groggy mornings
+              - generic [ref=e316]: Tastes great
+              - generic [ref=e317]: Free from additives & fillers
+            - generic [ref=e318]:
+              - generic [ref=e319]:
+                - img "Rejuvia" [ref=e320]
+                - img "Rejuvia" [ref=e321]
+              - generic [ref=e323]:
+                - text: Rapid
+                - text: (5-10 minutes)
+              - generic [ref=e325]: $0.89/night
+              - img [ref=e327]
+              - img [ref=e331]
+              - img [ref=e335]
+              - img [ref=e339]
+              - img [ref=e343]
+            - generic [ref=e346]:
+              - generic [ref=e347]:
+                - img "Sleep Pills"
+                - generic [ref=e348]: Sleep Pills
+              - generic [ref=e350]:
+                - text: Slow
+                - text: (up to 90 minutes)
+              - generic [ref=e352]: $3.00/night
+              - img [ref=e354]
+              - img [ref=e358]
+              - img [ref=e362]
+              - img [ref=e366]
+              - img [ref=e370]
+            - generic [ref=e373]:
+              - generic [ref=e374]:
+                - img "Sleep Gummies"
+                - generic [ref=e375]: Sleep Gummies
+              - generic [ref=e377]:
+                - text: Slow
+                - text: (up to 90 minutes)
+              - generic [ref=e379]: $1.83/night
+              - img [ref=e381]
+              - img [ref=e385]
+              - img [ref=e389]
+              - img [ref=e393]
+              - img [ref=e397]
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - img "Melatonin Supplements"
+                - generic [ref=e402]: Melatonin Supplements
+              - generic [ref=e404]:
+                - text: Slow
+                - text: (up to 90 minutes)
+              - generic [ref=e406]: $0.93/night
+              - img [ref=e408]
+              - img [ref=e412]
+              - img [ref=e416]
+              - img [ref=e420]
+              - img [ref=e424]
+          - generic [ref=e427]:
+            - link "Try Rejuvia Risk-Free" [ref=e428] [cursor=pointer]:
+              - /url: ""
+            - generic [ref=e429]:
+              - img [ref=e430]
+              - generic [ref=e432]: 90-Day Risk-Free Money-Back Guarantee
+        - generic [ref=e435]:
+          - img "rejuvia sleep spray" [ref=e437]
+          - generic [ref=e438]:
+            - heading "Finally, The Better Way To Sleep" [level=2] [ref=e439]
+            - paragraph [ref=e440]: Rejuvia combines 13+ science-backed ingredients to help you fall asleep 3x faster and stay asleep naturally — without grogginess or next-day fog. You stay in control, hear your alarm, and wake up refreshed. Fast-absorbing spray. Built for your rhythm.
+            - generic [ref=e441]:
+              - generic [ref=e442]:
+                - img "flower icon" [ref=e444]
+                - generic [ref=e445]: Fall Asleep 3x Faster
+              - generic [ref=e446]:
+                - img "moon with stars icon" [ref=e448]
+                - generic [ref=e449]: Natural Sleep Support
+              - generic [ref=e450]:
+                - img "sun icon" [ref=e452]
+                - generic [ref=e453]: No Morning Grogginess
+              - generic [ref=e454]:
+                - img "science flask icon" [ref=e456]
+                - generic [ref=e457]: Clean, Drug-Free Ingredients
+            - link "TRY REJUVIA NOW" [ref=e458] [cursor=pointer]:
+              - /url: /products/sleep-spray
+        - generic [ref=e461]:
+          - generic [ref=e462]:
+            - generic [ref=e463]:
+              - img [ref=e464]
+              - generic [ref=e470]: 5,950+ 5-Star Reviews
+            - heading "Used By 300,000 Sleepers" [level=2] [ref=e471]
+          - generic [ref=e472]:
+            - list "Customer reviews" [ref=e473]:
+              - generic [ref=e474]:
+                - generic:
+                  - listitem [ref=e475]:
+                    - generic [ref=e476]:
+                      - paragraph [ref=e477]: Rejuvia is the only product I didn’t give up on. I still use it months later and that says everything.”
+                      - generic [ref=e478]:
+                        - img [ref=e480]
+                        - generic [ref=e481]:
+                          - paragraph [ref=e482]: Robert G.
+                          - paragraph [ref=e483]: Verified Customer
+                  - listitem [ref=e484]:
+                    - generic [ref=e485]:
+                      - paragraph [ref=e486]: “I’ve tried everything. This was the first time I actually felt calm and fell asleep without waking up groggy.”
+                      - generic [ref=e487]:
+                        - img "rejuvia customer review" [ref=e489]
+                        - generic [ref=e490]:
+                          - paragraph [ref=e491]: Betty M.
+                          - paragraph [ref=e492]: Verified Customer
+                  - listitem [ref=e493]:
+                    - generic [ref=e494]:
+                      - paragraph [ref=e495]: “I use it after stressful days when I can’t shut my brain off. 6 sprays and I’m OUT for the night."
+                      - generic [ref=e496]:
+                        - img [ref=e498]
+                        - generic [ref=e499]:
+                          - paragraph [ref=e500]: Tracey F.
+                          - paragraph [ref=e501]: Verified Customer
+                  - listitem [ref=e502]:
+                    - generic [ref=e503]:
+                      - paragraph [ref=e504]: “This spray works so well! After about 15-20 minutes, it is lights out and I don’t wake up anymore during the night.”
+                      - generic [ref=e505]:
+                        - img [ref=e507]
+                        - generic [ref=e508]:
+                          - paragraph [ref=e509]: Scott S.
+                          - paragraph [ref=e510]: Verified Customer
+                  - listitem [ref=e511]:
+                    - generic [ref=e512]:
+                      - paragraph [ref=e513]: “I've suffered from bad sleep for years. I tried Rejuvia and it helps me fall asleep quickly and stay asleep the full night.”
+                      - generic [ref=e514]:
+                        - img [ref=e516]
+                        - generic [ref=e517]:
+                          - paragraph [ref=e518]: Kimberly W.
+                          - paragraph [ref=e519]: Verified Customer
+                  - listitem [ref=e520]:
+                    - generic [ref=e521]:
+                      - paragraph [ref=e522]: “It’s a little pricey, but nothing else worked this well for me. I’ve already re-ordered twice.”
+                      - generic [ref=e523]:
+                        - img [ref=e525]
+                        - generic [ref=e526]:
+                          - paragraph [ref=e527]: Eldonna M.
+                          - paragraph [ref=e528]: Verified Customer
+                  - listitem [ref=e529]:
+                    - generic [ref=e530]:
+                      - paragraph [ref=e531]: Rejuvia is the only product I didn’t give up on. I still use it months later and that says everything.”
+                      - generic [ref=e532]:
+                        - img [ref=e534]
+                        - generic [ref=e535]:
+                          - paragraph [ref=e536]: Robert G.
+                          - paragraph [ref=e537]: Verified Customer
+                  - listitem [ref=e538]:
+                    - generic [ref=e539]:
+                      - paragraph [ref=e540]: “I’ve tried everything. This was the first time I actually felt calm and fell asleep without waking up groggy.”
+                      - generic [ref=e541]:
+                        - img [ref=e543]
+                        - generic [ref=e544]:
+                          - paragraph [ref=e545]: Betty M.
+                          - paragraph [ref=e546]: Verified Customer
+                  - listitem [ref=e547]:
+                    - generic [ref=e548]:
+                      - paragraph [ref=e549]: “I use it after stressful days when I can’t shut my brain off. 6 sprays and I’m OUT for the night."
+                      - generic [ref=e550]:
+                        - img [ref=e552]
+                        - generic [ref=e553]:
+                          - paragraph [ref=e554]: Tracey F.
+                          - paragraph [ref=e555]: Verified Customer
+                  - listitem [ref=e556]:
+                    - generic [ref=e557]:
+                      - paragraph [ref=e558]: “This spray works so well! After about 15-20 minutes, it is lights out and I don’t wake up anymore during the night.”
+                      - generic [ref=e559]:
+                        - img [ref=e561]
+                        - generic [ref=e562]:
+                          - paragraph [ref=e563]: Scott S.
+                          - paragraph [ref=e564]: Verified Customer
+                  - listitem [ref=e565]:
+                    - generic [ref=e566]:
+                      - paragraph [ref=e567]: “I've suffered from bad sleep for years. I tried Rejuvia and it helps me fall asleep quickly and stay asleep the full night.”
+                      - generic [ref=e568]:
+                        - img [ref=e570]
+                        - generic [ref=e571]:
+                          - paragraph [ref=e572]: Kimberly W.
+                          - paragraph [ref=e573]: Verified Customer
+                  - listitem [ref=e574]:
+                    - generic [ref=e575]:
+                      - paragraph [ref=e576]: “It’s a little pricey, but nothing else worked this well for me. I’ve already re-ordered twice.”
+                      - generic [ref=e577]:
+                        - img [ref=e579]
+                        - generic [ref=e580]:
+                          - paragraph [ref=e581]: Eldonna M.
+                          - paragraph [ref=e582]: Verified Customer
+                  - listitem [ref=e583]:
+                    - generic [ref=e584]:
+                      - paragraph [ref=e585]: Rejuvia is the only product I didn’t give up on. I still use it months later and that says everything.”
+                      - generic [ref=e586]:
+                        - img [ref=e588]
+                        - generic [ref=e589]:
+                          - paragraph [ref=e590]: Robert G.
+                          - paragraph [ref=e591]: Verified Customer
+            - generic [ref=e592]:
+              - button "Previous review" [ref=e593] [cursor=pointer]:
+                - img [ref=e594]
+              - button "Next review" [ref=e597] [cursor=pointer]:
+                - img [ref=e598]
+        - generic [ref=e603]:
+          - heading "How Rejuvia Works" [level=2] [ref=e604]
+          - paragraph [ref=e605]: Use your Sleep Spray 15-20 minutes before bed for the best results.
+          - generic [ref=e606]:
+            - generic [ref=e607]:
+              - img "<b>Spray</b> 6-8 times under your tongue or inside your cheek." [ref=e608]
+              - generic [ref=e609]:
+                - paragraph [ref=e610]: STEP 1
+                - paragraph [ref=e611]: Spray 6-8 times under your tongue or inside your cheek.
+            - generic [ref=e612]:
+              - img "<b>Hold</b> in your mouth for at least 5-10 seconds." [ref=e613]
+              - generic [ref=e614]:
+                - paragraph [ref=e615]: STEP 2
+                - paragraph [ref=e616]: Hold in your mouth for at least 5-10 seconds.
+            - generic [ref=e617]:
+              - img "<b>Swallow </b>and get ready for the best sleep of your life." [ref=e618]
+              - generic [ref=e619]:
+                - paragraph [ref=e620]: STEP 3
+                - paragraph [ref=e621]: Swallow and get ready for the best sleep of your life.
+        - generic [ref=e624]:
+          - heading "Rejuvia vs. The Alternatives" [level=2] [ref=e625]
+          - generic [ref=e626]:
+            - region "Product comparison table" [ref=e627]:
+              - generic [ref=e628]:
+                - generic [ref=e630]: Absorption Speed
+                - generic [ref=e631]: Average Cost
+                - generic [ref=e632]: Proven Natural Ingredients
+                - generic [ref=e633]: Non-Habit Forming
+                - generic [ref=e634]: No Groggy Mornings
+                - generic [ref=e635]: Tastes Great
+                - generic [ref=e636]: Free From Additives & Fillers
+                - generic [ref=e637]: Customize Dosage
+                - generic [ref=e638]: Safe for Long-Term Use
+              - generic [ref=e639]:
+                - generic [ref=e640]:
+                  - generic [ref=e641]:
+                    - generic:
+                      - img "Rejuvia Sleep Spray"
+                    - generic [ref=e642]: Rejuvia Sleep Spray
+                  - generic [ref=e643]: Rapid (10 minutes)
+                  - generic [ref=e644]: $0.89/night
+                  - img [ref=e647]
+                  - img [ref=e651]
+                  - img [ref=e655]
+                  - img [ref=e659]
+                  - img [ref=e663]
+                  - generic [ref=e665]: Easy Spray Control
+                  - img [ref=e668]
+                - generic [ref=e670]:
+                  - generic [ref=e671]:
+                    - generic:
+                      - img "Sleeping Pills"
+                    - generic [ref=e672]: Sleeping Pills
+                  - generic [ref=e673]: Slow (up to 90 min)
+                  - generic [ref=e674]: $3.00/night
+                  - generic [ref=e685]: Limited
+                - generic [ref=e688]:
+                  - generic [ref=e689]:
+                    - generic:
+                      - img "Sleep Gummies"
+                    - generic [ref=e690]: Sleep Gummies
+                  - generic [ref=e691]: Slow (up to 90 min)
+                  - generic [ref=e692]: $1.83/night
+                  - img [ref=e695]
+                  - img [ref=e699]
+                  - generic [ref=e707]: Limited
+                - generic [ref=e710]:
+                  - generic [ref=e711]:
+                    - generic:
+                      - img "Melatonin Supplements"
+                    - generic [ref=e712]: Melatonin Supplements
+                  - generic [ref=e713]: Slow (up to 90 min)
+                  - generic [ref=e714]: $0.93/night
+                  - img [ref=e717]
+                  - generic [ref=e727]: Limited
+            - generic [ref=e730]: ← Scroll to compare →
+            - progressbar "Scroll progress" [ref=e731]
+        - generic [ref=e733]:
+          - heading "Natural Ingredients With a Purpose" [level=2] [ref=e734]
+          - paragraph [ref=e735]: Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects.
+          - generic [ref=e736]:
+            - generic [ref=e737]:
+              - img "Helps you unwind and sleep more deeply, especially when stress is high" [ref=e738]
+              - generic [ref=e739]:
+                - paragraph [ref=e740]: Hops Flower
+                - paragraph [ref=e741]: Helps you unwind and sleep more deeply, especially when stress is high
+            - generic [ref=e742]:
+              - img "Supports calm and mental clarity, so your mind can finally rest" [ref=e743]
+              - generic [ref=e744]:
+                - paragraph [ref=e745]: Ginkgo Biloba
+                - paragraph [ref=e746]: Supports calm and mental clarity, so your mind can finally rest
+            - generic [ref=e747]:
+              - img "Naturally soothes the nervous system to help you let go at night" [ref=e748]
+              - generic [ref=e749]:
+                - paragraph [ref=e750]: Skullcap Root
+                - paragraph [ref=e751]: Naturally soothes the nervous system to help you let go at night
+            - generic [ref=e752]:
+              - img "Signals your body it’s time for sleep — fast and gently" [ref=e753]
+              - generic [ref=e754]:
+                - paragraph [ref=e755]: Melatonin
+                - paragraph [ref=e756]: Signals your body it’s time for sleep — fast and gently
+            - generic [ref=e757]:
+              - img "Eases tension and boosts GABA, your body’s natural sleep switch" [ref=e758]
+              - generic [ref=e759]:
+                - paragraph [ref=e760]: Passionflower
+                - paragraph [ref=e761]: Eases tension and boosts GABA, your body’s natural sleep switch
+        - generic [ref=e764]:
+          - generic [ref=e767]:
+            - generic [ref=e768]:
+              - button "Previous" [ref=e769] [cursor=pointer]:
+                - img [ref=e770]
+              - generic [ref=e773]:
+                - img [ref=e776]
+                - img "Rejuvia sleep spray product on a white background" [ref=e779]
+                - img [ref=e782]
+                - img [ref=e785]
+                - img [ref=e788]
+                - img [ref=e791]
+                - img [ref=e794]
+                - img [ref=e797]
+                - img [ref=e800]
+                - img [ref=e803]
+                - img [ref=e806]
+                - img [ref=e809]
+                - img [ref=e812]
+                - img [ref=e815]
+                - img [ref=e818]
+                - img [ref=e821]
+                - img [ref=e824]
+                - img [ref=e827]
+                - img [ref=e830]
+              - button "Next" [ref=e831] [cursor=pointer]:
+                - img [ref=e832]
+            - generic [ref=e835]:
+              - generic [ref=e837]:
+                - link "Rejuvia sleep spray product on a white background" [ref=e839] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepspray1.webp?v=1755475872
+                  - img "Rejuvia sleep spray product on a white background" [ref=e840]
+                - link "Sleep Spray" [ref=e842] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepsprayingredients_00e223cc-7341-40d1-ab75-d57a0869f3d5.webp?v=1767698828
+                  - img "Sleep Spray" [ref=e843]
+                - link "Sleep Spray" [ref=e845] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepsprayreviews.webp?v=1767698828
+                  - img "Sleep Spray" [ref=e846]
+                - link "Sleep Spray" [ref=e848] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepspraykeypoints.webp?v=1770833445
+                  - img "Sleep Spray" [ref=e849]
+                - link "Sleep Spray" [ref=e851] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepspraybenefits.webp?v=1767698828
+                  - img "Sleep Spray" [ref=e852]
+                - link [ref=e854] [cursor=pointer]:
+                  - /url: /cdn/shop/files/Sleepspraycomparison.webp?v=1767698828
+                  - img [ref=e855]
+                - link [ref=e857] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepsprayvalueprops.webp?v=1767698828
+                  - img [ref=e858]
+                - link [ref=e860] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepspray2pack.webp?v=1766948719
+                  - img [ref=e861]
+                - link [ref=e863] [cursor=pointer]:
+                  - /url: /cdn/shop/files/sleepspray3pack.webp?v=1766948719
+                  - img [ref=e864]
+              - button "Next thumbnail" [ref=e865] [cursor=pointer]:
+                - img [ref=e866]
+          - generic [ref=e870]:
+            - link "4.6 Stars From 4873 Reviews" [ref=e872] [cursor=pointer]:
+              - /url: "#shopify-product-reviews"
+              - generic [ref=e873]:
+                - generic [ref=e874]:
+                  - img [ref=e876]
+                  - img [ref=e879]
+                  - img [ref=e882]
+                  - img [ref=e885]
+                  - img [ref=e888]
+                - generic [ref=e890]:
+                  - strong [ref=e891]: "4.6"
+                  - text: Stars From 4873 Reviews
+            - heading "Sleep Spray" [level=1] [ref=e893]
+            - generic [ref=e895]:
+              - img [ref=e897]
+              - generic [ref=e901]: Fresh Mint
+              - generic [ref=e902]: •
+              - generic [ref=e903]: 30 Nights Per Spray
+            - generic [ref=e904]:
+              - paragraph
+              - paragraph [ref=e905]: Fall asleep 3x faster, stay asleep all night long, and wake up feeling like your best self. Rejuvia absorbs instantly under your tongue so it works in minutes.
+              - paragraph
+            - generic [ref=e907]:
+              - generic [ref=e910]: CHOOSE YOUR QUANTITY
+              - generic [ref=e912]:
+                - generic [ref=e913] [cursor=pointer]:
+                  - img "30 Servings" [ref=e915]
+                  - generic [ref=e916]: 1 Month
+                  - generic [ref=e917]: $1.50/night
+                - generic [ref=e918] [cursor=pointer]:
+                  - generic [ref=e919]: 27% SAVINGS
+                  - img "60 Servings" [ref=e921]
+                  - generic [ref=e922]: 2 Months
+                  - generic [ref=e923]: $1.31/night
+                - generic [ref=e924] [cursor=pointer]:
+                  - generic [ref=e925]: 33% SAVINGS
+                  - img "90 Servings" [ref=e927]
+                  - generic [ref=e928]: 3 Months
+                  - generic [ref=e929]: $1.16/night
+            - radiogroup "Select your order" [ref=e932]:
+              - generic [ref=e933]: Select your order
+              - generic [ref=e936]: Choose Your Offer
+              - generic [ref=e938]:
+                - 'radio "Subscribe & Save 20% Skip or cancel anytime $36.00 $45.00 Your First Order Includes: 30 Servings 30 Servings $45.00 $36.00 Vitamin D3+K2 Spray Vitamin D3+K2 Spray $45.00 FREE FREE US Shipping $4.99 FREE" [checked]'
+                - generic [ref=e939] [cursor=pointer]:
+                  - generic [ref=e940]:
+                    - img [ref=e942]
+                    - generic [ref=e945]:
+                      - generic [ref=e946]: Subscribe & Save 20%
+                      - generic [ref=e947]: Skip or cancel anytime
+                    - generic [ref=e948]:
+                      - generic [ref=e949]: $36.00
+                      - generic [ref=e950]: $45.00
+                  - generic [ref=e952]:
+                    - generic [ref=e953]: "Your First Order Includes:"
+                    - generic [ref=e954]:
+                      - generic [ref=e955]:
+                        - img "30 Servings" [ref=e957]
+                        - generic [ref=e958]: 30 Servings
+                      - generic [ref=e959]:
+                        - generic [ref=e960]: $45.00
+                        - generic [ref=e961]: $36.00
+                    - generic [ref=e962]:
+                      - generic [ref=e963]:
+                        - img "Vitamin D3+K2 Spray" [ref=e965]
+                        - generic [ref=e966]: Vitamin D3+K2 Spray
+                      - generic [ref=e967]:
+                        - generic [ref=e968]: $45.00
+                        - generic [ref=e969]: FREE
+                    - generic [ref=e970]:
+                      - generic [ref=e971]:
+                        - img [ref=e974]
+                        - generic [ref=e977]: FREE US Shipping
+                      - generic [ref=e978]:
+                        - generic [ref=e979]: $4.99
+                        - generic [ref=e980]: FREE
+              - generic [ref=e981]:
+                - radio "One Time Purchase $45.00"
+                - generic [ref=e983] [cursor=pointer]:
+                  - img [ref=e985]
+                  - generic [ref=e988]: One Time Purchase
+                  - generic [ref=e989]: $45.00
+            - generic [ref=e991]:
+              - status
+              - generic [ref=e992]:
+                - button "Add to cart - $36.00" [ref=e994] [cursor=pointer]:
+                  - generic [ref=e995]: Add to cart - $36.00
+                - generic [ref=e996]:
+                  - img [ref=e997]
+                  - text: 90-Day Money Back Guarantee
+            - list [ref=e1003]:
+              - listitem [ref=e1004]:
+                - checkbox [checked] [ref=e1005] [cursor=pointer]
+                - img [ref=e1006]
+                - heading "Ingredients" [level=2] [ref=e1008]
+                - generic: "Key Ingredients Include: Passionflower, Hops Flower Head, Organic Feverfew Leaf, Melatonin (2.0mg), 5-HTP, Peppermint Leaf, Valerian Root, Lemon Balm, Magnolia, Chamomile, Cramp Bark, Gingko Biloba Extract, Skullcap Root and Natural Peppermint Flavor."
+              - listitem [ref=e1009]:
+                - checkbox [checked] [ref=e1010] [cursor=pointer]
+                - img [ref=e1011]
+                - heading "How To Use" [level=2] [ref=e1013]
+                - generic: Spray 6-8 times under your tongue or on the inside of your cheek 15-20 minutes before bed and then swallow. Our sleep spray has a delicious, all-natural mint flavoring to it and each spray bottle will last you about 30-35 days.
+              - listitem [ref=e1014]:
+                - checkbox [checked] [ref=e1015] [cursor=pointer]
+                - img [ref=e1016]
+                - heading "Shipping & Returns" [level=2] [ref=e1018]
+                - generic: We ship out all orders within 24 hours and offer free shipping on all subscriptions and orders over $79. Orders are typically delivered within 2-3 business days. Your first Rejuvia order is covered by our 90-day money-back guarantee.
+        - generic [ref=e1020]:
+          - heading "Subscribe & Save 20%" [level=2] [ref=e1021]
+          - generic [ref=e1022]:
+            - generic [ref=e1023]:
+              - img [ref=e1024]
+              - paragraph [ref=e1028]: 20% OFF Each Order
+            - generic [ref=e1029]:
+              - img [ref=e1030]
+              - paragraph [ref=e1034]: Unlock FREE Gifts
+            - generic [ref=e1035]:
+              - img [ref=e1036]
+              - paragraph [ref=e1040]: Always FREE Shipping
+        - generic [ref=e1044]:
+          - generic [ref=e1045]:
+            - heading "Originally For My Mom, Now For All" [level=2] [ref=e1047]
+            - generic [ref=e1048]:
+              - paragraph [ref=e1049]: My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.
+              - paragraph [ref=e1050]: So I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.
+              - paragraph [ref=e1051]: We didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.
+              - paragraph [ref=e1052]: So we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.
+            - generic [ref=e1053]:
+              - paragraph [ref=e1054]: RC Williams
+              - paragraph [ref=e1055]: Founder of Rejuvia
+          - img "Originally For My Mom, Now For All" [ref=e1057]
+        - generic [ref=e1061]:
+          - generic [ref=e1063]: Frequently Asked Questions
+          - generic [ref=e1064]:
+            - button "Why are Rejuvia sprays better than gummies and pills?" [ref=e1066] [cursor=pointer]:
+              - text: Why are Rejuvia sprays better than gummies and pills?
+              - img [ref=e1068]
+            - button "What's in it? Is it safe to take with other products?" [ref=e1071] [cursor=pointer]:
+              - text: What's in it? Is it safe to take with other products?
+              - img [ref=e1073]
+            - button "Do I need to take Rejuvia every night?" [ref=e1076] [cursor=pointer]:
+              - text: Do I need to take Rejuvia every night?
+              - img [ref=e1078]
+            - button "How quickly does Rejuvia work, and how long will I sleep?" [ref=e1081] [cursor=pointer]:
+              - text: How quickly does Rejuvia work, and how long will I sleep?
+              - img [ref=e1083]
+            - button "Will I feel groggy the next morning?" [ref=e1086] [cursor=pointer]:
+              - text: Will I feel groggy the next morning?
+              - img [ref=e1088]
+            - button "Will Rejuvia knock me out like a sleeping pill?" [ref=e1091] [cursor=pointer]:
+              - text: Will Rejuvia knock me out like a sleeping pill?
+              - img [ref=e1093]
+            - button "How does the subscription work? Can I cancel easily?" [ref=e1096] [cursor=pointer]:
+              - text: How does the subscription work? Can I cancel easily?
+              - img [ref=e1098]
+            - button "What if Rejuvia doesn't work for me?" [ref=e1101] [cursor=pointer]:
+              - text: What if Rejuvia doesn't work for me?
+              - img [ref=e1103]
+            - button "How many sprays should I take?" [ref=e1106] [cursor=pointer]:
+              - text: How many sprays should I take?
+              - img [ref=e1108]
+        - generic [ref=e1112]:
+          - generic [ref=e1113]:
+            - heading "Shop All Rejuvia Sprays" [level=2] [ref=e1114]
+            - generic [ref=e1115]: Explore all of our oral sprays and start your wellness journey today
+          - generic [ref=e1116]:
+            - link "Rated 4.6 out of 5 stars 4,873 Reviews Rated 4.6 out of 5 stars 4,873 Reviews Sleep Spray For the sleep you've always deserved $45" [ref=e1118] [cursor=pointer]:
+              - /url: /products/sleep-spray
+              - generic [ref=e1122]:
+                - generic [ref=e1123]:
+                  - generic [ref=e1125]:
+                    - generic [ref=e1127]:
+                      - img [ref=e1129]
+                      - img [ref=e1136]
+                      - generic [ref=e1142]: Rated 4.6 out of 5 stars
+                    - generic [ref=e1143]: 4,873 Reviews
+                  - generic [ref=e1146]:
+                    - generic [ref=e1148]:
+                      - img [ref=e1150]
+                      - img [ref=e1157]
+                      - generic [ref=e1163]: Rated 4.6 out of 5 stars
+                    - generic [ref=e1164]: 4,873 Reviews
+                - generic [ref=e1165]: Sleep Spray
+                - generic [ref=e1166]: For the sleep you've always deserved
+                - generic [ref=e1168]: $45
+            - link "Rated 4.6 out of 5 stars 4,873 Reviews Rated 4.6 out of 5 stars 4,873 Reviews Stress Spray Convenient and on-demand stress-relief $45" [ref=e1170] [cursor=pointer]:
+              - /url: /products/oral-stress-spray
+              - generic [ref=e1174]:
+                - generic [ref=e1175]:
+                  - generic [ref=e1177]:
+                    - generic [ref=e1179]:
+                      - img [ref=e1181]
+                      - img [ref=e1188]
+                      - generic [ref=e1194]: Rated 4.6 out of 5 stars
+                    - generic [ref=e1195]: 4,873 Reviews
+                  - generic [ref=e1198]:
+                    - generic [ref=e1200]:
+                      - img [ref=e1202]
+                      - img [ref=e1209]
+                      - generic [ref=e1215]: Rated 4.6 out of 5 stars
+                    - generic [ref=e1216]: 4,873 Reviews
+                - generic [ref=e1217]: Stress Spray
+                - generic [ref=e1218]: Convenient and on-demand stress-relief
+                - generic [ref=e1220]: $45
+            - link "Rated 4.8 out of 5 stars 5 Reviews Vitamin D3+K2 Spray Strengthen your immune system $45" [ref=e1222] [cursor=pointer]:
+              - /url: /products/vitamin-d3-k2-spray
+              - generic [ref=e1226]:
+                - generic [ref=e1229]:
+                  - generic [ref=e1231]:
+                    - img [ref=e1233]
+                    - img [ref=e1240]
+                    - generic [ref=e1246]: Rated 4.8 out of 5 stars
+                  - generic [ref=e1247]: 5 Reviews
+                - generic [ref=e1248]: Vitamin D3+K2 Spray
+                - generic [ref=e1249]: Strengthen your immune system
+                - generic [ref=e1251]: $45
+            - link "Rated 4.3 out of 5 stars 3 Reviews Lutein Spray Support long-term eye health and longevity $45" [ref=e1253] [cursor=pointer]:
+              - /url: /products/lutein
+              - generic [ref=e1257]:
+                - generic [ref=e1260]:
+                  - generic [ref=e1262]:
+                    - img [ref=e1264]
+                    - img [ref=e1271]
+                    - generic [ref=e1277]: Rated 4.3 out of 5 stars
+                  - generic [ref=e1278]: 3 Reviews
+                - generic [ref=e1279]: Lutein Spray
+                - generic [ref=e1280]: Support long-term eye health and longevity
+                - generic [ref=e1282]: $45
+    - generic [ref=e1286]:
+      - link "Rejuvia logo in beige text." [ref=e1289] [cursor=pointer]:
+        - /url: /
+        - img "Rejuvia logo in beige text." [ref=e1290]
+      - generic [ref=e1291]:
+        - generic [ref=e1292]:
+          - group [ref=e1293]:
+            - generic "Shop" [ref=e1294] [cursor=pointer]:
+              - generic [ref=e1295]: Shop
+              - img [ref=e1296]
+          - group [ref=e1298]:
+            - generic "About" [ref=e1299] [cursor=pointer]:
+              - generic [ref=e1300]: About
+              - img [ref=e1301]
+          - group [ref=e1303]:
+            - generic "Help" [ref=e1304] [cursor=pointer]:
+              - generic [ref=e1305]: Help
+              - img [ref=e1306]
+        - generic [ref=e1308]:
+          - heading "Join Our Newsletter" [level=2] [ref=e1309]
+          - paragraph [ref=e1310]: Sign up today to unlock our best deals.
+          - generic [ref=e1313]:
+            - generic [ref=e1314] [cursor=pointer]: Email address
+            - textbox "Email address" [ref=e1315]:
+              - /placeholder: Your Email
+            - button "Subscribe" [ref=e1316] [cursor=pointer]:
+              - generic [ref=e1317]: Get Offer
+      - list [ref=e1319]:
+        - listitem [ref=e1320]:
+          - link "Rejuvia on Instagram" [ref=e1321] [cursor=pointer]:
+            - /url: https://www.instagram.com/getrejuvia/
+            - img [ref=e1323]
+        - listitem [ref=e1325]:
+          - link "Rejuvia on Facebook" [ref=e1326] [cursor=pointer]:
+            - /url: https://www.facebook.com/getrejuvia/
+            - img [ref=e1328]
+        - listitem [ref=e1330]:
+          - link "Rejuvia on X" [ref=e1331] [cursor=pointer]:
+            - /url: https://twitter.com/getrejuvia
+            - img [ref=e1333]
+      - paragraph [ref=e1335]: "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product."
+      - generic [ref=e1336]:
+        - generic [ref=e1338]:
+          - paragraph [ref=e1339]: Copyright © 2026 Rejuvia. All rights reserved.
+          - generic [ref=e1340]:
+            - link "Privacy Policy" [ref=e1341] [cursor=pointer]:
+              - /url: /policies/privacy-policy
+            - link "Terms of Service" [ref=e1342] [cursor=pointer]:
+              - /url: /policies/terms-of-service
+        - list [ref=e1345]:
+          - listitem [ref=e1346]:
+            - img [ref=e1347]
+          - listitem [ref=e1351]:
+            - img [ref=e1352]
+          - listitem [ref=e1356]:
+            - img [ref=e1357]
+          - listitem [ref=e1362]:
+            - img [ref=e1363]
+          - listitem [ref=e1369]:
+            - img [ref=e1370]
+          - listitem [ref=e1372]:
+            - img [ref=e1373]
+          - listitem [ref=e1379]:
+            - img [ref=e1380]
+          - listitem [ref=e1386]:
+            - img [ref=e1387]
+          - listitem [ref=e1393]:
+            - img [ref=e1394]
+          - listitem [ref=e1402]:
+            - img [ref=e1403]

@@ -1,0 +1,95 @@
+[    1033ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[    1284ms] [WARNING] Lit has been loaded from a bundle that combines all core features into a single file. To reduce transfer size and parsing cost, consider using the `lit` npm package directly in your project. @ https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js:118
+[    1286ms] [LOG] %c[skio plan picker][plan-picker-5433533956258] color: #8770f2; Mounted @ http://127.0.0.1:9292/cdn/shop/t/210/assets/skio-plan-picker-component.js?v=47342839964013512421774957411:1577
+[    1303ms] [LOG] variant changed! @ http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:275
+[    1304ms] [ERROR] ProductJs init error: TypeError: Cannot read properties of null (reading 'parentNode')
+    at Shopify.OptionSelectors.replaceSelector (http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:2:4301)
+    at new Shopify.OptionSelectors (http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:2:3622)
+    at initializeVariantSelector (http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:173:7)
+    at init (http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:83:9)
+    at new ProductJs (http://127.0.0.1:9292/cdn/shop/t/210/assets/ProductJs.js?v=122148104424481875391774957409:487:12)
+    at HTMLDocument.<anonymous> (http://127.0.0.1:9292/?selling_plan=29054009564:9182:13)
+    at b (http://127.0.0.1:9292/cdn/shop/t/210/assets/vendor.js?v=108054963605337451121774957411:1:27786)
+    at Object.fireWith [as resolveWith] (http://127.0.0.1:9292/cdn/shop/t/210/assets/vendor.js?v=108054963605337451121774957411:1:28548)
+    at i.ready (http://127.0.0.1:9292/cdn/shop/t/210/assets/vendor.js?v=108054963605337451121774957411:1:30343)
+    at HTMLDocument.xt (http://127.0.0.1:9292/cdn/shop/t/210/assets/vendor.js?v=108054963605337451121774957411:1:30531) @ http://127.0.0.1:9292/?selling_plan=29054009564:9183
+[    1408ms] TypeError: Cannot read properties of undefined (reading 'filter')
+    at SkioPlanPicker.updated (http://127.0.0.1:9292/cdn/shop/t/210/assets/skio-plan-picker-component.js?v=47342839964013512421774957411:1452:74)
+    at SkioPlanPicker._$AE (https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js:11:5303)
+    at SkioPlanPicker.performUpdate (https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js:11:5168)
+    at SkioPlanPicker.scheduleUpdate (https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js:11:4639)
+    at SkioPlanPicker.k (https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js:11:4547)
+[    1362ms] [INFO] [HotReload] Connected @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:299
+[    1435ms] [ERROR] Access to fetch at 'https://api.skio.com/storefront-http/get-skio-info' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:9292/:0
+[    1435ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.skio.com/storefront-http/get-skio-info:0
+[    1439ms] TypeError: Failed to fetch
+    at window2.fetch (http://127.0.0.1:9292/cdn/shopifycloud/storefront/assets/shop_events_listener-3da45d37.js:1:7564)
+    at window.<computed> (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:124727)
+    at https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:144052
+    at _0x30a5d3 (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:104021)
+    at Generator._invoke (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:103412)
+    at Generator.next (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:104952)
+    at _0x53a960 (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:142516)
+    at _0x7de502 (https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:142991)
+    at https://cdn.skio.com/scripts/shopify/head/shopify.ba9807f79b5cdb6483d5.js:1:143222
+    at new Promise (<anonymous>)
+[    1600ms] [LOG] =====================
+| DATALAYER SHOPIFY |
+--------------------- @ http://127.0.0.1:9292/?selling_plan=29054009564:124
+[    1600ms] [LOG] Page Template: index @ http://127.0.0.1:9292/?selling_plan=29054009564:125
+[    1601ms] [LOG] Landing Page: false @ http://127.0.0.1:9292/?selling_plan=29054009564:151
+[    1604ms] [LOG] Log State :{
+ "logState": "Logged Out",
+ "firstLog": false,
+ "customerEmail": null,
+ "timestamp": 1775120326312,
+ "customerType": "New",
+ "customerTypeNumber": "1",
+ "shippingInfo": {
+  "fullName": null,
+  "firstName": null,
+  "lastName": null,
+  "address1": null,
+  "address2": null,
+  "street": null,
+  "city": null,
+  "province": null,
+  "zip": null,
+  "country": null,
+  "phone": null
+ },
+ "billingInfo": {
+  "fullName": null,
+  "firstName": null,
+  "lastName": null,
+  "address1": null,
+  "address2": null,
+  "street": null,
+  "city": null,
+  "province": null,
+  "zip": null,
+  "country": null,
+  "phone": null
+ },
+ "checkoutEmail": null,
+ "currency": "USD",
+ "pageType": "Log State",
+ "event": "Log State",
+ "gtm.uniqueEventId": 14
+} @ http://127.0.0.1:9292/?selling_plan=29054009564:253
+[    1606ms] [LOG] Homepage :{
+ "pageType": "Homepage",
+ "event": "Homepage",
+ "gtm.uniqueEventId": 15
+} @ http://127.0.0.1:9292/?selling_plan=29054009564:266
+[    1607ms] [LOG] DATALAYER: DataLayer Loaded. @ http://127.0.0.1:9292/?selling_plan=29054009564:414
+[    1718ms] [LOG] Skio selling_plans: [Object, Object, Object, Object] @ http://127.0.0.1:9292/cdn/shop/t/210/assets/skio-plan-picker-component.js?v=47342839964013512421774957411:1463
+[    1942ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rejuviamedical.myshopify.com https://www.rejuvia.co https://rejuvia.co https://rejuviamedical.account.myshopify.com https://shopify.com". The request has been blocked.
+ @ :0
+[    2120ms] [ERROR] Triplewhale Survey Error:  no order_id was found @ https://pps.triplewhale.systems/main.js?shop=rejuviamedical.myshopify.com:480
+[    2247ms] TypeError: Cannot read properties of null (reading 'innerHTML')
+    at http://127.0.0.1:9292/?selling_plan=29054009564:8283:68
+[   62520ms] [INFO] [HotReload] Full reload: sections/alternatives-v2.liquid @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:55
+[   64126ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   64150ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://127.0.0.1:9292/?selling_plan=29054009564:0
+[   64386ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:9292/favicon.ico:0

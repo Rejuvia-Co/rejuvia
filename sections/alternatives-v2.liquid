@@ -51,6 +51,7 @@
 
 .alt-v2-label-header {
     height: 100px;
+    border-bottom: 1px solid #eaeaf7;
 }
 
 .alt-v2-label {
@@ -95,6 +96,7 @@
     justify-content: center;
     gap: 16px;
     padding: 24px 0;
+    border-bottom: 1px solid #eaeaf7;
 }
 
 .alt-v2-col-header img {
@@ -131,7 +133,7 @@
     border-bottom: 1px solid #eaeaf7;
 }
 
-.alt-v2-col:not(.alt-v2-col--highlight) .alt-v2-cell:last-child,
+.alt-v2-cell:last-child,
 .alt-v2-labels .alt-v2-label:last-child {
     border-bottom: none;
 }
@@ -155,6 +157,28 @@
 .alt-v2-cross {
     width: 20px;
     height: 20px;
+}
+
+/* Dots */
+.alt-v2-dots {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 0 0;
+}
+
+.alt-v2-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d3d3d3;
+    transition: background 0.3s ease, width 0.3s ease;
+}
+
+.alt-v2-dot.is-active {
+    background: #672666;
+    width: 20px;
+    border-radius: 4px;
 }
 
 /* CTA */
@@ -214,12 +238,39 @@
         -webkit-overflow-scrolling: touch;
         padding: 0 16px;
     }
+    .alt-v2-section {
+        overflow-x: clip;
+    }
+    .alt-v2-table {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .alt-v2-table::-webkit-scrollbar {
+        display: none;
+    }
+    .alt-v2-dots {
+        display: flex;
+    }
     .alt-v2-labels {
-        min-width: 140px;
+        min-width: 130px;
+        max-width: 130px;
         position: sticky;
         left: 0;
         background: #fff;
-        z-index: 2;
+        z-index: 3;
+        padding-right: 10px;
+    }
+    .alt-v2-labels::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -20px;
+        bottom: 0;
+        width: 20px;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+        z-index: 4;
+        pointer-events: none;
     }
     .alt-v2-col {
         min-width: 150px;
@@ -316,6 +367,19 @@
         {% endfor %}
     </div>
 
+    {%- comment -%} Dots {%- endcomment -%}
+    <div class="alt-v2-dots" data-alt-v2-dots>
+        {% assign competitor_count = 0 %}
+        {% for block in section.blocks %}
+            {% if block.type == 'competitor' %}
+                {% assign competitor_count = competitor_count | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+        {% for i in (1..competitor_count) %}
+            <div class="alt-v2-dot{% if forloop.first %} is-active{% endif %}"></div>
+        {% endfor %}
+    </div>
+
     {%- comment -%} CTA {%- endcomment -%}
     {% if section.settings.btn_text != blank %}
         <div class="alt-v2-cta">
@@ -331,6 +395,28 @@
         </div>
     {% endif %}
 </div>
+
+<script>
+(function() {
+    var section = document.querySelector('.alt-v2-section');
+    if (!section) return;
+
+    var table = section.querySelector('.alt-v2-table');
+    var dots = section.querySelectorAll('.alt-v2-dot');
+    var cols = section.querySelectorAll('.alt-v2-col:not(.alt-v2-col--highlight)');
+    if (!table || dots.length === 0 || cols.length === 0) return;
+
+    table.addEventListener('scroll', function() {
+        var scrollLeft = table.scrollLeft;
+        var colWidth = cols[0].offsetWidth;
+        var active = Math.round(scrollLeft / colWidth);
+        active = Math.min(active, dots.length - 1);
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('is-active', i === active);
+        });
+    });
+})();
+</script>
 
 {% schema %}
 {
@@ -472,9 +558,9 @@
                 { "type": "row", "settings": { "label": "No groggy mornings", "rejuvia_value": "check" } },
                 { "type": "row", "settings": { "label": "Tastes great", "rejuvia_value": "check" } },
                 { "type": "row", "settings": { "label": "Free from additives & fillers", "rejuvia_value": "check" } },
-                { "type": "competitor", "settings": { "name": "Sleep Pills", "values": "Slow|$3.00/night|cross|cross|cross|cross|cross", "colors": "||alt-v2-cell--red||||", "subs": "(up to 90 minutes)||||||" } },
-                { "type": "competitor", "settings": { "name": "Sleep Gummies", "values": "Slow|$1.83/night|check|check|cross|cross|cross", "colors": "||alt-v2-cell--orange||||", "subs": "(up to 90 minutes)||||||" } },
-                { "type": "competitor", "settings": { "name": "Melatonin Supplements", "values": "Slow|$0.93/night|check|cross|cross|cross|cross", "colors": "||alt-v2-cell--orange||||", "subs": "(up to 90 minutes)||||||" } }
+                { "type": "competitor", "settings": { "name": "Sleep Pills", "values": "Slow|$3.00/night|cross|cross|cross|cross|cross", "colors": "|alt-v2-cell--red|||||", "subs": "(up to 90 minutes)||||||" } },
+                { "type": "competitor", "settings": { "name": "Sleep Gummies", "values": "Slow|$1.83/night|check|check|cross|cross|cross", "colors": "|alt-v2-cell--orange|||||", "subs": "(up to 90 minutes)||||||" } },
+                { "type": "competitor", "settings": { "name": "Melatonin Supplements", "values": "Slow|$0.93/night|check|cross|cross|cross|cross", "colors": "|alt-v2-cell--orange|||||", "subs": "(up to 90 minutes)||||||" } }
             ]
         }
     ]

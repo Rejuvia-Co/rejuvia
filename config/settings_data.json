@@ -3022,6 +3022,130 @@
           "link_text": "View Supplement Label",
           "link_url": ""
         }
+      },
+      "alternatives_v2_aVf4gw": {
+        "type": "alternatives-v2",
+        "blocks": {
+          "row_W3VDNd": {
+            "type": "row",
+            "settings": {
+              "label": "Fast-absorbing formula",
+              "rejuvia_value": "Rapid",
+              "rejuvia_sub": "(5-10 minutes)",
+              "rejuvia_color": "",
+              "rejuvia_bold": true
+            }
+          },
+          "row_CNKThp": {
+            "type": "row",
+            "settings": {
+              "label": "Low price per use",
+              "rejuvia_value": "$0.89/night",
+              "rejuvia_sub": "",
+              "rejuvia_color": "alt-v2-cell--green",
+              "rejuvia_bold": false
+            }
+          },
+          "row_Yn47Jt": {
+            "type": "row",
+            "settings": {
+              "label": "Proven natural ingredients",
+              "rejuvia_value": "check",
+              "rejuvia_sub": "",
+              "rejuvia_color": "",
+              "rejuvia_bold": false
+            }
+          },
+          "row_7YLxPG": {
+            "type": "row",
+            "settings": {
+              "label": "Non-habit forming",
+              "rejuvia_value": "check",
+              "rejuvia_sub": "",
+              "rejuvia_color": "",
+              "rejuvia_bold": false
+            }
+          },
+          "row_Ypibx8": {
+            "type": "row",
+            "settings": {
+              "label": "No groggy mornings",
+              "rejuvia_value": "check",
+              "rejuvia_sub": "",
+              "rejuvia_color": "",
+              "rejuvia_bold": false
+            }
+          },
+          "row_DegNKB": {
+            "type": "row",
+            "settings": {
+              "label": "Tastes great",
+              "rejuvia_value": "check",
+              "rejuvia_sub": "",
+              "rejuvia_color": "",
+              "rejuvia_bold": false
+            }
+          },
+          "row_DeYr8K": {
+            "type": "row",
+            "settings": {
+              "label": "Free from additives & fillers",
+              "rejuvia_value": "check",
+              "rejuvia_sub": "",
+              "rejuvia_color": "",
+              "rejuvia_bold": false
+            }
+          },
+          "competitor_haEqjD": {
+            "type": "competitor",
+            "settings": {
+              "name": "Sleep Pills",
+              "image": "shopify://shop_images/rejuvia-products-004-midnight-spray-001_1.png",
+              "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
+              "colors": "||alt-v2-cell--red||||",
+              "subs": "(up to 90 minutes)||||||"
+            }
+          },
+          "competitor_qgWqrH": {
+            "type": "competitor",
+            "settings": {
+              "name": "Sleep Gummies",
+              "image": "shopify://shop_images/single-sleep-gummy-closeup.png_1.png",
+              "values": "Slow|$1.83/night|check|check|cross|cross|cross",
+              "colors": "||alt-v2-cell--orange||||",
+              "subs": "(up to 90 minutes)||||||"
+            }
+          },
+          "competitor_dbeaPU": {
+            "type": "competitor",
+            "settings": {
+              "name": "Melatonin Supplements",
+              "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
+              "colors": "||alt-v2-cell--orange||||",
+              "subs": "(up to 90 minutes)||||||"
+            }
+          }
+        },
+        "block_order": [
+          "row_W3VDNd",
+          "row_CNKThp",
+          "row_Yn47Jt",
+          "row_7YLxPG",
+          "row_Ypibx8",
+          "row_DegNKB",
+          "row_DeYr8K",
+          "competitor_haEqjD",
+          "competitor_qgWqrH",
+          "competitor_dbeaPU"
+        ],
+        "name": "Alternatives V2",
+        "settings": {
+          "heading": "<p>The <em>most effective</em> alternative to sleep aids</p>",
+          "rejuvia_name": "Rejuvia",
+          "btn_text": "Try Rejuvia Risk-Free",
+          "btn_url": "",
+          "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+        }
       }
     },
     "content_for_index": [
@@ -3035,6 +3159,7 @@
       "use_in_just_v2_JAWTbF",
       "161352637973a49ebc",
       "press_logos_YiWTgA",
+      "alternatives_v2_aVf4gw",
       "product_features_p6FHhD",
       "featured_customer_reviews_96PMKt",
       "how_it_works_Qwdx49",

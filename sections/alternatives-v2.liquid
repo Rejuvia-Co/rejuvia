@@ -103,6 +103,11 @@
     object-fit: contain;
 }
 
+.alt-v2-logo {
+    max-width: 94px;
+    height: auto;
+}
+
 .alt-v2-col-name {
     font-size: 14px;
     font-weight: 500;
@@ -249,7 +254,9 @@
                 {% if section.settings.rejuvia_image != blank %}
                     <img src="{{ section.settings.rejuvia_image | image_url: width: 100 }}" alt="Rejuvia" loading="lazy">
                 {% endif %}
-                <span class="alt-v2-col-name">{{ section.settings.rejuvia_name | default: 'Rejuvia' }}</span>
+                {% if section.settings.rejuvia_logo != blank %}
+                    <img class="alt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy">
+                {% endif %}
             </div>
             {% for block in section.blocks %}
                 {% if block.type == 'row' %}
@@ -346,10 +353,9 @@
             "label": "Rejuvia product image"
         },
         {
-            "type": "text",
-            "id": "rejuvia_name",
-            "label": "Rejuvia name",
-            "default": "Rejuvia"
+            "type": "image_picker",
+            "id": "rejuvia_logo",
+            "label": "Rejuvia logo (SVG)"
         },
         {
             "type": "header",

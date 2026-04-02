@@ -25,13 +25,29 @@
     position: relative;
 }
 
-.wmd-v2-image-bg {
+.wmd-v2-image-glow {
     position: absolute;
     width: 345px;
-    height: 345px;
-    background-color: #f3f0f8;
-    border-radius: 10px;
-    transform: rotate(0deg);
+    height: 346px;
+    border-radius: 210px;
+    background: linear-gradient(180deg, #F2F1FB 0%, #D5D9F5 100%);
+    filter: blur(50px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wmd-v2-image-bg {
+    position: absolute;
+    width: 380px;
+    height: 395px;
+    background-image: url({{ 'pi-v2-dotted-circle.svg' | asset_url }});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .wmd-v2-image img {
@@ -79,20 +95,23 @@
 
 /* Info card */
 .wmd-v2-card {
-    background: #f3f0f8;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .wmd-v2-card-header {
     background: #eaeaf7;
     padding: 16px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.4;
-    color: #141414;
+    color: #672666;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    border-radius: 10px 10px 0 0;
 }
 
 .wmd-v2-card-body {
@@ -100,11 +119,13 @@
     display: flex;
     gap: 16px;
     align-items: flex-start;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
 }
 
 .wmd-v2-card-icon {
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 42px;
     flex-shrink: 0;
 }
 
@@ -177,9 +198,17 @@
     .wmd-v2-image img {
         max-height: 300px;
     }
+    .wmd-v2-image-glow {
+        width: 210px;
+        height: 210px;
+    }
     .wmd-v2-image-bg {
-        width: 195px;
-        height: 195px;
+        width: 250px;
+        height: 260px;
+    }
+    .wmd-v2-card-icon {
+        width: 28px;
+        height: 28px;
     }
 }
 </style>
@@ -190,6 +219,7 @@
 
     {%- comment -%} === Image === {%- endcomment -%}
     <div class="wmd-v2-image">
+        <div class="wmd-v2-image-glow"></div>
         <div class="wmd-v2-image-bg"></div>
         {% if section.settings.image != blank %}
             <img
@@ -208,10 +238,13 @@
         <div class="wmd-v2-card">
             <div class="wmd-v2-card-header">{{ section.settings.card_title }}</div>
             <div class="wmd-v2-card-body">
-                <svg class="wmd-v2-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
-                    <path d="M15 2C10 2 6 6 6 11C6 14 7.5 16.5 10 18V22C10 22.6 10.4 23 11 23H19C19.6 23 20 22.6 20 22V18C22.5 16.5 24 14 24 11C24 6 20 2 15 2Z" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                    <path d="M11 27H19" stroke="#672666" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M13 23V27M17 23V27" stroke="#672666" stroke-width="1.5" stroke-linecap="round"/>
+                <svg class="wmd-v2-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" fill="none">
+                    <path d="M10.4175 31.2515H24.3071" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.2085 38.1968H36.4602" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.307 38.1965C27.5303 38.1965 30.6216 36.9161 32.9008 34.6369C35.18 32.3577 36.4604 29.2664 36.4604 26.0431C36.4604 22.8198 35.18 19.7285 32.9008 17.4493C30.6216 15.1701 27.5303 13.8896 24.307 13.8896H22.5708" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.626 24.3071H19.0984" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.6257 20.8347C14.7048 20.8347 13.8216 20.4689 13.1704 19.8177C12.5192 19.1665 12.1533 18.2832 12.1533 17.3623V10.4175H22.5706V17.3623C22.5706 18.2832 22.2047 19.1665 21.5535 19.8177C20.9023 20.4689 20.0191 20.8347 19.0981 20.8347H15.6257Z" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.8345 10.417V5.20837C20.8345 4.7479 20.6516 4.30629 20.3259 3.98069C20.0003 3.65509 19.5587 3.47217 19.0983 3.47217H15.6259C15.1654 3.47217 14.7238 3.65509 14.3982 3.98069C14.0726 4.30629 13.8896 4.7479 13.8896 5.20837V10.417" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <div class="wmd-v2-card-text">
                     {{ section.settings.card_text }}

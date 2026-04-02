@@ -1,0 +1,450 @@
+<style>
+.uij-v2-section {
+    width: 100%;
+    background-color: #eaeaf7;
+}
+
+.uij-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Header row */
+.uij-v2-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.uij-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.uij-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.uij-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+.uij-v2-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border-radius: 80px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #672666;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Content row */
+.uij-v2-content {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Image */
+.uij-v2-image {
+    flex: 1;
+    min-width: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 600px;
+}
+
+.uij-v2-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Accordion */
+.uij-v2-accordion {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.uij-v2-step {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.uij-v2-step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.uij-v2-step-title {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.uij-v2-step.is-active .uij-v2-step-title {
+    font-weight: 700;
+}
+
+.uij-v2-step:not(.is-active) .uij-v2-step-title {
+    font-weight: 400;
+}
+
+.uij-v2-step-chevron {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.uij-v2-step.is-active .uij-v2-step-chevron {
+    transform: rotate(45deg);
+}
+
+/* Step content */
+.uij-v2-step-body {
+    display: none;
+    padding: 0 24px 24px;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.uij-v2-step.is-active .uij-v2-step-body {
+    display: flex;
+}
+
+.uij-v2-step-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.uij-v2-step-divider {
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+}
+
+/* Tips */
+.uij-v2-tips {
+    display: flex;
+    gap: 24px;
+}
+
+.uij-v2-tip {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.uij-v2-tip-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.uij-v2-tip-label svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.uij-v2-tip-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .uij-v2-container { padding: 40px 32px; }
+    .uij-v2-content { gap: 32px; }
+    .uij-v2-heading { font-size: 26px; }
+}
+
+@media (max-width: 900px) {
+    .uij-v2-container {
+        padding: 40px 16px;
+        gap: 24px;
+        align-items: center;
+    }
+    .uij-v2-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .uij-v2-heading { font-size: 24px; }
+    .uij-v2-link {
+        font-size: 14px;
+        order: 10;
+    }
+    .uij-v2-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .uij-v2-image {
+        width: 100%;
+        height: 360px;
+        border-radius: 20px;
+    }
+    .uij-v2-image img {
+        border-radius: 20px;
+    }
+    .uij-v2-tips {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+</style>
+
+<div class="uij-v2-container">
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="uij-v2-header">
+        <div class="uij-v2-heading">{{ section.settings.heading }}</div>
+        {% if section.settings.link_text != blank %}
+            <a class="uij-v2-link" href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+        {% endif %}
+    </div>
+
+    {%- comment -%} Content {%- endcomment -%}
+    <div class="uij-v2-content">
+        {%- comment -%} Image {%- endcomment -%}
+        <div class="uij-v2-image">
+            {% if section.settings.image != blank %}
+                <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="{{ section.settings.image.alt | default: 'How to use' }}" loading="lazy">
+            {% endif %}
+        </div>
+
+        {%- comment -%} Accordion {%- endcomment -%}
+        <div class="uij-v2-accordion">
+            {% for block in section.blocks %}
+                <div class="uij-v2-step{% if forloop.first %} is-active{% endif %}" data-uij-v2-step {{ block.shopify_attributes }}>
+                    <button class="uij-v2-step-header" type="button">
+                        <span class="uij-v2-step-title">{{ block.settings.title }}</span>
+                        <svg class="uij-v2-step-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="uij-v2-step-body">
+                        <p class="uij-v2-step-desc">{{ block.settings.description }}</p>
+                        {% if block.settings.tip1_label != blank or block.settings.tip2_label != blank %}
+                            <div class="uij-v2-step-divider"></div>
+                            <div class="uij-v2-tips">
+                                {% if block.settings.tip1_label != blank %}
+                                    <div class="uij-v2-tip">
+                                        <div class="uij-v2-tip-label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <circle cx="8" cy="8" r="7.5" stroke="#141414"/>
+                                                <path d="M8 4V8L10.5 10.5" stroke="#141414" stroke-linecap="round"/>
+                                            </svg>
+                                            {{ block.settings.tip1_label }}
+                                        </div>
+                                        <p class="uij-v2-tip-text">{{ block.settings.tip1_text }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if block.settings.tip2_label != blank %}
+                                    <div class="uij-v2-tip">
+                                        <div class="uij-v2-tip-label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <path d="M2 10L5 13L14 4" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            {{ block.settings.tip2_label }}
+                                        </div>
+                                        <p class="uij-v2-tip-text">{{ block.settings.tip2_text }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {%- comment -%} Mobile link (shown via CSS order) {%- endcomment -%}
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.uij-v2-section');
+    if (!section) return;
+
+    var steps = section.querySelectorAll('[data-uij-v2-step]');
+    steps.forEach(function(step) {
+        step.querySelector('.uij-v2-step-header').addEventListener('click', function() {
+            var isActive = step.classList.contains('is-active');
+            steps.forEach(function(s) { s.classList.remove('is-active'); });
+            if (!isActive) step.classList.add('is-active');
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Use In Just V2",
+    "class": "uij-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Use in <em>just 30 seconds</em></p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text",
+            "default": "View Supplement Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "step",
+            "name": "Step",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Step 1: Spray"
+                },
+                {
+                    "type": "textarea",
+                    "id": "description",
+                    "label": "Description",
+                    "default": "Hold the bottle close and spray 6–8 times under your tongue about 5–10 minutes before bed. Brush your teeth first, then spray—clean breath helps the nutrients absorb faster."
+                },
+                {
+                    "type": "text",
+                    "id": "tip1_label",
+                    "label": "Tip 1 label",
+                    "default": "When to use"
+                },
+                {
+                    "type": "textarea",
+                    "id": "tip1_text",
+                    "label": "Tip 1 text",
+                    "default": "Right before bed, or again if you wake up during the night."
+                },
+                {
+                    "type": "text",
+                    "id": "tip2_label",
+                    "label": "Tip 2 label",
+                    "default": "While traveling"
+                },
+                {
+                    "type": "textarea",
+                    "id": "tip2_text",
+                    "label": "Tip 2 text",
+                    "default": "TSA-approved and leak-proof, so you can keep your routine anywhere."
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Step image (optional)"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Use In Just V2",
+            "category": "Custom",
+            "blocks": [
+                {
+                    "type": "step",
+                    "settings": {
+                        "title": "Step 1: Spray",
+                        "description": "Hold the bottle close and spray 6–8 times under your tongue about 5–10 minutes before bed. Brush your teeth first, then spray—clean breath helps the nutrients absorb faster.",
+                        "tip1_label": "When to use",
+                        "tip1_text": "Right before bed, or again if you wake up during the night.",
+                        "tip2_label": "While traveling",
+                        "tip2_text": "TSA-approved and leak-proof, so you can keep your routine anywhere."
+                    }
+                },
+                {
+                    "type": "step",
+                    "settings": {
+                        "title": "Step 2: Settle In",
+                        "description": "Lie down, relax, and let the spray go to work. Most people feel the effects within 10–15 minutes.",
+                        "tip1_label": "",
+                        "tip1_text": "",
+                        "tip2_label": "",
+                        "tip2_text": ""
+                    }
+                },
+                {
+                    "type": "step",
+                    "settings": {
+                        "title": "Step 3: Store & Repeat",
+                        "description": "Keep it on your nightstand. Use it nightly for the best results — consistency is key.",
+                        "tip1_label": "",
+                        "tip1_text": "",
+                        "tip2_label": "",
+                        "tip2_text": ""
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

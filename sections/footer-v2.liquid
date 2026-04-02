@@ -154,10 +154,11 @@
 
 /* Disclaimer */
 .footer-v2-disclaimer {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.4;
-    color: #737373;
+    color: #141414;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     padding: 24px 0;
 }
 
@@ -275,18 +276,18 @@
                     </a>
                 {% endif %}
                 <div class="footer-v2-socials">
-                    {% if section.settings.instagram_url != blank %}
-                        <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                    {% if settings.instagram_link != blank %}
+                        <a href="{{ settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
                         </a>
                     {% endif %}
-                    {% if section.settings.facebook_url != blank %}
-                        <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                    {% if settings.facebook_link != blank %}
+                        <a href="{{ settings.facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                         </a>
                     {% endif %}
-                    {% if section.settings.twitter_url != blank %}
-                        <a href="{{ section.settings.twitter_url }}" target="_blank" rel="noopener" aria-label="X">
+                    {% if settings.twitter_link != blank %}
+                        <a href="{{ settings.twitter_link }}" target="_blank" rel="noopener" aria-label="X">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
                     {% endif %}
@@ -305,20 +306,10 @@
                                 </svg>
                             </div>
                             <div class="footer-v2-nav-links">
-                                {% if block.settings.link_1_text != blank %}
-                                    <a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_text }}</a>
-                                {% endif %}
-                                {% if block.settings.link_2_text != blank %}
-                                    <a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_text }}</a>
-                                {% endif %}
-                                {% if block.settings.link_3_text != blank %}
-                                    <a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_text }}</a>
-                                {% endif %}
-                                {% if block.settings.link_4_text != blank %}
-                                    <a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_text }}</a>
-                                {% endif %}
-                                {% if block.settings.link_5_text != blank %}
-                                    <a href="{{ block.settings.link_5_url }}">{{ block.settings.link_5_text }}</a>
+                                {% if block.settings.menu != blank %}
+                                    {% for link in linklists[block.settings.menu].links %}
+                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                    {% endfor %}
                                 {% endif %}
                             </div>
                         </div>
@@ -391,21 +382,6 @@
             "label": "Logo"
         },
         {
-            "type": "url",
-            "id": "instagram_url",
-            "label": "Instagram URL"
-        },
-        {
-            "type": "url",
-            "id": "facebook_url",
-            "label": "Facebook URL"
-        },
-        {
-            "type": "url",
-            "id": "twitter_url",
-            "label": "X (Twitter) URL"
-        },
-        {
             "type": "header",
             "content": "Newsletter"
         },
@@ -464,16 +440,11 @@
                     "label": "Column title",
                     "default": "SHOP"
                 },
-                { "type": "text", "id": "link_1_text", "label": "Link 1 text" },
-                { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
-                { "type": "text", "id": "link_2_text", "label": "Link 2 text" },
-                { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
-                { "type": "text", "id": "link_3_text", "label": "Link 3 text" },
-                { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
-                { "type": "text", "id": "link_4_text", "label": "Link 4 text" },
-                { "type": "url", "id": "link_4_url", "label": "Link 4 URL" },
-                { "type": "text", "id": "link_5_text", "label": "Link 5 text" },
-                { "type": "url", "id": "link_5_url", "label": "Link 5 URL" }
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
             ]
         }
     ],
@@ -481,9 +452,9 @@
         {
             "name": "Footer V2",
             "blocks": [
-                { "type": "nav_column", "settings": { "title": "SHOP", "link_1_text": "Sleep Spray", "link_2_text": "Shop All" } },
-                { "type": "nav_column", "settings": { "title": "ABOUT", "link_1_text": "Ingredients", "link_2_text": "Reviews", "link_3_text": "Our Story", "link_4_text": "FAQs" } },
-                { "type": "nav_column", "settings": { "title": "HELP", "link_1_text": "Help Center", "link_2_text": "Manage Subscription" } }
+                { "type": "nav_column", "settings": { "title": "SHOP" } },
+                { "type": "nav_column", "settings": { "title": "ABOUT" } },
+                { "type": "nav_column", "settings": { "title": "HELP" } }
             ]
         }
     ]

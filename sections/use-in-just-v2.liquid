@@ -173,11 +173,22 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
 }
 
-.uij-v2-step.is-active .uij-v2-step-chevron {
-    transform: rotate(45deg);
+.uij-v2-step-chevron .uij-v2-icon-minus {
+    display: none;
+}
+
+.uij-v2-step-chevron .uij-v2-icon-plus {
+    display: block;
+}
+
+.uij-v2-step.is-active .uij-v2-step-chevron .uij-v2-icon-minus {
+    display: block;
+}
+
+.uij-v2-step.is-active .uij-v2-step-chevron .uij-v2-icon-plus {
+    display: none;
 }
 
 /* Step content */
@@ -349,9 +360,14 @@
                 <div class="uij-v2-step{% if forloop.first %} is-active{% endif %}" data-uij-v2-step {{ block.shopify_attributes }}>
                     <button class="uij-v2-step-header" type="button">
                         <span class="uij-v2-step-title">{{ block.settings.title }}</span>
-                        <svg class="uij-v2-step-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
+                        <span class="uij-v2-step-chevron">
+                            <svg class="uij-v2-icon-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <svg class="uij-v2-icon-minus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
                     </button>
                     <div class="uij-v2-step-body">
                         <p class="uij-v2-step-desc">{{ block.settings.description }}</p>

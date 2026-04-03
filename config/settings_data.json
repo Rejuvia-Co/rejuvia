@@ -1024,6 +1024,7 @@
           "3e5c67c9-3921-450e-b05b-1a7d23e869f7"
         ],
         "settings": {
+          "enable_bar": false,
           "enable_carousel": true,
           "carousel_speed": 5
         }

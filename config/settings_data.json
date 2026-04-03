@@ -2189,6 +2189,7 @@
           },
           "fb_text_review_M6wKic": {
             "type": "fb_text_review",
+            "disabled": true,
             "settings": {
               "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
               "name": "Karla Finney",

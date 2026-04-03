@@ -163,8 +163,8 @@
 .alt-v2-dots {
     display: none;
     justify-content: center;
+    align-items: center;
     gap: 8px;
-    padding: 16px 0 0;
 }
 
 .alt-v2-dot {
@@ -179,6 +179,43 @@
     background: #672666;
     width: 20px;
     border-radius: 4px;
+}
+
+/* Navigation */
+.alt-v2-nav {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 16px 0;
+    width: 100%;
+}
+
+.alt-v2-nav-arrow {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.alt-v2-nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.alt-v2-nav-arrow svg {
+    width: 40px;
+    height: 40px;
+}
+
+.alt-v2-nav-arrow--prev svg {
+    transform: rotate(180deg);
 }
 
 /* CTA */
@@ -249,7 +286,10 @@
     .alt-v2-table::-webkit-scrollbar {
         display: none;
     }
-    .alt-v2-dots {
+    .alt-v2-nav {
+        display: flex;
+    }
+    .alt-v2-nav .alt-v2-dots {
         display: flex;
     }
     .alt-v2-labels {
@@ -367,17 +407,33 @@
         {% endfor %}
     </div>
 
-    {%- comment -%} Dots {%- endcomment -%}
-    <div class="alt-v2-dots" data-alt-v2-dots>
-        {% assign competitor_count = 0 %}
-        {% for block in section.blocks %}
-            {% if block.type == 'competitor' %}
-                {% assign competitor_count = competitor_count | plus: 1 %}
-            {% endif %}
-        {% endfor %}
-        {% for i in (1..competitor_count) %}
-            <div class="alt-v2-dot{% if forloop.first %} is-active{% endif %}"></div>
-        {% endfor %}
+    {%- comment -%} Navigation: arrows + dots {%- endcomment -%}
+    {% assign competitor_count = 0 %}
+    {% for block in section.blocks %}
+        {% if block.type == 'competitor' %}
+            {% assign competitor_count = competitor_count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+    <div class="alt-v2-nav" data-alt-v2-nav>
+        <button class="alt-v2-nav-arrow alt-v2-nav-arrow--prev" data-alt-v2-prev disabled aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16.667" fill="white" filter="drop-shadow(0px 3px 16px rgba(0,0,0,0.06))"/>
+                <path d="M20 26.667L26.667 20L20 13.333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.333 20H26.667" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="alt-v2-dots" data-alt-v2-dots>
+            {% for i in (1..competitor_count) %}
+                <div class="alt-v2-dot{% if forloop.first %} is-active{% endif %}"></div>
+            {% endfor %}
+        </div>
+        <button class="alt-v2-nav-arrow" data-alt-v2-next aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16.667" fill="white" filter="drop-shadow(0px 3px 16px rgba(0,0,0,0.06))"/>
+                <path d="M20 26.667L26.667 20L20 13.333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.333 20H26.667" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
     </div>
 
     {%- comment -%} CTA {%- endcomment -%}
@@ -404,17 +460,62 @@
     var table = section.querySelector('.alt-v2-table');
     var dots = section.querySelectorAll('.alt-v2-dot');
     var cols = section.querySelectorAll('.alt-v2-col:not(.alt-v2-col--highlight)');
-    if (!table || dots.length === 0 || cols.length === 0) return;
+    if (!table || cols.length === 0) return;
+
+    var currentIndex = 0;
+    var prevBtn = section.querySelector('[data-alt-v2-prev]');
+    var nextBtn = section.querySelector('[data-alt-v2-next]');
+    var counter = section.querySelector('[data-alt-v2-counter]');
+    var total = cols.length;
+
+    function updateNav() {
+        if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= total - 1;
+        if (counter) counter.textContent = (currentIndex + 1) + ' / ' + total;
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('is-active', i === currentIndex);
+        });
+    }
+
+    function scrollToIndex(index) {
+        if (index < 0 || index >= total) return;
+        currentIndex = index;
+        var col = cols[currentIndex];
+        var labelsWidth = section.querySelector('.alt-v2-labels').offsetWidth;
+        var scrollTarget = col.offsetLeft - labelsWidth - 16;
+        table.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+        updateNav();
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            scrollToIndex(currentIndex - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            scrollToIndex(currentIndex + 1);
+        });
+    }
 
     table.addEventListener('scroll', function() {
-        var scrollLeft = table.scrollLeft;
-        var colWidth = cols[0].offsetWidth;
-        var active = Math.round(scrollLeft / colWidth);
-        active = Math.min(active, dots.length - 1);
-        dots.forEach(function(dot, i) {
-            dot.classList.toggle('is-active', i === active);
+        var labelsWidth = section.querySelector('.alt-v2-labels').offsetWidth;
+        var scrollLeft = table.scrollLeft + labelsWidth + 16;
+        var closest = 0;
+        var minDist = Infinity;
+        cols.forEach(function(col, i) {
+            var dist = Math.abs(col.offsetLeft - scrollLeft);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = i;
+            }
         });
+        currentIndex = closest;
+        updateNav();
     });
+
+    updateNav();
 })();
 </script>
 

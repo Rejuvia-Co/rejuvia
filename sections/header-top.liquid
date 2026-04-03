@@ -124,6 +124,7 @@
   }
 {% endstyle %}
 
+{% if section.settings.enable_bar %}
 <div class="announcement-bar-wrap">
 <div class="announcement-bar" data-announcement-bar>
   {%- assign slide_count = 0 -%}
@@ -216,6 +217,7 @@
     startAutoplay();
   })();
 </script>
+{% endif %}
 
 {% schema %}
   {
@@ -227,6 +229,12 @@
       }
     ],
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_bar",
+        "label": "Enable announcement bar",
+        "default": true
+      },
       {
         "type": "checkbox",
         "id": "enable_carousel",

@@ -2183,8 +2183,8 @@
               "name": "Karla Finney",
               "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
               "offset_top": 0,
-              "offset_left": 0,
-              "offset_right": 0
+              "offset_left": 20,
+              "offset_right": 20
             }
           },
           "fb_text_review_M6wKic": {
@@ -2194,8 +2194,8 @@
               "name": "Karla Finney",
               "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
               "offset_top": 0,
-              "offset_left": 0,
-              "offset_right": 0
+              "offset_left": 20,
+              "offset_right": 20
             }
           },
           "tp_review_tedq9c": {
@@ -2706,7 +2706,9 @@
         "settings": {
           "text": "<p>Join <strong>300,000+ people</strong> sleeping through the night</p>",
           "btn_text": "Try Rejuvia",
-          "btn_url": "",
+          "scroll_target": ".product-widget-container",
+          "position": "bottom",
+          "disable_sticky_header": false,
           "show_after": 500
         }
       }

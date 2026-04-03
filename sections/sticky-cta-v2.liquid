@@ -116,6 +116,15 @@
 
     function check() {
         if (window.scrollY > offset) {
+            var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
+            if (footer) {
+                var footerTop = footer.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+                if (footerTop <= windowHeight) {
+                    sticky.classList.remove('is-visible');
+                    return;
+                }
+            }
             sticky.classList.add('is-visible');
         } else {
             sticky.classList.remove('is-visible');

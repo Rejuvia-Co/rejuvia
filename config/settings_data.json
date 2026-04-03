@@ -2181,7 +2181,10 @@
             "settings": {
               "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
               "name": "Karla Finney",
-              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           },
           "fb_text_review_M6wKic": {
@@ -2189,7 +2192,10 @@
             "settings": {
               "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
               "name": "Karla Finney",
-              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!"
+              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           },
           "tp_review_tedq9c": {
@@ -2243,25 +2249,37 @@
           "fb_review_L8tT8R": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/fb_4.png"
+              "image": "shopify://shop_images/fb_4.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           },
           "fb_review_iNWEtf": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/fb_3.png"
+              "image": "shopify://shop_images/fb_3.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           },
           "fb_review_9Nf3YL": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/fb_2.png"
+              "image": "shopify://shop_images/fb_2.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           },
           "fb_review_MQ7dHz": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/fb_1.png"
+              "image": "shopify://shop_images/fb_1.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
             }
           }
         },
@@ -2681,9 +2699,20 @@
           "signature_name": "RC Williams",
           "signature_title": "Founder"
         }
+      },
+      "sticky_cta_v2_wacfBP": {
+        "type": "sticky-cta-v2",
+        "name": "Sticky CTA V2",
+        "settings": {
+          "text": "<p>Join <strong>300,000+ people</strong> sleeping through the night</p>",
+          "btn_text": "Try Rejuvia",
+          "btn_url": "",
+          "show_after": 500
+        }
       }
     },
     "content_for_index": [
+      "sticky_cta_v2_wacfBP",
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
       "product_intro_v2_mcmr7P",

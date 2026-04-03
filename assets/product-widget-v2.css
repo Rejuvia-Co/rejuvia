@@ -977,7 +977,7 @@
     color: #FFF;
     font-size: 16px;
     line-height: 100%;
-    border-radius: 8px !important;
+    border-radius: 100px !important;
     background-color: #672666;
     text-transform: uppercase;
   }
@@ -1133,7 +1133,7 @@
       padding: 16px 24px !important;
       min-height: 52px;
       font-size: 18px;
-      border-radius: 8px !important;
+      border-radius: 100px !important;
       text-transform: uppercase;
     }
 

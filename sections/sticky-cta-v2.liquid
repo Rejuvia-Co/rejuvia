@@ -85,7 +85,7 @@
 
 <div class="sticky-cta-v2-bar">
     <span class="sticky-cta-v2-text">{{ section.settings.text }}</span>
-    <a class="sticky-cta-v2-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+    <a class="sticky-cta-v2-btn" href="#" data-sticky-cta-btn data-target="{{ section.settings.scroll_target }}">{{ section.settings.btn_text }}</a>
 </div>
 
 <script>
@@ -105,6 +105,29 @@
 
     window.addEventListener('scroll', check, { passive: true });
     check();
+
+    /* Smooth scroll to target */
+    var btn = sticky.querySelector('[data-sticky-cta-btn]');
+    if (btn) {
+        btn.addEventListener('click', function(e) {
+            var targetSelector = btn.getAttribute('data-target');
+            if (targetSelector) {
+                var target = document.querySelector(targetSelector);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    }
+
+    /* Disable sticky header on this page */
+    {% if section.settings.disable_sticky_header %}
+    var header = document.querySelector('#header.header');
+    if (header) {
+        header.style.position = 'relative';
+    }
+    {% endif %}
 })();
 </script>
 
@@ -126,9 +149,17 @@
             "default": "Try Rejuvia"
         },
         {
-            "type": "url",
-            "id": "btn_url",
-            "label": "Button link"
+            "type": "text",
+            "id": "scroll_target",
+            "label": "Scroll to CSS selector",
+            "default": ".product-widget-container",
+            "info": "CSS selector of the target section, e.g. .product-widget-container"
+        },
+        {
+            "type": "checkbox",
+            "id": "disable_sticky_header",
+            "label": "Disable sticky header on this page",
+            "default": false
         },
         {
             "type": "range",

@@ -61,7 +61,7 @@
 
   .product-widget-container .product-info .block-product-specs .product-specs {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 8px;
     margin: 0;
     color: #141414;
@@ -604,6 +604,18 @@
     height: 1.8em;
     padding: 0.3em;
     background: none;
+    color: var(--base-colour, #672666);
+  }
+
+  .product-widget-container .product-wrap .main-images .slick-arrow svg path[fill] {
+    fill: var(--base-colour, #672666) !important;
+  }
+  .product-widget-container .product-wrap .slick-arrow svg .left-arrow path,
+  .product-widget-container .product-wrap .slick-arrow svg .right-arrow path,
+  .product-widget-container .product-wrap .slick-arrow.left-arrow path,
+  .product-widget-container .product-wrap .slick-arrow.right-arrow path,
+  .product-widget-container .product-wrap .main-images .slick-arrow path {
+    fill: var(--base-colour, #672666) !important;
   }
 
   .product-wrap .main-images.slick-slider .slick-arrow.right-arrow {

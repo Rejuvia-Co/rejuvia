@@ -15,8 +15,8 @@ var ProductJs = function( item, product, preselectedItem = null ) {
           adaptiveHeight: true,
           speed: 700,
           waitForAnimate: false,
-          prevArrow: '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-arrow-left left-arrow" viewBox="0 0 32 32"><path fill="#000000" d="M24.333 28.205l-1.797 1.684L7.666 16l14.87-13.889 1.797 1.675L11.269 16z"/></svg>',
-          nextArrow: '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-arrow-right right-arrow" viewBox="0 0 32 32"><path fill="#000000" d="M7.667 3.795l1.797-1.684L24.334 16 9.464 29.889l-1.797-1.675L20.731 16z"/></svg>',
+          prevArrow: '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-arrow-left left-arrow" viewBox="0 0 32 32" style="color: var(--base-colour, #672666);"><path fill="currentColor" d="M24.333 28.205l-1.797 1.684L7.666 16l14.87-13.889 1.797 1.675L11.269 16z"/></svg>',
+          nextArrow: '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-arrow-right right-arrow" viewBox="0 0 32 32" style="color: var(--base-colour, #672666);"><path fill="currentColor" d="M7.667 3.795l1.797-1.684L24.334 16 9.464 29.889l-1.797-1.675L20.731 16z"/></svg>',
           responsive: [
             {
               breakpoint: 600,

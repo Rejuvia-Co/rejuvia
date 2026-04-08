@@ -11,19 +11,26 @@
     {%- comment -%} Copy Block {%- endcomment -%}
     <div class="product-intro-v3__copy">
       {% if intro.title != blank %}
-        <h2 class="product-intro-v3__heading">{{ intro.title }}</h2>
+        <h2 class="product-intro-v3__heading">
+          {{ currentProduct.metafields.custom.product_intro.value.title | metafield_tag }}
+        </h2>
       {% endif %}
       {% if intro.description != blank %}
-        <div class="product-intro-v3__description">{{ intro.description }}</div>
+        <div class="product-intro-v3__description">
+          {{ currentProduct.metafields.custom.product_intro.value.description | metafield_tag }}
+        </div>
       {% endif %}
     </div>
 
     {%- comment -%} Product Image {%- endcomment -%}
     <div class="product-intro-v3__image">
       <div class="product-intro-v3__image-glow"></div>
+      <div class="product-intro-v3__image-dots">
+        <img src="{{ 'product-intro-v3-dots.svg' | asset_url }}" alt="" loading="lazy">
+      </div>
       {% if intro.image != blank %}
         <img src="{{ intro.image | image_url: width: 800 }}"
-             alt="{{ intro.title | default: currentProduct.title }}"
+             alt="{{ currentProduct.title }}"
              loading="lazy">
       {% elsif currentProduct.featured_image %}
         <img src="{{ currentProduct.featured_image | image_url: width: 800 }}"
@@ -66,7 +73,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Content from product metafield custom.product_intro (metaobject: product_intro). Fields: title, description (rich text), image, benefit_1 through benefit_7. Section hidden when metafield is empty."
+      "content": "Content from product metafield custom.product_intro (metaobject: product_intro). Title (rich text, use italic for accent). Description (rich text). Image (file). Benefit 1-7 (single line text). Section hidden when metafield is empty."
     }
   ],
   "presets": [

@@ -194,6 +194,13 @@
       "type": "product-intro-v3",
       "settings": {}
     },
+    "key_ingredients_v2_1": {
+      "type": "key-ingredients-v2",
+      "settings": {
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label"
+      }
+    },
     "ingredients_section_1": {
       "type": "ingredients-section",
       "blocks": {
@@ -583,6 +590,7 @@
     "customer_testimonials_video_1",
     "product_benefits_1",
     "product_intro_v3_1",
+    "key_ingredients_v2_1",
     "ingredients_section_1",
     "product_how_to_use_1",
     "founder_story_1",

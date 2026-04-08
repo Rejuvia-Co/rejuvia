@@ -7,6 +7,8 @@
         {% assign currentProduct = product %}
     {% endif %}
 
+    {% assign base_colour = currentProduct.metafields.custom.base_colour %}
+
     {% assign subscription_product = currentProduct.metafields.subscriptions %}
     {% comment %}Discount settings{% endcomment %}
     {% assign discount_percentage = subscription_product.discount_percentage | round: 2 %}
@@ -18,7 +20,7 @@
     {% assign preselected_item_index = section.settings.preselected_item %}
 
 
-    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default">
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
         
             <div class="gallery-wrapper">
                 <div class="gallery-inner">
@@ -476,8 +478,8 @@
                     infinite: false,
                     arrows: true,
                     speed: 700,
-                    prevArrow: '<button type="button" aria-label="Previous thumbnail"><svg class="slick-prev slick-arrow icon icon-arrow-left left-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7Z" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M36.75 28L19.25 28" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.25 35L19.25 28L26.25 21" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-                    nextArrow: '<button type="button" aria-label="Next thumbnail"><svg class="icon icon-arrow-right right-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><g clip-path="url(#clip0_pw2)"><path d="M28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49Z" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.25 28H36.75" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.75 21L36.75 28L29.75 35" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_pw2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg></button>',
+                    prevArrow: '<button type="button" aria-label="Previous thumbnail" style="color: var(--base-colour, #672666);"><svg class="slick-prev slick-arrow icon icon-arrow-left left-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M36.75 28L19.25 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.25 35L19.25 28L26.25 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+                    nextArrow: '<button type="button" aria-label="Next thumbnail" style="color: var(--base-colour, #672666);"><svg class="icon icon-arrow-right right-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><g clip-path="url(#clip0_pw2)"><path d="M28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.25 28H36.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.75 21L36.75 28L29.75 35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_pw2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg></button>',
                     responsive: [
                         { breakpoint: 700, settings: { slidesToShow: 5, slidesToScroll: 1 } },
                         { breakpoint: 900, settings: { slidesToShow: 6, slidesToScroll: 1 } }

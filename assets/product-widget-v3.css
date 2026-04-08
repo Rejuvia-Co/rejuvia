@@ -119,14 +119,14 @@
   .variant-selector__line {
     flex: 1;
     height: 1px;
-    background-color: #672666;
+    background-color: var(--base-colour, #672666);
   }
 
   .variant-selector__title {
 
     font-size: 14px;
     font-weight: 600;
-    color: #672666;
+    color: var(--base-colour, #672666);
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -153,11 +153,11 @@
   }
 
   .variant-selector__option:hover {
-    border-color: #672666;
+    border-color: var(--base-colour, #672666);
   }
 
   .variant-selector__option.is-active {
-    border-color: #672666;
+    border-color: var(--base-colour, #672666);
   }
 
   .variant-selector__badge {
@@ -683,7 +683,7 @@
   }
 
   .product-wrap .product-gallery .thumbs .slide.active img {
-    border: 1px solid #000;
+    border: 2px solid var(--base-colour, #672666);
   }
 
 
@@ -979,7 +979,7 @@
     font-size: 16px;
     line-height: 100%;
     border-radius: 8px !important;
-    background-color: #672666;
+    background-color: var(--base-colour, #672666);
     text-transform: uppercase;
   }
 
@@ -1331,7 +1331,7 @@
   .product-widget-container .thumbs-wrapper .thumbs .slide.active img,
   .product-widget-container .thumbs-wrapper .thumbs .slick-current img {
     border-radius: 8px;
-    border: 2px solid #5D215F;
+    border: 2px solid var(--base-colour, #672666);
   }
 
   /* Thumbnail navigation arrows */
@@ -1456,7 +1456,7 @@
     /* Active thumbnail with purple border */
     .product-widget-container .thumbs-wrapper .thumbs .slide.active img,
     .product-widget-container .thumbs-wrapper .thumbs .slick-current img {
-      border: 2px solid #672666;
+      border: 2px solid var(--base-colour, #672666);
       border-radius: 8px;
     }
 
@@ -1554,7 +1554,7 @@
     }
 
     .product-wrap .product-gallery .thumbs .slide.active img {
-      border: 2px solid #672666;
+      border: 2px solid var(--base-colour, #672666);
     }
 
     .product-wrap .product-info .add-to-cart-form button.btn span {
@@ -1693,7 +1693,7 @@
   }
 
   .product-widget-container .block-reviews a:hover .reviews-count {
-    color: #672666;
+    color: var(--base-colour, #672666);
   }
 
   /* Custom Tabs Styles */

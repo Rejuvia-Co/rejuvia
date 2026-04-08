@@ -185,8 +185,8 @@
         "gradient_size_mobile": 150
       }
     },
-    "product_intro_v2_1": {
-      "type": "product-intro-v2",
+    "product_intro_v3_1": {
+      "type": "product-intro-v3",
       "settings": {}
     },
     "ingredients_section_1": {
@@ -576,7 +576,7 @@
     "product_widget_v2",
     "customer_testimonials_video_1",
     "product_benefits_1",
-    "product_intro_v2_1",
+    "product_intro_v3_1",
     "ingredients_section_1",
     "product_how_to_use_1",
     "founder_story_1",

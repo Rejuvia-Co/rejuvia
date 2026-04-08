@@ -111,6 +111,11 @@
         "preselected_item": 1
       }
     },
+    "product_intro_v3_A38pUb": {
+      "type": "product-intro-v3",
+      "name": "Product Intro V3",
+      "settings": {}
+    },
     "customer_testimonials_video_1": {
       "type": "customer-testimonials-video",
       "blocks": {
@@ -574,6 +579,7 @@
   },
   "order": [
     "product_widget_v2",
+    "product_intro_v3_A38pUb",
     "customer_testimonials_video_1",
     "product_benefits_1",
     "product_intro_v3_1",

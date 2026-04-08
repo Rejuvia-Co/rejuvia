@@ -16,7 +16,7 @@
           "type": "okendo-reviews",
           "settings": {
             "reviews_anchor": "shopify-product-reviews",
-            "star_color": "#d8b46e",
+            "star_color": "#FAB851",
             "empty_star_color": "#dddddd",
             "margin_top": 0,
             "margin_bottom": 5

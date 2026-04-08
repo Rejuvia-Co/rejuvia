@@ -127,12 +127,25 @@
                 {% when 'product-specs' %}
                     <div class="block-product-specs" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <div class="product-specs">
-                            {% if block.settings.icon_svg != blank %}
-                            <span class="specs-icon">{{ block.settings.icon_svg }}</span>
+                            {% assign specs = currentProduct.metafields.custom.product_specs.value %}
+                            {% if specs != blank %}
+                                {% for spec in specs %}
+                                    {% if forloop.first == false %}
+                                        <span class="specs-separator">•</span>
+                                    {% endif %}
+                                    {% if spec.icon_svg != blank %}
+                                        <span class="specs-icon">{{ spec.icon_svg }}</span>
+                                    {% endif %}
+                                    <span>{{ spec.text }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {% if block.settings.icon_svg != blank %}
+                                <span class="specs-icon">{{ block.settings.icon_svg }}</span>
+                                {% endif %}
+                                <span>{{ block.settings.custom_text_1 | default: currentProduct.variants.first.metafields.custom.variant_grams }}</span>
+                                <span>•</span>
+                                <span>{{ block.settings.custom_text_2 | default: currentProduct.variants.first.metafields.custom.variant_servings }}</span>
                             {% endif %}
-                            <span>{{ block.settings.custom_text_1 | default: currentProduct.variants.first.metafields.custom.variant_grams }}</span>
-                            <span>•</span>
-                            <span>{{ block.settings.custom_text_2 | default: currentProduct.variants.first.metafields.custom.variant_servings }}</span>
                         </div>
                     </div>
 
@@ -478,8 +491,8 @@
                     infinite: false,
                     arrows: true,
                     speed: 700,
-                    prevArrow: '<button type="button" aria-label="Previous thumbnail" style="color: var(--base-colour, #672666);"><svg class="slick-prev slick-arrow icon icon-arrow-left left-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M36.75 28L19.25 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.25 35L19.25 28L26.25 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-                    nextArrow: '<button type="button" aria-label="Next thumbnail" style="color: var(--base-colour, #672666);"><svg class="icon icon-arrow-right right-arrow" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><g clip-path="url(#clip0_pw2)"><path d="M28 49C39.598 49 49 39.598 49 28C49 16.402 39.598 7 28 7C16.402 7 7 16.402 7 28C7 39.598 16.402 49 28 49Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.25 28H36.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.75 21L36.75 28L29.75 35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_pw2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg></button>',
+                    prevArrow: '<button type="button" aria-label="Previous thumbnail" style="color: var(--base-colour, #672666);"><svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none" aria-hidden="true"><g filter="url(#filter_prev)"><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" fill="white"/><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M29.167 20.5L22.5003 27.1667L29.167 33.8333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M35.8333 27.1666H22.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><defs><filter id="filter_prev" x="0" y="0" width="58.333" height="58.3334" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2"/><feGaussianBlur stdDeviation="6"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg></button>',
+                    nextArrow: '<button type="button" aria-label="Next thumbnail" style="color: var(--base-colour, #672666);"><svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none" aria-hidden="true"><g filter="url(#filter_next)"><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" fill="white"/><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M29.167 33.8333L35.8337 27.1667L29.167 20.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.5 27.1666H35.8333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><defs><filter id="filter_next" x="0" y="0" width="58.333" height="58.3334" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2"/><feGaussianBlur stdDeviation="6"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg></button>',
                     responsive: [
                         { breakpoint: 700, settings: { slidesToShow: 5, slidesToScroll: 1 } },
                         { breakpoint: 900, settings: { slidesToShow: 6, slidesToScroll: 1 } }
@@ -630,22 +643,26 @@
       "limit": 1,
       "settings": [
         {
+          "type": "paragraph",
+          "content": "Content from product metafield custom.product_specs (list of metaobjects with icon_svg + text). Falls back to settings below if metafield is empty."
+        },
+        {
           "type": "html",
           "id": "icon_svg",
-          "label": "Icon SVG code",
-          "info": "Paste SVG code here (optional)"
+          "label": "Fallback: Icon SVG code",
+          "info": "Used only when custom.product_specs metafield is empty"
         },
         {
           "type": "text",
           "id": "custom_text_1",
-          "label": "Custom text 1",
-          "info": "Leave blank to use variant grams metafield"
+          "label": "Fallback: Custom text 1",
+          "info": "Used only when custom.product_specs metafield is empty"
         },
         {
           "type": "text",
           "id": "custom_text_2",
-          "label": "Custom text 2",
-          "info": "Leave blank to use variant servings metafield"
+          "label": "Fallback: Custom text 2",
+          "info": "Used only when custom.product_specs metafield is empty"
         },
         {
           "type": "range",

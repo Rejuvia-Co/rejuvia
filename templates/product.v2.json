@@ -176,6 +176,7 @@
         "testimonial_5",
         "testimonial_6"
       ],
+      "disabled": true,
       "settings": {
         "header": "Join 300,000 Getting Better Sleep",
         "stars_reating": "4.6",

@@ -10,16 +10,16 @@
 {
   "sections": {
     "product_widget_v2": {
-      "type": "product-widget-v2",
+      "type": "product-widget-v3",
       "blocks": {
-        "reviews_1": {
+        "okendo_reviews_1": {
           "type": "okendo-reviews",
           "settings": {
             "reviews_anchor": "shopify-product-reviews",
             "star_color": "#fab851",
             "empty_star_color": "#dddddd",
             "margin_top": 0,
-            "margin_bottom": 4
+            "margin_bottom": 5
           }
         },
         "title_1": {
@@ -30,7 +30,7 @@
             "margin_bottom": 10
           }
         },
-        "specs_1": {
+        "product_specs_1": {
           "type": "product-specs",
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewbox=\"0 0 18 18\" fill=\"none\">\n  <g clip-path=\"url(#clip0_1977_12499)\">\n    <path d=\"M8.80008 15.928C7.39533 15.9323 6.04028 15.4084 5.00369 14.4603C3.96711 13.5123 3.32469 12.2093 3.20387 10.8097C3.08304 9.41015 3.49263 8.0163 4.3514 6.90461C5.21017 5.79291 6.45538 5.04458 7.84008 4.80802C12.4001 3.92802 13.6001 3.51202 15.2001 1.52802C16.0001 3.12802 16.8001 4.87202 16.8001 7.92802C16.8001 12.328 12.9761 15.928 8.80008 15.928Z\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n    <path d=\"M1.59998 16.728C1.59998 14.328 3.07998 12.44 5.66398 11.928C7.59998 11.544 9.59998 10.328 10.4 9.52795\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_1977_12499\">\n      <rect width=\"18\" height=\"18\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
@@ -57,7 +57,7 @@
             "margin_bottom": 40
           }
         },
-        "skio_v2_1": {
+        "skio_plan_picker_v2_1": {
           "type": "skio-plan-picker-v2",
           "settings": {
             "start_onetime": false,
@@ -65,10 +65,10 @@
             "onetime_title": "One Time Purchase",
             "subscription_title": "Subscribe &",
             "header_title": "Choose Your Offer",
-            "subscription_subtitle": "Skip or cancel anytime",
+            "subscription_subtitle": "Easily Pause or Cancel",
             "show_variant_item": true,
             "show_free_shipping": true,
-            "shipping_original_price": "$4.99",
+            "shipping_original_price": "$4.95",
             "border_color": "#bfbfbf",
             "selected_border_color": "#672666",
             "discount_badge_color": "#c2f1bd",
@@ -82,8 +82,8 @@
           "settings": {
             "button_text": "Add to cart -",
             "show_guarantee": true,
-            "guarantee_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"13\" viewbox=\"0 0 14 13\" fill=\"none\">\n  <path d=\"M11.3887 1.7555C11.6088 1.54595 11.9017 1.43011 12.2056 1.43241C12.5095 1.43471 12.8006 1.55497 13.0175 1.76783C13.2344 1.98068 13.3602 2.26948 13.3682 2.57327C13.3762 2.87707 13.2659 3.17211 13.0606 3.39613L6.82621 11.193C6.719 11.3085 6.58962 11.4011 6.44579 11.4655C6.30195 11.5298 6.14663 11.5644 5.9891 11.5673C5.83157 11.5703 5.67506 11.5414 5.52895 11.4824C5.38283 11.4235 5.25011 11.3357 5.1387 11.2243L1.00433 7.08988C0.889194 6.98259 0.796847 6.85322 0.732797 6.70947C0.668747 6.56572 0.634306 6.41054 0.63153 6.25319C0.628754 6.09585 0.657699 5.93955 0.716638 5.79363C0.775577 5.64771 0.863303 5.51516 0.974582 5.40388C1.08586 5.2926 1.21841 5.20488 1.36433 5.14594C1.51025 5.087 1.66655 5.05805 1.8239 5.06083C1.98124 5.0636 2.13642 5.09805 2.28017 5.1621C2.42392 5.22614 2.55329 5.31849 2.66058 5.43363L5.93246 8.70394L11.359 1.78988L11.3887 1.7555Z\" fill=\"#FAB851\"></path>\n</svg>",
-            "guarantee_label": "90-Day Money Back Guarantee",
+            "guarantee_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"13\" viewbox=\"0 0 14 13\" fill=\"none\">\n  <path d=\"M11.3892 1.7555C11.6093 1.54595 11.9022 1.43011 12.2061 1.43241C12.51 1.43471 12.8011 1.55497 13.018 1.76783C13.2349 1.98068 13.3607 2.26948 13.3687 2.57327C13.3767 2.87707 13.2664 3.17211 13.0611 3.39613L6.82669 11.193C6.71949 11.3085 6.59011 11.4011 6.44627 11.4655C6.30244 11.5298 6.14712 11.5644 5.98959 11.5673C5.83205 11.5703 5.67555 11.5414 5.52944 11.4824C5.38332 11.4235 5.2506 11.3357 5.13919 11.2243L1.00482 7.08988C0.889682 6.98259 0.797335 6.85322 0.733285 6.70947C0.669235 6.56572 0.634795 6.41054 0.632018 6.25319C0.629242 6.09585 0.658187 5.93955 0.717126 5.79363C0.776065 5.64771 0.863791 5.51516 0.975071 5.40388C1.08635 5.2926 1.2189 5.20488 1.36482 5.14594C1.51074 5.087 1.66704 5.05805 1.82438 5.06083C1.98173 5.0636 2.13691 5.09805 2.28066 5.1621C2.42441 5.22614 2.55378 5.31849 2.66107 5.43363L5.93294 8.70394L11.3595 1.78988L11.3892 1.7555Z\" fill=\"#FAB851\"></path>\n</svg>",
+            "guarantee_label": "Backed by our <strong>90-Day Happiness Guarantee</strong>",
             "margin_top": 0,
             "margin_bottom": 28
           }
@@ -94,12 +94,12 @@
         }
       },
       "block_order": [
-        "reviews_1",
+        "okendo_reviews_1",
         "title_1",
-        "specs_1",
+        "product_specs_1",
         "description_1",
         "variant_selector_1",
-        "skio_v2_1",
+        "skio_plan_picker_v2_1",
         "buy_buttons_1",
         "custom_tabs_1"
       ],
@@ -108,54 +108,247 @@
         "show_related_product": false,
         "show_bundle_text": false,
         "swatch_tag_content": "",
-        "preselected_item": 3
+        "preselected_item": 1
       }
     },
-    "product_benefits_MEbMKY": {
-      "type": "product-benefits",
-      "name": "Product Benefits",
-      "settings": {
-        "gradient_size_desktop": 100,
-        "gradient_size_mobile": 150
-      }
-    },
-    "customer_testimonials_video_caghmG": {
-      "type": "customer-testimonials-video",
-      "disabled": true,
-      "name": "Video Testimonials",
-      "settings": {
-        "header": "",
-        "stars_reating": "",
-        "stars_label": ""
-      }
-    },
-    "ingredients_section_Mcnkac": {
-      "type": "ingredients-section",
-      "disabled": true,
-      "name": "Ingredients Info Section",
-      "settings": {
-        "heading": "",
-        "subheading": ""
-      }
-    },
-    "product_how_to_use_MUF43f": {
-      "type": "product-how-to-use",
-      "name": "Product How To Use",
+    "product_intro_v3_A38pUb": {
+      "type": "product-intro-v3",
+      "name": "Product Intro V3",
       "settings": {}
     },
-    "product_fb_reviews_fbddPH": {
-      "type": "product-fb-reviews",
-      "disabled": true,
-      "name": "Product FB Reviews",
+    "key_ingredients_v2_1": {
+      "type": "key-ingredients-v2",
       "settings": {
-        "title": "Latest Reviews",
-        "subtitle": "Read real reviews and comments from 300,000+ happy Rejuvia customers."
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label",
+        "button_url": ""
       }
     },
-    "1717460916cf4757a6": {
+    "use_in_just_v2_1": {
+      "type": "product-use-in-just-v2",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Step 1: Spray",
+            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+            "tip1_icon": "shopify://shop_images/Frame_1.svg",
+            "tip1_label": "When to use",
+            "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
+            "tip2_icon": "shopify://shop_images/Frame_2.svg",
+            "tip2_label": "While traveling",
+            "tip2_text": "Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule. A few sprays before you settle in can help your mind slow down and make unfamiliar environments feel a lot easier to fall asleep in.",
+            "image": "shopify://shop_images/Step_1.webp",
+            "watermark": "shopify://shop_images/Frame.svg",
+            "watermark_opacity": 60,
+            "watermark_position": "top-right"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Step 2: Settle In",
+            "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
+            "tip1_label": "Usage Tip",
+            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+            "tip2_label": "Finding Your Dose",
+            "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that's completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
+            "image": "shopify://shop_images/Step_2.webp",
+            "watermark_opacity": 20,
+            "watermark_position": "top-right"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Step 3: Store & Repeat",
+            "description": "Store Rejuvia in the place where you naturally wind down at night. Most people keep it in their nightstand or right next to their bed so it becomes part of their rhythm without needing to think about it. The simpler you make it, the more consistent your results will be.",
+            "tip1_label": "Building a Routine",
+            "tip1_text": "Using Rejuvia at the same time each night helps your body recognize it as a signal to wind down. The more consistent your routine, the faster and deeper your sleep becomes over time. Think of it as building momentum that makes falling asleep feel automatic.",
+            "tip2_label": "",
+            "tip2_text": "",
+            "image": "shopify://shop_images/Step_3.webp",
+            "watermark_opacity": 20,
+            "watermark_position": "top-right"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "name": "Use In Just V2",
+      "settings": {
+        "heading": "<p>Use in <em>just 30 seconds</em></p>",
+        "default_image": "shopify://shop_images/image_1.png",
+        "link_text": "View Supplement Label",
+        "link_url": ""
+      }
+    },
+    "alternatives_v2_1": {
+      "type": "product-alternatives-v2",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Fast-absorbing formula",
+            "rejuvia_value": "Rapid",
+            "rejuvia_sub": "(5-10 minutes)",
+            "rejuvia_color": "",
+            "rejuvia_bold": true
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "Low price per use",
+            "rejuvia_value": "$0.89/night",
+            "rejuvia_sub": "",
+            "rejuvia_color": "palt-v2-cell--green",
+            "rejuvia_bold": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Proven natural ingredients",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Non-habit forming",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "No groggy mornings",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "Tastes great",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "label": "Free from additives & fillers",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "competitor_1": {
+          "type": "competitor",
+          "settings": {
+            "name": "Sleep Pills",
+            "image": "shopify://shop_images/sleeping_pill_1.png",
+            "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
+            "colors": "|palt-v2-cell--red|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        },
+        "competitor_2": {
+          "type": "competitor",
+          "settings": {
+            "name": "Sleep Gummies",
+            "image": "shopify://shop_images/single-sleep-gummy-closeup.png_1.png",
+            "values": "Slow|$1.83/night|check|check|cross|cross|cross",
+            "colors": "|palt-v2-cell--orange|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        },
+        "competitor_3": {
+          "type": "competitor",
+          "settings": {
+            "name": "Melatonin Supplements",
+            "image": "shopify://shop_images/natrol-melatonin-60ct-10mgmaximum-tablet-fastdissolve-citrus-047469076689-size.jpg_1.png",
+            "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
+            "colors": "|palt-v2-cell--orange|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "competitor_1",
+        "competitor_2",
+        "competitor_3"
+      ],
+      "name": "Alternatives V2",
+      "settings": {
+        "heading": "<p>The <em>most effective</em> alternative to sleep aids</p>",
+        "rejuvia_image": "shopify://shop_images/rejuvia-products-004-midnight-spray-001_1.png",
+        "rejuvia_logo": "shopify://shop_images/Logo.svg",
+        "btn_text": "Try Rejuvia Risk-Free",
+        "btn_url": "",
+        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+      }
+    },
+    "guarantees_v2_1": {
+      "type": "guarantees-v2",
+      "blocks": {
+        "guarantee_1": {
+          "type": "guarantee",
+          "settings": {
+            "text": "5,000+ 5-Star Reviews"
+          }
+        },
+        "guarantee_2": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Free US Shipping over $79"
+          }
+        },
+        "guarantee_3": {
+          "type": "guarantee",
+          "settings": {
+            "text": "150,000+ Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee_1",
+        "guarantee_2",
+        "guarantee_3"
+      ],
+      "name": "Guarantees V2",
+      "settings": {
+        "bg_color": "#eaeaf7",
+        "icon_color": "#672666"
+      }
+    },
+    "okendo_reviews_app_1": {
       "type": "apps",
       "blocks": {
-        "okendo_reviews_widget_Uc3pqP": {
+        "okendo_reviews_widget_1": {
           "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
             "product": "{{product}}",
@@ -164,151 +357,42 @@
         }
       },
       "block_order": [
-        "okendo_reviews_widget_Uc3pqP"
+        "okendo_reviews_widget_1"
       ],
       "settings": {}
     },
-    "main_page_4Q6KQH": {
-      "type": "faqs",
-      "blocks": {
-        "faqs_Bzr9Mf": {
-          "type": "faqs",
-          "settings": {
-            "heading": "Why are Rejuvia sprays better than oils & pills?",
-            "subheading": "Oral sprays are more effective than gummy and capsule supplements because they allow for direct absorption of nutrients through the mucous membranes in the mouth, bypassing the digestive system. This leads to quicker and more efficient uptake of vitamins and minerals, ensuring significantly higher bioavailability."
-          }
-        },
-        "faqs_kbjgEW": {
-          "type": "faqs",
-          "settings": {
-            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Stress Spray?",
-            "subheading": "Our Sleep Spray is intended for use before bedtime. Our Stress Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."
-          }
-        },
-        "faqs_f39Ji6": {
-          "type": "faqs",
-          "settings": {
-            "heading": "When should I use the Stress Spray?",
-            "subheading": "The Stress Spray can be used during the day or evening when you need to calm down and alleviate stress. The Stress Spray will not make you feel tired or induce sleep, but it will help you feel mentally relaxed and calm."
-          }
-        },
-        "faqs_8mP9YQ": {
-          "type": "faqs",
-          "settings": {
-            "heading": "Will the Stress Spray make me tired during the day?",
-            "subheading": "The Stress Spray is primarily designed to reduce stress and promote relaxation without necessarily making you feel tired. However, since it helps reduce stress and creates a sense of calmness, it might make some people feel more relaxed and potentially a bit drowsy, especially if they are already tired or use it in the evening."
-          }
-        },
-        "faqs_eDxDNH": {
-          "type": "faqs",
-          "settings": {
-            "heading": "What do Rejuvia's sprays taste like?",
-            "subheading": "Our oral sprays have a delicious, all-natural mint flavor to them. It's not overly powerful but quite delicious. Even customers who don't typically love mint flavors enjoy our sprays."
-          }
-        },
-        "faqs_NitEKm": {
-          "type": "faqs",
-          "settings": {
-            "heading": "Are Rejuvia's sprays third-party tested?",
-            "subheading": "All of our products are indepdently triple lab-tested for purity and potency each batch. Each prodcut comes with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency."
-          }
-        },
-        "faqs_K9Fkbt": {
-          "type": "faqs",
-          "settings": {
-            "heading": "How long will one Stress Spray last?",
-            "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per day, so one Rejuvia Stress Spray will last you 30-35 days on average."
-          }
-        },
-        "faqs_rVdn8m": {
-          "type": "faqs",
-          "settings": {
-            "heading": "How many sprays should I use?",
-            "subheading": "Our recommended dose is 6-8 sprays under your tongue or on the inside of your cheek. You can adjust your dose to find the perfect balance, though. You might do better with just 4-6 sprays or you might do better with 8-10. It’s all about finding what works best for your body and the metered spray makes it very easy to do so."
-          }
-        },
-        "faqs_9MQKrh": {
-          "type": "faqs",
-          "settings": {
-            "heading": "Can I use the Stress Spray multiple times in one day?",
-            "subheading": "It is fine to use the Stress Spray more than once a day. The majority of our customers utilize our Stress Spray once per day, but some use it twice. The most popular time to use the Stress Spray is in the late morning. Each dosage should last you 4-6 hours."
-          }
-        }
-      },
-      "block_order": [
-        "faqs_Bzr9Mf",
-        "faqs_kbjgEW",
-        "faqs_f39Ji6",
-        "faqs_8mP9YQ",
-        "faqs_eDxDNH",
-        "faqs_NitEKm",
-        "faqs_K9Fkbt",
-        "faqs_rVdn8m",
-        "faqs_9MQKrh"
-      ],
+    "product_faqs_v2_jpe98j": {
+      "type": "product-faqs-v2",
+      "name": "Product FAQs V2",
       "settings": {
-        "customClass": "",
-        "background": "#ffffff",
-        "heading": "Frequently Asked Questions",
-        "customTextBottom": "",
-        "title_color": "#000000",
-        "text_color": "#000000"
+        "heading": "Frequently asked questions",
+        "description": "",
+        "footer_text": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>"
       }
     },
-    "section_choose_product_UUJBY4": {
-      "type": "section-choose-product",
-      "blocks": {
-        "product_yTNPFt": {
-          "type": "product",
-          "settings": {
-            "featured_product": "sleep-spray",
-            "short_description": ""
-          }
-        },
-        "product_Mc3T43": {
-          "type": "product",
-          "settings": {
-            "featured_product": "oral-stress-spray",
-            "short_description": ""
-          }
-        },
-        "product_GzhtQB": {
-          "type": "product",
-          "settings": {
-            "featured_product": "vitamin-d3-k2-spray",
-            "short_description": ""
-          }
-        },
-        "product_DzCK9Y": {
-          "type": "product",
-          "settings": {
-            "featured_product": "lutein",
-            "short_description": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_yTNPFt",
-        "product_Mc3T43",
-        "product_GzhtQB",
-        "product_DzCK9Y"
-      ],
-      "name": "Select Product",
+    "feature_products_v2_1": {
+      "type": "feature-products-v2",
       "settings": {
-        "title": "Shop All Rejuvia Products",
-        "sub_title": "Better sleep and less stress are now just a few sprays away."
+        "heading": ""
+      }
+    },
+    "product_sticky_cta_v2_1": {
+      "type": "product-sticky-cta-v2",
+      "settings": {
+        "trigger_selector": ".product-widget-container .block-buy-buttons"
       }
     }
   },
   "order": [
     "product_widget_v2",
-    "product_benefits_MEbMKY",
-    "customer_testimonials_video_caghmG",
-    "ingredients_section_Mcnkac",
-    "product_how_to_use_MUF43f",
-    "product_fb_reviews_fbddPH",
-    "1717460916cf4757a6",
-    "main_page_4Q6KQH",
-    "section_choose_product_UUJBY4"
+    "product_intro_v3_A38pUb",
+    "key_ingredients_v2_1",
+    "use_in_just_v2_1",
+    "alternatives_v2_1",
+    "guarantees_v2_1",
+    "okendo_reviews_app_1",
+    "product_faqs_v2_jpe98j",
+    "feature_products_v2_1",
+    "product_sticky_cta_v2_1"
   ]
 }

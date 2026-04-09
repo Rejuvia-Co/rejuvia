@@ -361,12 +361,6 @@
       ],
       "settings": {}
     },
-    "feature_products_v2_1": {
-      "type": "feature-products-v2",
-      "settings": {
-        "heading": "You may also like"
-      }
-    },
     "product_faqs_v2_jpe98j": {
       "type": "product-faqs-v2",
       "name": "Product FAQs V2",
@@ -374,6 +368,12 @@
         "heading": "Frequently asked questions",
         "description": "",
         "footer_text": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>"
+      }
+    },
+    "feature_products_v2_1": {
+      "type": "feature-products-v2",
+      "settings": {
+        "heading": ""
       }
     }
   },

@@ -325,8 +325,41 @@
         "link_url": ""
       }
     },
+    "guarantees_v2_1": {
+      "type": "guarantees-v2",
+      "blocks": {
+        "guarantee_1": {
+          "type": "guarantee",
+          "settings": {
+            "text": "5,000+ 5-Star Reviews"
+          }
+        },
+        "guarantee_2": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Free US Shipping over $79"
+          }
+        },
+        "guarantee_3": {
+          "type": "guarantee",
+          "settings": {
+            "text": "150,000+ Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee_1",
+        "guarantee_2",
+        "guarantee_3"
+      ],
+      "name": "Guarantees V2",
+      "settings": {
+        "bg_color": "#eaeaf7",
+        "icon_color": "#672666"
+      }
+    },
     "alternatives_v2_1": {
-      "type": "alternatives-v2",
+      "type": "product-alternatives-v2",
       "blocks": {
         "row_1": {
           "type": "row",
@@ -778,6 +811,7 @@
     "product_intro_v3_A38pUb",
     "key_ingredients_v2_1",
     "use_in_just_v2_1",
+    "guarantees_v2_1",
     "alternatives_v2_1",
     "customer_testimonials_video_1",
     "product_benefits_1",

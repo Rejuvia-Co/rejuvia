@@ -4,8 +4,17 @@
     background-color: #eaeaf7;
 }
 
+.puij-v2-wrapper {
+    background-color: #eaeaf7;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
 .puij-v2-container {
-    width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
@@ -111,6 +120,18 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.puij-v2-watermark--tinted {
+    width: 150px;
+    height: 150px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 .puij-v2-watermark--top-right {
@@ -321,18 +342,19 @@
 {% assign puij_button_url = puij_meta.button_url | default: section.settings.link_url %}
 
 <style>
-  .puij-v2-section--{{ section.id }} {
+  .puij-v2-wrapper--{{ section.id }} {
     background-color: {{ puij_bg }};
   }
-  .puij-v2-section--{{ section.id }} .puij-v2-heading em {
+  .puij-v2-wrapper--{{ section.id }} .puij-v2-heading em {
     color: {{ puij_accent }};
   }
-  .puij-v2-section--{{ section.id }} .puij-v2-link {
+  .puij-v2-wrapper--{{ section.id }} .puij-v2-link {
     color: {{ puij_accent }};
   }
 </style>
 
-<div class="puij-v2-container puij-v2-section--{{ section.id }}">
+<div class="puij-v2-wrapper puij-v2-wrapper--{{ section.id }}">
+<div class="puij-v2-container">
     {%- comment -%} Header {%- endcomment -%}
     <div class="puij-v2-header">
         <div class="puij-v2-heading">{{ section.settings.heading }}</div>
@@ -365,8 +387,8 @@
                     >
                 {% endif %}
                 {% if block.settings.watermark != blank %}
-                    <div class="puij-v2-watermark puij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-puij-v2-wm="{{ forloop.index0 }}" style="opacity: {{ block.settings.watermark_opacity | default: 20 | times: 0.01 }};">
-                        <img src="{{ block.settings.watermark | image_url: width: 300 }}" alt="" loading="lazy">
+                    <div class="puij-v2-watermark puij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-puij-v2-wm="{{ forloop.index0 }}" style="opacity: {{ block.settings.watermark_opacity | default: 20 | times: 0.01 }}; color: {{ puij_accent }};">
+                        <div class="puij-v2-watermark--tinted" style="-webkit-mask-image: url('{{ block.settings.watermark | image_url: width: 300 }}'); mask-image: url('{{ block.settings.watermark | image_url: width: 300 }}');"></div>
                     </div>
                 {% endif %}
             {% endfor %}
@@ -423,6 +445,7 @@
     </div>
 
     {%- comment -%} Mobile link (shown via CSS order) {%- endcomment -%}
+</div>
 </div>
 
 {% endif %}

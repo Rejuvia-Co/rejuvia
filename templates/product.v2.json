@@ -439,6 +439,15 @@
         "title_color": "#000000",
         "text_color": "#000000"
       }
+    },
+    "product_faqs_v2_jpe98j": {
+      "type": "product-faqs-v2",
+      "name": "Product FAQs V2",
+      "settings": {
+        "heading": "Frequently asked questions",
+        "description": "",
+        "footer_text": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>"
+      }
     }
   },
   "order": [
@@ -449,6 +458,7 @@
     "alternatives_v2_1",
     "guarantees_v2_1",
     "okendo_reviews_app_1",
-    "faqs_1"
+    "faqs_1",
+    "product_faqs_v2_jpe98j"
   ]
 }

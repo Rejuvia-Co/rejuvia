@@ -359,7 +359,7 @@
     <div class="puij-v2-header">
         <div class="puij-v2-heading">{{ section.settings.heading }}</div>
         {% if section.settings.link_text != blank %}
-            <a class="puij-v2-link" href="{{ puij_button_url }}">{{ section.settings.link_text }}</a>
+            <button type="button" class="puij-v2-link" data-open-supplement-popup>{{ section.settings.link_text }}</button>
         {% endif %}
     </div>
 

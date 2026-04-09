@@ -11,11 +11,7 @@
     <div class="key-ingredients-v2__header">
       <h2 class="key-ingredients-v2__title">{{ section.settings.heading | default: 'The key ingredients' }}</h2>
       {% if section.settings.button_label != blank %}
-        {% if section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}" class="key-ingredients-v2__btn key-ingredients-v2__btn--desktop">{{ section.settings.button_label }}</a>
-        {% else %}
-          <span class="key-ingredients-v2__btn key-ingredients-v2__btn--desktop">{{ section.settings.button_label }}</span>
-        {% endif %}
+        <button type="button" class="key-ingredients-v2__btn key-ingredients-v2__btn--desktop" data-open-supplement-popup>{{ section.settings.button_label }}</button>
       {% endif %}
     </div>
 
@@ -45,11 +41,7 @@
 
     {% if section.settings.button_label != blank %}
       <div class="key-ingredients-v2__mobile-btn">
-        {% if section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}" class="key-ingredients-v2__btn">{{ section.settings.button_label }}</a>
-        {% else %}
-          <span class="key-ingredients-v2__btn">{{ section.settings.button_label }}</span>
-        {% endif %}
+        <button type="button" class="key-ingredients-v2__btn" data-open-supplement-popup>{{ section.settings.button_label }}</button>
       </div>
     {% endif %}
 

@@ -1,0 +1,143 @@
+{{ 'feature-products-v2.css' | asset_url | stylesheet_tag }}
+
+{% assign featured = product.metafields.custom.feature_products.value %}
+
+{% if featured != blank %}
+<section class="fp-v2-section">
+  <div class="fp-v2-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="fp-v2-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="fp-v2-grid" data-fp-v2-grid>
+      {% for item in featured %}
+        {% assign item_base_colour = item.metafields.custom.base_colour | default: '#672666' %}
+        {% assign item_rating = item.metafields.okendo.summaryData.reviewAverageValue | default: 4.6 %}
+        {% assign item_reviews = item.metafields.okendo.summaryData.reviewCount | default: 0 %}
+        {% assign full_stars = item_rating | floor %}
+        {% assign has_half = false %}
+        {% assign remainder = item_rating | minus: full_stars %}
+        {% if remainder >= 0.25 and remainder < 0.75 %}
+          {% assign has_half = true %}
+        {% elsif remainder >= 0.75 %}
+          {% assign full_stars = full_stars | plus: 1 %}
+        {% endif %}
+        {% assign empty_stars = 5 | minus: full_stars %}
+        {% if has_half %}
+          {% assign empty_stars = empty_stars | minus: 1 %}
+        {% endif %}
+
+        <a href="{{ item.url }}" class="fp-v2-card" style="--card-base-colour: {{ item_base_colour }};">
+          <div class="fp-v2-card-image">
+            {% if item.featured_image %}
+              <img src="{{ item.featured_image | image_url: width: 500 }}"
+                   alt="{{ item.title }}"
+                   loading="lazy"
+                   width="200"
+                   height="200">
+            {% endif %}
+          </div>
+          <div class="fp-v2-card-content">
+            <div class="fp-v2-rating">
+              <span class="fp-v2-stars">
+                {% for i in (1..full_stars) %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="currentColor"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z"/></svg>
+                {% endfor %}
+                {% if has_half %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none">
+                    <defs>
+                      <linearGradient id="fp-half-{{ forloop.index }}">
+                        <stop offset="50%" stop-color="currentColor"/>
+                        <stop offset="50%" stop-color="#e5e5e5"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="url(#fp-half-{{ forloop.index }})"/>
+                  </svg>
+                {% endif %}
+                {% for i in (1..empty_stars) %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="#e5e5e5"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z"/></svg>
+                {% endfor %}
+              </span>
+              <span class="fp-v2-rating-text">
+                {{ item_rating }} <span class="fp-v2-rating-count">({{ item_reviews }} Reviews)</span>
+              </span>
+            </div>
+
+            <h3 class="fp-v2-card-title">{{ item.title }}</h3>
+
+            {% assign tags_raw = item.metafields.custom.card_tags %}
+            {% if tags_raw != blank %}
+              <div class="fp-v2-tags">
+                {% assign tags_list = tags_raw | split: ',' %}
+                {% for tag in tags_list %}
+                  <span class="fp-v2-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    {{ tag | strip }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% assign card_desc = item.metafields.custom.card_description | default: item.description %}
+            {% if card_desc != blank %}
+              <p class="fp-v2-card-desc">{{ card_desc | strip_html | truncate: 100 }}</p>
+            {% endif %}
+          </div>
+
+          <span class="fp-v2-card-btn">Shop Now</span>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="fp-v2-indicators" data-fp-v2-indicators>
+      {% for item in featured %}
+        <div class="fp-v2-indicator{% if forloop.first %} is-active{% endif %}"></div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var grid = document.querySelector('[data-fp-v2-grid]');
+  var indicators = document.querySelectorAll('[data-fp-v2-indicators] .fp-v2-indicator');
+  if (!grid || !indicators.length) return;
+
+  grid.addEventListener('scroll', function() {
+    var cardWidth = grid.querySelector('.fp-v2-card').offsetWidth + 16;
+    var index = Math.round(grid.scrollLeft / cardWidth);
+    indicators.forEach(function(dot, i) {
+      dot.classList.toggle('is-active', i === index);
+    });
+  });
+})();
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Feature Products V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Products come from product metafield custom.feature_products (list of products). Optional per-product metafields: custom.base_colour (accent), custom.card_description, custom.card_tags (comma-separated)."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Products V2"
+    }
+  ]
+}
+{% endschema %}

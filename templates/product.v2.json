@@ -361,6 +361,12 @@
       ],
       "settings": {}
     },
+    "feature_products_v2_1": {
+      "type": "feature-products-v2",
+      "settings": {
+        "heading": "You may also like"
+      }
+    },
     "product_faqs_v2_jpe98j": {
       "type": "product-faqs-v2",
       "name": "Product FAQs V2",
@@ -379,6 +385,7 @@
     "alternatives_v2_1",
     "guarantees_v2_1",
     "okendo_reviews_app_1",
-    "product_faqs_v2_jpe98j"
+    "product_faqs_v2_jpe98j",
+    "feature_products_v2_1"
   ]
 }

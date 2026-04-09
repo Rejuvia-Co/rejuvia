@@ -26,6 +26,7 @@
 }
 
 .key-ingredients-v2__title {
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 30px;
   font-weight: 500;
   line-height: 1.4;
@@ -56,6 +57,12 @@
 
 .key-ingredients-v2__btn:hover {
   opacity: 0.9;
+}
+
+.key-ingredients-v2__mobile-btn {
+  display: none;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 /* Grid */
@@ -94,6 +101,7 @@
 }
 
 .key-ingredients-v2__card-title {
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
@@ -106,7 +114,14 @@
   font-weight: 400;
   line-height: 1.4;
   color: #141414;
-  margin: 0;
+}
+
+.key-ingredients-v2__card-desc p {
+  margin: 0 0 0.5em;
+}
+
+.key-ingredients-v2__card-desc p:last-child {
+  margin-bottom: 0;
 }
 
 /* Mobile */
@@ -116,33 +131,43 @@
   }
 
   .key-ingredients-v2__container {
-    gap: 24px;
+    gap: 32px;
   }
 
   .key-ingredients-v2__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    justify-content: flex-start;
   }
 
   .key-ingredients-v2__title {
     font-size: 24px;
   }
 
+  .key-ingredients-v2__btn--desktop {
+    display: none;
+  }
+
+  .key-ingredients-v2__mobile-btn {
+    display: flex;
+  }
+
+  .key-ingredients-v2__mobile-btn .key-ingredients-v2__btn {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+
   .key-ingredients-v2__grid {
-    gap: 24px;
+    gap: 16px;
   }
 
   .key-ingredients-v2__card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
   }
 
   .key-ingredients-v2__card-image {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1;
+    height: 165px;
   }
 
   .key-ingredients-v2__card-title {
@@ -151,20 +176,6 @@
 
   .key-ingredients-v2__card-desc {
     font-size: 14px;
-  }
-
-  .key-ingredients-v2__header {
-    align-items: center;
-  }
-
-  .key-ingredients-v2__btn {
-    width: 100%;
-    justify-content: center;
-    order: 1;
-  }
-
-  .key-ingredients-v2__grid {
-    order: 0;
   }
 }
 

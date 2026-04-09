@@ -12,9 +12,9 @@
       <h2 class="key-ingredients-v2__title">{{ section.settings.heading | default: 'The key ingredients' }}</h2>
       {% if section.settings.button_label != blank %}
         {% if section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}" class="key-ingredients-v2__btn">{{ section.settings.button_label }}</a>
+          <a href="{{ section.settings.button_url }}" class="key-ingredients-v2__btn key-ingredients-v2__btn--desktop">{{ section.settings.button_label }}</a>
         {% else %}
-          <span class="key-ingredients-v2__btn">{{ section.settings.button_label }}</span>
+          <span class="key-ingredients-v2__btn key-ingredients-v2__btn--desktop">{{ section.settings.button_label }}</span>
         {% endif %}
       {% endif %}
     </div>
@@ -36,18 +36,19 @@
               <h3 class="key-ingredients-v2__card-title">{{ ingredient.title }}</h3>
             {% endif %}
             {% if ingredient.description != blank %}
-              <p class="key-ingredients-v2__card-desc">{{ ingredient.description }}</p>
+              <div class="key-ingredients-v2__card-desc">{{ ingredient.description | metafield_tag }}</div>
             {% endif %}
           </div>
         </div>
       {% endfor %}
     </div>
 
-    {% comment %} Mobile: button after grid {% endcomment %}
     {% if section.settings.button_label != blank %}
       <div class="key-ingredients-v2__mobile-btn">
         {% if section.settings.button_url != blank %}
           <a href="{{ section.settings.button_url }}" class="key-ingredients-v2__btn">{{ section.settings.button_label }}</a>
+        {% else %}
+          <span class="key-ingredients-v2__btn">{{ section.settings.button_label }}</span>
         {% endif %}
       </div>
     {% endif %}

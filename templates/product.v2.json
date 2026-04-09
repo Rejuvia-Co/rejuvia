@@ -116,6 +116,14 @@
       "name": "Product Intro V3",
       "settings": {}
     },
+    "key_ingredients_v2_1": {
+      "type": "key-ingredients-v2",
+      "settings": {
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label",
+        "button_url": ""
+      }
+    },
     "customer_testimonials_video_1": {
       "type": "customer-testimonials-video",
       "blocks": {
@@ -192,14 +200,6 @@
         "gradient_size_mobile": 150
       }
     },
-    "key_ingredients_v2_1": {
-      "type": "key-ingredients-v2",
-      "settings": {
-        "heading": "The key ingredients",
-        "button_label": "View Supplement Label",
-        "button_url": ""
-      }
-    },
     "ingredients_section_1": {
       "type": "ingredients-section",
       "blocks": {
@@ -251,6 +251,7 @@
         "card_4",
         "card_5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "All-Natural, Powerful Ingredients",
         "subheading": "Rejuvia's formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body's natural rhythm — without harsh doses or heavy side effects."
@@ -258,8 +259,71 @@
     },
     "product_how_to_use_1": {
       "type": "product-how-to-use",
+      "disabled": true,
       "name": "Product How To Use",
       "settings": {}
+    },
+    "use_in_just_v2_1": {
+      "type": "product-use-in-just-v2",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Step 1: Spray",
+            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+            "tip1_icon": "shopify://shop_images/Frame_1.svg",
+            "tip1_label": "When to use",
+            "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
+            "tip2_icon": "shopify://shop_images/Frame_2.svg",
+            "tip2_label": "While traveling",
+            "tip2_text": "Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule. A few sprays before you settle in can help your mind slow down and make unfamiliar environments feel a lot easier to fall asleep in.",
+            "image": "shopify://shop_images/Step_1.webp",
+            "watermark": "shopify://shop_images/Frame.svg",
+            "watermark_opacity": 60,
+            "watermark_position": "top-right"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Step 2: Settle In",
+            "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
+            "tip1_label": "Usage Tip",
+            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+            "tip2_label": "Finding Your Dose",
+            "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that's completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
+            "image": "shopify://shop_images/Step_2.webp",
+            "watermark_opacity": 20,
+            "watermark_position": "top-right"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Step 3: Store & Repeat",
+            "description": "Store Rejuvia in the place where you naturally wind down at night. Most people keep it in their nightstand or right next to their bed so it becomes part of their rhythm without needing to think about it. The simpler you make it, the more consistent your results will be.",
+            "tip1_label": "Building a Routine",
+            "tip1_text": "Using Rejuvia at the same time each night helps your body recognize it as a signal to wind down. The more consistent your routine, the faster and deeper your sleep becomes over time. Think of it as building momentum that makes falling asleep feel automatic.",
+            "tip2_label": "",
+            "tip2_text": "",
+            "image": "shopify://shop_images/Step_3.webp",
+            "watermark_opacity": 20,
+            "watermark_position": "top-right"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "name": "Use In Just V2",
+      "settings": {
+        "heading": "<p>Use in <em>just 30 seconds</em></p>",
+        "default_image": "shopify://shop_images/image_1.png",
+        "link_text": "View Supplement Label",
+        "link_url": ""
+      }
     },
     "alternatives_v2_1": {
       "type": "alternatives-v2",
@@ -385,68 +449,6 @@
         "btn_text": "Try Rejuvia Risk-Free",
         "btn_url": "",
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
-      }
-    },
-    "use_in_just_v2_1": {
-      "type": "product-use-in-just-v2",
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Step 1: Spray",
-            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
-            "tip1_icon": "shopify://shop_images/Frame_1.svg",
-            "tip1_label": "When to use",
-            "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
-            "tip2_icon": "shopify://shop_images/Frame_2.svg",
-            "tip2_label": "While traveling",
-            "tip2_text": "Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule. A few sprays before you settle in can help your mind slow down and make unfamiliar environments feel a lot easier to fall asleep in.",
-            "image": "shopify://shop_images/Step_1.webp",
-            "watermark": "shopify://shop_images/Frame.svg",
-            "watermark_opacity": 60,
-            "watermark_position": "top-right"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Step 2: Settle In",
-            "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
-            "tip1_label": "Usage Tip",
-            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
-            "tip2_label": "Finding Your Dose",
-            "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that's completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
-            "image": "shopify://shop_images/Step_2.webp",
-            "watermark_opacity": 20,
-            "watermark_position": "top-right"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Step 3: Store & Repeat",
-            "description": "Store Rejuvia in the place where you naturally wind down at night. Most people keep it in their nightstand or right next to their bed so it becomes part of their rhythm without needing to think about it. The simpler you make it, the more consistent your results will be.",
-            "tip1_label": "Building a Routine",
-            "tip1_text": "Using Rejuvia at the same time each night helps your body recognize it as a signal to wind down. The more consistent your routine, the faster and deeper your sleep becomes over time. Think of it as building momentum that makes falling asleep feel automatic.",
-            "tip2_label": "",
-            "tip2_text": "",
-            "image": "shopify://shop_images/Step_3.webp",
-            "watermark_opacity": 20,
-            "watermark_position": "top-right"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ],
-      "name": "Use In Just V2",
-      "settings": {
-        "heading": "<p>Use in <em>just 30 seconds</em></p>",
-        "default_image": "shopify://shop_images/image_1.png",
-        "link_text": "View Supplement Label",
-        "link_url": ""
       }
     },
     "founder_story_1": {
@@ -775,12 +777,12 @@
     "product_widget_v2",
     "product_intro_v3_A38pUb",
     "key_ingredients_v2_1",
+    "use_in_just_v2_1",
+    "alternatives_v2_1",
     "customer_testimonials_video_1",
     "product_benefits_1",
     "ingredients_section_1",
     "product_how_to_use_1",
-    "use_in_just_v2_1",
-    "alternatives_v2_1",
     "founder_story_1",
     "product_comparison_enhanced_1",
     "okendo_reviews_app_1",

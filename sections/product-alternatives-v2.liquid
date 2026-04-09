@@ -438,8 +438,8 @@
         </button>
     </div>
 
-    {%- comment -%} CTA {%- endcomment -%}
-    {% if section.settings.btn_text != blank %}
+    {%- comment -%} CTA - hidden on product template {%- endcomment -%}
+    {% if section.settings.btn_text != blank and template.name != 'product' %}
         <div class="palt-v2-cta">
             <a class="palt-v2-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
             {% if section.settings.guarantee_text != blank %}

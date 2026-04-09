@@ -375,6 +375,12 @@
       "settings": {
         "heading": ""
       }
+    },
+    "product_sticky_cta_v2_1": {
+      "type": "product-sticky-cta-v2",
+      "settings": {
+        "trigger_selector": ".product-widget-container .block-buy-buttons"
+      }
     }
   },
   "order": [
@@ -386,6 +392,7 @@
     "guarantees_v2_1",
     "okendo_reviews_app_1",
     "product_faqs_v2_jpe98j",
-    "feature_products_v2_1"
+    "feature_products_v2_1",
+    "product_sticky_cta_v2_1"
   ]
 }

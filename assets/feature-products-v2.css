@@ -136,6 +136,12 @@
   flex-shrink: 0;
 }
 
+.fp-v2-tag svg path,
+.fp-v2-tag svg circle,
+.fp-v2-tag svg rect {
+  stroke: currentColor;
+}
+
 /* Description */
 .fp-v2-card-desc {
   font-size: 14px;
@@ -158,7 +164,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-  color: var(--card-base-colour, #672666);
+  color: #672666;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;

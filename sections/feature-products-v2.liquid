@@ -66,16 +66,15 @@
 
             <h3 class="fp-v2-card-title">{{ item.title }}</h3>
 
-            {% assign tags_raw = item.metafields.custom.card_tags %}
-            {% if tags_raw != blank %}
+            {% assign item_tags = item.metafields.custom.card_tags.value %}
+            {% if item_tags != blank %}
               <div class="fp-v2-tags">
-                {% assign tags_list = tags_raw | split: ',' %}
-                {% for tag in tags_list %}
+                {% for tag in item_tags %}
                   <span class="fp-v2-tag">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none">
-                      <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    {{ tag | strip }}
+                    {% if tag.icon != blank %}
+                      {{ tag.icon }}
+                    {% endif %}
+                    {{ tag.title }}
                   </span>
                 {% endfor %}
               </div>

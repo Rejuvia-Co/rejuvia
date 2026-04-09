@@ -726,6 +726,14 @@
         "subtitle": "Read real reviews and comments from over 300,000+ customers."
       }
     },
+    "product_faqs_v2_1": {
+      "type": "product-faqs-v2",
+      "settings": {
+        "heading": "Got a question?",
+        "description": "We've heard it all from people struggling with sleep. And here are the most common questions.",
+        "footer_text": "<p>Don't see your question? <em>Get in touch with our team</em></p>"
+      }
+    },
     "faqs_1": {
       "type": "faqs",
       "blocks": {

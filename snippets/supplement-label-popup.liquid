@@ -174,6 +174,7 @@
 }
 
 .sl-popup__title {
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
@@ -200,11 +201,13 @@
 
 .sl-popup__feature svg {
   flex-shrink: 0;
+  color: var(--sl-accent, #672666);
 }
 
 .sl-popup__right {
   flex-shrink: 0;
   width: 280px;
+  margin-right: 24px;
 }
 
 /* Supplement Facts Table */
@@ -232,7 +235,7 @@
   flex-direction: column;
   gap: 2px;
   padding-bottom: 8px;
-  border-bottom: 3px solid var(--sl-accent, #672666);
+  border-bottom: 3.788px solid var(--sl-accent, #672666);
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -252,7 +255,7 @@
   display: flex;
   justify-content: space-between;
   padding: 4px 0;
-  border-bottom: 0.5px solid var(--sl-accent, #672666);
+  border-bottom: 2.26px solid var(--sl-accent, #672666);
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: 10px;
 }
@@ -268,7 +271,7 @@
 
 .sl-facts__item {
   padding: 4px 0;
-  border-bottom: 0.5px solid var(--sl-accent, #672666);
+  border-bottom: 0.76px solid var(--sl-accent, #672666);
 }
 
 .sl-facts__item:last-child {
@@ -288,6 +291,8 @@
 
 .sl-facts__item-dv {
   flex-shrink: 0;
+  width: 28px;
+  text-align: right;
 }
 
 .sl-facts__item-sub {
@@ -300,47 +305,65 @@
   padding: 6px 0;
   font-size: 9px;
   line-height: 1.2;
-  border-top: 3px solid var(--sl-accent, #672666);
 }
 
 .sl-facts__daily-value {
   padding: 4px 0;
   font-size: 10px;
-  border-top: 3px solid var(--sl-accent, #672666);
+  border-top: 3.788px solid var(--sl-accent, #672666);
 }
 
 .sl-facts__other {
   padding: 6px 0 0;
   font-size: 8.5px;
   line-height: 1.25;
-  border-top: 0.5px solid var(--sl-accent, #672666);
+  border-top: 3.788px solid var(--sl-accent, #672666);
+}
+
+.sl-facts__other strong {
   text-transform: uppercase;
 }
 
 @media (max-width: 749px) {
   .sl-popup__content {
     flex-direction: column;
-    padding: 24px 16px;
-    gap: 16px;
+    padding: 40px 24px;
+    gap: 24px;
     max-width: calc(100vw - 32px);
   }
 
   .sl-popup__left {
     order: 2;
-    padding-top: 0;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5e5;
+    align-items: stretch;
   }
 
   .sl-popup__right {
     order: 1;
     width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .sl-popup__title {
-    font-size: 18px;
+    display: none;
   }
 
   .sl-popup__features {
-    justify-content: flex-start;
+    padding-top: 0;
+    border-top: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .sl-popup__feature {
+    flex: none;
   }
 }
 </style>
@@ -350,21 +373,19 @@
   var dialog = document.getElementById('supplement-label-popup');
   if (!dialog) return;
 
-  document.querySelectorAll('[data-open-supplement-popup]').forEach(function(trigger) {
-    trigger.addEventListener('click', function(e) {
+  document.addEventListener('click', function(e) {
+    var trigger = e.target.closest('[data-open-supplement-popup]');
+    if (trigger) {
       e.preventDefault();
       dialog.showModal();
-    });
-  });
+      return;
+    }
 
-  var closeBtn = dialog.querySelector('[data-sl-close]');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
+    if (e.target.closest('[data-sl-close]')) {
       dialog.close();
-    });
-  }
+      return;
+    }
 
-  dialog.addEventListener('click', function(e) {
     if (e.target === dialog) {
       dialog.close();
     }

@@ -317,7 +317,11 @@
     <div class="uij-v2-header">
         <div class="uij-v2-heading">{{ section.settings.heading }}</div>
         {% if section.settings.link_text != blank %}
-            <a class="uij-v2-link" href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+            {% if section.settings.supplement_product != blank %}
+                <a class="uij-v2-link" href="#" data-open-supplement-popup>{{ section.settings.link_text }}</a>
+            {% else %}
+                <a class="uij-v2-link" href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+            {% endif %}
         {% endif %}
     </div>
 
@@ -405,6 +409,10 @@
     {%- comment -%} Mobile link (shown via CSS order) {%- endcomment -%}
 </div>
 
+{% if section.settings.supplement_product != blank %}
+    {% render 'supplement-label-popup', product: section.settings.supplement_product %}
+{% endif %}
+
 <script>
 (function() {
     var section = document.querySelector('.uij-v2-section');
@@ -468,7 +476,14 @@
         {
             "type": "url",
             "id": "link_url",
-            "label": "Link URL"
+            "label": "Link URL",
+            "info": "Used as fallback if no product is selected below."
+        },
+        {
+            "type": "product",
+            "id": "supplement_product",
+            "label": "Supplement label product",
+            "info": "Select a product whose supplement label will open in a popup when the link is clicked."
         }
     ],
     "blocks": [

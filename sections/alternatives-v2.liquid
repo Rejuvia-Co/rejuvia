@@ -243,6 +243,11 @@
     border: none;
     border-radius: 100px;
     cursor: pointer;
+    transition: opacity 0.25s ease;
+}
+
+.alt-v2-btn:hover {
+    opacity: 0.9;
 }
 
 .alt-v2-guarantee {
@@ -456,6 +461,18 @@
 (function() {
     var section = document.querySelector('.alt-v2-section');
     if (!section) return;
+
+    /* --- Smooth scroll to product widget --- */
+    var cta = section.querySelector('.alt-v2-btn');
+    if (cta) {
+        cta.addEventListener('click', function(e) {
+            var target = document.querySelector('.product-widget-section');
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 
     var table = section.querySelector('.alt-v2-table');
     var dots = section.querySelectorAll('.alt-v2-dot');

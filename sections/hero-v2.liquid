@@ -431,6 +431,18 @@
     adjust();
     window.addEventListener('resize', adjust);
 
+    /* --- Smooth scroll to product widget --- */
+    var btn = section.querySelector('.hero-v2-btn');
+    if (btn) {
+        btn.addEventListener('click', function(e) {
+            var target = document.querySelector('.product-widget-section');
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+
     /* --- Testimonial rotation --- */
     var slides = section.querySelectorAll('.hero-v2-testimonial-slide');
     if (slides.length < 2) return;

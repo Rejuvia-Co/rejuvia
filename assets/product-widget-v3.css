@@ -316,6 +316,11 @@
 
   .product-wrap .product-info .content-available .btn {
     position: relative;
+    transition: opacity 0.25s ease;
+  }
+
+  .product-wrap .product-info .content-available .btn:hover {
+    opacity: 0.9;
   }
 
   .product-wrap .product-info .content-available .sub-badge {

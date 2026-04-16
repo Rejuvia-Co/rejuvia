@@ -9,6 +9,45 @@
  */
 {
   "sections": {
+    "hero_ingredients_v2_PynYUG": {
+      "type": "hero-ingredients-v2",
+      "blocks": {
+        "description_block_fEdbtd": {
+          "type": "description_block",
+          "settings": {
+            "label": "The Science",
+            "href": "#science-ingredients"
+          }
+        },
+        "description_block_qMFJRt": {
+          "type": "description_block",
+          "settings": {
+            "label": "Our Ingredients",
+            "href": "#ingredients-benefits"
+          }
+        },
+        "description_block_rdcziW": {
+          "type": "description_block",
+          "settings": {
+            "label": "Why Oral Spray?",
+            "href": "#ingredients-oral-sprays"
+          }
+        }
+      },
+      "block_order": [
+        "description_block_fEdbtd",
+        "description_block_qMFJRt",
+        "description_block_rdcziW"
+      ],
+      "name": "Hero Ingredients V2",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "heading": "<p>Premium, All-Natural Sleep Ingredients</p>",
+        "description": "Our innovative oral sleep spray combines 13+ all-natural, science-backed sleep ingredients for quicker absorption, higher bioavailability, and customizable dosing.",
+        "image": "shopify://shop_images/image_1261.png"
+      }
+    },
     "hero_ingredients_xJ8tR9": {
       "type": "hero-ingredients",
       "blocks": {
@@ -335,6 +374,7 @@
     }
   },
   "order": [
+    "hero_ingredients_v2_PynYUG",
     "hero_ingredients_xJ8tR9",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",

@@ -29,15 +29,27 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_idQCTr": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "LD",
+            "avatar_color": "#dbffe8",
+            "stars": 5,
+            "title": "Great company and product",
+            "body": "<p>Great company! The service is 10⭐️ and the product sleep spray is a godsend to me. No more laying in bed, tossing and turning for hours. This stuff is a miracle</p>",
+            "author_name": "Lynn D.",
+            "badge_type": "unprompted"
+          }
+        },
         "review_aGj8GB": {
           "type": "review",
           "settings": {
             "avatar_initials": "JC",
             "avatar_color": "#FFDBE8",
             "stars": 5,
-            "title": "",
-            "body": "",
-            "author_name": "",
+            "title": "Never slept this great before",
+            "body": "<p>I love the product. I am 73 and never ever had an actual \"good night's sleep\" until I tried this spray. My quality of sleep has improved since using this spray. I never want to be without it.</p>",
+            "author_name": "Judy C.",
             "badge_type": "unprompted"
           }
         },
@@ -58,6 +70,7 @@
         }
       },
       "block_order": [
+        "review_idQCTr",
         "review_aGj8GB",
         "video_3C3KG8",
         "image_hcCcJF"

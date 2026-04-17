@@ -100,8 +100,20 @@
       ],
       "name": "Guarantees V2",
       "settings": {
-        "bg_color": "#EAEAF7",
+        "bg_color": "#eaeaf7",
         "icon_color": "#672666"
+      }
+    },
+    "why_better_v2_Ny6pzj": {
+      "type": "why-better-v2",
+      "name": "Why Better V2",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "heading": "<p>Why is an oral spray <em>better</em>?</p>",
+        "description": "<p>Unlike capsules, oils, or gummies that must pass through your digestive system, our sprays are absorbed largely under your tongue.</p><p>This allows nutrients to enter your bloodstream more efficiently, leading to faster, stronger, and more consistent effects without the hassle of swallowing pills.</p>",
+        "chart_image": "shopify://shop_images/1948755793_desktop.png",
+        "chart_image_mobile": "shopify://shop_images/1948755793_mob.png"
       }
     },
     "faqs_ingredients_Xnytn6": {
@@ -389,6 +401,7 @@
     "hero_ingredients_v2_PynYUG",
     "key_ingredients_page_v2_c96YaM",
     "guarantees_v2_ABV7Ti",
+    "why_better_v2_Ny6pzj",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",
     "separator_ingredients_eQrU4m",

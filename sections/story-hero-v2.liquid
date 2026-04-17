@@ -11,6 +11,7 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
 }
 
 .story-hero-v2-bg img {
@@ -23,19 +24,8 @@
     display: block;
 }
 
-.story-hero-v2-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        {{ section.settings.bg_color }} 0%,
-        {{ section.settings.bg_color }} 19%,
-        rgba(0, 0, 0, 0) 28%,
-        rgba(0, 0, 0, 0) 86%,
-        {{ section.settings.bg_color }} 92%,
-        {{ section.settings.bg_color }} 100%
-    );
-}
+.story-hero-v2-bg--desktop { display: block; }
+.story-hero-v2-bg--mobile { display: none; }
 
 .story-hero-v2-container {
     position: relative;
@@ -104,11 +94,14 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        min-height: 340px;
     }
 
-    .story-hero-v2-overlay { display: none; }
+    .story-hero-v2-bg--desktop { display: none; }
+    .story-hero-v2-bg--mobile { display: block; }
+    .story-hero-v2-bg--mobile-fallback { display: block; }
 
-    .story-hero-v2-bg img {
+    .story-hero-v2-bg--mobile img {
         object-position: {{ section.settings.image_position_mobile | default: 'center' }};
     }
 
@@ -124,21 +117,30 @@
     .story-hero-v2-rating-text { font-size: 12px; }
 
     .story-hero-v2-heading { font-size: 24px; }
-}
 
-/* Pull behind sticky header on mobile */
-@media (max-width: 900px) {
     main.content-wrapper { overflow: visible !important; }
 }
 {% endstyle %}
 
-{% if section.settings.image != blank %}
-    <div class="story-hero-v2-bg" aria-hidden="true">
-        <img src="{{ section.settings.image | image_url: width: 1800 }}"
-             alt="{{ section.settings.image.alt | default: '' }}"
+{%- assign has_mobile_image = false -%}
+{%- if section.settings.image_mobile != blank -%}
+    {%- assign has_mobile_image = true -%}
+{%- endif -%}
+
+{% if section.settings.image_desktop != blank %}
+    <div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
+        <img src="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+             alt="{{ section.settings.image_desktop.alt | default: '' }}"
              loading="eager">
     </div>
-    <div class="story-hero-v2-overlay" aria-hidden="true"></div>
+{% endif %}
+
+{% if has_mobile_image %}
+    <div class="story-hero-v2-bg story-hero-v2-bg--mobile" aria-hidden="true">
+        <img src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+             alt="{{ section.settings.image_mobile.alt | default: '' }}"
+             loading="eager">
+    </div>
 {% endif %}
 
 <div class="story-hero-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
@@ -208,24 +210,35 @@
         },
         {
             "type": "header",
-            "content": "Image"
+            "content": "Desktop image"
         },
         {
             "type": "image_picker",
-            "id": "image",
-            "label": "Hero image"
+            "id": "image_desktop",
+            "label": "Desktop banner",
+            "info": "Full-bleed banner, recommended 2000+ px wide."
         },
         {
             "type": "text",
             "id": "image_position_desktop",
-            "label": "Image position (desktop)",
-            "info": "CSS object-position, e.g. \"center\", \"right center\", \"70% 30%\".",
+            "label": "Desktop image position",
+            "info": "CSS object-position (e.g. \"center\", \"right center\", \"70% 30%\").",
             "default": "center"
+        },
+        {
+            "type": "header",
+            "content": "Mobile image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile banner",
+            "info": "Separate mobile banner (portrait/square crop). Falls back to desktop image if empty."
         },
         {
             "type": "text",
             "id": "image_position_mobile",
-            "label": "Image position (mobile)",
+            "label": "Mobile image position",
             "default": "center"
         },
         {

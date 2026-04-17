@@ -57,6 +57,53 @@
         "button_label": "View Supplement Label"
       }
     },
+    "guarantees_v2_ABV7Ti": {
+      "type": "guarantees-v2",
+      "blocks": {
+        "guarantee_bL8jmY": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Made in the USA"
+          }
+        },
+        "guarantee_mnDPbG": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Triple-Lab Tested"
+          }
+        },
+        "guarantee_rtUkcM": {
+          "type": "guarantee",
+          "settings": {
+            "text": "100% Vegan"
+          }
+        },
+        "guarantee_gqzCm4": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Non-GMO"
+          }
+        },
+        "guarantee_Mpjyw3": {
+          "type": "guarantee",
+          "settings": {
+            "text": "Gluten-Free"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee_bL8jmY",
+        "guarantee_mnDPbG",
+        "guarantee_rtUkcM",
+        "guarantee_gqzCm4",
+        "guarantee_Mpjyw3"
+      ],
+      "name": "Guarantees V2",
+      "settings": {
+        "bg_color": "#EAEAF7",
+        "icon_color": "#672666"
+      }
+    },
     "faqs_ingredients_Xnytn6": {
       "type": "FAQS-ingredients",
       "blocks": {
@@ -341,6 +388,7 @@
   "order": [
     "hero_ingredients_v2_PynYUG",
     "key_ingredients_page_v2_c96YaM",
+    "guarantees_v2_ABV7Ti",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",
     "separator_ingredients_eQrU4m",

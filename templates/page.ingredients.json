@@ -52,6 +52,7 @@
       "type": "key-ingredients-page-v2",
       "name": "Key Ingredients Page V2",
       "settings": {
+        "anchor_id": "ingredients-benefits",
         "product": "sleep-spray",
         "heading": "The key ingredients",
         "button_label": "View Supplement Label"
@@ -100,6 +101,7 @@
       ],
       "name": "Guarantees V2",
       "settings": {
+        "anchor_id": "",
         "bg_color": "#eaeaf7",
         "icon_color": "#672666"
       }
@@ -108,6 +110,7 @@
       "type": "why-better-v2",
       "name": "Why Better V2",
       "settings": {
+        "anchor_id": "why-oral-spray",
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "heading": "<p>Why is an oral spray <em>better</em>?</p>",
@@ -164,6 +167,7 @@
       ],
       "name": "Science V2",
       "settings": {
+        "anchor_id": "science-ingredients",
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "badge_bg_color": "#eaeaf7",
@@ -179,9 +183,10 @@
       "type": "page-cta-v2",
       "name": "Page CTA V2",
       "settings": {
-        "bg_color": "#F5F5FB",
+        "anchor_id": "",
+        "bg_color": "#f5f5fb",
         "accent_color": "#672666",
-        "stars_color": "#FAB851",
+        "stars_color": "#fab851",
         "image": "shopify://shop_images/hero-v2-product.png",
         "show_stars": true,
         "quote": "<p>“This is my go to! I <strong>can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep.”</p>",

@@ -42,6 +42,15 @@
             "badge_type": "unprompted"
           }
         },
+        "video_3C3KG8": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/web-2.mp4",
+            "quote": "“Try it – you’ll like it.”",
+            "author": "Hylan S.",
+            "video_url": ""
+          }
+        },
         "review_Mw7NaF": {
           "type": "review",
           "settings": {
@@ -54,6 +63,13 @@
             "body": "<p>So far this is legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast!</p>",
             "author_name": "Christy W.",
             "badge_type": "verified"
+          }
+        },
+        "image_dC4MD7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
+            "alt": ""
           }
         },
         "review_xY6pYw": {
@@ -167,13 +183,6 @@
             "body": "<p>The sleep spray works very well if you wake during the night. It gets you back to sleep quickly. Great customer service!</p>",
             "author_name": "",
             "badge_type": "none"
-          }
-        },
-        "image_dC4MD7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
-            "alt": ""
           }
         },
         "review_rDrwHL": {
@@ -292,15 +301,6 @@
             "badge_type": "unprompted"
           }
         },
-        "video_3C3KG8": {
-          "type": "video",
-          "settings": {
-            "video_file": "shopify://files/videos/web-2.mp4",
-            "quote": "“Try it – you’ll like it.”",
-            "author": "Hylan S.",
-            "video_url": ""
-          }
-        },
         "image_hcCcJF": {
           "type": "image",
           "settings": {
@@ -311,7 +311,9 @@
       },
       "block_order": [
         "review_gqfkTx",
+        "video_3C3KG8",
         "review_Mw7NaF",
+        "image_dC4MD7",
         "review_xY6pYw",
         "review_8qAamF",
         "review_6KVFgb",
@@ -321,7 +323,6 @@
         "review_ewpxei",
         "review_JkNAEP",
         "review_AYn89d",
-        "image_dC4MD7",
         "review_rDrwHL",
         "review_mytEd6",
         "video_qVrPTy",
@@ -333,7 +334,6 @@
         "image_wj7VaF",
         "review_idQCTr",
         "review_aGj8GB",
-        "video_3C3KG8",
         "image_hcCcJF"
       ],
       "name": "Story Reviews V2",

@@ -29,6 +29,32 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_rDrwHL": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "KC",
+            "avatar_color": "#ffe0b5",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Great team",
+            "body": "<p>Great customer service team, fast efficient and easy to work with. 10/10!</p>",
+            "author_name": "Kim C.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_mytEd6": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "SN",
+            "avatar_color": "#d0ffdd",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Had sleep issues for 20+ years...",
+            "body": "<p>I have had sleep issues for almost 20 years. I have been taking prescription for most of this time but even the medication has lost some of its effectiveness. I saw Rejuvia on FB and although initially hesitant I finally purchased a 6 pack. Rejuvia has been amazingly effective helping me fall asleep and getting me back to sleep after waking up to go to the bathroom. I use 8 pumps when falling asleep and 4-6 pumps after waking up. I highly recommend Rejuvia. Try it, you’ll love it !!</p>",
+            "author_name": "Steven N.",
+            "badge_type": "unprompted"
+          }
+        },
         "video_qVrPTy": {
           "type": "video",
           "settings": {
@@ -137,6 +163,8 @@
         }
       },
       "block_order": [
+        "review_rDrwHL",
+        "review_mytEd6",
         "video_qVrPTy",
         "review_49dEYh",
         "image_96jGB4",

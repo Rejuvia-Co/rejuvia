@@ -138,11 +138,13 @@
     var triggerSelector = '{{ section.settings.trigger_selector | default: ".product-widget-container .block-buy-buttons" }}';
     var trigger = document.querySelector(triggerSelector);
 
-    function check() {
-        if (!trigger) {
-            sticky.classList.add('is-visible');
-            return;
-        }
+    /* Hide on scroll up, show on scroll down — so the sticky bar and the main
+       header never stack at the same time. */
+    var lastY = window.scrollY;
+    var MIN_DELTA = 4;
+
+    function eligible() {
+        if (!trigger) return true;
         var rect = trigger.getBoundingClientRect();
         var buyBoxBelow = rect.top > window.innerHeight;
         var buyBoxPassed = rect.bottom < 0;
@@ -154,9 +156,22 @@
             footerVisible = footerRect.top < window.innerHeight;
         }
 
-        if ((buyBoxBelow || buyBoxPassed) && !footerVisible) {
+        return (buyBoxBelow || buyBoxPassed) && !footerVisible;
+    }
+
+    function check() {
+        var y = window.scrollY;
+        var delta = y - lastY;
+        lastY = y;
+
+        if (!eligible()) {
+            sticky.classList.remove('is-visible');
+            return;
+        }
+
+        if (delta > MIN_DELTA) {
             sticky.classList.add('is-visible');
-        } else {
+        } else if (delta < -MIN_DELTA) {
             sticky.classList.remove('is-visible');
         }
     }

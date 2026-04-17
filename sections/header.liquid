@@ -20,6 +20,12 @@
     position: sticky;
     top: 0;
     z-index: 110;
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  #header.header.is-hidden {
+    transform: translateY(-100%);
   }
 
 
@@ -402,24 +408,53 @@
     var header = document.getElementById('header');
     if (!header) return;
 
+    /* Hide header on scroll down, show on scroll up — only on pages that have
+       a BOTTOM sticky CTA bar (homepage, product pages). Top sticky bars don't
+       need this because they live in the same space as the header.
+       The --bottom modifier on .sticky-cta-v2-section is added by that section's
+       own inline script at DOMContentLoaded, so we recheck after the DOM is ready. */
+    var HIDE_ON_SCROLL = false;
+    function refreshHideOnScroll() {
+      HIDE_ON_SCROLL = !!document.querySelector('.sticky-cta-v2-section--bottom, .psc-v2-section');
+    }
+    refreshHideOnScroll();
+    document.addEventListener('DOMContentLoaded', refreshHideOnScroll);
+    window.addEventListener('load', refreshHideOnScroll);
+
     var oldScrollY = 0;
     var ticking = false;
+    var HIDE_THRESHOLD = 100;
+    var MIN_DELTA = 4;
 
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(function() {
         var scrollY = window.scrollY;
+        var delta = scrollY - oldScrollY;
+
         if (scrollY > 1) {
           header.classList.add('is-ticky');
         } else {
           header.classList.remove('is-ticky');
         }
+
         if (oldScrollY > scrollY) {
           document.body.classList.add('sticky-header');
         } else {
           document.body.classList.remove('sticky-header');
         }
+
+        if (HIDE_ON_SCROLL) {
+          if (scrollY < HIDE_THRESHOLD) {
+            header.classList.remove('is-hidden');
+          } else if (delta > MIN_DELTA) {
+            header.classList.add('is-hidden');
+          } else if (delta < -MIN_DELTA) {
+            header.classList.remove('is-hidden');
+          }
+        }
+
         oldScrollY = scrollY;
         ticking = false;
       });

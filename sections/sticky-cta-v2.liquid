@@ -116,23 +116,45 @@
     var sticky = document.querySelector('.sticky-cta-v2-section');
     if (!sticky) return;
 
-    sticky.classList.add('sticky-cta-v2-section--{{ section.settings.position | default: "bottom" }}');
+    var position = '{{ section.settings.position | default: "bottom" }}';
+    sticky.classList.add('sticky-cta-v2-section--' + position);
     var offset = {{ section.settings.show_after | default: 500 }};
 
+    /* Hide on scroll up, show on scroll down (for bottom position only).
+       Top position keeps the original behavior so it doesn't fight the header. */
+    var lastY = window.scrollY;
+    var MIN_DELTA = 4;
+
     function check() {
-        if (window.scrollY > offset) {
-            var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
-            if (footer) {
-                var footerTop = footer.getBoundingClientRect().top;
-                var windowHeight = window.innerHeight;
-                if (footerTop <= windowHeight) {
-                    sticky.classList.remove('is-visible');
-                    return;
-                }
+        var y = window.scrollY;
+        var delta = y - lastY;
+        lastY = y;
+
+        /* Near footer → hide */
+        var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
+        if (footer) {
+            var footerTop = footer.getBoundingClientRect().top;
+            if (footerTop <= window.innerHeight) {
+                sticky.classList.remove('is-visible');
+                return;
             }
-            sticky.classList.add('is-visible');
-        } else {
+        }
+
+        /* Not scrolled enough → hide */
+        if (y <= offset) {
             sticky.classList.remove('is-visible');
+            return;
+        }
+
+        if (position === 'bottom') {
+            /* Only show while scrolling down; hide while scrolling up */
+            if (delta > MIN_DELTA) {
+                sticky.classList.add('is-visible');
+            } else if (delta < -MIN_DELTA) {
+                sticky.classList.remove('is-visible');
+            }
+        } else {
+            sticky.classList.add('is-visible');
         }
     }
 

@@ -1,0 +1,350 @@
+{% style %}
+.page-cta-v2-section {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+}
+
+.page-cta-v2-container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 500px;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Background image */
+.page-cta-v2-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.page-cta-v2-bg img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: auto;
+    height: 140%;
+    max-width: none;
+    transform: translate(-25%, -50%);
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* Copy */
+.page-cta-v2-copy {
+    position: relative;
+    z-index: 1;
+    width: 600px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+/* Stars */
+.page-cta-v2-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.page-cta-v2-stars svg {
+    width: 17.066px;
+    height: 16px;
+}
+
+/* Quote */
+.page-cta-v2-quote {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.page-cta-v2-quote p { margin: 0; font: inherit; color: inherit; }
+
+.page-cta-v2-quote strong,
+.page-cta-v2-quote em {
+    font-style: normal;
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Author */
+.page-cta-v2-author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #141414;
+    line-height: 1.4;
+}
+
+.page-cta-v2-author-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.page-cta-v2-author-role {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+/* Button block */
+.page-cta-v2-btn-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.page-cta-v2-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 24px;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+    box-sizing: border-box;
+}
+
+.page-cta-v2-btn:hover { opacity: 0.9; }
+
+.page-cta-v2-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.page-cta-v2-guarantee svg {
+    width: 14px;
+    height: 11px;
+    flex-shrink: 0;
+}
+
+/* ===================== Mobile ===================== */
+@media (max-width: 900px) {
+    .page-cta-v2-container {
+        padding: 40px 16px;
+        align-items: stretch;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .page-cta-v2-bg {
+        display: none; /* moved inline on mobile */
+    }
+
+    .page-cta-v2-copy {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .page-cta-v2-quote { font-size: 18px; }
+
+    .page-cta-v2-btn-block { width: 100%; }
+
+    .page-cta-v2-mobile-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 420px;
+        object-fit: cover;
+        margin-top: 8px;
+    }
+
+    .page-cta-v2-guarantee { font-size: 12px; }
+}
+
+.page-cta-v2-mobile-image { display: none; }
+
+@media (max-width: 900px) {
+    .page-cta-v2-mobile-image { display: block; }
+}
+{% endstyle %}
+
+<div class="page-cta-v2-container">
+    {% if section.settings.image != blank %}
+        <div class="page-cta-v2-bg" aria-hidden="true">
+            <img src="{{ section.settings.image | image_url: width: 1400 }}"
+                 alt=""
+                 loading="lazy">
+        </div>
+    {% endif %}
+
+    <div class="page-cta-v2-copy">
+        {% if section.settings.show_stars %}
+            <div class="page-cta-v2-stars" aria-label="5 stars">
+                {% for i in (1..5) %}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color }}"/></svg>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if section.settings.quote != blank %}
+            <div class="page-cta-v2-quote">{{ section.settings.quote }}</div>
+        {% endif %}
+
+        {% if section.settings.author_name != blank or section.settings.author_role != blank %}
+            <div class="page-cta-v2-author">
+                {% if section.settings.author_name != blank %}
+                    <span class="page-cta-v2-author-name">{{ section.settings.author_name }}</span>
+                {% endif %}
+                {% if section.settings.author_role != blank %}
+                    <span class="page-cta-v2-author-role">{{ section.settings.author_role }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="page-cta-v2-btn-block">
+            {% if section.settings.btn_text != blank %}
+                <a class="page-cta-v2-btn" href="{{ section.settings.btn_url | default: '#' }}">
+                    {{ section.settings.btn_text }}
+                </a>
+            {% endif %}
+
+            {% if section.settings.guarantee_text != blank %}
+                <div class="page-cta-v2-guarantee">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none" aria-hidden="true">
+                        <path d="M11.6558 0.765634C11.8759 0.556086 12.1688 0.440239 12.4727 0.442538C12.7766 0.444838 13.0677 0.565104 13.2846 0.777959C13.5015 0.990814 13.6273 1.27961 13.6353 1.58341C13.6433 1.8872 13.533 2.18224 13.3277 2.40626L7.0933 10.2031C6.98609 10.3186 6.85671 10.4113 6.71288 10.4756C6.56904 10.5399 6.41372 10.5746 6.25619 10.5775C6.09866 10.5804 5.94215 10.5515 5.79604 10.4926C5.64992 10.4336 5.5172 10.3458 5.40579 10.2344L1.27142 6.10001C1.15628 5.99272 1.06394 5.86335 0.999887 5.7196C0.935837 5.57585 0.901396 5.42067 0.89862 5.26333C0.895844 5.10598 0.924789 4.94968 0.983728 4.80376C1.04267 4.65784 1.13039 4.52529 1.24167 4.41401C1.35295 4.30273 1.4855 4.21501 1.63142 4.15607C1.77734 4.09713 1.93364 4.06818 2.09099 4.07096C2.24833 4.07374 2.40351 4.10818 2.54726 4.17223C2.69101 4.23628 2.82038 4.32862 2.92767 4.44376L6.19954 7.71407L11.6261 0.80001L11.6558 0.765634Z" fill="{{ section.settings.stars_color }}"/>
+                    </svg>
+                    <span>{{ section.settings.guarantee_text }}</span>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if section.settings.image != blank %}
+            <img class="page-cta-v2-mobile-image"
+                 src="{{ section.settings.image | image_url: width: 900 }}"
+                 alt=""
+                 loading="lazy">
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Page CTA V2",
+    "class": "page-cta-v2-section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#F5F5FB"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Button color",
+            "default": "#672666"
+        },
+        {
+            "type": "color",
+            "id": "stars_color",
+            "label": "Stars / check color",
+            "default": "#FAB851"
+        },
+        {
+            "type": "header",
+            "content": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Placed on the left on desktop, below copy on mobile."
+        },
+        {
+            "type": "header",
+            "content": "Review"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_stars",
+            "label": "Show 5 stars",
+            "default": true
+        },
+        {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Quote",
+            "default": "<p>\u201CThis is my go to! I <strong>can\u2019t live without it.</strong> I don\u2019t need it every night, but it's always there when I need some help with sleep.\u201D</p>",
+            "info": "Wrap the accent phrase in <strong> for the bold highlight."
+        },
+        {
+            "type": "text",
+            "id": "author_name",
+            "label": "Author name",
+            "default": "Katie C."
+        },
+        {
+            "type": "text",
+            "id": "author_role",
+            "label": "Author role",
+            "default": "Verified Purchase"
+        },
+        {
+            "type": "header",
+            "content": "Button"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "Sleep Better Tonight"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "text",
+            "id": "guarantee_text",
+            "label": "Guarantee text",
+            "default": "90-Day Risk-Free Money-Back Guarantee"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Page CTA V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

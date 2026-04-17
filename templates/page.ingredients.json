@@ -116,6 +116,65 @@
         "chart_image_mobile": "shopify://shop_images/1948755793_mob.png"
       }
     },
+    "science_v2_wgkJq7": {
+      "type": "science-v2",
+      "blocks": {
+        "item_wEm73C": {
+          "type": "item",
+          "settings": {
+            "title": "Triple lab-tested, every batch",
+            "description": "<p>We don't test once and call it done. Every batch of every product is independently tested three times – for purity, potency, and contaminants.</p>",
+            "badge_text": "Independently Tested",
+            "open_by_default": true
+          }
+        },
+        "item_yQ9a4T": {
+          "type": "item",
+          "settings": {
+            "title": "Formulated with doctors and researchers",
+            "description": "",
+            "badge_text": "",
+            "open_by_default": false
+          }
+        },
+        "item_RDQ997": {
+          "type": "item",
+          "settings": {
+            "title": "Clean ingredients, nothing hidden",
+            "description": "",
+            "badge_text": "",
+            "open_by_default": false
+          }
+        },
+        "item_NTGMNN": {
+          "type": "item",
+          "settings": {
+            "title": "Innovative Delivery Method",
+            "description": "",
+            "badge_text": "",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "item_wEm73C",
+        "item_yQ9a4T",
+        "item_RDQ997",
+        "item_NTGMNN"
+      ],
+      "name": "Science V2",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "badge_bg_color": "#EAEAF7",
+        "badge_text_color": "#672666",
+        "quote_bg_color": "#F5F5FB",
+        "quote": "<p>“<strong>We’ve meticulously formulated</strong> our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
+        "signature_image": "shopify://shop_images/Frame_48101400.png",
+        "author_name": "– RC Williams",
+        "author_title": "Founder"
+      }
+    },
     "faqs_ingredients_Xnytn6": {
       "type": "FAQS-ingredients",
       "blocks": {
@@ -402,6 +461,7 @@
     "key_ingredients_page_v2_c96YaM",
     "guarantees_v2_ABV7Ti",
     "why_better_v2_Ny6pzj",
+    "science_v2_wgkJq7",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",
     "separator_ingredients_eQrU4m",

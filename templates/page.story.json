@@ -35,6 +35,7 @@
             "avatar_initials": "LD",
             "avatar_color": "#dbffe8",
             "stars": 5,
+            "stars_color": "#018e1c",
             "title": "Great company and product",
             "body": "<p>Great company! The service is 10⭐️ and the product sleep spray is a godsend to me. No more laying in bed, tossing and turning for hours. This stuff is a miracle</p>",
             "author_name": "Lynn D.",
@@ -45,8 +46,9 @@
           "type": "review",
           "settings": {
             "avatar_initials": "JC",
-            "avatar_color": "#FFDBE8",
+            "avatar_color": "#ffdbe8",
             "stars": 5,
+            "stars_color": "#018e1c",
             "title": "Never slept this great before",
             "body": "<p>I love the product. I am 73 and never ever had an actual \"good night's sleep\" until I tried this spray. My quality of sleep has improved since using this spray. I never want to be without it.</p>",
             "author_name": "Judy C.",
@@ -79,10 +81,10 @@
       "settings": {
         "anchor_id": "",
         "bg_color": "#ffffff",
-        "card_bg_color": "#FAFAFA",
-        "stars_color": "#FAB851",
+        "card_bg_color": "#fafafa",
+        "stars_color": "#fab851",
         "show_filters": true,
-        "filter_active_bg": "#EAEAF7",
+        "filter_active_bg": "#eaeaf7",
         "filter_all_label": "All",
         "filter_written_label": "Written Reviews",
         "filter_video_label": "Video Reviews"

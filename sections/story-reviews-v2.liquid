@@ -349,10 +349,11 @@
                                 </div>
                             {% endif %}
                             <div class="story-reviews-v2-review-meta">
+                                {%- assign star_color = block.settings.stars_color | default: section.settings.stars_color -%}
                                 <div class="story-reviews-v2-stars" aria-label="{{ block.settings.stars | default: 5 }} stars">
                                     {% assign star_count = block.settings.stars | default: 5 %}
                                     {% for i in (1..star_count) %}
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color }}"/></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ star_color }}"/></svg>
                                     {% endfor %}
                                 </div>
                                 {% if block.settings.title != blank %}
@@ -547,6 +548,12 @@
                     "max": 5,
                     "step": 1,
                     "default": 5
+                },
+                {
+                    "type": "color",
+                    "id": "stars_color",
+                    "label": "Stars color",
+                    "info": "Overrides the section default."
                 },
                 {
                     "type": "text",

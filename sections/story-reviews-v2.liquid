@@ -188,10 +188,16 @@
     box-sizing: border-box;
 }
 
-.story-reviews-v2-video-bg {
+.story-reviews-v2-video-bg,
+.story-reviews-v2-video-media {
     position: absolute;
     inset: 0;
     z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #141414;
 }
 
 .story-reviews-v2-video-bg img {
@@ -201,11 +207,19 @@
     display: block;
 }
 
-.story-reviews-v2-video-bg::after {
-    content: '';
+.story-reviews-v2-video-overlay {
     position: absolute;
     inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 55%);
+}
+
+.story-reviews-v2-video.is-playing .story-reviews-v2-video-overlay,
+.story-reviews-v2-video.is-playing .story-reviews-v2-video-content {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
 }
 
 .story-reviews-v2-video-content {
@@ -250,7 +264,13 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.16);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
 }
+
+.story-reviews-v2-video-play:hover { transform: scale(1.05); }
 
 .story-reviews-v2-video-play svg {
     width: 22px;
@@ -380,19 +400,35 @@
                 </div>
 
             {% when 'video' %}
+                {%- assign video_file = block.settings.video_file -%}
+                {%- if block.settings.thumbnail != blank -%}
+                    {%- assign video_poster = block.settings.thumbnail | image_url: width: 800 -%}
+                {%- elsif video_file != blank and video_file.preview_image != blank -%}
+                    {%- assign video_poster = video_file.preview_image | image_url: width: 800 -%}
+                {%- else -%}
+                    {%- assign video_poster = '' -%}
+                {%- endif -%}
                 <div class="story-reviews-v2-card" data-type="video" {{ block.shopify_attributes }}>
-                    {%- if block.settings.video_url != blank -%}
-                        <a class="story-reviews-v2-video" href="{{ block.settings.video_url }}" target="_blank" rel="noopener">
-                    {%- else -%}
-                        <div class="story-reviews-v2-video">
-                    {%- endif -%}
-                        {% if block.settings.thumbnail != blank %}
+                    <div class="story-reviews-v2-video" data-story-video>
+                        {% if video_file != blank %}
+                            <video class="story-reviews-v2-video-media"
+                                   playsinline
+                                   muted
+                                   preload="metadata"
+                                   {% if video_poster != blank %}poster="{{ video_poster }}"{% endif %}
+                                   data-story-video-media>
+                                {% for source in video_file.sources %}
+                                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                                {% endfor %}
+                            </video>
+                        {% elsif video_poster != blank %}
                             <div class="story-reviews-v2-video-bg">
-                                <img src="{{ block.settings.thumbnail | image_url: width: 600 }}"
+                                <img src="{{ video_poster }}"
                                      alt="{{ block.settings.author | default: 'Video review' }}"
                                      loading="lazy">
                             </div>
                         {% endif %}
+                        <div class="story-reviews-v2-video-overlay"></div>
                         <div class="story-reviews-v2-video-content">
                             <div class="story-reviews-v2-video-text">
                                 {% if block.settings.quote != blank %}
@@ -402,17 +438,16 @@
                                     <p class="story-reviews-v2-video-author">{{ block.settings.author }}</p>
                                 {% endif %}
                             </div>
-                            <div class="story-reviews-v2-video-play" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <button type="button" class="story-reviews-v2-video-play"
+                                    data-story-video-play
+                                    {% if video_file == blank and block.settings.video_url != blank %}data-external-url="{{ block.settings.video_url }}"{% endif %}
+                                    aria-label="Play video">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M8 5v14l11-7-11-7z" fill="currentColor"/>
                                 </svg>
-                            </div>
+                            </button>
                         </div>
-                    {%- if block.settings.video_url != blank -%}
-                        </a>
-                    {%- else -%}
-                        </div>
-                    {%- endif -%}
+                    </div>
                 </div>
 
             {% when 'image' %}
@@ -448,6 +483,53 @@
             } else {
                 section.setAttribute('data-filter', type);
             }
+        });
+    });
+
+    /* Play video inline; pause any other playing video in the section */
+    function pauseAllExcept(current) {
+        section.querySelectorAll('[data-story-video]').forEach(function(wrap) {
+            var media = wrap.querySelector('[data-story-video-media]');
+            if (!media || media === current) return;
+            media.pause();
+            media.controls = false;
+            wrap.classList.remove('is-playing');
+        });
+    }
+
+    section.querySelectorAll('[data-story-video-play]').forEach(function(playBtn) {
+        playBtn.addEventListener('click', function() {
+            var externalUrl = playBtn.getAttribute('data-external-url');
+            if (externalUrl) {
+                window.open(externalUrl, '_blank', 'noopener');
+                return;
+            }
+            var wrap = playBtn.closest('[data-story-video]');
+            if (!wrap) return;
+            var media = wrap.querySelector('[data-story-video-media]');
+            if (!media) return;
+            pauseAllExcept(media);
+            media.controls = true;
+            media.muted = false;
+            wrap.classList.add('is-playing');
+            var p = media.play();
+            if (p && typeof p.catch === 'function') p.catch(function() {});
+        });
+    });
+
+    /* When any <video> starts playing (controls or otherwise), pause the rest */
+    section.querySelectorAll('[data-story-video-media]').forEach(function(media) {
+        media.addEventListener('play', function() { pauseAllExcept(media); });
+        media.addEventListener('pause', function() {
+            var wrap = media.closest('[data-story-video]');
+            if (wrap && media.paused && !media.ended) {
+                /* Keep is-playing class while paused so UI stays out of the way */
+            }
+        });
+        media.addEventListener('ended', function() {
+            var wrap = media.closest('[data-story-video]');
+            if (wrap) wrap.classList.remove('is-playing');
+            media.controls = false;
         });
     });
 })();
@@ -588,9 +670,16 @@
             "name": "Video review",
             "settings": [
                 {
+                    "type": "video",
+                    "id": "video_file",
+                    "label": "Video (MP4)",
+                    "info": "Uploads via Shopify. Preview image is auto-generated (1st frame)."
+                },
+                {
                     "type": "image_picker",
                     "id": "thumbnail",
-                    "label": "Thumbnail"
+                    "label": "Custom thumbnail",
+                    "info": "Optional. Overrides the auto-generated preview image."
                 },
                 {
                     "type": "text",
@@ -607,8 +696,8 @@
                 {
                     "type": "url",
                     "id": "video_url",
-                    "label": "Video URL",
-                    "info": "Click opens this URL in a new tab."
+                    "label": "External video URL",
+                    "info": "Used as fallback if no MP4 is uploaded — opens in a new tab."
                 }
             ]
         },

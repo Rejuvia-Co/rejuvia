@@ -20,7 +20,7 @@
 {% assign ingredients = page.metafields.custom.key_ingredients.value %}
 
 {% if ingredients != blank %}
-<section class="key-ingredients-v2"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+<section class="key-ingredients-v2"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
   <div class="key-ingredients-v2__container">
 
     <div class="key-ingredients-v2__header">
@@ -76,6 +76,12 @@
     {
       "type": "paragraph",
       "content": "Ingredients list is pulled from the current page metafield custom.key_ingredients. The selected product is used only for the Supplement Label popup and accent colour (custom.supplement_label, custom.base_colour)."
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Used with hero nav links (e.g. ingredients-benefits \u2192 #ingredients-benefits)."
     },
     {
       "type": "product",

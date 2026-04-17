@@ -59,7 +59,7 @@
 }
 {% endstyle %}
 
-<div class="guarantees-v2-container">
+<div class="guarantees-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
     {% for block in section.blocks %}
         <div class="guarantees-v2-item" {{ block.shopify_attributes }}>
             <svg class="guarantees-v2-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
@@ -76,6 +76,12 @@
     "name": "Guarantees V2",
     "class": "guarantees-v2-section",
     "settings": [
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links."
+        },
         {
             "type": "color",
             "id": "bg_color",

@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    min-height: 500px;
+    min-height: 600px;
     box-sizing: border-box;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow: hidden;
@@ -31,14 +31,13 @@
 
 .page-cta-v2-bg img {
     position: absolute;
-    top: 50%;
     left: 0;
+    bottom: 0;
     width: auto;
-    height: 140%;
-    max-width: none;
-    transform: translate(-25%, -50%);
+    height: 100%;
+    max-width: 55%;
     object-fit: contain;
-    object-position: left center;
+    object-position: left bottom;
 }
 
 /* Copy */
@@ -124,7 +123,7 @@
     color: #ffffff;
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 0.7;
     text-align: center;
     text-decoration: none;
     border: none;
@@ -155,7 +154,7 @@
 /* ===================== Mobile ===================== */
 @media (max-width: 900px) {
     .page-cta-v2-container {
-        padding: 40px 16px;
+        padding: 40px 16px 0;
         align-items: stretch;
         min-height: 0;
         overflow: hidden;
@@ -193,14 +192,18 @@
 }
 {% endstyle %}
 
-<div class="page-cta-v2-container">
-    {% if section.settings.image != blank %}
-        <div class="page-cta-v2-bg" aria-hidden="true">
-            <img src="{{ section.settings.image | image_url: width: 1400 }}"
-                 alt=""
-                 loading="lazy">
-        </div>
-    {% endif %}
+{%- if section.settings.image != blank -%}
+    {%- assign cta_image_desktop = section.settings.image | image_url: width: 1400 -%}
+    {%- assign cta_image_mobile = section.settings.image | image_url: width: 900 -%}
+{%- else -%}
+    {%- assign cta_image_desktop = 'hero-v2-product.png' | asset_url -%}
+    {%- assign cta_image_mobile = cta_image_desktop -%}
+{%- endif -%}
+
+<div class="page-cta-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+    <div class="page-cta-v2-bg" aria-hidden="true">
+        <img src="{{ cta_image_desktop }}" alt="" loading="lazy">
+    </div>
 
     <div class="page-cta-v2-copy">
         {% if section.settings.show_stars %}
@@ -260,6 +263,12 @@
         {
             "type": "header",
             "content": "General"
+        },
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links."
         },
         {
             "type": "color",

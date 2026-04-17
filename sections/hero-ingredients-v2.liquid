@@ -120,27 +120,6 @@
     display: block;
 }
 
-/* --- Sticky pill nav --- */
-.hero-ingredients-v2-links-wrap.is-sticky {
-    position: fixed;
-    top: 93.4px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 16px 64px;
-    background-color: #ffffff;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.hero-ingredients-v2-links-wrap.is-sticky .hero-ingredients-v2-links {
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-@media (min-width: 901px) and (max-width: 975px) {
-    .hero-ingredients-v2-links-wrap.is-sticky { top: 117px; }
-}
-
 /* ===================== Responsive ===================== */
 @media (max-width: 900px) {
     .hero-ingredients-v2-container {
@@ -167,30 +146,19 @@
         font-size: 28px;
     }
 
-    .hero-ingredients-v2-links-wrap.is-sticky {
-        top: 56px;
-        padding: 12px 16px;
-    }
-
-    .hero-ingredients-v2-links-wrap.is-sticky .hero-ingredients-v2-links {
+    .hero-ingredients-v2-links {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
 
-    .hero-ingredients-v2-links-wrap.is-sticky .hero-ingredients-v2-links::-webkit-scrollbar {
+    .hero-ingredients-v2-links::-webkit-scrollbar {
         display: none;
     }
 
-    .hero-ingredients-v2-links-wrap.is-sticky .hero-ingredients-v2-link {
+    .hero-ingredients-v2-link {
         min-width: max-content;
-    }
-}
-
-@media (max-width: 500px) {
-    .hero-ingredients-v2-links-wrap.is-sticky {
-        padding: 12px 12px;
     }
 }
 
@@ -275,47 +243,7 @@
         document.fonts.ready.then(pullBehindHeaderPill);
     }
 
-    if (!wrap || links.length === 0) return;
-
-    /* --- Sticky nav --- */
-    var placeholder = document.createElement('div');
-    placeholder.style.display = 'none';
-    wrap.parentNode.insertBefore(placeholder, wrap);
-
-    var originalOffset = 0;
-
-    function measure() {
-        if (wrap.classList.contains('is-sticky')) return;
-        var rect = wrap.getBoundingClientRect();
-        placeholder.style.height = rect.height + 'px';
-        originalOffset = rect.top + window.scrollY;
-    }
-
-    function onScroll() {
-        if (window.scrollY > originalOffset) {
-            if (!wrap.classList.contains('is-sticky')) {
-                wrap.classList.add('is-sticky');
-                placeholder.style.display = 'block';
-            }
-        } else if (wrap.classList.contains('is-sticky')) {
-            wrap.classList.remove('is-sticky');
-            placeholder.style.display = 'none';
-            measure();
-        }
-    }
-
-    function onResize() {
-        if (wrap.classList.contains('is-sticky')) {
-            wrap.classList.remove('is-sticky');
-            placeholder.style.display = 'none';
-        }
-        measure();
-        onScroll();
-    }
-
-    measure();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
+    if (links.length === 0) return;
 
     /* --- Smooth scroll + active state --- */
     links.forEach(function(link) {

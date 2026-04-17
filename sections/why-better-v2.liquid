@@ -95,7 +95,7 @@
 }
 {% endstyle %}
 
-<div class="why-better-v2-container">
+<div class="why-better-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
     <div class="why-better-v2-chart{% if section.settings.chart_image_mobile == blank %} why-better-v2-chart--only-desktop{% endif %}">
         {% if section.settings.chart_image != blank %}
             <div class="why-better-v2-chart--desktop">
@@ -135,6 +135,12 @@
         {
             "type": "header",
             "content": "General"
+        },
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links (e.g. science-ingredients \u2192 #science-ingredients)."
         },
         {
             "type": "color",

@@ -29,6 +29,40 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_49dEYh": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "HE",
+            "avatar_color": "#fff7be",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Wonderful!",
+            "body": "<p>The sleep spray is WONDERFUL! I got two - one for me and one for my hubby and we both have found it more helpful than anything we have tried. We fall right sleep within a few mins and we aren't druggy feeling the next day!</p>",
+            "author_name": "Heather E.",
+            "badge_type": "unprompted"
+          }
+        },
+        "image_96jGB4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/scott_s.png",
+            "alt": ""
+          }
+        },
+        "image_Kjwjdj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
+            "alt": ""
+          }
+        },
+        "image_Wb9UP3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
+            "alt": ""
+          }
+        },
         "review_XJgTHd": {
           "type": "review",
           "settings": {
@@ -94,6 +128,10 @@
         }
       },
       "block_order": [
+        "review_49dEYh",
+        "image_96jGB4",
+        "image_Kjwjdj",
+        "image_Wb9UP3",
         "review_XJgTHd",
         "image_wj7VaF",
         "review_idQCTr",

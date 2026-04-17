@@ -9,6 +9,21 @@
  */
 {
   "sections": {
+    "story_hero_v2_Br9RWF": {
+      "type": "story-hero-v2",
+      "name": "Story Hero V2",
+      "settings": {
+        "anchor_id": "",
+        "bg_color": "#0087DA",
+        "stars_color": "#FAB851",
+        "image": "shopify://shop_images/Hero_story.png",
+        "image_position_desktop": "center",
+        "image_position_mobile": "center",
+        "show_stars": true,
+        "rating_text": "6,000+ verified 5-star reviews for Rejuvia products",
+        "heading": "<p>Over 50,000 Satisfied Customers</p>"
+      }
+    },
     "1719859380da8d7058": {
       "type": "apps",
       "blocks": {
@@ -71,6 +86,7 @@
         "text_dVDVjB",
         "skio_plan_picker_9AXrLU"
       ],
+      "disabled": true,
       "settings": {
         "hero_heading": "“Just a few sprays, to make the insomnia go away.”",
         "selected_product": "sleep-spray",
@@ -182,6 +198,7 @@
         "product_NgKnbk",
         "product_dJJeBt"
       ],
+      "disabled": true,
       "name": "Select Product",
       "settings": {
         "title": "Shop All Rejuvia Sprays",
@@ -215,6 +232,7 @@
         "benefit_XVWdUc",
         "benefit_CFKQXV"
       ],
+      "disabled": true,
       "settings": {
         "discount": "20%"
       }
@@ -273,6 +291,7 @@
         "faqs_drtKGi",
         "faqs_XNVegN"
       ],
+      "disabled": true,
       "settings": {
         "customClass": "",
         "background": "",
@@ -284,6 +303,7 @@
     }
   },
   "order": [
+    "story_hero_v2_Br9RWF",
     "1719859380da8d7058",
     "product_widget_NDYYjR",
     "customer_testimonials_fEN7e7",

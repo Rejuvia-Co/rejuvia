@@ -17,7 +17,7 @@
         "bg_color": "#0087da",
         "stars_color": "#fab851",
         "image_desktop": "shopify://shop_images/story_desktop_banner.png",
-        "image_position_desktop": "center",
+        "image_position_desktop": "right center",
         "image_mobile": "shopify://shop_images/Hero_story.png",
         "image_position_mobile": "center",
         "show_stars": true,

@@ -193,6 +193,15 @@
         padding: 12px 12px;
     }
 }
+
+/* Allow hero image to extend behind header pill on mobile.
+   Main has overflow:hidden which otherwise clips the pulled-up image.
+   html/body already have overflow-x:hidden so horizontal scroll is still contained. */
+@media (max-width: 900px) {
+    main.content-wrapper {
+        overflow: visible !important;
+    }
+}
 {% endstyle %}
 
 <div class="hero-ingredients-v2-container">
@@ -242,6 +251,30 @@
 
     var wrap = section.querySelector('.hero-ingredients-v2-links-wrap');
     var links = section.querySelectorAll('.hero-ingredients-v2-link');
+
+    /* --- Pull hero image up behind the header pill on mobile --- */
+    var MOBILE_BREAKPOINT = 900;
+
+    function pullBehindHeaderPill() {
+        section.style.marginTop = '';
+        if (window.innerWidth > MOBILE_BREAKPOINT) return;
+        var headerEl = document.querySelector('#page > header, header[role="banner"]');
+        if (!headerEl) return;
+        var headerHeight = headerEl.getBoundingClientRect().height;
+        if (headerHeight > 0) {
+            section.style.marginTop = '-' + headerHeight + 'px';
+        }
+    }
+
+    pullBehindHeaderPill();
+    if (document.readyState !== 'complete') {
+        window.addEventListener('load', pullBehindHeaderPill);
+    }
+    window.addEventListener('resize', pullBehindHeaderPill);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(pullBehindHeaderPill);
+    }
+
     if (!wrap || links.length === 0) return;
 
     /* --- Sticky nav --- */

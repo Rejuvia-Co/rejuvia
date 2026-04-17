@@ -48,6 +48,15 @@
         "image": "shopify://shop_images/image_1261.png"
       }
     },
+    "key_ingredients_page_v2_c96YaM": {
+      "type": "key-ingredients-page-v2",
+      "name": "Key Ingredients Page V2",
+      "settings": {
+        "product": "sleep-spray",
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label"
+      }
+    },
     "faqs_ingredients_Xnytn6": {
       "type": "FAQS-ingredients",
       "blocks": {
@@ -327,20 +336,11 @@
         "title": "Shop All Rejuvia Sprays",
         "sub_title": "Clean, fast-absorbing sprays designed to support your mind and body."
       }
-    },
-    "key_ingredients_v2_GJqwaq": {
-      "type": "key-ingredients-v2",
-      "name": "Key Ingredients V2",
-      "settings": {
-        "heading": "The key ingredients",
-        "button_label": "View Supplement Label",
-        "button_url": ""
-      }
     }
   },
   "order": [
     "hero_ingredients_v2_PynYUG",
-    "key_ingredients_v2_GJqwaq",
+    "key_ingredients_page_v2_c96YaM",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",
     "separator_ingredients_eQrU4m",

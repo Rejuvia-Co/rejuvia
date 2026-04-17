@@ -29,6 +29,27 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_XJgTHd": {
+          "type": "review",
+          "settings": {
+            "avatar_image": "shopify://shop_images/cd2d9bddbe02f7d789eed1691f70c660253e053c.jpg",
+            "avatar_initials": "JC",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Puts Me Right To Sleep",
+            "body": "<p>I am amazed. I'm an older adult and always wake up at 2 or 3 in the morning and can't fall back asleep. We'll, using this product I am falling back asleep.</p>",
+            "author_name": "Mike M.",
+            "badge_type": "verified"
+          }
+        },
+        "image_wj7VaF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ff2dd570-7ef4-44ef-a8f0-973dbb949bb9.webp",
+            "alt": ""
+          }
+        },
         "review_idQCTr": {
           "type": "review",
           "settings": {
@@ -73,6 +94,8 @@
         }
       },
       "block_order": [
+        "review_XJgTHd",
+        "image_wj7VaF",
         "review_idQCTr",
         "review_aGj8GB",
         "video_3C3KG8",

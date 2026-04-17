@@ -15,6 +15,21 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* Chart image */
+.why-better-v2-chart {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.why-better-v2-chart img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.why-better-v2-chart--desktop { display: block; }
+.why-better-v2-chart--mobile { display: none; }
+
 /* Copy */
 .why-better-v2-copy {
     flex: 1 1 0;
@@ -51,159 +66,6 @@
 .why-better-v2-description p { margin: 0 0 1em; }
 .why-better-v2-description p:last-child { margin-bottom: 0; }
 
-/* Chart */
-.why-better-v2-chart {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-.why-better-v2-chart-inner {
-    position: relative;
-    height: 500px;
-    padding: 0 50px 50px 25px;
-    box-sizing: border-box;
-}
-
-.why-better-v2-y-label {
-    position: absolute;
-    left: 0;
-    top: calc(50% - 25px);
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center;
-    font-size: 16px;
-    color: #141414;
-    white-space: nowrap;
-    line-height: 1.4;
-}
-
-.why-better-v2-y-values {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 50px;
-    width: 45px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #a0a0a0;
-    line-height: 1;
-    padding-left: 8px;
-    box-sizing: border-box;
-}
-
-.why-better-v2-plot {
-    position: relative;
-    height: 100%;
-    padding-right: 45px;
-    padding-left: 35px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.why-better-v2-grid {
-    position: absolute;
-    left: 35px;
-    right: 45px;
-    top: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.why-better-v2-grid-line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    border-top: 1px dashed #d0d0d0;
-}
-
-.why-better-v2-grid-line--solid { border-top-style: solid; border-top-color: #a0a0a0; }
-
-.why-better-v2-bar-col {
-    position: relative;
-    flex: 1 1 0;
-    max-width: 90px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.why-better-v2-bar-img {
-    position: absolute;
-    left: 50%;
-    bottom: calc(var(--height, 0%) + 6px);
-    transform: translateX(-50%);
-    width: auto;
-    max-width: 70px;
-    max-height: 120px;
-    object-fit: contain;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.why-better-v2-bar {
-    width: 100%;
-    height: var(--height, 0%);
-    background-color: #eaeaf7;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding-top: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    box-sizing: border-box;
-}
-
-.why-better-v2-bar--highlight {
-    background-color: {{ section.settings.accent_color }};
-}
-
-.why-better-v2-bar-value {
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-}
-
-.why-better-v2-bar--highlight .why-better-v2-bar-value {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.why-better-v2-bar-foot {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    line-height: 1.2;
-    color: #737373;
-    text-align: center;
-    white-space: pre-line;
-}
-
-.why-better-v2-bar-foot--logo {
-    color: #141414;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-}
-
-.why-better-v2-bar-foot--logo img {
-    display: block;
-    width: auto;
-    max-height: 18px;
-    max-width: 120px;
-}
-
 /* ===================== Mobile ===================== */
 @media (max-width: 900px) {
     .why-better-v2-container {
@@ -225,124 +87,34 @@
 
     .why-better-v2-heading { font-size: 24px; }
 
-    .why-better-v2-chart-inner {
-        height: 309px;
-        padding: 0 35px 28px 18px;
-    }
+    .why-better-v2-chart--desktop { display: none; }
+    .why-better-v2-chart--mobile { display: block; }
 
-    .why-better-v2-y-label {
-        font-size: 11px;
-        top: calc(50% - 14px);
-    }
-
-    .why-better-v2-y-values {
-        width: 32px;
-        font-size: 9.3px;
-        padding-left: 6px;
-        bottom: 28px;
-    }
-
-    .why-better-v2-plot {
-        padding-left: 24px;
-        padding-right: 32px;
-        gap: 8px;
-    }
-
-    .why-better-v2-grid {
-        left: 24px;
-        right: 32px;
-    }
-
-    .why-better-v2-bar-col { max-width: 60px; }
-
-    .why-better-v2-bar {
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
-        padding-top: 10px;
-    }
-
-    .why-better-v2-bar-value { font-size: 14.7px; }
-
-    .why-better-v2-bar--highlight .why-better-v2-bar-value { font-size: 16px; }
-
-    .why-better-v2-bar-foot {
-        font-size: 8px;
-        top: calc(100% + 5px);
-    }
-
-    .why-better-v2-bar-foot--logo img { max-height: 12px; max-width: 80px; }
-
-    .why-better-v2-bar-img {
-        max-width: 50px;
-        max-height: 80px;
-        bottom: calc(var(--height, 0%) + 4px);
-    }
+    /* If no mobile image is provided, keep showing the desktop one */
+    .why-better-v2-chart--only-desktop .why-better-v2-chart--desktop { display: block; }
 }
 {% endstyle %}
 
 <div class="why-better-v2-container">
-    <div class="why-better-v2-chart">
-        <div class="why-better-v2-chart-inner">
-            {% if section.settings.y_axis_label != blank %}
-                <span class="why-better-v2-y-label">{{ section.settings.y_axis_label }}</span>
-            {% endif %}
-
-            <div class="why-better-v2-y-values" aria-hidden="true">
-                <span>100%</span>
-                <span>80%</span>
-                <span>60%</span>
-                <span>40%</span>
-                <span>20%</span>
-                <span>0%</span>
+    <div class="why-better-v2-chart{% if section.settings.chart_image_mobile == blank %} why-better-v2-chart--only-desktop{% endif %}">
+        {% if section.settings.chart_image != blank %}
+            <div class="why-better-v2-chart--desktop">
+                <img src="{{ section.settings.chart_image | image_url: width: 1200 }}"
+                     alt="{{ section.settings.chart_image.alt | default: 'Absorption comparison chart' }}"
+                     width="{{ section.settings.chart_image.width }}"
+                     height="{{ section.settings.chart_image.height }}"
+                     loading="lazy">
             </div>
-
-            <div class="why-better-v2-grid" aria-hidden="true">
-                <div class="why-better-v2-grid-line why-better-v2-grid-line--solid" style="top: 0%;"></div>
-                <div class="why-better-v2-grid-line" style="top: 20%;"></div>
-                <div class="why-better-v2-grid-line" style="top: 40%;"></div>
-                <div class="why-better-v2-grid-line" style="top: 60%;"></div>
-                <div class="why-better-v2-grid-line" style="top: 80%;"></div>
-                <div class="why-better-v2-grid-line why-better-v2-grid-line--solid" style="top: 100%;"></div>
+        {% endif %}
+        {% if section.settings.chart_image_mobile != blank %}
+            <div class="why-better-v2-chart--mobile">
+                <img src="{{ section.settings.chart_image_mobile | image_url: width: 800 }}"
+                     alt="{{ section.settings.chart_image_mobile.alt | default: 'Absorption comparison chart' }}"
+                     width="{{ section.settings.chart_image_mobile.width }}"
+                     height="{{ section.settings.chart_image_mobile.height }}"
+                     loading="lazy">
             </div>
-
-            <div class="why-better-v2-plot">
-                {% for block in section.blocks %}
-                    {%- assign pct = block.settings.percentage | default: 0 -%}
-                    {%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
-                    {%- if pct < 0 -%}{%- assign pct = 0 -%}{%- endif -%}
-                    <div class="why-better-v2-bar-col"
-                         {{ block.shopify_attributes }}
-                         style="--height: {{ pct }}%;">
-                        {% if block.settings.image != blank %}
-                            <img class="why-better-v2-bar-img"
-                                 src="{{ block.settings.image | image_url: width: 200 }}"
-                                 alt="{{ block.settings.label | default: '' | strip_newlines }}"
-                                 loading="lazy">
-                        {% endif %}
-
-                        <div class="why-better-v2-bar{% if block.settings.highlight %} why-better-v2-bar--highlight{% endif %}">
-                            <span class="why-better-v2-bar-value">
-                                {%- if block.settings.value_text != blank -%}
-                                    {{ block.settings.value_text }}
-                                {%- else -%}
-                                    ~{{ pct }}%
-                                {%- endif -%}
-                            </span>
-                        </div>
-
-                        {% if block.settings.label_image != blank %}
-                            <span class="why-better-v2-bar-foot why-better-v2-bar-foot--logo">
-                                <img src="{{ block.settings.label_image | image_url: width: 240 }}"
-                                     alt="{{ block.settings.label | default: 'Logo' | strip_newlines }}"
-                                     loading="lazy">
-                            </span>
-                        {% elsif block.settings.label != blank %}
-                            <span class="why-better-v2-bar-foot{% if block.settings.highlight %} why-better-v2-bar-foot--logo{% endif %}">{{ block.settings.label | newline_to_br }}</span>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        {% endif %}
     </div>
 
     <div class="why-better-v2-copy">
@@ -398,102 +170,21 @@
             "content": "Chart"
         },
         {
-            "type": "text",
-            "id": "y_axis_label",
-            "label": "Y-axis label",
-            "default": "Amount of ingredients absorbed"
-        }
-    ],
-    "blocks": [
+            "type": "image_picker",
+            "id": "chart_image",
+            "label": "Chart image (desktop)"
+        },
         {
-            "type": "bar",
-            "name": "Bar",
-            "settings": [
-                {
-                    "type": "textarea",
-                    "id": "label",
-                    "label": "Label",
-                    "info": "Shown under the bar. Use a new line to break into two rows.",
-                    "default": "Melatonin\nGummies"
-                },
-                {
-                    "type": "range",
-                    "id": "percentage",
-                    "label": "Percentage (bar height)",
-                    "min": 0,
-                    "max": 100,
-                    "step": 1,
-                    "default": 20,
-                    "unit": "%"
-                },
-                {
-                    "type": "text",
-                    "id": "value_text",
-                    "label": "Value text",
-                    "info": "Shown inside the bar. Defaults to \"~{percentage}%\".",
-                    "default": "~20%"
-                },
-                {
-                    "type": "image_picker",
-                    "id": "image",
-                    "label": "Icon above bar",
-                    "info": "Optional pill / bottle image shown above the bar."
-                },
-                {
-                    "type": "checkbox",
-                    "id": "highlight",
-                    "label": "Highlight (purple bar)",
-                    "default": false
-                },
-                {
-                    "type": "image_picker",
-                    "id": "label_image",
-                    "label": "Label image (logo)",
-                    "info": "Optional. Use instead of text label — e.g. REJUVIA wordmark under the highlight bar."
-                }
-            ]
+            "type": "image_picker",
+            "id": "chart_image_mobile",
+            "label": "Chart image (mobile)",
+            "info": "Optional. Falls back to the desktop image if empty."
         }
     ],
-    "max_blocks": 6,
     "presets": [
         {
             "name": "Why Better V2",
-            "category": "Custom",
-            "blocks": [
-                {
-                    "type": "bar",
-                    "settings": {
-                        "label": "Melatonin\nGummies",
-                        "percentage": 20,
-                        "value_text": "~20%"
-                    }
-                },
-                {
-                    "type": "bar",
-                    "settings": {
-                        "label": "OTC\nMedication",
-                        "percentage": 35,
-                        "value_text": "~35%"
-                    }
-                },
-                {
-                    "type": "bar",
-                    "settings": {
-                        "label": "Prescription\nPills",
-                        "percentage": 40,
-                        "value_text": "~40%"
-                    }
-                },
-                {
-                    "type": "bar",
-                    "settings": {
-                        "label": "REJUVIA",
-                        "percentage": 90,
-                        "value_text": "~90%",
-                        "highlight": true
-                    }
-                }
-            ]
+            "category": "Custom"
         }
     ]
 }

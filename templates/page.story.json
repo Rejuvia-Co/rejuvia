@@ -17,12 +17,75 @@
         "bg_color": "#0087da",
         "stars_color": "#fab851",
         "image_desktop": "shopify://shop_images/story_desktop_banner.png",
-        "image_position_desktop": "right center",
+        "image_position_desktop": "center",
+        "desktop_min_height": 500,
         "image_mobile": "shopify://shop_images/Hero_story.png",
         "image_position_mobile": "center",
         "show_stars": true,
         "rating_text": "6,000+ verified 5-star reviews for Rejuvia products",
         "heading": "<p>Over 50,000 Satisfied Customers</p>"
+      }
+    },
+    "story_reviews_v2_WNr7Wz": {
+      "type": "story-reviews-v2",
+      "blocks": {
+        "review_idQCTr": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "LD",
+            "avatar_color": "#dbffe8",
+            "stars": 5,
+            "title": "Great company and product",
+            "body": "<p>Great company! The service is 10⭐️ and the product sleep spray is a godsend to me. No more laying in bed, tossing and turning for hours. This stuff is a miracle</p>",
+            "author_name": "Lynn D.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_aGj8GB": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "JC",
+            "avatar_color": "#FFDBE8",
+            "stars": 5,
+            "title": "Never slept this great before",
+            "body": "<p>I love the product. I am 73 and never ever had an actual \"good night's sleep\" until I tried this spray. My quality of sleep has improved since using this spray. I never want to be without it.</p>",
+            "author_name": "Judy C.",
+            "badge_type": "unprompted"
+          }
+        },
+        "video_3C3KG8": {
+          "type": "video",
+          "settings": {
+            "quote": "“Try it – you’ll like it.”",
+            "author": "Hylan S.",
+            "video_url": ""
+          }
+        },
+        "image_hcCcJF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_idQCTr",
+        "review_aGj8GB",
+        "video_3C3KG8",
+        "image_hcCcJF"
+      ],
+      "name": "Story Reviews V2",
+      "settings": {
+        "anchor_id": "",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#FAFAFA",
+        "stars_color": "#FAB851",
+        "show_filters": true,
+        "filter_active_bg": "#EAEAF7",
+        "filter_all_label": "All",
+        "filter_written_label": "Written Reviews",
+        "filter_video_label": "Video Reviews"
       }
     },
     "1719859380da8d7058": {
@@ -305,6 +368,7 @@
   },
   "order": [
     "story_hero_v2_Br9RWF",
+    "story_reviews_v2_WNr7Wz",
     "1719859380da8d7058",
     "product_widget_NDYYjR",
     "customer_testimonials_fEN7e7",

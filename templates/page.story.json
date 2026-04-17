@@ -58,6 +58,7 @@
         "video_3C3KG8": {
           "type": "video",
           "settings": {
+            "video_file": "shopify://files/videos/web-2.mp4",
             "quote": "“Try it – you’ll like it.”",
             "author": "Hylan S.",
             "video_url": ""

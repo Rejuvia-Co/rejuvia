@@ -2,7 +2,7 @@
 
 {% assign source_product = section.settings.product %}
 {% assign base_colour = source_product.metafields.custom.base_colour %}
-{% assign ingredients = source_product.metafields.custom.key_ingredients.value %}
+{% assign ingredients = page.metafields.custom.key_ingredients.value %}
 
 {% if ingredients != blank %}
 <section class="key-ingredients-v2"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
@@ -60,13 +60,13 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Page-template version of Key Ingredients V2. Select a product — ingredients and the supplement label popup are pulled from its metafields (custom.key_ingredients, custom.supplement_label, custom.base_colour)."
+      "content": "Ingredients list is pulled from the current page metafield custom.key_ingredients. The selected product is used only for the Supplement Label popup and accent colour (custom.supplement_label, custom.base_colour)."
     },
     {
       "type": "product",
       "id": "product",
-      "label": "Source product",
-      "info": "Provides key_ingredients, supplement_label and base_colour."
+      "label": "Supplement label product",
+      "info": "Used only for the Supplement Label popup and accent colour."
     },
     {
       "type": "text",

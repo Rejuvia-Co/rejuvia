@@ -21,13 +21,18 @@
 
 .story-hero-v2-bg img {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    width: auto;
     height: 100%;
     object-fit: cover;
-    object-position: {{ section.settings.image_position_desktop | default: 'center' }};
     display: block;
     max-width: none;
+    /* Fade both edges of the image so it blends into the section bg color */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, #000 120px, #000 calc(100% - 50px), rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, #000 120px, #000 calc(100% - 50px), rgba(0, 0, 0, 0) 100%);
 }
 
 .story-hero-v2-bg--desktop { display: block; }
@@ -42,7 +47,7 @@
     padding: 196px 64px 64px;
     display: flex;
     align-items: center;
-    min-height: {{ section.settings.desktop_min_height | default: 600 }}px;
+    min-height: {{ section.settings.desktop_min_height | default: 500 }}px;
     box-sizing: border-box;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -114,7 +119,14 @@ main.content-wrapper { overflow: visible !important; }
     .story-hero-v2-bg--mobile-fallback { display: block; }
 
     .story-hero-v2-bg--mobile img {
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         object-position: {{ section.settings.image_position_mobile | default: 'center' }};
+        -webkit-mask-image: none;
+        mask-image: none;
     }
 
     .story-hero-v2-copy {
@@ -245,7 +257,7 @@ main.content-wrapper { overflow: visible !important; }
             "min": 400,
             "max": 900,
             "step": 20,
-            "default": 600,
+            "default": 500,
             "unit": "px"
         },
         {

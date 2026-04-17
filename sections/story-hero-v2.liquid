@@ -1,0 +1,265 @@
+{% style %}
+.story-hero-v2-section {
+    position: relative;
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+    overflow: hidden;
+}
+
+.story-hero-v2-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.story-hero-v2-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.image_position_desktop | default: 'center' }};
+    display: block;
+}
+
+.story-hero-v2-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        {{ section.settings.bg_color }} 0%,
+        {{ section.settings.bg_color }} 19%,
+        rgba(0, 0, 0, 0) 28%,
+        rgba(0, 0, 0, 0) 86%,
+        {{ section.settings.bg_color }} 92%,
+        {{ section.settings.bg_color }} 100%
+    );
+}
+
+.story-hero-v2-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 196px 64px 64px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.story-hero-v2-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    width: 550px;
+    max-width: 100%;
+    color: #ffffff;
+}
+
+.story-hero-v2-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.story-hero-v2-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.story-hero-v2-stars svg {
+    width: 17.066px;
+    height: 16px;
+}
+
+.story-hero-v2-rating-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.story-hero-v2-heading {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #ffffff;
+    text-transform: capitalize;
+    font-family: inherit;
+}
+
+.story-hero-v2-heading p { margin: 0; font: inherit; color: inherit; text-transform: inherit; }
+
+/* ===================== Mobile ===================== */
+@media (max-width: 900px) {
+    .story-hero-v2-container {
+        padding: 80px 16px 32px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .story-hero-v2-overlay { display: none; }
+
+    .story-hero-v2-bg img {
+        object-position: {{ section.settings.image_position_mobile | default: 'center' }};
+    }
+
+    .story-hero-v2-copy {
+        width: 100%;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .story-hero-v2-stars svg { width: 14.93px; height: 14px; }
+
+    .story-hero-v2-rating-text { font-size: 12px; }
+
+    .story-hero-v2-heading { font-size: 24px; }
+}
+
+/* Pull behind sticky header on mobile */
+@media (max-width: 900px) {
+    main.content-wrapper { overflow: visible !important; }
+}
+{% endstyle %}
+
+{% if section.settings.image != blank %}
+    <div class="story-hero-v2-bg" aria-hidden="true">
+        <img src="{{ section.settings.image | image_url: width: 1800 }}"
+             alt="{{ section.settings.image.alt | default: '' }}"
+             loading="eager">
+    </div>
+    <div class="story-hero-v2-overlay" aria-hidden="true"></div>
+{% endif %}
+
+<div class="story-hero-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+    <div class="story-hero-v2-copy">
+        {% if section.settings.show_stars or section.settings.rating_text != blank %}
+            <div class="story-hero-v2-rating">
+                {% if section.settings.show_stars %}
+                    <div class="story-hero-v2-stars" aria-label="5 stars">
+                        {% for i in (1..5) %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color }}"/></svg>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if section.settings.rating_text != blank %}
+                    <span class="story-hero-v2-rating-text">{{ section.settings.rating_text }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+            <div class="story-hero-v2-heading">{{ section.settings.heading }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.story-hero-v2-section');
+    if (!section) return;
+    function pullBehindHeaderPill() {
+        section.style.marginTop = '';
+        if (window.innerWidth > 900) return;
+        var headerEl = document.querySelector('#page > header, header[role="banner"]');
+        if (!headerEl) return;
+        var h = headerEl.getBoundingClientRect().height;
+        if (h > 0) section.style.marginTop = '-' + h + 'px';
+    }
+    pullBehindHeaderPill();
+    if (document.readyState !== 'complete') window.addEventListener('load', pullBehindHeaderPill);
+    window.addEventListener('resize', pullBehindHeaderPill);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(pullBehindHeaderPill);
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Story Hero V2",
+    "class": "story-hero-v2-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links."
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#0087DA"
+        },
+        {
+            "type": "color",
+            "id": "stars_color",
+            "label": "Stars color",
+            "default": "#FAB851"
+        },
+        {
+            "type": "header",
+            "content": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Hero image"
+        },
+        {
+            "type": "text",
+            "id": "image_position_desktop",
+            "label": "Image position (desktop)",
+            "info": "CSS object-position, e.g. \"center\", \"right center\", \"70% 30%\".",
+            "default": "center"
+        },
+        {
+            "type": "text",
+            "id": "image_position_mobile",
+            "label": "Image position (mobile)",
+            "default": "center"
+        },
+        {
+            "type": "header",
+            "content": "Rating"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_stars",
+            "label": "Show 5 stars",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "rating_text",
+            "label": "Rating text",
+            "default": "6,000+ verified 5-star reviews for Rejuvia products"
+        },
+        {
+            "type": "header",
+            "content": "Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Over 50,000 Satisfied Customers</p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Story Hero V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

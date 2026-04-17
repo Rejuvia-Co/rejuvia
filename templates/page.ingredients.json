@@ -48,50 +48,6 @@
         "image": "shopify://shop_images/image_1261.png"
       }
     },
-    "hero_ingredients_xJ8tR9": {
-      "type": "hero-ingredients",
-      "blocks": {
-        "description_block_Gw8zxT": {
-          "type": "description_block",
-          "settings": {
-            "label": "Science",
-            "href": "#science-ingredients"
-          }
-        },
-        "description_block_tcF8NF": {
-          "type": "description_block",
-          "settings": {
-            "label": "Ingredients",
-            "href": "#ingredients-benefits"
-          }
-        },
-        "description_block_Q6kMQQ": {
-          "type": "description_block",
-          "settings": {
-            "label": "Oral Sprays",
-            "href": "#ingredients-oral-sprays"
-          }
-        },
-        "description_block_XDR8ag": {
-          "type": "description_block",
-          "settings": {
-            "label": "Founders",
-            "href": "#ourners-ingredients"
-          }
-        }
-      },
-      "block_order": [
-        "description_block_Gw8zxT",
-        "description_block_tcF8NF",
-        "description_block_Q6kMQQ",
-        "description_block_XDR8ag"
-      ],
-      "settings": {
-        "header": "Powerful, All-Natural Ingredients",
-        "description": "Our oral sprays use the highest quality, USA-made ingredients and are triple lab-tested for purity and potency. Every product includes a QR code linking to its lab report, so you can always feel confident that what's on the label is what's in the bottle.",
-        "image": "shopify://shop_images/Rejuvia_Ecomm_8-6-255845_copy.webp"
-      }
-    },
     "faqs_ingredients_Xnytn6": {
       "type": "FAQS-ingredients",
       "blocks": {
@@ -371,11 +327,20 @@
         "title": "Shop All Rejuvia Sprays",
         "sub_title": "Clean, fast-absorbing sprays designed to support your mind and body."
       }
+    },
+    "key_ingredients_v2_GJqwaq": {
+      "type": "key-ingredients-v2",
+      "name": "Key Ingredients V2",
+      "settings": {
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label",
+        "button_url": ""
+      }
     }
   },
   "order": [
     "hero_ingredients_v2_PynYUG",
-    "hero_ingredients_xJ8tR9",
+    "key_ingredients_v2_GJqwaq",
     "faqs_ingredients_Xnytn6",
     "second_customer_testimonial_VMaxpw",
     "separator_ingredients_eQrU4m",

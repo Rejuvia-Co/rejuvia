@@ -29,6 +29,39 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_JkNAEP": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "SB",
+            "avatar_color": "#fff7be",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "I love this product",
+            "body": "<p>I love this product. It truly helps me fall asleep. When a package came with a few damaged items, they quickly replied and sent out replacements. They have been great to work with and I hope their business continues to grow!</p>",
+            "author_name": "S B.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_AYn89d": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "CY",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "This works very well!",
+            "body": "<p>The sleep spray works very well if you wake during the night. It gets you back to sleep quickly. Great customer service!</p>",
+            "author_name": "",
+            "badge_type": "none"
+          }
+        },
+        "image_dC4MD7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
+            "alt": ""
+          }
+        },
         "review_rDrwHL": {
           "type": "review",
           "settings": {
@@ -163,6 +196,9 @@
         }
       },
       "block_order": [
+        "review_JkNAEP",
+        "review_AYn89d",
+        "image_dC4MD7",
         "review_rDrwHL",
         "review_mytEd6",
         "video_qVrPTy",

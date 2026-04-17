@@ -29,6 +29,15 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "video_qVrPTy": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/web-3.mp4",
+            "quote": "“Can’t say enough good things.”",
+            "author": "Debora O.",
+            "video_url": ""
+          }
+        },
         "review_49dEYh": {
           "type": "review",
           "settings": {
@@ -128,6 +137,7 @@
         }
       },
       "block_order": [
+        "video_qVrPTy",
         "review_49dEYh",
         "image_96jGB4",
         "image_Kjwjdj",

@@ -20,6 +20,7 @@
 .story-reviews-v2-filters {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
 }
@@ -273,9 +274,10 @@
 .story-reviews-v2-video-play:hover { transform: scale(1.05); }
 
 .story-reviews-v2-video-play svg {
-    width: 22px;
-    height: 22px;
-    color: #141414;
+    width: 30px;
+    height: 30px;
+    color: {{ section.settings.video_play_color | default: '#672666' }};
+    display: block;
 }
 
 /* Image card */
@@ -336,7 +338,7 @@
     .story-reviews-v2-video-quote { font-size: 22px; }
 
     .story-reviews-v2-video-play { width: 50px; height: 50px; }
-    .story-reviews-v2-video-play svg { width: 18px; height: 18px; }
+    .story-reviews-v2-video-play svg { width: 25px; height: 25px; }
 }
 {% endstyle %}
 
@@ -442,8 +444,8 @@
                                     data-story-video-play
                                     {% if video_file == blank and block.settings.video_url != blank %}data-external-url="{{ block.settings.video_url }}"{% endif %}
                                     aria-label="Play video">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                    <path d="M8 5v14l11-7-11-7z" fill="currentColor"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+                                    <path d="M6.25 6.25013C6.24987 5.81025 6.36581 5.37811 6.5861 4.99737C6.8064 4.61662 7.12326 4.30074 7.50469 4.08163C7.88612 3.86251 8.3186 3.74791 8.75849 3.7494C9.19837 3.7509 9.63007 3.86843 10.01 4.09013L25.0062 12.8376C25.3847 13.0572 25.6989 13.3723 25.9174 13.7514C26.136 14.1305 26.2512 14.5603 26.2515 14.9978C26.2519 15.4354 26.1375 15.8653 25.9196 16.2448C25.7017 16.6242 25.3881 16.9399 25.01 17.1601L10.01 25.9101C9.63007 26.1318 9.19837 26.2494 8.75849 26.2509C8.3186 26.2524 7.88612 26.1378 7.50469 25.9186C7.12326 25.6995 6.8064 25.3836 6.5861 25.0029C6.36581 24.6221 6.24987 24.19 6.25 23.7501V6.25013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>

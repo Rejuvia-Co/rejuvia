@@ -29,6 +29,94 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_gqfkTx": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "KI",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Customer service was helpful",
+            "body": "<p>I received my first order. I had a hard time with the first bottle. It was clogged and would not spray consistently. I sent email to customer service and they quickly responded. They let me know that I will be receiving a replacement. I appreciate that this exchange was quick and easy.</p>",
+            "author_name": "Kim I.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_Mw7NaF": {
+          "type": "review",
+          "settings": {
+            "avatar_image": "shopify://shop_images/Ellipse_218.png",
+            "avatar_initials": "",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Knocked out fast",
+            "body": "<p>So far this is legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast!</p>",
+            "author_name": "Christy W.",
+            "badge_type": "verified"
+          }
+        },
+        "review_xY6pYw": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "AH",
+            "avatar_color": "#d0ffdd",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Loyal customer for over a year",
+            "body": "<p>I love Rejuvia! Give the sleep spray 7 to 10 days and it will work its magic! I use it everyday and haven't had issues sleeping for over a year now. This is a family run business and you can tell-- they are incredibly ethical and customer focused people who want to do right by their customers!</p>",
+            "author_name": "Angela H.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_8qAamF": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "MP",
+            "avatar_color": "#fff7be",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Amazing customer service",
+            "body": "<p>Aside from their product being great (been helping me get better more consistent nights of sleep) -- their customer service is Excellent. Throughout any of my ordering questions or needs -- they are quick to respond. Definitely have that family owned -- \"We Care About You\" Customer Service attitude. Highly recommend them!</p>",
+            "author_name": "Michael P.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_6KVFgb": {
+          "type": "review",
+          "settings": {
+            "avatar_image": "shopify://shop_images/1564a0a7-02f7-48c2-83b0-47a3071e0e87_large_0af60b8e-fe70-41e5-bca7-f971307ee2fc.webp",
+            "avatar_initials": "",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Great for early mornings",
+            "body": "<p>If you suffer from waking up early and not being able to fall back asleep I encourage you to try this product. Your results may vary from mine but I firmly believe it's worth taking a shot. It may change your life.</p>",
+            "author_name": "Sam M.",
+            "badge_type": "verified"
+          }
+        },
+        "review_Kwrm33": {
+          "type": "review",
+          "settings": {
+            "avatar_image": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+            "avatar_initials": "",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Superb product",
+            "body": "<p>“I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends.”</p>",
+            "author_name": "Judi M.",
+            "badge_type": "verified"
+          }
+        },
+        "image_wqtVP4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/609c80de-1872-4bf6-8fec-46d662fbcc3b_large_1f4a6528-ae8a-4f57-8925-c64432e0e25e.webp",
+            "alt": ""
+          }
+        },
         "review_grdchk": {
           "type": "review",
           "settings": {
@@ -222,6 +310,13 @@
         }
       },
       "block_order": [
+        "review_gqfkTx",
+        "review_Mw7NaF",
+        "review_xY6pYw",
+        "review_8qAamF",
+        "review_6KVFgb",
+        "review_Kwrm33",
+        "image_wqtVP4",
         "review_grdchk",
         "review_ewpxei",
         "review_JkNAEP",

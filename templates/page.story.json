@@ -29,6 +29,32 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "review_grdchk": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "JF",
+            "avatar_color": "#ffe0b5",
+            "stars": 5,
+            "stars_color": "",
+            "title": "It helps me get to sleep",
+            "body": "<p>I have had insomnia for decades and have tried many prescription and non- prescription remedies. So what’s one more? I got this on their buy one get one free promotion. It actually does help me get to sleep within 10 or 15 minutes. I still can’t stay asleep, waking up after 3 or 4 hours. I do not feel energetic when I wake up, still as groggy as always. But for me it is worth the money to go to sleep instead of spending hours trying to sleep.</p>",
+            "author_name": "Janet F.",
+            "badge_type": "unprompted"
+          }
+        },
+        "review_ewpxei": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "JP",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Love this company",
+            "body": "<p>I love the “Stress” spray and so has everyone I have given one to.</p>",
+            "author_name": "Gaye P.",
+            "badge_type": "unprompted"
+          }
+        },
         "review_JkNAEP": {
           "type": "review",
           "settings": {
@@ -196,6 +222,8 @@
         }
       },
       "block_order": [
+        "review_grdchk",
+        "review_ewpxei",
         "review_JkNAEP",
         "review_AYn89d",
         "image_dC4MD7",

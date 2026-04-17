@@ -166,13 +166,30 @@
       "settings": {
         "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "badge_bg_color": "#EAEAF7",
+        "badge_bg_color": "#eaeaf7",
         "badge_text_color": "#672666",
-        "quote_bg_color": "#F5F5FB",
+        "quote_bg_color": "#f5f5fb",
         "quote": "<p>“<strong>We’ve meticulously formulated</strong> our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
         "signature_image": "shopify://shop_images/Frame_48101400.png",
         "author_name": "– RC Williams",
         "author_title": "Founder"
+      }
+    },
+    "page_cta_v2_HdCPMi": {
+      "type": "page-cta-v2",
+      "name": "Page CTA V2",
+      "settings": {
+        "bg_color": "#F5F5FB",
+        "accent_color": "#672666",
+        "stars_color": "#FAB851",
+        "image": "shopify://shop_images/hero-v2-product.png",
+        "show_stars": true,
+        "quote": "<p>“This is my go to! I <strong>can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep.”</p>",
+        "author_name": "Katie C.",
+        "author_role": "Verified Purchase",
+        "btn_text": "Sleep Better Tonight",
+        "btn_url": "shopify://products/sleep-spray",
+        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
       }
     }
   },
@@ -181,6 +198,7 @@
     "key_ingredients_page_v2_c96YaM",
     "guarantees_v2_ABV7Ti",
     "why_better_v2_Ny6pzj",
-    "science_v2_wgkJq7"
+    "science_v2_wgkJq7",
+    "page_cta_v2_HdCPMi"
   ]
 }

@@ -8,7 +8,12 @@
 
 .story-hero-v2-bg {
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
@@ -22,6 +27,7 @@
     object-fit: cover;
     object-position: {{ section.settings.image_position_desktop | default: 'center' }};
     display: block;
+    max-width: none;
 }
 
 .story-hero-v2-bg--desktop { display: block; }
@@ -36,6 +42,7 @@
     padding: 196px 64px 64px;
     display: flex;
     align-items: center;
+    min-height: {{ section.settings.desktop_min_height | default: 600 }}px;
     box-sizing: border-box;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -87,6 +94,11 @@
 
 .story-hero-v2-heading p { margin: 0; font: inherit; color: inherit; text-transform: inherit; }
 
+/* Allow hero to extend behind the sticky header pill.
+   Main has overflow:hidden which otherwise clips the pulled-up section.
+   html/body already keep overflow-x:hidden, so no horizontal scroll. */
+main.content-wrapper { overflow: visible !important; }
+
 /* ===================== Mobile ===================== */
 @media (max-width: 900px) {
     .story-hero-v2-container {
@@ -117,8 +129,6 @@
     .story-hero-v2-rating-text { font-size: 12px; }
 
     .story-hero-v2-heading { font-size: 24px; }
-
-    main.content-wrapper { overflow: visible !important; }
 }
 {% endstyle %}
 
@@ -127,13 +137,17 @@
     {%- assign has_mobile_image = true -%}
 {%- endif -%}
 
-{% if section.settings.image_desktop != blank %}
-    <div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
-        <img src="{{ section.settings.image_desktop | image_url: width: 2000 }}"
-             alt="{{ section.settings.image_desktop.alt | default: '' }}"
-             loading="eager">
-    </div>
-{% endif %}
+{%- if section.settings.image_desktop != blank -%}
+    {%- assign desktop_src = section.settings.image_desktop | image_url: width: 2000 -%}
+    {%- assign desktop_alt = section.settings.image_desktop.alt -%}
+{%- else -%}
+    {%- assign desktop_src = 'story_desktop_banner.png' | asset_url -%}
+    {%- assign desktop_alt = '' -%}
+{%- endif -%}
+
+<div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
+    <img src="{{ desktop_src }}" alt="{{ desktop_alt }}" loading="eager">
+</div>
 
 {% if has_mobile_image %}
     <div class="story-hero-v2-bg story-hero-v2-bg--mobile" aria-hidden="true">
@@ -172,7 +186,6 @@
     if (!section) return;
     function pullBehindHeaderPill() {
         section.style.marginTop = '';
-        if (window.innerWidth > 900) return;
         var headerEl = document.querySelector('#page > header, header[role="banner"]');
         if (!headerEl) return;
         var h = headerEl.getBoundingClientRect().height;
@@ -224,6 +237,16 @@
             "label": "Desktop image position",
             "info": "CSS object-position (e.g. \"center\", \"right center\", \"70% 30%\").",
             "default": "center"
+        },
+        {
+            "type": "range",
+            "id": "desktop_min_height",
+            "label": "Desktop section height",
+            "min": 400,
+            "max": 900,
+            "step": 20,
+            "default": 600,
+            "unit": "px"
         },
         {
             "type": "header",

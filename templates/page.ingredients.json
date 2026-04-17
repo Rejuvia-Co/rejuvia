@@ -132,7 +132,7 @@
           "type": "item",
           "settings": {
             "title": "Formulated with doctors and researchers",
-            "description": "",
+            "description": "<p>We partner with leading doctors, scientists and researchers from across the country to develop and formulate our products.</p>",
             "badge_text": "",
             "open_by_default": false
           }
@@ -141,7 +141,7 @@
           "type": "item",
           "settings": {
             "title": "Clean ingredients, nothing hidden",
-            "description": "",
+            "description": "<p>We source only the cleanest and purest ingredients, ensuring that every product is free from harmful chemicals and packed with efficacious blends.</p>",
             "badge_text": "",
             "open_by_default": false
           }
@@ -150,7 +150,7 @@
           "type": "item",
           "settings": {
             "title": "Innovative Delivery Method",
-            "description": "",
+            "description": "<p>We are constantly striving to bring the latest, most effective delivery methods to market.</p>",
             "badge_text": "",
             "open_by_default": false
           }

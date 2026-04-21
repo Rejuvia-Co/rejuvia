@@ -2002,7 +2002,7 @@
           "accent_color": "#672666",
           "rating_score": "4.6",
           "rating_sold": "1,500,000 Sprays",
-          "heading": "<p>Join 300,000 People <em>Sleeping Better</em> and <em>Through the Night</em></p>",
+          "heading": "<p>You Can't Sleep. <em>Rejuvia Sleep Spray </em>Fixes That.</p>",
           "description": "If you've tried gummies, pills, or prescriptions and still aren't sleeping – it's not you. Most sleep products lose up to 80% of their ingredients before they ever reach your bloodstream. Rejuvia was made to fix that.",
           "btn_text": "Sleep Better Tonight",
           "btn_url": "",
@@ -2041,6 +2041,7 @@
         ],
         "name": "Guarantees V2",
         "settings": {
+          "anchor_id": "",
           "bg_color": "#eaeaf7",
           "icon_color": "#672666"
         }
@@ -2091,7 +2092,7 @@
         ],
         "name": "Product Intro V2",
         "settings": {
-          "heading": "<p>You've tried everything, <em>here's why none of it worked</em></p>",
+          "heading": "<p>You've tried everything and <em>nothing's ever stuck.</em></p>",
           "description": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>",
           "accent_color": "#672666"
         }
@@ -2302,14 +2303,14 @@
         "name": "Real Stories V2",
         "settings": {
           "trusted_count": "300,000+",
-          "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
+          "heading": "<p>Real stories from customer's who <span style=\"text-decoration:underline\"><em>switched to Rejuvia</em></span></p>"
         }
       },
       "what_makes_different_v2_rRVmVL": {
         "type": "what-makes-different-v2",
         "name": "What Makes Different V2",
         "settings": {
-          "heading": "<p>What makes Rejuvia <em>different?</em></p>",
+          "heading": "<p>So, why is Rejuvia actually <em>different?</em></p>",
           "subtitle": "A fast-acting oral sleep spray with 13+ natural ingredients that absorb under your tongue in minutes.",
           "image": "shopify://shop_images/IMG.png",
           "card_title": "Why spraying works better",
@@ -2372,7 +2373,7 @@
         ],
         "name": "Use In Just V2",
         "settings": {
-          "heading": "<p>Use in <em>just 30 seconds</em></p>",
+          "heading": "<p>Use Rejuvia in <em>just 10 seconds</em></p>",
           "default_image": "shopify://shop_images/image_1.png",
           "link_text": "View Supplement Label",
           "link_url": "",
@@ -2559,7 +2560,7 @@
         "type": "ticker-v2",
         "name": "Ticker V2",
         "settings": {
-          "text": "<p><strong>LIMITED TIME OFFER:</strong> FREE Vitamin D3+K2 Spray When You Subscribe</p>"
+          "text": "<p><strong>EXCLUSIVE OFFER:</strong> FREE Vitamin D3+K2 Spray When You Subscribe</p>"
         }
       },
       "custom_reviews_v2_jMjAV7": {

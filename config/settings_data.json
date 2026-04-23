@@ -2092,7 +2092,7 @@
         ],
         "name": "Product Intro V2",
         "settings": {
-          "heading": "<p>You've tried it all. <em>Nothing's ever stuck.</em></p>",
+          "heading": "<p>You've tried it all. And <em>nothing's ever stuck.</em></p>",
           "description": "<p>Most sleep products lose the fight before they reach your bloodstream. Here's why.</p>",
           "accent_color": "#672666"
         }
@@ -2154,6 +2154,15 @@
       "real_stories_v2_CKGqJy": {
         "type": "real-stories-v2",
         "blocks": {
+          "fb_review_AUN6jL": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
           "tp_review_NqL6Rk": {
             "type": "tp_review",
             "settings": {
@@ -2176,17 +2185,6 @@
               "name": "Lynn D.",
               "badge": "Unprompted review",
               "stars": 5
-            }
-          },
-          "fb_text_review_hFr4KQ": {
-            "type": "fb_text_review",
-            "settings": {
-              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
-              "name": "Karla Finney",
-              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
-              "offset_top": 0,
-              "offset_left": 20,
-              "offset_right": 20
             }
           },
           "fb_text_review_M6wKic": {
@@ -2287,9 +2285,9 @@
           }
         },
         "block_order": [
+          "fb_review_AUN6jL",
           "tp_review_NqL6Rk",
           "tp_review_nq4Umj",
-          "fb_text_review_hFr4KQ",
           "fb_text_review_M6wKic",
           "tp_review_tedq9c",
           "tp_review_XAUKKi",

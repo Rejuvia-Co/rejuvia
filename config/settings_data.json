@@ -2694,6 +2694,7 @@
       },
       "founder_note_v2_nAYH3a": {
         "type": "founder-note-v2",
+        "disabled": true,
         "name": "Founder Note V2",
         "settings": {
           "heading": "A Note from Our Founder",

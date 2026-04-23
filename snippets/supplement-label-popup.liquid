@@ -1,0 +1,395 @@
+{% comment %}
+  Renders supplement label popup for product.
+  Data from: product.metafields.custom.supplement_label (metaobject)
+  Fields:
+    - title (single line text)
+    - feature_1..feature_6 (single line text)
+    - serving_size (single line text)
+    - servings_per_container (single line text)
+    - amount_per_serving_list (list of metaobject references with: title, value)
+    - amount_per_serving_footer (multi-line text)
+    - daily_value (single line text)
+    - other_ingredients (multi-line text)
+{% endcomment %}
+
+{% assign sl = product.metafields.custom.supplement_label.value %}
+{% assign base_colour = product.metafields.custom.base_colour | default: '#672666' %}
+
+{% if sl != blank %}
+<dialog class="sl-popup" id="supplement-label-popup" aria-labelledby="sl-popup-title" style="--sl-accent: {{ base_colour }};">
+  <div class="sl-popup__content">
+    <button type="button" class="sl-popup__close" data-sl-close aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="15" fill="currentColor"/>
+        <path d="M11 11L19 19M19 11L11 19" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="sl-popup__left">
+      {% if sl.title != blank %}
+        <h3 class="sl-popup__title" id="sl-popup-title">{{ sl.title }}</h3>
+      {% endif %}
+
+      <div class="sl-popup__features">
+        {% for i in (1..6) %}
+          {% assign field_name = "feature_" | append: i %}
+          {% assign feat = sl[field_name] %}
+          {% if feat != blank %}
+            <div class="sl-popup__feature">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="7" fill="currentColor"/>
+                <path d="M4 7L6 9L10 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{{ feat }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="sl-popup__right">
+      <div class="sl-facts">
+        <h4 class="sl-facts__title">Supplement Facts</h4>
+
+        {% if sl.serving_size != blank or sl.servings_per_container != blank %}
+          <div class="sl-facts__serving">
+            {% if sl.serving_size != blank %}
+              <div class="sl-facts__serving-row">
+                <span class="sl-facts__serving-label">Serving Size:</span>
+                <span class="sl-facts__serving-value">{{ sl.serving_size }}</span>
+              </div>
+            {% endif %}
+            {% if sl.servings_per_container != blank %}
+              <div class="sl-facts__serving-row">
+                <span class="sl-facts__serving-label">Servings Per Container:</span>
+                <span class="sl-facts__serving-value">{{ sl.servings_per_container }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% assign amount_list = sl.amount_per_serving_list.value %}
+        {% if amount_list != blank %}
+          <div class="sl-facts__header">
+            <span>Amount Per Serving</span>
+            <span class="sl-facts__dv-label">% DV</span>
+          </div>
+
+          <div class="sl-facts__items">
+            {% for item in amount_list %}
+              <div class="sl-facts__item">
+                <div class="sl-facts__item-main">
+                  <span class="sl-facts__item-name">{{ item.title }}</span>
+                  <span class="sl-facts__item-dv">{% if item.value != blank %}{{ item.value }}{% else %}†{% endif %}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if sl.amount_per_serving_footer != blank %}
+          <div class="sl-facts__footer-text">{{ sl.amount_per_serving_footer | newline_to_br }}</div>
+        {% endif %}
+
+        {% if sl.daily_value != blank %}
+          <div class="sl-facts__daily-value">† {{ sl.daily_value }}</div>
+        {% endif %}
+
+        {% if sl.other_ingredients != blank %}
+          <div class="sl-facts__other">
+            <strong>Other Ingredients:</strong> {{ sl.other_ingredients }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<style>
+.sl-popup {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: visible;
+  color: var(--sl-accent, #672666);
+}
+
+.sl-popup::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.sl-popup[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sl-popup__content {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  max-width: 700px;
+  width: calc(100vw - 32px);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.sl-popup__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  color: var(--sl-accent, #672666);
+}
+
+.sl-popup__close svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sl-popup__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 16px;
+  min-width: 0;
+  color: #141414;
+}
+
+.sl-popup__title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #141414;
+  margin: 0;
+}
+
+.sl-popup__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.sl-popup__feature {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #141414;
+}
+
+.sl-popup__feature svg {
+  flex-shrink: 0;
+  color: var(--sl-accent, #672666);
+}
+
+.sl-popup__right {
+  flex-shrink: 0;
+  width: 280px;
+  margin-right: 24px;
+}
+
+/* Supplement Facts Table */
+.sl-facts {
+  border: 1.5px solid var(--sl-accent, #672666);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--sl-accent, #672666);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.sl-facts__title {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin: 0 0 8px;
+  color: var(--sl-accent, #672666);
+}
+
+.sl-facts__serving {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 8px;
+  border-bottom: 3.788px solid var(--sl-accent, #672666);
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sl-facts__serving-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sl-facts__serving-value {
+  font-weight: 400;
+}
+
+.sl-facts__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 2.26px solid var(--sl-accent, #672666);
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 10px;
+}
+
+.sl-facts__dv-label {
+  text-align: right;
+}
+
+.sl-facts__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.sl-facts__item {
+  padding: 4px 0;
+  border-bottom: 0.76px solid var(--sl-accent, #672666);
+}
+
+.sl-facts__item:last-child {
+  border-bottom: none;
+}
+
+.sl-facts__item-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.sl-facts__item-name {
+  flex: 1;
+}
+
+.sl-facts__item-dv {
+  flex-shrink: 0;
+  width: 28px;
+  text-align: right;
+}
+
+.sl-facts__item-sub {
+  font-size: 9px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.sl-facts__footer-text {
+  padding: 6px 0;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.sl-facts__daily-value {
+  padding: 4px 0;
+  font-size: 10px;
+  border-top: 3.788px solid var(--sl-accent, #672666);
+}
+
+.sl-facts__other {
+  padding: 6px 0 0;
+  font-size: 8.5px;
+  line-height: 1.25;
+  border-top: 3.788px solid var(--sl-accent, #672666);
+}
+
+.sl-facts__other strong {
+  text-transform: uppercase;
+}
+
+@media (max-width: 749px) {
+  .sl-popup__content {
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 24px;
+    max-width: calc(100vw - 32px);
+  }
+
+  .sl-popup__left {
+    order: 2;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5e5;
+    align-items: stretch;
+  }
+
+  .sl-popup__right {
+    order: 1;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .sl-popup__title {
+    display: none;
+  }
+
+  .sl-popup__features {
+    padding-top: 0;
+    border-top: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .sl-popup__feature {
+    flex: none;
+  }
+}
+</style>
+
+<script>
+(function() {
+  var dialog = document.getElementById('supplement-label-popup');
+  if (!dialog) return;
+
+  document.addEventListener('click', function(e) {
+    var trigger = e.target.closest('[data-open-supplement-popup]');
+    if (trigger) {
+      e.preventDefault();
+      dialog.showModal();
+      return;
+    }
+
+    if (e.target.closest('[data-sl-close]')) {
+      dialog.close();
+      return;
+    }
+
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+})();
+</script>
+{% endif %}

@@ -1,0 +1,673 @@
+<style>
+.palt-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.palt-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.palt-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+    width: 100%;
+}
+
+.palt-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.palt-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+/* Table */
+.palt-v2-table {
+    display: flex;
+    width: 100%;
+}
+
+/* Labels column */
+.palt-v2-labels {
+    flex: 1;
+    min-width: 0;
+    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.palt-v2-label-header {
+    height: 100px;
+    border-bottom: 1px solid #eaeaf7;
+}
+
+.palt-v2-label {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2;
+    color: #141414;
+    border-bottom: 1px solid #eaeaf7;
+}
+
+.palt-v2-label:last-child {
+    border-bottom: none;
+}
+
+/* Product columns */
+.palt-v2-col {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px;
+}
+
+.palt-v2-col--highlight {
+    background: rgba(234, 234, 247, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    padding: 0;
+}
+
+/* Column header */
+.palt-v2-col-header {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 0;
+    border-bottom: 1px solid #eaeaf7;
+}
+
+.palt-v2-col-header img {
+    max-height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.palt-v2-logo {
+    max-width: 94px;
+    height: auto;
+}
+
+.palt-v2-col-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* Cell */
+.palt-v2-cell {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    border-bottom: 1px solid #eaeaf7;
+}
+
+.palt-v2-cell:last-child,
+.palt-v2-labels .palt-v2-label:last-child {
+    border-bottom: none;
+}
+
+.palt-v2-cell--green, .palt-v2-cell.alt-v2-cell--green { color: #00b10d; font-weight: 500; }
+.palt-v2-cell--red, .palt-v2-cell.alt-v2-cell--red { color: #e00000; font-weight: 500; }
+.palt-v2-cell--orange, .palt-v2-cell.alt-v2-cell--orange { color: #e98400; font-weight: 500; }
+
+.palt-v2-cell--bold {
+    font-weight: 700;
+}
+
+.palt-v2-cell--sub {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Check/Cross icons */
+.palt-v2-check,
+.palt-v2-cross {
+    width: 20px;
+    height: 20px;
+}
+
+/* Dots */
+.palt-v2-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.palt-v2-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d3d3d3;
+    transition: background 0.3s ease, width 0.3s ease;
+}
+
+.palt-v2-dot.is-active {
+    background: #672666;
+    width: 20px;
+    border-radius: 4px;
+}
+
+/* Navigation */
+.palt-v2-nav {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 16px 0;
+    width: 100%;
+}
+
+.palt-v2-nav-arrow {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.palt-v2-nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.palt-v2-nav-arrow svg {
+    width: 40px;
+    height: 40px;
+}
+
+.palt-v2-nav-arrow--prev svg {
+    transform: rotate(180deg);
+}
+
+/* CTA */
+.palt-v2-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.palt-v2-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 24px;
+    background: #672666;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.palt-v2-guarantee {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 1;
+    color: #141414;
+}
+
+.palt-v2-guarantee svg {
+    width: 14px;
+    height: 11px;
+    flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .palt-v2-container {
+        padding: 40px 0;
+        gap: 24px;
+    }
+    .palt-v2-heading {
+        font-size: 24px;
+        padding: 0 16px;
+    }
+    .palt-v2-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 16px;
+    }
+    .palt-v2-section {
+        overflow-x: clip;
+    }
+    .palt-v2-table {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .palt-v2-table::-webkit-scrollbar {
+        display: none;
+    }
+    .palt-v2-nav {
+        display: flex;
+    }
+    .palt-v2-nav .palt-v2-dots {
+        display: flex;
+    }
+    .palt-v2-labels {
+        min-width: 130px;
+        max-width: 130px;
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 3;
+        padding-right: 10px;
+    }
+    .palt-v2-labels::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -20px;
+        bottom: 0;
+        width: 20px;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+        z-index: 4;
+        pointer-events: none;
+    }
+    .palt-v2-col {
+        min-width: 150px;
+    }
+    .palt-v2-label {
+        font-size: 14px;
+    }
+    .palt-v2-cta {
+        padding: 0 16px;
+        max-width: 100%;
+    }
+}
+</style>
+
+{% if product.metafields.custom.show_comparison_section %}
+
+<div class="palt-v2-container">
+    <div class="palt-v2-heading">{{ section.settings.heading }}</div>
+
+    <div class="palt-v2-table">
+        {%- comment -%} Labels column {%- endcomment -%}
+        <div class="palt-v2-labels">
+            <div class="palt-v2-label-header"></div>
+            {% for block in section.blocks %}
+                {% if block.type == 'row' %}
+                    <div class="palt-v2-label">{{ block.settings.label }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {%- comment -%} Rejuvia column (highlighted) {%- endcomment -%}
+        <div class="palt-v2-col palt-v2-col--highlight">
+            <div class="palt-v2-col-header">
+                {% if section.settings.rejuvia_image != blank %}
+                    <img src="{{ section.settings.rejuvia_image | image_url: width: 100 }}" alt="Rejuvia" loading="lazy">
+                {% endif %}
+                {% if section.settings.rejuvia_logo != blank %}
+                    <img class="palt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy">
+                {% endif %}
+            </div>
+            {% for block in section.blocks %}
+                {% if block.type == 'row' %}
+                    <div class="palt-v2-cell {{ block.settings.rejuvia_color }}{% if block.settings.rejuvia_bold %} palt-v2-cell--bold{% endif %}">
+                        {% if block.settings.rejuvia_value == 'check' %}
+                            <svg class="palt-v2-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="10" fill="#672666"/>
+                                <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        {% elsif block.settings.rejuvia_value == 'cross' %}
+                            <svg class="palt-v2-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="10" fill="#d3d3d3"/>
+                                <path d="M7 7L13 13M13 7L7 13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        {% else %}
+                            <span>{{ block.settings.rejuvia_value }}{% if block.settings.rejuvia_sub != blank %}<br><span class="palt-v2-cell--sub">{{ block.settings.rejuvia_sub }}</span>{% endif %}</span>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {%- comment -%} Competitor columns {%- endcomment -%}
+        {% for block in section.blocks %}
+            {% if block.type == 'competitor' %}
+                <div class="palt-v2-col" {{ block.shopify_attributes }}>
+                    <div class="palt-v2-col-header">
+                        {% if block.settings.image != blank %}
+                            <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.name }}" loading="lazy">
+                        {% endif %}
+                        <span class="palt-v2-col-name">{{ block.settings.name }}</span>
+                    </div>
+                    {% assign values = block.settings.values | split: '|' %}
+                    {% assign colors = block.settings.colors | split: '|' %}
+                    {% assign subs = block.settings.subs | split: '|' %}
+                    {% for value in values %}
+                        {% assign color_class = colors[forloop.index0] | default: '' %}
+                        <div class="palt-v2-cell {{ color_class }}">
+                            {% assign trimmed = value | strip %}
+                            {% if trimmed == 'check' %}
+                                <svg class="palt-v2-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#672666"/>
+                                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            {% elsif trimmed == 'cross' %}
+                                <svg class="palt-v2-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#d3d3d3"/>
+                                    <path d="M7 7L13 13M13 7L7 13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            {% else %}
+                                <span>{{ trimmed }}{% assign sub = subs[forloop.index0] | strip %}{% if sub != blank and sub != '' %}<br><span class="palt-v2-cell--sub">{{ sub }}</span>{% endif %}</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {%- comment -%} Navigation: arrows + dots {%- endcomment -%}
+    {% assign competitor_count = 0 %}
+    {% for block in section.blocks %}
+        {% if block.type == 'competitor' %}
+            {% assign competitor_count = competitor_count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+    <div class="palt-v2-nav" data-palt-v2-nav>
+        <button class="palt-v2-nav-arrow palt-v2-nav-arrow--prev" data-palt-v2-prev disabled aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16.667" fill="white" filter="drop-shadow(0px 3px 16px rgba(0,0,0,0.06))"/>
+                <path d="M20 26.667L26.667 20L20 13.333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.333 20H26.667" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="palt-v2-dots" data-palt-v2-dots>
+            {% for i in (1..competitor_count) %}
+                <div class="palt-v2-dot{% if forloop.first %} is-active{% endif %}"></div>
+            {% endfor %}
+        </div>
+        <button class="palt-v2-nav-arrow" data-palt-v2-next aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16.667" fill="white" filter="drop-shadow(0px 3px 16px rgba(0,0,0,0.06))"/>
+                <path d="M20 26.667L26.667 20L20 13.333" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.333 20H26.667" stroke="#672666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
+    {%- comment -%} CTA - hidden on product template {%- endcomment -%}
+    {% if section.settings.btn_text != blank and template.name != 'product' %}
+        <div class="palt-v2-cta">
+            <a class="palt-v2-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+            {% if section.settings.guarantee_text != blank %}
+                <div class="palt-v2-guarantee">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+                        <path d="M11.6558 0.765634C11.8759 0.556086 12.1688 0.440239 12.4727 0.442538C12.7766 0.444838 13.0677 0.565104 13.2846 0.777959C13.5015 0.990814 13.6273 1.27961 13.6353 1.58341C13.6433 1.8872 13.533 2.18224 13.3277 2.40626L7.0933 10.2031C6.98609 10.3186 6.85671 10.4113 6.71288 10.4756C6.56904 10.5399 6.41372 10.5746 6.25619 10.5775C6.09866 10.5804 5.94215 10.5515 5.79604 10.4926C5.64992 10.4336 5.5172 10.3458 5.40579 10.2344L1.27142 6.10001C1.15628 5.99272 1.06394 5.86335 0.999887 5.7196C0.935837 5.57585 0.901396 5.42067 0.89862 5.26333C0.895844 5.10598 0.924789 4.94968 0.983728 4.80376C1.04267 4.65784 1.13039 4.52529 1.24167 4.41401C1.35295 4.30273 1.4855 4.21501 1.63142 4.15607C1.77734 4.09713 1.93364 4.06818 2.09099 4.07096C2.24833 4.07374 2.40351 4.10818 2.54726 4.17223C2.69101 4.23628 2.82038 4.32862 2.92767 4.44376L6.19954 7.71407L11.6261 0.80001L11.6558 0.765634Z" fill="#FAB851"/>
+                    </svg>
+                    <span>{{ section.settings.guarantee_text }}</span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+{% endif %}
+
+<script>
+(function() {
+    var section = document.querySelector('.palt-v2-section');
+    if (!section) return;
+
+    var table = section.querySelector('.palt-v2-table');
+    var dots = section.querySelectorAll('.palt-v2-dot');
+    var cols = section.querySelectorAll('.palt-v2-col:not(.palt-v2-col--highlight)');
+    if (!table || cols.length === 0) return;
+
+    var currentIndex = 0;
+    var prevBtn = section.querySelector('[data-palt-v2-prev]');
+    var nextBtn = section.querySelector('[data-palt-v2-next]');
+    var counter = section.querySelector('[data-palt-v2-counter]');
+    var total = cols.length;
+
+    function updateNav() {
+        if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= total - 1;
+        if (counter) counter.textContent = (currentIndex + 1) + ' / ' + total;
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('is-active', i === currentIndex);
+        });
+    }
+
+    function scrollToIndex(index) {
+        if (index < 0 || index >= total) return;
+        currentIndex = index;
+        var col = cols[currentIndex];
+        var labelsWidth = section.querySelector('.palt-v2-labels').offsetWidth;
+        var scrollTarget = col.offsetLeft - labelsWidth - 16;
+        table.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+        updateNav();
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            scrollToIndex(currentIndex - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            scrollToIndex(currentIndex + 1);
+        });
+    }
+
+    table.addEventListener('scroll', function() {
+        var labelsWidth = section.querySelector('.palt-v2-labels').offsetWidth;
+        var scrollLeft = table.scrollLeft + labelsWidth + 16;
+        var closest = 0;
+        var minDist = Infinity;
+        cols.forEach(function(col, i) {
+            var dist = Math.abs(col.offsetLeft - scrollLeft);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = i;
+            }
+        });
+        currentIndex = closest;
+        updateNav();
+    });
+
+    updateNav();
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Product Alternatives V2",
+    "class": "palt-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>The <em>most effective</em> alternative to sleep aids</p>"
+        },
+        {
+            "type": "header",
+            "content": "Rejuvia column"
+        },
+        {
+            "type": "image_picker",
+            "id": "rejuvia_image",
+            "label": "Rejuvia product image"
+        },
+        {
+            "type": "image_picker",
+            "id": "rejuvia_logo",
+            "label": "Rejuvia logo (SVG)"
+        },
+        {
+            "type": "header",
+            "content": "CTA"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "Try Rejuvia Risk-Free"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button link"
+        },
+        {
+            "type": "text",
+            "id": "guarantee_text",
+            "label": "Guarantee text",
+            "default": "90-Day Risk-Free Money-Back Guarantee"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "row",
+            "name": "Comparison Row",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Feature label",
+                    "default": "Fast-absorbing formula"
+                },
+                {
+                    "type": "text",
+                    "id": "rejuvia_value",
+                    "label": "Rejuvia value (text, 'check', or 'cross')",
+                    "default": "check"
+                },
+                {
+                    "type": "text",
+                    "id": "rejuvia_sub",
+                    "label": "Rejuvia sub-text"
+                },
+                {
+                    "type": "select",
+                    "id": "rejuvia_color",
+                    "label": "Rejuvia color",
+                    "options": [
+                        { "value": "", "label": "Default" },
+                        { "value": "palt-v2-cell--green", "label": "Green" },
+                        { "value": "palt-v2-cell--red", "label": "Red" },
+                        { "value": "palt-v2-cell--orange", "label": "Orange" }
+                    ],
+                    "default": ""
+                },
+                {
+                    "type": "checkbox",
+                    "id": "rejuvia_bold",
+                    "label": "Rejuvia bold",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "type": "competitor",
+            "name": "Competitor",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Name",
+                    "default": "Sleep Pills"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Product image"
+                },
+                {
+                    "type": "textarea",
+                    "id": "values",
+                    "label": "Values (separated by |)",
+                    "default": "Slow|$3.00/night|cross|cross|cross|cross|cross",
+                    "info": "Use 'check', 'cross', or text. Separate with |"
+                },
+                {
+                    "type": "textarea",
+                    "id": "colors",
+                    "label": "Colors (separated by |)",
+                    "default": "||palt-v2-cell--red||||",
+                    "info": "palt-v2-cell--green, palt-v2-cell--red, palt-v2-cell--orange"
+                },
+                {
+                    "type": "textarea",
+                    "id": "subs",
+                    "label": "Sub-texts (separated by |)",
+                    "default": "(up to 90 minutes)||||||",
+                    "info": "Italic sub-text under main value"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Alternatives V2",
+            "category": "Custom",
+            "blocks": [
+                { "type": "row", "settings": { "label": "Fast-absorbing formula", "rejuvia_value": "Rapid", "rejuvia_sub": "(5-10 minutes)", "rejuvia_bold": true } },
+                { "type": "row", "settings": { "label": "Low price per use", "rejuvia_value": "$0.89/night", "rejuvia_color": "palt-v2-cell--green" } },
+                { "type": "row", "settings": { "label": "Proven natural ingredients", "rejuvia_value": "check" } },
+                { "type": "row", "settings": { "label": "Non-habit forming", "rejuvia_value": "check" } },
+                { "type": "row", "settings": { "label": "No groggy mornings", "rejuvia_value": "check" } },
+                { "type": "row", "settings": { "label": "Tastes great", "rejuvia_value": "check" } },
+                { "type": "row", "settings": { "label": "Free from additives & fillers", "rejuvia_value": "check" } },
+                { "type": "competitor", "settings": { "name": "Sleep Pills", "values": "Slow|$3.00/night|cross|cross|cross|cross|cross", "colors": "|palt-v2-cell--red|||||", "subs": "(up to 90 minutes)||||||" } },
+                { "type": "competitor", "settings": { "name": "Sleep Gummies", "values": "Slow|$1.83/night|check|check|cross|cross|cross", "colors": "|palt-v2-cell--orange|||||", "subs": "(up to 90 minutes)||||||" } },
+                { "type": "competitor", "settings": { "name": "Melatonin Supplements", "values": "Slow|$0.93/night|check|cross|cross|cross|cross", "colors": "|palt-v2-cell--orange|||||", "subs": "(up to 90 minutes)||||||" } }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,351 @@
+{% style %}
+.hero-ingredients-v2-section {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+    overflow-x: clip;
+}
+
+.hero-ingredients-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* --- Copy --- */
+.hero-ingredients-v2-copy {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.hero-ingredients-v2-heading {
+    width: 100%;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 36px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    letter-spacing: 0 !important;
+    color: #141414;
+    text-transform: capitalize;
+}
+
+.hero-ingredients-v2-heading p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-transform: inherit;
+}
+
+.hero-ingredients-v2-heading em,
+.hero-ingredients-v2-heading .accent {
+    color: {{ section.settings.accent_color }};
+    font-style: normal;
+}
+
+.hero-ingredients-v2-description {
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+/* --- Links --- */
+.hero-ingredients-v2-links-wrap {
+    width: 100%;
+}
+
+.hero-ingredients-v2-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.hero-ingredients-v2-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #141414;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 80px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-ingredients-v2-link:hover,
+.hero-ingredients-v2-link.is-active {
+    background-color: #ffffff;
+    color: {{ section.settings.accent_color }};
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Image --- */
+.hero-ingredients-v2-image-wrap {
+    flex: 1 1 0;
+    min-width: 0;
+    align-self: stretch;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 480px;
+}
+
+.hero-ingredients-v2-image-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 900px) {
+    .hero-ingredients-v2-container {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        padding: 0;
+        gap: 0;
+    }
+
+    .hero-ingredients-v2-image-wrap {
+        width: 100%;
+        flex: 0 0 auto;
+        min-height: 300px;
+        height: 300px;
+        border-radius: 0;
+    }
+
+    .hero-ingredients-v2-copy {
+        padding: 32px 16px;
+        gap: 16px;
+    }
+
+    .hero-ingredients-v2-heading {
+        font-size: 28px;
+    }
+
+    .hero-ingredients-v2-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Allow hero image to extend behind header pill on mobile.
+   Main has overflow:hidden which otherwise clips the pulled-up image.
+   html/body already have overflow-x:hidden so horizontal scroll is still contained. */
+@media (max-width: 900px) {
+    main.content-wrapper {
+        overflow: visible !important;
+    }
+}
+{% endstyle %}
+
+<div class="hero-ingredients-v2-container">
+    <div class="hero-ingredients-v2-copy">
+        {% if section.settings.heading != blank %}
+            <h1 class="hero-ingredients-v2-heading">{{ section.settings.heading }}</h1>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+            <div class="hero-ingredients-v2-description">{{ section.settings.description }}</div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+            <div class="hero-ingredients-v2-links-wrap">
+                <div class="hero-ingredients-v2-links">
+                    {% for block in section.blocks %}
+                        <a
+                            class="hero-ingredients-v2-link"
+                            href="{{ block.settings.href }}"
+                            {{ block.shopify_attributes }}
+                        >
+                            {{ block.settings.label }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if section.settings.image != blank %}
+        <div class="hero-ingredients-v2-image-wrap">
+            <img
+                src="{{ section.settings.image | image_url: width: 1600 }}"
+                alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html }}"
+                width="{{ section.settings.image.width }}"
+                height="{{ section.settings.image.height }}"
+                loading="eager"
+            >
+        </div>
+    {% endif %}
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.hero-ingredients-v2-section');
+    if (!section) return;
+
+    var wrap = section.querySelector('.hero-ingredients-v2-links-wrap');
+    var links = section.querySelectorAll('.hero-ingredients-v2-link');
+
+    /* --- Pull hero image up behind the header pill on mobile --- */
+    var MOBILE_BREAKPOINT = 900;
+
+    function pullBehindHeaderPill() {
+        section.style.marginTop = '';
+        if (window.innerWidth > MOBILE_BREAKPOINT) return;
+        var headerEl = document.querySelector('#page > header, header[role="banner"]');
+        if (!headerEl) return;
+        var headerHeight = headerEl.getBoundingClientRect().height;
+        if (headerHeight > 0) {
+            section.style.marginTop = '-' + headerHeight + 'px';
+        }
+    }
+
+    pullBehindHeaderPill();
+    if (document.readyState !== 'complete') {
+        window.addEventListener('load', pullBehindHeaderPill);
+    }
+    window.addEventListener('resize', pullBehindHeaderPill);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(pullBehindHeaderPill);
+    }
+
+    if (links.length === 0) return;
+
+    /* --- Smooth scroll + active state --- */
+    links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var href = link.getAttribute('href') || '';
+            if (href.charAt(0) !== '#' || href.length < 2) return;
+            var target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            var top = target.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+            links.forEach(function(l) { l.classList.remove('is-active'); });
+            link.classList.add('is-active');
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Hero Ingredients V2",
+    "class": "hero-ingredients-v2-section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#672666"
+        },
+        {
+            "type": "header",
+            "content": "Copy"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Premium, All-Natural Sleep Ingredients</p>"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Our innovative oral sleep spray combines 13+ all-natural, science-backed sleep ingredients for quicker absorption, higher bioavailability, and customizable dosing."
+        },
+        {
+            "type": "header",
+            "content": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Hero image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "description_block",
+            "name": "Anchor link",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default": "The Science"
+                },
+                {
+                    "type": "text",
+                    "id": "href",
+                    "label": "Anchor (e.g. #section-id)",
+                    "default": "#science-ingredients"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Ingredients V2",
+            "category": "Custom",
+            "blocks": [
+                {
+                    "type": "description_block",
+                    "settings": {
+                        "label": "The Science",
+                        "href": "#science-ingredients"
+                    }
+                },
+                {
+                    "type": "description_block",
+                    "settings": {
+                        "label": "Our Ingredients",
+                        "href": "#ingredients-benefits"
+                    }
+                },
+                {
+                    "type": "description_block",
+                    "settings": {
+                        "label": "Why Oral Spray?",
+                        "href": "#ingredients-oral-sprays"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

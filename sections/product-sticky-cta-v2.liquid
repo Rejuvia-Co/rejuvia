@@ -1,0 +1,243 @@
+<style>
+.psc-v2-section {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    padding: 16px 12px 0;
+}
+
+.psc-v2-section.is-visible {
+    transform: translateY(0);
+}
+
+.psc-v2-bar {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.12);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    pointer-events: auto;
+    gap: 16px;
+}
+
+.psc-v2-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.psc-v2-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.psc-v2-variant {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #606060;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.psc-v2-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    padding: 24px 32px !important;
+    background-color: var(--base-colour, #672666) !important;
+    background-image: none !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    font-family: inherit !important;
+    line-height: 0.7 !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none !important;
+    border-radius: 100px !important;
+    cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+.psc-v2-btn:hover {
+    opacity: 0.9;
+}
+
+.psc-v2-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .psc-v2-section {
+        padding: 12px 12px 0;
+    }
+    .psc-v2-bar {
+        padding: 12px 16px;
+        gap: 12px;
+    }
+    .psc-v2-title,
+    .psc-v2-variant {
+        font-size: 14px;
+    }
+    .psc-v2-btn {
+        min-width: auto;
+        padding: 16px 24px !important;
+        font-size: 14px !important;
+    }
+}
+</style>
+
+{% assign base_colour = product.metafields.custom.base_colour %}
+
+<div class="psc-v2-section"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %} data-psc-v2>
+    <div class="psc-v2-bar">
+        <div class="psc-v2-info">
+            <p class="psc-v2-title">{{ product.title }}</p>
+            <p class="psc-v2-variant" data-psc-v2-variant>
+                {{ product.selected_or_first_available_variant.title }}
+            </p>
+        </div>
+        <button type="button" class="psc-v2-btn" data-psc-v2-btn>
+            <span data-psc-v2-btn-text>Add to cart – <span data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money }}</span></span>
+        </button>
+    </div>
+</div>
+
+<script>
+(function() {
+    var sticky = document.querySelector('[data-psc-v2]');
+    if (!sticky) return;
+
+    var triggerSelector = '{{ section.settings.trigger_selector | default: ".product-widget-container .block-buy-buttons" }}';
+    var trigger = document.querySelector(triggerSelector);
+
+    /* Hide on scroll up, show on scroll down — so the sticky bar and the main
+       header never stack at the same time. */
+    var lastY = window.scrollY;
+    var MIN_DELTA = 4;
+
+    function eligible() {
+        if (!trigger) return true;
+        var rect = trigger.getBoundingClientRect();
+        var buyBoxBelow = rect.top > window.innerHeight;
+        var buyBoxPassed = rect.bottom < 0;
+
+        var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
+        var footerVisible = false;
+        if (footer) {
+            var footerRect = footer.getBoundingClientRect();
+            footerVisible = footerRect.top < window.innerHeight;
+        }
+
+        return (buyBoxBelow || buyBoxPassed) && !footerVisible;
+    }
+
+    function check() {
+        var y = window.scrollY;
+        var delta = y - lastY;
+        lastY = y;
+
+        if (!eligible()) {
+            sticky.classList.remove('is-visible');
+            return;
+        }
+
+        if (delta > MIN_DELTA) {
+            sticky.classList.add('is-visible');
+        } else if (delta < -MIN_DELTA) {
+            sticky.classList.remove('is-visible');
+        }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    check();
+
+    /* Sync variant name from product widget variant selector */
+    var variantEl = sticky.querySelector('[data-psc-v2-variant]');
+    var priceEl = sticky.querySelector('[data-psc-v2-price]');
+
+    document.addEventListener('variant:changed', function(e) {
+        if (variantEl && e.detail.title) {
+            variantEl.textContent = e.detail.title;
+        }
+        if (priceEl && e.detail.price) {
+            priceEl.textContent = '$' + (e.detail.price / 100).toFixed(2).replace('.00', '');
+        }
+    });
+
+    /* Skio price updates via .skio-update-price class */
+    var priceObserver = document.querySelector('.variant-price-display.skio-update-price');
+    if (priceObserver && priceEl) {
+        var mutationObserver = new MutationObserver(function() {
+            priceEl.textContent = priceObserver.textContent;
+        });
+        mutationObserver.observe(priceObserver, { childList: true, characterData: true, subtree: true });
+    }
+
+    /* ATC button - trigger click on main product form submit button */
+    var btn = sticky.querySelector('[data-psc-v2-btn]');
+    if (btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var mainBtn = document.querySelector('.product-widget-container .add-to-cart-form button[type="submit"]')
+                       || document.querySelector('.add-to-cart-form button.btn');
+            if (mainBtn) {
+                mainBtn.click();
+            }
+        });
+    }
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Product Sticky CTA V2",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "Sticky CTA appears after scrolling past the buy box. Uses the product's base_colour metafield. ATC button triggers the main product form's add-to-cart button."
+        },
+        {
+            "type": "text",
+            "id": "trigger_selector",
+            "label": "Trigger CSS selector",
+            "default": ".product-widget-container .block-buy-buttons",
+            "info": "Element to watch — sticky CTA appears when this is off-screen"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Sticky CTA V2"
+        }
+    ]
+}
+{% endschema %}

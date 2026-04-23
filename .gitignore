@@ -3,5 +3,8 @@
 claude.md
 CLAUDE.md
 
+# Playwright MCP
+.playwright-mcp/
+
 # All markdown files
 *.md

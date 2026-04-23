@@ -1,0 +1,444 @@
+{% style %}
+.science-v2-section {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+}
+
+.science-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ---------------- Accordion ---------------- */
+.science-v2-list {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.science-v2-item {
+    background: #fff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.science-v2-question {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+}
+
+.science-v2-question-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    text-transform: capitalize;
+}
+
+.science-v2-item.is-active .science-v2-question-text {
+    font-weight: 700;
+}
+
+.science-v2-question-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #141414;
+}
+
+.science-v2-item.is-active .science-v2-icon-plus { display: none; }
+.science-v2-item:not(.is-active) .science-v2-icon-minus { display: none; }
+
+.science-v2-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.science-v2-item.is-active .science-v2-answer {
+    max-height: 600px;
+}
+
+.science-v2-answer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 24px 24px;
+}
+
+.science-v2-answer-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.science-v2-answer-text p { margin: 0 0 1em; }
+.science-v2-answer-text p:last-child { margin-bottom: 0; }
+
+.science-v2-divider {
+    height: 1px;
+    background: rgba(20, 20, 20, 0.1);
+    width: 100%;
+}
+
+.science-v2-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: {{ section.settings.badge_bg_color }};
+    color: {{ section.settings.badge_text_color }};
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    align-self: flex-start;
+    white-space: nowrap;
+}
+
+/* ---------------- Quote card ---------------- */
+.science-v2-quote {
+    flex: 1 1 0;
+    min-width: 0;
+    background: {{ section.settings.quote_bg_color }};
+    border-radius: 10px;
+    padding: 32px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.science-v2-quote-text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #171512;
+    margin: 0;
+}
+
+.science-v2-quote-text p { margin: 0; font: inherit; color: inherit; }
+
+.science-v2-quote-text em,
+.science-v2-quote-text strong {
+    color: {{ section.settings.accent_color }};
+    font-style: normal;
+    font-weight: 700;
+}
+
+.science-v2-quote-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 244px;
+    max-width: 100%;
+}
+
+.science-v2-quote-signature {
+    height: 60px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+}
+
+.science-v2-quote-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #141414;
+    text-transform: uppercase;
+}
+
+.science-v2-quote-name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+}
+
+.science-v2-quote-title {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-left: 12px;
+}
+
+/* ---------------- Mobile ---------------- */
+@media (max-width: 900px) {
+    .science-v2-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 16px 40px;
+        gap: 24px;
+    }
+
+    .science-v2-quote {
+        order: 1;
+        height: auto;
+        padding: 24px;
+        gap: 32px;
+    }
+
+    .science-v2-list { order: 2; }
+
+    .science-v2-quote-text { font-size: 18px; line-height: 1.4; }
+
+    .science-v2-quote-signature { height: 40px; }
+
+    .science-v2-answer-inner { padding: 0 24px 24px; }
+}
+{% endstyle %}
+
+<div class="science-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+    <div class="science-v2-list">
+        {% for block in section.blocks %}
+            <div class="science-v2-item{% if block.settings.open_by_default %} is-active{% endif %}" data-science-v2-item {{ block.shopify_attributes }}>
+                <button class="science-v2-question" type="button" aria-expanded="{% if block.settings.open_by_default %}true{% else %}false{% endif %}">
+                    <span class="science-v2-question-text">{{ block.settings.title }}</span>
+                    <svg class="science-v2-question-icon science-v2-icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="science-v2-question-icon science-v2-icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                {% if block.settings.description != blank or block.settings.badge_text != blank %}
+                    <div class="science-v2-answer">
+                        <div class="science-v2-answer-inner">
+                            {% if block.settings.description != blank %}
+                                <div class="science-v2-answer-text">{{ block.settings.description }}</div>
+                            {% endif %}
+                            {% if block.settings.badge_text != blank %}
+                                <div class="science-v2-divider"></div>
+                                <span class="science-v2-badge">{{ block.settings.badge_text }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="science-v2-quote">
+        {% if section.settings.quote != blank %}
+            <div class="science-v2-quote-text">{{ section.settings.quote }}</div>
+        {% endif %}
+        <div class="science-v2-quote-footer">
+            {% if section.settings.signature_image != blank %}
+                <img class="science-v2-quote-signature"
+                     src="{{ section.settings.signature_image | image_url: width: 400 }}"
+                     alt="{{ section.settings.author_name | default: 'Signature' }}"
+                     loading="lazy">
+            {% endif %}
+            {% if section.settings.author_name != blank or section.settings.author_title != blank %}
+                <div class="science-v2-quote-author">
+                    {% if section.settings.author_name != blank %}
+                        <span class="science-v2-quote-name">{{ section.settings.author_name }}</span>
+                    {% endif %}
+                    {% if section.settings.author_title != blank %}
+                        <span class="science-v2-quote-title">{{ section.settings.author_title }}</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var section = document.querySelector('.science-v2-section');
+    if (!section) return;
+    var items = section.querySelectorAll('[data-science-v2-item]');
+    items.forEach(function(item) {
+        var btn = item.querySelector('.science-v2-question');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            var isOpen = item.classList.contains('is-active');
+            items.forEach(function(other) {
+                other.classList.remove('is-active');
+                var b = other.querySelector('.science-v2-question');
+                if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('is-active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+    "name": "Science V2",
+    "class": "science-v2-section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links (e.g. science-ingredients \u2192 #science-ingredients)."
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#672666"
+        },
+        {
+            "type": "header",
+            "content": "Badge pill"
+        },
+        {
+            "type": "color",
+            "id": "badge_bg_color",
+            "label": "Badge background",
+            "default": "#EAEAF7"
+        },
+        {
+            "type": "color",
+            "id": "badge_text_color",
+            "label": "Badge text color",
+            "default": "#672666"
+        },
+        {
+            "type": "header",
+            "content": "Quote card"
+        },
+        {
+            "type": "color",
+            "id": "quote_bg_color",
+            "label": "Quote card background",
+            "default": "#F5F5FB"
+        },
+        {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Quote",
+            "default": "<p>\u201C<strong>We\u2019ve meticulously formulated</strong> our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.\u201D</p>",
+            "info": "Wrap the accent phrase in <strong> (or <em>) for the purple highlight."
+        },
+        {
+            "type": "image_picker",
+            "id": "signature_image",
+            "label": "Signature image"
+        },
+        {
+            "type": "text",
+            "id": "author_name",
+            "label": "Author name",
+            "default": "\u2013 RC Williams"
+        },
+        {
+            "type": "text",
+            "id": "author_title",
+            "label": "Author title",
+            "default": "Founder"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "Accordion item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Triple lab-tested, every batch"
+                },
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "Description"
+                },
+                {
+                    "type": "text",
+                    "id": "badge_text",
+                    "label": "Badge label",
+                    "info": "Optional pill badge shown below the description."
+                },
+                {
+                    "type": "checkbox",
+                    "id": "open_by_default",
+                    "label": "Open by default",
+                    "default": false
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Science V2",
+            "category": "Custom",
+            "blocks": [
+                {
+                    "type": "item",
+                    "settings": {
+                        "title": "Triple lab-tested, every batch",
+                        "description": "<p>We don't test once and call it done. Every batch of every product is independently tested three times \u2013 for purity, potency, and contaminants.</p>",
+                        "badge_text": "Independently Tested",
+                        "open_by_default": true
+                    }
+                },
+                {
+                    "type": "item",
+                    "settings": {
+                        "title": "Formulated with doctors and researchers"
+                    }
+                },
+                {
+                    "type": "item",
+                    "settings": {
+                        "title": "Clean ingredients, nothing hidden"
+                    }
+                },
+                {
+                    "type": "item",
+                    "settings": {
+                        "title": "Innovative Delivery Method"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -503,19 +503,43 @@ function setupDropdownMenus() {
   // Mega dropdown
   const trigger = document.querySelector('.has-dropdown--mega');
   const menu = document.querySelector('.menu-desktop');
+  const headerContainer = trigger ? trigger.closest('.container') || trigger.closest('#header') : null;
 
-  if (trigger && menu) {
-    trigger.addEventListener('mouseenter', () => {
+  if (trigger && menu && headerContainer) {
+    var closeTimer = null;
+
+    // Create invisible bridge between nav link and mega menu
+    var bridge = document.createElement('div');
+    bridge.style.cssText = 'position:absolute;left:0;right:0;height:30px;bottom:0;transform:translateY(100%);z-index:1;';
+    headerContainer.style.position = 'relative';
+    headerContainer.appendChild(bridge);
+    bridge.style.display = 'none';
+
+    function openMegaMenu() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
       menu.classList.add('open');
       trigger.classList.add('open');
-    });
+      bridge.style.display = 'block';
+    }
 
-    document.addEventListener('mousemove', (e) => {
-      if (!menu.contains(e.target) && !trigger.contains(e.target)) {
-        menu.classList.remove('open');
-        trigger.classList.remove('open');
-      }
-    });
+    function closeMegaMenu() {
+      menu.classList.remove('open');
+      trigger.classList.remove('open');
+      bridge.style.display = 'none';
+    }
+
+    function scheduleClose() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(closeMegaMenu, 300);
+    }
+
+    trigger.addEventListener('mouseenter', openMegaMenu);
+    menu.addEventListener('mouseenter', openMegaMenu);
+    bridge.addEventListener('mouseenter', openMegaMenu);
+
+    trigger.addEventListener('mouseleave', scheduleClose);
+    menu.addEventListener('mouseleave', scheduleClose);
+    bridge.addEventListener('mouseleave', scheduleClose);
   }
 
   // Keyboard navigation for dropdowns

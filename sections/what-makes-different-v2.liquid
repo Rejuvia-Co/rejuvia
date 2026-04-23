@@ -1,0 +1,304 @@
+<style>
+.wmd-v2-section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.wmd-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Image */
+.wmd-v2-image {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wmd-v2-image-glow {
+    position: absolute;
+    width: 345px;
+    height: 346px;
+    border-radius: 210px;
+    background: linear-gradient(180deg, #F2F1FB 0%, #D5D9F5 100%);
+    filter: blur(50px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wmd-v2-image-bg {
+    position: absolute;
+    width: 380px;
+    height: 395px;
+    background-image: url({{ 'pi-v2-dotted-circle.svg' | asset_url }});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wmd-v2-image img {
+    position: relative;
+    z-index: 1;
+    max-height: 600px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Copy */
+.wmd-v2-copy {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.wmd-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.wmd-v2-heading p {
+    margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.wmd-v2-heading em {
+    color: #672666; font-style: normal; text-decoration: underline;
+}
+
+.wmd-v2-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+/* Info card */
+.wmd-v2-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.wmd-v2-card-header {
+    background: #eaeaf7;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #672666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 10px 10px 0 0;
+}
+
+.wmd-v2-card-body {
+    padding: 24px 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+.wmd-v2-card-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.wmd-v2-card-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.wmd-v2-card-text strong {
+    font-weight: 700;
+}
+
+.wmd-v2-card-text p {
+    margin: 0 0 1em;
+}
+
+.wmd-v2-card-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Mobile heading */
+.wmd-v2-heading-mobile {
+    display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .wmd-v2-container {
+        gap: 40px;
+        padding: 40px 32px;
+    }
+    .wmd-v2-heading { font-size: 26px; }
+}
+
+@media (max-width: 900px) {
+    .wmd-v2-container {
+        flex-direction: column;
+        padding: 40px 16px;
+        gap: 24px;
+    }
+    .wmd-v2-heading-mobile {
+        display: block;
+        font-size: 24px;
+        font-weight: 500 !important;
+        line-height: 1.4;
+        color: #141414;
+        letter-spacing: 0 !important;
+        margin: 0;
+        width: 100%;
+    }
+    .wmd-v2-heading-mobile p {
+        margin: 0; padding: 0; font: inherit; letter-spacing: inherit; color: inherit;
+    }
+    .wmd-v2-heading-mobile em {
+        color: #672666; font-style: normal; text-decoration: underline;
+    }
+    .wmd-v2-copy .wmd-v2-heading {
+        display: none;
+    }
+    .wmd-v2-copy {
+        display: contents;
+    }
+    .wmd-v2-heading-mobile { order: 1; }
+    .wmd-v2-subtitle { order: 2; }
+    .wmd-v2-image { order: 3; width: 100%; }
+    .wmd-v2-card { order: 4; width: 100%; }
+    .wmd-v2-image img {
+        max-height: 300px;
+    }
+    .wmd-v2-image-glow {
+        width: 210px;
+        height: 210px;
+    }
+    .wmd-v2-image-bg {
+        width: 250px;
+        height: 260px;
+    }
+    .wmd-v2-card-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+</style>
+
+<div class="wmd-v2-container">
+    {%- comment -%} Mobile heading {%- endcomment -%}
+    <div class="wmd-v2-heading-mobile">{{ section.settings.heading }}</div>
+
+    {%- comment -%} === Image === {%- endcomment -%}
+    <div class="wmd-v2-image">
+        <div class="wmd-v2-image-glow"></div>
+        <div class="wmd-v2-image-bg"></div>
+        {% if section.settings.image != blank %}
+            <img
+                src="{{ section.settings.image | image_url: width: 800 }}"
+                alt="{{ section.settings.image.alt | default: 'Product' }}"
+                loading="lazy"
+            >
+        {% endif %}
+    </div>
+
+    {%- comment -%} === Copy Block === {%- endcomment -%}
+    <div class="wmd-v2-copy">
+        <div class="wmd-v2-heading">{{ section.settings.heading }}</div>
+        <p class="wmd-v2-subtitle">{{ section.settings.subtitle }}</p>
+
+        <div class="wmd-v2-card">
+            <div class="wmd-v2-card-header">{{ section.settings.card_title }}</div>
+            <div class="wmd-v2-card-body">
+                <svg class="wmd-v2-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" fill="none">
+                    <path d="M10.4175 31.2515H24.3071" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.2085 38.1968H36.4602" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.307 38.1965C27.5303 38.1965 30.6216 36.9161 32.9008 34.6369C35.18 32.3577 36.4604 29.2664 36.4604 26.0431C36.4604 22.8198 35.18 19.7285 32.9008 17.4493C30.6216 15.1701 27.5303 13.8896 24.307 13.8896H22.5708" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.626 24.3071H19.0984" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.6257 20.8347C14.7048 20.8347 13.8216 20.4689 13.1704 19.8177C12.5192 19.1665 12.1533 18.2832 12.1533 17.3623V10.4175H22.5706V17.3623C22.5706 18.2832 22.2047 19.1665 21.5535 19.8177C20.9023 20.4689 20.0191 20.8347 19.0981 20.8347H15.6257Z" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.8345 10.417V5.20837C20.8345 4.7479 20.6516 4.30629 20.3259 3.98069C20.0003 3.65509 19.5587 3.47217 19.0983 3.47217H15.6259C15.1654 3.47217 14.7238 3.65509 14.3982 3.98069C14.0726 4.30629 13.8896 4.7479 13.8896 5.20837V10.417" stroke="#672666" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="wmd-v2-card-text">
+                    {{ section.settings.card_text }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "What Makes Different V2",
+    "class": "wmd-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>What makes Rejuvia <em>different?</em></p>"
+        },
+        {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "A fast-acting oral sleep spray with 13+ natural ingredients that absorb under your tongue in minutes."
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Product image"
+        },
+        {
+            "type": "text",
+            "id": "card_title",
+            "label": "Card title",
+            "default": "Why spraying works better"
+        },
+        {
+            "type": "richtext",
+            "id": "card_text",
+            "label": "Card text",
+            "default": "<p>The tissue under your tongue is packed with blood vessels.</p><p>When something absorbs there, it goes directly into your bloodstream, <strong>skipping the digestive process</strong> that destroys most pills and gummies.</p><p><strong>More of the active ingredients</strong> reach your body intact, and you feel it <strong>working faster.</strong></p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "card_icon",
+            "label": "Card icon (optional)"
+        }
+    ],
+    "presets": [
+        {
+            "name": "What Makes Different V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

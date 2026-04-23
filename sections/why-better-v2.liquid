@@ -1,0 +1,197 @@
+{% style %}
+.why-better-v2-section {
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+}
+
+.why-better-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Chart image */
+.why-better-v2-chart {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.why-better-v2-chart img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.why-better-v2-chart--desktop { display: block; }
+.why-better-v2-chart--mobile { display: none; }
+
+/* Copy */
+.why-better-v2-copy {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.why-better-v2-heading {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.why-better-v2-heading p { margin: 0; font: inherit; color: inherit; }
+
+.why-better-v2-heading em,
+.why-better-v2-heading u {
+    color: {{ section.settings.accent_color }};
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.why-better-v2-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+}
+
+.why-better-v2-description p { margin: 0 0 1em; }
+.why-better-v2-description p:last-child { margin-bottom: 0; }
+
+/* ===================== Mobile ===================== */
+@media (max-width: 900px) {
+    .why-better-v2-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 40px 16px;
+        gap: 32px;
+    }
+
+    .why-better-v2-copy {
+        gap: 16px;
+        order: 1;
+    }
+
+    .why-better-v2-chart {
+        order: 2;
+        width: 100%;
+    }
+
+    .why-better-v2-heading { font-size: 24px; }
+
+    .why-better-v2-chart--desktop { display: none; }
+    .why-better-v2-chart--mobile { display: block; }
+
+    /* If no mobile image is provided, keep showing the desktop one */
+    .why-better-v2-chart--only-desktop .why-better-v2-chart--desktop { display: block; }
+}
+{% endstyle %}
+
+<div class="why-better-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+    <div class="why-better-v2-chart{% if section.settings.chart_image_mobile == blank %} why-better-v2-chart--only-desktop{% endif %}">
+        {% if section.settings.chart_image != blank %}
+            <div class="why-better-v2-chart--desktop">
+                <img src="{{ section.settings.chart_image | image_url: width: 1200 }}"
+                     alt="{{ section.settings.chart_image.alt | default: 'Absorption comparison chart' }}"
+                     width="{{ section.settings.chart_image.width }}"
+                     height="{{ section.settings.chart_image.height }}"
+                     loading="lazy">
+            </div>
+        {% endif %}
+        {% if section.settings.chart_image_mobile != blank %}
+            <div class="why-better-v2-chart--mobile">
+                <img src="{{ section.settings.chart_image_mobile | image_url: width: 800 }}"
+                     alt="{{ section.settings.chart_image_mobile.alt | default: 'Absorption comparison chart' }}"
+                     width="{{ section.settings.chart_image_mobile.width }}"
+                     height="{{ section.settings.chart_image_mobile.height }}"
+                     loading="lazy">
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="why-better-v2-copy">
+        {% if section.settings.heading != blank %}
+            <div class="why-better-v2-heading">{{ section.settings.heading }}</div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+            <div class="why-better-v2-description">{{ section.settings.description }}</div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Why Better V2",
+    "class": "why-better-v2-section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID",
+            "info": "Optional. Used with hero nav links (e.g. science-ingredients \u2192 #science-ingredients)."
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#672666"
+        },
+        {
+            "type": "header",
+            "content": "Copy"
+        },
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Why is an oral spray <em>better</em>?</p>",
+            "info": "Wrap the accent word in <em> for the purple underline."
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Unlike capsules, oils, or gummies that must pass through your digestive system, our sprays are absorbed largely under your tongue.</p><p>This allows nutrients to enter your bloodstream more efficiently, leading to faster, stronger, and more consistent effects without the hassle of swallowing pills.</p>"
+        },
+        {
+            "type": "header",
+            "content": "Chart"
+        },
+        {
+            "type": "image_picker",
+            "id": "chart_image",
+            "label": "Chart image (desktop)"
+        },
+        {
+            "type": "image_picker",
+            "id": "chart_image_mobile",
+            "label": "Chart image (mobile)",
+            "info": "Optional. Falls back to the desktop image if empty."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Why Better V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,190 @@
+<style>
+.listicle-v2-section {
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.listicle-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Graph */
+.listicle-v2-graph {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.listicle-v2-graph img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Copy */
+.listicle-v2-copy {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.listicle-v2-heading {
+    font-size: 30px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #141414;
+    letter-spacing: 0 !important;
+    margin: 0;
+}
+
+.listicle-v2-heading p {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+.listicle-v2-heading em {
+    color: #672666;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.listicle-v2-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #141414;
+    margin: 0;
+}
+
+.listicle-v2-desc p {
+    margin: 0 0 1em;
+}
+
+.listicle-v2-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.listicle-v2-desc strong {
+    font-weight: 700;
+}
+
+/* Mobile heading - hidden on desktop */
+.listicle-v2-heading-mobile {
+    display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .listicle-v2-container {
+        gap: 40px;
+        padding: 40px 32px;
+    }
+    .listicle-v2-heading {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 900px) {
+    .listicle-v2-container {
+        flex-direction: column;
+        padding: 40px 16px;
+        gap: 32px;
+    }
+    .listicle-v2-heading-mobile {
+        display: block;
+        font-size: 24px;
+        font-weight: 500 !important;
+        line-height: 1.4;
+        color: #141414;
+        letter-spacing: 0 !important;
+        margin: 0;
+    }
+    .listicle-v2-heading-mobile p {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        letter-spacing: inherit;
+        color: inherit;
+    }
+    .listicle-v2-heading-mobile em {
+        color: #672666;
+        font-style: normal;
+        text-decoration: underline;
+    }
+    .listicle-v2-copy .listicle-v2-heading {
+        display: none;
+    }
+    .listicle-v2-graph {
+        width: 343px;
+        max-width: 100%;
+    }
+}
+</style>
+
+<div class="listicle-v2-container">
+    {%- comment -%} Mobile heading (above graph) {%- endcomment -%}
+    <div class="listicle-v2-heading-mobile">{{ section.settings.heading }}</div>
+
+    {%- comment -%} === Graph === {%- endcomment -%}
+    <div class="listicle-v2-graph">
+        {% if section.settings.graph_image != blank %}
+            <img
+                src="{{ section.settings.graph_image | image_url: width: 1200 }}"
+                alt="Absorption comparison chart"
+                width="600"
+                height="500"
+                loading="lazy"
+            >
+        {% endif %}
+    </div>
+
+    {%- comment -%} === Copy Block === {%- endcomment -%}
+    <div class="listicle-v2-copy">
+        <div class="listicle-v2-heading">{{ section.settings.heading }}</div>
+        <div class="listicle-v2-desc">{{ section.settings.description }}</div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Listicle V2",
+    "class": "listicle-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>The real issue was never what you took, it was <em>how your body absorbed it</em></p>"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "graph_image",
+            "label": "Graph image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Listicle V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

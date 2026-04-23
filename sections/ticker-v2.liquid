@@ -1,0 +1,73 @@
+<style>
+.ticker-v2-section {
+    width: 100%;
+    background: linear-gradient(84deg, #d2d7f4 2.6%, #f9f2ff 14.6%, #eaeaf7 46.9%, #f9f2ff 78.1%, #d2d7f4 94.3%);
+}
+
+.ticker-v2-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 64px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #672666;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ticker-v2-text {
+    white-space: nowrap;
+}
+
+.ticker-v2-text p {
+    margin: 0;
+    padding: 0;
+}
+
+.ticker-v2-text strong {
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .ticker-v2-container {
+        padding: 20px 16px;
+        font-size: 14px;
+    }
+    .ticker-v2-text {
+        white-space: normal;
+    }
+    .ticker-v2-text strong {
+        display: block;
+    }
+}
+</style>
+
+<div class="ticker-v2-container">
+    <span class="ticker-v2-text">{{ section.settings.text }}</span>
+</div>
+
+{% schema %}
+{
+    "name": "Ticker V2",
+    "class": "ticker-v2-section",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p><strong>LIMITED TIME OFFER:</strong> FREE Vitamin D3+K2 Spray When You Subscribe</p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Ticker V2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

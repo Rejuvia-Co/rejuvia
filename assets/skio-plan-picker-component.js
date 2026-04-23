@@ -71,18 +71,21 @@ export class SkioPlanPicker extends LitElement {
       .group-container {
         display: block;
         position: relative;
-        transition: border-color 0.2s ease;
+        transition: all 0.2s ease;
         border: var(--skio-group-border-width, 1px) solid var(--skio-group-border-color, #ccc);
         border-radius: var(--skio-group-border-radius, 0);
         background-color: var(--skio-group-background-color, transparent);
         color: var(--skio-group-text-color, #000);
+        opacity: 0.6;
       }
-      
+
       .group-container--selected {
-        border-color: var(--skio-group-border-selected-color, #333);
+        border-color: var(--base-colour, #672666);
         border-width: var(--skio-group-border-selected-width, 1.5px);
         background-color: var(--skio-group-background-selected-color, transparent);
         color: var(--skio-group-text-selected-color, #000);
+        opacity: 1;
+        box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
       }
       .group-container--last {
         order: 1;
@@ -128,7 +131,7 @@ export class SkioPlanPicker extends LitElement {
         color: rgb(229 221 228);
       }
       .group-container--selected .skio-radio__container {
-        color: var(--skio-group-border-selected-color, #333);
+        color: var(--base-colour, #672666);
       }
       .skio-plan-picker.bundle-product .group-container--selected {
         background: #E8DFE8;
@@ -486,13 +489,13 @@ export class SkioPlanPicker extends LitElement {
       .skio-offer-header__line {
         flex: 1;
         height: 1px;
-        background-color: #672666;
+        background-color: var(--base-colour, #672666);
       }
       .skio-offer-header__title {
         font-family: inherit;
         font-size: 14px;
         font-weight: 600;
-        color: var(--skio-group-border-selected-color, #672666);
+        color: var(--base-colour, #672666);
         text-transform: uppercase;
         white-space: nowrap;
         line-height: 1.4;
@@ -511,8 +514,9 @@ export class SkioPlanPicker extends LitElement {
       }
 
       .skio-plan-picker .group-container.group-container--selected {
-        border: 2px solid var(--skio-group-border-selected-color, #672666);
-        background: transparent;
+        border: 2px solid var(--base-colour, #672666);
+        border-radius: 10px;
+        background: white;
       }
 
       .skio-plan-picker .subs-group-container {

@@ -1,417 +1,273 @@
 {% style %}
-  .eg-text-underline p {
+  .announcement-bar-wrap {
+    background-color: transparent;
+    width: 100%;
+    position: relative;
+    z-index: 110;
+  }
+
+  .announcement-bar {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 32px;
+    padding-top: 16px;
+    box-sizing: border-box;
+  }
+
+  .announcement-bar__inner {
+    background: #FFFFFF;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+    position: relative;
+  }
+
+  .announcement-bar__dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .announcement-bar__dot svg {
+    width: 45px;
+    height: 45px;
+    display: block;
+    overflow: visible;
+  }
+
+  .announcement-bar__dot--prev svg {
+    transform: rotate(180deg);
+  }
+
+  .announcement-bar__slides {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    min-height: 20px;
+  }
+
+  .announcement-bar__slide {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .announcement-bar__slide.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+  }
+
+  .announcement-bar__slide p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #141414;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .announcement-bar__slide p a {
+    color: #141414;
+    font-weight: 700;
     text-decoration: underline;
-    margin-left: 10px;
+  }
+
+  .announcement-bar__slide p strong {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* Mobile */
+  @media (max-width: 1024px) {
+    .announcement-bar {
+      padding: 0;
+      padding-top: 0;
+    }
+
+    .announcement-bar__inner {
+      border-radius: 0;
+      padding: 12px 16px;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .announcement-bar__dot {
+      display: none;
+    }
+
+    .announcement-bar__slide p {
+      font-size: 12px;
+    }
   }
 {% endstyle %}
-<div class="header-top" style="background: {{section.settings.header_color}};">
+
+{% if section.settings.enable_bar %}
+<div class="announcement-bar-wrap">
+<div class="announcement-bar" data-announcement-bar>
+  {%- assign slide_count = 0 -%}
   {%- for block in section.blocks -%}
-    {%- if block.type == 'utility_bar' -%}
-      {%- if block.settings.show -%}
-        <div class="utility-bar" style="color: {{section.settings.text_color}};">
-          <div class="utility-bar-items">
-            {{ block.settings.text }}
-          </div>
-          {%- if block.settings.info_title != blank or block.settings.info_text != blank -%}
-            <div style="display: none;" class="header-top__hide">
-              <button aria-label="Learn More" class="utility-bar-info">
-                <svg
-                  class="utility-bar-svg"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="none">
-                  <g>
-                    <path
-                      d="M10.4987 12.5V10"
-                      stroke="{{ block.settings.info_background }}"
-                      stroke-width="0.833333"
-                      stroke-linecap="round" />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10.4987 6.66683C10.0385 6.66683 9.66536 7.03993 9.66536 7.50016C9.66536 7.9604 10.0385 8.3335 10.4987 8.3335C10.9589 8.3335 11.332 7.9604 11.332 7.50016C11.332 7.03993 10.9589 6.66683 10.4987 6.66683Z"
-                      fill="{{ block.settings.info_background }}" />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10.5013 18.3332C15.1037 18.3332 18.8346 14.6022 18.8346 9.99984C18.8346 5.39746 15.1037 1.6665 10.5013 1.6665C5.89893 1.6665 2.16797 5.39746 2.16797 9.99984C2.16797 14.6022 5.89893 18.3332 10.5013 18.3332Z"
-                      stroke="{{ block.settings.info_background }}"
-                      stroke-width="0.833333" />
-                  </g>
-                </svg>
-                <div style="background-color: {{ block.settings.info_background }};" class="utility-bar-info__content">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="6"
-                    viewBox="0 0 12 6"
-                    fill="none">
-                    <defs>
-                      <filter
-                        id="triangle-shadow"
-                        x="-50%"
-                        y="-50%"
-                        width="200%"
-                        height="200%">
-                        <feDropShadow
-                          dx="0"
-                          dy="0"
-                          stdDeviation="1"
-                          flood-color="#04040426" />
-                        <feDropShadow
-                          dx="0"
-                          dy="12"
-                          stdDeviation="4"
-                          flood-color="#04040414" />
-                        <feDropShadow
-                          dx="0"
-                          dy="4"
-                          stdDeviation="2"
-                          flood-color="#04040408" />
-                      </filter>
-                    </defs>
-                    <path
-                      d="M12 6L6.70711 0.707107C6.31658 0.316583 5.68342 0.316583 5.29289 0.707107L0 6H12Z"
-                      fill="{{ section.settings.text_color }}"
-                      filter="url(#triangle-shadow)" />
-                  </svg>
-                  {%- if block.settings.info_title != blank -%}
-                    <h5 style="color: {{ block.settings.info_title_color }};">
-                      {{- block.settings.info_title -}}
-                    </h5>
-                  {%- endif -%}
-                  {%- if block.settings.info_text != blank -%}
-                    <p style="color: {{ block.settings.info_text_color }};">
-                      {{- block.settings.info_text -}}
-                    </p>
-                  {%- endif -%}
-                </div>
-                <svg
-                  class="utility-bar-info__arrow--mobile"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="6"
-                  viewBox="0 0 12 6"
-                  fill="none">
-                  <defs>
-                    <filter
-                      id="triangle-shadow"
-                      x="-50%"
-                      y="-50%"
-                      width="200%"
-                      height="200%">
-                      <feDropShadow
-                        dx="0"
-                        dy="0"
-                        stdDeviation="1"
-                        flood-color="#04040426" />
-                      <feDropShadow
-                        dx="0"
-                        dy="12"
-                        stdDeviation="4"
-                        flood-color="#04040414" />
-                      <feDropShadow
-                        dx="0"
-                        dy="4"
-                        stdDeviation="2"
-                        flood-color="#04040408" />
-                    </filter>
-                  </defs>
-                  <path d="M12 6L6.70711 0.707107C6.31658 0.316583 5.68342 0.316583 5.29289 0.707107L0 6H12Z" fill="{{ section.settings.text_color }}" />
-                </svg>
-              </button>
-            </div>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+    {%- if block.type == 'utility_bar' and block.settings.show -%}
+      {%- assign slide_count = slide_count | plus: 1 -%}
     {%- endif -%}
   {%- endfor -%}
-  <div class="header-top__close" style="display: none">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="10"
-      height="10"
-      viewBox="0 0 12 12"
-      fill="none">
-      <path
-        d="M10.7133 10.7137L1.28522 1.28564M10.7132 1.28564L1.28516 10.7137"
-        stroke=" {{ section.settings.text_color }}"
-        stroke-width="0.833333"
-        stroke-linecap="round" />
-    </svg>
+
+  <div class="announcement-bar__inner">
+    {%- if slide_count > 1 -%}
+    <button class="announcement-bar__dot announcement-bar__dot--prev" aria-label="Previous announcement" data-announcement-prev>
+      {% render 'icon-announcement-dot', direction: 'prev' %}
+    </button>
+    {%- endif -%}
+
+    <div class="announcement-bar__slides">
+      {%- assign slide_index = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'utility_bar' and block.settings.show -%}
+          <div class="announcement-bar__slide{% if slide_index == 0 %} is-active{% endif %}" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </div>
+          {%- assign slide_index = slide_index | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if slide_count > 1 -%}
+    <button class="announcement-bar__dot announcement-bar__dot--next" aria-label="Next announcement" data-announcement-next>
+      {% render 'icon-announcement-dot', direction: 'next' %}
+    </button>
+    {%- endif -%}
   </div>
+</div>
 </div>
 
 <script>
-    let headerTop = document.querySelector('.header-top');
-    let closeIcon = document.querySelector('.header-top__close');
+  (function() {
+    var bar = document.querySelector('[data-announcement-bar]');
+    if (!bar) return;
 
-    if (headerTop && closeIcon) {
-      closeIcon.addEventListener('click', () => {
-        headerTop.style.display = 'none';
+    var slides = bar.querySelectorAll('.announcement-bar__slide');
+    if (slides.length < 2) return;
+
+    var current = 0;
+    var total = slides.length;
+    var speed = {{ section.settings.carousel_speed | default: 5 }} * 1000;
+    var autoplayEnabled = {{ section.settings.enable_carousel | default: true }};
+    var timer = null;
+
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      current = (index + total) % total;
+      slides[current].classList.add('is-active');
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAutoplay() {
+      if (!autoplayEnabled || total < 2) return;
+      stopAutoplay();
+      timer = setInterval(next, speed);
+    }
+
+    function stopAutoplay() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    var prevBtn = bar.querySelector('[data-announcement-prev]');
+    var nextBtn = bar.querySelector('[data-announcement-next]');
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        prev();
+        stopAutoplay();
+        startAutoplay();
       });
     }
 
-  window.addEventListener('DOMContentLoaded', () => {
-
-  const headerTopHide = document.querySelector('.header-top__hide');
-  const utilityBarItems = document.querySelector('.utility-bar-items');
-  const lastParagraph = utilityBarItems.querySelector('p:last-of-type');
-
-  if (headerTopHide && lastParagraph) {
-    const clonedContent = headerTopHide.innerHTML;
-    lastParagraph.innerHTML += clonedContent;
-  }
-  });
-
-
-  function updateUtilityBarPosition() {
-  if (window.innerWidth < 750) {
-    const headerTop = document.querySelector('.header-top');
-    const utilityBar = document.querySelector('.utility-bar-info__content');
-
-    if (headerTop && utilityBar) {
-      const headerTopHeight = headerTop.offsetHeight;
-      utilityBar.style.top = `${headerTopHeight + 2}px`;
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        next();
+        stopAutoplay();
+        startAutoplay();
+      });
     }
-  } else {
-    const utilityBar = document.querySelector('.utility-bar-info__content');
-    if (utilityBar) {
-      utilityBar.style.top = '';
-    }
-  }
-  }
 
-  window.addEventListener('load', updateUtilityBarPosition);
-  window.addEventListener('resize', updateUtilityBarPosition);
+    startAutoplay();
+  })();
 </script>
+{% endif %}
 
 {% schema %}
   {
-    "name": "Header Top",
+    "name": "Announcement Bar",
     "presets": [
       {
-        "name": "Header",
+        "name": "Announcement Bar",
         "category": "Header"
       }
     ],
     "settings": [
-
-        {
-          "type": "paragraph",
-          "content": "*** Colors (Desktop) ***"
-        },
-        {
-          "type": "color",
-          "id": "header_color",
-          "label": "Background color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "header_border_color",
-          "label": "Border-bottom Color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text and Icons Color",
-          "default": "#000000"
-        }
+      {
+        "type": "checkbox",
+        "id": "enable_bar",
+        "label": "Enable announcement bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_carousel",
+        "label": "Enable auto-rotate",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "carousel_speed",
+        "label": "Auto-rotate interval (seconds)",
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "default": 5,
+        "unit": "s"
+      }
     ],
     "blocks": [
       {
         "type": "utility_bar",
-        "name": "Utility Bar",
+        "name": "Announcement Slide",
         "settings": [
           {
             "type": "checkbox",
             "id": "show",
-            "label": "Show utility bar?"
+            "label": "Show this slide?",
+            "default": true
           },
           {
             "type": "richtext",
             "id": "text",
-            "label": "Text in the top bar",
-            "default": "<p>Check out our <strong>Collections</strong>!</p>"
-          },
-          {
-            "type": "header",
-            "content": "Info hover content"
-          },
-          {
-            "type": "color",
-            "id": "info_background",
-            "label": "Background color",
-            "default": "#ffffff"
-          }, {
-            "type": "text",
-            "id": "info_title",
-            "label": "Title"
-          }, {
-            "type": "color",
-            "id": "info_title_color",
-            "label": "Title color",
-            "default": "#ffffff"
-          }, {
-            "type": "textarea",
-            "id": "info_text",
-            "label": "Text"
-          }, {
-            "type": "color",
-            "id": "info_text_color",
-            "label": "Text color",
-            "default": "#ffffff"
-          }
-        ]
-      }, {
-        "type": "top_utils",
-        "name": "Top Utils",
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "show",
-            "label": "Show Top Utils?",
-            "default": true
-          },
-          {
-            "type": "text",
-            "id": "top_utils_size",
-            "label": "Font Size",
-            "default": "0.9em"
-          },
-          {
-            "type": "select",
-            "id": "top_utils_weight",
-            "label": "Font Weight",
-            "options": [
-              {
-                "value": "100",
-                "label": "Extra Light"
-              },
-              {
-                "value": "300",
-                "label": "Light"
-              },
-              {
-                "value": "400",
-                "label": "Regular"
-              },
-              {
-                "value": "600",
-                "label": "Semi Bold"
-                },
-              {
-                "value": "700",
-                "label": "Bold"
-              },
-              {
-                "value": "900",
-                "label": "Extra Bold"
-              }
-            ],
-            "default": "400"
-          },
-          {
-            "type": "select",
-            "id": "top_utils_transform",
-            "label": "Text transform",
-            "options": [
-              {
-                "value": "none",
-                "label": "Normal"
-              },
-              {
-                "value": "uppercase",
-                "label": "Uppercase"
-              }
-            ],
-            "default": "none"
-          },
-          {
-            "type": "checkbox",
-            "id": "show_social",
-            "label": "Show Social Links?",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_search",
-            "label": "Show Search?",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_newsletter",
-            "label": "Show Newsletter?",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_user",
-            "label": "Show Account Link?",
-            "default": true,
-            "info": "Customer Accounts must be enabled at /admin/settings/checkout"
-          },
-          {
-            "type": "header",
-            "content": "Fullscreen Newsletter and Search"
-          },
-          {
-            "type": "text",
-            "id": "search_mailing_bg",
-            "label": "Background Color",
-            "default": "0,0,0,0.8",
-            "info": "R,G,B,Alpha. The last value is the alpha\/opacity, from 0 to 1."
-          },
-          {
-            "type": "color",
-            "id": "search_mailing_text",
-            "label": "Text Color",
-            "default": "#ffffff"
-          },
-          {
-            "type": "select",
-            "id": "search_mailing_effect",
-            "label": "Appearance Effect",
-            "options": [
-              {
-                "value": "fadeInLeft",
-                "label": "Fade in Left"
-              },
-              {
-                "value": "fadeIn",
-                "label": "Fade In"
-              },
-              {
-                "value": "zoomIn",
-                "label": "Zoom In"
-              },
-              {
-                "value": "flipInX",
-                "label": "Flip In X"
-              },
-              {
-                "value": "flipInY",
-                "label": "Flip In Y"
-              },
-              {
-                "value": "bounceIn",
-                "label": "Bounce In"
-              },
-              {
-                "value": "lightSpeedIn",
-                "label": "Light Speed In"
-              },
-              {
-                "value": "zoomInDown",
-                "label": "Zoom In Down"
-              }
-            ],
-            "default": "fadeInLeft"
+            "label": "Announcement text",
+            "default": "<p>Get 53% OFF Today – <strong>Shop Sleep Spray 6-Pack</strong></p>"
           }
         ]
       }

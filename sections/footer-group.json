@@ -11,39 +11,49 @@
   "name": "Footer Section",
   "type": "footer",
   "sections": {
-    "footer_ktHiKk": {
-      "type": "footer",
+    "footer_v2_6mcCxy": {
+      "type": "footer-v2",
+      "blocks": {
+        "nav_column_zPanm7": {
+          "type": "nav_column",
+          "settings": {
+            "title": "SHOP",
+            "menu": "footer-menu-2"
+          }
+        },
+        "nav_column_QjHMhH": {
+          "type": "nav_column",
+          "settings": {
+            "title": "ABOUT",
+            "menu": "learn"
+          }
+        },
+        "nav_column_wyQjCR": {
+          "type": "nav_column",
+          "settings": {
+            "title": "HELP",
+            "menu": "more"
+          }
+        }
+      },
+      "block_order": [
+        "nav_column_zPanm7",
+        "nav_column_QjHMhH",
+        "nav_column_wyQjCR"
+      ],
+      "name": "Footer V2",
       "settings": {
-        "section_padding_top_desktop": 56,
-        "section_padding_bottom_desktop": 32,
-        "section_padding_top_mobile": 40,
-        "section_padding_bottom_mobile": 24,
-        "bg_color": "#000000",
-        "border_color": "#000000",
-        "text_color": "#ffffff",
-        "menu_title_1": "Shop",
-        "section_linklist": "footer-menu-2",
-        "menu_title_2": "About",
-        "section_linklist_2": "learn",
-        "menu_title_3": "Help",
-        "section_linklist_3": "more",
-        "logo": "shopify://shop_images/REJUVIA_Logo_Wordmark_Gold-01_1_11e12cc9-012a-4de8-b2b1-291d89f43452.png",
-        "logo_max_width": 200,
-        "decor_image": "shopify://shop_images/REJUVIA_Logo_Icon_Gold-01_1.png",
-        "show_social": true,
-        "privacy_label": "Privacy Policy",
-        "privacy_url": "shopify://policies/privacy-policy",
-        "terms_label": "Terms of Service",
+        "logo": "shopify://shop_images/Logo_1.svg",
+        "newsletter_title": "Save 10% on Your Order",
+        "newsletter_desc": "Sign up for news and exclusive discounts, plus 10% off your first order!",
+        "newsletter_btn": "Sign Up & Save 10%",
+        "disclaimer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
         "terms_url": "shopify://policies/terms-of-service",
-        "mailing_title": "Join Our Newsletter",
-        "mailing_text": "Sign up today to unlock our best deals.",
-        "mailing_button": "Get Offer",
-        "custom_footer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
-        "show_payment_methods": true
+        "privacy_url": "shopify://policies/privacy-policy"
       }
     }
   },
   "order": [
-    "footer_ktHiKk"
+    "footer_v2_6mcCxy"
   ]
 }

@@ -1,0 +1,85 @@
+{{ 'product-intro-v3.css' | asset_url | stylesheet_tag }}
+
+{% assign currentProduct = product %}
+{% assign base_colour = currentProduct.metafields.custom.base_colour %}
+{% assign intro = currentProduct.metafields.custom.product_intro.value %}
+
+{% if intro != blank %}
+<section class="product-intro-v3"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+  <div class="product-intro-v3__container">
+
+    {%- comment -%} Copy Block {%- endcomment -%}
+    <div class="product-intro-v3__copy">
+      {% if intro.title != blank %}
+        <h2 class="product-intro-v3__heading">
+          {{ currentProduct.metafields.custom.product_intro.value.title | metafield_tag }}
+        </h2>
+      {% endif %}
+      {% if intro.description != blank %}
+        <div class="product-intro-v3__description">
+          {{ currentProduct.metafields.custom.product_intro.value.description | metafield_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Product Image {%- endcomment -%}
+    <div class="product-intro-v3__image">
+      <div class="product-intro-v3__image-glow"></div>
+      <div class="product-intro-v3__image-dots">
+        <img src="{{ 'product-intro-v3-dots.svg' | asset_url }}" alt="" loading="lazy">
+      </div>
+      {% if intro.image != blank %}
+        <img src="{{ intro.image | image_url: width: 800 }}"
+             alt="{{ currentProduct.title }}"
+             loading="lazy">
+      {% elsif currentProduct.featured_image %}
+        <img src="{{ currentProduct.featured_image | image_url: width: 800 }}"
+             alt="{{ currentProduct.title }}"
+             loading="lazy">
+      {% endif %}
+    </div>
+
+    {%- comment -%} Checklist {%- endcomment -%}
+    <div class="product-intro-v3__checklist">
+      {% assign first_benefit = true %}
+      {% for i in (1..7) %}
+        {% assign field_name = "benefit_" | append: i %}
+        {% assign benefit = intro[field_name] %}
+        {% if benefit != blank %}
+          {% unless first_benefit %}
+            <div class="product-intro-v3__check-divider"></div>
+          {% endunless %}
+          <div class="product-intro-v3__check-item">
+            <div class="product-intro-v3__check-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 3.5L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="product-intro-v3__check-text">{{ benefit }}</span>
+          </div>
+          {% assign first_benefit = false %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Intro V3",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Content from product metafield custom.product_intro (metaobject: product_intro). Title (rich text, use italic for accent). Description (rich text). Image (file). Benefit 1-7 (single line text). Section hidden when metafield is empty."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Intro V3"
+    }
+  ]
+}
+{% endschema %}

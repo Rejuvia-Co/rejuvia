@@ -1,0 +1,112 @@
+{{ 'key-ingredients-v2.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.key-ingredients-v2 .key-ingredients-v2__btn--light {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  color: var(--base-colour, #672666);
+  box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.06);
+  font-weight: 400;
+}
+.key-ingredients-v2 .key-ingredients-v2__btn--light:hover {
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 1;
+}
+{% endstyle %}
+
+{% assign source_product = section.settings.product %}
+{% assign base_colour = source_product.metafields.custom.base_colour %}
+{% assign ingredients = page.metafields.custom.key_ingredients.value %}
+
+{% if ingredients != blank %}
+<section class="key-ingredients-v2"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+  <div class="key-ingredients-v2__container">
+
+    <div class="key-ingredients-v2__header">
+      <h2 class="key-ingredients-v2__title">{{ section.settings.heading | default: 'The key ingredients' }}</h2>
+      {% if section.settings.button_label != blank and source_product != blank %}
+        <button type="button" class="key-ingredients-v2__btn key-ingredients-v2__btn--light key-ingredients-v2__btn--desktop" data-open-supplement-popup>{{ section.settings.button_label }}</button>
+      {% endif %}
+    </div>
+
+    <div class="key-ingredients-v2__grid">
+      {% for ingredient in ingredients %}
+        <div class="key-ingredients-v2__card">
+          {% if ingredient.image != blank %}
+            <div class="key-ingredients-v2__card-image">
+              <img src="{{ ingredient.image | image_url: width: 400 }}"
+                   alt="{{ ingredient.title | default: 'Ingredient' }}"
+                   loading="lazy"
+                   width="165"
+                   height="165">
+            </div>
+          {% endif %}
+          <div class="key-ingredients-v2__card-content">
+            {% if ingredient.title != blank %}
+              <h3 class="key-ingredients-v2__card-title">{{ ingredient.title }}</h3>
+            {% endif %}
+            {% if ingredient.description != blank %}
+              <div class="key-ingredients-v2__card-desc">{{ ingredient.description | metafield_tag }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.button_label != blank and source_product != blank %}
+      <div class="key-ingredients-v2__mobile-btn">
+        <button type="button" class="key-ingredients-v2__btn key-ingredients-v2__btn--light" data-open-supplement-popup>{{ section.settings.button_label }}</button>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% if source_product != blank %}
+  {% render 'supplement-label-popup', product: source_product %}
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Key Ingredients Page V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Ingredients list is pulled from the current page metafield custom.key_ingredients. The selected product is used only for the Supplement Label popup and accent colour (custom.supplement_label, custom.base_colour)."
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Used with hero nav links (e.g. ingredients-benefits \u2192 #ingredients-benefits)."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Supplement label product",
+      "info": "Used only for the Supplement Label popup and accent colour."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The key ingredients"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View Supplement Label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Key Ingredients Page V2",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

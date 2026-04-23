@@ -2256,6 +2256,15 @@
               "offset_right": 0
             }
           },
+          "fb_review_fAnRxn": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.13.42_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
           "fb_review_iNWEtf": {
             "type": "fb_review",
             "settings": {
@@ -2294,6 +2303,7 @@
           "tp_review_jRXKcN",
           "tp_review_Q8VBFC",
           "fb_review_L8tT8R",
+          "fb_review_fAnRxn",
           "fb_review_iNWEtf",
           "fb_review_9Nf3YL",
           "fb_review_MQ7dHz"

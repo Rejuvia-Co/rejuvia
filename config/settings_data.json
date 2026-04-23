@@ -1978,7 +1978,7 @@
             "settings": {
               "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
               "name": "Betty M.",
-              "quote": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
+              "quote": "First time in years I actually slept through the FULL night. And woke up clear.",
               "stars": 5
             }
           },
@@ -2001,10 +2001,10 @@
           "bg_color": "#fafafa",
           "accent_color": "#672666",
           "rating_score": "4.6",
-          "rating_sold": "1,500,000 Sprays",
+          "rating_sold": "1.5M Sprays",
           "heading": "<p>You Can't Sleep. <em>Rejuvia Sleep Spray </em>Fixes That.</p>",
-          "description": "If you've tried gummies, pills, or prescriptions and still aren't sleeping – it's not you. Most sleep products lose up to 80% of their ingredients before they ever reach your bloodstream. Rejuvia was made to fix that.",
-          "btn_text": "Sleep Better Tonight",
+          "description": "If you've tried melatonin gummies, sleeping pills, or teas and still can't sleep – it's not you. Most sleep products lose up to 80% of their efficacy before they ever reach your bloodstream. Rejuvia was made to fix that.",
+          "btn_text": "Try Rejuvia Risk-Free",
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
           "image": "shopify://shop_images/Image.png",
@@ -2053,7 +2053,7 @@
             "type": "tab",
             "settings": {
               "title": "Melatonin Gummies",
-              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
               "image": "shopify://shop_images/melatonin_gummies.png",
               "badge_text": "80% lost to digestion",
               "badge_position_desktop": "bottom-right",
@@ -2063,10 +2063,10 @@
           "tab_iLBcRm": {
             "type": "tab",
             "settings": {
-              "title": "The Prescription Trade-Off",
-              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "title": "Sleeping Pills",
+              "content": "<p>Sleep pills pack in high doses because they know <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
               "image": "shopify://shop_images/Generated_Image_March_18_2026_-_6_12PM_1.png",
-              "badge_text": "FDA black box warnings",
+              "badge_text": "Too Much, Poorly Absorbed",
               "badge_icon": "shopify://shop_images/Frame_3.svg",
               "badge_position_desktop": "top-right",
               "badge_position_mobile": "top-right"
@@ -2076,9 +2076,9 @@
             "type": "tab",
             "settings": {
               "title": "The \"Natural\" Cycle",
-              "content": "<p>Melatonin gummies have to <strong>survive your entire digestive system</strong> before they can help you sleep.</p><p>By the time they do, <strong>up to 80%</strong> of the active ingredients are gone. You're left waiting 45 minutes for a fraction of what you paid for.</p>",
+              "content": "<p>Teas, tinctures, magnesium baths. The ingredients are real, but the doses are too small and the absorption is too slow to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. again.</p>",
               "image": "shopify://shop_images/Frame_1948755839.png",
-              "badge_text": "Inconsistent results",
+              "badge_text": "Inconsistent Results",
               "badge_icon": "shopify://shop_images/Frame_4.svg",
               "badge_position_desktop": "bottom-left",
               "badge_position_mobile": "top-right"
@@ -2092,8 +2092,8 @@
         ],
         "name": "Product Intro V2",
         "settings": {
-          "heading": "<p>You've tried everything and <em>nothing's ever stuck.</em></p>",
-          "description": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>",
+          "heading": "<p>You've tried it all. <em>Nothing's ever stuck.</em></p>",
+          "description": "<p>Most sleep products lose the fight before they reach your bloodstream. Here's why.</p>",
           "accent_color": "#672666"
         }
       },
@@ -2147,7 +2147,7 @@
         "name": "Image with Text V2",
         "settings": {
           "heading": "<p>Here's why <em>Rejuvia works better</em></p>",
-          "description": "<p>Rejuvia takes a completely different approach.</p><p>Instead of another pill or gummy, it's <strong>a sublingual oral spray.</strong></p><p>You spray it under your tongue, where it absorbs directly into your bloodstream – no stomach, no liver, no wasted ingredients.</p>",
+          "description": "<p>Rejuvia isn't a pill or a gummy. It's <strong>a sublingual spray.</strong></p><p>You spray Rejuvia under your tongue, where the tissue is packed with blood vessels. The ingredients absorb directly into your bloodstream. No stomach. No liver. No wasted ingredients.</p><p>More of the formula reaches your body. So you feel it working in minutes, not an hour from now.</p>",
           "image": "shopify://shop_images/Higher-absorption-rate.png"
         }
       },
@@ -2303,7 +2303,7 @@
         "name": "Real Stories V2",
         "settings": {
           "trusted_count": "300,000+",
-          "heading": "<p>Real stories from customer's who <span style=\"text-decoration:underline\"><em>switched to Rejuvia</em></span></p>"
+          "heading": "<p>Real stories from customers who <span style=\"text-decoration:underline\"><em>switched to Rejuvia</em></span></p>"
         }
       },
       "what_makes_different_v2_rRVmVL": {

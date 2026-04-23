@@ -2527,8 +2527,8 @@
             "settings": {
               "heading": "",
               "text": "<p>So I started researching. I was at the University of Pennsylvania at the time, and I spent months digging into sleep science and supplement absorption.<br/><br/>What I found changed everything:<strong> the problem wasn't the ingredients</strong>. It was how the body absorbed them.<br/><br/>We decided to build a sublingual spray. Together. <br/><br/>My mom was the first person to try it. <strong>She slept through the night for the first time in years.</strong></p>",
-              "image": "shopify://shop_images/Image_3.png",
-              "caption": "The first sketch of a Rejuvia product",
+              "image": "shopify://shop_images/rejuvia_spray.png",
+              "caption": "Prototype sketch of Rejuvia Spray",
               "image_left": true,
               "signature_name": "RC Williams",
               "signature_title": "Founder"
@@ -2709,7 +2709,7 @@
         "type": "sticky-cta-v2",
         "name": "Sticky CTA V2",
         "settings": {
-          "text": "<p>Join <strong>300,000+ people</strong> sleeping through the night</p>",
+          "text": "<p>Join <strong>300,000+ People</strong> Sleeping Through The Full Night</p>",
           "btn_text": "Try Rejuvia",
           "scroll_target": ".product-widget-container",
           "position": "bottom",

@@ -44,12 +44,13 @@
       "name": "Footer V2",
       "settings": {
         "logo": "shopify://shop_images/Logo_1.svg",
-        "newsletter_title": "Save 10% on Your Order",
-        "newsletter_desc": "Sign up for news and exclusive discounts, plus 10% off your first order!",
-        "newsletter_btn": "Sign Up & Save 10%",
+        "newsletter_title": "Get a FREE D3+K2 Spray",
+        "newsletter_desc": "Sign up for news and exclusive discounts, plus a FREE D3+K2 spray with your first subscription order.",
+        "newsletter_btn": "Sign Up Now",
         "disclaimer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
         "terms_url": "shopify://policies/terms-of-service",
-        "privacy_url": "shopify://policies/privacy-policy"
+        "privacy_url": "shopify://policies/privacy-policy",
+        "show_payment_methods": true
       }
     }
   },

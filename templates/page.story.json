@@ -377,6 +377,22 @@
         "filter_video_label": "Video Reviews"
       }
     },
+    "1719859380da8d7058": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_jjgD9A": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_jjgD9A"
+      ],
+      "settings": {}
+    },
     "page_cta_v2_pPLqyN": {
       "type": "page-cta-v2",
       "name": "Page CTA V2",
@@ -394,28 +410,12 @@
         "btn_url": "shopify://products/sleep-spray",
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
       }
-    },
-    "1719859380da8d7058": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_jjgD9A": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_jjgD9A"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "story_hero_v2_Br9RWF",
     "story_reviews_v2_WNr7Wz",
-    "page_cta_v2_pPLqyN",
-    "1719859380da8d7058"
+    "1719859380da8d7058",
+    "page_cta_v2_pPLqyN"
   ]
 }

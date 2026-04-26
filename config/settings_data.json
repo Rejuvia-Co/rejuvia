@@ -2119,14 +2119,14 @@
           "stat_X9B8YY": {
             "type": "stat",
             "settings": {
-              "number": "2mg",
-              "label": "Low-dose melatonin"
+              "number": "65%",
+              "label": "Higher bioavailability"
             }
           },
           "stat_X9xjwk": {
             "type": "stat",
             "settings": {
-              "number": "15",
+              "number": "10-15",
               "label": "Minutes to sleep"
             }
           },

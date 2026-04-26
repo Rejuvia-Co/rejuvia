@@ -2708,6 +2708,152 @@
           "disable_sticky_header": false,
           "show_after": 500
         }
+      },
+      "real-stories-v2": {
+        "type": "real-stories-v2",
+        "blocks": {
+          "tp_review_Q84BmA": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "DO",
+              "avatar_color": "#d0ffdd",
+              "title": "Rejuvia is the real deal!! Great family owned business",
+              "text": "I have been increasingly struggling with sleep as I have gotten older, trying OTC options of varying kinds, but with only limited success. I decided to try Rejuvia after seeing their Facebook ad, and am I ever impressed! YES! This spray does everything it claims to. I fall asleep quickly, the taste is great, and I wake up alert and feeling like I'm done sleeping, which hasn't happened in a very long time.",
+              "name": "Debbie Owen",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_LytVmM": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "MO",
+              "avatar_color": "#d0ffdd",
+              "title": "Works as promised for me",
+              "text": "Rejuvia is a product that delivers exactly what they promise. The customer service is.prompt and professional. I had a billing question and it was answered in less than two hours.",
+              "name": "Mary Orr",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_XX7jCh": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "Great company and product",
+              "text": "The Rejuvia sleep spray is amazing !! I had tried everything (sleeping meds, melatonin and even Nyquil) to get a good nights sleep. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
+              "name": "Lynn D.",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_EYzLzU": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "EF",
+              "avatar_color": "#d0ffdd",
+              "title": "I HAD trouble sleeping until Rejuvia",
+              "text": "I have trouble sleeping. I bought two of these sleep sprays and I am shocked that 30 minutes before I go to sleep it hits me and it almost makes me conk out in front of the TV. It's the best over the counter sleep solution. You have to give it a try. I had an issue with one of mine and customer service was on it within hours of me sending the email. Great customer service and a great product.",
+              "name": "Ellen Fortney",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "tp_review_CkdLt7": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "PG",
+              "avatar_color": "#d0ffdd",
+              "title": "Very effective sleep product, great for traveling too",
+              "text": "Great stuff! I can't tell you when I first started using Midnight Bliss, but I can tell you I love it!! I've used 2 containers and I'm ready to order more. I've tried multiple sleep aids and this is by far what works for me! Keep doing what you're doing! I'm a fan!!!",
+              "name": "Pam Gerding",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
+          "fb_review_cB3fBy": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-26_at_9.12.36_AM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_4gKCw9": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-26_at_9.13.28_AM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_nPgNiB": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.13.42_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_FmBBcA": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_8rcmWz": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.10.36_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_tezyxq": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_4.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_Bt8Ayh": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/fb_1.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          }
+        },
+        "block_order": [
+          "tp_review_Q84BmA",
+          "tp_review_LytVmM",
+          "tp_review_XX7jCh",
+          "tp_review_EYzLzU",
+          "tp_review_CkdLt7",
+          "fb_review_cB3fBy",
+          "fb_review_4gKCw9",
+          "fb_review_nPgNiB",
+          "fb_review_FmBBcA",
+          "fb_review_8rcmWz",
+          "fb_review_tezyxq",
+          "fb_review_Bt8Ayh"
+        ],
+        "settings": {
+          "trusted_count": "300,000+",
+          "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
+        }
       }
     },
     "content_for_index": [

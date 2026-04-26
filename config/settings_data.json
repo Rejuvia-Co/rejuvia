@@ -2166,11 +2166,11 @@
           "tp_review_NqL6Rk": {
             "type": "tp_review",
             "settings": {
-              "initials": "LD",
+              "initials": "DO",
               "avatar_color": "#d0ffdd",
-              "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
-              "name": "Lynn D.",
+              "title": "Rejuvia is the real deal!! Great family owned business",
+              "text": "I have been increasingly struggling with sleep as I have gotten older, trying OTC options of varying kinds, but with only limited success. I decided to try Rejuvia after seeing their Facebook ad, and am I ever impressed! YES! This spray does everything it claims to. I fall asleep quickly, the taste is great, and I wake up alert and feeling like I'm done sleeping, which hasn't happened in a very long time.",
+              "name": "Debbie Owen",
               "badge": "Unprompted review",
               "stars": 5
             }
@@ -2178,25 +2178,13 @@
           "tp_review_nq4Umj": {
             "type": "tp_review",
             "settings": {
-              "initials": "LD",
+              "initials": "MO",
               "avatar_color": "#d0ffdd",
-              "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
-              "name": "Lynn D.",
+              "title": "Works as promised for me",
+              "text": "Rejuvia is a product that delivers exactly what they promise. The customer service is.prompt and professional. I had a billing question and it was answered in less than two hours.",
+              "name": "Mary Orr",
               "badge": "Unprompted review",
               "stars": 5
-            }
-          },
-          "fb_text_review_M6wKic": {
-            "type": "fb_text_review",
-            "disabled": true,
-            "settings": {
-              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
-              "name": "Karla Finney",
-              "comment": "Just tried last night for the first time. HOLY HELL, for literally the first time in 10 years, I SLEPT THROUGH THE NIGHT!",
-              "offset_top": 0,
-              "offset_left": 20,
-              "offset_right": 20
             }
           },
           "tp_review_tedq9c": {
@@ -2205,7 +2193,7 @@
               "initials": "LD",
               "avatar_color": "#d0ffdd",
               "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+              "text": "The Rejuvia sleep spray is amazing !! I had tried everything (sleeping meds, melatonin and even Nyquil) to get a good nights sleep. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
               "name": "Lynn D.",
               "badge": "Unprompted review",
               "stars": 5
@@ -2214,11 +2202,11 @@
           "tp_review_XAUKKi": {
             "type": "tp_review",
             "settings": {
-              "initials": "LD",
+              "initials": "EF",
               "avatar_color": "#8ec447",
-              "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
-              "name": "Lynn D.",
+              "title": "I HAD trouble sleeping until Rejuvia",
+              "text": "I have trouble sleeping. I bought two of these sleep sprays and I am shocked that 30 minutes before I go to sleep it hits me and it almost makes me conk out in front of the TV. It's the best over the counter sleep solution. You have to give it a try. I had an issue with one of mine and customer service was on it within hours of me sending the email. Great customer service and a great product.",
+              "name": "Ellen Fortney",
               "badge": "Unprompted review",
               "stars": 5
             }
@@ -2226,23 +2214,11 @@
           "tp_review_jRXKcN": {
             "type": "tp_review",
             "settings": {
-              "initials": "LD",
+              "initials": "PG",
               "avatar_color": "#eac78b",
-              "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
-              "name": "Lynn D.",
-              "badge": "Unprompted review",
-              "stars": 5
-            }
-          },
-          "tp_review_Q8VBFC": {
-            "type": "tp_review",
-            "settings": {
-              "initials": "LD",
-              "avatar_color": "#d0ffdd",
-              "title": "Great company and product",
-              "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
-              "name": "Lynn D.",
+              "title": "Very effective sleep product, great for traveling too",
+              "text": "Great stuff! I can't tell you when I first started using Midnight Bliss, but I can tell you I love it!! I've used 2 containers and I'm ready to order more. I've tried multiple sleep aids and this is by far what works for me! Keep doing what you're doing! I'm a fan!!!",
+              "name": "Pam Gerding",
               "badge": "Unprompted review",
               "stars": 5
             }
@@ -2306,11 +2282,9 @@
           "fb_review_AUN6jL",
           "tp_review_NqL6Rk",
           "tp_review_nq4Umj",
-          "fb_text_review_M6wKic",
           "tp_review_tedq9c",
           "tp_review_XAUKKi",
           "tp_review_jRXKcN",
-          "tp_review_Q8VBFC",
           "fb_review_L8tT8R",
           "fb_review_RUPLRy",
           "fb_review_eHXWc6",

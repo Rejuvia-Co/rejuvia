@@ -180,7 +180,7 @@
           "settings": {
             "initials": "AR",
             "avatar_color": "#d0ffdd",
-            "title": "Excellent product and customer service",
+            "title": "Excellent product and service",
             "text": "I LOVE not only the product (sleep spray) but the customer service! Excellent company, excellent product!",
             "name": "Allison Reynolds",
             "badge": "Unprompted review",
@@ -547,8 +547,8 @@
   "order": [
     "product_widget_v2",
     "product_intro_v3_A38pUb",
-    "key_ingredients_v2_1",
     "real_stories_v2_aXQec8",
+    "key_ingredients_v2_1",
     "use_in_just_v2_1",
     "alternatives_v2_1",
     "guarantees_v2_1",

@@ -2609,13 +2609,6 @@
               "answer": "<p>Oral sprays allow for direct absorption through the mucous membranes in your mouth, bypassing the digestive system entirely. That means faster uptake, higher bioavailability, and no fillers or added sugars that come with most gummies. You feel it working quicker and your body actually uses more of what you're taking.</p>"
             }
           },
-          "faq_GMGJEP": {
-            "type": "faq",
-            "settings": {
-              "question": "What's in it? Is it safe to take with other products?",
-              "answer": "<p>We like to keep it clean and transparent</p>"
-            }
-          },
           "faq_bnfb6i": {
             "type": "faq",
             "settings": {
@@ -2668,7 +2661,6 @@
         },
         "block_order": [
           "faq_kPjUwi",
-          "faq_GMGJEP",
           "faq_bnfb6i",
           "faq_iaepJi",
           "faq_Yd6Xga",

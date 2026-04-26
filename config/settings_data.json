@@ -2846,6 +2846,71 @@
           "trusted_count": "300,000+",
           "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
         }
+      },
+      "product-intro-v2": {
+        "type": "product-intro-v2",
+        "settings": {
+          "heading": "<p>You've tried everything, <em>here's why none of it worked</em></p>",
+          "description": "<p>Most sleep products are fighting an uphill battle before they even reach your bloodstream.</p><p>Here's what's actually happening with the three most common options.</p>",
+          "accent_color": "#672666"
+        }
+      },
+      "key-ingredients-v2": {
+        "type": "key-ingredients-v2",
+        "settings": {
+          "heading": "The key ingredients",
+          "button_label": "View Supplement Label",
+          "button_url": ""
+        }
+      },
+      "about-v2": {
+        "type": "about-v2",
+        "blocks": {
+          "story_row_4jJga6": {
+            "type": "story_row",
+            "settings": {
+              "heading": "<p>“Rejuvia all started for <em>my mom</em>.”</p>",
+              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" <strong>Couldn't. Sleep.</strong></p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked. <strong>And what did work left her worse in the morning than the sleepless night.</strong></p>",
+              "image": "shopify://shop_images/Image_2.png",
+              "caption": "RC & Kristen, Founders",
+              "image_left": false,
+              "products_image": "shopify://shop_images/Img_1.png",
+              "signature_name": "RC Williams",
+              "signature_title": "Founder"
+            }
+          },
+          "story_row_fwcCtt": {
+            "type": "story_row",
+            "settings": {
+              "heading": "",
+              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything: <strong>the problem wasn't the ingredients.</strong> It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it. <strong>She slept through the night for the first time in years.</strong></p>",
+              "image": "shopify://shop_images/rejuvia_spray.png",
+              "caption": "",
+              "image_left": true,
+              "signature_name": "RC Williams",
+              "signature_title": "Founder"
+            }
+          },
+          "story_row_HyiExX": {
+            "type": "story_row",
+            "settings": {
+              "heading": "<p>And now, over <em>300,000 customers</em> use Rejuvia nightly</p>",
+              "text": "<p>We never planned to turn Rejuvia into a business actually. We just wanted to fix her sleep! But after it worked for her, she realized there were hundreds of thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business. <strong>And my mom still uses Rejuvia with the same success as she did on the first night!</strong></p>",
+              "image": "shopify://shop_images/rejuvia_customers.png",
+              "caption": "Some of Rejuvia's first-ever customers",
+              "image_left": false,
+              "signature_image": "shopify://shop_images/Frame_48101400.png",
+              "signature_name": "RC Williams",
+              "signature_title": "Co-Founder, CEO"
+            }
+          }
+        },
+        "block_order": [
+          "story_row_4jJga6",
+          "story_row_fwcCtt",
+          "story_row_HyiExX"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [

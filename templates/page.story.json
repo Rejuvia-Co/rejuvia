@@ -22,8 +22,8 @@
         "image_mobile": "shopify://shop_images/Hero_story.png",
         "image_position_mobile": "center",
         "show_stars": true,
-        "rating_text": "6,000+ verified 5-star reviews for Rejuvia products",
-        "heading": "<p>Over 50,000 Satisfied Customers</p>"
+        "rating_text": "6,500+ Verified 5-Star Reviews",
+        "heading": "<p>Over 300,000 Happy Customers</p>"
       }
     },
     "story_reviews_v2_WNr7Wz": {
@@ -32,13 +32,13 @@
         "review_gqfkTx": {
           "type": "review",
           "settings": {
-            "avatar_initials": "KI",
+            "avatar_initials": "KM",
             "avatar_color": "#ffdbe8",
             "stars": 5,
             "stars_color": "#018e1c",
-            "title": "Customer service was helpful",
-            "body": "<p>I received my first order. I had a hard time with the first bottle. It was clogged and would not spray consistently. I sent email to customer service and they quickly responded. They let me know that I will be receiving a replacement. I appreciate that this exchange was quick and easy.</p>",
-            "author_name": "Kim I.",
+            "title": "Rejuvia's sleep spray has changed my life",
+            "body": "<p>Rejuvia's sleep spray has changed my life....I am on the verge of menopause and have struggled with sleep for YEARS. I have tried literally everything. This is the first thing that has gotten me to fall asleep quickly and stay asleep throughout the entire night which has made every part of my life better...energy, mood, etc. Second, the customer service is AMAZING. I have never had any problems with the products until my last order in which some of the nozzles on the products didn't work. They responded to me quickly and immediately sent me replacements for the broken sprays. All around amazing company - I will be a customer for life.</p>",
+            "author_name": "Kristen McNeany",
             "badge_type": "unprompted"
           }
         },
@@ -240,11 +240,37 @@
             "alt": ""
           }
         },
+        "review_ePTjw9": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "PG",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Pam Gerding",
+            "body": "<p>Great stuff! I can't tell you when I first started using Midnight Bliss, but I can tell you I love it!! I've used 2 containers and I'm ready to order more. I've tried multiple sleep aids and this is by far what works for me! Keep doing what you're doing! I'm a fan!!!</p>",
+            "author_name": "",
+            "badge_type": "unprompted"
+          }
+        },
         "image_Kjwjdj": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
             "alt": ""
+          }
+        },
+        "review_3K8EJd": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "PB",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "My Rejuvia experience",
+            "body": "<p>Hi. I have just started Rejuvia i was hesitant but kept trying and honestly it has helped me with my sleep. Great quality of service and product from a small business.<br/></p>",
+            "author_name": "Patty Blood",
+            "badge_type": "unprompted"
           }
         },
         "image_Wb9UP3": {
@@ -328,7 +354,9 @@
         "video_qVrPTy",
         "review_49dEYh",
         "image_96jGB4",
+        "review_ePTjw9",
         "image_Kjwjdj",
+        "review_3K8EJd",
         "image_Wb9UP3",
         "review_XJgTHd",
         "image_wj7VaF",

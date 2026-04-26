@@ -143,6 +143,18 @@
             "stars": 5
           }
         },
+        "tp_review_Pf6kKT": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "LD",
+            "avatar_color": "#d0ffdd",
+            "title": "Great company and product",
+            "text": "The Rejuvia sleep spray is amazing !! I had tried everything (sleeping meds, melatonin and even Nyquil) to get a good nights sleep. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
+            "name": "Lynn D.",
+            "badge": "Unprompted review",
+            "stars": 5
+          }
+        },
         "tp_review_q66kyY": {
           "type": "tp_review",
           "settings": {
@@ -161,7 +173,7 @@
             "initials": "LD",
             "avatar_color": "#d0ffdd",
             "title": "Great company and product",
-            "text": "Great company! The service is 10 stars and the product sleep spray is a godsend to me.",
+            "text": "The Rejuvia sleep spray is amazing !! I had tried everything ( Benadryl, melatonin and even Nyquil) to get a good nights slepp. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
             "name": "Lynn D.",
             "badge": "Unprompted review",
             "stars": 5
@@ -169,6 +181,7 @@
         },
         "tp_review_UaNHbG": {
           "type": "tp_review",
+          "disabled": true,
           "settings": {
             "initials": "AR",
             "avatar_color": "#d0ffdd",
@@ -181,6 +194,7 @@
         },
         "tp_review_iKajRc": {
           "type": "tp_review",
+          "disabled": true,
           "settings": {
             "initials": "TL",
             "avatar_color": "#d0ffdd",
@@ -258,6 +272,7 @@
       "block_order": [
         "tp_review_BeeYhA",
         "tp_review_xJ9dTN",
+        "tp_review_Pf6kKT",
         "tp_review_q66kyY",
         "tp_review_nmDf6b",
         "tp_review_UaNHbG",

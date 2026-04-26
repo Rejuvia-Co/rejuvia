@@ -116,14 +116,6 @@
       "name": "Product Intro V3",
       "settings": {}
     },
-    "key_ingredients_v2_1": {
-      "type": "key-ingredients-v2",
-      "settings": {
-        "heading": "The key ingredients",
-        "button_label": "View Supplement Label",
-        "button_url": ""
-      }
-    },
     "real_stories_v2_aXQec8": {
       "type": "real-stories-v2",
       "blocks": {
@@ -282,6 +274,14 @@
       "settings": {
         "trusted_count": "300,000+",
         "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
+      }
+    },
+    "key_ingredients_v2_1": {
+      "type": "key-ingredients-v2",
+      "settings": {
+        "heading": "Key natural sleep ingredients",
+        "button_label": "View Supplement Label",
+        "button_url": ""
       }
     },
     "use_in_just_v2_1": {

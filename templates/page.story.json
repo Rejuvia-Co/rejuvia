@@ -29,6 +29,15 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
+        "video_yypYhC": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/Peggy Sue.mov",
+            "quote": "\"Rejuvia completely changed my sleep.\"",
+            "author": "Peggy S.",
+            "video_url": ""
+          }
+        },
         "review_gqfkTx": {
           "type": "review",
           "settings": {
@@ -46,8 +55,106 @@
           "type": "video",
           "settings": {
             "video_file": "shopify://files/videos/web-2.mp4",
-            "quote": "“Try it – you’ll like it.”",
+            "quote": "“I was skeptical at first but it works!\"",
             "author": "Hylan S.",
+            "video_url": ""
+          }
+        },
+        "review_Kwrm33": {
+          "type": "review",
+          "settings": {
+            "avatar_image": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+            "avatar_initials": "",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "Superb product",
+            "body": "<p>“I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends.”</p>",
+            "author_name": "Judi M.",
+            "badge_type": "verified"
+          }
+        },
+        "video_kg4MYC": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/Angie Testimonial.mp4",
+            "quote": "\"It works quickly.\"",
+            "author": "Angie L.",
+            "video_url": ""
+          }
+        },
+        "review_xY6pYw": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "AH",
+            "avatar_color": "#d0ffdd",
+            "stars": 5,
+            "stars_color": "#018e1c",
+            "title": "Loyal customer for over a year",
+            "body": "<p>I love Rejuvia! Give the sleep spray 7 to 10 days and it will work its magic! I use it everyday and haven't had issues sleeping for over a year now. This is a family run business and you can tell-- they are incredibly ethical and customer focused people who want to do right by their customers!</p>",
+            "author_name": "Angela H.",
+            "badge_type": "unprompted"
+          }
+        },
+        "video_WNCAdK": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/alexlocke.mp4",
+            "quote": "\"Rejuvia is awesome.\"",
+            "author": "Alex L.",
+            "video_url": ""
+          }
+        },
+        "video_RDwkE8": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/Cindy.MOV",
+            "quote": "\"I've tried it all. Rejuvia does the trick.\"",
+            "author": "Cindy B.",
+            "video_url": ""
+          }
+        },
+        "review_grdchk": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "JF",
+            "avatar_color": "#ffe0b5",
+            "stars": 5,
+            "stars_color": "",
+            "title": "It helps me get to sleep",
+            "body": "<p>I have had insomnia for decades and have tried many prescription and non- prescription remedies. So what’s one more? I got this on their buy one get one free promotion. It actually does help me get to sleep within 10 or 15 minutes. I still can’t stay asleep, waking up after 3 or 4 hours. I do not feel energetic when I wake up, still as groggy as always. But for me it is worth the money to go to sleep instead of spending hours trying to sleep.</p>",
+            "author_name": "Janet F.",
+            "badge_type": "unprompted"
+          }
+        },
+        "video_egEMX8": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/Nick.mov",
+            "quote": "\"I've gotten amazing results.\"",
+            "author": "Nick T.",
+            "video_url": ""
+          }
+        },
+        "review_AYn89d": {
+          "type": "review",
+          "settings": {
+            "avatar_initials": "CY",
+            "avatar_color": "#ffdbe8",
+            "stars": 5,
+            "stars_color": "",
+            "title": "This works very well!",
+            "body": "<p>The sleep spray works very well if you wake during the night. It gets you back to sleep quickly. Great customer service!</p>",
+            "author_name": "",
+            "badge_type": "none"
+          }
+        },
+        "video_iPp7ny": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/20250304_145719 (2).mp4",
+            "quote": "\"I had serious sleep problems and Rejuvia helped!\"",
+            "author": "Dianne T.",
             "video_url": ""
           }
         },
@@ -70,19 +177,6 @@
           "settings": {
             "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
             "alt": ""
-          }
-        },
-        "review_xY6pYw": {
-          "type": "review",
-          "settings": {
-            "avatar_initials": "AH",
-            "avatar_color": "#d0ffdd",
-            "stars": 5,
-            "stars_color": "#018e1c",
-            "title": "Loyal customer for over a year",
-            "body": "<p>I love Rejuvia! Give the sleep spray 7 to 10 days and it will work its magic! I use it everyday and haven't had issues sleeping for over a year now. This is a family run business and you can tell-- they are incredibly ethical and customer focused people who want to do right by their customers!</p>",
-            "author_name": "Angela H.",
-            "badge_type": "unprompted"
           }
         },
         "review_8qAamF": {
@@ -112,18 +206,17 @@
             "badge_type": "verified"
           }
         },
-        "review_Kwrm33": {
+        "review_rDrwHL": {
           "type": "review",
           "settings": {
-            "avatar_image": "shopify://shop_images/hero-v2-testimonial-avatar.png",
-            "avatar_initials": "",
-            "avatar_color": "#ffdbe8",
+            "avatar_initials": "KC",
+            "avatar_color": "#ffe0b5",
             "stars": 5,
-            "stars_color": "",
-            "title": "Superb product",
-            "body": "<p>“I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends.”</p>",
-            "author_name": "Judi M.",
-            "badge_type": "verified"
+            "stars_color": "#018e1c",
+            "title": "Great team",
+            "body": "<p>Great customer service team, fast efficient and easy to work with. 10/10!</p>",
+            "author_name": "Kim C.",
+            "badge_type": "unprompted"
           }
         },
         "image_wqtVP4": {
@@ -131,19 +224,6 @@
           "settings": {
             "image": "shopify://shop_images/609c80de-1872-4bf6-8fec-46d662fbcc3b_large_1f4a6528-ae8a-4f57-8925-c64432e0e25e.webp",
             "alt": ""
-          }
-        },
-        "review_grdchk": {
-          "type": "review",
-          "settings": {
-            "avatar_initials": "JF",
-            "avatar_color": "#ffe0b5",
-            "stars": 5,
-            "stars_color": "",
-            "title": "It helps me get to sleep",
-            "body": "<p>I have had insomnia for decades and have tried many prescription and non- prescription remedies. So what’s one more? I got this on their buy one get one free promotion. It actually does help me get to sleep within 10 or 15 minutes. I still can’t stay asleep, waking up after 3 or 4 hours. I do not feel energetic when I wake up, still as groggy as always. But for me it is worth the money to go to sleep instead of spending hours trying to sleep.</p>",
-            "author_name": "Janet F.",
-            "badge_type": "unprompted"
           }
         },
         "review_ewpxei": {
@@ -159,6 +239,15 @@
             "badge_type": "unprompted"
           }
         },
+        "video_UBbWCx": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/Paul.mp4",
+            "quote": "\"I no longer take other sleep aids.\"",
+            "author": "Paul B.",
+            "video_url": ""
+          }
+        },
         "review_JkNAEP": {
           "type": "review",
           "settings": {
@@ -169,32 +258,6 @@
             "title": "I love this product",
             "body": "<p>I love this product. It truly helps me fall asleep. When a package came with a few damaged items, they quickly replied and sent out replacements. They have been great to work with and I hope their business continues to grow!</p>",
             "author_name": "S B.",
-            "badge_type": "unprompted"
-          }
-        },
-        "review_AYn89d": {
-          "type": "review",
-          "settings": {
-            "avatar_initials": "CY",
-            "avatar_color": "#ffdbe8",
-            "stars": 5,
-            "stars_color": "",
-            "title": "This works very well!",
-            "body": "<p>The sleep spray works very well if you wake during the night. It gets you back to sleep quickly. Great customer service!</p>",
-            "author_name": "",
-            "badge_type": "none"
-          }
-        },
-        "review_rDrwHL": {
-          "type": "review",
-          "settings": {
-            "avatar_initials": "KC",
-            "avatar_color": "#ffe0b5",
-            "stars": 5,
-            "stars_color": "#018e1c",
-            "title": "Great team",
-            "body": "<p>Great customer service team, fast efficient and easy to work with. 10/10!</p>",
-            "author_name": "Kim C.",
             "badge_type": "unprompted"
           }
         },
@@ -336,20 +399,27 @@
         }
       },
       "block_order": [
+        "video_yypYhC",
         "review_gqfkTx",
         "video_3C3KG8",
+        "review_Kwrm33",
+        "video_kg4MYC",
+        "review_xY6pYw",
+        "video_WNCAdK",
+        "video_RDwkE8",
+        "review_grdchk",
+        "video_egEMX8",
+        "review_AYn89d",
+        "video_iPp7ny",
         "review_Mw7NaF",
         "image_dC4MD7",
-        "review_xY6pYw",
         "review_8qAamF",
         "review_6KVFgb",
-        "review_Kwrm33",
-        "image_wqtVP4",
-        "review_grdchk",
-        "review_ewpxei",
-        "review_JkNAEP",
-        "review_AYn89d",
         "review_rDrwHL",
+        "image_wqtVP4",
+        "review_ewpxei",
+        "video_UBbWCx",
+        "review_JkNAEP",
         "review_mytEd6",
         "video_qVrPTy",
         "review_49dEYh",

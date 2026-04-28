@@ -479,7 +479,7 @@
       ],
       "name": "Alternatives V2",
       "settings": {
-        "heading": "<p>The <em>most effective</em> alternative to sleep aids</p>",
+        "heading": "<p>The alternative to every sleep aid that's let you down</p>",
         "rejuvia_image": "shopify://shop_images/rejuvia-products-004-midnight-spray-001_1.png",
         "rejuvia_logo": "shopify://shop_images/Logo.svg",
         "btn_text": "Try Rejuvia Risk-Free",
@@ -493,19 +493,19 @@
         "guarantee_1": {
           "type": "guarantee",
           "settings": {
-            "text": "5,000+ 5-Star Reviews"
+            "text": "6,500+ 5-Star Reviews"
           }
         },
         "guarantee_2": {
           "type": "guarantee",
           "settings": {
-            "text": "Free US Shipping over $79"
+            "text": "Free Shipping On Subscriptions"
           }
         },
         "guarantee_3": {
           "type": "guarantee",
           "settings": {
-            "text": "150,000+ Happy Customers"
+            "text": "300,000+ Happy Customers"
           }
         }
       },

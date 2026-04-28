@@ -2914,7 +2914,6 @@
       }
     },
     "content_for_index": [
-      "sticky_cta_v2_wacfBP",
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
       "product_intro_v2_mcmr7P",
@@ -2929,7 +2928,8 @@
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
       "faqs_v2_BYWkfd",
-      "founder_note_v2_nAYH3a"
+      "founder_note_v2_nAYH3a",
+      "sticky_cta_v2_wacfBP"
     ],
     "blocks": {
       "b476b6dd74a1465df3": {

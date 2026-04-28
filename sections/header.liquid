@@ -147,6 +147,32 @@
     display: none !important;
   }
 
+  /* Mega menu panel — base hide/show rules inlined to prevent FOUC
+     before the async stylesheet loads. */
+  #header .menu-desktop {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity 0s linear 0s, max-height 0.2s linear, z-index 0.2s linear, pointer-events 0.2s linear;
+  }
+
+  #header .menu-desktop.open {
+    max-height: 600px;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s linear 0.2s, max-height 0.2s linear, z-index 0.2s linear, pointer-events 0.2s linear;
+  }
+
   /* Right side: account + cart */
   #header .navigator-right {
     width: auto;
@@ -261,8 +287,8 @@
       background: #EAEAF7;
       border-radius: 10px;
       box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-      height: 44px;
-      padding: 0 16px;
+      height: 55px;
+      padding: 0 20px;
       align-items: center;
       justify-content: space-between;
     }
@@ -272,14 +298,14 @@
     }
 
     #header .navigator-mobile .logo .logo-rejuvia-svg {
-      height: 14px;
+      height: 18px;
       width: auto;
     }
 
     .navigator-mobile__right {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
 
     .navigator-mobile__right .cart-wrap,
@@ -290,8 +316,8 @@
     }
 
     .navigator-mobile__right svg {
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
     }
 
     #menu-mobile { display: block; }

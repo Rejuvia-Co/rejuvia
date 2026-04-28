@@ -660,19 +660,6 @@ function initHeaderScroll() {
 // ============================================================================
 
 function init() {
-  // Clone header menu for drop header
-  const mainMenu = document.querySelector('#header .main-menu');
-  const dropHeaderMenu = document.querySelector('.header-drop .main-menu');
-
-  if (mainMenu && dropHeaderMenu) {
-    dropHeaderMenu.innerHTML = mainMenu.innerHTML;
-    dropHeaderMenu.querySelectorAll('a').forEach(link => {
-      link.setAttribute('focusable', 'false');
-      link.setAttribute('tabindex', '-1');
-      link.setAttribute('aria-hidden', 'true');
-    });
-  }
-
   // Initialize all components
   initQuantityBoxes();
   initQuickView();

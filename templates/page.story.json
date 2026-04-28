@@ -29,12 +29,12 @@
     "story_reviews_v2_WNr7Wz": {
       "type": "story-reviews-v2",
       "blocks": {
-        "video_yypYhC": {
+        "video_egEMX8": {
           "type": "video",
           "settings": {
-            "video_file": "shopify://files/videos/Peggy Sue.mov",
-            "quote": "\"Rejuvia completely changed my sleep.\"",
-            "author": "Peggy S.",
+            "video_file": "shopify://files/videos/Nick.mov",
+            "quote": "\"I've gotten amazing results.\"",
+            "author": "Nick T.",
             "video_url": ""
           }
         },
@@ -51,12 +51,12 @@
             "badge_type": "unprompted"
           }
         },
-        "video_3C3KG8": {
+        "video_yypYhC": {
           "type": "video",
           "settings": {
-            "video_file": "shopify://files/videos/web-2.mp4",
-            "quote": "“I was skeptical at first but it works!\"",
-            "author": "Hylan S.",
+            "video_file": "shopify://files/videos/Peggy Sue.mov",
+            "quote": "\"Rejuvia completely changed my sleep.\"",
+            "author": "Peggy S.",
             "video_url": ""
           }
         },
@@ -127,12 +127,12 @@
             "badge_type": "unprompted"
           }
         },
-        "video_egEMX8": {
+        "video_iPp7ny": {
           "type": "video",
           "settings": {
-            "video_file": "shopify://files/videos/Nick.mov",
-            "quote": "\"I've gotten amazing results.\"",
-            "author": "Nick T.",
+            "video_file": "shopify://files/videos/20250304_145719 (2).mp4",
+            "quote": "\"I had serious sleep problems and Rejuvia helped!\"",
+            "author": "Dianne T.",
             "video_url": ""
           }
         },
@@ -149,15 +149,6 @@
             "badge_type": "none"
           }
         },
-        "video_iPp7ny": {
-          "type": "video",
-          "settings": {
-            "video_file": "shopify://files/videos/20250304_145719 (2).mp4",
-            "quote": "\"I had serious sleep problems and Rejuvia helped!\"",
-            "author": "Dianne T.",
-            "video_url": ""
-          }
-        },
         "review_Mw7NaF": {
           "type": "review",
           "settings": {
@@ -170,6 +161,15 @@
             "body": "<p>So far this is legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast!</p>",
             "author_name": "Christy W.",
             "badge_type": "verified"
+          }
+        },
+        "video_3C3KG8": {
+          "type": "video",
+          "settings": {
+            "video_file": "shopify://files/videos/web-2.mp4",
+            "quote": "“I was skeptical at first but it works!\"",
+            "author": "Hylan S.",
+            "video_url": ""
           }
         },
         "image_dC4MD7": {
@@ -318,6 +318,7 @@
         },
         "image_Kjwjdj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
             "alt": ""
@@ -392,6 +393,7 @@
         },
         "image_hcCcJF": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
             "alt": ""
@@ -399,19 +401,19 @@
         }
       },
       "block_order": [
-        "video_yypYhC",
+        "video_egEMX8",
         "review_gqfkTx",
-        "video_3C3KG8",
+        "video_yypYhC",
         "review_Kwrm33",
         "video_kg4MYC",
         "review_xY6pYw",
         "video_WNCAdK",
         "video_RDwkE8",
         "review_grdchk",
-        "video_egEMX8",
-        "review_AYn89d",
         "video_iPp7ny",
+        "review_AYn89d",
         "review_Mw7NaF",
+        "video_3C3KG8",
         "image_dC4MD7",
         "review_8qAamF",
         "review_6KVFgb",

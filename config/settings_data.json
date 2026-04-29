@@ -2082,7 +2082,7 @@
         ],
         "name": "Product Intro V2",
         "settings": {
-          "heading": "<p>You've tried it all. And <em>nothing's ever stuck.</em></p>",
+          "heading": "<p>You've tried it all and <em>nothing's ever stuck</em></p>",
           "description": "<p>Most sleep products lose the fight before they reach your bloodstream. Here's why.</p>",
           "accent_color": "#672666"
         }

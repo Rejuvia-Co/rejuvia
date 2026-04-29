@@ -51,10 +51,10 @@
   .product-widget-container .product-info .block-title .title {
     color: #141414;
     font-family: "Helvetica Neue", sans-serif;
-    font-size: 30px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.2;
     text-transform: capitalize;
     margin: 0;
   }
@@ -96,6 +96,20 @@
 
   .product-widget-container .product-info .block-description p {
     margin: 0;
+  }
+
+  .product-widget-container .product-info .block-description .grid,
+  .product-widget-container .product-info .block-description .grid-full,
+  .product-widget-container .product-info .description-container .grid,
+  .product-widget-container .product-info .description-container .grid-full {
+    margin-left: 0;
+  }
+
+  .product-widget-container .product-info .block-description .grid > .grid__item,
+  .product-widget-container .product-info .block-description .grid-full > .grid__item,
+  .product-widget-container .product-info .description-container .grid > .grid__item,
+  .product-widget-container .product-info .description-container .grid-full > .grid__item {
+    padding-left: 0;
   }
 
   .product-widget-container .content--p {
@@ -1051,15 +1065,15 @@
       margin-top: 0;
     }
 
-    /* Title - 24px bold */
+    /* Title - 32px bold */
     .product-widget-container .product-info .block-title .title,
     .product-wrap .product-top .title {
       color: #141414;
 
-      font-size: 24px;
+      font-size: 32px;
       font-style: normal;
       font-weight: 700;
-      line-height: 1.4;
+      line-height: 1.2;
       text-transform: capitalize;
       text-align: left;
       margin: 0;

@@ -1984,6 +1984,7 @@
           },
           "testimonial_tJdwPf": {
             "type": "testimonial",
+            "disabled": true,
             "settings": {
               "avatar": "shopify://shop_images/bettmrejuva.png",
               "name": "Betty K.",

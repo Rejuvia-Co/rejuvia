@@ -113,8 +113,8 @@
         "anchor_id": "ingredients-oral-sprays",
         "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "heading": "<p>Why is an oral spray <em>better</em>?</p>",
-        "description": "<p>Unlike capsules, oils, or gummies that must pass through your digestive system, our sprays are absorbed largely under your tongue.</p><p>This allows nutrients to enter your bloodstream more efficiently, leading to faster, stronger, and more consistent effects without the hassle of swallowing pills.</p>",
+        "heading": "<p>Why are oral sprays more effective?</p>",
+        "description": "<p>\"Unlike gummies or pills that have to survive your entire digestive system, Rejuvia absorbs directly under your tongue — straight into your bloodstream. No stomach. No liver. No wasted ingredients. </p><p></p><p>The tissue under your tongue is densely packed with blood vessels, allowing active ingredients to bypass the digestive process entirely. That means more of the formula reaches your body intact, at full potency, exactly when you need it.</p>",
         "chart_image": "shopify://shop_images/1948755793_desktop.png",
         "chart_image_mobile": "shopify://shop_images/1948755793_mob.png"
       }
@@ -126,7 +126,7 @@
           "type": "item",
           "settings": {
             "title": "Triple lab-tested, every batch",
-            "description": "<p>We don't test once and call it done. Every batch of every product is independently tested three times – for purity, potency, and contaminants.</p>",
+            "description": "<p>We don't test once and call it done. Every batch is independently tested three times for purity, potency, and contaminants before it ever ships.</p>",
             "badge_text": "Independently Tested",
             "open_by_default": true
           }
@@ -135,8 +135,8 @@
           "type": "item",
           "settings": {
             "title": "Formulated with doctors and researchers",
-            "description": "<p>We partner with leading doctors, scientists and researchers from across the country to develop and formulate our products.</p>",
-            "badge_text": "",
+            "description": "<p>Rejuvia wasn't built in a basement. We worked alongside doctors and sleep researchers to identify the right ingredients, the right doses, and the right delivery method to actually move the needle on sleep.</p>",
+            "badge_text": "Doctor-Backed",
             "open_by_default": false
           }
         },
@@ -144,8 +144,8 @@
           "type": "item",
           "settings": {
             "title": "Clean ingredients, nothing hidden",
-            "description": "<p>We source only the cleanest and purest ingredients, ensuring that every product is free from harmful chemicals and packed with efficacious blends.</p>",
-            "badge_text": "",
+            "description": "<p>No fillers. No artificial additives. No ingredients you'd have to Google. Every component in Rejuvia is natural, purposeful, and exactly what's listed on the label. Nothing more.</p>",
+            "badge_text": "Clean and Natural",
             "open_by_default": false
           }
         },
@@ -153,8 +153,8 @@
           "type": "item",
           "settings": {
             "title": "Innovative Delivery Method",
-            "description": "<p>We are constantly striving to bring the latest, most effective delivery methods to market.</p>",
-            "badge_text": "",
+            "description": "<p>Most supplements are still using a delivery system from the 1950s. Rejuvia's sublingual spray bypasses your digestive system entirely, absorbing directly into your bloodstream under your tongue so more of the formula reaches your body, faster.</p>",
+            "badge_text": "3x Faster Absorption",
             "open_by_default": false
           }
         }
@@ -173,7 +173,7 @@
         "badge_bg_color": "#eaeaf7",
         "badge_text_color": "#672666",
         "quote_bg_color": "#f5f5fb",
-        "quote": "<p>“<strong>We’ve meticulously formulated</strong> our Oral Sprays with the help of leading doctors and scientists, ensuring they are triple-tested for purity and potency, delivering a product that is both high-quality and highly effective.”</p>",
+        "quote": "<p>Building Rejuvia for my mom meant I wasn't willing to cut corners. We spent years working to get the formula right — testing different ingredient combinations, refining the delivery method, making sure what we put in actually reaches your body. Every batch is independently tested three times — for purity, potency, and contaminants — before it ever ships. Most supplement brands don't do that. We do it because we'd never sell something to <span style=\"text-decoration:underline\"><strong>300,000 people</strong></span> that we wouldn't give to our own family.</p>",
         "signature_image": "shopify://shop_images/Frame_48101400.png",
         "author_name": "– RC Williams",
         "author_title": "Founder"
@@ -189,7 +189,7 @@
         "stars_color": "#fab851",
         "image": "shopify://shop_images/hero-v2-product.png",
         "show_stars": true,
-        "quote": "<p>“This is my go to! I <strong>can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep.”</p>",
+        "quote": "<p>“Rejuvia is my go to! <strong>I can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep. It's great for traveling too!\"</p>",
         "author_name": "Katie C.",
         "author_role": "Verified Purchase",
         "btn_text": "Sleep Better Tonight",

@@ -1981,21 +1981,10 @@
               "quote": "First time in years I actually slept through the FULL night. And woke up feeling energized.",
               "stars": 5
             }
-          },
-          "testimonial_tJdwPf": {
-            "type": "testimonial",
-            "disabled": true,
-            "settings": {
-              "avatar": "shopify://shop_images/bettmrejuva.png",
-              "name": "Betty K.",
-              "quote": "I've tried everything. This was the first time I actually felt calm and woke up without feeling groggy.",
-              "stars": 5
-            }
           }
         },
         "block_order": [
-          "testimonial_yEEgca",
-          "testimonial_tJdwPf"
+          "testimonial_yEEgca"
         ],
         "name": "Hero V2",
         "settings": {

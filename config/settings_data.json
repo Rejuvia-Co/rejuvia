@@ -693,7 +693,7 @@
               "product_3_desc": "Calm your mind during the day, sleep deeply at night.",
               "product_4": "vitamin-d3-k2-spray",
               "product_4_desc": "Support immunity, bone strength, and heart health.",
-              "product_5": "lutein",
+              "product_5": "",
               "product_5_desc": "",
               "benefit_1_text": "Free Shipping on All Subscriptions",
               "benefit_2_text": "6,500+ 5-Star Reviews",
@@ -2602,72 +2602,80 @@
       "faqs_v2_BYWkfd": {
         "type": "faqs-v2",
         "blocks": {
+          "faq_A7twnN": {
+            "type": "faq",
+            "settings": {
+              "question": "What are the ingredients in Rejuvia?",
+              "answer": "<p>Rejuvia contains a blend of 13 natural sleep ingredients including Melatonin (2mg), Valerian Root, Passionflower, Chamomile, Lemon Balm, 5-HTP, Magnolia Bark, Skullcap Root, and Ginkgo Biloba. Every ingredient is natural, purposeful, and triple lab-tested for purity and potency before it ships.</p>"
+            }
+          },
           "faq_kPjUwi": {
             "type": "faq",
             "settings": {
-              "question": "Why are Rejuvia sprays better than gummies and pills?",
-              "answer": "<p>Oral sprays allow for direct absorption through the mucous membranes in your mouth, bypassing the digestive system entirely. That means faster uptake, higher bioavailability, and no fillers or added sugars that come with most gummies. You feel it working quicker and your body actually uses more of what you're taking.</p>"
+              "question": "How quickly does Rejuvia work, and how long will I sleep?",
+              "answer": "<p>Most customers feel Rejuvia working within 10-15 minutes of spraying. Because it absorbs directly under your tongue and into your bloodstream, it works significantly faster than pills or gummies that have to survive your digestive system first. Most customers report sleeping through the full night and waking up without grogginess.</p>"
             }
           },
           "faq_bnfb6i": {
             "type": "faq",
             "settings": {
-              "question": "Do I need to take Rejuvia every night?",
-              "answer": "<p>Nope. Rejuvia works on an as-needed basis — there's no buildup required. Use it nightly, on travel nights, or whenever you need help winding down. It's completely flexible.</p>"
+              "question": "Will I feel groggy the next morning?",
+              "answer": "<p>No. Rejuvia is formulated with a low 2mg dose of melatonin paired with natural calming herbs, designed to support your body's own sleep cycle rather than sedate it. You wake up feeling rested and clear-headed, not foggy. If you've ever felt groggy from a sleeping pill, Rejuvia works very differently.</p>"
             }
           },
           "faq_iaepJi": {
             "type": "faq",
             "settings": {
-              "question": "How quickly does Rejuvia work, and how long will I sleep?",
-              "answer": "<p>Most customers feel the effects within 15–20 minutes. You don't need to block out a full 8 hours — it supports your natural sleep cycle whether you're getting 5 hours or 8. Some people notice results the first night; others need 5–7 days of consistent use for the full effect.</p>"
+              "question": "What if Rejuvia doesn't work for me?",
+              "answer": "<p>Your first order comes with a 90-day money-back guarantee. If you give it a real try and don't sleep better, contact us and we'll take care of you, no questions asked. We're confident enough in the formula to stand behind it completely.</p>"
             }
           },
           "faq_Yd6Xga": {
             "type": "faq",
             "settings": {
-              "question": "Will I feel groggy the next morning?",
-              "answer": "<p>No. That's actually one of the biggest reasons people switch to Rejuvia from melatonin gummies or OTC sleep aids. Our sublingual formula absorbs directly into your bloodstream, so your body processes it efficiently — no next-day fog. Nurses, travelers, and early risers use it specifically for this reason.</p>"
-            }
-          },
-          "faq_tLDpaw": {
-            "type": "faq",
-            "settings": {
-              "question": "Will Rejuvia knock me out like a sleeping pill?",
-              "answer": "<p>No — Rejuvia isn't a sedative. It's designed to help your body wind down naturally so you fall asleep when you're ready. Think of it as support for your body's own sleep process, not an off switch. Most customers notice they simply drift off easier and stay asleep longer.</p>"
+              "question": "Is Rejuvia safe to use long-term?",
+              "answer": "<p>Yes. Rejuvia is made with 100% natural, non-habit-forming ingredients. There's no tolerance buildup, no dependency, and no withdrawal. Thousands of customers have used it nightly for a year or more without ever needing to increase their dose. It works with your body, not against it.</p>"
             }
           },
           "faq_YArTEw": {
             "type": "faq",
             "settings": {
-              "question": "How does the subscription work? Can I cancel easily?",
-              "answer": "<p>Yes — you can skip, pause, or cancel anytime from your account dashboard. No commitments, no hoops. You'll always get an email before you're charged so there are no surprises.</p>"
+              "question": "Do I need to take Rejuvia every night?",
+              "answer": "<p>No, but most customers choose to. Rejuvia works on the nights you use it, so some people use it every night as part of their routine while others keep it on the nightstand for nights when sleep is harder to come by. Either way works. There's no dependency, so you can use it as often or as little as you need.</p>"
             }
           },
-          "faq_Pthmj9": {
+          "faq_eCabn9": {
             "type": "faq",
             "settings": {
-              "question": "What if Rejuvia doesn't work for me?",
-              "answer": "<p>We offer a 90-day money-back guarantee on your first order, no questions asked. If it's not for you, just email hello@rejuvia.co and we'll walk you through the return. You're only responsible for return shipping costs.</p>"
+              "question": "Can I take Rejuvia if I have a medical condition?",
+              "answer": "<p>We always recommend consulting your healthcare professional before starting any new supplement, especially if you have an existing medical condition. Unfortunately we are not able to provide medical advice. Your doctor will be best positioned to let you know if Rejuvia is right for you.</p>"
             }
           },
           "faq_hz8L79": {
             "type": "faq",
             "settings": {
               "question": "How many sprays should I take?",
-              "answer": "<p>Start with 4-6 sprays under your tongue, 30 minutes before bed. Less is more — most customers find their sweet spot here. If you feel groggy the next morning, reduce by 1–2 sprays. If you don't notice an effect after a week, increase gradually. The max is 6–8 sprays, but it's not the starting point.</p>"
+              "answer": "<p>Start with 6-8 sprays under your tongue or inside your cheek and let it sit for a few seconds before swallowing. If you find that's not enough, you can increase to 10-12 sprays. The beauty of a spray is that you control your dose precisely, unlike a pill or gummy where you're locked into whatever dose they decided for you.</p>"
+            }
+          },
+          "faq_yjADWm": {
+            "type": "faq",
+            "settings": {
+              "question": "What does Rejuvia taste like?",
+              "answer": "<p>Fresh mint. It's light and pleasant, not medicinal or overwhelming. Most customers use it right after brushing their teeth as part of their bedtime routine, and the mint flavor fits naturally into that.</p>"
             }
           }
         },
         "block_order": [
+          "faq_A7twnN",
           "faq_kPjUwi",
           "faq_bnfb6i",
           "faq_iaepJi",
           "faq_Yd6Xga",
-          "faq_tLDpaw",
           "faq_YArTEw",
-          "faq_Pthmj9",
-          "faq_hz8L79"
+          "faq_eCabn9",
+          "faq_hz8L79",
+          "faq_yjADWm"
         ],
         "name": "FAQs V2",
         "settings": {

@@ -363,8 +363,13 @@
                             {% if block.settings.avatar_image != blank %}
                                 <div class="story-reviews-v2-avatar">
                                     <img src="{{ block.settings.avatar_image | image_url: width: 120 }}"
+                                         srcset="{{ block.settings.avatar_image | image_url: width: 100 }} 100w,
+                                                 {{ block.settings.avatar_image | image_url: width: 120 }} 120w"
+                                         sizes="60px"
+                                         width="60" height="60"
                                          alt="{{ block.settings.author_name | default: 'Reviewer' }}"
-                                         loading="lazy">
+                                         loading="lazy"
+                                         decoding="async">
                                 </div>
                             {% elsif block.settings.avatar_initials != blank %}
                                 <div class="story-reviews-v2-avatar" style="background: {{ block.settings.avatar_color | default: '#eaeaf7' }};">
@@ -425,10 +430,23 @@
                                 {% endfor %}
                             </video>
                         {% elsif video_poster != blank %}
+                            {%- assign poster_img = block.settings.thumbnail | default: video_file.preview_image -%}
                             <div class="story-reviews-v2-video-bg">
-                                <img src="{{ video_poster }}"
-                                     alt="{{ block.settings.author | default: 'Video review' }}"
-                                     loading="lazy">
+                                {% if poster_img != blank %}
+                                    <img src="{{ poster_img | image_url: width: 800 }}"
+                                         srcset="{{ poster_img | image_url: width: 400 }} 400w,
+                                                 {{ poster_img | image_url: width: 800 }} 800w,
+                                                 {{ poster_img | image_url: width: 1200 }} 1200w"
+                                         sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                                         alt="{{ block.settings.author | default: 'Video review' }}"
+                                         loading="lazy"
+                                         decoding="async">
+                                {% else %}
+                                    <img src="{{ video_poster }}"
+                                         alt="{{ block.settings.author | default: 'Video review' }}"
+                                         loading="lazy"
+                                         decoding="async">
+                                {% endif %}
                             </div>
                         {% endif %}
                         <div class="story-reviews-v2-video-overlay"></div>
@@ -458,8 +476,13 @@
                     <div class="story-reviews-v2-image">
                         {% if block.settings.image != blank %}
                             <img src="{{ block.settings.image | image_url: width: 800 }}"
+                                 srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                                         {{ block.settings.image | image_url: width: 800 }} 800w,
+                                         {{ block.settings.image | image_url: width: 1200 }} 1200w"
+                                 sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
                                  alt="{{ block.settings.alt | default: '' }}"
-                                 loading="lazy">
+                                 loading="lazy"
+                                 decoding="async">
                         {% endif %}
                     </div>
                 </div>

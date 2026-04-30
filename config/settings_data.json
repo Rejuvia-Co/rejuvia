@@ -2189,6 +2189,18 @@
               "stars": 5
             }
           },
+          "tp_review_BtajJX": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "MM",
+              "avatar_color": "#d0ffdd",
+              "title": "BEST customer service bar none!!",
+              "text": "I have some serious sleep issues and the Rejuvia does seem to helping, but better than the product is the customer service! One of my sprays was damaged in shipping. I sent one email and BOOM! Louie from Customer Service emailed me back and within two days (mostly because I am terrible at checking email) a replacement was in the mail! Absolutely top notch service!!!",
+              "name": "Melinda Malamoco",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
           "tp_review_XAUKKi": {
             "type": "tp_review",
             "settings": {
@@ -2273,6 +2285,7 @@
           "tp_review_NqL6Rk",
           "tp_review_nq4Umj",
           "tp_review_tedq9c",
+          "tp_review_BtajJX",
           "tp_review_XAUKKi",
           "tp_review_jRXKcN",
           "fb_review_L8tT8R",

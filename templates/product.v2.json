@@ -170,24 +170,23 @@
         "tp_review_nmDf6b": {
           "type": "tp_review",
           "settings": {
-            "initials": "LD",
+            "initials": "PG",
             "avatar_color": "#d0ffdd",
-            "title": "Great company and product",
-            "text": "The Rejuvia sleep spray is amazing !! I had tried everything ( Benadryl, melatonin and even Nyquil) to get a good nights slepp. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
-            "name": "Lynn D.",
+            "title": "Very effective sleep product, great for traveling too",
+            "text": "Great stuff! I can't tell you when I first started using Midnight Bliss, but I can tell you I love it!! I've used 2 containers and I'm ready to order more. I've tried multiple sleep aids and this is by far what works for me! Keep doing what you're doing! I'm a fan!!!",
+            "name": "Pam Gerding",
             "badge": "Unprompted review",
             "stars": 5
           }
         },
         "tp_review_UaNHbG": {
           "type": "tp_review",
-          "disabled": true,
           "settings": {
-            "initials": "AR",
+            "initials": "MM",
             "avatar_color": "#d0ffdd",
-            "title": "Excellent product and service",
-            "text": "I LOVE not only the product (sleep spray) but the customer service! Excellent company, excellent product!",
-            "name": "Allison Reynolds",
+            "title": "BEST customer service bar none!!",
+            "text": "I have some serious sleep issues and the Rejuvia does seem to helping, but better than the product is the customer service! One of my sprays was damaged in shipping. I sent one email and BOOM! Louie from Customer Service emailed me back and within two days (mostly because I am terrible at checking email) a replacement was in the mail! Absolutely top notch service!!!",
+            "name": "Melinda Malamoco",
             "badge": "Unprompted review",
             "stars": 5
           }

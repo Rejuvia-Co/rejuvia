@@ -1850,7 +1850,7 @@
           "show_heading": true,
           "heading": "Finally, The Better Way to Sleep",
           "container_width": 1300,
-          "section_padding_top": 65,
+          "section_padding_top": 40,
           "section_padding_bottom": 65,
           "section_padding_horizontal": 70,
           "bg_color": "#ffffff",
@@ -2964,6 +2964,14 @@
         ],
         "settings": {
           "heading": "<p>Over 6,500 real 5-star reviews from <em>300,000+</em> sleepers</p>"
+        }
+      },
+      "image-text-v2": {
+        "type": "image-text-v2",
+        "settings": {
+          "heading": "<p>Why Rejuvia Sleep Spray works <em>3x faster and stronger</em></p>",
+          "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes — bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster — you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
+          "image": "shopify://shop_images/rejuvia_absorption_a706ac01-eda1-4cb2-b505-293efd8935c3.png"
         }
       }
     },

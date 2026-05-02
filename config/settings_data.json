@@ -3004,6 +3004,7 @@
           "bg_color": "#f5f5fb",
           "accent_color": "#672666",
           "stars_color": "#fab851",
+          "image": "shopify://shop_images/Image.png",
           "show_stars": true,
           "quote": "<p>\"Love this product. <span style=\"text-decoration:underline\"><strong>I’m asleep within minutes.</strong></span> If I wake up in the middle of the night and don’t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",
           "author_name": "Sandy J. P.",

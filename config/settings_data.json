@@ -2739,6 +2739,18 @@
               "stars": 5
             }
           },
+          "tp_review_bgnrNp": {
+            "type": "tp_review",
+            "settings": {
+              "initials": "LD",
+              "avatar_color": "#d0ffdd",
+              "title": "BEST customer service bar none!!",
+              "text": "I have some serious sleep issues and the Rejuvia does seem to helping, but better than the product is the customer service! One of my sprays was damaged in shipping. I sent one email and BOOM! Louie from Customer Service emailed me back and within two days (mostly because I am terrible at checking email) a replacement was in the mail! Absolutely top notch service!!!",
+              "name": "Melinda Malamoco",
+              "badge": "Unprompted review",
+              "stars": 5
+            }
+          },
           "tp_review_XX7jCh": {
             "type": "tp_review",
             "settings": {
@@ -2775,10 +2787,28 @@
               "stars": 5
             }
           },
+          "fb_review_wG6Kzq": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-05-02_at_2.16.06_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
           "fb_review_cB3fBy": {
             "type": "fb_review",
             "settings": {
               "image": "shopify://shop_images/Screenshot_2026-04-26_at_9.12.36_AM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
+          "fb_review_V66kyC": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-05-02_at_2.13.16_PM.png",
               "offset_top": 0,
               "offset_left": 0,
               "offset_right": 0
@@ -2796,7 +2826,7 @@
           "fb_review_nPgNiB": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.13.42_PM.png",
+              "image": "shopify://shop_images/Screenshot_2026-05-02_at_2.15.00_PM.png",
               "offset_top": 0,
               "offset_left": 0,
               "offset_right": 0
@@ -2805,7 +2835,7 @@
           "fb_review_FmBBcA": {
             "type": "fb_review",
             "settings": {
-              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
+              "image": "shopify://shop_images/fb_1.png",
               "offset_top": 0,
               "offset_left": 0,
               "offset_right": 0
@@ -2828,34 +2858,27 @@
               "offset_left": 0,
               "offset_right": 0
             }
-          },
-          "fb_review_Bt8Ayh": {
-            "type": "fb_review",
-            "settings": {
-              "image": "shopify://shop_images/fb_1.png",
-              "offset_top": 0,
-              "offset_left": 0,
-              "offset_right": 0
-            }
           }
         },
         "block_order": [
           "tp_review_Q84BmA",
           "tp_review_LytVmM",
+          "tp_review_bgnrNp",
           "tp_review_XX7jCh",
           "tp_review_EYzLzU",
           "tp_review_CkdLt7",
+          "fb_review_wG6Kzq",
           "fb_review_cB3fBy",
+          "fb_review_V66kyC",
           "fb_review_4gKCw9",
           "fb_review_nPgNiB",
           "fb_review_FmBBcA",
           "fb_review_8rcmWz",
-          "fb_review_tezyxq",
-          "fb_review_Bt8Ayh"
+          "fb_review_tezyxq"
         ],
         "settings": {
           "trusted_count": "300,000+",
-          "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
+          "heading": "<p>Real reviews from people who <em>have tried everything for sleep</em></p>"
         }
       },
       "product-intro-v2": {

@@ -2922,6 +2922,49 @@
           "story_row_HyiExX"
         ],
         "settings": {}
+      },
+      "custom-reviews-v2": {
+        "type": "custom-reviews-v2",
+        "blocks": {
+          "review_9dKWip": {
+            "type": "review",
+            "settings": {
+              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
+              "title": "Rejuvia puts me right to sleep each night",
+              "text": "I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends. Highly, highly suggest giving it a try if you struggle to sleep, you have nothing to lose!",
+              "name": "Judi M.",
+              "stars": 5
+            }
+          },
+          "review_AQABdG": {
+            "type": "review",
+            "settings": {
+              "avatar": "shopify://shop_images/Ellipse_218.png",
+              "title": "I’ve been sleeping great!",
+              "text": "So far this is spray legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast and he is able to wake up without grogginess and the energy he had when he was in his 20s!! You've got a customer for LIFE!!",
+              "name": "Christy W.",
+              "stars": 5
+            }
+          },
+          "review_JLMA7d": {
+            "type": "review",
+            "settings": {
+              "avatar": "shopify://shop_images/Ellipse_218_1.png",
+              "title": "My mom uses it too now",
+              "text": "Tried a lot of different sleeping supplements… this works with 10-15 minutes every night! I’ve shared my extra bottles with a few of my friends and family… they couldn’t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
+              "name": "Theresa Y.",
+              "stars": 5
+            }
+          }
+        },
+        "block_order": [
+          "review_9dKWip",
+          "review_AQABdG",
+          "review_JLMA7d"
+        ],
+        "settings": {
+          "heading": "<p>Over 6,500 real 5-star reviews from <em>300,000+</em> sleepers</p>"
+        }
       }
     },
     "content_for_index": [

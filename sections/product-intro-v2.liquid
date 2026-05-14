@@ -89,6 +89,10 @@
     background-position: center;
 }
 
+.pi-v2-image-bg.is-hidden {
+    display: none;
+}
+
 .pi-v2-tab-image {
     display: none;
     align-items: center;
@@ -378,9 +382,9 @@
     {%- comment -%} === Image Column === {%- endcomment -%}
     <div class="pi-v2-image-col">
         <div class="pi-v2-image-area">
-            <div class="pi-v2-image-bg"></div>
+            <div class="pi-v2-image-bg{% if section.blocks.first.settings.hide_image_bg %} is-hidden{% endif %}" data-pi-v2-bg></div>
             {% for block in section.blocks %}
-                <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}" data-pi-v2-index="{{ forloop.index0 }}">
+                <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}" data-pi-v2-index="{{ forloop.index0 }}" data-pi-v2-hide-bg="{% if block.settings.hide_image_bg %}true{% else %}false{% endif %}">
                     {% if block.settings.image != blank %}
                         <img
                             src="{{ block.settings.image | image_url: width: 600 }}"
@@ -470,6 +474,7 @@
     var tabs = section.querySelectorAll('[data-pi-v2-tab]');
     var images = section.querySelectorAll('[data-pi-v2-index]');
     var badges = section.querySelectorAll('[data-pi-v2-badge]');
+    var bg = section.querySelector('[data-pi-v2-bg]');
     var counter = section.querySelector('[data-pi-v2-current]');
     var total = tabs.length;
     var current = 0;
@@ -494,6 +499,9 @@
         badges.forEach(function(b, i) {
             b.classList.toggle('is-active', i === current);
         });
+        if (bg && images[current]) {
+            bg.classList.toggle('is-hidden', images[current].getAttribute('data-pi-v2-hide-bg') === 'true');
+        }
         if (counter) counter.textContent = current + 1;
         updateNav();
     }
@@ -555,6 +563,13 @@
                     "type": "image_picker",
                     "id": "image",
                     "label": "Image"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "hide_image_bg",
+                    "label": "Hide dotted circle background",
+                    "info": "Enable for images that already have a white/solid background",
+                    "default": false
                 },
                 {
                     "type": "text",

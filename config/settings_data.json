@@ -2044,8 +2044,9 @@
             "settings": {
               "title": "Melatonin Gummies",
               "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
-              "image": "shopify://shop_images/melatonin_gummies.png",
-              "badge_text": "80% lost to digestion",
+              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_MelatoninGummies.png",
+              "hide_image_bg": true,
+              "badge_text": "",
               "badge_position_desktop": "bottom-right",
               "badge_position_mobile": "top-left"
             }
@@ -2056,6 +2057,7 @@
               "title": "Sleeping Pills",
               "content": "<p>Sleep pills pack in high doses because they know <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
               "image": "shopify://shop_images/Generated_Image_March_18_2026_-_6_12PM_1.png",
+              "hide_image_bg": false,
               "badge_text": "Too Much, Poorly Absorbed",
               "badge_icon": "shopify://shop_images/Frame_3.svg",
               "badge_position_desktop": "top-right",
@@ -2068,6 +2070,7 @@
               "title": "The \"Natural\" Cycle",
               "content": "<p>Teas, tinctures, magnesium baths. The ingredients are real, but the doses are too small and the absorption is too slow to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. again.</p>",
               "image": "shopify://shop_images/Frame_1948755839.png",
+              "hide_image_bg": false,
               "badge_text": "Inconsistent Results",
               "badge_icon": "shopify://shop_images/Frame_4.svg",
               "badge_position_desktop": "bottom-left",

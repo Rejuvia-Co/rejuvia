@@ -107,6 +107,11 @@
     display: flex;
 }
 
+.pi-v2-tab-image.pi-v2-tab-image--full {
+    width: 100%;
+    height: 100%;
+}
+
 .pi-v2-tab-image img {
     max-width: 100%;
     max-height: 100%;
@@ -329,6 +334,10 @@
         width: 177px;
         height: 177px;
     }
+    .pi-v2-tab-image.pi-v2-tab-image--full {
+        width: 100%;
+        height: auto;
+    }
     .pi-v2-nav {
         display: none;
     }
@@ -384,7 +393,7 @@
         <div class="pi-v2-image-area">
             <div class="pi-v2-image-bg{% if section.blocks.first.settings.hide_image_bg %} is-hidden{% endif %}" data-pi-v2-bg></div>
             {% for block in section.blocks %}
-                <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}" data-pi-v2-index="{{ forloop.index0 }}" data-pi-v2-hide-bg="{% if block.settings.hide_image_bg %}true{% else %}false{% endif %}">
+                <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}{% if block.settings.full_width_image %} pi-v2-tab-image--full{% endif %}" data-pi-v2-index="{{ forloop.index0 }}" data-pi-v2-hide-bg="{% if block.settings.hide_image_bg %}true{% else %}false{% endif %}">
                     {% if block.settings.image != blank %}
                         <img
                             src="{{ block.settings.image | image_url: width: 600 }}"
@@ -393,16 +402,18 @@
                         >
                     {% endif %}
                 </div>
-                <div class="pi-v2-badge pi-v2-badge--{{ block.settings.badge_position_desktop }} pi-v2-badge-m--{{ block.settings.badge_position_mobile }}{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
-                    {% if block.settings.badge_icon != blank %}
-                        <img class="pi-v2-badge-icon" src="{{ block.settings.badge_icon | image_url: width: 32 }}" alt="" width="12" height="12">
-                    {% else %}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
-                            <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    {% endif %}
-                    <span>{{ block.settings.badge_text }}</span>
-                </div>
+                {% if block.settings.badge_text != blank %}
+                    <div class="pi-v2-badge pi-v2-badge--{{ block.settings.badge_position_desktop }} pi-v2-badge-m--{{ block.settings.badge_position_mobile }}{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
+                        {% if block.settings.badge_icon != blank %}
+                            <img class="pi-v2-badge-icon" src="{{ block.settings.badge_icon | image_url: width: 32 }}" alt="" width="12" height="12">
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
+                                <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        {% endif %}
+                        <span>{{ block.settings.badge_text }}</span>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
         <div class="pi-v2-nav">
@@ -496,8 +507,9 @@
         images.forEach(function(img, i) {
             img.classList.toggle('is-active', i === current);
         });
-        badges.forEach(function(b, i) {
-            b.classList.toggle('is-active', i === current);
+        badges.forEach(function(b) {
+            var idx = parseInt(b.getAttribute('data-pi-v2-badge'), 10);
+            b.classList.toggle('is-active', idx === current);
         });
         if (bg && images[current]) {
             bg.classList.toggle('is-hidden', images[current].getAttribute('data-pi-v2-hide-bg') === 'true');
@@ -572,9 +584,17 @@
                     "default": false
                 },
                 {
+                    "type": "checkbox",
+                    "id": "full_width_image",
+                    "label": "Full-width column image",
+                    "info": "Image fills the entire column width instead of the fixed 240px",
+                    "default": false
+                },
+                {
                     "type": "text",
                     "id": "badge_text",
                     "label": "Badge text",
+                    "info": "Leave empty to hide the badge for this tab",
                     "default": "80% lost to digestion"
                 },
                 {

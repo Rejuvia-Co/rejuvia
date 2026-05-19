@@ -16,12 +16,12 @@
         "billing_address_description": "Select the address that matches your card.",
         "subscription_agreement_label_html": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
         "purchase_options_agreement_label": "By clicking \"Pay Now,\" you agree to Rejuvia's terms of sale and privacy policy.",
-        "card_security_notice": "All transactions are safe, secure and encrypted."
+        "card_security_notice": "All transactions are safe, secure and encrypted. Your order includes free returns and 24/7 access to our award-winning customer service team."
       },
       "contact": {
         "email_or_phone_label": "Email or mobile phone number",
         "phone_label": "Phone or email - get updates on your order!",
-        "contact_method_title": "Contact: (Step 1/3)",
+        "contact_method_title": "Contact",
         "shipping_address_title": "Shipping Address: (Step 2/3)"
       },
       "marketing": {

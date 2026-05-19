@@ -25,7 +25,7 @@
         "shipping_address_title": "Shipping Address"
       },
       "marketing": {
-        "accept_marketing_checkbox_label": "Receive order updates and information",
+        "accept_marketing_checkbox_label": "Send me live tracking and order updates",
         "accept_sms_checkbox_label": "Get order updates via SMS"
       },
       "shop_policies": {

@@ -2045,7 +2045,7 @@
               "title": "Melatonin Gummies",
               "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
               "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_MelatoninGummies.png",
-              "hide_image_bg": false,
+              "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
               "badge_position_desktop": "bottom-right",
@@ -2332,7 +2332,6 @@
               "tip2_label": "While traveling",
               "tip2_text": "Rejuvia is easy to travel with since it's TSA-approved and small enough to keep in your pocket or carry-on. Use it on planes, in hotel rooms, or anytime travel throws off your sleep schedule.",
               "image": "shopify://shop_images/Step_1.webp",
-              "watermark": "shopify://shop_images/Frame.svg",
               "watermark_opacity": 60,
               "watermark_position": "top-right"
             }

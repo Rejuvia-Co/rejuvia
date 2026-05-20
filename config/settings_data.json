@@ -2675,19 +2675,6 @@
           "footer_text": "<p>Don't see your question? We'd love to hear from you and help. <em>Email us at hello@rejuvia.co!</em></p>"
         }
       },
-      "founder_note_v2_nAYH3a": {
-        "type": "founder-note-v2",
-        "disabled": true,
-        "name": "Founder Note V2",
-        "settings": {
-          "heading": "A Note from Our Founder",
-          "text": "<p>Look, I know you're skeptical. <strong>You should be.</strong> You've spent years and hundreds of dollars on products that promised to fix your sleep and didn't.</p><p>I'm not going to tell you Rejuvia is magic. It's not. It's mint-flavored spray made from 13 plants and herbs that your great-grandmother probably could have named.</p><p><strong>The only thing we did differently is put them in a format your body can actually absorb. That's it. That's the whole innovation.</strong></p><p>If it doesn't work for you, email us within 90 days and <strong>we'll refund every cent.</strong> Try one bottle. Give it a few nights. And if you don't notice a difference, it costs you nothing.</p><p><strong>That's a fair deal from a family that just wants you to sleep.</strong></p>",
-          "image": "shopify://shop_images/Image_5.png",
-          "signature_image": "shopify://shop_images/Frame_48101400.png",
-          "signature_name": "RC Williams",
-          "signature_title": "Founder"
-        }
-      },
       "sticky_cta_v2_wacfBP": {
         "type": "sticky-cta-v2",
         "name": "Sticky CTA V2",
@@ -3018,7 +3005,6 @@
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
       "faqs_v2_BYWkfd",
-      "founder_note_v2_nAYH3a",
       "sticky_cta_v2_wacfBP"
     ],
     "blocks": {

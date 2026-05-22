@@ -55,7 +55,8 @@
           "other": "Subtotal"
         },
         "recurring_subtotal_label": "Subtotal",
-        "recurring_total_multiple_label": "90-Day Money Back Guarantee"
+        "recurring_total_multiple_label": "90-Day Money Back Guarantee",
+        "recurring_total_tooltip": "If you don't love Rejuvia, we’ll refund your order anytime within the first 90 days."
       },
       "shipping": {
         "shipping_method_title": "Shipping",

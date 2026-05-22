@@ -50,7 +50,7 @@
 }
 
 .alt-v2-label-header {
-    height: 100px;
+    height: calc(var(--alt-v2-icon-size, 90px) + 60px);
     border-bottom: 1px solid #eaeaf7;
 }
 
@@ -89,13 +89,13 @@
 
 /* Column header */
 .alt-v2-col-header {
-    height: 100px;
+    height: calc(var(--alt-v2-icon-size, 90px) + 60px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    padding: 24px 0;
+    gap: 12px;
+    padding: 16px 0;
     border-bottom: 1px solid #eaeaf7;
 }
 
@@ -103,6 +103,15 @@
     max-height: 42px;
     width: auto;
     object-fit: contain;
+    flex-shrink: 0;
+}
+
+.alt-v2-col-header img.alt-v2-competitor-icon,
+.alt-v2-col-header img.alt-v2-rejuvia-icon {
+    max-height: var(--alt-v2-icon-size, 90px);
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .alt-v2-logo {
@@ -330,6 +339,12 @@
 }
 </style>
 
+<style>
+    #shopify-section-{{ section.id }} {
+        --alt-v2-icon-size: {{ section.settings.icon_size | default: 90 }}px;
+    }
+</style>
+
 <div class="alt-v2-container">
     <div class="alt-v2-heading">{{ section.settings.heading }}</div>
 
@@ -348,10 +363,10 @@
         <div class="alt-v2-col alt-v2-col--highlight">
             <div class="alt-v2-col-header">
                 {% if section.settings.rejuvia_image != blank %}
-                    <img src="{{ section.settings.rejuvia_image | image_url: width: 100 }}" alt="Rejuvia" loading="lazy">
+                    <img class="alt-v2-rejuvia-icon" src="{{ section.settings.rejuvia_image | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_image.width }}" height="{{ section.settings.rejuvia_image.height }}">
                 {% endif %}
                 {% if section.settings.rejuvia_logo != blank %}
-                    <img class="alt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy">
+                    <img class="alt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_logo.width }}" height="{{ section.settings.rejuvia_logo.height }}">
                 {% endif %}
             </div>
             {% for block in section.blocks %}
@@ -381,7 +396,7 @@
                 <div class="alt-v2-col" {{ block.shopify_attributes }}>
                     <div class="alt-v2-col-header">
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.name }}" loading="lazy">
+                            <img class="alt-v2-competitor-icon" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.name }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
                         {% endif %}
                         <span class="alt-v2-col-name">{{ block.settings.name }}</span>
                     </div>
@@ -546,6 +561,20 @@
             "id": "heading",
             "label": "Heading",
             "default": "<p>The <em>most effective</em> alternative to sleep aids</p>"
+        },
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "type": "range",
+            "id": "icon_size",
+            "label": "Product icon size",
+            "min": 64,
+            "max": 120,
+            "step": 2,
+            "unit": "px",
+            "default": 90
         },
         {
             "type": "header",

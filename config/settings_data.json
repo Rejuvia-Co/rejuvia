@@ -2498,6 +2498,7 @@
         "name": "Alternatives V2",
         "settings": {
           "heading": "<p>Rejuvia is the <em>most effective alternative</em> to common sleep aids</p>",
+          "icon_size": 100,
           "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
           "rejuvia_logo": "shopify://shop_images/Logo.svg",
           "btn_text": "Try Rejuvia Risk-Free",

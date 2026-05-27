@@ -124,24 +124,19 @@
         <div class="faq-new__right--items">
           {% for block in section.blocks %}
             <div class="faq-new__right--item">
-              <button class="accordion">
+              <button class="accordion" type="button" aria-expanded="false">
                 <div class="faq-new__right--item-box">
                   {% if forloop.index > 9 %}
-                    <span>
-                      {{ forloop.index }}
-                    </span>
+                    <span>{{ forloop.index }}</span>
                   {% else %}
-                    <span>
-                      0{{ forloop.index }}</span>
+                    <span>0{{ forloop.index }}</span>
                   {% endif %}
 
-                  <h5>
-                    {{- block.settings.heading -}}
+                  <h5 data-text="{{ block.settings.heading | escape }}">
+                    <span>{{- block.settings.heading -}}</span>
                   </h5>
                 </div>
-                <span class="faq-new__right--item-toggle">
-                  {% render 'icon-arrow-tabs' %}
-                </span>
+                <span class="faq-new__right--item-toggle" aria-hidden="true"></span>
               </button>
               <div class="panel-custom">
                 <p class="panel-inner faq-new__right--item-text">
@@ -163,16 +158,11 @@
     if ($this.next().hasClass('show')) {
       $this.next().removeClass('show');
       $this.removeClass('active');
-      $this.next().css('height', `0px`)
-      // $this.next().slideUp(350);
+      $this.attr('aria-expanded', 'false');
     } else {
-      /* $this.parent().parent().find('.panel-custom').removeClass('show'); */
-      let innerHeight = $this.next().find('.panel-inner').height();
-      console.log('innetheigth', innerHeight);
-      $this.next().css('height', `${innerHeight}px`)
-      $this.next().toggleClass('show');
+      $this.next().addClass('show');
       $this.addClass('active');
-      // $this.next().slideToggle(350);
+      $this.attr('aria-expanded', 'true');
     }
   });
   

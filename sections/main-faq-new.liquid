@@ -1,7 +1,7 @@
 {% style %}
   .main-faq-new.section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.65 | round: 0 }}px;
+    padding-bottom: 40px;
   }
 
   @media screen and (min-width: 750px) {
@@ -13,13 +13,13 @@
 
   .main-faq-new__heading {
     margin: 0;
-    color: #040404;
-    font-size: 48px;
+    color: #141414;
+    font-size: 36px;
     font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    letter-spacing: -0.48px;
-    font-family: HelveticaNeueL, sans-serif;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: normal;
+    font-family: "Helvetica Neue", sans-serif;
   }
 
   .main-faq-new .container {
@@ -29,8 +29,8 @@
 
   @media only screen and (max-width: 749px) {
     .main-faq-new__heading {
-      font-size: 32px;
-      letter-spacing: -0.32px;
+      font-size: 28px;
+      letter-spacing: normal;
     }
 
     .main-faq-new.section-{{ section.id }} .container {
@@ -49,6 +49,26 @@
   </div>
 </div>
 
+<script>
+  (function () {
+    function setHeaderVar() {
+      var header = document.querySelector('header.sticky_header_desktop, header.sticky_header_mobile, header[class*="sticky_header"]') || document.querySelector('header');
+      if (!header) return;
+      var pos = getComputedStyle(header).position;
+      var h = (pos === 'sticky' || pos === 'fixed') ? header.offsetHeight : 0;
+      document.documentElement.style.setProperty('--faq-header-h', h + 'px');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setHeaderVar);
+    } else {
+      setHeaderVar();
+    }
+    window.addEventListener('resize', setHeaderVar);
+    window.addEventListener('load', setHeaderVar);
+  })();
+</script>
+
 {% schema %}
   {
     "name": "Main FAQ new",
@@ -63,7 +83,7 @@
         "type": "color",
         "id": "title_color",
         "label": "Title Color",
-        "default": "#000000"
+        "default": "#141414"
       },
       {
         "type": "header",

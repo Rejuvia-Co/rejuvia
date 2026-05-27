@@ -38,7 +38,11 @@
           }
         }
       },
-      "block_order": ["block-1", "block-2", "block-3"],
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3"
+      ],
       "settings": {
         "bg_color": "#eaeaf7",
         "text_color": "#141414",
@@ -67,7 +71,7 @@
   },
   "order": [
     "cart_main",
-    "info_icons_bar",
-    "177988248817cca89d"
+    "177988248817cca89d",
+    "info_icons_bar"
   ]
 }

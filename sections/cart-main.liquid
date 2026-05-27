@@ -344,41 +344,6 @@
             </div>
         </form>
 
-        {%- if section.settings.title_1 != blank or section.settings.title_2 != blank or section.settings.title_3 != blank -%}
-            <div class="cart-guarantees">
-                {%- if section.settings.title_1 != blank -%}
-                    <div class="cart-guarantees__item">
-                        {%- if section.settings.icon_1 != blank -%}
-                            <img src="{{ section.settings.icon_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}" class="cart-guarantees__icon">
-                        {%- else -%}
-                            {% render 'icon-guarantee-check' %}
-                        {%- endif -%}
-                        <span class="cart-guarantees__text">{{ section.settings.title_1 }}</span>
-                    </div>
-                {%- endif -%}
-                {%- if section.settings.title_2 != blank -%}
-                    <div class="cart-guarantees__item">
-                        {%- if section.settings.icon_2 != blank -%}
-                            <img src="{{ section.settings.icon_2 | img_url: 'master' }}" alt="{{ section.settings.title_2 }}" class="cart-guarantees__icon">
-                        {%- else -%}
-                            {% render 'icon-guarantee-check' %}
-                        {%- endif -%}
-                        <span class="cart-guarantees__text">{{ section.settings.title_2 }}</span>
-                    </div>
-                {%- endif -%}
-                {%- if section.settings.title_3 != blank -%}
-                    <div class="cart-guarantees__item">
-                        {%- if section.settings.icon_3 != blank -%}
-                            <img src="{{ section.settings.icon_3 | img_url: 'master' }}" alt="{{ section.settings.title_3 }}" class="cart-guarantees__icon">
-                        {%- else -%}
-                            {% render 'icon-guarantee-check' %}
-                        {%- endif -%}
-                        <span class="cart-guarantees__text">{{ section.settings.title_3 }}</span>
-                    </div>
-                {%- endif -%}
-            </div>
-        {%- endif -%}
-
     {%- endif -%}
 </div>
 
@@ -413,45 +378,11 @@
 
 {% schema %}
 {
-  "name": "Info Icons Section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title_1",
-      "label": "Title 1",
-      "default": "5,000+ 5-Star Reviews"
-    },
-    {
-      "type": "image_picker",
-      "id": "icon_1",
-      "label": "Icon 1"
-    },
-    {
-      "type": "text",
-      "id": "title_2",
-      "label": "Title 2",
-      "default": "Free US Shipping over $79"
-    },
-    {
-      "type": "image_picker",
-      "id": "icon_2",
-      "label": "Icon 2"
-    },
-    {
-      "type": "text",
-      "id": "title_3",
-      "label": "Title 3",
-      "default": "150,000+ Happy Customers"
-    },
-    {
-      "type": "image_picker",
-      "id": "icon_3",
-      "label": "Icon 3"
-    }
-  ],
+  "name": "Cart page",
+  "settings": [],
   "presets": [
     {
-      "name": "Info Icons Section",
+      "name": "Cart page",
       "category": "Custom"
     }
   ]

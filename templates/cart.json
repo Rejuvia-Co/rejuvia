@@ -11,16 +11,39 @@
   "sections": {
     "cart_main": {
       "type": "cart-main",
-      "custom_css": [
-        ".cart-icons {margin-bottom: 40px;}"
-      ],
+      "settings": {}
+    },
+    "info_icons_bar": {
+      "type": "info-icons-bar",
+      "blocks": {
+        "block-1": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/Wind.svg",
+            "text": "Free Shipping $79+ and Subscriptions"
+          }
+        },
+        "block-2": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/SealCheck.svg",
+            "text": "90-Day Money Back Guarantee"
+          }
+        },
+        "block-3": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/SmileyWink.svg",
+            "text": "Trusted By 300,000+ Customers"
+          }
+        }
+      },
+      "block_order": ["block-1", "block-2", "block-3"],
       "settings": {
-        "title_1": "Free Shipping $79+ and Subscriptions",
-        "icon_1": "shopify://shop_images/Wind.svg",
-        "title_2": "90-Day Money Back Guarantee",
-        "icon_2": "shopify://shop_images/SealCheck.svg",
-        "title_3": "Trusted By 300,000+ Customers",
-        "icon_3": "shopify://shop_images/SmileyWink.svg"
+        "bg_color": "#eaeaf7",
+        "text_color": "#141414",
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "177988248817cca89d": {
@@ -44,6 +67,7 @@
   },
   "order": [
     "cart_main",
+    "info_icons_bar",
     "177988248817cca89d"
   ]
 }

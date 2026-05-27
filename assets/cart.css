@@ -520,43 +520,6 @@ main:has(#cart.cart-page) {
 }
 
 /* ==========================================================================
-   Guarantees bar
-   ========================================================================== */
-
-.cart-guarantees {
-    width: 100%;
-    background: #eaeaf7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    padding: 16px;
-    overflow: hidden;
-}
-
-.cart-guarantees__item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.cart-guarantees__icon {
-    width: 22px;
-    height: 22px;
-    display: block;
-    flex-shrink: 0;
-}
-
-.cart-guarantees__text {
-    color: #141414;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    white-space: nowrap;
-}
-
-/* ==========================================================================
    Tablet (≤ 999px)
    ========================================================================== */
 
@@ -693,24 +656,6 @@ main:has(#cart.cart-page) {
     .cart-summary {
         width: 100%;
         padding: 24px 16px;
-    }
-
-    /* Guarantees: only show two items on mobile per Figma; vertical layout */
-    .cart-guarantees {
-        gap: 40px;
-        padding: 16px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .cart-guarantees__text {
-        font-size: 14px;
-        white-space: normal;
-    }
-
-    .cart-guarantees__icon {
-        width: 20px;
-        height: 20px;
     }
 }
 

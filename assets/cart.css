@@ -16,6 +16,13 @@ main:has(#cart.cart-page) {
     color: #141414;
 }
 
+#cart.cart-page,
+#cart.cart-page *,
+#cart.cart-page *::before,
+#cart.cart-page *::after {
+    box-sizing: border-box;
+}
+
 #cart.cart-page .container {
     max-width: 1344px;
     padding: 0 64px;
@@ -172,7 +179,7 @@ main:has(#cart.cart-page) {
 /* ------- Cart item card ------- */
 .cart-item {
     display: grid;
-    grid-template-columns: 120px 1fr auto auto;
+    grid-template-columns: 120px minmax(0, 1fr) auto auto;
     grid-template-areas: "image main pricing remove";
     align-items: center;
     padding: 20px;
@@ -181,6 +188,7 @@ main:has(#cart.cart-page) {
     overflow: hidden;
     margin: 0;
     position: relative;
+    min-width: 0;
 }
 
 .cart-item__image {
@@ -212,7 +220,7 @@ main:has(#cart.cart-page) {
 .cart-item__info {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 6px;
     width: 100%;
     color: #141414;
     line-height: 1.4;
@@ -258,8 +266,10 @@ main:has(#cart.cart-page) {
     gap: 16px;
     padding: 16px;
     background: #ffffff;
+    border: none;
     border-radius: 100px;
     overflow: hidden;
+    box-shadow: none;
 }
 
 .cart-item__quantity input[type="button"] {
@@ -268,10 +278,15 @@ main:has(#cart.cart-page) {
     border: none;
     cursor: pointer;
     padding: 0;
+    margin: 0;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 24px 24px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    flex-shrink: 0;
 }
 
 .cart-item__quantity input.plus {
@@ -283,8 +298,8 @@ main:has(#cart.cart-page) {
 }
 
 .cart-item__quantity input[type="number"] {
-    width: 24px;
-    min-width: 24px;
+    width: auto;
+    min-width: 14px;
     height: 24px;
     border: none;
     background: transparent;
@@ -293,9 +308,10 @@ main:has(#cart.cart-page) {
     font-family: "Helvetica Neue", sans-serif;
     font-size: 22px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1;
     padding: 0;
     margin: 0;
+    box-shadow: none;
     -moz-appearance: textfield;
     appearance: textfield;
 }
@@ -574,7 +590,7 @@ main:has(#cart.cart-page) {
     }
 
     .cart-page__hero {
-        padding: 16px 0 8px;
+        padding: 32px 0 14px;
     }
 
     .cart-page__hero-inner {
@@ -619,7 +635,7 @@ main:has(#cart.cart-page) {
     /* Item card: grid layout per Figma mobile (375) — image spans 2 rows */
     .cart-item {
         display: grid;
-        grid-template-columns: 120px 1fr 24px;
+        grid-template-columns: 120px minmax(0, 1fr) 24px;
         grid-template-areas:
             "image main remove"
             "image pricing pricing";
@@ -643,7 +659,7 @@ main:has(#cart.cart-page) {
     }
 
     .cart-item__info {
-        gap: 10px;
+        gap: 6px;
     }
 
     .cart-item__quantity .quantity-box > .flex {
@@ -658,7 +674,7 @@ main:has(#cart.cart-page) {
 
     .cart-item__pricing {
         padding-left: 0;
-        justify-content: flex-end;
+        justify-content: flex-start;
         gap: 14px;
     }
 

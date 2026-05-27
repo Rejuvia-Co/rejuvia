@@ -206,7 +206,7 @@
                                         {%- else -%}
                                             {%- assign variantImg = item.product.featured_image -%}
                                         {%- endif -%}
-                                        <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" />
+                                        <img src="{{ variantImg | image_url: width: 240 }}" srcset="{{ variantImg | image_url: width: 240 }} 1x, {{ variantImg | image_url: width: 360 }} 1.5x, {{ variantImg | image_url: width: 480 }} 2x" width="120" height="120" loading="lazy" alt="{{ item.product.title | escape }}" />
                                     </a>
 
                                     <div class="cart-item__main">

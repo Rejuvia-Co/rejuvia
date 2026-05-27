@@ -167,6 +167,11 @@
   <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
   {% endif %}
 
+  {% if template contains 'cart' %}
+  <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'okendo-cart.css' | asset_url }}">
+  {% endif %}
+
 </head>
 
 <body class="template{{ template | split: '.' | first | camelize }}{% if customer %} customer-logged-in{% endif %} {{ template.suffix }} template--{{ template.name }} {% if template.name == 'cart' and cart.item_count == 0 %} template--{{ template.name }}--empty {% endif %}">

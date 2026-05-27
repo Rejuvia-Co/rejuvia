@@ -35,19 +35,8 @@
                 console.log('error', xhr.responseText);
                 $('#loading-overlay').hide();
             }).done(function(){
-                $.ajax({
-                    type: 'GET',
-                    url: '/cart?view=update',
-                    cache: false,
-                    success: function(data){
-                        $('#loading-overlay').hide();
-                        $('#cart').remove();
-                        $('.content-wrapper').prepend(data);
-                        checkInstructions();
-                        location.reload();
-                    }
-                });
-                updateCartDesc();
+                if (typeof updateCartDesc === 'function') updateCartDesc();
+                location.reload();
             });
 
             return false;
@@ -58,7 +47,7 @@
         });
 
 
-        /********* UPDATE QUANTITY WITHOUT REFRESHING *********/
+        /********* UPDATE QUANTITY *********/
         function updateCart(){
             $('#loading-overlay').show();
 
@@ -68,20 +57,9 @@
                 data: $('#cart .main-form').serialize(),
                 dataType: 'json'
             }).fail(function(){console.log('error');}).done(function(){
-                $.ajax({
-                    type: 'GET',
-                    url: '/cart?view=update',
-                    cache: false,
-                    success: function(data){
-                        $('#loading-overlay').hide();
-                        $('#cart').remove();
-                        $('.content-wrapper').prepend(data);
-                        checkInstructions();
-                        location.reload();
-                    }
-                });
-                updateCartDesc();
+                if (typeof updateCartDesc === 'function') updateCartDesc();
                 $('#add-cart-overlay').fadeOut();
+                location.reload();
             });
         }
 
@@ -132,7 +110,6 @@
     });
 </script>
 
-{{ 'cart.css' | asset_url | stylesheet_tag }}
 
 <div id="cart" class="cart-page{% if cart.items == empty %} cart-page--empty{% else %} cart-page--full{% endif %}">
 
@@ -348,6 +325,33 @@
 </div>
 
 <script>
+    // Highlight "5-star" in Okendo carousel heading (Figma styling)
+    (function () {
+        function highlightStar() {
+            document.querySelectorAll('.templateCart .oke-reviewCarousel-header-title').forEach(function (el) {
+                if (el.dataset.okeStarHighlighted) return;
+                if (el.innerHTML.indexOf('5-star') === -1) return;
+                el.innerHTML = el.innerHTML.replace(
+                    /5-star/g,
+                    '<span class="oke-highlight-5star">5-star</span>'
+                );
+                el.dataset.okeStarHighlighted = 'true';
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', highlightStar);
+        } else {
+            highlightStar();
+        }
+        // Re-run when Okendo loads asynchronously
+        var attempts = 0;
+        var interval = setInterval(function () {
+            highlightStar();
+            attempts++;
+            if (attempts > 20) clearInterval(interval);
+        }, 500);
+    })();
+
     document.addEventListener("DOMContentLoaded", () => {
         let inputs = document.querySelectorAll('.input-hidden__price');
         let total = 0;

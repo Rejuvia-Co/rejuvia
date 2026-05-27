@@ -210,7 +210,7 @@ main:has(#cart.cart-page) {
     grid-area: main;
     min-width: 0;
     height: 120px;
-    padding-left: 16px;
+    margin-left: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -325,7 +325,7 @@ main:has(#cart.cart-page) {
 /* ------- Pricing ------- */
 .cart-item__pricing {
     grid-area: pricing;
-    padding-left: 32px;
+    margin-left: 32px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -386,15 +386,22 @@ main:has(#cart.cart-page) {
 
 .cart-item__remove {
     grid-area: remove;
-    padding-left: 32px;
+    margin-left: 32px;
     width: 24px;
     height: 24px;
-    box-sizing: content-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: #141414;
+    flex-shrink: 0;
+}
+
+.cart-item__remove svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex-shrink: 0;
 }
 
 .cart-item__remove svg {
@@ -523,23 +530,21 @@ main:has(#cart.cart-page) {
    Tablet (≤ 999px)
    ========================================================================== */
 
-@media only screen and (max-width: 999px) {
+@media only screen and (min-width: 750px) and (max-width: 1099px) {
+    /* Stack grid (cart-items above summary), but keep desktop line-item layout */
+    .cart-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .cart-items {
+        width: 100%;
+    }
+
     .cart-summary {
-        width: 360px;
-        padding: 20px;
-    }
-
-    .cart-item__main {
-        padding-left: 12px;
-    }
-
-    .cart-item__pricing {
-        padding-left: 20px;
-        gap: 10px;
-    }
-
-    .cart-item__remove {
-        padding-left: 20px;
+        width: 100%;
+        padding: 24px;
     }
 }
 
@@ -587,6 +592,7 @@ main:has(#cart.cart-page) {
     /* Full cart layout: stack */
     .cart-grid {
         flex-direction: column;
+        align-items: stretch;
         gap: 16px;
     }
 
@@ -617,6 +623,7 @@ main:has(#cart.cart-page) {
     .cart-item__main {
         height: auto;
         padding-left: 0;
+        margin-left: 0;
         justify-content: flex-start;
         gap: 12px;
     }
@@ -632,11 +639,13 @@ main:has(#cart.cart-page) {
 
     .cart-item__remove {
         padding-left: 0;
+        margin-left: 0;
         align-self: start;
     }
 
     .cart-item__pricing {
         padding-left: 0;
+        margin-left: 0;
         justify-content: flex-start;
         gap: 14px;
     }

@@ -1,0 +1,272 @@
+/* ==========================================================================
+   Okendo Reviews carousel — Cart page overrides (Figma 2762:8713)
+   ========================================================================== */
+
+.templateCart .shopify-section:has(.okeReviews) {
+    background: #ffffff;
+}
+
+.templateCart .okeReviews {
+    margin: 0 auto;
+    padding: 0 64px 64px;
+    max-width: 1440px;
+    box-sizing: border-box;
+}
+
+.templateCart .oke-reviewCarousel {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ------- Header ------- */
+.templateCart .oke-reviewCarousel-header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.templateCart .oke-reviewCarousel-header > .okeReviews {
+    padding: 0;
+    margin: 0;
+}
+
+.templateCart .oke-reviewCarousel-header-title,
+.templateCart .oke-reviewCarousel-header-title.oke-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 30px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+.templateCart .oke-reviewCarousel-header-title .oke-highlight-5star {
+    color: #672666;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+/* ------- Slider ------- */
+.templateCart .oke-reviewCarousel-slider {
+    position: relative;
+    padding: 0;
+}
+
+.templateCart .oke-reviewCarousel-reviews.hooper {
+    height: auto !important;
+}
+
+.templateCart .hooper-list {
+    overflow: visible;
+}
+
+/* Carousel arrows */
+.templateCart .oke-prevNextButton {
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #eaeaf7;
+    border-radius: 100px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.templateCart .oke-prevNextButton:hover {
+    background: #eaeaf7;
+}
+
+.templateCart .oke-prevNextButton-icon {
+    color: #141414;
+}
+
+/* ------- Card ------- */
+.templateCart .oke-reviewCard {
+    background: #fafafa !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    margin: 0 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.templateCart .oke-reviewCard-head,
+.templateCart .oke-reviewCard-content,
+.templateCart .oke-reviewCard-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Stars row (top of content) */
+.templateCart .oke-reviewContent-top {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 0 4px !important;
+}
+
+.templateCart .oke-reviewContent-stars .oke-stars {
+    --oke-stars-foregroundColor: #f5a623;
+    --oke-stars-backgroundColor: #e0e0e0;
+}
+
+/* Review title */
+.templateCart .oke-reviewContent-title,
+.templateCart .oke-reviewContent-title.oke-title {
+    margin: 0 !important;
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Review body */
+.templateCart .oke-reviewContent-body,
+.templateCart .oke-reviewContent-body.oke-bodyText {
+    margin: 0 !important;
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+}
+
+/* Read More link */
+.templateCart .oke-reviewContent-readMore,
+.templateCart .oke-reviewContent-readMore-text {
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    text-decoration: underline !important;
+    margin-top: 4px;
+}
+
+/* Reviewer block (below) */
+.templateCart .oke-reviewCard-reviewer,
+.templateCart .oke-w-reviewer {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+}
+
+/* Unclassed wrapper inside .oke-w-reviewer that holds identity + verified — force column */
+.templateCart div.okeReviews[data-oke-container] .oke-w-reviewer > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    width: 100%;
+}
+
+.templateCart .oke-w-reviewer-identity {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    text-align: left !important;
+}
+
+.templateCart div.okeReviews[data-oke-container] .oke-w-reviewer-name {
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+}
+
+.templateCart div.okeReviews[data-oke-container] .oke-w-reviewer-verified {
+    color: #141414 !important;
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    text-transform: uppercase !important;
+    letter-spacing: normal !important;
+    opacity: 1 !important;
+}
+
+.templateCart .oke-w-reviewer-verified-icon {
+    display: none !important;
+}
+
+/* Hide footer helpfulness buttons (not in Figma) */
+.templateCart .oke-w-review-footer,
+.templateCart .oke-footerBadges,
+.templateCart .oke-w-review-helpful {
+    display: none !important;
+}
+
+/* Hide header stars/badge to keep title-only layout per Figma */
+.templateCart .oke-reviewCarousel-header > .okeReviews .oke-ratingsBadge {
+    display: none;
+}
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+
+@media only screen and (max-width: 999px) {
+    .templateCart .okeReviews {
+        padding: 0 24px 48px;
+    }
+
+    .templateCart .oke-reviewCarousel-header-title,
+    .templateCart .oke-reviewCarousel-header-title.oke-title {
+        font-size: 24px !important;
+    }
+}
+
+/* ==========================================================================
+   Mobile (≤ 749px)
+   ========================================================================== */
+
+@media only screen and (max-width: 749px) {
+    .templateCart .okeReviews {
+        padding: 0 16px 40px;
+    }
+
+    .templateCart .oke-reviewCarousel {
+        gap: 24px;
+    }
+
+    .templateCart .oke-reviewCarousel-header-title,
+    .templateCart .oke-reviewCarousel-header-title.oke-title {
+        font-size: 22px !important;
+    }
+
+    .templateCart .oke-reviewCard {
+        padding: 20px !important;
+        gap: 12px !important;
+        margin: 0 8px !important;
+    }
+
+    .templateCart .oke-reviewContent-title,
+    .templateCart .oke-reviewContent-title.oke-title {
+        font-size: 16px !important;
+    }
+
+    .templateCart .oke-prevNextButton {
+        width: 32px;
+        height: 32px;
+    }
+}

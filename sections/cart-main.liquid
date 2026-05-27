@@ -132,403 +132,252 @@
     });
 </script>
 
-<div id="cart" class="two-columns container">
-    <style>
-        #cart .empty {/*margin: 120px 0;*/ text-align: center;}
-        #cart .empty .head {font-size: 6em; margin-bottom: 0.3em;}
-        #cart .empty .title {font-size: 1.2em; margin-bottom: 2em;}
+{{ 'cart.css' | asset_url | stylesheet_tag }}
 
-        #cart .column-title{font-size: 2.1em; text-transform: none;}
-
-        #cart .summary {padding: 2em 2em 2em; text-align: center;}
-        #cart .summary .column-title {margin-bottom: 0;}
-        #cart .summary .subtotal {font-size:1.15em; text-align: center; padding: 0.8em 0 0.1em; border-bottom: 2px solid;}
-        #cart .summary .total {border:none;}
-        #cart .summary .addnote {margin: 2em 0;}
-        #cart .summary .addnote label {text-transform: none; font-weight: 400;}
-        #cart .summary .addnote textarea {margin-top: 1em; height: 8em; padding: 0.5em; }
-        #cart .summary .additional-message {margin-bottom: 2em;}
-        #cart .summary .return-policy-button {font-weight: bold; margin-bottom: 2em; color: {{ settings.content_main_color}}; }
-        .isNotMobile #cart .summary .return-policy-button:hover {color: {{ settings.content_text_color}} }
-        #return-policy {max-width: 700px; text-align: center; padding: 30px;}
-        #return-policy .title {font-size: 1.2em; text-transform: {{settings.heading_font_transform}}; color: {{ settings.content_heading_color}}; padding-bottom: 1em; margin-bottom: 1.5em; border-bottom: 1px solid #eee; }
-        #cart .summary .additional-checkout-buttons {margin-top: 2em; position: relative; z-index: 1;}
-        #cart .summary .additional-checkout-buttons span {display: block; font-size: 0.7em; text-transform: uppercase; font-weight: 700; color: #999; margin-bottom: 1em;}
-        #cart .summary .buttons {margin-top:2em;}
-        #cart .summary .buttons .secondary {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5;}
-        #cart .summary .buttons .btn {margin-bottom: 0.5em;}
-
-        #cart .items {background-color: #f4f4f4; padding: 1em 1em 1em;}
-        #cart .item {position: relative; padding: 1em; background: #ffffff; margin-bottom: 2em;}
-        #cart .item:last-child {margin-bottom: 0;}
-        #cart .item img {width: 120%; display: block;}
-        #cart .item .title {margin-bottom: 0.5em;}
-        #cart .item .name {font-weight: 700; font-size: 1.2em; margin-bottom: 0.3em;}
-        #cart .item .remove {position: absolute; top: 1em; right: 1em;}
-        #cart .item .remove svg {font-size: 1em;}
-        #cart .item .quantity {display: inline-block;}
-        #cart .item .quantity-box > div {background: #fff;}
-        #cart .item .price {margin-bottom: 1em; font-size: 1.4em;}
-        {%- if settings.allow_quick_view -%}
-        #cart .item .edit-item {position: absolute; bottom: 2em; right: 2em; text-decoration: underline; font-size: 1.1em; display: block; line-height: 150%; padding-left: 1em; font-weight: 500;}
-        {%- endif -%}
-        #cart .clear-cart-div {margin: 2em 0 6em;}
-        #cart .clear-cart {background-color: {{settings.content_main_color}};}
-        #cart .clear-cart:hover {color: #000;}
-
-        #cart .foot-bottom div {margin-top:2em; width: 100%;}
-        #cart .foot-icon img {max-width: 12%; margin-right: 0.5em;}
-        @media all and (max-width:{{settings.breakpoint_tablet}}){
-            #cart {padding-top: 2em;}
-            #cart .summary {margin-top: 2em; padding: 2em 1.5em;}
-            #cart .foot-bottom div {width: auto;}
-            #cart .column-title {font-size: 1.3em;}
-            #cart .item .price {font-size: 1em;}
-            #cart .foot-icon img {margin-right: 1em;}
-            #cart .return img {margin-left: 1.5em;}
-        }
-    </style>
-
-    {{ 'cart.css' | asset_url | stylesheet_tag }}
+<div id="cart" class="cart-page{% if cart.items == empty %} cart-page--empty{% else %} cart-page--full{% endif %}">
 
     {%- if cart.items == empty -%}
 
-        <div class="empty-cart__items">
-            <h2 class="empty-cart__items--text">
-                Your Cart
-            </h2>
-            <span>{{ cart.item_count }} item</span>
+        <div class="cart-page__hero">
+            <div class="container">
+                <h1 class="cart-page__title">Your Cart</h1>
+            </div>
         </div>
 
-        <div class="empty empty-cart custom_subtitle_font">
-            <div class="head">
-                {% comment %} {% include 'icons', icon: 'product-tag' %} {% endcomment %}
-                <svg class="empty-cart__icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 14C16 9.58172 19.5817 6 24 6C28.4183 6 32 9.58172 32 14M10 14H38V38H10V14Z" stroke="#672666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-
-            <div class="title">Your Cart is Empty</div>
-            <div class="second-title">Start Shopping Rejuvia Today</div>
-            <div class="btn-outline-container" align="center">
-                <a href="https://www.rejuvia.co/collections/more-products" class="btn {-moz-box-shadow: 7px 5px 0px 0px #0c1b26; -webkit-box-shadow: 7px 5px 0px 0px #0c1b26; -moz-border-radius: 0px !important; -webkit-border-radius: 0px !important; box-shadow: 7px 5px 0px 0px #0c1b26; background-color:#ffffff !important; border:1px solid #000000; display:inline-block; cursor:pointer; color:#0c1b26 !important; font-size:17px; letter-spacing: {{settings.button_spacing}}; 	font-weight: {{settings.button_weight}}; padding:30px 10px; text-decoration:none;}">
-                    <span>TRY REJUVIA</span>
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="arrow-down">
-                            <path id="Vector" d="M3.5 12H21.5M21.5 12L15.5 18M21.5 12L15.5 6" stroke="white" stroke-linecap="round"/>
-                        </g>
-                    </svg>
-                </a>
-            </div>
-
-            {% comment %} <div class="footer-title">
-              <span> Free Shipping on All Orders </span>
-              </div> {% endcomment %}
-
-        </div>
-    {%- else -%}
-        <form action="/cart" method="post" id="cartform" class="main-form main-form__cart--unempty">
-
-            <div class="cart-unempty__items--box">
-                <div class="empty-cart__items">
-                    <h2 class="empty-cart__items--text">
-                        Your Cart
-                    </h2>
-                    <span>{{ cart.item_count }}
-                        {% if cart.item_count > 1 %}
-                            products
-                        {% else %}
-                            product
-                        {% endif %}
-          </span>
+        <div class="cart-page__body">
+            <div class="container">
+                <div class="cart-empty">
+                    <div class="cart-empty__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M13.3327 36.6666C14.2532 36.6666 14.9993 35.9205 14.9993 35C14.9993 34.0795 14.2532 33.3333 13.3327 33.3333C12.4122 33.3333 11.666 34.0795 11.666 35C11.666 35.9205 12.4122 36.6666 13.3327 36.6666Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M31.6667 36.6666C32.5871 36.6666 33.3333 35.9205 33.3333 35C33.3333 34.0795 32.5871 33.3333 31.6667 33.3333C30.7462 33.3333 30 34.0795 30 35C30 35.9205 30.7462 36.6666 31.6667 36.6666Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.41602 3.41663H6.74935L11.1827 24.1166C11.3453 24.8747 11.7671 25.5524 12.3755 26.0331C12.9839 26.5137 13.7409 26.7672 14.516 26.75H30.816C31.5746 26.7487 32.3102 26.4888 32.9011 26.013C33.492 25.5373 33.9029 24.8742 34.066 24.1333L36.816 11.75H8.53268" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="cart-empty__text">
+                        <h2 class="cart-empty__title">Your Cart is Empty</h2>
+                        <p class="cart-empty__subtitle">Start Shopping Rejuvia Today</p>
+                    </div>
+                    <a href="https://www.rejuvia.co/collections/more-products" class="cart-empty__btn">
+                        Try Rejuvia
+                    </a>
                 </div>
-                <a href="https://www.rejuvia.co/collections/more-products" class="cart-unempty__items">
-                    <h5 class="cart-unempty__items--text">
-                        Continue Shopping
-                    </h5>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="arrow-down">
-                            <path id="Vector" d="M3 12H21M21 12L15 18M21 12L15 6" stroke="#672666" stroke-linecap="round"/>
-                        </g>
-                    </svg>
-                </a>
             </div>
-            <div class="grid main cart-unempty__main">
+        </div>
 
-                <div class="grid__item two-thirds medium--one-whole small--one-whole">
-                    {% comment %} <h2 class="column-title custom_subtitle_font medium-down--hide"></h2> {% endcomment %}
+    {%- else -%}
 
-                    <a href="{{  routes.cart_clear_url }}" class="cart-header--clear_all" >
-                        {% render 'icon-close-small' %}
-                        <span>{{ 'sections.cart.cart_clear_button' | t }}</span>
+        <div class="cart-page__hero">
+            <div class="container">
+                <div class="cart-page__hero-inner">
+                    <h1 class="cart-page__title">Your Cart</h1>
+                    <div class="cart-page__hero-actions">
+                        <a href="{{ routes.cart_clear_url }}" class="cart-page__action cart-page__action--clear">
+                            Clear cart
                         </a>
-                   
-                    <div class="items">
-                        {%- for item in cart.items -%}
-                            <div class="item {{ item.product.handle }}">
-                                <div class="wrap">
-                                    <div class="grid align-items-center">
-                                        <div class="grid__item one-quarter image">
-                                            <a href="{{ item.product.url }}">
-                                                {%- if item.variant.image -%}
-                                                    {%- assign variantImg = item.variant.image -%}
-                                                {%- else -%}
-                                                    {%- assign variantImg = item.product.featured_image -%}
-                                                {%- endif -%}
-                                                <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" />
+                        <a href="https://www.rejuvia.co/collections/more-products" class="cart-page__action">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="/cart" method="post" id="cartform" class="main-form main-form__cart--unempty">
+            <div class="cart-page__body">
+                <div class="container">
+                    <div class="cart-grid">
+                        <div class="cart-items items">
+                            {%- for item in cart.items -%}
+                                {%- assign unit_compare = item.variant.compare_at_price | default: 0 -%}
+                                {%- assign unit_price = item.variant.price | default: 0 -%}
+                                {%- assign qty = item.quantity | default: 1 -%}
+                                {%- if unit_compare > 0 -%}
+                                    {%- assign full_total = unit_compare | times: qty -%}
+                                {%- else -%}
+                                    {%- assign full_total = unit_price | times: qty -%}
+                                {%- endif -%}
+                                {%- assign sale_total = item.line_price | default: 0 -%}
+
+                                <div class="cart-item item {{ item.product.handle }}">
+                                    <a href="{{ item.product.url }}" class="cart-item__image">
+                                        {%- if item.variant.image -%}
+                                            {%- assign variantImg = item.variant.image -%}
+                                        {%- else -%}
+                                            {%- assign variantImg = item.product.featured_image -%}
+                                        {%- endif -%}
+                                        <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" />
+                                    </a>
+
+                                    <div class="cart-item__main">
+                                        <div class="cart-item__info">
+                                            <a href="{{ item.url }}" class="cart-item__title-link">
+                                                {%- assign titlePart = item.product.title | split: ' - ' -%}
+                                                <h3 class="cart-item__name">{{ titlePart[0] }}</h3>
                                             </a>
+                                            {%- if item.variant.title != "Default Title" -%}
+                                                <p class="cart-item__variant">{{ item.variant.title }}</p>
+                                            {%- endif -%}
+
+                                            {%- unless item.variant.title contains 'Default' -%}
+                                                <div class="variants hide">
+                                                    {%- for option in item.options_with_values -%}
+                                                        <strong>{{ option.name }}</strong>: {{ option.value }}{%- unless forloop.last -%}<br/>{%- endunless -%}
+                                                    {%- endfor -%}
+                                                </div>
+                                            {%- endunless -%}
                                         </div>
-                                        <div class="grid__item three-quarters info">
-                                            <div class="cart-unempty__name flex justify-content-between medium-down--direction-column" style="max-width: 25em;">
-                                                <div class="title custom_subtitle_font">
-                                                    <a href="{{ item.url }}">
-                                                        {%- assign titlePart = item.product.title | split: ' - ' -%}
-                                                        <div class="name">{{ titlePart[0] }}</div>
-                                                        {% if item.variant.title != "Default Title" %}
-                                                            <div class="cart__variant">
-                                                                {{ item.variant.title }}
-                                                            </div>
-                                                        {% endif %}
 
-                                                        {%- unless item.variant.title contains 'Default' -%}
-                                                            <div class="variants hide">
-                                                                {%- for option in item.options_with_values -%}
-                                                                    <strong>{{ option.name }}</strong>: {{ option.value }}{%- unless forloop.last -%}<br/>{%- endunless -%}
-                                                                {%- endfor -%}
-                                                            </div>
-                                                        {%- endunless -%}
-
-                                                        {% if item.product.title contains 'Auto renew' %}
-                                                            {%- for p in item.properties -%}
-                                                                {% if p.first == "shipping_interval_unit_type" %}
-                                                                    <div class="properties custom_text_font">
-                                                                        <span class="hide">{{ p.first }}:</span>
-                                                                        {%- if p.last contains '/uploads/' -%}
-                                                                            <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                                                                        {%- else -%}
-                                                                            <!--               {{ p.last | replace: "Months", "Monthly" }} -->
-                                                                        {%- endif -%}
-                                                                    </div>
-                                                                {% endif %}
-                                                                <div class="properties custom_text_font">
-                                                                    {% if p.first == "shipping_interval_frequency"%}{{ p.last }} Weeks{% endif %}
-                                                                </div>
-                                                            {%- endfor -%}
-                                                        {% endif %}
-
-                                                    </a>
+                                        <div class="cart-item__quantity quantity">
+                                            <div class="quantity-box">
+                                                <div class="flex">
+                                                    <input type="button" value="" class="minus animation" aria-label="Decrease the quantity" />
+                                                    <input type="number" step="1" class="cart-unempty__number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" title="Qty" min="0" aria-label="Quantity" />
+                                                    <input type="button" value="" class="plus animation" aria-label="Increase the quantity" />
                                                 </div>
-                                                <div class="remove">
-                                                    <a class="remove-from-cart" href="/cart" aria-label="Remove Item">
-                                                        {% comment %} {% include 'icons', icon: 'close' %} {% endcomment %}
-                                                        {% comment %}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">{% endcomment %}
-                                                        {% comment %}<g id="bin">{% endcomment %}
-                                                        {% comment %}<path id="Vector" d="M19 6H5M14 5H10M6 10V21H18V10" stroke="#5C5C5C" stroke-linecap="round"/>{% endcomment %}
-                                                        {% comment %}</g>{% endcomment %}
-                                                        {% comment %}</svg>{% endcomment %}
-                                                        Remove
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="cart-unempty__box">
-                                                <div class="quantity">
-                                                    <div class="quantity-box">
-                                                        <div class="flex">
-                                                            <input type="button" value="" class="minus animation" aria-label="Decrease the quantity" />
-                                                            <input type="number" step="1" class="cart-unempty__number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" title="Qty" min="0" aria-label="Quantity" />
-                                                            <input type="button" value="" class="plus animation" aria-label="Increase the quantity" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               <div class="price custom_title_font">
-  {%- comment -%}
-    Пояснення:
-    - unit_compare = variant.compare_at_price (якщо є)
-    - unit_price = variant.price
-    - full_total = (unit_compare або unit_price) * quantity
-    - sale_total = item.line_price
-    - Показуємо знижку тільки якщо full_total > sale_total і full_total > 0
-  {%- endcomment -%}
-
-  {% assign unit_compare = item.variant.compare_at_price | default: 0 %}
-  {% assign unit_price = item.variant.price | default: 0 %}
-  {% assign qty = item.quantity | default: 1 %}
-
-  {% if unit_compare > 0 %}
-    {% assign full_total = unit_compare | times: qty %}
-  {% else %}
-    {% assign full_total = unit_price | times: qty %}
-  {% endif %}
-
-  {% assign sale_total = item.line_price | default: 0 %}
-
-  {% if full_total > sale_total and full_total > 0 %}
-    {% assign discount_amount = full_total | minus: sale_total %}
-    {% assign discount_percent = discount_amount | times: 100 | divided_by: full_total %}
-    {% assign discount_percent_rounded = discount_percent | round %}
-
-    <span class="cart-unempty__discount">
-      <span>-{{ discount_percent_rounded }}%</span>
-    </span>
-
-    <span class="cart-unempty__full--price">
-      {{ full_total | money }}
-    </span>
-
-    <span class="cart-unempty__sale--price">
-      {%comment%}{{ sale_total | money }} {%endcomment%}
-
-
-        {%- if sale_total == 0 -%}
-            {{- 'sections.cart.free' | t -}}
-        {%- else -%}
-             {{ sale_total | money }}
-        {%- endif -%}
-    </span>
-
-  {% else %}
-    
-    <span class="cart-unempty__sale--price">
-      {{ sale_total | money }}
-    </span>
-  {% endif %}
-</div>
-
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="cart-item__pricing">
+                                        {%- if full_total > sale_total and full_total > 0 -%}
+                                            {%- assign discount_amount = full_total | minus: sale_total -%}
+                                            {%- assign discount_percent = discount_amount | times: 100 | divided_by: full_total -%}
+                                            {%- assign discount_percent_rounded = discount_percent | round -%}
+
+                                            <span class="cart-item__discount">
+                                                <span>-{{ discount_percent_rounded }}%</span>
+                                            </span>
+
+                                            <div class="cart-item__price-stack">
+                                                <span class="cart-item__price--full">{{ full_total | money }}</span>
+                                                <span class="cart-item__price--sale{% if sale_total == 0 %} cart-item__price--free{% endif %}">
+                                                    {%- if sale_total == 0 -%}
+                                                        {{- 'sections.cart.free' | t -}}
+                                                    {%- else -%}
+                                                        {{ sale_total | money }}
+                                                    {%- endif -%}
+                                                </span>
+                                            </div>
+
+                                            {%- if item.variant.compare_at_price != blank -%}
+                                                <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
+                                            {%- else -%}
+                                                {%- assign single_discount = unit_price | times: item.quantity -%}
+                                                <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: single_discount | minus: item.line_price | money | remove: ',' }}">
+                                            {%- endif -%}
+                                        {%- else -%}
+                                            <div class="cart-item__price-stack">
+                                                <span class="cart-item__price--sale">{{ sale_total | money }}</span>
+                                            </div>
+                                        {%- endif -%}
+                                    </div>
+
+                                    <a href="/cart" class="cart-item__remove remove-from-cart" aria-label="Remove Item">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 6L6 18M6 6L18 18" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </a>
                                 </div>
-                            </div>
-                        {%- endfor -%}
-                    </div>
-                    {% if settings.show_empty_cart_btn %}
-                        <div class="clear-cart-div text-left medium-down--text-center">
-                            <a href="/cart/clear" class="clear-cart custom_button_font"><span>Empty Cart</span></a>
-                        </div>
-                    {% endif %}
-                    {%- comment -%}
-                    <!-- Use this to show the items in a TABLE
-                    <table class="items">
-                      <thead>
-                        <tr>
-                          <th>Item</th>
-                          <th>Unit $</th>
-                          <th>Quantity</th>
-                          <th>Total</th>
-                          <th>Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {%- for item in cart.items -%}
-                          {%- include 'cart_item_table' -%}
-                        {%- endfor -%}
-                      </tbody>
-                    </table>-->
-                    {%- endcomment -%}
-                </div>
-                <div class="grid__item one-third medium--one-whole small--one-whole">
-                    <div class="summary text-left medium-down--text-center">
-                        <h2 class="column-title custom_subtitle_font text-left">Summary</h2>
-                        <div class="flex subtotal align-items-center justify-content-between custom_subtitle_font">
-                            <div class="column cart-unempty__column">
-                                Subtotal:
-                            </div>
-                            <div class="column custom_text_font">
-                                {% assign subtotal = 0 %}
-                                {% for item in cart.items %}
-                                    {% assign discount = item.variant.price | times: item.quantity %}
-                                    {% if item.variant.compare_at_price != blank %}
-                                        {% assign subtotal = subtotal | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
-                                    {% elsif item.line_price != discount %}
-                                        {% assign subtotal = subtotal | plus: discount | minus: item.line_price | times: item.quantity %}
-                                    {% endif %}
-                                {% endfor %}
-                                {{ cart.items_subtotal_price | plus: subtotal | money }}
-                            </div>
-                        </div>
-
-                        <div class="flex sale align-items-center justify-content-between custom_subtitle_font">
-                            <div class="column cart-unempty__column">
-                                Discount:
-                            </div>
-                            {%- for item in cart.items -%}
-                                {% assign discount = item.variant.price | times: item.quantity %}
-                                {% if item.variant.compare_at_price != blank %}
-                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
-                                {% elsif item.line_price != discount %}
-                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: discount | minus: item.line_price | money | remove: ',' }}">
-                                {% endif %}
                             {%- endfor -%}
-                            <div class="column custom_text_font cart-unempty__sale"></div>
                         </div>
 
-                        <div class="flex shipping align-items-center justify-content-between custom_subtitle_font">
-                            <div class="column cart-unempty__column"></div>
-                            <div class="column cart-unempty__column">
-                                Shipping Calculated at Checkout
+                        <aside class="cart-summary summary">
+                            <h2 class="cart-summary__title">Summary</h2>
+                            <div class="cart-summary__divider"></div>
+
+                            <div class="cart-summary__row subtotal">
+                                <span class="cart-summary__label">Subtotal</span>
+                                <span class="cart-summary__value">
+                                    {%- assign subtotal = 0 -%}
+                                    {%- for item in cart.items -%}
+                                        {%- assign discount = item.variant.price | times: item.quantity -%}
+                                        {%- if item.variant.compare_at_price != blank -%}
+                                            {%- assign subtotal = subtotal | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
+                                        {%- elsif item.line_price != discount -%}
+                                            {%- assign subtotal = subtotal | plus: discount | minus: item.line_price | times: item.quantity -%}
+                                        {%- endif -%}
+                                    {%- endfor -%}
+                                    {{ cart.items_subtotal_price | plus: subtotal | money }}
+                                </span>
                             </div>
-                        </div>
 
-                        <div class="flex subtotal total align-items-center justify-content-between custom_subtitle_font">
-                            <div class="column cart-unempty__column">
-                                Total:
+                            <div class="cart-summary__row sale">
+                                <span class="cart-summary__label">Discount</span>
+                                <span class="cart-summary__value cart-unempty__sale"></span>
                             </div>
-                            <div class="column custom_text_font">
-                                {{ cart.total_price | money }}
+
+                            <div class="cart-summary__row cart-summary__row--right shipping">
+                                <span class="cart-summary__hint">Shipping calculated at Checkout</span>
                             </div>
-                        </div>
-                        <div id="corso-protection-placeholder-pr"></div>
 
-                        {%- if settings.cart_additional_msg != "" -%}
-                            <div class="additional-message">{{ settings.cart_additional_msg }}</div>
-                        {%- endif -%}
+                            <div class="cart-summary__divider"></div>
 
-                        {%- if settings.cart_return_policy != "" -%}
-                            <div class="hide"><div id="return-policy"><div class="title">Return Policy</div>{{ settings.cart_return_policy }}</div></div>
-                            <div class="return-policy-button"><a href="#" onclick="Simplistic.openModal($('#return-policy')); return false;">Return Policy</a></div>
-                        {%- endif-%}
+                            <div class="cart-summary__row total">
+                                <span class="cart-summary__label cart-summary__label--total">Total</span>
+                                <span class="cart-summary__value cart-summary__value--total">{{ cart.total_price | money }}</span>
+                            </div>
 
-                        <div class="buttons custom_button_font text-stretch-to-fill">
-                            <button type="submit" class="btn custom_button_font" name="checkout">
-                                <span>GO TO CHECKOUT</span>
-                                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="arrow-down">
-                                        <path id="Vector" d="M3.5 12H21.5M21.5 12L15.5 18M21.5 12L15.5 6" stroke="white" stroke-linecap="round"/>
-                                    </g>
-                                </svg>
+                            <div id="corso-protection-placeholder-pr"></div>
+
+                            {%- if settings.cart_additional_msg != "" -%}
+                                <div class="additional-message">{{ settings.cart_additional_msg }}</div>
+                            {%- endif -%}
+
+                            {%- if settings.cart_return_policy != "" -%}
+                                <div class="hide"><div id="return-policy"><div class="title">Return Policy</div>{{ settings.cart_return_policy }}</div></div>
+                                <div class="return-policy-button"><a href="#" onclick="Simplistic.openModal($('#return-policy')); return false;">Return Policy</a></div>
+                            {%- endif -%}
+
+                            <button type="submit" class="cart-summary__btn" name="checkout">
+                                Go to Checkout
                             </button>
+
                             {%- if additional_checkout_buttons -%}
                                 <div class="additional-checkout-buttons">
                                     {{ content_for_additional_checkout_buttons }}
                                 </div>
                             {%- endif -%}
-                        </div>
-
-                    </div>
-                    <div class="cart-icons">
-                        {% if section.settings.title_1 != blank  %}
-                            <div class="cart-icons__item">
-                                <img src="{{ section.settings.icon_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}">
-                                <span>{{ section.settings.title_1 }}</span>
-                            </div>
-                        {% endif %}
-                        {% if section.settings.title_2 != blank  %}
-                            <div class="cart-icons__item">
-                                <img src="{{ section.settings.icon_2 | img_url: 'master' }}" alt="{{ section.settings.title_2 }}">
-                                <span>{{ section.settings.title_2 }}</span>
-                            </div>
-                        {% endif %}
-                        {% if section.settings.title_3 != blank  %}
-                            <div class="cart-icons__item">
-                                <img src="{{ section.settings.icon_3 | img_url: 'master' }}" alt="{{ section.settings.title_3 }}">
-                                <span>{{ section.settings.title_3 }}</span>
-                            </div>
-                        {% endif %}
+                        </aside>
                     </div>
                 </div>
             </div>
-
         </form>
+
+        {%- if section.settings.title_1 != blank or section.settings.title_2 != blank or section.settings.title_3 != blank -%}
+            <div class="cart-guarantees">
+                {%- if section.settings.title_1 != blank -%}
+                    <div class="cart-guarantees__item">
+                        {%- if section.settings.icon_1 != blank -%}
+                            <img src="{{ section.settings.icon_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}" class="cart-guarantees__icon">
+                        {%- else -%}
+                            {% render 'icon-guarantee-check' %}
+                        {%- endif -%}
+                        <span class="cart-guarantees__text">{{ section.settings.title_1 }}</span>
+                    </div>
+                {%- endif -%}
+                {%- if section.settings.title_2 != blank -%}
+                    <div class="cart-guarantees__item">
+                        {%- if section.settings.icon_2 != blank -%}
+                            <img src="{{ section.settings.icon_2 | img_url: 'master' }}" alt="{{ section.settings.title_2 }}" class="cart-guarantees__icon">
+                        {%- else -%}
+                            {% render 'icon-guarantee-check' %}
+                        {%- endif -%}
+                        <span class="cart-guarantees__text">{{ section.settings.title_2 }}</span>
+                    </div>
+                {%- endif -%}
+                {%- if section.settings.title_3 != blank -%}
+                    <div class="cart-guarantees__item">
+                        {%- if section.settings.icon_3 != blank -%}
+                            <img src="{{ section.settings.icon_3 | img_url: 'master' }}" alt="{{ section.settings.title_3 }}" class="cart-guarantees__icon">
+                        {%- else -%}
+                            {% render 'icon-guarantee-check' %}
+                        {%- endif -%}
+                        <span class="cart-guarantees__text">{{ section.settings.title_3 }}</span>
+                    </div>
+                {%- endif -%}
+            </div>
+        {%- endif -%}
 
     {%- endif -%}
 </div>
@@ -555,20 +404,22 @@
 
         let formattedTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-        document.querySelector('.cart-unempty__sale').innerHTML = `-${currencySymbol}${formattedTotal}`;
+        const saleEl = document.querySelector('.cart-unempty__sale');
+        if (saleEl) {
+            saleEl.innerHTML = total > 0 ? `-${currencySymbol}${formattedTotal}` : `${currencySymbol}0.00`;
+        }
     });
 </script>
 
 {% schema %}
 {
   "name": "Info Icons Section",
-  "name": "Info Icons Section",
   "settings": [
     {
       "type": "text",
       "id": "title_1",
       "label": "Title 1",
-      "default": "Free Shipping $79+"
+      "default": "5,000+ 5-Star Reviews"
     },
     {
       "type": "image_picker",
@@ -579,7 +430,7 @@
       "type": "text",
       "id": "title_2",
       "label": "Title 2",
-      "default": "90-Day Moneyback"
+      "default": "Free US Shipping over $79"
     },
     {
       "type": "image_picker",
@@ -590,7 +441,7 @@
       "type": "text",
       "id": "title_3",
       "label": "Title 3",
-      "default": "The third person lab-tested"
+      "default": "150,000+ Happy Customers"
     },
     {
       "type": "image_picker",

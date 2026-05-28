@@ -11,6 +11,27 @@
   "sections": {
     "cart_main": {
       "type": "cart-main",
+      "settings": {
+        "show_clear_cart": false,
+        "show_continue_shopping": false
+      }
+    },
+    "177988248817cca89d": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_carousel_tMJMPe": {
+          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "show_heading": true,
+            "heading": "6,000+ verified 5-star reviews",
+            "badge_link": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_carousel_tMJMPe"
+      ],
       "settings": {}
     },
     "info_icons_bar": {
@@ -49,24 +70,6 @@
         "padding_top": 16,
         "padding_bottom": 16
       }
-    },
-    "177988248817cca89d": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_carousel_tMJMPe": {
-          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "show_heading": true,
-            "heading": "6,000+ verified 5-star reviews",
-            "badge_link": "",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_carousel_tMJMPe"
-      ],
-      "settings": {}
     }
   },
   "order": [

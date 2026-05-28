@@ -64,6 +64,7 @@
         "block-2",
         "block-3"
       ],
+      "disabled": true,
       "settings": {
         "bg_color": "#eaeaf7",
         "text_color": "#141414",

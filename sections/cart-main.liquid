@@ -148,14 +148,20 @@
             <div class="container">
                 <div class="cart-page__hero-inner">
                     <h1 class="cart-page__title">Your Cart</h1>
-                    <div class="cart-page__hero-actions">
-                        <a href="{{ routes.cart_clear_url }}" class="cart-page__action cart-page__action--clear">
-                            Clear cart
-                        </a>
-                        <a href="https://www.rejuvia.co/collections/more-products" class="cart-page__action">
-                            Continue Shopping
-                        </a>
-                    </div>
+                    {%- if section.settings.show_clear_cart or section.settings.show_continue_shopping -%}
+                        <div class="cart-page__hero-actions">
+                            {%- if section.settings.show_clear_cart -%}
+                                <a href="{{ routes.cart_clear_url }}" class="cart-page__action cart-page__action--clear">
+                                    Clear cart
+                                </a>
+                            {%- endif -%}
+                            {%- if section.settings.show_continue_shopping -%}
+                                <a href="https://www.rejuvia.co/collections/more-products" class="cart-page__action">
+                                    Continue Shopping
+                                </a>
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
                 </div>
             </div>
         </div>
@@ -383,7 +389,24 @@
 {% schema %}
 {
   "name": "Cart page",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header actions"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_clear_cart",
+      "label": "Show Clear cart link",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_continue_shopping",
+      "label": "Show Continue shopping link",
+      "default": true
+    }
+  ],
   "presets": [
     {
       "name": "Cart page",

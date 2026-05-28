@@ -1,9 +1,9 @@
 <style>
 .footer-v2 {
     width: 100%;
-    background-color: #EAEAF7;
+    background-color: {{ section.settings.bg_color | default: '#EAEAF7' }};
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #141414;
+    color: {{ section.settings.text_color | default: '#141414' }};
 }
 
 .footer-v2-container {
@@ -483,6 +483,22 @@
 {
     "name": "Footer V2",
     "settings": [
+        {
+            "type": "header",
+            "content": "Colors"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#EAEAF7"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#141414"
+        },
         {
             "type": "header",
             "content": "Brand"

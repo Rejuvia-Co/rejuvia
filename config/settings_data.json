@@ -719,6 +719,7 @@
           "mobile_menu_links_nav"
         ],
         "settings": {
+          "bg_color": "#eaeaf7",
           "menu_desktop": "header-navigation",
           "behavior": "static",
           "behavior_mobile": "static"

@@ -719,7 +719,7 @@
           "mobile_menu_links_nav"
         ],
         "settings": {
-          "bg_color": "#eaeaf7",
+          "bg_color": "#f8efe4",
           "menu_desktop": "header-navigation",
           "behavior": "static",
           "behavior_mobile": "static"
@@ -2033,7 +2033,7 @@
         "name": "Guarantees V2",
         "settings": {
           "anchor_id": "",
-          "bg_color": "#eaeaf7",
+          "bg_color": "#f8efe4",
           "icon_color": "#672666"
         }
       },

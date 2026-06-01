@@ -43,6 +43,8 @@
       ],
       "name": "Footer V2",
       "settings": {
+        "bg_color": "#f8efe4",
+        "text_color": "#141414",
         "logo": "shopify://shop_images/Logo_1.svg",
         "newsletter_title": "Get 20% Off Your First Order",
         "newsletter_desc": "Join thousands who've replaced their melatonin gummies and sleeping pills with one simple spray. Get 20% off your first subscription order.",

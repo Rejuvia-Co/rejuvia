@@ -16,7 +16,7 @@
         "anchor_id": "",
         "bg_color": "#0087da",
         "stars_color": "#fab851",
-        "image_desktop": "shopify://shop_images/story_desktop_banner.png",
+        "image_desktop": "shopify://shop_images/story_desktop_banner.webp",
         "image_position_desktop": "center",
         "desktop_min_height": 500,
         "image_mobile": "shopify://shop_images/Hero_story.png",

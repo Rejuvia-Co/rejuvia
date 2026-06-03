@@ -2045,7 +2045,7 @@
             "settings": {
               "title": "Melatonin Gummies",
               "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_MelatoninGummies.png",
+              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_MelatoninGummies.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -2058,7 +2058,7 @@
             "settings": {
               "title": "Sleeping Pills",
               "content": "<p>Sleep pills pack in high doses because they know <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_SleepingPills.png",
+              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_SleepingPills.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -2071,7 +2071,7 @@
             "settings": {
               "title": "The \"Natural\" Cycle",
               "content": "<p>Teas, tinctures, magnesium baths. The ingredients are real, but the doses are too small and the absorption is too slow to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. again.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_TheNaturalCycle.png",
+              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_TheNaturalCycle.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -2144,7 +2144,7 @@
         "settings": {
           "heading": "<p>Here's why <em>Rejuvia works better</em></p>",
           "description": "<p>Rejuvia isn't a pill or a gummy. It's <strong>a sublingual spray.</strong></p><p>You spray Rejuvia under your tongue, where the tissue is packed with blood vessels. The ingredients absorb directly into your bloodstream. No stomach. No liver. No wasted ingredients.</p><p>More of the formula reaches your body. So you feel it working in minutes, not an hour from now.</p>",
-          "image": "shopify://shop_images/Higher-absorption-rate.png"
+          "image": "shopify://shop_images/Higher-absorption-rate.webp"
         }
       },
       "real_stories_v2_CKGqJy": {
@@ -2374,7 +2374,7 @@
         "name": "Use In Just V2",
         "settings": {
           "heading": "<p>Use Rejuvia in <em>just 10 seconds</em></p>",
-          "default_image": "shopify://shop_images/image_1.png",
+          "default_image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.webp",
           "link_text": "View Supplement Label",
           "link_url": "",
           "supplement_product": "sleep-spray"

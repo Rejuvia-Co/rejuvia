@@ -1473,21 +1473,21 @@
           "card_wwQqGc": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.png",
+              "image": "shopify://shop_images/howtouse1_6d722aeb-ff96-4856-bfe3-5f865c2b3e45.webp",
               "description": "<b>Spray</b> 6-8 times under your tongue or inside your cheek."
             }
           },
           "card_fUJahd": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/howtouse2_e0d97c1c-e10a-49ec-8c8e-9d27c72aa50d.png",
+              "image": "shopify://shop_images/howtouse2_e0d97c1c-e10a-49ec-8c8e-9d27c72aa50d.webp",
               "description": "<b>Hold</b> in your mouth for at least 5-10 seconds."
             }
           },
           "card_GDHzqt": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/howtouse3_a1d61e7b-1169-49ef-bc1b-95d019170256.png",
+              "image": "shopify://shop_images/howtouse3_a1d61e7b-1169-49ef-bc1b-95d019170256.webp",
               "description": "<b>Swallow</b> and get ready for the best sleep of your life."
             }
           }
@@ -1865,7 +1865,7 @@
           "text": "When my mom was in her 50s, she could never sleep. And I mean never. She tried everything: the gummies, the pills, the teas, the powders. Anything her doctor or the internet suggested, she tried. But nothing ever worked. It was either made her feel groggy in the morning or had nasty side effects.\n\nIt was awful to watch my mom suffer from bad sleep and lose hope because everything she tried failed. So when I left for college at UPenn in 2017, I made it my mission to come home with a real solution for her — something she could trust, something that actually worked, and something that would help her feel like herself again.\n\nThat’s when the idea for an oral sleep spray was born. She had never even heard of a sleep spray before, but it made perfect sense. It offered much faster absorption, and using her chemical engineering background, she and I could put together an incredibly powerful, all-natural sleep formula that worked like no one's business!\n\nAnd that's how Rejuvia started. It was a way to help my mom finally get a good night’s sleep. Now, she and I run the business together and are on a mission to share the same formula that changed her nights with people who just want to feel rested again.",
           "founder_name": "RC Williams",
           "founder_title": "Co-Founder, CEO of Rejuvia",
-          "image": "shopify://shop_images/IMG_2412.webp"
+          "image": "shopify://shop_images/rejuvia_founders.webp"
         }
       },
       "product_widget_v2_m3pTph": {
@@ -2971,7 +2971,7 @@
         "settings": {
           "heading": "<p>Why Rejuvia Sleep Spray works <em>3x faster and stronger</em></p>",
           "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes — bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster — you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
-          "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.png"
+          "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
         }
       },
       "page-cta-v2": {
@@ -2981,11 +2981,11 @@
           "bg_color": "#f5f5fb",
           "accent_color": "#672666",
           "stars_color": "#fab851",
-          "image": "shopify://shop_images/Image.png",
+          "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
           "show_stars": true,
-          "quote": "<p>\"Love this product. <span style=\"text-decoration:underline\"><strong>I’m asleep within minutes.</strong></span> If I wake up in the middle of the night and don’t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",
+          "quote": "<p>\"Love this spray. <span style=\"text-decoration:underline\"><strong>I’m asleep within minutes.</strong></span> If I wake up in the middle of the night and don’t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",
           "author_name": "Sandy J. P.",
-          "author_role": "Verified Customer",
+          "author_role": "Verified Customer Since 2021",
           "btn_text": "Sleep Better Tonight",
           "btn_url": "#top",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"

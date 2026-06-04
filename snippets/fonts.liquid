@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 {%- endif -%}
 {%- if settings.font_icons_drip -%}
+{{ 'dropicons-v2.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 {%- if settings.font_icons_stroke -%}
 {{ 'Pe-icon-7-stroke.css' | asset_url | stylesheet_tag }}

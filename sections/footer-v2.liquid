@@ -359,8 +359,11 @@
             <div class="footer-v2-brand">
                 {% if section.settings.logo != blank %}
                     <a href="/">
-                        <img class="footer-v2-logo" src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}">
-                    </a>
+<img class="footer-v2-logo"
+     src="{{ section.settings.logo | image_url: width: 400 }}"
+     width="{{ section.settings.logo.width }}"
+     height="{{ section.settings.logo.height }}"
+     alt="{{ shop.name }}">                    </a>
                 {% endif %}
                 <div class="footer-v2-socials">
                     {% if settings.instagram_link != blank %}

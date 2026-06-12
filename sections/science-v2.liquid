@@ -252,12 +252,14 @@
             <div class="science-v2-quote-text">{{ section.settings.quote }}</div>
         {% endif %}
         <div class="science-v2-quote-footer">
-            {% if section.settings.signature_image != blank %}
-                <img class="science-v2-quote-signature"
-                     src="{{ section.settings.signature_image | image_url: width: 400 }}"
-                     alt="{{ section.settings.author_name | default: 'Signature' }}"
-                     loading="lazy">
-            {% endif %}
+{% if section.settings.signature_image != blank %}
+    <img class="science-v2-quote-signature"
+         src="{{ section.settings.signature_image | image_url: width: 400 }}"
+         width="{{ section.settings.signature_image.width }}"
+         height="{{ section.settings.signature_image.height }}"
+         alt="{{ section.settings.author_name | default: 'Signature' }}"
+         loading="lazy">
+{% endif %}
             {% if section.settings.author_name != blank or section.settings.author_title != blank %}
                 <div class="science-v2-quote-author">
                     {% if section.settings.author_name != blank %}

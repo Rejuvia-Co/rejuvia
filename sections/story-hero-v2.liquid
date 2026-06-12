@@ -158,12 +158,17 @@ main.content-wrapper { overflow: visible !important; }
 {%- endif -%}
 
 <div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
-    <img src="{{ desktop_src }}" alt="{{ desktop_alt }}" loading="eager">
+    <img src="{{ desktop_src }}"
+         width="{{ section.settings.image_desktop.width }}"
+         height="{{ section.settings.image_desktop.height }}"
+         alt="{{ desktop_alt }}"
+         loading="eager">
 </div>
-
 {% if has_mobile_image %}
     <div class="story-hero-v2-bg story-hero-v2-bg--mobile" aria-hidden="true">
         <img src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+             width="{{ section.settings.image_mobile.width }}"
+             height="{{ section.settings.image_mobile.height }}"
              alt="{{ section.settings.image_mobile.alt | default: '' }}"
              loading="eager">
     </div>

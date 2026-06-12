@@ -190,7 +190,7 @@
     padding: 4px 8px;
     border-radius: 5px;
 
-    font-size: 11px;
+    font-size: 12px;
     line-height: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -259,7 +259,7 @@
     }
 
     .variant-selector__badge {
-      font-size: 11px;
+      font-size: 12px;
       padding: 3px 6px;
     }
   }
@@ -1165,7 +1165,7 @@
     }
 
     .variant-selector__badge {
-      font-size: 11px;
+      font-size: 12px;
       padding: 3px 5px;
       top: -14px;
     }

@@ -1,3 +1,6 @@
+Here is the complete file with only those 3 fixes applied:
+
+```liquid
 {% style %}
 .story-reviews-v2-section {
     width: 100%;
@@ -438,11 +441,15 @@
                                                  {{ poster_img | image_url: width: 800 }} 800w,
                                                  {{ poster_img | image_url: width: 1200 }} 1200w"
                                          sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                                         width="{{ poster_img.width }}"
+                                         height="{{ poster_img.height }}"
                                          alt="{{ block.settings.author | default: 'Video review' }}"
                                          loading="lazy"
                                          decoding="async">
                                 {% else %}
                                     <img src="{{ video_poster }}"
+                                         width="{{ video_file.preview_image.width }}"
+                                         height="{{ video_file.preview_image.height }}"
                                          alt="{{ block.settings.author | default: 'Video review' }}"
                                          loading="lazy"
                                          decoding="async">
@@ -480,6 +487,8 @@
                                          {{ block.settings.image | image_url: width: 800 }} 800w,
                                          {{ block.settings.image | image_url: width: 1200 }} 1200w"
                                  sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                                 width="{{ block.settings.image.width }}"
+                                 height="{{ block.settings.image.height }}"
                                  alt="{{ block.settings.alt | default: '' }}"
                                  loading="lazy"
                                  decoding="async">
@@ -753,3 +762,4 @@
     ]
 }
 {% endschema %}
+```

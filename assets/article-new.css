@@ -51,7 +51,7 @@ html:has(.article-new) {
 }
 
 main:has(.article-new) {
-  background-color: #FAFAF9;
+  background-color: #fff;
   padding-bottom: 40px;
 }
 
@@ -634,7 +634,7 @@ main:has(.article-new) {
   }
 
   main:has(.article-new) {
-    background-color: #FAFAF9;
+    background-color: #fff;
     padding-bottom: 24px;
   }
 

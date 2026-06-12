@@ -194,10 +194,10 @@
 
 {%- if section.settings.image != blank -%}
     {%- assign cta_image_desktop = section.settings.image | image_url: width: 1400 -%}
-    {%- assign cta_image_mobile = section.settings.image | image_url: width: 900 -%}
+    
 {%- else -%}
     {%- assign cta_image_desktop = 'hero-v2-product.png' | asset_url -%}
-    {%- assign cta_image_mobile = cta_image_desktop -%}
+    
 {%- endif -%}
 
 <div class="page-cta-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>

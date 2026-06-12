@@ -246,12 +246,14 @@
             {% endif %}
         </div>
 
-        {% if section.settings.image != blank %}
-            <img class="page-cta-v2-mobile-image"
-                 src="{{ section.settings.image | image_url: width: 900 }}"
-                 alt=""
-                 loading="lazy">
-        {% endif %}
+{% if section.settings.image != blank %}
+    <img class="page-cta-v2-mobile-image"
+         src="{{ section.settings.image | image_url: width: 900 }}"
+         width="{{ section.settings.image.width }}"
+         height="{{ section.settings.image.height }}"
+         alt=""
+         loading="lazy">
+{% endif %}
     </div>
 </div>
 

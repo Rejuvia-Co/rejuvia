@@ -202,8 +202,11 @@
 
 <div class="page-cta-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
     <div class="page-cta-v2-bg" aria-hidden="true">
-        <img src="{{ cta_image_desktop }}" alt="" loading="lazy">
-    </div>
+<img src="{{ cta_image_desktop }}"
+     width="{{ section.settings.image.width }}"
+     height="{{ section.settings.image.height }}"
+     alt=""
+     loading="lazy">    </div>
 
     <div class="page-cta-v2-copy">
         {% if section.settings.show_stars %}

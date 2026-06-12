@@ -142,7 +142,7 @@
 
   .variant-selector__title {
 
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--base-colour, #672666);
     text-transform: uppercase;
@@ -191,7 +191,7 @@
     border-radius: 5px;
 
     font-size: 11px;
-    line-height: 14px;
+    line-height: 16px;
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
@@ -954,7 +954,7 @@
   .guarantee-label-container {
     color: #141414;
 
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.4;

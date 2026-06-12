@@ -1,5 +1,14 @@
 main:has(.blog-grid) {
-  background: #FAFAF9;
+  background: #fff;
+}
+
+/* The blog uses the "blog.grid" template, which makes Shopify add a "grid"
+   class to <body>. That collides with the theme's foundation .grid flex row
+   (display:flex; margin-left:-20px), shoving the whole page left and leaving
+   a gap on the right. Reset the body back to normal block flow here. */
+body.grid {
+  display: block;
+  margin: 0;
 }
 
 .blog-grid {

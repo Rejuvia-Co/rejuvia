@@ -96,7 +96,7 @@
         padding: 16px 12px 0;
     }
     .sticky-cta-v2-text {
-        font-size: 14px;
+        font-size: 16px;
         white-space: normal;
         max-width: 210px;
     }
@@ -137,6 +137,19 @@
         if (footer) {
             var footerTop = footer.getBoundingClientRect().top;
             if (footerTop <= window.innerHeight) {
+                sticky.classList.remove('is-visible');
+                return;
+            }
+        }
+
+        /* Never overlap the product widget: hide whenever any part of it is in the
+           viewport (even when scrolling up). Otherwise fall through to the normal
+           show logic below, so the bar still appears above and below the widget. */
+        var widget = document.querySelector('.product-widget-container');
+        if (widget) {
+            var wr = widget.getBoundingClientRect();
+            var widgetInView = wr.top < window.innerHeight && wr.bottom > 0;
+            if (widgetInView) {
                 sticky.classList.remove('is-visible');
                 return;
             }

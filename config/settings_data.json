@@ -748,45 +748,6 @@
           "show_payment_methods": true
         }
       },
-      "blog_sidebar": {
-        "type": "blog_sidebar",
-        "blocks": {
-          "1580751388441": {
-            "type": "featured_posts",
-            "settings": {
-              "title": "Featured Posts",
-              "article1": "",
-              "article2": "",
-              "article3": "",
-              "article4": "",
-              "article5": "",
-              "article6": ""
-            }
-          },
-          "1580751459683": {
-            "type": "search",
-            "settings": {
-              "show": true,
-              "title": "Search"
-            }
-          },
-          "1580751386191": {
-            "type": "recent_posts",
-            "settings": {
-              "show": true,
-              "title": "Recent Posts"
-            }
-          }
-        },
-        "block_order": [
-          "1580751388441",
-          "1580751459683",
-          "1580751386191"
-        ],
-        "settings": {
-          "show": true
-        }
-      },
       "ingredients": {
         "type": "ingredients",
         "blocks": {
@@ -889,75 +850,9 @@
           "text_padding_mobile": "0 20px 0em"
         }
       },
-      "article": {
-        "type": "article",
-        "settings": {}
-      },
       "faqs": {
         "type": "faqs",
         "settings": {}
-      },
-      "hero": {
-        "type": "hero",
-        "blocks": {
-          "1599842091514": {
-            "type": "slide",
-            "settings": {
-              "title": "Rejuvia, But On Your Terms",
-              "text": "<p>Subscribe and save to get access to exclusive perks!</p>",
-              "button": "",
-              "link": "",
-              "title_color": "#000000",
-              "title_color_mobile": "#000000",
-              "title_size_desktop": "3.9em",
-              "title_size_mobile": "2.6em",
-              "text_color": "#000000",
-              "text_color_mobile": "#000000",
-              "bg_color_mobile": "#999999",
-              "btn_bg": "#000000",
-              "btn_color": "#ffffff",
-              "image_mb": "shopify://shop_images/Rejuvia_Subscription.png",
-              "overlay_color_desktop": "#000000",
-              "overlay_opacity_desktop": 0,
-              "show_captions": true,
-              "text_width": "40em",
-              "text_width_mobile": "23em",
-              "text_padding": "2em 5em",
-              "text_padding_mobile": "0em 0em 2em 0em",
-              "text_position": "start",
-              "text_position_mobile": "center",
-              "text_align": "left",
-              "text_align_mobile": "center",
-              "featured_image_width": "25%",
-              "featured_image_right": "10%",
-              "featured_image_left": "auto",
-              "featured_image_position": "center",
-              "title_effect": "fadeInUp",
-              "text_effect": "fadeInUp",
-              "button_effect": "fadeInUp",
-              "image_effect": "fadeInLeft"
-            }
-          }
-        },
-        "block_order": [
-          "1599842091514"
-        ],
-        "settings": {
-          "full_width": false,
-          "full_height": true,
-          "img_height": "85.5%",
-          "layout": "captions_inside",
-          "full_width_mobile": true,
-          "full_height_mobile": false,
-          "img_height_mobile": "180%",
-          "fade": "true",
-          "show_arrows": true,
-          "arrow_color": "#FFFFFF",
-          "arrow_hover_color": "#0089ff",
-          "show_dots": true,
-          "dots_color": "#ffffff",
-          "dots_active_color": "#0089ff"
-        }
       },
       "section-choose-product": {
         "type": "section-choose-product",
@@ -1999,7 +1894,7 @@
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
-          "image_bg_color": "#f7f4f7",
+          "image_bg_color": "#FFFFFF",
           "testimonial_speed": 5
         }
       },

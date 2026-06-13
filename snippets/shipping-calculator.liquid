@@ -52,17 +52,17 @@
   <div id="shipping-rates-feedback" <% if (success) { %> class="success" <% } else { %> class="error" <% } %>>
   <% if (success) { %>
     <% if (rates.length <= 0) { %> 
-    <p><i class="fa fa-close"></i> We do not ship to this destination.</p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px"><path d="M18 6 6 18M6 6l12 12"/></svg> We do not ship to this destination.</p>
     <% } %>
   <% } else { %>
     <p>
-      <i class="fa fa-close"></i> <%= errorFeedback %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px"><path d="M18 6 6 18M6 6l12 12"/></svg> <%= errorFeedback %>
     </p>
   <% } %>
   </div>
   <div id="shipping-rates">
     <% for (var i=0; i<rates.length; i++) { %>
-    <p><i class="fa fa-check"></i> <%= rates[i].name %>: <%= rates[i].price %></p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-1px"><path d="M20 6 9 17l-5-5"/></svg> <%= rates[i].name %>: <%= rates[i].price %></p>
     <% } %>
   </div> 
 </script>

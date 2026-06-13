@@ -2268,7 +2268,7 @@
         ],
         "name": "Use In Just V2",
         "settings": {
-          "heading": "<p>Use Rejuvia in <em>just 10 seconds</em></p>",
+          "heading": "<p>Use Rejuvia in <em>10 seconds</em></p>",
           "default_image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.webp",
           "link_text": "View Supplement Label",
           "link_url": "",
@@ -2576,7 +2576,7 @@
         "type": "sticky-cta-v2",
         "name": "Sticky CTA V2",
         "settings": {
-          "text": "<p>Join <strong>300,000+ People</strong> Sleeping Through The Full Night</p>",
+          "text": "<p>Join <strong>300,000+</strong> people sleeping the full night</p>",
           "btn_text": "Try Rejuvia",
           "scroll_target": ".product-widget-container",
           "position": "bottom",

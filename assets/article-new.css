@@ -411,37 +411,6 @@ main:has(.article-new) {
   margin-top: 0;
 }
 
-.article-new .article-new__share {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.article-new .article-new__share--text {
-  display: block;
-  color: #5C5C5C;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 100%;
-  margin-top: 5px;
-}
-
-.article-new .article-new__share--icons {
-  gap: 8px;
-  display: flex;
-  align-items: center;
-}
-
-.article-new .article-new__share--icons a {
-  text-decoration: none;
-  width: 40px;
-  height: 40px;
-  padding: 11px;
-  border-radius: 100px;
-  background: #F0E9EF;
-  display: block;
-}
-
 @media screen and (max-width: 749px) {
   .article-new {
     padding: 16px 16.8px 0;

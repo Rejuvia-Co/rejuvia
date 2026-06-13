@@ -1,4 +1,14 @@
 <div class="new-product-grid container">
+    {% if section.settings.seo_heading != blank or section.settings.seo_text != blank %}
+        <div class="collection-intro">
+            {% if section.settings.seo_heading != blank %}
+                <h1 class="collection-intro__title">{{ section.settings.seo_heading }}</h1>
+            {% endif %}
+            {% if section.settings.seo_text != blank %}
+                <div class="collection-intro__text">{{ section.settings.seo_text }}</div>
+            {% endif %}
+        </div>
+    {% endif %}
     {% for block in section.blocks %}
         {% if block.type == 'collection-header' %}
             {% assign heading_tag = block.settings.heading %}
@@ -33,7 +43,23 @@
   "name": "Collection products grid",
   "tag": "section",
   "class": "custom-section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page intro (SEO)"
+    },
+    {
+      "type": "text",
+      "id": "seo_heading",
+      "label": "H1 heading",
+      "info": "Main page heading, shown above the grid. Use your primary SEO keyword."
+    },
+    {
+      "type": "richtext",
+      "id": "seo_text",
+      "label": "Intro paragraph"
+    }
+  ],
   "blocks": [
     {
       "type": "collection-header",

@@ -2885,6 +2885,24 @@
           "btn_url": "#top",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
         }
+      },
+      "page_cta_v2_x7WGqi": {
+        "type": "page-cta-v2",
+        "name": "Page CTA V2",
+        "settings": {
+          "anchor_id": "",
+          "bg_color": "#F5F5FB",
+          "accent_color": "#672666",
+          "stars_color": "#EAC78B",
+          "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
+          "show_stars": true,
+          "quote": "<p>\"This really works. I take 6 sprays under the tongue and within 15 minutes I am ready to fall asleep. It's really great stuff.\"</p>",
+          "author_name": "Darlene C.",
+          "author_role": "Verified Customer",
+          "btn_text": "Try Rejuvia Risk-Free",
+          "btn_url": "shopify://products/sleep-spray-30-nights",
+          "guarantee_text": "90-Day Money-Back Guarantee"
+        }
       }
     },
     "content_for_index": [
@@ -2902,7 +2920,8 @@
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
       "faqs_v2_BYWkfd",
-      "sticky_cta_v2_wacfBP"
+      "sticky_cta_v2_wacfBP",
+      "page_cta_v2_x7WGqi"
     ],
     "blocks": {
       "b476b6dd74a1465df3": {

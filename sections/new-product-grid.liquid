@@ -12,51 +12,6 @@
                         {{ block_products }}
                         {% render 'new-product-grid', product: product %}
 
-                        {% for inner_block in section.blocks %}
-                            {% if inner_block.type == 'content_card'
-                            and inner_block.settings.insert_after == index
-                            and inner_block.settings.group == heading_tag %}
-                                <div class="product-recommendation custom-content-card">
-                                    {% if inner_block.settings.image %}
-                                        <div class="custom-content-card__image">
-                                            <img src="{{ inner_block.settings.image | image_url: width: 381 }}" alt="">
-                                            <div class="product-grid-image__label">
-                                                {{ inner_block.settings.text_over_image }}
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    <div class="custom-content-card__content">
-                                        <div class="custom-content-card__heading">
-                                            {{ inner_block.settings.heading }}
-                                        </div>
-                                        <div class="custom-content-card__text">
-                                            {{ inner_block.settings.text }}
-                                        </div>
-                                        {% if inner_block.settings.link %}
-                                            <a href="{{ inner_block.settings.link }}" class="btn button custom-content-card__link">
-                                                {{ inner_block.settings.button_text }}
-                                                <svg class="icon-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                     height="24" viewBox="0 0 24 24" fill="none">
-                                                    <g clip-path="url(#clip0_3009_10216)">
-                                                        <path d="M3.75 12H20.25" stroke="white" stroke-width="1.5"
-                                                              stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path d="M13.5 5.25L20.25 12L13.5 18.75" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"></path>
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_3009_10216">
-                                                            <rect width="24" height="24" fill="white"
-                                                                  transform="matrix(-1 0 0 1 24 0)"></rect>
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
                     {% endcapture %}
                 {% endif %}
             {% endfor %}

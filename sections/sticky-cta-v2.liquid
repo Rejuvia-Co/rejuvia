@@ -142,17 +142,21 @@
             }
         }
 
-        /* Never overlap the product widget: only show once it is fully scrolled
-           past (entirely above the viewport). Hide whenever any part of it is on
-           screen — even when scrolling up — or before the user has reached it. */
+        /* Never overlap the product widget: hide whenever any part of it is in the
+           viewport (even when scrolling up). Otherwise fall through to the normal
+           show logic below, so the bar still appears above and below the widget. */
         var widget = document.querySelector('.product-widget-container');
         if (widget) {
-            if (widget.getBoundingClientRect().bottom > 0) {
+            var wr = widget.getBoundingClientRect();
+            var widgetInView = wr.top < window.innerHeight && wr.bottom > 0;
+            if (widgetInView) {
                 sticky.classList.remove('is-visible');
                 return;
             }
-        } else if (y <= offset) {
-            /* Fallback to the scroll offset when there is no product widget on the page */
+        }
+
+        /* Not scrolled enough → hide */
+        if (y <= offset) {
             sticky.classList.remove('is-visible');
             return;
         }

@@ -43,18 +43,3 @@
    };
 </script>
 {%- endif -%}
-{%- if settings.font_icons_linear -%}
-<link rel="stylesheet" href="//cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-{%- endif -%}
-{%- if settings.font_icons_ion -%}
-<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-{%- endif -%}
-{%- if settings.font_icons_drip -%}
-{{ 'dropicons-v2.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-{%- if settings.font_icons_stroke -%}
-{{ 'Pe-icon-7-stroke.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-{%- if settings.font_icons_themify -%}
-{{ 'themify.css' | asset_url | stylesheet_tag }}
-{%- endif -%}

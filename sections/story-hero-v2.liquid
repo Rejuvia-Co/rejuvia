@@ -150,20 +150,14 @@ main.content-wrapper { overflow: visible !important; }
 {%- endif -%}
 
 {%- if section.settings.image_desktop != blank -%}
-    {%- assign desktop_src = section.settings.image_desktop | image_url: width: 2000 -%}
-    {%- assign desktop_alt = section.settings.image_desktop.alt -%}
-{%- else -%}
-    {%- assign desktop_src = 'story_desktop_banner.png' | asset_url -%}
-    {%- assign desktop_alt = '' -%}
-{%- endif -%}
-
 <div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
-    <img src="{{ desktop_src }}"
+    <img src="{{ section.settings.image_desktop | image_url: width: 2000 }}"
          width="{{ section.settings.image_desktop.width }}"
          height="{{ section.settings.image_desktop.height }}"
-         alt="{{ desktop_alt }}"
+         alt="{{ section.settings.image_desktop.alt }}"
          loading="eager">
 </div>
+{%- endif -%}
 {% if has_mobile_image %}
     <div class="story-hero-v2-bg story-hero-v2-bg--mobile" aria-hidden="true">
         <img src="{{ section.settings.image_mobile | image_url: width: 1000 }}"

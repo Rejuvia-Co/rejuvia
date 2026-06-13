@@ -192,21 +192,15 @@
 }
 {% endstyle %}
 
-{%- if section.settings.image != blank -%}
-    {%- assign cta_image_desktop = section.settings.image | image_url: width: 1400 -%}
-    
-{%- else -%}
-    {%- assign cta_image_desktop = 'hero-v2-product.png' | asset_url -%}
-    
-{%- endif -%}
-
 <div class="page-cta-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+    {%- if section.settings.image != blank -%}
     <div class="page-cta-v2-bg" aria-hidden="true">
-<img src="{{ cta_image_desktop }}"
+<img src="{{ section.settings.image | image_url: width: 1400 }}"
      width="{{ section.settings.image.width }}"
      height="{{ section.settings.image.height }}"
      alt=""
      loading="lazy">    </div>
+    {%- endif -%}
 
     <div class="page-cta-v2-copy">
         {% if section.settings.show_stars %}

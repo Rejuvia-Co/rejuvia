@@ -1874,7 +1874,7 @@
             "settings": {
               "avatar": "shopify://shop_images/bettymrejuvia.png",
               "name": "Betty M.",
-              "quote": "First time in years I actually slept through the FULL night. And woke up feeling energized.",
+              "quote": "First time in years I slept through the FULL night. And woke up refreshed!",
               "stars": 5
             }
           }
@@ -1884,7 +1884,7 @@
         ],
         "name": "Hero V2",
         "settings": {
-          "bg_color": "#FFFFFF",
+          "bg_color": "#ffffff",
           "accent_color": "#672666",
           "rating_score": "4.6",
           "rating_sold": "1.3M Sleep Sprays",
@@ -1894,7 +1894,7 @@
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
-          "image_bg_color": "#F8F4F7",
+          "image_bg_color": "#f8f4f7",
           "testimonial_speed": 5
         }
       },

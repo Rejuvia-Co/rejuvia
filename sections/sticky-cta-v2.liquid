@@ -142,8 +142,17 @@
             }
         }
 
-        /* Not scrolled enough → hide */
-        if (y <= offset) {
+        /* Never overlap the product widget: only show once it is fully scrolled
+           past (entirely above the viewport). Hide whenever any part of it is on
+           screen — even when scrolling up — or before the user has reached it. */
+        var widget = document.querySelector('.product-widget-container');
+        if (widget) {
+            if (widget.getBoundingClientRect().bottom > 0) {
+                sticky.classList.remove('is-visible');
+                return;
+            }
+        } else if (y <= offset) {
+            /* Fallback to the scroll offset when there is no product widget on the page */
             sticky.classList.remove('is-visible');
             return;
         }

@@ -144,10 +144,14 @@
     var MIN_DELTA = 4;
 
     function eligible() {
-        if (!trigger) return true;
-        var rect = trigger.getBoundingClientRect();
-        var buyBoxBelow = rect.top > window.innerHeight;
-        var buyBoxPassed = rect.bottom < 0;
+        /* Gate visibility on the WHOLE product widget (not just the buy buttons),
+           so the bar never overlaps any part of the widget. Only show once the
+           widget is fully scrolled past (entirely above the viewport); hide whenever
+           any part of it is on screen — even when scrolling up. */
+        var widget = document.querySelector('.product-widget-container') || trigger;
+        if (!widget) return true;
+        var rect = widget.getBoundingClientRect();
+        var widgetPassed = rect.bottom < 0;
 
         var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
         var footerVisible = false;
@@ -156,7 +160,7 @@
             footerVisible = footerRect.top < window.innerHeight;
         }
 
-        return (buyBoxBelow || buyBoxPassed) && !footerVisible;
+        return widgetPassed && !footerVisible;
     }
 
     function check() {

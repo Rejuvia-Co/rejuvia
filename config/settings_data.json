@@ -719,7 +719,7 @@
           "mobile_menu_links_nav"
         ],
         "settings": {
-          "bg_color": "#EAEAF7",
+          "bg_color": "#eaeaf7",
           "menu_desktop": "header-navigation",
           "behavior": "static",
           "behavior_mobile": "static"
@@ -1928,7 +1928,7 @@
         "name": "Guarantees V2",
         "settings": {
           "anchor_id": "",
-          "bg_color": "#EAEAF7",
+          "bg_color": "#eaeaf7",
           "icon_color": "#672666"
         }
       },
@@ -1952,7 +1952,7 @@
             "type": "tab",
             "settings": {
               "title": "Sleeping Pills",
-              "content": "<p>Sleep pills pack in high doses because they know <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
+              "content": "<p>Sleeping pills contain high doses because <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
               "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_SleepingPills.webp",
               "hide_image_bg": true,
               "full_width_image": true,

@@ -1706,7 +1706,7 @@
   }
 
   .product-widget-container .custom-review-stars .star {
-    color: var(--star-color, #FAB851);
+    color: var(--star-color, #EAC78B);
     align-items: center !important;
     height: 17px;
   }

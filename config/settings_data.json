@@ -1770,7 +1770,7 @@
             "type": "okendo-reviews",
             "settings": {
               "reviews_anchor": "shopify-product-reviews",
-              "star_color": "#fab851",
+              "star_color": "#EAC78B",
               "empty_star_color": "#dddddd",
               "margin_top": 0,
               "margin_bottom": 5
@@ -2875,7 +2875,7 @@
           "anchor_id": "",
           "bg_color": "#f5f5fb",
           "accent_color": "#672666",
-          "stars_color": "#fab851",
+          "stars_color": "#EAC78B",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
           "show_stars": true,
           "quote": "<p>\"Love this spray. <span style=\"text-decoration:underline\"><strong>I’m asleep within minutes.</strong></span> If I wake up in the middle of the night and don’t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",

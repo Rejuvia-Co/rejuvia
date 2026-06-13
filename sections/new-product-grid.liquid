@@ -1,11 +1,15 @@
 <div class="new-product-grid container">
-    {% if section.settings.seo_heading != blank or section.settings.seo_text != blank %}
+    {%- comment -%} Pull from the collection's Title/Description by default; theme settings override per collection. {%- endcomment -%}
+    {%- assign intro_heading = section.settings.seo_heading | default: collection.title -%}
+    {%- assign intro_text = section.settings.seo_text -%}
+    {%- if intro_text == blank -%}{%- assign intro_text = collection.description -%}{%- endif -%}
+    {% if intro_heading != blank or intro_text != blank %}
         <div class="collection-intro">
-            {% if section.settings.seo_heading != blank %}
-                <h1 class="collection-intro__title">{{ section.settings.seo_heading }}</h1>
+            {% if intro_heading != blank %}
+                <h1 class="collection-intro__title">{{ intro_heading }}</h1>
             {% endif %}
-            {% if section.settings.seo_text != blank %}
-                <div class="collection-intro__text">{{ section.settings.seo_text }}</div>
+            {% if intro_text != blank %}
+                <div class="collection-intro__text">{{ intro_text }}</div>
             {% endif %}
         </div>
     {% endif %}
@@ -46,18 +50,18 @@
   "settings": [
     {
       "type": "header",
-      "content": "Page intro (SEO)"
+      "content": "Page intro (SEO)",
+      "info": "By default the H1 uses the collection Title and the paragraph uses the collection Description (edited per collection in Products → Collections). Fill these in only to override for the collection(s) using this template."
     },
     {
       "type": "text",
       "id": "seo_heading",
-      "label": "H1 heading",
-      "info": "Main page heading, shown above the grid. Use your primary SEO keyword."
+      "label": "H1 heading (override)"
     },
     {
       "type": "richtext",
       "id": "seo_text",
-      "label": "Intro paragraph"
+      "label": "Intro paragraph (override)"
     }
   ],
   "blocks": [

@@ -1,14 +1,5 @@
 <div class="product-recommendation">
     <a href="{{ product.url }}" class="eg-product-link">
-        {%- assign label_tag = '' -%}
-
-        {%- for tag in product.tags -%}
-            {%- if tag contains 'label:' -%}
-                {%- assign label_tag = tag | split: ':' | last | strip -%}
-                {%- break -%}
-            {%- endif -%}
-        {%- endfor -%}
-        <span class="product-grid__label">{{ label_tag }}</span>
         <div class="eg-productR-image">
             <div class="eg-background-product"></div>
             {% if product.metafields.custom.collection_card_text != blank %}

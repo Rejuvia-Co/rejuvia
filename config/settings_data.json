@@ -2409,7 +2409,7 @@
             "type": "story_row",
             "settings": {
               "heading": "<p>“Rejuvia all started for <em>my mom</em>.”</p>",
-              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" <strong>Couldn't. Sleep.</strong></p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked. <strong>And what did work left her worse in the morning than the sleepless night.</strong></p>",
+              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" Couldn't. Sleep.</p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked. And what did work left her worse in the morning than the sleepless night.</p>",
               "image": "shopify://shop_images/Image_2.png",
               "caption": "RC & Kristen, Founders",
               "image_left": false,
@@ -2422,7 +2422,7 @@
             "type": "story_row",
             "settings": {
               "heading": "",
-              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything: <strong>the problem wasn't the ingredients.</strong> It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it. <strong>She slept through the night for the first time in years.</strong></p>",
+              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything: the problem wasn't the ingredients. It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it. She slept through the night for the first time in years.</p>",
               "image": "shopify://shop_images/rejuvia_spray.webp",
               "caption": "Prototype sketch of Rejuvia Spray",
               "image_left": true,
@@ -2434,7 +2434,7 @@
             "type": "story_row",
             "settings": {
               "heading": "<p>And now, over <em>300,000 customers</em> use Rejuvia nightly</p>",
-              "text": "<p>We never planned to turn Rejuvia into a business. We just wanted to fix her sleep! But after it worked for her, she realized there were thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business. <strong>And my mom still uses Rejuvia with the same success as she did on the first night!</strong></p>",
+              "text": "<p>We never planned to turn Rejuvia into a business. We just wanted to fix her sleep! But after it worked for her, she realized there were thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business. And my mom still uses Rejuvia with the same success as she did on the first night!</p>",
               "image": "shopify://shop_images/rejuvia_customers.png",
               "caption": "Some of Rejuvia's first-ever customers",
               "image_left": false,

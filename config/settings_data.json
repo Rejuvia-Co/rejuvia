@@ -1884,7 +1884,7 @@
         ],
         "name": "Hero V2",
         "settings": {
-          "bg_color": "#fafafa",
+          "bg_color": "#FFFFFF",
           "accent_color": "#672666",
           "rating_score": "4.6",
           "rating_sold": "1.3M Sleep Sprays",
@@ -1894,7 +1894,7 @@
           "btn_url": "",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
-          "image_bg_color": "#FFFFFF",
+          "image_bg_color": "#F8F4F7",
           "testimonial_speed": 5
         }
       },

@@ -1,21 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "listicle-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/howtouse1_6d722aeb-ff96-4856-bfe3-5f865c2b3e45.webp",
+        "show_stars": true,
+        "eyebrow": "Trusted By 300,000+ Sleepers",
+        "heading": "5 Reasons Millions Are Ditching Sleeping Pills and Gummies For Rejuvia",
+        "text": "<p>Fall asleep faster. Stay asleep through the full night. Wake up rested and energized — without the morning hangover from sleeping pills or 10mg melatonin gummies. Here's why 300,000+ sleepers switched to Rejuvia.</p>",
+        "button_text": "Try Rejuvia Now",
+        "button_link": "",
+        "guarantee_text": "90-Day Money Back Guarantee",
+        "bg_color": "#ffffff",
+        "image_bg_color": "#f8e9ee",
+        "accent_color": "#672666",
+        "stars_color": "#eac78b"
+      }
+    },
+    "press_logos_qGBMzm": {
+      "type": "press-logos",
+      "name": "Press Logos",
+      "settings": {
+        "hero_heading": "“Just a few sprays, to make the insomnia go away.”",
+        "image-1": "shopify://shop_images/forbes_rejuvia_logo.png",
+        "scale_image_1": false,
+        "image-2": "shopify://shop_images/rejuvia_healthline_logo.png",
+        "image-3": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+        "image-4": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+        "scale_down_image_4": false,
+        "image-5": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+        "image-6": "shopify://shop_images/rejuvia_fabfitfun.png"
+      }
     },
     "blocks": {
       "type": "listicle-blocks",
       "blocks": {
-        "r1": { "type": "reason", "settings": { "title": "It Absorbs And Works in 10 Minutes, Not 90", "text": "<p>Here's the problem with every pill and gummy on the market. They have to survive your stomach. Your digestive system breaks them down over 60 to 90 minutes, destroying most of the active ingredients before they ever reach your bloodstream. You're swallowing a full dose but your body only absorbs a fraction of it. Rejuvia skips that entire process. You spray it under your tongue, where it absorbs directly into your bloodstream — no digestion, no waiting, no wasted ingredients. Your body absorbs up to 75% more of the active sleep compounds compared to gummies and pills.</p><p>That's why most customers are asleep within 10-15 minutes of their nightly sprays, not the 60-90 minutes pills take to kick in.</p>" } },
-        "r2": { "type": "reason", "settings": { "title": "Wake Up Refreshed, Not Drugged", "text": "<p>You know the feeling. The alarm goes off and you're not rested, you're hungover. Heavy eyelids, brain fog, stumbling to the coffee maker on autopilot. That's not sleep. That's sedation. And it's the price most people pay every night with sleeping pills and high-dose melatonin gummies.</p><p>Rejuvia works differently. We use a low 2mg dose of melatonin (most gummies pack 5-10mg, which is what causes the morning hangover) paired with 12 natural sleep herbs that calm your mind without knocking you out cold. Your body gets deep, restorative sleep, and you wake up clear-headed instead of spending the first two hours of your day recovering from the thing that was supposed to help you.</p>" } },
-        "r3": { "type": "reason", "settings": { "title": "Quiets Your Racing Mind and Stress", "text": "<p>You're exhausted. Your body is begging for sleep. But the second your head hits the pillow, your brain turns on — replaying the day, running through tomorrow's to-do list, worrying about things you can't control at 11 PM. Sound familiar?</p><p>Rejuvia is built around this exact problem. The formula includes passionflower, valerian root, lemon balm, chamomile, and skullcap — herbs that have been used for centuries to calm an overactive nervous system. Instead of lying there fighting your own thoughts, you feel a gentle wave of calm settle in. Within minutes, your mind stops racing and sleep takes over.</p>" } },
-        "r4": { "type": "reason", "settings": { "title": "13 Natural Ingredients, Drug-Free and Non-Habit-Forming", "text": "<p>Most sleep aids don't tell you what's really in them — and for good reason. Artificial dyes, added sugars, synthetic fillers, mystery compounds you can't pronounce. You're putting something in your body every single night. You should know exactly what it is.</p><p>Rejuvia is a blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity. No fillers. No junk. No drugs.</p><p>And because it's drug-free, Rejuvia is non-habit-forming. No tolerance buildup, no dependency, no withdrawal. It works with your body's natural sleep cycle instead of overriding it.</p>" } },
-        "r5": { "type": "reason", "settings": { "title": "Created By a Son For His Sleepless Mom", "text": "<p>When RC was growing up, his mom couldn't sleep. She'd lie awake until 2, 3, sometimes 4 AM — exhausted but wired. Her doctor put her on sleeping pills. They knocked her out, but she'd wake up foggy and feeling worse than before. Melatonin gummies. Teas. Magnesium. Nothing gave her real sleep.</p><p>So when RC left for the University of Pennsylvania, he made it his mission to find a real answer. What he discovered changed everything: the problem wasn't the ingredients — it was how the body absorbed them. That insight is what led to Rejuvia's Oral Sleep Spray. His mom was the first customer, and she finally got her sleep back.</p><p>Today, RC and his mom Kristen run Rejuvia together out of Philadelphia. Over 300,000 people now use the spray she helped create.</p>" } }
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph_50a2385e-effe-438d-87aa-824004e0406d.webp",
+            "title": "It Absorbs And Works in 10 Minutes, Not 90",
+            "text": "<p>Here's the problem with every pill and gummy on the market. They have to survive your stomach. Your digestive system breaks them down over 60 to 90 minutes, destroying most of the active ingredients before they ever reach your bloodstream. You're swallowing a full dose but your body only absorbs a fraction of it. Rejuvia skips that entire process. You spray it under your tongue, where it absorbs directly into your bloodstream — no digestion, no waiting, no wasted ingredients. Your body absorbs up to 75% more of the active sleep compounds compared to gummies and pills.</p><p>That's why most customers are asleep within 10-15 minutes of their nightly sprays, not the 60-90 minutes pills take to kick in.</p>"
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "image": "shopify://shop_images/3175c11f-7a4b-445a-83d6-a6fd1172236d.webp",
+            "title": "Wake Up Refreshed, Not Drugged",
+            "text": "<p>You know the feeling. The alarm goes off and you're not rested, you're hungover. Heavy eyelids, brain fog, stumbling to the coffee maker on autopilot. That's not sleep. That's sedation. And it's the price most people pay every night with sleeping pills and high-dose melatonin gummies.</p><p>Rejuvia works differently. We use a low 2mg dose of melatonin (most gummies pack 5-10mg, which is what causes the morning hangover) paired with 12 natural sleep herbs that calm your mind without knocking you out cold. Your body gets deep, restorative sleep, and you wake up clear-headed instead of spending the first two hours of your day recovering from the thing that was supposed to help you.</p>"
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "image": "shopify://shop_images/7ef0c4f7-3502-4b3d-8e74-3101b412ebfd.webp",
+            "title": "Quiets Your Racing Mind and Stress",
+            "text": "<p>You're exhausted. Your body is begging for sleep. But the second your head hits the pillow, your brain turns on — replaying the day, running through tomorrow's to-do list, worrying about things you can't control at 11 PM. Sound familiar?</p><p>Rejuvia is built around this exact problem. The formula includes passionflower, valerian root, lemon balm, chamomile, and skullcap — herbs that have been used for centuries to calm an overactive nervous system. Instead of lying there fighting your own thoughts, you feel a gentle wave of calm settle in. Within minutes, your mind stops racing and sleep takes over.</p>"
+          }
+        },
+        "r4": {
+          "type": "reason",
+          "settings": {
+            "image": "shopify://shop_images/ba41bff2-c80e-4128-becd-76f4db2a7d01.webp",
+            "title": "13 Natural Ingredients, Drug-Free and Non-Habit-Forming",
+            "text": "<p>Most sleep aids don't tell you what's really in them — and for good reason. Artificial dyes, added sugars, synthetic fillers, mystery compounds you can't pronounce. You're putting something in your body every single night. You should know exactly what it is.</p><p>Rejuvia is a blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity. No fillers. No junk. No drugs.</p><p>And because it's drug-free, Rejuvia is non-habit-forming. No tolerance buildup, no dependency, no withdrawal. It works with your body's natural sleep cycle instead of overriding it.</p>"
+          }
+        },
+        "r5": {
+          "type": "reason",
+          "settings": {
+            "image": "shopify://shop_images/d4eb13e4-ab3b-4910-9970-a71c7fb704d2.avif",
+            "title": "Created By a Son For His Sleepless Mom",
+            "text": "<p>When RC was growing up, his mom couldn't sleep. She'd lie awake until 2, 3, sometimes 4 AM — exhausted but wired. Her doctor put her on sleeping pills. They knocked her out, but she'd wake up foggy and feeling worse than before. Melatonin gummies. Teas. Magnesium. Nothing gave her real sleep.</p><p>So when RC left for the University of Pennsylvania, he made it his mission to find a real answer. What he discovered changed everything: the problem wasn't the ingredients — it was how the body absorbed them. That insight is what led to Rejuvia's Oral Sleep Spray. His mom was the first customer, and she finally got her sleep back.</p><p>Today, RC and his mom Kristen run Rejuvia together out of Philadelphia. Over 300,000 people now use the spray she helped create.</p>"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "badge_color": "#eac78b",
+        "badge_text_color": "#141414"
+      }
+    },
+    "17814435248f2fd49e": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_zwN3ex": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_zwN3ex"
+      ],
       "settings": {}
+    },
+    "product_comparison_enhanced_G6MmFh": {
+      "type": "product-comparison-enhanced",
+      "blocks": {
+        "product_column_tqfCjx": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Rejuvia Sleep Spray",
+            "is_featured": true
+          }
+        },
+        "product_column_Mg4C3p": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Sleeping Pills",
+            "is_featured": false
+          }
+        },
+        "product_column_nrXeXp": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Sleep Gummies",
+            "is_featured": false
+          }
+        },
+        "product_column_jtRq3f": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Melatonin Supplements",
+            "is_featured": false
+          }
+        },
+        "feature_row_HbpnWP": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Absorption Speed",
+            "value_type_col_1": "text",
+            "text_col_1": "Rapid (5-10 min)",
+            "value_type_col_2": "text",
+            "text_col_2": "Slow (up to 90 min)",
+            "value_type_col_3": "text",
+            "text_col_3": "Slow (up to 90 min)",
+            "value_type_col_4": "text",
+            "text_col_4": "Slow (up to 90 min)",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_UGQrUb": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Average Price",
+            "value_type_col_1": "text",
+            "text_col_1": "$0.89/night",
+            "value_type_col_2": "text",
+            "text_col_2": "$3.00/night",
+            "value_type_col_3": "text",
+            "text_col_3": "$1.83/night",
+            "value_type_col_4": "text",
+            "text_col_4": "$0.93/night",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_CGXtUe": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Proven Natural Ingredients",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "check",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_HFKqei": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Non-Habit Forming",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "cross",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_HYkECV": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "No Groggy Mornings",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "check",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "check",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_ipC3wC": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Tastes Great",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "check",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "check",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_m7EpPx": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Free From Additives & Fillers",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "check",
+            "text_col_2": "",
+            "value_type_col_3": "check",
+            "text_col_3": "",
+            "value_type_col_4": "check",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_TdJUdL": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Customize Dose",
+            "value_type_col_1": "text",
+            "text_col_1": "Easy spray control",
+            "value_type_col_2": "text",
+            "text_col_2": "Limited",
+            "value_type_col_3": "text",
+            "text_col_3": "Limited",
+            "value_type_col_4": "text",
+            "text_col_4": "Limited",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        },
+        "feature_row_Ytm67T": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Safe for Long-Term Use",
+            "value_type_col_1": "check",
+            "text_col_1": "",
+            "value_type_col_2": "cross",
+            "text_col_2": "",
+            "value_type_col_3": "cross",
+            "text_col_3": "",
+            "value_type_col_4": "cross",
+            "text_col_4": "",
+            "value_type_col_5": "cross",
+            "text_col_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_column_tqfCjx",
+        "product_column_Mg4C3p",
+        "product_column_nrXeXp",
+        "product_column_jtRq3f",
+        "feature_row_HbpnWP",
+        "feature_row_UGQrUb",
+        "feature_row_CGXtUe",
+        "feature_row_HFKqei",
+        "feature_row_HYkECV",
+        "feature_row_ipC3wC",
+        "feature_row_m7EpPx",
+        "feature_row_TdJUdL",
+        "feature_row_Ytm67T"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "show_heading": true,
+        "heading": "Finally, The Better Way to Sleep",
+        "container_width": 1300,
+        "section_padding_top": 65,
+        "section_padding_bottom": 65,
+        "section_padding_horizontal": 70,
+        "bg_color": "#ffffff",
+        "mobile_breakpoint": 750
+      }
+    },
+    "faqs_v2_xEMbAT": {
+      "type": "faqs-v2",
+      "name": "FAQs V2",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "description": "We've heard it all from people struggling with sleep. And here are the most common questions. Don't see your question? Get in touch with our team",
+        "footer_text": ""
+      }
     }
   },
-  "order": ["hero", "blocks"]
+  "order": [
+    "hero",
+    "press_logos_qGBMzm",
+    "blocks",
+    "17814435248f2fd49e",
+    "product_comparison_enhanced_G6MmFh",
+    "faqs_v2_xEMbAT"
+  ]
 }

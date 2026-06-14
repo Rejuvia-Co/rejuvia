@@ -21,7 +21,11 @@ html { scroll-behavior: smooth; }
   --font-ui: 'Inter', 'Helvetica Neue', Arimo, Arial, sans-serif;
   background-color: {{ section.settings.bg_color | default: '#ffffff' }};
   font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
+.bogo *, .bogo *::before, .bogo *::after { text-transform: none; }
 .bogo__anchor { display: block; scroll-margin-top: 80px; }
 
 .bogo__container {
@@ -37,15 +41,15 @@ html { scroll-behavior: smooth; }
 .bogo__buybox { grid-area: buybox; display: flex; flex-direction: column; gap: 18px; }
 
 /* Gallery */
-.bogo__main { aspect-ratio: 1 / 1; background: var(--surface-tint); border-radius: var(--radius-md); overflow: hidden; display: grid; place-items: center; position: relative; }
-.bogo__main img { width: 100%; height: 100%; object-fit: contain; padding: 9%; box-sizing: border-box; display: block; }
+.bogo__main { aspect-ratio: 1 / 1; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: var(--radius-md); overflow: hidden; display: grid; place-items: center; position: relative; }
+.bogo__main img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .bogo__review-pill { position: absolute; top: 14px; left: 14px; }
 .bogo__thumbs { display: flex; gap: 9px; justify-content: center; align-items: center; overflow-x: auto; padding: 2px; }
 .bogo__arrow { width: 40px; height: 40px; border-radius: var(--radius-pill); border: 1.5px solid var(--plum-400); background: var(--white); color: var(--plum-700); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; transition: background .15s; }
 .bogo__arrow:hover { background: var(--surface-tint); }
-.bogo__thumb { width: 72px; height: 72px; flex: 0 0 auto; padding: 0; cursor: pointer; border-radius: var(--radius-sm); overflow: hidden; background: var(--surface-tint); border: 1.5px solid var(--gray-200); }
+.bogo__thumb { width: 72px; height: 72px; flex: 0 0 auto; padding: 0; cursor: pointer; border-radius: var(--radius-sm); overflow: hidden; background: {{ section.settings.image_bg | default: '#ffffff' }}; border: 1.5px solid var(--gray-200); }
 .bogo__thumb.is-active { border: 2px solid var(--plum-700); }
-.bogo__thumb img { width: 100%; height: 100%; object-fit: contain; padding: 12%; box-sizing: border-box; display: block; }
+.bogo__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Header */
 .bogo__rating { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -341,6 +345,7 @@ html { scroll-behavior: smooth; }
   "settings": [
     { "type": "header", "content": "Gallery" },
     { "type": "product", "id": "product", "label": "Gallery product", "info": "The image gallery pulls this product's images." },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
     { "type": "text", "id": "review_pill_text", "label": "Image badge", "default": "★ 2,400+ 5-Star Reviews" },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },

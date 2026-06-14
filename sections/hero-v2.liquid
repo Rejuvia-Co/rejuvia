@@ -49,6 +49,14 @@
     font-size: 18px;
     line-height: 1.4;
     color: #141414;
+    white-space: nowrap;
+}
+
+.hero-v2-rating-text p { margin: 0; display: inline; }
+
+.hero-v2-rating-text strong {
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
 }
 
 .hero-v2-rating-text .hero-v2-accent {
@@ -338,12 +346,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#EAC78B"/></svg>
                 {% endfor %}
             </div>
-            <span class="hero-v2-rating-text">
-                <span class="hero-v2-accent">{{ section.settings.rating_score }}</span>
-                Stars |
-                <span class="hero-v2-accent">{{ section.settings.rating_sold }}</span>
-                Sold
-            </span>
+            <span class="hero-v2-rating-text">{{ section.settings.rating_text }}</span>
         </div>
 
         {%- comment -%} Heading {%- endcomment -%}
@@ -526,16 +529,11 @@
             "content": "Rating bar"
         },
         {
-            "type": "text",
-            "id": "rating_score",
-            "label": "Rating score",
-            "default": "4.6"
-        },
-        {
-            "type": "text",
-            "id": "rating_sold",
-            "label": "Units sold",
-            "default": "150K+"
+            "type": "richtext",
+            "id": "rating_text",
+            "label": "Review bar text",
+            "info": "One line. Bold text (Cmd/Ctrl+B) shows in the accent color.",
+            "default": "<p><strong>4.6</strong> Stars | <strong>1.3M Sleep Sprays</strong> Sold</p>"
         },
         {
             "type": "header",

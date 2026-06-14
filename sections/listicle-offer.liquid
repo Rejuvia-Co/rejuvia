@@ -55,21 +55,19 @@
 
 <section class="loffer" id="loffer-{{ section.id }}">
   <div class="loffer__container">
-    {%- assign image_blocks = section.blocks | where: "type", "image" -%}
+    {%- assign offer_product = section.settings.product -%}
     <div class="loffer__gallery">
       <div class="loffer__main">
-        {%- if image_blocks.first.settings.image != blank -%}
-          <img data-loffer-main src="{{ image_blocks.first.settings.image | image_url: width: 760 }}" alt="{{ section.settings.title | escape }}" loading="lazy">
+        {%- if offer_product != blank and offer_product.featured_image != blank -%}
+          <img data-loffer-main src="{{ offer_product.featured_image | image_url: width: 760 }}" alt="{{ offer_product.title | default: section.settings.title | escape }}" loading="lazy">
         {%- endif -%}
       </div>
-      {%- if image_blocks.size > 1 -%}
+      {%- if offer_product != blank and offer_product.images.size > 1 -%}
         <div class="loffer__thumbs">
-          {%- for b in image_blocks -%}
-            {%- if b.settings.image != blank -%}
-              <button type="button" class="loffer__thumb{% if forloop.first %} is-active{% endif %}" data-loffer-thumb data-full="{{ b.settings.image | image_url: width: 760 }}" {{ b.shopify_attributes }}>
-                <img src="{{ b.settings.image | image_url: width: 140 }}" alt="">
-              </button>
-            {%- endif -%}
+          {%- for img in offer_product.images -%}
+            <button type="button" class="loffer__thumb{% if forloop.first %} is-active{% endif %}" data-loffer-thumb data-full="{{ img | image_url: width: 760 }}">
+              <img src="{{ img | image_url: width: 140 }}" alt="">
+            </button>
           {%- endfor -%}
         </div>
       {%- endif -%}
@@ -186,6 +184,7 @@
   "tag": "section",
   "max_blocks": 12,
   "settings": [
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "The gallery pulls this product's images." },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
     { "type": "text", "id": "rating_text", "label": "Rating text", "default": "Trusted By 300,000+ Customers" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
@@ -200,13 +199,6 @@
     { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" }
   ],
   "blocks": [
-    {
-      "type": "image",
-      "name": "Gallery image",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "First image is the main; the rest are thumbnails." }
-      ]
-    },
     {
       "type": "tier",
       "name": "Offer tier",
@@ -229,7 +221,6 @@
       "name": "Listicle Offer",
       "category": "Listicle",
       "blocks": [
-        { "type": "image" },
         { "type": "tier", "settings": { "label": "Buy 1, Get 1 FREE", "variant_id": "46763671027932", "price": "$35", "compare_price": "$70", "per_night": "$0.62 Per Night", "is_default": false } },
         { "type": "tier", "settings": { "label": "Buy 2, Get 2 FREE", "variant_id": "46763671060700", "price": "$68", "compare_price": "$140", "savings_text": "52% OFF", "free_shipping": true, "per_night": "$0.60 Per Night", "badge": "Most Popular", "is_default": false } },
         { "type": "tier", "settings": { "label": "Buy 3, Get 3 FREE", "variant_id": "46763671093468", "price": "$98", "compare_price": "$210", "savings_text": "56% OFF", "free_shipping": true, "per_night": "$0.58 Per Night", "badge": "Most Savings", "is_default": true } }

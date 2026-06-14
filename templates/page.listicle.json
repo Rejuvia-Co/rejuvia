@@ -11,6 +11,7 @@
   "sections": {
     "listicle_sticky_bar_HpPMVj": {
       "type": "listicle-sticky-bar",
+      "disabled": true,
       "name": "Listicle Sticky Bar",
       "settings": {
         "logo": "shopify://shop_images/Logo_1.svg",
@@ -27,6 +28,7 @@
     },
     "hero": {
       "type": "listicle-hero",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/howtouse1_6d722aeb-ff96-4856-bfe3-5f865c2b3e45.webp",
         "show_stars": true,
@@ -46,6 +48,7 @@
     },
     "press_logos_qGBMzm": {
       "type": "press-logos",
+      "disabled": true,
       "name": "Press Logos",
       "settings": {
         "hero_heading": "“Just a few sprays, to make the insomnia go away.”",
@@ -110,6 +113,7 @@
         "r4",
         "r5"
       ],
+      "disabled": true,
       "settings": {
         "title_size": 32,
         "body_size": 16,
@@ -172,6 +176,7 @@
         "tier_FzUMf3",
         "tier_qkKmbp"
       ],
+      "disabled": true,
       "name": "Listicle Offer",
       "settings": {
         "product": "sleep-spray",
@@ -206,6 +211,7 @@
       "block_order": [
         "okendo_reviews_widget_zwN3ex"
       ],
+      "disabled": true,
       "settings": {}
     },
     "product_comparison_enhanced_G6MmFh": {
@@ -399,6 +405,7 @@
         "feature_row_TdJUdL",
         "feature_row_Ytm67T"
       ],
+      "disabled": true,
       "name": "Product Comparison",
       "settings": {
         "show_heading": true,
@@ -474,6 +481,7 @@
       "name": "BOGO Offer",
       "settings": {
         "product": "sleep-spray-30-nights",
+        "image_bg": "#ffffff",
         "review_pill_text": "★ 2,400+ 5-Star Reviews",
         "show_stars": true,
         "rating_number": "4.8",
@@ -481,12 +489,13 @@
         "title": "Rejuvia Sleep Spray",
         "eyebrow": "NON-HABIT FORMING · MELATONIN-FREE",
         "description": "<p>A fast-absorbing magnesium & botanical mist that helps you fall asleep faster and wake up refreshed — no grogginess, no melatonin.</p>",
-        "hint_qualify": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong>.</p>",
-        "hint_upsell": "<p>Upgrade to the next tier to unlock <strong>free sprays + free shipping.</strong></p>",
+        "hint_qualify": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong></p>",
+        "hint_upsell": "<p>Upgrade to the next tier to get <strong>free sprays + free shipping</strong></p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
         "trust_text": "90-Day Money-Back Guarantee",
         "show_payment_icons": true,
+        "hidden_payments": "discover,jcb,diners_club",
         "title_size": 38,
         "title_size_mobile": 28,
         "desc_size": 16,

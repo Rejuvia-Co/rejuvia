@@ -1,0 +1,260 @@
+{% style %}
+html { scroll-behavior: smooth; }
+.loffer { background-color: {{ section.settings.bg_color }}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.loffer__anchor { display: block; scroll-margin-top: 80px; }
+.loffer__container {
+  max-width: 1100px; margin: 0 auto; padding: 48px 24px;
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  grid-template-areas: "gallery header" "gallery buybox";
+  column-gap: 48px; row-gap: 22px;
+  align-items: start;
+}
+.loffer__header { grid-area: header; }
+.loffer__gallery { grid-area: gallery; }
+.loffer__buybox { grid-area: buybox; }
+
+.loffer__main { border-radius: 12px; overflow: hidden; background: #ffffff; }
+.loffer__main img { display: block; width: 100%; height: auto; }
+.loffer__thumbs { display: flex; gap: 10px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px; }
+.loffer__thumb { flex: 0 0 auto; width: 60px; height: 60px; border-radius: 8px; overflow: hidden; border: 1.5px solid #E5E5E5; background: #fff; cursor: pointer; padding: 0; }
+.loffer__thumb.is-active { border-color: {{ section.settings.accent_color }}; }
+.loffer__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.loffer__rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.loffer__stars { display: inline-flex; gap: 2px; }
+.loffer__stars svg { width: 19.2px; height: 18px; }
+.loffer__rating-text { font-size: {{ section.settings.rating_text_size | default: 16 }}px; font-weight: 500; color: #141414; }
+.loffer__title { font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: {{ section.settings.title_size | default: 34 }}px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #141414; margin: 0 0 6px; }
+.loffer__subtitle { font-size: {{ section.settings.subtitle_size | default: 17 }}px; color: #5C5C5C; margin: 0; }
+
+.loffer__tiers { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+.loffer__tier { position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1.5px solid #E2E2E2; border-radius: 12px; cursor: pointer; background: #fff; }
+.loffer__tier.is-selected { border-color: {{ section.settings.accent_color }}; background: rgba(103,38,102,0.05); }
+.loffer__tier input { position: absolute; opacity: 0; pointer-events: none; }
+.loffer__radio { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; border: 2px solid #C9C9C9; position: relative; }
+.loffer__tier.is-selected .loffer__radio { border-color: {{ section.settings.accent_color }}; }
+.loffer__tier.is-selected .loffer__radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: {{ section.settings.accent_color }}; }
+.loffer__tier-img { flex: 0 0 auto; width: 78px; height: 78px; object-fit: contain; }
+.loffer__tier-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-transform: none; }
+.loffer__tier-label { font-size: {{ section.settings.tier_label_size | default: 21 }}px; font-weight: 700; color: {{ section.settings.accent_color }}; line-height: 1.15; }
+.loffer__tier-night { font-size: 15px; font-style: italic; color: #6B6B6B; line-height: 1.2; }
+.loffer__tier-extra { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.loffer__tier-save { background: #F4ECDA; color: #5A451C; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 100px; line-height: 1; white-space: nowrap; }
+.loffer__tier-ship { font-size: 14px; font-weight: 700; color: #141414; white-space: nowrap; }
+.loffer__tier-pricecol { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.loffer__tier-price { font-size: 26px; font-weight: 700; color: #141414; line-height: 1.1; }
+.loffer__tier-compare { font-size: 17px; color: #9A9A9A; text-decoration: line-through; }
+.loffer__tier-badge { position: absolute; top: -10px; right: 14px; background: {{ section.settings.accent_color }}; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+
+.loffer__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: {{ section.settings.accent_color }}; color: #fff; font-size: 18px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; line-height: 1; padding: 22px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .2s ease; }
+.loffer__buy:hover { opacity: .92; }
+.loffer__buy:disabled { opacity: .6; cursor: default; }
+
+.loffer__assurances { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 14px; }
+.loffer__assurance { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: .03em; text-transform: uppercase; color: #141414; }
+.loffer__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.loffer__payments svg { height: 24px; width: auto; }
+
+@media (max-width: 900px) {
+  .loffer__container { display: flex; flex-direction: column; gap: 24px; padding: 28px 16px; }
+  .loffer__title { font-size: {{ section.settings.title_size | default: 34 | times: 0.82 | round }}px; }
+  .loffer__tier { gap: 12px; padding: 14px; }
+  .loffer__tier-img { width: 60px; height: 60px; }
+  .loffer__tier-label { font-size: {{ section.settings.tier_label_size | default: 21 | times: 0.86 | round }}px; }
+  .loffer__tier-price { font-size: 22px; }
+  .loffer__tier-compare { font-size: 15px; }
+  .loffer__assurances { flex-direction: column; gap: 8px; margin-top: 12px; }
+}
+{% endstyle %}
+
+{%- capture loffer_star -%}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color }}"/></svg>{%- endcapture -%}
+
+<section class="loffer" id="loffer-{{ section.id }}">
+  <span id="offer" class="loffer__anchor" aria-hidden="true"></span>
+  <div class="loffer__container">
+    {%- assign offer_product = section.settings.product -%}
+
+    <div class="loffer__header">
+      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
+        <div class="loffer__rating">
+          {%- if section.settings.show_stars -%}<span class="loffer__stars" aria-label="5 stars">{{ loffer_star }}{{ loffer_star }}{{ loffer_star }}{{ loffer_star }}{{ loffer_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<span class="loffer__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="loffer__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="loffer__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="loffer__gallery">
+      <div class="loffer__main">
+        {%- if offer_product != blank and offer_product.featured_image != blank -%}
+          <img data-loffer-main src="{{ offer_product.featured_image | image_url: width: 760 }}" alt="{{ offer_product.title | default: section.settings.title | escape }}" loading="lazy">
+        {%- endif -%}
+      </div>
+      {%- if offer_product != blank and offer_product.images.size > 1 -%}
+        <div class="loffer__thumbs">
+          {%- for img in offer_product.images -%}
+            <button type="button" class="loffer__thumb{% if forloop.first %} is-active{% endif %}" data-loffer-thumb data-full="{{ img | image_url: width: 760 }}">
+              <img src="{{ img | image_url: width: 140 }}" alt="">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="loffer__buybox">
+      <div class="loffer__tiers" role="radiogroup">
+        {%- for b in section.blocks -%}
+          {%- if b.type == "tier" -%}
+            <label class="loffer__tier{% if b.settings.is_default %} is-selected{% endif %}" {{ b.shopify_attributes }}>
+              <input type="radio" name="loffer-{{ section.id }}" value="{{ b.settings.variant_id }}" {% if b.settings.is_default %}checked{% endif %}>
+              <span class="loffer__radio" aria-hidden="true"></span>
+              {%- if b.settings.image != blank -%}<img class="loffer__tier-img" src="{{ b.settings.image | image_url: width: 156 }}" alt="">{%- endif -%}
+              <span class="loffer__tier-body">
+                <span class="loffer__tier-label">{{ b.settings.label }}</span>
+                {%- if b.settings.per_night != blank -%}<span class="loffer__tier-night">{{ b.settings.per_night }}</span>{%- endif -%}
+                {%- if b.settings.savings_text != blank or b.settings.free_shipping -%}
+                  <span class="loffer__tier-extra">
+                    {%- if b.settings.savings_text != blank -%}<span class="loffer__tier-save">{{ b.settings.savings_text }}</span>{%- endif -%}
+                    {%- if b.settings.free_shipping -%}<span class="loffer__tier-ship">+ FREE Shipping</span>{%- endif -%}
+                  </span>
+                {%- endif -%}
+              </span>
+              <span class="loffer__tier-pricecol">
+                {%- if b.settings.price != blank -%}<span class="loffer__tier-price">{{ b.settings.price }}</span>{%- endif -%}
+                {%- if b.settings.compare_price != blank -%}<span class="loffer__tier-compare">{{ b.settings.compare_price }}</span>{%- endif -%}
+              </span>
+              {%- if b.settings.badge != blank -%}<span class="loffer__tier-badge">{{ b.settings.badge }}</span>{%- endif -%}
+            </label>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <button type="button" class="loffer__buy" data-loffer-buy>
+        {{ section.settings.button_text | default: 'Buy Now' }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
+        <div class="loffer__assurances">
+          {%- if section.settings.guarantee_text != blank -%}
+            <span class="loffer__assurance"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 9a9 9 0 1 1 1.5 5" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ section.settings.guarantee_text }}</span>
+          {%- endif -%}
+          {%- if section.settings.onetime_text != blank -%}
+            <span class="loffer__assurance"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5.5 5.5 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3 7C19 16.65 12 21 12 21z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>{{ section.settings.onetime_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_payment_icons -%}
+        <div class="loffer__payments">
+          {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var sec = document.getElementById('loffer-{{ section.id }}');
+  if (!sec) return;
+
+  /* Tier selection */
+  sec.querySelectorAll('.loffer__tier input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      sec.querySelectorAll('.loffer__tier').forEach(function (t) { t.classList.remove('is-selected'); });
+      input.closest('.loffer__tier').classList.add('is-selected');
+    });
+  });
+
+  /* Thumbnail swap */
+  var mainImg = sec.querySelector('[data-loffer-main]');
+  sec.querySelectorAll('[data-loffer-thumb]').forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      if (mainImg) mainImg.src = thumb.getAttribute('data-full');
+      sec.querySelectorAll('[data-loffer-thumb]').forEach(function (t) { t.classList.remove('is-active'); });
+      thumb.classList.add('is-active');
+    });
+  });
+
+  /* Buy Now -> add selected variant, go to checkout */
+  var buy = sec.querySelector('[data-loffer-buy]');
+  if (buy) {
+    buy.addEventListener('click', function () {
+      var sel = sec.querySelector('.loffer__tier input[type="radio"]:checked');
+      if (!sel || !sel.value) return;
+      var id = parseInt(sel.value, 10);
+      buy.disabled = true;
+      fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+        .then(function () {
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: [{ id: id, quantity: 1 }] })
+          });
+        })
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
+        .catch(function () { window.location.href = '/cart/' + id + ':1'; });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Listicle Offer",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "The gallery pulls this product's images." },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "Trusted By 300,000+ Customers" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money Back Guarantee" },
+    { "type": "text", "id": "onetime_text", "label": "One-time purchase text", "default": "One-Time Purchase (Not a Subscription)" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "rating_text_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Rating text size", "default": 16 },
+    { "type": "range", "id": "title_size", "min": 20, "max": 52, "step": 1, "unit": "px", "label": "Title size", "default": 34 },
+    { "type": "range", "id": "subtitle_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size", "default": 17 },
+    { "type": "range", "id": "tier_label_size", "min": 14, "max": 32, "step": 1, "unit": "px", "label": "Variant box label size", "default": 21 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent / button color", "default": "#672666" },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Offer tier",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Buy 1, Get 1 FREE" },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Numeric variant ID added to cart when selected." },
+        { "type": "image_picker", "id": "image", "label": "Pack image" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$35" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "$70" },
+        { "type": "text", "id": "savings_text", "label": "Savings pill text", "info": "e.g. SAVE $72 or 52% OFF" },
+        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
+        { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62 Per Night" },
+        { "type": "text", "id": "badge", "label": "Corner badge", "info": "e.g. MOST POPULAR" },
+        { "type": "checkbox", "id": "is_default", "label": "Selected by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Listicle Offer",
+      "category": "Listicle",
+      "blocks": [
+        { "type": "tier", "settings": { "label": "Buy 1, Get 1 FREE", "variant_id": "46763671027932", "price": "$35", "compare_price": "$70", "per_night": "$0.62 Per Night", "is_default": false } },
+        { "type": "tier", "settings": { "label": "Buy 2, Get 2 FREE", "variant_id": "46763671060700", "price": "$68", "compare_price": "$140", "savings_text": "SAVE $72", "free_shipping": true, "per_night": "$0.60 Per Night", "badge": "Most Popular", "is_default": false } },
+        { "type": "tier", "settings": { "label": "Buy 3, Get 3 FREE", "variant_id": "46763671093468", "price": "$98", "compare_price": "$210", "savings_text": "SAVE $112", "free_shipping": true, "per_night": "$0.58 Per Night", "badge": "Most Savings", "is_default": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

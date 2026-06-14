@@ -1,0 +1,149 @@
+{% style %}
+.lb-blocks {
+  background-color: {{ section.settings.bg_color }};
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.lb-blocks__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.lb-blocks__item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #ffffff;
+  border: 1px solid #ECECEC;
+  border-radius: 16px;
+  padding: 24px;
+}
+.lb-blocks__media {
+  flex: 0 0 38%;
+  max-width: 38%;
+}
+.lb-blocks__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.lb-blocks__content { flex: 1 1 auto; min-width: 0; }
+.lb-blocks__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.lb-blocks__num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: {{ section.settings.badge_color }};
+  color: {{ section.settings.badge_text_color }};
+  border-radius: 7px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+.lb-blocks__title {
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: {{ section.settings.title_size | default: 32 }}px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #141414;
+  margin: 4px 0 0;
+}
+.lb-blocks__body {
+  font-size: {{ section.settings.body_size | default: 16 }}px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #5C5C5C;
+}
+.lb-blocks__body p { margin: 0 0 14px; }
+.lb-blocks__body p:last-child { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .lb-blocks__container { padding: 16px; gap: 16px; }
+  .lb-blocks__item { flex-direction: column; align-items: stretch; gap: 18px; padding: 16px; }
+  .lb-blocks__media { flex: 1 1 auto; max-width: 100%; }
+  .lb-blocks__title { font-size: {{ section.settings.title_size | default: 32 | times: 0.75 | round }}px; }
+  .lb-blocks__num { width: 30px; height: 30px; font-size: 16px; }
+}
+{% endstyle %}
+
+<section class="lb-blocks">
+  <div class="lb-blocks__container">
+    {%- for block in section.blocks -%}
+      <div class="lb-blocks__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="lb-blocks__media">
+            <img src="{{ block.settings.image | image_url: width: 760 }}"
+                 width="{{ block.settings.image.width }}"
+                 height="{{ block.settings.image.height }}"
+                 alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                 loading="lazy">
+          </div>
+        {%- endif -%}
+        <div class="lb-blocks__content">
+          <div class="lb-blocks__head">
+            <span class="lb-blocks__num">{{ forloop.index }}</span>
+            {%- if block.settings.title != blank -%}
+              <h2 class="lb-blocks__title">{{ block.settings.title }}</h2>
+            {%- endif -%}
+          </div>
+          {%- if block.settings.text != blank -%}
+            <div class="lb-blocks__body">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Listicle Blocks",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 18, "max": 48, "step": 1, "unit": "px", "label": "Reason title size", "default": 32 },
+    { "type": "range", "id": "body_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Body text size", "default": 16 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "badge_color", "label": "Number badge color", "default": "#EAC78B" },
+    { "type": "color", "id": "badge_text_color", "label": "Number text color", "default": "#141414" }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "text", "label": "Body" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Listicle Blocks",
+      "category": "Listicle",
+      "blocks": [
+        { "type": "reason", "settings": { "title": "It Absorbs And Works in 10 Minutes, Not 90", "text": "<p>Here's the problem with every pill and gummy on the market. They have to survive your stomach. Your digestive system breaks them down over 60 to 90 minutes, destroying most of the active ingredients before they ever reach your bloodstream. You're swallowing a full dose but your body only absorbs a fraction of it. Rejuvia skips that entire process. You spray it under your tongue, where it absorbs directly into your bloodstream — no digestion, no waiting, no wasted ingredients. Your body absorbs up to 75% more of the active sleep compounds compared to gummies and pills.</p><p>That's why most customers are asleep within 10-15 minutes of their nightly sprays, not the 60-90 minutes pills take to kick in.</p>" } },
+        { "type": "reason", "settings": { "title": "Wake Up Refreshed, Not Drugged", "text": "<p>You know the feeling. The alarm goes off and you're not rested, you're hungover. Heavy eyelids, brain fog, stumbling to the coffee maker on autopilot. That's not sleep. That's sedation. And it's the price most people pay every night with sleeping pills and high-dose melatonin gummies.</p><p>Rejuvia works differently. We use a low 2mg dose of melatonin (most gummies pack 5-10mg, which is what causes the morning hangover) paired with 12 natural sleep herbs that calm your mind without knocking you out cold. Your body gets deep, restorative sleep, and you wake up clear-headed instead of spending the first two hours of your day recovering from the thing that was supposed to help you.</p>" } },
+        { "type": "reason", "settings": { "title": "Quiets Your Racing Mind and Stress", "text": "<p>You're exhausted. Your body is begging for sleep. But the second your head hits the pillow, your brain turns on — replaying the day, running through tomorrow's to-do list, worrying about things you can't control at 11 PM. Sound familiar?</p><p>Rejuvia is built around this exact problem. The formula includes passionflower, valerian root, lemon balm, chamomile, and skullcap — herbs that have been used for centuries to calm an overactive nervous system. Instead of lying there fighting your own thoughts, you feel a gentle wave of calm settle in. Within minutes, your mind stops racing and sleep takes over.</p>" } },
+        { "type": "reason", "settings": { "title": "13 Natural Ingredients, Drug-Free and Non-Habit-Forming", "text": "<p>Most sleep aids don't tell you what's really in them — and for good reason. Artificial dyes, added sugars, synthetic fillers, mystery compounds you can't pronounce. You're putting something in your body every single night. You should know exactly what it is.</p><p>Rejuvia is a blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity. No fillers. No junk. No drugs.</p><p>And because it's drug-free, Rejuvia is non-habit-forming. No tolerance buildup, no dependency, no withdrawal. It works with your body's natural sleep cycle instead of overriding it.</p>" } },
+        { "type": "reason", "settings": { "title": "Created By a Son For His Sleepless Mom", "text": "<p>When RC was growing up, his mom couldn't sleep. She'd lie awake until 2, 3, sometimes 4 AM — exhausted but wired. Her doctor put her on sleeping pills. They knocked her out, but she'd wake up foggy and feeling worse than before. Melatonin gummies. Teas. Magnesium. Nothing gave her real sleep.</p><p>So when RC left for the University of Pennsylvania, he made it his mission to find a real answer. What he discovered changed everything: the problem wasn't the ingredients — it was how the body absorbed them. That insight is what led to Rejuvia's Oral Sleep Spray. His mom was the first customer, and she finally got her sleep back.</p><p>Today, RC and his mom Kristen run Rejuvia together out of Philadelphia. Over 300,000 people now use the spray she helped create.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

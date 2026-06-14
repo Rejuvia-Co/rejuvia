@@ -22,9 +22,9 @@
 .loffer__rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .loffer__stars { display: inline-flex; gap: 2px; }
 .loffer__stars svg { width: 19.2px; height: 18px; }
-.loffer__rating-text { font-size: 16px; font-weight: 500; color: #141414; }
-.loffer__title { font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 34px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #141414; margin: 0 0 6px; }
-.loffer__subtitle { font-size: 17px; color: #5C5C5C; margin: 0; }
+.loffer__rating-text { font-size: {{ section.settings.rating_text_size | default: 16 }}px; font-weight: 500; color: #141414; }
+.loffer__title { font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: {{ section.settings.title_size | default: 34 }}px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #141414; margin: 0 0 6px; }
+.loffer__subtitle { font-size: {{ section.settings.subtitle_size | default: 17 }}px; color: #5C5C5C; margin: 0; }
 
 .loffer__tiers { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
 .loffer__tier { position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1.5px solid #E2E2E2; border-radius: 12px; cursor: pointer; background: #fff; }
@@ -35,7 +35,7 @@
 .loffer__tier.is-selected .loffer__radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: {{ section.settings.accent_color }}; }
 .loffer__tier-img { flex: 0 0 auto; width: 78px; height: 78px; object-fit: contain; }
 .loffer__tier-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-transform: none; }
-.loffer__tier-label { font-size: 21px; font-weight: 700; color: {{ section.settings.accent_color }}; line-height: 1.15; }
+.loffer__tier-label { font-size: {{ section.settings.tier_label_size | default: 21 }}px; font-weight: 700; color: {{ section.settings.accent_color }}; line-height: 1.15; }
 .loffer__tier-night { font-size: 15px; font-style: italic; color: #6B6B6B; line-height: 1.2; }
 .loffer__tier-extra { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
 .loffer__tier-save { background: #F4ECDA; color: #5A451C; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 100px; line-height: 1; white-space: nowrap; }
@@ -56,12 +56,13 @@
 
 @media (max-width: 900px) {
   .loffer__container { display: flex; flex-direction: column; gap: 24px; padding: 28px 16px; }
-  .loffer__title { font-size: 28px; }
+  .loffer__title { font-size: {{ section.settings.title_size | default: 34 | times: 0.82 | round }}px; }
   .loffer__tier { gap: 12px; padding: 14px; }
   .loffer__tier-img { width: 60px; height: 60px; }
-  .loffer__tier-label { font-size: 18px; }
+  .loffer__tier-label { font-size: {{ section.settings.tier_label_size | default: 21 | times: 0.86 | round }}px; }
   .loffer__tier-price { font-size: 22px; }
   .loffer__tier-compare { font-size: 15px; }
+  .loffer__assurances { flex-direction: column; gap: 8px; margin-top: 12px; }
 }
 {% endstyle %}
 
@@ -213,6 +214,11 @@
     { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money Back Guarantee" },
     { "type": "text", "id": "onetime_text", "label": "One-time purchase text", "default": "One-Time Purchase (Not a Subscription)" },
     { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "rating_text_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Rating text size", "default": 16 },
+    { "type": "range", "id": "title_size", "min": 20, "max": 52, "step": 1, "unit": "px", "label": "Title size", "default": 34 },
+    { "type": "range", "id": "subtitle_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size", "default": 17 },
+    { "type": "range", "id": "tier_label_size", "min": 14, "max": 32, "step": 1, "unit": "px", "label": "Variant box label size", "default": 21 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
     { "type": "color", "id": "accent_color", "label": "Accent / button color", "default": "#672666" },

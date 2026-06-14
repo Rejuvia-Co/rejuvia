@@ -53,7 +53,7 @@
 }
 .lb-blocks__title {
   font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 32px;
+  font-size: {{ section.settings.title_size | default: 32 }}px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -61,7 +61,7 @@
   margin: 4px 0 0;
 }
 .lb-blocks__body {
-  font-size: 16px;
+  font-size: {{ section.settings.body_size | default: 16 }}px;
   font-weight: 400;
   line-height: 1.6;
   color: #5C5C5C;
@@ -73,7 +73,7 @@
   .lb-blocks__container { padding: 16px; gap: 16px; }
   .lb-blocks__item { flex-direction: column; align-items: stretch; gap: 18px; padding: 16px; }
   .lb-blocks__media { flex: 1 1 auto; max-width: 100%; }
-  .lb-blocks__title { font-size: 24px; }
+  .lb-blocks__title { font-size: {{ section.settings.title_size | default: 32 | times: 0.75 | round }}px; }
   .lb-blocks__num { width: 30px; height: 30px; font-size: 16px; }
 }
 {% endstyle %}
@@ -113,6 +113,10 @@
   "tag": "section",
   "max_blocks": 12,
   "settings": [
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 18, "max": 48, "step": 1, "unit": "px", "label": "Reason title size", "default": 32 },
+    { "type": "range", "id": "body_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Body text size", "default": 16 },
+    { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
     { "type": "color", "id": "badge_color", "label": "Number badge color", "default": "#EAC78B" },
     { "type": "color", "id": "badge_text_color", "label": "Number text color", "default": "#141414" }

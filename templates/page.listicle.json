@@ -9,9 +9,20 @@
  */
 {
   "sections": {
-    "stickybar": {
+    "listicle_sticky_bar_HpPMVj": {
       "type": "listicle-sticky-bar",
-      "settings": {}
+      "name": "Listicle Sticky Bar",
+      "settings": {
+        "logo": "shopify://shop_images/Logo_1.svg",
+        "logo_text": "Don't see your question? Get in touch with our team",
+        "logo_link": "",
+        "offer_text": "<p><strong>BOGO FREE</strong> - $0.58/night</p>",
+        "button_text": "Get Offer",
+        "button_link": "",
+        "hide_store_header": true,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666"
+      }
     },
     "hero": {
       "type": "listicle-hero",
@@ -320,17 +331,91 @@
         "bg_color": "#ffffff",
         "mobile_breakpoint": 750
       }
+    },
+    "listicle_offer_47XAc8": {
+      "type": "listicle-offer",
+      "blocks": {
+        "image_rC7kn6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rejuviasleepspray_4dab6609-b2ef-4768-9524-51483d10b41c.webp"
+          }
+        },
+        "tier_UFgdpi": {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 1, Get 1 FREE",
+            "variant_id": "46763671027932",
+            "image": "shopify://shop_images/Rejuviasleepspray_4dab6609-b2ef-4768-9524-51483d10b41c.webp",
+            "price": "$35",
+            "compare_price": "$70",
+            "savings_text": "",
+            "free_shipping": false,
+            "per_night": "$0.62 Per Night",
+            "badge": "",
+            "is_default": false
+          }
+        },
+        "tier_FzUMf3": {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 2, Get 2 FREE",
+            "variant_id": "46763671060700",
+            "image": "shopify://shop_images/sleepspray2pack.webp",
+            "price": "$68",
+            "compare_price": "$140",
+            "savings_text": "52% OFF",
+            "free_shipping": true,
+            "per_night": "$0.60 Per Night",
+            "badge": "Most Popular",
+            "is_default": false
+          }
+        },
+        "tier_qkKmbp": {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 3, Get 3 FREE",
+            "variant_id": "46763671093468",
+            "image": "shopify://shop_images/sleepspray3pack.webp",
+            "price": "$98",
+            "compare_price": "$210",
+            "savings_text": "56% OFF",
+            "free_shipping": true,
+            "per_night": "$0.58 Per Night",
+            "badge": "Most Savings",
+            "is_default": true
+          }
+        }
+      },
+      "block_order": [
+        "image_rC7kn6",
+        "tier_UFgdpi",
+        "tier_FzUMf3",
+        "tier_qkKmbp"
+      ],
+      "name": "Listicle Offer",
+      "settings": {
+        "show_stars": true,
+        "rating_text": "Trusted By 300,000+ Customers",
+        "title": "Rejuvia Sleep Spray",
+        "subtitle": "Fall Asleep in Minutes. Sleep The Full Night.",
+        "button_text": "Buy Now",
+        "guarantee_text": "90-Day Money Back Guarantee",
+        "onetime_text": "One-Time Purchase (Not a Subscription)",
+        "show_payment_icons": true,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "stars_color": "#EAC78B"
+      }
     }
   },
-<<<<<<< HEAD
-  "order": ["stickybar", "hero", "blocks"]
-=======
   "order": [
+    "listicle_sticky_bar_HpPMVj",
     "hero",
     "press_logos_qGBMzm",
     "blocks",
     "17814435248f2fd49e",
-    "product_comparison_enhanced_G6MmFh"
+    "product_comparison_enhanced_G6MmFh",
+    "listicle_offer_47XAc8"
   ]
->>>>>>> 5577f894c95945ed5a0b79fbcf8aebcbfbabcf20
 }

@@ -1886,8 +1886,7 @@
         "settings": {
           "bg_color": "#ffffff",
           "accent_color": "#672666",
-          "rating_score": "4.6",
-          "rating_sold": "1.3M Sleep Sprays",
+          "rating_text": "<p>Trusted By <strong>300,000+</strong> Customers</p>",
           "heading": "<p>You can't sleep, <em>Rejuvia</em> changes that tonight</p>",
           "description": "Fall asleep faster, sleep through the night and wake up feeling energized with Rejuvia. Trusted and used by over 300,000 deep-sleeping customers.",
           "btn_text": "Try Rejuvia Risk-Free",

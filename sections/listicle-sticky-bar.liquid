@@ -1,0 +1,111 @@
+{% style %}
+.lsb {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: {{ section.settings.bg_color }};
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.lsb__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lsb__logo { flex: 0 0 auto; display: flex; align-items: center; }
+.lsb__logo img { height: 24px; width: auto; display: block; }
+.lsb__logo-text {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #141414;
+}
+.lsb__offer {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #141414;
+}
+.lsb__offer p { margin: 0; }
+.lsb__offer strong { font-weight: 700; }
+.lsb__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: {{ section.settings.accent_color }};
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 13px 26px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+.lsb__btn:hover { opacity: 0.92; color: #fff; }
+
+@media (max-width: 749px) {
+  .lsb__inner { padding: 10px 14px; gap: 10px; }
+  .lsb__logo img { height: 18px; }
+  .lsb__logo-text { font-size: 15px; }
+  .lsb__offer { font-size: 12px; }
+  .lsb__btn { font-size: 11px; padding: 10px 16px; }
+}
+
+{%- if section.settings.hide_store_header -%}
+#shopify-section-header,
+#shopify-section-header-top { display: none !important; }
+{%- endif -%}
+{% endstyle %}
+
+<section class="lsb">
+  <div class="lsb__inner">
+    <a class="lsb__logo" href="{{ section.settings.logo_link | default: routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 220 }}" alt="{{ shop.name | escape }}">
+      {%- else -%}
+        <span class="lsb__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- if section.settings.offer_text != blank -%}
+      <div class="lsb__offer">{{ section.settings.offer_text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.button_text != blank -%}
+      <a class="lsb__btn" href="{{ section.settings.button_link | default: '#offer' }}">{{ section.settings.button_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Listicle Sticky Bar",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to use the text logo below." },
+    { "type": "text", "id": "logo_text", "label": "Logo text (fallback)", "default": "REJUVIA" },
+    { "type": "url", "id": "logo_link", "label": "Logo link" },
+    { "type": "richtext", "id": "offer_text", "label": "Offer text", "default": "<p><strong>BOGO FREE</strong> - $0.58/night</p>" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Get Offer" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Tip: link to the offer section, e.g. #offer" },
+    { "type": "checkbox", "id": "hide_store_header", "label": "Hide store header on this page", "default": true, "info": "Replaces the main store header with this bar (recommended for landing pages)." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Bar background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Button color", "default": "#672666" }
+  ],
+  "presets": [
+    { "name": "Listicle Sticky Bar", "category": "Listicle" }
+  ]
+}
+{% endschema %}

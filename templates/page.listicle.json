@@ -1,5 +1,9 @@
 {
   "sections": {
+    "stickybar": {
+      "type": "listicle-sticky-bar",
+      "settings": {}
+    },
     "hero": {
       "type": "listicle-hero",
       "settings": {}
@@ -17,5 +21,5 @@
       "settings": {}
     }
   },
-  "order": ["hero", "blocks"]
+  "order": ["stickybar", "hero", "blocks"]
 }

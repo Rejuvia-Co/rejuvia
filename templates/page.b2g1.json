@@ -139,11 +139,11 @@
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
         "title_size": 38,
-        "title_size_mobile": 28,
+        "title_size_mobile": 32,
         "desc_size": 16,
         "desc_size_mobile": 18,
         "tier_title_size": 22,
-        "tier_title_size_mobile": 18,
+        "tier_title_size_mobile": 20,
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "stars_color": "#eac78b"

@@ -43,8 +43,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
 /* Gallery */
 .bogo__main { position: relative; width: 100%; max-width: 100%; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: var(--radius-md); overflow: hidden; }
 .bogo__main img { display: block; width: 100%; height: auto; max-width: 100%; }
-.bogo__review-pill { position: absolute; top: 14px; left: 14px; }
-.bogo__thumbs { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; align-items: center; padding: 2px; }
+.bogo__thumbs { display: flex; gap: 9px; justify-content: flex-start; align-items: center; overflow-x: auto; padding: 2px; }
 .bogo__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: var(--radius-pill); border: none; background: rgba(255,255,255,0.92); box-shadow: 0 2px 10px rgba(0,0,0,0.18); color: var(--plum-700); display: grid; place-items: center; cursor: pointer; z-index: 2; transition: background .15s, transform .1s; }
 .bogo__nav:hover { background: #fff; }
 .bogo__nav:active { transform: translateY(-50%) scale(0.94); }
@@ -169,9 +168,6 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
       <div class="bogo__main">
         {%- if main_image != blank -%}
           <img data-bogo-main src="{{ main_image | image_url: width: 900 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">
-        {%- endif -%}
-        {%- if section.settings.review_pill_text != blank -%}
-          <span class="bogo__review-pill"><span class="bogo-badge bogo-badge--brand">{{ section.settings.review_pill_text }}</span></span>
         {%- endif -%}
         {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
           <button type="button" class="bogo__nav bogo__nav--prev" data-bogo-prev aria-label="Previous image"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -360,7 +356,6 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
     { "type": "header", "content": "Gallery" },
     { "type": "product", "id": "product", "label": "Gallery product", "info": "The image gallery pulls this product's images." },
     { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
-    { "type": "text", "id": "review_pill_text", "label": "Image badge", "default": "★ 2,400+ 5-Star Reviews" },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
     { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text (Ctrl/Cmd+B) renders in purple.", "default": "<p>Trusted by 300,000+ customers</p>" },

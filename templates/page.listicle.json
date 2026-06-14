@@ -20,6 +20,7 @@
         "button_text": "Get Offer",
         "button_link": "",
         "hide_store_header": true,
+        "offer_size_mobile": 13,
         "bg_color": "#ffffff",
         "accent_color": "#672666"
       }
@@ -35,6 +36,8 @@
         "button_text": "Try Rejuvia Now",
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
+        "heading_size": 52,
+        "text_size": 19,
         "bg_color": "#ffffff",
         "image_bg_color": "#f8e9ee",
         "accent_color": "#672666",
@@ -108,6 +111,8 @@
         "r5"
       ],
       "settings": {
+        "title_size": 32,
+        "body_size": 16,
         "bg_color": "#ffffff",
         "badge_color": "#eac78b",
         "badge_text_color": "#141414"
@@ -178,6 +183,10 @@
         "guarantee_text": "90-Day Money Back Guarantee",
         "onetime_text": "One-Time Purchase (Not a Subscription)",
         "show_payment_icons": true,
+        "rating_text_size": 16,
+        "title_size": 34,
+        "subtitle_size": 17,
+        "tier_label_size": 21,
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "stars_color": "#eac78b"
@@ -401,6 +410,93 @@
         "bg_color": "#ffffff",
         "mobile_breakpoint": 750
       }
+    },
+    "bogo_offer_PNJAyY": {
+      "type": "bogo-offer",
+      "blocks": {
+        "tier_Dyehwr": {
+          "type": "tier",
+          "settings": {
+            "product": "",
+            "label": "Buy 1 Sleep Spray",
+            "subline": "1 Spray Total · 30 Nights",
+            "price": "$29",
+            "compare_price": "$70",
+            "per_night": "$0.96/night",
+            "savings_text": "",
+            "free_shipping": false,
+            "qualifies": false,
+            "tag": "",
+            "tag_style": "brand",
+            "is_default": true
+          }
+        },
+        "tier_URwUdw": {
+          "type": "tier",
+          "settings": {
+            "product": "",
+            "label": "Buy 2, Get 1 Free",
+            "subline": "3 Sprays Total · 90 Nights",
+            "price": "$58",
+            "compare_price": "$87",
+            "per_night": "$0.64/night",
+            "savings_text": "SAVE $29",
+            "free_shipping": true,
+            "qualifies": true,
+            "tag": "MOST POPULAR",
+            "tag_style": "brand",
+            "is_default": false
+          }
+        },
+        "tier_93hH4H": {
+          "type": "tier",
+          "settings": {
+            "product": "",
+            "label": "Buy 3, Get 2 Free",
+            "subline": "5 Sprays Total · 150 Nights",
+            "price": "$87",
+            "compare_price": "$145",
+            "per_night": "$0.58/night",
+            "savings_text": "SAVE $58",
+            "free_shipping": true,
+            "qualifies": true,
+            "tag": "BEST VALUE",
+            "tag_style": "gold",
+            "is_default": false
+          }
+        }
+      },
+      "block_order": [
+        "tier_Dyehwr",
+        "tier_URwUdw",
+        "tier_93hH4H"
+      ],
+      "name": "BOGO Offer",
+      "settings": {
+        "product": "sleep-spray-30-nights",
+        "review_pill_text": "★ 2,400+ 5-Star Reviews",
+        "show_stars": true,
+        "rating_number": "4.8",
+        "reviews_text": "2,418 reviews",
+        "title": "Rejuvia Sleep Spray",
+        "eyebrow": "NON-HABIT FORMING · MELATONIN-FREE",
+        "description": "<p>A fast-absorbing magnesium & botanical mist that helps you fall asleep faster and wake up refreshed — no grogginess, no melatonin.</p>",
+        "hint_qualify": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong>.</p>",
+        "hint_upsell": "<p>Upgrade to the next tier to unlock <strong>free sprays + free shipping.</strong></p>",
+        "button_text": "Buy Now",
+        "show_cta_price": true,
+        "trust_text": "90-Day Money-Back Guarantee",
+        "show_payment_icons": true,
+        "title_size": 38,
+        "title_size_mobile": 28,
+        "desc_size": 16,
+        "desc_size_mobile": 15,
+        "tier_title_size": 22,
+        "tier_title_size_mobile": 18,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "stars_color": "#fab851"
+      }
     }
   },
   "order": [
@@ -410,6 +506,7 @@
     "blocks",
     "listicle_offer_47XAc8",
     "17814435248f2fd49e",
-    "product_comparison_enhanced_G6MmFh"
+    "product_comparison_enhanced_G6MmFh",
+    "bogo_offer_PNJAyY"
   ]
 }

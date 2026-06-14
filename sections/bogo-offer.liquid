@@ -121,7 +121,12 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 .bogo__buy { width: 100%; display: inline-flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--plum-700); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1; letter-spacing: -0.01em; padding: 22px 36px; border: none; border-radius: var(--radius-pill); cursor: pointer; transition: background .15s, transform .15s, opacity .15s; }
 .bogo__buy:hover { background: var(--plum-800); }
 .bogo__buy:active { transform: scale(.98); }
-.bogo__buy:disabled { opacity: .6; cursor: default; }
+.bogo__buy:disabled { cursor: default; }
+.bogo__spinner { display: none; width: 22px; height: 22px; border: 2.5px solid rgba(255,255,255,0.45); border-top-color: #fff; border-radius: 50%; animation: bogo-spin .6s linear infinite; }
+.bogo__buy.is-loading { justify-content: center; }
+.bogo__buy.is-loading .bogo__buy-label, .bogo__buy.is-loading .bogo__buy-right { display: none; }
+.bogo__buy.is-loading .bogo__spinner { display: block; }
+@keyframes bogo-spin { to { transform: rotate(360deg); } }
 .bogo__buy-right { display: inline-flex; align-items: center; gap: 8px; }
 .bogo__buy-price { display: inline-flex; align-items: baseline; gap: 8px; }
 .bogo__buy-compare { opacity: .6; text-decoration: line-through; font-weight: 400; font-size: 16px; }
@@ -146,7 +151,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 .bogo__tab-body strong { color: var(--ink-800); font-weight: 700; }
 
 @media (max-width: 900px) {
-  .bogo__container { display: flex; flex-direction: column; gap: 11px; padding: 22px 18px 28px; box-sizing: border-box; width: 100%; max-width: 100%; }
+  .bogo__container { display: flex; flex-direction: column; gap: 11px; padding: 22px 12px 28px; box-sizing: border-box; width: 100%; max-width: 100%; }
   .bogo__gallery { position: static; order: -1; width: 100%; max-width: 100%; }
   .bogo__gallery-inner { position: static; }
   .bogo__main, .bogo__thumbs { width: 100%; max-width: 100%; }
@@ -155,13 +160,16 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   .bogo__nav--next { right: 8px; }
   .bogo__thumb { width: 54px; height: 54px; }
   .bogo__buybox { gap: 16px; }
-  .bogo__title { font-size: {{ section.settings.title_size_mobile | default: 28 }}px; }
+  .bogo__title { font-size: {{ section.settings.title_size_mobile | default: 32 }}px; }
+  .bogo__eyebrow .bogo-badge { font-size: 14px; padding: 5px 12px; }
   .bogo__desc { font-size: {{ section.settings.desc_size_mobile | default: 15 }}px; }
   .bogo__tier-info { padding: 14px; }
-  .bogo__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 18 }}px; }
+  .bogo__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 20 }}px; }
   .bogo__price-area { width: 122px; padding: 14px 10px; gap: 6px; }
   .bogo__price { font-size: 24px; }
   .bogo__buy { font-size: 17px; padding: 20px 24px; }
+  .bogo__tab-q { font-size: 18px; }
+  .bogo__tab-body { font-size: 16px; }
 }
 {% endstyle %}
 
@@ -266,7 +274,8 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
       <div class="bogo__cta-wrap">
         <button type="button" class="bogo__buy" data-bogo-buy>
-          <span>{{ section.settings.button_text | default: 'Buy Now' }}</span>
+          <span class="bogo__spinner" aria-hidden="true"></span>
+          <span class="bogo__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>
           <span class="bogo__buy-right">
             {%- if section.settings.show_cta_price -%}
               <span class="bogo__buy-price">
@@ -393,12 +402,13 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   var buy = sec.querySelector('[data-bogo-buy]');
   if (buy) {
     /* Re-enable on every show, incl. mobile back/forward (bfcache) restores */
-    window.addEventListener('pageshow', function () { buy.disabled = false; });
+    window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
     buy.addEventListener('click', function () {
       var sel = sec.querySelector('.bogo__tier input[type="radio"]:checked');
       if (!sel || !sel.value) return;
       var id = parseInt(sel.value, 10);
       buy.disabled = true;
+      buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
         .then(function () {
           return fetch('/cart/add.js', {
@@ -438,11 +448,11 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
     { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated types to hide, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "title_size", "min": 24, "max": 56, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 38 },
-    { "type": "range", "id": "title_size_mobile", "min": 18, "max": 40, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 28 },
+    { "type": "range", "id": "title_size_mobile", "min": 18, "max": 44, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 32 },
     { "type": "range", "id": "desc_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Description size (desktop)", "default": 16 },
     { "type": "range", "id": "desc_size_mobile", "min": 12, "max": 20, "step": 1, "unit": "px", "label": "Description size (mobile)", "default": 15 },
     { "type": "range", "id": "tier_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Variant box title size (desktop)", "default": 22 },
-    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Variant box title size (mobile)", "default": 18 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Variant box title size (mobile)", "default": 20 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
     { "type": "color", "id": "accent_color", "label": "Brand / button color", "default": "#672666" },

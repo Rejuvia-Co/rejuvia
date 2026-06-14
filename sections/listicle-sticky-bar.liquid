@@ -1,4 +1,5 @@
 {% style %}
+#shopify-section-{{ section.id }} { position: sticky; top: 0; z-index: 200; }
 .lsb {
   position: sticky;
   top: 0;
@@ -55,10 +56,10 @@
 .lsb__btn:hover { opacity: 0.92; color: #fff; }
 
 @media (max-width: 749px) {
-  .lsb__inner { padding: 10px 14px; gap: 10px; }
+  .lsb__inner { padding: 10px 16px; gap: 12px; }
   .lsb__logo { display: none; }
-  .lsb__offer { font-size: 12px; }
-  .lsb__btn { font-size: 11px; padding: 10px 16px; }
+  .lsb__offer { font-size: {{ section.settings.offer_size_mobile | default: 13 }}px; text-align: left; }
+  .lsb__btn { font-size: 12px; padding: 11px 18px; }
 }
 
 {%- if section.settings.hide_store_header -%}
@@ -99,6 +100,8 @@
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Get Offer" },
     { "type": "url", "id": "button_link", "label": "Button link", "info": "Tip: link to the offer section, e.g. #offer" },
     { "type": "checkbox", "id": "hide_store_header", "label": "Hide store header on this page", "default": true, "info": "Replaces the main store header with this bar (recommended for landing pages)." },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "offer_size_mobile", "min": 9, "max": 18, "step": 1, "unit": "px", "label": "Offer text size (mobile)", "default": 13 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Bar background", "default": "#ffffff" },
     { "type": "color", "id": "accent_color", "label": "Button color", "default": "#672666" }

@@ -1123,12 +1123,12 @@
     }
 
     .product-widget-container .custom-review-stars .star svg {
-      width: 16px;
-      height: 14px;
+      width: auto;
+      height: 18px;
     }
 
     .product-widget-container .custom-review-stars .rating-text {
-      font-size: 16px!Important;
+      font-size: 18px!Important;
     }
 
     /* Variant Selector Mobile */
@@ -1708,12 +1708,12 @@
   .product-widget-container .custom-review-stars .star {
     color: var(--star-color, #EAC78B);
     align-items: center !important;
-    height: 17px;
+    height: 19px;
   }
 
   .product-widget-container .custom-review-stars .star svg {
-    width: 18px;
-    height: 16px;
+    width: auto;
+    height: 18px;
   }
 
   .product-widget-container .custom-review-stars .star.empty {
@@ -1723,7 +1723,7 @@
   .product-widget-container .custom-review-stars .rating-text {
     color: #141414;
 
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .product-widget-container .custom-review-stars .rating-text strong {

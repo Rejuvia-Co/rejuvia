@@ -42,7 +42,7 @@
             "compare_price": "$87",
             "per_night": "$0.64/night",
             "savings_text": "SAVE $29",
-            "free_shipping": true,
+            "free_shipping": false,
             "hint": "<p>You've unlocked 1 free sleep spray</p>",
             "hint_style": "green",
             "tag": "MOST POPULAR",

@@ -96,11 +96,12 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 .bogo__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 22 }}px; font-weight: 600; color: var(--ink-800); line-height: 1.15; }
 .bogo__tier-sub { font-family: var(--font-ui); font-size: 13.5px; color: var(--gray-500); margin: 3px 0 8px; white-space: nowrap; }
 .bogo__tier-perks { display: flex; flex-wrap: wrap; gap: 6px; }
-.bogo__price-area { width: 132px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 12px 8px; }
-.bogo__price-top { display: flex; align-items: baseline; gap: 6px; justify-content: center; }
+.bogo__price-area { width: 140px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 18px 12px; }
+.bogo__price-top { display: flex; align-items: baseline; gap: 7px; justify-content: center; flex-wrap: wrap; }
 .bogo__price { font-family: var(--font-display); font-size: 27px; font-weight: 600; color: var(--ink-800); line-height: 1; }
-.bogo__compare { font-family: var(--font-body); font-size: 14px; color: var(--gray-500); text-decoration: line-through; }
-.bogo__pernight { font-family: var(--font-ui); font-size: 11.5px; color: var(--gray-500); }
+.bogo__compare { font-family: var(--font-body); font-size: 15px; color: var(--gray-500); text-decoration: line-through; }
+.bogo__pernight { font-family: var(--font-ui); font-size: 12px; color: var(--gray-500); line-height: 1; }
+.bogo__save { margin-top: 1px; }
 .bogo__tag { position: absolute; top: 0; right: 16px; transform: translateY(-50%); }
 
 /* Value / upsell hint */
@@ -158,7 +159,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   .bogo__desc { font-size: {{ section.settings.desc_size_mobile | default: 15 }}px; }
   .bogo__tier-info { padding: 14px; }
   .bogo__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 18 }}px; }
-  .bogo__price-area { width: 116px; }
+  .bogo__price-area { width: 122px; padding: 14px 10px; gap: 6px; }
   .bogo__price { font-size: 24px; }
   .bogo__buy { font-size: 17px; padding: 20px 24px; }
 }
@@ -241,7 +242,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
                     {%- if b.settings.compare_price != blank -%}<span class="bogo__compare">{{ b.settings.compare_price }}</span>{%- endif -%}
                   </span>
                   {%- if b.settings.per_night != blank -%}<span class="bogo__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
-                  {%- if b.settings.savings_text != blank -%}<span style="margin-top:4px;"><span class="bogo-badge bogo-badge--success-solid">{{ b.settings.savings_text }}</span></span>{%- endif -%}
+                  {%- if b.settings.savings_text != blank -%}<span class="bogo-badge bogo-badge--success-solid bogo__save">{{ b.settings.savings_text }}</span>{%- endif -%}
                 </div>
               </div>
             </label>

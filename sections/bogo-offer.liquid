@@ -52,10 +52,10 @@ html { scroll-behavior: smooth; }
 .bogo__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Header */
-.bogo__rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.bogo__stars { display: inline-flex; gap: 2px; }
+.bogo__rating { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+.bogo__stars { display: inline-flex; gap: 2px; flex-shrink: 0; }
 .bogo__stars svg { width: 20px; height: 20px; display: block; }
-.bogo__rating-text { font-family: var(--font-body); font-size: 16px; font-weight: 400; color: var(--ink-800); }
+.bogo__rating-text { font-family: var(--font-body); font-size: 16px; font-weight: 400; color: var(--ink-800); white-space: nowrap; }
 .bogo__rating-text strong { font-weight: 700; color: var(--plum-700); }
 .bogo__rating-text p { margin: 0; }
 .bogo__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 38 }}px; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink-800); margin: 0; }
@@ -354,7 +354,7 @@ html { scroll-behavior: smooth; }
     { "type": "text", "id": "review_pill_text", "label": "Image badge", "default": "★ 2,400+ 5-Star Reviews" },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
-    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text (Ctrl/Cmd+B) renders in purple. e.g. 4.6 Stars | 1.3M Sleep Sprays Sold", "default": "<p><strong>4.6</strong> Stars | <strong>1.3M Sleep Sprays</strong> Sold</p>" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text (Ctrl/Cmd+B) renders in purple.", "default": "<p>Trusted by 300,000+ customers</p>" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow badge", "default": "NON-HABIT FORMING · MELATONIN-FREE" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>A fast-absorbing magnesium & botanical mist that helps you fall asleep faster and wake up refreshed — no grogginess, no melatonin.</p>" },

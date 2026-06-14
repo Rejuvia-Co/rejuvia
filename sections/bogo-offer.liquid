@@ -41,8 +41,8 @@ html { scroll-behavior: smooth; }
 .bogo__buybox { grid-area: buybox; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 /* Gallery */
-.bogo__main { aspect-ratio: 1 / 1; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: var(--radius-md); overflow: hidden; display: grid; place-items: center; position: relative; }
-.bogo__main img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.bogo__main { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1 / 1; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: var(--radius-md); overflow: hidden; }
+.bogo__main img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: 100%; object-fit: contain; display: block; }
 .bogo__review-pill { position: absolute; top: 14px; left: 14px; }
 .bogo__thumbs { display: flex; gap: 9px; justify-content: center; align-items: center; overflow-x: auto; padding: 2px; }
 .bogo__arrow { width: 40px; height: 40px; border-radius: var(--radius-pill); border: 1.5px solid var(--plum-400); background: var(--white); color: var(--plum-700); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; transition: background .15s; }
@@ -52,11 +52,12 @@ html { scroll-behavior: smooth; }
 .bogo__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Header */
-.bogo__rating { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.bogo__stars { display: inline-flex; gap: 2.6px; }
-.bogo__stars svg { width: 18px; height: 18px; display: block; }
-.bogo__rating-text { font-family: var(--font-body); font-size: 15px; color: var(--ink-800); }
-.bogo__rating-text strong { font-weight: 600; }
+.bogo__rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bogo__stars { display: inline-flex; gap: 2px; }
+.bogo__stars svg { width: 20px; height: 20px; display: block; }
+.bogo__rating-text { font-family: var(--font-body); font-size: 16px; font-weight: 400; color: var(--ink-800); }
+.bogo__rating-text strong { font-weight: 700; color: var(--plum-700); }
+.bogo__rating-text p { margin: 0; }
 .bogo__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 38 }}px; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink-800); margin: 0; }
 .bogo__eyebrow { align-self: flex-start; }
 .bogo__desc { font-family: var(--font-body); font-size: {{ section.settings.desc_size | default: 16 }}px; line-height: 1.55; color: var(--gray-500); margin: 2px 0 0; }
@@ -119,8 +120,9 @@ html { scroll-behavior: smooth; }
 .bogo__payments svg { height: 24px; width: auto; }
 
 @media (max-width: 900px) {
-  .bogo__container { display: flex; flex-direction: column; gap: 22px; padding: 22px 18px 28px; }
-  .bogo__gallery { position: static; order: -1; }
+  .bogo__container { display: flex; flex-direction: column; gap: 11px; padding: 22px 18px 28px; box-sizing: border-box; width: 100%; max-width: 100%; }
+  .bogo__gallery { position: static; order: -1; width: 100%; max-width: 100%; }
+  .bogo__main, .bogo__thumbs { width: 100%; max-width: 100%; }
   .bogo__arrow { display: none; }
   .bogo__thumb { width: 54px; height: 54px; }
   .bogo__buybox { gap: 16px; }
@@ -134,7 +136,7 @@ html { scroll-behavior: smooth; }
 }
 {% endstyle %}
 
-{%- capture bogo_star -%}<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.27l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg>{%- endcapture -%}
+{%- capture bogo_star -%}<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.27l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
 {%- capture bogo_check -%}<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>{%- endcapture -%}
 {%- capture bogo_gift -%}<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7S11 2 8 2 5 5 8 7M12 7s1-5 4-5 1 5-2 5"/></svg>{%- endcapture -%}
 {%- capture bogo_truck -%}<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4h12v11H1zM13 8h5l3 3v4h-8"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>{%- endcapture -%}
@@ -146,12 +148,10 @@ html { scroll-behavior: smooth; }
   <div class="bogo__container">
 
     <div class="bogo__header">
-      {%- if section.settings.show_stars or section.settings.rating_number != blank -%}
+      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
         <div class="bogo__rating">
-          {%- if section.settings.show_stars -%}<span class="bogo__stars" aria-label="{{ section.settings.rating_number }} out of 5 stars">{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}</span>{%- endif -%}
-          {%- if section.settings.rating_number != blank or section.settings.reviews_text != blank -%}
-            <span class="bogo__rating-text"><strong>{{ section.settings.rating_number }}</strong>{% if section.settings.reviews_text != blank %} · {{ section.settings.reviews_text }}{% endif %}</span>
-          {%- endif -%}
+          {%- if section.settings.show_stars -%}<span class="bogo__stars" aria-label="5 stars">{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<span class="bogo__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
         </div>
       {%- endif -%}
       {%- if section.settings.title != blank -%}<h1 class="bogo__title">{{ section.settings.title }}</h1>{%- endif -%}
@@ -185,10 +185,11 @@ html { scroll-behavior: smooth; }
       <div class="bogo__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- for b in section.blocks -%}
           {%- if b.type == 'tier' -%}
-            {%- assign tier_variant = b.settings.product.selected_or_first_available_variant -%}
+            {%- assign vid = b.settings.variant_id | strip -%}
+            {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
             <label class="bogo__tier{% if b.settings.is_default %} is-selected{% endif %}" {{ b.shopify_attributes }}>
               <input type="radio" name="bogo-{{ section.id }}"
-                     value="{% if tier_variant %}{{ tier_variant.id }}{% endif %}"
+                     value="{{ vid }}"
                      data-price="{{ b.settings.price }}"
                      data-compare="{{ b.settings.compare_price }}"
                      data-qualifies="{% if b.settings.qualifies %}true{% else %}false{% endif %}"
@@ -353,8 +354,7 @@ html { scroll-behavior: smooth; }
     { "type": "text", "id": "review_pill_text", "label": "Image badge", "default": "★ 2,400+ 5-Star Reviews" },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
-    { "type": "text", "id": "rating_number", "label": "Rating number", "default": "4.8" },
-    { "type": "text", "id": "reviews_text", "label": "Reviews text", "default": "2,418 reviews" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text (Ctrl/Cmd+B) renders in purple. e.g. 4.6 Stars | 1.3M Sleep Sprays Sold", "default": "<p><strong>4.6</strong> Stars | <strong>1.3M Sleep Sprays</strong> Sold</p>" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow badge", "default": "NON-HABIT FORMING · MELATONIN-FREE" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>A fast-absorbing magnesium & botanical mist that helps you fall asleep faster and wake up refreshed — no grogginess, no melatonin.</p>" },
@@ -384,7 +384,8 @@ html { scroll-behavior: smooth; }
       "type": "tier",
       "name": "Variant box",
       "settings": [
-        { "type": "product", "id": "product", "label": "Product", "info": "The variant added to cart when this box is selected." },
+        { "type": "product", "id": "product", "label": "Product", "info": "Usually the same product for all boxes; pick the exact variant below." },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "The exact variant added to cart for this box. Copy it from the product's variant URL (the number after ?variant=) or from the admin. Leave blank to use the product's default variant." },
         { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 FREE" },
         { "type": "text", "id": "subline", "label": "Sub-line", "default": "2 Sprays Total · 60 Nights" },
         { "type": "text", "id": "price", "label": "Price", "default": "$35" },
@@ -404,9 +405,9 @@ html { scroll-behavior: smooth; }
       "name": "BOGO Offer",
       "category": "Listicle",
       "blocks": [
-        { "type": "tier", "settings": { "label": "Buy 1 Sleep Spray", "subline": "1 Spray Total · 30 Nights", "price": "$29", "per_night": "$0.96/night", "free_shipping": false, "qualifies": false, "is_default": true } },
-        { "type": "tier", "settings": { "label": "Buy 2, Get 1 Free", "subline": "3 Sprays Total · 90 Nights", "price": "$58", "compare_price": "$87", "per_night": "$0.64/night", "savings_text": "SAVE $29", "free_shipping": true, "qualifies": true, "tag": "MOST POPULAR", "tag_style": "brand", "is_default": false } },
-        { "type": "tier", "settings": { "label": "Buy 3, Get 2 Free", "subline": "5 Sprays Total · 150 Nights", "price": "$87", "compare_price": "$145", "per_night": "$0.58/night", "savings_text": "SAVE $58", "free_shipping": true, "qualifies": true, "tag": "BEST VALUE", "tag_style": "gold", "is_default": false } }
+        { "type": "tier", "settings": { "variant_id": "46763671027932", "label": "Buy 1 Sleep Spray", "subline": "1 Spray Total · 30 Nights", "price": "$29", "per_night": "$0.96/night", "free_shipping": false, "qualifies": false, "is_default": true } },
+        { "type": "tier", "settings": { "variant_id": "46763671060700", "label": "Buy 2, Get 1 Free", "subline": "3 Sprays Total · 90 Nights", "price": "$58", "compare_price": "$87", "per_night": "$0.64/night", "savings_text": "SAVE $29", "free_shipping": true, "qualifies": true, "tag": "MOST POPULAR", "tag_style": "brand", "is_default": false } },
+        { "type": "tier", "settings": { "variant_id": "46763671093468", "label": "Buy 3, Get 2 Free", "subline": "5 Sprays Total · 150 Nights", "price": "$87", "compare_price": "$145", "per_night": "$0.58/night", "savings_text": "SAVE $58", "free_shipping": true, "qualifies": true, "tag": "BEST VALUE", "tag_style": "gold", "is_default": false } }
       ]
     }
   ]

@@ -249,7 +249,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
                     {%- if b.settings.price != blank -%}<span class="bogo__price">{{ b.settings.price }}</span>{%- endif -%}
                     {%- if b.settings.compare_price != blank -%}<span class="bogo__compare">{{ b.settings.compare_price }}</span>{%- endif -%}
                   </span>
-                  {%- if b.settings.per_night != blank -%}<span class="bogo__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
+                  {%- unless section.settings.hide_per_night -%}{%- if b.settings.per_night != blank -%}<span class="bogo__pernight">{{ b.settings.per_night }}</span>{%- endif -%}{%- endunless -%}
                   {%- if b.settings.savings_text != blank -%}<span class="bogo-badge bogo-badge--success-solid bogo__save">{{ b.settings.savings_text }}</span>{%- endif -%}
                 </div>
               </div>
@@ -443,6 +443,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
     { "type": "checkbox", "id": "show_cta_price", "label": "Show price on button", "default": true },
+    { "type": "checkbox", "id": "hide_per_night", "label": "Hide per-night price", "default": true },
     { "type": "text", "id": "trust_text", "label": "Trust line", "default": "90-Day Money-Back Guarantee" },
     { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
     { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated types to hide, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },

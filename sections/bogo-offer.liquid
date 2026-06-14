@@ -103,7 +103,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
 .bogo__hint--lav .bogo__hint-icon { color: var(--plum-700); }
 .bogo__hint-text { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.35; color: var(--ink-800); }
 .bogo__hint-text p { margin: 0; }
-.bogo__hint-text[hidden] { display: none; }
+.bogo__hint-text[hidden], .bogo__hint-one[hidden] { display: none; }
 
 /* CTA */
 .bogo__cta-wrap { display: flex; flex-direction: column; gap: 10px; }
@@ -196,7 +196,8 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
                      value="{{ vid }}"
                      data-price="{{ b.settings.price }}"
                      data-compare="{{ b.settings.compare_price }}"
-                     data-qualifies="{% if b.settings.qualifies %}true{% else %}false{% endif %}"
+                     data-tier-id="{{ b.id }}"
+                     data-hint-style="{{ b.settings.hint_style | default: 'green' }}"
                      {% if b.settings.is_default %}checked{% endif %}>
               {%- if b.settings.tag != blank -%}<span class="bogo__tag"><span class="bogo-badge bogo-badge--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span></span>{%- endif -%}
               <div class="bogo__tier-row">
@@ -222,12 +223,17 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
         {%- endfor -%}
       </div>
 
-      {%- if section.settings.hint_qualify != blank or section.settings.hint_upsell != blank -%}
+      {%- assign has_hint = false -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tier' and b.settings.hint != blank -%}{%- assign has_hint = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_hint -%}
         <div class="bogo__hint bogo__hint--lav" data-bogo-hint>
           <span class="bogo__hint-icon" data-bogo-hint-gift>{{ bogo_gift }}</span>
           <span class="bogo__hint-icon" data-bogo-hint-check hidden>{{ bogo_check }}</span>
-          <span class="bogo__hint-text" data-bogo-hint-upsell>{{ section.settings.hint_upsell }}</span>
-          <span class="bogo__hint-text" data-bogo-hint-qualify hidden>{{ section.settings.hint_qualify }}</span>
+          <span class="bogo__hint-text">
+            {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+              <span class="bogo__hint-one" data-hint-id="{{ b.id }}"{% unless b.settings.is_default %} hidden{% endunless %}>{{ b.settings.hint }}</span>
+            {%- endif -%}{%- endfor -%}
+          </span>
         </div>
       {%- endif -%}
 
@@ -269,8 +275,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
 
   /* ---- Tier selection + live CTA price + value hint ---- */
   var hint = sec.querySelector('[data-bogo-hint]');
-  var hintUpsell = sec.querySelector('[data-bogo-hint-upsell]');
-  var hintQualify = sec.querySelector('[data-bogo-hint-qualify]');
+  var hintOnes = hint ? hint.querySelectorAll('.bogo__hint-one') : [];
   var hintGift = sec.querySelector('[data-bogo-hint-gift]');
   var hintCheck = sec.querySelector('[data-bogo-hint-check]');
   var ctaPrice = sec.querySelector('[data-bogo-cta-price]');
@@ -288,13 +293,20 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
       ctaCompare.hidden = !cmp;
     }
     if (hint) {
-      var q = input.getAttribute('data-qualifies') === 'true';
-      hint.classList.toggle('bogo__hint--green', q);
-      hint.classList.toggle('bogo__hint--lav', !q);
-      if (hintQualify) hintQualify.hidden = !q;
-      if (hintUpsell) hintUpsell.hidden = q;
-      if (hintCheck) hintCheck.hidden = !q;
-      if (hintGift) hintGift.hidden = q;
+      var tid = input.getAttribute('data-tier-id');
+      var isGreen = (input.getAttribute('data-hint-style') || 'green') === 'green';
+      var activeOne = null;
+      hintOnes.forEach(function (o) {
+        var match = o.getAttribute('data-hint-id') === tid;
+        o.hidden = !match;
+        if (match) activeOne = o;
+      });
+      hint.classList.toggle('bogo__hint--green', isGreen);
+      hint.classList.toggle('bogo__hint--lav', !isGreen);
+      if (hintCheck) hintCheck.hidden = !isGreen;
+      if (hintGift) hintGift.hidden = isGreen;
+      var hasContent = activeOne && activeOne.textContent.trim() !== '';
+      hint.style.display = hasContent ? '' : 'none';
     }
   }
 
@@ -364,9 +376,6 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow badge", "default": "NON-HABIT FORMING · MELATONIN-FREE" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>A fast-absorbing magnesium & botanical mist that helps you fall asleep faster and wake up refreshed — no grogginess, no melatonin.</p>" },
-    { "type": "header", "content": "Value hint (below tiers)" },
-    { "type": "richtext", "id": "hint_qualify", "label": "Qualifying hint (green)", "info": "Shown when the selected tier is marked as qualifying.", "default": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong>.</p>" },
-    { "type": "richtext", "id": "hint_upsell", "label": "Upsell hint (lavender)", "info": "Shown when the selected tier is not qualifying.", "default": "<p><strong>Upgrade to the next tier</strong> to unlock <strong>multiple free Rejuvia sprays</strong> + free shipping.</p>" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
     { "type": "checkbox", "id": "show_cta_price", "label": "Show price on button", "default": true },
@@ -399,7 +408,8 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
         { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62/night" },
         { "type": "text", "id": "savings_text", "label": "Savings pill", "info": "e.g. SAVE $35. Leave blank to hide." },
         { "type": "checkbox", "id": "free_shipping", "label": "Show \"FREE shipping\" chip", "default": false },
-        { "type": "checkbox", "id": "qualifies", "label": "Show green free-gift hint when selected", "default": false },
+        { "type": "richtext", "id": "hint", "label": "Value hint (when selected)", "info": "Shown in the box below the tiers when this box is selected. Leave blank to hide." },
+        { "type": "select", "id": "hint_style", "label": "Hint style", "options": [ { "value": "green", "label": "Green (free gift)" }, { "value": "lavender", "label": "Lavender (upsell)" } ], "default": "green" },
         { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR. Leave blank to hide." },
         { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "brand" },
         { "type": "checkbox", "id": "is_default", "label": "Selected by default", "default": false }
@@ -411,9 +421,9 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
       "name": "BOGO Offer",
       "category": "Listicle",
       "blocks": [
-        { "type": "tier", "settings": { "variant_id": "46763671027932", "label": "Buy 1 Sleep Spray", "subline": "1 Spray Total · 30 Nights", "price": "$29", "per_night": "$0.96/night", "free_shipping": false, "qualifies": false, "is_default": true } },
-        { "type": "tier", "settings": { "variant_id": "46763671060700", "label": "Buy 2, Get 1 Free", "subline": "3 Sprays Total · 90 Nights", "price": "$58", "compare_price": "$87", "per_night": "$0.64/night", "savings_text": "SAVE $29", "free_shipping": true, "qualifies": true, "tag": "MOST POPULAR", "tag_style": "brand", "is_default": false } },
-        { "type": "tier", "settings": { "variant_id": "46763671093468", "label": "Buy 3, Get 2 Free", "subline": "5 Sprays Total · 150 Nights", "price": "$87", "compare_price": "$145", "per_night": "$0.58/night", "savings_text": "SAVE $58", "free_shipping": true, "qualifies": true, "tag": "BEST VALUE", "tag_style": "gold", "is_default": false } }
+        { "type": "tier", "settings": { "variant_id": "46763671027932", "label": "Buy 1 Sleep Spray", "subline": "1 Spray Total · 30 Nights", "price": "$29", "per_night": "$0.96/night", "free_shipping": false, "hint": "<p><strong>Upgrade to the next tier</strong> to unlock <strong>free Rejuvia sprays</strong> + free shipping.</p>", "hint_style": "lavender", "is_default": true } },
+        { "type": "tier", "settings": { "variant_id": "46763671060700", "label": "Buy 2, Get 1 Free", "subline": "3 Sprays Total · 90 Nights", "price": "$58", "compare_price": "$87", "per_night": "$0.64/night", "savings_text": "SAVE $29", "free_shipping": true, "hint": "<p>Order includes <strong>1 free spray</strong> and <strong>free shipping</strong>.</p>", "hint_style": "green", "tag": "MOST POPULAR", "tag_style": "brand", "is_default": false } },
+        { "type": "tier", "settings": { "variant_id": "46763671093468", "label": "Buy 3, Get 2 Free", "subline": "5 Sprays Total · 150 Nights", "price": "$87", "compare_price": "$145", "per_night": "$0.58/night", "savings_text": "SAVE $58", "free_shipping": true, "hint": "<p>Order includes <strong>2 free sprays</strong> and <strong>free shipping</strong>.</p>", "hint_style": "green", "tag": "BEST VALUE", "tag_style": "gold", "is_default": false } }
       ]
     }
   ]

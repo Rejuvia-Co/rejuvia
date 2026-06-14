@@ -316,15 +316,6 @@
         "bg_color": "#ffffff",
         "mobile_breakpoint": 750
       }
-    },
-    "faqs_v2_xEMbAT": {
-      "type": "faqs-v2",
-      "name": "FAQs V2",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "description": "We've heard it all from people struggling with sleep. And here are the most common questions. Don't see your question? Get in touch with our team",
-        "footer_text": ""
-      }
     }
   },
   "order": [
@@ -332,7 +323,6 @@
     "press_logos_qGBMzm",
     "blocks",
     "17814435248f2fd49e",
-    "product_comparison_enhanced_G6MmFh",
-    "faqs_v2_xEMbAT"
+    "product_comparison_enhanced_G6MmFh"
   ]
 }

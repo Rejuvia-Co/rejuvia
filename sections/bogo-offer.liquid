@@ -1,5 +1,13 @@
 {% style %}
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+/* Allow the desktop sticky image to work: an ancestor's overflow:hidden
+   turns it into a scroll container and breaks position:sticky. Switch to
+   clip (no horizontal scroll) + visible (sticky works) when this section
+   is present. Mirrors the theme's existing main:has(.faq-new) override. */
+@media (min-width: 901px) {
+  main:has(.bogo), .content-wrapper:has(.bogo) { overflow-x: clip; overflow-y: visible; }
+  #shopify-section-{{ section.id }} { overflow-x: clip; overflow-y: visible; }
+}
 .bogo {
   --plum-700: {{ section.settings.accent_color | default: '#672666' }};
   --plum-800: #5d215f;

@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
   letter-spacing: normal;
   word-spacing: normal;
 }
-.bogo *, .bogo *::before, .bogo *::after { text-transform: none; }
+.bogo *, .bogo *::before, .bogo *::after { text-transform: none; letter-spacing: normal !important; word-spacing: normal !important; }
 .bogo__anchor { display: block; scroll-margin-top: 80px; }
 
 .bogo__container {
@@ -33,12 +33,12 @@ html { scroll-behavior: smooth; }
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   grid-template-areas: "gallery header" "gallery buybox";
-  column-gap: 56px; row-gap: 18px;
+  column-gap: 56px; row-gap: 9px;
   align-items: start;
 }
-.bogo__gallery { grid-area: gallery; position: sticky; top: 24px; display: flex; flex-direction: column; gap: 14px; }
-.bogo__header { grid-area: header; display: flex; flex-direction: column; gap: 8px; }
-.bogo__buybox { grid-area: buybox; display: flex; flex-direction: column; gap: 18px; }
+.bogo__gallery { grid-area: gallery; min-width: 0; position: sticky; top: 24px; display: flex; flex-direction: column; gap: 14px; }
+.bogo__header { grid-area: header; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.bogo__buybox { grid-area: buybox; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 /* Gallery */
 .bogo__main { aspect-ratio: 1 / 1; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: var(--radius-md); overflow: hidden; display: grid; place-items: center; position: relative; }
@@ -60,6 +60,7 @@ html { scroll-behavior: smooth; }
 .bogo__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 38 }}px; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink-800); margin: 0; }
 .bogo__eyebrow { align-self: flex-start; }
 .bogo__desc { font-family: var(--font-body); font-size: {{ section.settings.desc_size | default: 16 }}px; line-height: 1.55; color: var(--gray-500); margin: 2px 0 0; }
+.bogo__desc p { margin: 0; }
 
 /* Badges */
 .bogo-badge { display: inline-flex; align-items: center; gap: 4px; border-radius: var(--radius-pill); font-family: var(--font-ui); font-weight: 600; letter-spacing: .02em; line-height: 1; padding: 4px 10px; font-size: 11px; white-space: nowrap; }
@@ -81,7 +82,7 @@ html { scroll-behavior: smooth; }
 .bogo__radio svg { display: none; }
 .bogo__tier.is-selected .bogo__radio svg { display: block; }
 .bogo__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 22 }}px; font-weight: 600; color: var(--ink-800); line-height: 1.15; }
-.bogo__tier-sub { font-family: var(--font-ui); font-size: 13.5px; color: var(--gray-500); margin: 3px 0 8px; }
+.bogo__tier-sub { font-family: var(--font-ui); font-size: 13.5px; color: var(--gray-500); margin: 3px 0 8px; white-space: nowrap; }
 .bogo__tier-perks { display: flex; flex-wrap: wrap; gap: 6px; }
 .bogo__price-area { width: 132px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 12px 8px; }
 .bogo__price-top { display: flex; align-items: baseline; gap: 6px; justify-content: center; }
@@ -244,8 +245,11 @@ html { scroll-behavior: smooth; }
         {%- endif -%}
 
         {%- if section.settings.show_payment_icons -%}
+          {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
           <div class="bogo__payments">
-            {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endfor -%}
+            {%- for type in shop.enabled_payment_types -%}
+              {%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}
+            {%- endfor -%}
           </div>
         {%- endif -%}
       </div>
@@ -362,6 +366,7 @@ html { scroll-behavior: smooth; }
     { "type": "checkbox", "id": "show_cta_price", "label": "Show price on button", "default": true },
     { "type": "text", "id": "trust_text", "label": "Trust line", "default": "90-Day Money-Back Guarantee" },
     { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated types to hide, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "title_size", "min": 24, "max": 56, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 38 },
     { "type": "range", "id": "title_size_mobile", "min": 18, "max": 40, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 28 },

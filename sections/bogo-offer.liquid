@@ -327,6 +327,8 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
   /* ---- Buy Now -> add selected variant, go to checkout ---- */
   var buy = sec.querySelector('[data-bogo-buy]');
   if (buy) {
+    /* Re-enable on every show, incl. mobile back/forward (bfcache) restores */
+    window.addEventListener('pageshow', function () { buy.disabled = false; });
     buy.addEventListener('click', function () {
       var sel = sec.querySelector('.bogo__tier input[type="radio"]:checked');
       if (!sel || !sel.value) return;

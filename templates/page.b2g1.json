@@ -24,7 +24,8 @@
             "per_night": "$0.96/night",
             "savings_text": "",
             "free_shipping": false,
-            "qualifies": false,
+            "hint": "<p>Upgrade to the next tier to unlock free sleep sprays and free shipping</p>",
+            "hint_style": "lavender",
             "tag": "",
             "tag_style": "brand",
             "is_default": true
@@ -42,7 +43,8 @@
             "per_night": "$0.64/night",
             "savings_text": "SAVE $29",
             "free_shipping": true,
-            "qualifies": true,
+            "hint": "<p>You've unlocked 1 free sleep spray</p>",
+            "hint_style": "green",
             "tag": "MOST POPULAR",
             "tag_style": "brand",
             "is_default": false
@@ -60,7 +62,8 @@
             "per_night": "$0.58/night",
             "savings_text": "SAVE $58",
             "free_shipping": true,
-            "qualifies": true,
+            "hint": "<p>You've unlocked 2 free sleep sprays and free shipping</p>",
+            "hint_style": "green",
             "tag": "BEST VALUE",
             "tag_style": "gold",
             "is_default": false
@@ -81,8 +84,6 @@
         "title": "Rejuvia Sleep Spray",
         "eyebrow": "NON-HABIT FORMING · ALL-NATURAL",
         "description": "<p>Fall asleep faster, sleep through the full night and wake up feeling refreshed. Naturally mint-flavored, safe and natural.</p>",
-        "hint_qualify": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong></p>",
-        "hint_upsell": "<p>Upgrade to the next tier to get <strong>free sprays + free shipping</strong></p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
         "trust_text": "90-Day Money-Back Guarantee",
@@ -528,7 +529,7 @@
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "title_color": "#141414",
-        "answer_color": "#5C5C5C"
+        "answer_color": "#5c5c5c"
       }
     },
     "page_cta_v2_BQV7dD": {

@@ -1,5 +1,5 @@
 {% style %}
-html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 .bogo {
   --plum-700: {{ section.settings.accent_color | default: '#672666' }};
   --plum-800: #5d215f;
@@ -101,9 +101,10 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
 .bogo__hint-icon { display: grid; place-items: center; flex-shrink: 0; }
 .bogo__hint--green .bogo__hint-icon { color: var(--green-600); }
 .bogo__hint--lav .bogo__hint-icon { color: var(--plum-700); }
-.bogo__hint-text { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.35; color: var(--ink-800); }
+.bogo__hint-text { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.35; color: var(--ink-800); display: grid; min-width: 0; }
 .bogo__hint-text p { margin: 0; }
-.bogo__hint-text[hidden], .bogo__hint-one[hidden] { display: none; }
+.bogo__hint-one { grid-area: 1 / 1; visibility: hidden; }
+.bogo__hint-one.is-shown { visibility: visible; }
 
 /* CTA */
 .bogo__cta-wrap { display: flex; flex-direction: column; gap: 10px; }
@@ -231,7 +232,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
           <span class="bogo__hint-icon" data-bogo-hint-check hidden>{{ bogo_check }}</span>
           <span class="bogo__hint-text">
             {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
-              <span class="bogo__hint-one" data-hint-id="{{ b.id }}"{% unless b.settings.is_default %} hidden{% endunless %}>{{ b.settings.hint }}</span>
+              <span class="bogo__hint-one{% if b.settings.is_default %} is-shown{% endif %}" data-hint-id="{{ b.id }}">{{ b.settings.hint }}</span>
             {%- endif -%}{%- endfor -%}
           </span>
         </div>
@@ -295,18 +296,13 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-y: scroll; }
     if (hint) {
       var tid = input.getAttribute('data-tier-id');
       var isGreen = (input.getAttribute('data-hint-style') || 'green') === 'green';
-      var activeOne = null;
       hintOnes.forEach(function (o) {
-        var match = o.getAttribute('data-hint-id') === tid;
-        o.hidden = !match;
-        if (match) activeOne = o;
+        o.classList.toggle('is-shown', o.getAttribute('data-hint-id') === tid);
       });
       hint.classList.toggle('bogo__hint--green', isGreen);
       hint.classList.toggle('bogo__hint--lav', !isGreen);
       if (hintCheck) hintCheck.hidden = !isGreen;
       if (hintGift) hintGift.hidden = isGreen;
-      var hasContent = activeOne && activeOne.textContent.trim() !== '';
-      hint.style.display = hasContent ? '' : 'none';
     }
   }
 

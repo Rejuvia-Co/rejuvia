@@ -1,0 +1,382 @@
+{% style %}
+html { scroll-behavior: smooth; }
+.ob-{{ section.id }} {
+  --ob-plum-900: #4a1c4a;
+  --ob-plum-800: #5d215f;
+  --ob-accent: {{ section.settings.accent_color | default: '#672666' }};
+  --ob-ink: #141414;
+  --ob-sub: #3a3a3a;
+  --ob-pernight: #8c8c92;
+  --ob-struck: #b7b7be;
+  --ob-sel-bg: #f4ecf7;
+  --ob-border: #dcdce2;
+  --ob-border-m: #9a679b;
+  --ob-disc-text: #018e1c;
+  --ob-disc-bg: #dcf5df;
+  --ob-divider: #e6e6ea;
+  --ob-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
+  --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-ui: 'Inter', 'Helvetica Neue', Arimo, Arial, sans-serif;
+  background-color: {{ section.settings.section_bg | default: '#ffffff' }};
+  font-family: var(--font-body);
+}
+.ob__card {
+  max-width: 1280px; margin: 0 auto; padding: 56px 60px;
+  background: {{ section.settings.card_bg | default: '#ffffff' }}; border-radius: 18px;
+  box-shadow: 0 8px 28px -10px rgba(0,0,0,0.14);
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas: "gallery header" "gallery buybox";
+  column-gap: 56px; row-gap: 26px; align-items: start;
+}
+.ob__header { grid-area: header; min-width: 0; }
+.ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; display: flex; flex-direction: column; gap: 18px; }
+.ob__buybox { grid-area: buybox; min-width: 0; }
+
+/* Gallery */
+.ob__main { flex: 1; min-height: 420px; display: grid; place-items: center; background: {{ section.settings.image_bg | default: '#ffffff' }}; border-radius: 14px; overflow: hidden; }
+.ob__main img { max-width: 100%; max-height: 480px; width: auto; height: auto; display: block; }
+.ob__thumbs-row { display: flex; align-items: center; gap: 10px; }
+.ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ob-accent); background: #fff; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: background .15s; }
+.ob__arrow:hover { background: #f6eef6; }
+.ob__thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; }
+.ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; }
+.ob__thumb.is-active { border: 2px solid var(--ob-accent); }
+.ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Header */
+.ob__rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ob__stars { display: inline-flex; gap: 0; flex-shrink: 0; }
+.ob__stars svg { width: 20px; height: 20px; display: block; margin: 0 -1px; }
+.ob__rating-text { font-family: var(--font-body); font-size: 18px; font-weight: 400; color: var(--ob-ink); }
+.ob__rating-text strong { font-weight: 700; color: var(--ob-accent); }
+.ob__rating-text p { margin: 0; display: inline; }
+.ob__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 52 }}px; font-weight: 700; line-height: 1.05; letter-spacing: -0.6px; color: var(--ob-ink); margin: 0 0 10px; }
+.ob__subtitle { font-family: var(--font-body); font-size: {{ section.settings.subtitle_size | default: 24 }}px; line-height: 1.35; color: var(--ob-sub); margin: 0; }
+
+/* Offer cards */
+.ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 30px; }
+.ob__tier { position: relative; display: flex; align-items: center; gap: 30px; background: #fff; border: 1.5px solid var(--ob-border); border-radius: 13px; padding: 20px 24px 20px 20px; cursor: pointer; transition: background .15s ease, border-color .15s ease; box-sizing: border-box; }
+.ob__tier.is-selected { border: 2.5px solid var(--ob-accent); background: var(--ob-sel-bg); }
+.ob__tier input { position: absolute; opacity: 0; pointer-events: none; }
+.ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
+.ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
+.ob__tier-img { flex-shrink: 0; width: 112px; height: auto; }
+.ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; letter-spacing: -0.6px; color: var(--ob-accent); line-height: 1.1; }
+.ob__tier-prices { display: flex; align-items: baseline; gap: 13px; flex-wrap: wrap; }
+.ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
+.ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }
+.ob__off { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 4px 11px; white-space: nowrap; }
+.ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
+.ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
+.ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
+.ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
+.ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
+
+/* CTA (pill) */
+.ob__cta-wrap { margin-top: 22px; }
+.ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 23px; letter-spacing: -0.4px; line-height: 1; padding: 24px 36px; border: none; border-radius: 100px; cursor: pointer; transition: background .15s ease, opacity .15s ease; }
+.ob__buy:hover { background: var(--ob-plum-900); }
+.ob__buy:disabled { cursor: default; }
+.ob__spinner { display: none; width: 24px; height: 24px; border: 2.5px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: ob-spin .6s linear infinite; }
+.ob__buy.is-loading { justify-content: center; }
+.ob__buy.is-loading .ob__buy-label, .ob__buy.is-loading svg { display: none; }
+.ob__buy.is-loading .ob__spinner { display: block; }
+@keyframes ob-spin { to { transform: rotate(360deg); } }
+
+.ob__assurances { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
+.ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.ob__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.ob__payments svg { height: 26px; width: auto; }
+
+/* Accordion */
+.ob__tabs { margin-top: 22px; border-bottom: 1px solid var(--ob-divider); }
+.ob__tab { border-top: 1px solid var(--ob-divider); }
+.ob__tab-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 6px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: #161616; line-height: 1.25; }
+.ob__tab-chevron { flex-shrink: 0; width: 20px; height: 20px; color: #161616; transition: transform .22s ease; }
+.ob__tab.is-open .ob__tab-chevron { transform: rotate(180deg); }
+.ob__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.ob__tab.is-open .ob__tab-a { grid-template-rows: 1fr; }
+.ob__tab-a-inner { overflow: hidden; }
+.ob__tab-body { padding: 0 6px 22px; font-family: var(--font-body); font-size: 19px; line-height: 1.55; color: var(--ob-sub); }
+.ob__tab-body p { margin: 0 0 12px; }
+.ob__tab-body p:last-child { margin-bottom: 0; }
+.ob__tab-body strong { color: var(--ob-ink); font-weight: 700; }
+
+@media (max-width: 900px) {
+  .ob__card { display: flex; flex-direction: column; gap: 22px; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
+  .ob__header { order: -1; text-align: center; }
+  .ob__rating { justify-content: center; }
+  .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; }
+  .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; }
+  .ob__main { min-height: 0; }
+  .ob__main img { max-height: 320px; }
+  .ob__arrow { display: none; }
+  .ob__thumb { width: 62px; height: 62px; border-radius: 9px; }
+  .ob__tiers { gap: 18px; margin-top: 0; }
+  .ob__tier { gap: 18px; padding: 15px 16px 15px 14px; border: 1.6px solid var(--ob-border-m); }
+  .ob__tier-img { width: 92px; }
+  .ob__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 21 }}px; }
+  .ob__price { font-size: 24px; }
+  .ob__struck { font-size: 18px; }
+  .ob__off { font-size: 14px; }
+  .ob__ship { font-size: 15px; }
+  .ob__pernight { font-size: 18px; }
+  .ob__tag { font-size: 12px; }
+  .ob__tag--brand { background: #f1e3c7; color: #6b4a16; }
+  .ob__buy { font-size: 20px; padding: 22px 28px; }
+  .ob__tab-q { font-size: 22px; padding: 18px 4px; }
+  .ob__tab-body { font-size: 17px; }
+}
+{% endstyle %}
+
+{%- capture ob_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
+{%- capture ob_chevron -%}<svg class="ob__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
+
+{%- assign gallery_product = section.settings.product -%}
+
+<section class="ob-{{ section.id }}" id="ob-{{ section.id }}">
+  <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
+  <div class="ob__card">
+
+    <div class="ob__header">
+      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
+        <div class="ob__rating">
+          {%- if section.settings.show_stars -%}<span class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="ob__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="ob__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="ob__gallery">
+      {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      <div class="ob__main">
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">{%- endif -%}
+      </div>
+      {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
+        <div class="ob__thumbs-row">
+          <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="ob__thumbs">
+            {%- for img in gallery_product.images -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt=""></button>
+            {%- endfor -%}
+          </div>
+          <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="ob__buybox">
+      <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+          {%- assign vid = b.settings.variant_id | strip -%}
+          {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
+          <label class="ob__tier{% if b.settings.is_default %} is-selected{% endif %}" {{ b.shopify_attributes }}>
+            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" {% if b.settings.is_default %}checked{% endif %}>
+            {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
+            <span class="ob__radio" aria-hidden="true"></span>
+            {%- if b.settings.image != blank -%}
+              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 280 }}" alt="">
+            {%- elsif b.settings.image_asset != blank -%}
+              <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" alt="">
+            {%- endif -%}
+            <span class="ob__tier-body">
+              <span class="ob__tier-title">{{ b.settings.label }}</span>
+              <span class="ob__tier-prices">
+                {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
+                {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
+                {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
+              </span>
+              {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
+              {%- if b.settings.per_night != blank -%}<span class="ob__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
+            </span>
+          </label>
+        {%- endif -%}{%- endfor -%}
+      </div>
+
+      <div class="ob__cta-wrap">
+        <button type="button" class="ob__buy" data-ob-buy>
+          <span class="ob__spinner" aria-hidden="true"></span>
+          <span class="ob__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+
+        {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
+          <div class="ob__assurances">
+            {%- if section.settings.guarantee_text != blank -%}
+              <span class="ob__assurance"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{{ section.settings.guarantee_text }}</span>
+            {%- endif -%}
+            {%- if section.settings.onetime_text != blank -%}
+              <span class="ob__assurance"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5.5 5.5 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3 7C19 16.65 12 21 12 21z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{{ section.settings.onetime_text }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_payment_icons -%}
+          {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+          <div class="ob__payments">
+            {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- assign has_tabs = false -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_tabs -%}
+        <div class="ob__tabs">
+          {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
+            <div class="ob__tab" {{ b.shopify_attributes }}>
+              <button type="button" class="ob__tab-q" aria-expanded="false"><span>{{ b.settings.title }}</span>{{ ob_chevron }}</button>
+              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}</div></div></div>
+            </div>
+          {%- endif -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var sec = document.getElementById('ob-{{ section.id }}');
+  if (!sec) return;
+
+  /* Tier selection */
+  sec.querySelectorAll('.ob__tier input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      sec.querySelectorAll('.ob__tier').forEach(function (t) { t.classList.remove('is-selected'); });
+      input.closest('.ob__tier').classList.add('is-selected');
+    });
+  });
+
+  /* Gallery */
+  var mainImg = sec.querySelector('[data-ob-main]');
+  var thumbs = [].slice.call(sec.querySelectorAll('[data-ob-thumb]'));
+  var idx = 0;
+  thumbs.forEach(function (t, i) { if (t.classList.contains('is-active')) idx = i; });
+  function setImg(i) {
+    if (!thumbs.length) return;
+    idx = (i + thumbs.length) % thumbs.length;
+    var t = thumbs[idx];
+    if (mainImg) mainImg.src = t.getAttribute('data-full');
+    thumbs.forEach(function (x) { x.classList.remove('is-active'); });
+    t.classList.add('is-active');
+  }
+  thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
+  var prev = sec.querySelector('[data-ob-prev]'), next = sec.querySelector('[data-ob-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Accordion — one open at a time */
+  var tabs = sec.querySelectorAll('.ob__tab');
+  sec.querySelectorAll('.ob__tab-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.closest('.ob__tab');
+      var willOpen = !tab.classList.contains('is-open');
+      tabs.forEach(function (t) { t.classList.remove('is-open'); var b = t.querySelector('.ob__tab-q'); if (b) b.setAttribute('aria-expanded', 'false'); });
+      if (willOpen) { tab.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Buy Now -> add selected variant, go to checkout */
+  var buy = sec.querySelector('[data-ob-buy]');
+  if (buy) {
+    window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
+    buy.addEventListener('click', function () {
+      var sel = sec.querySelector('.ob__tier input[type="radio"]:checked');
+      if (!sel || !sel.value) return;
+      var id = parseInt(sel.value, 10);
+      buy.disabled = true; buy.classList.add('is-loading');
+      fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: id, quantity: 1 }] }) }); })
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
+        .catch(function () { window.location.href = '/cart/' + id + ':1'; });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Offer Block",
+  "tag": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "header", "content": "Gallery" },
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
+    { "type": "header", "content": "Header" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>300,000+ customers</strong></p>" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
+    { "type": "text", "id": "onetime_text", "label": "One-time purchase line", "default": "One-Time Purchase (Not a Subscription)" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 28, "max": 64, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 52 },
+    { "type": "range", "id": "title_size_mobile", "min": 22, "max": 48, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 40 },
+    { "type": "range", "id": "subtitle_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Subtitle size (desktop)", "default": 24 },
+    { "type": "range", "id": "subtitle_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size (mobile)", "default": 20 },
+    { "type": "range", "id": "tier_title_size", "min": 16, "max": 34, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 26 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 21 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio)", "default": "#672666" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Offer tier",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product", "info": "Used for the cart variant if no Variant ID is set." },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart for this tier." },
+        { "type": "image_picker", "id": "image", "label": "Bundle image" },
+        { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no Bundle image is picked." },
+        { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 FREE" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$35" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "$70" },
+        { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
+        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
+        { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62 Per Night" },
+        { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
+        { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "brand" },
+        { "type": "checkbox", "id": "is_default", "label": "Selected by default", "default": false }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Block",
+      "category": "Rejuvia",
+      "blocks": [
+        { "type": "tier", "settings": { "variant_id": "46763671027932", "image_asset": "rejuvia-bundle-b1g1.png", "label": "Buy 1, Get 1 FREE", "price": "$35", "compare_price": "$70", "savings_text": "Save $35", "free_shipping": false, "per_night": "$0.62 Per Night", "is_default": false } },
+        { "type": "tier", "settings": { "variant_id": "46763671060700", "image_asset": "rejuvia-bundle-b2g2.png", "label": "Buy 2, Get 2 FREE", "price": "$70", "compare_price": "$140", "savings_text": "SAVE $70", "free_shipping": true, "per_night": "$0.60 Per Night", "tag": "MOST POPULAR", "tag_style": "brand", "is_default": true } },
+        { "type": "tier", "settings": { "variant_id": "46763671093468", "image_asset": "rejuvia-bundle-b3g3.png", "label": "Buy 3, Get 3 FREE", "price": "$105", "compare_price": "$210", "savings_text": "SAVE $105", "free_shipping": true, "per_night": "$0.58 Per Night", "tag": "BEST VALUE", "tag_style": "gold", "is_default": false } },
+        { "type": "tab", "settings": { "title": "90-Day Guarantee", "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong> Just reach out to our support team and we'll take care of it. Try Rejuvia risk-free — if it doesn't work for you, you don't pay.</p>" } },
+        { "type": "tab", "settings": { "title": "Why Rejuvia Works", "content": "<p>Most sleep aids are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p>We also use a low <strong>2mg dose of melatonin</strong> (most gummies pack 5–10mg, the cause of the morning hangover) paired with 12 natural sleep herbs that calm the mind without knocking you out cold.</p>" } },
+        { "type": "tab", "settings": { "title": "Shipping & Returns", "content": "<p>Orders ship within 1 business days, with free shipping on all orders over $69. You'll receive tracking as soon as your order is on its way.</p><p>Not happy? Our 90-day money-back guarantee has you covered. Contact our support team for a full refund or any return assistance.</p>" } },
+        { "type": "tab", "settings": { "title": "Is Rejuvia Safe?", "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds. As always, if you're pregnant, nursing, taking medication, or have a medical condition, check with your healthcare provider first.</p>" } },
+        { "type": "tab", "settings": { "title": "Ingredients", "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>" } },
+        { "type": "tab", "settings": { "title": "Frequently Asked Questions", "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

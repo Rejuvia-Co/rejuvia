@@ -134,6 +134,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__rating,
   .ob-{{ section.id }} .ob__title,
   .ob-{{ section.id }} .ob__subtitle { text-align: center !important; }
+  .ob-{{ section.id }} .ob__rating,
+  .ob-{{ section.id }} .ob__title,
+  .ob-{{ section.id }} .ob__subtitle { align-self: center !important; max-width: 100%; }
   .ob-{{ section.id }} .ob__rating { justify-content: center !important; }
   .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; }
   .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; }

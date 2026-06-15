@@ -130,6 +130,8 @@
     flex: 1 1 auto;
     max-width: 100%;
   }
+  .listicle-hero__media-inner { aspect-ratio: 4 / 3; }
+  .listicle-hero__media img { height: 100%; object-fit: cover; object-position: 50% 30%; }
   .listicle-hero__title { font-size: {{ section.settings.heading_size | default: 52 | times: 0.65 | round }}px; margin-bottom: 16px; }
   .listicle-hero__text { font-size: {{ section.settings.text_size | default: 19 | times: 0.9 | round }}px; margin-bottom: 22px; }
   .listicle-hero__btn { max-width: 100%; padding: 18px 24px; }

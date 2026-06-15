@@ -123,6 +123,7 @@
         "tab_MtCWCt",
         "tab_QtT6wh"
       ],
+      "disabled": true,
       "name": "BOGO Offer",
       "settings": {
         "product": "sleep-spray-30-nights",
@@ -258,14 +259,13 @@
         "tab_7c8d3h",
         "tab_aTHNXH"
       ],
-      "disabled": true,
       "name": "Offer Block",
       "settings": {
         "product": "sleep-spray",
         "image_bg": "#ffffff",
         "sticky_offset": 24,
         "show_stars": true,
-        "stars_color": "#EAC78B",
+        "stars_color": "#eac78b",
         "rating_text": "<p><strong>300,000+</strong> Happy Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Fall Asleep in Minutes. Sleep The Full Night.",

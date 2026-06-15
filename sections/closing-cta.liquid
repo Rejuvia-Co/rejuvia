@@ -6,11 +6,11 @@ html { scroll-behavior: smooth; }
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 33px 22px; }
+.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 56px 64px; }
 .cta-{{ section.id }} .cta__card {
-  max-width: 1240px; margin: 0 auto;
+  max-width: 1312px; margin: 0 auto;
   border-radius: 26px; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 1.05fr; min-height: 550px;
+  display: grid; grid-template-columns: 1fr 1.05fr;
   background: var(--cta-lav);
 }
 .cta-{{ section.id }} .cta__panel {
@@ -44,15 +44,13 @@ html { scroll-behavior: smooth; }
   align-self: flex-start;
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--cta-accent); color: #fff;
-  font-weight: 700; font-size: 18px; letter-spacing: -0.4px; line-height: 1;
-  padding: 22px 36px; border: none; border-radius: 100px; text-decoration: none; cursor: pointer;
-  box-shadow: 0 14px 30px -14px rgba(95,42,99,.7);
-  transition: background .15s cubic-bezier(.22,1,.36,1), transform .15s cubic-bezier(.22,1,.36,1);
+  font-weight: 500; font-size: 18px; letter-spacing: 0; line-height: 1.4;
+  padding: 20px 44px; border: none; border-radius: 100px; text-decoration: none; cursor: pointer;
+  transition: opacity 0.25s ease;
 }
-.cta-{{ section.id }} .cta__btn:hover { background: {{ section.settings.button_hover | default: '#6f3473' }}; color: #fff; }
-.cta-{{ section.id }} .cta__btn:active { transform: scale(.98); }
+.cta-{{ section.id }} .cta__btn:hover { opacity: 0.9; color: #fff; }
 
-.cta-{{ section.id }} .cta__photo { position: relative; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
+.cta-{{ section.id }} .cta__photo { position: relative; height: 500px; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
 .cta-{{ section.id }} .cta__seam { position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(90deg, var(--cta-lav) 0%, var(--cta-lav) 5%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 30%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 62%); }
 
@@ -97,7 +95,7 @@ html { scroll-behavior: smooth; }
         {%- endif -%}
 
         {%- if section.settings.button_text != blank -%}
-          <a class="cta__btn" href="{{ section.settings.button_link | default: '#offer' }}">{{ section.settings.button_text }}</a>
+          <a class="cta__btn" href="{{ section.settings.button_link | default: '#offer' }}" data-cta-scroll="{{ section.settings.scroll_target }}">{{ section.settings.button_text }}</a>
         {%- endif -%}
       </div>
 
@@ -107,6 +105,24 @@ html { scroll-behavior: smooth; }
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var sec = document.querySelector('.cta-{{ section.id }}');
+  if (!sec) return;
+  var btn = sec.querySelector('[data-cta-scroll]');
+  if (!btn) return;
+  btn.addEventListener('click', function (e) {
+    var sel = btn.getAttribute('data-cta-scroll');
+    if (!sel) return;
+    var target = document.querySelector(sel);
+    if (!target) return; /* fall back to the href */
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+})();
+</script>
 
 {% schema %}
 {
@@ -124,7 +140,8 @@ html { scroll-behavior: smooth; }
     { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#5F2A63" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
-    { "type": "url", "id": "button_link", "label": "Button link", "info": "Defaults to #offer (scrolls to the offer section on the page)." },
+    { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "default": ".product-widget-container", "info": "On click, smooth-scrolls to this selector (e.g. .product-widget-container). Falls back to Button link if not found on the page." },
+    { "type": "url", "id": "button_link", "label": "Button link (fallback)", "info": "Used if the scroll target isn't on the page. Defaults to #offer." },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "frame_bg", "label": "Section background (desktop)", "default": "#FFFFFF" },
     { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#E7E0F4" },

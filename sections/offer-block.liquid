@@ -38,7 +38,7 @@ html { scroll-behavior: smooth; }
   column-gap: 56px; row-gap: 26px; align-items: start;
 }
 .ob__header { grid-area: header; min-width: 0; }
-.ob__gallery { grid-area: gallery; min-width: 0; align-self: start; position: sticky; top: 24px; display: flex; flex-direction: column; gap: 16px; }
+.ob__gallery { grid-area: gallery; min-width: 0; align-self: start; position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
 .ob__buybox { grid-area: buybox; min-width: 0; }
 
 /* Gallery */
@@ -332,6 +332,7 @@ html { scroll-behavior: smooth; }
     { "type": "header", "content": "Gallery" },
     { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
     { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
+    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Gallery sticky offset (desktop)", "info": "Increase to clear a sticky header/bar (e.g. ~80 on the listicle page).", "default": 24 },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
     { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },

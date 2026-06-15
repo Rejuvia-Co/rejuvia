@@ -11,7 +11,6 @@
   "sections": {
     "hero": {
       "type": "listicle-hero",
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/howtouse1_6d722aeb-ff96-4856-bfe3-5f865c2b3e45.webp",
         "show_stars": true,
@@ -21,8 +20,8 @@
         "button_text": "Try Rejuvia Now",
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
-        "heading_size": 52,
-        "text_size": 19,
+        "heading_size": 48,
+        "text_size": 18,
         "bg_color": "#ffffff",
         "image_bg_color": "#f8e9ee",
         "accent_color": "#672666",
@@ -80,10 +79,9 @@
         "r4",
         "r5"
       ],
-      "disabled": true,
       "settings": {
-        "title_size": 32,
-        "body_size": 16,
+        "title_size": 36,
+        "body_size": 18,
         "bg_color": "#ffffff",
         "badge_color": "#eac78b",
         "badge_text_color": "#141414"
@@ -309,6 +307,7 @@
         "description": "<p>Fall asleep faster, sleep through the full night and wake up feeling refreshed. Naturally mint-flavored, safe and natural.</p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
+        "hide_per_night": true,
         "trust_text": "90-Day Money-Back Guarantee",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
@@ -325,10 +324,6 @@
     },
     "faq_center": {
       "type": "faq-center",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "eyebrow": ""
-      },
       "blocks": {
         "faq_0": {
           "type": "faq",
@@ -396,11 +391,26 @@
         "faq_5",
         "faq_6",
         "faq_7"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "question_size": 18,
+        "answer_size": 16,
+        "max_width": 960,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "title_color": "#141414",
+        "answer_color": "#5c5c5c"
+      }
     },
     "closing_cta": {
       "type": "closing-cta",
-      "settings": {},
       "blocks": {
         "cta_0": {
           "type": "point",
@@ -425,7 +435,21 @@
         "cta_0",
         "cta_1",
         "cta_2"
-      ]
+      ],
+      "settings": {
+        "show_stars": true,
+        "stars_color": "#eac78b",
+        "rating_text": "<p>Backed by <strong>300,000+ customers</strong></p>",
+        "rating_color": "#141414",
+        "heading": "<p>Better sleep is a spray away.</p>",
+        "heading_color": "#141414",
+        "button_text": "Try Rejuvia Risk-Free",
+        "scroll_target": ".product-widget-container",
+        "button_link": "",
+        "frame_bg": "#e7e0f4",
+        "panel_bg": "#ffffff",
+        "checklist_color": "#141414"
+      }
     }
   },
   "order": [

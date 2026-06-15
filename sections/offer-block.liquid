@@ -47,7 +47,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   grid-template-areas: "gallery header" "gallery buybox";
   column-gap: 56px; row-gap: 16px; align-items: start;
 }
-.ob__header { grid-area: header; min-width: 0; text-align: center; }
+.ob__header { grid-area: header; min-width: 0; text-align: left; }
 .ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
 .ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
 .ob__buybox { grid-area: buybox; min-width: 0; }
@@ -67,7 +67,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Header */
-.ob__rating { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ob__rating { display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .ob__stars { display: inline-flex; gap: 0; flex-shrink: 0; }
 .ob__stars svg { width: {{ section.settings.stars_size | default: 20 }}px; height: {{ section.settings.stars_size | default: 20 }}px; display: block; margin: 0 -1px; }
 .ob__rating-text { font-family: var(--font-body); font-size: {{ section.settings.rating_text_size | default: 18 }}px; font-weight: 400; color: var(--ob-ink); }
@@ -354,10 +354,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     });
   }
 
-  /* Hide the sticky CTA bar whenever this offer block (incl. accordion) is in the viewport */
+  /* Hide the sticky CTA bar whenever this offer block (incl. accordion) is in the viewport.
+     The bar is position:fixed and its own JS toggles .is-visible on scroll, so we force
+     display:none with !important directly on the element (beats its own styles). */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      document.body.classList.toggle('ob-offer-visible', entries[0].isIntersecting);
+      var vis = entries[0].isIntersecting;
+      document.body.classList.toggle('ob-offer-visible', vis);
+      document.querySelectorAll('.sticky-cta-v2-section').forEach(function (el) {
+        if (vis) { el.style.setProperty('display', 'none', 'important'); }
+        else { el.style.removeProperty('display'); }
+      });
     }, { threshold: 0 });
     io.observe(sec);
   }

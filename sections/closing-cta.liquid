@@ -1,7 +1,7 @@
 {% style %}
 html { scroll-behavior: smooth; }
 .cta-{{ section.id }} {
-  --cta-accent: {{ section.settings.accent_color | default: '#5F2A63' }};
+  --cta-accent: #672666;
   --cta-lav: {{ section.settings.panel_bg | default: '#FFFFFF' }};
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__rating { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
 .cta-{{ section.id }} .cta__stars { display: inline-flex; gap: 2px; flex-shrink: 0; }
 .cta-{{ section.id }} .cta__stars svg { width: 19.2px; height: 18px; display: block; }
-.cta-{{ section.id }} .cta__rating-text { font-size: 18px; line-height: 1.4; color: #141414; white-space: nowrap; }
+.cta-{{ section.id }} .cta__rating-text { font-size: 18px; line-height: 1.4; color: {{ section.settings.rating_color | default: '#141414' }}; white-space: nowrap; }
 .cta-{{ section.id }} .cta__rating-text p { margin: 0; display: inline; }
 .cta-{{ section.id }} .cta__rating-text strong { font-weight: 700; color: var(--cta-accent); }
 
@@ -38,7 +38,7 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__point { display: flex; align-items: center; gap: 10px; }
 .cta-{{ section.id }} .cta__check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cta-accent); display: grid; place-items: center; }
 .cta-{{ section.id }} .cta__check svg { width: 13px; height: 13px; }
-.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: {{ section.settings.heading_color | default: '#141414' }}; }
+.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: {{ section.settings.checklist_color | default: '#141414' }}; }
 
 .cta-{{ section.id }} .cta__btn {
   align-self: flex-start;
@@ -134,10 +134,11 @@ html { scroll-behavior: smooth; }
     { "type": "header", "content": "Review bar" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
     { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
-    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color (like Hero V2).", "default": "<p>Backed by <strong>300,000+ customers</strong></p>" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in brand purple (like Hero V2).", "default": "<p>Backed by <strong>300,000+ customers</strong></p>" },
+    { "type": "color", "id": "rating_color", "label": "Review bar text color", "default": "#141414" },
     { "type": "header", "content": "Headline" },
     { "type": "richtext", "id": "heading", "label": "Headline", "default": "<p>Better sleep is a spray away.</p>" },
-    { "type": "color", "id": "heading_color", "label": "Text color (headline & checklist)", "default": "#141414" },
+    { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#141414" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
     { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "default": ".product-widget-container", "info": "On click, smooth-scrolls to this selector (e.g. .product-widget-container). Falls back to Button link if not found on the page." },
@@ -145,8 +146,7 @@ html { scroll-behavior: smooth; }
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "frame_bg", "label": "Section background", "default": "#E7E0F4" },
     { "type": "color", "id": "panel_bg", "label": "Card background (behind text)", "default": "#FFFFFF" },
-    { "type": "color", "id": "accent_color", "label": "Accent (button, check circle, bold)", "default": "#5F2A63" },
-    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#6f3473" }
+    { "type": "color", "id": "checklist_color", "label": "Checklist text color", "default": "#141414" }
   ],
   "blocks": [
     {

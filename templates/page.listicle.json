@@ -12,14 +12,15 @@
     "listicle_sticky_bar": {
       "type": "listicle-sticky-bar",
       "settings": {
+        "logo": "shopify://shop_images/Logo_1.svg",
         "logo_text": "REJUVIA",
         "logo_link": "",
-        "offer_text": "<p><strong>BOGO FREE</strong> - $0.58/night</p>",
+        "offer_text": "<p><strong>Buy One, Get One 100% FREE</strong></p>",
         "button_text": "Get Offer",
         "button_link": "",
         "hide_store_header": true,
-        "offer_size_mobile": 13,
-        "bg_color": "#ffffff",
+        "offer_size_mobile": 16,
+        "bg_color": "#F8F4F7",
         "accent_color": "#672666"
       }
     },
@@ -485,12 +486,12 @@
       ],
       "name": "Alternatives V2",
       "settings": {
-        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to common sleep aids</p>",
+        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to sleeping pills and melatonin gummies</p>",
         "icon_size": 90,
         "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
         "rejuvia_logo": "shopify://shop_images/Logo.svg",
         "btn_text": "Try Rejuvia Risk-Free",
-        "btn_url": "",
+        "btn_url": "#offer",
         "guarantee_text": "90-Day Money-Back Guarantee"
       }
     },

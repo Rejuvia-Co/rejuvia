@@ -38,7 +38,8 @@ html { scroll-behavior: smooth; }
   column-gap: 56px; row-gap: 26px; align-items: start;
 }
 .ob__header { grid-area: header; min-width: 0; }
-.ob__gallery { grid-area: gallery; min-width: 0; align-self: start; position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
+.ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
+.ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
 .ob__buybox { grid-area: buybox; min-width: 0; }
 
 /* Gallery */
@@ -70,7 +71,8 @@ html { scroll-behavior: smooth; }
 .ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
 .ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
 .ob__tier-img { flex-shrink: 0; width: 112px; height: auto; }
-.ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 11px; }
+.ob__tier-prices { margin: 1px 0; }
 .ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; color: var(--ob-accent); line-height: 1.1; white-space: nowrap; }
 .ob__tier-prices { display: flex; align-items: baseline; gap: 13px; flex-wrap: wrap; }
 .ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
@@ -94,7 +96,8 @@ html { scroll-behavior: smooth; }
 @keyframes ob-spin { to { transform: rotate(360deg); } }
 
 .ob__assurances { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
-.ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.ob__assurance svg { width: 17px; height: 17px; flex-shrink: 0; }
 .ob__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 .ob__payments svg { height: 26px; width: auto; }
 
@@ -118,6 +121,7 @@ html { scroll-behavior: smooth; }
   .ob__rating { justify-content: center; }
   .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; }
   .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; }
+  .ob__gallery-inner { position: static; }
   .ob__main { min-height: 0; }
   .ob__main img { max-height: 320px; }
   .ob__arrow { display: none; }
@@ -161,6 +165,7 @@ html { scroll-behavior: smooth; }
 
     <div class="ob__gallery">
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      <div class="ob__gallery-inner">
       <div class="ob__main">
         {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">{%- endif -%}
       </div>
@@ -175,6 +180,7 @@ html { scroll-behavior: smooth; }
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
       {%- endif -%}
+      </div>
     </div>
 
     <div class="ob__buybox">

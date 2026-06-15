@@ -167,8 +167,7 @@
             "free_shipping": false,
             "per_night": "$0.62 Per Night",
             "tag": "",
-            "tag_style": "brand",
-            "is_default": true
+            "tag_style": "brand"
           }
         },
         "tier_8en7iz": {
@@ -184,8 +183,7 @@
             "free_shipping": true,
             "per_night": "$0.60 Per Night",
             "tag": "MOST POPULAR",
-            "tag_style": "brand",
-            "is_default": false
+            "tag_style": "brand"
           }
         },
         "tier_T7JQdb": {
@@ -201,8 +199,7 @@
             "free_shipping": true,
             "per_night": "$0.58 Per Night",
             "tag": "BEST VALUE",
-            "tag_style": "gold",
-            "is_default": false
+            "tag_style": "gold"
           }
         },
         "tab_kAdU4M": {
@@ -266,9 +263,12 @@
         "sticky_offset": 24,
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p><strong>300,000+</strong> Happy Customers</p>",
+        "stars_size": 16,
+        "rating_text_size": 16,
+        "rating_text": "<p><strong>Trusted By 300,000+</strong>  Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Fall Asleep in Minutes. Sleep The Full Night.",
+        "default_tier": 1,
         "button_text": "Claim Free Sprays Now",
         "guarantee_text": "90-Day Money Back Guarantee",
         "onetime_text": "One-Time Purchase (Not a Subscription)",

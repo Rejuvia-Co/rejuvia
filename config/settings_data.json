@@ -2919,11 +2919,12 @@
           "stars_color": "#eac78b",
           "rating_text": "<p><strong>Trusted By 300,000+ Customers</strong></p>",
           "heading": "<p>Better sleep is now just a spray away</p>",
-          "heading_color": "#5f2a63",
+          "heading_color": "#000000",
           "button_text": "Try Rejuvia Risk-Free",
+          "scroll_target": ".product-widget-container",
           "button_link": "#offer",
-          "frame_bg": "#ffffff",
-          "panel_bg": "#e7e0f4",
+          "frame_bg": "#E7E0F4",
+          "panel_bg": "#FFFFFF",
           "accent_color": "#5f2a63",
           "button_hover": "#6f3473"
         }

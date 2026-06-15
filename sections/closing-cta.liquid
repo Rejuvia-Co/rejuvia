@@ -2,11 +2,11 @@
 html { scroll-behavior: smooth; }
 .cta-{{ section.id }} {
   --cta-accent: {{ section.settings.accent_color | default: '#5F2A63' }};
-  --cta-lav: {{ section.settings.panel_bg | default: '#E7E0F4' }};
+  --cta-lav: {{ section.settings.panel_bg | default: '#FFFFFF' }};
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 56px 64px; }
+.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 56px 64px; }
 .cta-{{ section.id }} .cta__card {
   max-width: 1312px; margin: 0 auto;
   border-radius: 26px; overflow: hidden;
@@ -29,16 +29,16 @@ html { scroll-behavior: smooth; }
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 40px; line-height: 1.4; letter-spacing: 0;
-  color: {{ section.settings.heading_color | default: '#5F2A63' }};
+  color: {{ section.settings.heading_color | default: '#141414' }};
   margin: 0;
 }
 .cta-{{ section.id }} .cta__title p { margin: 0; }
 
 .cta-{{ section.id }} .cta__checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
 .cta-{{ section.id }} .cta__point { display: flex; align-items: center; gap: 10px; }
-.cta-{{ section.id }} .cta__check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cta-gold); display: grid; place-items: center; }
+.cta-{{ section.id }} .cta__check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cta-accent); display: grid; place-items: center; }
 .cta-{{ section.id }} .cta__check svg { width: 13px; height: 13px; }
-.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: var(--cta-accent); }
+.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: {{ section.settings.heading_color | default: '#141414' }}; }
 
 .cta-{{ section.id }} .cta__btn {
   align-self: flex-start;
@@ -55,8 +55,8 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(90deg, var(--cta-lav) 0%, var(--cta-lav) 5%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 30%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 62%); }
 
 @media (max-width: 767px) {
-  .cta-{{ section.id }} .cta__frame { background: var(--cta-lav); padding: 0; }
-  .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 0; min-height: 0; }
+  .cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 16px; }
+  .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 20px; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
   .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 30px; letter-spacing: 0; }
   .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
@@ -87,7 +87,7 @@ html { scroll-behavior: smooth; }
           <ul class="cta__checklist">
             {%- for block in section.blocks -%}{%- if block.type == 'point' -%}
               <li class="cta__point" {{ block.shopify_attributes }}>
-                <span class="cta__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.accent_color | default: '#5F2A63' }}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="cta__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 <span class="cta__point-label">{{ block.settings.text }}</span>
               </li>
             {%- endif -%}{%- endfor -%}
@@ -137,15 +137,15 @@ html { scroll-behavior: smooth; }
     { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color (like Hero V2).", "default": "<p>Backed by <strong>300,000+ customers</strong></p>" },
     { "type": "header", "content": "Headline" },
     { "type": "richtext", "id": "heading", "label": "Headline", "default": "<p>Better sleep is a spray away.</p>" },
-    { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#5F2A63" },
+    { "type": "color", "id": "heading_color", "label": "Text color (headline & checklist)", "default": "#141414" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
     { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "default": ".product-widget-container", "info": "On click, smooth-scrolls to this selector (e.g. .product-widget-container). Falls back to Button link if not found on the page." },
     { "type": "url", "id": "button_link", "label": "Button link (fallback)", "info": "Used if the scroll target isn't on the page. Defaults to #offer." },
     { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "frame_bg", "label": "Section background (desktop)", "default": "#FFFFFF" },
-    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#E7E0F4" },
-    { "type": "color", "id": "accent_color", "label": "Accent (button, checks, bold)", "default": "#5F2A63" },
+    { "type": "color", "id": "frame_bg", "label": "Section background", "default": "#E7E0F4" },
+    { "type": "color", "id": "panel_bg", "label": "Card background (behind text)", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, check circle, bold)", "default": "#5F2A63" },
     { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#6f3473" }
   ],
   "blocks": [

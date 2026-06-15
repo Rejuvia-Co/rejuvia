@@ -79,7 +79,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* Offer cards */
 .ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 0; }
 .ob__tier { position: relative; display: flex; align-items: center; gap: 28px; background: #fff; border: 1.5px solid var(--ob-border); border-radius: 13px; padding: 28px 30px; cursor: pointer; transition: background .15s ease, border-color .15s ease; box-sizing: border-box; }
-.ob__tier.is-selected { border: 2.5px solid var(--ob-accent); background: var(--ob-sel-bg); }
+.ob__tier.is-selected { border-color: var(--ob-accent); box-shadow: inset 0 0 0 1.5px var(--ob-accent); background: var(--ob-sel-bg); }
 .ob__tier input { position: absolute; opacity: 0; pointer-events: none; }
 .ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
 .ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }

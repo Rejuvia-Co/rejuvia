@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "listicle_sticky_bar": {
+      "type": "listicle-sticky-bar",
+      "settings": {
+        "logo_text": "REJUVIA",
+        "logo_link": "",
+        "offer_text": "<p><strong>BOGO FREE</strong> - $0.58/night</p>",
+        "button_text": "Get Offer",
+        "button_link": "",
+        "hide_store_header": true,
+        "offer_size_mobile": 13,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666"
+      }
+    },
     "hero": {
       "type": "listicle-hero",
       "settings": {
@@ -26,6 +40,21 @@
         "image_bg_color": "#f8e9ee",
         "accent_color": "#672666",
         "stars_color": "#eac78b"
+      }
+    },
+    "press_logos_P9wbz8": {
+      "type": "press-logos",
+      "name": "Press Logos",
+      "settings": {
+        "hero_heading": "\"Rejuvia works as advertised. It's highly effective, safe and natural.\"",
+        "image-1": "shopify://shop_images/forbes_rejuvia_logo.png",
+        "scale_image_1": false,
+        "image-2": "shopify://shop_images/rejuvia_healthline_logo.png",
+        "image-3": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+        "image-4": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+        "scale_down_image_4": false,
+        "image-5": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+        "image-6": "shopify://shop_images/rejuvia_fabfitfun.png"
       }
     },
     "listicle_blocks": {
@@ -338,6 +367,133 @@
       ],
       "settings": {}
     },
+    "alternatives_v2": {
+      "type": "alternatives-v2",
+      "blocks": {
+        "row_W3VDNd": {
+          "type": "row",
+          "settings": {
+            "label": "Fast-absorbing formula",
+            "rejuvia_value": "Rapid",
+            "rejuvia_sub": "(5-10 minutes)",
+            "rejuvia_color": "",
+            "rejuvia_bold": true
+          }
+        },
+        "row_CNKThp": {
+          "type": "row",
+          "settings": {
+            "label": "Low price per use",
+            "rejuvia_value": "$0.89/night",
+            "rejuvia_sub": "",
+            "rejuvia_color": "alt-v2-cell--green",
+            "rejuvia_bold": false
+          }
+        },
+        "row_Yn47Jt": {
+          "type": "row",
+          "settings": {
+            "label": "Proven natural ingredients",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_7YLxPG": {
+          "type": "row",
+          "settings": {
+            "label": "Non-habit forming",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_Ypibx8": {
+          "type": "row",
+          "settings": {
+            "label": "No groggy mornings",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_DegNKB": {
+          "type": "row",
+          "settings": {
+            "label": "Tastes great",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "row_DeYr8K": {
+          "type": "row",
+          "settings": {
+            "label": "Free from additives & fillers",
+            "rejuvia_value": "check",
+            "rejuvia_sub": "",
+            "rejuvia_color": "",
+            "rejuvia_bold": false
+          }
+        },
+        "competitor_haEqjD": {
+          "type": "competitor",
+          "settings": {
+            "name": "Sleep Pills",
+            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
+            "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
+            "colors": "|alt-v2-cell--red|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        },
+        "competitor_qgWqrH": {
+          "type": "competitor",
+          "settings": {
+            "name": "Sleep Gummies",
+            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
+            "values": "Slow|$1.83/night|check|check|cross|cross|cross",
+            "colors": "|alt-v2-cell--orange|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        },
+        "competitor_dbeaPU": {
+          "type": "competitor",
+          "settings": {
+            "name": "Melatonin Supplements",
+            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
+            "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
+            "colors": "|alt-v2-cell--orange|||||",
+            "subs": "(up to 90 minutes)||||||"
+          }
+        }
+      },
+      "block_order": [
+        "row_W3VDNd",
+        "row_CNKThp",
+        "row_Yn47Jt",
+        "row_7YLxPG",
+        "row_Ypibx8",
+        "row_DegNKB",
+        "row_DeYr8K",
+        "competitor_haEqjD",
+        "competitor_qgWqrH",
+        "competitor_dbeaPU"
+      ],
+      "name": "Alternatives V2",
+      "settings": {
+        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to common sleep aids</p>",
+        "icon_size": 90,
+        "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
+        "rejuvia_logo": "shopify://shop_images/Logo.svg",
+        "btn_text": "Try Rejuvia Risk-Free",
+        "btn_url": "",
+        "guarantee_text": "90-Day Money-Back Guarantee"
+      }
+    },
     "faq_center": {
       "type": "faq-center",
       "blocks": {
@@ -467,144 +623,12 @@
         "panel_bg": "#ffffff",
         "checklist_color": "#141414"
       }
-    },
-    "listicle_sticky_bar": {
-      "type": "listicle-sticky-bar",
-      "settings": {
-        "hide_store_header": true
-      }
-    },
-    "alternatives_v2": {
-      "type": "alternatives-v2",
-      "blocks": {
-        "row_W3VDNd": {
-          "type": "row",
-          "settings": {
-            "label": "Fast-absorbing formula",
-            "rejuvia_value": "Rapid",
-            "rejuvia_sub": "(5-10 minutes)",
-            "rejuvia_color": "",
-            "rejuvia_bold": true
-          }
-        },
-        "row_CNKThp": {
-          "type": "row",
-          "settings": {
-            "label": "Low price per use",
-            "rejuvia_value": "$0.89/night",
-            "rejuvia_sub": "",
-            "rejuvia_color": "alt-v2-cell--green",
-            "rejuvia_bold": false
-          }
-        },
-        "row_Yn47Jt": {
-          "type": "row",
-          "settings": {
-            "label": "Proven natural ingredients",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_7YLxPG": {
-          "type": "row",
-          "settings": {
-            "label": "Non-habit forming",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_Ypibx8": {
-          "type": "row",
-          "settings": {
-            "label": "No groggy mornings",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_DegNKB": {
-          "type": "row",
-          "settings": {
-            "label": "Tastes great",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_DeYr8K": {
-          "type": "row",
-          "settings": {
-            "label": "Free from additives & fillers",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "competitor_haEqjD": {
-          "type": "competitor",
-          "settings": {
-            "name": "Sleep Pills",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
-            "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
-            "colors": "|alt-v2-cell--red|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        },
-        "competitor_qgWqrH": {
-          "type": "competitor",
-          "settings": {
-            "name": "Sleep Gummies",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
-            "values": "Slow|$1.83/night|check|check|cross|cross|cross",
-            "colors": "|alt-v2-cell--orange|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        },
-        "competitor_dbeaPU": {
-          "type": "competitor",
-          "settings": {
-            "name": "Melatonin Supplements",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
-            "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
-            "colors": "|alt-v2-cell--orange|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        }
-      },
-      "block_order": [
-        "row_W3VDNd",
-        "row_CNKThp",
-        "row_Yn47Jt",
-        "row_7YLxPG",
-        "row_Ypibx8",
-        "row_DegNKB",
-        "row_DeYr8K",
-        "competitor_haEqjD",
-        "competitor_qgWqrH",
-        "competitor_dbeaPU"
-      ],
-      "name": "Alternatives V2",
-      "settings": {
-        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to common sleep aids</p>",
-        "icon_size": 90,
-        "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
-        "rejuvia_logo": "shopify://shop_images/Logo.svg",
-        "btn_text": "Try Rejuvia Risk-Free",
-        "btn_url": "",
-        "guarantee_text": "90-Day Money-Back Guarantee"
-      }
     }
   },
   "order": [
     "listicle_sticky_bar",
     "hero",
+    "press_logos_P9wbz8",
     "listicle_blocks",
     "video_testimonials",
     "bogo_offer",

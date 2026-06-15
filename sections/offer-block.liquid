@@ -1,5 +1,12 @@
 {% style %}
 html { scroll-behavior: smooth; }
+/* Desktop sticky gallery: the theme's .content-wrapper has overflow:hidden,
+   which breaks position:sticky. Switch the ancestor to clip + visible when
+   this section is present (mirrors the bogo-offer fix). */
+@media (min-width: 901px) {
+  main:has(.ob-{{ section.id }}), .content-wrapper:has(.ob-{{ section.id }}) { overflow-x: clip; overflow-y: visible; }
+  #shopify-section-{{ section.id }} { overflow-x: clip; overflow-y: visible; }
+}
 .ob-{{ section.id }} {
   --ob-plum-900: #4a1c4a;
   --ob-plum-800: #5d215f;

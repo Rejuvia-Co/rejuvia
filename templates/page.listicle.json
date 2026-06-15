@@ -322,6 +322,22 @@
         "stars_color": "#eac78b"
       }
     },
+    "17815436809f47f8ea": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_aTRVrA": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_aTRVrA"
+      ],
+      "settings": {}
+    },
     "faq_center": {
       "type": "faq-center",
       "blocks": {
@@ -415,7 +431,7 @@
         "cta_0": {
           "type": "point",
           "settings": {
-            "text": "30-day money-back guarantee"
+            "text": "90-day money-back guarantee"
           }
         },
         "cta_1": {
@@ -437,11 +453,12 @@
         "cta_2"
       ],
       "settings": {
+        "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p>Backed by <strong>300,000+ customers</strong></p>",
+        "rating_text": "<p>300,000+ Customers</p>",
         "rating_color": "#141414",
-        "heading": "<p>Better sleep is a spray away.</p>",
+        "heading": "<p>Better Sleep Is Now a Spray Away</p>",
         "heading_color": "#141414",
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": ".product-widget-container",
@@ -450,22 +467,6 @@
         "panel_bg": "#ffffff",
         "checklist_color": "#141414"
       }
-    },
-    "17815436809f47f8ea": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_aTRVrA": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_aTRVrA"
-      ],
-      "settings": {}
     }
   },
   "order": [

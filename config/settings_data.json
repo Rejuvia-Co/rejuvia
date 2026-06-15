@@ -1886,8 +1886,7 @@
         "settings": {
           "bg_color": "#ffffff",
           "accent_color": "#672666",
-          "rating_score": "4.6",
-          "rating_sold": "1.3M Sleep Sprays",
+          "rating_text": "<p>Trusted By <strong>300,000+</strong> Customers</p>",
           "heading": "<p>You can't sleep, <em>Rejuvia</em> changes that tonight</p>",
           "description": "Fall asleep faster, sleep through the night and wake up feeling energized with Rejuvia. Trusted and used by over 300,000 deep-sleeping customers.",
           "btn_text": "Try Rejuvia Risk-Free",
@@ -2885,6 +2884,49 @@
           "btn_url": "#top",
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
         }
+      },
+      "closing_cta_aQ8yAn": {
+        "type": "closing-cta",
+        "blocks": {
+          "point_TtE798": {
+            "type": "point",
+            "settings": {
+              "text": "90-day money-back guarantee"
+            }
+          },
+          "point_DD9chB": {
+            "type": "point",
+            "settings": {
+              "text": "Clinically studied ingredients"
+            }
+          },
+          "point_Rn4rU8": {
+            "type": "point",
+            "settings": {
+              "text": "Made in the USA · cGMP certified"
+            }
+          }
+        },
+        "block_order": [
+          "point_TtE798",
+          "point_DD9chB",
+          "point_Rn4rU8"
+        ],
+        "name": "Closing CTA",
+        "settings": {
+          "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
+          "show_stars": true,
+          "stars_color": "#eac78b",
+          "rating_text": "<p><strong>300,000+ Customers</strong></p>",
+          "heading": "<p>Better sleep is a spray away</p>",
+          "heading_color": "#5f2a63",
+          "button_text": "Try Rejuvia Risk-Free",
+          "button_link": "#offer",
+          "frame_bg": "#ffffff",
+          "panel_bg": "#e7e0f4",
+          "accent_color": "#5f2a63",
+          "button_hover": "#6f3473"
+        }
       }
     },
     "content_for_index": [
@@ -2902,6 +2944,7 @@
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
       "faqs_v2_BYWkfd",
+      "closing_cta_aQ8yAn",
       "sticky_cta_v2_wacfBP"
     ],
     "blocks": {

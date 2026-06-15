@@ -24,7 +24,8 @@
             "per_night": "$0.96/night",
             "savings_text": "",
             "free_shipping": false,
-            "qualifies": false,
+            "hint": "<p>Upgrade to the next tier to unlock free sprays and free shipping</p>",
+            "hint_style": "lavender",
             "tag": "",
             "tag_style": "brand",
             "is_default": true
@@ -41,8 +42,9 @@
             "compare_price": "$87",
             "per_night": "$0.64/night",
             "savings_text": "SAVE $29",
-            "free_shipping": true,
-            "qualifies": true,
+            "free_shipping": false,
+            "hint": "<p>You've unlocked 1 free sleep spray</p>",
+            "hint_style": "green",
             "tag": "MOST POPULAR",
             "tag_style": "brand",
             "is_default": false
@@ -60,29 +62,77 @@
             "per_night": "$0.58/night",
             "savings_text": "SAVE $58",
             "free_shipping": true,
-            "qualifies": true,
+            "hint": "<p>You've unlocked 2 free sleep sprays and free shipping</p>",
+            "hint_style": "green",
             "tag": "BEST VALUE",
             "tag_style": "gold",
             "is_default": false
+          }
+        },
+        "tab_Uf8NbR": {
+          "type": "tab",
+          "settings": {
+            "title": "90-Day Guarantee",
+            "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong> Just reach out to our support team and we'll take care of it. Try Rejuvia risk-free — if it doesn't work for you, you don't pay.</p>"
+          }
+        },
+        "tab_4AeDrA": {
+          "type": "tab",
+          "settings": {
+            "title": "The Science Behind It",
+            "content": "<p>Most sleep aids are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p>We also use a low <strong>2mg dose of melatonin</strong> (most gummies pack 5–10mg, the cause of the morning hangover) paired with 12 natural sleep herbs that calm the mind without knocking you out cold.</p>"
+          }
+        },
+        "tab_CQWgYd": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Orders ship within 1–2 business days, with free shipping over $69. You'll receive tracking as soon as your order is on its way.</p><p>Not happy? Our 90-day money-back guarantee has you covered. Contact our support team for a full refund or any return assistance.</p>"
+          }
+        },
+        "tab_reNgYB": {
+          "type": "tab",
+          "settings": {
+            "title": "Is Rejuvia Safe?",
+            "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds. As always, if you're pregnant, nursing, taking medication, or have a medical condition, check with your healthcare provider first.</p>"
+          }
+        },
+        "tab_dTVtg3": {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>"
+          }
+        },
+        "tab_MPjYCB": {
+          "type": "tab",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "content": "<p><strong>What if it doesn't work for me?</strong> </p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Will I wake up groggy?</strong> </p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong> </p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong> </p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong> </p><p>A light, pleasant natural mint taste that 99% of customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong> </p><p>Roughly one month of nightly use, depending on your dosage.</p>"
           }
         }
       },
       "block_order": [
         "tier_Dyehwr",
         "tier_URwUdw",
-        "tier_93hH4H"
+        "tier_93hH4H",
+        "tab_Uf8NbR",
+        "tab_4AeDrA",
+        "tab_CQWgYd",
+        "tab_reNgYB",
+        "tab_dTVtg3",
+        "tab_MPjYCB"
       ],
       "name": "BOGO Offer",
       "settings": {
         "product": "sleep-spray-30-nights",
         "image_bg": "#ffffff",
+        "sticky_offset": 24,
         "show_stars": true,
         "rating_text": "<p>Trusted by 300,000+ customers</p>",
         "title": "Rejuvia Sleep Spray",
         "eyebrow": "NON-HABIT FORMING · ALL-NATURAL",
         "description": "<p>Fall asleep faster, sleep through the full night and wake up feeling refreshed. Naturally mint-flavored, safe and natural.</p>",
-        "hint_qualify": "<p>Order includes <strong>free sprays</strong> and <strong>free shipping</strong></p>",
-        "hint_upsell": "<p>Upgrade to the next tier to get <strong>free sprays + free shipping</strong></p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
         "trust_text": "90-Day Money-Back Guarantee",
@@ -140,7 +190,7 @@
       ],
       "name": "Custom Reviews V2",
       "settings": {
-        "heading": "<p>4.7 stars from 300,000+ happy customers</p>"
+        "heading": "<p>4.7 Stars From 300,000+ Customers</p>"
       }
     },
     "image_text_v2_xzfhqx": {
@@ -183,7 +233,7 @@
       ],
       "name": "Image with Text V2",
       "settings": {
-        "heading": "<p>Why Rejuvia Sleep Spray works <em>3x faster and stronger</em></p>",
+        "heading": "<p>Why Rejuvia works <em>3x faster and stronger </em>than gummies and pills</p>",
         "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes — bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster — you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
         "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
       }
@@ -456,15 +506,68 @@
       ],
       "settings": {}
     },
-    "founder_story_MA6p9q": {
-      "type": "founder-story",
-      "name": "Founder Story",
+    "faq_center_CpCGTm": {
+      "type": "faq-center",
+      "blocks": {
+        "faq_nnp9wm": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>"
+          }
+        },
+        "faq_ApRcUW": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I wake up groggy in the morning?",
+            "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
+          }
+        },
+        "faq_YVTdnq": {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel Rejuvia working?",
+            "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>"
+          }
+        },
+        "faq_UAPq87": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
+          }
+        },
+        "faq_DRCFUR": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the ingredients in Rejuvia?",
+            "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_nnp9wm",
+        "faq_ApRcUW",
+        "faq_YVTdnq",
+        "faq_UAPq87",
+        "faq_DRCFUR"
+      ],
+      "name": "FAQ Center",
       "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
-        "founder_name": "RC Williams",
-        "founder_title": "Founder of Rejuvia",
-        "image": "shopify://shop_images/rejuvia_founders.webp"
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "question_size": 20,
+        "answer_size": 20,
+        "max_width": 800,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "title_color": "#141414",
+        "answer_color": "#5c5c5c"
       }
     },
     "page_cta_v2_BQV7dD": {
@@ -472,9 +575,9 @@
       "name": "Page CTA V2",
       "settings": {
         "anchor_id": "",
-        "bg_color": "#F5F5FB",
+        "bg_color": "#f5f5fb",
         "accent_color": "#672666",
-        "stars_color": "#EAC78B",
+        "stars_color": "#eac78b",
         "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
         "show_stars": true,
         "quote": "<p>“This is my go to! I <strong>can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep.”</p>",
@@ -505,8 +608,8 @@
     "how_it_works_Hc9igb",
     "key_ingredients_v2_XxByCK",
     "product_comparison_enhanced_G6MmFh",
-    "founder_story_MA6p9q",
     "17814435248f2fd49e",
+    "faq_center_CpCGTm",
     "page_cta_v2_BQV7dD",
     "sticky_cta_v2_WgFy7H"
   ]

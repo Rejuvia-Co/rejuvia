@@ -47,7 +47,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   grid-template-areas: "gallery header" "gallery buybox";
   column-gap: 56px; row-gap: 16px; align-items: start;
 }
-.ob__header { grid-area: header; min-width: 0; text-align: left; }
+.ob__header { grid-area: header; min-width: 0; }
 .ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
 .ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
 .ob__buybox { grid-area: buybox; min-width: 0; }
@@ -158,6 +158,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__tier-prices { gap: 7px; }
   .ob__tab-q { font-size: 22px; padding: 18px 4px; }
   .ob__tab-body { font-size: 17px; }
+}
+/* Desktop: header left-aligned (explicitly gated so it never affects mobile) */
+@media (min-width: 901px) {
+  .ob-{{ section.id }} .ob__header,
+  .ob-{{ section.id }} .ob__title,
+  .ob-{{ section.id }} .ob__subtitle { text-align: left; }
+  .ob-{{ section.id }} .ob__rating { justify-content: flex-start; }
 }
 {% endstyle %}
 

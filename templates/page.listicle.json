@@ -9,6 +9,21 @@
  */
 {
   "sections": {
+    "listicle_sticky_bar": {
+      "type": "listicle-sticky-bar",
+      "settings": {
+        "logo": "shopify://shop_images/Logo_1.svg",
+        "logo_text": "REJUVIA",
+        "logo_link": "",
+        "offer_text": "<p><strong>Buy One, Get One 100% FREE</strong></p>",
+        "button_text": "Get Offer",
+        "button_link": "",
+        "hide_store_header": true,
+        "offer_size_mobile": 16,
+        "bg_color": "#F8F4F7",
+        "accent_color": "#672666"
+      }
+    },
     "hero": {
       "type": "listicle-hero",
       "settings": {
@@ -26,6 +41,21 @@
         "image_bg_color": "#f8e9ee",
         "accent_color": "#672666",
         "stars_color": "#eac78b"
+      }
+    },
+    "press_logos_P9wbz8": {
+      "type": "press-logos",
+      "name": "Press Logos",
+      "settings": {
+        "hero_heading": "\"Rejuvia works as advertised. It's highly effective, safe and natural.\"",
+        "image-1": "shopify://shop_images/forbes_rejuvia_logo.png",
+        "scale_image_1": false,
+        "image-2": "shopify://shop_images/rejuvia_healthline_logo.png",
+        "image-3": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+        "image-4": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+        "scale_down_image_4": false,
+        "image-5": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+        "image-6": "shopify://shop_images/rejuvia_fabfitfun.png"
       }
     },
     "listicle_blocks": {
@@ -197,142 +227,6 @@
       ],
       "settings": {}
     },
-    "faq_center": {
-      "type": "faq-center",
-      "blocks": {
-        "faq_0": {
-          "type": "faq",
-          "settings": {
-            "question": "What if it doesn't work for me?",
-            "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>"
-          }
-        },
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "Will I wake up groggy in the morning?",
-            "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "How fast will I feel Rejuvia working?",
-            "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
-            "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq",
-          "settings": {
-            "question": "What are the ingredients in Rejuvia?",
-            "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "faq",
-          "settings": {
-            "question": "What flavor is Rejuvia?",
-            "answer": "<p>Rejuvia has a light, naturally pleasant taste made for a quick spray under the tongue.</p>"
-          }
-        },
-        "faq_6": {
-          "type": "faq",
-          "settings": {
-            "question": "Is this a subscription?",
-            "answer": "<p>No. Rejuvia is a one-time purchase, not a subscription — you're only charged once for the bundle you choose.</p>"
-          }
-        },
-        "faq_7": {
-          "type": "faq",
-          "settings": {
-            "question": "How long does one bottle last and when will my order arrive?",
-            "answer": "<p>Each bottle is about a 30-night supply. Orders typically ship within 1-2 business days and arrive within a few business days after that.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_0",
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5",
-        "faq_6",
-        "faq_7"
-      ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "Frequently Asked Questions",
-        "open_first": true,
-        "title_size": 40,
-        "title_size_mobile": 28,
-        "question_size": 18,
-        "answer_size": 16,
-        "max_width": 960,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "bg_color": "#ffffff",
-        "accent_color": "#672666",
-        "title_color": "#141414",
-        "answer_color": "#5c5c5c"
-      }
-    },
-    "closing_cta": {
-      "type": "closing-cta",
-      "blocks": {
-        "cta_0": {
-          "type": "point",
-          "settings": {
-            "text": "90-day money-back guarantee"
-          }
-        },
-        "cta_1": {
-          "type": "point",
-          "settings": {
-            "text": "Clinically studied ingredients"
-          }
-        },
-        "cta_2": {
-          "type": "point",
-          "settings": {
-            "text": "Made in the USA · cGMP certified"
-          }
-        }
-      },
-      "block_order": [
-        "cta_0",
-        "cta_1",
-        "cta_2"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
-        "show_stars": true,
-        "stars_color": "#eac78b",
-        "rating_text": "<p>300,000+ Customers</p>",
-        "rating_color": "#141414",
-        "heading": "<p>Better Sleep Is Now a Spray Away</p>",
-        "heading_color": "#141414",
-        "button_text": "Try Rejuvia Risk-Free",
-        "scroll_target": ".product-widget-container",
-        "button_link": "",
-        "frame_bg": "#e7e0f4",
-        "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
-      }
-    },
-    "listicle_sticky_bar": {
-      "type": "listicle-sticky-bar",
-      "settings": {
-        "hide_store_header": true
-      }
-    },
     "alternatives_v2": {
       "type": "alternatives-v2",
       "blocks": {
@@ -451,13 +345,143 @@
       ],
       "name": "Alternatives V2",
       "settings": {
-        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to common sleep aids</p>",
+        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to sleeping pills and melatonin gummies</p>",
         "icon_size": 90,
         "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
         "rejuvia_logo": "shopify://shop_images/Logo.svg",
         "btn_text": "Try Rejuvia Risk-Free",
-        "btn_url": "",
+        "btn_url": "#offer",
         "guarantee_text": "90-Day Money-Back Guarantee"
+      }
+    },
+    "faq_center": {
+      "type": "faq-center",
+      "blocks": {
+        "faq_0": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I wake up groggy in the morning?",
+            "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel Rejuvia working?",
+            "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the ingredients in Rejuvia?",
+            "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is Rejuvia?",
+            "answer": "<p>Rejuvia has a light, naturally pleasant taste made for a quick spray under the tongue.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this a subscription?",
+            "answer": "<p>No. Rejuvia is a one-time purchase, not a subscription — you're only charged once for the bundle you choose.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle last and when will my order arrive?",
+            "answer": "<p>Each bottle is about a 30-night supply. Orders typically ship within 1-2 business days and arrive within a few business days after that.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_0",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "question_size": 18,
+        "answer_size": 16,
+        "max_width": 800,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "title_color": "#141414",
+        "answer_color": "#5c5c5c"
+      }
+    },
+    "closing_cta": {
+      "type": "closing-cta",
+      "blocks": {
+        "cta_0": {
+          "type": "point",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "cta_1": {
+          "type": "point",
+          "settings": {
+            "text": "Clinically studied ingredients"
+          }
+        },
+        "cta_2": {
+          "type": "point",
+          "settings": {
+            "text": "Made in the USA · cGMP certified"
+          }
+        }
+      },
+      "block_order": [
+        "cta_0",
+        "cta_1",
+        "cta_2"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
+        "show_stars": true,
+        "stars_color": "#eac78b",
+        "rating_text": "<p>300,000+ Customers</p>",
+        "rating_color": "#141414",
+        "heading": "<p>Better Sleep Is Now a Spray Away</p>",
+        "heading_color": "#141414",
+        "button_text": "Try Rejuvia Risk-Free",
+        "scroll_target": ".product-widget-container",
+        "button_link": "",
+        "frame_bg": "#e7e0f4",
+        "panel_bg": "#ffffff",
+        "checklist_color": "#141414"
       }
     },
     "offer_block": {
@@ -571,6 +595,7 @@
   "order": [
     "listicle_sticky_bar",
     "hero",
+    "press_logos_P9wbz8",
     "listicle_blocks",
     "video_testimonials",
     "offer_block",

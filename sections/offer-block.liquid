@@ -47,7 +47,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   grid-template-areas: "gallery header" "gallery buybox";
   column-gap: 56px; row-gap: 16px; align-items: start;
 }
-.ob__header { grid-area: header; min-width: 0; }
+.ob__header { grid-area: header; min-width: 0; display: flex; flex-direction: column; }
 .ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
 .ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
 .ob__buybox { grid-area: buybox; min-width: 0; }
@@ -129,7 +129,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 @media (max-width: 900px) {
   .ob__card { display: flex; flex-direction: column; gap: 16px; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
-  .ob__header { order: -1; }
+  .ob__header { order: -1; align-items: center; }
   .ob-{{ section.id }} .ob__header,
   .ob-{{ section.id }} .ob__rating,
   .ob-{{ section.id }} .ob__title,
@@ -161,6 +161,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 }
 /* Desktop: header left-aligned (explicitly gated so it never affects mobile) */
 @media (min-width: 901px) {
+  .ob-{{ section.id }} .ob__header { align-items: flex-start; }
   .ob-{{ section.id }} .ob__header,
   .ob-{{ section.id }} .ob__title,
   .ob-{{ section.id }} .ob__subtitle { text-align: left; }

@@ -54,7 +54,7 @@
           "type": "tier",
           "settings": {
             "product": "sleep-spray-30-nights",
-            "variant_id": "51092021674204",
+            "variant_id": "51092021706972",
             "label": "Buy 3, Get 2 Free",
             "subline": "5 Sprays Total · 150 Nights",
             "price": "$87",
@@ -135,6 +135,7 @@
         "description": "<p>Fall asleep faster, sleep through the full night and wake up feeling refreshed. Naturally mint-flavored, safe and natural.</p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
+        "hide_per_night": true,
         "trust_text": "90-Day Money-Back Guarantee",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
@@ -543,6 +544,20 @@
             "question": "What are the ingredients in Rejuvia?",
             "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
           }
+        },
+        "faq_4RqVKU": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is Rejuvia?",
+            "answer": "<p>A light, pleasant natural mint taste that 99% of customers genuinely enjoy.</p>"
+          }
+        },
+        "faq_mFYFtn": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does on spray last?",
+            "answer": "<p>Each Rejuvia spray will last you 30-35 nights depending on your usage. One spray contains ~240 total spritzes and our suggest dosage is 6-8 spritzes per night.</p>"
+          }
         }
       },
       "block_order": [
@@ -550,7 +565,9 @@
         "faq_ApRcUW",
         "faq_YVTdnq",
         "faq_UAPq87",
-        "faq_DRCFUR"
+        "faq_DRCFUR",
+        "faq_4RqVKU",
+        "faq_mFYFtn"
       ],
       "name": "FAQ Center",
       "settings": {
@@ -562,8 +579,8 @@
         "question_size": 20,
         "answer_size": 20,
         "max_width": 800,
-        "padding_top": 64,
-        "padding_bottom": 64,
+        "padding_top": 100,
+        "padding_bottom": 100,
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "title_color": "#141414",

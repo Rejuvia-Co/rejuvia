@@ -135,6 +135,7 @@
         "description": "<p>Fall asleep faster, sleep through the full night and wake up feeling refreshed. Naturally mint-flavored, safe and natural.</p>",
         "button_text": "Buy Now",
         "show_cta_price": true,
+        "hide_per_night": true,
         "trust_text": "90-Day Money-Back Guarantee",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
@@ -495,7 +496,7 @@
       "name": "Founder Story",
       "settings": {
         "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom struggled with sleep for years—nothing worked. While studying at Penn, I discovered that oral sprays absorb up to 80% faster than pills or gummies. So I set out to create a clean, fast-acting sleep spray that would finally help her rest.\n\nIt worked almost immediately. Within days, she was sleeping through the night again. That's how Rejuvia began—a family-run brand now helping hundreds of thousands of people get real, natural rest every night.",
+        "text": "My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.\n\nSo I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.\n\nWe didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.\n\nSo we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.",
         "founder_name": "RC Williams",
         "founder_title": "Founder of Rejuvia",
         "image": "shopify://shop_images/rejuvia_founders.webp"

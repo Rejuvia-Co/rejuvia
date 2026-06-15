@@ -491,17 +491,6 @@
         "mobile_breakpoint": 750
       }
     },
-    "founder_story_MA6p9q": {
-      "type": "founder-story",
-      "name": "Founder Story",
-      "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.\n\nSo I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.\n\nWe didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.\n\nSo we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.",
-        "founder_name": "RC Williams",
-        "founder_title": "Founder of Rejuvia",
-        "image": "shopify://shop_images/rejuvia_founders.webp"
-      }
-    },
     "17814435248f2fd49e": {
       "type": "apps",
       "blocks": {
@@ -518,23 +507,103 @@
       ],
       "settings": {}
     },
-    "page_cta_v2_BQV7dD": {
-      "type": "page-cta-v2",
-      "disabled": true,
-      "name": "Page CTA V2",
+    "founder_story_MA6p9q": {
+      "type": "founder-story",
+      "name": "Founder Story",
       "settings": {
-        "anchor_id": "",
-        "bg_color": "#f5f5fb",
+        "heading": "Originally Built For My Mom, Now For Everyone",
+        "text": "My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.\n\nSo I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.\n\nWe didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.\n\nSo we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.",
+        "founder_name": "RC Williams",
+        "founder_title": "Founder of Rejuvia",
+        "image": "shopify://shop_images/rejuvia_founders.webp"
+      }
+    },
+    "faq_center_fQVeth": {
+      "type": "faq-center",
+      "blocks": {
+        "faq_tzyTkg": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>"
+          }
+        },
+        "faq_8qDeDY": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I wake up groggy in the morning?",
+            "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
+          }
+        },
+        "faq_67qEnG": {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel Rejuvia working?",
+            "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>"
+          }
+        },
+        "faq_NkjjkQ": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
+          }
+        },
+        "faq_AhBwnL": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the ingredients in Rejuvia?",
+            "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
+          }
+        },
+        "faq_rxDhbV": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is Rejuvia?",
+            "answer": "<p>A light, pleasant natural mint taste that 99% of customers genuinely enjoy.</p>"
+          }
+        },
+        "faq_mFex9e": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this a subscription?",
+            "answer": "<p>No. Rejuvia is a one-time purchase, not an automatic subscription.</p>"
+          }
+        },
+        "faq_jynxhn": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle last?",
+            "answer": "<p>Each Rejuvia spray will last you 30-35 nights depending on your usage. One spray contains ~240 total spritzes and our suggest dosage is 6-8 spritzes per night.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_tzyTkg",
+        "faq_8qDeDY",
+        "faq_67qEnG",
+        "faq_NkjjkQ",
+        "faq_AhBwnL",
+        "faq_rxDhbV",
+        "faq_mFex9e",
+        "faq_jynxhn"
+      ],
+      "name": "FAQ Center",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "question_size": 18,
+        "answer_size": 16,
+        "max_width": 800,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "stars_color": "#eac78b",
-        "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
-        "show_stars": true,
-        "quote": "<p>“This is my go to! I <strong>can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep.”</p>",
-        "author_name": "Katie C.",
-        "author_role": "Verified Purchase",
-        "btn_text": "Sleep Better Tonight",
-        "btn_url": "",
-        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+        "title_color": "#141414",
+        "answer_color": "#5C5C5C"
       }
     },
     "closing_cta_ThzKQ3": {
@@ -601,9 +670,9 @@
     "how_it_works_Hc9igb",
     "key_ingredients_v2_XxByCK",
     "product_comparison_enhanced_G6MmFh",
-    "founder_story_MA6p9q",
     "17814435248f2fd49e",
-    "page_cta_v2_BQV7dD",
+    "founder_story_MA6p9q",
+    "faq_center_fQVeth",
     "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"
   ]

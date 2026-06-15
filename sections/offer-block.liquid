@@ -173,6 +173,16 @@ html { scroll-behavior: smooth; }
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign vid = b.settings.variant_id | strip -%}
+          {%- assign tier_variant = blank -%}
+          {%- if vid != blank -%}
+            {%- assign srcprod = b.settings.product | default: gallery_product -%}
+            {%- if srcprod != blank -%}
+              {%- for v in srcprod.variants -%}
+                {%- assign vstr = v.id | append: '' -%}
+                {%- if vstr == vid -%}{%- assign tier_variant = v -%}{%- break -%}{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
           {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
           <label class="ob__tier{% if b.settings.is_default %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" {% if b.settings.is_default %}checked{% endif %}>
@@ -186,8 +196,13 @@ html { scroll-behavior: smooth; }
             <span class="ob__tier-body">
               <span class="ob__tier-title">{{ b.settings.label }}</span>
               <span class="ob__tier-prices">
-                {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
-                {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
+                {%- if tier_variant != blank -%}
+                  <span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>
+                  {%- if tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
+                {%- else -%}
+                  {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
+                  {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
+                {%- endif -%}
                 {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
               </span>
               {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
@@ -337,13 +352,13 @@ html { scroll-behavior: smooth; }
       "type": "tier",
       "name": "Offer tier",
       "settings": [
-        { "type": "product", "id": "product", "label": "Product", "info": "Used for the cart variant if no Variant ID is set." },
-        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart for this tier." },
+        { "type": "product", "id": "product", "label": "Product", "info": "The product that owns this tier's variant. Used for the cart and for live prices (falls back to the section's Gallery product)." },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart. Prices below auto-pull from this variant when its product is connected." },
         { "type": "image_picker", "id": "image", "label": "Bundle image" },
         { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no Bundle image is picked." },
         { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 FREE" },
-        { "type": "text", "id": "price", "label": "Price", "default": "$35" },
-        { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "$70" },
+        { "type": "text", "id": "price", "label": "Price (fallback)", "info": "Shown only if the live variant price can't be resolved.", "default": "$35" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price (fallback)", "default": "$70" },
         { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
         { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
         { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62 Per Night" },

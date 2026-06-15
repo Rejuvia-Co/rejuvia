@@ -2916,15 +2916,15 @@
         "settings": {
           "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
           "show_stars": true,
-          "stars_color": "#EAC78B",
+          "stars_color": "#eac78b",
           "rating_text": "<p><strong>300,000+ Customers</strong></p>",
           "heading": "<p>Better sleep is a spray away</p>",
-          "heading_color": "#5F2A63",
+          "heading_color": "#5f2a63",
           "button_text": "Try Rejuvia Risk-Free",
-          "button_link": "",
-          "frame_bg": "#FFFFFF",
-          "panel_bg": "#E7E0F4",
-          "accent_color": "#5F2A63",
+          "button_link": "#offer",
+          "frame_bg": "#ffffff",
+          "panel_bg": "#e7e0f4",
+          "accent_color": "#5f2a63",
           "button_hover": "#6f3473"
         }
       }

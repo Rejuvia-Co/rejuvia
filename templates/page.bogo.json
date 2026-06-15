@@ -520,6 +520,7 @@
     },
     "page_cta_v2_BQV7dD": {
       "type": "page-cta-v2",
+      "disabled": true,
       "name": "Page CTA V2",
       "settings": {
         "anchor_id": "",
@@ -534,6 +535,50 @@
         "btn_text": "Sleep Better Tonight",
         "btn_url": "",
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+      }
+    },
+    "closing_cta_ThzKQ3": {
+      "type": "closing-cta",
+      "blocks": {
+        "point_dCFWPJ": {
+          "type": "point",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "point_hnPm76": {
+          "type": "point",
+          "settings": {
+            "text": "Clinically-backed ingredients"
+          }
+        },
+        "point_XmNjEf": {
+          "type": "point",
+          "settings": {
+            "text": "Made in the USA"
+          }
+        }
+      },
+      "block_order": [
+        "point_dCFWPJ",
+        "point_hnPm76",
+        "point_XmNjEf"
+      ],
+      "name": "Closing CTA",
+      "settings": {
+        "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
+        "show_stars": true,
+        "stars_color": "#EAC78B",
+        "rating_text": "<p>Backed by <strong>300,000+ customers</strong></p>",
+        "heading": "<p>Better sleep is now just a spray away</p>",
+        "heading_color": "#5F2A63",
+        "button_text": "Try Rejuvia Risk-Free",
+        "scroll_target": ".product-widget-container",
+        "button_link": "",
+        "frame_bg": "#FFFFFF",
+        "panel_bg": "#E7E0F4",
+        "accent_color": "#5F2A63",
+        "button_hover": "#6f3473"
       }
     },
     "sticky_cta_v2_WgFy7H": {
@@ -559,6 +604,7 @@
     "founder_story_MA6p9q",
     "17814435248f2fd49e",
     "page_cta_v2_BQV7dD",
+    "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"
   ]
 }

@@ -235,7 +235,10 @@
     },
     "faq_center": {
       "type": "faq-center",
-      "settings": {},
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "eyebrow": ""
+      },
       "blocks": {
         "faq_0": {
           "type": "faq",

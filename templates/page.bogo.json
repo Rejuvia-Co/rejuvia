@@ -245,7 +245,7 @@
           "type": "tab",
           "settings": {
             "title": "Frequently Asked Questions",
-            "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage.</p>"
+            "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Is this a subscription?</strong></p><p>No, our BOGO offer here is not an automatic subscription. It is one-time purchase only.</p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage.</p>"
           }
         }
       },
@@ -275,7 +275,8 @@
         "default_tier": 1,
         "button_text": "Claim Free Sprays Now",
         "guarantee_text": "90-Day Money Back Guarantee",
-        "onetime_text": "One-Time Purchase (Not a Subscription)",
+        "guarantee_icon": "shopify://shop_images/SealCheck.svg",
+        "onetime_text": "",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
         "title_size": 44,

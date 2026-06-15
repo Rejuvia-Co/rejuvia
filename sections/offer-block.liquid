@@ -79,7 +79,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* Offer cards */
 .ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 0; }
 .ob__tier { position: relative; display: flex; align-items: center; gap: 28px; background: #fff; border: 1.5px solid var(--ob-border); border-radius: 13px; padding: 28px 30px; cursor: pointer; transition: background .15s ease, border-color .15s ease; box-sizing: border-box; }
-.ob__tier.is-selected { border: 2.5px solid var(--ob-accent); background: var(--ob-sel-bg); }
+.ob__tier.is-selected { border-color: var(--ob-accent); box-shadow: inset 0 0 0 1.5px var(--ob-accent); background: var(--ob-sel-bg); }
 .ob__tier input { position: absolute; opacity: 0; pointer-events: none; }
 .ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
 .ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
@@ -110,6 +110,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__assurances { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
 .ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
 .ob__assurance svg { width: 17px; height: 17px; flex-shrink: 0; }
+.ob__assurance-icon { width: 17px; height: 17px; flex-shrink: 0; object-fit: contain; display: block; }
 .ob__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 .ob__payments svg { height: 26px; width: auto; }
 
@@ -265,10 +266,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
           <div class="ob__assurances">
             {%- if section.settings.guarantee_text != blank -%}
-              <span class="ob__assurance"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{{ section.settings.guarantee_text }}</span>
+              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
             {%- endif -%}
             {%- if section.settings.onetime_text != blank -%}
-              <span class="ob__assurance"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5.5 5.5 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3 7C19 16.65 12 21 12 21z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{{ section.settings.onetime_text }}</span>
+              <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 9 2 5.5 5.5 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3 7C19 16.65 12 21 12 21z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -403,7 +404,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee line icon", "info": "Optional. Replaces the default shield icon. Square image recommended." },
     { "type": "text", "id": "onetime_text", "label": "One-time purchase line", "default": "One-Time Purchase (Not a Subscription)" },
+    { "type": "image_picker", "id": "onetime_icon", "label": "One-time purchase line icon", "info": "Optional. Replaces the default heart icon. Square image recommended." },
     { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
     { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
     { "type": "header", "content": "Typography" },

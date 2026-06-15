@@ -1,5 +1,12 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
+{% style %}
+/* Shorten the review media on mobile so the full section fits on screen */
+@media (max-width: 749px) {
+  #shopify-section-{{ section.id }} .customer-review-image { height: 312px; }
+}
+{% endstyle %}
+
 <!-- Required Core Stylesheet - Async loaded -->
 <link
   rel="stylesheet"

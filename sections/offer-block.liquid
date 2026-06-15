@@ -20,7 +20,16 @@ html { scroll-behavior: smooth; }
   --font-ui: 'Inter', 'Helvetica Neue', Arimo, Arial, sans-serif;
   background-color: {{ section.settings.section_bg | default: '#ffffff' }};
   font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
+.ob-{{ section.id }} *, .ob-{{ section.id }} *::before, .ob-{{ section.id }} *::after {
+  text-transform: none;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+.ob-{{ section.id }} .ob__assurance { text-transform: uppercase; }
 .ob__card {
   max-width: 1280px; margin: 0 auto; padding: 56px 60px;
   background: {{ section.settings.card_bg | default: '#ffffff' }}; border-radius: 18px;
@@ -63,7 +72,7 @@ html { scroll-behavior: smooth; }
 .ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
 .ob__tier-img { flex-shrink: 0; width: 112px; height: auto; }
 .ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; letter-spacing: -0.6px; color: var(--ob-accent); line-height: 1.1; }
+.ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; color: var(--ob-accent); line-height: 1.1; white-space: nowrap; }
 .ob__tier-prices { display: flex; align-items: baseline; gap: 13px; flex-wrap: wrap; }
 .ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
 .ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }

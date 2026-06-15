@@ -1,0 +1,154 @@
+{% style %}
+html { scroll-behavior: smooth; }
+.cta-{{ section.id }} {
+  --cta-accent: {{ section.settings.accent_color | default: '#5F2A63' }};
+  --cta-lav: {{ section.settings.panel_bg | default: '#E7E0F4' }};
+  --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
+  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+}
+.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 22px; }
+.cta-{{ section.id }} .cta__card {
+  max-width: 1240px; margin: 0 auto;
+  border-radius: 26px; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1.05fr; min-height: 420px;
+  background: var(--cta-lav);
+}
+.cta-{{ section.id }} .cta__panel {
+  background: var(--cta-lav);
+  display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 48px 64px;
+}
+.cta-{{ section.id }} .cta__rating { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
+.cta-{{ section.id }} .cta__stars { display: inline-flex; gap: 2px; flex-shrink: 0; }
+.cta-{{ section.id }} .cta__stars svg { width: 19.2px; height: 18px; display: block; }
+.cta-{{ section.id }} .cta__rating-text { font-size: 18px; line-height: 1.4; color: #141414; white-space: nowrap; }
+.cta-{{ section.id }} .cta__rating-text p { margin: 0; display: inline; }
+.cta-{{ section.id }} .cta__rating-text strong { font-weight: 700; color: var(--cta-accent); }
+
+.cta-{{ section.id }} .cta__title,
+.cta-{{ section.id }} .cta__title * {
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 58px; line-height: 0.94; letter-spacing: -1.6px;
+  color: {{ section.settings.heading_color | default: '#5F2A63' }};
+  margin: 0;
+}
+.cta-{{ section.id }} .cta__title p { margin: 0; }
+
+.cta-{{ section.id }} .cta__checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.cta-{{ section.id }} .cta__point { display: flex; align-items: center; gap: 10px; }
+.cta-{{ section.id }} .cta__check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cta-gold); display: grid; place-items: center; }
+.cta-{{ section.id }} .cta__check svg { width: 13px; height: 13px; }
+.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: var(--cta-accent); }
+
+.cta-{{ section.id }} .cta__btn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--cta-accent); color: #fff;
+  font-weight: 700; font-size: 18px; letter-spacing: -0.4px; line-height: 1;
+  padding: 22px 36px; border: none; border-radius: 100px; text-decoration: none; cursor: pointer;
+  box-shadow: 0 14px 30px -14px rgba(95,42,99,.7);
+  transition: background .15s cubic-bezier(.22,1,.36,1), transform .15s cubic-bezier(.22,1,.36,1);
+}
+.cta-{{ section.id }} .cta__btn:hover { background: {{ section.settings.button_hover | default: '#6f3473' }}; color: #fff; }
+.cta-{{ section.id }} .cta__btn:active { transform: scale(.98); }
+
+.cta-{{ section.id }} .cta__photo { position: relative; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
+.cta-{{ section.id }} .cta__seam { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, var(--cta-lav) 0%, var(--cta-lav) 5%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 30%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 62%); }
+
+@media (max-width: 767px) {
+  .cta-{{ section.id }} .cta__frame { background: var(--cta-lav); padding: 0; }
+  .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 0; min-height: 0; }
+  .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
+  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 44px; letter-spacing: -1.2px; }
+  .cta-{{ section.id }} .cta__rating-text { font-size: 16px; }
+  .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; }
+  .cta-{{ section.id }} .cta__photo { height: 360px; }
+  .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;
+    background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 42%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
+}
+{% endstyle %}
+
+{%- capture cta_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
+
+<section class="cta-{{ section.id }}">
+  <div class="cta__frame">
+    <div class="cta__card">
+      <div class="cta__panel">
+        {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
+          <div class="cta__rating">
+            {%- if section.settings.show_stars -%}<span class="cta__stars" aria-label="5 stars">{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}</span>{%- endif -%}
+            {%- if section.settings.rating_text != blank -%}<span class="cta__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}<h2 class="cta__title">{{ section.settings.heading }}</h2>{%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="cta__checklist">
+            {%- for block in section.blocks -%}{%- if block.type == 'point' -%}
+              <li class="cta__point" {{ block.shopify_attributes }}>
+                <span class="cta__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.accent_color | default: '#5F2A63' }}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="cta__point-label">{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}{%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank -%}
+          <a class="cta__btn" href="{{ section.settings.button_link | default: '#offer' }}">{{ section.settings.button_text }}</a>
+        {%- endif -%}
+      </div>
+
+      <div class="cta__photo"{% if section.settings.image != blank %} style="background-image: url('{{ section.settings.image | image_url: width: 1600 }}');"{% endif %}>
+        <span class="cta__seam"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Closing CTA",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Product image" },
+    { "type": "header", "content": "Review bar" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color (like Hero V2).", "default": "<p>Backed by <strong>300,000+ customers</strong></p>" },
+    { "type": "header", "content": "Headline" },
+    { "type": "richtext", "id": "heading", "label": "Headline", "default": "<p>Better sleep is a spray away.</p>" },
+    { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#5F2A63" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Defaults to #offer (scrolls to the offer section on the page)." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "frame_bg", "label": "Section background (desktop)", "default": "#FFFFFF" },
+    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#E7E0F4" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, checks, bold)", "default": "#5F2A63" },
+    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#6f3473" }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Checklist point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "30-day money-back guarantee" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Closing CTA",
+      "category": "Rejuvia",
+      "blocks": [
+        { "type": "point", "settings": { "text": "30-day money-back guarantee" } },
+        { "type": "point", "settings": { "text": "Clinically studied ingredients" } },
+        { "type": "point", "settings": { "text": "Made in the USA · cGMP certified" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

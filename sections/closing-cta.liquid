@@ -6,11 +6,11 @@ html { scroll-behavior: smooth; }
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 22px; }
+.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#FFFFFF' }}; padding: 33px 22px; }
 .cta-{{ section.id }} .cta__card {
   max-width: 1240px; margin: 0 auto;
   border-radius: 26px; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 1.05fr; min-height: 420px;
+  display: grid; grid-template-columns: 1fr 1.05fr; min-height: 550px;
   background: var(--cta-lav);
 }
 .cta-{{ section.id }} .cta__panel {
@@ -26,9 +26,9 @@ html { scroll-behavior: smooth; }
 
 .cta-{{ section.id }} .cta__title,
 .cta-{{ section.id }} .cta__title * {
-  font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 58px; line-height: 0.94; letter-spacing: -1.6px;
+  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 40px; line-height: 1.4; letter-spacing: 0;
   color: {{ section.settings.heading_color | default: '#5F2A63' }};
   margin: 0;
 }
@@ -60,8 +60,9 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__frame { background: var(--cta-lav); padding: 0; }
   .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 0; min-height: 0; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
-  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 44px; letter-spacing: -1.2px; }
-  .cta-{{ section.id }} .cta__rating-text { font-size: 16px; }
+  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 30px; letter-spacing: 0; }
+  .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
+  .cta-{{ section.id }} .cta__rating-text { font-size: 16px; white-space: normal; }
   .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
   .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;

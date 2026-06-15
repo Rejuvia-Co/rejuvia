@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-404",
+      "blocks": {
+        "p1": { "type": "product", "settings": { "product": "vitamin-d3-k2-spray" } },
+        "p2": { "type": "product", "settings": { "product": "lutein-spray" } },
+        "p3": { "type": "product", "settings": { "product": "stress-spray" } },
+        "p4": { "type": "product", "settings": { "product": "sleep-spray" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "badge_text": "404 · Page not found",
+        "headline": "This page drifted off to sleep",
+        "subtitle": "<p>We couldn't find the page you were looking for — but a better night's sleep is still just a spray away.</p>",
+        "cta_text": "Continue Shopping",
+        "cta_link": "/",
+        "grid_eyebrow": "BESTSELLERS",
+        "grid_heading": "Shop our bestsellers.",
+        "products_limit": 4,
+        "show_flourish": true,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666"
+      }
+    }
+  },
+  "order": ["main"]
+}

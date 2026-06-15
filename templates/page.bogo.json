@@ -210,7 +210,7 @@
           "type": "tab",
           "settings": {
             "title": "90-Day Guarantee",
-            "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong> Just reach out to our support team and we'll take care of it. Try Rejuvia risk-free — if it doesn't work for you, you don't pay.</p>"
+            "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind our products no matter what. If you don't like them, if they don't work for you, or whatever other reason, then you are absolutely covered by our risk-free guarantee. No questions asked, ever!</p>"
           }
         },
         "tab_MwDWnL": {
@@ -224,14 +224,14 @@
           "type": "tab",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p>Orders ship within 1 business days, with free shipping on all orders over $69. You'll receive tracking as soon as your order is on its way.</p><p>Not happy? Our 90-day money-back guarantee has you covered. Contact our support team for a full refund or any return assistance.</p>"
+            "content": "<p>All Rejuvia orders ship within 1 business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $69. You'll receive tracking as soon as your order is on its way.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
           }
         },
         "tab_UUNhhe": {
           "type": "tab",
           "settings": {
             "title": "Is Rejuvia Safe?",
-            "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds. As always, if you're pregnant, nursing, taking medication, or have a medical condition, check with your healthcare provider first.</p>"
+            "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds.</p>"
           }
         },
         "tab_7c8d3h": {
@@ -269,7 +269,7 @@
         "stars_color": "#eac78b",
         "stars_size": 16,
         "rating_text_size": 16,
-        "rating_text": "<p><strong>Trusted By 300,000+</strong>  Customers</p>",
+        "rating_text": "<p>Trusted By <strong>300,000+</strong>  Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Calm your stress, fall asleep in minutes and sleep the full night.",
         "default_tier": 1,

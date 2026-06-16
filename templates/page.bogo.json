@@ -530,22 +530,6 @@
             "text_col_5": ""
           }
         },
-        "feature_row_UGQrUb": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Average Price",
-            "value_type_col_1": "text",
-            "text_col_1": "$0.89/night",
-            "value_type_col_2": "text",
-            "text_col_2": "$3.00/night",
-            "value_type_col_3": "text",
-            "text_col_3": "$1.83/night",
-            "value_type_col_4": "text",
-            "text_col_4": "$0.93/night",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
         "feature_row_CGXtUe": {
           "type": "feature_row",
           "settings": {
@@ -610,22 +594,6 @@
             "text_col_5": ""
           }
         },
-        "feature_row_m7EpPx": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Free From Additives & Fillers",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "check",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
         "feature_row_TdJUdL": {
           "type": "feature_row",
           "settings": {
@@ -665,12 +633,10 @@
         "product_column_nrXeXp",
         "product_column_jtRq3f",
         "feature_row_HbpnWP",
-        "feature_row_UGQrUb",
         "feature_row_CGXtUe",
         "feature_row_HFKqei",
         "feature_row_HYkECV",
         "feature_row_ipC3wC",
-        "feature_row_m7EpPx",
         "feature_row_TdJUdL",
         "feature_row_Ytm67T"
       ],
@@ -746,18 +712,6 @@
         "section_bg": "#EAEAF7",
         "card_bg": "#ffffff",
         "image_shadow_color": "#2a0e2a"
-      }
-    },
-    "founder_story_MA6p9q": {
-      "type": "founder-story",
-      "disabled": true,
-      "name": "Founder Story",
-      "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.\n\nSo I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.\n\nWe didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.\n\nSo we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.",
-        "founder_name": "RC Williams",
-        "founder_title": "Founder of Rejuvia",
-        "image": "shopify://shop_images/rejuvia_founders.webp"
       }
     },
     "faq_center_fQVeth": {
@@ -924,7 +878,6 @@
     "guarantee_section_gK7mPq",
     "17814435248f2fd49e",
     "founder_story_v2_Rj7kQp",
-    "founder_story_MA6p9q",
     "faq_center_fQVeth",
     "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"

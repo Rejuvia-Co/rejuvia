@@ -688,11 +688,12 @@
     "guarantee_section_gK7mPq": {
       "type": "guarantee-section",
       "settings": {
-        "title": "60-Day Money-Back Guarantee",
-        "description": "Don't feel the difference within 60 days? We'll refund you. No questions asked.",
+        "icon": "shopify://shop_images/SealCheck.svg",
+        "title": "90-Day Money-Back Guarantee",
+        "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
-        "sub_text": "60-Day Money-Back Guarantee",
+        "sub_text": "Buy One, Get One 100% FREE Today",
         "bg_color": "#eaeaf7"
       }
     },

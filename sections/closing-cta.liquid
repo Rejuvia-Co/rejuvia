@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__rating { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
 .cta-{{ section.id }} .cta__stars { display: inline-flex; gap: 2px; flex-shrink: 0; }
 .cta-{{ section.id }} .cta__stars svg { width: 19.2px; height: 18px; display: block; }
-.cta-{{ section.id }} .cta__rating-text { font-size: 18px; line-height: 1.4; color: {{ section.settings.rating_color | default: '#141414' }}; white-space: nowrap; }
+.cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size | default: 18 }}px; line-height: 1.4; color: {{ section.settings.rating_color | default: '#141414' }}; white-space: nowrap; }
 .cta-{{ section.id }} .cta__rating-text p { margin: 0; display: inline; }
 .cta-{{ section.id }} .cta__rating-text strong { font-weight: 700; color: var(--cta-accent); }
 
@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__title * {
   font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  font-size: 40px; line-height: 1.15; letter-spacing: -0.02em;
+  font-size: {{ section.settings.heading_size | default: 40 }}px; line-height: 1.15; letter-spacing: -0.02em;
   color: {{ section.settings.heading_color | default: '#141414' }};
   margin: 0;
 }
@@ -38,13 +38,13 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__point { display: flex; align-items: center; gap: 10px; }
 .cta-{{ section.id }} .cta__check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cta-accent); display: grid; place-items: center; }
 .cta-{{ section.id }} .cta__check svg { width: 13px; height: 13px; }
-.cta-{{ section.id }} .cta__point-label { font-size: 15px; font-weight: 400; letter-spacing: -0.2px; color: {{ section.settings.checklist_color | default: '#141414' }}; }
+.cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size | default: 15 }}px; font-weight: 400; letter-spacing: -0.2px; color: {{ section.settings.checklist_color | default: '#141414' }}; }
 
 .cta-{{ section.id }} .cta__btn {
   align-self: flex-start;
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--cta-accent); color: #fff;
-  font-weight: 500; font-size: 18px; letter-spacing: 0; line-height: 1.4;
+  font-weight: 500; font-size: {{ section.settings.button_size | default: 18 }}px; letter-spacing: 0; line-height: 1.4;
   padding: 20px 44px; border: none; border-radius: 100px; text-decoration: none; cursor: pointer;
   transition: opacity 0.25s ease;
 }
@@ -52,16 +52,24 @@ html { scroll-behavior: smooth; }
 
 .cta-{{ section.id }} .cta__photo { position: relative; height: 500px; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
 .cta-{{ section.id }} .cta__seam { position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, var(--cta-lav) 0%, var(--cta-lav) 5%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 30%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 62%); }
+  background: linear-gradient(90deg,
+    var(--cta-lav) 0%,
+    var(--cta-lav) 3%,
+    color-mix(in srgb, var(--cta-lav) 80%, transparent) 11%,
+    color-mix(in srgb, var(--cta-lav) 52%, transparent) 20%,
+    color-mix(in srgb, var(--cta-lav) 28%, transparent) 30%,
+    color-mix(in srgb, var(--cta-lav) 12%, transparent) 38%,
+    color-mix(in srgb, var(--cta-lav) 0%, transparent) 47%); }
 
 @media (max-width: 767px) {
   .cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 16px; }
   .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 20px; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
-  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 28px; letter-spacing: -0.02em; }
+  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: {{ section.settings.heading_size_mobile | default: 28 }}px; letter-spacing: -0.02em; }
   .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
-  .cta-{{ section.id }} .cta__rating-text { font-size: 16px; white-space: normal; }
-  .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; }
+  .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: normal; }
+  .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size_mobile | default: 15 }}px; }
+  .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
   .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;
     background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 42%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
@@ -143,6 +151,16 @@ html { scroll-behavior: smooth; }
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
     { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "default": ".product-widget-container", "info": "On click, smooth-scrolls to this selector (e.g. .product-widget-container). Falls back to Button link if not found on the page." },
     { "type": "url", "id": "button_link", "label": "Button link (fallback)", "info": "Used if the scroll target isn't on the page. Defaults to #offer." },
+    { "type": "header", "content": "Text sizes (desktop)" },
+    { "type": "range", "id": "rating_size", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Review bar text", "default": 18 },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 64, "step": 1, "unit": "px", "label": "Headline", "default": 40 },
+    { "type": "range", "id": "checklist_size", "min": 10, "max": 28, "step": 1, "unit": "px", "label": "Checklist text", "default": 15 },
+    { "type": "range", "id": "button_size", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Button text", "default": 18 },
+    { "type": "header", "content": "Text sizes (mobile)" },
+    { "type": "range", "id": "rating_size_mobile", "min": 10, "max": 28, "step": 1, "unit": "px", "label": "Review bar text", "default": 16 },
+    { "type": "range", "id": "heading_size_mobile", "min": 18, "max": 48, "step": 1, "unit": "px", "label": "Headline", "default": 28 },
+    { "type": "range", "id": "checklist_size_mobile", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Checklist text", "default": 15 },
+    { "type": "range", "id": "button_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Button text", "default": 18 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "frame_bg", "label": "Section background", "default": "#E7E0F4" },
     { "type": "color", "id": "panel_bg", "label": "Card background (behind text)", "default": "#FFFFFF" },

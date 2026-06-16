@@ -119,10 +119,6 @@
         <div class="psc-v2-inner">
             <div class="psc-v2-info">
                 <p class="psc-v2-title">{{ product.title }}</p>
-                {%- assign psc_servings = product.selected_or_first_available_variant.metafields.custom.variant_servings -%}
-                {%- if psc_servings != blank -%}
-                <p class="psc-v2-variant" data-psc-v2-variant>{{ psc_servings }}</p>
-                {%- endif -%}
             </div>
             <button type="button" class="psc-v2-btn" data-psc-v2-btn>
                 <span data-psc-v2-btn-text>Add to cart</span>

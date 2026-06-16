@@ -386,7 +386,7 @@
         "header": "Join 300,000 Getting Better Sleep",
         "stars_reating": "4.5",
         "stars_label": "Trusted By 300,000+ Sleepers",
-        "bg_color": "#EAEAF7"
+        "bg_color": "#eaeaf7"
       }
     },
     "image_text_v2_xzfhqx": {
@@ -880,20 +880,20 @@
         "stars_color": "#eac78b",
         "rating_text": "<p>Trusted by <strong>300,000+</strong> Customers</p>",
         "rating_color": "#000000",
-        "heading": "<p>Better sleep is just a spray away</p>",
+        "heading": "<p>The Sleep You Deserve Is Now a Spray Away</p>",
         "heading_color": "#000000",
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": ".product-widget-container",
         "button_link": "",
         "rating_size": 18,
-        "heading_size": 36,
+        "heading_size": 40,
         "checklist_size": 18,
         "button_size": 18,
         "rating_size_mobile": 16,
-        "heading_size_mobile": 28,
+        "heading_size_mobile": 26,
         "checklist_size_mobile": 18,
         "button_size_mobile": 18,
-        "frame_bg": "#EAEAF7",
+        "frame_bg": "#eaeaf7",
         "panel_bg": "#ffffff",
         "checklist_color": "#141414"
       }

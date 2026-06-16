@@ -893,7 +893,7 @@
         "heading_size_mobile": 28,
         "checklist_size_mobile": 18,
         "button_size_mobile": 18,
-        "frame_bg": "#e7e0f4",
+        "frame_bg": "#EAEAF7",
         "panel_bg": "#ffffff",
         "checklist_color": "#141414"
       }

@@ -775,10 +775,10 @@ export class SkioPlanPicker extends LitElement {
           font-size: 14px;
         }
         .skio-includes__header {
-          font-size: 13px;
+          font-size: 15px;
         }
         .skio-includes__item-name {
-          font-size: 15px;
+          font-size: 17px;
         }
         .skio-includes__item-image {
           width: 36px;
@@ -791,10 +791,10 @@ export class SkioPlanPicker extends LitElement {
           min-width: 36px;
         }
         .skio-includes__item-original {
-          font-size: 13px;
+          font-size: 15px;
         }
         .skio-includes__item-price {
-          font-size: 15px;
+          font-size: 17px;
         }
         .skio-plan-picker .group-label {
           padding: 16px 14px;

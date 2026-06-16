@@ -26,9 +26,10 @@ html { scroll-behavior: smooth; }
 
 .cta-{{ section.id }} .cta__title,
 .cta-{{ section.id }} .cta__title * {
-  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  font-size: {{ section.settings.heading_size | default: 40 }}px; line-height: 1.15; letter-spacing: -0.02em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: {{ section.settings.heading_size | default: 36 }}px; line-height: 1.4; letter-spacing: 0;
+  text-transform: none;
   color: {{ section.settings.heading_color | default: '#141414' }};
   margin: 0;
 }
@@ -65,7 +66,7 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 16px; }
   .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 20px; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
-  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: {{ section.settings.heading_size_mobile | default: 28 }}px; letter-spacing: -0.02em; }
+  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: {{ section.settings.heading_size_mobile | default: 28 }}px; letter-spacing: 0; }
   .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
   .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: normal; }
   .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size_mobile | default: 15 }}px; }
@@ -153,7 +154,7 @@ html { scroll-behavior: smooth; }
     { "type": "url", "id": "button_link", "label": "Button link (fallback)", "info": "Used if the scroll target isn't on the page. Defaults to #offer." },
     { "type": "header", "content": "Text sizes (desktop)" },
     { "type": "range", "id": "rating_size", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Review bar text", "default": 18 },
-    { "type": "range", "id": "heading_size", "min": 20, "max": 64, "step": 1, "unit": "px", "label": "Headline", "default": 40 },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 64, "step": 1, "unit": "px", "label": "Headline", "default": 36 },
     { "type": "range", "id": "checklist_size", "min": 10, "max": 28, "step": 1, "unit": "px", "label": "Checklist text", "default": 15 },
     { "type": "range", "id": "button_size", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Button text", "default": 18 },
     { "type": "header", "content": "Text sizes (mobile)" },

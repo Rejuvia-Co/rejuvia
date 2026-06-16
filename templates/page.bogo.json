@@ -725,7 +725,7 @@
         "faq_8qDeDY": {
           "type": "faq",
           "settings": {
-            "question": "Will I wake up groggy in the morning?",
+            "question": "Will I feel groggy in the morning?",
             "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
           }
         },
@@ -739,7 +739,7 @@
         "faq_NkjjkQ": {
           "type": "faq",
           "settings": {
-            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "question": "Is Rejuvia habit-forming?",
             "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
           }
         },
@@ -767,7 +767,7 @@
         "faq_jynxhn": {
           "type": "faq",
           "settings": {
-            "question": "How long does one bottle last?",
+            "question": "How long does one spray last?",
             "answer": "<p>Each Rejuvia spray will last you 30-35 nights depending on your usage. One spray contains ~240 total spritzes and our suggest dosage is 6-8 spritzes per night.</p>"
           }
         }
@@ -789,8 +789,8 @@
         "open_first": true,
         "title_size": 40,
         "title_size_mobile": 28,
-        "question_size": 18,
-        "answer_size": 16,
+        "question_size": 20,
+        "answer_size": 18,
         "max_width": 800,
         "padding_top": 100,
         "padding_bottom": 100,
@@ -832,15 +832,15 @@
         "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p>Backed by <strong>300,000+ customers</strong></p>",
-        "rating_color": "#141414",
+        "rating_text": "<p>Trusted by <strong>300,000+</strong> Customers</p>",
+        "rating_color": "#000000",
         "heading": "<p>Better sleep is now just a spray away</p>",
-        "heading_color": "#5f2a63",
+        "heading_color": "#000000",
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": ".product-widget-container",
         "button_link": "",
-        "frame_bg": "#ffffff",
-        "panel_bg": "#e7e0f4",
+        "frame_bg": "#E7E0F4",
+        "panel_bg": "#FFFFFF",
         "checklist_color": "#141414"
       }
     },
@@ -848,8 +848,8 @@
       "type": "sticky-cta-bogo",
       "name": "Sticky CTA (Bogo)",
       "settings": {
-        "text": "<p>Claim <span style=\"text-decoration:underline\"><strong>FREE</strong></span> sprays today</p>",
-        "btn_text": "Try Rejuvia",
+        "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
+        "btn_text": "Get Offer",
         "scroll_target": ".offer",
         "position": "bottom",
         "disable_sticky_header": false,

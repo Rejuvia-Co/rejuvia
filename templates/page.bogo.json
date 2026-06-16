@@ -264,7 +264,7 @@
       "settings": {
         "product": "sleep-spray",
         "image_bg": "#ffffff",
-        "sticky_offset": 24,
+        "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#eac78b",
         "stars_size": 17,

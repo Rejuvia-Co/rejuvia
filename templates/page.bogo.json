@@ -800,6 +800,18 @@
         "answer_color": "#5c5c5c"
       }
     },
+    "guarantee_section_gK7mPq": {
+      "type": "guarantee-section",
+      "disabled": true,
+      "settings": {
+        "title": "60-Day Money-Back Guarantee",
+        "description": "Don't feel the difference within 60 days? We'll refund you. No questions asked.",
+        "button_text": "Try Rejuvia Risk-Free",
+        "button_link": "#offer",
+        "sub_text": "60-Day Money-Back Guarantee",
+        "bg_color": "#ffffff"
+      }
+    },
     "closing_cta_ThzKQ3": {
       "type": "closing-cta",
       "blocks": {
@@ -868,6 +880,7 @@
     "17814435248f2fd49e",
     "founder_story_MA6p9q",
     "faq_center_fQVeth",
+    "guarantee_section_gK7mPq",
     "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"
   ]

@@ -1,0 +1,121 @@
+{% style %}
+.gs-{{ section.id }} {
+  background: {{ section.settings.bg_color | default: '#ffffff' }};
+  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+}
+.gs-{{ section.id }} .gs__inner {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 64px 48px;
+  text-align: center;
+}
+.gs-{{ section.id }} .gs__icon { display: flex; justify-content: center; margin-bottom: 24px; }
+.gs-{{ section.id }} .gs__icon img { width: 64px; height: 64px; object-fit: contain; display: block; }
+.gs-{{ section.id }} .gs__icon svg { width: 64px; height: 64px; display: block; }
+.gs-{{ section.id }} .gs__title {
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+  color: #000000;
+  margin: 0 0 14px;
+}
+.gs-{{ section.id }} .gs__desc {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #232323;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.gs-{{ section.id }} .gs__cta { display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
+.gs-{{ section.id }} .gs__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #672666;
+  color: #ffffff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.4px;
+  line-height: 1;
+  padding: 22px 88px;
+  border: none;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.22,1,0.36,1), transform 150ms cubic-bezier(0.22,1,0.36,1);
+}
+.gs-{{ section.id }} .gs__btn:hover { background: #5d215f; color: #ffffff; }
+.gs-{{ section.id }} .gs__btn:active { transform: scale(0.98); }
+.gs-{{ section.id }} .gs__guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; color: #141414; }
+.gs-{{ section.id }} .gs__guarantee img { width: 18px; height: 18px; object-fit: contain; display: block; }
+.gs-{{ section.id }} .gs__guarantee svg { width: 18px; height: 18px; display: block; }
+
+@media (max-width: 749px) {
+  .gs-{{ section.id }} .gs__inner { padding: 44px 28px; }
+  .gs-{{ section.id }} .gs__icon { margin-bottom: 18px; }
+  .gs-{{ section.id }} .gs__icon img, .gs-{{ section.id }} .gs__icon svg { width: 56px; height: 56px; }
+  .gs-{{ section.id }} .gs__title { font-size: 27px; letter-spacing: -0.5px; line-height: 1.15; margin: 0 0 12px; }
+  .gs-{{ section.id }} .gs__desc { font-size: 16px; margin: 0 auto 28px; }
+  .gs-{{ section.id }} .gs__cta { display: block; }
+  .gs-{{ section.id }} .gs__btn { width: 100%; padding: 20px 24px; }
+  .gs-{{ section.id }} .gs__guarantee { font-size: 15px; margin-top: 14px; }
+}
+{% endstyle %}
+
+{%- capture gs_ring_check -%}<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#5d215f" stroke-width="3" fill="none"/><path d="M15 24.5l6 6 12-13" stroke="#5d215f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>{%- endcapture -%}
+{%- capture gs_gold_check -%}<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12.5l5 5 11-12" stroke="#fab851" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+
+<section class="gs-{{ section.id }}">
+  <div class="gs__inner">
+    <div class="gs__icon">
+      {%- if section.settings.icon != blank -%}
+        <img src="{{ section.settings.icon | image_url: width: 160 }}" alt="" width="64" height="64" loading="lazy">
+      {%- else -%}
+        {{ gs_ring_check }}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.title != blank -%}<h2 class="gs__title">{{ section.settings.title }}</h2>{%- endif -%}
+    {%- if section.settings.description != blank -%}<p class="gs__desc">{{ section.settings.description }}</p>{%- endif -%}
+
+    <div class="gs__cta">
+      {%- if section.settings.button_text != blank -%}
+        <a class="gs__btn" href="{{ section.settings.button_link | default: '#offer' }}">{{ section.settings.button_text }}</a>
+      {%- endif -%}
+      {%- if section.settings.sub_text != blank or section.settings.sub_icon != blank -%}
+        <div class="gs__guarantee">
+          {%- if section.settings.sub_icon != blank -%}
+            <img src="{{ section.settings.sub_icon | image_url: width: 48 }}" alt="" width="18" height="18" loading="lazy">
+          {%- else -%}
+            {{ gs_gold_check }}
+          {%- endif -%}
+          {%- if section.settings.sub_text != blank -%}<span>{{ section.settings.sub_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Guarantee Section",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "image_picker", "id": "icon", "label": "Icon", "info": "Optional. Defaults to the ring-check icon. Square image recommended." },
+    { "type": "text", "id": "title", "label": "Title", "default": "60-Day Money-Back Guarantee" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Don't feel the difference within 60 days? We'll refund you. No questions asked." },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Tip: link to the offer section, e.g. #offer" },
+    { "type": "image_picker", "id": "sub_icon", "label": "Sub icon (below button)", "info": "Optional. Defaults to a gold checkmark." },
+    { "type": "text", "id": "sub_text", "label": "Sub text (below button)", "default": "60-Day Money-Back Guarantee" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" }
+  ],
+  "presets": [
+    { "name": "Guarantee Section", "category": "Rejuvia" }
+  ]
+}
+{% endschema %}

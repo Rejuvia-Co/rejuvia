@@ -35,19 +35,18 @@
   background: #672666;
   color: #ffffff;
   font-family: inherit;
-  font-weight: 700;
-  font-size: 19px;
-  letter-spacing: -0.4px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
   line-height: 1;
   padding: 22px 88px;
   border: none;
   border-radius: 100px;
   text-decoration: none;
   cursor: pointer;
-  transition: background 150ms cubic-bezier(0.22,1,0.36,1), transform 150ms cubic-bezier(0.22,1,0.36,1);
+  transition: opacity 0.25s ease;
 }
-.gs-{{ section.id }} .gs__btn:hover { background: #5d215f; color: #ffffff; }
-.gs-{{ section.id }} .gs__btn:active { transform: scale(0.98); }
+.gs-{{ section.id }} .gs__btn:hover { opacity: 0.9; color: #ffffff; }
 .gs-{{ section.id }} .gs__guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; color: #141414; }
 .gs-{{ section.id }} .gs__guarantee img { width: 18px; height: 18px; object-fit: contain; display: block; }
 .gs-{{ section.id }} .gs__guarantee svg { width: 18px; height: 18px; display: block; }

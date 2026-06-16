@@ -308,7 +308,7 @@
         "testimonial_A8C7gQ": {
           "type": "testimonial",
           "settings": {
-            "text": "I have been really enjoying my Rejuvia and always sleep very well when I use it.",
+            "text": "I've been really enjoying my Rejuvia and always sleep very well when I use it.",
             "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
             "name": "Betty M. (Verified Buyer)"
           }
@@ -332,7 +332,7 @@
         "testimonial_mqf9FP": {
           "type": "testimonial",
           "settings": {
-            "text": "\"Excellent product, recommend it. Tastes good and helps me fall asleep quickly.\"",
+            "text": "\"Excellent spray, recommend it. Tastes good and helps me fall asleep quickly.\"",
             "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
             "name": "Timothy G. (Verified Buyer)"
           }
@@ -530,22 +530,6 @@
             "text_col_5": ""
           }
         },
-        "feature_row_UGQrUb": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Average Price",
-            "value_type_col_1": "text",
-            "text_col_1": "$0.89/night",
-            "value_type_col_2": "text",
-            "text_col_2": "$3.00/night",
-            "value_type_col_3": "text",
-            "text_col_3": "$1.83/night",
-            "value_type_col_4": "text",
-            "text_col_4": "$0.93/night",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
         "feature_row_CGXtUe": {
           "type": "feature_row",
           "settings": {
@@ -610,22 +594,6 @@
             "text_col_5": ""
           }
         },
-        "feature_row_m7EpPx": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Free From Additives & Fillers",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "check",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
         "feature_row_TdJUdL": {
           "type": "feature_row",
           "settings": {
@@ -665,12 +633,10 @@
         "product_column_nrXeXp",
         "product_column_jtRq3f",
         "feature_row_HbpnWP",
-        "feature_row_UGQrUb",
         "feature_row_CGXtUe",
         "feature_row_HFKqei",
         "feature_row_HYkECV",
         "feature_row_ipC3wC",
-        "feature_row_m7EpPx",
         "feature_row_TdJUdL",
         "feature_row_Ytm67T"
       ],
@@ -720,8 +686,8 @@
       "settings": {
         "caption_1": "RC & Mom · 2019",
         "caption_2": "Founders of Rejuvia",
-        "headline": "Built for my mom. Now for everyone.",
-        "paragraph_1": "She was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania we built an oral sleep spray with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.",
+        "headline": "Originally for my mom. Now Rejuvia is for everyone.",
+        "paragraph_1": "My mom was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania I built an oral sleep spray for her with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.",
         "paragraph_2": "We just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
         "stat1_number": "100%",
         "stat1_label": "Made in the USA",
@@ -737,25 +703,15 @@
         "stat_label_size": 14,
         "name_size": 19,
         "title_size": 15,
-        "headline_size_mobile": 22,
-        "body_size_mobile": 15,
+        "headline_size_mobile": 24,
+        "body_size_mobile": 18,
         "stat_num_size_mobile": 20,
-        "stat_label_size_mobile": 12,
-        "name_size_mobile": 16,
-        "title_size_mobile": 13,
-        "section_bg": "#672666"
-      }
-    },
-    "founder_story_MA6p9q": {
-      "type": "founder-story",
-      "disabled": true,
-      "name": "Founder Story",
-      "settings": {
-        "heading": "Originally Built For My Mom, Now For Everyone",
-        "text": "My mom was 55, going through menopause, and she could never freaking sleep. She'd tried everything — melatonin capsules, gummies, sleeping pills, Ambien, teas — nothing ever helped.\n\nSo I spent my entire time at the University of Pennsylvania working with her to create something different. Not another pill. Not another gummy. An oral sleep spray with 13 natural ingredients that absorbs directly under your tongue and skips your digestive system entirely. That's why it works in minutes, not hours.\n\nWe didn't even want it to be a business. We just wanted to solve her sleep so she could get back to being herself — in control of her nights, her energy, her life. But after it worked for her, she realized there were hundreds of thousands of other women just like her, 55, 60 years old, going through the same thing, who needed this too.\n\nSo we built a small family business around it. Five years later, over 300,000 customers use Rejuvia nightly. It started with my mom. She's never slept better, never felt better. And as her son, I've never seen her live a better life — and it all started with fixing her sleep.",
-        "founder_name": "RC Williams",
-        "founder_title": "Founder of Rejuvia",
-        "image": "shopify://shop_images/rejuvia_founders.webp"
+        "stat_label_size_mobile": 14,
+        "name_size_mobile": 18,
+        "title_size_mobile": 16,
+        "section_bg": "#EAEAF7",
+        "card_bg": "#ffffff",
+        "image_shadow_color": "#2a0e2a"
       }
     },
     "faq_center_fQVeth": {
@@ -886,7 +842,7 @@
         "scroll_target": ".product-widget-container",
         "button_link": "",
         "rating_size": 18,
-        "heading_size": 40,
+        "heading_size": 36,
         "checklist_size": 18,
         "button_size": 18,
         "rating_size_mobile": 16,
@@ -922,7 +878,6 @@
     "guarantee_section_gK7mPq",
     "17814435248f2fd49e",
     "founder_story_v2_Rj7kQp",
-    "founder_story_MA6p9q",
     "faq_center_fQVeth",
     "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"

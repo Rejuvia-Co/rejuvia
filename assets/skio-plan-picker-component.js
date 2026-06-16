@@ -566,10 +566,10 @@ export class SkioPlanPicker extends LitElement {
         display: inline-block;
         background: #5d215f;
         color: #fff;
-        font-size: 13px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 1;
-        padding: 5px 9px;
+        padding: 7px 14px;
         border-radius: 100px;
         white-space: nowrap;
         letter-spacing: 0.2px;

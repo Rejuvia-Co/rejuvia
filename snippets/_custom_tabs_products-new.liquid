@@ -190,26 +190,26 @@
   .custom-tabs-product-new ul {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
+    border-top: 1px solid #e5e5e5;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li {
-    padding: 24px !important;
+    padding: 22px 0 !important;
     border: none !important;
+    border-bottom: 1px solid #e5e5e5 !important;
     position: relative;
-    background: #fff;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.06);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     overflow: hidden;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li h2 {
     color: #141414;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 700;
     line-height: 1.4;
     letter-spacing: 0;
     text-transform: none;
@@ -236,8 +236,8 @@
 
   #custom_tabs_product.custom-tabs-product-new ul li svg {
     position: absolute;
-    right: 24px;
-    top: 24px;
+    right: 0;
+    top: 22px;
   }
 
   /* Plus icon: show when collapsed (checked), hide when expanded */
@@ -249,7 +249,7 @@
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~ h2 {
-    font-weight: 500;
+    font-weight: 700;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~ .icon-tab-plus {
@@ -261,11 +261,16 @@
 
   @media only screen and (max-width: 749px) {
     #custom_tabs_product.custom-tabs-product-new ul li {
-      padding: 20px !important;
+      padding: 18px 0 !important;
+    }
+
+    #custom_tabs_product.custom-tabs-product-new ul li h2 {
+      font-size: 16px;
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li svg {
-      right: 20px;
+      right: 0;
+      top: 18px;
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li .tab_content {

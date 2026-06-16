@@ -385,7 +385,8 @@
       "settings": {
         "header": "Join 300,000 Getting Better Sleep",
         "stars_reating": "4.5",
-        "stars_label": "Trusted By 300,000+ Sleepers"
+        "stars_label": "Trusted By 300,000+ Sleepers",
+        "bg_color": "#eaeaf7"
       }
     },
     "image_text_v2_xzfhqx": {

@@ -1,6 +1,9 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
+{%- if section.settings.bg_color != blank -%}
+#shopify-section-{{ section.id }} { background: {{ section.settings.bg_color }}; }
+{%- endif -%}
 /* Shorten the review media on mobile so the full section fits on screen */
 @media (max-width: 749px) {
   #shopify-section-{{ section.id }} .customer-review-image { height: 312px; }
@@ -171,6 +174,12 @@
       "type": "text",
       "id": "stars_label",
       "label": "Stars Label"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "info": "Leave empty for the default (no background)."
     }
   ],
   "blocks": [

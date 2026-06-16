@@ -26,9 +26,9 @@ html { scroll-behavior: smooth; }
 
 .cta-{{ section.id }} .cta__title,
 .cta-{{ section.id }} .cta__title * {
-  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-size: 40px; line-height: 1.4; letter-spacing: 0;
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px; line-height: 1.15; letter-spacing: -0.02em;
   color: {{ section.settings.heading_color | default: '#141414' }};
   margin: 0;
 }
@@ -58,7 +58,7 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 16px; }
   .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 20px; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
-  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 30px; letter-spacing: 0; }
+  .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 28px; letter-spacing: -0.02em; }
   .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
   .cta-{{ section.id }} .cta__rating-text { font-size: 16px; white-space: normal; }
   .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; }

@@ -291,7 +291,9 @@
     margin-top: 28px;
   }
   #custom_tabs_product .supplement-label-btn {
-    display: inline-flex;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     background: #ffffff;
@@ -302,7 +304,7 @@
     line-height: 1;
     letter-spacing: 0;
     text-transform: none;
-    padding: 18px 64px;
+    padding: 18px 32px;
     border: none;
     border-radius: 100px;
     box-shadow: 0 4px 18px rgba(40, 12, 40, 0.12);
@@ -318,7 +320,7 @@
   }
   @media only screen and (max-width: 749px) {
     #custom_tabs_product .supplement-label-cta { margin-top: 22px; }
-    #custom_tabs_product .supplement-label-btn { padding: 16px 48px; font-size: 15px; }
+    #custom_tabs_product .supplement-label-btn { padding: 16px 32px; font-size: 15px; }
   }
 </style>
 
@@ -401,7 +403,7 @@
       </ul>
       {% if product.metafields.custom.supplement_label != blank %}
         <div class="supplement-label-cta">
-          <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Label</a>
+          <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
         </div>
       {% endif %}
     </div>

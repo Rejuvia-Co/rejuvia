@@ -560,7 +560,8 @@ export class SkioPlanPicker extends LitElement {
         display: flex;
         align-items: center;
         gap: 8px;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        min-width: 0;
       }
       .skio-save-pill {
         display: inline-block;

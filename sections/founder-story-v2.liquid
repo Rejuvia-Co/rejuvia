@@ -7,12 +7,12 @@
   --fs-ink: #141414;
   --fs-mauve: #c694a0;
   --fs-divider: #d7d2e2;
-  background: {{ section.settings.section_bg | default: '#ffffff' }};
+  background: {{ section.settings.section_bg | default: '#672666' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.fs-{{ section.id }} .fs__wrap { max-width: 1280px; margin: 0 auto; padding: 72px 24px; }
+.fs-{{ section.id }} .fs__wrap { max-width: 1280px; margin: 0 auto; padding: 48px 40px; }
 .fs-{{ section.id }} .fs__band {
-  background: linear-gradient(110deg, #eaeaf7, #f9f2ff);
+  background: {{ section.settings.card_bg | default: '#ffffff' }};
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -27,7 +27,7 @@
   background: #fff;
   padding: 14px 14px 20px;
   border-radius: 6px;
-  box-shadow: 0 16px 32px -14px rgba(40,12,40,0.4);
+  box-shadow: 0 18px 40px -16px {{ section.settings.image_shadow_color | default: '#2a0e2a' | color_modify: 'alpha', 0.26 }};
   transform: rotate(-3deg);
 }
 .fs-{{ section.id }} .fs__photo { width: 290px; height: 346px; overflow: hidden; border-radius: 2px; }
@@ -182,7 +182,9 @@
     { "type": "range", "id": "name_size_mobile", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Founder name", "default": 16 },
     { "type": "range", "id": "title_size_mobile", "min": 9, "max": 20, "step": 1, "unit": "px", "label": "Founder title", "default": 13 },
     { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
+    { "type": "color", "id": "section_bg", "label": "Section background (outside the band)", "default": "#672666" },
+    { "type": "color", "id": "card_bg", "label": "Band background", "default": "#ffffff" },
+    { "type": "color", "id": "image_shadow_color", "label": "Photo shadow color", "default": "#2a0e2a" }
   ],
   "presets": [
     { "name": "Founder Story V2", "category": "Rejuvia" }

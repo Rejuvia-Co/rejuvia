@@ -886,7 +886,7 @@
   /* add-to-cart-navbar */
 
   .add-to-cart-navbar .title {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   .add-to-cart-navbar img {
@@ -903,11 +903,21 @@
     border-top: 2px solid #EAC78B;
     border-bottom: 1px solid #EAC78B;
     transition: top .8s ease, bottom .8s ease;
-    padding: 1em 1em;
+    padding: 26px 32px;
   }
 
   .add-to-cart-navbar h4 {
     margin-bottom: 0;
+    font-size: 16px;
+  }
+
+  .add-to-cart-navbar button {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px 48px;
+    min-height: 60px;
+    border-radius: 100px;
+    line-height: 1;
   }
 
   @media all and (min-width: 901px) {
@@ -927,13 +937,13 @@
     }
 
     .add-to-cart-navbar h1.title {
-      font-size: 1.2em;
+      font-size: 1.6em;
       color: #000000;
     }
 
     .add-to-cart-navbar h4 {
       margin: 0;
-      font-size: 1.2em;
+      font-size: 1.4em;
       color: #eac78b;
       font-weight: 700;
     }

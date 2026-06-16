@@ -12,7 +12,7 @@
 
 .sticky-cta-bogo-section--bottom {
     bottom: 0;
-    padding: 16px 12px 0;
+    padding: 0;
     transform: translateY(100%);
 }
 
@@ -47,17 +47,19 @@ body.bogo-offer-visible .sticky-cta-bogo-section--top {
 }
 
 .sticky-cta-bogo-bar {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -3px 16px -3px rgba(0, 0, 0, 0.12);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    pointer-events: auto;
+}
+.sticky-cta-bogo-inner {
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    background: #ffffff;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 -3px 16px -3px rgba(0, 0, 0, 0.12);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    pointer-events: auto;
+    padding: 12px 24px;
     overflow: hidden;
 }
 
@@ -107,13 +109,7 @@ body.bogo-offer-visible .sticky-cta-bogo-section--top {
 /* ===== Responsive ===== */
 /* Mobile: solid white, full-width edge-to-edge, and a bit bigger overall. */
 @media (max-width: 900px) {
-    .sticky-cta-bogo-section--bottom {
-        padding: 0;
-    }
-    .sticky-cta-bogo-bar {
-        max-width: 100%;
-        margin: 0;
-        border-radius: 0;
+    .sticky-cta-bogo-inner {
         padding: 15px 16px;
     }
     .sticky-cta-bogo-text {
@@ -131,8 +127,10 @@ body.bogo-offer-visible .sticky-cta-bogo-section--top {
 </style>
 
 <div class="sticky-cta-bogo-bar">
-    <span class="sticky-cta-bogo-text">{{ section.settings.text }}</span>
-    <a class="sticky-cta-bogo-btn" href="#" data-sticky-cta-btn data-target="{{ section.settings.scroll_target }}">{{ section.settings.btn_text }}</a>
+    <div class="sticky-cta-bogo-inner">
+        <span class="sticky-cta-bogo-text">{{ section.settings.text }}</span>
+        <a class="sticky-cta-bogo-btn" href="#" data-sticky-cta-btn data-target="{{ section.settings.scroll_target }}">{{ section.settings.btn_text }}</a>
+    </div>
 </div>
 
 <script>

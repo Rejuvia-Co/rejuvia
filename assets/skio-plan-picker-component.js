@@ -679,7 +679,7 @@ export class SkioPlanPicker extends LitElement {
         justify-content: center;
       }
       .skio-includes__item-name {
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 400;
         color: #000;
         line-height: 1;
@@ -778,7 +778,7 @@ export class SkioPlanPicker extends LitElement {
           font-size: 15px;
         }
         .skio-includes__item-name {
-          font-size: 17px;
+          font-size: 16px;
         }
         .skio-includes__item-image {
           width: 36px;

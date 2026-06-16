@@ -264,11 +264,11 @@
       "settings": {
         "product": "sleep-spray",
         "image_bg": "#ffffff",
-        "sticky_offset": 24,
+        "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#eac78b",
-        "stars_size": 16,
-        "rating_text_size": 16,
+        "stars_size": 17,
+        "rating_text_size": 17,
         "rating_text": "<p>Trusted By <strong>300,000+</strong>  Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Calm your stress, fall asleep in minutes and sleep the full night.",
@@ -685,6 +685,17 @@
         "mobile_breakpoint": 750
       }
     },
+    "guarantee_section_gK7mPq": {
+      "type": "guarantee-section",
+      "settings": {
+        "title": "60-Day Money-Back Guarantee",
+        "description": "Don't feel the difference within 60 days? We'll refund you. No questions asked.",
+        "button_text": "Try Rejuvia Risk-Free",
+        "button_link": "#offer",
+        "sub_text": "60-Day Money-Back Guarantee",
+        "bg_color": "#eaeaf7"
+      }
+    },
     "17814435248f2fd49e": {
       "type": "apps",
       "blocks": {
@@ -800,18 +811,6 @@
         "answer_color": "#5c5c5c"
       }
     },
-    "guarantee_section_gK7mPq": {
-      "type": "guarantee-section",
-      "disabled": true,
-      "settings": {
-        "title": "60-Day Money-Back Guarantee",
-        "description": "Don't feel the difference within 60 days? We'll refund you. No questions asked.",
-        "button_text": "Try Rejuvia Risk-Free",
-        "button_link": "#offer",
-        "sub_text": "60-Day Money-Back Guarantee",
-        "bg_color": "#ffffff"
-      }
-    },
     "closing_cta_ThzKQ3": {
       "type": "closing-cta",
       "blocks": {
@@ -851,8 +850,8 @@
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": ".product-widget-container",
         "button_link": "",
-        "frame_bg": "#E7E0F4",
-        "panel_bg": "#FFFFFF",
+        "frame_bg": "#e7e0f4",
+        "panel_bg": "#ffffff",
         "checklist_color": "#141414"
       }
     },
@@ -877,10 +876,10 @@
     "how_it_works_Hc9igb",
     "key_ingredients_v2_XxByCK",
     "product_comparison_enhanced_G6MmFh",
+    "guarantee_section_gK7mPq",
     "17814435248f2fd49e",
     "founder_story_MA6p9q",
     "faq_center_fQVeth",
-    "guarantee_section_gK7mPq",
     "closing_cta_ThzKQ3",
     "sticky_cta_v2_WgFy7H"
   ]

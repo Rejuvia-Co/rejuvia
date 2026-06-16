@@ -1,0 +1,187 @@
+{% style %}
+.fs-{{ section.id }} {
+  --fs-plum: #672666;
+  --fs-deep: #3a153a;
+  --fs-body: #5c5c66;
+  --fs-muted: #8a8a94;
+  --fs-ink: #141414;
+  --fs-mauve: #c694a0;
+  --fs-divider: #d7d2e2;
+  background: {{ section.settings.section_bg | default: '#ffffff' }};
+  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+}
+.fs-{{ section.id }} .fs__wrap { max-width: 1080px; margin: 0 auto; padding: 40px 24px; }
+.fs-{{ section.id }} .fs__card {
+  background: #ffffff;
+  border: 1px solid #ececf3;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px -32px rgba(40,12,40,0.28);
+  padding: 40px;
+}
+.fs-{{ section.id }} .fs__band {
+  background: linear-gradient(110deg, #eaeaf7, #f9f2ff);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  padding: 40px 44px;
+}
+
+/* Polaroid */
+.fs-{{ section.id }} .fs__polaroid {
+  flex-shrink: 0;
+  background: #fff;
+  padding: 12px 12px 18px;
+  border-radius: 6px;
+  box-shadow: 0 16px 32px -14px rgba(40,12,40,0.4);
+  transform: rotate(-3deg);
+}
+.fs-{{ section.id }} .fs__photo { width: 240px; height: 286px; overflow: hidden; border-radius: 2px; }
+.fs-{{ section.id }} .fs__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+.fs-{{ section.id }} .fs__cap1 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; color: var(--fs-plum); text-align: center; margin-top: 10px; }
+.fs-{{ section.id }} .fs__cap2 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--fs-muted); text-align: center; margin-top: 2px; }
+
+/* Text column */
+.fs-{{ section.id }} .fs__text { flex: 1; min-width: 0; }
+.fs-{{ section.id }} .fs__quote { font-family: Georgia, serif; font-size: 64px; line-height: 0.5; display: block; height: 34px; color: var(--fs-mauve); }
+.fs-{{ section.id }} .fs__headline { font-size: 25px; font-weight: 700; line-height: 1.3; letter-spacing: -0.5px; color: var(--fs-deep); margin: 0 0 16px; }
+.fs-{{ section.id }} .fs__p { font-size: 16px; line-height: 1.62; color: var(--fs-body); max-width: 540px; margin: 0 0 14px; }
+.fs-{{ section.id }} .fs__p:last-of-type { margin-bottom: 24px; }
+
+/* Stats */
+.fs-{{ section.id }} .fs__stats { display: flex; align-items: center; margin-bottom: 24px; }
+.fs-{{ section.id }} .fs__stat { padding-right: 24px; }
+.fs-{{ section.id }} .fs__stat + .fs__stat { border-left: 1px solid var(--fs-divider); padding: 0 24px; }
+.fs-{{ section.id }} .fs__stat-num { font-size: 24px; font-weight: 700; color: var(--fs-plum); letter-spacing: -0.5px; line-height: 1.1; }
+.fs-{{ section.id }} .fs__stat-label { font-size: 13px; color: var(--fs-muted); }
+
+/* Signature */
+.fs-{{ section.id }} .fs__sig { height: 48px; width: auto; display: block; margin: 0 0 4px -2px; }
+.fs-{{ section.id }} .fs__name-row { display: flex; align-items: center; gap: 10px; }
+.fs-{{ section.id }} .fs__name { font-size: 17px; font-weight: 700; color: var(--fs-ink); }
+.fs-{{ section.id }} .fs__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--fs-mauve); flex-shrink: 0; }
+.fs-{{ section.id }} .fs__attr { font-size: 14px; font-style: italic; color: var(--fs-muted); }
+
+/* Mobile: single lavender card, centered */
+@media (max-width: 767px) {
+  .fs-{{ section.id }} .fs__wrap { padding: 16px; }
+  .fs-{{ section.id }} .fs__card { background: none; border: none; border-radius: 0; box-shadow: none; padding: 0; }
+  .fs-{{ section.id }} .fs__band {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    background: linear-gradient(150deg, #eaeaf7, #f9f2ff);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px -34px rgba(40,12,40,0.3);
+    padding: 30px 26px;
+  }
+  .fs-{{ section.id }} .fs__polaroid { padding: 10px 10px 14px; box-shadow: 0 14px 28px -12px rgba(40,12,40,0.4); margin-bottom: 24px; }
+  .fs-{{ section.id }} .fs__photo { width: 200px; height: 200px; }
+  .fs-{{ section.id }} .fs__cap1 { font-size: 12px; margin-top: 8px; }
+  .fs-{{ section.id }} .fs__text { width: 100%; }
+  .fs-{{ section.id }} .fs__quote { display: none; }
+  .fs-{{ section.id }} .fs__headline { font-size: 22px; line-height: 1.28; letter-spacing: -0.4px; margin: 0 0 12px; }
+  .fs-{{ section.id }} .fs__p { font-size: 15px; line-height: 1.6; max-width: 100%; margin: 0 0 12px; }
+  .fs-{{ section.id }} .fs__p:last-of-type { margin-bottom: 20px; }
+  .fs-{{ section.id }} .fs__stats { justify-content: center; margin-bottom: 20px; }
+  .fs-{{ section.id }} .fs__stat { padding: 0 16px; }
+  .fs-{{ section.id }} .fs__stat:first-child { padding-left: 0; }
+  .fs-{{ section.id }} .fs__stat + .fs__stat { padding: 0 16px; }
+  .fs-{{ section.id }} .fs__stat-num { font-size: 20px; }
+  .fs-{{ section.id }} .fs__stat-label { font-size: 12px; }
+  .fs-{{ section.id }} .fs__sig { height: 42px; margin: 0 auto 4px; }
+  .fs-{{ section.id }} .fs__name-row { justify-content: center; gap: 9px; }
+  .fs-{{ section.id }} .fs__name { font-size: 16px; }
+  .fs-{{ section.id }} .fs__attr { font-size: 13px; }
+}
+{% endstyle %}
+
+{%- assign fs_photo = section.settings.image -%}
+{%- assign fs_sig = section.settings.signature -%}
+
+<section class="fs-{{ section.id }}">
+  <div class="fs__wrap">
+    <div class="fs__card">
+      <div class="fs__band">
+
+        <div class="fs__polaroid">
+          <div class="fs__photo">
+            {%- if fs_photo != blank -%}
+              <img src="{{ fs_photo | image_url: width: 480 }}" alt="{{ fs_photo.alt | default: section.settings.caption_1 | escape }}" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'founder-selfie.png' | asset_url }}" alt="{{ section.settings.caption_1 | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
+          {%- if section.settings.caption_1 != blank -%}<div class="fs__cap1">{{ section.settings.caption_1 }}</div>{%- endif -%}
+          {%- if section.settings.caption_2 != blank -%}<div class="fs__cap2">{{ section.settings.caption_2 }}</div>{%- endif -%}
+        </div>
+
+        <div class="fs__text">
+          <span class="fs__quote" aria-hidden="true">&ldquo;</span>
+          {%- if section.settings.headline != blank -%}<h2 class="fs__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+          {%- if section.settings.paragraph_1 != blank -%}<p class="fs__p">{{ section.settings.paragraph_1 }}</p>{%- endif -%}
+          {%- if section.settings.paragraph_2 != blank -%}<p class="fs__p">{{ section.settings.paragraph_2 }}</p>{%- endif -%}
+
+          <div class="fs__stats">
+            {%- if section.settings.stat1_number != blank -%}
+              <div class="fs__stat"><div class="fs__stat-num">{{ section.settings.stat1_number }}</div><div class="fs__stat-label">{{ section.settings.stat1_label }}</div></div>
+            {%- endif -%}
+            {%- if section.settings.stat2_number != blank -%}
+              <div class="fs__stat"><div class="fs__stat-num">{{ section.settings.stat2_number }}</div><div class="fs__stat-label">{{ section.settings.stat2_label }}</div></div>
+            {%- endif -%}
+            {%- if section.settings.stat3_number != blank -%}
+              <div class="fs__stat"><div class="fs__stat-num">{{ section.settings.stat3_number }}</div><div class="fs__stat-label">{{ section.settings.stat3_label }}</div></div>
+            {%- endif -%}
+          </div>
+
+          {%- if fs_sig != blank -%}
+            <img class="fs__sig" src="{{ fs_sig | image_url: width: 200 }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
+          {%- else -%}
+            <img class="fs__sig" src="{{ 'rc-signature.png' | asset_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
+          {%- endif -%}
+          <div class="fs__name-row">
+            {%- if section.settings.founder_name != blank -%}<span class="fs__name">{{ section.settings.founder_name }}</span>{%- endif -%}
+            <span class="fs__dot" aria-hidden="true"></span>
+            {%- if section.settings.founder_title != blank -%}<span class="fs__attr">{{ section.settings.founder_title }}</span>{%- endif -%}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Story V2",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Photo" },
+    { "type": "image_picker", "id": "image", "label": "Founder photo", "info": "Defaults to the bundled founder selfie." },
+    { "type": "text", "id": "caption_1", "label": "Photo caption (line 1)", "default": "RC & Mom · 2019" },
+    { "type": "text", "id": "caption_2", "label": "Photo caption (line 2)", "default": "Founders of Rejuvia" },
+    { "type": "header", "content": "Story" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Built for my mom. Now for everyone." },
+    { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "She was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania we built an oral sleep spray with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours." },
+    { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "We just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom." },
+    { "type": "header", "content": "Stats" },
+    { "type": "text", "id": "stat1_number", "label": "Stat 1 number", "default": "100%" },
+    { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Made in the USA" },
+    { "type": "text", "id": "stat2_number", "label": "Stat 2 number", "default": "8 yrs" },
+    { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Family business" },
+    { "type": "text", "id": "stat3_number", "label": "Stat 3 number", "default": "300K+" },
+    { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Customers nationwide" },
+    { "type": "header", "content": "Signature" },
+    { "type": "image_picker", "id": "signature", "label": "Signature image", "info": "Transparent PNG. Defaults to the bundled RC signature." },
+    { "type": "text", "id": "founder_name", "label": "Founder name", "default": "RC Williams" },
+    { "type": "text", "id": "founder_title", "label": "Founder title", "default": "Co-Founder, CEO of Rejuvia" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
+  ],
+  "presets": [
+    { "name": "Founder Story V2", "category": "Rejuvia" }
+  ]
+}
+{% endschema %}

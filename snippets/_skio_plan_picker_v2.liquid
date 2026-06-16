@@ -37,7 +37,7 @@
       "type": "gift",
       "name": {{ free_gift.title | json }},
       "image": {{ free_gift.featured_image | image_url: width: 80 | json }},
-      "original_price": {{ free_gift.price | money | json }},
+      "original_price": {{ free_gift.price | money_without_trailing_zeros | json }},
       "sale_price": "FREE"
     }{% if block.settings.show_free_shipping %},{% endif %}
   {% endif %}

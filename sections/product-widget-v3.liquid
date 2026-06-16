@@ -309,7 +309,7 @@
 
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
-                                        <span>{{ block.settings.button_text }} <span class="variant-price-display skio-update-price">{{ currentProduct.variants[1].price | default: currentProduct.variants.first.price | money }}</span></span>
+                                        <span style="display:flex;align-items:center;justify-content:center;width:100%;">{{ block.settings.button_text }}</span>
                                     </button>
                                 </div>
 
@@ -845,7 +845,7 @@
           "type": "text",
           "id": "button_text",
           "label": "Button text",
-          "default": "Add to cart -"
+          "default": "Add to cart"
         },
         {
           "type": "header",

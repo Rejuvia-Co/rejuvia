@@ -200,6 +200,7 @@
   }
 
   .variant-selector__image {
+    margin-top: 14px;
     width: 60px;
     height: 60px;
     display: flex;
@@ -1151,6 +1152,7 @@
     }
 
     .variant-selector__image {
+      margin-top: 0;
       width: 60px;
       height: 60px;
     }

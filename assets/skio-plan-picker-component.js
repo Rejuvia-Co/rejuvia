@@ -548,7 +548,7 @@ export class SkioPlanPicker extends LitElement {
         margin-left: auto;
       }
       .skio-sub-top__title {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 400;
         color: #000;
         line-height: 1.4;
@@ -758,7 +758,7 @@ export class SkioPlanPicker extends LitElement {
           gap: 10px;
         }
         .skio-sub-top__title {
-          font-size: 17px;
+          font-size: 15px;
         }
         .skio-save-pill {
           font-size: 12px;
@@ -820,7 +820,7 @@ export class SkioPlanPicker extends LitElement {
           font-size: 14px;
         }
         .skio-sub-top__title {
-          font-size: 17px;
+          font-size: 15px;
         }
         .skio-sub-top__price {
           font-size: 17px;

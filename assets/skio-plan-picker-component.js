@@ -542,6 +542,7 @@ export class SkioPlanPicker extends LitElement {
         display: flex;
         flex-direction: column;
         gap: 6px;
+        min-width: 0;
       }
       .skio-sub-top__right {
         margin-left: auto;
@@ -552,6 +553,8 @@ export class SkioPlanPicker extends LitElement {
         color: #000;
         line-height: 1.4;
         letter-spacing: normal;
+        min-width: 0;
+        white-space: normal;
       }
       .group-container--selected .skio-sub-top__title {
         font-weight: 700;
@@ -560,17 +563,17 @@ export class SkioPlanPicker extends LitElement {
         display: flex;
         align-items: center;
         gap: 8px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         min-width: 0;
       }
       .skio-save-pill {
         display: inline-block;
         background: #5d215f;
         color: #fff;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         line-height: 1;
-        padding: 6px 12px;
+        padding: 5px 10px;
         border-radius: 100px;
         white-space: nowrap;
         letter-spacing: 0.2px;
@@ -756,10 +759,6 @@ export class SkioPlanPicker extends LitElement {
         }
         .skio-sub-top__title {
           font-size: 17px;
-        }
-        .skio-save-pill {
-          font-size: 14px;
-          padding: 5px 10px;
         }
         .skio-sub-top__subtitle {
           font-size: 14px;
@@ -1211,7 +1210,7 @@ export class SkioPlanPicker extends LitElement {
           ? (this.options?.discount_format === 'absolute' ? this.money(discount.absolute) : discount.percent + '%')
           : '';
         const subTitle = this.options?.subscription_title || 'Subscribe & ';
-        const titleText = discountLabel ? `${subTitle} Save ${discountLabel}` : subTitle;
+        const titleText = discountLabel ? `Subscribe (${discountLabel} OFF)` : subTitle;
         const comparePrice = this.selectedVariant?.compare_at_price || this.selectedVariant?.price;
         const salePrice = this.price(group.selected_selling_plan);
         const hasCompare = this.options?.show_compare_price && comparePrice > this.price(group.selected_selling_plan, false);

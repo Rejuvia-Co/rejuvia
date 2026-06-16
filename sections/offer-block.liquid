@@ -61,7 +61,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__dot.is-active { background: var(--ob-accent); }
 .ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ob-accent); background: #fff; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: background .15s; }
 .ob__arrow:hover { background: #f6eef6; }
-.ob__thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; }
+.ob__thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; scrollbar-width: none; -ms-overflow-style: none; }
+.ob__thumbs::-webkit-scrollbar { display: none; }
 .ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; }
 .ob__thumb.is-active { border: 2px solid var(--ob-accent); }
 .ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }

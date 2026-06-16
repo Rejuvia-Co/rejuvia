@@ -148,14 +148,17 @@
             }
         }
 
-        /* Never overlap the offer: hide whenever any part of it is in the
-           viewport (even when scrolling up). Otherwise fall through to the normal
-           show logic below, so the bar still appears above and below the offer. */
-        var widget = document.querySelector('.product-widget-container');
-        if (widget) {
-            var wr = widget.getBoundingClientRect();
-            var widgetInView = wr.top < window.innerHeight && wr.bottom > 0;
-            if (widgetInView) {
+        /* Never overlap the offer section: hide whenever any part of it is in
+           the viewport (even when scrolling up). This element wraps the whole
+           offer — gallery, buy button, AND the info tabs below it — so the bar
+           stays hidden across all of it. Falls through to the normal show logic
+           below, so the bar still appears above and below the offer. */
+        var offerSel = '{{ section.settings.hide_selector | default: ".bogo" }}';
+        var offer = offerSel ? document.querySelector(offerSel) : null;
+        if (offer) {
+            var or = offer.getBoundingClientRect();
+            var offerInView = or.top < window.innerHeight && or.bottom > 0;
+            if (offerInView) {
                 sticky.classList.remove('is-visible');
                 return;
             }
@@ -230,6 +233,13 @@
             "label": "Scroll to CSS selector",
             "default": ".offer",
             "info": "CSS selector of the target section, e.g. .offer"
+        },
+        {
+            "type": "text",
+            "id": "hide_selector",
+            "label": "Hide while this section is visible (CSS selector)",
+            "default": ".bogo",
+            "info": "The bar hides whenever this element is in view — defaults to .bogo (the whole offer block, incl. its info tabs). Leave blank to never auto-hide."
         },
         {
             "type": "select",

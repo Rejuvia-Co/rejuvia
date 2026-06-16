@@ -119,6 +119,7 @@
         <div class="psc-v2-inner">
             <div class="psc-v2-info">
                 <p class="psc-v2-title">{{ product.title }}</p>
+                <p class="psc-v2-variant" data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</p>
             </div>
             <button type="button" class="psc-v2-btn" data-psc-v2-btn>
                 <span data-psc-v2-btn-text>Add to cart</span>

@@ -1240,7 +1240,7 @@ export class SkioPlanPicker extends LitElement {
               <div class="skio-sub-top__left">
                 <div class="skio-sub-top__title-wrap">
                   <div class="skio-sub-top__title">${titleText}</div>
-                  ${savingsAmount > 0 ? html`<span class="skio-save-pill">Save ${this.money(savingsAmount)}</span>` : ''}
+                  ${savingsAmount > 0 ? html`<span class="skio-save-pill">Save ${this.money(Math.ceil(savingsAmount / 100) * 100)}</span>` : ''}
                 </div>
                 <div class="skio-sub-top__subtitle">${this.options?.subscription_subtitle || 'Skip or cancel anytime'}</div>
               </div>

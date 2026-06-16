@@ -556,6 +556,24 @@ export class SkioPlanPicker extends LitElement {
       .group-container--selected .skio-sub-top__title {
         font-weight: 700;
       }
+      .skio-sub-top__title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .skio-save-pill {
+        display: inline-block;
+        background: #5d215f;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        padding: 5px 9px;
+        border-radius: 100px;
+        white-space: nowrap;
+        letter-spacing: 0.2px;
+      }
       .skio-sub-top__subtitle {
         font-size: 16px;
         font-weight: 400;
@@ -1191,6 +1209,8 @@ export class SkioPlanPicker extends LitElement {
         const comparePrice = this.selectedVariant?.compare_at_price || this.selectedVariant?.price;
         const salePrice = this.price(group.selected_selling_plan);
         const hasCompare = this.options?.show_compare_price && comparePrice > this.price(group.selected_selling_plan, false);
+        // Savings pill: one-time purchase price minus the subscription price for this plan
+        const savingsAmount = (this.selectedVariant?.price || 0) - this.price(group.selected_selling_plan, false);
 
         return html`
         <div class="group-container subs-group-container ${this.selectedSellingPlanGroup == group ? 'group-container--selected' : ''}"
@@ -1209,7 +1229,10 @@ export class SkioPlanPicker extends LitElement {
             <div class="skio-sub-top">
               ${this.radioTemplate()}
               <div class="skio-sub-top__left">
-                <div class="skio-sub-top__title">${titleText}</div>
+                <div class="skio-sub-top__title-wrap">
+                  <div class="skio-sub-top__title">${titleText}</div>
+                  ${savingsAmount > 0 ? html`<span class="skio-save-pill">Save ${this.money(savingsAmount)}</span>` : ''}
+                </div>
                 <div class="skio-sub-top__subtitle">${this.options?.subscription_subtitle || 'Skip or cancel anytime'}</div>
               </div>
 

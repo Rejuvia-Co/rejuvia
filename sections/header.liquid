@@ -441,7 +441,7 @@
        own inline script at DOMContentLoaded, so we recheck after the DOM is ready. */
     var HIDE_ON_SCROLL = false;
     function refreshHideOnScroll() {
-      HIDE_ON_SCROLL = !!document.querySelector('.sticky-cta-v2-section--bottom, .psc-v2-section');
+      HIDE_ON_SCROLL = !!document.querySelector('.sticky-cta-v2-section--bottom, .sticky-cta-bogo-section--bottom, .psc-v2-section');
     }
     refreshHideOnScroll();
     document.addEventListener('DOMContentLoaded', refreshHideOnScroll);

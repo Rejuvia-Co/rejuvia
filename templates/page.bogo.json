@@ -267,8 +267,8 @@
         "sticky_offset": 24,
         "show_stars": true,
         "stars_color": "#eac78b",
-        "stars_size": 16,
-        "rating_text_size": 16,
+        "stars_size": 17,
+        "rating_text_size": 17,
         "rating_text": "<p>Trusted By <strong>300,000+</strong>  Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Calm your stress, fall asleep in minutes and sleep the full night.",
@@ -693,7 +693,7 @@
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
         "sub_text": "60-Day Money-Back Guarantee",
-        "bg_color": "#EAEAF7"
+        "bg_color": "#eaeaf7"
       }
     },
     "17814435248f2fd49e": {

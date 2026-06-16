@@ -778,7 +778,7 @@ export class SkioPlanPicker extends LitElement {
           font-size: 15px;
         }
         .skio-includes__item-name {
-          font-size: 17px;
+          font-size: 16px;
         }
         .skio-includes__item-image {
           width: 36px;

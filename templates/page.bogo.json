@@ -720,8 +720,8 @@
       "settings": {
         "caption_1": "RC & Mom · 2019",
         "caption_2": "Founders of Rejuvia",
-        "headline": "Built for my mom. Now for everyone.",
-        "paragraph_1": "She was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania we built an oral sleep spray with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.",
+        "headline": "Originally for my mom. Now Rejuvia is for everyone.",
+        "paragraph_1": "My mom was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania I built an oral sleep spray for her with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.",
         "paragraph_2": "We just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
         "stat1_number": "100%",
         "stat1_label": "Made in the USA",
@@ -737,13 +737,15 @@
         "stat_label_size": 14,
         "name_size": 19,
         "title_size": 15,
-        "headline_size_mobile": 22,
-        "body_size_mobile": 15,
+        "headline_size_mobile": 24,
+        "body_size_mobile": 18,
         "stat_num_size_mobile": 20,
-        "stat_label_size_mobile": 12,
-        "name_size_mobile": 16,
-        "title_size_mobile": 13,
-        "section_bg": "#ffffff"
+        "stat_label_size_mobile": 14,
+        "name_size_mobile": 18,
+        "title_size_mobile": 16,
+        "section_bg": "#EAEAF7",
+        "card_bg": "#ffffff",
+        "image_shadow_color": "#2a0e2a"
       }
     },
     "founder_story_MA6p9q": {

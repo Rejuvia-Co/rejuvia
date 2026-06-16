@@ -345,7 +345,9 @@
             {% endfor %}
 
             </div>
-     
+
+        {% render 'supplement-label-popup', product: currentProduct %}
+
         {%- unless currentProduct.tags contains "hide" -%}
         <div class="add-to-cart-navbar">
             <div class="flex align-items-center justify-content-between">

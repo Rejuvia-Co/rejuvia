@@ -845,8 +845,8 @@
       }
     },
     "sticky_cta_v2_WgFy7H": {
-      "type": "sticky-cta-v2",
-      "name": "Sticky CTA V2",
+      "type": "sticky-cta-bogo",
+      "name": "Sticky CTA (Bogo)",
       "settings": {
         "text": "<p>Claim <span style=\"text-decoration:underline\"><strong>FREE</strong></span> sprays today</p>",
         "btn_text": "Try Rejuvia",

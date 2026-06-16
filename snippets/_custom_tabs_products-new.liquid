@@ -53,7 +53,6 @@
   #custom_tabs_product ul li input[type=checkbox]:checked~div.tab_content {
     max-height: 0;
     opacity: 0;
-    transform: translate(0, 50%);
     margin-top: 0;
   }
 
@@ -208,13 +207,14 @@
   #custom_tabs_product.custom-tabs-product-new ul li h2 {
     color: #141414;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.4;
     letter-spacing: 0;
     text-transform: none;
     margin: 0;
     padding-right: 40px;
+    overflow-wrap: anywhere;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li input {
@@ -227,11 +227,12 @@
   #custom_tabs_product.custom-tabs-product-new ul li .tab_content {
     color: #141414;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 18px !important;
     font-weight: 400;
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 0;
+    overflow-wrap: anywhere;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li svg {
@@ -265,7 +266,7 @@
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li h2 {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li svg {
@@ -275,6 +276,7 @@
 
     #custom_tabs_product.custom-tabs-product-new ul li .tab_content {
       margin: 0;
+      font-size: 16px !important;
     }
 
     #custom_tabs_product ul li input[type=checkbox]:not(:checked) ~div.tab_content {

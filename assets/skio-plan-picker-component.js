@@ -560,19 +560,20 @@ export class SkioPlanPicker extends LitElement {
         display: flex;
         align-items: center;
         gap: 8px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
       }
       .skio-save-pill {
         display: inline-block;
         background: #5d215f;
         color: #fff;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 1;
-        padding: 7px 14px;
+        padding: 6px 12px;
         border-radius: 100px;
         white-space: nowrap;
         letter-spacing: 0.2px;
+        flex-shrink: 0;
       }
       .skio-sub-top__subtitle {
         font-size: 16px;
@@ -754,6 +755,10 @@ export class SkioPlanPicker extends LitElement {
         }
         .skio-sub-top__title {
           font-size: 17px;
+        }
+        .skio-save-pill {
+          font-size: 14px;
+          padding: 5px 10px;
         }
         .skio-sub-top__subtitle {
           font-size: 14px;

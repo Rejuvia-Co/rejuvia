@@ -106,8 +106,8 @@
     }
     .psc-v2-btn {
         min-width: auto;
-        padding: 18px 28px !important;
-        font-size: 16px !important;
+        padding: 14px 20px !important;
+        font-size: 14px !important;
     }
 }
 </style>
@@ -124,7 +124,7 @@
                 </p>
             </div>
             <button type="button" class="psc-v2-btn" data-psc-v2-btn>
-                <span data-psc-v2-btn-text>Add to cart – <span data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money }}</span></span>
+                <span data-psc-v2-btn-text>Add to cart – <span data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span></span>
             </button>
         </div>
     </div>

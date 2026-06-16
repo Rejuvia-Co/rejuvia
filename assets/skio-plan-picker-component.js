@@ -493,7 +493,7 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-offer-header__title {
         font-family: inherit;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
         color: var(--base-colour, #672666);
         text-transform: uppercase;
@@ -548,7 +548,7 @@ export class SkioPlanPicker extends LitElement {
         margin-left: auto;
       }
       .skio-sub-top__title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1.4;
@@ -570,7 +570,7 @@ export class SkioPlanPicker extends LitElement {
         display: inline-block;
         background: #5d215f;
         color: #fff;
-        font-size: 12px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 1;
         padding: 5px 10px;
@@ -580,7 +580,7 @@ export class SkioPlanPicker extends LitElement {
         flex-shrink: 0;
       }
       .skio-sub-top__subtitle {
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 400;
         color: #707070;
         line-height: 1;
@@ -597,7 +597,7 @@ export class SkioPlanPicker extends LitElement {
         align-items: flex-end;
       }
       .skio-sub-top__price {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1;
@@ -606,7 +606,7 @@ export class SkioPlanPicker extends LitElement {
         font-weight: 700;
       }
       .skio-sub-top__compare {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         color: #707070;
         text-decoration: line-through;
@@ -628,7 +628,7 @@ export class SkioPlanPicker extends LitElement {
         width: 100%;
       }
       .skio-includes__header {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
         color: #000;
         text-transform: uppercase;
@@ -679,7 +679,7 @@ export class SkioPlanPicker extends LitElement {
         justify-content: center;
       }
       .skio-includes__item-name {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1;
@@ -692,14 +692,14 @@ export class SkioPlanPicker extends LitElement {
         white-space: nowrap;
       }
       .skio-includes__item-original {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         color: #707070;
         text-decoration: line-through;
         line-height: 1;
       }
       .skio-includes__item-price {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1;
@@ -719,14 +719,14 @@ export class SkioPlanPicker extends LitElement {
         margin-bottom: 0;
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .group-title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1.4;
         letter-spacing: normal;
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .skio-price {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 400;
         color: #000;
         line-height: 1;
@@ -759,6 +759,10 @@ export class SkioPlanPicker extends LitElement {
         }
         .skio-sub-top__title {
           font-size: 17px;
+        }
+        .skio-save-pill {
+          font-size: 12px;
+          padding: 5px 10px;
         }
         .skio-sub-top__subtitle {
           font-size: 14px;

@@ -1600,7 +1600,15 @@ export class SkioPlanPicker extends LitElement {
   }
 
   money(price) {
-    return this.moneyFormatter.format(price / 100.0)
+    const amount = price / 100.0
+    // Drop the cents when the amount is a whole dollar ($36.00 -> $36); keep them otherwise ($36.50).
+    const isWhole = Math.abs(amount - Math.round(amount)) < 0.005
+    return new Intl.NumberFormat(this.language, {
+      style: 'currency',
+      currency: this.currency,
+      minimumFractionDigits: isWhole ? 0 : 2,
+      maximumFractionDigits: 2,
+    }).format(amount)
   }
 
   viable() {

@@ -118,20 +118,33 @@
 }
 
 .footer-v2-form {
+    position: relative;
+}
+
+/* White pill containing the input and an inline arrow/submit */
+.footer-v2-field {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 8px;
+    height: 64px;
+    padding: 0 10px 0 24px;
+    background: #fff;
+    border: 1px solid #141414;
+    border-radius: 100px;
+    box-sizing: border-box;
 }
 
 .footer-v2-input {
-    width: 100% !important;
-    height: 60px !important;
-    padding: 16px !important;
-    border: 1px solid #141414 !important;
-    border-radius: 10px !important;
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0;
+    height: 100% !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
     font-size: 16px !important;
     font-family: inherit;
-    background: #fff !important;
+    background: transparent !important;
     color: #141414 !important;
     outline: none;
     box-sizing: border-box;
@@ -139,7 +152,7 @@
 }
 
 .footer-v2-input::placeholder {
-    color: #CCC;
+    color: #999;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -147,18 +160,63 @@
 }
 
 .footer-v2-submit {
-    width: 100%;
-    padding: 24px 32px;
-    background: #672666;
-    color: #fff;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
     border: none;
     border-radius: 100px;
+    color: #141414;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.footer-v2-submit:hover {
+    transform: translateX(2px);
+}
+
+/* Loading spinner (replaces the arrow while submitting) */
+.footer-v2-spinner {
+    display: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(20, 20, 20, 0.2);
+    border-top-color: #141414;
+    border-radius: 50%;
+    animation: footer-v2-spin 0.7s linear infinite;
+}
+
+@keyframes footer-v2-spin {
+    to { transform: rotate(360deg); }
+}
+
+.footer-v2-form.is-loading .footer-v2-submit-arrow { display: none; }
+.footer-v2-form.is-loading .footer-v2-spinner { display: block; }
+.footer-v2-form.is-loading .footer-v2-submit { cursor: default; transform: none; }
+
+/* Success state (replaces the field) */
+.footer-v2-success {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    margin: 0;
+    padding: 0 24px;
+    background: #fff;
+    border: 1px solid #141414;
+    border-radius: 100px;
+    color: #2e7d32;
     font-size: 18px;
     font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    line-height: 0.7;
+    text-align: center;
 }
+
+.footer-v2-form.is-done .footer-v2-field { display: none; }
+.footer-v2-form.is-done .footer-v2-success { display: flex; }
 
 /* Divider */
 .footer-v2-divider {
@@ -431,12 +489,18 @@
             <div class="footer-v2-newsletter">
                 <h3 class="footer-v2-newsletter-title">{{ section.settings.newsletter_title }}</h3>
                 <p class="footer-v2-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
-                <form class="footer-v2-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
+                <form class="footer-v2-form" method="post" action="/contact#contact_form" accept-charset="UTF-8" data-newsletter-form>
                     <input type="hidden" name="form_type" value="customer">
                     <input type="hidden" name="utf8" value="✓">
                     <input type="hidden" name="contact[tags]" value="newsletter">
-                    <input class="footer-v2-input" type="email" name="contact[email]" placeholder="Your Email" required>
-                    <button class="footer-v2-submit" type="submit">{{ section.settings.newsletter_btn | default: 'Sign Up & Save 10%' }}</button>
+                    <div class="footer-v2-field">
+                        <input class="footer-v2-input" type="email" name="contact[email]" placeholder="Your Email" required autocomplete="email" aria-label="Email address">
+                        <button class="footer-v2-submit" type="submit" aria-label="Subscribe">
+                            <svg class="footer-v2-submit-arrow" width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11M10 4l5 5-5 5"/></svg>
+                            <span class="footer-v2-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p class="footer-v2-success" role="status">Thanks! You're in!</p>
                 </form>
             </div>
         </div>
@@ -479,6 +543,27 @@
     document.querySelectorAll('[data-footer-v2-toggle]').forEach(function(toggle) {
         toggle.addEventListener('click', function() {
             toggle.closest('[data-footer-v2-col]').classList.toggle('is-open');
+        });
+    });
+
+    // Newsletter: AJAX submit with loading spinner + inline success
+    document.querySelectorAll('[data-newsletter-form]').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (form.classList.contains('is-loading') || form.classList.contains('is-done')) return;
+            var email = form.querySelector('input[type="email"]');
+            if (email && !email.checkValidity()) { email.reportValidity(); return; }
+            form.classList.add('is-loading');
+            fetch(form.getAttribute('action').split('#')[0], {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'text/html' }
+            }).then(function() {
+                form.classList.remove('is-loading');
+                form.classList.add('is-done');
+            }).catch(function() {
+                form.classList.remove('is-loading');
+            });
         });
     });
 })();

@@ -233,13 +233,6 @@
                                                         {%- endif -%}
                                                     </span>
                                                 </div>
-
-                                                {%- if item.variant.compare_at_price != blank -%}
-                                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
-                                                {%- else -%}
-                                                    {%- assign single_discount = unit_price | times: item.quantity -%}
-                                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: single_discount | minus: item.line_price | money | remove: ',' }}">
-                                                {%- endif -%}
                                             {%- else -%}
                                                 <div class="cart-item__price-stack">
                                                     <span class="cart-item__price--sale">{{ sale_total | money }}</span>
@@ -342,60 +335,6 @@
 </div>
 
 <script>
-    // Highlight "5-star" in Okendo carousel heading (Figma styling)
-    (function () {
-        function highlightStar() {
-            document.querySelectorAll('.templateCart .oke-reviewCarousel-header-title').forEach(function (el) {
-                if (el.dataset.okeStarHighlighted) return;
-                if (el.innerHTML.indexOf('5-star') === -1) return;
-                el.innerHTML = el.innerHTML.replace(
-                    /5-star/g,
-                    '<span class="oke-highlight-5star">5-star</span>'
-                );
-                el.dataset.okeStarHighlighted = 'true';
-            });
-        }
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', highlightStar);
-        } else {
-            highlightStar();
-        }
-        // Re-run when Okendo loads asynchronously
-        var attempts = 0;
-        var interval = setInterval(function () {
-            highlightStar();
-            attempts++;
-            if (attempts > 20) clearInterval(interval);
-        }, 500);
-    })();
-
-    document.addEventListener("DOMContentLoaded", () => {
-        let inputs = document.querySelectorAll('.input-hidden__price');
-        let total = 0;
-        let currencySymbol = '';
-
-        inputs.forEach((input, index) => {
-            let value = input.value;
-
-            if (index === 0) {
-                currencySymbol = value.match(/[^0-9.]/g)?.join('') || '';
-            }
-
-            let numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
-
-            if (!isNaN(numericValue)) {
-                total += numericValue;
-            }
-        });
-
-        let formattedTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-        const saleEl = document.querySelector('.cart-unempty__sale');
-        if (saleEl) {
-            saleEl.innerHTML = total > 0 ? `-${currencySymbol}${formattedTotal}` : `${currencySymbol}0.00`;
-        }
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
         // Promo code: expandable, AJAX apply/validate/remove via Cart API
         const getCart = () => fetch('/cart.js', { headers: { 'Accept': 'application/json' } }).then(r => r.json());

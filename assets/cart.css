@@ -349,6 +349,7 @@ main:has(#cart.cart-page) {
 .cart-item__pricing {
     margin-left: 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     gap: 12px;
@@ -719,12 +720,8 @@ main:has(#cart.cart-page) {
     color: #ffffff;
 }
 
-#cart .additional-checkout-buttons {
-    display: none !important;
-}
-
 /* ==========================================================================
-   Tablet (≤ 999px)
+   Tablet (750–1099px)
    ========================================================================== */
 
 @media only screen and (min-width: 750px) and (max-width: 1099px) {

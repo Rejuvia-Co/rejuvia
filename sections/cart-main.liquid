@@ -210,6 +210,42 @@
                                                 </div>
                                             {%- endunless -%}
                                         </div>
+                                    </div>
+
+                                    <div class="cart-item__side">
+                                        <div class="cart-item__pricing">
+                                            {%- if full_total > sale_total and full_total > 0 -%}
+                                                {%- assign discount_amount = full_total | minus: sale_total -%}
+                                                {%- assign discount_percent = discount_amount | times: 100 | divided_by: full_total -%}
+                                                {%- assign discount_percent_rounded = discount_percent | round -%}
+
+                                                <span class="cart-item__discount">
+                                                    <span>-{{ discount_percent_rounded }}%</span>
+                                                </span>
+
+                                                <div class="cart-item__price-stack">
+                                                    <span class="cart-item__price--full">{{ full_total | money }}</span>
+                                                    <span class="cart-item__price--sale{% if sale_total == 0 %} cart-item__price--free{% endif %}">
+                                                        {%- if sale_total == 0 -%}
+                                                            {{- 'sections.cart.free' | t -}}
+                                                        {%- else -%}
+                                                            {{ sale_total | money }}
+                                                        {%- endif -%}
+                                                    </span>
+                                                </div>
+
+                                                {%- if item.variant.compare_at_price != blank -%}
+                                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
+                                                {%- else -%}
+                                                    {%- assign single_discount = unit_price | times: item.quantity -%}
+                                                    <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: single_discount | minus: item.line_price | money | remove: ',' }}">
+                                                {%- endif -%}
+                                            {%- else -%}
+                                                <div class="cart-item__price-stack">
+                                                    <span class="cart-item__price--sale">{{ sale_total | money }}</span>
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
 
                                         <div class="cart-item__quantity quantity">
                                             <div class="quantity-box">
@@ -222,40 +258,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="cart-item__pricing">
-                                        {%- if full_total > sale_total and full_total > 0 -%}
-                                            {%- assign discount_amount = full_total | minus: sale_total -%}
-                                            {%- assign discount_percent = discount_amount | times: 100 | divided_by: full_total -%}
-                                            {%- assign discount_percent_rounded = discount_percent | round -%}
-
-                                            <span class="cart-item__discount">
-                                                <span>-{{ discount_percent_rounded }}%</span>
-                                            </span>
-
-                                            <div class="cart-item__price-stack">
-                                                <span class="cart-item__price--full">{{ full_total | money }}</span>
-                                                <span class="cart-item__price--sale{% if sale_total == 0 %} cart-item__price--free{% endif %}">
-                                                    {%- if sale_total == 0 -%}
-                                                        {{- 'sections.cart.free' | t -}}
-                                                    {%- else -%}
-                                                        {{ sale_total | money }}
-                                                    {%- endif -%}
-                                                </span>
-                                            </div>
-
-                                            {%- if item.variant.compare_at_price != blank -%}
-                                                <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity | money | remove: ',' }}">
-                                            {%- else -%}
-                                                {%- assign single_discount = unit_price | times: item.quantity -%}
-                                                <input class="input-hidden__price" type="hidden" value="{{ total_discount | plus: single_discount | minus: item.line_price | money | remove: ',' }}">
-                                            {%- endif -%}
-                                        {%- else -%}
-                                            <div class="cart-item__price-stack">
-                                                <span class="cart-item__price--sale">{{ sale_total | money }}</span>
-                                            </div>
-                                        {%- endif -%}
-                                    </div>
-
                                     <a href="/cart" class="cart-item__remove remove-from-cart" aria-label="Remove Item">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M18 6L6 18M6 6L18 18" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
@@ -265,40 +267,25 @@
                             {%- endfor -%}
                         </div>
 
-                        <aside class="cart-summary summary">
-                            <h2 class="cart-summary__title">Summary</h2>
-                            <div class="cart-summary__divider"></div>
-
-                            <div class="cart-summary__row subtotal">
-                                <span class="cart-summary__label">Subtotal</span>
-                                <span class="cart-summary__value">
-                                    {%- assign subtotal = 0 -%}
-                                    {%- for item in cart.items -%}
-                                        {%- assign discount = item.variant.price | times: item.quantity -%}
-                                        {%- if item.variant.compare_at_price != blank -%}
-                                            {%- assign subtotal = subtotal | plus: item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
-                                        {%- elsif item.line_price != discount -%}
-                                            {%- assign subtotal = subtotal | plus: discount | minus: item.line_price | times: item.quantity -%}
-                                        {%- endif -%}
-                                    {%- endfor -%}
-                                    {{ cart.items_subtotal_price | plus: subtotal | money }}
-                                </span>
+                        <div class="cart-checkout">
+                            <div class="cart-checkout__row subtotal">
+                                <span class="cart-checkout__label">Subtotal</span>
+                                <span class="cart-checkout__value">{{ cart.items_subtotal_price | money }}</span>
                             </div>
 
-                            <div class="cart-summary__row sale">
-                                <span class="cart-summary__label">Discount</span>
-                                <span class="cart-summary__value cart-unempty__sale"></span>
-                            </div>
+                            <p class="cart-checkout__note">Shipping &amp; taxes calculated at checkout</p>
 
-                            <div class="cart-summary__row cart-summary__row--right shipping">
-                                <span class="cart-summary__hint">Shipping calculated at Checkout</span>
-                            </div>
-
-                            <div class="cart-summary__divider"></div>
-
-                            <div class="cart-summary__row total">
-                                <span class="cart-summary__label cart-summary__label--total">Total</span>
-                                <span class="cart-summary__value cart-summary__value--total">{{ cart.total_price | money }}</span>
+                            <div class="cart-promo">
+                                <button type="button" class="cart-promo__toggle" aria-expanded="false">
+                                    <span>Have a promo code?</span>
+                                    <svg class="cart-promo__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="cart-promo__panel" hidden>
+                                    <input type="text" class="cart-promo__input" placeholder="Promo code" aria-label="Promo code" autocomplete="off" />
+                                    <button type="button" class="cart-promo__apply">Apply</button>
+                                </div>
                             </div>
 
                             <div id="corso-protection-placeholder-pr"></div>
@@ -312,8 +299,8 @@
                                 <div class="return-policy-button"><a href="#" onclick="Simplistic.openModal($('#return-policy')); return false;">Return Policy</a></div>
                             {%- endif -%}
 
-                            <button type="submit" class="cart-summary__btn" name="checkout">
-                                Go to Checkout
+                            <button type="submit" class="cart-checkout__btn" name="checkout">
+                                Checkout
                             </button>
 
                             {%- if additional_checkout_buttons -%}
@@ -321,7 +308,7 @@
                                     {{ content_for_additional_checkout_buttons }}
                                 </div>
                             {%- endif -%}
-                        </aside>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -383,6 +370,42 @@
         if (saleEl) {
             saleEl.innerHTML = total > 0 ? `-${currencySymbol}${formattedTotal}` : `${currencySymbol}0.00`;
         }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Promo code: expandable + apply via Shopify discount URL
+        const toggle = document.querySelector('.cart-promo__toggle');
+        const panel = document.querySelector('.cart-promo__panel');
+        if (toggle && panel) {
+            toggle.addEventListener('click', () => {
+                const open = panel.hasAttribute('hidden');
+                if (open) { panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden', ''); }
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            const input = panel.querySelector('.cart-promo__input');
+            const apply = panel.querySelector('.cart-promo__apply');
+            const applyCode = () => {
+                const code = (input.value || '').trim();
+                if (!code) { input.focus(); return; }
+                window.location.href = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
+            };
+            apply.addEventListener('click', applyCode);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); applyCode(); }
+            });
+        }
+
+        // Quantity control: show trash icon when qty is 1, minus when qty > 1
+        const syncRemoveState = (input) => {
+            const minus = input.parentNode.querySelector('.minus');
+            if (!minus) return;
+            const v = parseInt(input.value, 10);
+            minus.classList.toggle('is-remove', !(v > 1));
+        };
+        document.querySelectorAll('.cart-item__quantity input[type="number"]').forEach(syncRemoveState);
+        document.addEventListener('input', (e) => {
+            if (e.target.matches('.cart-item__quantity input[type="number"]')) syncRemoveState(e.target);
+        });
     });
 </script>
 

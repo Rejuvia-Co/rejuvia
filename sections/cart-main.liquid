@@ -276,19 +276,26 @@
                             {%- if cart.cart_level_discount_applications.size > 0 -%}
                                 {%- for discount in cart.cart_level_discount_applications -%}
                                     <div class="cart-checkout__row savings">
-                                        <span class="cart-checkout__label cart-checkout__label--savings">Savings ({{ discount.title }})</span>
+                                        <span class="cart-promo__chip">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3.6 3.6H10.2L20.4 13.8L13.8 20.4L3.6 10.2V3.6Z" stroke="#141414" stroke-width="1.5" stroke-linejoin="round"/>
+                                                <circle cx="7.5" cy="7.5" r="1.25" fill="#141414"/>
+                                            </svg>
+                                            <span class="cart-promo__chip-code">{{ discount.title }}</span>
+                                            <button type="button" class="cart-promo__remove" data-code="{{ discount.title | escape }}" aria-label="Remove discount {{ discount.title | escape }}">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18 6L6 18M6 6L18 18" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                                                </svg>
+                                            </button>
+                                        </span>
                                         <span class="cart-checkout__value cart-checkout__value--savings">-{{ discount.total_allocated_amount | money }}</span>
                                     </div>
                                 {%- endfor -%}
-                                <div class="cart-checkout__row total">
-                                    <span class="cart-checkout__label cart-checkout__label--total">Total</span>
-                                    <span class="cart-checkout__value cart-checkout__value--total">{{ cart.total_price | money }}</span>
-                                </div>
                             {%- endif -%}
 
                             <p class="cart-checkout__note">Shipping &amp; taxes calculated at checkout</p>
 
-                            <div class="cart-promo">
+                            <div class="cart-promo" data-cart-promo>
                                 <button type="button" class="cart-promo__toggle" aria-expanded="false">
                                     <span>Have a promo code?</span>
                                     <svg class="cart-promo__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -296,8 +303,18 @@
                                     </svg>
                                 </button>
                                 <div class="cart-promo__panel" hidden>
-                                    <input type="text" class="cart-promo__input" placeholder="Promo code" aria-label="Promo code" autocomplete="off" />
-                                    <button type="button" class="cart-promo__apply">Apply</button>
+                                    <div class="cart-promo__field">
+                                        <input type="text" class="cart-promo__input" placeholder="Promo code" aria-label="Promo code" autocomplete="off" />
+                                        <button type="button" class="cart-promo__apply">Apply</button>
+                                    </div>
+                                    <p class="cart-promo__error" role="alert" hidden>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M12 8V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                            <circle cx="12" cy="16" r="0.9" fill="currentColor"/>
+                                        </svg>
+                                        <span class="cart-promo__error-text">Invalid promo code.</span>
+                                    </p>
                                 </div>
                             </div>
 
@@ -386,27 +403,95 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-        // Promo code: expandable + apply via Shopify discount URL
-        const toggle = document.querySelector('.cart-promo__toggle');
-        const panel = document.querySelector('.cart-promo__panel');
-        if (toggle && panel) {
+        // Promo code: expandable, AJAX apply/validate/remove via Cart API
+        const getCart = () => fetch('/cart.js', { headers: { 'Accept': 'application/json' } }).then(r => r.json());
+        const setDiscounts = (codes) => fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ discount: codes.join(',') })
+        }).then(r => r.json());
+
+        const promo = document.querySelector('[data-cart-promo]');
+        if (promo) {
+            const toggle = promo.querySelector('.cart-promo__toggle');
+            const panel = promo.querySelector('.cart-promo__panel');
+            const field = promo.querySelector('.cart-promo__field');
+            const input = promo.querySelector('.cart-promo__input');
+            const apply = promo.querySelector('.cart-promo__apply');
+            const errorEl = promo.querySelector('.cart-promo__error');
+
             toggle.addEventListener('click', () => {
                 const open = panel.hasAttribute('hidden');
-                if (open) { panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden', ''); }
+                if (open) { panel.removeAttribute('hidden'); input.focus(); } else { panel.setAttribute('hidden', ''); }
                 toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             });
-            const input = panel.querySelector('.cart-promo__input');
-            const apply = panel.querySelector('.cart-promo__apply');
-            const applyCode = () => {
+
+            const showError = (msg) => {
+                field.classList.add('has-error');
+                if (msg) errorEl.querySelector('.cart-promo__error-text').textContent = msg;
+                errorEl.removeAttribute('hidden');
+            };
+            const clearError = () => {
+                field.classList.remove('has-error');
+                errorEl.setAttribute('hidden', '');
+            };
+            input.addEventListener('input', clearError);
+
+            const applyCode = async () => {
                 const code = (input.value || '').trim();
                 if (!code) { input.focus(); return; }
-                window.location.href = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
+                clearError();
+                apply.disabled = true;
+                apply.textContent = 'Applying…';
+                try {
+                    const before = await getCart();
+                    const existing = (before.discount_codes || []).filter(d => d.applicable).map(d => d.code);
+                    const codes = existing.filter(c => c.toLowerCase() !== code.toLowerCase()).concat(code);
+                    const cart = await setDiscounts(codes);
+
+                    let applied = false;
+                    if (Array.isArray(cart.discount_codes)) {
+                        const match = cart.discount_codes.find(d => d.code.toLowerCase() === code.toLowerCase());
+                        applied = !!(match && match.applicable);
+                    } else {
+                        const apps = cart.cart_level_discount_applications || [];
+                        applied = apps.some(a => (a.title || '').toLowerCase() === code.toLowerCase())
+                            || (cart.total_discount || 0) > (before.total_discount || 0);
+                    }
+
+                    if (applied) {
+                        location.reload();
+                        return;
+                    }
+                    showError('Invalid promo code.');
+                } catch (e) {
+                    showError('Something went wrong. Please try again.');
+                }
+                apply.disabled = false;
+                apply.textContent = 'Apply';
             };
             apply.addEventListener('click', applyCode);
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') { e.preventDefault(); applyCode(); }
             });
         }
+
+        // Remove an applied discount code (chip × button)
+        document.addEventListener('click', async (e) => {
+            const rm = e.target.closest('.cart-promo__remove');
+            if (!rm) return;
+            e.preventDefault();
+            rm.disabled = true;
+            const code = (rm.getAttribute('data-code') || '').toLowerCase();
+            try {
+                const current = await getCart();
+                const remaining = (current.discount_codes || [])
+                    .filter(d => d.applicable && d.code.toLowerCase() !== code)
+                    .map(d => d.code);
+                await setDiscounts(remaining);
+            } catch (err) { /* fall through to reload */ }
+            location.reload();
+        });
 
         // Quantity control: show trash icon when qty is 1, minus when qty > 1
         const syncRemoveState = (input) => {

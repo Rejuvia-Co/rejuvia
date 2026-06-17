@@ -302,8 +302,8 @@
       background: {{ section.settings.bg_color | default: '#EAEAF7' }};
       border-radius: 10px;
       box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-      height: 55px;
-      padding: 0 20px;
+      height: 64px;
+      padding: 0 22px;
       align-items: center;
       justify-content: space-between;
     }
@@ -313,7 +313,7 @@
     }
 
     #header .navigator-mobile .logo .logo-rejuvia-svg {
-      height: 18px;
+      height: 20px;
       width: auto;
     }
 
@@ -328,11 +328,20 @@
     .navigator-mobile__right .close {
       display: flex;
       align-items: center;
+      justify-content: center;
+    }
+
+    /* Equal fixed box for the toggle icons so swapping hamburger <-> X never shifts the layout */
+    .navigator-mobile__right .btn-open-mobile-menu,
+    .navigator-mobile__right .close {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
     }
 
     .navigator-mobile__right svg {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
     }
 
     #menu-mobile { display: block; }

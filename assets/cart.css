@@ -39,6 +39,9 @@ main:has(#cart.cart-page) {
     display: flex;
     align-items: center;
     gap: 40px;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .cart-page__title {
@@ -185,7 +188,8 @@ main:has(#cart.cart-page) {
     grid-template-areas: "image main side remove";
     align-items: center;
     padding: 20px;
-    background: #fafafa;
+    background: #ffffff;
+    border: 1px solid #ededed;
     border-radius: 10px;
     overflow: hidden;
     margin: 0;
@@ -276,8 +280,8 @@ main:has(#cart.cart-page) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 5px 8px;
+    gap: 4px;
+    padding: 4px 8px;
     background: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 100px;
@@ -351,16 +355,17 @@ main:has(#cart.cart-page) {
 }
 
 .cart-item__discount {
+    order: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
+    padding: 6px 10px;
     background: #eaeaf7;
     border-radius: 24px;
     color: #672666;
     font-family: "Helvetica Neue", sans-serif;
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 600;
     line-height: 1;
     flex-shrink: 0;
 }
@@ -371,14 +376,17 @@ main:has(#cart.cart-page) {
 }
 
 .cart-item__price-stack {
+    order: 1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
     gap: 8px;
-    line-height: 0;
     white-space: nowrap;
 }
+
+.cart-item__price--sale { order: 1; }
+.cart-item__price--full { order: 2; }
 
 .cart-item__price--full {
     color: #cccccc;
@@ -467,6 +475,27 @@ main:has(#cart.cart-page) {
     white-space: nowrap;
 }
 
+/* Savings line — only shows when a discount code is applied */
+.cart-checkout__label--savings {
+    font-weight: 500;
+    color: #141414;
+}
+
+.cart-checkout__value--savings {
+    color: #00b10d;
+}
+
+/* Total line — only shows when a discount is applied */
+.cart-checkout__row.total {
+    padding-top: 12px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.cart-checkout__label--total,
+.cart-checkout__value--total {
+    font-size: 20px;
+}
+
 .cart-checkout__note {
     margin: -8px 0 0;
     color: #888888;
@@ -520,45 +549,60 @@ main:has(#cart.cart-page) {
     display: none;
 }
 
-.cart-promo__input {
+#cart .cart-promo__input,
+#cart .cart-promo__input[type="text"] {
     flex: 1 1 0;
+    width: auto;
     min-width: 0;
-    height: 48px;
-    padding: 0 16px;
+    height: 50px;
+    padding: 0 18px;
     background: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #141414;
     border-radius: 8px;
     color: #141414;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 15px;
-    line-height: 1.2;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: normal;
+    text-transform: none;
     box-shadow: none;
     -webkit-appearance: none;
     appearance: none;
 }
 
-.cart-promo__input:focus {
-    outline: none;
-    border-color: #672666;
+#cart .cart-promo__input::placeholder {
+    color: #9a9a9a;
 }
 
-.cart-promo__apply {
+#cart .cart-promo__input:focus,
+#cart .cart-promo__input[type="text"]:focus {
+    outline: none;
+    border-color: #672666;
+    background: #ffffff;
+}
+
+#cart .cart-promo__apply {
     flex-shrink: 0;
-    padding: 0 24px;
-    height: 48px;
+    width: auto;
+    padding: 0 28px;
+    height: 50px;
     background: #141414;
     border: none;
     border-radius: 8px;
     color: #ffffff;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
     cursor: pointer;
     transition: background 0.2s ease;
 }
 
-.cart-promo__apply:hover {
+#cart .cart-promo__apply:hover {
     background: #000000;
+    color: #ffffff;
 }
 
 .cart-checkout__btn {

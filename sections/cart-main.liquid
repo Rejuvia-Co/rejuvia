@@ -273,6 +273,19 @@
                                 <span class="cart-checkout__value">{{ cart.items_subtotal_price | money }}</span>
                             </div>
 
+                            {%- if cart.cart_level_discount_applications.size > 0 -%}
+                                {%- for discount in cart.cart_level_discount_applications -%}
+                                    <div class="cart-checkout__row savings">
+                                        <span class="cart-checkout__label cart-checkout__label--savings">Savings ({{ discount.title }})</span>
+                                        <span class="cart-checkout__value cart-checkout__value--savings">-{{ discount.total_allocated_amount | money }}</span>
+                                    </div>
+                                {%- endfor -%}
+                                <div class="cart-checkout__row total">
+                                    <span class="cart-checkout__label cart-checkout__label--total">Total</span>
+                                    <span class="cart-checkout__value cart-checkout__value--total">{{ cart.total_price | money }}</span>
+                                </div>
+                            {%- endif -%}
+
                             <p class="cart-checkout__note">Shipping &amp; taxes calculated at checkout</p>
 
                             <div class="cart-promo">
@@ -300,7 +313,7 @@
                             {%- endif -%}
 
                             <button type="submit" class="cart-checkout__btn" name="checkout">
-                                Checkout
+                                Go to Checkout
                             </button>
 
                             {%- if additional_checkout_buttons -%}

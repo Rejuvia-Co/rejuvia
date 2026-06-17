@@ -16,24 +16,6 @@
         "show_continue_shopping": false
       }
     },
-    "177988248817cca89d": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_carousel_tMJMPe": {
-          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "show_heading": true,
-            "heading": "Rejuvia Is Trusted By 300,000+ Customers",
-            "badge_link": "",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_carousel_tMJMPe"
-      ],
-      "settings": {}
-    },
     "info_icons_bar": {
       "type": "info-icons-bar",
       "blocks": {
@@ -75,7 +57,6 @@
   },
   "order": [
     "cart_main",
-    "177988248817cca89d",
     "info_icons_bar"
   ]
 }

@@ -686,8 +686,6 @@ main:has(#cart.cart-page) {
 }
 
 .cart-checkout__btn {
-
-.cart-checkout__btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -785,19 +783,19 @@ main:has(#cart.cart-page) {
     /* Item card: image spans 2 rows; price sits ABOVE the quantity selector */
     .cart-item {
         display: grid;
-        grid-template-columns: 120px minmax(0, 1fr) 24px;
+        grid-template-columns: 96px minmax(0, 1fr) 24px;
         grid-template-areas:
             "image main remove"
             "image side side";
-        column-gap: 12px;
+        column-gap: 14px;
         row-gap: 12px;
         padding: 16px;
         align-items: start;
     }
 
     .cart-item__image {
-        width: 120px;
-        height: 120px;
+        width: 96px;
+        height: 96px;
         align-self: start;
     }
 

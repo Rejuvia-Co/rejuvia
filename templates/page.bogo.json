@@ -839,7 +839,7 @@
         "heading": "<p>The Sleep You Deserve Is Now a Spray Away</p>",
         "heading_color": "#000000",
         "button_text": "Try Rejuvia Risk-Free",
-        "scroll_target": ".product-widget-container",
+        "scroll_target": "#offer",
         "button_link": "",
         "rating_size": 18,
         "heading_size": 36,
@@ -860,7 +860,7 @@
       "settings": {
         "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
         "btn_text": "Get Offer",
-        "scroll_target": ".offer",
+        "scroll_target": "#offer",
         "position": "bottom",
         "disable_sticky_header": false,
         "show_after": 500

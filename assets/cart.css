@@ -86,77 +86,109 @@ main:has(#cart.cart-page) {
    ========================================================================== */
 
 .cart-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 64px 24px;
-    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
     width: 100%;
-}
-
-.cart-empty__icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    background: #f0e9f0;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.cart-empty__icon svg {
-    width: 40px;
-    height: 40px;
-    display: block;
+/* Background glows — matches the 404 page */
+.cart-empty__glow,
+.cart-empty__glow2 {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
 }
 
-.cart-empty__text {
+.cart-empty__glow {
+    width: 980px;
+    height: 980px;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, #f9f2ff 0%, rgba(249, 242, 255, 0.55) 38%, rgba(255, 255, 255, 0) 70%);
+}
+
+.cart-empty__glow2 {
+    width: 420px;
+    height: 420px;
+    top: 80px;
+    right: 40px;
+    opacity: 0.5;
+    background: radial-gradient(circle, #d2d7f4 0%, rgba(234, 234, 247, 0) 70%);
+}
+
+.cart-empty__hero {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    text-align: center;
-    color: #141414;
+    gap: 26px;
+    padding: 96px 64px 80px;
+}
+
+.cart-empty__moon svg {
+    display: block;
+    width: 76px;
+    height: 76px;
 }
 
 .cart-empty__title {
     margin: 0;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: normal;
+    max-width: 560px;
+    font-family: "HelveticaNeueL", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.4px;
+    color: #141414;
 }
 
 .cart-empty__subtitle {
     margin: 0;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 16px;
+    max-width: 480px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 19px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: #767676;
 }
 
-.cart-empty__btn {
+.cart-empty__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 98px;
+    gap: 10px;
+    padding: 18px 34px;
     background: #672666;
     color: #ffffff;
     border-radius: 100px;
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-weight: 500;
-    line-height: 0.7;
+    line-height: 1;
+    letter-spacing: -0.2px;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.cart-empty__btn:hover {
-    background: #4d1a4c;
+.cart-empty__cta:hover {
+    background: #5d215f;
     color: #ffffff;
+}
+
+.cart-empty__cta:active {
+    transform: scale(0.98);
+}
+
+.cart-empty__cta svg {
+    flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -762,13 +794,41 @@ main:has(#cart.cart-page) {
         padding-bottom: 40px;
     }
 
-    /* Empty */
-    .cart-empty {
-        padding: 64px 24px;
+    /* Empty (matches 404 mobile hero) */
+    .cart-empty__hero {
+        padding: 52px 20px 56px;
+        gap: 20px;
+    }
+
+    .cart-empty__moon svg {
+        width: 60px;
+        height: 60px;
     }
 
     .cart-empty__title {
-        font-size: 28px;
+        font-size: 34px;
+        line-height: 1.12;
+    }
+
+    .cart-empty__subtitle {
+        font-size: 16px;
+    }
+
+    .cart-empty__cta {
+        width: 100%;
+    }
+
+    .cart-empty__glow {
+        width: 520px;
+        height: 520px;
+        top: -120px;
+    }
+
+    .cart-empty__glow2 {
+        width: 240px;
+        height: 240px;
+        top: 40px;
+        right: -80px;
     }
 
     /* Full cart layout: stack */

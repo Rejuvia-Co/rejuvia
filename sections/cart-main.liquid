@@ -115,29 +115,31 @@
 
     {%- if cart.items == empty -%}
 
-        <div class="cart-page__hero">
-            <div class="container">
-                <h1 class="cart-page__title">Your Cart</h1>
-            </div>
-        </div>
-
         <div class="cart-page__body">
             <div class="container">
                 <div class="cart-empty">
-                    <div class="cart-empty__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <path d="M13.3327 36.6666C14.2532 36.6666 14.9993 35.9205 14.9993 35C14.9993 34.0795 14.2532 33.3333 13.3327 33.3333C12.4122 33.3333 11.666 34.0795 11.666 35C11.666 35.9205 12.4122 36.6666 13.3327 36.6666Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M31.6667 36.6666C32.5871 36.6666 33.3333 35.9205 33.3333 35C33.3333 34.0795 32.5871 33.3333 31.6667 33.3333C30.7462 33.3333 30 34.0795 30 35C30 35.9205 30.7462 36.6666 31.6667 36.6666Z" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M3.41602 3.41663H6.74935L11.1827 24.1166C11.3453 24.8747 11.7671 25.5524 12.3755 26.0331C12.9839 26.5137 13.7409 26.7672 14.516 26.75H30.816C31.5746 26.7487 32.3102 26.4888 32.9011 26.013C33.492 25.5373 33.9029 24.8742 34.066 24.1333L36.816 11.75H8.53268" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="cart-empty__text">
-                        <h2 class="cart-empty__title">Your Cart is Empty</h2>
+                    <div class="cart-empty__glow" aria-hidden="true"></div>
+                    <div class="cart-empty__glow2" aria-hidden="true"></div>
+
+                    <div class="cart-empty__hero">
+                        <span class="cart-empty__moon" aria-hidden="true">
+                            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs><mask id="cartEmptyMoon"><rect x="0" y="0" width="72" height="72" fill="#fff"/><circle cx="46" cy="28" r="22" fill="#000"/></mask></defs>
+                                <circle cx="36" cy="36" r="30" fill="#f9f2ff"/>
+                                <circle cx="33" cy="34" r="22" fill="#672666" mask="url(#cartEmptyMoon)"/>
+                                <path d="M55 14 q1.4 4 4.6 5 q-3.2 1-4.6 5 q-1.4-4-4.6-5 q3.2-1 4.6-5Z" fill="#fab851"/>
+                                <path d="M53 40 q0.9 2.6 3 3.3 q-2.1 0.7-3 3.3 q-0.9-2.6-3-3.3 q2.1-0.7 3-3.3Z" fill="#eac78b"/>
+                            </svg>
+                        </span>
+
+                        <h1 class="cart-empty__title">Your Cart is Empty</h1>
                         <p class="cart-empty__subtitle">Start Shopping Rejuvia Today</p>
+
+                        <a href="https://www.rejuvia.co/products/sleep-spray?selling_plan=29054009564" class="cart-empty__cta">
+                            Try Rejuvia
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11M10 4l5 5-5 5"/></svg>
+                        </a>
                     </div>
-                    <a href="https://www.rejuvia.co/products/sleep-spray?selling_plan=29054009564" class="cart-empty__btn">
-                        Try Rejuvia
-                    </a>
                 </div>
             </div>
         </div>

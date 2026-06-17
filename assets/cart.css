@@ -87,37 +87,14 @@ main:has(#cart.cart-page) {
 
 .cart-empty {
     position: relative;
-    overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: center;
-}
-
-/* Background glows — matches the 404 page */
-.cart-empty__glow,
-.cart-empty__glow2 {
-    position: absolute;
-    pointer-events: none;
-    z-index: 0;
-    border-radius: 50%;
-}
-
-.cart-empty__glow {
-    width: 980px;
-    height: 980px;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, #f9f2ff 0%, rgba(249, 242, 255, 0.55) 38%, rgba(255, 255, 255, 0) 70%);
-}
-
-.cart-empty__glow2 {
-    width: 420px;
-    height: 420px;
-    top: 80px;
-    right: 40px;
-    opacity: 0.5;
-    background: radial-gradient(circle, #d2d7f4 0%, rgba(234, 234, 247, 0) 70%);
+    /* Soft glows painted as backgrounds so they fade out with no hard clip edges (404 look) */
+    background:
+        radial-gradient(78% 80% at 50% 36%, #f9f2ff 0%, rgba(249, 242, 255, 0.5) 40%, rgba(249, 242, 255, 0) 72%),
+        radial-gradient(42% 55% at 90% 60%, rgba(210, 215, 244, 0.45) 0%, rgba(210, 215, 244, 0) 72%);
+    background-repeat: no-repeat;
 }
 
 .cart-empty__hero {
@@ -816,19 +793,6 @@ main:has(#cart.cart-page) {
 
     .cart-empty__cta {
         width: 100%;
-    }
-
-    .cart-empty__glow {
-        width: 520px;
-        height: 520px;
-        top: -120px;
-    }
-
-    .cart-empty__glow2 {
-        width: 240px;
-        height: 240px;
-        top: 40px;
-        right: -80px;
     }
 
     /* Full cart layout: stack */

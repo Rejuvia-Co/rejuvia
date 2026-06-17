@@ -328,6 +328,17 @@
   <div class="custom-container flex">
     <div class="w-100">
       <ul>
+          {% if product.metafields.custom.guarantee_90_day != blank %}
+              <li>
+                  <input type="checkbox" checked>
+                  <svg class="icon-tab-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <svg class="icon-tab-minus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <h2 class="faq-title title-color">90-Day Guarantee</h2>
+                  <div class="title-color tab_content" style="font-size:16px;">
+                      {{ product.metafields.custom.guarantee_90_day | metafield_tag }}
+                  </div>
+              </li>
+          {% endif %}
           {% if product.metafields.custom.boundle_product_included != blank %}
               <li>
                   <input type="checkbox" checked>
@@ -397,17 +408,6 @@
             <h2 class="faq-title title-color">Dosing</h2>
             <div class="title-color tab_content" style="font-size:16px;">
               {{ product.metafields.tabs.dosing }}
-            </div>
-          </li>
-        {% endif %}
-        {% if product.metafields.custom.guarantee_90_day != blank %}
-          <li>
-            <input type="checkbox" checked>
-            <svg class="icon-tab-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  <svg class="icon-tab-minus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <h2 class="faq-title title-color">90-Day Guarantee</h2>
-            <div class="title-color tab_content" style="font-size:16px;">
-              {{ product.metafields.custom.guarantee_90_day }}
             </div>
           </li>
         {% endif %}

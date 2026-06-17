@@ -88,12 +88,14 @@ main:has(#cart.cart-page) {
 .cart-empty {
     position: relative;
     width: 100%;
+    min-height: 620px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    /* Soft glows painted as backgrounds so they fade out with no hard clip edges (404 look) */
+    /* Full-bleed soft glows painted as backgrounds so they fade out with no hard edges (404 look) */
     background:
-        radial-gradient(78% 80% at 50% 36%, #f9f2ff 0%, rgba(249, 242, 255, 0.5) 40%, rgba(249, 242, 255, 0) 72%),
-        radial-gradient(42% 55% at 90% 60%, rgba(210, 215, 244, 0.45) 0%, rgba(210, 215, 244, 0) 72%);
+        radial-gradient(70% 75% at 50% 42%, #f9f2ff 0%, rgba(249, 242, 255, 0.5) 40%, rgba(249, 242, 255, 0) 72%),
+        radial-gradient(34% 50% at 88% 58%, rgba(210, 215, 244, 0.45) 0%, rgba(210, 215, 244, 0) 72%);
     background-repeat: no-repeat;
 }
 
@@ -772,6 +774,10 @@ main:has(#cart.cart-page) {
     }
 
     /* Empty (matches 404 mobile hero) */
+    .cart-empty {
+        min-height: 70vh;
+    }
+
     .cart-empty__hero {
         padding: 52px 20px 56px;
         gap: 20px;

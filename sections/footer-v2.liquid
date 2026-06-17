@@ -558,9 +558,13 @@
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'text/html' }
-            }).then(function() {
+            }).then(function(res) {
                 form.classList.remove('is-loading');
-                form.classList.add('is-done');
+                // Shopify redirects to ...?customer_posted=true only on a successful signup
+                if (res && res.url && res.url.indexOf('customer_posted=true') !== -1) {
+                    form.classList.add('is-done');
+                }
+                // otherwise leave the field in place so the visitor can retry
             }).catch(function() {
                 form.classList.remove('is-loading');
             });

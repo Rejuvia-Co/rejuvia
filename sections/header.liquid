@@ -193,23 +193,16 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 100px;
-    padding: 12px 24px;
-    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
     color: #141414;
     font-size: 16px;
     font-weight: 400;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: normal;
-    height: 44px;
     white-space: nowrap;
     text-decoration: none;
-    transition: background 0.2s ease;
   }
 
   .nav-v2-account:hover {
-    background: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     color: #141414;
   }
@@ -223,6 +216,27 @@
   .nav-v2-icons .cart-wrap {
     display: flex;
     align-items: center;
+    position: relative;
+  }
+
+  .nav-v2-icons .cart-wrap .count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    background: #5F2A63;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 0 4px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Star ratings */
@@ -338,7 +352,7 @@
       <div class="nav-v2-icons">
         <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
           {% render 'icon-account' %}
-          Account Log In
+          Sign In
         </a>
         <a class="flex cart-wrap" href="/cart" title="Bag" aria-label="Cart">
           {% render 'icon-cart' %}

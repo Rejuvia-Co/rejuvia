@@ -9,133 +9,6 @@
  */
 {
   "sections": {
-    "customer_testimonials_video_b39r9z": {
-      "type": "customer-testimonials-video",
-      "blocks": {
-        "testimonial_mqbtHE": {
-          "type": "testimonial",
-          "settings": {
-            "text": "I spray 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!",
-            "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
-            "name": "Tracey F. (Verified Buyer)"
-          }
-        },
-        "testimonial_A8C7gQ": {
-          "type": "testimonial",
-          "settings": {
-            "text": "I have been really enjoying my Rejuvia and always sleep very well when I use it.",
-            "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
-            "name": "Betty M. (Verified Buyer)"
-          }
-        },
-        "testimonial_9BgBkh": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.",
-            "image": "shopify://shop_images/scott_s.png",
-            "name": "Scott S. (Verified Buyer)"
-          }
-        },
-        "testimonial_GcRmKE": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Absolutely puts me to sleep quickly each night and I love the taste.",
-            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
-            "name": "Kimberly W. (Verified Buyer)"
-          }
-        },
-        "testimonial_mqf9FP": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"Excellent product, recommend it. Tastes good and helps me fall asleep quickly.\"",
-            "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
-            "name": "Timothy G. (Verified Buyer)"
-          }
-        },
-        "testimonial_DGdCYV": {
-          "type": "testimonial",
-          "settings": {
-            "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
-            "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
-            "name": "Mandie N. (Verified Buyer)"
-          }
-        },
-        "testimonial_wfdQJm": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\" I will continue to use Rejuvia as it seems to really work for me at night!\"",
-            "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
-            "name": "Andrew H. (Verified Buyer)"
-          }
-        },
-        "testimonial_DpTVkq": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
-            "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
-            "name": "Eldonna M. (Verified Buyer)"
-          }
-        },
-        "testimonial_DbKM3X": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"We've been using Rejuvia for a few months and it better than anything we've tried!!\"",
-            "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
-            "name": "Kelly G. (Verified Buyer)"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_mqbtHE",
-        "testimonial_A8C7gQ",
-        "testimonial_9BgBkh",
-        "testimonial_GcRmKE",
-        "testimonial_mqf9FP",
-        "testimonial_DGdCYV",
-        "testimonial_wfdQJm",
-        "testimonial_DpTVkq",
-        "testimonial_DbKM3X"
-      ],
-      "name": "Video Testimonials",
-      "settings": {
-        "header": "Join 300,000 Getting Better Sleep",
-        "stars_reating": "4.5",
-        "stars_label": "Trusted By 300,000+ Sleepers",
-        "bg_color": "#eaeaf7"
-      }
-    },
-    "founder_story_v2_Rj7kQp": {
-      "type": "founder-story-v2",
-      "name": "Founder Story V2",
-      "settings": {
-        "caption_1": "RC & Mom · 2019",
-        "caption_2": "Founders of Rejuvia",
-        "headline": "Built for my mom. Now for everyone.",
-        "paragraph_1": "She was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania we built an oral sleep spray with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.",
-        "paragraph_2": "We just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
-        "stat1_number": "100%",
-        "stat1_label": "Made in the USA",
-        "stat2_number": "8 yrs",
-        "stat2_label": "Family business",
-        "stat3_number": "300K+",
-        "stat3_label": "Customers nationwide",
-        "founder_name": "RC Williams",
-        "founder_title": "Co-Founder, CEO of Rejuvia",
-        "headline_size": 30,
-        "body_size": 18,
-        "stat_num_size": 28,
-        "stat_label_size": 14,
-        "name_size": 19,
-        "title_size": 15,
-        "headline_size_mobile": 22,
-        "body_size_mobile": 15,
-        "stat_num_size_mobile": 20,
-        "stat_label_size_mobile": 12,
-        "name_size_mobile": 16,
-        "title_size_mobile": 13,
-        "section_bg": "#672666"
-      }
-    },
     "bogo_offer_PNJAyY": {
       "type": "bogo-offer",
       "blocks": {
@@ -281,6 +154,101 @@
         "stars_color": "#eac78b"
       }
     },
+    "customer_testimonials_video_b39r9z": {
+      "type": "customer-testimonials-video",
+      "blocks": {
+        "testimonial_mqbtHE": {
+          "type": "testimonial",
+          "settings": {
+            "text": "I spray 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!",
+            "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
+            "name": "Tracey F. (Verified Buyer)"
+          }
+        },
+        "testimonial_A8C7gQ": {
+          "type": "testimonial",
+          "settings": {
+            "text": "I have been really enjoying my Rejuvia and always sleep very well when I use it.",
+            "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
+            "name": "Betty M. (Verified Buyer)"
+          }
+        },
+        "testimonial_9BgBkh": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.",
+            "image": "shopify://shop_images/scott_s.png",
+            "name": "Scott S. (Verified Buyer)"
+          }
+        },
+        "testimonial_GcRmKE": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Absolutely puts me to sleep quickly each night and I love the taste.",
+            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
+            "name": "Kimberly W. (Verified Buyer)"
+          }
+        },
+        "testimonial_mqf9FP": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Excellent product, recommend it. Tastes good and helps me fall asleep quickly.\"",
+            "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
+            "name": "Timothy G. (Verified Buyer)"
+          }
+        },
+        "testimonial_DGdCYV": {
+          "type": "testimonial",
+          "settings": {
+            "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
+            "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
+            "name": "Mandie N. (Verified Buyer)"
+          }
+        },
+        "testimonial_wfdQJm": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\" I will continue to use Rejuvia as it seems to really work for me at night!\"",
+            "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
+            "name": "Andrew H. (Verified Buyer)"
+          }
+        },
+        "testimonial_DpTVkq": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
+            "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
+            "name": "Eldonna M. (Verified Buyer)"
+          }
+        },
+        "testimonial_DbKM3X": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"We've been using Rejuvia for a few months and it better than anything we've tried!!\"",
+            "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
+            "name": "Kelly G. (Verified Buyer)"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_mqbtHE",
+        "testimonial_A8C7gQ",
+        "testimonial_9BgBkh",
+        "testimonial_GcRmKE",
+        "testimonial_mqf9FP",
+        "testimonial_DGdCYV",
+        "testimonial_wfdQJm",
+        "testimonial_DpTVkq",
+        "testimonial_DbKM3X"
+      ],
+      "name": "Video Testimonials",
+      "settings": {
+        "header": "Join 300,000 Getting Better Sleep",
+        "stars_reating": "4.5",
+        "stars_label": "Trusted By 300,000+ Sleepers",
+        "bg_color": "#eaeaf7"
+      }
+    },
     "custom_reviews_v2_TfPLAM": {
       "type": "custom-reviews-v2",
       "blocks": {
@@ -320,6 +288,7 @@
         "review_nVHHgV",
         "review_A4yw7p"
       ],
+      "disabled": true,
       "name": "Custom Reviews V2",
       "settings": {
         "heading": "<p>4.7 Stars From 300,000+ Customers</p>"
@@ -598,7 +567,7 @@
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "",
         "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#EAEAF7"
+        "bg_color": "#eaeaf7"
       }
     },
     "17814435248f2fd49e": {
@@ -616,6 +585,40 @@
         "okendo_reviews_widget_zwN3ex"
       ],
       "settings": {}
+    },
+    "founder_story_v2_Rj7kQp": {
+      "type": "founder-story-v2",
+      "name": "Founder Story V2",
+      "settings": {
+        "caption_1": "RC & Kristen (Mom) · 2019",
+        "caption_2": "Founders of Rejuvia",
+        "headline": "Originally for my mom. Now Rejuvia is for everyone.",
+        "paragraph_1": "My mom was 55, going through menopause, and couldn't sleep — she'd tried everything and nothing helped. So at the University of Pennsylvania I built an oral sleep spray for her with 13 natural ingredients that absorbs under your tongue and works in minutes, not hours.\n\nWe just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
+        "paragraph_2": "We just wanted to fix her sleep so she could be herself again. Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
+        "stat1_number": "100%",
+        "stat1_label": "Made in the USA",
+        "stat2_number": "8 yrs",
+        "stat2_label": "Family business",
+        "stat3_number": "300K+",
+        "stat3_label": "Customers nationwide",
+        "founder_name": "RC Williams",
+        "founder_title": "Co-Founder, CEO of Rejuvia",
+        "headline_size": 30,
+        "body_size": 18,
+        "stat_num_size": 28,
+        "stat_label_size": 14,
+        "name_size": 19,
+        "title_size": 15,
+        "headline_size_mobile": 22,
+        "body_size_mobile": 15,
+        "stat_num_size_mobile": 20,
+        "stat_label_size_mobile": 12,
+        "name_size_mobile": 16,
+        "title_size_mobile": 13,
+        "section_bg": "#EAEAF7",
+        "card_bg": "#ffffff",
+        "image_shadow_color": "#2a0e2a"
+      }
     },
     "faq_center_CpCGTm": {
       "type": "faq-center",
@@ -715,19 +718,6 @@
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
       }
     },
-    "sticky_cta_v2_WgFy7H": {
-      "type": "sticky-cta-v2",
-      "disabled": true,
-      "name": "Sticky CTA V2",
-      "settings": {
-        "text": "<p>Claim FREE sprays today</p>",
-        "btn_text": "Try Rejuvia",
-        "scroll_target": ".offer",
-        "position": "bottom",
-        "disable_sticky_header": false,
-        "show_after": 500
-      }
-    },
     "sticky_cta_bogo_FjNJeB": {
       "type": "sticky-cta-bogo",
       "name": "Sticky CTA (Bogo)",
@@ -754,7 +744,6 @@
     "founder_story_v2_Rj7kQp",
     "faq_center_CpCGTm",
     "page_cta_v2_BQV7dD",
-    "sticky_cta_v2_WgFy7H",
     "sticky_cta_bogo_FjNJeB"
   ]
 }

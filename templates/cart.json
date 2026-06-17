@@ -15,48 +15,9 @@
         "show_clear_cart": false,
         "show_continue_shopping": false
       }
-    },
-    "info_icons_bar": {
-      "type": "info-icons-bar",
-      "blocks": {
-        "block-1": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/Wind.svg",
-            "text": "Free Shipping $79+ and Subscriptions"
-          }
-        },
-        "block-2": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/SealCheck.svg",
-            "text": "90-Day Money Back Guarantee"
-          }
-        },
-        "block-3": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/SmileyWink.svg",
-            "text": "Trusted By 300,000+ Customers"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
-      ],
-      "disabled": true,
-      "settings": {
-        "bg_color": "#eaeaf7",
-        "text_color": "#141414",
-        "padding_top": 16,
-        "padding_bottom": 16
-      }
     }
   },
   "order": [
-    "cart_main",
-    "info_icons_bar"
+    "cart_main"
   ]
 }

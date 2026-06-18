@@ -1939,7 +1939,6 @@
             "settings": {
               "title": "Melatonin Gummies",
               "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_MelatoninGummies.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1952,7 +1951,6 @@
             "settings": {
               "title": "Sleeping Pills",
               "content": "<p>Sleeping pills contain high doses because <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_SleepingPills.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1965,7 +1963,6 @@
             "settings": {
               "title": "The \"Natural\" Cycle",
               "content": "<p>Teas, tinctures, magnesium baths. The ingredients are real, but the doses are too small and the absorption is too slow to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. again.</p>",
-              "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section2_TheNaturalCycle.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1992,8 +1989,7 @@
         "name": "Listicle V2",
         "settings": {
           "heading": "<p>The real issue was never what you took, it was <em>how your body absorbed it</em></p>",
-          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>",
-          "graph_image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
+          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>"
         }
       },
       "image_text_v2_EEfUyt": {
@@ -2268,7 +2264,6 @@
         "name": "Use In Just V2",
         "settings": {
           "heading": "<p>Use Rejuvia in <em>10 seconds</em></p>",
-          "default_image": "shopify://shop_images/howtouse1_91b96fb7-e26d-4de8-9095-ab6a2fa64aca.webp",
           "link_text": "View Supplement Label",
           "link_url": "",
           "supplement_product": "sleep-spray"
@@ -2914,7 +2909,7 @@
         ],
         "name": "Closing CTA",
         "settings": {
-          "image": "shopify://shop_images/hf_20260615_120836_5bf4f748-6296-4859-b1a6-7ecad3feebe9.webp",
+          "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
           "show_stars": true,
           "stars_color": "#eac78b",
           "rating_text": "<p>Trusted By 300,000+ Customers</p>",
@@ -2983,6 +2978,11 @@
       },
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
+        "disabled": false,
+        "settings": {}
+      },
+      "1877152918344802950": {
+        "type": "shopify://apps/intelligems-a-b-testing/blocks/intelligems-script/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
         "disabled": false,
         "settings": {}
       }

@@ -336,7 +336,7 @@
       "settings": {
         "heading": "<p>Why Rejuvia works <em>3x faster and stronger </em>than gummies and pills</p>",
         "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes — bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster — you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
-        "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
+        "image": "shopify://shop_images/rejuvia_absorption_graph.webp"
       }
     },
     "how_it_works_Hc9igb": {
@@ -345,21 +345,21 @@
         "card_WEBagL": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/howtouse1_6d722aeb-ff96-4856-bfe3-5f865c2b3e45.webp",
+            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
             "description": "Spray 6-8 times under your tongue or inside your cheek."
           }
         },
         "card_dBbLhQ": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/howtouse2_e0d97c1c-e10a-49ec-8c8e-9d27c72aa50d.webp",
+            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
             "description": "Hold in your mouth for at least 5-10 seconds."
           }
         },
         "card_PD9LjK": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/howtouse3_a1d61e7b-1169-49ef-bc1b-95d019170256.webp",
+            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
             "description": "Swallow and drift off to sleep."
           }
         }
@@ -615,7 +615,7 @@
         "stat_label_size_mobile": 12,
         "name_size_mobile": 16,
         "title_size_mobile": 13,
-        "section_bg": "#EAEAF7",
+        "section_bg": "#eaeaf7",
         "card_bg": "#ffffff",
         "image_shadow_color": "#2a0e2a"
       }

@@ -45,7 +45,7 @@
         "accent_color": "#672666",
         "heading": "<p>Wondering what's actually in rejuvia?</p>",
         "description": "No surprises here. Rejuvia is made with a clean, all-natural blend of sleep herbs and botanicals. Nothing else. Every ingredient was chosen for a specific reason, backed by clinical research, and included at a dose that actually does something. No fillers, no proprietary blends hiding weak doses, no ingredients you need a chemistry degree to pronounce.",
-        "image": "shopify://shop_images/rejuvia_1_a822bdcc-88a0-4390-b290-6fe36a602ca9.webp"
+        "image": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
       }
     },
     "key_ingredients_page_v2_c96YaM": {
@@ -115,8 +115,8 @@
         "accent_color": "#672666",
         "heading": "<p>Why are oral sprays more effective?</p>",
         "description": "<p>Unlike gummies or pills that have to survive your entire digestive system, Rejuvia absorbs directly under your tongue — straight into your bloodstream. No stomach. No liver. No wasted ingredients. </p><p>The tissue under your tongue is densely packed with blood vessels, allowing active ingredients to bypass the digestive process entirely. That means more of the formula reaches your body intact, at full potency, exactly when you need it.</p>",
-        "chart_image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp",
-        "chart_image_mobile": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
+        "chart_image": "shopify://shop_images/rejuvia_absorption_graph.webp",
+        "chart_image_mobile": "shopify://shop_images/rejuvia_absorption_graph.webp"
       }
     },
     "science_v2_wgkJq7": {
@@ -186,7 +186,7 @@
         "anchor_id": "",
         "bg_color": "#f5f5fb",
         "accent_color": "#672666",
-        "stars_color": "#EAC78B",
+        "stars_color": "#eac78b",
         "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
         "show_stars": true,
         "quote": "<p>“Rejuvia is my go to! <strong>I can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep. It's great for traveling too!\"</p>",

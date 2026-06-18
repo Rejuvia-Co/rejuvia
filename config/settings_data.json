@@ -2909,6 +2909,7 @@
         ],
         "name": "Closing CTA",
         "settings": {
+          "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
           "show_stars": true,
           "stars_color": "#eac78b",
           "rating_text": "<p>Trusted By 300,000+ Customers</p>",

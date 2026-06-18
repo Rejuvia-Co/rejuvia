@@ -546,28 +546,29 @@
         });
     });
 
-    // Newsletter: AJAX submit with loading spinner + inline success
-    document.querySelectorAll('[data-newsletter-form]').forEach(function(form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (form.classList.contains('is-loading') || form.classList.contains('is-done')) return;
-            var email = form.querySelector('input[type="email"]');
-            if (email && !email.checkValidity()) { email.reportValidity(); return; }
-            form.classList.add('is-loading');
-            fetch(form.getAttribute('action').split('#')[0], {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'text/html' }
-            }).then(function(res) {
-                form.classList.remove('is-loading');
-                // Shopify redirects to ...?customer_posted=true only on a successful signup
-                if (res && res.url && res.url.indexOf('customer_posted=true') !== -1) {
-                    form.classList.add('is-done');
-                }
-                // otherwise leave the field in place so the visitor can retry
-            }).catch(function() {
-                form.classList.remove('is-loading');
-            });
+    // Newsletter: AJAX submit. Delegated on document so it intercepts the submit
+    // regardless of when this script runs or if the section DOM is re-rendered.
+    document.addEventListener('submit', function(e) {
+        var form = e.target.closest && e.target.closest('[data-newsletter-form]');
+        if (!form) return;
+        e.preventDefault();
+        if (form.classList.contains('is-loading') || form.classList.contains('is-done')) return;
+        var email = form.querySelector('input[type="email"]');
+        if (email && !email.checkValidity()) { email.reportValidity(); return; }
+        form.classList.add('is-loading');
+        fetch(form.getAttribute('action').split('#')[0], {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'text/html' }
+        }).then(function(res) {
+            form.classList.remove('is-loading');
+            // Shopify redirects to ...?customer_posted=true only on a successful signup
+            if (res && res.url && res.url.indexOf('customer_posted=true') !== -1) {
+                form.classList.add('is-done');
+            }
+            // otherwise leave the field in place so the visitor can retry
+        }).catch(function() {
+            form.classList.remove('is-loading');
         });
     });
 })();

@@ -218,6 +218,9 @@
 .footer-v2-form.is-done .footer-v2-field { display: none; }
 .footer-v2-form.is-done .footer-v2-success { display: flex; }
 
+/* Hidden submit target (keeps the newsletter POST off the top window) */
+.footer-v2-newsletter-sink { display: none; }
+
 /* Divider */
 .footer-v2-divider {
     width: 100%;
@@ -489,7 +492,7 @@
             <div class="footer-v2-newsletter">
                 <h3 class="footer-v2-newsletter-title">{{ section.settings.newsletter_title }}</h3>
                 <p class="footer-v2-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
-                <form class="footer-v2-form" method="post" action="/contact#contact_form" accept-charset="UTF-8" data-newsletter-form>
+                <form class="footer-v2-form" method="post" action="/contact#contact_form" accept-charset="UTF-8" target="footer-newsletter-sink" data-newsletter-form>
                     <input type="hidden" name="form_type" value="customer">
                     <input type="hidden" name="utf8" value="✓">
                     <input type="hidden" name="contact[tags]" value="newsletter">
@@ -502,6 +505,8 @@
                     </div>
                     <p class="footer-v2-success" role="status">Thanks! You're in!</p>
                 </form>
+                {%- comment -%} Submit target: keeps the POST off the top window so the page never reloads, even with JS disabled/deferred {%- endcomment -%}
+                <iframe name="footer-newsletter-sink" class="footer-v2-newsletter-sink" title="Newsletter signup" tabindex="-1" aria-hidden="true"></iframe>
             </div>
         </div>
 
@@ -546,30 +551,28 @@
         });
     });
 
-    // Newsletter: AJAX submit. Delegated on document so it intercepts the submit
-    // regardless of when this script runs or if the section DOM is re-rendered.
+    // Newsletter: the form posts into a hidden iframe (target), so the page never
+    // reloads regardless of JS timing. This handler just layers on the loading
+    // spinner + "Thanks! You're in!" success state once the iframe responds.
     document.addEventListener('submit', function(e) {
         var form = e.target.closest && e.target.closest('[data-newsletter-form]');
         if (!form) return;
-        e.preventDefault();
-        if (form.classList.contains('is-loading') || form.classList.contains('is-done')) return;
+        if (form.classList.contains('is-done')) { e.preventDefault(); return; }
+        // invalid input -> let the browser show its native validation, no submit happens
         var email = form.querySelector('input[type="email"]');
-        if (email && !email.checkValidity()) { email.reportValidity(); return; }
+        if (email && !email.checkValidity()) return;
+        // NOTE: no preventDefault — the form submits natively into the iframe target
         form.classList.add('is-loading');
-        fetch(form.getAttribute('action').split('#')[0], {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'text/html' }
-        }).then(function(res) {
+        var sink = document.getElementsByName(form.getAttribute('target'))[0];
+        if (!sink) return;
+        var onLoad = function() {
+            sink.removeEventListener('load', onLoad);
             form.classList.remove('is-loading');
-            // Shopify redirects to ...?customer_posted=true only on a successful signup
-            if (res && res.url && res.url.indexOf('customer_posted=true') !== -1) {
-                form.classList.add('is-done');
-            }
-            // otherwise leave the field in place so the visitor can retry
-        }).catch(function() {
-            form.classList.remove('is-loading');
-        });
+            var ok = false;
+            try { ok = (sink.contentWindow.location.href || '').indexOf('customer_posted=true') !== -1; } catch (err) {}
+            if (ok) form.classList.add('is-done'); // else leave the field so they can retry
+        };
+        sink.addEventListener('load', onLoad);
     });
 })();
 </script>

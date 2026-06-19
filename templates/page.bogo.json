@@ -123,7 +123,7 @@
         "stars_color": "#eac78b",
         "stars_size": 17,
         "rating_text_size": 17,
-        "rating_text": "<p>Trusted By <strong>300,000+</strong>  Customers</p>",
+        "rating_text": "<p>Trusted By <strong>300,000+</strong> Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Calm your stress, fall asleep in minutes and sleep the full night.",
         "default_tier": 1,
@@ -145,19 +145,15 @@
         "tab_body_size_mobile": 17,
         "section_bg": "#ffffff",
         "card_bg": "#ffffff",
-        "accent_color": "#672666"
-      }
-    },
-    "trusted_by_bar_bogo": {
-      "type": "trusted-by",
-      "settings": {
-        "title": "Trusted by 300K+ customers",
-        "subtext": "who choose Rejuvia to fall asleep faster and sleep the full night.",
-        "image_1": "shopify://shop_images/customer_1.png",
-        "image_2": "shopify://shop_images/customer_13.png",
-        "image_3": "shopify://shop_images/customer_12.png",
-        "bg_color": "#f4f4f4",
-        "check_color": "#34c759"
+        "accent_color": "#672666",
+        "show_trusted": true,
+        "trusted_title": "Trusted by 300K+ customers",
+        "trusted_subtext": "who choose Rejuvia to fall asleep faster and sleep the full night.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {

@@ -261,6 +261,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       </div>
 
       <div class="ob__cta-wrap">
+        {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
         <button type="button" class="ob__buy" data-ob-buy>
           <span class="ob__spinner" aria-hidden="true"></span>
           <span class="ob__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>

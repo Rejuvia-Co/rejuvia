@@ -1,0 +1,101 @@
+{%- comment -%}
+  Shipping ETA bar — "Ships by <next day>" + Fast US Shipping.
+
+  The date is the shop-local current day + 1 (always +1, no weekend skipping),
+  rendered server-side in Liquid so it shows instantly and doesn't depend on JS
+  (this theme defers/blocks inline JS). Reusable on any template via:
+    {% render 'shipping-bar' %}
+{%- endcomment -%}
+{%- assign ship_ts = 'now' | date: '%s' | plus: 86400 -%}
+<div class="ship-bar{% if extra_class %} {{ extra_class }}{% endif %}" role="note">
+  <span class="ship-bar__seg">
+    <span class="ship-bar__dot" aria-hidden="true"></span>
+    <span class="ship-bar__txt">Ships by&nbsp;<strong>{{ ship_ts | date: '%a, %b %-d' }}</strong></span>
+  </span>
+  <span class="ship-bar__seg">
+    <svg class="ship-bar__flag" viewBox="0 0 20 14" width="20" height="14" aria-hidden="true" focusable="false">
+      <rect width="20" height="14" rx="1.5" fill="#fff"/>
+      <g fill="#B22234">
+        <rect width="20" height="1.08" y="0"/>
+        <rect width="20" height="1.08" y="2.15"/>
+        <rect width="20" height="1.08" y="4.31"/>
+        <rect width="20" height="1.08" y="6.46"/>
+        <rect width="20" height="1.08" y="8.62"/>
+        <rect width="20" height="1.08" y="10.77"/>
+        <rect width="20" height="1.08" y="12.92"/>
+      </g>
+      <rect width="9" height="7.54" fill="#3C3B6E"/>
+      <g fill="#fff">
+        <circle cx="1.8" cy="1.5" r="0.5"/><circle cx="4.5" cy="1.5" r="0.5"/><circle cx="7.2" cy="1.5" r="0.5"/>
+        <circle cx="3.15" cy="3.0" r="0.5"/><circle cx="5.85" cy="3.0" r="0.5"/>
+        <circle cx="1.8" cy="4.5" r="0.5"/><circle cx="4.5" cy="4.5" r="0.5"/><circle cx="7.2" cy="4.5" r="0.5"/>
+        <circle cx="3.15" cy="6.0" r="0.5"/><circle cx="5.85" cy="6.0" r="0.5"/>
+      </g>
+    </svg>
+    <span class="ship-bar__txt">Fast&nbsp;<strong>US</strong>&nbsp;Shipping</span>
+  </span>
+</div>
+
+{%- unless shipping_bar_css_loaded -%}
+  {%- assign shipping_bar_css_loaded = true -%}
+  <style>
+    .ship-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 12px 18px;
+      background: #f5f5f5;
+      border: 1px solid #e7e7e7;
+      border-radius: 100px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #141414;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+    .ship-bar__seg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .ship-bar__dot {
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #1f9d44;
+    }
+    .ship-bar__flag {
+      flex-shrink: 0;
+      display: block;
+      width: 20px;
+      height: 14px;
+    }
+    .ship-bar__txt {
+      white-space: nowrap;
+    }
+    .ship-bar__txt strong {
+      font-weight: 700;
+    }
+    /* spacing modifier: when the bar sits directly above a CTA button */
+    .ship-bar--stack { margin-bottom: 14px; }
+    @media (max-width: 749px) {
+      .ship-bar {
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 13px;
+        gap: 6px 12px;
+      }
+      .ship-bar__dot { width: 9px; height: 9px; }
+      .ship-bar__flag { width: 18px; height: 13px; }
+    }
+  </style>
+{%- endunless -%}

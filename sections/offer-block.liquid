@@ -299,6 +299,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- endif -%}{%- endfor -%}
         </div>
       {%- endif -%}
+
+      {%- if section.settings.show_trusted -%}
+        {% render 'trusted-by',
+          title: section.settings.trusted_title,
+          subtext: section.settings.trusted_subtext,
+          image_1: section.settings.trusted_image_1,
+          image_2: section.settings.trusted_image_2,
+          image_3: section.settings.trusted_image_3,
+          bg_color: section.settings.trusted_bg,
+          check_color: section.settings.trusted_check %}
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -428,7 +439,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" },
     { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
-    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio)", "default": "#672666" }
+    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio)", "default": "#672666" },
+    { "type": "header", "content": "Trusted-by bar (under accordions)" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Trusted by 300K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who choose Rejuvia to fall asleep faster and sleep through the full night." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
+    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" }
   ],
   "blocks": [
     {

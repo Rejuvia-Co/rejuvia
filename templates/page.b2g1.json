@@ -9,13 +9,6 @@
  */
 {
   "sections": {
-    "trusted_by_bar_b2g1": {
-      "type": "trusted-by",
-      "settings": {
-        "title": "Trusted by 300K+ customers",
-        "subtext": "who choose Rejuvia to fall asleep faster and sleep through the full night."
-      }
-    },
     "bogo_offer_PNJAyY": {
       "type": "bogo-offer",
       "blocks": {
@@ -740,7 +733,6 @@
   },
   "order": [
     "bogo_offer_PNJAyY",
-    "trusted_by_bar_b2g1",
     "customer_testimonials_video_b39r9z",
     "custom_reviews_v2_TfPLAM",
     "image_text_v2_xzfhqx",

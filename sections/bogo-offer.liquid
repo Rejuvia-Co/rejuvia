@@ -283,6 +283,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
       {%- endif -%}
 
       <div class="bogo__cta-wrap">
+        {% render 'shipping-bar' %}
         <button type="button" class="bogo__buy" data-bogo-buy>
           <span class="bogo__spinner" aria-hidden="true"></span>
           <span class="bogo__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>

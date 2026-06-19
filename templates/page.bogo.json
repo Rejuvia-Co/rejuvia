@@ -9,13 +9,6 @@
  */
 {
   "sections": {
-    "trusted_by_bar_bogo": {
-      "type": "trusted-by",
-      "settings": {
-        "title": "Trusted by 300K+ customers",
-        "subtext": "who choose Rejuvia to fall asleep faster and sleep through the full night."
-      }
-    },
     "offer_block_C9tJiM": {
       "type": "offer-block",
       "blocks": {
@@ -153,6 +146,18 @@
         "section_bg": "#ffffff",
         "card_bg": "#ffffff",
         "accent_color": "#672666"
+      }
+    },
+    "trusted_by_bar_bogo": {
+      "type": "trusted-by",
+      "settings": {
+        "title": "Trusted by 300K+ customers",
+        "subtext": "who choose Rejuvia to fall asleep faster and sleep the full night.",
+        "image_1": "shopify://shop_images/customer_1.png",
+        "image_2": "shopify://shop_images/customer_13.png",
+        "image_3": "shopify://shop_images/customer_12.png",
+        "bg_color": "#f4f4f4",
+        "check_color": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {

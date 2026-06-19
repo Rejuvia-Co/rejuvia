@@ -1916,6 +1916,7 @@
             "settings": {
               "title": "Melatonin Gummies",
               "content": "<p>Gummies have to <strong>survive your entire digestive system</strong> before they can do anything. By the time they reach your bloodstream, up to 80% of the active ingredients are gone. You wait 45 minutes for a fraction of what you paid for.</p>",
+              "image": "shopify://shop_images/melatonin_gummy_comparison.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1928,6 +1929,7 @@
             "settings": {
               "title": "Sleeping Pills",
               "content": "<p>Sleeping pills contain high doses because <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
+              "image": "shopify://shop_images/sleeping_pill_comparison.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1940,6 +1942,7 @@
             "settings": {
               "title": "The \"Natural\" Cycle",
               "content": "<p>Teas, tinctures, magnesium baths. The ingredients are real, but the doses are too small and the absorption is too slow to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. again.</p>",
+              "image": "shopify://shop_images/natural_products_comparison.webp",
               "hide_image_bg": true,
               "full_width_image": true,
               "badge_text": "",
@@ -1966,7 +1969,8 @@
         "name": "Listicle V2",
         "settings": {
           "heading": "<p>The real issue was never what you took, it was <em>how your body absorbed it</em></p>",
-          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>"
+          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed.</p><p><strong>That's not a bad product. It's a bad delivery system.</strong></p>",
+          "graph_image": "shopify://shop_images/rejuvia_absorption_graph.webp"
         }
       },
       "image_text_v2_EEfUyt": {

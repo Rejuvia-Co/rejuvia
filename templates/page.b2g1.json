@@ -151,7 +151,15 @@
         "tab_body_size_mobile": 15,
         "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "stars_color": "#eac78b"
+        "stars_color": "#eac78b",
+        "show_trusted": true,
+        "trusted_title": "Trusted by 300K+ customers",
+        "trusted_subtext": "who choose Rejuvia to fall asleep faster and sleep the full night.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {

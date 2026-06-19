@@ -1,0 +1,150 @@
+{%- comment -%}
+  Trusted-by social-proof bar: overlapping avatar cluster + green check,
+  bold title, supporting subtext. Title, subtext, and the 3 avatar images
+  are all editable in the theme editor.
+{%- endcomment -%}
+
+{%- liquid
+  assign avatars = ''
+  if section.settings.image_1 != blank
+    assign avatars = avatars | append: 'a'
+  endif
+-%}
+
+<section class="tb-{{ section.id }} trusted-by-section" style="--tb-bg: {{ section.settings.bg_color | default: '#f4f4f4' }}; --tb-check: {{ section.settings.check_color | default: '#34c759' }};">
+  <div class="trusted-by">
+    <div class="trusted-by__avatars">
+      {%- for n in (1..3) -%}
+        {%- assign key = 'image_' | append: n -%}
+        {%- assign img = section.settings[key] -%}
+        {%- if img != blank -%}
+          <img class="trusted-by__avatar"
+               src="{{ img | image_url: width: 160 }}"
+               srcset="{{ img | image_url: width: 128 }} 1x, {{ img | image_url: width: 160 }} 2x"
+               width="64" height="64" loading="lazy"
+               alt="{{ img.alt | default: 'Happy customer' | escape }}">
+        {%- else -%}
+          <span class="trusted-by__avatar trusted-by__avatar--ph" aria-hidden="true"></span>
+        {%- endif -%}
+      {%- endfor -%}
+      <span class="trusted-by__check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </span>
+    </div>
+    <div class="trusted-by__text">
+      {%- if section.settings.title != blank -%}<p class="trusted-by__title">{{ section.settings.title }}</p>{%- endif -%}
+      {%- if section.settings.subtext != blank -%}<p class="trusted-by__sub">{{ section.settings.subtext }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- unless trusted_by_css -%}{%- assign trusted_by_css = true -%}
+<style>
+  .trusted-by-section { width: 100%; box-sizing: border-box; padding: 8px 16px 24px; }
+  .trusted-by {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    max-width: 720px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 18px 28px;
+    background: var(--tb-bg, #f4f4f4);
+    border-radius: 28px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  .trusted-by__avatars {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    padding-right: 6px;
+  }
+  .trusted-by__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    background: #e3e3e3;
+    margin-left: -18px;
+    display: block;
+  }
+  .trusted-by__avatar:first-child { margin-left: 0; }
+  .trusted-by__check {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--tb-check, #34c759);
+    border: 3px solid #fff;
+    box-sizing: border-box;
+  }
+  .trusted-by__text { min-width: 0; }
+  .trusted-by__title {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #141414;
+    letter-spacing: -0.2px;
+  }
+  .trusted-by__sub {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: #141414;
+  }
+  @media (max-width: 749px) {
+    .trusted-by-section { padding: 8px 16px 20px; }
+    .trusted-by { gap: 16px; padding: 16px 18px; border-radius: 22px; }
+    .trusted-by__avatar { width: 52px; height: 52px; border-width: 2.5px; margin-left: -16px; }
+    .trusted-by__check { width: 24px; height: 24px; top: -3px; right: -3px; }
+    .trusted-by__check svg { width: 12px; height: 12px; }
+    .trusted-by__title { font-size: 18px; }
+    .trusted-by__sub { font-size: 15px; }
+  }
+</style>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Trusted By Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Trusted by 300K+ customers"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "who choose Rejuvia to fall asleep faster and sleep through the full night."
+    },
+    {
+      "type": "header",
+      "content": "Avatar images (3 circles)"
+    },
+    { "type": "image_picker", "id": "image_1", "label": "Image 1" },
+    { "type": "image_picker", "id": "image_2", "label": "Image 2" },
+    { "type": "image_picker", "id": "image_3", "label": "Image 3" },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#f4f4f4" },
+    { "type": "color", "id": "check_color", "label": "Checkmark", "default": "#34c759" }
+  ],
+  "presets": [
+    { "name": "Trusted By Bar" }
+  ]
+}
+{% endschema %}

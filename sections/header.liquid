@@ -52,8 +52,8 @@
   }
 
   #header .logo .logo-rejuvia-svg {
-    width: 164px;
-    height: 20px;
+    width: {{ section.settings.logo_width | default: 164 }}px;
+    height: auto;
     display: block;
   }
 
@@ -313,8 +313,8 @@
     }
 
     #header .navigator-mobile .logo .logo-rejuvia-svg {
-      height: 20px;
-      width: auto;
+      width: {{ section.settings.logo_width_mobile | default: 164 }}px;
+      height: auto;
     }
 
     .navigator-mobile__right {
@@ -522,6 +522,30 @@
     "name": "Header",
     "class": "main-header",
     "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 100,
+        "max": 280,
+        "step": 2,
+        "unit": "px",
+        "label": "Logo width (desktop)",
+        "default": 164
+      },
+      {
+        "type": "range",
+        "id": "logo_width_mobile",
+        "min": 80,
+        "max": 220,
+        "step": 2,
+        "unit": "px",
+        "label": "Logo width (mobile)",
+        "default": 164
+      },
       {
         "type": "header",
         "content": "Colors"

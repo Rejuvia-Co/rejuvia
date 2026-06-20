@@ -132,8 +132,8 @@
   }
   .listicle-hero__media-inner { aspect-ratio: 4 / 3; }
   .listicle-hero__media img { height: 100%; object-fit: cover; object-position: 50% 30%; }
-  .listicle-hero__title { font-size: {{ section.settings.heading_size | default: 52 | times: 0.65 | round }}px; margin-bottom: 16px; }
-  .listicle-hero__text { font-size: {{ section.settings.text_size | default: 19 | times: 0.9 | round }}px; margin-bottom: 22px; }
+  .listicle-hero__title { font-size: {{ section.settings.heading_size_mobile | default: 34 }}px; margin-bottom: 16px; }
+  .listicle-hero__text { font-size: {{ section.settings.text_size_mobile | default: 17 }}px; margin-bottom: 22px; }
   .listicle-hero__btn { max-width: 100%; padding: 18px 24px; }
   .listicle-hero__rating { margin-bottom: 14px; }
 }
@@ -208,8 +208,10 @@
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money Back Guarantee" },
     { "type": "header", "content": "Typography" },
-    { "type": "range", "id": "heading_size", "min": 24, "max": 72, "step": 1, "unit": "px", "label": "Heading size", "default": 52 },
-    { "type": "range", "id": "text_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Paragraph size", "default": 19 },
+    { "type": "range", "id": "heading_size", "min": 24, "max": 72, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 52 },
+    { "type": "range", "id": "heading_size_mobile", "min": 18, "max": 56, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 34 },
+    { "type": "range", "id": "text_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Paragraph size (desktop)", "default": 19 },
+    { "type": "range", "id": "text_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Paragraph size (mobile)", "default": 17 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
     { "type": "color", "id": "image_bg_color", "label": "Image background", "default": "#F8E9EE" },

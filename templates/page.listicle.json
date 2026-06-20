@@ -27,7 +27,7 @@
     "hero": {
       "type": "listicle-hero",
       "settings": {
-        "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+        "image": "shopify://shop_images/rejuvia_image.png",
         "show_stars": true,
         "eyebrow": "Trusted By 300,000+ Sleepers",
         "heading": "5 Reasons Millions Are Ditching Sleeping Pills and Gummies For Rejuvia",
@@ -35,7 +35,7 @@
         "button_text": "Try Risk-Free Today",
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
-        "heading_size": 44,
+        "heading_size": 40,
         "heading_size_mobile": 29,
         "text_size": 18,
         "text_size_mobile": 17,

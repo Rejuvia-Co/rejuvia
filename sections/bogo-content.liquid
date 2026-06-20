@@ -1,0 +1,245 @@
+{%- comment -%}
+  BOGO content section — image bed (lavender gradient) + headline, subhead,
+  benefit bullets, CTA pill, and money-back-guarantee line. Image side and
+  image treatment (contained product vs lifestyle cover) are configurable.
+{%- endcomment -%}
+
+<section
+  class="bogo-content{% if section.settings.image_side == 'right' %} bogo-content--img-right{% endif %}"
+  style="--bgc-bg: {{ section.settings.bg_color | default: '#fafafa' }}; --bgc-accent: {{ section.settings.accent_color | default: '#672666' }};">
+  <div class="bogo-content__inner">
+
+    <div class="bogo-content__media">
+      <div class="bogo-content__bed{% if section.settings.image_mode == 'lifestyle' %} is-lifestyle{% endif %}">
+        {%- if section.settings.image != blank -%}
+          <img class="bogo-content__img"
+               src="{{ section.settings.image | image_url: width: 1200 }}"
+               srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               sizes="(max-width: 760px) 90vw, 540px"
+               width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}"
+               alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}" loading="lazy">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'bogo-content__img bogo-content__img--ph' }}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="bogo-content__text">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bogo-content__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subhead != blank -%}
+        <p class="bogo-content__sub">{{ section.settings.subhead }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="bogo-content__bullets">
+          {%- for block in section.blocks -%}{%- if block.type == 'bullet' and block.settings.text != blank -%}
+            <li class="bogo-content__bullet" {{ block.shopify_attributes }}>
+              <span class="bogo-content__check" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="bogo-content__bullet-text">{{ block.settings.text }}</span>
+            </li>
+          {%- endif -%}{%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="bogo-content__cta">
+        {%- if section.settings.cta_text != blank -%}
+          <a class="bogo-content__btn" href="{{ section.settings.cta_link | default: '#offer' }}">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+        {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
+          <span class="bogo-content__guarantee">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#fab851" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ section.settings.guarantee_text }}
+          </span>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .bogo-content {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--bgc-bg, #fafafa);
+    padding: 72px 64px;
+    font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  }
+  .bogo-content__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .bogo-content--img-right .bogo-content__media { order: 2; }
+
+  .bogo-content__bed {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg, #f9f2ff 0%, #eaeaf7 60%, #d2d7f4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bogo-content__img {
+    height: 78%;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 40px rgba(74, 28, 74, 0.28));
+  }
+  .bogo-content__bed.is-lifestyle .bogo-content__img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    filter: none;
+  }
+  .bogo-content__img--ph { width: 100%; height: 100%; background: #ececf4; }
+
+  .bogo-content__heading {
+    margin: 0 0 22px;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    color: #141414;
+    text-wrap: balance;
+  }
+  .bogo-content__sub {
+    margin: 0 0 30px;
+    max-width: 460px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: #767676;
+  }
+  .bogo-content__bullets {
+    list-style: none;
+    margin: 0 0 38px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .bogo-content__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .bogo-content__check {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 100px;
+    background: #4a1c4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .bogo-content__bullet-text {
+    font-size: 17px;
+    line-height: 1.45;
+    color: #232323;
+  }
+  .bogo-content__cta {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bogo-content__btn {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    background: var(--bgc-accent, #672666);
+    color: #fff;
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    padding: 26px 32px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 150ms cubic-bezier(.22,1,.36,1), transform 150ms cubic-bezier(.22,1,.36,1);
+  }
+  .bogo-content__btn:hover { background: #5d215f; color: #fff; }
+  .bogo-content__btn:active { transform: scale(0.985); }
+  .bogo-content__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #232323;
+  }
+  .bogo-content__guarantee svg { flex-shrink: 0; }
+
+  @media (max-width: 760px) {
+    .bogo-content { padding: 40px 20px; }
+    .bogo-content__inner { grid-template-columns: 1fr; gap: 32px; }
+    .bogo-content--img-right .bogo-content__media,
+    .bogo-content__media { order: 0; }
+    .bogo-content__bed { aspect-ratio: 4 / 3; }
+    .bogo-content__heading { font-size: 30px; }
+    .bogo-content__sub { font-size: 16px; margin-bottom: 24px; }
+    .bogo-content__btn { font-size: 18px; padding: 20px 28px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "BOGO Content Section",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Headline", "default": "Buy One, Get One Free — Sleep Better, Together" },
+    { "type": "textarea", "id": "subhead", "label": "Subhead", "default": "Stock up on Midnight Bliss Oral Sleep Spray and share the gift of deep, restful sleep with someone you love." },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "image_mode", "label": "Image treatment", "options": [ { "value": "product", "label": "Product (contained on gradient)" }, { "value": "lifestyle", "label": "Lifestyle (fills the frame)" } ], "default": "product" },
+    { "type": "select", "id": "image_side", "label": "Image side (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "left" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
+    { "type": "url", "id": "cta_link", "label": "Button link", "info": "Defaults to #offer (scrolls to the buybox) if left blank." },
+    { "type": "checkbox", "id": "show_guarantee", "label": "Show guarantee line", "default": true },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money-Back Guarantee" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#fafafa" },
+    { "type": "color", "id": "accent_color", "label": "Button color", "default": "#672666" }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Benefit bullet",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BOGO Content Section",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "Fall asleep faster with a fast-absorbing oral spray — no pills to swallow" } },
+        { "type": "bullet", "settings": { "text": "Wake up refreshed, never groggy, with a non-habit-forming formula" } },
+        { "type": "bullet", "settings": { "text": "Made with melatonin, L-theanine & soothing botanicals" } },
+        { "type": "bullet", "settings": { "text": "Two bottles delivered free — keep one, gift one" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

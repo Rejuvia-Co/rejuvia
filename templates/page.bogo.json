@@ -9,6 +9,29 @@
  */
 {
   "sections": {
+    "bogo_content_lp1": {
+      "type": "bogo-content",
+      "blocks": {
+        "bullet_1": { "type": "bullet", "settings": { "text": "Fall asleep faster with a fast-absorbing oral spray — no pills to swallow" } },
+        "bullet_2": { "type": "bullet", "settings": { "text": "Wake up refreshed, never groggy, with a non-habit-forming formula" } },
+        "bullet_3": { "type": "bullet", "settings": { "text": "Made with melatonin, L-theanine & soothing botanicals" } },
+        "bullet_4": { "type": "bullet", "settings": { "text": "Two bottles delivered free — keep one, gift one" } }
+      },
+      "block_order": ["bullet_1", "bullet_2", "bullet_3", "bullet_4"],
+      "disabled": true,
+      "settings": {
+        "heading": "Buy One, Get One Free — Sleep Better, Together",
+        "subhead": "Stock up on Midnight Bliss Oral Sleep Spray and share the gift of deep, restful sleep with someone you love.",
+        "image_mode": "product",
+        "image_side": "left",
+        "cta_text": "Try Rejuvia Risk-Free",
+        "cta_link": "",
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Money-Back Guarantee",
+        "bg_color": "#fafafa",
+        "accent_color": "#672666"
+      }
+    },
     "offer_block_C9tJiM": {
       "type": "offer-block",
       "blocks": {
@@ -723,6 +746,7 @@
   },
   "order": [
     "offer_block_C9tJiM",
+    "bogo_content_lp1",
     "customer_testimonials_video_b39r9z",
     "image_text_v2_xzfhqx",
     "how_it_works_Hc9igb",

@@ -321,7 +321,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
                   <span>{{ b.settings.title }}</span>
                   <svg class="bogo__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
-                <div class="bogo__tab-a"><div class="bogo__tab-a-inner"><div class="bogo__tab-body">{{ b.settings.content }}</div></div></div>
+                <div class="bogo__tab-a"><div class="bogo__tab-a-inner"><div class="bogo__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
               </div>
             {%- endif -%}{%- endfor -%}
           </div>
@@ -340,6 +340,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
       </div>
     </div>
   </div>
+  {% render 'supplement-label-popup', product: section.settings.product %}
 </section>
 
 <script>

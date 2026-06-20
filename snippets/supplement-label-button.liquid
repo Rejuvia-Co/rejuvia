@@ -1,0 +1,43 @@
+{%- comment -%}
+  "View Supplement Facts" button (white pill) that opens the supplement-label popup.
+  Requires {% render 'supplement-label-popup', product: <product> %} on the same page.
+  Param: product — the product whose custom.supplement_label metaobject drives the popup.
+  Renders nothing if that metafield is empty.
+{%- endcomment -%}
+{%- if product.metafields.custom.supplement_label != blank -%}
+  <div class="supplement-label-cta">
+    <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
+  </div>
+  {%- unless supplement_label_btn_css -%}{%- assign supplement_label_btn_css = true -%}
+  <style>
+    .supplement-label-cta { display: flex; justify-content: center; margin-top: 16px; }
+    .supplement-label-btn {
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #672666;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: none;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 100px;
+      box-shadow: 0 4px 18px rgba(40, 12, 40, 0.12);
+      text-decoration: none;
+      cursor: pointer;
+      transition: box-shadow .2s ease, transform .1s ease;
+    }
+    .supplement-label-btn:hover { box-shadow: 0 6px 22px rgba(40, 12, 40, 0.18); }
+    .supplement-label-btn:active { transform: scale(0.98); }
+    @media (max-width: 749px) {
+      .supplement-label-btn { padding: 14px 28px; font-size: 15px; }
+    }
+  </style>
+  {%- endunless -%}
+{%- endif -%}

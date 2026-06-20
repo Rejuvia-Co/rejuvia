@@ -294,7 +294,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
             <div class="ob__tab" {{ b.shopify_attributes }}>
               <button type="button" class="ob__tab-q" aria-expanded="false"><span>{{ b.settings.title }}</span>{{ ob_chevron }}</button>
-              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}</div></div></div>
+              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
             </div>
           {%- endif -%}{%- endfor -%}
         </div>
@@ -312,6 +312,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
     </div>
   </div>
+  {% render 'supplement-label-popup', product: section.settings.product %}
 </section>
 
 <script>

@@ -258,34 +258,26 @@
           "type": "stat",
           "settings": {
             "number": "13+",
-            "label": "Natural ingredients"
-          }
-        },
-        "stat_87aJbk": {
-          "type": "stat",
-          "settings": {
-            "number": "2mg",
-            "label": "Low-dose melatonin"
+            "label": "Natural Sleep Ingredients"
           }
         },
         "stat_a3zVGA": {
           "type": "stat",
           "settings": {
-            "number": "15",
-            "label": "Minutes to sleep"
+            "number": "10-15",
+            "label": "Minutes to Fall Asleep"
           }
         },
         "stat_K4eVbd": {
           "type": "stat",
           "settings": {
             "number": "0",
-            "label": "Zero grogginess"
+            "label": "3am Wake Ups"
           }
         }
       },
       "block_order": [
         "stat_Gg74Lc",
-        "stat_87aJbk",
         "stat_a3zVGA",
         "stat_K4eVbd"
       ],

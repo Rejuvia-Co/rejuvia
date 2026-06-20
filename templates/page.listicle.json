@@ -20,7 +20,7 @@
         "button_link": "",
         "hide_store_header": true,
         "offer_size_mobile": 16,
-        "bg_color": "#F5F5F5",
+        "bg_color": "#f5f5f5",
         "accent_color": "#672666"
       }
     },
@@ -36,7 +36,9 @@
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
         "heading_size": 44,
+        "heading_size_mobile": 29,
         "text_size": 18,
+        "text_size_mobile": 17,
         "bg_color": "#ffffff",
         "image_bg_color": "#f8e9ee",
         "accent_color": "#672666",
@@ -209,7 +211,7 @@
         "header": "Join 300,000 Getting Better Sleep",
         "stars_reating": "4.5",
         "stars_label": "Trusted By 300,000+ Sleepers",
-        "bg_color": "#F8F4F7"
+        "bg_color": "#f8f4f7"
       }
     },
     "offer_block": {
@@ -340,7 +342,7 @@
         "subtitle_size": 18,
         "subtitle_size_mobile": 18,
         "tier_title_size": 26,
-        "tier_title_size_mobile": 22,
+        "tier_title_size_mobile": 19,
         "tab_title_size": 20,
         "tab_title_size_mobile": 20,
         "tab_body_size": 19,

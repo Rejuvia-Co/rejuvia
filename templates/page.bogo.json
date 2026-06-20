@@ -9,28 +9,6 @@
  */
 {
   "sections": {
-    "bogo_content_lp1": {
-      "type": "bogo-content",
-      "blocks": {
-        "bullet_1": { "type": "bullet", "settings": { "text": "Fall asleep faster with a fast-absorbing oral spray — no pills to swallow" } },
-        "bullet_2": { "type": "bullet", "settings": { "text": "Wake up refreshed, never groggy, with a non-habit-forming formula" } },
-        "bullet_3": { "type": "bullet", "settings": { "text": "Made with melatonin, L-theanine & soothing botanicals" } },
-        "bullet_4": { "type": "bullet", "settings": { "text": "Two bottles delivered free — keep one, gift one" } }
-      },
-      "block_order": ["bullet_1", "bullet_2", "bullet_3", "bullet_4"],
-      "disabled": true,
-      "settings": {
-        "heading": "Buy One, Get One Free — Sleep Better, Together",
-        "subhead": "Stock up on Midnight Bliss Oral Sleep Spray and share the gift of deep, restful sleep with someone you love.",
-        "image_side": "left",
-        "cta_text": "Try Rejuvia Risk-Free",
-        "cta_link": "",
-        "show_guarantee": true,
-        "guarantee_text": "90-Day Money-Back Guarantee",
-        "bg_color": "#fafafa",
-        "accent_color": "#672666"
-      }
-    },
     "offer_block_C9tJiM": {
       "type": "offer-block",
       "blocks": {
@@ -273,6 +251,53 @@
         "bg_color": "#eaeaf7"
       }
     },
+    "bogo_content_lp1": {
+      "type": "bogo-content",
+      "blocks": {
+        "bullet_1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Fall asleep in 10-15 minutes after spraying under your tongue"
+          }
+        },
+        "bullet_2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Sleep through the entire night without 3am wake-ups"
+          }
+        },
+        "bullet_3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Wake up refreshed, not groggy, with a non-habit-forming formula"
+          }
+        },
+        "bullet_4": {
+          "type": "bullet",
+          "settings": {
+            "text": "Made with 100% all-natural, clean and safe ingredients"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_1",
+        "bullet_2",
+        "bullet_3",
+        "bullet_4"
+      ],
+      "settings": {
+        "heading": "Fix Your Sleep Once and For All",
+        "subhead": "Join millions ditching melatonin gummies and sleeping pills with the one sleep solution that actually works when you need it: Rejuvia.",
+        "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
+        "image_side": "left",
+        "cta_text": "Try Rejuvia Risk-Free",
+        "cta_link": "",
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Money-Back Guarantee",
+        "bg_color": "#fafafa",
+        "accent_color": "#672666"
+      }
+    },
     "image_text_v2_xzfhqx": {
       "type": "image-text-v2",
       "blocks": {
@@ -303,6 +328,7 @@
         "stat_a3zVGA",
         "stat_K4eVbd"
       ],
+      "disabled": true,
       "name": "Image with Text V2",
       "settings": {
         "heading": "<p>Why Rejuvia works <em>3x faster and stronger </em>than sleeping pills and gummies</p>",
@@ -745,8 +771,8 @@
   },
   "order": [
     "offer_block_C9tJiM",
-    "bogo_content_lp1",
     "customer_testimonials_video_b39r9z",
+    "bogo_content_lp1",
     "image_text_v2_xzfhqx",
     "how_it_works_Hc9igb",
     "key_ingredients_v2_XxByCK",

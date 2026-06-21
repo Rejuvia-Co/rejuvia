@@ -10,7 +10,8 @@
   </div>
   {%- unless supplement_label_btn_css -%}{%- assign supplement_label_btn_css = true -%}
   <style>
-    .supplement-label-cta { display: flex; justify-content: center; margin-top: 16px; }
+    /* position/z-index keep it clickable above accordion checkbox-hack toggles */
+    .supplement-label-cta { display: flex; justify-content: center; margin-top: 16px; position: relative; z-index: 2; }
     .supplement-label-btn {
       display: flex;
       width: 100%;
@@ -18,25 +19,24 @@
       align-items: center;
       justify-content: center;
       background: #ffffff;
-      color: #672666;
+      color: #5d215f;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 16px;
       font-weight: 500;
       line-height: 1;
       letter-spacing: 0;
       text-transform: none;
-      padding: 16px 32px;
-      border: none;
+      padding: 14px 28px;
+      border: 1.5px solid #5d215f;
       border-radius: 100px;
-      box-shadow: 0 4px 18px rgba(40, 12, 40, 0.12);
       text-decoration: none;
       cursor: pointer;
-      transition: box-shadow .2s ease, transform .1s ease;
+      transition: background .15s ease, color .15s ease;
     }
-    .supplement-label-btn:hover { box-shadow: 0 6px 22px rgba(40, 12, 40, 0.18); }
+    .supplement-label-btn:hover { background: #5d215f; color: #ffffff; }
     .supplement-label-btn:active { transform: scale(0.98); }
     @media (max-width: 749px) {
-      .supplement-label-btn { padding: 14px 28px; font-size: 15px; }
+      .supplement-label-btn { padding: 13px 24px; font-size: 15px; }
     }
   </style>
   {%- endunless -%}

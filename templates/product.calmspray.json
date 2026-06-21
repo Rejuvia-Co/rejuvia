@@ -105,9 +105,6 @@
       ],
       "settings": {
         "selected_product": "",
-        "trusted_image_1": "shopify://shop_images/customer_1.png",
-        "trusted_image_2": "shopify://shop_images/customer_13.png",
-        "trusted_image_3": "shopify://shop_images/customer_12.png",
         "show_related_product": false,
         "show_bundle_text": false,
         "swatch_tag_content": "",

@@ -284,46 +284,7 @@
     }
   }
 
-  /* View Supplement Label button (white pill, purple text) */
-  #custom_tabs_product .supplement-label-cta {
-    display: flex;
-    justify-content: center;
-    margin-top: 14px;
-    position: relative;
-    z-index: 2;
-  }
-  #custom_tabs_product .supplement-label-btn {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    color: #672666;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0;
-    text-transform: none;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 100px;
-    box-shadow: 0 3px 14px rgba(40, 12, 40, 0.10);
-    text-decoration: none;
-    cursor: pointer;
-    transition: box-shadow .2s ease, transform .1s ease;
-  }
-  #custom_tabs_product .supplement-label-btn:hover {
-    box-shadow: 0 6px 22px rgba(40, 12, 40, 0.18);
-  }
-  #custom_tabs_product .supplement-label-btn:active {
-    transform: scale(0.98);
-  }
-  @media only screen and (max-width: 749px) {
-    #custom_tabs_product .supplement-label-cta { margin-top: 12px; }
-    #custom_tabs_product .supplement-label-btn { padding: 13px 24px; font-size: 15px; }
-  }
+  /* "View Supplement Facts" button styling now lives in snippets/supplement-label-button.liquid */
 </style>
 
 <section class="custom-tabs-product-new" id="custom_tabs_product">
@@ -364,11 +325,7 @@
                       {% else %}
                         {{ product.metafields.tabs.ingredients }}
                       {% endif %}
-                      {% if product.metafields.custom.supplement_label != blank %}
-                        <div class="supplement-label-cta">
-                          <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
-                        </div>
-                      {% endif %}
+                      {% render 'supplement-label-button', product: product %}
                   </div>
               </li>
           {% endif %}

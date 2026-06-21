@@ -332,8 +332,8 @@
                         {%- render '_custom_tabs_products-new', product: currentProduct -%}
                         {%- if section.settings.show_trusted -%}
                           {% render 'trusted-by',
-                            title: currentProduct.metafields.custom.trusted_title | default: section.settings.trusted_title,
-                            subtext: currentProduct.metafields.custom.trusted_subtext | default: section.settings.trusted_subtext,
+                            title: currentProduct.metafields.custom.trusted_title.value | default: section.settings.trusted_title,
+                            subtext: currentProduct.metafields.custom.trusted_subtext.value | default: section.settings.trusted_subtext,
                             image_1: section.settings.trusted_image_1,
                             image_2: section.settings.trusted_image_2,
                             image_3: section.settings.trusted_image_3,

@@ -21,7 +21,7 @@ main:has(.lsb), .content-wrapper:has(.lsb) { overflow-x: clip; overflow-y: visib
   gap: 16px;
 }
 .lsb__logo { flex: 0 0 auto; display: flex; align-items: center; }
-.lsb__logo img { height: 24px; width: auto; display: block; }
+.lsb__logo img { height: {{ section.settings.logo_size | default: 24 }}px; width: auto; display: block; }
 .lsb__logo-text {
   font-size: 19px;
   font-weight: 700;
@@ -31,7 +31,7 @@ main:has(.lsb), .content-wrapper:has(.lsb) { overflow-x: clip; overflow-y: visib
 .lsb__offer {
   flex: 1 1 auto;
   text-align: center;
-  font-size: 15px;
+  font-size: {{ section.settings.offer_size | default: 15 }}px;
   font-weight: 400;
   line-height: 1.2;
   color: #141414;
@@ -73,13 +73,13 @@ main:has(.lsb), .content-wrapper:has(.lsb) { overflow-x: clip; overflow-y: visib
 
 <section class="lsb">
   <div class="lsb__inner">
-    <a class="lsb__logo" href="{{ section.settings.logo_link | default: routes.root_url }}">
+    <span class="lsb__logo">
       {%- if section.settings.logo != blank -%}
         <img src="{{ section.settings.logo | image_url: width: 220 }}" alt="{{ shop.name | escape }}">
       {%- else -%}
         <span class="lsb__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
       {%- endif -%}
-    </a>
+    </span>
 
     {%- if section.settings.offer_text != blank -%}
       <div class="lsb__offer">{{ section.settings.offer_text }}</div>
@@ -98,12 +98,13 @@ main:has(.lsb), .content-wrapper:has(.lsb) { overflow-x: clip; overflow-y: visib
   "settings": [
     { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to use the text logo below." },
     { "type": "text", "id": "logo_text", "label": "Logo text (fallback)", "default": "REJUVIA" },
-    { "type": "url", "id": "logo_link", "label": "Logo link" },
+    { "type": "range", "id": "logo_size", "min": 16, "max": 48, "step": 1, "unit": "px", "label": "Logo height (desktop)", "info": "Logo is hidden on mobile.", "default": 24 },
     { "type": "richtext", "id": "offer_text", "label": "Offer text", "default": "<p><strong>BOGO FREE</strong> - $0.58/night</p>" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Get Offer" },
     { "type": "url", "id": "button_link", "label": "Button link", "info": "Tip: link to the offer section, e.g. #offer" },
     { "type": "checkbox", "id": "hide_store_header", "label": "Hide store header on this page", "default": true, "info": "Replaces the main store header with this bar (recommended for landing pages)." },
     { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "offer_size", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Offer text size (desktop)", "default": 15 },
     { "type": "range", "id": "offer_size_mobile", "min": 9, "max": 18, "step": 1, "unit": "px", "label": "Offer text size (mobile)", "default": 13 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Bar background", "default": "#ffffff" },

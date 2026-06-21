@@ -317,8 +317,8 @@
                         {%- render '_custom_tabs_products-new', product: currentProduct -%}
                         {%- if section.settings.show_trusted -%}
                           {% render 'trusted-by',
-                            title: section.settings.trusted_title,
-                            subtext: section.settings.trusted_subtext,
+                            title: currentProduct.metafields.custom.trusted_title | default: section.settings.trusted_title,
+                            subtext: currentProduct.metafields.custom.trusted_subtext | default: section.settings.trusted_subtext,
                             image_1: section.settings.trusted_image_1,
                             image_2: section.settings.trusted_image_2,
                             image_3: section.settings.trusted_image_3,
@@ -598,8 +598,8 @@
     },
     { "type": "header", "content": "Trusted-by bar (under accordions)" },
     { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
-    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by 300K+ customers" },
-    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who use Rejuvia to fall asleep faster and sleep through the full night." },
+    { "type": "text", "id": "trusted_title", "label": "Title (fallback)", "info": "Per-product override: product metafield custom.trusted_title", "default": "Used by 300K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext (fallback)", "info": "Per-product override: product metafield custom.trusted_subtext", "default": "who use Rejuvia to fall asleep faster and sleep through the full night." },
     { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
     { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
     { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },

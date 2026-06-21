@@ -118,6 +118,7 @@
 }
 
 .listicle-hero__guarantee svg { flex-shrink: 0; }
+.listicle-hero__guarantee-icon { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; display: block; }
 
 @media (max-width: 900px) {
   .listicle-hero__container {
@@ -193,7 +194,11 @@
 
       {%- if section.settings.guarantee_text != blank -%}
         <div class="listicle-hero__guarantee">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9a9 9 0 1 1 1.5 5" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {%- if section.settings.guarantee_icon != blank -%}
+            <img class="listicle-hero__guarantee-icon" src="{{ section.settings.guarantee_icon | image_url: width: 48 }}" alt="" width="16" height="16" loading="lazy">
+          {%- else -%}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9a9 9 0 1 1 1.5 5" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {%- endif -%}
           <span>{{ section.settings.guarantee_text }}</span>
         </div>
       {%- endif -%}
@@ -215,6 +220,7 @@
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Now" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money Back Guarantee" },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee icon", "info": "Optional. Replaces the default icon next to the guarantee text." },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "heading_size", "min": 24, "max": 72, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 52 },
     { "type": "range", "id": "heading_size_mobile", "min": 18, "max": 56, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 34 },

@@ -99,7 +99,7 @@
     padding: 12px 24px;
     border-radius: 80px;
     color: #141414;
-    font-size: 20px;
+    font-size: {{ section.settings.nav_font_size | default: 20 }}px;
     font-weight: 400;
     line-height: 1;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -351,9 +351,9 @@
 <div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
     {%- comment -%} Desktop nav bar {%- endcomment -%}
     <div class="main-content flex align-items-center justify-content-between">
-      <a href="/" class="logo">
+      <span class="logo">
         {% render 'logo-rejuvia' %}
-      </a>
+      </span>
       <div class="nav-wrapper">
         <nav class="main-menu flex align-items-center" role="navigation">
           {% render 'mega-menu', menu: section.settings.menu_desktop.links %}
@@ -373,9 +373,9 @@
 
     {%- comment -%} Mobile nav bar {%- endcomment -%}
     <div class="navigator-mobile">
-      <a href="/" class="logo">
+      <span class="logo">
         {% render 'logo-rejuvia' %}
-      </a>
+      </span>
       <div class="navigator-mobile__right">
         <a class="cart-wrap" href="/cart" title="Bag" aria-label="Cart">
           {% render 'icon-cart' %}
@@ -545,6 +545,30 @@
         "unit": "px",
         "label": "Logo width (mobile)",
         "default": 164
+      },
+      {
+        "type": "header",
+        "content": "Navigation text"
+      },
+      {
+        "type": "range",
+        "id": "nav_font_size",
+        "min": 12,
+        "max": 28,
+        "step": 1,
+        "unit": "px",
+        "label": "Nav text size (desktop)",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "nav_font_size_mobile",
+        "min": 12,
+        "max": 28,
+        "step": 1,
+        "unit": "px",
+        "label": "Nav text size (mobile menu)",
+        "default": 20
       },
       {
         "type": "header",

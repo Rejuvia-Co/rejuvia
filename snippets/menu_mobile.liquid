@@ -226,8 +226,8 @@
     color: #141414;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 20px;
+    font-size: {{ section.settings.nav_font_size_mobile | default: 20 }}px;
+    line-height: 1.1;
   }
 
   .mobile-menu-v2__link:hover {

@@ -28,7 +28,8 @@
     "hero": {
       "type": "listicle-hero",
       "settings": {
-        "image": "shopify://shop_images/rejuvia_image.png",
+        "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+        "image_mobile": "shopify://shop_images/rejuvia_image.png",
         "show_stars": true,
         "eyebrow": "Trusted By 300,000+ Sleepers",
         "heading": "5 Reasons Millions Are Ditching Sleeping Pills and Gummies For Rejuvia",

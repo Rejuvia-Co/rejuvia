@@ -362,6 +362,11 @@
                       {% else %}
                         {{ product.metafields.tabs.ingredients }}
                       {% endif %}
+                      {% if product.metafields.custom.supplement_label != blank %}
+                        <div class="supplement-label-cta">
+                          <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
+                        </div>
+                      {% endif %}
                   </div>
               </li>
           {% endif %}
@@ -432,11 +437,6 @@
               </li>
           {% endif %}
       </ul>
-      {% if product.metafields.custom.supplement_label != blank %}
-        <div class="supplement-label-cta">
-          <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
-        </div>
-      {% endif %}
     </div>
   </div>
     {% if product.metafields.custom.boundle_related_product != blank %}

@@ -330,6 +330,16 @@
                 {% when 'custom-tabs' %}
                     <div class="block-custom-tabs" {{ block.shopify_attributes }}>
                         {%- render '_custom_tabs_products-new', product: currentProduct -%}
+                        {%- if section.settings.show_trusted -%}
+                          {% render 'trusted-by',
+                            title: section.settings.trusted_title,
+                            subtext: section.settings.trusted_subtext,
+                            image_1: section.settings.trusted_image_1,
+                            image_2: section.settings.trusted_image_2,
+                            image_3: section.settings.trusted_image_3,
+                            bg_color: section.settings.trusted_bg,
+                            check_color: section.settings.trusted_check %}
+                        {%- endif -%}
                     </div>
 
                 {% when 'social-sharing' %}
@@ -598,7 +608,16 @@
       "label": "Preselected Item",
       "default": 3,
       "info": "Indicates the position number of the variant, The first available one is selected if the field is empty"
-    }
+    },
+    { "type": "header", "content": "Trusted-by bar (under accordions)" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by 300K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who use Rejuvia to fall asleep faster and sleep through the full night." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
+    { "type": "color", "id": "trusted_check", "label": "Checkmark", "default": "#34c759" }
   ],
   "blocks": [
     {

@@ -35,6 +35,7 @@
         "button_text": "Try Risk-Free Today",
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
+        "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "heading_size": 40,
         "heading_size_mobile": 29,
         "text_size": 18,

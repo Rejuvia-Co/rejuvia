@@ -14,11 +14,12 @@
       "settings": {
         "logo": "shopify://shop_images/Logo_1.svg",
         "logo_text": "REJUVIA",
-        "logo_link": "",
-        "offer_text": "<p><strong>Buy One, Get One 100% FREE</strong></p>",
+        "logo_size": 18,
+        "offer_text": "<p>Buy One, Get One <span style=\"text-decoration:underline\"><strong>100% FREE</strong></span></p>",
         "button_text": "Get Offer",
         "button_link": "",
         "hide_store_header": true,
+        "offer_size": 15,
         "offer_size_mobile": 16,
         "bg_color": "#f5f5f5",
         "accent_color": "#672666"

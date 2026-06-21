@@ -351,9 +351,9 @@
 <div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
     {%- comment -%} Desktop nav bar {%- endcomment -%}
     <div class="main-content flex align-items-center justify-content-between">
-      <span class="logo">
+      <a href="/" class="logo">
         {% render 'logo-rejuvia' %}
-      </span>
+      </a>
       <div class="nav-wrapper">
         <nav class="main-menu flex align-items-center" role="navigation">
           {% render 'mega-menu', menu: section.settings.menu_desktop.links %}
@@ -373,9 +373,9 @@
 
     {%- comment -%} Mobile nav bar {%- endcomment -%}
     <div class="navigator-mobile">
-      <span class="logo">
+      <a href="/" class="logo">
         {% render 'logo-rejuvia' %}
-      </span>
+      </a>
       <div class="navigator-mobile__right">
         <a class="cart-wrap" href="/cart" title="Bag" aria-label="Cart">
           {% render 'icon-cart' %}

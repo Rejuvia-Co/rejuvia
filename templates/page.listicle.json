@@ -286,7 +286,7 @@
           "type": "tab",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p>All Rejuvia orders ship within 1 business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $69. You'll receive tracking as soon as your order is on its way.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
+            "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All Rejuvia orders ship within 1 business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
           }
         },
         "tab_UUNhhe": {
@@ -378,123 +378,6 @@
         "okendo_reviews_widget_aTRVrA"
       ],
       "settings": {}
-    },
-    "alternatives_v2": {
-      "type": "alternatives-v2",
-      "blocks": {
-        "row_W3VDNd": {
-          "type": "row",
-          "settings": {
-            "label": "Fast-absorbing formula",
-            "rejuvia_value": "Rapid",
-            "rejuvia_sub": "(5-10 minutes)",
-            "rejuvia_color": "",
-            "rejuvia_bold": true
-          }
-        },
-        "row_Yn47Jt": {
-          "type": "row",
-          "settings": {
-            "label": "Proven natural ingredients",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_7YLxPG": {
-          "type": "row",
-          "settings": {
-            "label": "Non-habit forming",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_Ypibx8": {
-          "type": "row",
-          "settings": {
-            "label": "No groggy mornings",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_DegNKB": {
-          "type": "row",
-          "settings": {
-            "label": "Tastes great",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "row_DeYr8K": {
-          "type": "row",
-          "settings": {
-            "label": "Free from additives & fillers",
-            "rejuvia_value": "check",
-            "rejuvia_sub": "",
-            "rejuvia_color": "",
-            "rejuvia_bold": false
-          }
-        },
-        "competitor_haEqjD": {
-          "type": "competitor",
-          "settings": {
-            "name": "Sleep Pills",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
-            "values": "Slow|$3.00/night|cross|cross|cross|cross|cross",
-            "colors": "|alt-v2-cell--red|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        },
-        "competitor_qgWqrH": {
-          "type": "competitor",
-          "settings": {
-            "name": "Sleep Gummies",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
-            "values": "Slow|$1.83/night|check|check|cross|cross|cross",
-            "colors": "|alt-v2-cell--orange|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        },
-        "competitor_dbeaPU": {
-          "type": "competitor",
-          "settings": {
-            "name": "Melatonin Supplements",
-            "image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
-            "values": "Slow|$0.93/night|check|cross|cross|cross|cross",
-            "colors": "|alt-v2-cell--orange|||||",
-            "subs": "(up to 90 minutes)||||||"
-          }
-        }
-      },
-      "block_order": [
-        "row_W3VDNd",
-        "row_Yn47Jt",
-        "row_7YLxPG",
-        "row_Ypibx8",
-        "row_DegNKB",
-        "row_DeYr8K",
-        "competitor_haEqjD",
-        "competitor_qgWqrH",
-        "competitor_dbeaPU"
-      ],
-      "disabled": true,
-      "name": "Alternatives V2",
-      "settings": {
-        "heading": "<p>Rejuvia is the <em>most effective alternative</em> to sleeping pills and melatonin gummies</p>",
-        "icon_size": 90,
-        "rejuvia_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_5.png",
-        "rejuvia_logo": "shopify://shop_images/Logo.svg",
-        "btn_text": "Try Rejuvia Risk-Free",
-        "btn_url": "#offer",
-        "guarantee_text": "90-Day Money-Back Guarantee"
-      }
     },
     "faq_center": {
       "type": "faq-center",
@@ -643,7 +526,6 @@
     "video_testimonials",
     "offer_block",
     "17815436809f47f8ea",
-    "alternatives_v2",
     "faq_center",
     "closing_cta"
   ]

@@ -719,6 +719,10 @@
           "mobile_menu_links_nav"
         ],
         "settings": {
+          "logo_width": 164,
+          "logo_width_mobile": 164,
+          "nav_font_size": 20,
+          "nav_font_size_mobile": 20,
           "bg_color": "#eaeaf7",
           "menu_desktop": "header-navigation",
           "behavior": "static",
@@ -2424,6 +2428,7 @@
           "story_row_F8ygGj",
           "story_row_PpyEkz"
         ],
+        "disabled": true,
         "name": "About V2",
         "settings": {}
       },
@@ -2912,6 +2917,41 @@
           "panel_bg": "#ffffff",
           "checklist_color": "#141414"
         }
+      },
+      "founder_story_v2_jEGKjY": {
+        "type": "founder-story-v2",
+        "name": "Founder Story V2",
+        "settings": {
+          "image": "shopify://shop_images/rejuvia_founders.avif",
+          "caption_1": "RC & Mom · 2019",
+          "caption_2": "Co-Founders of Rejuvia",
+          "headline": "Rejuvia was originally for my mom. Now it's for everyone.",
+          "paragraph_1": "My mom was 55, going through menopause and a whole lot of stress, and couldn't sleep. She'd tried everything and nothing helped. So at the University of Pennsylvania I built her an oral sleep spray with 13 natural sleep ingredients that absorbs under your tongue and works in minutes, not hours.",
+          "paragraph_2": "We just wanted to fix her sleep so she could be herself again. And it worked! Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
+          "stat1_number": "100%",
+          "stat1_label": "Made in the USA",
+          "stat2_number": "8 yrs",
+          "stat2_label": "Family business",
+          "stat3_number": "300K+",
+          "stat3_label": "Customers nationwide",
+          "founder_name": "RC Williams",
+          "founder_title": "Co-Founder, CEO of Rejuvia",
+          "headline_size": 30,
+          "body_size": 18,
+          "stat_num_size": 28,
+          "stat_label_size": 14,
+          "name_size": 19,
+          "title_size": 15,
+          "headline_size_mobile": 22,
+          "body_size_mobile": 15,
+          "stat_num_size_mobile": 20,
+          "stat_label_size_mobile": 12,
+          "name_size_mobile": 16,
+          "title_size_mobile": 13,
+          "section_bg": "#ffffff",
+          "card_bg": "#eaeaf7",
+          "image_shadow_color": "#2a0e2a"
+        }
       }
     },
     "content_for_index": [
@@ -2925,6 +2965,7 @@
       "use_in_just_v2_JAWTbF",
       "alternatives_v2_aVf4gw",
       "about_v2_Lx7Enx",
+      "founder_story_v2_jEGKjY",
       "ticker_v2_j6gkXE",
       "product_widget_v2_m3pTph",
       "custom_reviews_v2_jMjAV7",
@@ -2964,7 +3005,7 @@
       },
       "1877152918344802950": {
         "type": "shopify://apps/intelligems-a-b-testing/blocks/intelligems-script/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     }

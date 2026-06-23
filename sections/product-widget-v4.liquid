@@ -1,0 +1,487 @@
+{%- comment -%}
+  Product Widget V4 — conversion offer block.
+  Reuses v2's data model: each variant = a pack (1/3/6), with metafields
+  custom.variant_servings, variant_pack_size, price_per_night, variant_badge,
+  badge_bg_color, badge_text_color, preselected_selling_plan (Skio autoship plan).
+  Reused snippets: shipping-bar, trusted-by, supplement-label-button/-popup.
+{%- endcomment -%}
+
+{%- liquid
+  assign p = section.settings.selected_product
+  if p == blank
+    assign p = product
+  endif
+  assign accent = section.settings.accent_color | default: '#672666'
+  assign default_index = section.settings.default_variant | default: 2
+
+  comment
+    Resolve the server-side default variant + its autoship plan so the
+    add-to-cart form works even before JS hydrates the selector.
+  endcomment
+  assign def_i = default_index | minus: 1
+  assign def_v = p.variants[def_i]
+  if def_v == blank
+    assign def_v = p.selected_or_first_available_variant
+  endif
+  assign def_plan = def_v.metafields.custom.preselected_selling_plan
+  assign def_plan_ok = false
+  for a in def_v.selling_plan_allocations
+    if a.selling_plan.id == def_plan
+      assign def_plan_ok = true
+    endif
+  endfor
+  if def_plan_ok == false and def_v.selling_plan_allocations.size > 0
+    assign def_plan = def_v.selling_plan_allocations.first.selling_plan.id
+  endif
+-%}
+
+<style>
+  #pw4-{{ section.id }} { --pw4-accent: {{ accent }}; }
+  #pw4-{{ section.id }} .pw4 { width: 100%; box-sizing: border-box; padding: 36px; font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif; color: #141414; }
+  #pw4-{{ section.id }} .pw4 *, #pw4-{{ section.id }} .pw4 *::before, #pw4-{{ section.id }} .pw4 *::after { box-sizing: border-box; }
+  #pw4-{{ section.id }} .pw4__grid { display: flex; align-items: flex-start; gap: 44px; max-width: 1180px; margin: 0 auto; }
+  #pw4-{{ section.id }} .pw4__gallery { flex: 0 0 44%; position: sticky; top: 24px; }
+  #pw4-{{ section.id }} .pw4__buybox { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+
+  /* Gallery */
+  #pw4-{{ section.id }} .pw4__main { position: relative; width: 100%; padding-top: 100%; background: #f7f4f7; border-radius: 20px; overflow: hidden; }
+  #pw4-{{ section.id }} .pw4__main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6%; display: none; }
+  #pw4-{{ section.id }} .pw4__main img.is-active { display: block; }
+  #pw4-{{ section.id }} .pw4__thumbs-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+  #pw4-{{ section.id }} .pw4__arrow { flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--pw4-accent); background: #fff; color: var(--pw4-accent); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+  #pw4-{{ section.id }} .pw4__thumbs { flex: 1 1 0; display: grid; grid-template-columns: repeat({{ p.images.size | at_most: 5 | at_least: 1 }}, 1fr); gap: 8px; }
+  #pw4-{{ section.id }} .pw4__thumb { padding: 0; border: 2px solid #e5e5e5; border-radius: 12px; overflow: hidden; background: #f7f4f7; cursor: pointer; aspect-ratio: 1/1; }
+  #pw4-{{ section.id }} .pw4__thumb.is-active { border-color: var(--pw4-accent); }
+  #pw4-{{ section.id }} .pw4__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #pw4-{{ section.id }} .pw4__review { margin-top: 18px; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px; }
+  #pw4-{{ section.id }} .pw4__review-quote { font-size: 15px; line-height: 1.5; color: #141414; margin: 0 0 12px; }
+  #pw4-{{ section.id }} .pw4__review-meta { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  #pw4-{{ section.id }} .pw4__review-author { font-weight: 700; }
+  #pw4-{{ section.id }} .pw4__review-verified { display: inline-flex; align-items: center; gap: 4px; color: #018e1c; font-weight: 600; font-size: 13px; }
+
+  /* Rating */
+  #pw4-{{ section.id }} .pw4__rating { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+  #pw4-{{ section.id }} .pw4__stars { display: inline-flex; gap: 1px; }
+  #pw4-{{ section.id }} .pw4__rating a { color: #141414; }
+
+  /* Title + pill */
+  #pw4-{{ section.id }} .pw4__title { margin: 0; font-size: 36px; font-weight: 700; letter-spacing: -0.8px; line-height: 1.05; }
+  #pw4-{{ section.id }} .pw4__pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: #eef6ef; border-radius: 100px; padding: 7px 16px; }
+  #pw4-{{ section.id }} .pw4__pill span { color: #3f8a4a; font-size: 12.5px; font-weight: 500; }
+  #pw4-{{ section.id }} .pw4__pill i { width: 3px; height: 3px; border-radius: 50%; background: #b6d4ba; display: inline-block; }
+  #pw4-{{ section.id }} .pw4__subhead { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; }
+
+  /* Benefits */
+  #pw4-{{ section.id }} .pw4__benefits ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  #pw4-{{ section.id }} .pw4__benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.4; }
+  #pw4-{{ section.id }} .pw4__benefits li::before { content: ''; flex-shrink: 0; width: 19px; height: 19px; margin-top: 1px; border-radius: 50%; background: #e3f7e5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M5 12l4 4L19 7' stroke='%23018e1c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat; }
+
+  /* Divider label */
+  #pw4-{{ section.id }} .pw4__divider { display: flex; align-items: center; gap: 14px; }
+  #pw4-{{ section.id }} .pw4__divider::before, #pw4-{{ section.id }} .pw4__divider::after { content: ''; flex: 1; height: 1px; background: #e5e5e5; }
+  #pw4-{{ section.id }} .pw4__divider span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--pw4-accent); text-transform: uppercase; }
+
+  /* Quantity cards */
+  #pw4-{{ section.id }} .pw4__qty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 14px; }
+  #pw4-{{ section.id }} .pw4__qty-card { position: relative; border: 1.5px solid #e5e5e5; background: #fff; border-radius: 10px; padding: 16px 8px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+  #pw4-{{ section.id }} .pw4__qty-card.is-selected { border: 2px solid var(--pw4-accent); background: #faf6fa; }
+  #pw4-{{ section.id }} .pw4__qty-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border-radius: 100px; }
+  #pw4-{{ section.id }} .pw4__qty-label { font-size: 16px; font-weight: 600; }
+  #pw4-{{ section.id }} .pw4__qty-servings { font-size: 12px; color: #767676; margin-top: 2px; }
+  #pw4-{{ section.id }} .pw4__qty-pernight { font-size: 13px; font-weight: 600; color: var(--pw4-accent); margin-top: 4px; }
+
+  /* Offer cards */
+  #pw4-{{ section.id }} .pw4__offers { display: flex; flex-direction: column; gap: 10px; }
+  #pw4-{{ section.id }} .pw4__offer { border: 1.5px solid #e5e5e5; background: #fff; border-radius: 10px; padding: 16px; cursor: pointer; transition: border-color .15s, background .15s; }
+  #pw4-{{ section.id }} .pw4__offer.is-selected { border: 2px solid var(--pw4-accent); background: #faf6fa; }
+  #pw4-{{ section.id }} .pw4__offer-top { display: flex; align-items: center; gap: 12px; }
+  #pw4-{{ section.id }} .pw4__radio { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #cccccc; position: relative; }
+  #pw4-{{ section.id }} .pw4__offer.is-selected .pw4__radio { border-color: var(--pw4-accent); }
+  #pw4-{{ section.id }} .pw4__offer.is-selected .pw4__radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--pw4-accent); }
+  #pw4-{{ section.id }} .pw4__offer-main { flex: 1 1 0; min-width: 0; }
+  #pw4-{{ section.id }} .pw4__offer-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  #pw4-{{ section.id }} .pw4__off-pill { background: #e3f7e5; color: #018e1c; font-size: 14px; font-weight: 700; padding: 4px 11px; border-radius: 100px; }
+  #pw4-{{ section.id }} .pw4__offer-sub { font-size: 13px; color: #767676; margin-top: 2px; }
+  #pw4-{{ section.id }} .pw4__offer-price { text-align: right; }
+  #pw4-{{ section.id }} .pw4__offer-price .now { font-size: 21px; font-weight: 700; }
+  #pw4-{{ section.id }} .pw4__offer-price .was { display: block; font-size: 15px; color: #999; text-decoration: line-through; }
+  #pw4-{{ section.id }} .pw4__includes { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #e5e5e5; }
+  #pw4-{{ section.id }} .pw4__offer--sub.is-selected .pw4__includes { display: block; }
+  #pw4-{{ section.id }} .pw4__includes-title { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #767676; text-transform: uppercase; margin-bottom: 10px; }
+  #pw4-{{ section.id }} .pw4__inc-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; padding: 4px 0; }
+  #pw4-{{ section.id }} .pw4__inc-row span:first-child { display: inline-flex; align-items: center; gap: 8px; }
+  #pw4-{{ section.id }} .pw4__inc-was { color: #999; text-decoration: line-through; margin-right: 8px; }
+  #pw4-{{ section.id }} .pw4__inc-now { color: #00b10d; font-weight: 700; }
+  #pw4-{{ section.id }} .pw4__inc-row svg { color: #018e1c; flex-shrink: 0; }
+
+  /* CTA */
+  #pw4-{{ section.id }} .pw4__atc { width: 100%; background: var(--pw4-accent); color: #fff; border: none; border-radius: 100px; padding: 20px; font-size: 18px; font-weight: 500; letter-spacing: -0.4px; cursor: pointer; transition: opacity .15s; }
+  #pw4-{{ section.id }} .pw4__atc:hover { opacity: 0.92; }
+  #pw4-{{ section.id }} .pw4__guarantee { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; color: #767676; }
+  #pw4-{{ section.id }} .pw4__guarantee svg { color: #018e1c; }
+
+  /* Accordion (BOGO style) */
+  #pw4-{{ section.id }} .pw4__tabs { display: flex; flex-direction: column; }
+  #pw4-{{ section.id }} .pw4__tab { border-bottom: 1px solid #e5e5e5; }
+  #pw4-{{ section.id }} .pw4__tab:first-child { border-top: 1px solid #e5e5e5; }
+  #pw4-{{ section.id }} .pw4__tab-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 2px; background: none; border: none; cursor: pointer; text-align: left; font-size: 16px; font-weight: 600; color: #161616; }
+  #pw4-{{ section.id }} .pw4__tab-q > span { flex: 1 1 auto; min-width: 0; }
+  #pw4-{{ section.id }} .pw4__tab-sign { flex-shrink: 0; width: 22px; height: 22px; color: var(--pw4-accent); transition: transform .22s ease; }
+  #pw4-{{ section.id }} .pw4__tab.is-open .pw4__tab-sign { transform: rotate(180deg); }
+  #pw4-{{ section.id }} .pw4__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  #pw4-{{ section.id }} .pw4__tab.is-open .pw4__tab-a { grid-template-rows: 1fr; }
+  #pw4-{{ section.id }} .pw4__tab-a-inner { overflow: hidden; }
+  #pw4-{{ section.id }} .pw4__tab-body { padding: 0 2px 20px; font-size: 14px; line-height: 1.6; color: #767676; }
+  #pw4-{{ section.id }} .pw4__tab-body img { max-width: 100%; height: auto; }
+
+  /* Less than 1% strip */
+  #pw4-{{ section.id }} .pw4__strip { background: #e3f7e5; border-radius: 10px; padding: 14px; text-align: center; font-size: 14px; color: #018e1c; }
+  #pw4-{{ section.id }} .pw4__strip strong { font-weight: 700; }
+
+  @media (max-width: 899px) {
+    #pw4-{{ section.id }} .pw4 { padding: 18px; }
+    #pw4-{{ section.id }} .pw4__grid { flex-direction: column; gap: 24px; }
+    #pw4-{{ section.id }} .pw4__gallery { position: static; flex-basis: auto; width: 100%; }
+    #pw4-{{ section.id }} .pw4__review { display: none; }
+    #pw4-{{ section.id }} .pw4__title { font-size: 28px; }
+  }
+</style>
+
+<section id="pw4-{{ section.id }}" class="pw4">
+  <div class="pw4__grid">
+
+    {%- comment -%} ===== Gallery ===== {%- endcomment -%}
+    <div class="pw4__gallery">
+      <div class="pw4__main">
+        {%- for img in p.images limit: 5 -%}
+          <img class="{% if forloop.first %}is-active{% endif %}" src="{{ img | image_url: width: 900 }}" alt="{{ p.title | escape }}" width="900" height="900" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+        {%- endfor -%}
+      </div>
+      <div class="pw4__thumbs-row">
+        <button type="button" class="pw4__arrow" data-pw4-prev aria-label="Previous image"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="pw4__thumbs">
+          {%- for img in p.images limit: 5 -%}
+            <button type="button" class="pw4__thumb{% if forloop.first %} is-active{% endif %}" data-pw4-thumb="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy"></button>
+          {%- endfor -%}
+        </div>
+        <button type="button" class="pw4__arrow" data-pw4-next aria-label="Next image"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+
+      {%- assign rev_quote = p.metafields.custom.gallery_review_quote -%}
+      {%- if rev_quote != blank -%}
+        <div class="pw4__review">
+          <p class="pw4__review-quote">"{{ rev_quote }}"</p>
+          <div class="pw4__review-meta">
+            <span class="pw4__stars" aria-label="5 stars">
+              {%- for i in (1..5) -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="#fab851"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z"/></svg>{%- endfor -%}
+            </span>
+            <span class="pw4__review-author">{{ p.metafields.custom.gallery_review_author | default: 'Verified Buyer' }}</span>
+            <span class="pw4__review-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>Verified Buyer</span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ===== Buy box ===== {%- endcomment -%}
+    <div class="pw4__buybox">
+
+      {%- comment -%} Rating {%- endcomment -%}
+      <div class="pw4__rating">
+        <span class="pw4__stars" aria-label="{{ section.settings.rating_value | default: '4.5' }} stars">
+          {%- for i in (1..5) -%}<svg width="19" height="19" viewBox="0 0 24 24" fill="{% if i == 5 %}#d6d6d6{% else %}#fab851{% endif %}"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z"/></svg>{%- endfor -%}
+        </span>
+        <span><strong>{{ section.settings.rating_value | default: '4.5' }}</strong> Stars | <a href="{{ section.settings.reviews_link | default: '#reviews' }}">{{ section.settings.reviews_count | default: '5,500' }} Reviews</a></span>
+      </div>
+
+      {%- comment -%} Title + pill + subhead {%- endcomment -%}
+      {%- assign titlePart = p.title | split: ' - ' -%}
+      <h1 class="pw4__title">{{ titlePart[0] }}</h1>
+      {%- if section.settings.pill_label_1 != blank or section.settings.pill_label_2 != blank -%}
+        <span class="pw4__pill">
+          {%- if section.settings.pill_label_1 != blank -%}<span>{{ section.settings.pill_label_1 }}</span>{%- endif -%}
+          {%- if section.settings.pill_label_1 != blank and section.settings.pill_label_2 != blank -%}<i></i>{%- endif -%}
+          {%- if section.settings.pill_label_2 != blank -%}<span>{{ section.settings.pill_label_2 }}</span>{%- endif -%}
+        </span>
+      {%- endif -%}
+      {%- if section.settings.subhead != blank -%}<p class="pw4__subhead">{{ section.settings.subhead }}</p>{%- endif -%}
+
+      {%- comment -%} Benefits {%- endcomment -%}
+      {%- if section.settings.benefits != blank -%}
+        <div class="pw4__benefits">{{ section.settings.benefits }}</div>
+      {%- endif -%}
+
+      {%- comment -%} Buy more save more {%- endcomment -%}
+      <div class="pw4__divider"><span>{{ section.settings.qty_divider_label | default: 'Buy More, Save More' }}</span></div>
+
+      {%- comment -%} Quantity cards (one per variant/pack) {%- endcomment -%}
+      <div class="pw4__qty" data-pw4-qty>
+        {%- for v in p.variants -%}
+          {%- liquid
+            assign plan_id = v.metafields.custom.preselected_selling_plan
+            assign sub_price = 0
+            for a in v.selling_plan_allocations
+              if a.selling_plan.id == plan_id
+                assign sub_price = a.price
+              endif
+            endfor
+            if sub_price == 0 and v.selling_plan_allocations.size > 0
+              assign sub_price = v.selling_plan_allocations.first.price
+              assign plan_id = v.selling_plan_allocations.first.selling_plan.id
+            endif
+            assign is_default = false
+            if forloop.index == default_index
+              assign is_default = true
+            endif
+          -%}
+          <button type="button" class="pw4__qty-card{% if is_default %} is-selected{% endif %}"
+                  data-pw4-card
+                  data-vid="{{ v.id }}"
+                  data-plan="{{ plan_id }}"
+                  data-once="{{ v.price }}"
+                  data-sub="{{ sub_price }}"
+                  data-compare="{{ v.compare_at_price | default: v.price }}">
+            {%- if v.metafields.custom.variant_badge != blank -%}
+              <span class="pw4__qty-badge" style="background:{{ v.metafields.custom.badge_bg_color | default: accent }};color:{{ v.metafields.custom.badge_text_color | default: '#ffffff' }};">{{ v.metafields.custom.variant_badge }}</span>
+            {%- endif -%}
+            <span class="pw4__qty-label">{{ v.metafields.custom.variant_pack_size | default: v.title }}</span>
+            {%- if v.metafields.custom.variant_servings != blank -%}<span class="pw4__qty-servings">{{ v.metafields.custom.variant_servings }}</span>{%- endif -%}
+            {%- if v.metafields.custom.price_per_night != blank -%}<span class="pw4__qty-pernight">{{ v.metafields.custom.price_per_night }}</span>{%- endif -%}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Autoship divider {%- endcomment -%}
+      <div class="pw4__divider"><span>{{ section.settings.offer_divider_label | default: 'Autoship For Most Savings' }}</span></div>
+
+      {%- comment -%} Offer selector + add-to-cart form {%- endcomment -%}
+      <form action="/cart/add" method="post" id="pw4-form-{{ section.id }}" class="pw4__form" data-pw4-form>
+        <input type="hidden" name="id" value="{{ def_v.id }}" data-pw4-id>
+        <input type="hidden" name="selling_plan" value="{{ def_plan }}" data-pw4-plan>
+        <input type="hidden" name="quantity" value="1">
+
+        <div class="pw4__offers">
+          <div class="pw4__offer pw4__offer--sub is-selected" data-pw4-offer="sub">
+            <div class="pw4__offer-top">
+              <span class="pw4__radio"></span>
+              <div class="pw4__offer-main">
+                <div class="pw4__offer-title">{{ section.settings.autoship_title | default: 'Autoship & Save' }} <span class="pw4__off-pill" data-pw4-off></span></div>
+                <div class="pw4__offer-sub">{{ section.settings.autoship_subline | default: 'Skip or cancel anytime' }}</div>
+              </div>
+              <div class="pw4__offer-price"><span class="now" data-pw4-subprice></span><span class="was" data-pw4-subwas></span></div>
+            </div>
+            <div class="pw4__includes">
+              <div class="pw4__includes-title">{{ section.settings.includes_title | default: 'Your order includes' }}</div>
+              {%- for i in (1..3) -%}
+                {%- assign lkey = 'include_' | append: i | append: '_label' -%}
+                {%- assign wkey = 'include_' | append: i | append: '_was' -%}
+                {%- assign nkey = 'include_' | append: i | append: '_now' -%}
+                {%- assign lbl = section.settings[lkey] -%}
+                {%- if lbl != blank -%}
+                  <div class="pw4__inc-row">
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>{{ lbl }}</span>
+                    <span>{%- if section.settings[wkey] != blank -%}<span class="pw4__inc-was">{{ section.settings[wkey] }}</span>{%- endif -%}<span class="pw4__inc-now">{{ section.settings[nkey] | default: 'FREE' }}</span></span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <div class="pw4__offer pw4__offer--once" data-pw4-offer="once">
+            <div class="pw4__offer-top">
+              <span class="pw4__radio"></span>
+              <div class="pw4__offer-main">
+                <div class="pw4__offer-title">{{ section.settings.onetime_title | default: 'One Time Purchase' }}</div>
+                <div class="pw4__offer-sub">{{ section.settings.onetime_subline | default: 'Full price · ships once' }}</div>
+              </div>
+              <div class="pw4__offer-price"><span class="now" data-pw4-onceprice></span></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="pw4__atc" style="margin-top:18px;">{{ section.settings.atc_text | default: 'Add to Cart' }}</button>
+      </form>
+
+      <div class="pw4__guarantee"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>{{ section.settings.guarantee_text | default: '90-Day Money-Back Guarantee' }}</div>
+
+      {%- comment -%} Shipping bar (reused snippet) {%- endcomment -%}
+      {% render 'shipping-bar' %}
+
+      {%- comment -%} Accordion (BOGO style, product metafields) {%- endcomment -%}
+      {%- capture pw4_sign -%}<svg class="pw4__tab-sign" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
+      <div class="pw4__tabs" data-pw4-tabs>
+        {%- if p.metafields.custom.why_rejuvia_works != blank -%}
+          <div class="pw4__tab is-open"><button type="button" class="pw4__tab-q"><span>Why Rejuvia Works</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.custom.why_rejuvia_works | metafield_tag }}</div></div></div></div>
+        {%- endif -%}
+        {%- if p.metafields.tabs.directions_for_use != blank -%}
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>How To Use</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.tabs.directions_for_use }}</div></div></div></div>
+        {%- endif -%}
+        {%- if p.metafields.tabs.ingredients != blank or p.metafields.custom.ingredients_image.value != blank -%}
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>Ingredients</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{% if p.metafields.custom.ingredients_image.value != blank %}<img src="{{ p.metafields.custom.ingredients_image.value | img_url: 'master' }}" alt="Ingredients">{% else %}{{ p.metafields.tabs.ingredients }}{% endif %}{% render 'supplement-label-button', product: p %}</div></div></div></div>
+        {%- endif -%}
+        {%- if p.metafields.custom.guarantee_90_day != blank -%}
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>90-Day Guarantee</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.custom.guarantee_90_day | metafield_tag }}</div></div></div></div>
+        {%- endif -%}
+        {%- if p.metafields.tabs.key_benefits != blank -%}
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>Shipping &amp; Returns</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.tabs.key_benefits }}</div></div></div></div>
+        {%- endif -%}
+        {%- if p.metafields.custom.product_faq != blank -%}
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>Frequently Asked Questions</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.custom.product_faq | metafield_tag }}</div></div></div></div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Trusted-by (reused snippet) {%- endcomment -%}
+      {%- if section.settings.show_trusted -%}
+        {% render 'trusted-by',
+          title: section.settings.trusted_title,
+          subtext: section.settings.trusted_subtext,
+          image_1: section.settings.trusted_image_1,
+          image_2: section.settings.trusted_image_2,
+          image_3: section.settings.trusted_image_3 %}
+      {%- endif -%}
+
+      {%- comment -%} Less than 1% strip {%- endcomment -%}
+      {%- if section.settings.strip_text != blank -%}
+        <div class="pw4__strip">{{ section.settings.strip_text }}</div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {% render 'supplement-label-popup', product: p %}
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('pw4-{{ section.id }}');
+  if (!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('[data-pw4-card]'));
+  var offers = Array.prototype.slice.call(root.querySelectorAll('[data-pw4-offer]'));
+  var idInput = root.querySelector('[data-pw4-id]');
+  var planInput = root.querySelector('[data-pw4-plan]');
+  var subPriceEl = root.querySelector('[data-pw4-subprice]');
+  var subWasEl = root.querySelector('[data-pw4-subwas]');
+  var oncePriceEl = root.querySelector('[data-pw4-onceprice]');
+  var offPill = root.querySelector('[data-pw4-off]');
+
+  var state = { card: root.querySelector('.pw4__qty-card.is-selected') || cards[0], offer: 'sub' };
+
+  function money(cents) {
+    cents = parseInt(cents, 10) || 0;
+    var v = (cents / 100).toFixed(2).replace(/\.00$/, '');
+    return '$' + v;
+  }
+
+  function render() {
+    var c = state.card;
+    if (!c) return;
+    var once = parseInt(c.getAttribute('data-once'), 10) || 0;
+    var sub = parseInt(c.getAttribute('data-sub'), 10) || once;
+    var compare = parseInt(c.getAttribute('data-compare'), 10) || once;
+    if (subPriceEl) subPriceEl.textContent = money(sub);
+    if (subWasEl) subWasEl.textContent = compare > sub ? money(compare) : '';
+    if (oncePriceEl) oncePriceEl.textContent = money(once);
+    if (offPill) {
+      var off = compare - sub;
+      offPill.textContent = off > 0 ? money(off) + ' OFF' : '';
+      offPill.style.display = off > 0 ? '' : 'none';
+    }
+    // card selected states
+    cards.forEach(function (el) { el.classList.toggle('is-selected', el === c); });
+    // offer selected states
+    offers.forEach(function (el) { el.classList.toggle('is-selected', el.getAttribute('data-pw4-offer') === state.offer); });
+    // form inputs
+    if (idInput) idInput.value = c.getAttribute('data-vid');
+    if (planInput) planInput.value = state.offer === 'sub' ? (c.getAttribute('data-plan') || '') : '';
+  }
+
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () { state.card = c; render(); });
+  });
+  offers.forEach(function (o) {
+    o.addEventListener('click', function () { state.offer = o.getAttribute('data-pw4-offer'); render(); });
+  });
+
+  // Gallery
+  var mains = Array.prototype.slice.call(root.querySelectorAll('.pw4__main img'));
+  var thumbs = Array.prototype.slice.call(root.querySelectorAll('[data-pw4-thumb]'));
+  var slide = 0;
+  function showSlide(i) {
+    if (!mains.length) return;
+    slide = (i + mains.length) % mains.length;
+    mains.forEach(function (m, idx) { m.classList.toggle('is-active', idx === slide); });
+    thumbs.forEach(function (t, idx) { t.classList.toggle('is-active', idx === slide); });
+  }
+  thumbs.forEach(function (t) { t.addEventListener('click', function () { showSlide(parseInt(t.getAttribute('data-pw4-thumb'), 10)); }); });
+  var prev = root.querySelector('[data-pw4-prev]'); var next = root.querySelector('[data-pw4-next]');
+  if (prev) prev.addEventListener('click', function () { showSlide(slide - 1); });
+  if (next) next.addEventListener('click', function () { showSlide(slide + 1); });
+
+  // Accordion (single-open)
+  var tabs = Array.prototype.slice.call(root.querySelectorAll('.pw4__tab'));
+  tabs.forEach(function (tab) {
+    var q = tab.querySelector('.pw4__tab-q');
+    if (!q) return;
+    q.addEventListener('click', function () {
+      var open = tab.classList.contains('is-open');
+      tabs.forEach(function (t) { t.classList.remove('is-open'); });
+      if (!open) tab.classList.add('is-open');
+    });
+  });
+
+  render();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Widget V4",
+  "tag": "section",
+  "settings": [
+    { "type": "product", "id": "selected_product", "label": "Product", "info": "Leave empty on a product page to use that product." },
+    { "type": "range", "id": "default_variant", "min": 1, "max": 6, "step": 1, "label": "Default selected pack (by position)", "default": 2 },
+    { "type": "color", "id": "accent_color", "label": "Accent (brand)", "default": "#672666" },
+    { "type": "header", "content": "Rating row" },
+    { "type": "text", "id": "rating_value", "label": "Rating", "default": "4.5" },
+    { "type": "text", "id": "reviews_count", "label": "Reviews count", "default": "5,500" },
+    { "type": "url", "id": "reviews_link", "label": "Reviews link" },
+    { "type": "header", "content": "Title area" },
+    { "type": "text", "id": "pill_label_1", "label": "Pill label 1", "default": "30 Nights Per Spray" },
+    { "type": "text", "id": "pill_label_2", "label": "Pill label 2", "default": "Light Mint Taste" },
+    { "type": "text", "id": "subhead", "label": "Subhead", "default": "Fall asleep faster, sleep the full night, and wake up without the grogginess." },
+    { "type": "richtext", "id": "benefits", "label": "Benefits list", "default": "<ul><li>Fall asleep faster — feel calm in minutes</li><li>Stay asleep through the full night</li><li>Wake up refreshed, never groggy</li><li>Drug-free & non-habit-forming</li></ul>" },
+    { "type": "header", "content": "Selectors" },
+    { "type": "text", "id": "qty_divider_label", "label": "Quantity divider label", "default": "Buy More, Save More" },
+    { "type": "text", "id": "offer_divider_label", "label": "Offer divider label", "default": "Autoship For Most Savings" },
+    { "type": "text", "id": "autoship_title", "label": "Autoship title", "default": "Autoship & Save" },
+    { "type": "text", "id": "autoship_subline", "label": "Autoship subline", "default": "Skip or cancel anytime" },
+    { "type": "text", "id": "onetime_title", "label": "One-time title", "default": "One Time Purchase" },
+    { "type": "text", "id": "onetime_subline", "label": "One-time subline", "default": "Full price · ships once" },
+    { "type": "header", "content": "Autoship — order includes" },
+    { "type": "text", "id": "includes_title", "label": "Panel title", "default": "Your order includes" },
+    { "type": "text", "id": "include_1_label", "label": "Row 1 label", "default": "Free US Shipping" },
+    { "type": "text", "id": "include_1_was", "label": "Row 1 was", "default": "$4.99" },
+    { "type": "text", "id": "include_1_now", "label": "Row 1 now", "default": "FREE" },
+    { "type": "text", "id": "include_2_label", "label": "Row 2 label", "default": "Free Sleep Guide" },
+    { "type": "text", "id": "include_2_was", "label": "Row 2 was", "default": "$19" },
+    { "type": "text", "id": "include_2_now", "label": "Row 2 now", "default": "FREE" },
+    { "type": "text", "id": "include_3_label", "label": "Row 3 label", "default": "90-Day Guarantee" },
+    { "type": "text", "id": "include_3_was", "label": "Row 3 was", "default": "" },
+    { "type": "text", "id": "include_3_now", "label": "Row 3 now", "default": "INCLUDED" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "atc_text", "label": "Add to cart text", "default": "Add to Cart" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" },
+    { "type": "header", "content": "Trusted-by bar" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used nightly by 300K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who use Rejuvia to fall asleep faster and sleep through the full night." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "header", "content": "Guarantee strip" },
+    { "type": "richtext", "id": "strip_text", "label": "Strip text", "default": "<p><strong>Less than 1%</strong> of customers use our Money-Back Guarantee</p>" }
+  ],
+  "presets": [
+    { "name": "Product Widget V4" }
+  ]
+}
+{% endschema %}

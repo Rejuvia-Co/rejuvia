@@ -1,3 +1,7 @@
+/*
+ * Product template using the Product Widget V4 section.
+ * Assign a product to the "v4" template to use this layout.
+ */
 {
   "sections": {
     "product_widget_v4": {

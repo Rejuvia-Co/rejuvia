@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "product_widget_v4": {
+      "type": "product-widget-v4",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_widget_v4"
+  ]
+}

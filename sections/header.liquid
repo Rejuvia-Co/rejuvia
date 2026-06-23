@@ -193,6 +193,8 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    padding: 12px 20px;
+    border-radius: 80px;
     color: #141414;
     font-size: {{ section.settings.nav_font_size | default: 20 }}px;
     font-weight: 400;
@@ -200,11 +202,13 @@
     line-height: normal;
     white-space: nowrap;
     text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
   }
 
   .nav-v2-account:hover {
     text-decoration: none;
     color: #141414;
+    background: rgba(255, 255, 255, 0.4);
   }
 
   .nav-v2-account svg {

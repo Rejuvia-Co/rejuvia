@@ -134,7 +134,7 @@
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
         "title_size": 44,
-        "title_size_mobile": 31,
+        "title_size_mobile": 32,
         "subtitle_size": 18,
         "subtitle_size_mobile": 17,
         "tier_title_size": 26,

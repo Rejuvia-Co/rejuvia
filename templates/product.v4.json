@@ -1,6 +1,7 @@
 /*
  * Product template using the Product Widget V4 section.
  * Assign a product to the "v4" template to use this layout.
+ * Synced to theme.
  */
 {
   "sections": {

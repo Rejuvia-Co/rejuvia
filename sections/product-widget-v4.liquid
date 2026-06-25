@@ -63,7 +63,7 @@
   /* Rating */
   #pw4-{{ section.id }} .pw4__rating { display: flex; align-items: center; gap: 8px; font-size: 17px; }
   #pw4-{{ section.id }} .pw4__stars { display: inline-flex; gap: 1px; }
-  #pw4-{{ section.id }} .pw4__rating a { color: #141414; }
+  #pw4-{{ section.id }} .pw4__rating a { color: #141414; text-decoration: underline; }
 
   /* Title + pill */
   #pw4-{{ section.id }} .pw4__title { margin: 0; font-size: 36px; font-weight: 700; letter-spacing: -0.8px; line-height: 1.05; }
@@ -101,7 +101,7 @@
   #pw4-{{ section.id }} .pw4__offer.is-selected .pw4__radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--pw4-accent); }
   #pw4-{{ section.id }} .pw4__offer-main { flex: 1 1 0; min-width: 0; }
   #pw4-{{ section.id }} .pw4__offer-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  #pw4-{{ section.id }} .pw4__off-pill { background: #e3f7e5; color: #018e1c; font-size: 14px; font-weight: 700; padding: 4px 11px; border-radius: 100px; }
+  #pw4-{{ section.id }} .pw4__off-pill { background: #e3f7e5; color: #018e1c; font-size: 14px; font-weight: 700; padding: 5px 11px; border-radius: 100px; }
   #pw4-{{ section.id }} .pw4__offer-sub { font-size: 13px; color: #767676; margin-top: 2px; }
   #pw4-{{ section.id }} .pw4__offer-price { text-align: right; }
   #pw4-{{ section.id }} .pw4__offer-price .now { font-size: 21px; font-weight: 700; }
@@ -188,8 +188,19 @@
 
       {%- comment -%} Rating {%- endcomment -%}
       <div class="pw4__rating">
+        {%- assign pw4_rv = section.settings.rating_value | default: '4.5' | plus: 0.0 -%}
         <span class="pw4__stars" aria-label="{{ section.settings.rating_value | default: '4.5' }} stars">
-          {%- for i in (1..5) -%}<svg width="19" height="19" viewBox="0 0 24 24" fill="{% if i == 5 %}#d6d6d6{% else %}#fab851{% endif %}"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z"/></svg>{%- endfor -%}
+          {%- for i in (1..5) -%}
+            {%- assign pw4_diff = i | minus: pw4_rv -%}
+            <svg width="19" height="19" viewBox="0 0 24 24">
+              {%- if pw4_diff > 0.0 and pw4_diff < 1.0 -%}
+                <defs><linearGradient id="pw4star-{{ section.id }}-{{ i }}"><stop offset="50%" stop-color="#fab851"/><stop offset="50%" stop-color="#d6d6d6"/></linearGradient></defs>
+                <path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z" fill="url(#pw4star-{{ section.id }}-{{ i }})"/>
+              {%- else -%}
+                <path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z" fill="{% if pw4_rv >= i %}#fab851{% else %}#d6d6d6{% endif %}"/>
+              {%- endif -%}
+            </svg>
+          {%- endfor -%}
         </span>
         <span><strong>{{ section.settings.rating_value | default: '4.5' }}</strong> Stars | <a href="{{ section.settings.reviews_link | default: '#reviews' }}">{{ section.settings.reviews_count | default: '5,500' }} Reviews</a></span>
       </div>
@@ -469,7 +480,7 @@
     { "type": "text", "id": "include_3_was", "label": "Row 3 was", "default": "" },
     { "type": "text", "id": "include_3_now", "label": "Row 3 now", "default": "INCLUDED" },
     { "type": "header", "content": "CTA" },
-    { "type": "text", "id": "atc_text", "label": "Add to cart text", "default": "Add to Cart" },
+    { "type": "text", "id": "atc_text", "label": "Add to cart text", "default": "ADD TO CART" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" },
     { "type": "header", "content": "Trusted-by bar" },
     { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },

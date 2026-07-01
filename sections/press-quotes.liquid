@@ -1,0 +1,197 @@
+{%- comment -%}
+  Press Quotes — a single press/publication quote with logo.
+  Fully dynamic, Online Store 2.0 compatible. All styling comes from
+  section settings; CSS is scoped to this section instance.
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = 'PressQuotes-' | append: section.id
+  assign bg = section.settings.bg_color
+  assign fg = section.settings.text_color
+  assign fs_d = section.settings.font_size_desktop
+  assign fs_m = section.settings.font_size_mobile
+  assign logo_w = section.settings.logo_max_width
+-%}
+
+<style>
+  #{{ uid }} {
+    background-color: {{ bg }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #{{ uid }} .press-quotes__inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    text-align: {{ section.settings.alignment }};
+  }
+  #{{ uid }} .press-quotes__logo {
+    display: inline-block;
+    width: 100%;
+    max-width: {{ logo_w }}px;
+    height: auto;
+    margin-bottom: 22px;
+  }
+  #{{ uid }} .press-quotes__quote {
+    margin: 0;
+    color: {{ fg }};
+    font-size: {{ fs_d }}px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+  #{{ uid }} .press-quotes__quote > *:first-child { margin-top: 0; }
+  #{{ uid }} .press-quotes__quote > *:last-child { margin-bottom: 0; }
+
+  @media screen and (max-width: 749px) {
+    #{{ uid }} .press-quotes__quote {
+      font-size: {{ fs_m }}px;
+    }
+  }
+</style>
+
+<section id="{{ uid }}" class="press-quotes" aria-label="{{ section.settings.aria_label | default: 'Press quote' | escape }}">
+  <div class="press-quotes__inner">
+    <figure class="press-quotes__figure">
+      {%- if section.settings.logo != blank -%}
+        {%- assign logo_alt = section.settings.logo.alt | default: shop.name -%}
+        <img
+          class="press-quotes__logo"
+          src="{{ section.settings.logo | image_url: width: 600 }}"
+          srcset="{{ section.settings.logo | image_url: width: 200 }} 200w,
+                  {{ section.settings.logo | image_url: width: 400 }} 400w,
+                  {{ section.settings.logo | image_url: width: 600 }} 600w"
+          sizes="(max-width: 749px) 60vw, {{ logo_w }}px"
+          width="{{ section.settings.logo.width }}"
+          height="{{ section.settings.logo.height }}"
+          alt="{{ logo_alt | escape }}"
+          loading="lazy"
+        >
+      {%- endif -%}
+
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="press-quotes__quote">{{ section.settings.quote }}</blockquote>
+      {%- endif -%}
+    </figure>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Press Quotes",
+  "tag": "section",
+  "class": "press-quotes-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Quote",
+      "info": "The press or publication quote.",
+      "default": "<p>“The best sleep spray we've ever tested.”</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Publication logo",
+      "info": "Scales responsively; set its max width below."
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 60,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 160
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background color",
+      "default": "#f6f4f2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Quote font color",
+      "default": "#141414"
+    },
+    {
+      "type": "header",
+      "content": "Font size"
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "min": 16,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote font size (desktop)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote font size (mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 480,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 760
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Quotes"
+    }
+  ]
+}
+{% endschema %}

@@ -2952,12 +2952,100 @@
           "card_bg": "#eaeaf7",
           "image_shadow_color": "#2a0e2a"
         }
+      },
+      "press_quotes_Af9Ryj": {
+        "type": "press-quotes",
+        "blocks": {
+          "quote_GppJYp": {
+            "type": "quote",
+            "settings": {
+              "publication_name": "Forbes",
+              "quote": "The sleep spray that actually works — you feel it absorb in minutes.",
+              "font": "serif",
+              "weight": "700",
+              "letter_spacing": "-0.01em",
+              "transform": "none"
+            }
+          },
+          "quote_H9PVV8": {
+            "type": "quote",
+            "settings": {
+              "publication_name": "VOGUE",
+              "quote": "A nightstand essential we can’t imagine falling asleep without.",
+              "font": "serif",
+              "weight": "400",
+              "letter_spacing": "0.26em",
+              "transform": "none"
+            }
+          },
+          "quote_EQhQfU": {
+            "type": "quote",
+            "settings": {
+              "publication_name": "The Wall Street Journal",
+              "quote": "Drug-free, science-backed, and beloved by 300,000 sleepers.",
+              "font": "serif",
+              "weight": "600",
+              "letter_spacing": "0",
+              "transform": "none"
+            }
+          },
+          "quote_wehQXi": {
+            "type": "quote",
+            "settings": {
+              "publication_name": "TechCrunch",
+              "quote": "Rejuvia is rethinking how a supplement should be delivered.",
+              "font": "sans",
+              "weight": "800",
+              "letter_spacing": "-0.02em",
+              "transform": "none"
+            }
+          },
+          "quote_W3Bk6F": {
+            "type": "quote",
+            "settings": {
+              "publication_name": "mindbodygreen",
+              "quote": "Low-dose melatonin, done right — clean, gentle, fast-acting.",
+              "font": "sans",
+              "weight": "600",
+              "letter_spacing": "0",
+              "transform": "lowercase"
+            }
+          }
+        },
+        "block_order": [
+          "quote_GppJYp",
+          "quote_H9PVV8",
+          "quote_EQhQfU",
+          "quote_wehQXi",
+          "quote_W3Bk6F"
+        ],
+        "disabled": true,
+        "name": "Press Quotes",
+        "settings": {
+          "eyebrow": "As featured in",
+          "rotate_ms": 5500,
+          "transition": "Fade",
+          "bg_1": "#ECE0ED",
+          "bg_2": "#F6EFF6",
+          "bg_3": "#FBF7FB",
+          "eyebrow_color": "#5F2A63",
+          "quote_color": "#2D1530",
+          "logo_active_color": "#161015",
+          "logo_inactive_color": "#8E5A92",
+          "quote_size_desktop": 38,
+          "quote_size_mobile": 25,
+          "logo_size_desktop": 21,
+          "logo_size_mobile": 17,
+          "padding_top": 72,
+          "padding_bottom": 56
+        }
       }
     },
     "content_for_index": [
       "hero_v2_ypthhg",
-      "guarantees_v2_h3tcz4",
+      "press_quotes_Af9Ryj",
       "product_intro_v2_mcmr7P",
+      "guarantees_v2_h3tcz4",
       "listicle_v2_N8G8nM",
       "image_text_v2_EEfUyt",
       "real_stories_v2_CKGqJy",

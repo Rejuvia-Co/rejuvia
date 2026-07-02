@@ -9,7 +9,9 @@
 	{% comment %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
 {% endif %}
 
+{% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
 <link rel="preload" href="{{ 'custom.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+{% endif %}
 <link rel="preload" href="{{ 'style.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 {% comment %} Consolidated component CSS for performance {% endcomment %}

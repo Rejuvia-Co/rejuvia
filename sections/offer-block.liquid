@@ -90,7 +90,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__tier-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
 .ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
 .ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }
-.ob__off { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 4px 11px; white-space: nowrap; }
+.ob__off { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 4px 11px; white-space: nowrap; text-transform: uppercase; }
 .ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
 .ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
@@ -137,8 +137,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   /* Header: centered on mobile */
   .ob-{{ section.id }} .ob__header { order: -1; text-align: center; }
   .ob-{{ section.id }} .ob__rating { justify-content: center; }
-  .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; }
-  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; }
+  .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; text-align: center; }
+  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; }
   .ob__gallery-inner { position: static; }
   .ob__main { min-height: 0; }
   .ob__main img { max-height: 320px; }
@@ -155,7 +155,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__ship { font-size: 15px; }
   .ob__pernight { font-size: 18px; }
   .ob__tag { font-size: 12px; }
-  .ob__tag--brand { background: #f1e3c7; color: #6b4a16; }
   .ob__buy { font-size: 18px; padding: 20px 28px; }
   .ob__tier-prices { gap: 7px; flex-wrap: wrap; white-space: normal; }
   .ob__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 22 }}px; padding: 18px 14px 18px 4px; }

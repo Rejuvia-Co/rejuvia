@@ -1,0 +1,329 @@
+{%- comment -%}
+  Press Quotes / Social Proof — crossfading press pull-quote over a soft
+  purple wash, with a row of clickable press wordmarks that act as the
+  carousel nav. Auto-rotates, pauses on hover, swipeable on mobile.
+  Fully dynamic (Online Store 2.0): quotes are section blocks; colors,
+  sizes and timing are section settings. CSS scoped to the instance.
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = 'pq-' | append: section.id
+  assign first_quote = section.blocks.first.settings.quote
+-%}
+
+<style>
+  #{{ uid }} {
+    --pq-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --pq-sans: 'Hanken Grotesk', 'HelveticaNeueL', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    --pq-cond: 'Helvetica LT Cond', 'Arial Narrow', 'HelveticaNeueL', sans-serif;
+    --pq-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    background: radial-gradient(120% 150% at 50% -30%, {{ section.settings.bg_1 }} 0%, {{ section.settings.bg_2 }} 48%, {{ section.settings.bg_3 }} 100%);
+    padding: {{ section.settings.padding_top }}px 72px {{ section.settings.padding_bottom }}px;
+  }
+  #{{ uid }} .pq__inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  #{{ uid }} .pq__eyebrow {
+    margin: 0;
+    font-family: var(--pq-cond);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+  }
+  #{{ uid }} .pq__quote-wrap {
+    min-height: 150px;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #{{ uid }} .pq__quote {
+    margin: 0;
+    font-family: var(--pq-serif);
+    font-weight: 500;
+    font-size: {{ section.settings.quote_size_desktop }}px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: {{ section.settings.quote_color }};
+    transition: opacity .28s var(--pq-ease), transform .28s var(--pq-ease);
+  }
+  #{{ uid }} .pq__logos-row { max-width: 960px; margin: 48px auto 0; }
+  #{{ uid }} .pq__logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  #{{ uid }} .pq__logo {
+    font-size: {{ section.settings.logo_size_desktop }}px;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 4px 2px;
+    color: {{ section.settings.logo_inactive_color }};
+    opacity: 0.4;
+    transition: opacity .28s var(--pq-ease), color .28s var(--pq-ease);
+  }
+  #{{ uid }} .pq__logo.is-active { color: {{ section.settings.logo_active_color }}; opacity: 1; }
+  #{{ uid }} .pq__logo:hover,
+  #{{ uid }} .pq__logo:focus-visible { color: {{ section.settings.logo_active_color }}; opacity: 1; }
+
+  @media screen and (max-width: 767px) {
+    #{{ uid }} {
+      background: radial-gradient(130% 90% at 50% 0%, {{ section.settings.bg_1 }} 0%, {{ section.settings.bg_2 }} 60%, {{ section.settings.bg_3 }} 100%);
+      padding: 40px 18px 34px;
+    }
+    #{{ uid }} .pq__eyebrow { font-size: 11px; letter-spacing: 0.16em; }
+    #{{ uid }} .pq__quote-wrap { min-height: 135px; margin-top: 6px; padding: 18px 8px 7px; }
+    #{{ uid }} .pq__quote { font-size: {{ section.settings.quote_size_mobile }}px; line-height: 1.24; }
+    #{{ uid }} .pq__logos-row {
+      margin-top: 26px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    #{{ uid }} .pq__logos-row::-webkit-scrollbar { display: none; }
+    #{{ uid }} .pq__logos { justify-content: flex-start; gap: 30px; padding: 6px 12px; width: max-content; }
+    #{{ uid }} .pq__logo { font-size: {{ section.settings.logo_size_mobile }}px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #{{ uid }} .pq__quote { transition: opacity .28s linear; }
+  }
+</style>
+
+<section id="{{ uid }}" class="pq" aria-label="{{ section.settings.eyebrow | default: 'As featured in' | escape }}">
+  <div class="pq__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="pq__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <div class="pq__quote-wrap" aria-live="polite">
+      <blockquote class="pq__quote" data-pq-quote>{% if first_quote != blank %}&ldquo;{{ first_quote }}&rdquo;{% endif %}</blockquote>
+    </div>
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="pq__logos-row">
+      <div class="pq__logos" role="group" aria-label="Choose a publication">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            case block.settings.font
+              when 'serif'
+                assign fam = 'var(--pq-serif)'
+              when 'cond'
+                assign fam = 'var(--pq-cond)'
+              else
+                assign fam = 'var(--pq-sans)'
+            endcase
+          -%}
+          <button
+            type="button"
+            class="pq__logo{% if forloop.first %} is-active{% endif %}"
+            data-pq-logo="{{ forloop.index0 }}"
+            data-quote="{{ block.settings.quote | escape }}"
+            aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+            {% if forloop.first %}aria-current="true"{% endif %}
+            style="font-family:{{ fam }};font-weight:{{ block.settings.weight }};letter-spacing:{{ block.settings.letter_spacing }};text-transform:{{ block.settings.transform }};"
+            {{ block.shopify_attributes }}
+          >{{ block.settings.publication_name }}</button>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('{{ uid }}');
+  if (!root) return;
+  var quoteEl = root.querySelector('[data-pq-quote]');
+  var logos = Array.prototype.slice.call(root.querySelectorAll('[data-pq-logo]'));
+  if (!quoteEl || !logos.length) return;
+
+  var quotes = logos.map(function (b) { return b.getAttribute('data-quote') || ''; });
+  var index = 0;
+  var paused = false;
+  var fadeTimer = null;
+  var rotateTimer = null;
+  var rotateMs = {{ section.settings.rotate_ms }};
+  var mode = {{ section.settings.transition | json }};
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setActive(n) {
+    logos.forEach(function (b, i) {
+      var active = i === n;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      if (active) { b.setAttribute('aria-current', 'true'); } else { b.removeAttribute('aria-current'); }
+    });
+  }
+
+  function goTo(n, dir) {
+    n = (n % quotes.length + quotes.length) % quotes.length;
+    index = n;
+    setActive(n);
+    var text = '“' + quotes[n] + '”';
+    if (reduce) { quoteEl.textContent = text; return; }
+    quoteEl.style.opacity = '0';
+    quoteEl.style.transform = mode === 'Slide'
+      ? 'translateX(' + ((dir || 1) > 0 ? '22px' : '-22px') + ')'
+      : 'translateY(7px)';
+    if (fadeTimer) clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function () {
+      quoteEl.textContent = text;
+      quoteEl.style.opacity = '1';
+      quoteEl.style.transform = 'none';
+    }, 280);
+  }
+
+  function step(dir) { goTo(index + dir, dir); }
+  function start() { if (reduce || quotes.length < 2) return; stop(); rotateTimer = setInterval(function () { if (!paused) step(1); }, rotateMs); }
+  function stop() { if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = null; } }
+
+  logos.forEach(function (b, i) {
+    b.addEventListener('click', function () { goTo(i, i > index ? 1 : -1); });
+  });
+
+  root.addEventListener('mouseenter', function () { paused = true; });
+  root.addEventListener('mouseleave', function () { paused = false; });
+
+  var startX = null;
+  root.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+  root.addEventListener('pointerup', function (e) {
+    if (startX === null) return;
+    var dx = e.clientX - startX;
+    if (dx < -40) step(1); else if (dx > 40) step(-1);
+    startX = null;
+  });
+
+  start();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Press Quotes",
+  "tag": "section",
+  "class": "press-quotes-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "As featured in"
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "rotate_ms",
+      "min": 3000,
+      "max": 8000,
+      "step": 250,
+      "unit": "ms",
+      "label": "Auto-rotate interval",
+      "default": 5500
+    },
+    {
+      "type": "select",
+      "id": "transition",
+      "label": "Transition",
+      "options": [
+        { "value": "Fade", "label": "Fade" },
+        { "value": "Slide", "label": "Slide" }
+      ],
+      "default": "Fade"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    { "type": "color", "id": "bg_1", "label": "Background wash — inner", "default": "#ECE0ED" },
+    { "type": "color", "id": "bg_2", "label": "Background wash — mid", "default": "#F6EFF6" },
+    { "type": "color", "id": "bg_3", "label": "Background wash — outer", "default": "#FBF7FB" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#5F2A63" },
+    { "type": "color", "id": "quote_color", "label": "Quote text", "default": "#2D1530" },
+    { "type": "color", "id": "logo_active_color", "label": "Logo — active/hover", "default": "#161015" },
+    { "type": "color", "id": "logo_inactive_color", "label": "Logo — inactive", "default": "#8E5A92" },
+    {
+      "type": "header",
+      "content": "Font size"
+    },
+    { "type": "range", "id": "quote_size_desktop", "min": 20, "max": 56, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 38 },
+    { "type": "range", "id": "quote_size_mobile", "min": 16, "max": 40, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 25 },
+    { "type": "range", "id": "logo_size_desktop", "min": 14, "max": 32, "step": 1, "unit": "px", "label": "Logo size (desktop)", "default": 21 },
+    { "type": "range", "id": "logo_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Logo size (mobile)", "default": 17 },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Press quote",
+      "settings": [
+        { "type": "text", "id": "publication_name", "label": "Publication name", "info": "Shown as the wordmark. Type it exactly as it should appear (e.g. VOGUE)." },
+        { "type": "textarea", "id": "quote", "label": "Quote", "info": "Curly quotes are added automatically." },
+        {
+          "type": "select",
+          "id": "font",
+          "label": "Wordmark font",
+          "options": [
+            { "value": "serif", "label": "Display serif" },
+            { "value": "sans", "label": "Sans" },
+            { "value": "cond", "label": "Condensed" }
+          ],
+          "default": "serif"
+        },
+        {
+          "type": "select",
+          "id": "weight",
+          "label": "Wordmark weight",
+          "options": [
+            { "value": "400", "label": "400 — Regular" },
+            { "value": "500", "label": "500 — Medium" },
+            { "value": "600", "label": "600 — Semibold" },
+            { "value": "700", "label": "700 — Bold" },
+            { "value": "800", "label": "800 — Extrabold" }
+          ],
+          "default": "600"
+        },
+        { "type": "text", "id": "letter_spacing", "label": "Letter spacing", "info": "e.g. -0.01em, 0.26em, 0", "default": "0" },
+        {
+          "type": "select",
+          "id": "transform",
+          "label": "Letter case",
+          "options": [
+            { "value": "none", "label": "As typed" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" }
+          ],
+          "default": "none"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Press Quotes",
+      "blocks": [
+        { "type": "quote", "settings": { "publication_name": "Forbes", "quote": "The sleep spray that actually works — you feel it absorb in minutes.", "font": "serif", "weight": "700", "letter_spacing": "-0.01em", "transform": "none" } },
+        { "type": "quote", "settings": { "publication_name": "VOGUE", "quote": "A nightstand essential we can’t imagine falling asleep without.", "font": "serif", "weight": "400", "letter_spacing": "0.26em", "transform": "none" } },
+        { "type": "quote", "settings": { "publication_name": "The Wall Street Journal", "quote": "Drug-free, science-backed, and beloved by 300,000 sleepers.", "font": "serif", "weight": "600", "letter_spacing": "0", "transform": "none" } },
+        { "type": "quote", "settings": { "publication_name": "TechCrunch", "quote": "Rejuvia is rethinking how a supplement should be delivered.", "font": "sans", "weight": "800", "letter_spacing": "-0.02em", "transform": "none" } },
+        { "type": "quote", "settings": { "publication_name": "mindbodygreen", "quote": "Low-dose melatonin, done right — clean, gentle, fast-acting.", "font": "sans", "weight": "600", "letter_spacing": "0", "transform": "lowercase" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1167,7 +1167,7 @@
       {
         "type": "checkbox",
         "id": "input_outline_none",
-        "label": "Remove Outline\/Blue Shadow on Focus Status?",
+        "label": "Remove Outline/Blue Shadow on Focus Status?",
         "default": true
       },
       {
@@ -2082,32 +2082,6 @@
         "id": "subscription_success_msg",
         "label": "Final Message",
         "default": "Don't forget to check your email to complete your subscription."
-      }
-    ]
-  },
-  {
-    "name": "Gift Card Page",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Settings"
-      },
-      {
-        "type": "text",
-        "id": "gift_card_title",
-        "label": "Title",
-        "default": "Here is your [[shop.name]] e-Gift Card!"
-      },
-      {
-        "type": "text",
-        "id": "gift_card_subtitle",
-        "label": "How to",
-        "default": "Use this code at checkout to redeem your gift card"
-      },
-      {
-        "type": "image",
-        "id": "gift-card.jpg",
-        "label": "Image"
       }
     ]
   }

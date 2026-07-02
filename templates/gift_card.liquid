@@ -97,7 +97,7 @@
             <div id="gift-card-inner-container">
 
               <header id="gift-card-header">
-                <h2>{{settings.gift_card_title | replace: '[[shop.name]]', shop.name }}</h2>
+                <h2>Here is your {{ shop.name }} e-Gift Card!</h2>
                 {%- unless gift_card.enabled -%}
                   <span class="tag">Disabled</span>
                 {%- endunless -%}
@@ -115,7 +115,6 @@
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div id="gift-card">
-                  <img src="{{ 'gift-card.jpg' | asset_url }}" alt="Gift card">
                   {% assign initial_value_size = formatted_initial_value | size %}
                   <div id="gift-card-amount" class="{% if initial_value_size > 6 %}medium{% endif %}">
                     {%- if gift_card.balance != gift_card.initial_value -%}
@@ -133,7 +132,7 @@
               </div>
 
               <div id="gift-card-instructions">
-                <p>{{settings.gift_card_subtitle}}</p>
+                <p>Use this code at checkout to redeem your gift card</p>
               </div>
               <div id="qr-code"></div>
               <script>

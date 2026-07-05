@@ -154,6 +154,31 @@ input.error, textarea.error {border-color: #ff0202 !important;}
 }
 .isNotMobile .btn:hover, input.btn:hover { opacity: 0.9; }
 
+/* Secondary button — outlined pill (supplement-facts / "view label" / secondary CTAs) */
+.btn-secondary, input.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 28px;
+  background: #ffffff;
+  color: #672666;
+  border: 1.5px solid #672666;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.isNotMobile .btn-secondary:hover, input.btn-secondary:hover { background: #672666; color: #ffffff; }
+
 .fa {font-family: 'FontAwesome' !important;}
 
 /**** CUSTOM CHECKBOX AND RADIO STYLES ****/

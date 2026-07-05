@@ -156,23 +156,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 80px;
-  box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
+  padding: 14px 28px;
+  background: #ffffff;
+  border: 1.5px solid #672666;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
   color: #672666;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  transition: background 0.2s ease;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .fp-v2-card-btn:hover {
-  background: rgba(255, 255, 255, 1);
+  background: #672666;
+  color: #ffffff;
 }
 
 /* Mobile: carousel */

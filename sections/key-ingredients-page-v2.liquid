@@ -1,19 +1,6 @@
 {{ 'key-ingredients-v2.css' | asset_url | stylesheet_tag }}
 
-{% style %}
-.key-ingredients-v2 .key-ingredients-v2__btn--light {
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  color: var(--base-colour, #672666);
-  box-shadow: 0 3px 16px -3px rgba(0, 0, 0, 0.06);
-  font-weight: 400;
-}
-.key-ingredients-v2 .key-ingredients-v2__btn--light:hover {
-  background: rgba(255, 255, 255, 0.95);
-  opacity: 1;
-}
-{% endstyle %}
+{% comment %} The --light modifier now inherits the standard secondary button style (outlined pill) from .key-ingredients-v2__btn. {% endcomment %}
 
 {% assign source_product = section.settings.product %}
 {% assign base_colour = source_product.metafields.custom.base_colour %}

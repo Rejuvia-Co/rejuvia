@@ -38,23 +38,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background: var(--base-colour, #672666);
-  color: #fff;
-  font-family: 'HelveticaNeueL', sans-serif;
-  font-size: 18px;
+  padding: 14px 28px;
+  background: #ffffff;
+  color: #672666;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.4;
-  border: none;
+  line-height: 1;
+  border: 1.5px solid #672666;
   border-radius: 100px;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity 0.25s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .key-ingredients-v2__btn:hover {
-  opacity: 0.9;
+  background: #672666;
+  color: #ffffff;
 }
 
 .key-ingredients-v2__mobile-btn {

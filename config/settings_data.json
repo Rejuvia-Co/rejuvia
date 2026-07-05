@@ -2249,6 +2249,7 @@
         "name": "Use In Just V2",
         "settings": {
           "heading": "<p>Use Rejuvia in <em>10 seconds</em></p>",
+          "default_image": "shopify://shop_images/Step_1.webp",
           "link_text": "View Supplement Label",
           "link_url": "",
           "supplement_product": "sleep-spray"

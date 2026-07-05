@@ -16,7 +16,7 @@
           "type": "okendo-reviews",
           "settings": {
             "reviews_anchor": "shopify-product-reviews",
-            "star_color": "#EAC78B",
+            "star_color": "#eac78b",
             "empty_star_color": "#dddddd",
             "margin_top": 0,
             "margin_bottom": 5
@@ -354,7 +354,7 @@
       "name": "Use In Just V2",
       "settings": {
         "heading": "<p>Use in <em>just 30 seconds</em></p>",
-        "default_image": "shopify://shop_images/image_1.png",
+        "default_image": "shopify://shop_images/Step_1.webp",
         "link_text": "View Supplement Label",
         "link_url": ""
       }

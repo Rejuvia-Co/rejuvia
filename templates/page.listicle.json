@@ -225,7 +225,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671027932",
-            "image_asset": "rejuvia-bundle-b1g1.png",
+            "image_asset": "rejuvia-bundle-b1g1.webp",
             "label": "Buy 1, Get 1 FREE",
             "price": "$30",
             "compare_price": "$70",
@@ -241,7 +241,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671060700",
-            "image_asset": "rejuvia-bundle-b2g2.png",
+            "image_asset": "rejuvia-bundle-b2g2.webp",
             "label": "Buy 2, Get 2 FREE",
             "price": "$60",
             "compare_price": "$140",
@@ -257,7 +257,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671093468",
-            "image_asset": "rejuvia-bundle-b3g3.png",
+            "image_asset": "rejuvia-bundle-b3g3.webp",
             "label": "Buy 3, Get 3 FREE",
             "price": "$90",
             "compare_price": "$210",

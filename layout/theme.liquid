@@ -59,9 +59,6 @@
   <script src="{{ 'vendor.js' | asset_url }}"></script>
   <script src="{{ 'ProductJs.js' | asset_url }}"></script>
 
-  <!-- Shopify API can remain deferred -->
-  <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>
-
   {{ content_for_header }}
 
   {%- if template contains 'customers' -%}

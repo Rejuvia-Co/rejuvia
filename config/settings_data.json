@@ -2381,57 +2381,6 @@
           "guarantee_text": "90-Day Money-Back Guarantee"
         }
       },
-      "about_v2_Lx7Enx": {
-        "type": "about-v2",
-        "blocks": {
-          "story_row_YrqtWg": {
-            "type": "story_row",
-            "settings": {
-              "heading": "<p>“Rejuvia all started for <em>my mom</em>.”</p>",
-              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" Couldn't. Sleep.</p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked. And what did work left her worse in the morning than the sleepless night.</p>",
-              "image": "shopify://shop_images/Image_2.png",
-              "caption": "RC & Kristen, Founders",
-              "image_left": false,
-              "products_image": "shopify://shop_images/Rejuvia_alts.png",
-              "signature_name": "RC Williams",
-              "signature_title": "Founder"
-            }
-          },
-          "story_row_F8ygGj": {
-            "type": "story_row",
-            "settings": {
-              "heading": "",
-              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything: the problem wasn't the ingredients. It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it. She slept through the night for the first time in years.</p>",
-              "image": "shopify://shop_images/rejuvia_spray.webp",
-              "caption": "Prototype sketch of Rejuvia Spray",
-              "image_left": true,
-              "signature_name": "RC Williams",
-              "signature_title": "Founder"
-            }
-          },
-          "story_row_PpyEkz": {
-            "type": "story_row",
-            "settings": {
-              "heading": "<p>And now, over <em>300,000 customers</em> use Rejuvia nightly</p>",
-              "text": "<p>We never planned to turn Rejuvia into a business. We just wanted to fix her sleep! But after it worked for her, she realized there were thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business. And my mom still uses Rejuvia with the same success as she did on the first night!</p>",
-              "image": "shopify://shop_images/rejuvia_customers.png",
-              "caption": "Some of Rejuvia's first-ever customers",
-              "image_left": false,
-              "signature_image": "shopify://shop_images/Frame_48101400.png",
-              "signature_name": "RC Williams",
-              "signature_title": "Founder"
-            }
-          }
-        },
-        "block_order": [
-          "story_row_YrqtWg",
-          "story_row_F8ygGj",
-          "story_row_PpyEkz"
-        ],
-        "disabled": true,
-        "name": "About V2",
-        "settings": {}
-      },
       "ticker_v2_j6gkXE": {
         "type": "ticker-v2",
         "name": "Ticker V2",
@@ -3025,13 +2974,13 @@
           "eyebrow": "As featured in",
           "rotate_ms": 5500,
           "transition": "Fade",
-          "bg_1": "#ECE0ED",
-          "bg_2": "#F6EFF6",
-          "bg_3": "#FBF7FB",
-          "eyebrow_color": "#5F2A63",
-          "quote_color": "#2D1530",
+          "bg_1": "#ece0ed",
+          "bg_2": "#f6eff6",
+          "bg_3": "#fbf7fb",
+          "eyebrow_color": "#5f2a63",
+          "quote_color": "#2d1530",
           "logo_active_color": "#161015",
-          "logo_inactive_color": "#8E5A92",
+          "logo_inactive_color": "#8e5a92",
           "quote_size_desktop": 38,
           "quote_size_mobile": 25,
           "logo_size_desktop": 21,
@@ -3052,7 +3001,6 @@
       "what_makes_different_v2_rRVmVL",
       "use_in_just_v2_JAWTbF",
       "alternatives_v2_aVf4gw",
-      "about_v2_Lx7Enx",
       "founder_story_v2_jEGKjY",
       "ticker_v2_j6gkXE",
       "product_widget_v2_m3pTph",

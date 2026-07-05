@@ -11,34 +11,7 @@
   "sections": {
     "hero_ingredients_v2_PynYUG": {
       "type": "hero-ingredients-v2",
-      "blocks": {
-        "description_block_fEdbtd": {
-          "type": "description_block",
-          "settings": {
-            "label": "The Science",
-            "href": "#science-ingredients"
-          }
-        },
-        "description_block_qMFJRt": {
-          "type": "description_block",
-          "settings": {
-            "label": "Our Ingredients",
-            "href": "#ingredients-benefits"
-          }
-        },
-        "description_block_rdcziW": {
-          "type": "description_block",
-          "settings": {
-            "label": "Why Oral Sprays?",
-            "href": "#ingredients-oral-sprays"
-          }
-        }
-      },
-      "block_order": [
-        "description_block_fEdbtd",
-        "description_block_qMFJRt",
-        "description_block_rdcziW"
-      ],
+      "block_order": [],
       "name": "Hero Ingredients V2",
       "settings": {
         "bg_color": "#ffffff",

@@ -38,21 +38,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
+  padding: 24px;
   background: var(--base-colour, #672666);
   color: #fff;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-family: 'HelveticaNeueL', sans-serif;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.4;
   border: none;
-  border-radius: 80px;
+  border-radius: 100px;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(10px);
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease;
 }
 
 .key-ingredients-v2__btn:hover {

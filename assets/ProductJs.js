@@ -152,6 +152,7 @@ var ProductJs = function( item, product, preselectedItem = null ) {
 
     var initializeVariantSelector = function() {
       var variantSelectorId = "product-select-"+product.id;
+      if(!document.getElementById(variantSelectorId)) { return; }
       var selectCallback = onVariantSelected();
 
       new Shopify.OptionSelectors(variantSelectorId, { product: product, onVariantSelected: selectCallback });

@@ -198,7 +198,9 @@
     <div class="iwt-v2-image">
         {% if section.settings.image != blank %}
             <img
-                src="{{ section.settings.image | image_url: width: 1200 }}"
+                src="{{ section.settings.image | image_url: width: 800 }}"
+                srcset="{{ section.settings.image | image_url: width: 400 }} 400w, {{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+                sizes="(max-width: 900px) 92vw, 400px"
                 alt="{{ section.settings.image.alt | default: 'Product image' }}"
                 loading="lazy"
             >

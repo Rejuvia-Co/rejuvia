@@ -375,7 +375,9 @@
                 <img
                     class="puij-v2-step-image"
                     data-puij-v2-default
-                    src="{{ section.settings.default_image | image_url: width: 1200 }}"
+                    src="{{ section.settings.default_image | image_url: width: 800 }}"
+                    srcset="{{ section.settings.default_image | image_url: width: 400 }} 400w, {{ section.settings.default_image | image_url: width: 600 }} 600w, {{ section.settings.default_image | image_url: width: 800 }} 800w, {{ section.settings.default_image | image_url: width: 1200 }} 1200w"
+                    sizes="(max-width: 900px) 92vw, 400px"
                     alt="How to use"
                     loading="eager"
                 >
@@ -385,7 +387,9 @@
                     <img
                         class="puij-v2-step-image{% if forloop.first %} is-active{% endif %}"
                         data-puij-v2-img="{{ forloop.index0 }}"
-                        src="{{ block.settings.image | image_url: width: 1200 }}"
+                        src="{{ block.settings.image | image_url: width: 800 }}"
+                        srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 800 }} 800w, {{ block.settings.image | image_url: width: 1200 }} 1200w"
+                        sizes="(max-width: 900px) 92vw, 400px"
                         alt="{{ block.settings.title }}"
                         loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                     >

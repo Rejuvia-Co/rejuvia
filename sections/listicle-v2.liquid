@@ -141,7 +141,9 @@
     <div class="listicle-v2-graph">
         {% if section.settings.graph_image != blank %}
             <img
-                src="{{ section.settings.graph_image | image_url: width: 1200 }}"
+                src="{{ section.settings.graph_image | image_url: width: 800 }}"
+                srcset="{{ section.settings.graph_image | image_url: width: 400 }} 400w, {{ section.settings.graph_image | image_url: width: 600 }} 600w, {{ section.settings.graph_image | image_url: width: 800 }} 800w, {{ section.settings.graph_image | image_url: width: 1200 }} 1200w"
+                sizes="(max-width: 900px) 92vw, 600px"
                 alt="Absorption comparison chart"
                 width="600"
                 height="500"

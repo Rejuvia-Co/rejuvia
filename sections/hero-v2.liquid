@@ -377,7 +377,9 @@
             <div class="hero-v2-image-bg"></div>
             {% if section.settings.image != blank %}
                 <img
-                    src="{{ section.settings.image | image_url: width: 1200 }}"
+                    src="{{ section.settings.image | image_url: width: 800 }}"
+                    srcset="{{ section.settings.image | image_url: width: 400 }} 400w, {{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+                    sizes="(max-width: 900px) 92vw, 600px"
                     alt="{{ section.settings.image.alt | default: section.settings.heading }}"
                     width="600"
                     height="568"

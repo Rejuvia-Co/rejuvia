@@ -355,9 +355,10 @@
         {% for block in section.blocks %}
             {% if block.type == 'fb_review' %}
                 <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
-                    {% if block.settings.image != blank %}
+                    {%- assign fb_img_url = block.settings.image | image_url: width: 800 -%}
+                    {% if fb_img_url != blank %}
                         <img
-                            src="{{ block.settings.image | image_url: width: 1200 }}"
+                            src="{{ fb_img_url }}"
                             alt="Facebook review"
                             loading="lazy"
                         >

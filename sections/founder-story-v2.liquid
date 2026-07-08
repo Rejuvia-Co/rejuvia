@@ -127,8 +127,9 @@
           {%- endif -%}
         </div>
 
-        {%- if fs_sig != blank -%}
-          <img class="fs__sig" src="{{ fs_sig | image_url: width: 220 }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
+        {%- assign fs_sig_url = fs_sig | image_url: width: 220 -%}
+        {%- if fs_sig_url != blank -%}
+          <img class="fs__sig" src="{{ fs_sig_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
         {%- else -%}
           <img class="fs__sig" src="{{ 'rc-signature.png' | asset_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
         {%- endif -%}

@@ -2025,15 +2025,6 @@
       "real_stories_v2_CKGqJy": {
         "type": "real-stories-v2",
         "blocks": {
-          "fb_review_AUN6jL": {
-            "type": "fb_review",
-            "settings": {
-              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
-              "offset_top": 0,
-              "offset_left": 0,
-              "offset_right": 0
-            }
-          },
           "tp_review_NqL6Rk": {
             "type": "tp_review",
             "settings": {
@@ -2106,6 +2097,15 @@
               "stars": 5
             }
           },
+          "fb_review_AUN6jL": {
+            "type": "fb_review",
+            "settings": {
+              "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
+              "offset_top": 0,
+              "offset_left": 0,
+              "offset_right": 0
+            }
+          },
           "fb_review_L8tT8R": {
             "type": "fb_review",
             "settings": {
@@ -2162,13 +2162,13 @@
           }
         },
         "block_order": [
-          "fb_review_AUN6jL",
           "tp_review_NqL6Rk",
           "tp_review_nq4Umj",
           "tp_review_tedq9c",
           "tp_review_BtajJX",
           "tp_review_XAUKKi",
           "tp_review_jRXKcN",
+          "fb_review_AUN6jL",
           "fb_review_L8tT8R",
           "fb_review_RUPLRy",
           "fb_review_eHXWc6",

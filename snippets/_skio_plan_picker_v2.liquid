@@ -30,7 +30,7 @@
     {
       "type": "variant",
       "name": {{ product.title | json }}
-    }{% if free_gift != blank or block.settings.show_free_shipping %},{% endif %}
+    },
   {% endif %}
   {% if free_gift != blank %}
     {
@@ -39,7 +39,7 @@
       "image": {{ free_gift.featured_image | image_url: width: 80 | json }},
       "original_price": {{ free_gift.price | money_without_trailing_zeros | json }},
       "sale_price": "FREE"
-    }{% if block.settings.show_free_shipping %},{% endif %}
+    },
   {% endif %}
   {% if block.settings.show_free_shipping %}
     {
@@ -48,8 +48,15 @@
       "name": "FREE US Shipping",
       "original_price": {{ block.settings.shipping_original_price | json }},
       "sale_price": "FREE"
-    }
+    },
   {% endif %}
+  {
+    "type": "guarantee",
+    "icon": "guarantee",
+    "name": "90-Day Money-Back Guarantee",
+    "original_price": "",
+    "sale_price": "Risk-Free"
+  }
 ]{% endcapture %}
 
 {% capture skio_settings %}

@@ -1304,7 +1304,7 @@ export class SkioPlanPicker extends LitElement {
     const name = isVariant ? variantTitle : item.name;
     const originalPrice = isVariant ? this.money(this.selectedVariant?.compare_at_price || this.selectedVariant?.price) : item.original_price;
     const salePrice = isVariant ? this.price(group.selected_selling_plan) : item.sale_price;
-    const isFree = !isVariant && item.sale_price === 'FREE';
+    const isFree = !isVariant && (item.sale_price === 'FREE' || item.type === 'guarantee');
 
     return html`
       <div class="skio-includes__item">
@@ -1320,6 +1320,14 @@ export class SkioPlanPicker extends LitElement {
                   <path d="M15.75 5.99993C15.7497 5.73688 15.6803 5.47853 15.5487 5.2508C15.417 5.02306 15.2278 4.83395 15 4.70243L9.75 1.70243C9.52197 1.57077 9.2633 1.50146 9 1.50146C8.7367 1.50146 8.47803 1.57077 8.25 1.70243L3 4.70243C2.7722 4.83395 2.58299 5.02306 2.45135 5.2508C2.31971 5.47853 2.25027 5.73688 2.25 5.99993V11.9999C2.25027 12.263 2.31971 12.5213 2.45135 12.7491C2.58299 12.9768 2.7722 13.1659 3 13.2974L8.25 16.2974C8.47803 16.4291 8.7367 16.4984 9 16.4984C9.2633 16.4984 9.52197 16.4291 9.75 16.2974L15 13.2974C15.2278 13.1659 15.417 12.9768 15.5487 12.7491C15.6803 12.5213 15.7497 12.263 15.75 11.9999V5.99993Z" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M2.4751 5.25L9.0001 9L15.5251 5.25" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M9 16.5V9" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          ` : item.icon === 'guarantee' ? html`
+            <div class="skio-includes__item-icon">
+              <div class="skio-includes__item-icon-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3.75 9.375L7.125 12.75L14.25 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>

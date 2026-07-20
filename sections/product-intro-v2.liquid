@@ -398,6 +398,8 @@
                         <img
                             src="{{ block.settings.image | image_url: width: 600 }}"
                             alt="{{ block.settings.title }}"
+                            width="{{ block.settings.image.width }}"
+                            height="{{ block.settings.image.height }}"
                             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                         >
                     {% endif %}

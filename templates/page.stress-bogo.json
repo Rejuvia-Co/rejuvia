@@ -23,7 +23,7 @@
             "compare_price": "$70",
             "savings_text": "Save $30",
             "free_shipping": false,
-            "per_night": "$0.50 Per Night",
+            "per_night": "$0.50 Per Use",
             "tag": "",
             "tag_style": "brand"
           }
@@ -39,7 +39,7 @@
             "compare_price": "$140",
             "savings_text": "SAVE $60",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
+            "per_night": "$0.50 Per Use",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -55,7 +55,7 @@
             "compare_price": "$210",
             "savings_text": "SAVE $90",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
+            "per_night": "$0.50 Per Use",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }

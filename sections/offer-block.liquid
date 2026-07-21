@@ -374,9 +374,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       buy.disabled = true; buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
-        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: id, quantity: 1 }] }) }); })
+        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: id, quantity: {{ section.settings.add_quantity | default: 1 }} }] }) }); })
         .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
-        .catch(function () { window.location.href = '/cart/' + id + ':1'; });
+        .catch(function () { window.location.href = '/cart/' + id + ':{{ section.settings.add_quantity | default: 1 }}'; });
     });
   }
 
@@ -418,6 +418,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Offer cards" },
     { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "info": "1 = first box (e.g. Buy 1, Get 1 Free).", "default": 1 },
     { "type": "header", "content": "Call to action" },
+    { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "How many units of the selected box are added to cart. Set to 2 for a native Buy-One-Get-One flow (pair with a Shopify automatic Buy X Get Y discount). Leave at 1 for standard behavior.", "default": 1 },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
     { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee line icon", "info": "Optional. Replaces the default shield icon. Square image recommended." },

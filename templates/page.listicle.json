@@ -323,6 +323,7 @@
         "tab_aTHNXH"
       ],
       "settings": {
+        "add_quantity": 2,
         "product": "sleep-spray",
         "image_bg": "#ffffff",
         "sticky_offset": 100,

@@ -17,7 +17,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671027932",
-            "image_asset": "rejuvia-bundle-b1g1.webp",
+            "image_asset": "rejuvia-d3k2-bottle.webp",
             "label": "Buy 1, Get 1 FREE",
             "price": "$30",
             "compare_price": "$70",
@@ -25,7 +25,8 @@
             "free_shipping": false,
             "per_night": "$0.50 Per Night",
             "tag": "",
-            "tag_style": "brand"
+            "tag_style": "brand",
+            "image": ""
           }
         },
         "tier_8en7iz": {
@@ -33,7 +34,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671060700",
-            "image_asset": "rejuvia-bundle-b2g2.webp",
+            "image_asset": "rejuvia-d3k2-bottle.webp",
             "label": "Buy 2, Get 2 FREE",
             "price": "$60",
             "compare_price": "$140",
@@ -41,7 +42,8 @@
             "free_shipping": true,
             "per_night": "$0.50 Per Night",
             "tag": "MOST POPULAR",
-            "tag_style": "brand"
+            "tag_style": "brand",
+            "image": ""
           }
         },
         "tier_T7JQdb": {
@@ -49,7 +51,7 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671093468",
-            "image_asset": "rejuvia-bundle-b3g3.webp",
+            "image_asset": "rejuvia-d3k2-bottle.webp",
             "label": "Buy 3, Get 3 FREE",
             "price": "$90",
             "compare_price": "$210",
@@ -57,7 +59,8 @@
             "free_shipping": true,
             "per_night": "$0.50 Per Night",
             "tag": "BEST VALUE",
-            "tag_style": "gold"
+            "tag_style": "gold",
+            "image": ""
           }
         },
         "tab_kAdU4M": {
@@ -146,7 +149,7 @@
         "tab_body_size_mobile": 17,
         "section_bg": "#ffffff",
         "card_bg": "#ffffff",
-        "accent_color": "#672666",
+        "accent_color": "#018E1C",
         "show_trusted": true,
         "trusted_title": "Used nightly by 300K+ customers",
         "trusted_subtext": "who use Rejuvia to fall asleep faster and sleep through the full night.",
@@ -154,7 +157,8 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#34c759"
+        "trusted_check": "#34c759",
+        "selected_bg": "#EFF5EE"
       }
     },
     "customer_testimonials_video_b39r9z": {
@@ -526,7 +530,7 @@
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
         "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7"
+        "bg_color": "#EFF5EE"
       }
     },
     "17814435248f2fd49e": {

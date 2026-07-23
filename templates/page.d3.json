@@ -258,25 +258,25 @@
         "bullet_1": {
           "type": "bullet",
           "settings": {
-            "text": "Fall asleep in 10-15 minutes after spraying under your tongue"
+            "text": "Vitamins D3 + K2 paired together"
           }
         },
         "bullet_2": {
           "type": "bullet",
           "settings": {
-            "text": "Sleep through the entire night without 3am wake-ups"
+            "text": "Plant-based D3 supports calcium absorption"
           }
         },
         "bullet_3": {
           "type": "bullet",
           "settings": {
-            "text": "Wake up refreshed, not groggy, with a non-habit-forming formula"
+            "text": "K2 directs calcium into bones and teeth"
           }
         },
         "bullet_4": {
           "type": "bullet",
           "settings": {
-            "text": "Made with 100% all-natural, clean and safe ingredients"
+            "text": "Replaces what your body can't make"
           }
         }
       },
@@ -287,8 +287,8 @@
         "bullet_4"
       ],
       "settings": {
-        "heading": "Fix Your Sleep Once and For All",
-        "subhead": "Join millions ditching melatonin gummies and sleeping pills with the one sleep solution that actually works when you need it: Rejuvia.",
+        "heading": "Your indoor life is costing you vitamin D",
+        "subhead": "Most people spend 90% of their day behind walls and glass that block the UV rays your skin needs to produce vitamin D. But replacing D3 alone isn't enough — without K2, your body absorbs the calcium but has nowhere to put it. This sublingual spray gives you the D3 you need and the K2 that makes sure it actually works.",
         "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
@@ -320,7 +320,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
-            "description": "Swallow and drift off to sleep."
+            "description": "Swallow — that's your daily dose of D3 + K2."
           }
         }
       },
@@ -332,7 +332,7 @@
       "name": "How It Works",
       "settings": {
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."
+        "subheading": "Use your D3 + K2 Spray once daily — spray under your tongue, hold, then swallow."
       }
     },
     "key_ingredients_v2_XxByCK": {
@@ -522,7 +522,7 @@
       "settings": {
         "icon": "shopify://shop_images/SealCheck.svg",
         "title": "90-Day Money-Back Guarantee",
-        "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
+        "description": "Not feeling the difference within 90 days? You're covered by our guarantee. No questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
         "sub_text": "90-Day Money Back Guarantee",
@@ -699,9 +699,9 @@
         "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p>Trusted by <strong>300,000+</strong> Customers</p>",
+        "rating_text": "<p>Trusted by <strong>150,000+</strong> Customers</p>",
         "rating_color": "#000000",
-        "heading": "<p>The Sleep You Deserve Is Now a Spray Away</p>",
+        "heading": "<p>The Vitamin D Your Body Needs Is Now a Spray Away</p>",
         "heading_color": "#000000",
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": "#offer",

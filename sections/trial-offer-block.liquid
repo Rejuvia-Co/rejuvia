@@ -1,0 +1,526 @@
+{% style %}
+html { scroll-behavior: smooth; }
+/* Hide the sticky CTA bar while the offer block (incl. its accordion) is in view */
+body.ob-offer-visible .sticky-cta-v2-section,
+body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important; }
+/* Desktop sticky gallery: the theme's .content-wrapper has overflow:hidden,
+   which breaks position:sticky. Switch the ancestor to clip + visible when
+   this section is present (mirrors the bogo-offer fix). */
+@media (min-width: 901px) {
+  main:has(.ob-{{ section.id }}), .content-wrapper:has(.ob-{{ section.id }}) { overflow-x: clip; overflow-y: visible; }
+  #shopify-section-{{ section.id }} { overflow-x: clip; overflow-y: visible; }
+}
+.ob-{{ section.id }} {
+  --ob-plum-900: #4a1c4a;
+  --ob-plum-800: #5d215f;
+  --ob-accent: {{ section.settings.accent_color | default: '#672666' }};
+  --ob-ink: #141414;
+  --ob-sub: #3a3a3a;
+  --ob-pernight: #8c8c92;
+  --ob-struck: #b7b7be;
+  --ob-sel-bg: #f4ecf7;
+  --ob-border: #dcdce2;
+  --ob-border-m: #9a679b;
+  --ob-disc-text: #018e1c;
+  --ob-disc-bg: #dcf5df;
+  --ob-divider: #e6e6ea;
+  --ob-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
+  --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-ui: 'Inter', 'Helvetica Neue', Arimo, Arial, sans-serif;
+  background-color: {{ section.settings.section_bg | default: '#ffffff' }};
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.ob-{{ section.id }} *, .ob-{{ section.id }} *::before, .ob-{{ section.id }} *::after {
+  text-transform: none;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+.ob-{{ section.id }} .ob__assurance { text-transform: uppercase; }
+.ob__card {
+  max-width: 1280px; margin: 0 auto; padding: 48px 24px;
+  background: {{ section.settings.card_bg | default: 'transparent' }};
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas: "gallery header" "gallery buybox";
+  column-gap: 56px; row-gap: 16px; align-items: start;
+}
+.ob__header { grid-area: header; min-width: 0; }
+.ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
+.ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
+.ob__buybox { grid-area: buybox; min-width: 0; }
+
+/* Gallery */
+.ob__main { position: relative; width: 100%; display: grid; place-items: center; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
+.ob__main img { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
+.ob__thumbs-row { display: flex; align-items: center; gap: 10px; }
+.ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
+.ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
+.ob__dot.is-active { background: var(--ob-accent); }
+.ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ob-accent); background: #fff; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: background .15s; }
+.ob__arrow:hover { background: #f6eef6; }
+.ob__thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; scrollbar-width: none; -ms-overflow-style: none; }
+.ob__thumbs::-webkit-scrollbar { display: none; }
+.ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; }
+.ob__thumb.is-active { border: 2px solid var(--ob-accent); }
+.ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Header */
+.ob__rating { display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ob__stars { display: inline-flex; gap: 0; flex-shrink: 0; }
+.ob__stars svg { width: {{ section.settings.stars_size | default: 20 }}px; height: {{ section.settings.stars_size | default: 20 }}px; display: block; margin: 0 -1px; }
+.ob__rating-text { font-family: var(--font-body); font-size: {{ section.settings.rating_text_size | default: 18 }}px; font-weight: 400; color: var(--ob-ink); }
+.ob__rating-text strong { font-weight: 700; color: var(--ob-accent); }
+.ob__rating-text p { margin: 0; display: inline; }
+.ob__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 52 }}px; font-weight: 700; line-height: 1.05; letter-spacing: -0.6px; color: var(--ob-ink); margin: 0 0 10px; }
+.ob__subtitle { font-family: var(--font-body); font-size: {{ section.settings.subtitle_size | default: 24 }}px; line-height: 1.35; color: var(--ob-sub); margin: 0; }
+
+/* Offer cards */
+.ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 0; }
+.ob__tier { position: relative; display: flex; align-items: center; gap: 28px; background: #fff; border: 1.5px solid var(--ob-border); border-radius: 13px; padding: 28px 30px; cursor: pointer; transition: background .15s ease, border-color .15s ease; box-sizing: border-box; }
+.ob__tier.is-selected { border-color: var(--ob-accent); box-shadow: inset 0 0 0 1.5px var(--ob-accent); background: var(--ob-sel-bg); }
+.ob__tier input { position: absolute; opacity: 0; pointer-events: none; }
+.ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
+.ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
+.ob__tier-img { flex-shrink: 0; width: 112px; height: auto; }
+.ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 15px; }
+.ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; color: var(--ob-accent); line-height: 1.1; white-space: nowrap; }
+.ob__tier-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
+.ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
+.ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }
+.ob__off { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 4px 11px; white-space: nowrap; text-transform: uppercase; }
+.ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
+.ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
+.ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
+.ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
+.ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
+
+/* CTA (pill) */
+.ob__cta-wrap { margin-top: 22px; }
+.ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: 0; line-height: 1; padding: 22px 36px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
+.ob__buy:hover { opacity: 0.9; }
+.ob__buy:disabled { cursor: default; }
+.ob__spinner { display: none; width: 24px; height: 24px; border: 2.5px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: ob-spin .6s linear infinite; }
+.ob__buy.is-loading { justify-content: center; }
+.ob__buy.is-loading .ob__buy-label, .ob__buy.is-loading svg { display: none; }
+.ob__buy.is-loading .ob__spinner { display: block; }
+@keyframes ob-spin { to { transform: rotate(360deg); } }
+
+.ob__assurances { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
+.ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.ob__assurance svg { width: 17px; height: 17px; flex-shrink: 0; }
+.ob__assurance-icon { width: 17px; height: 17px; flex-shrink: 0; object-fit: contain; display: block; }
+.ob__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.ob__payments svg { height: 26px; width: auto; }
+
+/* Accordion */
+.ob__tabs { margin-top: 22px; border-bottom: 1px solid var(--ob-divider); }
+.ob__tab { border-top: 1px solid var(--ob-divider); }
+.ob__tab-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 6px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-display); font-size: {{ section.settings.tab_title_size | default: 24 }}px; font-weight: 700; color: #161616; line-height: 1.25; }
+.ob__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.ob__tab-chevron { flex-shrink: 0; width: 20px; height: 20px; color: #161616; transition: transform .22s ease; }
+.ob__tab.is-open .ob__tab-chevron { transform: rotate(180deg); }
+.ob__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.ob__tab.is-open .ob__tab-a { grid-template-rows: 1fr; }
+.ob__tab-a-inner { overflow: hidden; }
+.ob__tab-body { padding: 0 6px 22px; font-family: var(--font-body); font-size: {{ section.settings.tab_body_size | default: 19 }}px; line-height: 1.55; color: var(--ob-sub); }
+.ob__tab-body p { margin: 0 0 12px; }
+.ob__tab-body p:last-child { margin-bottom: 0; }
+.ob__tab-body strong { color: var(--ob-ink); font-weight: 700; }
+
+@media (max-width: 900px) {
+  .ob-{{ section.id }} { overflow-x: clip; }
+  .ob__buybox, .ob__tabs, .ob__tab-q { min-width: 0; max-width: 100%; }
+  .ob__card { display: flex; flex-direction: column; gap: 16px; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
+  /* Header: centered on mobile */
+  .ob-{{ section.id }} .ob__header { order: -1; text-align: center; }
+  .ob-{{ section.id }} .ob__rating { justify-content: center; }
+  .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; text-align: center; }
+  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; }
+  .ob__gallery-inner { position: static; }
+  .ob__main { min-height: 0; }
+  .ob__main img { max-height: 320px; }
+  .ob__arrow { display: none; }
+  .ob__thumb { width: 62px; height: 62px; border-radius: 9px; }
+  .ob__tiers { gap: 18px; margin-top: 0; }
+  .ob__tier { gap: 18px; padding: 16px 16px 16px 14px; border: 1.6px solid var(--ob-border-m); }
+  .ob__tier-body { gap: 10px; }
+  .ob__tier-img { width: 83px; margin-left: -7px; }
+  .ob__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 21 }}px; white-space: normal; }
+  .ob__price { font-size: 24px; }
+  .ob__struck { font-size: 18px; }
+  .ob__off { font-size: 14px; }
+  .ob__ship { font-size: 15px; }
+  .ob__pernight { font-size: 18px; }
+  .ob__tag { font-size: 12px; }
+  .ob__buy { font-size: 18px; padding: 20px 28px; }
+  .ob__tier-prices { gap: 7px; flex-wrap: wrap; white-space: normal; }
+  .ob__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 22 }}px; padding: 18px 14px 18px 4px; }
+  .ob__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 17 }}px; }
+}
+/* Header: left-aligned on desktop */
+@media (min-width: 901px) {
+  .ob-{{ section.id }} .ob__header,
+  .ob-{{ section.id }} .ob__title,
+  .ob-{{ section.id }} .ob__subtitle { text-align: left; }
+  .ob-{{ section.id }} .ob__rating { justify-content: flex-start; }
+}
+
+/* ===== Trial: price block + single offer card ===== */
+.ob-{{ section.id }} .ob__price-block { margin-bottom: 4px; }
+.ob-{{ section.id }} .ob__price-row { display: flex; align-items: flex-end; gap: 15px; flex-wrap: wrap; }
+.ob-{{ section.id }} .ob__t-price { font-family: var(--font-display); font-weight: 800; font-size: 38px; line-height: 1; color: var(--ob-ink); }
+.ob-{{ section.id }} .ob__t-struck { font-weight: 600; font-size: 24px; color: var(--ob-struck); text-decoration: line-through; margin-bottom: 3px; }
+.ob-{{ section.id }} .ob__t-off { display: inline-flex; align-items: center; background: #E4F5E9; color: #1E7A4B; font-family: var(--font-ui); font-weight: 700; font-size: 12px; letter-spacing: .05em; padding: 6px 12px; border-radius: 100px; text-transform: uppercase; margin-bottom: 6px; white-space: nowrap; }
+.ob-{{ section.id }} .ob__t-pernight { font-family: var(--font-body); font-style: italic; color: var(--ob-pernight); font-size: 17px; margin-top: 9px; }
+.ob-{{ section.id }} .ob__offer-card { position: relative; border: 2px solid var(--ob-accent); background: var(--ob-sel-bg); border-radius: 16px; padding: 24px; margin-top: 20px; }
+.ob-{{ section.id }} .ob__offer-pill { position: absolute; top: -13px; left: 22px; background: var(--ob-accent); color: #fff; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 100px; white-space: nowrap; }
+.ob-{{ section.id }} .ob__offer-eyebrow { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; font-weight: 700; color: var(--ob-accent); }
+.ob-{{ section.id }} .ob__offer-desc { font-family: var(--font-body); color: var(--ob-ink); font-size: 17px; line-height: 1.55; margin: 9px 0 0; }
+
+@media (max-width: 900px) {
+  .ob-{{ section.id }} .ob__t-price { font-size: 27px; }
+  .ob-{{ section.id }} .ob__t-struck { font-size: 18px; }
+  .ob-{{ section.id }} .ob__t-pernight { font-size: 15px; }
+  .ob-{{ section.id }} .ob__offer-card { padding: 20px; }
+  .ob-{{ section.id }} .ob__offer-desc { font-size: 15px; }
+}
+{% endstyle %}
+
+{%- capture ob_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
+{%- capture ob_chevron -%}<svg class="ob__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
+
+{%- assign gallery_product = section.settings.product -%}
+
+{%- liquid
+  comment
+    Resolve the single trial variant + its subscription selling-plan price.
+    Falls back to the variant's own price, then to editable text settings.
+  endcomment
+  assign trial_prod = section.settings.trial_product | default: gallery_product
+  assign trial_vid = section.settings.trial_variant_id | strip
+  assign trial_plan = section.settings.selling_plan_id | strip
+  assign trial_variant = blank
+  if trial_prod != blank
+    if trial_vid != blank
+      for v in trial_prod.variants
+        assign vstr = v.id | append: ''
+        if vstr == trial_vid
+          assign trial_variant = v
+          break
+        endif
+      endfor
+    endif
+    if trial_variant == blank
+      assign trial_variant = trial_prod.selected_or_first_available_variant
+    endif
+  endif
+
+  assign trial_now = blank
+  assign trial_was = blank
+  if trial_variant != blank
+    assign trial_now = trial_variant.price
+    if trial_variant.compare_at_price > trial_variant.price
+      assign trial_was = trial_variant.compare_at_price
+    endif
+    for a in trial_variant.selling_plan_allocations
+      assign astr = a.selling_plan.id | append: ''
+      if astr == trial_plan
+        assign trial_now = a.price
+        if a.compare_at_price > a.price
+          assign trial_was = a.compare_at_price
+        endif
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<section class="ob-{{ section.id }}" id="ob-{{ section.id }}">
+  <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
+  <div class="ob__card">
+
+    <div class="ob__header">
+      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
+        <div class="ob__rating">
+          {%- if section.settings.show_stars -%}<span class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="ob__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="ob__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="ob__gallery">
+      {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      <div class="ob__gallery-inner">
+      <div class="ob__main">
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">{%- endif -%}
+      </div>
+      {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
+        <div class="ob__thumbs-row">
+          <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="ob__thumbs">
+            {%- for img in gallery_product.images -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt=""></button>
+            {%- endfor -%}
+          </div>
+          <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+        <div class="ob__dots" aria-hidden="true">
+          {%- for img in gallery_product.images -%}<span class="ob__dot{% if img == main_image %} is-active{% endif %}" data-ob-dot></span>{%- endfor -%}
+        </div>
+      {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ob__buybox">
+      {%- comment -%} Price block {%- endcomment -%}
+      <div class="ob__price-block">
+        <div class="ob__price-row">
+          {%- if trial_now != blank -%}
+            <span class="ob__t-price">{{ trial_now | money_without_trailing_zeros }}</span>
+          {%- elsif section.settings.price_fallback != blank -%}
+            <span class="ob__t-price">{{ section.settings.price_fallback }}</span>
+          {%- endif -%}
+          {%- if trial_was != blank -%}
+            <span class="ob__t-struck">{{ trial_was | money_without_trailing_zeros }}</span>
+          {%- elsif section.settings.compare_fallback != blank -%}
+            <span class="ob__t-struck">{{ section.settings.compare_fallback }}</span>
+          {%- endif -%}
+          {%- if section.settings.savings_text != blank -%}
+            <span class="ob__t-off">{{ section.settings.savings_text }}</span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.per_night_text != blank -%}
+          <div class="ob__t-pernight">{{ section.settings.per_night_text }}</div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Single offer card {%- endcomment -%}
+      <div class="ob__offer-card">
+        {%- if section.settings.offer_pill != blank -%}<span class="ob__offer-pill">{{ section.settings.offer_pill }}</span>{%- endif -%}
+        {%- if section.settings.offer_eyebrow != blank -%}<div class="ob__offer-eyebrow">{{ section.settings.offer_eyebrow }}</div>{%- endif -%}
+        {%- if section.settings.offer_desc != blank -%}<p class="ob__offer-desc">{{ section.settings.offer_desc }}</p>{%- endif -%}
+      </div>
+
+      <div class="ob__cta-wrap">
+        {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
+        <button type="button" class="ob__buy" data-ob-buy>
+          <span class="ob__spinner" aria-hidden="true"></span>
+          <span class="ob__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+
+        {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
+          <div class="ob__assurances">
+            {%- if section.settings.guarantee_text != blank -%}
+              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
+            {%- endif -%}
+            {%- if section.settings.onetime_text != blank -%}
+              <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="#5d215f" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#5d215f" stroke-width="1.8" stroke-linecap="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_payment_icons -%}
+          {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+          <div class="ob__payments">
+            {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- assign has_tabs = false -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_tabs -%}
+        <div class="ob__tabs">
+          {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
+            <div class="ob__tab" {{ b.shopify_attributes }}>
+              <button type="button" class="ob__tab-q" aria-expanded="false"><span>{{ b.settings.title }}</span>{{ ob_chevron }}</button>
+              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
+            </div>
+          {%- endif -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_trusted -%}
+        {% render 'trusted-by',
+          title: section.settings.trusted_title,
+          subtext: section.settings.trusted_subtext,
+          image_1: section.settings.trusted_image_1,
+          image_2: section.settings.trusted_image_2,
+          image_3: section.settings.trusted_image_3,
+          bg_color: section.settings.trusted_bg,
+          check_color: section.settings.trusted_check %}
+      {%- endif -%}
+    </div>
+  </div>
+  {% render 'supplement-label-popup', product: section.settings.product %}
+</section>
+
+<script>
+(function () {
+  var sec = document.getElementById('ob-{{ section.id }}');
+  if (!sec) return;
+
+  /* Single trial offer — no tier selection needed. */
+
+  /* Gallery */
+  var mainImg = sec.querySelector('[data-ob-main]');
+  var thumbs = [].slice.call(sec.querySelectorAll('[data-ob-thumb]'));
+  var dots = [].slice.call(sec.querySelectorAll('[data-ob-dot]'));
+  var idx = 0;
+  thumbs.forEach(function (t, i) { if (t.classList.contains('is-active')) idx = i; });
+  function setImg(i) {
+    if (!thumbs.length) return;
+    idx = (i + thumbs.length) % thumbs.length;
+    var t = thumbs[idx];
+    if (mainImg) mainImg.src = t.getAttribute('data-full');
+    thumbs.forEach(function (x) { x.classList.remove('is-active'); });
+    t.classList.add('is-active');
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
+  var prev = sec.querySelector('[data-ob-prev]'), next = sec.querySelector('[data-ob-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Accordion — one open at a time */
+  var tabs = sec.querySelectorAll('.ob__tab');
+  sec.querySelectorAll('.ob__tab-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.closest('.ob__tab');
+      var willOpen = !tab.classList.contains('is-open');
+      tabs.forEach(function (t) { t.classList.remove('is-open'); var b = t.querySelector('.ob__tab-q'); if (b) b.setAttribute('aria-expanded', 'false'); });
+      if (willOpen) { tab.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Buy Now -> add selected variant, go to checkout */
+  var buy = sec.querySelector('[data-ob-buy]');
+  if (buy) {
+    window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
+    buy.addEventListener('click', function () {
+      var id = {{ section.settings.trial_variant_id | default: 0 | json }};
+      id = parseInt(id, 10);
+      if (!id) return;
+      var plan = {{ section.settings.selling_plan_id | default: '' | json }};
+      var item = { id: id, quantity: 1 };
+      if (plan) { item.selling_plan = parseInt(plan, 10); }
+      buy.disabled = true; buy.classList.add('is-loading');
+      fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [item] }) }); })
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
+        .catch(function () { window.location.href = '/cart/' + id + ':1'; });
+    });
+  }
+
+  /* Hide the sticky CTA bar whenever this offer block (incl. accordion) is in the viewport.
+     The bar is position:fixed and its own JS toggles .is-visible on scroll, so we force
+     display:none with !important directly on the element (beats its own styles). */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var vis = entries[0].isIntersecting;
+      document.body.classList.toggle('ob-offer-visible', vis);
+      document.querySelectorAll('.sticky-cta-v2-section').forEach(function (el) {
+        if (vis) { el.style.setProperty('display', 'none', 'important'); }
+        else { el.style.removeProperty('display'); }
+      });
+    }, { threshold: 0 });
+    io.observe(sec);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Trial Offer Block",
+  "tag": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "header", "content": "Gallery" },
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
+    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Gallery sticky offset (desktop)", "info": "Increase to clear a sticky header/bar (e.g. ~80 on the listicle page).", "default": 24 },
+    { "type": "header", "content": "Header" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
+    { "type": "range", "id": "stars_size", "min": 12, "max": 32, "step": 1, "unit": "px", "label": "Star size", "default": 20 },
+    { "type": "range", "id": "rating_text_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Review bar text size", "default": 18 },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Used By <strong>300,000+</strong> Customers</p>" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Sleep Spray - 30 Night Trial" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle (optional)", "default": "" },
+    { "type": "header", "content": "Trial offer" },
+    { "type": "product", "id": "trial_product", "label": "Trial product", "info": "The product added to cart and used for live pricing. Falls back to the Gallery product." },
+    { "type": "text", "id": "trial_variant_id", "label": "Variant ID", "info": "Exact variant added to cart.", "default": "44328075526364" },
+    { "type": "text", "id": "selling_plan_id", "label": "Subscription selling plan ID", "info": "Adds the variant on this Skio/subscription plan. Leave blank for a one-time add.", "default": "29054009564" },
+    { "type": "text", "id": "price_fallback", "label": "Price (fallback)", "info": "Shown only if the live variant/plan price can't be resolved.", "default": "$27" },
+    { "type": "text", "id": "compare_fallback", "label": "Compare-at price (fallback)", "default": "$45" },
+    { "type": "text", "id": "savings_text", "label": "Savings pill", "info": "Green pill next to the price. Leave blank to hide.", "default": "40% Off · Limited-Time Trial" },
+    { "type": "text", "id": "per_night_text", "label": "Per-night line", "default": "Just $0.90 per night · full 30-night supply" },
+    { "type": "text", "id": "offer_pill", "label": "Offer card — floating pill", "default": "Exclusive · Limited-Time Trial" },
+    { "type": "text", "id": "offer_eyebrow", "label": "Offer card — eyebrow", "default": "Your First 30 Nights · One Bottle" },
+    { "type": "textarea", "id": "offer_desc", "label": "Offer card — description", "default": "One bottle of Rejuvia Sleep Spray — a full month to fall asleep faster and stay asleep through the night, completely risk-free." },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now (Save 40%)" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee line icon", "info": "Optional. Replaces the default shield icon. Square image recommended." },
+    { "type": "text", "id": "onetime_text", "label": "One-time purchase line", "default": "One-Time Purchase (Not a Subscription)" },
+    { "type": "image_picker", "id": "onetime_icon", "label": "One-time purchase line icon", "info": "Optional. Replaces the default heart icon. Square image recommended." },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 28, "max": 64, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 52 },
+    { "type": "range", "id": "title_size_mobile", "min": 22, "max": 48, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 40 },
+    { "type": "range", "id": "subtitle_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Subtitle size (desktop)", "default": 24 },
+    { "type": "range", "id": "subtitle_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size (mobile)", "default": 20 },
+    { "type": "range", "id": "tier_title_size", "min": 16, "max": 34, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 26 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 21 },
+    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 24 },
+    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 22 },
+    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 19 },
+    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 17 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio)", "default": "#672666" },
+    { "type": "header", "content": "Trusted-by bar (under accordions)" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Trusted by 300K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who choose Rejuvia to fall asleep faster and sleep through the full night." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
+    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trial Offer Block",
+      "category": "Rejuvia",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "90-Day Guarantee", "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong> Just reach out to our support team and we'll take care of it. Try Rejuvia risk-free — if it doesn't work for you, you don't pay.</p>" } },
+        { "type": "tab", "settings": { "title": "Why Rejuvia Works", "content": "<p>Most sleep aids are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p>We also use a low <strong>2mg dose of melatonin</strong> (most gummies pack 5–10mg, the cause of the morning hangover) paired with 12 natural sleep herbs that calm the mind without knocking you out cold.</p>" } },
+        { "type": "tab", "settings": { "title": "Shipping & Returns", "content": "<p>Orders ship within 1 business days, with free shipping on all orders over $69. You'll receive tracking as soon as your order is on its way.</p><p>Not happy? Our 90-day money-back guarantee has you covered. Contact our support team for a full refund or any return assistance.</p>" } },
+        { "type": "tab", "settings": { "title": "Is Rejuvia Safe?", "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds. As always, if you're pregnant, nursing, taking medication, or have a medical condition, check with your healthcare provider first.</p>" } },
+        { "type": "tab", "settings": { "title": "Ingredients", "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>" } },
+        { "type": "tab", "settings": { "title": "Frequently Asked Questions", "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

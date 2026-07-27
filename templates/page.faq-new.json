@@ -126,6 +126,27 @@
             "subheading": "One spray tube contains 240 total spritzes. The recommended dosage is 6-8 spritzes per serving, so one Rejuvia spray will last you 30-35 days on average."
           }
         },
+        "faq_8qeqE4": {
+          "type": "faq",
+          "settings": {
+            "heading": "How much melatonin is in the Sleep Spray? Will I feel groggy the next morning?",
+            "subheading": "Each nightly serving contains just 2mg of melatonin — a deliberately low dose. Most grogginess from sleep aids comes from high-dose melatonin (5–10mg+) that's still in your system the next morning. We pair the low dose with 12 other calming natural ingredients (valerian root, passionflower, chamomile, and more) so you fall asleep without the next-day fog. If you do feel groggy, try reducing your number of sprays — a little goes a long way."
+          }
+        },
+        "faq_n43D6C": {
+          "type": "faq",
+          "settings": {
+            "heading": "Will Rejuvia help me stay asleep — not just fall asleep?",
+            "subheading": "Yes — this is actually the #1 reason customers use Rejuvia. The formula is designed for both sleep onset and sleep maintenance: melatonin and 5-HTP help you fall asleep, while valerian root, passionflower, and chamomile support staying asleep through the night. Many customers keep the spray on their nightstand and use 2–3 extra sprays if they wake at 3am — because it's a sublingual spray (not a pill), it absorbs fast without leaving you groggy at your alarm. Give it 7–14 consistent nights for full effect."
+          }
+        },
+        "faq_QmcDha": {
+          "type": "faq",
+          "settings": {
+            "heading": "Is Rejuvia habit-forming? What if it seems to stop working over time?",
+            "subheading": "Rejuvia is non-habit-forming — the ingredients are natural, non-narcotic, and don't create dependency the way prescription sleep medications can. If you feel like the effect has faded after months of nightly use, don't just spray more. Try this instead: take a 3–5 night break, then restart at your original dose; or alternate your dose (6 sprays weeknights, fewer on weekends). Most customers find sensitivity returns quickly. Still not working like it used to? Email hello@rejuvia.co — occasionally the cause is a defective sprayer under-dosing you, and we'll replace it free."
+          }
+        },
         "faq_tpmiqC": {
           "type": "faq",
           "settings": {
@@ -145,6 +166,9 @@
         "faq_Hk9y4E",
         "faq_7Qh3nf",
         "faq_WTGkwW",
+        "faq_8qeqE4",
+        "faq_n43D6C",
+        "faq_QmcDha",
         "faq_tpmiqC",
         "faq_QtYzDi"
       ],

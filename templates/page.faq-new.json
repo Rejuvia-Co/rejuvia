@@ -470,6 +470,20 @@
             "subheading": "We currently offer free shipping on all orders above $79 and all subscription orders (both your first subscription order and all subsequent subscription orders). We are working hard on improving our shipping costs so we can offer free shipping on all orders in the future."
           }
         },
+        "faq_VbnVgw": {
+          "type": "faq",
+          "settings": {
+            "heading": "Tracking says my package was delivered, but I don't have it. What now?",
+            "subheading": "This happens more than you'd think — carriers sometimes mark packages delivered a day or two early, or leave them with a neighbor or building office. Check around your delivery area and give it 48 hours. If it still hasn't shown up, email hello@rejuvia.co and we'll send a replacement or refund — you won't be left paying for a package you never received."
+          }
+        },
+        "faq_NfjWXh": {
+          "type": "faq",
+          "settings": {
+            "heading": "How does the 90-day money-back guarantee work?",
+            "subheading": "If Rejuvia doesn't work for you, your first order is covered by our 90-day money-back guarantee. Email hello@rejuvia.co within 90 days of purchase and we'll walk you through it — you don't need the bottles unopened (how else would you test it?). The guarantee applies to your first order of a product; subsequent orders and renewals aren't refund-eligible."
+          }
+        },
         "faq_Fktpba": {
           "type": "faq",
           "settings": {
@@ -496,6 +510,8 @@
         "faq_PA3PmD",
         "faq_TECRnP",
         "faq_9rBggX",
+        "faq_VbnVgw",
+        "faq_NfjWXh",
         "faq_Fktpba",
         "faq_pfgneJ",
         "faq_atgMp8"

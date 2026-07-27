@@ -456,6 +456,13 @@
             "subheading": "We offer a 90-day money-back guarantee on your first Rejuvia order, no questions asked. All subsequent orders are not eligible for returns or refunds. Customers are responsible for return shipping costs. To start a return, simply email us at hello@rejuvia.co for easy instructions."
           }
         },
+        "faq_TECRnP": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I buy Rejuvia one time, without a subscription?",
+            "subheading": "Yes! Every Rejuvia product can be purchased one-time or as a subscription — the choice is yours at checkout. Subscribers get 20% off every order, free shipping, and our 90-day money-back guarantee, but a subscription is never required. If you select \"One-Time Purchase,\" you will not be enrolled in anything and you'll never be billed again. If you're ever unsure which option you chose, check your order confirmation email or reach out to hello@rejuvia.co and we'll confirm in minutes."
+          }
+        },
         "faq_9rBggX": {
           "type": "faq",
           "settings": {
@@ -487,6 +494,7 @@
       },
       "block_order": [
         "faq_PA3PmD",
+        "faq_TECRnP",
         "faq_9rBggX",
         "faq_Fktpba",
         "faq_pfgneJ",

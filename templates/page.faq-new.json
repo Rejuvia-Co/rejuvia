@@ -355,6 +355,20 @@
             "subheading": "You can manage your subscription directly in your account portal or by emailing us at hello@rejuvia.co."
           }
         },
+        "faq_K6crbi": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I cancel my subscription?",
+            "subheading": "You can cancel anytime, no phone calls and no hoops. Log in to your account at rejuvia.co/a/account/login, select \"Manage Subscription,\" and click \"Cancel Subscription.\" You'll receive an email confirming the cancellation — if you don't get one, the cancellation didn't go through, so reach out to us at hello@rejuvia.co and we'll take care of it right away."
+          }
+        },
+        "faq_yMkJAn": {
+          "type": "faq",
+          "settings": {
+            "heading": "When will I be charged for my next subscription order?",
+            "subheading": "Your card is charged on your renewal date, based on the delivery frequency you chose. We'll email you a reminder before every renewal so you have time to skip, swap products, change your date, or cancel — no surprises. You can also see your next renewal date anytime under \"Manage Subscription\" in your account."
+          }
+        },
         "faq_jhiKUR": {
           "type": "faq",
           "settings": {
@@ -367,6 +381,13 @@
           "settings": {
             "heading": "How do I change frequencies of my deliveries?",
             "subheading": "To change your delivery frequency or push back your next order: \n<br> <br> \n<b> 1. </b>  Log in to your <b> Rejuvia Account </b>  and click <b> Manage Subscriptions. </b>\n<br> <br> \n<b> 2. </b>  Click <b> Edit </b> next to your subscription.\n<br> <br> \n<b>3. </b>  You can change the <b> Next Charge Date </b> or adjust your Shipping Schedule here!"
+          }
+        },
+        "faq_QiBzgJ": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I skip or pause a delivery instead of cancelling?",
+            "subheading": "Absolutely — and it's the easiest way to make sure you never get product before you need it. Log in to your account, select \"Manage Subscription,\" and choose \"Skip Next Delivery\" or \"Pause Subscription.\" You can also push your renewal date out as far as you'd like. Your discount and benefits stay locked in."
           }
         },
         "faq_jKJ7a6": {
@@ -394,8 +415,11 @@
       "block_order": [
         "faq_xi4Jkx",
         "faq_4mWciY",
+        "faq_K6crbi",
+        "faq_yMkJAn",
         "faq_jhiKUR",
         "faq_hgckRk",
+        "faq_QiBzgJ",
         "faq_jKJ7a6",
         "faq_JQ8erh",
         "faq_b8J8He"

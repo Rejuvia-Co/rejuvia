@@ -112,6 +112,13 @@
             "subheading": "Our sleep spray is made with 13 all-natural sleep-friendly ingredients like gingko biloba, valerian root, passionflower, cramp bark and more. We formulated the spray so that it can offer three benefits in one product — fall asleep faster, sleep through the night and wake up feeling refreshed. Each spray is triple lab-tested to ensure purity, potency and efficacy. You can learn more about our ingredients and supplement facts on the Sleep Spray’s product page."
           }
         },
+        "faq_hEAypb": {
+          "type": "faq",
+          "settings": {
+            "heading": "What's the difference between the Sleep Spray and the Calm Spray?",
+            "subheading": "Our Sleep Spray is designed for use before bedtime. Our Calm Spray can be used throughout the day to help you feel calm, relaxed, and focused."
+          }
+        },
         "faq_7Qh3nf": {
           "type": "faq",
           "settings": {
@@ -153,24 +160,17 @@
             "heading": "Does Rejuvia expire?",
             "subheading": "Our sprays do expire, but generally not for 2-3 years from when they are manufactured. All of our sprays are manufactured within 3-4 weeks from when you order, so your sprays won’t expire for 2-3 years after that."
           }
-        },
-        "faq_QtYzDi": {
-          "type": "faq",
-          "settings": {
-            "heading": "What’s the difference between Rejuvia’s Sleep Spray and Stress Spray?",
-            "subheading": "Our Sleep Spray is intended for use before bedtime. Our Calm Spray can be used throughout the day to help you feel relaxed, calm and achieve mental clarity."
-          }
         }
       },
       "block_order": [
         "faq_Hk9y4E",
+        "faq_hEAypb",
         "faq_7Qh3nf",
         "faq_WTGkwW",
         "faq_8qeqE4",
         "faq_n43D6C",
         "faq_QmcDha",
-        "faq_tpmiqC",
-        "faq_QtYzDi"
+        "faq_tpmiqC"
       ],
       "settings": {
         "id": "section-2",
@@ -202,6 +202,13 @@
           "settings": {
             "heading": "Are Rejuvia’s products third-party lab tested?",
             "subheading": "Yes, all of our products are triple lab-tested for purity and potency. They come with a Certificate of Analysis to ensure we are using the finest ingredients and you can access it via a QR code on the packaging. We batch-test and validate with certified third-party labs to ensure purity and consistency. Shoot us an email at hello@rejuvia.co if you have any questions!"
+          }
+        },
+        "faq_xGgN4x": {
+          "type": "faq",
+          "settings": {
+            "heading": "What if my order arrives damaged, defective, or incorrect?",
+            "subheading": "Email us at hello@rejuvia.co with your order number and a photo of the issue and we'll send a replacement on us — no return needed. For a spray or nozzle problem, a photo of the sprayer and the batch number on the bottle helps us resolve it fastest."
           }
         },
         "faq_yhhrGk": {
@@ -242,6 +249,7 @@
       },
       "block_order": [
         "faq_D8QCfn",
+        "faq_xGgN4x",
         "faq_yhhrGk",
         "faq_FQ6XQU",
         "faq_QbthDG",
@@ -501,6 +509,13 @@
             "subheading": "This happens more than you'd think — carriers sometimes mark packages delivered a day or two early, or leave them with a neighbor or building office. Check around your delivery area and give it 48 hours. If it still hasn't shown up, email hello@rejuvia.co and we'll send a replacement or refund — you won't be left paying for a package you never received."
           }
         },
+        "faq_zNWpEX": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I modify or cancel my order?",
+            "subheading": "One-time orders can be modified or cancelled only before a packing slip has been created. Once a packing slip is generated and the order enters fulfillment, we're unable to change or cancel it. Subscription orders can be paused, skipped, rescheduled, or cancelled any time before your next charge date through your account. Email hello@rejuvia.co as early as possible and we'll do our best to help."
+          }
+        },
         "faq_NfjWXh": {
           "type": "faq",
           "settings": {
@@ -535,6 +550,7 @@
         "faq_TECRnP",
         "faq_9rBggX",
         "faq_VbnVgw",
+        "faq_zNWpEX",
         "faq_NfjWXh",
         "faq_Fktpba",
         "faq_pfgneJ",

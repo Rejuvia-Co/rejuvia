@@ -171,9 +171,9 @@
   "tag": "section",
   "class": "press-carousel-section",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#672666" },
-    { "type": "color", "id": "text_color", "label": "Quote color", "default": "#ffffff" },
-    { "type": "color", "id": "control_color", "label": "Arrows & dots color", "default": "#ffffff" },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#EAEAF7" },
+    { "type": "color", "id": "text_color", "label": "Quote color", "default": "#000000" },
+    { "type": "color", "id": "control_color", "label": "Arrows & dots color", "default": "#672666" },
     { "type": "header", "content": "Quote font size" },
     { "type": "range", "id": "quote_size_desktop", "min": 16, "max": 52, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 30 },
     { "type": "range", "id": "quote_size_mobile", "min": 14, "max": 36, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 20 },
@@ -193,7 +193,7 @@
       "name": "Press quote",
       "settings": [
         { "type": "textarea", "id": "quote", "label": "Quote" },
-        { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Transparent PNG/SVG. Use a light/white logo since the background is dark." },
+        { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Transparent PNG/SVG. Dark logos work best on the light background." },
         { "type": "text", "id": "logo_alt", "label": "Logo alt text", "info": "For accessibility, e.g. the publication name." }
       ]
     }
@@ -203,9 +203,10 @@
     {
       "name": "Press Carousel",
       "blocks": [
-        { "type": "quote", "settings": { "quote": "\"The ultimate answer to midday burnout. The boost in clarity is amazing, and best of all, there are zero jitters and no crash.\"" } },
-        { "type": "quote", "settings": { "quote": "\"Three reasons we're switching: it boosts mood, enhances immunity, and maintains that delicious, authentic coffee taste we love.\"" } },
-        { "type": "quote", "settings": { "quote": "\"Shockingly effective after just a few days. Best-tasting mushroom coffee on the market.\"" } }
+        { "type": "quote", "settings": { "quote": "Ranked #224 on the Inc. 5000 list of America's fastest-growing companies", "logo": "shopify://shop_images/Inc.-5000-Logo_1811b83c-d905-4bdb-a4ce-773836d83bf3.png" } },
+        { "type": "quote", "settings": { "quote": "\"Rejuvia is all-natural and the spray works as fast and effectively as anything else out there.\"", "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png" } },
+        { "type": "quote", "settings": { "quote": "\"Finally, I found something to take the edge off at night before I head to bed. I'm sleeping better than ever.\"", "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png" } },
+        { "type": "quote", "settings": { "quote": "\"Shockingly effective. Knocks you out for the night and keeps you asleep until the morning.\"", "logo": "shopify://shop_images/forbes_rejuvia_logo.png" } }
       ]
     }
   ]

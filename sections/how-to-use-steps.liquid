@@ -18,8 +18,8 @@
   }
   #{{ uid }} .hus__inner { max-width: 1200px; margin: 0 auto; padding: 72px 80px; display: flex; flex-direction: column; gap: 48px; box-sizing: border-box; }
   #{{ uid }} .hus__header { display: flex; flex-direction: column; gap: 10px; text-align: center; align-items: center; }
-  #{{ uid }} .hus__heading { margin: 0; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; }
-  #{{ uid }} .hus__sub { margin: 0; font-size: 17px; line-height: 1.6; color: #3D2F3C; max-width: 720px; }
+  #{{ uid }} .hus__heading { margin: 0; font-size: {{ section.settings.heading_size | default: 36 }}px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; }
+  #{{ uid }} .hus__sub { margin: 0; font-size: {{ section.settings.subheading_size | default: 17 }}px; line-height: 1.6; color: #3D2F3C; max-width: 720px; }
 
   /* Mobile hero — hidden on desktop */
   #{{ uid }} .hus__hero { display: none; }
@@ -27,18 +27,18 @@
   /* Steps grid */
   #{{ uid }} .hus__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   #{{ uid }} .hus__step { display: flex; flex-direction: column; gap: 18px; }
-  #{{ uid }} .hus__media { aspect-ratio: 16 / 11; border-radius: 14px; overflow: hidden; }
+  #{{ uid }} .hus__media { aspect-ratio: 16 / 13.2; border-radius: 14px; overflow: hidden; }
   #{{ uid }} .hus__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
   #{{ uid }} .hus__body { display: flex; flex-direction: column; gap: 8px; }
   #{{ uid }} .hus__label { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #6B5B69; }
-  #{{ uid }} .hus__text { margin: 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #161015; text-wrap: pretty; }
+  #{{ uid }} .hus__text { margin: 0; font-size: {{ section.settings.step_text_size | default: 18 }}px; line-height: 1.5; font-weight: 500; color: #161015; text-wrap: pretty; }
   #{{ uid }} .hus__text p { margin: 0; }
   #{{ uid }} .hus__text strong { font-weight: 700; }
 
   @media (max-width: 767px) {
     #{{ uid }} .hus__inner { padding: 40px 16px 44px; gap: 24px; }
-    #{{ uid }} .hus__heading { font-size: 26px; line-height: 1.15; }
-    #{{ uid }} .hus__sub { font-size: 15px; line-height: 1.55; }
+    #{{ uid }} .hus__heading { font-size: {{ section.settings.heading_size_mobile | default: 26 }}px; line-height: 1.15; }
+    #{{ uid }} .hus__sub { font-size: {{ section.settings.subheading_size_mobile | default: 15 }}px; line-height: 1.55; }
     #{{ uid }} .hus__hero { display: block; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; }
     #{{ uid }} .hus__hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
     #{{ uid }} .hus__grid { grid-template-columns: 1fr; gap: 14px; }
@@ -47,7 +47,7 @@
     #{{ uid }} .hus__media img { object-position: 50% 18%; }
     #{{ uid }} .hus__body { gap: 2px; }
     #{{ uid }} .hus__label { font-size: 11px; }
-    #{{ uid }} .hus__text { font-size: 16px; line-height: 1.4; font-weight: 400; }
+    #{{ uid }} .hus__text { font-size: {{ section.settings.step_text_size_mobile | default: 16 }}px; line-height: 1.4; font-weight: 400; }
   }
 </style>
 
@@ -99,7 +99,14 @@
   "settings": [
     { "type": "color", "id": "background_color", "label": "Section background", "default": "#ffffff" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "How To Use Rejuvia" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "You should use your Sleep Spray 15–20 minutes before bed for the best results." }
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "You should use your Sleep Spray 15–20 minutes before bed for the best results." },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 60, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 36 },
+    { "type": "range", "id": "heading_size_mobile", "min": 16, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 26 },
+    { "type": "range", "id": "subheading_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Subheading size (desktop)", "default": 17 },
+    { "type": "range", "id": "subheading_size_mobile", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Subheading size (mobile)", "default": 15 },
+    { "type": "range", "id": "step_text_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Step text size (desktop)", "default": 18 },
+    { "type": "range", "id": "step_text_size_mobile", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Step text size (mobile)", "default": 16 }
   ],
   "blocks": [
     {

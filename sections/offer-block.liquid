@@ -353,6 +353,22 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
   if (next) next.addEventListener('click', function () { setImg(idx + 1); });
 
+  /* Mobile: horizontal swipe on the main image toggles through the gallery.
+     Horizontal-dominant only, so vertical page scrolling is never hijacked. */
+  var galMain = sec.querySelector('.ob__main');
+  if (galMain && thumbs.length > 1) {
+    var gsx = null, gsy = null;
+    galMain.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; gsx = t.clientX; gsy = t.clientY;
+    }, { passive: true });
+    galMain.addEventListener('touchend', function (e) {
+      if (gsx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - gsx, dy = t.clientY - gsy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { setImg(dx < 0 ? idx + 1 : idx - 1); }
+      gsx = null; gsy = null;
+    }, { passive: true });
+  }
+
   /* Accordion — one open at a time */
   var tabs = sec.querySelectorAll('.ob__tab');
   sec.querySelectorAll('.ob__tab-q').forEach(function (btn) {

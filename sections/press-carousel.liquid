@@ -30,7 +30,7 @@
     line-height: 1.4;
     max-width: 420px;
   }
-  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: auto auto 0; padding-top: 20px; }
+  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: auto auto 0; padding-top: 26px; }
 
   /* Arrows */
   #{{ uid }} .pc__arrow {
@@ -55,11 +55,11 @@
   #{{ uid }} .pc__dot.is-active { background: {{ ctrl }}; }
 
   @media screen and (max-width: 767px) {
-    #{{ uid }} { padding: 40px 14px; }
+    #{{ uid }} { padding: {{ section.settings.padding_top | times: 0.6 | round }}px 14px {{ section.settings.padding_bottom | times: 0.6 | round }}px; }
     #{{ uid }} .pc__track { align-items: flex-start; }
     #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 44px; justify-content: center; }
     #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; max-width: 100%; }
-    #{{ uid }} .pc__logo { height: 44px; margin: 26px auto 0; padding-top: 0; }
+    #{{ uid }} .pc__logo { margin: 26px auto 0; padding-top: 0; }
     #{{ uid }} .pc__arrow { width: 38px; height: 38px; }
     #{{ uid }} .pc__arrow--prev { left: -6px; }
     #{{ uid }} .pc__arrow--next { right: -6px; }
@@ -205,17 +205,17 @@
     { "type": "color", "id": "text_color", "label": "Quote color", "default": "#000000" },
     { "type": "color", "id": "control_color", "label": "Arrows & dots color", "default": "#672666" },
     { "type": "header", "content": "Quote font size" },
-    { "type": "range", "id": "quote_size_desktop", "min": 16, "max": 52, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 20 },
+    { "type": "range", "id": "quote_size_desktop", "min": 16, "max": 52, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 30 },
     { "type": "range", "id": "quote_size_mobile", "min": 14, "max": 36, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 20 },
     { "type": "header", "content": "Logo" },
-    { "type": "range", "id": "logo_max_height", "min": 16, "max": 120, "step": 1, "unit": "px", "label": "Logo height (desktop)", "default": 64 },
+    { "type": "range", "id": "logo_max_height", "min": 16, "max": 90, "step": 1, "unit": "px", "label": "Logo height", "default": 44 },
     { "type": "header", "content": "Autoplay" },
     { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
     { "type": "range", "id": "autoplay_seconds", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Seconds per slide", "default": 6 },
     { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "max_width", "min": 600, "max": 1300, "step": 20, "unit": "px", "label": "Content max width", "default": 1160 },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding top (desktop)", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding bottom (desktop)", "default": 48 }
+    { "type": "range", "id": "max_width", "min": 600, "max": 1300, "step": 20, "unit": "px", "label": "Content max width", "default": 1000 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
   ],
   "blocks": [
     {

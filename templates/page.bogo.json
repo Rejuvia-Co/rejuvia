@@ -116,7 +116,6 @@
       ],
       "name": "Offer Block",
       "settings": {
-        "add_quantity": 2,
         "product": "sleep-spray",
         "image_bg": "#ffffff",
         "sticky_offset": 100,
@@ -128,6 +127,7 @@
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Fall asleep in minutes and sleep through the entire night",
         "default_tier": 1,
+        "add_quantity": 2,
         "button_text": "BUY NOW",
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
@@ -147,6 +147,7 @@
         "section_bg": "#ffffff",
         "card_bg": "#ffffff",
         "accent_color": "#672666",
+        "selected_bg": "#f4ecf7",
         "show_trusted": true,
         "trusted_title": "Used nightly by 300K+ customers",
         "trusted_subtext": "who use Rejuvia to fall asleep faster and sleep through the full night.",
@@ -299,6 +300,63 @@
         "accent_color": "#672666"
       }
     },
+    "press_carousel_gJTCmt": {
+      "type": "press-carousel",
+      "blocks": {
+        "quote_pUQKPY": {
+          "type": "quote",
+          "settings": {
+            "quote": "Ranked #224 on the Inc. 5000 list of America's fastest-growing private companies",
+            "logo": "shopify://shop_images/Inc.-5000-Logo_1811b83c-d905-4bdb-a4ce-773836d83bf3.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_rYq4mc": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia is all-natural and the spray works as fast and effectively as anything else out there.\"",
+            "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_eza8QA": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Finally, I found something to take the edge off at night before I head to bed. I'm sleeping better than ever.\"",
+            "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_qQe6cC": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Shockingly effective. Knocks you out for the night and keeps you asleep until the morning.\"",
+            "logo": "shopify://shop_images/forbes_rejuvia_logo.png",
+            "logo_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "quote_pUQKPY",
+        "quote_rYq4mc",
+        "quote_eza8QA",
+        "quote_qQe6cC"
+      ],
+      "name": "Press Carousel",
+      "settings": {
+        "bg_color": "#EAEAF7",
+        "text_color": "#000000",
+        "control_color": "#672666",
+        "quote_size_desktop": 30,
+        "quote_size_mobile": 20,
+        "logo_max_height": 44,
+        "autoplay": true,
+        "autoplay_seconds": 6,
+        "max_width": 1000,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "how_it_works_Hc9igb": {
       "type": "how-it-works",
       "blocks": {
@@ -332,7 +390,8 @@
       "name": "How It Works",
       "settings": {
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results."
+        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results.",
+        "background_color": "#FFFFFF"
       }
     },
     "key_ingredients_v2_XxByCK": {
@@ -736,6 +795,7 @@
     "offer_block_C9tJiM",
     "customer_testimonials_video_b39r9z",
     "bogo_content_lp1",
+    "press_carousel_gJTCmt",
     "how_it_works_Hc9igb",
     "key_ingredients_v2_XxByCK",
     "product_comparison_enhanced_G6MmFh",

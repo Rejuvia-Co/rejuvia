@@ -357,44 +357,6 @@
         "padding_bottom": 48
       }
     },
-    "how_it_works_Hc9igb": {
-      "type": "how-it-works",
-      "blocks": {
-        "card_WEBagL": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
-            "description": "Spray 6-8 times under your tongue or inside your cheek."
-          }
-        },
-        "card_dBbLhQ": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
-            "description": "Hold in your mouth for at least 5-10 seconds."
-          }
-        },
-        "card_PD9LjK": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
-            "description": "Swallow and drift off to sleep."
-          }
-        }
-      },
-      "block_order": [
-        "card_WEBagL",
-        "card_dBbLhQ",
-        "card_PD9LjK"
-      ],
-      "disabled": true,
-      "name": "How It Works",
-      "settings": {
-        "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results.",
-        "background_color": "#ffffff"
-      }
-    },
     "how_to_use_steps_rmUcyN": {
       "type": "how-to-use-steps",
       "blocks": {
@@ -435,7 +397,13 @@
       "settings": {
         "background_color": "#ffffff",
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use Rejuvia 15–20 minutes before bed for the best results."
+        "subheading": "You should use Rejuvia 15–20 minutes before bed for the best results.",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "subheading_size": 18,
+        "subheading_size_mobile": 16,
+        "step_text_size": 18,
+        "step_text_size_mobile": 16
       }
     },
     "key_ingredients_v2_XxByCK": {
@@ -445,6 +413,18 @@
         "heading": "The key ingredients",
         "button_label": "View Supplement Label",
         "button_url": ""
+      }
+    },
+    "guarantee_section_gK7mPq": {
+      "type": "guarantee-section",
+      "settings": {
+        "icon": "shopify://shop_images/SealCheck.svg",
+        "title": "90-Day Money-Back Guarantee",
+        "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
+        "button_text": "Try Rejuvia Risk-Free",
+        "button_link": "#offer",
+        "sub_text": "90-Day Money Back Guarantee",
+        "bg_color": "#eaeaf7"
       }
     },
     "product_comparison_enhanced_G6MmFh": {
@@ -487,13 +467,13 @@
           "settings": {
             "feature_name": "Absorption Speed",
             "value_type_col_1": "text",
-            "text_col_1": "Rapid (5-10 min)",
+            "text_col_1": "Fast (5-10 min)",
             "value_type_col_2": "text",
-            "text_col_2": "Slow (up to 90 min)",
+            "text_col_2": "Slow (60-90 min)",
             "value_type_col_3": "text",
-            "text_col_3": "Slow (up to 90 min)",
+            "text_col_3": "Slow (60-90 min)",
             "value_type_col_4": "text",
-            "text_col_4": "Slow (up to 90 min)",
+            "text_col_4": "Slow (60-90 min)",
             "value_type_col_5": "cross",
             "text_col_5": ""
           }
@@ -618,18 +598,6 @@
         "section_padding_horizontal": 70,
         "bg_color": "#ffffff",
         "mobile_breakpoint": 750
-      }
-    },
-    "guarantee_section_gK7mPq": {
-      "type": "guarantee-section",
-      "settings": {
-        "icon": "shopify://shop_images/SealCheck.svg",
-        "title": "90-Day Money-Back Guarantee",
-        "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
-        "button_text": "Try Rejuvia Risk-Free",
-        "button_link": "#offer",
-        "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7"
       }
     },
     "17814435248f2fd49e": {
@@ -840,11 +808,10 @@
     "customer_testimonials_video_b39r9z",
     "bogo_content_lp1",
     "press_carousel_gJTCmt",
-    "how_it_works_Hc9igb",
     "how_to_use_steps_rmUcyN",
     "key_ingredients_v2_XxByCK",
-    "product_comparison_enhanced_G6MmFh",
     "guarantee_section_gK7mPq",
+    "product_comparison_enhanced_G6MmFh",
     "17814435248f2fd49e",
     "founder_story_v2_Rj7kQp",
     "faq_center_fQVeth",

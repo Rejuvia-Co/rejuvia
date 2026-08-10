@@ -1,0 +1,129 @@
+{%- comment -%}
+  How To Use (Steps) — redesign of the usage section.
+  Desktop: 3 photo steps in a row. Mobile: one hero photo (first step's
+  image) + three compact rows (64px circle thumb + STEP label + sentence).
+  Static, no JS. Each step is a section block (image, backdrop, label, text).
+  Headline matches the site standard (36/26). No eyebrow.
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = 'hus-' | append: section.id
+  assign hero = section.blocks.first
+-%}
+
+<style>
+  #{{ uid }} {
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+    font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  }
+  #{{ uid }} .hus__inner { max-width: 1200px; margin: 0 auto; padding: 72px 80px; display: flex; flex-direction: column; gap: 48px; box-sizing: border-box; }
+  #{{ uid }} .hus__header { display: flex; flex-direction: column; gap: 10px; text-align: center; align-items: center; }
+  #{{ uid }} .hus__heading { margin: 0; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; }
+  #{{ uid }} .hus__sub { margin: 0; font-size: 17px; line-height: 1.6; color: #3D2F3C; max-width: 720px; }
+
+  /* Mobile hero — hidden on desktop */
+  #{{ uid }} .hus__hero { display: none; }
+
+  /* Steps grid */
+  #{{ uid }} .hus__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  #{{ uid }} .hus__step { display: flex; flex-direction: column; gap: 18px; }
+  #{{ uid }} .hus__media { aspect-ratio: 16 / 11; border-radius: 14px; overflow: hidden; }
+  #{{ uid }} .hus__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
+  #{{ uid }} .hus__body { display: flex; flex-direction: column; gap: 8px; }
+  #{{ uid }} .hus__label { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #6B5B69; }
+  #{{ uid }} .hus__text { margin: 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #161015; text-wrap: pretty; }
+  #{{ uid }} .hus__text p { margin: 0; }
+  #{{ uid }} .hus__text strong { font-weight: 700; }
+
+  @media (max-width: 767px) {
+    #{{ uid }} .hus__inner { padding: 40px 16px 44px; gap: 24px; }
+    #{{ uid }} .hus__heading { font-size: 26px; line-height: 1.15; }
+    #{{ uid }} .hus__sub { font-size: 15px; line-height: 1.55; }
+    #{{ uid }} .hus__hero { display: block; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; }
+    #{{ uid }} .hus__hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+    #{{ uid }} .hus__grid { grid-template-columns: 1fr; gap: 14px; }
+    #{{ uid }} .hus__step { flex-direction: row; align-items: center; gap: 14px; }
+    #{{ uid }} .hus__media { flex: none; width: 64px; height: 64px; aspect-ratio: auto; border-radius: 100px; }
+    #{{ uid }} .hus__media img { object-position: 50% 18%; }
+    #{{ uid }} .hus__body { gap: 2px; }
+    #{{ uid }} .hus__label { font-size: 11px; }
+    #{{ uid }} .hus__text { font-size: 16px; line-height: 1.4; font-weight: 400; }
+  }
+</style>
+
+<section id="{{ uid }}" class="hus">
+  <div class="hus__inner">
+    <div class="hus__header">
+      {%- if section.settings.heading != blank -%}<h2 class="hus__heading">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="hus__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    {%- if hero.settings.image != blank -%}
+      <div class="hus__hero" style="background: {{ hero.settings.backdrop_color | default: '#F7EDEC' }};">
+        <img src="{{ hero.settings.image | image_url: width: 800 }}"
+             srcset="{{ hero.settings.image | image_url: width: 500 }} 500w, {{ hero.settings.image | image_url: width: 800 }} 800w"
+             sizes="100vw"
+             width="{{ hero.settings.image.width }}" height="{{ hero.settings.image.height }}"
+             alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="eager">
+      </div>
+    {%- endif -%}
+
+    <div class="hus__grid">
+      {%- for block in section.blocks -%}
+        <div class="hus__step" {{ block.shopify_attributes }}>
+          <div class="hus__media" style="background: {{ block.settings.backdrop_color | default: '#F7EDEC' }};">
+            {%- if block.settings.image != blank -%}
+              <img class="hus__img"
+                   src="{{ block.settings.image | image_url: width: 800 }}"
+                   srcset="{{ block.settings.image | image_url: width: 128 }} 128w, {{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 800 }} 800w"
+                   sizes="(max-width: 767px) 64px, 380px"
+                   width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                   alt="{{ block.settings.label | default: block.settings.image.alt | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="hus__body">
+            {%- if block.settings.label != blank -%}<p class="hus__label">{{ block.settings.label }}</p>{%- endif -%}
+            {%- if block.settings.text != blank -%}<div class="hus__text">{{ block.settings.text }}</div>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How To Use (Steps)",
+  "tag": "section",
+  "class": "how-to-use-steps-section",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How To Use Rejuvia" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "You should use your Sleep Spray 15–20 minutes before bed for the best results." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 3,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "color", "id": "backdrop_color", "label": "Photo backdrop", "default": "#F7EDEC" },
+        { "type": "text", "id": "label", "label": "Step label", "default": "STEP 1" },
+        { "type": "richtext", "id": "text", "label": "Instruction", "info": "Bold the quantity/duration.", "default": "<p>Spray <strong>6–8 times</strong> under your tongue or inside your cheek.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "How To Use (Steps)",
+      "blocks": [
+        { "type": "step", "settings": { "image": "shopify://shop_images/how_to_use_rejuvia_1.webp", "backdrop_color": "#F7EDEC", "label": "STEP 1", "text": "<p>Spray <strong>6–8 times</strong> under your tongue or inside your cheek.</p>" } },
+        { "type": "step", "settings": { "image": "shopify://shop_images/how_to_use_rejuvia_2.webp", "backdrop_color": "#F5F0F0", "label": "STEP 2", "text": "<p>Hold it in your mouth for at least <strong>5–10 seconds</strong>.</p>" } },
+        { "type": "step", "settings": { "image": "shopify://shop_images/how_to_use_rejuvia_3.webp", "backdrop_color": "#F7EDEC", "label": "STEP 3", "text": "<p>Swallow and drift off to sleep.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

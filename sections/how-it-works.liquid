@@ -1,5 +1,9 @@
 {{ 'sections-features.css' | asset_url | stylesheet_tag }}
 
+<style>
+  #shopify-section-{{ section.id }} { background-color: {{ section.settings.background_color | default: '#EBEDF6' }}; }
+</style>
+
 <div class="how-it-word-section_container">
   <h2 class="section-title--h1">
     {{ section.settings.heading }}
@@ -33,6 +37,12 @@
       "type": "text",
       "id": "subheading",
       "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#EBEDF6"
     }
   ],
   "blocks": [

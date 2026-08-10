@@ -1,0 +1,213 @@
+{%- comment -%}
+  Press Carousel — one press quote + logo per slide, on a full-bleed
+  brand-purple background. Prev/next arrows + dots. Each slide (quote +
+  logo image) is a section block. Editable quote font size for desktop
+  and mobile. Scoped CSS; Online Store 2.0 compatible.
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = 'pc-' | append: section.id
+  assign bg = section.settings.bg_color
+  assign fg = section.settings.text_color
+  assign ctrl = section.settings.control_color
+-%}
+
+<style>
+  #{{ uid }} {
+    background-color: {{ bg }};
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  }
+  #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
+  #{{ uid }} .pc__window { overflow: hidden; }
+  #{{ uid }} .pc__track { display: flex; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+  #{{ uid }} .pc__slide { flex: 0 0 100%; min-width: 0; box-sizing: border-box; padding: 0 60px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #{{ uid }} .pc__quote {
+    margin: 0;
+    color: {{ fg }};
+    font-size: {{ section.settings.quote_size_desktop }}px;
+    font-weight: 600;
+    line-height: 1.35;
+    max-width: 760px;
+  }
+  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: 26px auto 0; }
+
+  /* Arrows */
+  #{{ uid }} .pc__arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1.5px solid {{ ctrl }}; background: transparent; color: {{ ctrl }};
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0; transition: background .15s ease, opacity .15s ease; z-index: 2;
+  }
+  #{{ uid }} .pc__arrow:hover { background: rgba(255,255,255,0.14); }
+  #{{ uid }} .pc__arrow--prev { left: -8px; }
+  #{{ uid }} .pc__arrow--next { right: -8px; }
+  #{{ uid }} .pc__arrow svg { width: 18px; height: 18px; }
+
+  /* Dots */
+  #{{ uid }} .pc__dots { display: flex; justify-content: center; gap: 14px; margin-top: 34px; }
+  #{{ uid }} .pc__dot {
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1.5px solid {{ ctrl }}; background: transparent; padding: 0; cursor: pointer;
+    transition: background .15s ease;
+  }
+  #{{ uid }} .pc__dot.is-active { background: {{ ctrl }}; }
+
+  @media screen and (max-width: 767px) {
+    #{{ uid }} { padding: {{ section.settings.padding_top | times: 0.6 | round }}px 14px {{ section.settings.padding_bottom | times: 0.6 | round }}px; }
+    #{{ uid }} .pc__slide { padding: 0 44px; }
+    #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; }
+    #{{ uid }} .pc__arrow { width: 38px; height: 38px; }
+    #{{ uid }} .pc__arrow--prev { left: -6px; }
+    #{{ uid }} .pc__arrow--next { right: -6px; }
+    #{{ uid }} .pc__dots { margin-top: 26px; gap: 11px; }
+    #{{ uid }} .pc__dot { width: 13px; height: 13px; }
+  }
+</style>
+
+<section id="{{ uid }}" class="pc" aria-roledescription="carousel" aria-label="{{ section.settings.aria_label | default: 'Press quotes' | escape }}">
+  <div class="pc__viewport">
+    {%- if section.blocks.size > 1 -%}
+      <button type="button" class="pc__arrow pc__arrow--prev" data-pc-prev aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    {%- endif -%}
+
+    <div class="pc__window">
+      <div class="pc__track" data-pc-track>
+        {%- for block in section.blocks -%}
+          <div class="pc__slide" data-pc-slide role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.quote != blank -%}
+              <blockquote class="pc__quote">{{ block.settings.quote }}</blockquote>
+            {%- endif -%}
+            {%- if block.settings.logo != blank -%}
+              <img class="pc__logo"
+                   src="{{ block.settings.logo | image_url: width: 480 }}"
+                   srcset="{{ block.settings.logo | image_url: width: 240 }} 240w, {{ block.settings.logo | image_url: width: 480 }} 480w"
+                   sizes="240px"
+                   width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}"
+                   alt="{{ block.settings.logo_alt | default: 'Press logo' | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 1 -%}
+      <button type="button" class="pc__arrow pc__arrow--next" data-pc-next aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="pc__dots" role="tablist" aria-label="Choose slide">
+      {%- for block in section.blocks -%}
+        <button type="button" class="pc__dot{% if forloop.first %} is-active{% endif %}" data-pc-dot="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}" {% if forloop.first %}aria-current="true"{% endif %}></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('{{ uid }}');
+  if (!root) return;
+  var track = root.querySelector('[data-pc-track]');
+  var slides = Array.prototype.slice.call(root.querySelectorAll('[data-pc-slide]'));
+  var dots = Array.prototype.slice.call(root.querySelectorAll('[data-pc-dot]'));
+  if (!track || slides.length < 2) return;
+
+  var index = 0;
+  var count = slides.length;
+  var autoplay = {{ section.settings.autoplay | json }};
+  var intervalMs = {{ section.settings.autoplay_seconds | times: 1000 }};
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+
+  function render() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    dots.forEach(function (d, i) {
+      var on = i === index;
+      d.classList.toggle('is-active', on);
+      if (on) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+    });
+  }
+  function goTo(n) { index = (n % count + count) % count; render(); }
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  var prevBtn = root.querySelector('[data-pc-prev]');
+  var nextBtn = root.querySelector('[data-pc-next]');
+  if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+  dots.forEach(function (d) { d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-pc-dot'), 10)); restart(); }); });
+
+  function start() { if (!autoplay || reduce) return; stop(); timer = setInterval(next, intervalMs); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function restart() { stop(); start(); }
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  /* Swipe */
+  var startX = null;
+  root.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+  root.addEventListener('pointerup', function (e) {
+    if (startX === null) return;
+    var dx = e.clientX - startX;
+    if (dx < -40) { next(); restart(); } else if (dx > 40) { prev(); restart(); }
+    startX = null;
+  });
+
+  render();
+  start();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Press Carousel",
+  "tag": "section",
+  "class": "press-carousel-section",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#672666" },
+    { "type": "color", "id": "text_color", "label": "Quote color", "default": "#ffffff" },
+    { "type": "color", "id": "control_color", "label": "Arrows & dots color", "default": "#ffffff" },
+    { "type": "header", "content": "Quote font size" },
+    { "type": "range", "id": "quote_size_desktop", "min": 16, "max": 52, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 30 },
+    { "type": "range", "id": "quote_size_mobile", "min": 14, "max": 36, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 20 },
+    { "type": "header", "content": "Logo" },
+    { "type": "range", "id": "logo_max_height", "min": 16, "max": 90, "step": 1, "unit": "px", "label": "Logo height", "default": 44 },
+    { "type": "header", "content": "Autoplay" },
+    { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
+    { "type": "range", "id": "autoplay_seconds", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Seconds per slide", "default": 6 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "max_width", "min": 600, "max": 1300, "step": 20, "unit": "px", "label": "Content max width", "default": 1000 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Press quote",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Transparent PNG/SVG. Use a light/white logo since the background is dark." },
+        { "type": "text", "id": "logo_alt", "label": "Logo alt text", "info": "For accessibility, e.g. the publication name." }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Press Carousel",
+      "blocks": [
+        { "type": "quote", "settings": { "quote": "\"The ultimate answer to midday burnout. The boost in clarity is amazing, and best of all, there are zero jitters and no crash.\"" } },
+        { "type": "quote", "settings": { "quote": "\"Three reasons we're switching: it boosts mood, enhances immunity, and maintains that delicious, authentic coffee taste we love.\"" } },
+        { "type": "quote", "settings": { "quote": "\"Shockingly effective after just a few days. Best-tasting mushroom coffee on the market.\"" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

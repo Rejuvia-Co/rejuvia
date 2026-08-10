@@ -20,17 +20,17 @@
   }
   #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
   #{{ uid }} .pc__window { overflow: hidden; }
-  #{{ uid }} .pc__track { display: flex; transition: transform .4s cubic-bezier(.22,1,.36,1); }
-  #{{ uid }} .pc__slide { flex: 0 0 100%; min-width: 0; box-sizing: border-box; padding: 0 60px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+  #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 0 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
   #{{ uid }} .pc__quote {
     margin: 0;
     color: {{ fg }};
     font-size: {{ section.settings.quote_size_desktop }}px;
-    font-weight: 600;
-    line-height: 1.35;
-    max-width: 760px;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 420px;
   }
-  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: 26px auto 0; }
+  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: auto auto 0; padding-top: 26px; }
 
   /* Arrows */
   #{{ uid }} .pc__arrow {
@@ -40,7 +40,7 @@
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer; padding: 0; transition: background .15s ease, opacity .15s ease; z-index: 2;
   }
-  #{{ uid }} .pc__arrow:hover { background: rgba(255,255,255,0.14); }
+  #{{ uid }} .pc__arrow:hover { background: rgba(0,0,0,0.05); }
   #{{ uid }} .pc__arrow--prev { left: -8px; }
   #{{ uid }} .pc__arrow--next { right: -8px; }
   #{{ uid }} .pc__arrow svg { width: 18px; height: 18px; }
@@ -56,8 +56,10 @@
 
   @media screen and (max-width: 767px) {
     #{{ uid }} { padding: {{ section.settings.padding_top | times: 0.6 | round }}px 14px {{ section.settings.padding_bottom | times: 0.6 | round }}px; }
-    #{{ uid }} .pc__slide { padding: 0 44px; }
-    #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; }
+    #{{ uid }} .pc__track { align-items: flex-start; }
+    #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 44px; justify-content: center; }
+    #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; max-width: 100%; }
+    #{{ uid }} .pc__logo { margin: 26px auto 0; padding-top: 0; }
     #{{ uid }} .pc__arrow { width: 38px; height: 38px; }
     #{{ uid }} .pc__arrow--prev { left: -6px; }
     #{{ uid }} .pc__arrow--next { right: -6px; }
@@ -102,11 +104,7 @@
   </div>
 
   {%- if section.blocks.size > 1 -%}
-    <div class="pc__dots" role="tablist" aria-label="Choose slide">
-      {%- for block in section.blocks -%}
-        <button type="button" class="pc__dot{% if forloop.first %} is-active{% endif %}" data-pc-dot="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}" {% if forloop.first %}aria-current="true"{% endif %}></button>
-      {%- endfor -%}
-    </div>
+    <div class="pc__dots" data-pc-dots role="tablist" aria-label="Choose slide"></div>
   {%- endif -%}
 </section>
 
@@ -116,35 +114,64 @@
   if (!root) return;
   var track = root.querySelector('[data-pc-track]');
   var slides = Array.prototype.slice.call(root.querySelectorAll('[data-pc-slide]'));
-  var dots = Array.prototype.slice.call(root.querySelectorAll('[data-pc-dot]'));
+  var dotsWrap = root.querySelector('[data-pc-dots]');
   if (!track || slides.length < 2) return;
 
-  var index = 0;
   var count = slides.length;
   var autoplay = {{ section.settings.autoplay | json }};
   var intervalMs = {{ section.settings.autoplay_seconds | times: 1000 }};
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timer = null;
+  var prevBtn = root.querySelector('[data-pc-prev]');
+  var nextBtn = root.querySelector('[data-pc-next]');
+  var timer = null, pos = 0, perView = 1, positions = 1, dots = [];
+
+  function calcPerView() { return (window.matchMedia && window.matchMedia('(min-width: 768px)').matches) ? 3 : 1; }
+
+  function buildDots() {
+    dots = [];
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    if (positions < 2) return;
+    for (var i = 0; i < positions; i++) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pc__dot' + (i === pos ? ' is-active' : '');
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      (function (n) { b.addEventListener('click', function () { goTo(n); restart(); }); })(i);
+      dotsWrap.appendChild(b);
+      dots.push(b);
+    }
+  }
 
   function render() {
-    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    var step = 100 / perView;
+    track.style.transform = 'translateX(' + (-pos * step) + '%)';
     dots.forEach(function (d, i) {
-      var on = i === index;
+      var on = i === pos;
       d.classList.toggle('is-active', on);
       if (on) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
     });
+    var hide = positions < 2;
+    if (prevBtn) prevBtn.style.display = hide ? 'none' : '';
+    if (nextBtn) nextBtn.style.display = hide ? 'none' : '';
   }
-  function goTo(n) { index = (n % count + count) % count; render(); }
-  function next() { goTo(index + 1); }
-  function prev() { goTo(index - 1); }
 
-  var prevBtn = root.querySelector('[data-pc-prev]');
-  var nextBtn = root.querySelector('[data-pc-next]');
+  function layout() {
+    perView = calcPerView();
+    positions = Math.max(1, count - perView + 1);
+    if (pos > positions - 1) pos = positions - 1;
+    buildDots();
+    render();
+  }
+
+  function goTo(n) { pos = (n % positions + positions) % positions; render(); }
+  function next() { goTo(pos + 1); }
+  function prev() { goTo(pos - 1); }
+
   if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
   if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
-  dots.forEach(function (d) { d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-pc-dot'), 10)); restart(); }); });
 
-  function start() { if (!autoplay || reduce) return; stop(); timer = setInterval(next, intervalMs); }
+  function start() { if (!autoplay || reduce || positions < 2) return; stop(); timer = setInterval(next, intervalMs); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
   function restart() { stop(); start(); }
   root.addEventListener('mouseenter', stop);
@@ -160,7 +187,10 @@
     startX = null;
   });
 
-  render();
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 150); });
+
+  layout();
   start();
 })();
 </script>

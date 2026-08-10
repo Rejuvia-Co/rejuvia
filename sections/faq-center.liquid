@@ -20,7 +20,7 @@
 .fc__title {
   font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
-  font-size: 52px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.52px;
@@ -84,7 +84,7 @@
 
 @media (max-width: 749px) {
   .fc__container { padding: {{ section.settings.padding_top | default: 64 | times: 0.6 | round }}px 16px {{ section.settings.padding_bottom | default: 64 | times: 0.6 | round }}px; }
-  .fc__title { font-size: 36px; letter-spacing: -0.52px; margin-bottom: 24px; }
+  .fc__title { font-size: 26px; letter-spacing: -0.52px; margin-bottom: 24px; }
   .fc__q { font-size: {{ section.settings.question_size | default: 18 | minus: 2 }}px; padding: 20px 2px; }
 }
 {% endstyle %}

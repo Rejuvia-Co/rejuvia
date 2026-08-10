@@ -2936,17 +2936,26 @@
               "logo": "shopify://shop_images/forbes_rejuvia_logo.png",
               "logo_alt": ""
             }
+          },
+          "quote_NV7DGK": {
+            "type": "quote",
+            "settings": {
+              "quote": "\"Rejuvia works as advertised. It's highly effective, safe and natural.\"",
+              "logo": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+              "logo_alt": ""
+            }
           }
         },
         "block_order": [
           "quote_8qj3Lr",
           "quote_N9h3U4",
           "quote_pVGafC",
-          "quote_aQhgPB"
+          "quote_aQhgPB",
+          "quote_NV7DGK"
         ],
         "name": "Press Carousel",
         "settings": {
-          "bg_color": "#EAEAF7",
+          "bg_color": "#eaeaf7",
           "text_color": "#000000",
           "control_color": "#672666",
           "quote_size_desktop": 20,

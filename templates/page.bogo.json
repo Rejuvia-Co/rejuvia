@@ -387,11 +387,55 @@
         "card_dBbLhQ",
         "card_PD9LjK"
       ],
+      "disabled": true,
       "name": "How It Works",
       "settings": {
         "heading": "How To Use Rejuvia",
         "subheading": "You should use your Sleep Spray 15-20 minutes before bed for the best results.",
         "background_color": "#ffffff"
+      }
+    },
+    "how_to_use_steps_rmUcyN": {
+      "type": "how-to-use-steps",
+      "blocks": {
+        "step_FXirf6": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+            "backdrop_color": "#f7edec",
+            "label": "STEP 1",
+            "text": "<p>Spray Rejuvia 6–8 times under your tongue or inside your cheek</p>"
+          }
+        },
+        "step_i7qPND": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
+            "backdrop_color": "#f5f0f0",
+            "label": "STEP 2",
+            "text": "<p>Hold Rejuvia  in your mouth for at least 5–10 seconds</p>"
+          }
+        },
+        "step_AyzCTT": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
+            "backdrop_color": "#f7edec",
+            "label": "STEP 3",
+            "text": "<p>Swallow and get ready to drift off to a deep, peaceful sleep</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_FXirf6",
+        "step_i7qPND",
+        "step_AyzCTT"
+      ],
+      "name": "How To Use (Steps)",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "How To Use Rejuvia",
+        "subheading": "You should use Rejuvia 15–20 minutes before bed for the best results."
       }
     },
     "key_ingredients_v2_XxByCK": {
@@ -797,6 +841,7 @@
     "bogo_content_lp1",
     "press_carousel_gJTCmt",
     "how_it_works_Hc9igb",
+    "how_to_use_steps_rmUcyN",
     "key_ingredients_v2_XxByCK",
     "product_comparison_enhanced_G6MmFh",
     "guarantee_section_gK7mPq",

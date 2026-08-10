@@ -1,6 +1,17 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
+#shopify-section-{{ section.id }} .reviews_section-title {
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.52px;
+  color: #171512;
+}
+@media (max-width: 749px) {
+  #shopify-section-{{ section.id }} .reviews_section-title { font-size: 26px; }
+}
 {%- if section.settings.bg_color != blank -%}
 #shopify-section-{{ section.id }} { background: {{ section.settings.bg_color }}; }
 {%- endif -%}

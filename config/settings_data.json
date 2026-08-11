@@ -706,8 +706,8 @@
               "first_url": "shopify://pages/ingredients",
               "second_label": "Reviews",
               "second_url": "shopify://pages/reviews",
-              "third_label": "Our Story",
-              "third_url": "",
+              "third_label": "FAQs",
+              "third_url": "shopify://pages/rejuvia-faqs",
               "fourth_label": "",
               "fourth_url": ""
             }

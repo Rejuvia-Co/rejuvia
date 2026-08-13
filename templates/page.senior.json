@@ -125,7 +125,12 @@
         "rating_text_size": 16,
         "rating_text": "<p>Used By <strong>300,000+</strong> Customers</p>",
         "title": "Rejuvia Sleep Spray",
-        "subtitle": "Claim our Senior Citizen Buy One, Get One Free discount now",
+        "subtitle": "Fall asleep in minutes and sleep through the entire night",
+        "pill_text": "Senior Citizen Buy One Get One FREE",
+        "pill_size": 16,
+        "pill_size_mobile": 14,
+        "pill_color": "#ffffff",
+        "pill_bg": "#5d215f",
         "default_tier": 1,
         "add_quantity": 2,
         "button_text": "BUY NOW",
@@ -155,8 +160,7 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#34c759",
-        "pill_text": "Best Seller"
+        "trusted_check": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {

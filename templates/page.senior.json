@@ -131,6 +131,8 @@
         "pill_size_mobile": 14,
         "pill_color": "#ffffff",
         "pill_bg": "#5d215f",
+        "header_gap": 12,
+        "header_gap_mobile": 8,
         "default_tier": 1,
         "add_quantity": 2,
         "button_text": "BUY NOW",

@@ -55,6 +55,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* Gallery */
 .ob__main { position: relative; width: 100%; display: grid; place-items: center; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
 .ob__main img { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
+.ob__gallery-badge { position: absolute; left: 14px; top: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .ob__thumbs-row { display: flex; align-items: center; gap: 10px; }
 .ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
 .ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
@@ -142,7 +143,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__badge { font-size: {{ section.settings.pill_size_mobile | default: 13 }}px; }
   .ob-{{ section.id }} .ob__rating { justify-content: center; }
   .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; text-align: center; }
-  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; }
+  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; padding: 0 12px; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 }}px; }
   .ob__gallery-inner { position: static; }
   .ob__main { min-height: 0; }
@@ -178,6 +179,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- capture ob_chevron -%}<svg class="ob__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
 
 {%- assign gallery_product = section.settings.product -%}
+{%- capture ob_badge_src -%}{%- if section.settings.badge_image != blank -%}{{ section.settings.badge_image | image_url: width: 200 }}{%- elsif section.settings.badge_asset != blank -%}{{ section.settings.badge_asset | asset_url }}{%- endif -%}{%- endcapture -%}
 
 <section class="ob-{{ section.id }}" id="ob-{{ section.id }}">
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
@@ -202,6 +204,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       <div class="ob__gallery-inner">
       <div class="ob__main">
         {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">{%- endif -%}
+        {%- if ob_badge_src != blank -%}<img class="ob__gallery-badge" data-ob-badge src="{{ ob_badge_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
         <div class="ob__thumbs-row">
@@ -342,6 +345,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
   /* Gallery */
   var mainImg = sec.querySelector('[data-ob-main]');
+  var galBadge = sec.querySelector('[data-ob-badge]');
   var thumbs = [].slice.call(sec.querySelectorAll('[data-ob-thumb]'));
   var dots = [].slice.call(sec.querySelectorAll('[data-ob-dot]'));
   var idx = 0;
@@ -354,6 +358,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     thumbs.forEach(function (x) { x.classList.remove('is-active'); });
     t.classList.add('is-active');
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    if (galBadge) galBadge.style.display = idx === 0 ? '' : 'none';
     if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
   thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
@@ -431,6 +436,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
     { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
     { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Gallery sticky offset (desktop)", "info": "Increase to clear a sticky header/bar (e.g. ~80 on the listicle page).", "default": 24 },
+    { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown top-left on the first image only (e.g. Inc. 5000). Leave empty to hide." },
+    { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "info": "Filename in assets/, used if no badge image is picked." },
     { "type": "header", "content": "Header" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
     { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },

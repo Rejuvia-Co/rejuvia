@@ -80,8 +80,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__bottle--free { background: transparent; border: 1.5px solid #00b10d; transition: background .18s ease; }
 .obd__tier.is-selected .obd__bottle { background: #672666; }
 .obd__tier.is-selected .obd__bottle--free { background: #eefaf0; }
-.obd__tinfo { flex: 1; min-width: 0; }
-.obd__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; line-height: 1.25; white-space: nowrap; }
+.obd__tinfo { flex: 1; min-width: 0; text-align: left; }
+.obd__tname { display: block; font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; line-height: 1.25; white-space: nowrap; }
 .obd__tsub { font-size: 15px; line-height: 1.35; color: rgba(243,233,243,.62); margin-top: 6px; white-space: nowrap; transition: color .18s ease; }
 .obd__tier.is-selected .obd__tsub { color: #6b6660; }
 .obd__tsub--m { display: none; }
@@ -100,7 +100,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tag--goldoutline { background: #723e4f; color: #EAC78B; border: 1px solid rgba(250,184,81,.6); }
 
 /* ---- Receipt ---- */
-.obd__receipt { background: rgba(255,255,255,.08); border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #f3e9f3; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
+.obd__receipt { text-align: left; background: rgba(255,255,255,.08); border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #f3e9f3; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
 .obd__receipt b { font-weight: 800; }
 .obd__rcheck { color: #EAC78B; font-weight: 800; }
 .obd__receipt p { margin: 0; display: inline; }
@@ -132,7 +132,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1); }
 .obd__tab.is-open .obd__tab-a { grid-template-rows: 1fr; }
 .obd__tab-a-inner { overflow: hidden; }
-.obd__tab-body { font-size: {{ section.settings.tab_body_size | default: 17 }}px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
+.obd__tab-body { text-align: left; font-size: {{ section.settings.tab_body_size | default: 17 }}px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
 .obd__tab-body p { margin: 0 0 10px; }
 .obd__tab-body p:last-child { margin-bottom: 0; }
 .obd__tab-body strong { color: #171512; font-weight: 800; }

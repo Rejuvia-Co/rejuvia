@@ -48,7 +48,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Gallery ---- */
 .obh__main { position: relative; background: {{ section.settings.gallery_bg | default: '#ffffff' }}; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .obh__main img[data-obh-main] { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
-.obh__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
+.obh__inc { position: absolute; left: 14px; top: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obh__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obh__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
 .obh__arrow:hover { background: #f6eef6; }
@@ -79,15 +79,15 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obh__bottle { width: 10px; height: 28px; border-radius: 3px; background: #672666; border-top: 6px solid #fab851; }
 .obh__bottle--free { background: #eefaf0; border: 1.5px solid #00b10d; }
 .obh__tinfo { flex: 1; min-width: 0; }
-.obh__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; color: #171512; white-space: nowrap; }
-.obh__tsub { font-size: 14px; color: #6b6660; margin-top: 4px; white-space: nowrap; }
+.obh__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; line-height: 1.25; color: #171512; white-space: nowrap; }
+.obh__tsub { font-size: 14px; line-height: 1.35; color: #6b6660; margin-top: 6px; white-space: nowrap; }
 .obh__tsub--m { display: none; }
 .obh__pcol { width: 120px; flex: none; text-align: right; }
 .obh__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
 .obh__price { font-size: 21px; font-weight: 800; color: #171512; }
 .obh__tier--featured .obh__price { color: #672666; }
 .obh__struck { font-size: 15px; color: #a9a3b2; text-decoration: line-through; }
-.obh__save { font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 4px; }
+.obh__save { font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 6px; }
 .obh__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obh__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obh__tag--gold { background: #c9920e; color: #fff; }
@@ -161,7 +161,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obh__prices { gap: 5px; }
   .obh__price { font-size: 18px; }
   .obh__struck { font-size: 13px; }
-  .obh__save { font-size: 11.5px; margin-top: 3px; }
+  .obh__save { font-size: 11.5px; margin-top: 4px; }
   .obh__save--pill { padding: 2px 7px; }
   .obh__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
   .obh__shipbar { padding: 9px 12px; font-size: 13px; margin-top: 10px; }

@@ -1,7 +1,7 @@
 {
   "sections": {
     "offer_block_C9tJiM": {
-      "type": "offer-block-hero",
+      "type": "offer-block-ladder",
       "blocks": {
         "tier_1": {
           "type": "tier",
@@ -30,7 +30,8 @@
             "compare_price": "$90",
             "savings_text": "SAVE $60",
             "featured": true,
-            "strip_text": "MOST POPULAR \u00b7 OUR BEST SELLER"
+            "tag": "MOST POPULAR",
+            "tag_style": "plum"
           }
         },
         "tier_3": {
@@ -130,7 +131,8 @@
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "section_bg": "#ffffff",
         "unit_line": "<p>Just <strong>$15 per bottle</strong> \u2014 the same price at every pack size</p>",
-        "unit_line_mobile": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>"
+        "unit_line_mobile": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>",
+        "unlock_text": "Free US shipping unlocked on 4- and 6-bottle packs"
       }
     },
     "customer_testimonials_video_b39r9z": {

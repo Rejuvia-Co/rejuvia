@@ -1,0 +1,561 @@
+{%- comment -%}
+  Offer Block V1 — Hero Default (BOGO1 template).
+  Redesigned buy-box from the "BOGO Buy-Box Explorations" handoff, variant 3a:
+  one strict tier grid; the recommended pack is flagged by a full-width purple
+  header strip + lavender fill, never by breaking column alignment/type scale.
+  Desktop: sticky left column (gallery + FB review); right column scrolls.
+  Shares the sticky-CTA contract with offer-block via body.ob-offer-visible.
+{%- endcomment -%}
+
+{% style %}
+html { scroll-behavior: smooth; }
+body.ob-offer-visible .sticky-cta-v2-section,
+body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important; }
+/* Desktop sticky gallery: the theme's .content-wrapper has overflow:hidden,
+   which breaks position:sticky. Switch ancestors to clip + visible. */
+@media (min-width: 901px) {
+  main:has(.obh-{{ section.id }}), .content-wrapper:has(.obh-{{ section.id }}) { overflow-x: clip; overflow-y: visible; }
+  #shopify-section-{{ section.id }} { overflow-x: clip; overflow-y: visible; }
+}
+
+.obh-{{ section.id }} {
+  background-color: {{ section.settings.section_bg | default: '#ffffff' }};
+  font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+}
+/* Neutralize theme-wide text styling, then re-apply per element via vars. */
+.obh-{{ section.id }}, .obh-{{ section.id }} *, .obh-{{ section.id }} *::before, .obh-{{ section.id }} *::after {
+  text-transform: var(--tt, none) !important;
+  letter-spacing: var(--ls, normal) !important;
+  word-spacing: normal !important;
+  box-sizing: border-box;
+}
+
+.obh__wrap { max-width: 1120px; margin: 0 auto; padding: 36px; display: grid; grid-template-columns: 430px minmax(0, 1fr); grid-template-areas: "gallery header" "gallery buybox"; column-gap: 44px; row-gap: 0; align-items: start; }
+.obh__header { grid-area: header; min-width: 0; }
+.obh__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
+.obh__buybox { grid-area: buybox; min-width: 0; }
+.obh__left-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 16 }}px; display: flex; flex-direction: column; gap: 16px; }
+
+/* ---- Header ---- */
+.obh__eyebrow { --tt: uppercase; --ls: .5px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; color: #4a4550; }
+.obh__stars { display: inline-flex; gap: 1.5px; flex-shrink: 0; }
+.obh__stars svg { width: 14px; height: 14px; display: block; }
+.obh__eyebrow strong { color: #672666; font-weight: 800; }
+.obh__eyebrow p { margin: 0; display: inline; }
+.obh__title { --ls: -1.5px; font-size: 44px; line-height: 1.02; font-weight: 800; color: #171512; margin: 10px 0 0; }
+.obh__subtitle { font-size: 16.5px; line-height: 1.35; color: #4a4550; margin: 10px 0 0; }
+
+/* ---- Gallery ---- */
+.obh__main { position: relative; background: {{ section.settings.gallery_bg | default: '#f5f2fb' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.obh__main img[data-obh-main] { width: 80%; height: 80%; object-fit: contain; display: block; }
+.obh__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
+.obh__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
+.obh__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
+.obh__arrow:hover { background: #f6eef6; }
+.obh__arrow svg { width: 14px; height: 14px; display: block; }
+.obh__thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; max-width: 100%; }
+.obh__thumbs::-webkit-scrollbar { display: none; }
+.obh__thumb { flex: none; width: 48px; height: 48px; border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
+.obh__thumb img { width: 84%; height: 84%; object-fit: contain; display: block; }
+.obh__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
+.obh__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
+.obh__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
+.obh__dot.is-active { background: #672666; }
+
+/* ---- Tier grid ---- */
+.obh__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+.obh__tier { position: relative; display: block; background: #fff; border: 1.5px solid #e6e1ee; border-radius: 12px; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
+.obh__tier.is-selected { border-color: #672666; box-shadow: inset 0 0 0 .5px #672666; background: #faf7fd; }
+.obh__tier--featured { overflow: hidden; box-shadow: 0 8px 24px rgba(45,21,48,.10); }
+.obh__tier--featured.is-selected { box-shadow: inset 0 0 0 .5px #672666, 0 8px 24px rgba(45,21,48,.10); }
+.obh__tier input { position: absolute; opacity: 0; pointer-events: none; }
+.obh__strip { --tt: uppercase; --ls: 1.2px; background: #672666; color: #fff; font-size: 11.5px; font-weight: 800; padding: 6px 16px; }
+.obh__row { display: flex; align-items: center; gap: 14px; padding: 15px 16px; }
+.obh__radio { flex: none; width: 20px; height: 20px; border: 2px solid #cfc9dd; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
+.obh__tier.is-selected .obh__radio { border-color: #672666; }
+.obh__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #672666; opacity: 0; transition: opacity .18s ease; }
+.obh__tier.is-selected .obh__radio::after { opacity: 1; }
+.obh__picto { display: flex; gap: 4px; align-items: center; width: 84px; flex: none; }
+.obh__bottle { width: 10px; height: 28px; border-radius: 3px; background: #672666; border-top: 6px solid #fab851; }
+.obh__bottle--free { background: #eefaf0; border: 1.5px solid #00b10d; }
+.obh__tinfo { flex: 1; min-width: 0; }
+.obh__tname { font-size: 17px; font-weight: 800; color: #171512; white-space: nowrap; }
+.obh__tsub { font-size: 12.5px; color: #6b6660; margin-top: 3px; white-space: nowrap; }
+.obh__tsub--m { display: none; }
+.obh__pcol { width: 120px; flex: none; text-align: right; }
+.obh__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
+.obh__price { font-size: 19px; font-weight: 800; color: #171512; }
+.obh__tier--featured .obh__price { color: #672666; }
+.obh__struck { font-size: 13.5px; color: #a9a3b2; text-decoration: line-through; }
+.obh__save { font-size: 11.5px; font-weight: 800; color: #018e1c; margin-top: 3px; }
+.obh__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
+.obh__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
+.obh__tag--gold { background: #c9920e; color: #fff; }
+.obh__tag--plum { background: #672666; color: #fff; }
+
+/* ---- Below tiers ---- */
+.obh__unit { font-size: 12.5px; color: #6b6660; text-align: center; margin-top: 16px; }
+.obh__unit p { margin: 0; }
+.obh__unit strong, .obh__unit b { color: #171512; font-weight: 800; }
+.obh__unit--m { display: none; }
+.obh__shipbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #f2f2f8; border-radius: 10px; padding: 11px 15px; font-size: 12.5px; color: #171512; margin-top: 12px; }
+.obh__shipseg { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+.obh__shipdot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #00b10d; }
+.obh__shipseg b { font-weight: 800; }
+.obh__shipseg--right { font-weight: 700; }
+.obh__flag { flex: none; display: block; width: 18px; height: 13px; }
+.obh__buy { --ls: 1.2px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: #fab851; color: #46184a; border: none; border-radius: 100px; height: 58px; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer; margin-top: 14px; box-shadow: 0 6px 18px rgba(45,21,48,.14); transition: background .14s ease, transform .14s ease; }
+.obh__buy:hover { background: #f5aa38; transform: translateY(-1px); }
+.obh__buy:active { transform: translateY(1px); }
+.obh__buy:disabled { cursor: default; }
+.obh__spinner { display: none; width: 22px; height: 22px; border: 2.5px solid rgba(70,24,74,.3); border-top-color: #46184a; border-radius: 50%; animation: obh-spin .6s linear infinite; }
+.obh__buy.is-loading .obh__buy-label { display: none; }
+.obh__buy.is-loading .obh__spinner { display: block; }
+@keyframes obh-spin { to { transform: rotate(360deg); } }
+.obh__trust { --tt: uppercase; --ls: .6px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 16px; font-size: 11px; font-weight: 700; color: #4a4550; }
+.obh__trust .obh__check { color: #672666; }
+.obh__payments { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.obh__payments svg { height: 24px; width: auto; display: block; }
+.obh__fb { display: block; width: 100%; height: auto; }
+.obh__fb--mobile { display: none; }
+
+/* ---- Accordion ---- */
+.obh__tabs { margin-top: 26px; border-top: 1px solid #e6e2ec; }
+.obh__tab { border-bottom: 1px solid #e6e2ec; }
+.obh__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 17px; font-weight: 800; color: #171512; line-height: 1.3; }
+.obh__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.obh__chev { flex: none; width: 15px; height: 15px; color: #672666; transition: transform 260ms cubic-bezier(.22,1,.36,1); }
+.obh__tab.is-open .obh__chev { transform: rotate(180deg); }
+.obh__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1); }
+.obh__tab.is-open .obh__tab-a { grid-template-rows: 1fr; }
+.obh__tab-a-inner { overflow: hidden; }
+.obh__tab-body { font-size: 14px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
+.obh__tab-body p { margin: 0 0 10px; }
+.obh__tab-body p:last-child { margin-bottom: 0; }
+.obh__tab-body strong { color: #171512; font-weight: 800; }
+
+/* ---- Social proof bar ---- */
+.obh__social { display: flex; align-items: center; gap: 16px; background: #f4f3f7; border-radius: 14px; padding: 14px 18px; margin-top: 20px; }
+.obh__avatars { position: relative; display: flex; flex: none; }
+.obh__avatar { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; background: #ded7ea; object-fit: cover; display: block; }
+.obh__avatar + .obh__avatar { margin-left: -14px; }
+.obh__socialcheck { position: absolute; top: -2px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: #00b10d; color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+.obh__socialtext { min-width: 0; }
+.obh__socialtitle { --ls: -.2px; font-size: 16px; font-weight: 800; color: #171512; margin: 0; }
+.obh__socialsub { font-size: 13.5px; color: #4a4550; margin: 2px 0 0; }
+
+/* ---- Mobile ---- */
+@media (max-width: 900px) {
+  .obh-{{ section.id }} { overflow-x: clip; }
+  .obh__wrap { display: flex; flex-direction: column; padding: 18px 16px; gap: 0; }
+  .obh__header { text-align: center; }
+  .obh__eyebrow { justify-content: center; }
+  .obh__eyebrow .obh__stars svg { width: 12px; height: 12px; }
+  .obh__eyebrow { font-size: 10.5px; --ls: .4px; }
+  .obh__title { font-size: 31px; line-height: 1.05; --ls: -1.1px; margin-top: 7px; }
+  .obh__subtitle { font-size: 14px; margin-top: 7px; }
+  .obh__gallery { margin-top: 16px; }
+  .obh__left-inner { position: static; gap: 0; }
+  .obh__fb--desktop { display: none; }
+  .obh__fb--mobile { display: block; margin-top: 16px; }
+  .obh__buybox { margin-top: 14px; }
+  .obh__tiers { gap: 14px; margin-top: 0; }
+  .obh__row { gap: 10px; padding: 13px 10px; }
+  .obh__strip { font-size: 9.5px; --ls: 1px; padding: 5px 12px; }
+  .obh__picto { gap: 2px; width: 52px; }
+  .obh__bottle { width: 7px; height: 24px; border-radius: 2px; border-top-width: 5px; }
+  .obh__bottle--free { border: 1.5px solid #00b10d; }
+  .obh__tname { font-size: 15px; }
+  .obh__tsub { font-size: 11.5px; }
+  .obh__tsub--d { display: none; }
+  .obh__tsub--m { display: block; }
+  .obh__pcol { width: 76px; }
+  .obh__prices { gap: 5px; }
+  .obh__price { font-size: 16.5px; }
+  .obh__struck { font-size: 12px; }
+  .obh__save { font-size: 10.5px; margin-top: 2px; }
+  .obh__save--pill { padding: 2px 7px; }
+  .obh__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
+  .obh__unit { font-size: 11.5px; margin-top: 14px; }
+  .obh__unit--d { display: none; }
+  .obh__unit--m { display: block; }
+  .obh__shipbar { padding: 9px 12px; font-size: 11.5px; margin-top: 10px; }
+  .obh__buy { height: 54px; font-size: 15px; --ls: 1.1px; margin-top: 12px; box-shadow: none; }
+  .obh__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; --ls: .5px; }
+  .obh__payments { gap: 5px; margin-top: 10px; }
+  .obh__payments svg { height: 22px; }
+  .obh__tabs { margin-top: 18px; }
+  .obh__social { margin-top: 16px; }
+}
+{% endstyle %}
+
+{%- capture obh_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg>{%- endcapture -%}
+{%- capture obh_chevron -%}<svg class="obh__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
+{%- capture obh_flag -%}<svg class="obh__flag" viewBox="0 0 20 14" aria-hidden="true" focusable="false"><rect width="20" height="14" rx="1.5" fill="#fff"/><g fill="#B22234"><rect width="20" height="1.08" y="0"/><rect width="20" height="1.08" y="2.15"/><rect width="20" height="1.08" y="4.31"/><rect width="20" height="1.08" y="6.46"/><rect width="20" height="1.08" y="8.62"/><rect width="20" height="1.08" y="10.77"/><rect width="20" height="1.08" y="12.92"/></g><rect width="9" height="7.54" fill="#3C3B6E"/><g fill="#fff"><circle cx="1.8" cy="1.5" r="0.5"/><circle cx="4.5" cy="1.5" r="0.5"/><circle cx="7.2" cy="1.5" r="0.5"/><circle cx="3.15" cy="3.0" r="0.5"/><circle cx="5.85" cy="3.0" r="0.5"/><circle cx="1.8" cy="4.5" r="0.5"/><circle cx="4.5" cy="4.5" r="0.5"/><circle cx="7.2" cy="4.5" r="0.5"/><circle cx="3.15" cy="6.0" r="0.5"/><circle cx="5.85" cy="6.0" r="0.5"/></g></svg>{%- endcapture -%}
+
+{%- assign gallery_product = section.settings.product -%}
+{%- assign ship_ts = 'now' | date: '%s' | plus: 86400 -%}
+{%- assign ship_date = ship_ts | date: '%a, %b %-d' -%}
+
+{%- capture obh_fb_src -%}{%- if section.settings.fb_image != blank -%}{{ section.settings.fb_image | image_url: width: 1200 }}{%- elsif section.settings.fb_asset != blank -%}{{ section.settings.fb_asset | asset_url }}{%- endif -%}{%- endcapture -%}
+{%- capture obh_inc_src -%}{%- if section.settings.badge_image != blank -%}{{ section.settings.badge_image | image_url: width: 200 }}{%- elsif section.settings.badge_asset != blank -%}{{ section.settings.badge_asset | asset_url }}{%- endif -%}{%- endcapture -%}
+
+<section class="obh obh-{{ section.id }}" id="obh-{{ section.id }}">
+  <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
+  <div class="obh__wrap">
+
+    <div class="obh__header">
+      <div class="obh__eyebrow">
+        <span class="obh__stars" aria-label="5 stars">{{ obh_star }}{{ obh_star }}{{ obh_star }}{{ obh_star }}{{ obh_star }}</span>
+        {%- if section.settings.rating_text != blank -%}<span class="obh__eyebrow-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+      </div>
+      {%- if section.settings.title != blank -%}<h2 class="obh__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="obh__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="obh__gallery">
+      {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      <div class="obh__left-inner">
+        <div class="obh__gallery-block">
+          <div class="obh__main">
+            {%- if main_image != blank -%}<img data-obh-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager">{%- endif -%}
+            {%- if obh_inc_src != blank -%}<img class="obh__inc" data-obh-inc src="{{ obh_inc_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy">{%- endif -%}
+          </div>
+          {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
+            <div class="obh__thumbrow">
+              <button type="button" class="obh__arrow" data-obh-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <div class="obh__thumbs">
+                {%- for img in gallery_product.images -%}
+                  <button type="button" class="obh__thumb{% if img == main_image %} is-active{% endif %}" data-obh-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy"></button>
+                {%- endfor -%}
+              </div>
+              <button type="button" class="obh__arrow" data-obh-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <div class="obh__dots" aria-hidden="true">
+              {%- for img in gallery_product.images -%}<span class="obh__dot{% if img == main_image %} is-active{% endif %}" data-obh-dot></span>{%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.show_fb and obh_fb_src != blank -%}
+          <img class="obh__fb obh__fb--desktop" src="{{ obh_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy">
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="obh__buybox">
+      <div class="obh__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- assign tier_n = 0 -%}
+        {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+          {%- assign tier_n = tier_n | plus: 1 -%}
+          {%- assign tier_sel = false -%}
+          {%- if tier_n == section.settings.default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
+          {%- assign vid = b.settings.variant_id | strip -%}
+          {%- assign tier_variant = blank -%}
+          {%- if vid != blank -%}
+            {%- assign srcprod = b.settings.product | default: gallery_product -%}
+            {%- if srcprod != blank -%}
+              {%- for v in srcprod.variants -%}
+                {%- assign vstr = v.id | append: '' -%}
+                {%- if vstr == vid -%}{%- assign tier_variant = v -%}{%- break -%}{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
+          {%- capture tier_price -%}{%- if tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}{%- else -%}{{ b.settings.price }}{%- endif -%}{%- endcapture -%}
+          {%- capture tier_compare -%}{%- if tier_variant != blank -%}{%- if tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}{%- else -%}{{ b.settings.compare_price }}{%- endif -%}{%- endcapture -%}
+          {%- assign paid_n = b.settings.paid_bottles | default: 1 -%}
+          {%- assign free_n = b.settings.free_bottles | default: 1 -%}
+          {%- assign total_n = paid_n | plus: free_n -%}
+          <label class="obh__tier{% if b.settings.featured %} obh__tier--featured{% endif %}{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
+            <input type="radio" name="obh-{{ section.id }}" value="{{ vid }}" data-price="{{ tier_price | strip }}" {% if tier_sel %}checked{% endif %}>
+            {%- if b.settings.featured and b.settings.strip_text != blank -%}
+              <span class="obh__strip">{{ b.settings.strip_text }}</span>
+            {%- elsif b.settings.tag != blank -%}
+              <span class="obh__tag obh__tag--{{ b.settings.tag_style | default: 'plum' }}">{{ b.settings.tag }}</span>
+            {%- endif -%}
+            <span class="obh__row">
+              <span class="obh__radio" aria-hidden="true"></span>
+              <span class="obh__picto" aria-hidden="true">
+                {%- for i in (1..paid_n) -%}<span class="obh__bottle"></span>{%- endfor -%}
+                {%- if free_n > 0 -%}{%- for i in (1..free_n) -%}<span class="obh__bottle obh__bottle--free"></span>{%- endfor -%}{%- endif -%}
+              </span>
+              <span class="obh__tinfo">
+                <span class="obh__tname">{{ b.settings.label }}</span>
+                <span class="obh__tsub obh__tsub--d">{{ total_n }} bottles &middot; {{ free_n }} free &middot; {% if b.settings.free_shipping %}Free shipping{% else %}Standard shipping{% endif %}</span>
+                <span class="obh__tsub obh__tsub--m">{{ total_n }} bottles &middot; {{ free_n }} free</span>
+              </span>
+              <span class="obh__pcol">
+                <span class="obh__prices">
+                  <span class="obh__price">{{ tier_price }}</span>
+                  {%- if tier_compare != blank -%}<span class="obh__struck">{{ tier_compare }}</span>{%- endif -%}
+                </span>
+                {%- if b.settings.savings_text != blank -%}<span class="obh__save{% if b.settings.featured %} obh__save--pill{% endif %}">{{ b.settings.savings_text }}</span>{%- endif -%}
+              </span>
+            </span>
+          </label>
+        {%- endif -%}{%- endfor -%}
+      </div>
+
+      {%- if section.settings.unit_line != blank -%}
+        <div class="obh__unit obh__unit--d">{{ section.settings.unit_line }}</div>
+        <div class="obh__unit obh__unit--m">{{ section.settings.unit_line_mobile | default: section.settings.unit_line }}</div>
+      {%- endif -%}
+
+      <div class="obh__shipbar" role="note">
+        <span class="obh__shipseg"><span class="obh__shipdot" aria-hidden="true"></span><span>Ships by&nbsp;<b>{{ ship_date }}</b></span></span>
+        <span class="obh__shipseg obh__shipseg--right">{{ obh_flag }}<span>Fast US Shipping</span></span>
+      </div>
+
+      <button type="button" class="obh__buy" data-obh-buy>
+        <span class="obh__spinner" aria-hidden="true"></span>
+        <span class="obh__buy-label" data-obh-cta-label>{{ section.settings.button_prefix | default: 'BUY NOW —' }}</span>
+      </button>
+
+      <div class="obh__trust">
+        {%- if section.settings.guarantee_text != blank -%}<span><span class="obh__check">&#10003;</span> {{ section.settings.guarantee_text }}</span>{%- endif -%}
+        {%- if section.settings.onetime_text != blank -%}<span><span class="obh__check">&#10003;</span> {{ section.settings.onetime_text }}</span>{%- endif -%}
+      </div>
+
+      {%- if section.settings.show_fb and obh_fb_src != blank -%}
+        <img class="obh__fb obh__fb--mobile" src="{{ obh_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy">
+      {%- endif -%}
+
+      {%- if section.settings.show_payment_icons -%}
+        {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+        <div class="obh__payments">
+          {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- assign has_tabs = false -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_tabs -%}
+        <div class="obh__tabs">
+          {%- assign tab_n = 0 -%}
+          {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
+            {%- assign tab_n = tab_n | plus: 1 -%}
+            <div class="obh__tab{% if tab_n == 1 %} is-open{% endif %}" {{ b.shopify_attributes }}>
+              <button type="button" class="obh__tab-q" aria-expanded="{% if tab_n == 1 %}true{% else %}false{% endif %}"><span>{{ b.settings.title }}</span>{{ obh_chevron }}</button>
+              <div class="obh__tab-a"><div class="obh__tab-a-inner"><div class="obh__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
+            </div>
+          {%- endif -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_trusted -%}
+        <div class="obh__social">
+          <span class="obh__avatars">
+            {%- for i in (1..3) -%}
+              {%- case i -%}
+                {%- when 1 -%}{%- assign av = section.settings.trusted_image_1 -%}
+                {%- when 2 -%}{%- assign av = section.settings.trusted_image_2 -%}
+                {%- when 3 -%}{%- assign av = section.settings.trusted_image_3 -%}
+              {%- endcase -%}
+              {%- if av != blank -%}
+                <img class="obh__avatar" src="{{ av | image_url: width: 120 }}" width="44" height="44" loading="lazy" alt="{{ av.alt | default: 'Happy customer' | escape }}">
+              {%- else -%}
+                <span class="obh__avatar" aria-hidden="true"></span>
+              {%- endif -%}
+            {%- endfor -%}
+            <span class="obh__socialcheck" aria-hidden="true">&#10003;</span>
+          </span>
+          <span class="obh__socialtext">
+            {%- if section.settings.trusted_title != blank -%}<p class="obh__socialtitle">{{ section.settings.trusted_title }}</p>{%- endif -%}
+            {%- if section.settings.trusted_subtext != blank -%}<p class="obh__socialsub">{{ section.settings.trusted_subtext }}</p>{%- endif -%}
+          </span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {% render 'supplement-label-popup', product: section.settings.product %}
+</section>
+
+<script>
+(function () {
+  var sec = document.getElementById('obh-{{ section.id }}');
+  if (!sec) return;
+
+  /* Tier selection + live CTA price */
+  var ctaLabel = sec.querySelector('[data-obh-cta-label]');
+  var ctaPrefix = {{ section.settings.button_prefix | default: 'BUY NOW —' | json }};
+  function syncCta() {
+    var sel = sec.querySelector('.obh__tier input[type="radio"]:checked');
+    if (ctaLabel && sel && sel.getAttribute('data-price')) ctaLabel.textContent = ctaPrefix + ' ' + sel.getAttribute('data-price');
+  }
+  sec.querySelectorAll('.obh__tier input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      sec.querySelectorAll('.obh__tier').forEach(function (t) { t.classList.remove('is-selected'); });
+      input.closest('.obh__tier').classList.add('is-selected');
+      syncCta();
+    });
+  });
+  if (!sec.querySelector('.obh__tier input[type="radio"]:checked')) {
+    var firstInput = sec.querySelector('.obh__tier input[type="radio"]');
+    if (firstInput) { firstInput.checked = true; firstInput.closest('.obh__tier').classList.add('is-selected'); }
+  }
+  syncCta();
+
+  /* Gallery */
+  var mainImg = sec.querySelector('[data-obh-main]');
+  var incBadge = sec.querySelector('[data-obh-inc]');
+  var thumbs = [].slice.call(sec.querySelectorAll('[data-obh-thumb]'));
+  var dots = [].slice.call(sec.querySelectorAll('[data-obh-dot]'));
+  var idx = 0;
+  thumbs.forEach(function (t, i) { if (t.classList.contains('is-active')) idx = i; });
+  function setImg(i) {
+    if (!thumbs.length) return;
+    idx = (i + thumbs.length) % thumbs.length;
+    var t = thumbs[idx];
+    if (mainImg) mainImg.src = t.getAttribute('data-full');
+    thumbs.forEach(function (x) { x.classList.remove('is-active'); });
+    t.classList.add('is-active');
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    if (incBadge) incBadge.style.display = idx === 0 ? '' : 'none';
+    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
+  var prev = sec.querySelector('[data-obh-prev]'), next = sec.querySelector('[data-obh-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Mobile: horizontal-dominant swipe on the main image */
+  var galMain = sec.querySelector('.obh__main');
+  if (galMain && thumbs.length > 1) {
+    var gsx = null, gsy = null;
+    galMain.addEventListener('touchstart', function (e) { var t = e.touches[0]; gsx = t.clientX; gsy = t.clientY; }, { passive: true });
+    galMain.addEventListener('touchend', function (e) {
+      if (gsx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - gsx, dy = t.clientY - gsy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { setImg(dx < 0 ? idx + 1 : idx - 1); }
+      gsx = null; gsy = null;
+    }, { passive: true });
+  }
+
+  /* Accordion — one open at a time */
+  var tabs = sec.querySelectorAll('.obh__tab');
+  sec.querySelectorAll('.obh__tab-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.closest('.obh__tab');
+      var willOpen = !tab.classList.contains('is-open');
+      tabs.forEach(function (t) { t.classList.remove('is-open'); var b = t.querySelector('.obh__tab-q'); if (b) b.setAttribute('aria-expanded', 'false'); });
+      if (willOpen) { tab.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Buy Now -> add selected variant, go to checkout */
+  var buy = sec.querySelector('[data-obh-buy]');
+  if (buy) {
+    window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
+    buy.addEventListener('click', function () {
+      var sel = sec.querySelector('.obh__tier input[type="radio"]:checked');
+      if (!sel || !sel.value) return;
+      var id = parseInt(sel.value, 10);
+      buy.disabled = true; buy.classList.add('is-loading');
+      fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: id, quantity: {{ section.settings.add_quantity | default: 2 }} }] }) }); })
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
+        .catch(function () { window.location.href = '/cart/' + id + ':{{ section.settings.add_quantity | default: 2 }}'; });
+    });
+  }
+
+  /* Hide the sticky CTA bar while this section is in view */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var vis = entries[0].isIntersecting;
+      document.body.classList.toggle('ob-offer-visible', vis);
+      document.querySelectorAll('.sticky-cta-v2-section').forEach(function (el) {
+        if (vis) { el.style.setProperty('display', 'none', 'important'); }
+        else { el.style.removeProperty('display'); }
+      });
+    }, { threshold: 0 });
+    io.observe(sec);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Offer Block V1 — Hero",
+  "tag": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "header", "content": "Gallery" },
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
+    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#f5f2fb" },
+    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Sticky column offset (desktop)", "default": 16 },
+    { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown bottom-left on the first image only (e.g. Inc. 5000)." },
+    { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "default": "rejuvia-inc5000.png" },
+    { "type": "header", "content": "Header" },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#fab851" },
+    { "type": "richtext", "id": "rating_text", "label": "Eyebrow text", "info": "Bold renders purple.", "default": "<p>Used by <strong>300,000+</strong> customers</p>" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia™ Sleep Spray" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall asleep in minutes and sleep through the entire night" },
+    { "type": "header", "content": "Offer" },
+    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
+    { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).", "default": 2 },
+    { "type": "richtext", "id": "unit_line", "label": "Unit price line (desktop)", "default": "<p>Just <strong>$15 per bottle</strong> — the same price at every pack size</p>" },
+    { "type": "richtext", "id": "unit_line_mobile", "label": "Unit price line (mobile)", "default": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
+    { "type": "text", "id": "onetime_text", "label": "One-time purchase line", "default": "One-Time Purchase (Not a Subscription)" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+    { "type": "header", "content": "Facebook review" },
+    { "type": "checkbox", "id": "show_fb", "label": "Show review screenshot", "default": true },
+    { "type": "image_picker", "id": "fb_image", "label": "Review screenshot" },
+    { "type": "text", "id": "fb_asset", "label": "Review screenshot (theme asset fallback)", "default": "rejuvia-fb-comment.png" },
+    { "type": "header", "content": "Social-proof bar" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show social-proof bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by 300,000+ customers" },
+    { "type": "text", "id": "trusted_subtext", "label": "Subtext", "default": "to fall asleep faster and sleep the full night." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Offer tier",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product", "info": "Owns this tier's variant; used for the cart and live prices (falls back to the Gallery product)." },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart. Price/compare auto-pull from it when its product is connected." },
+        { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 Free" },
+        { "type": "range", "id": "paid_bottles", "min": 1, "max": 6, "step": 1, "label": "Paid bottles (pictogram)", "default": 1 },
+        { "type": "range", "id": "free_bottles", "min": 0, "max": 6, "step": 1, "label": "Free bottles (pictogram)", "default": 1 },
+        { "type": "checkbox", "id": "free_shipping", "label": "Free shipping on this tier", "default": false },
+        { "type": "text", "id": "price", "label": "Price (fallback)", "default": "$30" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price (fallback)" },
+        { "type": "text", "id": "savings_text", "label": "Savings label", "info": "e.g. SAVE $30. Renders as a filled green pill on the featured tier.", "default": "SAVE $30" },
+        { "type": "checkbox", "id": "featured", "label": "Featured (recommended) tier", "info": "Adds the purple header strip, card shadow, purple price, and green savings pill.", "default": false },
+        { "type": "text", "id": "strip_text", "label": "Header strip text (featured only)", "default": "MOST POPULAR · OUR BEST SELLER" },
+        { "type": "text", "id": "tag", "label": "Corner tag (non-featured)", "info": "e.g. BEST VALUE. Ignored when Featured is on." },
+        { "type": "select", "id": "tag_style", "label": "Corner tag style", "options": [ { "value": "plum", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "gold" }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Block V1 — Hero",
+      "category": "Rejuvia",
+      "blocks": [
+        { "type": "tier", "settings": { "variant_id": "46763671027932", "label": "Buy 1, Get 1 Free", "paid_bottles": 1, "free_bottles": 1, "free_shipping": false, "price": "$30", "compare_price": "", "savings_text": "SAVE $30" } },
+        { "type": "tier", "settings": { "variant_id": "46763671060700", "label": "Buy 2, Get 2 Free", "paid_bottles": 2, "free_bottles": 2, "free_shipping": true, "price": "$60", "compare_price": "$90", "savings_text": "SAVE $60", "featured": true, "strip_text": "MOST POPULAR · OUR BEST SELLER" } },
+        { "type": "tier", "settings": { "variant_id": "46763671093468", "label": "Buy 3, Get 3 Free", "paid_bottles": 3, "free_bottles": 3, "free_shipping": true, "price": "$90", "compare_price": "$135", "savings_text": "SAVE $90", "tag": "BEST VALUE", "tag_style": "gold" } },
+        { "type": "tab", "settings": { "title": "90-Day Guarantee", "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong></p>" } },
+        { "type": "tab", "settings": { "title": "Why Rejuvia Works", "content": "<p>Rejuvia is a sublingual spray — the ingredients absorb directly into your bloodstream, so most customers are asleep within 10–15 minutes.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

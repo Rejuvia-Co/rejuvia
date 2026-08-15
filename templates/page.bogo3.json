@@ -1,7 +1,7 @@
 {
   "sections": {
     "offer_block_C9tJiM": {
-      "type": "offer-block-hero",
+      "type": "offer-block-decision",
       "blocks": {
         "tier_1": {
           "type": "tier",
@@ -14,7 +14,8 @@
             "free_shipping": false,
             "price": "$30",
             "compare_price": "",
-            "savings_text": "SAVE $30"
+            "savings_text": "SAVE $30",
+            "save_amount": "$30"
           }
         },
         "tier_2": {
@@ -30,7 +31,9 @@
             "compare_price": "$90",
             "savings_text": "SAVE $60",
             "featured": true,
-            "strip_text": "MOST POPULAR \u00b7 OUR BEST SELLER"
+            "save_amount": "$60",
+            "tag": "MOST POPULAR",
+            "tag_style": "goldfill"
           }
         },
         "tier_3": {
@@ -45,8 +48,9 @@
             "price": "$90",
             "compare_price": "$135",
             "savings_text": "SAVE $90",
+            "save_amount": "$90",
             "tag": "BEST VALUE",
-            "tag_style": "gold"
+            "tag_style": "goldoutline"
           }
         },
         "tab_kAdU4M": {
@@ -129,8 +133,7 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "section_bg": "#ffffff",
-        "unit_line": "<p>Just <strong>$15 per bottle</strong> \u2014 the same price at every pack size</p>",
-        "unit_line_mobile": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>"
+        "unit_line": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>"
       }
     },
     "customer_testimonials_video_b39r9z": {

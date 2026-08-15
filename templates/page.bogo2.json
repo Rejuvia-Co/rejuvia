@@ -131,8 +131,7 @@
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "section_bg": "#ffffff",
         "unit_line": "<p>Just <strong>$15 per bottle</strong> \u2014 the same price at every pack size</p>",
-        "unit_line_mobile": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>",
-        "unlock_text": "Free US shipping unlocked on 4- and 6-bottle packs"
+        "unit_line_mobile": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>"
       }
     },
     "customer_testimonials_video_b39r9z": {

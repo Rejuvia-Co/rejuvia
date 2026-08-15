@@ -63,59 +63,58 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__dot.is-active { background: #672666; }
 
 /* ---- Dark panel ---- */
-.obd__panel { background: #4c1c4f; border-radius: 20px; padding: 20px; margin-top: 18px; }
+.obd__panel { background: #eaeaf7; border-radius: 20px; padding: 20px; margin-top: 18px; box-shadow: 0 6px 18px rgba(45,21,48,.06); }
 
 /* ---- Tier grid (dark) ---- */
 .obd__tiers { display: flex; flex-direction: column; gap: 18px; }
-.obd__tier { position: relative; display: block; background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.16); border-radius: 12px; color: #f3e9f3; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1), color .18s cubic-bezier(.22,1,.36,1); }
-.obd__tier.is-selected { background: #fff; border-color: #fab851; box-shadow: inset 0 0 0 .5px #fab851; color: #171512; }
+.obd__tier { position: relative; display: block; background: #fff; border: 1.5px solid #e6e1ee; border-radius: 12px; color: #171512; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1), color .18s cubic-bezier(.22,1,.36,1); }
+.obd__tier.is-selected { background: #4c1c4f; border-color: #4c1c4f; box-shadow: inset 0 0 0 .5px #4c1c4f, 0 8px 24px rgba(45,21,48,.18); color: #fff; }
 .obd__tier input { position: absolute; opacity: 0; pointer-events: none; }
 .obd__row { display: flex; align-items: center; gap: 14px; padding: 17px 18px; }
-.obd__radio { flex: none; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
-.obd__tier.is-selected .obd__radio { border-color: #672666; }
-.obd__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #672666; opacity: 0; transition: opacity .18s ease; }
+.obd__radio { flex: none; width: 20px; height: 20px; border: 2px solid #cfc9dd; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
+.obd__tier.is-selected .obd__radio { border-color: #fab851; }
+.obd__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #fab851; opacity: 0; transition: opacity .18s ease; }
 .obd__tier.is-selected .obd__radio::after { opacity: 1; }
 .obd__picto { display: flex; gap: 4px; align-items: center; width: 84px; flex: none; }
-.obd__bottle { width: 10px; height: 28px; border-radius: 3px; background: #a86bae; border-top: 6px solid #fab851; transition: background .18s ease; }
-.obd__bottle--free { background: transparent; border: 1.5px solid #00b10d; transition: background .18s ease; }
-.obd__tier.is-selected .obd__bottle { background: #672666; }
-.obd__tier.is-selected .obd__bottle--free { background: #eefaf0; }
+.obd__bottle { width: 10px; height: 28px; border-radius: 3px; background: #672666; border-top: 6px solid #fab851; transition: background .18s ease; }
+.obd__bottle--free { background: #eefaf0; border: 1.5px solid #00b10d; transition: background .18s ease; }
+.obd__tier.is-selected .obd__bottle { background: #e6d9ee; }
+.obd__tier.is-selected .obd__bottle--free { background: transparent; border-color: #5ddc6d; }
 .obd__tinfo { flex: 1; min-width: 0; text-align: left; }
 .obd__tname { display: block; font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; line-height: 1.25; white-space: nowrap; }
-.obd__tsub { display: block; font-size: 15px; line-height: 1.35; color: rgba(243,233,243,.62); margin-top: 6px; white-space: nowrap; transition: color .18s ease; }
-.obd__tier.is-selected .obd__tsub { color: #6b6660; }
+.obd__tsub { display: block; font-size: 15px; line-height: 1.35; color: #6b6660; margin-top: 6px; white-space: nowrap; transition: color .18s ease; }
+.obd__tier.is-selected .obd__tsub { color: rgba(243,233,243,.78); }
 .obd__tsub--m { display: none; }
 .obd__pcol { width: 120px; flex: none; text-align: right; }
 .obd__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
 .obd__price { font-size: 21px; font-weight: 800; }
-.obd__tier--featured.is-selected .obd__price { color: #672666; }
-.obd__struck { font-size: 15px; color: rgba(243,233,243,.45); text-decoration: line-through; transition: color .18s ease; }
-.obd__tier.is-selected .obd__struck { color: #a9a3b2; }
-.obd__save { display: block; font-size: 12.5px; font-weight: 800; color: #5ddc6d; margin-top: 6px; transition: color .18s ease; }
-.obd__tier.is-selected .obd__save { color: #018e1c; }
+.obd__struck { font-size: 15px; color: #a9a3b2; text-decoration: line-through; transition: color .18s ease; }
+.obd__tier.is-selected .obd__struck { color: rgba(243,233,243,.55); }
+.obd__save { display: block; font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 6px; transition: color .18s ease; }
+.obd__tier.is-selected .obd__save { color: #5ddc6d; }
 .obd__save--pill { display: block; margin-left: auto; width: fit-content; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obd__tier.is-selected .obd__save--pill { color: #fff; }
 .obd__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
-.obd__tag--goldfill { background: #fab851; color: #46184a; }
-.obd__tag--goldoutline { background: #723e4f; color: #EAC78B; border: 1px solid rgba(250,184,81,.6); }
+.obd__tag--plum { background: #4c1c4f; color: #fff; }
+.obd__tag--gold { background: #c9920e; color: #fff; }
 
 /* ---- Receipt ---- */
-.obd__receipt { text-align: left; background: rgba(255,255,255,.08); border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #f3e9f3; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
+.obd__receipt { text-align: left; background: #fff; border: 1px solid #e6e1ee; border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #171512; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
 .obd__receipt b { font-weight: 800; }
-.obd__rcheck { color: #EAC78B; font-weight: 800; }
+.obd__rcheck { color: #00b10d; font-weight: 800; }
 .obd__receipt p { margin: 0; display: inline; }
 .obd__receipt strong { font-weight: 800; }
 
 /* ---- CTA (inside panel) ---- */
-.obd__buy { --ls: 1.2px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: #fab851; color: #46184a; border: none; border-radius: 100px; height: 58px; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer; margin-top: 14px; transition: background .14s ease, transform .14s ease; }
+.obd__buy { --ls: 1.2px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: #fab851; color: #672666; border: none; border-radius: 100px; height: 58px; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer; margin-top: 14px; transition: background .14s ease, transform .14s ease; }
 .obd__buy:hover { background: #f5aa38; transform: translateY(-1px); }
 .obd__buy:active { transform: translateY(1px); }
 .obd__buy:disabled { cursor: default; }
-.obd__spinner { display: none; width: 22px; height: 22px; border: 2.5px solid rgba(70,24,74,.3); border-top-color: #46184a; border-radius: 50%; animation: obd-spin .6s linear infinite; }
+.obd__spinner { display: none; width: 22px; height: 22px; border: 2.5px solid rgba(103,38,102,.3); border-top-color: #672666; border-radius: 50%; animation: obd-spin .6s linear infinite; }
 .obd__buy.is-loading .obd__buy-label { display: none; }
 .obd__buy.is-loading .obd__spinner { display: block; }
 @keyframes obd-spin { to { transform: rotate(360deg); } }
-.obd__trust--panel { --tt: uppercase; --ls: .6px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 14px; font-size: 11px; font-weight: 700; color: rgba(243,233,243,.8); }
+.obd__trust--panel { --tt: uppercase; --ls: .6px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 14px; font-size: 11px; font-weight: 700; color: #4a4550; }
 .obd__trust--mobile { display: none; }
 .obd__payments { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; margin-top: 11px; }
 .obd__payments svg { height: 24px; width: auto; display: block; }
@@ -265,7 +264,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <label class="obd__tier{% if b.settings.featured %} obd__tier--featured{% endif %}{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
               <input type="radio" name="obd-{{ section.id }}" value="{{ vid }}" data-price="{{ tier_price | strip }}" data-bottles="{{ total_n }}" data-save="{{ b.settings.save_amount | default: '' }}" data-freeship="{% if b.settings.free_shipping %}1{% else %}0{% endif %}" {% if tier_sel %}checked{% endif %}>
               {%- if b.settings.tag != blank -%}
-                <span class="obd__tag obd__tag--{{ b.settings.tag_style | default: 'goldfill' }}">{{ b.settings.tag }}</span>
+                <span class="obd__tag obd__tag--{{ b.settings.tag_style | default: 'plum' }}">{{ b.settings.tag }}</span>
               {%- endif -%}
               <span class="obd__row">
                 <span class="obd__radio" aria-hidden="true"></span>
@@ -904,15 +903,15 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "label": "Corner tag style",
           "options": [
             {
-              "value": "goldfill",
-              "label": "Gold (filled)"
+              "value": "plum",
+              "label": "Plum (filled)"
             },
             {
-              "value": "goldoutline",
-              "label": "Gold (outline)"
+              "value": "gold",
+              "label": "Gold (filled)"
             }
           ],
-          "default": "goldfill"
+          "default": "plum"
         }
       ]
     },
@@ -996,7 +995,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "featured": true,
             "save_amount": "$60",
             "tag": "MOST POPULAR",
-            "tag_style": "goldfill"
+            "tag_style": "plum"
           }
         },
         {
@@ -1013,7 +1012,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "savings_text": "SAVE $90",
             "save_amount": "$90",
             "tag": "BEST VALUE",
-            "tag_style": "goldoutline"
+            "tag_style": "gold"
           }
         },
         {

@@ -63,14 +63,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obh__dot.is-active { background: #672666; }
 
 /* ---- Tier grid ---- */
-.obh__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+.obh__tiers { display: flex; flex-direction: column; gap: 18px; margin-top: 16px; }
 .obh__tier { position: relative; display: block; background: #fff; border: 1.5px solid #e6e1ee; border-radius: 12px; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
 .obh__tier.is-selected { border-color: #672666; box-shadow: inset 0 0 0 .5px #672666; background: #faf7fd; }
 .obh__tier--featured { overflow: hidden; box-shadow: 0 8px 24px rgba(45,21,48,.10); }
 .obh__tier--featured.is-selected { box-shadow: inset 0 0 0 .5px #672666, 0 8px 24px rgba(45,21,48,.10); }
 .obh__tier input { position: absolute; opacity: 0; pointer-events: none; }
-.obh__strip { --tt: uppercase; --ls: 1.2px; background: #672666; color: #fff; font-size: 11.5px; font-weight: 800; padding: 6px 16px; }
-.obh__row { display: flex; align-items: center; gap: 14px; padding: 15px 16px; }
+.obh__strip { --tt: uppercase; --ls: 1.2px; display: block; background: #672666; color: #fff; font-size: 11.5px; font-weight: 800; padding: 6px 16px; }
+.obh__row { display: flex; align-items: center; gap: 14px; padding: 17px 18px; }
 .obh__radio { flex: none; width: 20px; height: 20px; border: 2px solid #cfc9dd; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
 .obh__tier.is-selected .obh__radio { border-color: #672666; }
 .obh__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #672666; opacity: 0; transition: opacity .18s ease; }
@@ -80,14 +80,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obh__bottle--free { background: #eefaf0; border: 1.5px solid #00b10d; }
 .obh__tinfo { flex: 1; min-width: 0; }
 .obh__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; color: #171512; white-space: nowrap; }
-.obh__tsub { font-size: 14px; color: #6b6660; margin-top: 3px; white-space: nowrap; }
+.obh__tsub { font-size: 14px; color: #6b6660; margin-top: 4px; white-space: nowrap; }
 .obh__tsub--m { display: none; }
 .obh__pcol { width: 120px; flex: none; text-align: right; }
 .obh__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
 .obh__price { font-size: 21px; font-weight: 800; color: #171512; }
 .obh__tier--featured .obh__price { color: #672666; }
 .obh__struck { font-size: 15px; color: #a9a3b2; text-decoration: line-through; }
-.obh__save { font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 3px; }
+.obh__save { font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 4px; }
 .obh__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obh__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obh__tag--gold { background: #c9920e; color: #fff; }
@@ -146,8 +146,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obh__fb--desktop { display: none; }
   .obh__fb--mobile { display: block; margin-top: 16px; }
   .obh__buybox { margin-top: 14px; }
-  .obh__tiers { gap: 14px; margin-top: 0; }
-  .obh__row { gap: 10px; padding: 13px 10px; }
+  .obh__tiers { gap: 16px; margin-top: 0; }
+  .obh__row { gap: 10px; padding: 14px 12px; }
   .obh__strip { font-size: 9.5px; --ls: 1px; padding: 5px 12px; }
   .obh__picto { gap: 2px; width: 52px; }
   .obh__bottle { width: 7px; height: 24px; border-radius: 2px; border-top-width: 5px; }
@@ -160,7 +160,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obh__prices { gap: 5px; }
   .obh__price { font-size: 18px; }
   .obh__struck { font-size: 13px; }
-  .obh__save { font-size: 11.5px; margin-top: 2px; }
+  .obh__save { font-size: 11.5px; margin-top: 3px; }
   .obh__save--pill { padding: 2px 7px; }
   .obh__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
   .obh__shipbar { padding: 9px 12px; font-size: 13px; margin-top: 10px; }

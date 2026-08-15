@@ -475,82 +475,461 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   "tag": "section",
   "max_blocks": 16,
   "settings": [
-    { "type": "header", "content": "Gallery" },
-    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
-    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#ffffff" },
-    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Sticky column offset (desktop)", "default": 16 },
-    { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown bottom-left on the first image only (e.g. Inc. 5000)." },
-    { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "default": "rejuvia-inc5000.png" },
-    { "type": "header", "content": "Header" },
-    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#fab851" },
-    { "type": "richtext", "id": "rating_text", "label": "Eyebrow text", "info": "Bold renders purple.", "default": "<p>Used by <strong>300,000+</strong> customers</p>" },
-    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia™ Sleep Spray" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall asleep in minutes and sleep through the entire night" },
-    { "type": "range", "id": "eyebrow_size", "min": 9, "max": 18, "step": 0.5, "unit": "px", "label": "Eyebrow size (desktop)", "default": 11.5 },
-    { "type": "range", "id": "eyebrow_size_mobile", "min": 8, "max": 16, "step": 0.5, "unit": "px", "label": "Eyebrow size (mobile)", "default": 10.5 },
-    { "type": "range", "id": "title_size", "min": 28, "max": 60, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 44 },
-    { "type": "range", "id": "title_size_mobile", "min": 20, "max": 44, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 31 },
-    { "type": "range", "id": "subtitle_size", "min": 12, "max": 26, "step": 0.5, "unit": "px", "label": "Subtitle size (desktop)", "default": 16.5 },
-    { "type": "range", "id": "subtitle_size_mobile", "min": 11, "max": 24, "step": 0.5, "unit": "px", "label": "Subtitle size (mobile)", "default": 15.5 },
-    { "type": "header", "content": "Offer" },
-    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
-    { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).", "default": 2 },
-    { "type": "text", "id": "receipt_extra", "label": "Receipt: extra line", "info": "Third checkmark line, same for every tier. Leave blank to hide.", "default": "$15 Per Spray Bottle" },
-    { "type": "header", "content": "Call to action" },
-    { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
-    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
-    { "type": "text", "id": "onetime_text", "label": "One-time purchase line", "default": "One-Time Purchase (Not a Subscription)" },
-    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
-    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
-    { "type": "header", "content": "Facebook review" },
-    { "type": "checkbox", "id": "show_fb", "label": "Show review screenshot", "default": true },
-    { "type": "image_picker", "id": "fb_image", "label": "Review screenshot" },
-    { "type": "text", "id": "fb_asset", "label": "Review screenshot (theme asset fallback)", "default": "rejuvia-fb-comment.png" },
-    { "type": "header", "content": "Social-proof bar" },
-    { "type": "checkbox", "id": "show_trusted", "label": "Show social-proof bar", "default": true },
-    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by 300,000+ customers" },
-    { "type": "text", "id": "trusted_subtext", "label": "Subtext", "default": "to fall asleep faster and sleep the full night." },
-    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
-    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
-    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
-    { "type": "color", "id": "trusted_bg", "label": "Bar background", "default": "#f4f4f4" },
-    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" },
-    { "type": "header", "content": "Typography" },
-    { "type": "range", "id": "tier_title_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 19 },
-    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 18 },
-    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
-    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 19 },
-    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 17 },
-    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 16 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Gallery product",
+      "info": "Main image + thumbnails pull from this product's images."
+    },
+    {
+      "type": "color",
+      "id": "gallery_bg",
+      "label": "Gallery frame background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "sticky_offset",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Sticky column offset (desktop)",
+      "default": 100
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Gallery overlay badge",
+      "info": "Shown bottom-left on the first image only (e.g. Inc. 5000)."
+    },
+    {
+      "type": "text",
+      "id": "badge_asset",
+      "label": "Overlay badge (theme asset fallback)",
+      "default": "rejuvia-inc5000.png"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars color",
+      "default": "#fab851"
+    },
+    {
+      "type": "richtext",
+      "id": "rating_text",
+      "label": "Eyebrow text",
+      "info": "Bold renders purple.",
+      "default": "<p>Used by <strong>300,000+</strong> customers</p>"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Rejuvia™ Sleep Spray"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Fall asleep in minutes and sleep through the entire night"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "min": 9,
+      "max": 18,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Eyebrow size (desktop)",
+      "default": 11.5
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size_mobile",
+      "min": 8,
+      "max": 16,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Eyebrow size (mobile)",
+      "default": 10.5
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 28,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size (desktop)",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 44,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size (mobile)",
+      "default": 31
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 26,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Subtitle size (desktop)",
+      "default": 16.5
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 11,
+      "max": 24,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Subtitle size (mobile)",
+      "default": 15.5
+    },
+    {
+      "type": "header",
+      "content": "Offer"
+    },
+    {
+      "type": "range",
+      "id": "default_tier",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Pre-selected tier (by position)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "add_quantity",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Quantity added per selection",
+      "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "receipt_extra",
+      "label": "Receipt: extra line",
+      "info": "Third checkmark line, same for every tier. Leave blank to hide.",
+      "default": "$15 Per Spray Bottle"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "button_prefix",
+      "label": "Button label prefix",
+      "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.",
+      "default": "BUY NOW —"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee line",
+      "default": "90-Day Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "onetime_text",
+      "label": "One-time purchase line",
+      "default": "One-Time Purchase (Not a Subscription)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hidden_payments",
+      "label": "Hide payment icons",
+      "info": "Comma-separated, e.g. discover,jcb,diners_club",
+      "default": "discover,jcb,diners_club"
+    },
+    {
+      "type": "header",
+      "content": "Facebook review"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fb",
+      "label": "Show review screenshot",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "fb_image",
+      "label": "Review screenshot"
+    },
+    {
+      "type": "text",
+      "id": "fb_asset",
+      "label": "Review screenshot (theme asset fallback)",
+      "default": "rejuvia-fb-comment.png"
+    },
+    {
+      "type": "header",
+      "content": "Social-proof bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trusted",
+      "label": "Show social-proof bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trusted_title",
+      "label": "Title",
+      "default": "Used by  300,000+ customers"
+    },
+    {
+      "type": "text",
+      "id": "trusted_subtext",
+      "label": "Subtext",
+      "default": "to fall asleep faster and sleep the full night."
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "color",
+      "id": "trusted_bg",
+      "label": "Bar background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "trusted_check",
+      "label": "Checkmark color",
+      "default": "#34c759"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "tier_title_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Tier title size (desktop)",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "tier_title_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tier title size (mobile)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "tab_title_size",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion title size (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "tab_title_size_mobile",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion title size (mobile)",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "tab_body_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion answer size (desktop)",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "tab_body_size_mobile",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion answer size (mobile)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    }
   ],
   "blocks": [
     {
       "type": "tier",
       "name": "Offer tier",
       "settings": [
-        { "type": "product", "id": "product", "label": "Product", "info": "Owns this tier's variant; used for the cart and live prices (falls back to the Gallery product)." },
-        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart. Price/compare auto-pull from it when its product is connected." },
-        { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 Free" },
-        { "type": "range", "id": "paid_bottles", "min": 1, "max": 6, "step": 1, "label": "Paid bottles (pictogram)", "default": 1 },
-        { "type": "range", "id": "free_bottles", "min": 0, "max": 6, "step": 1, "label": "Free bottles (pictogram)", "default": 1 },
-        { "type": "checkbox", "id": "free_shipping", "label": "Free shipping on this tier", "default": false },
-        { "type": "text", "id": "price", "label": "Price (fallback)", "default": "$30" },
-        { "type": "text", "id": "compare_price", "label": "Compare-at price (fallback)" },
-        { "type": "text", "id": "savings_text", "label": "Savings label", "info": "e.g. SAVE $30. Renders as a filled green pill on the featured tier.", "default": "SAVE $30" },
-        { "type": "text", "id": "save_amount", "label": "Receipt savings amount", "info": "Shown in the live receipt, e.g. $30.", "default": "$30" },
-        { "type": "checkbox", "id": "featured", "label": "Featured (recommended) tier", "info": "Purple price when selected and a filled green savings pill.", "default": false },
-        { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR / BEST VALUE." },
-        { "type": "select", "id": "tag_style", "label": "Corner tag style", "options": [ { "value": "goldfill", "label": "Gold (filled)" }, { "value": "goldoutline", "label": "Gold (outline)" } ], "default": "goldfill" }
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Owns this tier's variant; used for the cart and live prices (falls back to the Gallery product)."
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "Exact variant added to cart. Price/compare auto-pull from it when its product is connected."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Title",
+          "default": "Buy 1, Get 1 Free"
+        },
+        {
+          "type": "range",
+          "id": "paid_bottles",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Paid bottles (pictogram)",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "free_bottles",
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "label": "Free bottles (pictogram)",
+          "default": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "free_shipping",
+          "label": "Free shipping on this tier",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price (fallback)",
+          "default": "$30"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare-at price (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "savings_text",
+          "label": "Savings label",
+          "info": "e.g. SAVE $30. Renders as a filled green pill on the featured tier.",
+          "default": "SAVE $30"
+        },
+        {
+          "type": "text",
+          "id": "save_amount",
+          "label": "Receipt savings amount",
+          "info": "Shown in the live receipt, e.g. $30.",
+          "default": "$30"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured (recommended) tier",
+          "info": "Purple price when selected and a filled green savings pill.",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Corner tag",
+          "info": "e.g. MOST POPULAR / BEST VALUE."
+        },
+        {
+          "type": "select",
+          "id": "tag_style",
+          "label": "Corner tag style",
+          "options": [
+            {
+              "value": "goldfill",
+              "label": "Gold (filled)"
+            },
+            {
+              "value": "goldoutline",
+              "label": "Gold (outline)"
+            }
+          ],
+          "default": "goldfill"
+        }
       ]
     },
     {
       "type": "tab",
       "name": "Accordion row",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "content", "label": "Content" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
       ]
     }
   ],
@@ -558,12 +937,127 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     {
       "name": "Offer Block V3 — Decision",
       "category": "Rejuvia",
+      "settings": {
+        "product": "sleep-spray",
+        "gallery_bg": "#ffffff",
+        "sticky_offset": 100,
+        "badge_asset": "rejuvia-inc5000.png",
+        "stars_color": "#fab851",
+        "rating_text": "<p>Used by <strong>300,000+</strong> customers</p>",
+        "title": "Rejuvia™ Sleep Spray",
+        "subtitle": "Fall asleep in minutes and sleep through the entire night",
+        "default_tier": 2,
+        "add_quantity": 2,
+        "button_prefix": "BUY NOW —",
+        "guarantee_text": "90-Day Money Back Guarantee",
+        "onetime_text": "One-Time Purchase (Not a Subscription)",
+        "show_payment_icons": true,
+        "hidden_payments": "discover,jcb,diners_club",
+        "show_fb": true,
+        "fb_asset": "rejuvia-fb-comment.png",
+        "show_trusted": true,
+        "trusted_title": "Used by  300,000+ customers",
+        "trusted_subtext": "to fall asleep faster and sleep the full night.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png",
+        "section_bg": "#ffffff",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#34c759"
+      },
       "blocks": [
-        { "type": "tier", "settings": { "variant_id": "46763671027932", "label": "Buy 1, Get 1 Free", "paid_bottles": 1, "free_bottles": 1, "free_shipping": false, "price": "$30", "compare_price": "", "savings_text": "SAVE $30", "save_amount": "$30" } },
-        { "type": "tier", "settings": { "variant_id": "46763671060700", "label": "Buy 2, Get 2 Free", "paid_bottles": 2, "free_bottles": 2, "free_shipping": true, "price": "$60", "compare_price": "$90", "savings_text": "SAVE $60", "save_amount": "$60", "featured": true, "tag": "MOST POPULAR", "tag_style": "goldfill" } },
-        { "type": "tier", "settings": { "variant_id": "46763671093468", "label": "Buy 3, Get 3 Free", "paid_bottles": 3, "free_bottles": 3, "free_shipping": true, "price": "$90", "compare_price": "$135", "savings_text": "SAVE $90", "save_amount": "$90", "tag": "BEST VALUE", "tag_style": "goldoutline" } },
-        { "type": "tab", "settings": { "title": "90-Day Guarantee", "content": "<p>We offer a <strong>90-day money-back guarantee.</strong></p><p>If for any reason you're not completely satisfied with your sleep, we'll issue a <strong>full refund, no questions asked.</strong></p>" } },
-        { "type": "tab", "settings": { "title": "Why Rejuvia Works", "content": "<p>Rejuvia is a sublingual spray — the ingredients absorb directly into your bloodstream, so most customers are asleep within 10–15 minutes.</p>" } }
+        {
+          "type": "tier",
+          "settings": {
+            "product": "sleep-spray-copy",
+            "variant_id": "46763671027932",
+            "label": "Buy 1, Get 1 Free",
+            "paid_bottles": 1,
+            "free_bottles": 1,
+            "free_shipping": false,
+            "price": "$30",
+            "compare_price": "",
+            "savings_text": "SAVE $30",
+            "save_amount": "$30"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "product": "sleep-spray-copy",
+            "variant_id": "46763671060700",
+            "label": "Buy 2, Get 2 Free",
+            "paid_bottles": 2,
+            "free_bottles": 2,
+            "free_shipping": true,
+            "price": "$60",
+            "compare_price": "$90",
+            "savings_text": "SAVE $60",
+            "featured": true,
+            "save_amount": "$60",
+            "tag": "MOST POPULAR",
+            "tag_style": "goldfill"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "product": "sleep-spray-copy",
+            "variant_id": "46763671093468",
+            "label": "Buy 3, Get 3 Free",
+            "paid_bottles": 3,
+            "free_bottles": 3,
+            "free_shipping": true,
+            "price": "$90",
+            "compare_price": "$135",
+            "savings_text": "SAVE $90",
+            "save_amount": "$90",
+            "tag": "BEST VALUE",
+            "tag_style": "goldoutline"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "90-Day Guarantee",
+            "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind our products no matter what. It is risk-free to try Rejuvia and all orders are backed by our 90-day guarantee. No questions asked.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Why Rejuvia Works",
+            "content": "<p>Most sleep products are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p></p><p>Better absorption, better ingredients.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All Rejuvia orders ship within 1 business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Is Rejuvia Safe?",
+            "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Is this a subscription?</strong></p><p>No, our BOGO offer here is not an automatic subscription. It is one-time purchase only.</p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p><p><strong>Is it habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage.</p>"
+          }
+        }
       ]
     }
   ]

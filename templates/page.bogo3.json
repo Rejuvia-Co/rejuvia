@@ -127,12 +127,14 @@
         "show_fb": true,
         "fb_asset": "rejuvia-fb-comment.png",
         "show_trusted": true,
-        "trusted_title": "Used by 300,000+ customers",
+        "trusted_title": "Used by  300,000+ customers",
         "trusted_subtext": "to fall asleep faster and sleep the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
-        "section_bg": "#ffffff"
+        "section_bg": "#ffffff",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {

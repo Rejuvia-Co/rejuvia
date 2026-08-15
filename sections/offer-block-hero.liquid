@@ -130,15 +130,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obh__tab-body p:last-child { margin-bottom: 0; }
 .obh__tab-body strong { color: #171512; font-weight: 800; }
 
-/* ---- Social proof bar ---- */
-.obh__social { display: flex; align-items: center; gap: 16px; background: #f4f3f7; border-radius: 14px; padding: 14px 18px; margin-top: 20px; }
-.obh__avatars { position: relative; display: flex; flex: none; }
-.obh__avatar { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; background: #ded7ea; object-fit: cover; display: block; }
-.obh__avatar + .obh__avatar { margin-left: -14px; }
-.obh__socialcheck { position: absolute; top: -2px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: #00b10d; color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
-.obh__socialtext { min-width: 0; }
-.obh__socialtitle { --ls: -.2px; font-size: 17px; font-weight: 800; color: #171512; margin: 0; }
-.obh__socialsub { font-size: 14.5px; color: #4a4550; margin: 2px 0 0; }
 
 /* ---- Mobile ---- */
 @media (max-width: 900px) {
@@ -180,7 +171,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obh__tabs { margin-top: 18px; }
   .obh__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 19 }}px; }
   .obh__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 16 }}px; }
-  .obh__social { margin-top: 16px; }
 }
 {% endstyle %}
 
@@ -333,27 +323,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
 
       {%- if section.settings.show_trusted -%}
-        <div class="obh__social">
-          <span class="obh__avatars">
-            {%- for i in (1..3) -%}
-              {%- case i -%}
-                {%- when 1 -%}{%- assign av = section.settings.trusted_image_1 -%}
-                {%- when 2 -%}{%- assign av = section.settings.trusted_image_2 -%}
-                {%- when 3 -%}{%- assign av = section.settings.trusted_image_3 -%}
-              {%- endcase -%}
-              {%- if av != blank -%}
-                <img class="obh__avatar" src="{{ av | image_url: width: 120 }}" width="44" height="44" loading="lazy" alt="{{ av.alt | default: 'Happy customer' | escape }}">
-              {%- else -%}
-                <span class="obh__avatar" aria-hidden="true"></span>
-              {%- endif -%}
-            {%- endfor -%}
-            <span class="obh__socialcheck" aria-hidden="true">&#10003;</span>
-          </span>
-          <span class="obh__socialtext">
-            {%- if section.settings.trusted_title != blank -%}<p class="obh__socialtitle">{{ section.settings.trusted_title }}</p>{%- endif -%}
-            {%- if section.settings.trusted_subtext != blank -%}<p class="obh__socialsub">{{ section.settings.trusted_subtext }}</p>{%- endif -%}
-          </span>
-        </div>
+        {% render 'trusted-by',
+          title: section.settings.trusted_title,
+          subtext: section.settings.trusted_subtext,
+          image_1: section.settings.trusted_image_1,
+          image_2: section.settings.trusted_image_2,
+          image_3: section.settings.trusted_image_3,
+          bg_color: section.settings.trusted_bg,
+          check_color: section.settings.trusted_check %}
       {%- endif -%}
     </div>
   </div>
@@ -500,6 +477,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
     { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
     { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "color", "id": "trusted_bg", "label": "Bar background", "default": "#f4f4f4" },
+    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "tier_title_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 19 },
     { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 17 },

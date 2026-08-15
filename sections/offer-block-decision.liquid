@@ -46,8 +46,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__subtitle { font-size: 16.5px; line-height: 1.35; color: #4a4550; margin: 10px 0 0; }
 
 /* ---- Gallery ---- */
-.obd__main { position: relative; background: {{ section.settings.gallery_bg | default: '#f5f2fb' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.obd__main img[data-obd-main] { width: 80%; height: 80%; object-fit: contain; display: block; }
+.obd__main { position: relative; background: {{ section.settings.gallery_bg | default: '#ffffff' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.obd__main img[data-obd-main] { width: 100%; height: 100%; object-fit: contain; display: block; }
 .obd__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obd__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obd__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
@@ -81,17 +81,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tier.is-selected .obd__bottle { background: #672666; }
 .obd__tier.is-selected .obd__bottle--free { background: #eefaf0; }
 .obd__tinfo { flex: 1; min-width: 0; }
-.obd__tname { font-size: 17px; font-weight: 800; white-space: nowrap; }
-.obd__tsub { font-size: 13.5px; color: rgba(243,233,243,.62); margin-top: 3px; white-space: nowrap; transition: color .18s ease; }
+.obd__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; white-space: nowrap; }
+.obd__tsub { font-size: 15px; color: rgba(243,233,243,.62); margin-top: 3px; white-space: nowrap; transition: color .18s ease; }
 .obd__tier.is-selected .obd__tsub { color: #6b6660; }
 .obd__tsub--m { display: none; }
 .obd__pcol { width: 120px; flex: none; text-align: right; }
 .obd__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
-.obd__price { font-size: 19px; font-weight: 800; }
+.obd__price { font-size: 21px; font-weight: 800; }
 .obd__tier--featured.is-selected .obd__price { color: #672666; }
-.obd__struck { font-size: 13.5px; color: rgba(243,233,243,.45); text-decoration: line-through; transition: color .18s ease; }
+.obd__struck { font-size: 15px; color: rgba(243,233,243,.45); text-decoration: line-through; transition: color .18s ease; }
 .obd__tier.is-selected .obd__struck { color: #a9a3b2; }
-.obd__save { font-size: 11.5px; font-weight: 800; color: #5ddc6d; margin-top: 3px; transition: color .18s ease; }
+.obd__save { font-size: 12.5px; font-weight: 800; color: #5ddc6d; margin-top: 3px; transition: color .18s ease; }
 .obd__tier.is-selected .obd__save { color: #018e1c; }
 .obd__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obd__tier.is-selected .obd__save--pill { color: #fff; }
@@ -100,7 +100,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tag--goldoutline { background: rgba(250,184,81,.22); color: #EAC78B; border: 1px solid rgba(250,184,81,.5); }
 
 /* ---- Receipt ---- */
-.obd__receipt { background: rgba(255,255,255,.08); border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #f3e9f3; font-size: 12.5px; display: flex; flex-direction: column; gap: 6px; }
+.obd__receipt { background: rgba(255,255,255,.08); border-radius: 12px; padding: 13px 15px; margin-top: 16px; color: #f3e9f3; font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
 .obd__receipt b { font-weight: 800; }
 .obd__rcheck { color: #EAC78B; font-weight: 800; }
 .obd__receipt p { margin: 0; display: inline; }
@@ -115,7 +115,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__buy.is-loading .obd__buy-label { display: none; }
 .obd__buy.is-loading .obd__spinner { display: block; }
 @keyframes obd-spin { to { transform: rotate(360deg); } }
-.obd__trust--panel { --tt: uppercase; --ls: .6px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 14px; font-size: 10px; font-weight: 700; color: rgba(243,233,243,.8); }
+.obd__trust--panel { --tt: uppercase; --ls: .6px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 14px; font-size: 11px; font-weight: 700; color: rgba(243,233,243,.8); }
 .obd__trust--mobile { display: none; }
 .obd__payments { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; margin-top: 11px; }
 .obd__payments svg { height: 24px; width: auto; display: block; }
@@ -125,14 +125,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Accordion ---- */
 .obd__tabs { margin-top: 26px; border-top: 1px solid #e6e2ec; }
 .obd__tab { border-bottom: 1px solid #e6e2ec; }
-.obd__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 17px; font-weight: 800; color: #171512; line-height: 1.3; }
+.obd__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: {{ section.settings.tab_title_size | default: 20 }}px; font-weight: 800; color: #171512; line-height: 1.3; }
 .obd__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .obd__chev { flex: none; width: 15px; height: 15px; color: #672666; transition: transform 260ms cubic-bezier(.22,1,.36,1); }
 .obd__tab.is-open .obd__chev { transform: rotate(180deg); }
 .obd__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1); }
 .obd__tab.is-open .obd__tab-a { grid-template-rows: 1fr; }
 .obd__tab-a-inner { overflow: hidden; }
-.obd__tab-body { font-size: 14px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
+.obd__tab-body { font-size: {{ section.settings.tab_body_size | default: 17 }}px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
 .obd__tab-body p { margin: 0 0 10px; }
 .obd__tab-body p:last-child { margin-bottom: 0; }
 .obd__tab-body strong { color: #171512; font-weight: 800; }
@@ -144,8 +144,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__avatar + .obd__avatar { margin-left: -14px; }
 .obd__socialcheck { position: absolute; top: -2px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: #00b10d; color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
 .obd__socialtext { min-width: 0; }
-.obd__socialtitle { --ls: -.2px; font-size: 16px; font-weight: 800; color: #171512; margin: 0; }
-.obd__socialsub { font-size: 13.5px; color: #4a4550; margin: 2px 0 0; }
+.obd__socialtitle { --ls: -.2px; font-size: 17px; font-weight: 800; color: #171512; margin: 0; }
+.obd__socialsub { font-size: 14.5px; color: #4a4550; margin: 2px 0 0; }
 
 /* ---- Mobile ---- */
 @media (max-width: 900px) {
@@ -168,26 +168,28 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obd__picto { gap: 2px; width: 52px; }
   .obd__bottle { width: 7px; height: 24px; border-radius: 2px; border-top-width: 5px; }
   .obd__bottle--free { border: 1.5px solid #00b10d; }
-  .obd__tname { font-size: 15px; }
-  .obd__tsub { font-size: 11.5px; }
+  .obd__tname { font-size: {{ section.settings.tier_title_size_mobile | default: 17 }}px; }
+  .obd__tsub { font-size: 12.5px; }
   .obd__tsub--d { display: none; }
   .obd__tsub--m { display: block; }
   .obd__pcol { width: 72px; }
   .obd__prices { gap: 5px; }
-  .obd__price { font-size: 16.5px; }
-  .obd__struck { font-size: 12px; }
-  .obd__save { font-size: 10.5px; margin-top: 2px; }
+  .obd__price { font-size: 18px; }
+  .obd__struck { font-size: 13px; }
+  .obd__save { font-size: 11.5px; margin-top: 2px; }
   .obd__save--pill { padding: 2px 7px; }
   .obd__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
-  .obd__receipt { padding: 11px 12px; margin: 14px 8px 0; font-size: 11.5px; gap: 5px; }
+  .obd__receipt { padding: 11px 12px; margin: 14px 8px 0; font-size: 13px; gap: 5px; }
   .obd__ys { display: none; }
   .obd__buy { height: 54px; font-size: 15px; --ls: 1.1px; margin: 12px 8px 0; width: calc(100% - 16px); }
   .obd__trust--panel { display: none; }
-  .obd__trust--mobile { --tt: uppercase; --ls: .5px; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 16px; font-size: 10.5px; font-weight: 700; color: #4a4550; }
+  .obd__trust--mobile { --tt: uppercase; --ls: .5px; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 16px; font-size: 11.5px; font-weight: 700; color: #4a4550; }
   .obd__trust--mobile .obd__check { color: #672666; }
   .obd__payments { gap: 4px; margin-top: 10px; }
   .obd__payments svg { height: 22px; }
   .obd__tabs { margin-top: 18px; }
+  .obd__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 19 }}px; }
+  .obd__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 16 }}px; }
   .obd__social { margin-top: 16px; }
 }
 {% endstyle %}
@@ -300,9 +302,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <div class="obd__receipt">
           <span><span class="obd__rcheck">&#10003;</span> You get <b data-obd-bottles>4</b> bottles &mdash; <span class="obd__ys">you </span>save <b data-obd-save>$60</b></span>
           <span data-obd-shipline><span class="obd__rcheck">&#10003;</span> Free US shipping &mdash; ships by <b>{{ ship_date }}</b></span>
-          {%- if section.settings.unit_line != blank -%}
-            <span><span class="obd__rcheck">&#10003;</span> {{ section.settings.unit_line }}</span>
-          {%- endif -%}
         </div>
 
         <button type="button" class="obd__buy" data-obd-buy>
@@ -497,7 +496,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   "settings": [
     { "type": "header", "content": "Gallery" },
     { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
-    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#f5f2fb" },
+    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#ffffff" },
     { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Sticky column offset (desktop)", "default": 16 },
     { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown bottom-left on the first image only (e.g. Inc. 5000)." },
     { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "default": "rejuvia-inc5000.png" },
@@ -509,7 +508,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Offer" },
     { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).", "default": 2 },
-    { "type": "richtext", "id": "unit_line", "label": "Receipt: unit price line", "default": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
@@ -527,6 +525,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
     { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
     { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "tier_title_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 19 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 17 },
+    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
+    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 19 },
+    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 17 },
+    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 16 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
   ],

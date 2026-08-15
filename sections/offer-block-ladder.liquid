@@ -47,8 +47,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obl__subtitle { font-size: 16.5px; line-height: 1.35; color: #4a4550; margin: 10px 0 0; }
 
 /* ---- Gallery ---- */
-.obl__main { position: relative; background: {{ section.settings.gallery_bg | default: '#f5f2fb' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.obl__main img[data-obl-main] { width: 80%; height: 80%; object-fit: contain; display: block; }
+.obl__main { position: relative; background: {{ section.settings.gallery_bg | default: '#ffffff' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.obl__main img[data-obl-main] { width: 100%; height: 100%; object-fit: contain; display: block; }
 .obl__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obl__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obl__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
@@ -79,25 +79,21 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obl__bottle { width: 10px; height: 28px; border-radius: 3px; background: #672666; border-top: 6px solid #fab851; }
 .obl__bottle--free { background: #eefaf0; border: 1.5px solid #00b10d; }
 .obl__tinfo { flex: 1; min-width: 0; }
-.obl__tname { font-size: 17px; font-weight: 800; color: #171512; white-space: nowrap; }
-.obl__tsub { font-size: 12.5px; color: #6b6660; margin-top: 3px; white-space: nowrap; }
+.obl__tname { font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; color: #171512; white-space: nowrap; }
+.obl__tsub { font-size: 14px; color: #6b6660; margin-top: 3px; white-space: nowrap; }
 .obl__tsub--m { display: none; }
 .obl__pcol { width: 120px; flex: none; text-align: right; }
 .obl__prices { display: flex; align-items: baseline; gap: 7px; justify-content: flex-end; }
-.obl__price { font-size: 19px; font-weight: 800; color: #171512; }
-.obl__struck { font-size: 13.5px; color: #a9a3b2; text-decoration: line-through; }
-.obl__save { font-size: 11.5px; font-weight: 800; color: #018e1c; margin-top: 3px; }
+.obl__price { font-size: 21px; font-weight: 800; color: #171512; }
+.obl__struck { font-size: 15px; color: #a9a3b2; text-decoration: line-through; }
+.obl__save { font-size: 12.5px; font-weight: 800; color: #018e1c; margin-top: 3px; }
 .obl__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obl__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obl__tag--gold { background: #c9920e; color: #fff; }
 .obl__tag--plum { background: #672666; color: #fff; }
 
 /* ---- Below tiers ---- */
-.obl__unit { font-size: 12.5px; color: #6b6660; text-align: center; margin-top: 16px; }
-.obl__unit p { margin: 0; }
-.obl__unit strong, .obl__unit b { color: #171512; font-weight: 800; }
-.obl__unit--m { display: none; }
-.obl__shipbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #f2f2f8; border-radius: 10px; padding: 11px 15px; font-size: 12.5px; color: #171512; margin-top: 12px; }
+.obl__shipbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #f2f2f8; border-radius: 10px; padding: 11px 15px; font-size: 14px; color: #171512; margin-top: 12px; }
 .obl__shipseg { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
 .obl__shipdot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #00b10d; }
 .obl__shipseg b { font-weight: 800; }
@@ -111,7 +107,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obl__buy.is-loading .obl__buy-label { display: none; }
 .obl__buy.is-loading .obl__spinner { display: block; }
 @keyframes obl-spin { to { transform: rotate(360deg); } }
-.obl__trust { --tt: uppercase; --ls: .6px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 16px; font-size: 11px; font-weight: 700; color: #4a4550; }
+.obl__trust { --tt: uppercase; --ls: .6px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 16px; font-size: 12px; font-weight: 700; color: #4a4550; }
 .obl__trust .obl__check { color: #672666; }
 .obl__payments { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
 .obl__payments svg { height: 24px; width: auto; display: block; }
@@ -121,14 +117,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Accordion ---- */
 .obl__tabs { margin-top: 26px; border-top: 1px solid #e6e2ec; }
 .obl__tab { border-bottom: 1px solid #e6e2ec; }
-.obl__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 17px; font-weight: 800; color: #171512; line-height: 1.3; }
+.obl__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: {{ section.settings.tab_title_size | default: 20 }}px; font-weight: 800; color: #171512; line-height: 1.3; }
 .obl__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .obl__chev { flex: none; width: 15px; height: 15px; color: #672666; transition: transform 260ms cubic-bezier(.22,1,.36,1); }
 .obl__tab.is-open .obl__chev { transform: rotate(180deg); }
 .obl__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1); }
 .obl__tab.is-open .obl__tab-a { grid-template-rows: 1fr; }
 .obl__tab-a-inner { overflow: hidden; }
-.obl__tab-body { font-size: 14px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
+.obl__tab-body { font-size: {{ section.settings.tab_body_size | default: 17 }}px; line-height: 1.55; color: #4a4550; padding: 0 4px 18px; max-width: 60ch; }
 .obl__tab-body p { margin: 0 0 10px; }
 .obl__tab-body p:last-child { margin-bottom: 0; }
 .obl__tab-body strong { color: #171512; font-weight: 800; }
@@ -140,8 +136,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obl__avatar + .obl__avatar { margin-left: -14px; }
 .obl__socialcheck { position: absolute; top: -2px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: #00b10d; color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
 .obl__socialtext { min-width: 0; }
-.obl__socialtitle { --ls: -.2px; font-size: 16px; font-weight: 800; color: #171512; margin: 0; }
-.obl__socialsub { font-size: 13.5px; color: #4a4550; margin: 2px 0 0; }
+.obl__socialtitle { --ls: -.2px; font-size: 17px; font-weight: 800; color: #171512; margin: 0; }
+.obl__socialsub { font-size: 14.5px; color: #4a4550; margin: 2px 0 0; }
 
 /* ---- Mobile ---- */
 @media (max-width: 900px) {
@@ -163,26 +159,25 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obl__picto { gap: 2px; width: 52px; }
   .obl__bottle { width: 7px; height: 24px; border-radius: 2px; border-top-width: 5px; }
   .obl__bottle--free { border: 1.5px solid #00b10d; }
-  .obl__tname { font-size: 15px; }
-  .obl__tsub { font-size: 11.5px; }
+  .obl__tname { font-size: {{ section.settings.tier_title_size_mobile | default: 17 }}px; }
+  .obl__tsub { font-size: 12.5px; }
   .obl__tsub--d { display: none; }
   .obl__tsub--m { display: block; }
   .obl__pcol { width: 76px; }
   .obl__prices { gap: 5px; }
-  .obl__price { font-size: 16.5px; }
-  .obl__struck { font-size: 12px; }
-  .obl__save { font-size: 10.5px; margin-top: 2px; }
+  .obl__price { font-size: 18px; }
+  .obl__struck { font-size: 13px; }
+  .obl__save { font-size: 11.5px; margin-top: 2px; }
   .obl__save--pill { padding: 2px 7px; }
   .obl__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
-  .obl__unit { font-size: 11.5px; margin-top: 14px; }
-  .obl__unit--d { display: none; }
-  .obl__unit--m { display: block; }
-  .obl__shipbar { padding: 9px 12px; font-size: 11.5px; margin-top: 10px; }
+  .obl__shipbar { padding: 9px 12px; font-size: 13px; margin-top: 10px; }
   .obl__buy { height: 54px; font-size: 15px; --ls: 1.1px; margin-top: 12px; box-shadow: none; }
-  .obl__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; --ls: .5px; }
+  .obl__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 11.5px; --ls: .5px; }
   .obl__payments { gap: 5px; margin-top: 10px; }
   .obl__payments svg { height: 22px; }
   .obl__tabs { margin-top: 18px; }
+  .obl__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 19 }}px; }
+  .obl__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 16 }}px; }
   .obl__social { margin-top: 16px; }
 }
 {% endstyle %}
@@ -292,11 +287,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           </label>
         {%- endif -%}{%- endfor -%}
       </div>
-
-      {%- if section.settings.unit_line != blank -%}
-        <div class="obl__unit obl__unit--d">{{ section.settings.unit_line }}</div>
-        <div class="obl__unit obl__unit--m">{{ section.settings.unit_line_mobile | default: section.settings.unit_line }}</div>
-      {%- endif -%}
 
       <div class="obl__shipbar" role="note">
         <span class="obl__shipseg"><span class="obl__shipdot" aria-hidden="true"></span><span>Ships by&nbsp;<b>{{ ship_date }}</b></span></span>
@@ -478,7 +468,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   "settings": [
     { "type": "header", "content": "Gallery" },
     { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
-    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#f5f2fb" },
+    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#ffffff" },
     { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Sticky column offset (desktop)", "default": 16 },
     { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown bottom-left on the first image only (e.g. Inc. 5000)." },
     { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "default": "rejuvia-inc5000.png" },
@@ -490,8 +480,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Offer" },
     { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).", "default": 2 },
-    { "type": "richtext", "id": "unit_line", "label": "Unit price line (desktop)", "default": "<p>Just <strong>$15 per bottle</strong> — the same price at every pack size</p>" },
-    { "type": "richtext", "id": "unit_line_mobile", "label": "Unit price line (mobile)", "default": "<p>Just <strong>$15 per bottle</strong> at every pack size</p>" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
@@ -509,6 +497,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
     { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
     { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "tier_title_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 19 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 17 },
+    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
+    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 19 },
+    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 17 },
+    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 16 },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
   ],

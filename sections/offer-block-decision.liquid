@@ -160,22 +160,22 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obd__picto { gap: 2px; width: 52px; }
   .obd__bottle { width: 7px; height: 24px; border-radius: 2px; border-top-width: 5px; }
   .obd__bottle--free { border: 1.5px solid #00b10d; }
-  .obd__tname { font-size: {{ section.settings.tier_title_size_mobile | default: 17 }}px; }
-  .obd__tsub { font-size: 12.5px; }
+  .obd__tname { font-size: {{ section.settings.tier_title_size_mobile | default: 18 }}px; }
+  .obd__tsub { font-size: 13.5px; }
   .obd__tsub--d { display: none; }
   .obd__tsub--m { display: block; }
   .obd__pcol { width: 72px; }
   .obd__prices { gap: 5px; }
-  .obd__price { font-size: 18px; }
-  .obd__struck { font-size: 13px; }
-  .obd__save { font-size: 11.5px; margin-top: 4px; }
+  .obd__price { font-size: 19px; }
+  .obd__struck { font-size: 14px; }
+  .obd__save { font-size: 12.5px; margin-top: 7px; }
   .obd__save--pill { padding: 2px 7px; }
   .obd__tag { right: 12px; font-size: 9px; --ls: .8px; padding: 3px 9px; }
-  .obd__receipt { padding: 12px 14px; margin: 14px 0 0; font-size: 13px; gap: 6px; }
+  .obd__receipt { padding: 13px 14px; margin: 14px 0 0; font-size: 14.5px; gap: 7px; }
   .obd__ys { display: none; }
-  .obd__buy { height: 54px; font-size: 15px; --ls: 1.1px; margin: 12px 0 0; width: 100%; }
+  .obd__buy { height: 60px; font-size: 16.5px; --ls: 1.1px; margin: 12px 0 0; width: 100%; }
   .obd__trust--panel { display: none; }
-  .obd__trust--mobile { --tt: uppercase; --ls: .5px; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 16px; font-size: 11.5px; font-weight: 700; color: #4a4550; }
+  .obd__trust--mobile { --tt: uppercase; --ls: .5px; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 16px; font-size: 12.5px; font-weight: 700; color: #4a4550; }
   .obd__trust--mobile .obd__check { color: #672666; }
   .obd__payments { gap: 4px; margin-top: 10px; }
   .obd__payments svg { height: 22px; }
@@ -293,6 +293,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <div class="obd__receipt">
           <span><span class="obd__rcheck">&#10003;</span> You get <b data-obd-bottles>4</b> bottles &mdash; <span class="obd__ys">you </span>save <b data-obd-save>$60</b></span>
           <span data-obd-shipline><span class="obd__rcheck">&#10003;</span> Free US shipping &mdash; ships by <b>{{ ship_date }}</b></span>
+          {%- if section.settings.receipt_extra != blank -%}
+            <span><span class="obd__rcheck">&#10003;</span> {{ section.settings.receipt_extra }}</span>
+          {%- endif -%}
         </div>
 
         <button type="button" class="obd__buy" data-obd-buy>
@@ -486,6 +489,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Offer" },
     { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "2 = native Buy-One-Get-One (pair with an automatic Buy X Get Y discount).", "default": 2 },
+    { "type": "text", "id": "receipt_extra", "label": "Receipt: extra line", "info": "Third checkmark line, same for every tier. Leave blank to hide.", "default": "$15 Per Spray Bottle" },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
@@ -507,7 +511,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "tier_title_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 19 },
-    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 17 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 18 },
     { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
     { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 19 },
     { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 17 },

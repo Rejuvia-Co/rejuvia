@@ -82,7 +82,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tier.is-selected .obd__bottle--free { background: #eefaf0; }
 .obd__tinfo { flex: 1; min-width: 0; text-align: left; }
 .obd__tname { display: block; font-size: {{ section.settings.tier_title_size | default: 19 }}px; font-weight: 800; line-height: 1.25; white-space: nowrap; }
-.obd__tsub { font-size: 15px; line-height: 1.35; color: rgba(243,233,243,.62); margin-top: 6px; white-space: nowrap; transition: color .18s ease; }
+.obd__tsub { display: block; font-size: 15px; line-height: 1.35; color: rgba(243,233,243,.62); margin-top: 6px; white-space: nowrap; transition: color .18s ease; }
 .obd__tier.is-selected .obd__tsub { color: #6b6660; }
 .obd__tsub--m { display: none; }
 .obd__pcol { width: 120px; flex: none; text-align: right; }
@@ -91,9 +91,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__tier--featured.is-selected .obd__price { color: #672666; }
 .obd__struck { font-size: 15px; color: rgba(243,233,243,.45); text-decoration: line-through; transition: color .18s ease; }
 .obd__tier.is-selected .obd__struck { color: #a9a3b2; }
-.obd__save { font-size: 12.5px; font-weight: 800; color: #5ddc6d; margin-top: 6px; transition: color .18s ease; }
+.obd__save { display: block; font-size: 12.5px; font-weight: 800; color: #5ddc6d; margin-top: 6px; transition: color .18s ease; }
 .obd__tier.is-selected .obd__save { color: #018e1c; }
-.obd__save--pill { display: inline-block; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
+.obd__save--pill { display: block; margin-left: auto; width: fit-content; background: #00b10d; color: #fff; padding: 3px 9px; border-radius: 100px; }
 .obd__tier.is-selected .obd__save--pill { color: #fff; }
 .obd__tag { --ls: .9px; position: absolute; top: -10px; right: 16px; font-size: 9.5px; font-weight: 800; padding: 3px 10px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obd__tag--goldfill { background: #fab851; color: #46184a; }
@@ -147,7 +147,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obd__eyebrow .obd__stars svg { width: 12px; height: 12px; }
   .obd__eyebrow { font-size: 10.5px; --ls: .4px; }
   .obd__title { font-size: 31px; line-height: 1.05; --ls: -1.1px; margin-top: 7px; }
-  .obd__subtitle { font-size: 14px; margin-top: 7px; }
+  .obd__subtitle { font-size: 15.5px; margin-top: 7px; text-wrap: balance; }
   .obd__gallery { margin-top: 16px; }
   .obd__main img[data-obd-main] { max-height: 320px; }
   .obd__left-inner { position: static; gap: 0; }

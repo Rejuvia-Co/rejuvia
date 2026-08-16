@@ -18,7 +18,7 @@
     padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   }
-  #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
+  #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; padding: 0 60px; }
   #{{ uid }} .pc__window { overflow: hidden; }
   #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
   #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 0 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
@@ -41,8 +41,8 @@
     cursor: pointer; padding: 0; transition: background .15s ease, opacity .15s ease; z-index: 2;
   }
   #{{ uid }} .pc__arrow:hover { background: rgba(0,0,0,0.05); }
-  #{{ uid }} .pc__arrow--prev { left: -8px; }
-  #{{ uid }} .pc__arrow--next { right: -8px; }
+  #{{ uid }} .pc__arrow--prev { left: 2px; }
+  #{{ uid }} .pc__arrow--next { right: 2px; }
   #{{ uid }} .pc__arrow svg { width: 18px; height: 18px; }
 
   /* Dots */
@@ -60,6 +60,7 @@
     #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 44px; justify-content: center; }
     #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; max-width: 100%; }
     #{{ uid }} .pc__logo { height: 34px; margin: 22px auto 0; padding-top: 0; }
+    #{{ uid }} .pc__viewport { padding: 0; }
     #{{ uid }} .pc__arrow { width: 38px; height: 38px; }
     #{{ uid }} .pc__arrow--prev { left: -6px; }
     #{{ uid }} .pc__arrow--next { right: -6px; }

@@ -195,8 +195,7 @@
                 alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html }}"
                 width="{{ section.settings.image.width }}"
                 height="{{ section.settings.image.height }}"
-                loading="eager"
-            >
+                loading="eager" decoding="async">
         </div>
     {% endif %}
 </div>

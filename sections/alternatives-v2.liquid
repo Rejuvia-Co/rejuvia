@@ -379,10 +379,10 @@
         <div class="alt-v2-col alt-v2-col--highlight">
             <div class="alt-v2-col-header">
                 {% if section.settings.rejuvia_image != blank %}
-                    <img class="alt-v2-rejuvia-icon" src="{{ section.settings.rejuvia_image | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_image.width }}" height="{{ section.settings.rejuvia_image.height }}">
+                    <img class="alt-v2-rejuvia-icon" src="{{ section.settings.rejuvia_image | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_image.width }}" height="{{ section.settings.rejuvia_image.height }}" decoding="async">
                 {% endif %}
                 {% if section.settings.rejuvia_logo != blank %}
-                    <img class="alt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_logo.width }}" height="{{ section.settings.rejuvia_logo.height }}">
+                    <img class="alt-v2-logo" src="{{ section.settings.rejuvia_logo | image_url: width: 200 }}" alt="Rejuvia" loading="lazy" width="{{ section.settings.rejuvia_logo.width }}" height="{{ section.settings.rejuvia_logo.height }}" decoding="async">
                 {% endif %}
             </div>
             {% for block in section.blocks %}
@@ -412,7 +412,7 @@
                 <div class="alt-v2-col" {{ block.shopify_attributes }}>
                     <div class="alt-v2-col-header">
                         {% if block.settings.image != blank %}
-                            <img class="alt-v2-competitor-icon" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.name }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                            <img class="alt-v2-competitor-icon" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.name }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" decoding="async">
                         {% endif %}
                         <span class="alt-v2-col-name">{{ block.settings.name }}</span>
                     </div>

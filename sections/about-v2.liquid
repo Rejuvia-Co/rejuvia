@@ -195,12 +195,12 @@
                         <div class="about-v2-text">{{ block.settings.text }}</div>
                         {% if block.settings.products_image != blank %}
                             <div class="about-v2-products">
-                                <img src="{{ block.settings.products_image | image_url: width: 600 }}" alt="" loading="lazy">
+                                <img src="{{ block.settings.products_image | image_url: width: 600 }}" alt="" loading="lazy" decoding="async">
                             </div>
                         {% endif %}
                         {% if block.settings.signature_image != blank %}
                             <div class="about-v2-signature">
-                                <img src="{{ block.settings.signature_image | image_url: width: 400 }}" alt="{{ block.settings.signature_name }}" loading="lazy">
+                                <img src="{{ block.settings.signature_image | image_url: width: 400 }}" alt="{{ block.settings.signature_name }}" loading="lazy" decoding="async">
                                 <div>
                                     <span class="about-v2-sig-name">– {{ block.settings.signature_name }}</span><br>
                                     <span class="about-v2-sig-title">{{ block.settings.signature_title }}</span>
@@ -210,7 +210,7 @@
                     </div>
                     {% if block.settings.image != blank %}
                         <div class="about-v2-img-col">
-                            <img class="about-v2-photo" src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.caption }}" loading="lazy">
+                            <img class="about-v2-photo" src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.caption }}" loading="lazy" decoding="async">
                             {% if block.settings.caption != blank %}
                                 <span class="about-v2-caption">{{ block.settings.caption }}</span>
                             {% endif %}

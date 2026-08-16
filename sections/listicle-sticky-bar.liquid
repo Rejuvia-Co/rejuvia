@@ -75,7 +75,7 @@ main:has(.lsb), .content-wrapper:has(.lsb) { overflow-x: clip; overflow-y: visib
   <div class="lsb__inner">
     <span class="lsb__logo">
       {%- if section.settings.logo != blank -%}
-        <img src="{{ section.settings.logo | image_url: width: 220 }}" alt="{{ shop.name | escape }}" decoding="async">
+        <img src="{{ section.settings.logo | image_url: width: 220 }}" alt="{{ shop.name | escape }}" decoding="async" loading="lazy">
       {%- else -%}
         <span class="lsb__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
       {%- endif -%}

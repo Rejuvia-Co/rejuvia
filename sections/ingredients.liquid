@@ -62,7 +62,7 @@
               
               <div class="grid__item one-sixth medium--one-third">
                 {% if block.settings.image != nil %}
-                  <img class="lazyload" data-sizes="auto" src="{% render 'image_placeholder', image: block.settings.image %}" data-srcset="{% render 'lazy_src', image: block.settings.image %}" />
+                  <img class="lazyload" data-sizes="auto" src="{% render 'image_placeholder', image: block.settings.image %}" data-srcset="{% render 'lazy_src', image: block.settings.image %}" loading="lazy" decoding="async">
 				{% endif %}
               </div>
               <div class="grid__item five-sixths medium--two-thirds flex align-items-center">

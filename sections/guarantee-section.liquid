@@ -71,7 +71,7 @@
   <div class="gs__inner">
     <div class="gs__icon">
       {%- if section.settings.icon != blank -%}
-        <img src="{{ section.settings.icon | image_url: width: 160 }}" alt="" width="64" height="64" loading="lazy">
+        <img src="{{ section.settings.icon | image_url: width: 160 }}" alt="" width="64" height="64" loading="lazy" decoding="async">
       {%- else -%}
         {{ gs_ring_check }}
       {%- endif -%}
@@ -87,7 +87,7 @@
       {%- if section.settings.sub_text != blank or section.settings.sub_icon != blank -%}
         <div class="gs__guarantee">
           {%- if section.settings.sub_icon != blank -%}
-            <img src="{{ section.settings.sub_icon | image_url: width: 48 }}" alt="" width="18" height="18" loading="lazy">
+            <img src="{{ section.settings.sub_icon | image_url: width: 48 }}" alt="" width="18" height="18" loading="lazy" decoding="async">
           {%- else -%}
             {{ gs_gold_check }}
           {%- endif -%}

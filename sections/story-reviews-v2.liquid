@@ -342,9 +342,9 @@
 <div class="story-reviews-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
     {% if section.settings.show_filters %}
         <div class="story-reviews-v2-filters" role="tablist">
-            <button type="button" class="story-reviews-v2-filter is-active" data-filter="all">{{ section.settings.filter_all_label }}</button>
-            <button type="button" class="story-reviews-v2-filter" data-filter="written">{{ section.settings.filter_written_label }}</button>
-            <button type="button" class="story-reviews-v2-filter" data-filter="video">{{ section.settings.filter_video_label }}</button>
+            <button type="button" class="story-reviews-v2-filter is-active" role="tab" data-filter="all">{{ section.settings.filter_all_label }}</button>
+            <button type="button" class="story-reviews-v2-filter" role="tab" data-filter="written">{{ section.settings.filter_written_label }}</button>
+            <button type="button" class="story-reviews-v2-filter" role="tab" data-filter="video">{{ section.settings.filter_video_label }}</button>
         </div>
     {% endif %}
 

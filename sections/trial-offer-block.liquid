@@ -246,7 +246,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     <div class="ob__header">
       {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
         <div class="ob__rating">
-          {%- if section.settings.show_stars -%}<span class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
+          {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
           {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
         </div>
       {%- endif -%}
@@ -265,7 +265,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
             {%- for img in gallery_product.images -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt=""></button>
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy" decoding="async"></button>
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -318,10 +318,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
           <div class="ob__assurances">
             {%- if section.settings.guarantee_text != blank -%}
-              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
+              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
             {%- endif -%}
             {%- if section.settings.onetime_text != blank -%}
-              <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="#5d215f" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#5d215f" stroke-width="1.8" stroke-linecap="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>
+              <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="#5d215f" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#5d215f" stroke-width="1.8" stroke-linecap="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>
             {%- endif -%}
           </div>
         {%- endif -%}

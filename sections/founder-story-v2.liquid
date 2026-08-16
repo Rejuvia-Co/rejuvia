@@ -105,9 +105,9 @@
       <div class="fs__polaroid">
         <div class="fs__photo">
           {%- if fs_photo != blank -%}
-            <img src="{{ fs_photo | image_url: width: 580 }}" alt="{{ fs_photo.alt | default: section.settings.caption_1 | escape }}" loading="lazy">
+            <img src="{{ fs_photo | image_url: width: 580 }}" alt="{{ fs_photo.alt | default: section.settings.caption_1 | escape }}" loading="lazy" decoding="async">
           {%- else -%}
-            <img src="{{ 'founder-selfie.jpg' | asset_url }}" alt="{{ section.settings.caption_1 | escape }}" loading="lazy">
+            <img src="{{ 'founder-selfie.jpg' | asset_url }}" alt="{{ section.settings.caption_1 | escape }}" loading="lazy" decoding="async">
           {%- endif -%}
         </div>
         {%- if section.settings.caption_1 != blank -%}<div class="fs__cap1">{{ section.settings.caption_1 }}</div>{%- endif -%}
@@ -134,9 +134,9 @@
 
         {%- assign fs_sig_url = fs_sig | image_url: width: 220 -%}
         {%- if fs_sig_url != blank -%}
-          <img class="fs__sig" src="{{ fs_sig_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
+          <img class="fs__sig" src="{{ fs_sig_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy" decoding="async">
         {%- else -%}
-          <img class="fs__sig" src="{{ 'rc-signature.png' | asset_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy">
+          <img class="fs__sig" src="{{ 'rc-signature.png' | asset_url }}" alt="{{ section.settings.founder_name | escape }} signature" loading="lazy" decoding="async">
         {%- endif -%}
         <div class="fs__name-row">
           {%- if section.settings.founder_name != blank -%}<span class="fs__name">{{ section.settings.founder_name }}</span>{%- endif -%}

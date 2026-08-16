@@ -169,7 +169,7 @@
       {%- if section.settings.show_stars or section.settings.eyebrow != blank -%}
         <div class="listicle-hero__rating">
           {%- if section.settings.show_stars -%}
-            <span class="listicle-hero__stars" aria-label="5 stars">{{ gold_star }}{{ gold_star }}{{ gold_star }}{{ gold_star }}{{ gold_star }}</span>
+            <span role="img" class="listicle-hero__stars" aria-label="5 stars">{{ gold_star }}{{ gold_star }}{{ gold_star }}{{ gold_star }}{{ gold_star }}</span>
           {%- endif -%}
           {%- if section.settings.eyebrow != blank -%}
             <span class="listicle-hero__eyebrow">{{ section.settings.eyebrow }}</span>

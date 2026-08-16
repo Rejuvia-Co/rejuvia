@@ -548,8 +548,7 @@
                       <img
                         src="{{ product_block.settings.product_icon | image_url: width: 300 }}"
                         alt="{{ product_block.settings.product_name }}"
-                        loading="lazy"
-                      >
+                        loading="lazy" decoding="async">
                     </div>
                   {% endif %}
                   <div class="product-name">{{ product_block.settings.product_name }}</div>

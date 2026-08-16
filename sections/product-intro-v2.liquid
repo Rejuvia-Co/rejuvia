@@ -398,14 +398,13 @@
                         <img
                             src="{{ block.settings.image | image_url: width: 600 }}"
                             alt="{{ block.settings.title }}"
-                            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-                        >
+                            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
                     {% endif %}
                 </div>
                 {% if block.settings.badge_text != blank %}
                     <div class="pi-v2-badge pi-v2-badge--{{ block.settings.badge_position_desktop }} pi-v2-badge-m--{{ block.settings.badge_position_mobile }}{% if forloop.first %} is-active{% endif %}" data-pi-v2-badge="{{ forloop.index0 }}">
                         {% if block.settings.badge_icon != blank %}
-                            <img class="pi-v2-badge-icon" src="{{ block.settings.badge_icon | image_url: width: 32 }}" alt="" width="12" height="12">
+                            <img class="pi-v2-badge-icon" src="{{ block.settings.badge_icon | image_url: width: 32 }}" alt="" width="12" height="12" loading="lazy" decoding="async">
                         {% else %}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 12" fill="none">
                                 <path d="M4.5 0L4.5 10M4.5 10L1 6.5M4.5 10L8 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

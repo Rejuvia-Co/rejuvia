@@ -200,7 +200,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="obd__header">
       <div class="obd__eyebrow">
-        <span class="obd__stars" aria-label="5 stars">{{ obd_star }}{{ obd_star }}{{ obd_star }}{{ obd_star }}{{ obd_star }}</span>
+        <span role="img" class="obd__stars" aria-label="5 stars">{{ obd_star }}{{ obd_star }}{{ obd_star }}{{ obd_star }}{{ obd_star }}</span>
         {%- if section.settings.rating_text != blank -%}<span class="obd__eyebrow-text">{{ section.settings.rating_text }}</span>{%- endif -%}
       </div>
       {%- if section.settings.title != blank -%}<h2 class="obd__title">{{ section.settings.title }}</h2>{%- endif -%}
@@ -213,14 +213,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <div class="obd__gallery-block">
           <div class="obd__main">
             {%- if main_image != blank -%}<img data-obd-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
-            {%- if obd_inc_src != blank -%}<img class="obd__inc" data-obd-inc src="{{ obd_inc_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy">{%- endif -%}
+            {%- if obd_inc_src != blank -%}<img class="obd__inc" data-obd-inc src="{{ obd_inc_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy" decoding="async">{%- endif -%}
           </div>
           {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
             <div class="obd__thumbrow">
               <button type="button" class="obd__arrow" data-obd-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
               <div class="obd__thumbs">
                 {%- for img in gallery_product.images -%}
-                  <button type="button" class="obd__thumb{% if img == main_image %} is-active{% endif %}" data-obd-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy"></button>
+                  <button type="button" class="obd__thumb{% if img == main_image %} is-active{% endif %}" data-obd-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy" decoding="async"></button>
                 {%- endfor -%}
               </div>
               <button type="button" class="obd__arrow" data-obd-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -231,7 +231,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- endif -%}
         </div>
         {%- if section.settings.show_fb and obd_fb_src != blank -%}
-          <img class="obd__fb obd__fb--desktop" src="{{ obd_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy">
+          <img class="obd__fb obd__fb--desktop" src="{{ obd_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy" decoding="async">
         {%- endif -%}
       </div>
     </div>
@@ -321,7 +321,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       </div>
 
       {%- if section.settings.show_fb and obd_fb_src != blank -%}
-        <img class="obd__fb obd__fb--mobile" src="{{ obd_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy">
+        <img class="obd__fb obd__fb--mobile" src="{{ obd_fb_src }}" alt="Customer review of Rejuvia Sleep Spray" loading="lazy" decoding="async">
       {%- endif -%}
 
       {%- assign has_tabs = false -%}

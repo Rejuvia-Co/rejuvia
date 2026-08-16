@@ -26,16 +26,16 @@
     <div class="product-intro-v3__image">
       <div class="product-intro-v3__image-glow"></div>
       <div class="product-intro-v3__image-dots">
-        <img src="{{ 'product-intro-v3-dots.svg' | asset_url }}" alt="" loading="lazy">
+        <img src="{{ 'product-intro-v3-dots.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
       </div>
       {% if intro.image != blank %}
         <img src="{{ intro.image | image_url: width: 800 }}"
              alt="{{ currentProduct.title }}"
-             loading="lazy">
+             loading="lazy" decoding="async">
       {% elsif currentProduct.featured_image %}
         <img src="{{ currentProduct.featured_image | image_url: width: 800 }}"
              alt="{{ currentProduct.title }}"
-             loading="lazy">
+             loading="lazy" decoding="async">
       {% endif %}
     </div>
 

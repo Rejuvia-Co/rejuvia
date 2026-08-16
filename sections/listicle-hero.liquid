@@ -159,7 +159,7 @@
                  width="{{ hero_img.width }}"
                  height="{{ hero_img.height }}"
                  alt="{{ hero_img.alt | default: section.settings.heading | escape }}"
-                 loading="eager" fetchpriority="high">
+                 loading="eager" fetchpriority="high" decoding="async">
           </picture>
         </div>
       </div>
@@ -195,7 +195,7 @@
       {%- if section.settings.guarantee_text != blank -%}
         <div class="listicle-hero__guarantee">
           {%- if section.settings.guarantee_icon != blank -%}
-            <img class="listicle-hero__guarantee-icon" src="{{ section.settings.guarantee_icon | image_url: width: 48 }}" alt="" width="16" height="16" loading="lazy">
+            <img class="listicle-hero__guarantee-icon" src="{{ section.settings.guarantee_icon | image_url: width: 48 }}" alt="" width="16" height="16" loading="lazy" decoding="async">
           {%- else -%}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9a9 9 0 1 1 1.5 5" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           {%- endif -%}

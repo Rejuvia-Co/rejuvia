@@ -88,7 +88,7 @@
                  width="{{ block.settings.image.width }}"
                  height="{{ block.settings.image.height }}"
                  alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
-                 loading="lazy">
+                 loading="lazy" decoding="async">
           </div>
         {%- endif -%}
         <div class="lb-blocks__content">

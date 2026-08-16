@@ -151,6 +151,84 @@
   </div>
 </div>
 
+{%- comment -%}
+  The Topics box is position:sticky, but sticky can only stick inside its own
+  parent - and each FAQ topic is a separate section. So it unpinned after the
+  first topic group. This pins it across every .faq-new section on the page.
+  Desktop only; mobile uses the select dropdown instead.
+{%- endcomment -%}
+{%- if section.settings.table_show -%}
+<script>
+(function () {
+  var TOP = 94, MIN_W = 750;
+  function init() {
+    var secs = [].slice.call(document.querySelectorAll('.faq-new'));
+    if (secs.length < 2) return;
+    var col = document.querySelector('.section-{{ section.id }} .faq-new__left');
+    if (!col) return;
+
+    var ph = document.createElement('div');
+    ph.setAttribute('aria-hidden', 'true');
+    ph.style.display = 'none';
+    col.parentNode.insertBefore(ph, col);
+
+    var pinned = false, natural = null;
+
+    function measure() {
+      var r = col.getBoundingClientRect();
+      natural = { left: r.left + window.scrollX, width: r.width, height: r.height,
+                  top: r.top + window.scrollY };
+    }
+    function unpin() {
+      if (!pinned) return;
+      col.style.position = ''; col.style.top = ''; col.style.left = '';
+      col.style.width = ''; ph.style.display = 'none';
+      pinned = false;
+    }
+    function pinAt(topPx) {
+      if (!pinned) {
+        ph.style.display = 'block';
+        ph.style.width = natural.width + 'px';
+        ph.style.height = natural.height + 'px';
+        ph.style.flex = '0 0 ' + natural.width + 'px';
+        col.style.position = 'fixed';
+        col.style.width = natural.width + 'px';
+        col.style.left = (natural.left - window.scrollX) + 'px';
+        pinned = true;
+      }
+      col.style.top = topPx + 'px';
+    }
+    function update() {
+      if (window.innerWidth < MIN_W || getComputedStyle(col).display === 'none') { unpin(); return; }
+      if (!pinned) measure();
+      var last = secs[secs.length - 1];
+      var regionBottom = last.getBoundingClientRect().bottom + window.scrollY;
+      var h = pinned ? col.offsetHeight : natural.height;
+      var y = window.scrollY;
+
+      if (y + TOP < natural.top) { unpin(); return; }
+      var overshoot = (y + TOP + h) - regionBottom;
+      if (overshoot > 0) {
+        if (y + TOP - overshoot < natural.top) { unpin(); return; }
+        pinAt(TOP - overshoot);
+      } else {
+        pinAt(TOP);
+      }
+    }
+    function onResize() { unpin(); measure(); update(); }
+
+    measure();
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', onResize);
+    window.addEventListener('load', onResize);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+{%- endif -%}
+
 <script>
   $('.section-{{ section.id }} .accordion').click(function (e) {
     e.preventDefault();

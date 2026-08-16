@@ -1,6 +1,7 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
+/* Social-proof pill: block-level flex so the auto margins centre it. */
 #shopify-section-{{ section.id }} .testimonial-social-proof--pill {
   /* block-level flex: auto margins do not centre an inline-level box */
   display: flex;

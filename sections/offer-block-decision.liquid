@@ -212,7 +212,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       <div class="obd__left-inner">
         <div class="obd__gallery-block">
           <div class="obd__main">
-            {%- if main_image != blank -%}<img data-obd-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager">{%- endif -%}
+            {%- if main_image != blank -%}<img data-obd-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
             {%- if obd_inc_src != blank -%}<img class="obd__inc" data-obd-inc src="{{ obd_inc_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy">{%- endif -%}
           </div>
           {%- if gallery_product != blank and gallery_product.images.size > 1 -%}

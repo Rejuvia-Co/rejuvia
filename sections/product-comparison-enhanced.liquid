@@ -546,7 +546,7 @@
                   {% if product_block.settings.product_icon %}
                     <div class="product-icon">
                       <img
-                        src="{{ product_block.settings.product_icon | img_url: 'master' }}"
+                        src="{{ product_block.settings.product_icon | image_url: width: 300 }}"
                         alt="{{ product_block.settings.product_name }}"
                         loading="lazy"
                       >

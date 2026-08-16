@@ -1557,7 +1557,7 @@
         ],
         "settings": {
           "header": "Join 300,000 Getting Better Sleep",
-          "stars_label": "90,000,000+ Nights of Sleep Supported"
+          "stars_label": "Backed By 90 Million Nights of Sleep"
         }
       },
       "product-comparison-enhanced": {
@@ -2510,7 +2510,8 @@
           "bg_color": "#fafafa",
           "accent_color": "#672666",
           "title_color": "#171512",
-          "answer_color": "#3a3a3a"
+          "answer_color": "#3a3a3a",
+          "eyebrow": ""
         }
       },
       "sticky_cta_v2_wacfBP": {

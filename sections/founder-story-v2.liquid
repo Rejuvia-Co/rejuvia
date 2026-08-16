@@ -38,6 +38,7 @@
 /* Text column */
 .fs-{{ section.id }} .fs__text { flex: 1; min-width: 0; }
 .fs-{{ section.id }} .fs__quote { font-family: Georgia, serif; font-size: 76px; line-height: 0.5; display: block; height: 40px; color: var(--fs-mauve); }
+.fs-{{ section.id }} .fs__headline--m { display: none; }
 .fs-{{ section.id }} .fs__headline { font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; margin: 0 0 18px; }
 .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 }}px; line-height: 1.62; color: var(--fs-body); max-width: 620px; margin: 0 0 16px; }
 .fs-{{ section.id }} .fs__p:last-of-type { margin-bottom: 28px; }
@@ -75,6 +76,9 @@
   .fs-{{ section.id }} .fs__text { width: 100%; }
   .fs-{{ section.id }} .fs__quote { display: none; }
   .fs-{{ section.id }} .fs__headline { font-size: 26px; line-height: 1.2; letter-spacing: -0.52px; margin: 0 0 12px; }
+  /* Lead with the headline on mobile; the in-column copy stays for desktop. */
+  .fs-{{ section.id }} .fs__headline--m { display: block; margin: 0 0 20px; }
+  .fs-{{ section.id }} .fs__text .fs__headline { display: none; }
   .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size_mobile | default: 15 }}px; line-height: 1.6; max-width: 100%; margin: 0 0 12px; }
   .fs-{{ section.id }} .fs__p:last-of-type { margin-bottom: 20px; }
   .fs-{{ section.id }} .fs__stats { justify-content: center; margin-bottom: 20px; }
@@ -97,6 +101,7 @@
   <div class="fs__wrap">
     <div class="fs__band">
 
+      {%- if section.settings.headline != blank -%}<h2 class="fs__headline fs__headline--m">{{ section.settings.headline }}</h2>{%- endif -%}
       <div class="fs__polaroid">
         <div class="fs__photo">
           {%- if fs_photo != blank -%}

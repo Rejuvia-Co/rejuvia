@@ -68,8 +68,11 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__card { display: flex; flex-direction: column; border-radius: 20px; }
   .cta-{{ section.id }} .cta__panel { padding: 40px 28px 30px; gap: 18px; }
   .cta-{{ section.id }} .cta__title, .cta-{{ section.id }} .cta__title * { font-size: 26px; letter-spacing: -0.52px; }
-  .cta-{{ section.id }} .cta__rating { flex-wrap: wrap; }
-  .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: normal; }
+  /* Keep stars + text on a single line: smaller stars, tighter gaps. */
+  .cta-{{ section.id }} .cta__rating { flex-wrap: nowrap; gap: 8px; }
+  .cta-{{ section.id }} .cta__stars { gap: 1.5px; }
+  .cta-{{ section.id }} .cta__stars svg { width: 15px; height: 14px; }
+  .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: nowrap; }
   .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size_mobile | default: 15 }}px; }
   .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }

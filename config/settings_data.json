@@ -2433,7 +2433,7 @@
         }
       },
       "faqs_v2_BYWkfd": {
-        "type": "faqs-v2",
+        "type": "faq-center",
         "blocks": {
           "faq_A7twnN": {
             "type": "faq",
@@ -2497,8 +2497,21 @@
         "name": "FAQs V2",
         "settings": {
           "heading": "Frequently Asked Questions",
-          "description": "We've heard it all from people struggling with sleep. And here are their most common questions.",
-          "footer_text": "<p>Don't see your question? We'd love to hear from you and help. <em>Email us at hello@rejuvia.co!</em></p>"
+          "subheading": "<p>Don't see your question? We'd love to hear from you and help. <em>Email us at hello@rejuvia.co!</em></p>",
+          "sub_size": 18,
+          "sub_size_mobile": 16,
+          "open_first": false,
+          "title_size": 36,
+          "title_size_mobile": 26,
+          "question_size": 18,
+          "answer_size": 17,
+          "max_width": 900,
+          "padding_top": 64,
+          "padding_bottom": 64,
+          "bg_color": "#ffffff",
+          "accent_color": "#672666",
+          "title_color": "#171512",
+          "answer_color": "#3a3a3a"
         }
       },
       "sticky_cta_v2_wacfBP": {

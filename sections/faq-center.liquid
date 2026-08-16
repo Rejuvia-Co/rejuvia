@@ -26,8 +26,19 @@
   letter-spacing: -0.52px;
   text-transform: none;
   color: #171512;
-  margin: 0 0 36px;
+  margin: 0 0 12px;
 }
+.fc__sub {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: {{ section.settings.sub_size | default: 18 }}px;
+  line-height: 1.5;
+  color: #232323;
+  max-width: 640px;
+  margin: 0 auto 36px;
+}
+.fc__sub p { margin: 0; }
+.fc__sub em { font-style: normal; color: {{ section.settings.accent_color | default: '#672666' }}; font-weight: 600; }
 .fc__list { border-top: 1px solid rgba(0,0,0,0.1); }
 .fc__item { border-bottom: 1px solid rgba(0,0,0,0.1); }
 .fc__q {
@@ -36,7 +47,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 22px 4px;
+  padding: 26px 4px;
   background: none;
   border: none;
   cursor: pointer;
@@ -63,7 +74,7 @@
 }
 .fc__item.is-open .fc__a { max-height: 800px; }
 .fc__a-inner {
-  padding: 0 4px 24px;
+  padding: 0 4px 28px;
   font-size: {{ section.settings.answer_size | default: 16 }}px;
   font-weight: 400;
   line-height: 1.6;
@@ -74,8 +85,9 @@
 
 @media (max-width: 749px) {
   .fc__container { padding: {{ section.settings.padding_top | default: 64 | times: 0.6 | round }}px 16px {{ section.settings.padding_bottom | default: 64 | times: 0.6 | round }}px; }
-  .fc__title { font-size: 26px; letter-spacing: -0.52px; margin-bottom: 24px; }
-  .fc__q { font-size: {{ section.settings.question_size | default: 18 | minus: 2 }}px; padding: 20px 2px; }
+  .fc__title { font-size: 26px; letter-spacing: -0.52px; margin-bottom: 10px; }
+  .fc__sub { font-size: {{ section.settings.sub_size_mobile | default: 16 }}px; margin-bottom: 24px; }
+  .fc__q { font-size: {{ section.settings.question_size | default: 18 | minus: 2 }}px; padding: 24px 2px; }
 }
 {% endstyle %}
 
@@ -83,6 +95,7 @@
   <div class="fc__container">
     {%- if section.settings.eyebrow != blank -%}<p class="fc__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     {%- if section.settings.heading != blank -%}<h2 class="fc__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.subheading != blank -%}<div class="fc__sub">{{ section.settings.subheading }}</div>{%- endif -%}
     <div class="fc__list">
       {%- for block in section.blocks -%}
         <div class="fc__item{% if section.settings.open_first and forloop.first %} is-open{% endif %}" {{ block.shopify_attributes }}>
@@ -128,31 +141,172 @@
   "tag": "section",
   "max_blocks": 24,
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "GOOD TO KNOW" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
-    { "type": "checkbox", "id": "open_first", "label": "Open first question by default", "default": true },
-    { "type": "header", "content": "Typography" },
-    { "type": "range", "id": "title_size", "min": 24, "max": 56, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 40 },
-    { "type": "range", "id": "title_size_mobile", "min": 18, "max": 40, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 28 },
-    { "type": "range", "id": "question_size", "min": 14, "max": 24, "step": 1, "unit": "px", "label": "Question size", "default": 18 },
-    { "type": "range", "id": "answer_size", "min": 12, "max": 20, "step": 1, "unit": "px", "label": "Answer size", "default": 16 },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "max_width", "min": 600, "max": 1200, "step": 20, "unit": "px", "label": "Content width", "default": 960 },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 64 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 64 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
-    { "type": "color", "id": "accent_color", "label": "Eyebrow & icon color", "default": "#672666" },
-    { "type": "color", "id": "title_color", "label": "Heading & question color", "default": "#141414" },
-    { "type": "color", "id": "answer_color", "label": "Answer color", "default": "#5C5C5C" }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "GOOD TO KNOW"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheadline",
+      "info": "Shown under the heading. Italic text renders in the accent colour."
+    },
+    {
+      "type": "range",
+      "id": "sub_size",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheadline size (desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "sub_size_mobile",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheadline size (mobile)",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first question by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 18,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Question size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Content width",
+      "default": 960
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow & icon color",
+      "default": "#672666"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Heading & question color",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer color",
+      "default": "#5C5C5C"
+    }
   ],
   "blocks": [
     {
       "type": "faq",
       "name": "Question",
       "settings": [
-        { "type": "text", "id": "question", "label": "Question" },
-        { "type": "richtext", "id": "answer", "label": "Answer" }
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
       ]
     }
   ],
@@ -161,14 +315,62 @@
       "name": "FAQ Center",
       "category": "Listicle",
       "blocks": [
-        { "type": "faq", "settings": { "question": "What if it doesn't work for me?", "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>" } },
-        { "type": "faq", "settings": { "question": "Will I wake up groggy in the morning?", "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>" } },
-        { "type": "faq", "settings": { "question": "How fast will I feel Rejuvia working?", "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>" } },
-        { "type": "faq", "settings": { "question": "Is Rejuvia habit-forming? Will I become dependent on it?", "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>" } },
-        { "type": "faq", "settings": { "question": "What are the ingredients in Rejuvia?", "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>" } },
-        { "type": "faq", "settings": { "question": "What flavor is Rejuvia?", "answer": "<p>Rejuvia has a light, naturally pleasant taste made for a quick spray under the tongue.</p>" } },
-        { "type": "faq", "settings": { "question": "Is this a subscription?", "answer": "<p>No. Rejuvia is a one-time purchase, not a subscription — you're only charged once for the bundle you choose.</p>" } },
-        { "type": "faq", "settings": { "question": "How long does one bottle last and when will my order arrive?", "answer": "<p>Each bottle is about a 30-night supply. Orders typically ship within 1-2 business days and arrive within a few business days after that.</p>" } }
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free for a full 90 nights — if you're not sleeping better, send it back for a complete refund, no questions asked.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will I wake up groggy in the morning?",
+            "answer": "<p>No. Rejuvia uses a low 2mg dose of melatonin — most gummies pack 5-10mg — paired with natural sleep herbs that calm your mind without knocking you out. You get deep, restorative sleep and wake up clear-headed, not hungover.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel Rejuvia working?",
+            "answer": "<p>Because you spray it under your tongue, it absorbs directly into your bloodstream with no waiting on digestion. Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "answer": "<p>No. Rejuvia is drug-free and non-habit-forming. There's no tolerance buildup, no dependency, and no withdrawal — it works with your body's natural sleep cycle instead of overriding it.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What are the ingredients in Rejuvia?",
+            "answer": "<p>A blend of 13 natural sleep ingredients including melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. Every batch is triple lab-tested for purity — no fillers, no junk.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is Rejuvia?",
+            "answer": "<p>Rejuvia has a light, naturally pleasant taste made for a quick spray under the tongue.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is this a subscription?",
+            "answer": "<p>No. Rejuvia is a one-time purchase, not a subscription — you're only charged once for the bundle you choose.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle last and when will my order arrive?",
+            "answer": "<p>Each bottle is about a 30-night supply. Orders typically ship within 1-2 business days and arrive within a few business days after that.</p>"
+          }
+        }
       ]
     }
   ]

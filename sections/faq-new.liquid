@@ -160,7 +160,7 @@
 {%- if section.settings.table_show -%}
 <script>
 (function () {
-  var TOP = 94, MIN_W = 750;
+  var TOP = 94, MIN_W = 750, GAP = 32;
   function init() {
     var secs = [].slice.call(document.querySelectorAll('.faq-new'));
     if (secs.length < 2) return;
@@ -191,7 +191,7 @@
       pinned = false;
     }
     function pinAt(topPx) {
-      if (!pinned) {
+      if (!pinned || col.style.position === 'absolute') {
         ph.style.display = 'block';
         ph.style.width = natural.width + 'px';
         ph.style.height = natural.height + 'px';
@@ -203,6 +203,26 @@
       }
       col.style.top = topPx + 'px';
     }
+    /* Park the box in the document instead of sliding a fixed element upward:
+       raising a position:fixed element's top pushes it under the sticky header.
+       Absolute keeps it in flow with the page and it simply scrolls away. */
+    function parkAt(docTop) {
+      var host = col.parentNode;
+      if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+      var hostRect = host.getBoundingClientRect();
+      var hostTop = hostRect.top + window.scrollY;
+      var hostLeft = hostRect.left + window.scrollX;
+      ph.style.display = 'block';
+      ph.style.width = natural.width + 'px';
+      ph.style.height = natural.height + 'px';
+      ph.style.flex = '0 0 ' + natural.width + 'px';
+      col.style.position = 'absolute';
+      col.style.width = natural.width + 'px';
+      col.style.left = (natural.left - hostLeft) + 'px';
+      col.style.top = (docTop - hostTop) + 'px';
+      pinned = true;
+    }
+
     function update() {
       if (window.innerWidth < MIN_W || getComputedStyle(col).display === 'none') { unpin(); return; }
       if (!pinned) measure();
@@ -212,10 +232,12 @@
       var y = window.scrollY;
 
       if (y + TOP < natural.top) { unpin(); return; }
-      var overshoot = (y + TOP + h) - regionBottom;
-      if (overshoot > 0) {
-        if (y + TOP - overshoot < natural.top) { unpin(); return; }
-        pinAt(TOP - overshoot);
+
+      /* stop short of the region end so the box never touches the footer */
+      var limit = regionBottom - GAP - h;
+      if (y + TOP > limit) {
+        if (limit < natural.top) { unpin(); return; }
+        parkAt(limit);
       } else {
         pinAt(TOP);
       }

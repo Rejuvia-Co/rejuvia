@@ -2,7 +2,8 @@
 
 {% style %}
 #shopify-section-{{ section.id }} .testimonial-social-proof--pill {
-  display: inline-flex;
+  /* block-level flex: auto margins do not centre an inline-level box */
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;

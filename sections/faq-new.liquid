@@ -172,6 +172,11 @@
     ph.style.display = 'none';
     col.parentNode.insertBefore(ph, col);
 
+    /* Disable the CSS sticky: with it active, measuring the element while it
+       was already stuck returned the stuck offset as its "natural" top, which
+       moved the pin threshold and made the box jump to a second position. */
+    col.style.position = 'static';
+
     var pinned = false, natural = null;
 
     function measure() {
@@ -181,7 +186,7 @@
     }
     function unpin() {
       if (!pinned) return;
-      col.style.position = ''; col.style.top = ''; col.style.left = '';
+      col.style.position = 'static'; col.style.top = ''; col.style.left = '';
       col.style.width = ''; ph.style.display = 'none';
       pinned = false;
     }

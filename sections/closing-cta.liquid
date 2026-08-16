@@ -41,9 +41,13 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__check svg { width: 13px; height: 13px; }
 .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size | default: 15 }}px; font-weight: 400; letter-spacing: -0.2px; color: {{ section.settings.checklist_color | default: '#141414' }}; }
 
-.cta-{{ section.id }} .cta__btn {
+.cta-{{ section.id }} .cta__action {
   align-self: flex-start;
   width: 100%; max-width: 400px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.cta-{{ section.id }} .cta__btn {
+  width: 100%;
   display: flex; align-items: center; justify-content: center;
   background: var(--cta-accent); color: #fff;
   font-weight: 500; font-size: {{ section.settings.button_size | default: 18 }}px; letter-spacing: normal; line-height: 1.4;
@@ -52,7 +56,7 @@ html { scroll-behavior: smooth; }
   transition: opacity 0.25s ease;
 }
 .cta-{{ section.id }} .cta__btn:hover { opacity: 0.9; color: #fff; }
-.cta-{{ section.id }} .cta__guarantee { display: flex; align-items: center; gap: 9px; margin-top: -10px; font-size: 16px; font-weight: 500; color: #232323; }
+.cta-{{ section.id }} .cta__guarantee { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 16px; font-weight: 500; color: #232323; }
 .cta-{{ section.id }} .cta__guarantee svg { flex-shrink: 0; }
 
 .cta-{{ section.id }} .cta__photo { position: relative; height: 500px; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
@@ -77,8 +81,9 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__stars svg { width: 15px; height: 14px; }
   .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: nowrap; }
   .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size_mobile | default: 15 }}px; }
-  .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
-  .cta-{{ section.id }} .cta__guarantee { justify-content: center; margin-top: -8px; font-size: 15px; }
+  .cta-{{ section.id }} .cta__action { align-self: stretch; max-width: none; gap: 12px; }
+  .cta-{{ section.id }} .cta__btn { padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
+  .cta-{{ section.id }} .cta__guarantee { font-size: 15px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
   .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;
     background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 42%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
@@ -111,14 +116,18 @@ html { scroll-behavior: smooth; }
           </ul>
         {%- endif -%}
 
-        {%- if section.settings.button_text != blank -%}
-          <a class="cta__btn" href="{{ section.settings.button_link | default: '#offer' }}" data-cta-scroll="{{ section.settings.scroll_target }}">{{ section.settings.button_text }}</a>
-        {%- endif -%}
-        {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
-          <span class="cta__guarantee">
-            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#fab851" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            {{ section.settings.guarantee_text }}
-          </span>
+        {%- if section.settings.button_text != blank or section.settings.show_guarantee -%}
+          <div class="cta__action">
+            {%- if section.settings.button_text != blank -%}
+              <a class="cta__btn" href="{{ section.settings.button_link | default: '#offer' }}" data-cta-scroll="{{ section.settings.scroll_target }}">{{ section.settings.button_text }}</a>
+            {%- endif -%}
+            {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
+              <span class="cta__guarantee">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#fab851" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ section.settings.guarantee_text }}
+              </span>
+            {%- endif -%}
+          </div>
         {%- endif -%}
       </div>
 

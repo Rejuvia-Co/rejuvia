@@ -1868,7 +1868,7 @@
           "rating_text": "<p>Trusted By <strong>300,000+</strong> Customers</p>",
           "heading": "<p>You can't sleep, <em>Rejuvia</em> changes that tonight</p>",
           "description": "Fall asleep faster, sleep through the night and wake up feeling energized with Rejuvia. Trusted and used by over 300,000 deep-sleeping customers.",
-          "btn_text": "Try Rejuvia Risk-Free",
+          "btn_text": "TRY RISK-FREE",
           "btn_url": "",
           "guarantee_text": "90-Day Money-Back Guarantee",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
@@ -2519,7 +2519,7 @@
         "name": "Sticky CTA V2",
         "settings": {
           "text": "<p>Join <strong>300,000+</strong> people sleeping the full night</p>",
-          "btn_text": "Try Rejuvia",
+          "btn_text": "TRY REJUVIA",
           "scroll_target": ".product-widget-container",
           "position": "bottom",
           "disable_sticky_header": false,

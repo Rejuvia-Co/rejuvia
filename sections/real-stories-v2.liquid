@@ -163,7 +163,7 @@
     gap: 8px;
 }
 
-.rs-v2-tp-stars { display: flex; gap: 3px; }
+.rs-v2-tp-stars { display: flex; gap: 3px; margin-top: 4px; }
 .rs-v2-tp-stars svg { width: 20px; height: 20px; display: block; }
 
 .rs-v2-tp-title {
@@ -184,8 +184,10 @@
 
 .rs-v2-tp-footer {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .rs-v2-tp-name {
@@ -206,7 +208,6 @@
     font-weight: 700;
     line-height: 1.4;
     color: #141414;
-    align-self: flex-start;
 }
 
 /* FB text review (styled as FB comment) */
@@ -396,16 +397,16 @@
                             {{ block.settings.initials }}
                         </div>
                         <div class="rs-v2-tp-info">
-                            <div class="rs-v2-tp-stars">
-                                {% assign star_count = block.settings.stars | default: 5 %}
-                                {% for i in (1..star_count) %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" fill="#00B67A"/><path d="M12 4 L14.35 9.4 L20 9.9 L15.7 13.7 L17 19.4 L12 16.4 L7 19.4 L8.3 13.7 L4 9.9 L9.65 9.4 Z" fill="#ffffff"/></svg>
-                                {% endfor %}
-                            </div>
                             <p class="rs-v2-tp-title">{{ block.settings.title }}</p>
                         </div>
                     </div>
                     <p class="rs-v2-tp-text">{{ block.settings.text }}</p>
+                    <div class="rs-v2-tp-stars">
+                        {% assign star_count = block.settings.stars | default: 5 %}
+                        {% for i in (1..star_count) %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" fill="#00B67A"/><path d="M12 4 L14.35 9.4 L20 9.9 L15.7 13.7 L17 19.4 L12 16.4 L7 19.4 L8.3 13.7 L4 9.9 L9.65 9.4 Z" fill="#ffffff"/></svg>
+                        {% endfor %}
+                    </div>
                     <div class="rs-v2-tp-footer">
                         <span class="rs-v2-tp-name">{{ block.settings.name }}</span>
                         {% if block.settings.badge != blank %}

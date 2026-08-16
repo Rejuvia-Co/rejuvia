@@ -9,6 +9,10 @@
   style="--bgc-bg: {{ section.settings.bg_color | default: '#fafafa' }}; --bgc-accent: {{ section.settings.accent_color | default: '#672666' }};">
   <div class="bogo-content__inner">
 
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-title--h1 bogo-content__heading bogo-content__heading--m">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
     <div class="bogo-content__media">
       <div class="bogo-content__bed">
         {%- if section.settings.image != blank -%}
@@ -92,6 +96,7 @@
   }
   .bogo-content__img--ph { width: 100%; height: 100%; background: #ececf4; }
 
+  .bogo-content__heading--m { display: none; }
   .bogo-content__heading {
     margin: 0 0 22px;
     text-wrap: balance;
@@ -179,6 +184,9 @@
     .bogo-content__inner { grid-template-columns: 1fr; gap: 32px; }
     .bogo-content--img-right .bogo-content__media,
     .bogo-content__media { order: 0; }
+    /* Lead with the headline on mobile; the in-column copy stays for desktop. */
+    .bogo-content__heading--m { display: block; margin: 0; }
+    .bogo-content__text .bogo-content__heading { display: none; }
     .bogo-content__bed { aspect-ratio: 4 / 3; }
     .bogo-content__sub { font-size: 16px; margin-bottom: 24px; }
     .bogo-content__btn { font-size: 18px; padding: 20px 28px; }

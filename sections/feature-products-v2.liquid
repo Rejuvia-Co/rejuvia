@@ -1,17 +1,25 @@
 {{ 'feature-products-v2.css' | asset_url | stylesheet_tag }}
 
 {% assign featured = product.metafields.custom.feature_products.value %}
+{% assign fp_limit = section.settings.product_limit | default: 3 %}
 
 {% if featured != blank %}
 <section class="fp-v2-section">
   <div class="fp-v2-container">
 
-    {% if section.settings.heading != blank %}
-      <h2 class="fp-v2-heading">{{ section.settings.heading }}</h2>
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <div class="fp-v2-header">
+        {% if section.settings.heading != blank %}
+          <h2 class="fp-v2-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <div class="fp-v2-sub">{{ section.settings.subheading }}</div>
+        {% endif %}
+      </div>
     {% endif %}
 
     <div class="fp-v2-grid" data-fp-v2-grid>
-      {% for item in featured %}
+      {% for item in featured limit: fp_limit %}
         {% assign item_base_colour = item.metafields.custom.base_colour | default: '#672666' %}
         {% assign item_rating = item.metafields.okendo.summaryData.reviewAverageValue | default: 4.6 %}
         {% assign item_reviews = item.metafields.okendo.summaryData.reviewCount | default: 0 %}
@@ -92,7 +100,7 @@
     </div>
 
     <div class="fp-v2-indicators" data-fp-v2-indicators>
-      {% for item in featured %}
+      {% for item in featured limit: fp_limit %}
         <div class="fp-v2-indicator{% if forloop.first %} is-active{% endif %}"></div>
       {% endfor %}
     </div>
@@ -131,6 +139,21 @@
       "id": "heading",
       "label": "Heading",
       "default": "You may also like"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "Italic text renders in the accent colour."
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Products to show",
+      "default": 3
     }
   ],
   "presets": [

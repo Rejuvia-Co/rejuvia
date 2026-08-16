@@ -613,7 +613,9 @@
     "feature_products_v2_1": {
       "type": "feature-products-v2",
       "settings": {
-        "heading": ""
+        "heading": "Explore More Rejuvia",
+        "subheading": "<p>Oral sprays for sleep, stress and daily wellness \u2014 all absorbed in seconds.</p>",
+        "product_limit": 3
       }
     },
     "product_sticky_cta_v2_1": {

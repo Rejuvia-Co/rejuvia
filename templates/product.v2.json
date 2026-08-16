@@ -307,7 +307,7 @@
             "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
             "backdrop_color": "#f7edec",
             "label": "STEP 1",
-            "text": "<p>Spray <strong>6–8 times</strong> under your tongue or inside your cheek.</p>"
+            "text": "<p>Spray <strong>6\u20138 times</strong> under your tongue or inside your cheek.</p>"
           }
         },
         "step_KcPfam": {
@@ -316,7 +316,7 @@
             "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
             "backdrop_color": "#f5f0f0",
             "label": "STEP 2",
-            "text": "<p>Hold it in your mouth for at least <strong>5–10 seconds</strong>.</p>"
+            "text": "<p>Hold it in your mouth for at least <strong>5\u201310 seconds</strong>.</p>"
           }
         },
         "step_cxtqnU": {
@@ -338,7 +338,7 @@
       "settings": {
         "background_color": "#EAEAF7",
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15–20 minutes before bed for the best results.",
+        "subheading": "You should use your Sleep Spray 15\u201320 minutes before bed for the best results.",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subheading_size": 17,
@@ -354,7 +354,7 @@
           "type": "step",
           "settings": {
             "title": "Step 1: Spray",
-            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+            "description": "Spray Rejuvia 6\u20138 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
             "tip1_icon": "shopify://shop_images/Frame_1.svg",
             "tip1_label": "When to use",
             "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
@@ -372,9 +372,9 @@
             "title": "Step 2: Settle In",
             "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
             "tip1_label": "Usage Tip",
-            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1\u20132 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
             "tip2_label": "Finding Your Dose",
-            "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that's completely normal — personalize your dose based on what helps you feel calm and ready for sleep.",
+            "tip2_text": "Everyone responds differently to Rejuvia - that's normal. If 6 sprays feels perfect, stick with it. If you need 8 or even a couple more, that's completely normal \u2014 personalize your dose based on what helps you feel calm and ready for sleep.",
             "image": "shopify://shop_images/Step_2.webp",
             "watermark_opacity": 20,
             "watermark_position": "top-right"
@@ -590,9 +590,24 @@
       "type": "product-faqs-v2",
       "name": "Product FAQs V2",
       "settings": {
-        "heading": "Frequently asked questions",
+        "heading": "Frequently Asked Questions",
         "description": "",
-        "footer_text": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>"
+        "footer_text": "<p>Have a question that isn\u2019t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "eyebrow": "",
+        "open_first": false,
+        "title_size": 36,
+        "title_size_mobile": 26,
+        "sub_size": 18,
+        "sub_size_mobile": 16,
+        "question_size": 20,
+        "answer_size": 18,
+        "max_width": 800,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "bg_color": "#fafafa",
+        "accent_color": "#672666",
+        "title_color": "#171512",
+        "answer_color": "#3a3a3a"
       }
     },
     "feature_products_v2_1": {

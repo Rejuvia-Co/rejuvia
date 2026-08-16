@@ -1,271 +1,204 @@
-<style>
-.pfaq-v2-section {
-    width: 100%;
-    background-color: #fafafa;
-}
+{%- comment -%}
+  Product FAQs — same design as the homepage "FAQ Center" section
+  (centred single column, chevron icon, one open at a time), but the items
+  come from the product metafield custom.faqs (list of metaobjects with
+  question + answer). Section hides itself when the metafield is empty.
+{%- endcomment -%}
 
-.pfaq-v2-container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    gap: 64px;
-    align-items: flex-start;
-    padding: 64px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+{% style %}
+#pfaq-{{ section.id }} {
+  background-color: {{ section.settings.bg_color | default: '#fafafa' }};
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+#pfaq-{{ section.id }} .pfaq-v2-container {
+  max-width: {{ section.settings.max_width | default: 800 }}px;
+  margin: 0 auto;
+  padding: {{ section.settings.padding_top | default: 64 }}px 24px {{ section.settings.padding_bottom | default: 64 }}px;
+}
+#pfaq-{{ section.id }} .pfaq-v2-eyebrow {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: {{ section.settings.accent_color | default: '#672666' }};
+  margin: 0 0 10px;
+}
+#pfaq-{{ section.id }} .pfaq-v2-heading {
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: {{ section.settings.title_size | default: 36 }}px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.52px;
+  text-transform: none;
+  color: {{ section.settings.title_color | default: '#171512' }};
+  margin: 0 0 12px;
+}
+#pfaq-{{ section.id }} .pfaq-v2-sub {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: {{ section.settings.sub_size | default: 18 }}px;
+  line-height: 1.5;
+  color: #232323;
+  max-width: 640px;
+  margin: 0 auto 36px;
+}
+#pfaq-{{ section.id }} .pfaq-v2-sub p { margin: 0; }
+#pfaq-{{ section.id }} .pfaq-v2-sub em { font-style: normal; color: {{ section.settings.accent_color | default: '#672666' }}; font-weight: 600; }
+#pfaq-{{ section.id }} .pfaq-v2-list { border-top: 1px solid rgba(0,0,0,0.1); }
+#pfaq-{{ section.id }} .pfaq-v2-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+#pfaq-{{ section.id }} .pfaq-v2-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: {{ section.settings.question_size | default: 20 }}px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: {{ section.settings.title_color | default: '#171512' }};
+}
+#pfaq-{{ section.id }} .pfaq-v2-question-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: {{ section.settings.accent_color | default: '#672666' }};
+  transition: transform 0.22s ease;
+}
+#pfaq-{{ section.id }} .pfaq-v2-item.is-open .pfaq-v2-question-icon { transform: rotate(180deg); }
+#pfaq-{{ section.id }} .pfaq-v2-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+#pfaq-{{ section.id }} .pfaq-v2-item.is-open .pfaq-v2-answer { max-height: 800px; }
+#pfaq-{{ section.id }} .pfaq-v2-answer-inner {
+  padding: 0 4px 28px;
+  font-size: {{ section.settings.answer_size | default: 18 }}px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: {{ section.settings.answer_color | default: '#3a3a3a' }};
+}
+#pfaq-{{ section.id }} .pfaq-v2-answer-inner p { margin: 0 0 12px; }
+#pfaq-{{ section.id }} .pfaq-v2-answer-inner p:last-child { margin-bottom: 0; }
+#pfaq-{{ section.id }} .pfaq-v2-footer {
+  text-align: center;
+  font-size: {{ section.settings.sub_size | default: 18 }}px;
+  line-height: 1.5;
+  color: #232323;
+  margin: 32px auto 0;
+  max-width: 640px;
+}
+#pfaq-{{ section.id }} .pfaq-v2-footer p { margin: 0; }
+#pfaq-{{ section.id }} .pfaq-v2-footer em { font-style: normal; color: {{ section.settings.accent_color | default: '#672666' }}; font-weight: 600; }
 
-/* Left copy */
-.pfaq-v2-copy {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    position: sticky;
-    top: 120px;
+@media (max-width: 749px) {
+  #pfaq-{{ section.id }} .pfaq-v2-container { padding: {{ section.settings.padding_top | default: 64 | times: 0.6 | round }}px 16px {{ section.settings.padding_bottom | default: 64 | times: 0.6 | round }}px; }
+  #pfaq-{{ section.id }} .pfaq-v2-heading { font-size: {{ section.settings.title_size_mobile | default: 26 }}px; letter-spacing: -0.52px; margin-bottom: 10px; }
+  #pfaq-{{ section.id }} .pfaq-v2-sub { font-size: {{ section.settings.sub_size_mobile | default: 16 }}px; margin-bottom: 24px; }
+  #pfaq-{{ section.id }} .pfaq-v2-question { font-size: {{ section.settings.question_size | default: 20 | minus: 2 }}px; padding: 24px 2px; }
+  #pfaq-{{ section.id }} .pfaq-v2-footer { font-size: {{ section.settings.sub_size_mobile | default: 16 }}px; margin-top: 24px; }
 }
-
-.pfaq-v2-heading {
-    font-size: 30px;
-    font-weight: 500 !important;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-    line-height: 1.4;
-    color: #141414;
-    letter-spacing: 0 !important;
-    margin: 0;
-}
-
-.pfaq-v2-desc {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-    margin: 0;
-}
-
-.pfaq-v2-link {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-}
-
-.pfaq-v2-link p {
-    margin: 0;
-}
-
-.pfaq-v2-link em {
-    font-style: normal;
-    text-decoration: underline;
-}
-
-/* Right accordion */
-.pfaq-v2-list {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.pfaq-v2-item {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-}
-
-.pfaq-v2-question {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px 24px;
-    width: 100%;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-family: inherit;
-    text-align: left;
-}
-
-.pfaq-v2-question-text {
-    flex: 1;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-}
-
-.pfaq-v2-question-icon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-}
-
-.pfaq-v2-item.is-active .pfaq-v2-question-text {
-    -webkit-text-stroke: 0.3px currentColor;
-    text-stroke: 0.3px currentColor;
-}
-
-.pfaq-v2-item.is-active .pfaq-v2-icon-plus {
-    display: none;
-}
-
-.pfaq-v2-item:not(.is-active) .pfaq-v2-icon-minus {
-    display: none;
-}
-
-.pfaq-v2-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 24px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.pfaq-v2-answer p {
-    margin: 0 0 1em;
-}
-
-.pfaq-v2-answer p:last-child {
-    margin-bottom: 0;
-}
-
-.pfaq-v2-item.is-active .pfaq-v2-answer {
-    max-height: 800px;
-    padding: 0 24px 24px;
-}
-
-/* Mobile link */
-.pfaq-v2-link-mobile {
-    display: none;
-    text-align: center;
-    font-size: 16px;
-    color: #141414;
-    padding: 24px 0 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    width: 100%;
-}
-
-.pfaq-v2-link-mobile p {
-    margin: 0;
-}
-
-.pfaq-v2-link-mobile em {
-    font-style: normal;
-    text-decoration: underline;
-    display: block;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-    .pfaq-v2-container {
-        flex-direction: column;
-        padding: 40px 16px;
-        gap: 24px;
-    }
-    .pfaq-v2-copy {
-        width: 100%;
-        position: static;
-    }
-    .pfaq-v2-heading { font-size: 24px; }
-    .pfaq-v2-link { display: none; }
-    .pfaq-v2-link-mobile { display: block; }
-}
-</style>
+{% endstyle %}
 
 {% assign faqs = product.metafields.custom.faqs.value %}
 
 {% if faqs != blank %}
-<div class="pfaq-v2-container">
-    <div class="pfaq-v2-copy">
-        {% if section.settings.heading != blank %}
-            <h2 class="pfaq-v2-heading">{{ section.settings.heading }}</h2>
-        {% endif %}
-        {% if section.settings.description != blank %}
-            <p class="pfaq-v2-desc">{{ section.settings.description }}</p>
-        {% endif %}
-        {% if section.settings.footer_text != blank %}
-            <div class="pfaq-v2-link">{{ section.settings.footer_text }}</div>
-        {% endif %}
-    </div>
+<section id="pfaq-{{ section.id }}" class="pfaq-v2-section">
+  <div class="pfaq-v2-container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="pfaq-v2-eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="pfaq-v2-heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <div class="pfaq-v2-sub">{{ section.settings.description }}</div>
+    {%- endif -%}
 
     <div class="pfaq-v2-list">
-        {% for faq in faqs %}
-            <div class="pfaq-v2-item" data-pfaq-v2-item>
-                <button class="pfaq-v2-question" type="button">
-                    <span class="pfaq-v2-question-text">{{ faq.question }}</span>
-                    <svg class="pfaq-v2-question-icon pfaq-v2-icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 5V19M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <svg class="pfaq-v2-question-icon pfaq-v2-icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12H19" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="pfaq-v2-answer">
-                    {{ faq.answer | metafield_tag }}
-                </div>
-            </div>
-        {% endfor %}
+      {% for faq in faqs %}
+        <div class="pfaq-v2-item{% if section.settings.open_first and forloop.first %} is-open{% endif %}" data-pfaq-v2-item>
+          <button class="pfaq-v2-question" type="button" aria-expanded="{% if section.settings.open_first and forloop.first %}true{% else %}false{% endif %}">
+            <span>{{ faq.question }}</span>
+            <svg class="pfaq-v2-question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="pfaq-v2-answer">
+            <div class="pfaq-v2-answer-inner">{{ faq.answer | metafield_tag }}</div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-    {% if section.settings.footer_text != blank %}
-        <div class="pfaq-v2-link-mobile">{{ section.settings.footer_text }}</div>
-    {% endif %}
-</div>
+
+    {%- if section.settings.footer_text != blank -%}
+      <div class="pfaq-v2-footer">{{ section.settings.footer_text }}</div>
+    {%- endif -%}
+  </div>
+</section>
 
 <script>
-(function() {
-    var section = document.querySelector('.pfaq-v2-section');
-    if (!section) return;
-
-    section.querySelectorAll('[data-pfaq-v2-item]').forEach(function(item) {
-        item.querySelector('.pfaq-v2-question').addEventListener('click', function() {
-            item.classList.toggle('is-active');
-        });
+(function () {
+  var sec = document.getElementById('pfaq-{{ section.id }}');
+  if (!sec) return;
+  var items = [].slice.call(sec.querySelectorAll('[data-pfaq-v2-item]'));
+  items.forEach(function (item) {
+    var btn = item.querySelector('.pfaq-v2-question');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var willOpen = !item.classList.contains('is-open');
+      items.forEach(function (other) {
+        other.classList.remove('is-open');
+        var b = other.querySelector('.pfaq-v2-question');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
+  });
 })();
 </script>
 {% endif %}
 
 {% schema %}
 {
-    "name": "Product FAQs V2",
-    "class": "pfaq-v2-section",
-    "settings": [
-        {
-            "type": "paragraph",
-            "content": "FAQ items come from product metafield custom.faqs (list of metaobjects with question + answer fields). Section hidden when metafield is empty."
-        },
-        {
-            "type": "text",
-            "id": "heading",
-            "label": "Heading",
-            "default": "Got a question?"
-        },
-        {
-            "type": "textarea",
-            "id": "description",
-            "label": "Description",
-            "default": "We've heard it all from people struggling with sleep. And here are the most common questions."
-        },
-        {
-            "type": "richtext",
-            "id": "footer_text",
-            "label": "Footer text",
-            "default": "<p>Don't see your question? <em>Get in touch with our team</em></p>"
-        }
-    ],
-    "presets": [
-        {
-            "name": "Product FAQs V2",
-            "category": "Custom"
-        }
-    ]
+  "name": "Product FAQs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "FAQ items come from product metafield custom.faqs (list of metaobjects with question + answer fields). Section hidden when the metafield is empty."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "info": "Small uppercase line above the title. Leave blank to hide." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "richtext", "id": "description", "label": "Subheading", "info": "Italic text renders in the accent colour." },
+    { "type": "richtext", "id": "footer_text", "label": "Footer text", "info": "Shown under the list. Italic text renders in the accent colour." },
+    { "type": "checkbox", "id": "open_first", "label": "Open the first question by default", "default": false },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 22, "max": 56, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 36 },
+    { "type": "range", "id": "title_size_mobile", "min": 18, "max": 40, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 26 },
+    { "type": "range", "id": "sub_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Subheading size (desktop)", "default": 18 },
+    { "type": "range", "id": "sub_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Subheading size (mobile)", "default": 16 },
+    { "type": "range", "id": "question_size", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Question size (desktop)", "default": 20 },
+    { "type": "range", "id": "answer_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Answer size (desktop)", "default": 18 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "max_width", "min": 600, "max": 1200, "step": 20, "unit": "px", "label": "Max width", "default": 800 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 64 },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#fafafa" },
+    { "type": "color", "id": "accent_color", "label": "Accent (icon, italics)", "default": "#672666" },
+    { "type": "color", "id": "title_color", "label": "Title & question colour", "default": "#171512" },
+    { "type": "color", "id": "answer_color", "label": "Answer colour", "default": "#3a3a3a" }
+  ]
 }
 {% endschema %}

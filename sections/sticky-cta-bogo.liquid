@@ -31,18 +31,16 @@
 }
 
 /* Hide whenever an offer section is in view. The offer sections (offer-block
-   and bogo-offer) toggle these body classes via IntersectionObserver, so the
+   toggles this body class via IntersectionObserver, so the
    bar stays hidden across the entire offer — gallery, buy button, and the
    info tabs below it — and reappears above and below. */
-body.ob-offer-visible .sticky-cta-bogo-section,
-body.bogo-offer-visible .sticky-cta-bogo-section {
+body.ob-offer-visible .sticky-cta-bogo-section {
     transform: translateY(100%) !important;
 }
 .sticky-cta-bogo-section--top.is-visible {
     transform: translateY(0);
 }
-body.ob-offer-visible .sticky-cta-bogo-section--top,
-body.bogo-offer-visible .sticky-cta-bogo-section--top {
+body.ob-offer-visible .sticky-cta-bogo-section--top {
     transform: translateY(-100%) !important;
 }
 
@@ -163,7 +161,7 @@ body.bogo-offer-visible .sticky-cta-bogo-section--top {
         }
 
         /* Hiding while an offer section is on screen is handled by CSS
-           (body.ob-offer-visible / body.bogo-offer-visible), toggled by the
+           (body.ob-offer-visible), toggled by the
            offer sections' own IntersectionObservers. */
 
         /* Not scrolled enough → hide */

@@ -190,13 +190,13 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid rgba(0,0,0,0.1);
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li {
-    padding: 22px 0 !important;
+    padding: 26px 4px !important;
     border: none !important;
-    border-bottom: 1px solid #e5e5e5 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
     position: relative;
     background: transparent;
     border-radius: 0;
@@ -205,10 +205,10 @@
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li h2 {
-    color: #141414;
+    color: #171512;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0;
     text-transform: none;
@@ -225,20 +225,23 @@
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li .tab_content {
-    color: #141414;
+    color: #3a3a3a;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px !important;
     font-weight: 400;
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 0;
+    padding-bottom: 2px;
     overflow-wrap: anywhere;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li svg {
     position: absolute;
-    right: 0;
-    top: 22px;
+    right: 4px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
   }
 
   /* Plus icon: show when collapsed (checked), hide when expanded */
@@ -250,7 +253,7 @@
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~ h2 {
-    font-weight: 700;
+    font-weight: 500;
   }
 
   #custom_tabs_product.custom-tabs-product-new ul li input[type=checkbox]:not(:checked) ~ .icon-tab-plus {
@@ -262,7 +265,7 @@
 
   @media only screen and (max-width: 749px) {
     #custom_tabs_product.custom-tabs-product-new ul li {
-      padding: 18px 0 !important;
+      padding: 24px 2px !important;
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li h2 {
@@ -270,8 +273,8 @@
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li svg {
-      right: 0;
-      top: 18px;
+      right: 2px;
+      top: 27px;
     }
 
     #custom_tabs_product.custom-tabs-product-new ul li .tab_content {

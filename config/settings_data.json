@@ -2507,7 +2507,7 @@
           "max_width": 900,
           "padding_top": 64,
           "padding_bottom": 64,
-          "bg_color": "#ffffff",
+          "bg_color": "#fafafa",
           "accent_color": "#672666",
           "title_color": "#171512",
           "answer_color": "#3a3a3a"

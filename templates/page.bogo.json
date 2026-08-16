@@ -313,7 +313,7 @@
         "quote_pUQKPY": {
           "type": "quote",
           "settings": {
-            "quote": "Rejuvia was recently ranked #228 on the Inc. 5000 list of fast-growing companies in America",
+            "quote": "Rejuvia was recently ranked #228 on the Inc. 5000 list of fast-growing private companies in America",
             "logo": "shopify://shop_images/logo.png",
             "logo_alt": ""
           }
@@ -598,7 +598,7 @@
       "name": "Product Comparison",
       "settings": {
         "show_heading": true,
-        "heading": "Finally, The Better Way to Sleep",
+        "heading": "Rejuvia Is The Better Way to Sleep",
         "container_width": 1300,
         "section_padding_top": 65,
         "section_padding_bottom": 65,

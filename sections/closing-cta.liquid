@@ -52,7 +52,7 @@ html { scroll-behavior: smooth; }
   transition: opacity 0.25s ease;
 }
 .cta-{{ section.id }} .cta__btn:hover { opacity: 0.9; color: #fff; }
-.cta-{{ section.id }} .cta__guarantee { display: flex; align-items: center; gap: 9px; margin-top: 18px; font-size: 16px; font-weight: 500; color: #232323; }
+.cta-{{ section.id }} .cta__guarantee { display: flex; align-items: center; gap: 9px; margin-top: -10px; font-size: 16px; font-weight: 500; color: #232323; }
 .cta-{{ section.id }} .cta__guarantee svg { flex-shrink: 0; }
 
 .cta-{{ section.id }} .cta__photo { position: relative; height: 500px; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
@@ -78,7 +78,7 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__rating-text { font-size: {{ section.settings.rating_size_mobile | default: 16 }}px; white-space: nowrap; }
   .cta-{{ section.id }} .cta__point-label { font-size: {{ section.settings.checklist_size_mobile | default: 15 }}px; }
   .cta-{{ section.id }} .cta__btn { align-self: stretch; padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
-  .cta-{{ section.id }} .cta__guarantee { justify-content: center; margin-top: 14px; font-size: 15px; }
+  .cta-{{ section.id }} .cta__guarantee { justify-content: center; margin-top: -8px; font-size: 15px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
   .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;
     background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 42%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }

@@ -28,7 +28,7 @@
                 <div class="review-info-container">
                     {% if item.settings.image %}
                         <div class="review-image-author">
-                          {{ item.settings.image |  image_url: width: 60 |  image_tag }}
+                          {{ item.settings.image |  image_url: width: 60, format: 'webp' |  image_tag }}
                         </div>
                     {% endif %}
                     <div>

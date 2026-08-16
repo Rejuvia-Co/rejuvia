@@ -35,7 +35,7 @@
               <div class="customer-review-box">
                 <div class="customer-review-image">
                   {% if item.settings.image %}
-                    {{ item.settings.image | image_url: width: 350, height: 410 | image_tag }}
+                    {{ item.settings.image | image_url: width: 350, height: 410, format: 'webp' | image_tag }}
                   {% endif %}
                 </div>
 

@@ -501,7 +501,9 @@
         "button_size_mobile": 18,
         "frame_bg": "#e7e0f4",
         "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "checklist_color": "#141414",
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Money-Back Guarantee"
       }
     },
     "press_carousel_lst1": {

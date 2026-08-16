@@ -18,7 +18,7 @@
     padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   }
-  #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; padding: 0 60px; }
+  #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
   #{{ uid }} .pc__window { overflow: hidden; }
   #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
   #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 0 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
@@ -33,20 +33,19 @@
   #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: auto auto 0; padding-top: 20px; }
 
   /* Arrows */
+  #{{ uid }} .pc__controls { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 30px; }
   #{{ uid }} .pc__arrow {
-    position: absolute; top: 50%; transform: translateY(-50%);
+    flex: none;
     width: 46px; height: 46px; border-radius: 50%;
     border: 1.5px solid {{ ctrl }}; background: transparent; color: {{ ctrl }};
     display: inline-flex; align-items: center; justify-content: center;
-    cursor: pointer; padding: 0; transition: background .15s ease, opacity .15s ease; z-index: 2;
+    cursor: pointer; padding: 0; transition: background .15s ease, opacity .15s ease;
   }
   #{{ uid }} .pc__arrow:hover { background: rgba(0,0,0,0.05); }
-  #{{ uid }} .pc__arrow--prev { left: 2px; }
-  #{{ uid }} .pc__arrow--next { right: 2px; }
   #{{ uid }} .pc__arrow svg { width: 18px; height: 18px; }
 
   /* Dots */
-  #{{ uid }} .pc__dots { display: flex; justify-content: center; gap: 14px; margin-top: 34px; }
+  #{{ uid }} .pc__dots { display: flex; justify-content: center; gap: 14px; margin: 0; }
   #{{ uid }} .pc__dot {
     width: 15px; height: 15px; border-radius: 50%;
     border: 1.5px solid {{ ctrl }}; background: transparent; padding: 0; cursor: pointer;
@@ -60,22 +59,15 @@
     #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 44px; justify-content: center; }
     #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; max-width: 100%; }
     #{{ uid }} .pc__logo { height: 34px; margin: 22px auto 0; padding-top: 0; }
-    #{{ uid }} .pc__viewport { padding: 0; }
     #{{ uid }} .pc__arrow { width: 38px; height: 38px; }
-    #{{ uid }} .pc__arrow--prev { left: -6px; }
-    #{{ uid }} .pc__arrow--next { right: -6px; }
-    #{{ uid }} .pc__dots { margin-top: 26px; gap: 11px; }
+    #{{ uid }} .pc__controls { margin-top: 24px; gap: 14px; }
+    #{{ uid }} .pc__dots { gap: 11px; }
     #{{ uid }} .pc__dot { width: 13px; height: 13px; }
   }
 </style>
 
 <section id="{{ uid }}" class="pc" aria-roledescription="carousel" aria-label="{{ section.settings.aria_label | default: 'Press quotes' | escape }}">
   <div class="pc__viewport">
-    {%- if section.blocks.size > 1 -%}
-      <button type="button" class="pc__arrow pc__arrow--prev" data-pc-prev aria-label="Previous">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-    {%- endif -%}
 
     <div class="pc__window">
       <div class="pc__track" data-pc-track>
@@ -97,15 +89,18 @@
       </div>
     </div>
 
-    {%- if section.blocks.size > 1 -%}
-      <button type="button" class="pc__arrow pc__arrow--next" data-pc-next aria-label="Next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    {%- endif -%}
   </div>
 
   {%- if section.blocks.size > 1 -%}
-    <div class="pc__dots" data-pc-dots role="tablist" aria-label="Choose slide"></div>
+    <div class="pc__controls">
+      <button type="button" class="pc__arrow pc__arrow--prev" data-pc-prev aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="pc__dots" data-pc-dots role="tablist" aria-label="Choose slide"></div>
+      <button type="button" class="pc__arrow pc__arrow--next" data-pc-next aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
   {%- endif -%}
 </section>
 

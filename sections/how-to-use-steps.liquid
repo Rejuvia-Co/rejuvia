@@ -31,7 +31,7 @@
   #{{ uid }} .hus__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
   #{{ uid }} .hus__body { display: flex; flex-direction: column; gap: 8px; }
   #{{ uid }} .hus__label { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #6B5B69; }
-  #{{ uid }} .hus__text { margin: 0; font-size: {{ section.settings.step_text_size | default: 18 }}px; line-height: 1.5; font-weight: 500; color: #161015; text-wrap: pretty; }
+  #{{ uid }} .hus__text { margin: 0; font-size: {{ section.settings.step_text_size | default: 18 }}px; line-height: 1.5; font-weight: 400; color: #232323; text-wrap: pretty; }
   #{{ uid }} .hus__text p { margin: 0; }
   #{{ uid }} .hus__text strong { font-weight: 700; }
 
@@ -47,7 +47,7 @@
     #{{ uid }} .hus__media img { object-position: 50% 18%; }
     #{{ uid }} .hus__body { gap: 2px; }
     #{{ uid }} .hus__label { font-size: 11px; }
-    #{{ uid }} .hus__text { font-size: {{ section.settings.step_text_size_mobile | default: 16 }}px; line-height: 1.4; font-weight: 400; }
+    #{{ uid }} .hus__text { font-size: {{ section.settings.step_text_size_mobile | default: 16 }}px; line-height: 1.5; font-weight: 400; }
   }
 </style>
 

@@ -198,30 +198,139 @@
   "tag": "section",
   "class": "press-carousel-section",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#EAEAF7" },
-    { "type": "color", "id": "text_color", "label": "Quote color", "default": "#000000" },
-    { "type": "color", "id": "control_color", "label": "Arrows & dots color", "default": "#672666" },
-    { "type": "header", "content": "Quote font size" },
-    { "type": "range", "id": "quote_size_desktop", "min": 16, "max": 52, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 20 },
-    { "type": "range", "id": "quote_size_mobile", "min": 14, "max": 36, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 20 },
-    { "type": "header", "content": "Logo" },
-    { "type": "range", "id": "logo_max_height", "min": 16, "max": 120, "step": 1, "unit": "px", "label": "Logo height (desktop)", "default": 64 },
-    { "type": "header", "content": "Autoplay" },
-    { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
-    { "type": "range", "id": "autoplay_seconds", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Seconds per slide", "default": 6 },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "max_width", "min": 600, "max": 1300, "step": 20, "unit": "px", "label": "Content max width", "default": 1160 },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding top (desktop)", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding bottom (desktop)", "default": 48 }
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#eaeaf7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Quote color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "control_color",
+      "label": "Arrows & dots color",
+      "default": "#672666"
+    },
+    {
+      "type": "header",
+      "content": "Quote font size"
+    },
+    {
+      "type": "range",
+      "id": "quote_size_desktop",
+      "min": 16,
+      "max": 52,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote size (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "quote_size_mobile",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote size (mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_height",
+      "min": 16,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "Logo height (desktop)",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_seconds",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Seconds per slide",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1300,
+      "step": 20,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 1160
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (desktop)",
+      "default": 48
+    }
   ],
   "blocks": [
     {
       "type": "quote",
       "name": "Press quote",
       "settings": [
-        { "type": "textarea", "id": "quote", "label": "Quote" },
-        { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Transparent PNG/SVG. Dark logos work best on the light background." },
-        { "type": "text", "id": "logo_alt", "label": "Logo alt text", "info": "For accessibility, e.g. the publication name." }
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image",
+          "info": "Transparent PNG/SVG. Dark logos work best on the light background."
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Logo alt text",
+          "info": "For accessibility, e.g. the publication name."
+        }
       ]
     }
   ],
@@ -229,11 +338,61 @@
   "presets": [
     {
       "name": "Press Carousel",
+      "category": "Rejuvia",
+      "settings": {
+        "bg_color": "#eaeaf7",
+        "text_color": "#000000",
+        "control_color": "#672666",
+        "quote_size_desktop": 20,
+        "quote_size_mobile": 20,
+        "logo_max_height": 64,
+        "autoplay": true,
+        "autoplay_seconds": 6,
+        "max_width": 1160,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
       "blocks": [
-        { "type": "quote", "settings": { "quote": "Ranked #224 on the Inc. 5000 list of America's fastest-growing companies", "logo": "shopify://shop_images/Inc.-5000-Logo_1811b83c-d905-4bdb-a4ce-773836d83bf3.png" } },
-        { "type": "quote", "settings": { "quote": "\"Rejuvia is all-natural and the spray works as fast and effectively as anything else out there.\"", "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png" } },
-        { "type": "quote", "settings": { "quote": "\"Finally, I found something to take the edge off at night before I head to bed. I'm sleeping better than ever.\"", "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png" } },
-        { "type": "quote", "settings": { "quote": "\"Shockingly effective. Knocks you out for the night and keeps you asleep until the morning.\"", "logo": "shopify://shop_images/forbes_rejuvia_logo.png" } }
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "Rejuvia was recently ranked #228 on the Inc. 5000 list of America's fastest-growing companies",
+            "logo": "shopify://shop_images/logo.png",
+            "logo_alt": ""
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia is all-natural and the spray works as fast and effectively as anything else out there.\"",
+            "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+            "logo_alt": ""
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Finally, I found something to take the edge off at night before I head to bed. I'm sleeping better than ever.\"",
+            "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+            "logo_alt": ""
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Shockingly effective. Knocks you out for the night and keeps you asleep until the morning.\"",
+            "logo": "shopify://shop_images/forbes_rejuvia_logo.png",
+            "logo_alt": ""
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia works as advertised. It's highly effective, safe and natural.\"",
+            "logo": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+            "logo_alt": ""
+          }
+        }
       ]
     }
   ]

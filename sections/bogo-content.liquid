@@ -100,12 +100,12 @@
   .bogo-content__heading {
     margin: 0 0 22px;
     text-wrap: balance;
-    font-size: 36px;
+    font-size: {{ section.settings.heading_size | default: 36 }}px;
   }
   .bogo-content__sub {
     margin: 0 0 30px;
     max-width: 460px;
-    font-size: 18px;
+    font-size: {{ section.settings.subhead_size | default: 18 }}px;
     font-weight: 400;
     line-height: 1.55;
     color: #767676;
@@ -135,7 +135,7 @@
     margin-top: 1px;
   }
   .bogo-content__bullet-text {
-    font-size: 17px;
+    font-size: {{ section.settings.bullet_size | default: 17 }}px;
     line-height: 1.45;
     color: #232323;
   }
@@ -179,7 +179,7 @@
   .bogo-content__guarantee svg { flex-shrink: 0; }
 
   @media (max-width: 760px) {
-    .bogo-content__heading { font-size: 26px; text-wrap: normal; }
+    .bogo-content__heading { font-size: {{ section.settings.heading_size_mobile | default: 26 }}px; text-wrap: normal; }
     .bogo-content { padding: 40px 20px; }
     .bogo-content__inner { grid-template-columns: 1fr; gap: 32px; }
     .bogo-content--img-right .bogo-content__media,
@@ -188,7 +188,8 @@
     .bogo-content__heading--m { display: block; margin: 0; }
     .bogo-content__text .bogo-content__heading { display: none; }
     .bogo-content__bed { aspect-ratio: 4 / 3; }
-    .bogo-content__sub { font-size: 16px; margin-bottom: 24px; }
+    .bogo-content__sub { font-size: {{ section.settings.subhead_size_mobile | default: 16 }}px; margin-bottom: 24px; }
+    .bogo-content__bullet-text { font-size: {{ section.settings.bullet_size_mobile | default: 17 }}px; }
     .bogo-content__btn { font-size: 18px; padding: 20px 28px; }
   }
 </style>
@@ -200,6 +201,13 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Headline", "default": "Buy One, Get One Free — Sleep Better, Together" },
     { "type": "textarea", "id": "subhead", "label": "Subhead", "default": "Stock up on Midnight Bliss Oral Sleep Spray and share the gift of deep, restful sleep with someone you love." },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 60, "step": 1, "unit": "px", "label": "Headline (desktop)", "default": 36 },
+    { "type": "range", "id": "heading_size_mobile", "min": 16, "max": 44, "step": 1, "unit": "px", "label": "Headline (mobile)", "default": 26 },
+    { "type": "range", "id": "subhead_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Subhead (desktop)", "default": 18 },
+    { "type": "range", "id": "subhead_size_mobile", "min": 11, "max": 26, "step": 1, "unit": "px", "label": "Subhead (mobile)", "default": 16 },
+    { "type": "range", "id": "bullet_size", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Bullet text (desktop)", "default": 17 },
+    { "type": "range", "id": "bullet_size_mobile", "min": 11, "max": 26, "step": 1, "unit": "px", "label": "Bullet text (mobile)", "default": 17 },
     { "type": "header", "content": "Image" },
     { "type": "image_picker", "id": "image", "label": "Image", "info": "Fills the rounded frame (square works best)." },
     { "type": "select", "id": "image_side", "label": "Image side (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "left" },

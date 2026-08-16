@@ -54,8 +54,11 @@
    centre the table. Desktop-only: on mobile the table scrolls horizontally and
    centring an overflowing flex container makes its left edge unreachable. */
 @media (min-width: 901px) {
+    /* Constrain heading AND table to the same 1120px (320 labels + 4x200 cols)
+       so the heading's left edge lines up with the first label. */
+    .alt-v2-heading,
     .alt-v2-table {
-        justify-content: center;
+        max-width: 1120px;
     }
     .alt-v2-labels {
         flex: 0 1 320px;

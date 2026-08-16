@@ -591,8 +591,8 @@
       "name": "Product FAQs V2",
       "settings": {
         "heading": "Frequently Asked Questions",
-        "description": "",
-        "footer_text": "<p>Have a question that isn\u2019t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "description": "<p>Have a question that isn\u2019t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "footer_text": "",
         "eyebrow": "",
         "open_first": false,
         "title_size": 36,

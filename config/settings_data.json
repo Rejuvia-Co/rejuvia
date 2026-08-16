@@ -2495,8 +2495,9 @@
         ],
         "name": "FAQs V2",
         "settings": {
+          "eyebrow": "",
           "heading": "Frequently Asked Questions",
-          "subheading": "<p>Don't see your question? We'd love to hear from you and help. <em>Email us at hello@rejuvia.co!</em></p>",
+          "subheading": "<p>Don't see your question? We'd love to help. Email us at <em>hello@rejuvia.co!</em></p>",
           "sub_size": 18,
           "sub_size_mobile": 16,
           "open_first": false,
@@ -2510,8 +2511,7 @@
           "bg_color": "#fafafa",
           "accent_color": "#672666",
           "title_color": "#171512",
-          "answer_color": "#3a3a3a",
-          "eyebrow": ""
+          "answer_color": "#3a3a3a"
         }
       },
       "sticky_cta_v2_wacfBP": {

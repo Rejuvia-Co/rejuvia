@@ -49,6 +49,19 @@
     flex-direction: column;
 }
 
+/* Desktop: the labels column was flex:1, so it absorbed every spare pixel and
+   pushed the product columns to the right, leaving a wide dead gap. Cap it and
+   centre the table. Desktop-only: on mobile the table scrolls horizontally and
+   centring an overflowing flex container makes its left edge unreachable. */
+@media (min-width: 901px) {
+    .alt-v2-table {
+        justify-content: center;
+    }
+    .alt-v2-labels {
+        flex: 0 1 320px;
+    }
+}
+
 .alt-v2-label-header {
     height: calc(var(--alt-v2-icon-size, 90px) + 60px);
     border-bottom: 1px solid #eaeaf7;

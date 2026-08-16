@@ -190,7 +190,7 @@
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease; text-transform: uppercase; letter-spacing: normal;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .fp-v2-card-btn:hover {

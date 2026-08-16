@@ -48,24 +48,14 @@
   color: {{ section.settings.title_color }};
 }
 .fc__icon {
-  position: relative;
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  transition: transform 0.25s ease;
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: {{ section.settings.accent_color }};
+  transition: transform 0.22s ease;
 }
-.fc__icon::before,
-.fc__icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: {{ section.settings.accent_color }};
-  transform: translate(-50%, -50%);
-}
-.fc__icon::before { width: 16px; height: 2px; }
-.fc__icon::after { width: 2px; height: 16px; }
-.fc__item.is-open .fc__icon { transform: rotate(45deg); }
+.fc__item.is-open .fc__icon { transform: rotate(180deg); }
 .fc__a {
   max-height: 0;
   overflow: hidden;
@@ -98,7 +88,7 @@
         <div class="fc__item{% if section.settings.open_first and forloop.first %} is-open{% endif %}" {{ block.shopify_attributes }}>
           <button class="fc__q" type="button" aria-expanded="{% if section.settings.open_first and forloop.first %}true{% else %}false{% endif %}">
             <span>{{ block.settings.question }}</span>
-            <span class="fc__icon" aria-hidden="true"></span>
+            <svg class="fc__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="fc__a">
             <div class="fc__a-inner">{{ block.settings.answer }}</div>

@@ -12,7 +12,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   background: {{ section.settings.pill_bg | default: '#ffffff' }};
   border: 1px solid rgba(0,0,0,0.10);
   border-radius: 10px;
@@ -26,7 +26,7 @@
   color: {{ section.settings.stars_label_color | default: '#672666' }};
 }
 @media (max-width: 749px) {
-  #shopify-section-{{ section.id }} .testimonial-social-proof--pill { padding: 9px 14px; gap: 8px; }
+  #shopify-section-{{ section.id }} .testimonial-social-proof--pill { padding: 9px 12px; gap: 8px; }
   #shopify-section-{{ section.id }} .tsp__stars svg { width: 16px; height: 16px; }
   #shopify-section-{{ section.id }} .testimonial-social-proof--pill span.customer-testimonials-stars__label {
     font-size: {{ section.settings.stars_label_size_mobile | default: 15 }}px;

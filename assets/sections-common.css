@@ -238,7 +238,7 @@ main:has(.faq-new) {
 .faq-new .table-content__links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .faq-new .table-content__link {
@@ -246,7 +246,7 @@ main:has(.faq-new) {
   align-items: center;
   color: #141414;
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: normal;

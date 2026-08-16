@@ -324,7 +324,7 @@
                   <h2 class="faq-title title-color">Ingredients</h2>
                   <div class="title-color tab_content" style="font-size:16px;">
                       {% if product.metafields.custom.ingredients_image.value != blank %}
-                        <img src="{{ product.metafields.custom.ingredients_image.value  | img_url: 'master'}}" />
+                        <img src="{{ product.metafields.custom.ingredients_image.value  | img_url: 'master'}}" loading="lazy" decoding="async">
                       {% else %}
                         {{ product.metafields.tabs.ingredients }}
                       {% endif %}
@@ -421,12 +421,12 @@
                     {% endif %}
                     <div class="eg-productR-image">
                         <div class="eg-background-product"></div>
-                        <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}">
+                        <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}" loading="lazy" decoding="async">
                     </div>
                     <div class="eg-productR-info">
                         <div class="eg-reviews">
                             {{ relatedProduct.metafields.okendo.StarRatingSnippet }}
-                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" />
+                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <div class="productR-info_title">
                             <span>{{ relatedProduct.title }}</span>
@@ -451,7 +451,7 @@
                             <div class="boundle-related__products--wrap">
                                 {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
                                     <div class="boundle-related__products--product">
-                                        <img src="{{ product_ref.featured_image | img_url: '50x50' }}" >
+                                        <img src="{{ product_ref.featured_image | img_url: '50x50' }}" loading="lazy" decoding="async">
                                         <div>
                                             {{ product_ref.title }}
                                         </div>

@@ -258,7 +258,7 @@
          width="{{ section.settings.signature_image.width }}"
          height="{{ section.settings.signature_image.height }}"
          alt="{{ section.settings.author_name | default: 'Signature' }}"
-         loading="lazy">
+         loading="lazy" decoding="async">
 {% endif %}
             {% if section.settings.author_name != blank or section.settings.author_title != blank %}
                 <div class="science-v2-quote-author">

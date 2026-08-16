@@ -64,7 +64,7 @@
              srcset="{{ hero.settings.image | image_url: width: 500 }} 500w, {{ hero.settings.image | image_url: width: 800 }} 800w"
              sizes="100vw"
              width="{{ hero.settings.image.width }}" height="{{ hero.settings.image.height }}"
-             alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="eager">
+             alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
       </div>
     {%- endif -%}
 
@@ -78,7 +78,7 @@
                    srcset="{{ block.settings.image | image_url: width: 128 }} 128w, {{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 800 }} 800w"
                    sizes="(max-width: 767px) 64px, 380px"
                    width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
-                   alt="{{ block.settings.label | default: block.settings.image.alt | escape }}" loading="lazy">
+                   alt="{{ block.settings.label | default: block.settings.image.alt | escape }}" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
           <div class="hus__body">

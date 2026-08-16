@@ -99,7 +99,7 @@ html { scroll-behavior: smooth; }
       <div class="cta__panel">
         {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
           <div class="cta__rating">
-            {%- if section.settings.show_stars -%}<span class="cta__stars" aria-label="5 stars">{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}</span>{%- endif -%}
+            {%- if section.settings.show_stars -%}<span role="img" class="cta__stars" aria-label="5 stars">{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}{{ cta_star }}</span>{%- endif -%}
             {%- if section.settings.rating_text != blank -%}<span class="cta__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
           </div>
         {%- endif -%}
@@ -125,7 +125,7 @@ html { scroll-behavior: smooth; }
             {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
               <div class="cta__guarantee">
                 {%- if section.settings.guarantee_icon != blank -%}
-                  <img src="{{ section.settings.guarantee_icon | image_url: width: 48 }}" alt="" width="18" height="18" loading="lazy">
+                  <img src="{{ section.settings.guarantee_icon | image_url: width: 48 }}" alt="" width="18" height="18" loading="lazy" decoding="async">
                 {%- else -%}
                   {{ cta_gold_check }}
                 {%- endif -%}

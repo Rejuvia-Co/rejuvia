@@ -150,7 +150,7 @@
                   {% endif %}
                 <span class="visuallyhidden">Select </span>
                   <div class="swatch-label__box--img">
-                    <img src="{{ variant.featured_image | img_url: 'master' }}" alt="{{ variant.title }}">
+                    <img src="{{ variant.featured_image | img_url: 'master' }}" alt="{{ variant.title }}" loading="lazy" decoding="async">
                   </div>
                 <div class="swatch-price__box">
                   <div class="swatch-radio-button__box">

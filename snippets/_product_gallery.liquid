@@ -28,7 +28,7 @@
                               {{ currentProduct.metafields.custom.boundle_text }}
                           </div>
                       {% endif %}
-                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" />
+                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" loading="lazy" decoding="async">
                   </div>
                   {%- if quickView != true -%}
                       {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}
@@ -55,7 +55,7 @@
           
             <div class="slide" {{ groupingData }}>
               <a class="gallery" href="{{ image | img_url: 'master' }}" data-media-id="{{media.id}}" variant-id="{{ media.variants.first.id }}">
-                <img src="{% render 'image_placeholder', image: image %}" data-srcset="{% render 'lazy_src', image: image %}" class="lazyload" data-sizes="auto" alt="{{media.alt}}" />
+                <img src="{% render 'image_placeholder', image: image %}" data-srcset="{% render 'lazy_src', image: image %}" class="lazyload" data-sizes="auto" alt="{{media.alt}}" loading="lazy" decoding="async">
               </a>
             </div>
           

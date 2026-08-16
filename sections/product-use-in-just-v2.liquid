@@ -379,8 +379,7 @@
                     srcset="{{ section.settings.default_image | image_url: width: 400 }} 400w, {{ section.settings.default_image | image_url: width: 600 }} 600w, {{ section.settings.default_image | image_url: width: 800 }} 800w, {{ section.settings.default_image | image_url: width: 1200 }} 1200w"
                     sizes="(max-width: 900px) 92vw, 400px"
                     alt="How to use"
-                    loading="eager"
-                >
+                    loading="eager" decoding="async">
             {% endif %}
             {% for block in section.blocks %}
                 {% if block.settings.image != blank %}
@@ -391,8 +390,7 @@
                         srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 800 }} 800w, {{ block.settings.image | image_url: width: 1200 }} 1200w"
                         sizes="(max-width: 900px) 92vw, 400px"
                         alt="{{ block.settings.title }}"
-                        loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-                    >
+                        loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
                 {% endif %}
                 {% if block.settings.watermark != blank %}
                     <div class="puij-v2-watermark puij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-puij-v2-wm="{{ forloop.index0 }}" style="opacity: {{ block.settings.watermark_opacity | default: 20 | times: 0.01 }}; color: {{ puij_accent }};">
@@ -426,7 +424,7 @@
                                     <div class="puij-v2-tip">
                                         <div class="puij-v2-tip-label">
                                             {% if block.settings.tip1_icon != blank %}
-                                                <img src="{{ block.settings.tip1_icon | image_url: width: 32 }}" alt="" width="16" height="16">
+                                                <img src="{{ block.settings.tip1_icon | image_url: width: 32 }}" alt="" width="16" height="16" loading="lazy" decoding="async">
                                             {% endif %}
                                             {{ block.settings.tip1_label }}
                                         </div>
@@ -437,7 +435,7 @@
                                     <div class="puij-v2-tip">
                                         <div class="puij-v2-tip-label">
                                             {% if block.settings.tip2_icon != blank %}
-                                                <img src="{{ block.settings.tip2_icon | image_url: width: 32 }}" alt="" width="16" height="16">
+                                                <img src="{{ block.settings.tip2_icon | image_url: width: 32 }}" alt="" width="16" height="16" loading="lazy" decoding="async">
                                             {% endif %}
                                             {{ block.settings.tip2_label }}
                                         </div>

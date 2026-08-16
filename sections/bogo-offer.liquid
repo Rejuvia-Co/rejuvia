@@ -197,7 +197,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
     <div class="bogo__header">
       {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
         <div class="bogo__rating">
-          {%- if section.settings.show_stars -%}<span class="bogo__stars" aria-label="5 stars">{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}</span>{%- endif -%}
+          {%- if section.settings.show_stars -%}<span role="img" class="bogo__stars" aria-label="5 stars">{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}{{ bogo_star }}</span>{%- endif -%}
           {%- if section.settings.rating_text != blank -%}<span class="bogo__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
         </div>
       {%- endif -%}
@@ -211,7 +211,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
       <div class="bogo__gallery-inner">
       <div class="bogo__main">
         {%- if main_image != blank -%}
-          <img data-bogo-main src="{{ main_image | image_url: width: 900 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">
+          <img data-bogo-main src="{{ main_image | image_url: width: 900 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy" decoding="async">
         {%- endif -%}
         {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
           <button type="button" class="bogo__nav bogo__nav--prev" data-bogo-prev aria-label="Previous image"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -222,7 +222,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
         <div class="bogo__thumbs">
           {%- for img in gallery_product.images -%}
             <button type="button" class="bogo__thumb{% if img == main_image %} is-active{% endif %}" data-bogo-thumb data-full="{{ img | image_url: width: 900 }}" aria-label="View image {{ forloop.index }}">
-              <img src="{{ img | image_url: width: 160 }}" alt="">
+              <img src="{{ img | image_url: width: 160 }}" alt="" loading="lazy" decoding="async">
             </button>
           {%- endfor -%}
         </div>

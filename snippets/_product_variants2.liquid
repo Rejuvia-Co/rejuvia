@@ -39,10 +39,10 @@
             <div class="additional-product__item--image">
                 {% if currentProduct.metafields.custom.additional_subscription_product_image != blank %}
                     <img src="{{ currentProduct.metafields.custom.additional_subscription_product_image | img_url: 'master' }}"
-                         alt="{{ settings.additional_product.title }}">
+                         alt="{{ settings.additional_product.title }}" loading="lazy" decoding="async">
                 {% else %}
                     <img src="{{ settings.additional_product.featured_image | img_url: 'master' }}"
-                         alt="{{ settings.additional_product.title }}">
+                         alt="{{ settings.additional_product.title }}" loading="lazy" decoding="async">
 
                 {% endif %}
             </div>

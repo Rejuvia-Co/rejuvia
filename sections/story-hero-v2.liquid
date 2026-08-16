@@ -155,7 +155,7 @@ main.content-wrapper { overflow: visible !important; }
          width="{{ section.settings.image_desktop.width }}"
          height="{{ section.settings.image_desktop.height }}"
          alt="{{ section.settings.image_desktop.alt }}"
-         loading="eager">
+         loading="eager" decoding="async">
 </div>
 {%- endif -%}
 {% if has_mobile_image %}
@@ -164,7 +164,7 @@ main.content-wrapper { overflow: visible !important; }
              width="{{ section.settings.image_mobile.width }}"
              height="{{ section.settings.image_mobile.height }}"
              alt="{{ section.settings.image_mobile.alt | default: '' }}"
-             loading="eager">
+             loading="eager" decoding="async">
     </div>
 {% endif %}
 

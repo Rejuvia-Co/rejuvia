@@ -103,7 +103,7 @@
                      alt="{{ section.settings.chart_image.alt | default: 'Absorption comparison chart' }}"
                      width="{{ section.settings.chart_image.width }}"
                      height="{{ section.settings.chart_image.height }}"
-                     loading="lazy">
+                     loading="lazy" decoding="async">
             </div>
         {% endif %}
         {% if section.settings.chart_image_mobile != blank %}
@@ -112,7 +112,7 @@
                      alt="{{ section.settings.chart_image_mobile.alt | default: 'Absorption comparison chart' }}"
                      width="{{ section.settings.chart_image_mobile.width }}"
                      height="{{ section.settings.chart_image_mobile.height }}"
-                     loading="lazy">
+                     loading="lazy" decoding="async">
             </div>
         {% endif %}
     </div>

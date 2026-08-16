@@ -16,7 +16,7 @@
              src="{{ img | image_url: width: 160 }}"
              srcset="{{ img | image_url: width: 128 }} 1x, {{ img | image_url: width: 160 }} 2x"
              width="64" height="64" loading="lazy"
-             alt="{{ img.alt | default: 'Happy customer' | escape }}">
+             alt="{{ img.alt | default: 'Happy customer' | escape }}" decoding="async">
       {%- else -%}
         <span class="trusted-by__avatar trusted-by__avatar--ph" aria-hidden="true"></span>
       {%- endif -%}

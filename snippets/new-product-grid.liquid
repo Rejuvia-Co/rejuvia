@@ -7,7 +7,7 @@
                     {{ product.metafields.custom.collection_card_text }}
                 </div>
             {% endif %}
-            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" loading="lazy" decoding="async">
             {% if block.settings.show_savings %}
                 <div class="eg-savings-text">
                     <b>{{ block.settings.savings_text }}</b>
@@ -17,7 +17,7 @@
         <div class="eg-productR-info">
             <div class="eg-reviews">
                 {{ product.metafields.okendo.StarRatingSnippet }}
-                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true"/>
+                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true"loading="lazy" decoding="async">
             </div>
             <div class="productR-info_title">
                 <span>{{ product.title }}</span>

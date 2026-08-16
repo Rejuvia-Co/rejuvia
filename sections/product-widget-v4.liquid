@@ -154,14 +154,14 @@
     <div class="pw4__gallery">
       <div class="pw4__main">
         {%- for img in p.images limit: 5 -%}
-          <img class="{% if forloop.first %}is-active{% endif %}" src="{{ img | image_url: width: 900 }}" alt="{{ p.title | escape }}" width="900" height="900" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          <img class="{% if forloop.first %}is-active{% endif %}" src="{{ img | image_url: width: 900 }}" alt="{{ p.title | escape }}" width="900" height="900" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
         {%- endfor -%}
       </div>
       <div class="pw4__thumbs-row">
         <button type="button" class="pw4__arrow" data-pw4-prev aria-label="Previous image"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
         <div class="pw4__thumbs">
           {%- for img in p.images limit: 5 -%}
-            <button type="button" class="pw4__thumb{% if forloop.first %} is-active{% endif %}" data-pw4-thumb="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy"></button>
+            <button type="button" class="pw4__thumb{% if forloop.first %} is-active{% endif %}" data-pw4-thumb="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy" decoding="async"></button>
           {%- endfor -%}
         </div>
         <button type="button" class="pw4__arrow" data-pw4-next aria-label="Next image"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -172,7 +172,7 @@
         <div class="pw4__review">
           <p class="pw4__review-quote">"{{ rev_quote }}"</p>
           <div class="pw4__review-meta">
-            <span class="pw4__stars" aria-label="5 stars">
+            <span role="img" class="pw4__stars" aria-label="5 stars">
               {%- for i in (1..5) -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="#fab851"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z"/></svg>{%- endfor -%}
             </span>
             <span class="pw4__review-author">{{ p.metafields.custom.gallery_review_author | default: 'Verified Buyer' }}</span>
@@ -187,7 +187,7 @@
 
       {%- comment -%} Rating {%- endcomment -%}
       <div class="pw4__rating">
-        <span class="pw4__stars" aria-label="{{ section.settings.rating_value | default: '4.5' }} stars">
+        <span role="img" class="pw4__stars" aria-label="{{ section.settings.rating_value | default: '4.5' }} stars">
           {%- for i in (1..5) -%}<svg width="19" height="19" viewBox="0 0 24 24" fill="{% if i == 5 %}#d6d6d6{% else %}#fab851{% endif %}"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 7L12 17.8 5.4 21l1.3-7-5-4.7 7-.9z"/></svg>{%- endfor -%}
         </span>
         <span><strong>{{ section.settings.rating_value | default: '4.5' }}</strong> Stars | <a href="{{ section.settings.reviews_link | default: '#reviews' }}">{{ section.settings.reviews_count | default: '5,500' }} Reviews</a></span>
@@ -316,7 +316,7 @@
           <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>How To Use</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.tabs.directions_for_use }}</div></div></div></div>
         {%- endif -%}
         {%- if p.metafields.tabs.ingredients != blank or p.metafields.custom.ingredients_image.value != blank -%}
-          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>Ingredients</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{% if p.metafields.custom.ingredients_image.value != blank %}<img src="{{ p.metafields.custom.ingredients_image.value | img_url: 'master' }}" alt="Ingredients">{% else %}{{ p.metafields.tabs.ingredients }}{% endif %}{% render 'supplement-label-button', product: p %}</div></div></div></div>
+          <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>Ingredients</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{% if p.metafields.custom.ingredients_image.value != blank %}<img src="{{ p.metafields.custom.ingredients_image.value | img_url: 'master' }}" alt="Ingredients" loading="lazy" decoding="async">{% else %}{{ p.metafields.tabs.ingredients }}{% endif %}{% render 'supplement-label-button', product: p %}</div></div></div></div>
         {%- endif -%}
         {%- if p.metafields.custom.guarantee_90_day != blank -%}
           <div class="pw4__tab"><button type="button" class="pw4__tab-q"><span>90-Day Guarantee</span>{{ pw4_sign }}</button><div class="pw4__tab-a"><div class="pw4__tab-a-inner"><div class="pw4__tab-body">{{ p.metafields.custom.guarantee_90_day | metafield_tag }}</div></div></div></div>

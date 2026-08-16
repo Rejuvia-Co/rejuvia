@@ -192,7 +192,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
       {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
         <div class="ob__rating">
-          {%- if section.settings.show_stars -%}<span class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
+          {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
           {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
         </div>
       {%- endif -%}
@@ -247,9 +247,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
             {%- if b.settings.image != blank -%}
-              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 280 }}" alt="" decoding="async">
+              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290 }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- elsif b.settings.image_asset != blank -%}
-              <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" alt="" decoding="async">
+              <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- endif -%}
             <span class="ob__tier-body">
               <span class="ob__tier-title">{{ b.settings.label }}</span>

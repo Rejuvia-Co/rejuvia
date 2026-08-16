@@ -361,14 +361,13 @@
                         <img
                             src="{{ fb_img_url }}"
                             alt="Facebook review"
-                            loading="lazy"
-                        >
+                            loading="lazy" decoding="async">
                     {% endif %}
                 </div>
             {% elsif block.type == 'fb_text_review' %}
                 <div class="rs-v2-fb-text" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
                     {% if block.settings.avatar != blank %}
-                        <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72 }}" alt="{{ block.settings.name }}" loading="lazy">
+                        <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72 }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
                     {% else %}
                         <div class="rs-v2-fb-avatar-placeholder"></div>
                     {% endif %}

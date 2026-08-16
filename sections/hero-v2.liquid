@@ -402,8 +402,7 @@
                                 alt="{{ block.settings.name }}"
                                 width="60"
                                 height="60"
-                                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-                            >
+                                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
                         {% endif %}
                         <div class="hero-v2-testimonial-body">
                             <div class="hero-v2-testimonial-header">

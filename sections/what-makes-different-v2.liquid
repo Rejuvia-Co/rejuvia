@@ -225,8 +225,7 @@
             <img
                 src="{{ section.settings.image | image_url: width: 800 }}"
                 alt="{{ section.settings.image.alt | default: 'Product' }}"
-                loading="lazy"
-            >
+                loading="lazy" decoding="async">
         {% endif %}
     </div>
 

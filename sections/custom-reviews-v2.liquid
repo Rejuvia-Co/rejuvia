@@ -148,7 +148,7 @@
             <div class="cr-v2-card" {{ block.shopify_attributes }}>
                 <div class="cr-v2-card-header">
                     {% if block.settings.avatar != blank %}
-                        <img class="cr-v2-avatar" src="{{ block.settings.avatar | image_url: width: 100 }}" alt="{{ block.settings.name }}" loading="lazy">
+                        <img class="cr-v2-avatar" src="{{ block.settings.avatar | image_url: width: 100 }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
                     {% endif %}
                     <div class="cr-v2-header-info">
                         <div class="cr-v2-stars">

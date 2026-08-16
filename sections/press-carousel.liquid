@@ -83,7 +83,7 @@
                    srcset="{{ block.settings.logo | image_url: width: 240 }} 240w, {{ block.settings.logo | image_url: width: 480 }} 480w"
                    sizes="240px"
                    width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}"
-                   alt="{{ block.settings.logo_alt | default: 'Press logo' | escape }}" loading="lazy">
+                   alt="{{ block.settings.logo_alt | default: 'Press logo' | escape }}" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
         {%- endfor -%}
@@ -133,6 +133,7 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'pc__dot' + (i === pos ? ' is-active' : '');
+      b.setAttribute('role', 'tab');
       b.setAttribute('aria-label', 'Slide ' + (i + 1));
       (function (n) { b.addEventListener('click', function () { goTo(n); restart(); }); })(i);
       dotsWrap.appendChild(b);
@@ -146,7 +147,7 @@
     dots.forEach(function (d, i) {
       var on = i === pos;
       d.classList.toggle('is-active', on);
-      if (on) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+      if (on) { d.setAttribute('aria-selected', 'true'); } else { d.removeAttribute('aria-selected'); }
     });
     var hide = positions < 2;
     if (prevBtn) prevBtn.style.display = hide ? 'none' : '';

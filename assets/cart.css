@@ -154,7 +154,7 @@ main:has(#cart.cart-page) {
     letter-spacing: normal;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.15s ease, transform 0.15s ease; text-transform: uppercase;
+    transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .cart-empty__cta:hover {
@@ -718,7 +718,6 @@ main:has(#cart.cart-page) {
     font-weight: 500;
     line-height: 1.2;
     text-align: center;
-    text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s ease;
     letter-spacing: normal;

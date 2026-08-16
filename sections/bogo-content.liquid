@@ -55,7 +55,7 @@
         {%- endif -%}
         {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
           <span class="bogo-content__guarantee">
-            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#fab851" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12.5l5 5 11-12" stroke="#fab851" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             {{ section.settings.guarantee_text }}
           </span>
         {%- endif -%}
@@ -163,20 +163,20 @@
     border: none;
     border-radius: 100px;
     cursor: pointer;
-    transition: background 150ms cubic-bezier(.22,1,.36,1), transform 150ms cubic-bezier(.22,1,.36,1); text-transform: uppercase;
+    transition: background 150ms cubic-bezier(.22,1,.36,1), transform 150ms cubic-bezier(.22,1,.36,1);
 }
   .bogo-content__btn:hover { background: #5d215f; color: #fff; }
   .bogo-content__btn:active { transform: scale(0.985); }
   .bogo-content__guarantee {
     display: flex;
     align-items: center;
-    gap: 9px;
+    justify-content: center;
+    gap: 8px;
     margin-top: 18px;
     font-size: 16px;
-    font-weight: 500;
-    color: #232323;
+    color: #141414;
   }
-  .bogo-content__guarantee svg { flex-shrink: 0; }
+  .bogo-content__guarantee svg { width: 18px; height: 18px; display: block; flex-shrink: 0; }
 
   @media (max-width: 760px) {
     .bogo-content__heading { font-size: {{ section.settings.heading_size_mobile | default: 26 }}px; text-wrap: normal; }

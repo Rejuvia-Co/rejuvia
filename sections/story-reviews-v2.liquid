@@ -116,10 +116,10 @@
 .story-reviews-v2-stars {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 3px;
 }
 
-.story-reviews-v2-stars svg { width: 21.32px; height: 20px; }
+.story-reviews-v2-stars svg { width: 20px; height: 20px; display: block; }
 
 .story-reviews-v2-review-title {
     margin: 0;
@@ -158,20 +158,16 @@
 .story-reviews-v2-badge {
     display: inline-flex;
     align-items: center;
-    padding: 3px 6px;
-    background: #e5e5e5;
-    border-radius: 2px;
-    font-size: 10px;
-    font-weight: 400;
+    padding: 4px 10px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
     line-height: 1.4;
     color: #141414;
 }
 
 .story-reviews-v2-badge--verified {
-    background: transparent;
-    padding: 0;
-    font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 0;
 }
 
@@ -328,7 +324,7 @@
 
     .story-reviews-v2-avatar-text { font-size: 16.67px; }
 
-    .story-reviews-v2-stars svg { width: 17.07px; height: 16px; }
+    .story-reviews-v2-stars svg { width: 17px; height: 17px; }
 
     .story-reviews-v2-review-title { font-size: 18px; }
 
@@ -381,7 +377,7 @@
                                 <div class="story-reviews-v2-stars" aria-label="{{ block.settings.stars | default: 5 }} stars">
                                     {% assign star_count = block.settings.stars | default: 5 %}
                                     {% for i in (1..star_count) %}
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ star_color }}"/></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" fill="{{ star_color }}"/><path d="M12 4 L14.35 9.4 L20 9.9 L15.7 13.7 L17 19.4 L12 16.4 L7 19.4 L8.3 13.7 L4 9.9 L9.65 9.4 Z" fill="#ffffff"/></svg>
                                     {% endfor %}
                                 </div>
                                 {% if block.settings.title != blank %}
@@ -401,7 +397,7 @@
                             {% if block.settings.badge_type == 'verified' %}
                                 <span class="story-reviews-v2-badge story-reviews-v2-badge--verified">Verified Purchase</span>
                             {% elsif block.settings.badge_type == 'unprompted' %}
-                                <span class="story-reviews-v2-badge">Unprompted review</span>
+                                <span class="story-reviews-v2-badge">Verified</span>
                             {% endif %}
                         </div>
                     </div>
@@ -690,7 +686,7 @@
                     "label": "Badge",
                     "options": [
                         { "value": "none", "label": "None" },
-                        { "value": "unprompted", "label": "Unprompted review" },
+                        { "value": "unprompted", "label": "Verified" },
                         { "value": "verified", "label": "Verified Purchase" }
                     ],
                     "default": "unprompted"

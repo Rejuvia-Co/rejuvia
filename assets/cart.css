@@ -143,7 +143,7 @@ main:has(#cart.cart-page) {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 18px 34px;
+    padding: 24px 32px;
     background: #672666;
     color: #ffffff;
     border-radius: 100px;
@@ -151,10 +151,10 @@ main:has(#cart.cart-page) {
     font-size: 18px;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: -0.2px;
+    letter-spacing: normal;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.15s ease, transform 0.15s ease;
+    transition: background 0.15s ease, transform 0.15s ease; text-transform: uppercase;
 }
 
 .cart-empty__cta:hover {
@@ -708,7 +708,7 @@ main:has(#cart.cart-page) {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 18px 32px;
+    padding: 24px 32px;
     background: #672666;
     border: 1px solid #672666;
     border-radius: 100px;
@@ -718,11 +718,12 @@ main:has(#cart.cart-page) {
     font-weight: 500;
     line-height: 1.2;
     text-align: center;
-    text-transform: none;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s ease;
     letter-spacing: normal;
     margin: 0;
+
 }
 
 .cart-checkout__btn:hover {

@@ -107,8 +107,8 @@
 }
 
 .fp-v2-stars svg {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 }
 
 .fp-v2-star--empty {
@@ -116,7 +116,7 @@
 }
 
 .fp-v2-rating-text {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   color: #141414;
 }
@@ -128,9 +128,9 @@
 /* Title */
 .fp-v2-card-title {
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.3;
   color: #141414;
   margin: 0;
 }
@@ -146,15 +146,15 @@
 .fp-v2-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 7px;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--card-base-colour, #672666);
 }
 
 .fp-v2-tag svg {
-  width: 14px;
-  height: 14px;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
 }
 
@@ -166,10 +166,10 @@
 
 /* Description */
 .fp-v2-card-desc {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   color: #141414;
-  opacity: 0.75;
+  opacity: 0.8;
   margin: 0;
 }
 
@@ -190,7 +190,7 @@
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease; text-transform: uppercase; letter-spacing: normal;
 }
 
 .fp-v2-card-btn:hover {

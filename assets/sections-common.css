@@ -350,21 +350,8 @@ main:has(.faq-new) {
   grid-template-areas: "stack";
 }
 
-.faq-new__right--item-box h5::before {
-  content: attr(data-text);
-  grid-area: stack;
-  font-weight: 500;
-  visibility: hidden;
-  pointer-events: none;
-  user-select: none;
-}
-
 .faq-new__right--item-box h5 > span {
   grid-area: stack;
-}
-
-.accordion.active .faq-new__right--item-box h5 > span {
-  font-weight: 500;
 }
 
 .faq-new__right--item-text {
@@ -386,37 +373,17 @@ main:has(.faq-new) {
 }
 
 .faq-new__right--item-toggle svg {
-  display: none;
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: #672666;
+  transition: transform .22s ease;
 }
 
-.faq-new__right--item-toggle::before,
-.faq-new__right--item-toggle::after {
-  content: '';
-  position: absolute;
-  background-color: #141414;
-  border-radius: 2px;
-}
-
-.faq-new__right--item-toggle::before {
-  top: 50%;
-  left: 4px;
-  right: 4px;
-  height: 1.5px;
-  transform: translateY(-50%);
-}
-
-.faq-new__right--item-toggle::after {
-  left: 50%;
-  top: 4px;
-  bottom: 4px;
-  width: 1.5px;
-  transform: translateX(-50%);
-  transition: opacity .25s ease, transform .25s ease;
-}
-
-.accordion.active .faq-new__right--item-toggle::after {
-  opacity: 0;
-  transform: translateX(-50%) rotate(90deg);
+/* more specific than the generic '.accordion.active svg' rule below, which
+   faqs.liquid also relies on - so that rule is left untouched */
+.accordion.active .faq-new__right--item-toggle svg {
+  transform: rotate(180deg);
 }
 
 .accordion.active svg {

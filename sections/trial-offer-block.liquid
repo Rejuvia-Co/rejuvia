@@ -258,7 +258,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
       <div class="ob__gallery-inner">
       <div class="ob__main">
-        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="lazy">{%- endif -%}
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
         <div class="ob__thumbs-row">

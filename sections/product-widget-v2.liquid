@@ -325,11 +325,11 @@
                 {% when 'custom-image' %}
                     {% if block.settings.image != blank %}
                     <div class="block-custom-image custom-image-badge" {{ block.shopify_attributes }}>
-                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" loading="lazy" decoding="async">
+                        <img src="{{ block.settings.image | image_url: width: 400, format: 'webp' }}" alt="{{ block.settings.image.alt }}" loading="lazy" decoding="async">
                     </div>
                     {% elsif settings.CustomImage != blank %}
                     <div class="block-custom-image custom-image-badge" {{ block.shopify_attributes }}>
-                        <img src="{{ settings.CustomImage | img_url: 'master' }}" loading="lazy" decoding="async">
+                        <img src="{{ settings.CustomImage | image_url: width: 400, format: 'webp' }}" loading="lazy" decoding="async">
                     </div>
                     {% endif %}
 

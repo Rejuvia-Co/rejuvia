@@ -47,7 +47,6 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671027932",
-            "selling_plan_id": "33377616092",
             "quantity": 2,
             "label": "Buy 1, Get 1 FREE",
             "image_asset": "rejuvia-bundle-b1g1.webp",
@@ -64,7 +63,6 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671060700",
-            "selling_plan_id": "33377648860",
             "quantity": 2,
             "label": "Buy 2, Get 2 FREE",
             "image_asset": "rejuvia-bundle-b2g2.webp",
@@ -81,7 +79,6 @@
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671093468",
-            "selling_plan_id": "33377681628",
             "quantity": 2,
             "label": "Buy 3, Get 3 FREE",
             "image_asset": "rejuvia-bundle-b3g3.webp",
@@ -177,7 +174,7 @@
         "button_prefix": "BUY NOW —",
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
-        "onetime_text": "Cancel or Skip Anytime",
+        "onetime_text": "One-Time Purchase (No Subscriptions)",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
         "proof_text": "<p><strong>Less than 1%</strong> of customers ever claim our 90-day money-back guarantee.</p>",

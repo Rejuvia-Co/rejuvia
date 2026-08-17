@@ -182,23 +182,15 @@
     "breakpoint_tablet": "900px",
     "breakpoint_mobile": "600px",
     "content_text_color": "#000000",
-    "content_heading_color": "#000000",
     "content_main_color": "#eac78b",
     "content_red_details_color": "#ff0202",
     "body_font": "",
     "body_font_weight": "400",
-    "heading_font": "",
-    "heading_font_transform": "none",
     "button_spacing": "0.08em",
     "button_padding": "1em 1em",
     "button_radius": "2000em",
     "button_transform": "uppercase",
     "button_weight": "900",
-    "label_text": "#000000",
-    "label_size": "1em",
-    "label_spacing": "0.05em",
-    "label_transform": "uppercase",
-    "label_weight": "700",
     "mobile_menu_position": "left",
     "mobile_menu_bg_color": "rgba(0,0,0,0)",
     "allow_quick_view": false,
@@ -209,14 +201,8 @@
     "main_image_display": "None",
     "product_thumbs_group_by": "",
     "product_thumbs_slide": "horizontal",
-    "variants_layout": "swatches",
-    "enable_color_swatches": true,
-    "share_prod_on_twitter": false,
-    "share_prod_on_facebook": false,
-    "share_prod_on_pinterest": false,
     "show_related_products": true,
     "allow_ajax_cart": false,
-    "show_empty_cart_btn": false,
     "cart_additional_msg": "",
     "cart_return_policy": "",
     "twitter_link": "https://twitter.com/getrejuvia",
@@ -833,7 +819,7 @@
           "review_Lg4LCz": {
             "type": "review",
             "settings": {
-              "text": "\"Nothing else worked for me—Rejuvia is the first one that truly delivers. I’m asleep in minutes and wake up feeling amazing.\"",
+              "text": "\"Nothing else worked for me\u2014Rejuvia is the first one that truly delivers. I\u2019m asleep in minutes and wake up feeling amazing.\"",
               "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.16.17_PM.png",
               "name": "Robert G."
             }
@@ -841,7 +827,7 @@
           "review_gT7h8w": {
             "type": "review",
             "settings": {
-              "text": "\"It took a few days to kick in, but WOW—now I get amazing sleep every night! Highly recommend!\"",
+              "text": "\"It took a few days to kick in, but WOW\u2014now I get amazing sleep every night! Highly recommend!\"",
               "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
               "name": "Betty M."
             }
@@ -849,7 +835,7 @@
           "review_jCxNgq": {
             "type": "review",
             "settings": {
-              "text": "\"Rejuvia tastes great and helps me fall asleep a lot faster at night. It's totally worth the investment if you’re second-guessing yourself.\"",
+              "text": "\"Rejuvia tastes great and helps me fall asleep a lot faster at night. It's totally worth the investment if you\u2019re second-guessing yourself.\"",
               "image": "shopify://shop_images/timothy_g.png",
               "name": "Timothy G."
             }
@@ -881,19 +867,19 @@
           "step_FgxKgk": {
             "type": "step",
             "settings": {
-              "text": "<p><strong>Spray</strong> 6-8 times under your tongue or on the inside of your cheek.</p>"
+              "text": "<p><strong>Spray</strong>\u00a06-8\u00a0times under your tongue or on the inside of your cheek.</p>"
             }
           },
           "step_h9QTwL": {
             "type": "step",
             "settings": {
-              "text": "<p><strong>Hold</strong> in your mouth for at least 5-10 seconds.</p>"
+              "text": "<p><strong>Hold</strong>\u00a0in your mouth for at least 5-10 seconds.</p>"
             }
           },
           "step_BW7APg": {
             "type": "step",
             "settings": {
-              "text": "<p><strong>Swallow</strong> and get ready for the best sleep of your life.</p>"
+              "text": "<p><strong>Swallow</strong>\u00a0and get ready for the best sleep of your life.</p>"
             }
           }
         },
@@ -995,7 +981,7 @@
             "settings": {
               "image": "shopify://shop_images/MoonStars.svg",
               "title": "Melatonin",
-              "description": "Signals your body it’s time for sleep — fast and gently"
+              "description": "Signals your body it\u2019s time for sleep \u2014 fast and gently"
             }
           },
           "card_VMT8Pe": {
@@ -1003,7 +989,7 @@
             "settings": {
               "image": "shopify://shop_images/ApproximateEquals.svg",
               "title": "Passionflower",
-              "description": "Eases tension and boosts GABA, your body’s natural sleep switch"
+              "description": "Eases tension and boosts GABA, your body\u2019s natural sleep switch"
             }
           }
         },
@@ -1016,7 +1002,7 @@
         ],
         "settings": {
           "heading": "Natural Ingredients With a Purpose",
-          "subheading": "Rejuvia’s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body’s natural rhythm — without harsh doses or heavy side effects."
+          "subheading": "Rejuvia\u2019s formula blends trusted, science-backed ingredients that work together to calm your mind, ease you into sleep, and support your body\u2019s natural rhythm \u2014 without harsh doses or heavy side effects."
         }
       },
       "customer-testimonials": {
@@ -1049,7 +1035,7 @@
           "testimonial_4Uyhcq": {
             "type": "testimonial",
             "settings": {
-              "text": "\" I will continue to use Rejuvia as it seems to really work for me at night!\"",
+              "text": "\"\u00a0I will continue to use Rejuvia as it seems to really work for me at night!\"",
               "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
               "name": "Andrew H., Verified Customer"
             }
@@ -1057,7 +1043,7 @@
           "testimonial_haNUqt": {
             "type": "testimonial",
             "settings": {
-              "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
+              "text": "\u201cI've tried it all for sleep before and Rejuvia really works as advertised for me!\u201d",
               "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
               "name": "Mandie N., Verified Customer"
             }
@@ -1230,7 +1216,7 @@
             "type": "faq",
             "settings": {
               "question": "13 Natural Sleep Ingredients",
-              "answer": "Powered by 13 all-natural, sleep ingredients—like valerian root, passionflower, L-ornithine, melatonin, ginkgo biloba, and 5-HTP—our Sleep Spray helps you fall asleep faster, stay asleep longer, and wake up feeling truly refreshed.",
+              "answer": "Powered by 13 all-natural, sleep ingredients\u2014like valerian root, passionflower, L-ornithine, melatonin, ginkgo biloba, and 5-HTP\u2014our Sleep Spray helps you fall asleep faster, stay asleep longer, and wake up feeling truly refreshed.",
               "image": "shopify://shop_images/ICON_2_2X_e85dabc3-ebca-4f56-96ea-44b7a8284537.png"
             }
           },
@@ -1246,7 +1232,7 @@
             "type": "faq",
             "settings": {
               "question": "Natural, Clean & Drug-Free",
-              "answer": "Formulated only from natural, clean, and drug-free ingredients, Rejuvia delivers a safe, effective sleep solution—without the unpleasant side effects of traditional sleep aids.",
+              "answer": "Formulated only from natural, clean, and drug-free ingredients, Rejuvia delivers a safe, effective sleep solution\u2014without the unpleasant side effects of traditional sleep aids.",
               "image": "shopify://shop_images/ICON_1_2X_c3a0576c-d78f-493f-ba5b-fa337bf1105a.png"
             }
           },
@@ -1268,7 +1254,7 @@
         "settings": {
           "bg_color_section": "#fafaf9",
           "bg_color": "#f6f5f9",
-          "testimonial": "<p>\"As someone who struggled with restless nights for years, I wanted a solution that was safe, natural, and truly worked. That’s why we created Rejuvia—a sleep spray developed with top sleep specialists to help you fall asleep faster, stay asleep longer, and wake up refreshed without side effects.\"</p>",
+          "testimonial": "<p>\"As someone who struggled with restless nights for years, I wanted a solution that was safe, natural, and truly worked. That\u2019s why we created Rejuvia\u2014a sleep spray developed with top sleep specialists to help you fall asleep faster, stay asleep longer, and wake up refreshed without side effects.\"</p>",
           "name": "Ronald Williams",
           "position": "Co-Founder, CEO of Rejuvia"
         }
@@ -1352,7 +1338,7 @@
           "testimonial_dQ3MeY": {
             "type": "testimonial",
             "settings": {
-              "text": "“I've tried it all for sleep and Rejuvia really works for me! Highly suggest it.\"”",
+              "text": "\u201cI've tried it all for sleep and Rejuvia really works for me! Highly suggest it.\"\u201d",
               "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
               "name": "Mandie N. (Verified Buyer)"
             }
@@ -1376,7 +1362,7 @@
           "testimonial_gznJPD": {
             "type": "testimonial",
             "settings": {
-              "text": "\"Truly amazing. Any questions about whether it’d work vanished the first night!\"",
+              "text": "\"Truly amazing. Any questions about whether it\u2019d work vanished the first night!\"",
               "image": "shopify://shop_images/ff2dd570-7ef4-44ef-a8f0-973dbb949bb9.webp",
               "name": "Mike B. (Verified Buyer)"
             }
@@ -1582,7 +1568,7 @@
         "type": "founder-story",
         "settings": {
           "heading": "Originally Built For My Mom, Now For Everyone",
-          "text": "When my mom was in her 50s, she could never sleep. And I mean never. She tried everything: the gummies, the pills, the teas, the powders. Anything her doctor or the internet suggested, she tried. But nothing ever worked. It was either made her feel groggy in the morning or had nasty side effects.\n\nIt was awful to watch my mom suffer from bad sleep and lose hope because everything she tried failed. So when I left for college at UPenn in 2017, I made it my mission to come home with a real solution for her — something she could trust, something that actually worked, and something that would help her feel like herself again.\n\nThat’s when the idea for an oral sleep spray was born. She had never even heard of a sleep spray before, but it made perfect sense. It offered much faster absorption, and using her chemical engineering background, she and I could put together an incredibly powerful, all-natural sleep formula that worked like no one's business!\n\nAnd that's how Rejuvia started. It was a way to help my mom finally get a good night’s sleep. Now, she and I run the business together and are on a mission to share the same formula that changed her nights with people who just want to feel rested again.",
+          "text": "When my mom was in her 50s, she could never sleep. And I mean never. She tried everything: the gummies, the pills, the teas, the powders. Anything her doctor or the internet suggested, she tried. But nothing ever worked. It was either made her feel groggy in the morning or had nasty side effects.\n\nIt was awful to watch my mom suffer from bad sleep and lose hope because everything she tried failed. So when I left for college at UPenn in 2017, I made it my mission to come home with a real solution for her \u2014 something she could trust, something that actually worked, and something that would help her feel like herself again.\n\nThat\u2019s when the idea for an oral sleep spray was born. She had never even heard of a sleep spray before, but it made perfect sense. It offered much faster absorption, and using her chemical engineering background, she and I could put together an incredibly powerful, all-natural sleep formula that worked like no one's business!\n\nAnd that's how Rejuvia started. It was a way to help my mom finally get a good night\u2019s sleep. Now, she and I run the business together and are on a mission to share the same formula that changed her nights with people who just want to feel rested again.",
           "founder_name": "RC Williams",
           "founder_title": "Co-Founder, CEO of Rejuvia",
           "image": "shopify://shop_images/rejuvia_founders.webp"
@@ -1776,7 +1762,7 @@
             "type": "tab",
             "settings": {
               "title": "Sleeping Pills",
-              "content": "<p>Sleeping pills contain high doses because <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy — your body's still processing what it couldn't absorb.</p>",
+              "content": "<p>Sleeping pills contain high doses because <strong>most of it won't make it through your stomach</strong>. So you end up overdosing on ingredients to get a fraction of the effect. That's why you wake up groggy \u2014 your body's still processing what it couldn't absorb.</p>",
               "image": "shopify://shop_images/sleeping_pill_comparison.webp",
               "hide_image_bg": true,
               "full_width_image": true,
@@ -1817,7 +1803,7 @@
         "name": "Listicle V2",
         "settings": {
           "heading": "<p>The real issue was never what you took, it was <em>how your body absorbed it</em></p>",
-          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed. It's not a bad product - it's a bad absorption mechanism.</p>",
+          "description": "<p>Every pill, capsule, and gummy has to survive your stomach \u2014 acid, enzymes, your liver \u2014 before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed. It's not a bad product - it's a bad absorption mechanism.</p>",
           "graph_image": "shopify://shop_images/rejuvia_absorption_graph.webp"
         }
       },
@@ -2031,10 +2017,10 @@
         "name": "What Makes Different V2",
         "settings": {
           "heading": "<p>So, why does Rejuvia <em>actually work</em>?</p>",
-          "subtitle": "Most sleep aids take 45–60 minutes to kick in — if they work at all. Rejuvia's sublingual formula absorbs directly under your tongue and into your bloodstream in minutes.",
+          "subtitle": "Most sleep aids take 45\u201360 minutes to kick in \u2014 if they work at all. Rejuvia's sublingual formula absorbs directly under your tongue and into your bloodstream in minutes.",
           "image": "shopify://shop_images/IMG.png",
           "card_title": "Why oral sprays work better",
-          "card_text": "<p>The tissue under your tongue is packed with blood vessels. Spray Rejuvia there and it bypasses your digestive system entirely — the same process that destroys up to 80% of every pill and gummy you've ever taken. More ingredients reach your body intact. You feel it faster.</p>"
+          "card_text": "<p>The tissue under your tongue is packed with blood vessels. Spray Rejuvia there and it bypasses your digestive system entirely \u2014 the same process that destroys up to 80% of every pill and gummy you've ever taken. More ingredients reach your body intact. You feel it faster.</p>"
         }
       },
       "use_in_just_v2_JAWTbF": {
@@ -2044,7 +2030,7 @@
             "type": "step",
             "settings": {
               "title": "Step 1: Spray",
-              "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around.",
+              "description": "Spray Rejuvia 6\u20138 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around.",
               "tip1_icon": "shopify://shop_images/Frame_1.svg",
               "tip1_label": "When to use",
               "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed.",
@@ -2057,7 +2043,7 @@
               "title": "Step 2: Settle In",
               "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest.",
               "tip1_label": "Usage Tip",
-              "tip1_text": "If you wake up during the night, it’s completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning.",
+              "tip1_text": "If you wake up during the night, it\u2019s completely fine to use Rejuvia again. Most people take 1\u20132 sprays to help their mind settle back down without feeling groggy in the morning.",
               "image": "shopify://shop_images/Step_2.webp"
             }
           },
@@ -2236,7 +2222,7 @@
             "type": "review",
             "settings": {
               "avatar": "shopify://shop_images/Ellipse_218.png",
-              "title": "I’ve been sleeping great!",
+              "title": "I\u2019ve been sleeping great!",
               "text": "So far this is spray legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast and he is able to wake up without grogginess and the energy he had when he was in his 20s!! You've got a customer for LIFE!!",
               "name": "Christy W.",
               "stars": 5
@@ -2247,7 +2233,7 @@
             "settings": {
               "avatar": "shopify://shop_images/Ellipse_218_1.png",
               "title": "My friends use it too",
-              "text": "Tried a lot of different sleeping supplements… this works with 10-15 minutes every night! I’ve shared my extra bottles with a few of my friends and family… they couldn’t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
+              "text": "Tried a lot of different sleeping supplements\u2026 this works with 10-15 minutes every night! I\u2019ve shared my extra bottles with a few of my friends and family\u2026 they couldn\u2019t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
               "name": "Theresa Y.",
               "stars": 5
             }
@@ -2549,8 +2535,8 @@
           "story_row_4jJga6": {
             "type": "story_row",
             "settings": {
-              "heading": "<p>“Rejuvia all started for <em>my mom</em>.”</p>",
-              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\" <strong>Couldn't. Sleep.</strong></p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked. <strong>And what did work left her worse in the morning than the sleepless night.</strong></p>",
+              "heading": "<p>\u201cRejuvia all started for\u00a0<em>my mom</em>.\u201d</p>",
+              "text": "<p>My mom was 55, going through menopause, and she couldn't sleep. Not \"had trouble sleeping.\"\u00a0<strong>Couldn't. Sleep.</strong></p><p>She'd tried everything. Melatonin, gummies, sleeping pills, teas, every \"hack\" on the internet. Nothing worked.\u00a0<strong>And what did work left her worse in the morning than the sleepless night.</strong></p>",
               "image": "shopify://shop_images/Image_2.png",
               "caption": "RC & Kristen, Founders",
               "image_left": false,
@@ -2563,7 +2549,7 @@
             "type": "story_row",
             "settings": {
               "heading": "",
-              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything: <strong>the problem wasn't the ingredients.</strong> It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it. <strong>She slept through the night for the first time in years.</strong></p>",
+              "text": "<p>So I started researching. I was at The University of Pennsylvania at the time, and I spent months digging into sleep science and how the body actually absorbs supplements.</p><p>What I found changed everything:\u00a0<strong>the problem wasn't the ingredients.</strong>\u00a0It was how her body absorbed them.</p><p>So we built a sublingual spray. Together.</p><p>My mom was the first person to try it.\u00a0<strong>She slept through the night for the first time in years.</strong></p>",
               "image": "shopify://shop_images/rejuvia_spray.png",
               "caption": "",
               "image_left": true,
@@ -2574,8 +2560,8 @@
           "story_row_HyiExX": {
             "type": "story_row",
             "settings": {
-              "heading": "<p>And now, over <em>300,000 customers</em> use Rejuvia nightly</p>",
-              "text": "<p>We never planned to turn Rejuvia into a business actually. We just wanted to fix her sleep! But after it worked for her, she realized there were hundreds of thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business. <strong>And my mom still uses Rejuvia with the same success as she did on the first night!</strong></p>",
+              "heading": "<p>And now, over\u00a0<em>300,000 customers</em>\u00a0use Rejuvia nightly</p>",
+              "text": "<p>We never planned to turn Rejuvia into a business actually. We just wanted to fix her sleep! But after it worked for her, she realized there were hundreds of thousands of others going through the same thing.</p><p>To date, and 300,000+ customers later, Rejuvia is still a family business.\u00a0<strong>And my mom still uses Rejuvia with the same success as she did on the first night!</strong></p>",
               "image": "shopify://shop_images/rejuvia_customers.png",
               "caption": "Some of Rejuvia's first-ever customers",
               "image_left": false,
@@ -2609,7 +2595,7 @@
             "type": "review",
             "settings": {
               "avatar": "shopify://shop_images/Ellipse_218.png",
-              "title": "I’ve been sleeping great!",
+              "title": "I\u2019ve been sleeping great!",
               "text": "So far this is spray legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast and he is able to wake up without grogginess and the energy he had when he was in his 20s!! You've got a customer for LIFE!!",
               "name": "Christy W.",
               "stars": 5
@@ -2620,7 +2606,7 @@
             "settings": {
               "avatar": "shopify://shop_images/Ellipse_218_1.png",
               "title": "My mom uses it too now",
-              "text": "Tried a lot of different sleeping supplements… this works with 10-15 minutes every night! I’ve shared my extra bottles with a few of my friends and family… they couldn’t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
+              "text": "Tried a lot of different sleeping supplements\u2026 this works with 10-15 minutes every night! I\u2019ve shared my extra bottles with a few of my friends and family\u2026 they couldn\u2019t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
               "name": "Theresa Y.",
               "stars": 5
             }
@@ -2632,14 +2618,14 @@
           "review_JLMA7d"
         ],
         "settings": {
-          "heading": "<p>Over 6,500 real 5-star reviews from <em>300,000+</em> sleepers</p>"
+          "heading": "<p>Over 6,500 real 5-star reviews from\u00a0<em>300,000+</em>\u00a0sleepers</p>"
         }
       },
       "image-text-v2": {
         "type": "image-text-v2",
         "settings": {
           "heading": "<p>Why Rejuvia Sleep Spray works <em>3x faster and stronger</em></p>",
-          "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes — bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster — you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
+          "description": "<p>Most sleep supplements lose up to 80% of their ingredients in your stomach. You're essentially paying for filler and a placebo effect.</p><p>Rejuvia is different. As a sublingual spray, it absorbs directly under your tongue and into your bloodstream in minutes \u2014 bypassing your digestive system entirely. Nothing wasted. Nothing lost.</p><p>And with 13 all-natural ingredients working together in a triple-action sleep formula, you're not just falling asleep faster \u2014 you're getting the deep, restorative sleep your body actually needs.</p><p>No dependency. No morning fog. Just the sleep you've been missing.</p>",
           "image": "shopify://shop_images/REJUVIA_2.0_WEB_Section3_Graph.webp"
         }
       },
@@ -2652,7 +2638,7 @@
           "stars_color": "#EAC78B",
           "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
           "show_stars": true,
-          "quote": "<p>\"Love this spray. <span style=\"text-decoration:underline\"><strong>I’m asleep within minutes.</strong></span> If I wake up in the middle of the night and don’t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",
+          "quote": "<p>\"Love this spray. <span style=\"text-decoration:underline\"><strong>I\u2019m asleep within minutes.</strong></span> If I wake up in the middle of the night and don\u2019t go back to sleep quickly, I can use again. I do not have sluggish symptoms from using this product. Highly recommend.\"</p>",
           "author_name": "Sandy J. P.",
           "author_role": "Verified Customer Since 2021",
           "btn_text": "Sleep Better Tonight",
@@ -2678,7 +2664,7 @@
           "point_Rn4rU8": {
             "type": "point",
             "settings": {
-              "text": "Made in the USA · cGMP certified"
+              "text": "Made in the USA \u00b7 cGMP certified"
             }
           }
         },
@@ -2719,11 +2705,11 @@
         "name": "Founder Story V2",
         "settings": {
           "image": "shopify://shop_images/rejuvia_founders.avif",
-          "caption_1": "RC & Mom · 2019",
+          "caption_1": "RC & Mom \u00b7 2019",
           "caption_2": "Co-Founders of Rejuvia",
           "headline": "Rejuvia was originally for my mom. Now it's for everyone.",
           "paragraph_1": "My mom was 55, going through menopause and a whole lot of stress, and couldn't sleep. She'd tried everything and nothing helped. So at the University of Pennsylvania I built her an oral sleep spray with 13 natural sleep ingredients that absorbs under your tongue and works in minutes, not hours.",
-          "paragraph_2": "We just wanted to fix her sleep so she could be herself again. And it worked! Five years later, it's the nightly ritual for over 300,000 people — and it all started with my mom.",
+          "paragraph_2": "We just wanted to fix her sleep so she could be herself again. And it worked! Five years later, it's the nightly ritual for over 300,000 people \u2014 and it all started with my mom.",
           "stat1_number": "100%",
           "stat1_label": "Made in the USA",
           "stat2_number": "8 yrs",

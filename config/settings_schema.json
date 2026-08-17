@@ -31,27 +31,6 @@
         "id": "breakpoint_mobile",
         "label": "Breakpoint (Mobile)",
         "default": "600px"
-      },
-      {
-        "type": "header",
-        "content": "Store Images"
-      },
-      {
-        "type": "image",
-        "id": "favicon.png",
-        "label": "Favicon"
-      },
-      {
-        "type": "image",
-        "id": "logo.png",
-        "label": "Logo",
-        "info": "Used in the Checkout. Can be used throughout the site with the name 'logo.png' | asset_url"
-      },
-      {
-        "type": "image",
-        "id": "social.jpg",
-        "label": "Social media image",
-        "info": "The default image to be used when the website url is posted in social media."
       }
     ]
   },
@@ -67,12 +46,6 @@
         "id": "content_text_color",
         "label": "Text Color",
         "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "content_heading_color",
-        "label": "Heading Color",
-        "default": "#0089ff"
       },
       {
         "type": "color",
@@ -144,32 +117,6 @@
           }
         ],
         "default": "400"
-      },
-      {
-        "type": "header",
-        "content": "Headings"
-      },
-      {
-        "type": "text",
-        "id": "heading_font",
-        "label": "Font Family Name",
-        "default": "'Inter', sans-serif"
-      },
-      {
-        "type": "select",
-        "id": "heading_font_transform",
-        "label": "Heading Font transform",
-        "options": [
-          {
-            "value": "none",
-            "label": "Normal"
-          },
-          {
-            "value": "uppercase",
-            "label": "Uppercase"
-          }
-        ],
-        "default": "none"
       }
     ]
   },
@@ -222,93 +169,6 @@
         "type": "select",
         "id": "button_weight",
         "label": "Button Font Weight",
-        "options": [
-          {
-            "value": "100",
-            "label": "100"
-          },
-          {
-            "value": "200",
-            "label": "200"
-          },
-          {
-            "value": "300",
-            "label": "300"
-          },
-          {
-            "value": "400",
-            "label": "400"
-          },
-          {
-            "value": "500",
-            "label": "500"
-          },
-          {
-            "value": "600",
-            "label": "600"
-          },
-          {
-            "value": "700",
-            "label": "700"
-          },
-          {
-            "value": "800",
-            "label": "800"
-          },
-          {
-            "value": "900",
-            "label": "900"
-          }
-        ],
-        "default": "700"
-      }
-    ]
-  },
-  {
-    "name": "Forms",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Labels"
-      },
-      {
-        "type": "color",
-        "id": "label_text",
-        "label": "Label Color",
-        "default": "#000000"
-      },
-      {
-        "type": "text",
-        "id": "label_size",
-        "label": "Label Size",
-        "default": "1em"
-      },
-      {
-        "type": "text",
-        "id": "label_spacing",
-        "label": "Label Letter Spacing",
-        "default": "0.05em"
-      },
-      {
-        "type": "select",
-        "id": "label_transform",
-        "label": "Label Text transform",
-        "options": [
-          {
-            "value": "none",
-            "label": "Normal"
-          },
-          {
-            "value": "uppercase",
-            "label": "Uppercase"
-          }
-        ],
-        "default": "uppercase"
-      },
-      {
-        "type": "select",
-        "id": "label_weight",
-        "label": "Label Font Weight",
         "options": [
           {
             "value": "100",
@@ -537,59 +397,6 @@
         ]
       },
       {
-        "type": "select",
-        "id": "variants_layout",
-        "label": "Variants Layout",
-        "options": [
-          {
-            "value": "dropdown",
-            "label": "Dropdowns"
-          },
-          {
-            "value": "swatches",
-            "label": "Swatches"
-          }
-        ],
-        "default": "dropdown"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_color_swatches",
-        "label": "Enable Color Swatches",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Sharing Buttons"
-      },
-      {
-        "type": "checkbox",
-        "id": "share_prod_on_twitter",
-        "label": "Tweet button",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "share_prod_on_facebook",
-        "label": "Facebook Like button",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "share_prod_on_pinterest",
-        "label": "Pin button (Pinterest)",
-        "default": true
-      },
-      {
-        "type": "header",
-        "content": "Custom Image"
-      },
-      {
-        "type": "image_picker",
-        "id": "CustomImage",
-        "label": "Image"
-      },
-      {
         "type": "header",
         "content": "Related Products"
       },
@@ -611,11 +418,6 @@
         "type": "checkbox",
         "id": "allow_ajax_cart",
         "label": "Allow Ajax Cart?"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_empty_cart_btn",
-        "label": "Show Empty Cart Button?"
       },
       {
         "type": "textarea",

@@ -7,8 +7,8 @@
      panel. Purple CTA with an arrow. No Facebook review block.
    - Gallery images come from section blocks uploaded in the customizer,
      NOT from a product's media.
-   - Each tier carries its own Skio selling plan id, so Buy Now adds a
-     subscription line item (selling_plan) rather than a one-off.
+   - Buy Now adds a one-time purchase, same as the BOGO template. The
+     subscription path (per-tier Skio selling plan) is removed for now.
 
   Lifted unchanged from the existing BOGO template: the ships-by bar
   (shipping-bar snippet), payment icons, sub-CTA trust rows, the six-row
@@ -16,9 +16,8 @@
   supplement-label popup, the desktop sticky gallery column, and the
   sticky-CTA hide contract (body.ob-offer-visible).
 
-  Setup: upload the five gallery images into the Gallery image blocks, and
-  set each tier's Variant ID + Skio selling plan ID. A tier with no plan id
-  is added as a one-time purchase.
+  Setup: upload the five gallery images into the Gallery image blocks and set
+  each tier's Variant ID.
 {%- endcomment -%}
 
 {% style %}
@@ -266,7 +265,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
-      <div class="obs__tiers" role="radiogroup" aria-label="Choose your subscription">
+      <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign tier_n = tier_n | plus: 1 -%}
@@ -274,7 +273,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- if tier_n == section.settings.default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
 
           {%- assign vid = b.settings.variant_id | strip -%}
-          {%- assign plan_id = b.settings.selling_plan_id | strip -%}
           {%- assign srcprod = b.settings.product | default: section.settings.product -%}
           {%- assign tier_variant = blank -%}
           {%- if vid != blank and srcprod != blank -%}
@@ -285,35 +283,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- endif -%}
           {%- if vid == blank and srcprod != blank -%}{%- assign vid = srcprod.selected_or_first_available_variant.id -%}{%- endif -%}
 
-          {%- comment -%} Subscription price: prefer the selling plan allocation for this plan {%- endcomment -%}
-          {%- assign alloc_price = blank -%}
-          {%- assign alloc_compare = blank -%}
-          {%- if tier_variant != blank and plan_id != blank -%}
-            {%- for alloc in tier_variant.selling_plan_allocations -%}
-              {%- assign aid = alloc.selling_plan.id | append: '' -%}
-              {%- if aid == plan_id -%}
-                {%- assign alloc_price = alloc.price -%}
-                {%- assign alloc_compare = alloc.compare_at_price -%}
-                {%- break -%}
-              {%- endif -%}
-            {%- endfor -%}
-          {%- endif -%}
-
           {%- capture tier_price -%}
-            {%- if alloc_price != blank -%}{{ alloc_price | money_without_trailing_zeros }}
-            {%- elsif tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
+            {%- if tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.price }}{%- endif -%}
           {%- endcapture -%}
           {%- capture tier_compare -%}
-            {%- if alloc_compare != blank and alloc_compare > alloc_price -%}{{ alloc_compare | money_without_trailing_zeros }}
-            {%- elsif tier_variant != blank and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}
+            {%- if tier_variant != blank and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.compare_price }}{%- endif -%}
           {%- endcapture -%}
 
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"
                    data-price="{{ tier_price | strip }}"
-                   data-selling-plan="{{ plan_id }}"
                    data-qty="{{ b.settings.quantity | default: section.settings.add_quantity | default: 1 }}"
                    {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.badge != blank -%}
@@ -503,7 +484,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     });
   });
 
-  /* ---- Buy Now: add the selected variant WITH its selling plan, then checkout ---- */
+  /* ---- Buy Now: add the selected variant, then checkout (one-time purchase) ---- */
   var buy = sec.querySelector('[data-obs-buy]');
   if (buy) {
     window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
@@ -511,10 +492,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var sel = sec.querySelector('.obs__tier input[type="radio"]:checked');
       if (!sel || !sel.value) return;
       var id = parseInt(sel.value, 10);
-      var plan = sel.getAttribute('data-selling-plan');
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
-      if (plan) item.selling_plan = parseInt(plan, 10);
       buy.disabled = true; buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
         .then(function () {
@@ -525,12 +504,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           });
         })
         .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
-        .catch(function () {
-          /* permalink fallback keeps the selling plan */
-          var url = '/cart/' + id + ':' + qty;
-          if (plan) url += '?selling_plan=' + plan;
-          window.location.href = url;
-        });
+        .catch(function () { window.location.href = '/cart/' + id + ':' + qty; });
     });
   }
 
@@ -941,12 +915,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "info": "Exact variant added to cart."
         },
         {
-          "type": "text",
-          "id": "selling_plan_id",
-          "label": "Skio selling plan ID",
-          "info": "Numeric selling plan id for this tier. Leave blank to add as a one-time purchase. Price shows the plan's price when set."
-        },
-        {
           "type": "range",
           "id": "quantity",
           "min": 1,
@@ -1052,7 +1020,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "price": "$30",
             "savings_text": "SAVE $30",
             "quantity": 2,
-            "selling_plan_id": "33377616092",
             "variant_id": "46763671027932"
           }
         },
@@ -1068,7 +1035,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "badge": "MOST POPULAR",
             "badge_style": "plum",
             "quantity": 2,
-            "selling_plan_id": "33377648860",
             "variant_id": "46763671060700"
           }
         },
@@ -1084,7 +1050,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "badge": "BEST VALUE",
             "badge_style": "gold",
             "quantity": 2,
-            "selling_plan_id": "33377681628",
             "variant_id": "46763671093468"
           }
         }

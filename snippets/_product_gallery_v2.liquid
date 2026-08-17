@@ -28,7 +28,7 @@
                               {{ currentProduct.metafields.custom.boundle_text }}
                           </div>
                       {% endif %}
-                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" loading="lazy" decoding="async">
+                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" {% if forloop.index == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
                   </div>
                   {%- if quickView != true -%}
                       {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}

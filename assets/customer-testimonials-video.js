@@ -1,5 +1,7 @@
 var glide2 = new Glide("#glide-testimonials-video", {
   type: "carousel",
+  animationDuration: 350,
+  animationTimingFunc: "cubic-bezier(.22,1,.36,1)",
   perView: 4,
   gap: 16,
   breakpoints: {

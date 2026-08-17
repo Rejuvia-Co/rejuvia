@@ -98,35 +98,6 @@
 }
 
 /* Watermark */
-.uij-v2-watermark {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    z-index: 2;
-    display: none;
-    pointer-events: none;
-}
-
-.uij-v2-watermark.is-active {
-    display: block;
-}
-
-.uij-v2-watermark img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.uij-v2-watermark--top-right {
-    top: 20px;
-    right: 20px;
-}
-
-.uij-v2-watermark--top-left {
-    top: 20px;
-    left: 20px;
-}
-
 /* Accordion */
 .uij-v2-accordion {
     flex: 1;
@@ -297,18 +268,6 @@
     .uij-v2-step-image {
         border-radius: 20px;
     }
-    .uij-v2-watermark {
-        width: 80px;
-        height: 80px;
-    }
-    .uij-v2-watermark--top-right {
-        top: 15px;
-        right: 30px;
-    }
-    .uij-v2-watermark--top-left {
-        top: 15px;
-        left: 30px;
-    }
 }
 </style>
 
@@ -339,11 +298,6 @@
                         sizes="(max-width: 900px) 92vw, 400px"
                         alt="{{ block.settings.title }}"
                         loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" {% if forloop.first %}fetchpriority="high"{% endif %} decoding="async">
-                {% endif %}
-                {% if block.settings.watermark != blank %}
-                    <div class="uij-v2-watermark uij-v2-watermark--{{ block.settings.watermark_position | default: 'top-right' }}{% if forloop.first %} is-active{% endif %}" data-uij-v2-wm="{{ forloop.index0 }}" style="opacity: {{ block.settings.watermark_opacity | default: 20 | times: 0.01 }};">
-                        <img src="{{ block.settings.watermark | image_url: width: 300, format: 'webp' }}" alt="" loading="lazy" decoding="async">
-                    </div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -400,21 +354,16 @@
     function deactivateAll() {
         steps.forEach(function(s) { s.classList.remove('is-active'); });
         section.querySelectorAll('[data-uij-v2-img]').forEach(function(img) { img.classList.remove('is-active'); });
-        section.querySelectorAll('[data-uij-v2-wm]').forEach(function(wm) { wm.classList.remove('is-active'); });
         /* closed state = step 1's image, so opening step 1 never swaps files */
         var firstImg = section.querySelector('[data-uij-v2-img="0"]');
-        var firstWm = section.querySelector('[data-uij-v2-wm="0"]');
         if (firstImg) firstImg.classList.add('is-active');
-        if (firstWm) firstWm.classList.add('is-active');
     }
 
     function activate(index) {
         deactivateAll();
         steps[index].classList.add('is-active');
         var img = section.querySelector('[data-uij-v2-img="' + index + '"]');
-        var wm = section.querySelector('[data-uij-v2-wm="' + index + '"]');
         if (img) img.classList.add('is-active');
-        if (wm) wm.classList.add('is-active');
     }
 
     steps.forEach(function(step, index) {
@@ -497,37 +446,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Step image"
-        },
-        {
-          "type": "image_picker",
-          "id": "watermark",
-          "label": "Watermark SVG"
-        },
-        {
-          "type": "range",
-          "id": "watermark_opacity",
-          "label": "Watermark opacity",
-          "min": 0,
-          "max": 100,
-          "step": 5,
-          "default": 20,
-          "unit": "%"
-        },
-        {
-          "type": "select",
-          "id": "watermark_position",
-          "label": "Watermark position",
-          "options": [
-            {
-              "value": "top-right",
-              "label": "Top Right"
-            },
-            {
-              "value": "top-left",
-              "label": "Top Left"
-            }
-          ],
-          "default": "top-right"
         }
       ]
     }

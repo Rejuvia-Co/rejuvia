@@ -17,7 +17,19 @@
   cursor: pointer; padding: 4px !important; box-shadow: none !important;
   transition: opacity .15s ease; left: auto !important; right: auto !important;
 }
-#shopify-section-{{ section.id }} .glide__arrow:hover { opacity: .6; background: transparent; border-color: transparent !important; }
+#shopify-section-{{ section.id }} .glide__arrow:hover { opacity: .6; background: transparent !important; border-color: transparent !important; }
+/* the shared stylesheet repaints the glyph white on hover
+   (.glide__arrows .glide__arrow:hover path { stroke:#fff }) and tints the svg -
+   hold the chevron colour through every state, exactly like the press carousel */
+#shopify-section-{{ section.id }} .glide__arrow path,
+#shopify-section-{{ section.id }} .glide__arrow:hover path,
+#shopify-section-{{ section.id }} .glide__arrow:focus path,
+#shopify-section-{{ section.id }} .glide__arrow:active path { stroke: #672666 !important; }
+#shopify-section-{{ section.id }} .glide__arrow:hover svg,
+#shopify-section-{{ section.id }} .glide__arrow:focus svg,
+#shopify-section-{{ section.id }} .glide__arrow:active svg {
+  background: transparent !important; border: none !important; border-radius: 0 !important; padding: 0 !important;
+}
 /* the shared stylesheet draws the circle on the SVG itself and pads it 13px,
    which crushed the glyph - reset the svg to a plain icon */
 #shopify-section-{{ section.id }} .glide__arrow svg {

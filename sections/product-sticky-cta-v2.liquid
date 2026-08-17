@@ -31,6 +31,9 @@
     justify-content: space-between;
     gap: 16px;
     padding: 18px 24px;
+    /* keep clear of rounded-screen corners / home indicator */
+    padding-left: max(24px, env(safe-area-inset-left));
+    padding-right: max(24px, env(safe-area-inset-right));
 }
 
 .psc-v2-info {
@@ -97,12 +100,16 @@
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
     .psc-v2-inner {
-        padding: 15px 16px;
+        padding: 15px 20px;
+        padding-left: max(22px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
         gap: 12px;
     }
-    .psc-v2-title,
+    .psc-v2-title {
+        font-size: 20px;
+    }
     .psc-v2-variant {
-        font-size: 18px;
+        font-size: 19px;
     }
     .psc-v2-btn {
         min-width: auto;
@@ -119,7 +126,7 @@
         <div class="psc-v2-inner">
             <div class="psc-v2-info">
                 <p class="psc-v2-title">{{ product.title }}</p>
-                <p class="psc-v2-variant" data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</p>
+                <p class="psc-v2-variant skio-update-price" data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</p>
             </div>
             <button type="button" class="psc-v2-btn" data-psc-v2-btn>
                 <span data-psc-v2-btn-text>Add to cart</span>
@@ -192,14 +199,19 @@
         }
     });
 
-    /* Skio price updates via .skio-update-price class */
-    var priceObserver = document.querySelector('.variant-price-display.skio-update-price');
-    if (priceObserver && priceEl) {
-        var mutationObserver = new MutationObserver(function() {
-            priceEl.textContent = priceObserver.textContent;
-        });
-        mutationObserver.observe(priceObserver, { childList: true, characterData: true, subtree: true });
-    }
+    /* Subscription vs one-time price.
+       The price element carries .skio-update-price, which is the selector Skio is
+       configured with (external_price_selector), so Skio writes the correct price
+       into it on load and on every plan change. The old code observed
+       '.variant-price-display.skio-update-price', which matched no element, so the
+       bar kept showing the server-rendered one-time price.
+       This listener is a fallback for variants without a selling plan. */
+    document.addEventListener('skio::update-selling-plan', function (e) {
+        if (!priceEl || !e.detail) return;
+        if (!e.detail.sellingPlan && e.detail.variant && typeof e.detail.variant.price === 'number') {
+            priceEl.textContent = '$' + (e.detail.variant.price / 100).toFixed(2).replace('.00', '');
+        }
+    });
 
     /* ATC button - trigger click on main product form submit button */
     var btn = sticky.querySelector('[data-psc-v2-btn]');

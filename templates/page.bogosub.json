@@ -36,8 +36,7 @@
             "price": "$30",
             "compare_price": "",
             "savings_text": "SAVE $30",
-            "free_shipping": false,
-            "per_night": "$0.50 Per Night"
+            "free_shipping": false
           }
         },
         "tier_2": {
@@ -53,7 +52,6 @@
             "compare_price": "$90",
             "savings_text": "SAVE $60",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
             "badge": "MOST POPULAR",
             "badge_style": "plum"
           }
@@ -71,7 +69,6 @@
             "compare_price": "$135",
             "savings_text": "SAVE $90",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
             "badge": "BEST VALUE",
             "badge_style": "gold"
           }

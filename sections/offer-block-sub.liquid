@@ -106,7 +106,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__struck { font-size: 15px; color: #a9a3b2; text-decoration: line-through; }
 .obs__save { display: inline-flex; align-items: center; justify-content: center; line-height: 1; background: #eefaf0; color: #018e1c; font-weight: 800; font-size: 12.5px; padding: 5px 10px 4px; border-radius: 100px; white-space: nowrap; }
 .obs__ship { display: block; font-size: 13.5px; font-weight: 800; color: #171512; margin-top: 6px; }
-.obs__pernight { display: block; font-size: 13.5px; color: #8b8494; font-style: italic; margin-top: 5px; }
 .obs__badge { --ls: 1.1px; position: absolute; top: -11px; right: 18px; font-size: 10.5px; font-weight: 800; padding: 4px 12px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obs__badge--plum { background: #5d215f; color: #fff; }
 .obs__badge--gold { background: #EAC78B; color: #4c1c4f; }
@@ -175,7 +174,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__price { font-size: 19px; }
   .obs__struck { font-size: 13px; }
   .obs__save { font-size: 11px; padding: 4px 9px 3px; }
-  .obs__ship, .obs__pernight { font-size: 12px; }
+  .obs__ship { font-size: 12px; }
   .obs__badge { right: 12px; font-size: 9.5px; }
   .obs__buy { height: 54px; font-size: 15px; --ls: 1.1px; box-shadow: none; }
   .obs__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; --ls: .5px; }
@@ -341,7 +340,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- if b.settings.savings_text != blank -%}<span class="obs__save">{{ b.settings.savings_text }}</span>{%- endif -%}
                 </span>
                 {%- if b.settings.free_shipping -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
-                {%- if b.settings.per_night != blank -%}<span class="obs__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
               </span>
             </span>
           </label>
@@ -1021,12 +1019,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         },
         {
           "type": "text",
-          "id": "per_night",
-          "label": "Per-night text",
-          "default": "$0.50 Per Night"
-        },
-        {
-          "type": "text",
           "id": "badge",
           "label": "Badge",
           "info": "e.g. MOST POPULAR. Sits half outside the top border."
@@ -1078,7 +1070,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "image_asset": "rejuvia-bundle-b1g1.webp",
             "price": "$30",
             "savings_text": "SAVE $30",
-            "per_night": "$0.50 Per Night",
             "quantity": 2,
             "selling_plan_id": "29054009564",
             "variant_id": "46763671027932"
@@ -1093,7 +1084,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "compare_price": "$90",
             "savings_text": "SAVE $60",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
             "badge": "MOST POPULAR",
             "badge_style": "plum",
             "quantity": 2,
@@ -1110,7 +1100,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "compare_price": "$135",
             "savings_text": "SAVE $90",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
             "badge": "BEST VALUE",
             "badge_style": "gold",
             "quantity": 2,

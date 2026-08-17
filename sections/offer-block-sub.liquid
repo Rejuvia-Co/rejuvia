@@ -556,96 +556,505 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   "tag": "section",
   "max_blocks": 24,
   "settings": [
-    { "type": "header", "content": "Product" },
-    { "type": "product", "id": "product", "label": "Product", "info": "Used for the supplement label popup and as the fallback owner of tier variants. Gallery images are NOT taken from it." },
-    { "type": "header", "content": "Gallery" },
-    { "type": "paragraph", "content": "Gallery images are uploaded as Gallery image blocks below — they are not pulled from the product." },
-    { "type": "color", "id": "gallery_bg", "label": "Gallery frame background", "default": "#F8EFE4" },
-    { "type": "select", "id": "gallery_fit", "label": "Image fit", "options": [ { "value": "cover", "label": "Fill the frame (cover)" }, { "value": "contain", "label": "Fit inside (contain)" } ], "default": "cover" },
-    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Sticky column offset (desktop)", "default": 16 },
-    { "type": "image_picker", "id": "badge_image", "label": "Gallery overlay badge", "info": "Shown bottom-left on the first image only." },
-    { "type": "text", "id": "badge_asset", "label": "Overlay badge (theme asset fallback)", "default": "rejuvia-inc5000.png" },
-    { "type": "header", "content": "Review bar" },
-    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
-    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#fab851" },
-    { "type": "text", "id": "rating_label", "label": "Rating label", "default": "Excellent 4.5" },
-    { "type": "richtext", "id": "reviews_label", "label": "Reviews label", "default": "<p><strong>6,500+</strong> trusted reviews</p>" },
-    { "type": "richtext", "id": "customers_label", "label": "Customers label", "info": "Hidden on mobile.", "default": "<p><strong>300,000+</strong> customers</p>" },
-    { "type": "header", "content": "Offer headline" },
-    { "type": "text", "id": "headline", "label": "Headline", "default": "Save Up To 50% Off + Get Up To 3 Bottles FREE" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "With today's Buy One, Get One FREE subscription offer on Rejuvia™ Sleep Spray" },
-    { "type": "range", "id": "headline_size", "min": 26, "max": 56, "step": 1, "unit": "px", "label": "Headline size (desktop)", "default": 42 },
-    { "type": "range", "id": "headline_size_mobile", "min": 20, "max": 40, "step": 1, "unit": "px", "label": "Headline size (mobile)", "default": 29 },
-    { "type": "range", "id": "subtitle_size", "min": 12, "max": 24, "step": 0.5, "unit": "px", "label": "Subtitle size (desktop)", "default": 16.5 },
-    { "type": "range", "id": "subtitle_size_mobile", "min": 11, "max": 20, "step": 0.5, "unit": "px", "label": "Subtitle size (mobile)", "default": 13.5 },
-    { "type": "header", "content": "Urgency strip" },
-    { "type": "textarea", "id": "urgency_text", "label": "Urgency copy", "info": "Use {cutoff} for the live cutoff time (now + 1 hour, Eastern) and {date} for today's date. Leave blank to hide.", "default": "Order within the next hour — by {cutoff} — and it ships today, {date}" },
-    { "type": "header", "content": "Offer" },
-    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected tier (by position)", "default": 2 },
-    { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Default quantity per selection", "info": "Fallback when a tier has no quantity of its own. 2 = native Buy-One-Get-One.", "default": 2 },
-    { "type": "range", "id": "tier_title_size", "min": 15, "max": 30, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 21 },
-    { "type": "range", "id": "tier_title_size_mobile", "min": 13, "max": 24, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 17 },
-    { "type": "header", "content": "Call to action" },
-    { "type": "text", "id": "button_prefix", "label": "Button label prefix", "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.", "default": "BUY NOW —" },
-    { "type": "text", "id": "guarantee_text", "label": "Trust line 1", "default": "90-Day Money Back Guarantee" },
-    { "type": "image_picker", "id": "guarantee_icon", "label": "Trust line 1 icon" },
-    { "type": "text", "id": "onetime_text", "label": "Trust line 2", "default": "Cancel or Skip Anytime" },
-    { "type": "image_picker", "id": "onetime_icon", "label": "Trust line 2 icon" },
-    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
-    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
-    { "type": "header", "content": "Guarantee proof" },
-    { "type": "richtext", "id": "proof_text", "label": "Proof copy", "info": "Leave blank to hide.", "default": "<p><strong>Less than 1%</strong> of customers ever claim our 90-day money-back guarantee.</p>" },
-    { "type": "header", "content": "Accordion typography" },
-    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
-    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 19 },
-    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 17 },
-    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 16 },
-    { "type": "header", "content": "Trusted-by bar" },
-    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
-    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by  300,000+ customers" },
-    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "to fall asleep faster and sleep the full night." },
-    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
-    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
-    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
-    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
-    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#34c759" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" }
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Used for the supplement label popup and as the fallback owner of tier variants. Gallery images are NOT taken from it."
+    },
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gallery images are uploaded as Gallery image blocks below — they are not pulled from the product."
+    },
+    {
+      "type": "color",
+      "id": "gallery_bg",
+      "label": "Gallery frame background",
+      "default": "#F8EFE4"
+    },
+    {
+      "type": "select",
+      "id": "gallery_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Fill the frame (cover)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit inside (contain)"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "sticky_offset",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Sticky column offset (desktop)",
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Gallery overlay badge",
+      "info": "Shown bottom-left on the first image only."
+    },
+    {
+      "type": "text",
+      "id": "badge_asset",
+      "label": "Overlay badge (theme asset fallback)",
+      "default": "rejuvia-inc5000.png"
+    },
+    {
+      "type": "header",
+      "content": "Review bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show stars",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars color",
+      "default": "#fab851"
+    },
+    {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating label",
+      "default": "Excellent 4.5"
+    },
+    {
+      "type": "richtext",
+      "id": "reviews_label",
+      "label": "Reviews label",
+      "default": "<p><strong>6,500+</strong> trusted reviews</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "customers_label",
+      "label": "Customers label",
+      "info": "Hidden on mobile.",
+      "default": "<p><strong>300,000+</strong> customers</p>"
+    },
+    {
+      "type": "header",
+      "content": "Offer headline"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Save Up To 50% Off + Get Up To 3 Bottles FREE"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "With today's Buy One, Get One FREE subscription offer on Rejuvia™ Sleep Spray"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 26,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "label": "Headline size (desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "headline_size_mobile",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Headline size (mobile)",
+      "default": 29
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 24,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Subtitle size (desktop)",
+      "default": 16.5
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 11,
+      "max": 20,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Subtitle size (mobile)",
+      "default": 13.5
+    },
+    {
+      "type": "header",
+      "content": "Urgency strip"
+    },
+    {
+      "type": "textarea",
+      "id": "urgency_text",
+      "label": "Urgency copy",
+      "info": "Use {cutoff} for the live cutoff time (now + 1 hour, Eastern) and {date} for today's date. Leave blank to hide.",
+      "default": "Order within the next hour — by {cutoff} — and it ships today, {date}"
+    },
+    {
+      "type": "header",
+      "content": "Offer"
+    },
+    {
+      "type": "range",
+      "id": "default_tier",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Pre-selected tier (by position)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "add_quantity",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Default quantity per selection",
+      "info": "Fallback when a tier has no quantity of its own. 2 = native Buy-One-Get-One.",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "tier_title_size",
+      "min": 15,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Tier title size (desktop)",
+      "default": 21
+    },
+    {
+      "type": "range",
+      "id": "tier_title_size_mobile",
+      "min": 13,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tier title size (mobile)",
+      "default": 17
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "button_prefix",
+      "label": "Button label prefix",
+      "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.",
+      "default": "BUY NOW —"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Trust line 1",
+      "default": "90-Day Money Back Guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_icon",
+      "label": "Trust line 1 icon"
+    },
+    {
+      "type": "text",
+      "id": "onetime_text",
+      "label": "Trust line 2",
+      "default": "Cancel or Skip Anytime"
+    },
+    {
+      "type": "image_picker",
+      "id": "onetime_icon",
+      "label": "Trust line 2 icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hidden_payments",
+      "label": "Hide payment icons",
+      "info": "Comma-separated, e.g. discover,jcb,diners_club",
+      "default": "discover,jcb,diners_club"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee proof"
+    },
+    {
+      "type": "richtext",
+      "id": "proof_text",
+      "label": "Proof copy",
+      "info": "Leave blank to hide.",
+      "default": "<p><strong>Less than 1%</strong> of customers ever claim our 90-day money-back guarantee.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Accordion typography"
+    },
+    {
+      "type": "range",
+      "id": "tab_title_size",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion title size (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "tab_title_size_mobile",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion title size (mobile)",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "tab_body_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion answer size (desktop)",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "tab_body_size_mobile",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion answer size (mobile)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Trusted-by bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trusted",
+      "label": "Show trusted-by bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trusted_title",
+      "label": "Title",
+      "default": "Used by  300,000+ customers"
+    },
+    {
+      "type": "textarea",
+      "id": "trusted_subtext",
+      "label": "Subtext",
+      "default": "to fall asleep faster and sleep the full night."
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "color",
+      "id": "trusted_bg",
+      "label": "Trusted-by background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "trusted_check",
+      "label": "Checkmark color",
+      "default": "#34c759"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    }
   ],
   "blocks": [
     {
       "type": "slide",
       "name": "Gallery image",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "Uploaded here, not pulled from the product." }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Uploaded here, not pulled from the product."
+        }
       ]
     },
     {
       "type": "tier",
       "name": "Offer tier",
       "settings": [
-        { "type": "product", "id": "product", "label": "Product", "info": "Owns this tier's variant. Falls back to the section's Product." },
-        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "Exact variant added to cart." },
-        { "type": "text", "id": "selling_plan_id", "label": "Skio selling plan ID", "info": "Numeric selling plan id for this tier. Leave blank to add as a one-time purchase. Price shows the plan's price when set." },
-        { "type": "range", "id": "quantity", "min": 1, "max": 6, "step": 1, "label": "Quantity added", "info": "Overrides the section default.", "default": 2 },
-        { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 FREE" },
-        { "type": "image_picker", "id": "image", "label": "Bundle image" },
-        { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no bundle image is picked." },
-        { "type": "text", "id": "price", "label": "Price (fallback)", "info": "Shown only if no live price can be resolved.", "default": "$30" },
-        { "type": "text", "id": "compare_price", "label": "Compare-at price (fallback)" },
-        { "type": "text", "id": "savings_text", "label": "Savings pill", "info": "e.g. SAVE $30. Leave blank to hide.", "default": "SAVE $30" },
-        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
-        { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.50 Per Night" },
-        { "type": "text", "id": "badge", "label": "Badge", "info": "e.g. MOST POPULAR. Sits half outside the top border." },
-        { "type": "select", "id": "badge_style", "label": "Badge style", "options": [ { "value": "plum", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "plum" }
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Owns this tier's variant. Falls back to the section's Product."
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "Exact variant added to cart."
+        },
+        {
+          "type": "text",
+          "id": "selling_plan_id",
+          "label": "Skio selling plan ID",
+          "info": "Numeric selling plan id for this tier. Leave blank to add as a one-time purchase. Price shows the plan's price when set."
+        },
+        {
+          "type": "range",
+          "id": "quantity",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Quantity added",
+          "info": "Overrides the section default.",
+          "default": 2
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Title",
+          "default": "Buy 1, Get 1 FREE"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bundle image"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Bundle image (theme asset fallback)",
+          "info": "Filename in assets/, used if no bundle image is picked."
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price (fallback)",
+          "info": "Shown only if no live price can be resolved.",
+          "default": "$30"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare-at price (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "savings_text",
+          "label": "Savings pill",
+          "info": "e.g. SAVE $30. Leave blank to hide.",
+          "default": "SAVE $30"
+        },
+        {
+          "type": "checkbox",
+          "id": "free_shipping",
+          "label": "Show \"+ FREE Shipping\"",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "per_night",
+          "label": "Per-night text",
+          "default": "$0.50 Per Night"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "info": "e.g. MOST POPULAR. Sits half outside the top border."
+        },
+        {
+          "type": "select",
+          "id": "badge_style",
+          "label": "Badge style",
+          "options": [
+            {
+              "value": "plum",
+              "label": "Plum"
+            },
+            {
+              "value": "gold",
+              "label": "Gold"
+            }
+          ],
+          "default": "plum"
+        }
       ]
     },
     {
       "type": "tab",
       "name": "Accordion row",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "content", "label": "Content" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
       ]
     }
   ],
@@ -654,9 +1063,50 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "name": "Offer Block SUB — Offer-Led",
       "category": "Rejuvia",
       "blocks": [
-        { "type": "tier", "settings": { "label": "Buy 1, Get 1 FREE", "image_asset": "rejuvia-bundle-b1g1.webp", "price": "$30", "savings_text": "SAVE $30", "per_night": "$0.50 Per Night", "quantity": 2 } },
-        { "type": "tier", "settings": { "label": "Buy 2, Get 2 FREE", "image_asset": "rejuvia-bundle-b2g2.webp", "price": "$60", "compare_price": "$90", "savings_text": "SAVE $60", "free_shipping": true, "per_night": "$0.50 Per Night", "badge": "MOST POPULAR", "badge_style": "plum", "quantity": 2 } },
-        { "type": "tier", "settings": { "label": "Buy 3, Get 3 FREE", "image_asset": "rejuvia-bundle-b3g3.webp", "price": "$90", "compare_price": "$135", "savings_text": "SAVE $90", "free_shipping": true, "per_night": "$0.50 Per Night", "badge": "BEST VALUE", "badge_style": "gold", "quantity": 2 } }
+        {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 1, Get 1 FREE",
+            "image_asset": "rejuvia-bundle-b1g1.webp",
+            "price": "$30",
+            "savings_text": "SAVE $30",
+            "per_night": "$0.50 Per Night",
+            "quantity": 2,
+            "selling_plan_id": "29054009564"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 2, Get 2 FREE",
+            "image_asset": "rejuvia-bundle-b2g2.webp",
+            "price": "$60",
+            "compare_price": "$90",
+            "savings_text": "SAVE $60",
+            "free_shipping": true,
+            "per_night": "$0.50 Per Night",
+            "badge": "MOST POPULAR",
+            "badge_style": "plum",
+            "quantity": 2,
+            "selling_plan_id": "29054042332"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "label": "Buy 3, Get 3 FREE",
+            "image_asset": "rejuvia-bundle-b3g3.webp",
+            "price": "$90",
+            "compare_price": "$135",
+            "savings_text": "SAVE $90",
+            "free_shipping": true,
+            "per_night": "$0.50 Per Night",
+            "badge": "BEST VALUE",
+            "badge_style": "gold",
+            "quantity": 2,
+            "selling_plan_id": "29054075100"
+          }
+        }
       ]
     }
   ]

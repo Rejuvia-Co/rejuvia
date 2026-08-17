@@ -39,7 +39,7 @@
         <a href="{{ item.url }}" class="fp-v2-card" style="--card-base-colour: {{ item_base_colour }};">
           <div class="fp-v2-card-image">
             {% if item.featured_image %}
-              <img src="{{ item.featured_image | image_url: width: 500 }}"
+              <img src="{{ item.featured_image | image_url: width: 500, format: 'webp' }}"
                    alt="{{ item.title }}"
                    loading="lazy"
                    width="200"

@@ -105,7 +105,7 @@
       <div class="fs__polaroid">
         <div class="fs__photo">
           {%- if fs_photo != blank -%}
-            <img src="{{ fs_photo | image_url: width: 580 }}" alt="{{ fs_photo.alt | default: section.settings.caption_1 | escape }}" loading="lazy" decoding="async">
+            <img src="{{ fs_photo | image_url: width: 580, format: 'webp' }}" alt="{{ fs_photo.alt | default: section.settings.caption_1 | escape }}" loading="lazy" decoding="async">
           {%- else -%}
             <img src="{{ 'founder-selfie.jpg' | asset_url }}" alt="{{ section.settings.caption_1 | escape }}" loading="lazy" decoding="async">
           {%- endif -%}

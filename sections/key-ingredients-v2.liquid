@@ -20,7 +20,7 @@
         <div class="key-ingredients-v2__card">
           {% if ingredient.image != blank %}
             <div class="key-ingredients-v2__card-image">
-              <img src="{{ ingredient.image | image_url: width: 400 }}"
+              <img src="{{ ingredient.image | image_url: width: 400, format: 'webp' }}"
                    alt="{{ ingredient.title | default: 'Ingredient' }}"
                    loading="lazy"
                    width="165"

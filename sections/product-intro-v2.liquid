@@ -396,7 +396,7 @@
                 <div class="pi-v2-tab-image{% if forloop.first %} is-active{% endif %}{% if block.settings.full_width_image %} pi-v2-tab-image--full{% endif %}" data-pi-v2-index="{{ forloop.index0 }}" data-pi-v2-hide-bg="{% if block.settings.hide_image_bg %}true{% else %}false{% endif %}">
                     {% if block.settings.image != blank %}
                         <img
-                            src="{{ block.settings.image | image_url: width: 600 }}"
+                            src="{{ block.settings.image | image_url: width: 600, format: 'webp' }}"
                             alt="{{ block.settings.title }}"
                             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
                     {% endif %}

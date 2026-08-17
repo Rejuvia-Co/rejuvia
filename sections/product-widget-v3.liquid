@@ -46,7 +46,7 @@
                             {% endif %}
                             <div class="eg-productR-image">
                                 <div class="eg-background-product"></div>
-                                <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}" loading="lazy" decoding="async">
+                                <img src="{{ relatedProduct.featured_image | image_url: width: 400, format: 'webp' }}" alt="{{ relatedProduct.title }}" loading="lazy" decoding="async">
                             </div>
                             <div class="eg-productR-info">
                                 <div class="eg-reviews">
@@ -76,7 +76,7 @@
                                 <div class="boundle-related__products--wrap">
                                     {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
                                     <div class="boundle-related__products--product">
-                                    <img src="{{ product_ref.featured_image | img_url: '50x50' }}" loading="lazy" decoding="async">
+                                    <img src="{{ product_ref.featured_image | image_url: width: 50, height: 50, crop: 'center', format: 'webp' }}" loading="lazy" decoding="async">
                                     <div>
                                         {{ product_ref.title }}
                                     </div>
@@ -228,7 +228,7 @@
                                 <div class="bundle_item">
                                     <div class="bundle_item_image">
                                         {% if bundle_product.featured_image %}
-                                        <img src="{{ bundle_product.featured_image | img_url: '100x100' }}" alt="{{ bundle_product.title }}" loading="lazy" decoding="async">
+                                        <img src="{{ bundle_product.featured_image | image_url: width: 100, height: 100, crop: 'center', format: 'webp' }}" alt="{{ bundle_product.title }}" loading="lazy" decoding="async">
                                         {% endif %}
                                     </div>
                                     <p class="bundle_item_title">{{ quantity }}x {{ bundle_product.title }}</p>

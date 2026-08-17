@@ -378,7 +378,7 @@
             <div class="hero-v2-image-bg"></div>
             {% if section.settings.image != blank %}
                 <img
-                    src="{{ section.settings.image | image_url: width: 800, format: 'webp' }}"
+                    decoding="async" src="{{ section.settings.image | image_url: width: 800, format: 'webp' }}"
                     srcset="{{ section.settings.image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.image | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ section.settings.image | image_url: width: 1200, format: 'webp' }} 1200w"
                     sizes="(max-width: 900px) 92vw, 600px"
                     alt="{{ section.settings.image.alt | default: section.settings.heading }}"

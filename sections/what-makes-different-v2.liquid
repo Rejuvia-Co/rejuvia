@@ -223,7 +223,7 @@
         <div class="wmd-v2-image-bg"></div>
         {% if section.settings.image != blank %}
             <img
-                src="{{ section.settings.image | image_url: width: 800 }}"
+                src="{{ section.settings.image | image_url: width: 800, format: 'webp' }}"
                 alt="{{ section.settings.image.alt | default: 'Product' }}"
                 loading="lazy" decoding="async">
         {% endif %}

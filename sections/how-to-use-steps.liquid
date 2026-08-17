@@ -60,8 +60,8 @@
 
     {%- if hero.settings.image != blank -%}
       <div class="hus__hero" style="background: {{ hero.settings.backdrop_color | default: '#F7EDEC' }};">
-        <img src="{{ hero.settings.image | image_url: width: 800 }}"
-             srcset="{{ hero.settings.image | image_url: width: 500 }} 500w, {{ hero.settings.image | image_url: width: 800 }} 800w"
+        <img src="{{ hero.settings.image | image_url: width: 800, format: 'webp' }}"
+             srcset="{{ hero.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ hero.settings.image | image_url: width: 800, format: 'webp' }} 800w"
              sizes="100vw"
              width="{{ hero.settings.image.width }}" height="{{ hero.settings.image.height }}"
              alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
@@ -74,8 +74,8 @@
           <div class="hus__media" style="background: {{ block.settings.backdrop_color | default: '#F7EDEC' }};">
             {%- if block.settings.image != blank -%}
               <img class="hus__img"
-                   src="{{ block.settings.image | image_url: width: 800 }}"
-                   srcset="{{ block.settings.image | image_url: width: 128 }} 128w, {{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 800 }} 800w"
+                   src="{{ block.settings.image | image_url: width: 800, format: 'webp' }}"
+                   srcset="{{ block.settings.image | image_url: width: 128, format: 'webp' }} 128w, {{ block.settings.image | image_url: width: 400, format: 'webp' }} 400w, {{ block.settings.image | image_url: width: 800, format: 'webp' }} 800w"
                    sizes="(max-width: 767px) 64px, 380px"
                    width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
                    alt="{{ block.settings.label | default: block.settings.image.alt | escape }}" loading="lazy" decoding="async">

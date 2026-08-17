@@ -28,7 +28,23 @@
                               {{ currentProduct.metafields.custom.boundle_text }}
                           </div>
                       {% endif %}
-                      <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb {%if forloop.index == 1 %}lazyload{% endif %}" itemprop="image" alt="{{media.alt}}" {% if forloop.index == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                      {%- if forloop.index == 1 -%}
+                          {%- comment -%}
+                            LCP image. Rendered with a real src/srcset and marked
+                            lazyloaded so the preload scanner fetches it from the
+                            HTML and it paints at opacity 1 immediately, instead of
+                            waiting on async lazysizes plus the 0.5s fade-in.
+                            ProductJs skips it because it already has .lazyloaded.
+                          {%- endcomment -%}
+                          <img src="{{ media.preview_image | image_url: width: 1000, format: 'webp' }}"
+                               srcset="{{ media.preview_image | image_url: width: 500, format: 'webp' }} 500w, {{ media.preview_image | image_url: width: 700, format: 'webp' }} 700w, {{ media.preview_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ media.preview_image | image_url: width: 1400, format: 'webp' }} 1400w"
+                               sizes="(max-width: 900px) 100vw, 700px"
+                               data-file="{{ media | product_img_url: 'master' }}"
+                               class="large-thumb lazyloaded" itemprop="image" alt="{{ media.alt }}"
+                               loading="eager" fetchpriority="high" decoding="async">
+                      {%- else -%}
+                          <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb" itemprop="image" alt="{{media.alt}}" loading="lazy" decoding="async">
+                      {%- endif -%}
                   </div>
                   {%- if quickView != true -%}
                       {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}

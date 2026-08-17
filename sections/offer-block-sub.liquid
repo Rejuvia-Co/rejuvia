@@ -421,7 +421,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   /* ---- Urgency cutoff: current time + 1 hour, pinned to America/New_York so
          it reads honestly for shoppers outside Eastern time. ---- */
   var urgency = sec.querySelector('[data-obs-urgency]');
-  if (urgency && urgency.textContent.indexOf('{cutoff}') !== -1) {
+  if (urgency && urgency.innerHTML.indexOf('{cutoff}') !== -1) {
     var cutoff;
     try {
       cutoff = new Intl.DateTimeFormat('en-US', {
@@ -432,7 +432,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var h = d.getHours() % 12 || 12, m = ('0' + d.getMinutes()).slice(-2);
       cutoff = h + ':' + m + (d.getHours() < 12 ? ' AM' : ' PM');
     }
-    urgency.textContent = urgency.textContent.replace('{cutoff}', cutoff);
+    /* innerHTML, not textContent: textContent would strip the <b> around the
+       ship date. cutoff is generated from Intl, so there is nothing to escape. */
+    urgency.innerHTML = urgency.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>');
   }
 
   /* ---- Gallery (customizer images) ---- */

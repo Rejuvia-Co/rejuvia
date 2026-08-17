@@ -127,10 +127,13 @@
     background: {{ section.settings.quote_bg_color }};
     border-radius: 10px;
     padding: 32px;
-    height: 600px;
+    /* Content-driven height. A fixed 600px left dead space under the footer
+       when the quote was short and overflowed the padding when it was long
+       (measured 568px of content in a 536px content box). Mobile already
+       used height:auto. */
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 24px;
     box-sizing: border-box;
 }

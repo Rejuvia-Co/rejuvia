@@ -53,6 +53,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Gallery (customizer images) ---- */
 .obs__main { position: relative; background: {{ section.settings.gallery_bg | default: '#F8EFE4' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .obs__main img[data-obs-main] { width: 100%; height: 100%; object-fit: {{ section.settings.gallery_fit | default: 'cover' }}; display: block; }
+/* the rule above sets display:block, which overrides the hidden attribute -
+   this restores it so only the active slide renders */
+.obs__main img[data-obs-main][hidden] { display: none; }
 .obs__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obs__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obs__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
@@ -260,7 +263,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- comment -%} Urgency strip. {date} is rendered server-side; {cutoff} is filled in on load. {%- endcomment -%}
       {%- if section.settings.urgency_text != blank -%}
-        {%- assign urgency = section.settings.urgency_text | replace: '{date}', today_date -%}
+        {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
+        {%- assign urgency = section.settings.urgency_text | replace: '{date}', ship_date_bold | replace: '{today}', today_date -%}
         <div class="obs__urgency" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="#672666" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
           <span data-obs-urgency>{{ urgency }}</span>
@@ -721,8 +725,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "type": "textarea",
       "id": "urgency_text",
       "label": "Urgency copy",
-      "info": "Use {cutoff} for the live cutoff time (now + 1 hour, Eastern) and {date} for today's date. Leave blank to hide.",
-      "default": "Order within the next hour — by {cutoff} — and it ships today, {date}"
+      "info": "Tokens: {date} = next-day ship date (rendered bold), {today} = today's date, {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.",
+      "default": "Order within the next hour and it ships by {date}"
     },
     {
       "type": "header",

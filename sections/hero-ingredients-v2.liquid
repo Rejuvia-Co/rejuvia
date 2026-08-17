@@ -7,7 +7,7 @@
 
 .hero-ingredients-v2-container {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -190,8 +190,8 @@
 
     {% if section.settings.image != blank %}
         <div class="hero-ingredients-v2-image-wrap">
-            <img
-                src="{{ section.settings.image | image_url: width: 1600 }}"
+            <img decoding="async"
+                src="{{ section.settings.image | image_url: width: 1600, format: 'webp' }}"
                 alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html }}"
                 width="{{ section.settings.image.width }}"
                 height="{{ section.settings.image.height }}"

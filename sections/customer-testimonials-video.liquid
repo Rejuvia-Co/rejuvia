@@ -54,7 +54,16 @@
     width: 38px; height: 38px !important; padding: 0 !important;
     border: 1.5px solid #672666 !important; border-radius: 50% !important;
   }
-  #shopify-section-{{ section.id }} .glide__arrow:hover { opacity: 1; background: rgba(0,0,0,0.05); }
+  /* the desktop rule clears border-color; on mobile the circle IS the border,
+     so hold it through hover/focus/active (press-carousel behaviour) */
+  #shopify-section-{{ section.id }} .glide__arrow:hover,
+  #shopify-section-{{ section.id }} .glide__arrow:focus,
+  #shopify-section-{{ section.id }} .glide__arrow:active {
+    opacity: 1;
+    background: rgba(0,0,0,0.05) !important;
+    border: 1.5px solid #672666 !important;
+    border-radius: 50% !important;
+  }
   #shopify-section-{{ section.id }} .glide__arrow svg { width: 18px !important; height: 18px !important; }
   #shopify-section-{{ section.id }} .glide__bullets { gap: 11px; }
   #shopify-section-{{ section.id }} .glide__bullet { width: 13px; height: 13px; }

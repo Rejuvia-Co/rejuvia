@@ -204,14 +204,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
       <div class="ob__gallery-inner">
       <div class="ob__main">
-        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
         <div class="ob__thumbs-row">
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
             {%- for img in gallery_product.images -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy" decoding="async"></button>
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -247,7 +247,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
             {%- if b.settings.image != blank -%}
-              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290 }}" width="290" height="320" alt="" decoding="async" loading="lazy">
+              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290, format: 'webp' }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- elsif b.settings.image_asset != blank -%}
               <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- endif -%}

@@ -84,7 +84,7 @@
       <div class="lb-blocks__item" {{ block.shopify_attributes }}>
         {%- if block.settings.image != blank -%}
           <div class="lb-blocks__media">
-            <img src="{{ block.settings.image | image_url: width: 760 }}"
+            <img src="{{ block.settings.image | image_url: width: 760, format: 'webp' }}"
                  width="{{ block.settings.image.width }}"
                  height="{{ block.settings.image.height }}"
                  alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"

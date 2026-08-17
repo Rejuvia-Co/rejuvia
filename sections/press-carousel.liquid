@@ -79,8 +79,8 @@
             {%- endif -%}
             {%- if block.settings.logo != blank -%}
               <img class="pc__logo"
-                   src="{{ block.settings.logo | image_url: width: 480 }}"
-                   srcset="{{ block.settings.logo | image_url: width: 240 }} 240w, {{ block.settings.logo | image_url: width: 480 }} 480w"
+                   src="{{ block.settings.logo | image_url: width: 480, format: 'webp' }}"
+                   srcset="{{ block.settings.logo | image_url: width: 240, format: 'webp' }} 240w, {{ block.settings.logo | image_url: width: 480, format: 'webp' }} 480w"
                    sizes="240px"
                    width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}"
                    alt="{{ block.settings.logo_alt | default: 'Press logo' | escape }}" loading="lazy" decoding="async">

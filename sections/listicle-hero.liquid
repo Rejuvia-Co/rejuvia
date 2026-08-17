@@ -153,9 +153,9 @@
         <div class="listicle-hero__media-inner">
           <picture>
             {%- if section.settings.image_mobile != blank -%}
-              <source media="(max-width: 749px)" srcset="{{ section.settings.image_mobile | image_url: width: 750 }} 1x, {{ section.settings.image_mobile | image_url: width: 1100 }} 2x">
+              <source media="(max-width: 749px)" srcset="{{ section.settings.image_mobile | image_url: width: 750, format: 'webp' }} 1x, {{ section.settings.image_mobile | image_url: width: 1100, format: 'webp' }} 2x">
             {%- endif -%}
-            <img src="{{ hero_img | image_url: width: 1100 }}"
+            <img src="{{ hero_img | image_url: width: 1100, format: 'webp' }}"
                  width="{{ hero_img.width }}"
                  height="{{ hero_img.height }}"
                  alt="{{ hero_img.alt | default: section.settings.heading | escape }}"

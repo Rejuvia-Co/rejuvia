@@ -146,7 +146,6 @@
         "gallery_bg": "#F8EFE4",
         "gallery_fit": "cover",
         "sticky_offset": 100,
-        "badge_asset": "rejuvia-inc5000.png",
         "show_stars": true,
         "stars_color": "#fab851",
         "rating_label": "Excellent 4.5",

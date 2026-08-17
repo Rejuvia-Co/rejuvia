@@ -56,7 +56,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* the rule above sets display:block, which overrides the hidden attribute -
    this restores it so only the active slide renders */
 .obs__main img[data-obs-main][hidden] { display: none; }
-.obs__inc { position: absolute; left: 14px; bottom: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obs__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obs__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
 .obs__arrow:hover { background: #f6eef6; }
@@ -196,7 +195,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- assign ship_date = ship_ts | date: '%a, %b %-d' -%}
 {%- assign today_date = 'now' | date: '%a, %b %-d' -%}
 
-{%- capture obs_inc_src -%}{%- if section.settings.badge_image != blank -%}{{ section.settings.badge_image | image_url: width: 200, format: 'webp' }}{%- elsif section.settings.badge_asset != blank -%}{{ section.settings.badge_asset | asset_url }}{%- endif -%}{%- endcapture -%}
 
 {%- comment -%} Gallery slides come from customizer blocks, not a product {%- endcomment -%}
 {%- assign slides = section.blocks | where: 'type', 'slide' -%}
@@ -229,15 +227,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- if b.settings.image != blank -%}
               <img data-obs-main{% unless forloop.first %} hidden{% endunless %}
                    src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
-                   srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w"
+                   srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
                    sizes="(max-width: 900px) 92vw, 430px"
                    alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
             {%- endif -%}
           {%- endfor -%}
-          {%- if obs_inc_src != blank -%}
-            <img class="obs__inc" data-obs-inc src="{{ obs_inc_src }}" alt="Inc. 5000 — America's fastest-growing private companies" loading="lazy" decoding="async">
-          {%- endif -%}
         </div>
         {%- if slides.size > 1 -%}
           <div class="obs__thumbrow">
@@ -465,7 +460,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   var mains = [].slice.call(sec.querySelectorAll('[data-obs-main]'));
   var thumbs = [].slice.call(sec.querySelectorAll('[data-obs-thumb]'));
   var dots = [].slice.call(sec.querySelectorAll('[data-obs-dot]'));
-  var inc = sec.querySelector('[data-obs-inc]');
   var idx = 0;
   function setImg(i) {
     if (!mains.length) return;
@@ -473,7 +467,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     mains.forEach(function (img, j) { img.hidden = j !== idx; });
     thumbs.forEach(function (t, j) { t.classList.toggle('is-active', j === idx); });
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
-    if (inc) inc.style.display = idx === 0 ? '' : 'none';
     var t = thumbs[idx];
     if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
@@ -611,18 +604,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "unit": "px",
       "label": "Sticky column offset (desktop)",
       "default": 16
-    },
-    {
-      "type": "image_picker",
-      "id": "badge_image",
-      "label": "Gallery overlay badge",
-      "info": "Shown bottom-left on the first image only."
-    },
-    {
-      "type": "text",
-      "id": "badge_asset",
-      "label": "Overlay badge (theme asset fallback)",
-      "default": "rejuvia-inc5000.png"
     },
     {
       "type": "header",

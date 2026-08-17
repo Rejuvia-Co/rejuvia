@@ -161,7 +161,7 @@
         "headline_size_mobile": 29,
         "subtitle_size": 16.5,
         "subtitle_size_mobile": 13.5,
-        "urgency_text": "Order within the next hour and it ships by {date}",
+        "urgency_text": "Order within the next hour \u2014 by {cutoff} \u2014 and it ships by {date}",
         "default_tier": 2,
         "add_quantity": 2,
         "tier_title_size": 21,

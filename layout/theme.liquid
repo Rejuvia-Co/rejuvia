@@ -21,7 +21,6 @@
 <!-- Theme settings for JavaScript -->
   <script>
     window.THEME_SETTINGS = {
-      allow_side_cart: {{ settings.allow_side_cart | json }},
       allow_ajax_cart: {{ settings.allow_ajax_cart | json }}
     };
 
@@ -91,9 +90,6 @@
     </main>
     {% sections 'footer-group' %}
 
-    {%- if settings.allow_side_cart -%}
-      {%- include 'side_cart' -%}
-    {%- endif -%}
 
     <div id="loading-overlay">
       <div class="loader"></div>

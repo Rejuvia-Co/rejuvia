@@ -248,6 +248,7 @@
     }
 }
 .trustb-section {
+    overflow-x: hidden;   /* moved out of the theme Custom CSS box */
     padding-top: 33px;
     padding-bottom: 33px;
     max-width: 1130px;

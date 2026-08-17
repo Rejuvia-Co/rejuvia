@@ -22,12 +22,6 @@
       },
       {
         "type": "text",
-        "id": "container_width",
-        "label": "Container Width",
-        "default": "1300px"
-      },
-      {
-        "type": "text",
         "id": "breakpoint_tablet",
         "label": "Breakpoint (Tablet)",
         "default": "900px"
@@ -70,12 +64,6 @@
       },
       {
         "type": "color",
-        "id": "bg_color",
-        "label": "Background Color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
         "id": "content_text_color",
         "label": "Text Color",
         "default": "#000000"
@@ -103,10 +91,6 @@
   {
     "name": "Fonts",
     "settings": [
-      {
-        "type": "header",
-        "content": "Font Files"
-      },
       {
         "type": "header",
         "content": "Body"
@@ -186,10 +170,6 @@
           }
         ],
         "default": "none"
-      },
-      {
-        "type": "header",
-        "content": "Icons"
       }
     ]
   },
@@ -203,18 +183,6 @@
       {
         "type": "paragraph",
         "content": "Class: .btn"
-      },
-      {
-        "type": "color",
-        "id": "button_text",
-        "label": "Text Color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "text",
-        "id": "button_size",
-        "label": "Font Size",
-        "default": "1em"
       },
       {
         "type": "text",
@@ -293,46 +261,6 @@
           }
         ],
         "default": "700"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #1 - Hover"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #2 - Settings"
-      },
-      {
-        "type": "paragraph",
-        "content": "Class: .btn.v2"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #2 - Hover"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #3 - Settings"
-      },
-      {
-        "type": "paragraph",
-        "content": "Class: .btn.v3"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #3 - Hover"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #4 - Settings"
-      },
-      {
-        "type": "paragraph",
-        "content": "Class: .btn.v4"
-      },
-      {
-        "type": "header",
-        "content": "BUTTON #4 - Hover"
       }
     ]
   },
@@ -420,14 +348,6 @@
           }
         ],
         "default": "700"
-      },
-      {
-        "type": "header",
-        "content": "Input Fields"
-      },
-      {
-        "type": "header",
-        "content": "Focus State"
       }
     ]
   },
@@ -677,10 +597,6 @@
         "type": "checkbox",
         "id": "show_related_products",
         "label": "Show section?"
-      },
-      {
-        "type": "header",
-        "content": "Recently Viewed"
       }
     ]
   },
@@ -690,11 +606,6 @@
       {
         "type": "header",
         "content": "Settings"
-      },
-      {
-        "type": "checkbox",
-        "id": "allow_side_cart",
-        "label": "Allow Side Cart?"
       },
       {
         "type": "checkbox",
@@ -715,114 +626,6 @@
         "type": "textarea",
         "id": "cart_return_policy",
         "label": "Return Policy"
-      },
-      {
-        "type": "header",
-        "content": "Side Cart"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_bg_color",
-        "label": "Background Color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_text_color",
-        "label": "Text Color",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_borders_color",
-        "label": "Borders Color",
-        "default": "#dfdfdf"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_title_bg_color",
-        "label": "Title Background Color",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_title_color",
-        "label": "Title Color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "sidecart_title_border_bottom",
-        "label": "Title Border Bottom Color",
-        "default": "#000000"
-      },
-      {
-        "type": "select",
-        "id": "sidecart_title_weight",
-        "label": "Title Font Weight",
-        "options": [
-          {
-            "value": "100",
-            "label": "100"
-          },
-          {
-            "value": "200",
-            "label": "200"
-          },
-          {
-            "value": "300",
-            "label": "300"
-          },
-          {
-            "value": "400",
-            "label": "400"
-          },
-          {
-            "value": "500",
-            "label": "500"
-          },
-          {
-            "value": "600",
-            "label": "600"
-          },
-          {
-            "value": "700",
-            "label": "700"
-          },
-          {
-            "value": "800",
-            "label": "800"
-          },
-          {
-            "value": "900",
-            "label": "900"
-          }
-        ],
-        "default": "700"
-      },
-      {
-        "type": "select",
-        "id": "sidecart_title_transform",
-        "label": "Sidecart Text transform",
-        "options": [
-          {
-            "value": "none",
-            "label": "Normal"
-          },
-          {
-            "value": "uppercase",
-            "label": "Uppercase"
-          }
-        ],
-        "default": "uppercase"
-      },
-      {
-        "type": "header",
-        "content": "Shipping Rates Calculator"
-      },
-      {
-        "type": "paragraph",
-        "content": "If your customer is logged-in, the country in his default shipping address will be selected. If you are not sure about the  spelling to use here, refer to the first checkout page."
       }
     ]
   },
@@ -873,21 +676,6 @@
         "type": "text",
         "id": "mailing_link",
         "label": "Mailing List"
-      }
-    ]
-  },
-  {
-    "name": "Subscription Pop Up",
-    "settings": [
-      {
-        "type": "textarea",
-        "id": "subscription_title",
-        "label": "Title",
-        "default": "Submit"
-      },
-      {
-        "type": "header",
-        "content": "Success"
       }
     ]
   }

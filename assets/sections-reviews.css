@@ -1,3 +1,7 @@
+.featured-customer-reviews-section {
+  overflow-x: hidden;   /* moved out of the theme Custom CSS box */
+}
+
 .customer-testimonials-section {
     position: relative;
     background: #F0E9EF;

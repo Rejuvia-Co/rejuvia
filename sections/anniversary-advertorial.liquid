@@ -47,8 +47,6 @@
     --adv-btn-text: {{ section.settings.button_text_color }};
     --adv-bar-bg: {{ bar_bg }};
     --adv-bar-text: {{ section.settings.bar_text_color }};
-    --adv-pill-bg: {{ section.settings.offer_pill_bg }};
-    --adv-pill-text: {{ section.settings.offer_pill_text }};
     --adv-band-bg: {{ section.settings.band_bg }};
     --adv-ink: #171512;
     --adv-muted: #55504a;
@@ -311,18 +309,15 @@
     max-width: 560px;
     margin: 0 auto;
     transform: translateY(-18px);
-    background: var(--adv-pill-bg);
-    color: var(--adv-pill-text);
+    background: #000;
+    color: var(--adv-accent);
     border-radius: 8px;
-    /* Optical centring: line-height 1 strips the font's built-in descender
-       space, then the extra top padding puts the cap-height visually in the
-       middle. Symmetric padding always reads bottom-heavy on caps text. */
-    line-height: 1;
-    padding: 16px 20px 13px;
+    padding: 12px 20px;
     text-align: center;
     font-family: var(--font-ui);
     font-size: 17px;
     font-weight: 700;
+    line-height: 1.25;
   }
 
   .adv-{{ section.id }} .adv__offer-grid {
@@ -382,9 +377,7 @@
     gap: 10px;
     width: 100%;
     margin: 16px 0 0;
-    /* Same optical-centring trick as the pill — extra top padding so the
-       label sits in the visual middle of the button, not below it. */
-    padding: 19px 20px 16px;
+    padding: 16px 20px;
     background: var(--adv-btn);
     color: var(--adv-btn-text);
     border: 0;
@@ -417,8 +410,7 @@
   .adv-{{ section.id }} .adv__offer-risk {
     background: #fdf3f2;
     border-radius: 6px;
-    /* Text on a background again — a touch more top than bottom. */
-    padding: 12px 14px 9px;
+    padding: 10px 14px;
     margin: 12px 0 0;
     font-size: 14px;
     line-height: 1.4;
@@ -461,16 +453,11 @@
     .adv-{{ section.id }} .adv__item-cta { font-size: {{ section.settings.body_size_mobile }}px; }
     .adv-{{ section.id }} .adv__band-heading { font-size: {{ section.settings.item_title_size_mobile | plus: 4 }}px; }
 
-    /* Mobile: stack the row so the image spans the full column — i.e. exactly
-       the width of the item heading above it. A narrow image floated beside
-       the copy read as misaligned against the heading. */
     .adv-{{ section.id }} .adv__item {
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding: 26px 0;
+      grid-template-columns: {{ section.settings.image_width_mobile }}px 1fr;
+      gap: 16px;
+      padding: 24px 0;
     }
-
-    .adv-{{ section.id }} .adv__item-img { border-radius: 14px; }
 
     .adv-{{ section.id }} .adv__offer { padding: 0 14px 20px; }
     .adv-{{ section.id }} .adv__offer-pill { font-size: 14px; padding: 10px 14px; width: calc(100% - 20px); }
@@ -480,14 +467,11 @@
     .adv-{{ section.id }} .adv__offer-btn { font-size: 18px; padding: 15px 18px; }
   }
 
-  /* Reviews widget (Okendo app block) sits under the offer card. */
-  .adv-{{ section.id }} .adv__reviews {
-    max-width: 860px;
-    margin: 34px auto 0;
-  }
-
-  @media screen and (max-width: 860px) {
-    .adv-{{ section.id }} .adv__reviews { margin-top: 26px; }
+  /* Stack the item rows only on genuinely narrow phones — the reference keeps
+     image and copy side by side, which stays readable down to about here. */
+  @media screen and (max-width: 480px) {
+    .adv-{{ section.id }} .adv__item { grid-template-columns: 1fr; gap: 14px; }
+    .adv-{{ section.id }} .adv__item-fig { max-width: 260px; }
   }
 {% endstyle %}
 
@@ -562,15 +546,8 @@
     </header>
 
     <div class="adv__items">
-      {%- comment -%}
-        Count items explicitly rather than using forloop.index: section.blocks
-        also carries the Okendo @app block, so forloop.index would skip a
-        number the moment that block is reordered above an item.
-      {%- endcomment -%}
-      {%- assign item_no = 0 -%}
       {%- for block in section.blocks -%}
         {%- if block.type == 'item' -%}
-          {%- assign item_no = item_no | plus: 1 -%}
           {%- assign has_img = false -%}
           {%- if block.settings.image != blank -%}{%- assign has_img = true -%}{%- endif -%}
 
@@ -578,12 +555,11 @@
             {%- if has_img -%}
               <figure class="adv__item-fig">
                 <img class="adv__item-img"
-                     src="{{ block.settings.image | image_url: width: 800, format: 'webp' }}"
-                     srcset="{{ block.settings.image | image_url: width: 400, format: 'webp' }} 400w,
-                             {{ block.settings.image | image_url: width: 600, format: 'webp' }} 600w,
-                             {{ block.settings.image | image_url: width: 800, format: 'webp' }} 800w,
-                             {{ block.settings.image | image_url: width: 1100, format: 'webp' }} 1100w"
-                     sizes="(max-width: 860px) calc(100vw - 40px), {{ section.settings.image_width }}px"
+                     src="{{ block.settings.image | image_url: width: 600, format: 'webp' }}"
+                     srcset="{{ block.settings.image | image_url: width: 300, format: 'webp' }} 300w,
+                             {{ block.settings.image | image_url: width: 450, format: 'webp' }} 450w,
+                             {{ block.settings.image | image_url: width: 600, format: 'webp' }} 600w"
+                     sizes="(max-width: 480px) 260px, (max-width: 860px) {{ section.settings.image_width_mobile }}px, {{ section.settings.image_width }}px"
                      width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
                      alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
                      loading="lazy" decoding="async">
@@ -593,7 +569,7 @@
             <div class="adv__item-copy">
               {%- if block.settings.heading != blank -%}
                 <h2 class="adv__item-title">
-                  {%- if section.settings.show_numbers -%}{{ item_no }}. {% endif -%}
+                  {%- if section.settings.show_numbers -%}{{ forloop.index }}. {% endif -%}
                   {{- block.settings.heading -}}
                 </h2>
               {%- endif -%}
@@ -687,18 +663,6 @@
           </div>
         </div>
       </div>
-
-      {%- comment -%}
-        Okendo reviews widget — same app block the BOGO template uses, placed
-        below the offer card so it backs up the CTA with social proof.
-      {%- endcomment -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == '@app' -%}
-          <div class="adv__reviews" {{ block.shopify_attributes }}>
-            {%- render block -%}
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
     </div>
   </div>
 
@@ -807,7 +771,8 @@
 
     { "type": "header", "content": "Numbered items" },
     { "type": "checkbox", "id": "show_numbers", "label": "Number the items", "default": true },
-    { "type": "range", "id": "image_width", "label": "Image width (desktop)", "unit": "px", "min": 200, "max": 560, "step": 10, "default": 375, "info": "On mobile the images always span the full column width, matching the heading." },
+    { "type": "range", "id": "image_width", "label": "Image width (desktop)", "unit": "px", "min": 180, "max": 420, "step": 10, "default": 300 },
+    { "type": "range", "id": "image_width_mobile", "label": "Image width (mobile)", "unit": "px", "min": 100, "max": 260, "step": 5, "default": 150 },
 
     { "type": "header", "content": "Highlight band" },
     { "type": "text", "id": "band_heading", "label": "Band heading", "default": "Over 300,000 People Are Sleeping Better (and Counting)" },
@@ -816,8 +781,6 @@
 
     { "type": "header", "content": "Offer card" },
     { "type": "text", "id": "offer_pill", "label": "Pill text", "default": "✨ Anniversary Sale — Best Price Ever ✨" },
-    { "type": "color", "id": "offer_pill_bg", "label": "Pill background", "default": "#000000" },
-    { "type": "color", "id": "offer_pill_text", "label": "Pill text colour", "default": "#fab851" },
     { "type": "image_picker", "id": "offer_image", "label": "Offer image" },
     { "type": "text", "id": "offer_gifts", "label": "Gifts line", "default": "🎁 FREE GIFTS WITH YOUR ORDER 🎁" },
     { "type": "text", "id": "offer_headline_red", "label": "Headline (red line)", "default": "BUY ONE, GET ONE" },
@@ -835,7 +798,7 @@
     { "type": "header", "content": "Type sizes" },
     { "type": "range", "id": "title_size", "label": "Headline (desktop)", "unit": "px", "min": 24, "max": 60, "step": 1, "default": 44 },
     { "type": "range", "id": "title_size_mobile", "label": "Headline (mobile)", "unit": "px", "min": 18, "max": 44, "step": 1, "default": 31 },
-    { "type": "range", "id": "item_title_size", "label": "Item heading (desktop)", "unit": "px", "min": 18, "max": 48, "step": 1, "default": 33 },
+    { "type": "range", "id": "item_title_size", "label": "Item heading (desktop)", "unit": "px", "min": 18, "max": 42, "step": 1, "default": 27 },
     { "type": "range", "id": "item_title_size_mobile", "label": "Item heading (mobile)", "unit": "px", "min": 15, "max": 34, "step": 1, "default": 21 },
     { "type": "range", "id": "body_size", "label": "Body (desktop)", "unit": "px", "min": 14, "max": 26, "step": 1, "default": 18 },
     { "type": "range", "id": "body_size_mobile", "label": "Body (mobile)", "unit": "px", "min": 13, "max": 24, "step": 1, "default": 17 },
@@ -845,7 +808,7 @@
     { "type": "color", "id": "link_color", "label": "CTA link", "default": "#672666" },
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#00b10d" },
     { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
-    { "type": "range", "id": "content_width", "label": "Content width", "unit": "px", "min": 640, "max": 1200, "step": 10, "default": 900 }
+    { "type": "range", "id": "content_width", "label": "Content width", "unit": "px", "min": 700, "max": 1200, "step": 10, "default": 1000 }
   ],
   "blocks": [
     {
@@ -858,8 +821,7 @@
         { "type": "text", "id": "cta_label", "label": "CTA label" },
         { "type": "url", "id": "cta_url", "label": "CTA link (overrides the section link)" }
       ]
-    },
-    { "type": "@app" }
+    }
   ],
   "max_blocks": 12,
   "presets": [

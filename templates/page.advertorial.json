@@ -81,6 +81,13 @@
             "cta_label": "Try It Risk-Free",
             "cta_url": ""
           }
+        },
+        "okendo_reviews": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
         }
       },
       "block_order": [
@@ -90,7 +97,8 @@
         "item_4",
         "item_5",
         "item_6",
-        "item_7"
+        "item_7",
+        "okendo_reviews"
       ],
       "settings": {
         "show_bar": true,

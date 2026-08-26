@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "advertorial": {
@@ -6,57 +15,71 @@
         "item_1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_review.webp",
             "heading": "Falls Asleep in 10 Minutes With One Spray Under Your Tongue",
             "body": "<p>Pills and gummies have to sit in your stomach for 45–60 minutes and lose half their strength to digestion on the way. Rejuvia skips all of that. You spray it 6–8 times under your tongue and it absorbs directly into your bloodstream — up to 75% more than pills. That's why most people are out in 10–15 minutes. One spray. No waiting. Lights out.</p>",
-            "cta_label": "Fall Asleep Faster"
+            "cta_label": "Fall Asleep Faster",
+            "cta_url": ""
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
             "heading": "Stop Wasting Money on Pills and Gummies That Leave You Groggy",
             "body": "<p>Most sleep aids are stuffed with 10–12mg of melatonin — about five times what your body actually needs — which is exactly why you wake up feeling like you got hit by a truck. Rejuvia uses a low 2mg, plus 13 natural ingredients that quiet a racing mind. Enough to knock you out, not enough to wreck your morning. Stop paying for the hangover.</p>",
-            "cta_label": "Ditch the Pills"
+            "cta_label": "Ditch the Pills",
+            "cta_url": ""
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_ingredients.webp",
             "heading": "No More 3AM Wake-Ups — You Fall Right Back to Sleep",
             "body": "<p>The line we see in our reviews more than any other: “I wake up at 3am, spray again, and I'm right back to sleep.” Rejuvia works on your nervous system — passionflower and valerian calm the stress that jolts you awake — so you don't just fall asleep, you stay asleep. Even a bathroom trip won't cost you the whole night.</p>",
-            "cta_label": "Sleep Through the Night"
+            "cta_label": "Sleep Through the Night",
+            "cta_url": ""
           }
         },
         "item_4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/hf_20260817_183016_b45c9bc0-e72e-4f20-a056-9ef7ef296acd.webp",
             "heading": "Buy One, Get One FREE If You Order Today",
             "body": "<p>For our anniversary, every Rejuvia comes with a second bottle completely free — that's just <strong>$15 a spray</strong>, our best price ever. Keep one on your nightstand and one for whoever you keep awake at night. It's not a subscription, and there's no auto-renewal nonsense — just two bottles, one price.</p>",
-            "cta_label": "Claim Your Free Bottle"
+            "cta_label": "Claim Your Free Bottle",
+            "cta_url": ""
           }
         },
         "item_5": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_spray_offer_benefits.webp",
             "heading": "Small Enough for Your Nightstand, Purse, or Carry-On",
             "body": "<p>No pills to count, no water needed. Rejuvia is a slim little spray that fits in a nightstand drawer, a purse, or a carry-on — and it's TSA-friendly, so you can sleep just as well on the road as you do at home. Bonus: it tastes like fresh mint, not medicine.</p>",
-            "cta_label": "Take It Anywhere"
+            "cta_label": "Take It Anywhere",
+            "cta_url": ""
           }
         },
         "item_6": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_ingredients_0af620cb-8043-4223-bfd9-dd996bf60034.webp",
             "heading": "So Simple: Spray, Swish, Sleep",
             "body": "<p>Three steps. Spray it 6–8 times under your tongue, swish and swallow, and get in bed. That's it. Need just a little help? Use 4 sprays. Rough night? Use 8. You control your own dose — and you can use it every night or only on the bad ones, because it's non-habit-forming.</p>",
-            "cta_label": "See How Easy It Is"
+            "cta_label": "See How Easy It Is",
+            "cta_url": ""
           }
         },
         "item_7": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/rejuvia_guarnatee.webp",
             "heading": "Try It Risk-Free for 90 Nights",
             "body": "<p>Every order is backed by our 90-day money-back guarantee. Use it every single night for three months. If you're not sleeping better, send it back — no questions, no hassle. Over 300,000 people already fall asleep with Rejuvia every night. Now it's your turn.</p>",
-            "cta_label": "Try It Risk-Free"
+            "cta_label": "Try It Risk-Free",
+            "cta_url": ""
           }
         }
       },
@@ -70,7 +93,46 @@
         "item_7"
       ],
       "settings": {
-        "cta_url": "/pages/bogo"
+        "show_bar": true,
+        "bar_eyebrow": "✨ ANNIVERSARY SALE ✨",
+        "bar_headline": "BUY 1, GET 1 FREE",
+        "countdown_minutes": 40,
+        "bar_bg": "#672666",
+        "bar_text_color": "#ffffff",
+        "title": "This $15 Under-the-Tongue Sleep Spray Knocks You Out in 10 Minutes",
+        "author_image": "shopify://shop_images/customer_12.png",
+        "author_name": "Karen M.",
+        "date_text": "Last Updated August 24, 2026",
+        "summary": "<p>Lying awake for hours is exhausting — and so is dragging yourself through the next day after a pill or gummy leaves you foggy. <strong>Rejuvia</strong> is a sublingual sleep spray that absorbs under your tongue straight into your bloodstream, so most people are asleep in 10–15 minutes instead of 45–60. No wonder it keeps selling out.</p>",
+        "show_numbers": true,
+        "image_width": 300,
+        "image_width_mobile": 150,
+        "band_heading": "Over 300,000 People Are Sleeping Better (and Counting)",
+        "band_text": "<p>Families across the country have taken back their nights with Rejuvia — falling asleep faster, staying asleep, and waking up clear, all from a few minty sprays under the tongue. It's not just a product people buy — it's one they reach for every single night.</p>",
+        "band_bg": "#fdfced",
+        "offer_pill": "UP TO 3 FREE SPRAYS NOW",
+        "offer_image": "shopify://shop_images/hf_20260817_183016_b45c9bc0-e72e-4f20-a056-9ef7ef296acd.webp",
+        "offer_gifts": "🎁 FREE GIFTS WITH YOUR ORDER 🎁",
+        "offer_headline_red": "BUY ONE, GET ONE",
+        "offer_headline_dark": "FREE",
+        "offer_note": "*Due to extreme demand, stock may sell out sooner.",
+        "button_label": "Check Availability",
+        "cta_url": "/pages/bogo",
+        "offer_timer_label": "Offer ends in:",
+        "offer_risk": "<p><strong>Sell-Out Risk: High</strong> | Few Units Left</p>",
+        "offer_guarantee": "Try it today with a 90-Day Money-Back Guarantee!",
+        "footer_text": "Copyright © Rejuvia. All Rights Reserved.",
+        "title_size": 44,
+        "title_size_mobile": 31,
+        "item_title_size": 27,
+        "item_title_size_mobile": 21,
+        "body_size": 18,
+        "body_size_mobile": 17,
+        "accent_color": "#fab851",
+        "link_color": "#672666",
+        "button_bg": "#00b10d",
+        "button_text_color": "#ffffff",
+        "content_width": 1000
       }
     }
   },

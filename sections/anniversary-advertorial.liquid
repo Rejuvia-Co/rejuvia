@@ -26,6 +26,20 @@
 -%}
 
 {% style %}
+  {%- if section.settings.hide_chrome -%}
+    /* Standalone advertorial: drop the announcement bar, main nav and footer.
+       These selectors sit outside the section, so they are deliberately NOT
+       scoped to .adv-{{ section.id }} — but this stylesheet only ships on pages
+       that render this section, so nothing else on the site is affected.
+
+       Safe to display:none rather than reposition: the theme header is
+       position:sticky (custom.min.css), not fixed, and neither #page nor
+       .content-wrapper reserves space for it, so hiding it leaves no gap. */
+    #shopify-section-header-top,
+    header[role="banner"],
+    .shopify-section-group-footer-group { display: none !important; }
+  {%- endif -%}
+
   .adv-{{ section.id }} {
     --adv-accent: {{ acc }};
     --adv-link: {{ link_c }};
@@ -737,6 +751,9 @@
   "tag": "section",
   "class": "section-anniversary-advertorial",
   "settings": [
+    { "type": "header", "content": "Page chrome" },
+    { "type": "checkbox", "id": "hide_chrome", "label": "Hide site header & footer", "default": true, "info": "Hides the announcement bar, main navigation and footer — on this page only." },
+
     { "type": "header", "content": "Sticky urgency bar" },
     { "type": "checkbox", "id": "show_bar", "label": "Show sticky bar", "default": true },
     { "type": "text", "id": "bar_eyebrow", "label": "Bar eyebrow", "default": "✨ ANNIVERSARY SALE ✨" },

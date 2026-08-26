@@ -1,0 +1,825 @@
+{%- comment -%}
+  Anniversary advertorial — editorial "listicle" landing page.
+
+  Layout, top to bottom:
+    sticky urgency bar (eyebrow + headline + live countdown)
+    article header (title, author byline, summary)
+    numbered items (image left, heading + body + CTA right) — one per block
+    highlight band (social-proof heading + paragraph)
+    offer card (dashed frame, product photo, price lines, CTA, countdown, risk box)
+    footer line
+
+  The countdown drives every [data-adv-*] element on the page, so the bar and
+  the offer card always read the same. The deadline is stored per visitor in
+  sessionStorage so it survives a scroll-and-refresh instead of restarting.
+
+  JS here is deliberately ES5-level — no optional chaining, no nullish
+  coalescing. This audience skews older and runs older webviews, where those
+  operators are a whole-file SyntaxError rather than a graceful degradation.
+{%- endcomment -%}
+
+{%- liquid
+  assign acc = section.settings.accent_color
+  assign bar_bg = section.settings.bar_bg
+  assign link_c = section.settings.link_color
+  assign btn_bg = section.settings.button_bg
+-%}
+
+{% style %}
+  .adv-{{ section.id }} {
+    --adv-accent: {{ acc }};
+    --adv-link: {{ link_c }};
+    --adv-btn: {{ btn_bg }};
+    --adv-btn-text: {{ section.settings.button_text_color }};
+    --adv-bar-bg: {{ bar_bg }};
+    --adv-bar-text: {{ section.settings.bar_text_color }};
+    --adv-band-bg: {{ section.settings.band_bg }};
+    --adv-ink: #171512;
+    --adv-muted: #55504a;
+    --adv-rule: #e3e0dc;
+    --adv-w: {{ section.settings.content_width }}px;
+    --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+    --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+    --font-ui: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
+    color: var(--adv-ink);
+    letter-spacing: normal;
+  }
+
+  .adv-{{ section.id }} *,
+  .adv-{{ section.id }} *::before,
+  .adv-{{ section.id }} *::after { box-sizing: border-box; }
+
+  .adv-{{ section.id }} .adv__wrap {
+    max-width: var(--adv-w);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ---------- sticky urgency bar ---------- */
+  .adv-{{ section.id }} .adv__bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--adv-bar-bg);
+    color: var(--adv-bar-text);
+    padding: 10px 16px;
+  }
+
+  .adv-{{ section.id }} .adv__bar-inner {
+    max-width: var(--adv-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .adv-{{ section.id }} .adv__bar-copy { text-align: center; }
+
+  .adv-{{ section.id }} .adv__bar-eyebrow {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--adv-accent);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+
+  .adv-{{ section.id }} .adv__bar-headline {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ---------- countdown ---------- */
+  .adv-{{ section.id }} .adv__clock {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    border: 2px solid rgba(255,255,255,.85);
+    border-radius: 8px;
+    padding: 6px 12px;
+    flex: 0 0 auto;
+  }
+
+  .adv-{{ section.id }} .adv__clock-seg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 30px;
+  }
+
+  .adv-{{ section.id }} .adv__clock-num {
+    font-family: var(--font-ui);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .adv-{{ section.id }} .adv__clock-lbl {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .06em;
+    opacity: .8;
+    font-style: normal;
+    margin-top: 3px;
+  }
+
+  .adv-{{ section.id }} .adv__clock-sep {
+    font-family: var(--font-ui);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  /* ---------- article header ---------- */
+  .adv-{{ section.id }} .adv__head { padding: 40px 0 0; }
+
+  .adv-{{ section.id }} .adv__title {
+    font-family: var(--font-display);
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -.015em;
+    margin: 0;
+  }
+
+  .adv-{{ section.id }} .adv__byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .adv-{{ section.id }} .adv__avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+    display: block;
+  }
+
+  .adv-{{ section.id }} .adv__byline-text {
+    font-family: var(--font-ui);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .adv-{{ section.id }} .adv__byline-text strong { font-weight: 700; }
+
+  .adv-{{ section.id }} .adv__summary {
+    font-size: {{ section.settings.body_size }}px;
+    line-height: 1.62;
+    margin: 26px 0 0;
+  }
+
+  .adv-{{ section.id }} .adv__summary p { margin: 0 0 1em; }
+  .adv-{{ section.id }} .adv__summary p:last-child { margin-bottom: 0; }
+  .adv-{{ section.id }} .adv__summary strong { font-weight: 700; }
+
+  .adv-{{ section.id }} .adv__rule {
+    border: 0;
+    border-top: 1px solid var(--adv-rule);
+    margin: 34px 0 0;
+  }
+
+  /* ---------- numbered items ---------- */
+  .adv-{{ section.id }} .adv__items { padding: 8px 0 0; }
+
+  .adv-{{ section.id }} .adv__item {
+    display: grid;
+    grid-template-columns: {{ section.settings.image_width }}px 1fr;
+    gap: 28px;
+    align-items: start;
+    padding: 34px 0;
+  }
+
+  .adv-{{ section.id }} .adv__item--noimg { grid-template-columns: 1fr; }
+
+  .adv-{{ section.id }} .adv__item-fig { margin: 0; }
+
+  .adv-{{ section.id }} .adv__item-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background: #f4f2ef;
+  }
+
+  .adv-{{ section.id }} .adv__item-title {
+    font-family: var(--font-display);
+    font-size: {{ section.settings.item_title_size }}px;
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -.01em;
+    margin: 0 0 12px;
+  }
+
+  .adv-{{ section.id }} .adv__item-body {
+    font-size: {{ section.settings.body_size }}px;
+    line-height: 1.62;
+  }
+
+  .adv-{{ section.id }} .adv__item-body p { margin: 0 0 1em; }
+  .adv-{{ section.id }} .adv__item-body p:last-child { margin-bottom: 0; }
+  .adv-{{ section.id }} .adv__item-body strong { font-weight: 700; }
+
+  .adv-{{ section.id }} .adv__item-cta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-ui);
+    font-size: {{ section.settings.body_size }}px;
+    font-weight: 700;
+    color: var(--adv-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .adv-{{ section.id }} .adv__item-cta:hover { text-decoration: none; }
+
+  /* ---------- highlight band ---------- */
+  .adv-{{ section.id }} .adv__band {
+    background: var(--adv-band-bg);
+    padding: 52px 0 60px;
+    margin-top: 26px;
+  }
+
+  .adv-{{ section.id }} .adv__band-heading {
+    font-family: var(--font-display);
+    font-size: {{ section.settings.item_title_size | plus: 6 }}px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    text-align: center;
+    margin: 0;
+  }
+
+  .adv-{{ section.id }} .adv__band-text {
+    font-size: {{ section.settings.body_size }}px;
+    line-height: 1.62;
+    text-align: center;
+    max-width: 760px;
+    margin: 18px auto 0;
+  }
+
+  .adv-{{ section.id }} .adv__band-text p { margin: 0 0 1em; }
+  .adv-{{ section.id }} .adv__band-text p:last-child { margin-bottom: 0; }
+
+  /* ---------- offer card ---------- */
+  .adv-{{ section.id }} .adv__offer {
+    margin: 34px auto 0;
+    max-width: 860px;
+    border: 2px dashed #4a4a4a;
+    border-radius: 4px;
+    padding: 0 22px 26px;
+    background: transparent;
+    position: relative;
+  }
+
+  .adv-{{ section.id }} .adv__offer-pill {
+    display: block;
+    width: calc(100% - 44px);
+    max-width: 560px;
+    margin: 0 auto;
+    transform: translateY(-18px);
+    background: #000;
+    color: var(--adv-accent);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .adv-{{ section.id }} .adv__offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+
+  .adv-{{ section.id }} .adv__offer-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .adv-{{ section.id }} .adv__offer-body { text-align: center; }
+
+  .adv-{{ section.id }} .adv__offer-gifts {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: .01em;
+    margin: 0 0 10px;
+  }
+
+  .adv-{{ section.id }} .adv__offer-red {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #d0021b;
+  }
+
+  .adv-{{ section.id }} .adv__offer-dark {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--adv-ink);
+  }
+
+  .adv-{{ section.id }} .adv__offer-note {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--adv-muted);
+    margin: 12px 0 0;
+  }
+
+  .adv-{{ section.id }} .adv__offer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 16px 20px;
+    background: var(--adv-btn);
+    color: var(--adv-btn-text);
+    border: 0;
+    border-radius: 8px;
+    font-family: var(--font-ui);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .adv-{{ section.id }} .adv__offer-btn:hover { filter: brightness(.94); }
+
+  .adv-{{ section.id }} .adv__offer-timer {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: .02em;
+    margin: 12px 0 0;
+    text-transform: uppercase;
+  }
+
+  .adv-{{ section.id }} .adv__offer-timer span {
+    color: #d0021b;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .adv-{{ section.id }} .adv__offer-risk {
+    background: #fdf3f2;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .adv-{{ section.id }} .adv__offer-risk p { margin: 0; }
+  .adv-{{ section.id }} .adv__offer-risk strong { font-weight: 700; }
+
+  .adv-{{ section.id }} .adv__offer-guarantee {
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 12px 0 0;
+  }
+
+  /* ---------- footer ---------- */
+  .adv-{{ section.id }} .adv__footer {
+    text-align: center;
+    padding: 26px 0 34px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--adv-muted);
+  }
+
+  /* ---------- mobile ---------- */
+  @media screen and (max-width: 860px) {
+    .adv-{{ section.id }} .adv__bar-inner { gap: 14px; }
+    .adv-{{ section.id }} .adv__bar-eyebrow { font-size: 15px; }
+    .adv-{{ section.id }} .adv__bar-headline { font-size: 12px; }
+    .adv-{{ section.id }} .adv__clock { padding: 5px 9px; gap: 4px; }
+    .adv-{{ section.id }} .adv__clock-num,
+    .adv-{{ section.id }} .adv__clock-sep { font-size: 17px; }
+    .adv-{{ section.id }} .adv__clock-seg { min-width: 24px; }
+
+    .adv-{{ section.id }} .adv__head { padding-top: 28px; }
+    .adv-{{ section.id }} .adv__title { font-size: {{ section.settings.title_size_mobile }}px; }
+    .adv-{{ section.id }} .adv__summary,
+    .adv-{{ section.id }} .adv__item-body,
+    .adv-{{ section.id }} .adv__band-text { font-size: {{ section.settings.body_size_mobile }}px; }
+    .adv-{{ section.id }} .adv__item-title { font-size: {{ section.settings.item_title_size_mobile }}px; }
+    .adv-{{ section.id }} .adv__item-cta { font-size: {{ section.settings.body_size_mobile }}px; }
+    .adv-{{ section.id }} .adv__band-heading { font-size: {{ section.settings.item_title_size_mobile | plus: 4 }}px; }
+
+    .adv-{{ section.id }} .adv__item {
+      grid-template-columns: {{ section.settings.image_width_mobile }}px 1fr;
+      gap: 16px;
+      padding: 24px 0;
+    }
+
+    .adv-{{ section.id }} .adv__offer { padding: 0 14px 20px; }
+    .adv-{{ section.id }} .adv__offer-pill { font-size: 14px; padding: 10px 14px; width: calc(100% - 20px); }
+    .adv-{{ section.id }} .adv__offer-grid { grid-template-columns: 1fr; gap: 18px; }
+    .adv-{{ section.id }} .adv__offer-red,
+    .adv-{{ section.id }} .adv__offer-dark { font-size: 24px; }
+    .adv-{{ section.id }} .adv__offer-btn { font-size: 18px; padding: 15px 18px; }
+  }
+
+  /* Stack the item rows only on genuinely narrow phones — the reference keeps
+     image and copy side by side, which stays readable down to about here. */
+  @media screen and (max-width: 480px) {
+    .adv-{{ section.id }} .adv__item { grid-template-columns: 1fr; gap: 14px; }
+    .adv-{{ section.id }} .adv__item-fig { max-width: 260px; }
+  }
+{% endstyle %}
+
+<div class="adv-{{ section.id }}" data-adv-root>
+
+  {%- if section.settings.show_bar -%}
+    <div class="adv__bar">
+      <div class="adv__bar-inner">
+        <div class="adv__bar-copy">
+          {%- if section.settings.bar_eyebrow != blank -%}
+            <span class="adv__bar-eyebrow">{{ section.settings.bar_eyebrow }}</span>
+          {%- endif -%}
+          {%- if section.settings.bar_headline != blank -%}
+            <span class="adv__bar-headline">{{ section.settings.bar_headline }}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="adv__clock" role="timer" aria-live="off">
+          <span class="adv__clock-seg">
+            <span class="adv__clock-num" data-adv-h>00</span>
+            <em class="adv__clock-lbl">HRS</em>
+          </span>
+          <span class="adv__clock-sep">:</span>
+          <span class="adv__clock-seg">
+            <span class="adv__clock-num" data-adv-m>00</span>
+            <em class="adv__clock-lbl">MIN</em>
+          </span>
+          <span class="adv__clock-sep">:</span>
+          <span class="adv__clock-seg">
+            <span class="adv__clock-num" data-adv-s>00</span>
+            <em class="adv__clock-lbl">SEC</em>
+          </span>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="adv__wrap">
+    <header class="adv__head">
+      {%- if section.settings.title != blank -%}
+        <h1 class="adv__title">{{ section.settings.title }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.author_name != blank or section.settings.author_image != blank -%}
+        <div class="adv__byline">
+          {%- if section.settings.author_image != blank -%}
+            <img class="adv__avatar"
+                 src="{{ section.settings.author_image | image_url: width: 108, format: 'webp' }}"
+                 srcset="{{ section.settings.author_image | image_url: width: 54, format: 'webp' }} 54w,
+                         {{ section.settings.author_image | image_url: width: 108, format: 'webp' }} 108w"
+                 sizes="54px"
+                 width="54" height="54"
+                 alt="{{ section.settings.author_image.alt | default: section.settings.author_name | escape }}"
+                 loading="lazy" decoding="async">
+          {%- endif -%}
+          <div class="adv__byline-text">
+            {%- if section.settings.author_name != blank -%}
+              <div>By <strong>{{ section.settings.author_name }}</strong></div>
+            {%- endif -%}
+            {%- if section.settings.date_text != blank -%}
+              <div><strong>{{ section.settings.date_text }}</strong></div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.summary != blank -%}
+        <div class="adv__summary">{{ section.settings.summary }}</div>
+      {%- endif -%}
+
+      <hr class="adv__rule">
+    </header>
+
+    <div class="adv__items">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'item' -%}
+          {%- assign has_img = false -%}
+          {%- if block.settings.image != blank -%}{%- assign has_img = true -%}{%- endif -%}
+
+          <div class="adv__item{% unless has_img %} adv__item--noimg{% endunless %}" {{ block.shopify_attributes }}>
+            {%- if has_img -%}
+              <figure class="adv__item-fig">
+                <img class="adv__item-img"
+                     src="{{ block.settings.image | image_url: width: 600, format: 'webp' }}"
+                     srcset="{{ block.settings.image | image_url: width: 300, format: 'webp' }} 300w,
+                             {{ block.settings.image | image_url: width: 450, format: 'webp' }} 450w,
+                             {{ block.settings.image | image_url: width: 600, format: 'webp' }} 600w"
+                     sizes="(max-width: 480px) 260px, (max-width: 860px) {{ section.settings.image_width_mobile }}px, {{ section.settings.image_width }}px"
+                     width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
+                     loading="lazy" decoding="async">
+              </figure>
+            {%- endif -%}
+
+            <div class="adv__item-copy">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="adv__item-title">
+                  {%- if section.settings.show_numbers -%}{{ forloop.index }}. {% endif -%}
+                  {{- block.settings.heading -}}
+                </h2>
+              {%- endif -%}
+
+              {%- if block.settings.body != blank -%}
+                <div class="adv__item-body">{{ block.settings.body }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.cta_label != blank -%}
+                {%- assign item_url = block.settings.cta_url | default: section.settings.cta_url -%}
+                <a class="adv__item-cta" href="{{ item_url | default: '#' }}">
+                  <span aria-hidden="true">👉</span>
+                  <span>{{ block.settings.cta_label }}</span>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="adv__band">
+    <div class="adv__wrap">
+      {%- if section.settings.band_heading != blank -%}
+        <h2 class="adv__band-heading">{{ section.settings.band_heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.band_text != blank -%}
+        <div class="adv__band-text">{{ section.settings.band_text }}</div>
+      {%- endif -%}
+
+      <div class="adv__offer">
+        {%- if section.settings.offer_pill != blank -%}
+          <span class="adv__offer-pill">{{ section.settings.offer_pill }}</span>
+        {%- endif -%}
+
+        <div class="adv__offer-grid{% if section.settings.offer_image == blank %} adv__offer-grid--noimg{% endif %}">
+          {%- if section.settings.offer_image != blank -%}
+            <img class="adv__offer-img"
+                 src="{{ section.settings.offer_image | image_url: width: 800, format: 'webp' }}"
+                 srcset="{{ section.settings.offer_image | image_url: width: 400, format: 'webp' }} 400w,
+                         {{ section.settings.offer_image | image_url: width: 600, format: 'webp' }} 600w,
+                         {{ section.settings.offer_image | image_url: width: 800, format: 'webp' }} 800w"
+                 sizes="(max-width: 860px) 88vw, 400px"
+                 width="{{ section.settings.offer_image.width }}" height="{{ section.settings.offer_image.height }}"
+                 alt="{{ section.settings.offer_image.alt | default: section.settings.offer_headline_red | escape }}"
+                 loading="lazy" decoding="async">
+          {%- endif -%}
+
+          <div class="adv__offer-body">
+            {%- if section.settings.offer_gifts != blank -%}
+              <p class="adv__offer-gifts">{{ section.settings.offer_gifts }}</p>
+            {%- endif -%}
+
+            {%- if section.settings.offer_headline_red != blank -%}
+              <span class="adv__offer-red">{{ section.settings.offer_headline_red }}</span>
+            {%- endif -%}
+            {%- if section.settings.offer_headline_dark != blank -%}
+              <span class="adv__offer-dark">{{ section.settings.offer_headline_dark }}</span>
+            {%- endif -%}
+
+            {%- if section.settings.offer_note != blank -%}
+              <p class="adv__offer-note">{{ section.settings.offer_note }}</p>
+            {%- endif -%}
+
+            {%- if section.settings.button_label != blank -%}
+              <a class="adv__offer-btn" href="{{ section.settings.cta_url | default: '#' }}">
+                <span>{{ section.settings.button_label }}</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M9 12h6m0 0-2.4-2.4M15 12l-2.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.offer_timer_label != blank -%}
+              <p class="adv__offer-timer">
+                {{ section.settings.offer_timer_label }}
+                <span><span data-adv-h>00</span> : <span data-adv-m>00</span> : <span data-adv-s>00</span></span>
+              </p>
+            {%- endif -%}
+
+            {%- if section.settings.offer_risk != blank -%}
+              <div class="adv__offer-risk">{{ section.settings.offer_risk }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.offer_guarantee != blank -%}
+              <p class="adv__offer-guarantee">{{ section.settings.offer_guarantee }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- if section.settings.footer_text != blank -%}
+    <div class="adv__footer">{{ section.settings.footer_text }}</div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    /* currentScript can be null if the markup is re-injected by the theme
+       editor, so fall back to the last root on the page. */
+    if (!root || !root.hasAttribute || !root.hasAttribute('data-adv-root')) {
+      var all = document.querySelectorAll('[data-adv-root]');
+      root = all.length ? all[all.length - 1] : null;
+    }
+    if (!root) return;
+
+    var MINUTES = {{ section.settings.countdown_minutes | default: 38 }};
+    var KEY = 'rejuvia-adv-deadline-{{ section.id }}';
+    var WINDOW_MS = MINUTES * 60 * 1000;
+
+    /* Storage throws outright in some privacy modes, so every access is
+       guarded. Without storage the timer simply restarts on each load. */
+    function readDeadline() {
+      try {
+        var raw = window.sessionStorage.getItem(KEY);
+        if (!raw) return 0;
+        var n = parseInt(raw, 10);
+        return isNaN(n) ? 0 : n;
+      } catch (e) { return 0; }
+    }
+
+    function writeDeadline(ms) {
+      try { window.sessionStorage.setItem(KEY, String(ms)); } catch (e) {}
+    }
+
+    var deadline = readDeadline();
+    var now = new Date().getTime();
+
+    /* A stale deadline would render a dead 00:00:00 clock, so start a fresh
+       window instead of showing an expired offer. */
+    if (!deadline || deadline <= now) {
+      deadline = now + WINDOW_MS;
+      writeDeadline(deadline);
+    }
+
+    var hEls = root.querySelectorAll('[data-adv-h]');
+    var mEls = root.querySelectorAll('[data-adv-m]');
+    var sEls = root.querySelectorAll('[data-adv-s]');
+
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+    function paint(els, value) {
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].textContent !== value) els[i].textContent = value;
+      }
+    }
+
+    var timer = null;
+
+    function tick() {
+      var left = deadline - new Date().getTime();
+      if (left < 0) left = 0;
+
+      var totalSec = Math.floor(left / 1000);
+      paint(hEls, pad(Math.floor(totalSec / 3600)));
+      paint(mEls, pad(Math.floor((totalSec % 3600) / 60)));
+      paint(sEls, pad(totalSec % 60));
+
+      if (left <= 0 && timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    tick();
+    timer = setInterval(tick, 1000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Anniversary Advertorial",
+  "tag": "section",
+  "class": "section-anniversary-advertorial",
+  "settings": [
+    { "type": "header", "content": "Sticky urgency bar" },
+    { "type": "checkbox", "id": "show_bar", "label": "Show sticky bar", "default": true },
+    { "type": "text", "id": "bar_eyebrow", "label": "Bar eyebrow", "default": "✨ ANNIVERSARY SALE ✨" },
+    { "type": "text", "id": "bar_headline", "label": "Bar headline", "default": "BUY 1, GET 1 FREE" },
+    { "type": "range", "id": "countdown_minutes", "label": "Countdown length", "unit": "min", "min": 5, "max": 180, "step": 5, "default": 40 },
+    { "type": "color", "id": "bar_bg", "label": "Bar background", "default": "#000000" },
+    { "type": "color", "id": "bar_text_color", "label": "Bar text", "default": "#ffffff" },
+
+    { "type": "header", "content": "Article header" },
+    { "type": "textarea", "id": "title", "label": "Headline", "default": "This $15 Under-the-Tongue Sleep Spray Knocks You Out in 10 Minutes — No Pills, No Grogginess" },
+    { "type": "image_picker", "id": "author_image", "label": "Author photo" },
+    { "type": "text", "id": "author_name", "label": "Author name", "default": "Karen M." },
+    { "type": "text", "id": "date_text", "label": "Date line", "default": "Last Updated August 24, 2026" },
+    { "type": "richtext", "id": "summary", "label": "Summary", "default": "<p>Lying awake for hours is exhausting — and so is dragging yourself through the next day after a pill or gummy leaves you foggy. <strong>Rejuvia</strong> is a sublingual sleep spray that absorbs under your tongue straight into your bloodstream, so most people are asleep in 10–15 minutes instead of 45–60. No wonder it keeps selling out.</p>" },
+
+    { "type": "header", "content": "Numbered items" },
+    { "type": "checkbox", "id": "show_numbers", "label": "Number the items", "default": true },
+    { "type": "range", "id": "image_width", "label": "Image width (desktop)", "unit": "px", "min": 180, "max": 420, "step": 10, "default": 300 },
+    { "type": "range", "id": "image_width_mobile", "label": "Image width (mobile)", "unit": "px", "min": 100, "max": 260, "step": 5, "default": 150 },
+
+    { "type": "header", "content": "Highlight band" },
+    { "type": "text", "id": "band_heading", "label": "Band heading", "default": "Over 300,000 People Are Sleeping Better (and Counting)" },
+    { "type": "richtext", "id": "band_text", "label": "Band paragraph", "default": "<p>Families across the country have taken back their nights with Rejuvia — falling asleep faster, staying asleep, and waking up clear, all from a few minty sprays under the tongue. It's not just a product people buy — it's one they reach for every single night.</p>" },
+    { "type": "color", "id": "band_bg", "label": "Band background", "default": "#fdfced" },
+
+    { "type": "header", "content": "Offer card" },
+    { "type": "text", "id": "offer_pill", "label": "Pill text", "default": "✨ Anniversary Sale — Best Price Ever ✨" },
+    { "type": "image_picker", "id": "offer_image", "label": "Offer image" },
+    { "type": "text", "id": "offer_gifts", "label": "Gifts line", "default": "🎁 FREE GIFTS WITH YOUR ORDER 🎁" },
+    { "type": "text", "id": "offer_headline_red", "label": "Headline (red line)", "default": "BUY ONE, GET ONE" },
+    { "type": "text", "id": "offer_headline_dark", "label": "Headline (dark line)", "default": "FREE" },
+    { "type": "text", "id": "offer_note", "label": "Stock note", "default": "*Due to extreme demand, stock may sell out sooner." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Check Availability" },
+    { "type": "url", "id": "cta_url", "label": "CTA link (used by all CTAs)" },
+    { "type": "text", "id": "offer_timer_label", "label": "Timer label", "default": "Offer ends in:" },
+    { "type": "richtext", "id": "offer_risk", "label": "Risk box", "default": "<p><strong>Sell-Out Risk: High</strong> | Few Units Left</p>" },
+    { "type": "text", "id": "offer_guarantee", "label": "Guarantee line", "default": "Try it today with a 90-Day Money-Back Guarantee!" },
+
+    { "type": "header", "content": "Footer" },
+    { "type": "text", "id": "footer_text", "label": "Footer text", "default": "Copyright © Rejuvia. All Rights Reserved." },
+
+    { "type": "header", "content": "Type sizes" },
+    { "type": "range", "id": "title_size", "label": "Headline (desktop)", "unit": "px", "min": 24, "max": 60, "step": 1, "default": 44 },
+    { "type": "range", "id": "title_size_mobile", "label": "Headline (mobile)", "unit": "px", "min": 18, "max": 44, "step": 1, "default": 31 },
+    { "type": "range", "id": "item_title_size", "label": "Item heading (desktop)", "unit": "px", "min": 18, "max": 42, "step": 1, "default": 27 },
+    { "type": "range", "id": "item_title_size_mobile", "label": "Item heading (mobile)", "unit": "px", "min": 15, "max": 34, "step": 1, "default": 21 },
+    { "type": "range", "id": "body_size", "label": "Body (desktop)", "unit": "px", "min": 14, "max": 26, "step": 1, "default": 18 },
+    { "type": "range", "id": "body_size_mobile", "label": "Body (mobile)", "unit": "px", "min": 13, "max": 24, "step": 1, "default": 17 },
+
+    { "type": "header", "content": "Colours & width" },
+    { "type": "color", "id": "accent_color", "label": "Accent (gold)", "default": "#fab851" },
+    { "type": "color", "id": "link_color", "label": "CTA link", "default": "#672666" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#00b10d" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
+    { "type": "range", "id": "content_width", "label": "Content width", "unit": "px", "min": 700, "max": 1200, "step": 10, "default": 1000 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Numbered item",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "richtext", "id": "body", "label": "Body" },
+        { "type": "text", "id": "cta_label", "label": "CTA label" },
+        { "type": "url", "id": "cta_url", "label": "CTA link (overrides the section link)" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Anniversary Advertorial",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

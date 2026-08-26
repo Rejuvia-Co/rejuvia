@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "advertorial": {
+      "type": "anniversary-advertorial",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "heading": "Falls Asleep in 10 Minutes With One Spray Under Your Tongue",
+            "body": "<p>Pills and gummies have to sit in your stomach for 45–60 minutes and lose half their strength to digestion on the way. Rejuvia skips all of that. You spray it 6–8 times under your tongue and it absorbs directly into your bloodstream — up to 75% more than pills. That's why most people are out in 10–15 minutes. One spray. No waiting. Lights out.</p>",
+            "cta_label": "Fall Asleep Faster"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "heading": "Stop Wasting Money on Pills and Gummies That Leave You Groggy",
+            "body": "<p>Most sleep aids are stuffed with 10–12mg of melatonin — about five times what your body actually needs — which is exactly why you wake up feeling like you got hit by a truck. Rejuvia uses a low 2mg, plus 13 natural ingredients that quiet a racing mind. Enough to knock you out, not enough to wreck your morning. Stop paying for the hangover.</p>",
+            "cta_label": "Ditch the Pills"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "heading": "No More 3AM Wake-Ups — You Fall Right Back to Sleep",
+            "body": "<p>The line we see in our reviews more than any other: “I wake up at 3am, spray again, and I'm right back to sleep.” Rejuvia works on your nervous system — passionflower and valerian calm the stress that jolts you awake — so you don't just fall asleep, you stay asleep. Even a bathroom trip won't cost you the whole night.</p>",
+            "cta_label": "Sleep Through the Night"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Buy One, Get One FREE If You Order Today",
+            "body": "<p>For our anniversary, every Rejuvia comes with a second bottle completely free — that's just <strong>$15 a spray</strong>, our best price ever. Keep one on your nightstand and one for whoever you keep awake at night. It's not a subscription, and there's no auto-renewal nonsense — just two bottles, one price.</p>",
+            "cta_label": "Claim Your Free Bottle"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "heading": "Small Enough for Your Nightstand, Purse, or Carry-On",
+            "body": "<p>No pills to count, no water needed. Rejuvia is a slim little spray that fits in a nightstand drawer, a purse, or a carry-on — and it's TSA-friendly, so you can sleep just as well on the road as you do at home. Bonus: it tastes like fresh mint, not medicine.</p>",
+            "cta_label": "Take It Anywhere"
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "heading": "So Simple: Spray, Swish, Sleep",
+            "body": "<p>Three steps. Spray it 6–8 times under your tongue, swish and swallow, and get in bed. That's it. Need just a little help? Use 4 sprays. Rough night? Use 8. You control your own dose — and you can use it every night or only on the bad ones, because it's non-habit-forming.</p>",
+            "cta_label": "See How Easy It Is"
+          }
+        },
+        "item_7": {
+          "type": "item",
+          "settings": {
+            "heading": "Try It Risk-Free for 90 Nights",
+            "body": "<p>Every order is backed by our 90-day money-back guarantee. Use it every single night for three months. If you're not sleeping better, send it back — no questions, no hassle. Over 300,000 people already fall asleep with Rejuvia every night. Now it's your turn.</p>",
+            "cta_label": "Try It Risk-Free"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6",
+        "item_7"
+      ],
+      "settings": {
+        "cta_url": "/pages/bogo"
+      }
+    }
+  },
+  "order": [
+    "advertorial"
+  ]
+}

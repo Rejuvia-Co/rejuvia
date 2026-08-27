@@ -22,6 +22,27 @@
     font-family: "Helvetica Neue", sans-serif;
   }
 
+  .main-faq-new__sub {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: {{ section.settings.sub_size | default: 18 }}px;
+    line-height: 1.5;
+    color: #232323;
+    /* Left-aligned under the title. Capped so the line keeps a comfortable
+       measure instead of running the full 1344px container width. */
+    max-width: 640px;
+    margin: 12px 0 0;
+  }
+
+  .main-faq-new__sub p { margin: 0; }
+
+  /* Parity with the homepage FAQ section: <em> is the accent treatment for
+     the email address, not italics. */
+  .main-faq-new__sub em {
+    font-style: normal;
+    color: {{ section.settings.accent_color | default: '#672666' }};
+    font-weight: 600;
+  }
+
   .main-faq-new .container {
     padding: 0 21px;
     max-width: 1344px;
@@ -31,6 +52,11 @@
     .main-faq-new__heading {
       font-size: 28px;
       letter-spacing: normal;
+    }
+
+    .main-faq-new__sub {
+      font-size: {{ section.settings.sub_size_mobile | default: 16 }}px;
+      margin-top: 10px;
     }
 
     .main-faq-new.section-{{ section.id }} .container {
@@ -45,6 +71,10 @@
       <h1 class="main-faq-new__heading" style="color: {{ section.settings.title_color }};">
 				{{ page.title }}
 			</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <div class="main-faq-new__sub">{{ section.settings.subheading }}</div>
     {%- endif -%}
   </div>
 </div>
@@ -84,6 +114,39 @@
         "id": "title_color",
         "label": "Title Color",
         "default": "#141414"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subtitle",
+        "info": "Wrap the email address in italics to give it the purple accent.",
+        "default": "<p>Don't see your question? We'd love to help. Email us at <em>hello@rejuvia.co!</em></p>"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Subtitle accent",
+        "default": "#672666"
+      },
+      {
+        "type": "range",
+        "id": "sub_size",
+        "min": 14,
+        "max": 26,
+        "step": 1,
+        "unit": "px",
+        "label": "Subtitle size (desktop)",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "sub_size_mobile",
+        "min": 13,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "label": "Subtitle size (mobile)",
+        "default": 16
       },
       {
         "type": "header",

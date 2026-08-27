@@ -64,6 +64,9 @@
     --obq-green: #018e1c;
     --obq-dot: #00b10d;
     --obq-ease: 180ms cubic-bezier(.22,1,.36,1);
+    /* One multiplier over every size in the buy box, so the whole thing can be
+       dialled up for an older audience without touching individual rules. */
+    --obq-scale: {{ section.settings.panel_scale | divided_by: 100.0 }};
     --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
     --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
     --font-ui: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -232,7 +235,7 @@
     background: #f9f6fc;
     border-radius: 14px;
     padding: 13px 18px;
-    font-size: 14.5px;
+    font-size: calc(16px * var(--obq-scale));
     line-height: 1.35;
     color: var(--obq-plum);
     margin-top: 16px;
@@ -252,7 +255,7 @@
 
   .obq-{{ section.id }} .obq__step {
     font-family: var(--font-ui);
-    font-size: 11.5px;
+    font-size: calc(12.5px * var(--obq-scale));
     font-weight: 800;
     line-height: 1;
     letter-spacing: 1.1px;
@@ -327,7 +330,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-ui);
-    font-size: 9.5px;
+    font-size: calc(10.5px * var(--obq-scale));
     font-weight: 800;
     line-height: 1;
     letter-spacing: 1px;
@@ -352,7 +355,7 @@
 
   .obq-{{ section.id }} .obq__cname {
     display: block;
-    font-size: 18px;
+    font-size: calc(20px * var(--obq-scale));
     font-weight: 800;
     line-height: 1.1;
     color: var(--obq-ink);
@@ -360,7 +363,7 @@
 
   .obq-{{ section.id }} .obq__cnights {
     display: block;
-    font-size: 12px;
+    font-size: calc(13px * var(--obq-scale));
     line-height: 1.3;
     color: var(--obq-soft);
     margin-top: 3px;
@@ -376,21 +379,21 @@
   }
 
   .obq-{{ section.id }} .obq__cprice-now {
-    font-size: 20px;
+    font-size: calc(23px * var(--obq-scale));
     font-weight: 800;
     line-height: 1.1;
     color: var(--obq-ink);
   }
 
   .obq-{{ section.id }} .obq__cprice-was {
-    font-size: 12.5px;
+    font-size: calc(14px * var(--obq-scale));
     color: var(--obq-struck);
     text-decoration: line-through;
   }
 
   .obq-{{ section.id }} .obq__cper {
     display: block;
-    font-size: 12px;
+    font-size: calc(13.5px * var(--obq-scale));
     font-weight: 700;
     line-height: 1.3;
     color: var(--obq-accent);
@@ -429,7 +432,7 @@
     background: var(--obq-cta);
     color: #fff;
     font-family: var(--font-ui);
-    font-size: 11px;
+    font-size: calc(12px * var(--obq-scale));
     font-weight: 800;
     line-height: 1;
     letter-spacing: 1.1px;
@@ -439,7 +442,7 @@
   .obq-{{ section.id }} .obq__reco {
     background: var(--obq-gold);
     color: var(--obq-plum);
-    font-size: 9.5px;
+    font-size: calc(10.5px * var(--obq-scale));
     font-weight: 800;
     letter-spacing: 1px;
     border-radius: 100px;
@@ -483,7 +486,7 @@
 
   .obq-{{ section.id }} .obq__ptitle {
     display: block;
-    font-size: 17.5px;
+    font-size: calc(19.5px * var(--obq-scale));
     font-weight: 800;
     line-height: 1.15;
     color: var(--obq-ink);
@@ -491,7 +494,7 @@
 
   .obq-{{ section.id }} .obq__psub {
     display: block;
-    font-size: 13.5px;
+    font-size: calc(15px * var(--obq-scale));
     line-height: 1.35;
     color: var(--obq-muted);
     margin-top: 3px;
@@ -507,21 +510,21 @@
   }
 
   .obq-{{ section.id }} .obq__pnow {
-    font-size: 21px;
+    font-size: calc(24px * var(--obq-scale));
     font-weight: 800;
     line-height: 1.1;
     color: var(--obq-ink);
   }
 
   .obq-{{ section.id }} .obq__pwas {
-    font-size: 13.5px;
+    font-size: calc(15px * var(--obq-scale));
     color: var(--obq-struck);
     text-decoration: line-through;
   }
 
   .obq-{{ section.id }} .obq__pmeta {
     display: block;
-    font-size: 12px;
+    font-size: calc(13.5px * var(--obq-scale));
     font-weight: 700;
     line-height: 1.3;
     margin-top: 3px;
@@ -537,7 +540,7 @@
     border-radius: 12px;
     padding: 13px 15px;
     margin-top: 16px;
-    font-size: 12.5px;
+    font-size: calc(14.5px * var(--obq-scale));
     line-height: 1.5;
     color: var(--obq-ink);
     display: flex;
@@ -558,7 +561,7 @@
     background: #f4f2f7;
     border-radius: 12px;
     padding: 12px 16px;
-    font-size: 13px;
+    font-size: calc(14.5px * var(--obq-scale));
     line-height: 1.3;
     color: var(--obq-ink);
     margin-top: 12px;
@@ -581,7 +584,7 @@
     border: 0;
     border-radius: 100px;
     font-family: var(--font-ui);
-    font-size: 16px;
+    font-size: calc(18px * var(--obq-scale));
     font-weight: 800;
     letter-spacing: 1.2px;
     line-height: 1;
@@ -604,7 +607,7 @@
     gap: 6px 18px;
     margin-top: 12px;
     font-family: var(--font-ui);
-    font-size: 10px;
+    font-size: calc(11.5px * var(--obq-scale));
     font-weight: 800;
     letter-spacing: .6px;
     color: var(--obq-body);
@@ -691,6 +694,13 @@
   }
 
   @media screen and (max-width: 749px) {
+    /* Mobile carries its own multiplier — small screens need proportionally
+       more, not less, for this audience. */
+    .obq-{{ section.id }} { --obq-scale: {{ section.settings.panel_scale_mobile | divided_by: 100.0 }}; }
+    .obq-{{ section.id }} .obq__summary { font-size: calc(13.5px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__ships { font-size: calc(13.5px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__trust { font-size: calc(10.5px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__pmeta { font-size: calc(12.5px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__wrap { padding: 18px 16px 32px; }
     .obq-{{ section.id }} .obq__reviewbar { justify-content: center; font-size: 13px; }
     .obq-{{ section.id }} .obq__headline { font-size: {{ section.settings.headline_size_mobile }}px; letter-spacing: -.8px; }
@@ -703,7 +713,7 @@
     .obq-{{ section.id }} .obq__urgency--top { display: flex; }
 
     .obq-{{ section.id }} .obq__urgency {
-      font-size: 12.5px;
+      font-size: calc(14px * var(--obq-scale));
       padding: 11px 13px;
       border-radius: 13px;
       gap: 9px;
@@ -711,30 +721,30 @@
 
     .obq-{{ section.id }} .obq__urgency svg { width: 18px; height: 18px; }
 
-    .obq-{{ section.id }} .obq__panel { border-radius: 18px; padding: 15px 12px; }
-    .obq-{{ section.id }} .obq__step { font-size: 10.5px; }
+    .obq-{{ section.id }} .obq__panel { border-radius: 18px; padding: 15px 10px; }
+    .obq-{{ section.id }} .obq__step { font-size: calc(12px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__cards { gap: 8px; }
-    .obq-{{ section.id }} .obq__card { padding: 16px 6px 12px; border-radius: 13px; }
-    .obq-{{ section.id }} .obq__card.is-selected { padding: 15.5px 5.5px 11.5px; }
+    .obq-{{ section.id }} .obq__card { padding: 16px 4px 12px; border-radius: 13px; }
+    .obq-{{ section.id }} .obq__card.is-selected { padding: 15.5px 3.5px 11.5px; }
     .obq-{{ section.id }} .obq__bottles { height: 48px; gap: 3px; margin-bottom: 8px; }
     .obq-{{ section.id }} .obq__bottles img { height: 46px; }
-    .obq-{{ section.id }} .obq__cname { font-size: 14.5px; }
-    .obq-{{ section.id }} .obq__cprice-now { font-size: 17px; }
-    .obq-{{ section.id }} .obq__cper { font-size: 11px; }
+    .obq-{{ section.id }} .obq__cname { font-size: calc(17px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__cprice-now { font-size: calc(20px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__cper { font-size: calc(12.5px * var(--obq-scale)); }
 
     /* mobile cards drop the nights line and the strikethrough to stay legible */
     .obq-{{ section.id }} .obq__cnights,
     .obq-{{ section.id }} .obq__cprice-was { display: none; }
 
-    .obq-{{ section.id }} .obq__strip { font-size: 9.5px; letter-spacing: .8px; padding: 7px 12px 6px; }
+    .obq-{{ section.id }} .obq__strip { font-size: calc(11px * var(--obq-scale)); letter-spacing: .8px; padding: 7px 12px 6px; }
     .obq-{{ section.id }} .obq__reco { display: none; }
     .obq-{{ section.id }} .obq__prow { padding: 13px 12px; gap: 10px; }
-    .obq-{{ section.id }} .obq__ptitle { font-size: 15.5px; }
-    .obq-{{ section.id }} .obq__psub { font-size: 12px; }
-    .obq-{{ section.id }} .obq__pnow { font-size: 18px; }
+    .obq-{{ section.id }} .obq__ptitle { font-size: calc(17.5px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__psub { font-size: calc(13.5px * var(--obq-scale)); }
+    .obq-{{ section.id }} .obq__pnow { font-size: calc(21px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__pwas { display: none; }
     .obq-{{ section.id }} .obq__pmeta--muted { display: none; }
-    .obq-{{ section.id }} .obq__buy { height: 54px; font-size: 15px; }
+    .obq-{{ section.id }} .obq__buy { height: 54px; font-size: calc(17px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__thumb { width: 54px; height: 54px; }
     .obq-{{ section.id }} .obq__tab-q { font-size: {{ section.settings.tab_title_size_mobile }}px; padding: 18px 2px; }
     .obq-{{ section.id }} .obq__tab-body { font-size: {{ section.settings.tab_body_size_mobile }}px; padding-bottom: 18px; }
@@ -1286,13 +1296,15 @@
     { "type": "range", "id": "headline_size", "label": "Title size (desktop)", "unit": "px", "min": 26, "max": 60, "step": 1, "default": 44 },
     { "type": "range", "id": "headline_size_mobile", "label": "Title size (mobile)", "unit": "px", "min": 20, "max": 44, "step": 1, "default": 31 },
     { "type": "range", "id": "subtitle_size", "label": "Subtitle size (desktop)", "unit": "px", "min": 13, "max": 24, "step": 0.5, "default": 16.5 },
-    { "type": "range", "id": "subtitle_size_mobile", "label": "Subtitle size (mobile)", "unit": "px", "min": 12, "max": 20, "step": 0.5, "default": 14 },
+    { "type": "range", "id": "subtitle_size_mobile", "label": "Subtitle size (mobile)", "unit": "px", "min": 12, "max": 22, "step": 0.5, "default": 15.5 },
 
     { "type": "header", "content": "Gallery" },
     { "type": "color", "id": "gallery_bg", "label": "Gallery background", "default": "#ffffff" },
     { "type": "select", "id": "gallery_fit", "label": "Image fit", "options": [ { "value": "cover", "label": "Cover" }, { "value": "contain", "label": "Contain" } ], "default": "cover" },
     { "type": "range", "id": "sticky_offset", "label": "Sticky offset", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 16 },
     { "type": "range", "id": "gallery_width", "label": "Gallery column width", "unit": "px", "min": 340, "max": 620, "step": 5, "default": 495 },
+    { "type": "range", "id": "panel_scale", "label": "Buy box text size (desktop)", "unit": "%", "min": 90, "max": 140, "step": 5, "default": 100 },
+    { "type": "range", "id": "panel_scale_mobile", "label": "Buy box text size (mobile)", "unit": "%", "min": 90, "max": 140, "step": 5, "default": 105 },
 
     { "type": "header", "content": "Step 1 — quantity" },
     { "type": "text", "id": "step1_label", "label": "Step 1 label", "default": "Step 1 — choose your quantity" },
@@ -1339,10 +1351,10 @@
     { "type": "text", "id": "urgency_text", "label": "Urgency text", "info": "Use {cutoff} and {date}.", "default": "Order within the next hour — by {cutoff} — and it ships by {date}" },
 
     { "type": "header", "content": "Accordion" },
-    { "type": "range", "id": "tab_title_size", "label": "Question size (desktop)", "unit": "px", "min": 14, "max": 26, "step": 1, "default": 19 },
-    { "type": "range", "id": "tab_title_size_mobile", "label": "Question size (mobile)", "unit": "px", "min": 13, "max": 22, "step": 1, "default": 17 },
-    { "type": "range", "id": "tab_body_size", "label": "Answer size (desktop)", "unit": "px", "min": 13, "max": 22, "step": 1, "default": 16 },
-    { "type": "range", "id": "tab_body_size_mobile", "label": "Answer size (mobile)", "unit": "px", "min": 12, "max": 20, "step": 1, "default": 15 },
+    { "type": "range", "id": "tab_title_size", "label": "Question size (desktop)", "unit": "px", "min": 14, "max": 28, "step": 1, "default": 20 },
+    { "type": "range", "id": "tab_title_size_mobile", "label": "Question size (mobile)", "unit": "px", "min": 13, "max": 24, "step": 1, "default": 18 },
+    { "type": "range", "id": "tab_body_size", "label": "Answer size (desktop)", "unit": "px", "min": 13, "max": 24, "step": 1, "default": 17 },
+    { "type": "range", "id": "tab_body_size_mobile", "label": "Answer size (mobile)", "unit": "px", "min": 12, "max": 22, "step": 1, "default": 16 },
 
     { "type": "header", "content": "Trusted by row" },
     { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by row", "default": true },

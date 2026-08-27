@@ -703,7 +703,16 @@
 {%- capture obq_urgency -%}
   {%- if section.settings.urgency_text != blank -%}
     {%- capture sd -%}<b>{{ ship_date }}</b>{%- endcapture -%}
-    <div class="obq__urgency" role="note">{{ obq_truck }}<span data-obq-urgency>{{ section.settings.urgency_text | replace: '{date}', sd }}</span></div>
+    {%- comment -%}
+      The replace must run in an assign tag, never inline in an output tag.
+      Liquid ends an output tag by scanning for its closing double brace, and
+      the closing brace inside the date placeholder literal breaks that scan
+      (FileSaveError: not properly terminated). Assign tags close on percent
+      brace instead, so the placeholder is harmless there. offer-block-sub
+      does it this way for the same reason.
+    {%- endcomment -%}
+    {%- assign urgency_html = section.settings.urgency_text | replace: '{date}', sd -%}
+    <div class="obq__urgency" role="note">{{ obq_truck }}<span data-obq-urgency>{{ urgency_html }}</span></div>
   {%- endif -%}
 {%- endcapture -%}
 

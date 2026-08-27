@@ -100,6 +100,17 @@
   }
 
   /* ---------- header ---------- */
+  /* One uniform gap between review bar, title and subtitle. Stacked
+     margins read unevenly here because the review bar's line-height adds
+     ~5px of invisible leading below its text, so an equal margin looks
+     bigger above the title than below it. */
+  .obq-{{ section.id }} .obq__header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: {{ section.settings.header_gap }}px;
+  }
+
   .obq-{{ section.id }} .obq__reviewbar {
     display: flex;
     align-items: center;
@@ -107,6 +118,7 @@
     gap: 8px;
     font-family: var(--font-ui);
     font-size: 14px;
+    line-height: 1.2;
     color: var(--obq-body);
   }
 
@@ -123,14 +135,14 @@
     line-height: 1.08;
     letter-spacing: -1.5px;
     color: var(--obq-ink);
-    margin: 14px 0 0;
+    margin: 0;
   }
 
   .obq-{{ section.id }} .obq__subtitle {
     font-size: {{ section.settings.subtitle_size }}px;
     line-height: 1.35;
     color: var(--obq-body);
-    margin: 10px 0 0;
+    margin: 0;
   }
 
   /* ---------- two-column layout, sticky gallery ---------- */
@@ -724,6 +736,7 @@
     .obq-{{ section.id }} .obq__trust { font-size: calc(10.5px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__pmeta { font-size: calc(12.5px * var(--obq-scale)); }
     .obq-{{ section.id }} .obq__wrap { padding: 18px 16px 32px; }
+    .obq-{{ section.id }} .obq__header { gap: {{ section.settings.header_gap_mobile }}px; }
     .obq-{{ section.id }} .obq__reviewbar { justify-content: center; font-size: 13px; }
     .obq-{{ section.id }} .obq__headline { font-size: {{ section.settings.headline_size_mobile }}px; letter-spacing: -.8px; }
     .obq-{{ section.id }} .obq__subtitle { font-size: {{ section.settings.subtitle_size_mobile }}px; }
@@ -1319,6 +1332,8 @@
     { "type": "range", "id": "headline_size_mobile", "label": "Title size (mobile)", "unit": "px", "min": 20, "max": 44, "step": 1, "default": 31 },
     { "type": "range", "id": "subtitle_size", "label": "Subtitle size (desktop)", "unit": "px", "min": 13, "max": 24, "step": 0.5, "default": 16.5 },
     { "type": "range", "id": "subtitle_size_mobile", "label": "Subtitle size (mobile)", "unit": "px", "min": 12, "max": 22, "step": 0.5, "default": 15.5 },
+    { "type": "range", "id": "header_gap", "label": "Header spacing (desktop)", "unit": "px", "min": 0, "max": 40, "step": 1, "default": 14 },
+    { "type": "range", "id": "header_gap_mobile", "label": "Header spacing (mobile)", "unit": "px", "min": 0, "max": 32, "step": 1, "default": 10 },
 
     { "type": "header", "content": "Gallery" },
     { "type": "color", "id": "gallery_bg", "label": "Gallery background", "default": "#ffffff" },

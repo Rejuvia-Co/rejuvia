@@ -430,7 +430,7 @@
       "settings": {
         "icon": "shopify://shop_images/SealCheck.svg",
         "title": "90-Day Money-Back Guarantee",
-        "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
+        "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
         "sub_text": "90-Day Money Back Guarantee",
@@ -504,19 +504,19 @@
             "text_col_5": ""
           }
         },
-        "feature_row_HFKqei": {
+        "feature_row_Ytm67T": {
           "type": "feature_row",
           "settings": {
-            "feature_name": "Non-Habit Forming",
+            "feature_name": "Safe, Not Habit-Forming",
             "value_type_col_1": "check",
             "text_col_1": "",
             "value_type_col_2": "cross",
             "text_col_2": "",
-            "value_type_col_3": "check",
+            "value_type_col_3": "cross",
             "text_col_3": "",
-            "value_type_col_4": "check",
+            "value_type_col_4": "cross",
             "text_col_4": "",
-            "value_type_col_5": "check",
+            "value_type_col_5": "cross",
             "text_col_5": ""
           }
         },
@@ -567,22 +567,6 @@
             "value_type_col_5": "cross",
             "text_col_5": ""
           }
-        },
-        "feature_row_Ytm67T": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Safe for Long-Term Use",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "cross",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
         }
       },
       "block_order": [
@@ -592,11 +576,10 @@
         "product_column_jtRq3f",
         "feature_row_HbpnWP",
         "feature_row_CGXtUe",
-        "feature_row_HFKqei",
+        "feature_row_Ytm67T",
         "feature_row_HYkECV",
         "feature_row_ipC3wC",
-        "feature_row_TdJUdL",
-        "feature_row_Ytm67T"
+        "feature_row_TdJUdL"
       ],
       "name": "Product Comparison",
       "settings": {

@@ -554,8 +554,8 @@
               "second_url": "shopify://pages/reviews",
               "third_label": "FAQs",
               "third_url": "shopify://pages/rejuvia-faqs",
-              "fourth_label": "",
-              "fourth_url": ""
+              "fourth_label": "Login",
+              "fourth_url": "https://www.rejuvia.co/a/account/login"
             }
           }
         },

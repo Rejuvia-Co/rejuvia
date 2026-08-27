@@ -192,6 +192,9 @@
   .obq-{{ section.id }} .obq__thumbrow {
     display: flex;
     align-items: center;
+    /* Centred, so the arrows sit beside the thumbnails instead of being
+       flung to the far edges — same as offer-block-sub. */
+    justify-content: center;
     gap: 8px;
     margin-top: 12px;
   }
@@ -203,8 +206,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: 0;
+    background: #fff;
+    border: 1px solid #e3ddea;
+    border-radius: 50%;
     padding: 0;
     cursor: pointer;
     color: var(--obq-accent);
@@ -217,11 +221,12 @@
     gap: 8px;
     overflow-x: auto;
     scrollbar-width: none;
-    flex: 1 1 auto;
-    /* Without min-width:0 a flex item will not shrink below its content, so
-       the five thumbs + two arrows set a ~378px floor that pushed the whole
-       grid track past the viewport. */
+    /* Shrink-to-fit, never grow: growing is what pushed the arrows out to the
+       edges. min-width:0 + max-width:100% let it shrink and scroll instead of
+       setting a ~378px floor that overflowed the grid track. */
+    flex: 0 1 auto;
     min-width: 0;
+    max-width: 100%;
   }
 
   .obq-{{ section.id }} .obq__thumbs::-webkit-scrollbar { display: none; }
@@ -358,7 +363,7 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: 1px;
-    padding: 5px 11px 4px;
+    padding: 7px 11px 4px;
     border-radius: 100px;
     white-space: nowrap;
   }
@@ -460,7 +465,7 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: 1.1px;
-    padding: 8px 16px 7px;
+    padding: 10px 16px 6px;
   }
 
   .obq-{{ section.id }} .obq__reco {
@@ -470,7 +475,7 @@
     font-weight: 800;
     letter-spacing: 1px;
     border-radius: 100px;
-    padding: 4px 9px 3px;
+    padding: 6px 9px 3px;
     white-space: nowrap;
   }
 
@@ -608,6 +613,9 @@
     color: #fff;
     border: 0;
     border-radius: 100px;
+    /* Same optical correction: 4px of top padding against a fixed height
+       shifts the label ~2px down, off the descender space it never uses. */
+    padding-top: 4px;
     font-family: var(--font-ui);
     font-size: calc(18px * var(--obq-scale));
     font-weight: 800;
@@ -780,7 +788,7 @@
     .obq-{{ section.id }} .obq__cnights,
     .obq-{{ section.id }} .obq__cprice-was { display: none; }
 
-    .obq-{{ section.id }} .obq__strip { font-size: calc(11px * var(--obq-scale)); letter-spacing: .8px; padding: 7px 12px 6px; }
+    .obq-{{ section.id }} .obq__strip { font-size: calc(11px * var(--obq-scale)); letter-spacing: .8px; padding: 9px 12px 5px; }
     .obq-{{ section.id }} .obq__reco { display: none; }
     .obq-{{ section.id }} .obq__prow { padding: 13px 12px; gap: 10px; }
     .obq-{{ section.id }} .obq__ptitle { font-size: calc(17.5px * var(--obq-scale)); }

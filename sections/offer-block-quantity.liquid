@@ -953,8 +953,7 @@
                        data-bottles="{{ bottles }}"
                        data-label="{{ b.settings.label | escape }}"
                        data-nights="{{ b.settings.nights }}"
-                       data-cadence="{{ b.settings.cadence_text | escape }}"
-                       data-ot-price="{{ ot | money_without_trailing_zeros }}"
+                         data-ot-price="{{ ot | money_without_trailing_zeros }}"
                        data-ot-per="{{ ot_per | money_without_trailing_zeros }}"
                        data-sub-price="{{ sub | money_without_trailing_zeros }}"
                        data-sub-per="{{ sub_per | money_without_trailing_zeros }}"
@@ -1002,7 +1001,6 @@
                 <span class="obq__radio" aria-hidden="true"></span>
                 <span class="obq__pinfo">
                   <span class="obq__ptitle">{{ section.settings.sub_title }}</span>
-                  <span class="obq__psub" data-obq-sub-cadence></span>
                 </span>
                 <span class="obq__pright">
                   <span class="obq__pprice">
@@ -1114,7 +1112,6 @@
   var subPrice  = sec.querySelector('[data-obq-sub-price]');
   var subWas    = sec.querySelector('[data-obq-sub-was]');
   var subMeta   = sec.querySelector('[data-obq-sub-meta]');
-  var subCad    = sec.querySelector('[data-obq-sub-cadence]');
   var otPrice   = sec.querySelector('[data-obq-ot-price]');
   var otWas     = sec.querySelector('[data-obq-ot-was]');
   var otMeta    = sec.querySelector('[data-obq-ot-meta]');
@@ -1205,8 +1202,7 @@
     /* Step 2 rows always show both prices for the chosen quantity. */
     set(subPrice, subP);
     set(subWas, otP);
-    set(subMeta, subPer + COPY.perBottle + ' · ' + COPY.saveWord + ' ' + subSav);
-    set(subCad, d(card, 'data-cadence'));
+    set(subMeta, COPY.saveWord + ' ' + subSav);
     set(otPrice, otP);
     set(otWas, msrp);
     set(otMeta, otPer + COPY.perBottle);
@@ -1443,7 +1439,6 @@
         { "type": "range", "id": "bottles", "label": "Bottles", "min": 1, "max": 12, "step": 1, "default": 1 },
         { "type": "text", "id": "label", "label": "Label", "default": "1 Spray" },
         { "type": "text", "id": "nights", "label": "Nights", "default": "30" },
-        { "type": "text", "id": "cadence_text", "label": "Subscribe sub-line", "default": "Delivered every 30 days, easily cancel anytime" },
         { "type": "text", "id": "badge", "label": "Flag" },
         { "type": "select", "id": "badge_style", "label": "Flag style", "options": [ { "value": "plum", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "plum" }
       ]

@@ -78,8 +78,18 @@
   .obq-{{ section.id }} *::before,
   .obq-{{ section.id }} *::after { box-sizing: border-box; }
 
+  /* position:sticky is dead inside a clipping ancestor, and the theme sets
+     overflow:hidden on main.content-wrapper (it already works around this for
+     the FAQ page via main:has(.faq-new)). `clip` clips exactly like hidden but
+     does NOT create a scroll container, so sticky survives. This stylesheet
+     only ships on pages rendering this section, so nothing else is affected.
+     On browsers without `clip` the declaration is dropped and the gallery
+     simply does not stick -- no layout damage. No :has() needed: the rule
+     only exists on pages that render this section. */
+  main.content-wrapper { overflow: clip; }
+
   .obq-{{ section.id }} .obq__wrap {
-    max-width: 1120px;
+    max-width: 1288px;
     margin: 0 auto;
     padding: 28px 20px 40px;
   }
@@ -119,18 +129,30 @@
   }
 
   /* ---------- two-column layout, sticky gallery ---------- */
+  /* Desktop: gallery spans both rows on the left; the review bar, title and
+     subtitle sit in the RIGHT column above the panel, per the handoff. Named
+     areas let mobile reorder to header -> gallery -> panel without duplicating
+     the heading in the DOM. */
   .obq-{{ section.id }} .obq__cols {
     display: grid;
-    grid-template-columns: 430px minmax(0, 1fr);
-    gap: 44px;
+    grid-template-columns: {{ section.settings.gallery_width }}px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "gallery header"
+      "gallery buybox";
+    gap: 18px 44px;
     align-items: start;
     margin-top: 22px;
   }
 
+  .obq-{{ section.id }} .obq__header { grid-area: header; }
+  .obq-{{ section.id }} .obq__buybox { grid-area: buybox; min-width: 0; }
+
   .obq-{{ section.id }} .obq__gallery {
+    grid-area: gallery;
     position: sticky;
     top: {{ section.settings.sticky_offset }}px;
-    align-self: flex-start;
+    align-self: start;
   }
 
   .obq-{{ section.id }} .obq__main {
@@ -652,8 +674,20 @@
 
   /* ---------- mobile ---------- */
   @media screen and (max-width: 989px) {
-    .obq-{{ section.id }} .obq__cols { grid-template-columns: 1fr; gap: 18px; }
+    .obq-{{ section.id }} .obq__cols {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "header" "gallery" "buybox";
+      gap: 18px;
+    }
     .obq-{{ section.id }} .obq__gallery { position: static; top: auto; }
+  }
+
+  @media screen and (max-width: 749px) {
+    .obq-{{ section.id }} .obq__cols {
+      grid-template-areas: "header" "urgency" "gallery" "buybox";
+    }
+    .obq-{{ section.id }} .obq__urgency--top { grid-area: urgency; }
   }
 
   @media screen and (max-width: 749px) {
@@ -735,27 +769,28 @@
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
   <div class="obq__wrap">
 
-    <div class="obq__header">
-      <div class="obq__reviewbar">
-        {%- if section.settings.show_stars -%}<span class="obq__stars" role="img" aria-label="5 stars">{{ obq_star }}{{ obq_star }}{{ obq_star }}{{ obq_star }}{{ obq_star }}</span>{%- endif -%}
-        {%- if section.settings.rating_label != blank -%}<span class="obq__rb-strong">{{ section.settings.rating_label }}</span>{%- endif -%}
-        {%- if section.settings.reviews_label != blank -%}
-          <span class="obq__rb-sep" aria-hidden="true">|</span>
-          <span>{{ section.settings.reviews_label }}</span>
-        {%- endif -%}
-        {%- if section.settings.customers_label != blank -%}
-          <span class="obq__rb-sep obq__rb-hide-mobile" aria-hidden="true">|</span>
-          <span class="obq__rb-hide-mobile">{{ section.settings.customers_label }}</span>
-        {%- endif -%}
-      </div>
-      {%- if section.settings.headline != blank -%}<h1 class="obq__headline">{{ section.settings.headline }}</h1>{%- endif -%}
-      {%- if section.settings.subtitle != blank -%}<p class="obq__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
-    </div>
-
-    {%- comment -%} Mobile only: the strip appears once above the gallery too {%- endcomment -%}
-    <div class="obq__urgency--top">{{ obq_urgency }}</div>
-
     <div class="obq__cols">
+
+      <div class="obq__header">
+        <div class="obq__reviewbar">
+          {%- if section.settings.show_stars -%}<span class="obq__stars" role="img" aria-label="5 stars">{{ obq_star }}{{ obq_star }}{{ obq_star }}{{ obq_star }}{{ obq_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_label != blank -%}<span class="obq__rb-strong">{{ section.settings.rating_label }}</span>{%- endif -%}
+          {%- if section.settings.reviews_label != blank -%}
+            <span class="obq__rb-sep" aria-hidden="true">|</span>
+            <span>{{ section.settings.reviews_label }}</span>
+          {%- endif -%}
+          {%- if section.settings.customers_label != blank -%}
+            <span class="obq__rb-sep obq__rb-hide-mobile" aria-hidden="true">|</span>
+            <span class="obq__rb-hide-mobile">{{ section.settings.customers_label }}</span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.headline != blank -%}<h1 class="obq__headline">{{ section.settings.headline }}</h1>{%- endif -%}
+        {%- if section.settings.subtitle != blank -%}<p class="obq__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+      </div>
+
+      {%- comment -%} Mobile only: the strip appears once above the gallery too {%- endcomment -%}
+      <div class="obq__urgency--top">{{ obq_urgency }}</div>
+
 
       <div class="obq__gallery">
         <div class="obq__main">
@@ -764,7 +799,7 @@
               <img data-obq-main{% unless forloop.first %} hidden{% endunless %}
                    src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
                    srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
-                   sizes="(max-width: 989px) 92vw, 430px"
+                   sizes="(max-width: 989px) 92vw, {{ section.settings.gallery_width }}px"
                    width="{{ b.settings.image.width }}" height="{{ b.settings.image.height }}"
                    alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
@@ -1257,6 +1292,7 @@
     { "type": "color", "id": "gallery_bg", "label": "Gallery background", "default": "#ffffff" },
     { "type": "select", "id": "gallery_fit", "label": "Image fit", "options": [ { "value": "cover", "label": "Cover" }, { "value": "contain", "label": "Contain" } ], "default": "cover" },
     { "type": "range", "id": "sticky_offset", "label": "Sticky offset", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 16 },
+    { "type": "range", "id": "gallery_width", "label": "Gallery column width", "unit": "px", "min": 340, "max": 620, "step": 5, "default": 495 },
 
     { "type": "header", "content": "Step 1 — quantity" },
     { "type": "text", "id": "step1_label", "label": "Step 1 label", "default": "Step 1 — choose your quantity" },

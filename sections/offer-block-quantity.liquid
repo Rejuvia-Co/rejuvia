@@ -722,9 +722,11 @@
 
   @media screen and (max-width: 749px) {
     .obq-{{ section.id }} .obq__cols {
-      grid-template-areas: "header" "urgency" "gallery" "buybox";
+      grid-template-areas: "header"{% if section.settings.show_urgency_top %} "urgency"{% endif %} "gallery" "buybox";
     }
+    {%- if section.settings.show_urgency_top -%}
     .obq-{{ section.id }} .obq__urgency--top { grid-area: urgency; }
+    {%- endif -%}
   }
 
   @media screen and (max-width: 749px) {
@@ -833,8 +835,10 @@
         {%- if section.settings.subtitle != blank -%}<p class="obq__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
       </div>
 
-      {%- comment -%} Mobile only: the strip appears once above the gallery too {%- endcomment -%}
-      <div class="obq__urgency--top">{{ obq_urgency }}</div>
+      {%- comment -%} Optional duplicate of the strip above the gallery (mobile only). {%- endcomment -%}
+      {%- if section.settings.show_urgency_top -%}
+        <div class="obq__urgency--top">{{ obq_urgency }}</div>
+      {%- endif -%}
 
 
       <div class="obq__gallery">
@@ -1386,6 +1390,7 @@
 
     { "type": "header", "content": "Urgency strip" },
     { "type": "text", "id": "urgency_text", "label": "Urgency text", "info": "Use {cutoff} and {date}.", "default": "Order within the next hour — by {cutoff} — and it ships by {date}" },
+    { "type": "checkbox", "id": "show_urgency_top", "label": "Repeat above the gallery (mobile)", "default": false },
 
     { "type": "header", "content": "Accordion" },
     { "type": "range", "id": "tab_title_size", "label": "Question size (desktop)", "unit": "px", "min": 14, "max": 28, "step": 1, "default": 20 },

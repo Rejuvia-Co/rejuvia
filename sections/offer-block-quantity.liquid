@@ -248,6 +248,15 @@
     gap: 12px;
   }
 
+  .obq-{{ section.id }} .obq__card,
+  .obq-{{ section.id }} .obq__plan {
+    /* The theme sets a global label{} rule (inline-block, uppercase,
+       letter-spacing). These are labels, so reset it or every string inside
+       renders shouted. */
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
   .obq-{{ section.id }} .obq__card {
     position: relative;
     display: block;
@@ -320,6 +329,7 @@
   .obq-{{ section.id }} .obq__bottles img { height: 64px; width: auto; display: block; }
 
   .obq-{{ section.id }} .obq__cname {
+    display: block;
     font-size: 18px;
     font-weight: 800;
     line-height: 1.1;
@@ -327,6 +337,7 @@
   }
 
   .obq-{{ section.id }} .obq__cnights {
+    display: block;
     font-size: 12px;
     line-height: 1.3;
     color: var(--obq-soft);
@@ -356,6 +367,7 @@
   }
 
   .obq-{{ section.id }} .obq__cper {
+    display: block;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.3;
@@ -448,6 +460,7 @@
   .obq-{{ section.id }} .obq__pinfo { flex: 1 1 auto; min-width: 0; }
 
   .obq-{{ section.id }} .obq__ptitle {
+    display: block;
     font-size: 17.5px;
     font-weight: 800;
     line-height: 1.15;
@@ -455,6 +468,7 @@
   }
 
   .obq-{{ section.id }} .obq__psub {
+    display: block;
     font-size: 13.5px;
     line-height: 1.35;
     color: var(--obq-muted);
@@ -484,6 +498,7 @@
   }
 
   .obq-{{ section.id }} .obq__pmeta {
+    display: block;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.3;
@@ -807,7 +822,7 @@
                 {%- assign plan_want = b.settings.selling_plan_id | strip -%}
                 {%- assign sub = 0 -%}
                 {%- for a in tv.selling_plan_allocations -%}
-                  {%- assign ps = a.selling_plan_id | append: '' -%}
+                  {%- assign ps = a.selling_plan.id | append: '' -%}
                   {%- if ps == plan_want -%}{%- assign sub = a.price -%}{%- break -%}{%- endif -%}
                 {%- endfor -%}
                 {%- assign has_sub = true -%}

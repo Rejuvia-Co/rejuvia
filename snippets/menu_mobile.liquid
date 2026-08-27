@@ -209,10 +209,10 @@
   .mobile-menu-v2__links {
     display: flex;
     flex-direction: column;
-    /* Bottom padding replaces the breathing room the old account button used
-       to provide below the last link. With the traits bar's own 24px
-       margin-top that leaves 32px of white before the purple gradient. */
-    padding: 0 16px 8px;
+    /* The links are now the last thing in the panel — the account button and
+       the traits bar that used to sit below them are both gone. Even 16px
+       inset all round so the closing divider clears the panel's rounded edge. */
+    padding: 0 16px 16px;
   }
 
   .mobile-menu-v2__link-divider {
@@ -246,44 +246,6 @@
     opacity: 0.5;
   }
 
-  /* V2 Traits Bar */
-  .mobile-menu-v2__traits {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 16px;
-    margin-top: 24px;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(92.71deg, #D2D7F4 7.64%, #F9F2FF 34.21%, #EAEAF7 75%, #D2D7F4 103.66%);
-  }
-
-  .mobile-menu-v2__trait {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .mobile-menu-v2__trait-icon {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
-  .mobile-menu-v2__trait-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .mobile-menu-v2__trait-label {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    color: #141414;
-    white-space: nowrap;
-  }
 {% endstyle %}
 
 <div id="menu-mobile" class="ease-animation-slow" role="dialog" aria-modal="true">
@@ -377,30 +339,6 @@
               {% endif %}
             {% endfor %}
           </div>
-
-          {% if mega_block %}
-          <div class="mobile-menu-v2__traits">
-            {% if mega_block.settings.benefit_1_text != blank %}
-            <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-shipping' %}</span>
-              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_1_text }}</span>
-            </div>
-            {% endif %}
-            {% if mega_block.settings.benefit_2_text != blank %}
-            <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-reviews' %}</span>
-              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_2_text }}</span>
-            </div>
-            {% endif %}
-            {% if mega_block.settings.benefit_3_text != blank %}
-            <div class="mobile-menu-v2__trait">
-              <span class="mobile-menu-v2__trait-icon">{% render 'icon-benefit-family' %}</span>
-              <span class="mobile-menu-v2__trait-label">{{ mega_block.settings.benefit_3_text }}</span>
-            </div>
-            {% endif %}
-          </div>
-          {% endif %}
-
 
       </nav>
     </div>

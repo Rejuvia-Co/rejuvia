@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "buybox": {
@@ -140,19 +149,60 @@
         "customers_label": "<p><strong>300,000+</strong> customers</p>",
         "headline": "Rejuvia Sleep Spray",
         "subtitle": "The fast, natural way to fall asleep and wake up refreshed.",
+        "headline_size": 44,
+        "headline_size_mobile": 31,
+        "subtitle_size": 16.5,
+        "subtitle_size_mobile": 15.5,
+        "header_gap": 14,
+        "header_gap_mobile": 10,
         "gallery_bg": "#f8efe4",
         "gallery_fit": "cover",
+        "sticky_offset": 16,
+        "gallery_width": 495,
+        "panel_scale": 100,
+        "panel_scale_mobile": 105,
+        "step1_label": "Step 1 — choose your quantity",
         "default_qty": 2,
-        "urgency_text": "Order within the next hour — by {cutoff} — and it ships by {date}",
+        "step2_label": "Step 2 — choose your price",
+        "sub_strip_text": "SUBSCRIBE & SAVE 20% + FREE SHIPPING",
+        "recommended_text": "RECOMMENDED",
+        "sub_title": "Subscribe & save",
+        "onetime_title": "One-time purchase",
+        "onetime_sub": "",
+        "per_bottle_suffix": "/bottle",
+        "save_word": "save",
+        "show_summary": true,
+        "summary_nights_text": "{nights} nights at {per} a bottle",
+        "summary_ship_sub": "FREE shipping on every delivery",
+        "summary_ship_onetime": "$4.75 flat-rate shipping",
+        "summary_save_text": "You save {amount} off the regular price",
+        "show_ships_bar": false,
+        "ships_by_label": "Ships by",
+        "ships_right_text": "🇺🇸 Fast US Shipping",
+        "button_label": "BUY NOW",
+        "cta_color": "#5d215f",
+        "cta_hover_color": "#4a1a4c",
+        "accent_color": "#672666",
+        "gold_color": "#eac78b",
         "guarantee_text": "90-DAY MONEY BACK GUARANTEE",
+        "trust_sub_text": "SKIP OR CANCEL ANYTIME",
+        "trust_onetime_text": "ONE-TIME PURCHASE (NOT A SUBSCRIPTION)",
+        "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
+        "urgency_text": "Order within the next hour — by {cutoff} — and it ships by {date}",
+        "tab_title_size": 20,
+        "tab_title_size_mobile": 18,
+        "tab_body_size": 17,
+        "tab_body_size_mobile": 16,
         "show_trusted": true,
         "trusted_title": "Used by  300,000+ customers",
         "trusted_subtext": "to fall asleep faster and sleep the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
-        "show_ships_bar": false
+        "trusted_bg": "#eaeaf7",
+        "trusted_check": "#018e1c",
+        "section_bg": "#ffffff"
       }
     },
     "customer_testimonials_video_b39r9z": {

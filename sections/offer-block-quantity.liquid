@@ -1216,15 +1216,14 @@
     });
   }
 
-  /* ---- Hide the sticky CTA bar while this section is in view ---- */
+  /* ---- Hide the sticky CTA bar while this section is in view ----
+     sticky-cta-bogo hides itself off body.ob-offer-visible with a transform,
+     so setting the class is all that is needed. offer-block-sub also loops
+     over '.sticky-cta-v2-section' here, but no section in this theme renders
+     that class, and forcing display:none would fight the transform anyway. */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      var vis = entries[0].isIntersecting;
-      document.body.classList.toggle('ob-offer-visible', vis);
-      document.querySelectorAll('.sticky-cta-v2-section').forEach(function (el) {
-        if (vis) el.style.setProperty('display', 'none', 'important');
-        else el.style.removeProperty('display');
-      });
+      document.body.classList.toggle('ob-offer-visible', entries[0].isIntersecting);
     }, { threshold: 0 });
     io.observe(sec);
   }

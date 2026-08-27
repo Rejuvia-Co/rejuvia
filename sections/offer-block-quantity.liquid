@@ -718,6 +718,13 @@
     .obq-{{ section.id }} .obq__buybox,
     .obq-{{ section.id }} .obq__urgency--top { min-width: 0; max-width: 100%; }
     .obq-{{ section.id }} .obq__gallery { position: static; top: auto; }
+
+    /* Once the layout stacks, the header centres — same treatment as
+       offer-block-sub, including the small inset that keeps the subtitle
+       off the edges. */
+    .obq-{{ section.id }} .obq__reviewbar { justify-content: center; }
+    .obq-{{ section.id }} .obq__headline { text-align: center; }
+    .obq-{{ section.id }} .obq__subtitle { text-align: center; padding: 0 6px; }
   }
 
   @media screen and (max-width: 749px) {

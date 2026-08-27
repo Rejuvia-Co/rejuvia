@@ -127,7 +127,7 @@
         "rating_text_size_mobile": 18,
         "rating_text": "<p>Used By <strong>300,000+</strong> Customers</p>",
         "title": "Rejuvia Sleep Spray",
-        "subtitle": "Fall asleep in minutes and sleep through the full night",
+        "subtitle": "For a limited-time, claim your BOGO free offer on our Sleep Spray today",
         "pill_text": "",
         "pill_size": 14,
         "pill_size_mobile": 13,
@@ -233,14 +233,6 @@
             "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
             "name": "Eldonna M. (Verified Buyer)"
           }
-        },
-        "testimonial_DbKM3X": {
-          "type": "testimonial",
-          "settings": {
-            "text": "\"We've been using Rejuvia for a few months and it better than anything we've tried!!\"",
-            "image": "shopify://shop_images/Screenshot_2024-10-28_at_5.14.55_PM.png",
-            "name": "Kelly G. (Verified Buyer)"
-          }
         }
       },
       "block_order": [
@@ -251,8 +243,7 @@
         "testimonial_mqf9FP",
         "testimonial_DGdCYV",
         "testimonial_wfdQJm",
-        "testimonial_DpTVkq",
-        "testimonial_DbKM3X"
+        "testimonial_DpTVkq"
       ],
       "name": "Video Testimonials",
       "settings": {

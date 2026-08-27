@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "buybox": {
+      "type": "offer-block-quantity",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260817_183016_b45c9bc0-e72e-4f20-a056-9ef7ef296acd.webp"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_review.webp"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_sleep_spray_offer_benefits.webp"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_guarnatee.webp"
+          }
+        },
+        "slide_5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rejuvia_ingredients_0af620cb-8043-4223-bfd9-dd996bf60034.webp"
+          }
+        },
+        "qty_1": {
+          "type": "qty",
+          "settings": {
+            "variant_id": "44328075526364",
+            "selling_plan_id": "29054009564",
+            "bottles": 1,
+            "label": "1 Spray",
+            "nights": "30",
+            "cadence_text": "Delivered every 30 days, easily cancel anytime",
+            "badge": "",
+            "badge_style": "plum"
+          }
+        },
+        "qty_3": {
+          "type": "qty",
+          "settings": {
+            "variant_id": "45415440089308",
+            "selling_plan_id": "29054075100",
+            "bottles": 3,
+            "label": "3 Sprays",
+            "nights": "90",
+            "cadence_text": "Delivered every 90 days, easily cancel anytime",
+            "badge": "MOST POPULAR",
+            "badge_style": "plum"
+          }
+        },
+        "qty_6": {
+          "type": "qty",
+          "settings": {
+            "variant_id": "52094398595292",
+            "selling_plan_id": "32315277532",
+            "bottles": 6,
+            "label": "6 Sprays",
+            "nights": "180",
+            "cadence_text": "Delivered every 180 days, easily cancel anytime",
+            "badge": "BEST VALUE",
+            "badge_style": "gold"
+          }
+        },
+        "tab_kAdU4M": {
+          "type": "tab",
+          "settings": {
+            "title": "90-Day Guarantee",
+            "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind our products no matter what. It is risk-free to try Rejuvia and all orders are backed by our 90-day guarantee. No questions asked.</p>"
+          }
+        },
+        "tab_MwDWnL": {
+          "type": "tab",
+          "settings": {
+            "title": "Why Rejuvia Works",
+            "content": "<p>Most sleep products are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p></p><p>Better absorption, better ingredients.</p>"
+          }
+        },
+        "tab_VPYtfC": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All Rejuvia orders ship within one business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
+          }
+        },
+        "tab_UUNhhe": {
+          "type": "tab",
+          "settings": {
+            "title": "Is Rejuvia Safe?",
+            "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds.</p>"
+          }
+        },
+        "tab_7c8d3h": {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>"
+          }
+        },
+        "tab_aTHNXH": {
+          "type": "tab",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "content": "<p><strong>What if it doesn't work for me?</strong></p><p>You're covered by our 90-day money-back guarantee — full refund, no questions asked.</p><p><strong>Is this an automatic subscription?</strong></p><p>No, our BOGO offer is not an automatic subscription. It is a one-time purchase.</p><p><strong>Can I use Rejuvia again if I wake up in the middle of the night?</strong></p><p>Yes you can. We suggest using a half dosage (3-4 sprays) if you wake up in the night to easily fall back asleep. </p><p><strong>Will I wake up groggy?</strong></p><p>No. Our low 2mg melatonin dose is designed to give you restful sleep without the morning hangover from high-dose gummies and pills.</p><p><strong>How fast does Rejuvia work?</strong></p><p>Most customers can fall asleep within 10–15 minutes after using Rejuvia at night.</p><p><strong>Is Rejuvia habit-forming?</strong></p><p>No. Rejuvia is drug-free and non-habit-forming, with no tolerance buildup or dependency.</p><p><strong>What flavor is Rejuvia?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of nightly use, depending on your dosage. Each bottle contains 240 total spritzes and we suggest using 6-8 per night.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_3",
+        "slide_2",
+        "slide_4",
+        "slide_5",
+        "qty_1",
+        "qty_3",
+        "qty_6",
+        "tab_kAdU4M",
+        "tab_MwDWnL",
+        "tab_VPYtfC",
+        "tab_UUNhhe",
+        "tab_7c8d3h",
+        "tab_aTHNXH"
+      ],
+      "settings": {
+        "product": "sleep-spray",
+        "show_stars": true,
+        "stars_color": "#fab851",
+        "rating_label": "Excellent 4.5",
+        "reviews_label": "<p><strong>6,500+</strong> trusted reviews</p>",
+        "customers_label": "<p><strong>300,000+</strong> customers</p>",
+        "headline": "Rejuvia Sleep Spray",
+        "subtitle": "The fast, natural way to fall asleep and wake up refreshed.",
+        "gallery_bg": "#f8efe4",
+        "gallery_fit": "cover",
+        "default_qty": 2,
+        "urgency_text": "Order within the next hour — by {cutoff} — and it ships by {date}",
+        "guarantee_text": "90-DAY MONEY BACK GUARANTEE",
+        "hidden_payments": "discover,jcb,diners_club",
+        "show_trusted": true,
+        "trusted_title": "Used by  300,000+ customers",
+        "trusted_subtext": "to fall asleep faster and sleep the full night.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png"
+      }
+    }
+  },
+  "order": [
+    "buybox"
+  ]
+}

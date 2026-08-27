@@ -91,6 +91,8 @@
      only exists on pages that render this section. */
   main.content-wrapper { overflow: clip; }
 
+  .obq-{{ section.id }} .obq__cols > * { min-width: 0; max-width: 100%; }
+
   .obq-{{ section.id }} .obq__wrap {
     max-width: 1288px;
     margin: 0 auto;
@@ -204,6 +206,10 @@
     overflow-x: auto;
     scrollbar-width: none;
     flex: 1 1 auto;
+    /* Without min-width:0 a flex item will not shrink below its content, so
+       the five thumbs + two arrows set a ~378px floor that pushed the whole
+       grid track past the viewport. */
+    min-width: 0;
   }
 
   .obq-{{ section.id }} .obq__thumbs::-webkit-scrollbar { display: none; }
@@ -269,17 +275,23 @@
   /* ---------- step 1: quantity cards ---------- */
   .obq-{{ section.id }} .obq__cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
 
   .obq-{{ section.id }} .obq__card,
   .obq-{{ section.id }} .obq__plan {
-    /* The theme sets a global label{} rule (inline-block, uppercase,
-       letter-spacing). These are labels, so reset it or every string inside
-       renders shouted. */
+    /* The theme's global label{} rule is:
+         display:inline-block; line-height:100%; padding:1em 0 .5em;
+         text-transform:uppercase; letter-spacing:.05em
+       These are labels, so all five have to go. The padding is the one that
+       bites hardest: it added 14px above the purple subscribe strip and threw
+       the card spacing out. */
+    padding: 0;
+    line-height: normal;
     text-transform: none;
     letter-spacing: normal;
+    font-size: inherit;
   }
 
   .obq-{{ section.id }} .obq__card {
@@ -557,7 +569,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 6px 10px;
     background: #f4f2f7;
     border-radius: 12px;
     padding: 12px 16px;
@@ -678,11 +691,20 @@
   /* ---------- mobile ---------- */
   @media screen and (max-width: 989px) {
     .obq-{{ section.id }} .obq__cols {
-      grid-template-columns: 1fr;
+      /* minmax(0, 1fr), never plain 1fr: 1fr floors at the column's
+         min-content, and the thumbnail row's min-content was forcing the
+         track to 378px inside a 343px container, shoving the whole section
+         off the right edge. */
+      grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto;
       grid-template-areas: "header" "gallery" "buybox";
       gap: 18px;
     }
+
+    .obq-{{ section.id }} .obq__header,
+    .obq-{{ section.id }} .obq__gallery,
+    .obq-{{ section.id }} .obq__buybox,
+    .obq-{{ section.id }} .obq__urgency--top { min-width: 0; max-width: 100%; }
     .obq-{{ section.id }} .obq__gallery { position: static; top: auto; }
   }
 

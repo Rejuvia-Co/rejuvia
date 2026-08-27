@@ -777,90 +777,92 @@
                   {%- if vs == want -%}{%- assign tv = v -%}{%- break -%}{%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
-              {%- if tv == blank -%}{%- continue -%}{%- endif -%}
-              {%- assign n = n | plus: 1 -%}
+              {%- comment -%} Skip a tier whose variant id no longer resolves on the product. {%- endcomment -%}
+              {%- if tv != blank -%}
+                {%- assign n = n | plus: 1 -%}
 
-              {%- assign bottles = b.settings.bottles | plus: 0 -%}
-              {%- if bottles < 1 -%}{%- assign bottles = 1 -%}{%- endif -%}
+                {%- assign bottles = b.settings.bottles | plus: 0 -%}
+                {%- if bottles < 1 -%}{%- assign bottles = 1 -%}{%- endif -%}
 
-              {%- comment -%} one-time {%- endcomment -%}
-              {%- assign ot = tv.price -%}
-              {%- assign msrp = 0 -%}
-              {%- if tv.compare_at_price > tv.price -%}
-                {%- assign msrp = tv.compare_at_price -%}
-              {%- else -%}
-                {%- assign derived = unit_price | times: bottles -%}
-                {%- if derived > tv.price -%}{%- assign msrp = derived -%}{%- endif -%}
-              {%- endif -%}
-
-              {%- comment -%} subscription: allocation matching this tier's plan {%- endcomment -%}
-              {%- assign plan_want = b.settings.selling_plan_id | strip -%}
-              {%- assign sub = 0 -%}
-              {%- for a in tv.selling_plan_allocations -%}
-                {%- assign ps = a.selling_plan_id | append: '' -%}
-                {%- if ps == plan_want -%}{%- assign sub = a.price -%}{%- break -%}{%- endif -%}
-              {%- endfor -%}
-              {%- assign has_sub = true -%}
-              {%- if sub == 0 -%}{%- assign sub = ot -%}{%- assign has_sub = false -%}{%- endif -%}
-
-              {%- comment -%} per-bottle via float so it rounds to the nearest cent {%- endcomment -%}
-              {%- assign ot_per = ot | times: 1.0 | divided_by: bottles | round: 0 -%}
-              {%- assign sub_per = sub | times: 1.0 | divided_by: bottles | round: 0 -%}
-              {%- assign sub_save = ot | minus: sub -%}
-              {%- comment -%}
-                "Regular price" is the MSRP where one exists, otherwise the
-                one-time price. That way the 1-spray tier — which has no
-                compare_at — still reports the real subscriber saving against
-                its $45 list price instead of showing nothing.
-              {%- endcomment -%}
-              {%- assign ot_save = 0 -%}
-              {%- if msrp > 0 -%}{%- assign ot_save = msrp | minus: ot -%}{%- endif -%}
-              {%- assign sub_reg = ot -%}
-              {%- if msrp > 0 -%}{%- assign sub_reg = msrp -%}{%- endif -%}
-              {%- assign sub_msrp_save = sub_reg | minus: sub -%}
-
-              {%- assign sel = false -%}
-              {%- if n == section.settings.default_qty -%}{%- assign sel = true -%}{%- endif -%}
-
-              <label class="obq__card{% if sel %} is-selected{% endif %}"
-                     data-obq-card
-                     data-variant="{{ tv.id }}"
-                     data-plan="{{ plan_want }}"
-                     data-bottles="{{ bottles }}"
-                     data-label="{{ b.settings.label | escape }}"
-                     data-nights="{{ b.settings.nights }}"
-                     data-cadence="{{ b.settings.cadence_text | escape }}"
-                     data-ot-price="{{ ot | money_without_trailing_zeros }}"
-                     data-ot-per="{{ ot_per | money_without_trailing_zeros }}"
-                     data-sub-price="{{ sub | money_without_trailing_zeros }}"
-                     data-sub-per="{{ sub_per | money_without_trailing_zeros }}"
-                     data-sub-save="{{ sub_save | money_without_trailing_zeros }}"
-                     data-msrp="{% if msrp > 0 %}{{ msrp | money_without_trailing_zeros }}{% endif %}"
-                     data-ot-save="{% if ot_save > 0 %}{{ ot_save | money_without_trailing_zeros }}{% endif %}"
-                     data-sub-msrp-save="{% if sub_msrp_save > 0 %}{{ sub_msrp_save | money_without_trailing_zeros }}{% endif %}"
-                     data-has-sub="{{ has_sub }}"
-                     {{ b.shopify_attributes }}>
-                <input type="radio" name="obq-qty-{{ section.id }}" value="{{ n }}" {% if sel %}checked{% endif %}>
-                {%- if b.settings.badge != blank -%}
-                  <span class="obq__flag obq__flag--{{ b.settings.badge_style }}">{{ b.settings.badge }}</span>
+                {%- comment -%} one-time {%- endcomment -%}
+                {%- assign ot = tv.price -%}
+                {%- assign msrp = 0 -%}
+                {%- if tv.compare_at_price > tv.price -%}
+                  {%- assign msrp = tv.compare_at_price -%}
+                {%- else -%}
+                  {%- assign derived = unit_price | times: bottles -%}
+                  {%- if derived > tv.price -%}{%- assign msrp = derived -%}{%- endif -%}
                 {%- endif -%}
-                <span class="obq__bottles" aria-hidden="true">
-                  {%- for i in (1..bottles) -%}
-                    {%- if section.settings.bottle_image != blank -%}
-                      <img src="{{ section.settings.bottle_image | image_url: width: 140, format: 'webp' }}" alt="" loading="lazy" decoding="async">
-                    {%- else -%}
-                      <img src="{{ 'spray-bottle-sm.png' | asset_url }}" alt="" loading="lazy" decoding="async">
-                    {%- endif -%}
-                  {%- endfor -%}
-                </span>
-                <span class="obq__cname">{{ b.settings.label }}</span>
-                {%- if b.settings.nights != blank -%}<span class="obq__cnights">{{ b.settings.nights }} nights</span>{%- endif -%}
-                <span class="obq__cprice">
-                  <span class="obq__cprice-now" data-obq-card-price>{{ sub | money_without_trailing_zeros }}</span>
-                  <span class="obq__cprice-was" data-obq-card-was>{% if msrp > 0 %}{{ msrp | money_without_trailing_zeros }}{% endif %}</span>
-                </span>
-                <span class="obq__cper" data-obq-card-per>{{ sub_per | money_without_trailing_zeros }}/bottle</span>
-              </label>
+
+                {%- comment -%} subscription: allocation matching this tier's plan {%- endcomment -%}
+                {%- assign plan_want = b.settings.selling_plan_id | strip -%}
+                {%- assign sub = 0 -%}
+                {%- for a in tv.selling_plan_allocations -%}
+                  {%- assign ps = a.selling_plan_id | append: '' -%}
+                  {%- if ps == plan_want -%}{%- assign sub = a.price -%}{%- break -%}{%- endif -%}
+                {%- endfor -%}
+                {%- assign has_sub = true -%}
+                {%- if sub == 0 -%}{%- assign sub = ot -%}{%- assign has_sub = false -%}{%- endif -%}
+
+                {%- comment -%} per-bottle via float so it rounds to the nearest cent {%- endcomment -%}
+                {%- assign ot_per = ot | times: 1.0 | divided_by: bottles | round: 0 -%}
+                {%- assign sub_per = sub | times: 1.0 | divided_by: bottles | round: 0 -%}
+                {%- assign sub_save = ot | minus: sub -%}
+                {%- comment -%}
+                  "Regular price" is the MSRP where one exists, otherwise the
+                  one-time price. That way the 1-spray tier — which has no
+                  compare_at — still reports the real subscriber saving against
+                  its $45 list price instead of showing nothing.
+                {%- endcomment -%}
+                {%- assign ot_save = 0 -%}
+                {%- if msrp > 0 -%}{%- assign ot_save = msrp | minus: ot -%}{%- endif -%}
+                {%- assign sub_reg = ot -%}
+                {%- if msrp > 0 -%}{%- assign sub_reg = msrp -%}{%- endif -%}
+                {%- assign sub_msrp_save = sub_reg | minus: sub -%}
+
+                {%- assign sel = false -%}
+                {%- if n == section.settings.default_qty -%}{%- assign sel = true -%}{%- endif -%}
+
+                <label class="obq__card{% if sel %} is-selected{% endif %}"
+                       data-obq-card
+                       data-variant="{{ tv.id }}"
+                       data-plan="{{ plan_want }}"
+                       data-bottles="{{ bottles }}"
+                       data-label="{{ b.settings.label | escape }}"
+                       data-nights="{{ b.settings.nights }}"
+                       data-cadence="{{ b.settings.cadence_text | escape }}"
+                       data-ot-price="{{ ot | money_without_trailing_zeros }}"
+                       data-ot-per="{{ ot_per | money_without_trailing_zeros }}"
+                       data-sub-price="{{ sub | money_without_trailing_zeros }}"
+                       data-sub-per="{{ sub_per | money_without_trailing_zeros }}"
+                       data-sub-save="{{ sub_save | money_without_trailing_zeros }}"
+                       data-msrp="{% if msrp > 0 %}{{ msrp | money_without_trailing_zeros }}{% endif %}"
+                       data-ot-save="{% if ot_save > 0 %}{{ ot_save | money_without_trailing_zeros }}{% endif %}"
+                       data-sub-msrp-save="{% if sub_msrp_save > 0 %}{{ sub_msrp_save | money_without_trailing_zeros }}{% endif %}"
+                       data-has-sub="{{ has_sub }}"
+                       {{ b.shopify_attributes }}>
+                  <input type="radio" name="obq-qty-{{ section.id }}" value="{{ n }}" {% if sel %}checked{% endif %}>
+                  {%- if b.settings.badge != blank -%}
+                    <span class="obq__flag obq__flag--{{ b.settings.badge_style }}">{{ b.settings.badge }}</span>
+                  {%- endif -%}
+                  <span class="obq__bottles" aria-hidden="true">
+                    {%- for i in (1..bottles) -%}
+                      {%- if section.settings.bottle_image != blank -%}
+                        <img src="{{ section.settings.bottle_image | image_url: width: 140, format: 'webp' }}" alt="" loading="lazy" decoding="async">
+                      {%- else -%}
+                        <img src="{{ 'spray-bottle-sm.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </span>
+                  <span class="obq__cname">{{ b.settings.label }}</span>
+                  {%- if b.settings.nights != blank -%}<span class="obq__cnights">{{ b.settings.nights }} nights</span>{%- endif -%}
+                  <span class="obq__cprice">
+                    <span class="obq__cprice-now" data-obq-card-price>{{ sub | money_without_trailing_zeros }}</span>
+                    <span class="obq__cprice-was" data-obq-card-was>{% if msrp > 0 %}{{ msrp | money_without_trailing_zeros }}{% endif %}</span>
+                  </span>
+                  <span class="obq__cper" data-obq-card-per>{{ sub_per | money_without_trailing_zeros }}/bottle</span>
+                </label>
+              {%- endif -%}
             {%- endfor -%}
           </div>
 

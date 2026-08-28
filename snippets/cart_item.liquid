@@ -2,19 +2,19 @@
   <div class="wrap">
     <div class="grid align-items-center">
       <div class="grid__item one-quarter image">
-        <div class="cart-item__image-wrap">
+        <a href="{{ item.product.url }}">
         {%- if item.variant.image -%}
         {%- assign variantImg = item.variant.image -%}
         {%- else -%}
         {%- assign variantImg = item.product.featured_image -%}
         {%- endif -%}
         <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" loading="lazy" decoding="async">
-        </div>
+        </a>
       </div>
       <div class="grid__item three-quarters info">
         <div class="cart-unempty__name flex justify-content-between medium-down--direction-column" style="max-width: 25em;">
         <div class="title custom_subtitle_font">
-          <div class="cart-item__title-wrap">
+          <a href="{{ item.url }}">
             {%- assign titlePart = item.product.title | split: ' - ' -%}
             <div class="name">{{ titlePart[0] }}</div>
             {% if item.variant.title != "Default Title" %}
@@ -49,7 +49,7 @@
             {%- endfor -%}
             {% endif %}
             
-          </div>
+          </a>
         </div>
         <div class="remove">
           <a class="remove-from-cart" href="/cart" aria-label="Remove Item">

@@ -23,15 +23,15 @@
   those are whole-file syntax errors on the older webviews this audience uses.
 {%- endcomment -%}
 
-{%- liquid
-  assign hero_id = currentProduct.featured_media.id
-  assign variant_media_ids = ','
-  for v in currentProduct.variants
-    if v.featured_media != blank and v.featured_media.id != hero_id
-      assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ','
-    endif
-  endfor
--%}
+{%- assign hero_id = currentProduct.featured_media.id -%}
+{%- assign variant_media_ids = ',' -%}
+{%- for v in currentProduct.variants -%}
+  {%- if v.featured_media != blank -%}
+    {%- unless v.featured_media.id == hero_id -%}
+      {%- assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ',' -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
 
 {%- comment -%} Pass 1: how many images survive the filter? {%- endcomment -%}
 {%- assign gallery_count = 0 -%}
@@ -125,6 +125,7 @@
         {%- unless variant_media_ids contains mkey -%}
           {%- assign i = i | plus: 1 -%}
           {%- assign img = media.preview_image -%}
+          {%- comment -%} Image 1 is the LCP element: real src/srcset so the preload scanner fetches it from the HTML, eager and high priority. The rest stay lazy until the warm-up. {%- endcomment -%}
           <img data-pgal-main{% unless i == 1 %} hidden{% endunless %}
                src="{{ img | image_url: width: 1000, format: 'webp' }}"
                srcset="{{ img | image_url: width: 500, format: 'webp' }} 500w,
@@ -134,11 +135,6 @@
                sizes="(max-width: 900px) 100vw, 700px"
                width="{{ img.width }}" height="{{ img.height }}"
                alt="{{ media.alt | escape }}"
-               {%- comment -%}
-                 Image 1 is the LCP element: real src/srcset so the preload
-                 scanner fetches it straight from the HTML, eager + high
-                 priority. The rest stay lazy.
-               {%- endcomment -%}
                {% if i == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
                decoding="async">
         {%- endunless -%}
@@ -177,8 +173,15 @@
     </div>
 
     <div class="pgal__dots" aria-hidden="true">
-      {%- for n in (1..gallery_count) -%}
-        <span class="pgal__dot{% if forloop.first %} is-active{% endif %}" data-pgal-dot></span>
+      {%- assign dn = 0 -%}
+      {%- for media in currentProduct.media -%}
+        {%- if media.media_type == 'image' -%}
+          {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+          {%- unless variant_media_ids contains mkey -%}
+            {%- assign dn = dn | plus: 1 -%}
+            <span class="pgal__dot{% if dn == 1 %} is-active{% endif %}" data-pgal-dot></span>
+          {%- endunless -%}
+        {%- endif -%}
       {%- endfor -%}
     </div>
   {%- endif -%}

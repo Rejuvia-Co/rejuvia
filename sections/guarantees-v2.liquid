@@ -30,6 +30,12 @@
     flex-shrink: 0;
 }
 
+/* Tick follows the product's base_colour where one is set; the icon_color
+   setting is the fallback, so non-product pages are unchanged. */
+.guarantees-v2-icon circle {
+    fill: var(--base-colour, {{ section.settings.icon_color }});
+}
+
 .guarantees-v2-text {
     font-size: 16px;
     font-weight: 400;
@@ -60,7 +66,8 @@
 }
 {% endstyle %}
 
-<div class="guarantees-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
+{%- assign gv2_base = product.metafields.custom.base_colour -%}
+<div class="guarantees-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}{% if gv2_base != blank %} style="--base-colour: {{ gv2_base }};"{% endif %}>
     {% for block in section.blocks %}
         <div class="guarantees-v2-item" {{ block.shopify_attributes }}>
             <svg class="guarantees-v2-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
@@ -87,7 +94,7 @@
             "type": "color",
             "id": "bg_color",
             "label": "Background color",
-            "default": "#EAEAF7"
+            "default": "#F8EFE4"
         },
         {
             "type": "color",
@@ -105,7 +112,7 @@
                     "type": "text",
                     "id": "text",
                     "label": "Text",
-                    "default": "5,000+ 5-Star Reviews"
+                    "default": "6,500+ 5-Star Reviews"
                 }
             ]
         }
@@ -117,15 +124,15 @@
             "blocks": [
                 {
                     "type": "guarantee",
-                    "settings": { "text": "5,000+ 5-Star Reviews" }
+                    "settings": { "text": "6,500+ 5-Star Reviews" }
                 },
                 {
                     "type": "guarantee",
-                    "settings": { "text": "Free US Shipping over $79" }
+                    "settings": { "text": "Free US Shipping over $59" }
                 },
                 {
                     "type": "guarantee",
-                    "settings": { "text": "150,000+ Happy Customers" }
+                    "settings": { "text": "300,000+ Happy Customers" }
                 }
             ]
         }

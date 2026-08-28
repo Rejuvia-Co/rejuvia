@@ -534,7 +534,7 @@
         "guarantee_2": {
           "type": "guarantee",
           "settings": {
-            "text": "Free Shipping On Subscriptions"
+            "text": "Free US Shipping over $59"
           }
         },
         "guarantee_3": {
@@ -552,7 +552,7 @@
       "name": "Guarantees V2",
       "settings": {
         "anchor_id": "",
-        "bg_color": "#eaeaf7",
+        "bg_color": "#F8EFE4",
         "icon_color": "#672666"
       }
     },

@@ -131,7 +131,7 @@
           "type": "step",
           "settings": {
             "title": "Step 1: Spray",
-            "description": "Spray Rejuvia 6\u20138 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
             "tip1_icon": "shopify://shop_images/Frame_1.svg",
             "tip1_label": "When to use",
             "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
@@ -144,7 +144,7 @@
             "title": "Step 2: Settle In",
             "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
             "tip1_label": "Usage Tip",
-            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1\u20132 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
             "image": "shopify://shop_images/Step_2.webp"
           }
         },
@@ -303,19 +303,19 @@
         "guarantee_1": {
           "type": "guarantee",
           "settings": {
-            "text": "5,000+ 5-Star Reviews"
+            "text": "6,500+ 5-Star Reviews"
           }
         },
         "guarantee_2": {
           "type": "guarantee",
           "settings": {
-            "text": "Free US Shipping over $79"
+            "text": "Free US Shipping over $59"
           }
         },
         "guarantee_3": {
           "type": "guarantee",
           "settings": {
-            "text": "150,000+ Happy Customers"
+            "text": "300,000+ Happy Customers"
           }
         }
       },
@@ -326,7 +326,7 @@
       ],
       "name": "Guarantees V2",
       "settings": {
-        "bg_color": "#eaeaf7",
+        "bg_color": "#F8EFE4",
         "icon_color": "#672666"
       }
     },
@@ -351,7 +351,7 @@
       "name": "Product FAQs V2",
       "settings": {
         "heading": "Frequently asked questions",
-        "description": "<p>Have a question that isn\u2019t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "description": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
         "footer_text": "",
         "eyebrow": "",
         "open_first": false,

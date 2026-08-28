@@ -22,7 +22,7 @@
   #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
   #{{ uid }} .pc__window { overflow: hidden; }
   #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
-  #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 0 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 0 28px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 16px; }
   #{{ uid }} .pc__quote {
     margin: 0;
     color: {{ fg }};
@@ -31,7 +31,9 @@
     line-height: 1.4;
     max-width: 420px;
   }
-  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 240px; object-fit: contain; margin: auto auto 0; padding-top: 20px; }
+  /* margin-top:auto bottom-aligns every logo so they share a baseline across
+     the three slides; the slide's gap owns the space above them. */
+  #{{ uid }} .pc__logo { display: block; width: auto; height: {{ section.settings.logo_max_height }}px; max-width: 200px; object-fit: contain; margin: auto auto 0; padding-top: 0; }
 
   /* Arrows */
   #{{ uid }} .pc__controls { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 30px; }
@@ -56,15 +58,14 @@
   @media screen and (max-width: 767px) {
     #{{ uid }} { padding: 40px 14px; }
     #{{ uid }} .pc__track { align-items: flex-start; }
-    #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 44px; justify-content: center; }
+    #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 36px; justify-content: center; gap: 14px; }
     #{{ uid }} .pc__quote { font-size: {{ section.settings.quote_size_mobile }}px; max-width: 100%; }
-    #{{ uid }} .pc__logo { height: 34px; margin: 22px auto 0; padding-top: 0; }
-    #{{ uid }} .pc__arrow {
-      width: 38px; height: 38px; padding: 0;
-      border: 1.5px solid {{ ctrl }}; border-radius: 50%;
-    }
-    #{{ uid }} .pc__arrow:hover { opacity: 1; background: rgba(0,0,0,0.05); }
-    #{{ uid }} .pc__arrow svg { width: 18px; height: 18px; }
+    #{{ uid }} .pc__logo { height: 34px; max-width: 170px; margin: auto auto 0; padding-top: 0; }
+    /* Bare chevrons, same as desktop. Padding keeps a comfortable tap target
+       without drawing a circle. */
+    #{{ uid }} .pc__arrow { width: auto; height: auto; padding: 8px; border: none; border-radius: 0; background: transparent; }
+    #{{ uid }} .pc__arrow:hover { opacity: .6; background: transparent; }
+    #{{ uid }} .pc__arrow svg { width: 20px; height: 20px; }
     #{{ uid }} .pc__controls { margin-top: 24px; gap: 14px; }
     #{{ uid }} .pc__dots { gap: 11px; }
     #{{ uid }} .pc__dot { width: 13px; height: 13px; }
@@ -257,7 +258,7 @@
       "step": 2,
       "unit": "px",
       "label": "Logo height (desktop)",
-      "default": 64
+      "default": 48
     },
     {
       "type": "header",
@@ -350,7 +351,7 @@
         "control_color": "#672666",
         "quote_size_desktop": 20,
         "quote_size_mobile": 20,
-        "logo_max_height": 64,
+        "logo_max_height": 48,
         "autoplay": true,
         "autoplay_seconds": 6,
         "max_width": 1160,

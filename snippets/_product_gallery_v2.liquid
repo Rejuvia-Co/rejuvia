@@ -45,9 +45,13 @@
 {%- endfor -%}
 
 <style>
-  .pgal { --pgal-thumb: 56px; --pgal-gap: 8px; }
+  .pgal { --pgal-thumb: 64px; --pgal-gap: 8px; }
 
   .pgal__main {
+    /* Desktop: 85% of the gallery column -- the full-width square read as
+       oversized next to the buy box. Mobile stays full width below. */
+    max-width: 85%;
+    margin: 0 auto;
     position: relative;
     background: #F8EFE4;
     border-radius: 16px;
@@ -80,7 +84,7 @@
   .pgal__arrow:hover { background: #f6eef6; }
   .pgal__arrow svg { width: 14px; height: 14px; display: block; }
 
-  /* Exactly five thumbs visible; the rest scroll horizontally. */
+  /* Desktop shows every thumb; mobile keeps the five-visible cap. */
   .pgal__thumbs {
     display: flex; gap: var(--pgal-gap);
     /* No scroll-behavior: smooth. Animating the strip means a fast run of
@@ -89,7 +93,7 @@
        the arrows need. Finger-scrolling the strip is unaffected. */
     overflow-x: auto;
     scrollbar-width: none; -ms-overflow-style: none;
-    max-width: min(100%, calc(var(--pgal-thumb) * 5 + var(--pgal-gap) * 4));
+    max-width: 100%;
   }
   .pgal__thumbs::-webkit-scrollbar { display: none; }
 
@@ -108,6 +112,13 @@
 
   @media screen and (max-width: 749px) {
     .pgal { --pgal-thumb: 48px; }
+    /* Mobile unchanged: full-width image, five thumbs then scroll. */
+    .pgal__main { max-width: 100%; }
+    .pgal__thumbs { max-width: min(100%, calc(var(--pgal-thumb) * 5 + var(--pgal-gap) * 4)); }
+    /* .product-wrap stacks here and its 30px row-gap becomes dead space
+       between the gallery dots and the review bar. This stylesheet only
+       ships on pages that render this snippet. */
+    .product-wrap { row-gap: 16px; }
     .pgal__main { border-radius: 14px; }
   }
 </style>
@@ -132,7 +143,7 @@
                        {{ img | image_url: width: 700, format: 'webp' }} 700w,
                        {{ img | image_url: width: 1000, format: 'webp' }} 1000w,
                        {{ img | image_url: width: 1400, format: 'webp' }} 1400w"
-               sizes="(max-width: 900px) 100vw, 700px"
+               sizes="(max-width: 900px) 100vw, 500px"
                width="{{ img.width }}" height="{{ img.height }}"
                alt="{{ media.alt | escape }}"
                {% if i == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}

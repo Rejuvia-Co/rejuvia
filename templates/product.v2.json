@@ -307,7 +307,7 @@
             "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
             "backdrop_color": "#f7edec",
             "label": "STEP 1",
-            "text": "<p>Spray <strong>6\u20138 times</strong> under your tongue or inside your cheek.</p>"
+            "text": "<p>Spray <strong>6–8 times</strong> under your tongue or inside your cheek.</p>"
           }
         },
         "step_KcPfam": {
@@ -316,7 +316,7 @@
             "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
             "backdrop_color": "#f5f0f0",
             "label": "STEP 2",
-            "text": "<p>Hold it in your mouth for at least <strong>5\u201310 seconds</strong>.</p>"
+            "text": "<p>Hold it in your mouth for at least <strong>5–10 seconds</strong>.</p>"
           }
         },
         "step_cxtqnU": {
@@ -338,7 +338,7 @@
       "settings": {
         "background_color": "#EAEAF7",
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15\u201320 minutes before bed for the best results.",
+        "subheading": "You should use your Sleep Spray 15–20 minutes before bed for the best results.",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subheading_size": 17,
@@ -354,7 +354,7 @@
           "type": "step",
           "settings": {
             "title": "Step 1: Spray",
-            "description": "Spray Rejuvia 6\u20138 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
+            "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around. Think of it as the final step in your nighttime routine before getting into bed.",
             "tip1_icon": "shopify://shop_images/Frame_1.svg",
             "tip1_label": "When to use",
             "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed. It should be the last thing you do before getting into bed.",
@@ -367,7 +367,7 @@
             "title": "Step 2: Settle In",
             "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest. Most people start to feel their thoughts quiet and their body relax within a few minutes.",
             "tip1_label": "Usage Tip",
-            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1\u20132 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
+            "tip1_text": "If you wake up during the night, it's completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning. It works quickly, so you can ease back into sleep even in the middle of the night.",
             "image": "shopify://shop_images/Step_2.webp"
           }
         },
@@ -577,7 +577,7 @@
       "name": "Product FAQs V2",
       "settings": {
         "heading": "Frequently Asked Questions",
-        "description": "<p>Have a question that isn\u2019t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "description": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
         "footer_text": "",
         "eyebrow": "",
         "open_first": false,
@@ -600,7 +600,7 @@
       "type": "feature-products-v2",
       "settings": {
         "heading": "Explore More Rejuvia",
-        "subheading": "<p>Oral sprays for sleep, stress and daily wellness \u2014 all absorbed in seconds.</p>",
+        "subheading": "<p>Oral sprays for sleep, stress and daily wellness — all absorbed in seconds.</p>",
         "product_limit": 3
       }
     },
@@ -609,10 +609,101 @@
       "settings": {
         "trigger_selector": ".product-widget-container .block-buy-buttons"
       }
+    },
+    "customer_testimonials_video_sleep": {
+      "type": "customer-testimonials-video",
+      "blocks": {
+        "testimonial_mqbtHE": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I spray 6 times and I'm sound asleep in 15 minutes. I hope they sell it forever!!\"",
+            "image": "shopify://shop_images/197ca0c5-3a37-485a-9265-fd5f625c99fc.webp",
+            "name": "Tracey F. (Verified Buyer)"
+          }
+        },
+        "testimonial_A8C7gQ": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I've been really enjoying my Rejuvia and always sleep very well when I use it.\"",
+            "image": "shopify://shop_images/rejuvia_sleep_review_4.png",
+            "name": "Betty M. (Verified Buyer)"
+          }
+        },
+        "testimonial_9BgBkh": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Rejuvia WORKS! It's lights out for me after just 15-20 minutes with Rejuvia.\"",
+            "image": "shopify://shop_images/scott_s.png",
+            "name": "Scott S. (Verified Buyer)"
+          }
+        },
+        "testimonial_GcRmKE": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Absolutely puts me to sleep quickly each night and I love the taste.\"",
+            "image": "shopify://shop_images/rejuvia_sleep_review_2.png",
+            "name": "Kimberly W. (Verified Buyer)"
+          }
+        },
+        "testimonial_mqf9FP": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Excellent spray, recommend it. Tastes good and helps me fall asleep quickly.\"",
+            "image": "shopify://shop_images/e766e923-e957-49f7-8053-ea835d4f3c97_full_size.jpg",
+            "name": "Timothy G. (Verified Buyer)"
+          }
+        },
+        "testimonial_DGdCYV": {
+          "type": "testimonial",
+          "settings": {
+            "text": "“I've tried it all for sleep before and Rejuvia really works as advertised for me!”",
+            "image": "shopify://shop_images/rejuvia_sleep_review_3.png",
+            "name": "Mandie N. (Verified Buyer)"
+          }
+        },
+        "testimonial_wfdQJm": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I will continue to use Rejuvia as it seems to really work for me at night!\"",
+            "image": "shopify://shop_images/fb986ec5-bb3a-47ec-bcbf-baf4362058c5.webp",
+            "name": "Andrew H. (Verified Buyer)"
+          }
+        },
+        "testimonial_DpTVkq": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I love the sleep spray. I spray 7 times under my tongue and I fall asleep in 15-20 minutes.\"",
+            "image": "shopify://shop_images/702dc425-a501-4809-8ca7-274d9e3edef3.webp",
+            "name": "Eldonna M. (Verified Buyer)"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_mqbtHE",
+        "testimonial_A8C7gQ",
+        "testimonial_9BgBkh",
+        "testimonial_GcRmKE",
+        "testimonial_mqf9FP",
+        "testimonial_DGdCYV",
+        "testimonial_wfdQJm",
+        "testimonial_DpTVkq"
+      ],
+      "name": "Video Testimonials",
+      "settings": {
+        "header": "Join 300,000 Getting Better Sleep With Rejuvia",
+        "stars_label": "Backed By 90M+ Nights of Sleep",
+        "stars_label_size": 18,
+        "stars_label_size_mobile": 15,
+        "stars_label_color": "#672666",
+        "stars_color": "#fab851",
+        "pill_bg": "#ffffff",
+        "bg_color": "#eaeaf7"
+      }
     }
   },
   "order": [
     "product_widget_v2",
+    "customer_testimonials_video_sleep",
     "product_intro_v3_A38pUb",
     "real_stories_v2_aXQec8",
     "key_ingredients_v2_1",

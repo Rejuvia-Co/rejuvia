@@ -1,83 +1,229 @@
-<div class="product-gallery clearfix {% if settings.product_thumbs_slide == 'vertical' %}vertical {% endif %}{% if currentProduct.images.size > 0 %}{% if settings.main_image_display == 'Zoom-in' or settings.main_image_display == 'Both' %}zoom-in{% endif %}{% endif %}">
-    <div class="main-images slick-pending {% if settings.product_thumbs_slide == 'vertical' and currentProduct.images.size > 1 %}float-right five-sixths medium-down--one-whole{% endif %}">
-      {%- for media in currentProduct.media -%}
-    	{%- capture groupingData -%}
-          {%- render '_product_gallery_grouping_data', media: media, index: forloop.index -%}
-        {%- endcapture -%}
+{%- comment -%}
+  Product gallery — the BOGOSub (offer-block-sub) gallery design, driven by
+  the product's own media instead of customizer blocks.
 
-      {% comment %} {% unless forloop.last or forloop.rindex0 == 1 %} {% endcomment %}
-        <div class="active-wrapper slide" {{ groupingData }} data-media-id="{{media.id}}">
-          {%- case media.media_type -%}
-              {% when 'video' %}
-                   <div class="video-wrap" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
-                      {{ media | video_tag: controls: true, image_size: "1024x" }}
-                   </div>
-              {% when 'external_video' %}
-                  <div class="video-wrap" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
-                    {{ media | external_video_tag }}
-                  </div>
-              {% when 'image' %}
-                  {%- if quickView != true -%}
-                      {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}
-                          <a href="{{ media | product_img_url: 'master' }}" class="productImage">
-                      {%- endif -%}
-                  {%- endif -%}
-                  <div class="image-text__wrapper">
-                      {% if currentProduct.metafields.custom.boundle and show_bundle_text %}
-                          <div class="boundle-text">
-                              {{ currentProduct.metafields.custom.boundle_text }}
-                          </div>
-                      {% endif %}
-                      {%- if forloop.index == 1 -%}
-                          {%- comment -%}
-                            LCP image. Rendered with a real src/srcset and marked
-                            lazyloaded so the preload scanner fetches it from the
-                            HTML and it paints at opacity 1 immediately, instead of
-                            waiting on async lazysizes plus the 0.5s fade-in.
-                            ProductJs skips it because it already has .lazyloaded.
-                          {%- endcomment -%}
-                          <img src="{{ media.preview_image | image_url: width: 1000, format: 'webp' }}"
-                               srcset="{{ media.preview_image | image_url: width: 500, format: 'webp' }} 500w, {{ media.preview_image | image_url: width: 700, format: 'webp' }} 700w, {{ media.preview_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ media.preview_image | image_url: width: 1400, format: 'webp' }} 1400w"
-                               sizes="(max-width: 900px) 100vw, 700px"
-                               data-file="{{ media | product_img_url: 'master' }}"
-                               class="large-thumb lazyloaded" itemprop="image" alt="{{ media.alt }}"
-                               loading="eager" fetchpriority="high" decoding="async">
-                      {%- else -%}
-                          <img src="{% render 'image_placeholder', image: media %}" data-srcset="{% render 'lazy_src', image: media %}" data-sizes="auto" data-file="{{media | product_img_url: 'master'}}" class="large-thumb" itemprop="image" alt="{{media.alt}}" loading="lazy" decoding="async">
-                      {%- endif -%}
-                  </div>
-                  {%- if quickView != true -%}
-                      {%- if settings.main_image_display == 'Lightbox' or settings.main_image_display == 'Both' -%}
-                          </a>
-                      {%- endif -%}
-                  {%- endif -%}
-          {%- endcase -%}
-       	</div>
-      {% comment %} {% endunless %} {% endcomment %}
+  Structure: one square main image with the rest stacked behind it and hidden,
+  a centred thumb strip with prev/next arrows, and dots. Identical on mobile
+  and desktop — the design needs no breakpoint of its own; the surrounding
+  column just gets narrower.
 
-    	
+  Replaces the old Slick carousel. ProductJs still runs, but every one of its
+  gallery hooks is guarded on `.main-images .slick-track` existing, so with no
+  Slick markup they all no-op. Quick-view is unaffected: it renders the older
+  _product_gallery snippet, not this one.
+
+  Deliberately dropped: zoom / lightbox, and variant-linked image switching.
+
+  Variant images are filtered OUT of the gallery — the 3-pack and 6-pack shots
+  are already shown in the variant selector, so repeating them here adds
+  nothing. The product's own featured image is kept even though the base
+  variant also points at it; on every product it is position 1, the hero.
+
+  JS is ES5-level on purpose (no optional chaining / nullish coalescing) —
+  those are whole-file syntax errors on the older webviews this audience uses.
+{%- endcomment -%}
+
+{%- liquid
+  assign hero_id = currentProduct.featured_media.id
+  assign variant_media_ids = ','
+  for v in currentProduct.variants
+    if v.featured_media != blank and v.featured_media.id != hero_id
+      assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ','
+    endif
+  endfor
+-%}
+
+{%- comment -%} Pass 1: how many images survive the filter? {%- endcomment -%}
+{%- assign gallery_count = 0 -%}
+{%- for media in currentProduct.media -%}
+  {%- if media.media_type == 'image' -%}
+    {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+    {%- unless variant_media_ids contains mkey -%}
+      {%- assign gallery_count = gallery_count | plus: 1 -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  .pgal { --pgal-thumb: 56px; --pgal-gap: 8px; }
+
+  .pgal__main {
+    position: relative;
+    background: #F8EFE4;
+    border-radius: 16px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .pgal__main img[data-pgal-main] { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* The rule above sets display:block, which overrides the hidden attribute —
+     this restores it so only the active image renders. */
+  .pgal__main img[data-pgal-main][hidden] { display: none; }
+
+  .pgal__bundle {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    text-align: center; pointer-events: none;
+  }
+
+  .pgal__thumbrow { display: flex; align-items: center; justify-content: center; gap: var(--pgal-gap); margin-top: 12px; }
+
+  .pgal__arrow {
+    flex: none; width: 30px; height: 30px;
+    border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0; transition: background .14s ease;
+  }
+  .pgal__arrow:hover { background: #f6eef6; }
+  .pgal__arrow svg { width: 14px; height: 14px; display: block; }
+
+  /* Exactly five thumbs visible; the rest scroll horizontally. */
+  .pgal__thumbs {
+    display: flex; gap: var(--pgal-gap);
+    overflow-x: auto; scroll-behavior: smooth;
+    scrollbar-width: none; -ms-overflow-style: none;
+    max-width: min(100%, calc(var(--pgal-thumb) * 5 + var(--pgal-gap) * 4));
+  }
+  .pgal__thumbs::-webkit-scrollbar { display: none; }
+
+  .pgal__thumb {
+    flex: none; width: var(--pgal-thumb); height: var(--pgal-thumb);
+    border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; cursor: pointer; padding: 0;
+  }
+  .pgal__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pgal__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
+
+  .pgal__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
+  .pgal__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
+  .pgal__dot.is-active { background: #672666; }
+
+  @media screen and (max-width: 749px) {
+    .pgal { --pgal-thumb: 48px; }
+    .pgal__main { border-radius: 14px; }
+  }
+</style>
+
+<div class="pgal" data-pgal>
+  <div class="pgal__main">
+    {%- if currentProduct.metafields.custom.boundle and show_bundle_text -%}
+      <div class="pgal__bundle boundle-text">{{ currentProduct.metafields.custom.boundle_text }}</div>
+    {%- endif -%}
+
+    {%- assign i = 0 -%}
+    {%- for media in currentProduct.media -%}
+      {%- if media.media_type == 'image' -%}
+        {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+        {%- unless variant_media_ids contains mkey -%}
+          {%- assign i = i | plus: 1 -%}
+          {%- assign img = media.preview_image -%}
+          <img data-pgal-main{% unless i == 1 %} hidden{% endunless %}
+               src="{{ img | image_url: width: 1000, format: 'webp' }}"
+               srcset="{{ img | image_url: width: 500, format: 'webp' }} 500w,
+                       {{ img | image_url: width: 700, format: 'webp' }} 700w,
+                       {{ img | image_url: width: 1000, format: 'webp' }} 1000w,
+                       {{ img | image_url: width: 1400, format: 'webp' }} 1400w"
+               sizes="(max-width: 900px) 100vw, 700px"
+               width="{{ img.width }}" height="{{ img.height }}"
+               alt="{{ media.alt | escape }}"
+               {%- comment -%}
+                 Image 1 is the LCP element: real src/srcset so the preload
+                 scanner fetches it straight from the HTML, eager + high
+                 priority. The rest stay lazy.
+               {%- endcomment -%}
+               {% if i == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+               decoding="async">
+        {%- endunless -%}
+      {%- endif -%}
     {%- endfor -%}
   </div>
 
-  {%- if currentProduct.images.size > 1 -%}
-    <div class="thumbs-wrapper {% if settings.product_thumbs_slide == 'vertical' %}float-left one-sixth medium-down--one-whole{% endif %}">
-      <div class="thumbs slick-pending switch">
-        {%- for media in currentProduct.media -%}
-          {%- capture groupingData -%}
-            {%- render '_product_gallery_grouping_data', media: media, index: forloop.index -%}
-          {%- endcapture -%}
-          {%- assign image = media.preview_image -%}
+  {%- if gallery_count > 1 -%}
+    <div class="pgal__thumbrow">
+      <button type="button" class="pgal__arrow" data-pgal-prev aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
 
-          
-            <div class="slide" {{ groupingData }}>
-              <a class="gallery" href="{{ image | img_url: 'master' }}" data-media-id="{{media.id}}" variant-id="{{ media.variants.first.id }}">
-                <img src="{{ image | img_url: '300x300' }}" srcset="{{ image | img_url: '150x150' }} 150w, {{ image | img_url: '300x300' }} 300w" sizes="122px" class="lazyload" alt="{{media.alt}}" loading="lazy" decoding="async">
-              </a>
-            </div>
-          
+      <div class="pgal__thumbs">
+        {%- assign t = 0 -%}
+        {%- for media in currentProduct.media -%}
+          {%- if media.media_type == 'image' -%}
+            {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+            {%- unless variant_media_ids contains mkey -%}
+              {%- assign t = t | plus: 1 -%}
+              {%- assign img = media.preview_image -%}
+              <button type="button" class="pgal__thumb{% if t == 1 %} is-active{% endif %}" data-pgal-thumb aria-label="View image {{ t }}">
+                <img src="{{ img | image_url: width: 120, format: 'webp' }}"
+                     srcset="{{ img | image_url: width: 120, format: 'webp' }} 120w, {{ img | image_url: width: 180, format: 'webp' }} 180w"
+                     sizes="56px" width="56" height="56"
+                     alt="" loading="lazy" decoding="async">
+              </button>
+            {%- endunless -%}
+          {%- endif -%}
         {%- endfor -%}
       </div>
+
+      <button type="button" class="pgal__arrow" data-pgal-next aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div class="pgal__dots" aria-hidden="true">
+      {%- for n in (1..gallery_count) -%}
+        <span class="pgal__dot{% if forloop.first %} is-active{% endif %}" data-pgal-dot></span>
+      {%- endfor -%}
     </div>
   {%- endif -%}
-
 </div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pgal]');
+  if (!root) return;
+
+  var mains  = [].slice.call(root.querySelectorAll('[data-pgal-main]'));
+  var thumbs = [].slice.call(root.querySelectorAll('[data-pgal-thumb]'));
+  var dots   = [].slice.call(root.querySelectorAll('[data-pgal-dot]'));
+  if (mains.length < 2) return;
+
+  var idx = 0;
+
+  function setImg(i) {
+    idx = (i + mains.length) % mains.length;
+    mains.forEach(function (img, j) { img.hidden = j !== idx; });
+    thumbs.forEach(function (t, j) { t.classList.toggle('is-active', j === idx); });
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    var t = thumbs[idx];
+    /* Keep the active thumb in view when only five of them fit. */
+    if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+
+  thumbs.forEach(function (t, i) {
+    t.addEventListener('click', function () { setImg(i); });
+  });
+
+  var prev = root.querySelector('[data-pgal-prev]');
+  var next = root.querySelector('[data-pgal-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Horizontal-dominant swipe only, so vertical page scrolling is never hijacked. */
+  var main = root.querySelector('.pgal__main');
+  if (main) {
+    var sx = null, sy = null;
+    main.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+    }, { passive: true });
+    main.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) setImg(dx < 0 ? idx + 1 : idx - 1);
+      sx = null; sy = null;
+    }, { passive: true });
+  }
+})();
+</script>

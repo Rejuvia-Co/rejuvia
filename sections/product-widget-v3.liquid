@@ -390,13 +390,6 @@
 
 {% unless request.page_type == 'product' %}
 <style>
-  /* Non-product pages: show gallery immediately since ProductJs may not initialize */
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-
   /* Fix sticky: .content-wrapper has overflow:hidden which breaks position:sticky.
      Only on wider desktop where layout widths properly account for the gap. */
   @media screen and (min-width: 900px) {
@@ -412,11 +405,6 @@
     }
   }
 
-  /* Slick arrows visible inside the slider (not hidden at -2em) */
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
 </style>
 {% endunless %}
 <script type="text/javascript">

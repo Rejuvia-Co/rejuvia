@@ -375,18 +375,22 @@
 
 {% unless request.page_type == 'product' %}
 <style>
-  /* Non-product pages: show gallery immediately since ProductJs may not initialize */
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-
-  /* Fix sticky: .content-wrapper has overflow:hidden which breaks position:sticky.
-     Only on wider desktop where layout widths properly account for the gap. */
+  /* Desktop: lock the gallery column while the buy box scrolls.
+     .content-wrapper carries overflow:hidden (three separate rules set it),
+     and a clipping ancestor disables position:sticky outright. `clip` clips
+     exactly like hidden but does not create a scroll container, so sticky
+     survives -- and unlike the previous :has() attempt it does not depend on
+     selector support or on out-specifying those three rules. Safe to use a
+     bare selector: this <style> only renders inside product-widget-v2, which
+     exists on the homepage alone. */
   @media screen and (min-width: 900px) {
-    .content-wrapper:has(.product-widget-container) {
-      overflow: visible;
+    main.content-wrapper {
+      overflow: clip;
+    }
+    .product-widget-container .gallery-wrapper {
+      position: sticky;
+      top: 24px;
+      align-self: flex-start;
     }
     /* Between 900-1199px, widths must account for the gap to prevent overflow */
     .product-widget-container .gallery-wrapper {
@@ -397,11 +401,6 @@
     }
   }
 
-  /* Slick arrows visible inside the slider (not hidden at -2em) */
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
-  #product-item-{{ currentProduct.id }}
 </style>
 {% endunless %}
 <script type="text/javascript">

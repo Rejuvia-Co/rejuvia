@@ -388,27 +388,14 @@
 {% render 'supplement-label-popup', product: currentProduct %}
 
 
-
 {% unless request.page_type == 'product' %}
 <style>
   /* Non-product pages: show gallery immediately since ProductJs may not initialize */
-  #product-item-{{ currentProduct.id }} .main-images.slick-pending {
-    display: block;
-  }
-  #product-item-{{ currentProduct.id }} .main-images.slick-pending .slide:not(:first-child) {
-    display: none;
-  }
-  #product-item-{{ currentProduct.id }} .main-images.slick-pending.slick-initialized .slide {
-    display: block;
-  }
-  #product-item-{{ currentProduct.id }} .thumbs.slick-pending {
-    display: flex;
-    gap: 8px;
-    overflow: hidden;
-  }
-  #product-item-{{ currentProduct.id }} .thumbs.slick-pending.slick-initialized {
-    display: block;
-  }
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
 
   /* Fix sticky: .content-wrapper has overflow:hidden which breaks position:sticky.
      Only on wider desktop where layout widths properly account for the gap. */
@@ -426,32 +413,10 @@
   }
 
   /* Slick arrows visible inside the slider (not hidden at -2em) */
-  #product-item-{{ currentProduct.id }} .main-images.slick-slider .slick-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.8);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 4px;
-  }
-  #product-item-{{ currentProduct.id }} .main-images.slick-slider .slick-arrow svg {
-    width: 16px;
-    height: 16px;
-  }
-  #product-item-{{ currentProduct.id }} .main-images.slick-slider .slick-prev {
-    left: 10px;
-  }
-  #product-item-{{ currentProduct.id }} .main-images.slick-slider .slick-next {
-    right: 10px;
-  }
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
+  #product-item-{{ currentProduct.id }}
 </style>
 {% endunless %}
 <script type="text/javascript">
@@ -464,73 +429,6 @@
             new ProductJs($container, product, {{ preselected_item_index }});
         } catch(e) {
             console.error('ProductJs init error:', e);
-
-            // ProductJs failed (likely on non-product pages) — initialize slick gallery directly
-            var $mainImages = $container.find('.main-images');
-            var $thumbs = $container.find('.thumbs');
-
-            if ($mainImages.length && !$mainImages.hasClass('slick-initialized')) {
-                $mainImages.slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    adaptiveHeight: true,
-                    arrows: false,
-                    speed: 250,
-                    waitForAnimate: false,
-                    prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"><svg aria-hidden="true" viewBox="0 0 32 32"><path fill="#000000" d="M24.333 28.205l-1.797 1.684L7.666 16l14.87-13.889 1.797 1.675L11.269 16z"/></svg></button>',
-                    nextArrow: '<button type="button" class="slick-next" aria-label="Next"><svg aria-hidden="true" viewBox="0 0 32 32"><path fill="#000000" d="M7.667 3.795l1.797-1.684L24.334 16 9.464 29.889l-1.797-1.675L20.731 16z"/></svg></button>',
-                    responsive: [{ breakpoint: 600, settings: { adaptiveHeight: true } }]
-                });
-
-                // Trigger lazysizes on all gallery images so full-res loads
-                $mainImages.find('.large-thumb').addClass('lazyload');
-            }
-
-            if ($thumbs.length && !$thumbs.hasClass('slick-initialized')) {
-                $thumbs.slick({
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    infinite: false,
-                    arrows: true,
-                    speed: 250,
-                    prevArrow: '<button type="button" aria-label="Previous thumbnail" style="color: var(--base-colour, #672666);"><svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none" aria-hidden="true"><g filter="url(#filter_prev)"><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" fill="white"/><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M29.167 20.5L22.5003 27.1667L29.167 33.8333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M35.8333 27.1666H22.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><defs><filter id="filter_prev" x="0" y="0" width="58.333" height="58.3334" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2"/><feGaussianBlur stdDeviation="6"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg></button>',
-                    nextArrow: '<button type="button" aria-label="Next thumbnail" style="color: var(--base-colour, #672666);"><svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none" aria-hidden="true"><g filter="url(#filter_next)"><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" fill="white"/><path d="M29.1667 43.8333C38.3714 43.8333 45.8333 36.3714 45.8333 27.1667C45.8333 17.9619 38.3714 10.5 29.1667 10.5C19.9619 10.5 12.5 17.9619 12.5 27.1667C12.5 36.3714 19.9619 43.8333 29.1667 43.8333Z" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M29.167 33.8333L35.8337 27.1667L29.167 20.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.5 27.1666H35.8333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><defs><filter id="filter_next" x="0" y="0" width="58.333" height="58.3334" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2"/><feGaussianBlur stdDeviation="6"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg></button>',
-                    responsive: [
-                        { breakpoint: 700, settings: { slidesToShow: 5, slidesToScroll: 1 } },
-                        { breakpoint: 900, settings: { slidesToShow: 6, slidesToScroll: 1 } }
-                    ]
-                });
-                $thumbs.find('.slide:not(.slick-cloned):eq(0)').addClass('active');
-            }
-
-            // Sync: load full-res image when navigating slides
-            $mainImages.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-                var nextImage = $(this).find('.slide:not(.slick-cloned) .large-thumb:eq(' + nextSlide + ')');
-                if (!nextImage.hasClass('lazyloaded')) {
-                    nextImage.addClass('lazyload');
-                }
-            });
-
-            // Sync thumbnail clicks to main image
-            $container.find('.thumbs a.gallery').on('click', function(e) {
-                e.preventDefault();
-                var mediaId = $(this).data('media-id');
-                if ($mainImages.find('.slick-track').length > 0) {
-                    var index = $mainImages.find('.slide:not(.slick-cloned)').index(
-                        $mainImages.find('.slide:not(.slick-cloned)[data-media-id="' + mediaId + '"]')
-                    );
-                    $mainImages.slick('goTo', index);
-                }
-            });
-
-            // Sync main slider navigation to active thumbnail
-            $mainImages.on('afterChange', function(event, slick, currentSlide) {
-                $thumbs.find('.slide').removeClass('active');
-                $thumbs.find('.slide:not(.slick-cloned):eq(' + currentSlide + ')').addClass('active');
-                if ($thumbs.hasClass('slick-initialized')) {
-                    $thumbs.slick('slickGoTo', Math.max(0, currentSlide - 2));
-                }
-            });
         }
 
         if (window.location.hash.indexOf('search') >= 0) {
@@ -558,7 +456,6 @@
         }, 1500);
     });
 </script>
-
 
 
 {% schema %}

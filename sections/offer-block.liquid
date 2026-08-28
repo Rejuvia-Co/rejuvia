@@ -149,7 +149,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 }}px; }
   .ob__gallery-inner { position: static; }
   .ob__main { min-height: 0; }
-  .ob__main img { max-height: 320px; }
+  /* Fill the gallery width on mobile. The base rule is width:auto with a
+     max-height, so a square image capped at 320px tall also rendered 320px
+     wide -- 23px narrower than the 343px gallery, thumbs and dots, which read
+     as the image being misaligned. Width now governs and the height follows
+     the aspect ratio. */
+  .ob__main img { width: 100%; height: auto; max-height: none; }
   .ob__arrow { display: none; }
   .ob__thumb { width: 62px; height: 62px; border-radius: 9px; }
   .ob__tiers { gap: 18px; margin-top: 0; }

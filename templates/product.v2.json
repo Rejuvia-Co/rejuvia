@@ -390,9 +390,7 @@
       "disabled": true,
       "name": "Use In Just V2",
       "settings": {
-        "heading": "<p>Use in <em>just 30 seconds</em></p>",
-        "link_text": "View Supplement Label",
-        "link_url": ""
+        "heading": "<p>Use in <em>just 30 seconds</em></p>"
       }
     },
     "alternatives_v2_1": {
@@ -576,10 +574,10 @@
       "type": "product-faqs-v2",
       "name": "Product FAQs V2",
       "settings": {
+        "eyebrow": "",
         "heading": "Frequently Asked Questions",
         "description": "<p>Have a question you don't see? Email us at <em>hello@rejuvia.co</em>.</p>",
         "footer_text": "",
-        "eyebrow": "",
         "open_first": false,
         "title_size": 36,
         "title_size_mobile": 26,

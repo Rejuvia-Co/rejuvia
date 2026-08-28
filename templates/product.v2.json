@@ -577,7 +577,7 @@
       "name": "Product FAQs V2",
       "settings": {
         "heading": "Frequently Asked Questions",
-        "description": "<p>Have a question that isn’t here?<em> Get in touch with at hello@rejuvia.co.</em></p>",
+        "description": "<p>Have a question you don't see? Email us at <em>hello@rejuvia.co</em>.</p>",
         "footer_text": "",
         "eyebrow": "",
         "open_first": false,

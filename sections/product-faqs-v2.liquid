@@ -45,7 +45,7 @@
   margin: 0 auto 36px;
 }
 #pfaq-{{ section.id }} .pfaq-v2-sub p { margin: 0; }
-#pfaq-{{ section.id }} .pfaq-v2-sub em { font-style: normal; color: {{ section.settings.accent_color | default: '#672666' }}; font-weight: 600; }
+#pfaq-{{ section.id }} .pfaq-v2-sub em { font-style: normal; color: #171512; font-weight: 700; }
 #pfaq-{{ section.id }} .pfaq-v2-list { border-top: 1px solid rgba(0,0,0,0.1); }
 #pfaq-{{ section.id }} .pfaq-v2-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
 #pfaq-{{ section.id }} .pfaq-v2-question {
@@ -70,7 +70,7 @@
   width: 20px;
   height: 20px;
   display: block;
-  color: {{ section.settings.accent_color | default: '#672666' }};
+  color: var(--base-colour, {{ section.settings.accent_color | default: '#672666' }});
   transition: transform 0.22s ease;
 }
 #pfaq-{{ section.id }} .pfaq-v2-item.is-open .pfaq-v2-question-icon { transform: rotate(180deg); }
@@ -98,7 +98,7 @@
   max-width: 640px;
 }
 #pfaq-{{ section.id }} .pfaq-v2-footer p { margin: 0; }
-#pfaq-{{ section.id }} .pfaq-v2-footer em { font-style: normal; color: {{ section.settings.accent_color | default: '#672666' }}; font-weight: 600; }
+#pfaq-{{ section.id }} .pfaq-v2-footer em { font-style: normal; color: #171512; font-weight: 700; }
 
 @media (max-width: 749px) {
   #pfaq-{{ section.id }} .pfaq-v2-container { padding: {{ section.settings.padding_top | default: 64 | times: 0.6 | round }}px 16px {{ section.settings.padding_bottom | default: 64 | times: 0.6 | round }}px; }
@@ -112,7 +112,8 @@
 {% assign faqs = product.metafields.custom.faqs.value %}
 
 {% if faqs != blank %}
-<section id="pfaq-{{ section.id }}" class="pfaq-v2-section">
+{%- assign pfaq_base = product.metafields.custom.base_colour -%}
+<section id="pfaq-{{ section.id }}"{% if pfaq_base != blank %} style="--base-colour: {{ pfaq_base }};"{% endif %} class="pfaq-v2-section">
   <div class="pfaq-v2-container">
     {%- if section.settings.eyebrow != blank -%}
       <p class="pfaq-v2-eyebrow">{{ section.settings.eyebrow }}</p>

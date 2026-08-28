@@ -244,6 +244,12 @@
     height: 20px;
   }
 
+  /* Chevrons follow the product's base colour; purple stays the fallback. */
+  #custom_tabs_product.custom-tabs-product-new ul li .icon-tab-plus path,
+  #custom_tabs_product.custom-tabs-product-new ul li .icon-tab-minus path {
+    stroke: var(--base-colour, #672666);
+  }
+
   /* Plus icon: show when collapsed (checked), hide when expanded */
   #custom_tabs_product.custom-tabs-product-new ul li .icon-tab-plus {
     display: block;

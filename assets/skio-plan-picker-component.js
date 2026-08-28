@@ -159,7 +159,7 @@ export class SkioPlanPicker extends LitElement {
         line-height: 1;
         margin-left: auto;
         vertical-align: middle;
-        font-weight: 500;
+        font-weight: 700;
       }
       .subs-group-container.group-container--selected .skio-price {
         color: #006516;
@@ -461,7 +461,7 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .group-label .skio-price {
         color: #000000;
-        font-size: 16px;
+        font-size: 19px;
         font-weight: 400;
         line-height: 150%;
       }
@@ -548,7 +548,7 @@ export class SkioPlanPicker extends LitElement {
         margin-left: auto;
       }
       .skio-sub-top__title {
-        font-size: 15px;
+        font-size: 17px;
         font-weight: 400;
         color: #000;
         line-height: 1.4;
@@ -719,8 +719,8 @@ export class SkioPlanPicker extends LitElement {
         margin-bottom: 0;
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .group-title {
-        font-size: 20px;
-        font-weight: 400;
+        font-size: 17px;
+        font-weight: 700;
         color: #000;
         line-height: 1.4;
         letter-spacing: normal;
@@ -764,12 +764,33 @@ export class SkioPlanPicker extends LitElement {
           font-size: 12px;
           padding: 5px 10px;
         }
+
+        /* --- Option typography, normalised -------------------------------
+           The subscribe and one-time rows are built from different markup
+           (skio-sub-top__* vs group-title / skio-price) and had drifted
+           apart: title 15px vs 20px, price 17px/700 vs 16px/400. Worse, the
+           subscribe title and price flipped 700 -> 400 on deselect, so
+           toggling changed glyph widths and the box visibly shifted. Both
+           rows now share one scale at a constant weight; selection is
+           signalled by the border, radio and background instead. */
+        .skio-sub-top__title,
+        .group-title {
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+        .skio-sub-top__price,
+        .group-container--last .skio-price {
+          font-size: 19px;
+          font-weight: 700;
+          line-height: 1.2;
+        }
         .skio-sub-top__subtitle {
           font-size: 14px;
           text-align:left;
         }
         .skio-sub-top__price {
-          font-size: 17px;
+          font-size: 19px;
         }
         .skio-sub-top__compare {
           font-size: 14px;

@@ -785,6 +785,20 @@ export class SkioPlanPicker extends LitElement {
           font-weight: 700;
           line-height: 1.2;
         }
+
+        /* Radio alignment. .skio-sub-top is a centred flex row, so the radio
+           was centring against the whole two-line block (title + subtitle,
+           62px) while the title occupies only the top 42px -- leaving it 10px
+           low. Pinning it to the top and offsetting by half the title row
+           lines it up with the title instead. The one-time row needs none of
+           this: its topline is single-line and already measures 0px off. */
+        .skio-sub-top {
+          align-items: flex-start;
+        }
+        .subs-group-container .skio-radio__container {
+          align-self: flex-start;
+          margin-top: 11px;
+        }
         .skio-sub-top__subtitle {
           font-size: 14px;
           text-align:left;

@@ -180,21 +180,22 @@
                                 {%- assign sale_total = item.line_price | default: 0 -%}
 
                                 <div class="cart-item item {{ item.product.handle }}">
-                                    <a href="{{ item.product.url }}" class="cart-item__image">
+                                    {%- comment -%} Not a link: clicking the card used to bounce shoppers out of checkout. {%- endcomment -%}
+                                    <div class="cart-item__image">
                                         {%- if item.variant.image -%}
                                             {%- assign variantImg = item.variant.image -%}
                                         {%- else -%}
                                             {%- assign variantImg = item.product.featured_image -%}
                                         {%- endif -%}
                                         <img src="{{ variantImg | image_url: width: 240 }}" srcset="{{ variantImg | image_url: width: 240 }} 1x, {{ variantImg | image_url: width: 360 }} 1.5x, {{ variantImg | image_url: width: 480 }} 2x" width="120" height="120" loading="lazy" alt="{{ item.product.title | escape }}" decoding="async">
-                                    </a>
+                                    </div>
 
                                     <div class="cart-item__main">
                                         <div class="cart-item__info">
-                                            <a href="{{ item.url }}" class="cart-item__title-link">
+                                            <div class="cart-item__title-link">
                                                 {%- assign titlePart = item.product.title | split: ' - ' -%}
                                                 <h3 class="cart-item__name">{{ titlePart[0] }}</h3>
-                                            </a>
+                                            </div>
                                             {%- if item.variant.title != "Default Title" -%}
                                                 <p class="cart-item__variant">{{ item.variant.title }}</p>
                                             {%- endif -%}
@@ -257,10 +258,52 @@
                             {%- endfor -%}
                         </div>
 
+                        {%- comment -%}
+
+                          Cart-wide "was" price, using the same rule as each line item above:
+
+                          compare-at x qty where one exists, else the original line price. Savings
+
+                          are measured against items_subtotal_price, so line-level discounts count
+
+                          as well as compare-at pricing.
+
+                        {%- endcomment -%}
+
+                        {%- assign cart_full_total = 0 -%}
+
+                        {%- for c_item in cart.items -%}
+
+                          {%- assign c_compare = c_item.variant.compare_at_price | default: 0 -%}
+
+                          {%- assign c_qty = c_item.quantity | default: 1 -%}
+
+                          {%- if c_compare > 0 -%}
+
+                            {%- assign c_full = c_compare | times: c_qty -%}
+
+                          {%- else -%}
+
+                            {%- assign c_full = c_item.original_line_price -%}
+
+                          {%- endif -%}
+
+                          {%- assign cart_full_total = cart_full_total | plus: c_full -%}
+
+                        {%- endfor -%}
+
+                        {%- assign cart_savings = cart_full_total | minus: cart.items_subtotal_price -%}
+
                         <div class="cart-checkout">
                             <div class="cart-checkout__row subtotal">
                                 <span class="cart-checkout__label">Subtotal</span>
-                                <span class="cart-checkout__value">{{ cart.items_subtotal_price | money }}</span>
+                                <span class="cart-checkout__value">
+                                    {%- if cart_savings > 0 -%}
+                                        <span class="cart-savings-pill">Save {{ cart_savings | money }}</span>
+                                        <s class="cart-checkout__was">{{ cart_full_total | money }}</s>
+                                    {%- endif -%}
+                                    {{ cart.items_subtotal_price | money }}
+                                </span>
                             </div>
 
                             {%- if cart.cart_level_discount_applications.size > 0 -%}

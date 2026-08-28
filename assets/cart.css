@@ -487,6 +487,29 @@ main:has(#cart.cart-page) {
     white-space: nowrap;
 }
 
+/* "Was" price and savings pill on the subtotal row. Pill uses the cream
+   base with black text; the extra top padding optically centres the caps. */
+.cart-checkout__was {
+    color: #a9a3b2;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-right: 8px;
+}
+
+.cart-savings-pill {
+    display: inline-flex;
+    align-items: center;
+    background: #F8EFE4;
+    color: #141414;
+    border-radius: 100px;
+    padding: 6px 11px 5px;
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 /* Savings row — only shows when a discount code is applied */
 .cart-checkout__row.savings {
     align-items: center;

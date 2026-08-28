@@ -568,7 +568,7 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-save-pill {
         display: inline-block;
-        background: #5d215f;
+        background: var(--base-colour, #5d215f);
         color: #fff;
         font-size: 16px;
         font-weight: 700;

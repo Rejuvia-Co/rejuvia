@@ -42,11 +42,11 @@
   justify-content: center;
   padding: 14px 28px;
   background: #ffffff;
-  color: #672666;
+  color: var(--base-colour, #672666);
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
-  border: 1.5px solid #672666;
+  border: 1.5px solid var(--base-colour, #672666);
   border-radius: 100px;
   cursor: pointer;
   text-decoration: none;
@@ -54,8 +54,9 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 
+/* Hover fills with the product's base colour, text goes white. */
 .key-ingredients-v2__btn:hover {
-  background: #672666;
+  background: var(--base-colour, #672666);
   color: #ffffff;
 }
 

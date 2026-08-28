@@ -286,7 +286,6 @@
 
 {% assign puij_bg = puij_meta.background | default: '#eaeaf7' %}
 {% assign puij_accent = puij_meta.accent_colour | default: product.metafields.custom.base_colour | default: '#672666' %}
-{% assign puij_button_url = puij_meta.button_url | default: section.settings.link_url %}
 
 <style>
   .puij-v2-wrapper--{{ section.id }} {
@@ -305,9 +304,6 @@
     {%- comment -%} Header {%- endcomment -%}
     <div class="puij-v2-header">
         <div class="puij-v2-heading">{{ section.settings.heading }}</div>
-        {% if section.settings.link_text != blank %}
-            <button type="button" class="puij-v2-link" data-open-supplement-popup>{{ section.settings.link_text }}</button>
-        {% endif %}
     </div>
 
     {%- comment -%} Content {%- endcomment -%}
@@ -413,17 +409,6 @@
       "id": "heading",
       "label": "Heading",
       "default": "<p>Use in <em>just 30 seconds</em></p>"
-    },
-    {
-      "type": "text",
-      "id": "link_text",
-      "label": "Link text",
-      "default": "View Supplement Label"
-    },
-    {
-      "type": "url",
-      "id": "link_url",
-      "label": "Link URL"
     }
   ],
   "blocks": [

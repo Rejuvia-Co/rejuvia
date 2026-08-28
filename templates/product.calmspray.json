@@ -16,7 +16,7 @@
           "type": "okendo-reviews",
           "settings": {
             "reviews_anchor": "shopify-product-reviews",
-            "star_color": "#EAC78B",
+            "star_color": "#eac78b",
             "empty_star_color": "#dddddd",
             "margin_top": 0,
             "margin_bottom": 5
@@ -294,7 +294,8 @@
         "rejuvia_logo": "shopify://shop_images/Logo.svg",
         "btn_text": "Try Rejuvia Risk-Free",
         "btn_url": "",
-        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee",
+        "icon_size": "90"
       }
     },
     "guarantees_v2_1": {
@@ -327,7 +328,8 @@
       "name": "Guarantees V2",
       "settings": {
         "bg_color": "#F8EFE4",
-        "icon_color": "#672666"
+        "icon_color": "#672666",
+        "anchor_id": ""
       }
     },
     "okendo_reviews_app_1": {
@@ -350,7 +352,7 @@
       "type": "product-faqs-v2",
       "name": "Product FAQs V2",
       "settings": {
-        "heading": "Frequently asked questions",
+        "heading": "Frequently Asked Questions",
         "description": "<p>Have a question you don't see? Email us at <em>hello@rejuvia.co</em>.</p>",
         "footer_text": "",
         "eyebrow": "",
@@ -373,7 +375,8 @@
     "feature_products_v2_1": {
       "type": "feature-products-v2",
       "settings": {
-        "heading": ""
+        "heading": "",
+        "product_limit": "3"
       }
     },
     "product_sticky_cta_v2_1": {

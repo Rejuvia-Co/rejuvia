@@ -706,7 +706,7 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-includes__item-price--free {
         font-weight: 600;
-        color: #018c0b;
+        color: var(--base-colour, #018c0b);
       }
 
       /* One-time purchase card — simpler style */

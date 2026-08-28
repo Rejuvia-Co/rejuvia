@@ -2849,7 +2849,8 @@
           "button_text": "Try Rejuvia Risk-Free",
           "button_link": "#offer",
           "sub_text": "90-Day Money Back Guarantee",
-          "bg_color": "#eaeaf7"
+          "bg_color": "#eaeaf7",
+          "scroll_target": ".product-widget-container"
         }
       }
     },

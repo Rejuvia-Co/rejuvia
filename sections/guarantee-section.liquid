@@ -82,7 +82,7 @@
 
     <div class="gs__cta">
       {%- if section.settings.button_text != blank -%}
-        <a class="gs__btn" href="{{ section.settings.button_link | default: '#offer' }}">{{ section.settings.button_text }}</a>
+        <a class="gs__btn" href="{{ section.settings.button_link | default: '#offer' }}" data-gs-scroll="{{ section.settings.scroll_target }}">{{ section.settings.button_text }}</a>
       {%- endif -%}
       {%- if section.settings.sub_text != blank or section.settings.sub_icon != blank -%}
         <div class="gs__guarantee">
@@ -98,6 +98,28 @@
   </div>
 </section>
 
+
+<script>
+(function () {
+  /* Scroll to a target on the same page instead of following the href. The
+     href stays as the fallback, so pages with a real #offer anchor (the BOGO
+     family) are unaffected: a blank selector returns early. */
+  var sec = document.getElementById('shopify-section-{{ section.id }}');
+  if (!sec) return;
+  var btn = sec.querySelector('[data-gs-scroll]');
+  if (!btn) return;
+  btn.addEventListener('click', function (e) {
+    var sel = btn.getAttribute('data-gs-scroll');
+    if (!sel) return;
+    var target = document.querySelector(sel);
+    if (!target) return;
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+})();
+</script>
+
 {% schema %}
 {
   "name": "Guarantee Section",
@@ -109,6 +131,7 @@
     { "type": "textarea", "id": "description", "label": "Description", "default": "Don't feel the difference within 60 days? We'll refund you. No questions asked." },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
     { "type": "url", "id": "button_link", "label": "Button link", "info": "Tip: link to the offer section, e.g. #offer" },
+    { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "info": "Overrides the link and smooth-scrolls to this element, e.g. .product-widget-container. Leave blank to use the link." },
     { "type": "image_picker", "id": "sub_icon", "label": "Sub icon (below button)", "info": "Optional. Defaults to a gold checkmark." },
     { "type": "text", "id": "sub_text", "label": "Sub text (below button)", "default": "60-Day Money-Back Guarantee" },
     { "type": "header", "content": "Colors" },

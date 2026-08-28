@@ -83,7 +83,11 @@
   /* Exactly five thumbs visible; the rest scroll horizontally. */
   .pgal__thumbs {
     display: flex; gap: var(--pgal-gap);
-    overflow-x: auto; scroll-behavior: smooth;
+    /* No scroll-behavior: smooth. Animating the strip means a fast run of
+       arrow clicks keeps restarting the animation, so the active thumb lags
+       behind the main image. An instant jump reads as snappier and is what
+       the arrows need. Finger-scrolling the strip is unaffected. */
+    overflow-x: auto;
     scrollbar-width: none; -ms-overflow-style: none;
     max-width: min(100%, calc(var(--pgal-thumb) * 5 + var(--pgal-gap) * 4));
   }
@@ -190,21 +194,52 @@
   var dots   = [].slice.call(root.querySelectorAll('[data-pgal-dot]'));
   if (mains.length < 2) return;
 
+  var strip = root.querySelector('.pgal__thumbs');
   var idx = 0;
+
+  /* Scroll the strip by hand rather than with scrollIntoView. Two reasons:
+     scrollIntoView did not move this horizontal container at all (arrowing
+     past the fifth thumb left the active one highlighted off-screen), and it
+     can also scroll the page vertically as a side effect. This only ever
+     touches strip.scrollLeft. */
+  function keepThumbVisible(t) {
+    if (!t || !strip) return;
+    /* Rect deltas, not offsetLeft: .pgal__thumbs is position:static, so a
+       thumb's offsetParent is the body and offsetLeft measures from the page
+       edge, not from the strip's scroll origin. Rects are relative to the
+       viewport for both, so the difference is always the right nudge. */
+    var tr = t.getBoundingClientRect();
+    var sr = strip.getBoundingClientRect();
+    if (tr.left < sr.left) strip.scrollLeft -= (sr.left - tr.left);
+    else if (tr.right > sr.right) strip.scrollLeft += (tr.right - sr.right);
+  }
 
   function setImg(i) {
     idx = (i + mains.length) % mains.length;
     mains.forEach(function (img, j) { img.hidden = j !== idx; });
     thumbs.forEach(function (t, j) { t.classList.toggle('is-active', j === idx); });
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
-    var t = thumbs[idx];
-    /* Keep the active thumb in view when only five of them fit. */
-    if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    keepThumbVisible(thumbs[idx]);
   }
 
   thumbs.forEach(function (t, i) {
     t.addEventListener('click', function () { setImg(i); });
   });
+
+  /* Snappiness: images 2+ ship as loading="lazy" so they never compete with
+     the LCP image. But a lazy image inside display:none is never fetched at
+     all, so the first click on each thumb would wait on a cold request.
+     Once `load` has fired the LCP is settled, so flip them to eager and let
+     them download in the background, then decode them off the main thread.
+     By the time anyone clicks a thumb the image is already painted. */
+  function warmImages() {
+    mains.forEach(function (img) {
+      if (img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+      if (img.decode) { img.decode().catch(function () {}); }
+    });
+  }
+  if (document.readyState === 'complete') warmImages();
+  else window.addEventListener('load', warmImages);
 
   var prev = root.querySelector('[data-pgal-prev]');
   var next = root.querySelector('[data-pgal-next]');

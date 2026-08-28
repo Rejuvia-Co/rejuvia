@@ -217,22 +217,61 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="ob__gallery">
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      {%- comment -%}
+
+        Drop the variant images (the 2-pack / 3-pack shots) from the carousel --
+
+        they already appear in the variant selector. The product's own featured
+
+        image is kept even though the base variant points at it too: it is
+
+        position 1, the hero. Same rule as the product page gallery.
+
+      {%- endcomment -%}
+
+      {%- assign hero_img_id = gallery_product.featured_image.id -%}
+
+      {%- assign variant_img_ids = ',' -%}
+
+      {%- for v in gallery_product.variants -%}
+
+        {%- if v.featured_image != blank -%}
+
+          {%- unless v.featured_image.id == hero_img_id -%}
+
+            {%- assign variant_img_ids = variant_img_ids | append: v.featured_image.id | append: ',' -%}
+
+          {%- endunless -%}
+
+        {%- endif -%}
+
+      {%- endfor -%}
+
+      {%- assign gal_count = 0 -%}
+
+      {%- for img in gallery_product.images -%}
+
+        {%- capture ikey -%},{{ img.id }},{%- endcapture -%}
+
+        {%- unless variant_img_ids contains ikey -%}{%- assign gal_count = gal_count | plus: 1 -%}{%- endunless -%}
+
+      {%- endfor -%}
       <div class="ob__gallery-inner">
       <div class="ob__main">
         {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
-      {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
+      {%- if gallery_product != blank and gal_count > 1 -%}
         <div class="ob__thumbs-row">
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
-            {%- for img in gallery_product.images -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
+            {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
         <div class="ob__dots" aria-hidden="true">
-          {%- for img in gallery_product.images -%}<span class="ob__dot{% if img == main_image %} is-active{% endif %}" data-ob-dot></span>{%- endfor -%}
+          {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}<span class="ob__dot{% if img == main_image %} is-active{% endif %}" data-ob-dot></span>{%- endunless -%}{%- endfor -%}
         </div>
       {%- endif -%}
       </div>

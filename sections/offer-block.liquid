@@ -55,13 +55,22 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* Gallery */
 .ob__main { position: relative; width: 100%; display: grid; place-items: center; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
 .ob__main img { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
-.ob__thumbs-row { display: flex; align-items: center; gap: 10px; }
+/* Thumb sizing lives here so the strip can cap itself to a whole number
+   of thumbs. Centred so the arrows sit beside them, as on the product
+   page gallery. */
+.ob__thumbs-row { --ob-thumb: 96px; --ob-tgap: 10px; display: flex; align-items: center; justify-content: center; gap: var(--ob-tgap); }
 .ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
 .ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
 .ob__dot.is-active { background: var(--ob-accent); }
 .ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ob-accent); background: #fff; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: background .15s; }
 .ob__arrow:hover { background: #f6eef6; }
-.ob__thumbs { display: flex; gap: 10px; overflow-x: auto; flex: 1; scrollbar-width: none; -ms-overflow-style: none; }
+/* flex:1 made the strip fill whatever space was left -- an arbitrary
+   476px on desktop -- so the 5th thumb rendered sliced in half. Capping
+   to exactly 4 thumbs plus their gaps means every thumb shown is whole;
+   the rest are still reachable by scrolling. */
+.ob__thumbs { display: flex; gap: var(--ob-tgap); overflow-x: auto; flex: 0 1 auto; min-width: 0;
+  max-width: min(100%, calc(var(--ob-thumb) * 4 + var(--ob-tgap) * 3));
+  scrollbar-width: none; -ms-overflow-style: none; }
 .ob__thumbs::-webkit-scrollbar { display: none; }
 .ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; }
 .ob__thumb.is-active { border: 2px solid var(--ob-accent); }
@@ -156,6 +165,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
      the aspect ratio. */
   .ob__main img { width: 100%; height: auto; max-height: none; }
   .ob__arrow { display: none; }
+  .ob__thumbs-row { --ob-thumb: 62px; }
   .ob__thumb { width: 62px; height: 62px; border-radius: 9px; }
   .ob__tiers { gap: 18px; margin-top: 0; }
   .ob__tier { gap: 18px; padding: 16px 16px 16px 14px; border: 1.6px solid var(--ob-border-m); }

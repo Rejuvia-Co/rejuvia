@@ -3,9 +3,13 @@
   Requires {% render 'supplement-label-popup', product: <product> %} on the same page.
   Param: product — the product whose custom.supplement_label metaobject drives the popup.
   Renders nothing if that metafield is empty.
+  Colour: follows the product's custom.base_colour where one is set. Sections
+  not tied to a product (or products with no base_colour) keep the purple,
+  which is the var() fallback.
 {%- endcomment -%}
 {%- if product.metafields.custom.supplement_label != blank -%}
-  <div class="supplement-label-cta">
+  {%- assign sl_base = product.metafields.custom.base_colour -%}
+  <div class="supplement-label-cta"{% if sl_base != blank %} style="--sl-btn-colour: {{ sl_base }};"{% endif %}>
     <a class="supplement-label-btn" href="#" data-open-supplement-popup>View Supplement Facts</a>
   </div>
   {%- unless supplement_label_btn_css -%}{%- assign supplement_label_btn_css = true -%}
@@ -19,20 +23,20 @@
       align-items: center;
       justify-content: center;
       background: #ffffff;
-      color: #672666;
+      color: var(--sl-btn-colour, #672666);
       font-size: 16px;
       font-weight: 500;
       line-height: 1;
       letter-spacing: 0;
       text-transform: none;
       padding: 14px 28px;
-      border: 1.5px solid #672666;
+      border: 1.5px solid var(--sl-btn-colour, #672666);
       border-radius: 100px;
       text-decoration: none;
       cursor: pointer;
       transition: background .15s ease, color .15s ease;
     }
-    .supplement-label-btn:hover { background: #672666; color: #ffffff; }
+        .supplement-label-btn:hover { background: var(--sl-btn-colour, #672666); color: #ffffff; }
     .supplement-label-btn:active { transform: scale(0.98); }
     @media (max-width: 749px) {
       .supplement-label-btn { padding: 13px 24px; font-size: 15px; }

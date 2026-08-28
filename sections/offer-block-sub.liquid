@@ -43,7 +43,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   box-sizing: border-box;
 }
 
-.obs__wrap { max-width: 1120px; margin: 0 auto; padding: 36px; display: grid; grid-template-columns: 430px minmax(0, 1fr); grid-template-areas: "gallery header" "gallery buybox"; column-gap: 44px; row-gap: 0; align-items: start; }
+/* Gallery column matches the product page (500px at a 1280 viewport, the
+   common desktop case; the product page is fluid, this stays capped). The
+   wrap grows 1120 -> 1190 by the same 70px so the buy-box column keeps its
+   574px instead of being squeezed. */
+.obs__wrap { max-width: 1190px; margin: 0 auto; padding: 36px; display: grid; grid-template-columns: {{ section.settings.gallery_width | default: 500 }}px minmax(0, 1fr); grid-template-areas: "gallery header" "gallery buybox"; column-gap: 44px; row-gap: 0; align-items: start; }
 .obs__header { grid-area: header; min-width: 0; }
 .obs__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
 .obs__buybox { grid-area: buybox; min-width: 0; }
@@ -227,7 +231,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
               <img data-obs-main{% unless forloop.first %} hidden{% endunless %}
                    src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
                    srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
-                   sizes="(max-width: 900px) 92vw, 430px"
+                   sizes="(max-width: 900px) 92vw, {{ section.settings.gallery_width | default: 500 }}px"
                    alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
             {%- endif -%}
@@ -568,6 +572,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         }
       ],
       "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "gallery_width",
+      "min": 360,
+      "max": 640,
+      "step": 5,
+      "unit": "px",
+      "label": "Gallery column width (desktop)",
+      "default": 500
     },
     {
       "type": "range",

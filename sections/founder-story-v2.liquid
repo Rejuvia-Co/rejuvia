@@ -10,7 +10,7 @@
   background: {{ section.settings.section_bg | default: '#672666' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.fs-{{ section.id }} .fs__wrap { max-width: 1200px; margin: 0 auto; padding: 48px 40px; }
+.fs-{{ section.id }} .fs__wrap { max-width: 1260px; margin: 0 auto; padding: 48px 32px; }
 .fs-{{ section.id }} .fs__band {
   background: {{ section.settings.card_bg | default: '#ffffff' }};
   border-radius: 20px;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: 60px;
-  padding: 64px 72px;
+  padding: 64px 60px;
 }
 
 /* Polaroid */
@@ -40,7 +40,7 @@
 .fs-{{ section.id }} .fs__quote { font-family: Georgia, serif; font-size: 76px; line-height: 0.5; display: block; height: 40px; color: var(--fs-mauve); }
 .fs-{{ section.id }} .fs__headline--m { display: none; }
 .fs-{{ section.id }} .fs__headline { font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; margin: 0 0 18px; }
-.fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 }}px; line-height: 1.62; color: var(--fs-body); max-width: 620px; margin: 0 0 16px; }
+.fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 }}px; line-height: 1.62; color: var(--fs-body); max-width: 700px; margin: 0 0 16px; }
 .fs-{{ section.id }} .fs__p:last-of-type { margin-bottom: 28px; }
 
 /* Stats */

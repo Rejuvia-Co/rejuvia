@@ -51,7 +51,7 @@
 
       <div class="bogo-content__cta">
         {%- if section.settings.cta_text != blank -%}
-          <a class="bogo-content__btn" href="{{ section.settings.cta_link | default: '#offer' }}">{{ section.settings.cta_text }}</a>
+          <a class="bogo-content__btn" href="{{ section.settings.cta_link | default: '#offer' }}" data-cta-scroll="{{ section.settings.scroll_target }}">{{ section.settings.cta_text }}</a>
         {%- endif -%}
         {%- if section.settings.show_guarantee and section.settings.guarantee_text != blank -%}
           <span class="bogo-content__guarantee">
@@ -64,6 +64,28 @@
 
   </div>
 </section>
+
+<script>
+(function () {
+  /* Scroll to a target on the same page instead of following the href.
+     Same mechanism closing-cta uses. The href stays as the fallback, so
+     nothing changes on pages where scroll_target is blank or the selector
+     matches nothing (e.g. the BOGO pages, which use the #offer anchor). */
+  var sec = document.getElementById('shopify-section-{{ section.id }}');
+  if (!sec) return;
+  var btn = sec.querySelector('[data-cta-scroll]');
+  if (!btn) return;
+  btn.addEventListener('click', function (e) {
+    var sel = btn.getAttribute('data-cta-scroll');
+    if (!sel) return;
+    var target = document.querySelector(sel);
+    if (!target) return;
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+})();
+</script>
 
 <style>
   .bogo-content {
@@ -214,6 +236,7 @@
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
     { "type": "url", "id": "cta_link", "label": "Button link", "info": "Defaults to #offer (scrolls to the buybox) if left blank." },
+    { "type": "text", "id": "scroll_target", "label": "Scroll to (CSS selector)", "info": "Overrides the link and smooth-scrolls to this element, e.g. .product-widget-container. Leave blank to use the link." },
     { "type": "checkbox", "id": "show_guarantee", "label": "Show guarantee line", "default": true },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money-Back Guarantee" },
     { "type": "header", "content": "Colors" },

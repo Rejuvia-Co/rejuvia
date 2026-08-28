@@ -2843,7 +2843,8 @@
           "show_guarantee": true,
           "guarantee_text": "90-Day Money-Back Guarantee",
           "bg_color": "#fafafa",
-          "accent_color": "#672666"
+          "accent_color": "#672666",
+          "scroll_target": ".product-widget-container"
         }
       },
       "guarantee_section_home": {
@@ -2871,7 +2872,6 @@
       "use_in_just_v2_JAWTbF",
       "alternatives_v2_aVf4gw",
       "founder_story_v2_jEGKjY",
-      "ticker_v2_j6gkXE",
       "product_widget_v2_m3pTph",
       "customer_testimonials_video_home",
       "faqs_v2_BYWkfd",

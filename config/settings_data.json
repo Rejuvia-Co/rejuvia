@@ -2205,50 +2205,6 @@
           "text": "<p><strong>EXCLUSIVE OFFER: </strong>20% OFF + FREE Shipping With All Subscriptions</p>"
         }
       },
-      "custom_reviews_v2_jMjAV7": {
-        "type": "custom-reviews-v2",
-        "blocks": {
-          "review_BDWrQx": {
-            "type": "review",
-            "settings": {
-              "avatar": "shopify://shop_images/hero-v2-testimonial-avatar.png",
-              "title": "Rejuvia puts me right to sleep each night",
-              "text": "I have been using Rejuvia sleep spray for at least a year now, if not two! It is a superb product. I use it every night and have introduced it to several friends. Highly, highly suggest giving it a try if you struggle to sleep, you have nothing to lose!",
-              "name": "Judi M.",
-              "stars": 5
-            }
-          },
-          "review_nzUpgW": {
-            "type": "review",
-            "settings": {
-              "avatar": "shopify://shop_images/Ellipse_218.png",
-              "title": "I’ve been sleeping great!",
-              "text": "So far this is spray legit!!! Been sleeping GREAT! Even my husband likes using Rejuvia on nights he gets home late from work, knocks him out fast and he is able to wake up without grogginess and the energy he had when he was in his 20s!! You've got a customer for LIFE!!",
-              "name": "Christy W.",
-              "stars": 5
-            }
-          },
-          "review_XcYbjj": {
-            "type": "review",
-            "settings": {
-              "avatar": "shopify://shop_images/Ellipse_218_1.png",
-              "title": "My friends use it too",
-              "text": "Tried a lot of different sleeping supplements… this works with 10-15 minutes every night! I’ve shared my extra bottles with a few of my friends and family… they couldn’t believe how great it worked for them and have order more themselves! Definitely worth a try if you have trouble sleeping..",
-              "name": "Theresa Y.",
-              "stars": 5
-            }
-          }
-        },
-        "block_order": [
-          "review_BDWrQx",
-          "review_nzUpgW",
-          "review_XcYbjj"
-        ],
-        "name": "Custom Reviews V2",
-        "settings": {
-          "heading": "<p>Over 6,500 real 5-star reviews from <em>300,000+</em> sleepers</p>"
-        }
-      },
       "faqs_v2_BYWkfd": {
         "type": "faq-center",
         "blocks": {
@@ -2646,60 +2602,6 @@
           "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
         }
       },
-      "closing_cta_aQ8yAn": {
-        "type": "closing-cta",
-        "blocks": {
-          "point_TtE798": {
-            "type": "point",
-            "settings": {
-              "text": "90-day money-back guarantee"
-            }
-          },
-          "point_DD9chB": {
-            "type": "point",
-            "settings": {
-              "text": "Clinically studied ingredients"
-            }
-          },
-          "point_Rn4rU8": {
-            "type": "point",
-            "settings": {
-              "text": "Made in the USA · cGMP certified"
-            }
-          }
-        },
-        "block_order": [
-          "point_TtE798",
-          "point_DD9chB",
-          "point_Rn4rU8"
-        ],
-        "name": "Closing CTA",
-        "settings": {
-          "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
-          "show_stars": true,
-          "stars_color": "#eac78b",
-          "rating_text": "<p>Trusted By 300,000+ Customers</p>",
-          "rating_color": "#000000",
-          "heading": "<p>Better sleep is now just a spray away</p>",
-          "heading_color": "#000000",
-          "button_text": "Try Rejuvia Risk-Free",
-          "scroll_target": ".product-widget-container",
-          "button_link": "#offer",
-          "show_guarantee": true,
-          "guarantee_text": "90-Day Money-Back Guarantee",
-          "rating_size": 18,
-          "heading_size": 40,
-          "checklist_size": 15,
-          "button_size": 18,
-          "rating_size_mobile": 16,
-          "heading_size_mobile": 28,
-          "checklist_size_mobile": 17,
-          "button_size_mobile": 18,
-          "frame_bg": "#e7e0f4",
-          "panel_bg": "#ffffff",
-          "checklist_color": "#141414"
-        }
-      },
       "founder_story_v2_jEGKjY": {
         "type": "founder-story-v2",
         "name": "Founder Story V2",
@@ -2998,11 +2900,6 @@
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
-        "settings": {}
-      },
-      "2786716548061469553": {
-        "type": "shopify://apps/applovin/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
-        "disabled": true,
         "settings": {}
       }
     }

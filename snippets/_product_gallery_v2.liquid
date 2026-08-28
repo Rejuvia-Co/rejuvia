@@ -111,15 +111,23 @@
   .pgal__dot.is-active { background: #672666; }
 
   @media screen and (max-width: 749px) {
-    .pgal { --pgal-thumb: 48px; }
-    /* Mobile unchanged: full-width image, five thumbs then scroll. */
-    .pgal__main { max-width: 100%; }
-    .pgal__thumbs { max-width: min(100%, calc(var(--pgal-thumb) * 5 + var(--pgal-gap) * 4)); }
+    /* Touch sizing. The old row was 5 thumbs @48 + 30px arrows = 348px inside
+       343px, i.e. already overflowing, which is why the arrows were awkward
+       to hit. Four visible thumbs buys the room: 4x54 + 3 gaps + 2x40 arrows
+       + 2 gaps = 336px, so the swatches grow 48 -> 54, the arrows 30 -> 40
+       (a proper touch target) and it still fits with room to spare. */
+    .pgal { --pgal-thumb: 54px; }
+    .pgal__main { max-width: 100%; border-radius: 14px; }
+    .pgal__thumbs { max-width: min(100%, calc(var(--pgal-thumb) * 4 + var(--pgal-gap) * 3)); }
+    .pgal__arrow { width: 40px; height: 40px; }
+    .pgal__arrow svg { width: 17px; height: 17px; }
+    .pgal__dots { gap: 6px; margin-top: 12px; }
+    .pgal__dot { width: 9px; height: 9px; }
+
     /* .product-wrap stacks here and its 30px row-gap becomes dead space
        between the gallery dots and the review bar. This stylesheet only
        ships on pages that render this snippet. */
     .product-wrap { row-gap: 16px; }
-    .pgal__main { border-radius: 14px; }
   }
 </style>
 

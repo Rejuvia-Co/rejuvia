@@ -2943,6 +2943,18 @@
           "bg_color": "#fafafa",
           "accent_color": "#672666"
         }
+      },
+      "guarantee_section_home": {
+        "type": "guarantee-section",
+        "settings": {
+          "icon": "shopify://shop_images/SealCheck.svg",
+          "title": "90-Day Money-Back Guarantee",
+          "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
+          "button_text": "Try Rejuvia Risk-Free",
+          "button_link": "#offer",
+          "sub_text": "90-Day Money Back Guarantee",
+          "bg_color": "#eaeaf7"
+        }
       }
     },
     "content_for_index": [
@@ -2961,6 +2973,7 @@
       "product_widget_v2_m3pTph",
       "customer_testimonials_video_home",
       "faqs_v2_BYWkfd",
+      "guarantee_section_home",
       "bogo_content_home",
       "sticky_cta_v2_wacfBP"
     ],

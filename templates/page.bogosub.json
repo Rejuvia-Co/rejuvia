@@ -21,25 +21,25 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/rejuvia_review.webp"
+            "image": "shopify://shop_images/sleep-spray-review.webp"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/rejuvia_sleep_spray_offer_benefits.webp"
+            "image": "shopify://shop_images/sleep-spray-benefits.webp"
           }
         },
         "slide_4": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/rejuvia_guarnatee.webp"
+            "image": "shopify://shop_images/sleep-spray-ingredients.webp"
           }
         },
         "slide_5": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/rejuvia_ingredients_0af620cb-8043-4223-bfd9-dd996bf60034.webp"
+            "image": "shopify://shop_images/sleep-spray-money-back-guarantee.webp"
           }
         },
         "tier_1": {
@@ -154,6 +154,7 @@
         "product": "sleep-spray-copy",
         "gallery_bg": "#f8efe4",
         "gallery_fit": "cover",
+        "gallery_width": 500,
         "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#fab851",
@@ -339,6 +340,7 @@
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
+        "scroll_target": "",
         "show_guarantee": true,
         "guarantee_text": "90-Day Money-Back Guarantee",
         "bg_color": "#fafafa",

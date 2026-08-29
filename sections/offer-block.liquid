@@ -62,6 +62,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
 .ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
 .ob__dot.is-active { background: var(--ob-accent); }
+/* BOGO ships-bar: equal spacing above/below (override the product-page --stack pull). */
+.ob__cta-wrap .ship-bar--stack { margin-top: -8px; margin-bottom: 14px; }
 .ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border: none; background: none; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: opacity .15s; }
 .ob__arrow:hover { opacity: .55; }
 /* flex:1 made the strip fill whatever space was left -- an arbitrary
@@ -169,8 +171,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
      product-page gallery (they were hidden). The thumb strip scrolls between them. */
   .ob__arrow { width: 40px; height: 40px; }
   .ob__arrow svg { width: 17px; height: 17px; }
-  .ob__thumbs-row { --ob-thumb: 62px; }
-  .ob__thumb { width: 62px; height: 62px; border-radius: 9px; }
+  .ob__thumbs-row { --ob-thumb: 56px; --ob-tgap: 8px; margin-left: -6px; margin-right: -6px; }
+  .ob__thumb { width: 56px; height: 56px; border-radius: 9px; }
   .ob__tiers { gap: 18px; margin-top: 0; }
   .ob__tier { gap: 18px; padding: 16px 16px 16px 14px; border: 1.6px solid var(--ob-border-m); }
   .ob__tier-body { gap: 10px; }

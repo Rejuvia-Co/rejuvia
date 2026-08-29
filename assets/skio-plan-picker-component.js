@@ -605,6 +605,13 @@ export class SkioPlanPicker extends LitElement {
       .group-container--selected .skio-sub-top__price {
         font-weight: 700;
       }
+        /* One-time row: bold title + price only while it is the selected
+           option, matching the subscribe row. The extra .group-label lifts the
+           specificity above the un-selected base rules. */
+        .skio-plan-picker .group-container--last.group-container--selected .group-label .group-title,
+        .skio-plan-picker .group-container--last.group-container--selected .group-label .skio-price {
+          font-weight: 700;
+        }
       .skio-sub-top__compare {
         font-size: 18px;
         font-weight: 400;
@@ -720,7 +727,7 @@ export class SkioPlanPicker extends LitElement {
       }
       .skio-plan-picker .group-container:not(.subs-group-container) .group-title {
         font-size: 17px;
-        font-weight: 700;
+        font-weight: 400;
         color: #000;
         line-height: 1.4;
         letter-spacing: normal;
@@ -776,13 +783,13 @@ export class SkioPlanPicker extends LitElement {
         .skio-sub-top__title,
         .group-title {
           font-size: 17px;
-          font-weight: 700;
+          font-weight: 400;
           line-height: 1.4;
         }
         .skio-sub-top__price,
         .group-container--last .skio-price {
           font-size: 19px;
-          font-weight: 700;
+          font-weight: 400;
           line-height: 1.2;
         }
 

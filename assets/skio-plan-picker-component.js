@@ -538,6 +538,15 @@ export class SkioPlanPicker extends LitElement {
         width: 100%;
         white-space: nowrap;
       }
+      /* Center the radio dot on the TITLE line, not the two-line block. The
+         title-wrap is ~26px tall (driven by the Save pill), so give the dot a
+         matching-height box and center within it. align-self:flex-start pins it
+         to the top of the row so it tracks the title, never the subtitle. */
+      .skio-sub-top > .skio-radio__container {
+        align-self: flex-start;
+        height: 26px;
+        align-items: center;
+      }
       .skio-sub-top__left {
         display: flex;
         flex-direction: column;
@@ -804,7 +813,6 @@ export class SkioPlanPicker extends LitElement {
         }
         .subs-group-container .skio-radio__container {
           align-self: flex-start;
-          margin-top: 11px;
         }
         .skio-sub-top__subtitle {
           font-size: 14px;
@@ -847,7 +855,7 @@ export class SkioPlanPicker extends LitElement {
         }
         .skio-sub-top {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
             width: 100%;
             white-space: nowrap;

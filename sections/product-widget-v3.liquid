@@ -307,6 +307,9 @@
                                     %}
                                 {% endif %} -->
 
+                                {%- comment -%} Ships-by / Fast US Shipping bar — above ATC, below plan options {%- endcomment -%}
+                                {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
+
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
                                         <span style="display:flex;align-items:center;justify-content:center;width:100%;">{{ block.settings.button_text }}</span>

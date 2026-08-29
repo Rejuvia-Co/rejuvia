@@ -46,8 +46,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__subtitle { font-size: {{ section.settings.subtitle_size | default: 16.5 }}px; line-height: 1.35; color: #4a4550; margin: 10px 0 0; }
 
 /* ---- Gallery ---- */
-.obd__main { position: relative; background: {{ section.settings.gallery_bg | default: '#ffffff' }}; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.obd__main img[data-obd-main] { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
+.obd__main { position: relative; max-width: 93.5%; margin: 0 auto; background: {{ section.settings.gallery_bg | default: '#F8EFE4' }}; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.obd__main img[data-obd-main] { width: 100%; height: 100%; object-fit: cover; display: block; }
 .obd__inc { position: absolute; left: 14px; top: 14px; width: 62px; height: 62px; object-fit: contain; pointer-events: none; }
 .obd__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .obd__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
@@ -55,12 +55,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obd__arrow svg { width: 14px; height: 14px; display: block; }
 .obd__thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; max-width: 100%; }
 .obd__thumbs::-webkit-scrollbar { display: none; }
-.obd__thumb { flex: none; width: 48px; height: 48px; border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
-.obd__thumb img { width: 84%; height: 84%; object-fit: contain; display: block; }
+.obd__thumb { flex: none; width: 70px; height: 70px; border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
+.obd__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .obd__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
 .obd__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
 .obd__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
 .obd__dot.is-active { background: #672666; }
+
+/* Mobile touch sizing — matches the Sleep Spray product-page gallery (40px arrows, 4 visible thumbs) */
+@media (max-width: 749px) {
+  .obd__thumb { width: 54px; height: 54px; }
+  .obd__thumbs { max-width: min(100%, calc(54px * 4 + 8px * 3)); }
+  .obd__arrow { width: 40px; height: 40px; }
+  .obd__arrow svg { width: 17px; height: 17px; }
+  .obd__dots { gap: 6px; margin-top: 12px; }
+  .obd__dot { width: 9px; height: 9px; }
+  .obd__main { border-radius: 14px; }
+}
 
 /* ---- Dark panel ---- */
 .obd__panel { background: #eaeaf7; border-radius: 20px; padding: 20px; margin-top: 18px; box-shadow: 0 6px 18px rgba(45,21,48,.06); }
@@ -148,7 +159,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obd__title { font-size: {{ section.settings.title_size_mobile | default: 31 }}px; line-height: 1.05; --ls: -1.1px; margin-top: 7px; }
   .obd__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 15.5 }}px; margin-top: 7px; }
   .obd__gallery { margin-top: 16px; }
-  .obd__main img[data-obd-main] { max-height: 320px; }
+  .obd__main { max-width: 100%; }
   .obd__left-inner { position: static; gap: 0; }
   .obd__fb--desktop { display: none; }
   .obd__fb--mobile { display: block; margin-top: 16px; }
@@ -406,7 +417,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     t.classList.add('is-active');
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
     if (incBadge) incBadge.style.display = idx === 0 ? '' : 'none';
-    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    var strip = sec.querySelector('.obd__thumbs');
+    if (strip && t) { var tr = t.getBoundingClientRect(), sr = strip.getBoundingClientRect(); if (tr.left < sr.left) strip.scrollLeft -= (sr.left - tr.left); else if (tr.right > sr.right) strip.scrollLeft += (tr.right - sr.right); }
   }
   thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
   var prev = sec.querySelector('[data-obd-prev]'), next = sec.querySelector('[data-obd-next]');

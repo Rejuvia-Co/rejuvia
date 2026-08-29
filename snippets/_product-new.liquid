@@ -1828,6 +1828,9 @@
           {% endcase %}
           {% endfor %} {% endcomment %}
 
+          {%- comment -%} Ships-by / Fast US Shipping bar — above ATC, below plan options {%- endcomment -%}
+          {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
+
           <div class="content-available">
             <button type="submit" name="add" class="btn custom_button_font">
               <span>Add to cart</span>

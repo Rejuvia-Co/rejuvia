@@ -62,17 +62,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
 .ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
 .ob__dot.is-active { background: var(--ob-accent); }
-.ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ob-accent); background: #fff; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: background .15s; }
-.ob__arrow:hover { background: #f6eef6; }
+.ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border: none; background: none; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: opacity .15s; }
+.ob__arrow:hover { opacity: .55; }
 /* flex:1 made the strip fill whatever space was left -- an arbitrary
    476px on desktop -- so the 5th thumb rendered sliced in half. Capping
    to exactly 4 thumbs plus their gaps means every thumb shown is whole;
    the rest are still reachable by scrolling. */
 .ob__thumbs { display: flex; gap: var(--ob-tgap); overflow-x: auto; flex: 0 1 auto; min-width: 0;
   max-width: min(100%, calc(var(--ob-thumb) * 4 + var(--ob-tgap) * 3));
+  scroll-snap-type: x mandatory;
   scrollbar-width: none; -ms-overflow-style: none; }
 .ob__thumbs::-webkit-scrollbar { display: none; }
-.ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; }
+.ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f5f1f9' }}; cursor: pointer; padding: 0; scroll-snap-align: start; }
 .ob__thumb.is-active { border: 2px solid var(--ob-accent); }
 .ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 

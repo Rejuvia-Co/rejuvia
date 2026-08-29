@@ -86,9 +86,9 @@
       font-weight: 700;
     }
     /* spacing modifier: when the bar sits directly above a CTA button */
-    .ship-bar--stack { margin-top: -16px; margin-bottom: 14px; }
-    /* TEMP: hidden on PRODUCT PAGES only — kept on BOGO / page templates / homepage */
-    body.templateProduct .ship-bar { display: none; }
+    /* Balanced spacing above/below when placed between the plan options and ATC
+       (product widgets + homepage). BOGO overrides this under .ob__cta-wrap. */
+    .ship-bar--stack { margin-top: -18px; margin-bottom: 14px; }
     @media (max-width: 749px) {
       .ship-bar {
         justify-content: space-between;

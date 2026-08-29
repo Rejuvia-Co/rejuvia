@@ -105,6 +105,12 @@
 
 .pi-v2-tab-image.is-active {
     display: flex;
+    animation: piV2Fade 0.22s ease;
+}
+
+@keyframes piV2Fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .pi-v2-tab-image.pi-v2-tab-image--full {
@@ -339,7 +345,9 @@
         height: auto;
     }
     .pi-v2-nav {
-        display: none;
+        display: flex;
+        justify-content: center;
+        margin-top: 4px;
     }
     .pi-v2-image-col {
         width: 100%;
@@ -465,7 +473,7 @@
                     </div>
                     <span class="pi-v2-tab-title">{{ block.settings.title }}</span>
                     <svg class="pi-v2-tab-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
-                        <path d="M5 8L10 13L15 8" stroke="#E15046" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 8L10 13L15 8" stroke="#672666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
                 <div class="pi-v2-tab-content">
@@ -525,6 +533,25 @@
 
     if (prev) prev.addEventListener('click', function() { activate(current - 1); });
     if (next) next.addEventListener('click', function() { activate(current + 1); });
+
+    // Horizontal-dominant swipe on the image (matches the product gallery carousel).
+    // Vertical page scrolling is never hijacked.
+    var swipeArea = section.querySelector('.pi-v2-image-area');
+    if (swipeArea) {
+        var sx = null, sy = null;
+        swipeArea.addEventListener('touchstart', function(e) {
+            var t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+        }, { passive: true });
+        swipeArea.addEventListener('touchend', function(e) {
+            if (sx === null) return;
+            var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                activate(dx < 0 ? current + 1 : current - 1);
+            }
+            sx = null; sy = null;
+        }, { passive: true });
+    }
+
     updateNav();
 })();
 </script>

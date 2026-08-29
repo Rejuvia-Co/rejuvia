@@ -40,7 +40,7 @@
   {%- assign shipping_bar_css_loaded = true -%}
   <style>
     .ship-bar {
-      display: none; /* TEMP hidden — set back to flex to re-enable */
+      display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
@@ -87,6 +87,8 @@
     }
     /* spacing modifier: when the bar sits directly above a CTA button */
     .ship-bar--stack { margin-top: -16px; margin-bottom: 14px; }
+    /* TEMP: hidden on PRODUCT PAGES only — kept on BOGO / page templates / homepage */
+    body.templateProduct .ship-bar { display: none; }
     @media (max-width: 749px) {
       .ship-bar {
         justify-content: space-between;

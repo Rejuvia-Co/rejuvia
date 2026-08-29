@@ -1876,6 +1876,15 @@
           {% endcomment %}
         </div>
 
+        {%- comment -%} Payment icons — same as BOGO, between ATC and the accordions {%- endcomment -%}
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          {%- assign hidden_pay = 'discover,jcb,diners_club' | split: ',' -%}
+          <div class="pw3__payments">
+            {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+          </div>
+          <style>.pw3__payments{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}.pw3__payments svg{height:26px;width:auto}</style>
+        {%- endif -%}
+
       </form>
       {%- render 'social_sharing' -%}
 

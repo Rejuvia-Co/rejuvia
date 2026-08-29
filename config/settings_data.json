@@ -2852,6 +2852,55 @@
           "bg_color": "#eaeaf7",
           "scroll_target": ".product-widget-container"
         }
+      },
+      "how_to_use_steps_home": {
+        "type": "how-to-use-steps",
+        "blocks": {
+          "step_FXirf6": {
+            "type": "step",
+            "settings": {
+              "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+              "backdrop_color": "#f7edec",
+              "label": "STEP 1",
+              "text": "<p>Spray Rejuvia 6–8 times under your tongue or inside your cheek</p>"
+            }
+          },
+          "step_i7qPND": {
+            "type": "step",
+            "settings": {
+              "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
+              "backdrop_color": "#f5f0f0",
+              "label": "STEP 2",
+              "text": "<p>Hold Rejuvia  in your mouth for at least 5–10 seconds</p>"
+            }
+          },
+          "step_AyzCTT": {
+            "type": "step",
+            "settings": {
+              "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
+              "backdrop_color": "#f7edec",
+              "label": "STEP 3",
+              "text": "<p>Swallow and get ready to drift off to a deep, peaceful sleep</p>"
+            }
+          }
+        },
+        "block_order": [
+          "step_FXirf6",
+          "step_i7qPND",
+          "step_AyzCTT"
+        ],
+        "name": "How To Use (Steps)",
+        "settings": {
+          "background_color": "#ffffff",
+          "heading": "How To Use Rejuvia",
+          "subheading": "Use 15–20 minutes before bed for the best results",
+          "heading_size": 36,
+          "heading_size_mobile": 26,
+          "subheading_size": 18,
+          "subheading_size_mobile": 16,
+          "step_text_size": 18,
+          "step_text_size_mobile": 16
+        }
       }
     },
     "content_for_index": [
@@ -2863,7 +2912,7 @@
       "image_text_v2_EEfUyt",
       "real_stories_v2_CKGqJy",
       "what_makes_different_v2_rRVmVL",
-      "use_in_just_v2_JAWTbF",
+      "how_to_use_steps_home",
       "alternatives_v2_aVf4gw",
       "founder_story_v2_jEGKjY",
       "product_widget_v2_m3pTph",

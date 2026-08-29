@@ -21,3 +21,16 @@ var glide2 = new Glide("#glide-testimonials", {
 });
 
 glide2.mount();
+
+/* Snappy dots: Glide flips the active bullet on move.after (transition end),
+   which lands ~1s after the click here. Update it on the early 'run' event
+   instead so the dot moves with the slide, not a second behind it. */
+glide2.on('run', function () {
+  var root = document.getElementById('glide-testimonials');
+  if (!root) return;
+  var scope = root.closest('[id^="shopify-section"]') || root.parentNode || document;
+  var bullets = scope.querySelectorAll('.glide__bullet');
+  for (var i = 0; i < bullets.length; i++) {
+    bullets[i].classList.toggle('glide__bullet--active', i === glide2.index);
+  }
+});

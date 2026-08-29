@@ -291,6 +291,9 @@
                                     %}
                                 {% endif %} -->
 
+                                {%- comment -%} Ships-by / Fast US Shipping bar — above ATC, below plan options {%- endcomment -%}
+                                {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
+
                                 <div class="content-available">
                                     <button type="submit" name="add" class="btn custom_button_font">
                                         <span style="display:flex;align-items:center;justify-content:center;width:100%;">{{ block.settings.button_text }}</span>
@@ -307,6 +310,27 @@
                                     {{ block.settings.guarantee_label }}
                                 </div>
                                 {% endif %}
+
+                                {%- comment -%} Payment icons — same as the BOGO page, between ATC and the content accordions {%- endcomment -%}
+                                {%- if shop.enabled_payment_types.size > 0 -%}
+                                  {%- assign hidden_pay = 'discover,jcb,diners_club' | split: ',' -%}
+                                  <div class="pw3__payments">
+                                    {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+                                  </div>
+                                  <style>.pw3__payments{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}.pw3__payments svg{height:26px;width:auto}</style>
+                                {%- endif -%}
+
+                                {%- comment -%} Trusted-by bar — same as the BOGO page; enabled per instance via settings {%- endcomment -%}
+                                {%- if section.settings.show_trusted -%}
+                                  {% render 'trusted-by',
+                                    title: section.settings.trusted_title,
+                                    subtext: section.settings.trusted_subtext,
+                                    image_1: section.settings.trusted_image_1,
+                                    image_2: section.settings.trusted_image_2,
+                                    image_3: section.settings.trusted_image_3,
+                                    bg_color: section.settings.trusted_bg,
+                                    check_color: section.settings.trusted_check %}
+                                {%- endif -%}
                             </div>
                         </form>
                     </div>
@@ -480,6 +504,55 @@
       "label": "Preselected Item",
       "default": 3,
       "info": "Indicates the position number of the variant, The first available one is selected if the field is empty"
+    },
+    {
+      "type": "header",
+      "content": "Trusted-by bar (enable per instance, e.g. homepage Sleep Spray)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trusted",
+      "label": "Show trusted-by bar",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "trusted_title",
+      "label": "Trusted-by title",
+      "default": "Used by 300,000+ customers"
+    },
+    {
+      "type": "text",
+      "id": "trusted_subtext",
+      "label": "Trusted-by subtext",
+      "default": "to fall asleep faster and sleep the full night."
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_1",
+      "label": "Customer image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_2",
+      "label": "Customer image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_3",
+      "label": "Customer image 3"
+    },
+    {
+      "type": "color",
+      "id": "trusted_bg",
+      "label": "Trusted-by background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "trusted_check",
+      "label": "Trusted-by check color",
+      "default": "#34c759"
     }
   ],
   "blocks": [

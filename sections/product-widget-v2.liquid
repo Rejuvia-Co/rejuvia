@@ -6,6 +6,8 @@
         {% assign currentProduct = product %}
     {% endif %}
 
+    {% assign base_colour = currentProduct.metafields.custom.base_colour %}
+
     {% assign subscription_product = currentProduct.metafields.subscriptions %}
     {% comment %}Discount settings{% endcomment %}
     {% assign discount_percentage = subscription_product.discount_percentage | round: 2 %}
@@ -17,8 +19,8 @@
     {% assign preselected_item_index = section.settings.preselected_item %}
 
 
-    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default">
-        
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+
             <div class="gallery-wrapper">
                 <div class="gallery-inner">
                     {%- render '_product_gallery_v2', currentProduct: currentProduct, show_bundle_text: section.settings.show_bundle_text -%}
@@ -229,6 +231,10 @@
                     </div>
 
                 {% when 'buy-buttons' %}
+                    {%- comment -%} Ships-by bar between the plan picker and Add to Cart, same as BOGO / V2 product template. {%- endcomment -%}
+                    {%- if section.settings.show_ship_bar -%}
+                      <div class="pw-ship">{% render 'shipping-bar' %}</div>
+                    {%- endif -%}
                     <div class="block-buy-buttons" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ currentProduct.id }}"
                             id="{{ product_form_id }}" method="post" class="layout-2 variants add-to-cart-form"
@@ -310,11 +316,31 @@
                             </div>
                         </form>
                     </div>
+                    {%- comment -%} Payment icons below Add to Cart, above the accordion --
+                       same content/placement as the BOGO offer block / V2 product template. {%- endcomment -%}
+                    {%- if section.settings.show_payment_icons -%}
+                      {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+                      <div class="pw-payments">
+                        {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+                      </div>
+                    {%- endif -%}
 
                 {% when 'custom-tabs' %}
                     <div class="block-custom-tabs" {{ block.shopify_attributes }}>
                         {%- render '_custom_tabs_products-new', product: currentProduct -%}
                     </div>
+                    {%- comment -%} Used-by bar under the accordion, same as BOGO / V2 product template.
+                       Gated on the section setting so it only appears where enabled. {%- endcomment -%}
+                    {%- if section.settings.show_trusted -%}
+                      {% render 'trusted-by',
+                        title: section.settings.trusted_title,
+                        subtext: section.settings.trusted_subtext,
+                        image_1: section.settings.trusted_image_1,
+                        image_2: section.settings.trusted_image_2,
+                        image_3: section.settings.trusted_image_3,
+                        bg_color: section.settings.trusted_bg,
+                        check_color: section.settings.trusted_check %}
+                    {%- endif -%}
 
                 {% when 'social-sharing' %}
                     <div class="block-social-sharing" {{ block.shopify_attributes }}>
@@ -480,7 +506,20 @@
       "label": "Preselected Item",
       "default": 3,
       "info": "Indicates the position number of the variant, The first available one is selected if the field is empty"
-    }
+    },
+      { "type": "header", "content": "Used-by bar (below accordion)" },
+      { "type": "checkbox", "id": "show_trusted", "label": "Show used-by bar", "default": false },
+      { "type": "text", "id": "trusted_title", "label": "Title", "default": "Used by 300,000+ customers" },
+      { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "to fall asleep faster and sleep the full night." },
+      { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+      { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+      { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+      { "type": "color", "id": "trusted_bg", "label": "Bar background", "default": "#f4f4f4" },
+      { "type": "color", "id": "trusted_check", "label": "Checkmark colour", "default": "#34c759" },
+      { "type": "header", "content": "Payment icons (below Add to Cart)" },
+      { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+      { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+      { "type": "checkbox", "id": "show_ship_bar", "label": "Show ships-by bar (above Add to Cart)", "default": true }
   ],
   "blocks": [
     {

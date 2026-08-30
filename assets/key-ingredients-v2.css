@@ -195,28 +195,35 @@
   }
 }
 
-/* Bottom CTA — scrolls to the product widget; colour follows base_colour */
+/* Bottom CTA — matches the homepage alternatives CTA exactly; scrolls to the product widget */
 .key-ingredients-v2__cta {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-top: 48px;
+  gap: 12px;
+  max-width: 400px;
+  width: 100%;
+  margin: 48px auto 0;
 }
 
 .key-ingredients-v2__cta-btn {
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 24px 32px;
   background: var(--base-colour, #672666);
-  color: #ffffff;
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
-  font-weight: 700;
-  letter-spacing: normal;
-  padding: 22px 64px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  border: none;
   border-radius: 100px;
-  max-width: 100%;
-  transition: opacity 0.2s ease;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+  letter-spacing: normal;
 }
 
 .key-ingredients-v2__cta-btn:hover {
@@ -225,18 +232,19 @@
 
 .key-ingredients-v2__cta-note {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 14px;
   line-height: 1;
   color: #141414;
 }
 
 .key-ingredients-v2__cta-note svg {
+  width: 14px;
+  height: 11px;
   flex-shrink: 0;
 }
 
 @media screen and (max-width: 749px) {
-  .key-ingredients-v2__cta { margin-top: 32px; }
-  .key-ingredients-v2__cta-btn { width: 100%; padding: 20px 32px; }
+  .key-ingredients-v2__cta { margin-top: 32px; padding: 0 16px; max-width: 100%; }
 }

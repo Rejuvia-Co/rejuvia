@@ -5,9 +5,11 @@
   question + answer). Section hides itself when the metafield is empty.
 {%- endcomment -%}
 
+{%- comment -%} Background follows the product's sub-base tint (US/UK spelling), falling back to the setting. {%- endcomment -%}
+{%- assign pfaq_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: section.settings.bg_color | default: '#fafafa' -%}
 {% style %}
 #pfaq-{{ section.id }} {
-  background-color: {{ section.settings.bg_color | default: '#fafafa' }};
+  background-color: {{ pfaq_bg }};
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 #pfaq-{{ section.id }} .pfaq-v2-container {
@@ -46,7 +48,7 @@
 }
 #pfaq-{{ section.id }} .pfaq-v2-sub p { margin: 0; }
 #pfaq-{{ section.id }} .pfaq-v2-sub em { font-style: normal; color: #171512; font-weight: 700; }
-#pfaq-{{ section.id }} .pfaq-v2-list { border-top: 1px solid rgba(0,0,0,0.1); }
+#pfaq-{{ section.id }} .pfaq-v2-list { border-top: none; }
 #pfaq-{{ section.id }} .pfaq-v2-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
 #pfaq-{{ section.id }} .pfaq-v2-question {
   width: 100%;

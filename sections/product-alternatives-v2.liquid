@@ -83,8 +83,9 @@
     letter-spacing: -0.5px; margin: 0; width: 100%; text-align: center;
   }
 
-  /* Table */
-  .palt-v2-table { display: flex; width: 100%; align-items: stretch; }
+  /* Table — top padding reserves room for the bottle to pop up above the column,
+     and keeps that protrusion INSIDE the (mobile) scroll box so it is never clipped. */
+  .palt-v2-table { display: flex; width: 100%; align-items: stretch; padding-top: 64px; }
 
   /* Labels column */
   .palt-v2-labels { flex: 1; min-width: 0; padding-right: 12px; display: flex; flex-direction: column; }
@@ -131,10 +132,12 @@
     filter: grayscale(1); -webkit-filter: grayscale(1);
   }
 
-  /* Rejuvia bottle — pops out above the column so ~30% sits on the white above it */
+  /* Rejuvia bottle — pops up above the column so its gold nozzle + ~30% sit on the
+     white above the tinted column. Protrusion (44px) stays within the table's 64px
+     top padding so it is never clipped, on desktop or in the mobile scroll box. */
   .palt-v2-rejuvia-bottle {
-    max-height: calc(var(--palt-v2-icon-size, 84px) + 72px); width: auto; object-fit: contain;
-    margin-top: -64px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.20));
+    max-height: calc(var(--palt-v2-icon-size, 84px) + 52px); width: auto; object-fit: contain;
+    margin-top: -44px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.20));
   }
 
   /* Cell */
@@ -159,18 +162,20 @@
   .palt-v2-ic--cross { border: 2px solid var(--palt-v2-base, #672666); }
   .palt-v2-ic--cross svg { stroke: var(--palt-v2-base, #672666); }
 
-  /* CTA */
-  .palt-v2-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 8px; width: 100%; }
+  /* CTA — matches the homepage alternatives CTA exactly (weight 500, 24px 32px, 400px wrapper) */
+  .palt-v2-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 400px; width: 100%; }
   .palt-v2-cta-btn {
-    border: none; cursor: pointer; font-family: inherit;
-    background: var(--palt-v2-base, #672666); color: #ffffff;
-    font-size: 18px; font-weight: 700; letter-spacing: normal;
-    padding: 22px 64px; border-radius: 100px; max-width: 100%;
-    transition: opacity .2s ease;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; padding: 24px 32px;
+    background: var(--palt-v2-base, #672666); color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px; font-weight: 500; line-height: 1.4;
+    text-decoration: none; border: none; border-radius: 100px;
+    cursor: pointer; transition: opacity 0.25s ease; letter-spacing: normal;
   }
-  .palt-v2-cta-btn:hover { opacity: .9; }
-  .palt-v2-cta-note { display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 1; color: #141414; }
-  .palt-v2-cta-note svg { flex-shrink: 0; }
+  .palt-v2-cta-btn:hover { opacity: 0.9; }
+  .palt-v2-cta-note { display: flex; align-items: flex-start; gap: 6px; font-size: 14px; line-height: 1; color: #141414; }
+  .palt-v2-cta-note svg { width: 14px; height: 11px; flex-shrink: 0; }
 
   /* Nav (mobile) */
   .palt-v2-dots { display: none; justify-content: center; align-items: center; gap: 8px; }
@@ -186,7 +191,9 @@
     .palt-v2-container { padding: 40px 0; gap: 24px; }
     .palt-v2-heading { font-size: 26px; padding: 0 16px; }
     .palt-v2-section { overflow-x: clip; }
-    .palt-v2-table { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 0 16px; }
+    /* keep the 56px top padding so the popped bottle stays inside the scroll box (not clipped) */
+    .palt-v2-table { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 56px 16px 0; }
+    .palt-v2-cta { padding: 0 16px; max-width: 100%; }
     .palt-v2-table::-webkit-scrollbar { display: none; }
     .palt-v2-nav { display: flex; }
     .palt-v2-nav .palt-v2-dots { display: flex; }

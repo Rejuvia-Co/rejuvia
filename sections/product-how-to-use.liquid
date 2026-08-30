@@ -24,7 +24,7 @@
     Section background follows the product's sub-base colour (a softer tint of the
     accent), falling back to the section's own background_color setting.
   endcomment
-  assign section_bg = product.metafields.custom.sub_base_colour | default: section.settings.background_color | default: '#ffffff'
+  assign section_bg = product.metafields.custom.sub_base_colour | default: product.metafields.custom.sub_base_color | default: section.settings.background_color | default: '#ffffff'
 -%}
 
 {%- if steps != blank and steps.size > 0 -%}

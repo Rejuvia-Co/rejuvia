@@ -144,7 +144,7 @@
 }
 {%- comment -%} Section background follows the product's sub-base colour (a softer
    tint of the accent), falling back to the section's own bg_color setting. {%- endcomment -%}
-{%- assign section_bg = product.metafields.custom.sub_base_colour | default: section.settings.bg_color -%}
+{%- assign section_bg = product.metafields.custom.sub_base_colour | default: product.metafields.custom.sub_base_color | default: section.settings.bg_color -%}
 {%- if section_bg != blank -%}
 #shopify-section-{{ section.id }} { background: {{ section_bg }}; }
 {%- endif -%}

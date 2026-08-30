@@ -71,3 +71,6 @@
 /* Review stars follow the product base colour (empty stars keep their grey via
    the more-specific .star.empty rule). */
 .product-widget-container .custom-review-stars .star { color: var(--base-colour, #EAC78B); }
+
+/* Pipe divider in the rating line ("4.5 Stars | 425,000+ Customers"). */
+.product-widget-container .rating-text .rating-divider { color: #d0d0d0; font-weight: 400; margin: 0 4px; }

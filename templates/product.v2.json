@@ -110,7 +110,7 @@
         "swatch_tag_content": "",
         "preselected_item": 1,
         "show_trusted": true,
-        "trusted_title": "Used by  300,000+ customers",
+        "trusted_title": "Used by  425,000+ customers",
         "trusted_subtext": "to fall asleep faster and sleep the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
@@ -199,7 +199,7 @@
       ],
       "name": "Video Testimonials",
       "settings": {
-        "header": "Join 300,000 Getting Better Sleep With Rejuvia",
+        "header": "Join 425,000 Getting Better Sleep With Rejuvia",
         "stars_label": "Backed By 90M+ Nights of Sleep",
         "stars_label_size": 18,
         "stars_label_size_mobile": 15,
@@ -384,7 +384,7 @@
       ],
       "name": "Real Stories V2",
       "settings": {
-        "trusted_count": "300,000+",
+        "trusted_count": "425,000+",
         "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
       }
     },
@@ -590,7 +590,7 @@
         "guarantee_3": {
           "type": "guarantee",
           "settings": {
-            "text": "300,000+ Happy Customers"
+            "text": "425,000+ Happy Customers"
           }
         }
       },

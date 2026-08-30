@@ -31,9 +31,9 @@
         "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
         "image_mobile": "shopify://shop_images/rejuvia_image.png",
         "show_stars": true,
-        "eyebrow": "Trusted By 300,000+ Sleepers",
+        "eyebrow": "Trusted By 425,000+ Sleepers",
         "heading": "5 Reasons Millions Are Ditching Sleeping Pills and Gummies For Rejuvia",
-        "text": "<p>Fall asleep faster. Stay asleep through the full night. Wake up rested and energized — without the morning hangover from sleeping pills or 10mg melatonin gummies. Here's why 300,000+ sleepers switched to Rejuvia.</p>",
+        "text": "<p>Fall asleep faster. Stay asleep through the full night. Wake up rested and energized — without the morning hangover from sleeping pills or 10mg melatonin gummies. Here's why 425,000+ sleepers switched to Rejuvia.</p>",
         "button_text": "Try Risk-Free Today",
         "button_link": "",
         "guarantee_text": "90-Day Money Back Guarantee",
@@ -154,7 +154,7 @@
           "settings": {
             "image": "shopify://shop_images/rejuvia_founders.avif",
             "title": "Created By a Son For His Sleepless Mom",
-            "text": "<p>When RC was growing up, his mom couldn't sleep. She'd lie awake until 2, 3, sometimes 4 AM — exhausted but wired. Her doctor put her on sleeping pills. They knocked her out, but she'd wake up foggy and feeling worse than before. Melatonin gummies. Teas. Magnesium. Nothing gave her real sleep.</p><p>So when RC left for the University of Pennsylvania, he made it his mission to find a real answer. What he discovered changed everything: the problem wasn't the ingredients — it was how the body absorbed them. That insight is what led to Rejuvia's Oral Sleep Spray. His mom was the first customer, and she finally got her sleep back.</p><p>Today, RC and his mom Kristen run Rejuvia together out of Philadelphia. Over 300,000 people now use the spray she helped create.</p>"
+            "text": "<p>When RC was growing up, his mom couldn't sleep. She'd lie awake until 2, 3, sometimes 4 AM — exhausted but wired. Her doctor put her on sleeping pills. They knocked her out, but she'd wake up foggy and feeling worse than before. Melatonin gummies. Teas. Magnesium. Nothing gave her real sleep.</p><p>So when RC left for the University of Pennsylvania, he made it his mission to find a real answer. What he discovered changed everything: the problem wasn't the ingredients — it was how the body absorbed them. That insight is what led to Rejuvia's Oral Sleep Spray. His mom was the first customer, and she finally got her sleep back.</p><p>Today, RC and his mom Kristen run Rejuvia together out of Philadelphia. Over 425,000 people now use the spray she helped create.</p>"
           }
         }
       },
@@ -262,7 +262,7 @@
       ],
       "name": "Video Testimonials",
       "settings": {
-        "header": "Join 300,000 Getting Better Sleep",
+        "header": "Join 425,000 Getting Better Sleep",
         "stars_label": "Backed By 90 Million Nights of Sleep",
         "stars_label_size": 18,
         "stars_label_size_mobile": 14,
@@ -387,7 +387,7 @@
         "stars_size_mobile": 17,
         "rating_text_size": 17,
         "rating_text_size_mobile": 17,
-        "rating_text": "<p>Used By <strong>300,000+</strong> Customers</p>",
+        "rating_text": "<p>Used By <strong>425,000+</strong> Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "Fall asleep in minutes and sleep through the entire night",
         "pill_text": "",
@@ -420,7 +420,7 @@
         "accent_color": "#672666",
         "selected_bg": "#f4ecf7",
         "show_trusted": true,
-        "trusted_title": "Used nightly by 300K+ customers",
+        "trusted_title": "Used nightly by 425K+ customers",
         "trusted_subtext": "who use Rejuvia to fall asleep faster and sleep through the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
@@ -566,7 +566,7 @@
         "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p>300,000+ Customers</p>",
+        "rating_text": "<p>425,000+ Customers</p>",
         "rating_color": "#141414",
         "heading": "<p>Better Sleep Is Now a Spray Away</p>",
         "heading_color": "#141414",

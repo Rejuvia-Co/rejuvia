@@ -1,3 +1,30 @@
+{%- comment -%}
+  Content source (per tab, in priority order):
+    1. The per-product metaobject custom.real_stories — parent object holding
+       heading, facebook_reviews[] (child real_story_fb: screenshot OR name+comment),
+       and online_reviews[] (child real_story_review: title/body/name/initials/
+       stars/badge/avatar_color). Used on product pages.
+    2. The section's own blocks — used on pages with no product context
+       (homepage, BOGO/landers) so the section always renders.
+  The star banner (trusted_count) stays a global section setting, not per product.
+{%- endcomment -%}
+{%- liquid
+  assign rs = product.metafields.custom.real_stories
+  assign rs_fb = rs.value.facebook_reviews.value
+  assign rs_online = rs.value.online_reviews.value
+  assign rs_heading = rs.value.heading | default: section.settings.heading
+
+  assign use_fb_meta = false
+  if rs_fb != blank and rs_fb.size > 0
+    assign use_fb_meta = true
+  endif
+
+  assign use_online_meta = false
+  if rs_online != blank and rs_online.size > 0
+    assign use_online_meta = true
+  endif
+-%}
+
 <style>
 .rs-v2-section {
     width: 100%;
@@ -331,7 +358,7 @@
     </div>
 
     {%- comment -%} Heading {%- endcomment -%}
-    <div class="rs-v2-heading">{{ section.settings.heading }}</div>
+    <div class="rs-v2-heading">{{ rs_heading }}</div>
 
     {%- comment -%} Tabs {%- endcomment -%}
     <div class="rs-v2-tabs">
@@ -353,6 +380,34 @@
 
     {%- comment -%} Facebook Reviews {%- endcomment -%}
     <div class="rs-v2-reviews is-active" data-rs-v2-panel="facebook">
+        {% if use_fb_meta %}
+            {% for fb in rs_fb %}
+                {%- assign fb_img = fb.screenshot -%}
+                {% if fb_img != blank %}
+                    <div class="rs-v2-fb-review">
+                        <img src="{{ fb_img | image_url: width: 800, format: 'webp' }}" alt="Facebook review" loading="lazy" decoding="async">
+                    </div>
+                {% elsif fb.comment != blank %}
+                    <div class="rs-v2-fb-text">
+                        {% if fb.avatar != blank %}
+                            <img class="rs-v2-fb-avatar" src="{{ fb.avatar | image_url: width: 72, format: 'webp' }}" alt="{{ fb.name }}" loading="lazy" decoding="async">
+                        {% else %}
+                            <div class="rs-v2-fb-avatar-placeholder"></div>
+                        {% endif %}
+                        <div class="rs-v2-fb-body">
+                            <div class="rs-v2-fb-bubble">
+                                <div class="rs-v2-fb-name">{{ fb.name }}</div>
+                                <p class="rs-v2-fb-comment">{{ fb.comment }}</p>
+                            </div>
+                            <div class="rs-v2-fb-actions">
+                                <span class="rs-v2-fb-action">Like</span>
+                                <span class="rs-v2-fb-action">Reply</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
         {% for block in section.blocks %}
             {% if block.type == 'fb_review' %}
                 <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
@@ -384,10 +439,39 @@
                 </div>
             {% endif %}
         {% endfor %}
+        {% endif %}
     </div>
 
-    {%- comment -%} Trustpilot Reviews {%- endcomment -%}
+    {%- comment -%} Online / Trustpilot Reviews {%- endcomment -%}
     <div class="rs-v2-reviews rs-v2-reviews--tp" data-rs-v2-panel="trustpilot">
+        {% if use_online_meta %}
+            {% for r in rs_online %}
+                <div class="rs-v2-tp-review">
+                    <div class="rs-v2-tp-header">
+                        <div class="rs-v2-tp-avatar" style="background-color: {{ r.avatar_color | default: '#d0ffdd' }};">
+                            {{ r.initials }}
+                        </div>
+                        <div class="rs-v2-tp-info">
+                            <p class="rs-v2-tp-title">{{ r.title }}</p>
+                        </div>
+                    </div>
+                    <p class="rs-v2-tp-text">{{ r.body }}</p>
+                    <div class="rs-v2-tp-stars">
+                        {% assign star_count = r.stars | default: 5 %}
+                        {% for i in (1..star_count) %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" fill="#00B67A"/><path d="M12 4 L14.35 9.4 L20 9.9 L15.7 13.7 L17 19.4 L12 16.4 L7 19.4 L8.3 13.7 L4 9.9 L9.65 9.4 Z" fill="#ffffff"/></svg>
+                        {% endfor %}
+                    </div>
+                    <div class="rs-v2-tp-footer">
+                        <span class="rs-v2-tp-name">{{ r.name }}</span>
+                        {% assign r_badge = r.badge | default: 'Verified' %}
+                        {% if r_badge != blank %}
+                            <span class="rs-v2-tp-badge">{{ r_badge }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
         {% for block in section.blocks %}
             {% if block.type == 'tp_review' %}
                 <div class="rs-v2-tp-review" {{ block.shopify_attributes }}>
@@ -415,6 +499,7 @@
                 </div>
             {% endif %}
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 

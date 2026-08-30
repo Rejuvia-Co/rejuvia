@@ -137,7 +137,7 @@
 
                 {% when 'okendo-reviews' %}
                     <div class="block-reviews" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                        <a id="okendo-product-reviews" href="#{{ block.settings.reviews_anchor }}">
+                        <div class="review-summary">
                             {% assign reviewRating = currentProduct.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
                             {% assign reviewCount = currentProduct.metafields.okendo.summaryData.reviewCount | plus: 0 %}
                             {% assign fullStars = reviewRating | floor %}
@@ -186,10 +186,10 @@
                                 </span>
 
                                 <span class="rating-text">
-                                    <strong>{{ reviewRating }}</strong> Stars From <span class="reviews-count">{{ reviewCount }} Reviews</span>
+                                    <strong>{{ reviewRating }}</strong> Stars From 300,000+ Customers
                                 </span>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                 {% when 'description' %}

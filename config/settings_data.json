@@ -2118,7 +2118,7 @@
         "settings": {
           "eyebrow": "",
           "heading": "Frequently Asked Questions",
-          "subheading": "<p>Don't see your question? We'd love to help. Email us at <em>hello@rejuvia.co!</em></p>",
+          "subheading": "",
           "sub_size": 18,
           "sub_size_mobile": 16,
           "open_first": false,

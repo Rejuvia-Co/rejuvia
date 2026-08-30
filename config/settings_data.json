@@ -2031,54 +2031,6 @@
           "card_text": "<p>The tissue under your tongue is packed with blood vessels. Spray Rejuvia there and it bypasses your digestive system entirely — the same process that destroys up to 80% of every pill and gummy you've ever taken. More ingredients reach your body intact. You feel it faster.</p>"
         }
       },
-      "use_in_just_v2_JAWTbF": {
-        "type": "use-in-just-v2",
-        "blocks": {
-          "step_FCja3B": {
-            "type": "step",
-            "settings": {
-              "title": "Step 1: Spray",
-              "description": "Spray Rejuvia 6–8 times under your tongue or inside your cheek and let it sit for a few seconds before swallowing. This helps the ingredients absorb quickly so you can ease into sleep without waiting around.",
-              "tip1_icon": "shopify://shop_images/Frame_1.svg",
-              "tip1_label": "When to use",
-              "tip1_text": "Brush your teeth first, then use Rejuvia. A clean mouth helps the spray absorb more effectively and keeps your routine simple and consistent. We suggest about 10-15 minutes before you head to bed.",
-              "image": "shopify://shop_images/Step_1.webp"
-            }
-          },
-          "step_9t4thq": {
-            "type": "step",
-            "settings": {
-              "title": "Step 2: Settle In",
-              "description": "Once you take your sprays, get into bed and allow your mind to slow down. Avoid scrolling on your phone and let your body transition into rest.",
-              "tip1_label": "Usage Tip",
-              "tip1_text": "If you wake up during the night, it’s completely fine to use Rejuvia again. Most people take 1–2 sprays to help their mind settle back down without feeling groggy in the morning.",
-              "image": "shopify://shop_images/Step_2.webp"
-            }
-          },
-          "step_cxFni4": {
-            "type": "step",
-            "settings": {
-              "title": "Step 3: Store & Repeat",
-              "description": "Store Rejuvia in the place where you naturally wind down at night. Most people keep it in their nightstand or right next to their bed so it becomes part of their rhythm without needing to think about it. The simpler you make it, the more consistent your results will be.",
-              "tip1_label": "Building a Routine",
-              "tip1_text": "Using Rejuvia at the same time each night helps your body recognize it as a signal to wind down. The more consistent your routine, the faster and deeper your sleep becomes over time. Think of it as building momentum that makes falling asleep feel automatic.",
-              "image": "shopify://shop_images/Step_3.webp"
-            }
-          }
-        },
-        "block_order": [
-          "step_FCja3B",
-          "step_9t4thq",
-          "step_cxFni4"
-        ],
-        "name": "Use In Just V2",
-        "settings": {
-          "heading": "<p>Use Rejuvia in <em>10 seconds</em></p>",
-          "link_text": "View Supplement Label",
-          "link_url": "",
-          "supplement_product": "sleep-spray"
-        }
-      },
       "alternatives_v2_aVf4gw": {
         "type": "alternatives-v2",
         "blocks": {
@@ -2856,9 +2808,9 @@
           "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
           "button_text": "Try Rejuvia Risk-Free",
           "button_link": "#offer",
+          "scroll_target": ".product-widget-container",
           "sub_text": "90-Day Money Back Guarantee",
-          "bg_color": "#eaeaf7",
-          "scroll_target": ".product-widget-container"
+          "bg_color": "#eaeaf7"
         }
       },
       "how_to_use_steps_home": {

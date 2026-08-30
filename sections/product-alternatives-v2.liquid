@@ -22,8 +22,8 @@
   Competitor icons are the SAME across all products, so they live in section
   settings and are rendered grayscale via CSS (reuse the brand illustrations).
 
-  The whole section only renders when custom.show_comparison_section is true
-  AND a comparison metaobject is attached. Product template only.
+  The section renders on any product that has a comparison metaobject attached
+  in custom.comparison (empty field = hidden). Product template only.
 {%- endcomment -%}
 
 {%- liquid

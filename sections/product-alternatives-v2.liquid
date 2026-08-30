@@ -75,7 +75,7 @@
   .palt-v2-container {
     width: 100%; max-width: 1200px; margin: 0 auto;
     display: flex; flex-direction: column; gap: 32px; align-items: center;
-    padding: 64px; box-sizing: border-box;
+    padding: 64px 16px; box-sizing: border-box;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   .palt-v2-heading {
@@ -91,8 +91,10 @@
   /* Labels column */
   .palt-v2-labels { flex: 1; min-width: 0; padding-right: 12px; display: flex; flex-direction: column; }
   @media (min-width: 901px) {
-    .palt-v2-heading, .palt-v2-table { max-width: 1120px; }
-    .palt-v2-labels { flex: 0 1 300px; }
+    /* Match the Product Intro width (1200) so the section is as wide as the sections above. */
+    .palt-v2-heading, .palt-v2-table { max-width: 1200px; }
+    /* let the labels column grow so the table fills the full width (aligns the left edge) */
+    .palt-v2-labels { flex: 1 1 300px; }
   }
   .palt-v2-label-header { height: calc(var(--palt-v2-icon-size, 84px) + 78px); border-bottom: 1px solid #eaeaf7; }
   .palt-v2-label {

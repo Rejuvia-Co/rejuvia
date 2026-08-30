@@ -11,9 +11,8 @@
 }
 
 .key-ingredients-v2__container {
-  /* 1072px = the 1200px container minus the 64px side padding the other
-     sections use, so content edges line up with hero/why-better/science. */
-  max-width: 1072px;
+  /* 1200px to match the Product Intro section width (its content edges). */
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

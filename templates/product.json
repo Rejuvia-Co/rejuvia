@@ -388,7 +388,7 @@
       "name": "Real Stories V2",
       "settings": {
         "trusted_count": "425,000+",
-        "heading": "<p>Real stories from people who <em>have tried everything</em></p>",
+        "heading": "<p>Real Stories From People Who <em>Have Tried Everything</em></p>",
         "tp_avatar_color": "#d0ffdd",
         "tp_stars": 5,
         "tp_badge": "Verified"
@@ -397,7 +397,7 @@
     "key_ingredients_v2_1": {
       "type": "key-ingredients-v2",
       "settings": {
-        "heading": "Key all-natural ingredients",
+        "heading": "Key All-Natural Ingredients",
         "button_label": "View Supplement Label",
         "button_url": "",
         "cta_text": "Try Rejuvia Risk-Free",
@@ -409,7 +409,7 @@
       "name": "Product How To Use",
       "settings": {
         "background_color": "#eaeaf7",
-        "heading": "How to use Rejuvia",
+        "heading": "How To Use Rejuvia",
         "backdrop_color": "#f7edec",
         "heading_size": 36,
         "heading_size_mobile": 26,
@@ -489,7 +489,7 @@
       "name": "Product FAQs V2",
       "settings": {
         "eyebrow": "",
-        "heading": "Frequently asked questions",
+        "heading": "Frequently Asked Questions",
         "description": "",
         "footer_text": "",
         "open_first": false,
@@ -511,7 +511,7 @@
     "feature_products_v2_1": {
       "type": "feature-products-v2",
       "settings": {
-        "heading": "Explore more Rejuvia",
+        "heading": "Explore More Rejuvia",
         "subheading": "<p>Oral sprays for sleep, stress and daily wellness — all absorbed in seconds.</p>",
         "product_limit": 3
       }

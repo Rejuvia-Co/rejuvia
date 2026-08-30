@@ -33,6 +33,9 @@
   # falling back to the original light grey on pages with no product context.
   assign rs_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
   assign rs_bg = rs_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#fafafa'
+
+  # Trust-pill text colour follows the product's base colour (brand purple fallback).
+  assign rs_base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour | default: '#672666'
 -%}
 
 <style>
@@ -53,25 +56,35 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* Header */
+/* Header — social-proof pill (matches the Video Testimonials banner) */
 .rs-v2-rating {
-    display: flex;
+    --base-colour: {{ rs_base }};
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 10px 15px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 10px;
 }
 
-.rs-v2-stars { display: flex; gap: 1px; line-height: 0; }
-.rs-v2-stars svg { width: 24.75px; height: 22px; display: block; }
+.rs-v2-stars { display: inline-flex; gap: 0; line-height: 0; flex-shrink: 0; }
+.rs-v2-stars svg { width: 18px; height: 18px; display: block; margin: 0 -1px; }
 
 .rs-v2-rating-text {
-    font-size: 21px;
-    line-height: 1.2;
-    color: #141414;
+    /* Optical alignment: nudge the cap-height text down to sit with the stars. */
+    transform: translateY(0.1em);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--base-colour, #672666);
 }
 
 .rs-v2-rating-text .rs-v2-accent {
     font-weight: 700;
-    color: #672666;
+    color: inherit;
 }
 
 .rs-v2-heading {
@@ -359,7 +372,7 @@
     <div class="rs-v2-rating">
         <div class="rs-v2-stars">
             {% for i in (1..5) %}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#EAC78B"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="#fab851"/></svg>
             {% endfor %}
         </div>
         <span class="rs-v2-rating-text">

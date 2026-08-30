@@ -5,16 +5,30 @@
   the used-by bar / leaf icon. Reusable on any template:
     {% render 'product-benefits', product: currentProduct %}
 {%- endcomment -%}
-{%- assign benefits = product.metafields.custom.key_benefits.value -%}
+{%- comment -%}
+  Accept either a proper list metafield (each entry = one benefit) or a single
+  line-text field holding a comma-separated string. In the string case, split on
+  commas and strip stray wrapping quotes/spaces so "A", "B", "C" still yields
+  three clean rows.
+{%- endcomment -%}
+{%- assign mf = product.metafields.custom.key_benefits -%}
+{%- if mf.type contains 'list' -%}
+  {%- assign benefits = mf.value -%}
+{%- else -%}
+  {%- assign benefits = mf.value | split: ',' -%}
+{%- endif -%}
 {%- if benefits and benefits.size > 0 -%}
   <ul class="pw-benefits">
     {%- for benefit in benefits -%}
+      {%- assign line = benefit | strip | replace: '"', '' | replace: '“', '' | replace: '”', '' | strip -%}
+      {%- if line != blank -%}
       <li class="pw-benefit">
         <span class="pw-benefit__check" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
         </span>
-        <span class="pw-benefit__text">{{ benefit }}</span>
+        <span class="pw-benefit__text">{{ line }}</span>
       </li>
+      {%- endif -%}
     {%- endfor -%}
   </ul>
   {%- unless pw_benefits_css -%}{%- assign pw_benefits_css = true -%}

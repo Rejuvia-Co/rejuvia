@@ -5,9 +5,13 @@
     Falls back to the section's default_items setting when the metafield is empty.
     Background follows the product's sub-base colour; icon tick follows base_colour.
   endcomment
-  assign gv2_base = product.metafields.custom.base_colour
-  assign gv2_bg = product.metafields.custom.sub_base_colour | default: product.metafields.custom.sub_base_color | default: section.settings.bg_color
-  assign items_raw = product.metafields.custom.guarantees | default: section.settings.default_items
+  comment Read .value explicitly so basic metafields resolve to their string, not the drop. endcomment
+  assign gv2_base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour
+
+  assign gv2_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
+  assign gv2_bg = gv2_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: section.settings.bg_color
+
+  assign items_raw = product.metafields.custom.guarantees.value | default: product.metafields.custom.guarantees | default: section.settings.default_items
   assign gv2_items = items_raw | split: ','
 -%}
 {% style %}

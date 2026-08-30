@@ -145,53 +145,91 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
 </noscript>
 
+{%- comment -%}
+  Content source: prefer the per-product metaobject custom.video_testimonials
+  (header, stars_label, testimonials[] -> image/quote/name). Falls back to the
+  section's own settings + blocks when the metaobject is empty, so the live
+  site keeps working until the metaobject is populated in admin.
+{%- endcomment -%}
+{%- liquid
+  assign vt = product.metafields.custom.video_testimonials
+  assign meta_items = vt.value.testimonials.value
+  assign use_meta = false
+  if meta_items != blank and meta_items.size > 0
+    assign use_meta = true
+  endif
+  if use_meta
+    assign header = vt.value.header
+    assign stars_label = vt.value.stars_label
+    assign slide_count = meta_items.size
+  else
+    assign header = section.settings.header
+    assign stars_label = section.settings.stars_label
+    assign slide_count = section.blocks.size
+  endif
+-%}
+
 <div class="customer-testimonials customer-testimonials-video customer-testimonials-container container">
-  {%- if section.settings.stars_label != blank -%}
+  {%- if stars_label != blank -%}
     <div class="testimonial-social-proof testimonial-social-proof--pill">
       <span class="tsp__stars" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none" aria-hidden="true"><path d="M12.5006 18.26L5.44715 22.2082L7.02248 14.2799L1.08789 8.7918L9.11493 7.84006L12.5006 0.5L15.8862 7.84006L23.9132 8.7918L17.9787 14.2799L19.554 22.2082L12.5006 18.26Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg></span>
-      <span class="customer-testimonials-stars__label">{{ section.settings.stars_label }}</span>
+      <span class="customer-testimonials-stars__label">{{ stars_label }}</span>
     </div>
-  {%- endif -%} 
-    {%- if section.settings.header != blank -%} 
+  {%- endif -%}
+    {%- if header != blank -%}
       <h3 class="reviews_section-title">
-        {{ section.settings.header }}
+        {{ header }}
       </h3>
-    {%- endif -%} 
+    {%- endif -%}
     <div id="glide-testimonials-video" class="glide">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-          {% for item in section.blocks %}
-            <li class="glide__slide">
-              <div class="customer-review-box">
-                <div class="customer-review-image">
-                  {% if item.settings.image %}
-                    {{ item.settings.image | image_url: width: 350, height: 410, format: 'webp' | image_tag }}
-                  {% endif %}
-                  {% if item.settings.video %}
-                    {{ item.settings.video | video_tag: image_size: '1100x', autoplay: false, loop: false, controls: false, muted: false }}
-                    <div class="customer-review-play">
-                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="ic/tabler-icon-player-play-filled">
-                          <path id="Vector" d="M10 6.66714V33.3338C9.99992 33.6304 10.079 33.9216 10.229 34.1774C10.379 34.4332 10.5945 34.6443 10.8534 34.789C11.1122 34.9337 11.405 35.0068 11.7015 35.0006C11.998 34.9944 12.2874 34.9092 12.54 34.7538L34.2067 21.4205C34.4493 21.2714 34.6497 21.0625 34.7888 20.814C34.9278 20.5654 35.0008 20.2853 35.0008 20.0005C35.0008 19.7157 34.9278 19.4356 34.7888 19.187C34.6497 18.9384 34.4493 18.7296 34.2067 18.5805L12.54 5.24714C12.2874 5.09174 11.998 5.00656 11.7015 5.00036C11.405 4.99417 11.1122 5.0672 10.8534 5.2119C10.5945 5.35661 10.379 5.56777 10.229 5.82357C10.079 6.07938 9.99992 6.37059 10 6.66714Z" fill="white"/>
-                        </g>
-                      </svg>
-                    </div>
-                  {% endif %}
+          {%- if use_meta -%}
+            {% for item in meta_items %}
+              <li class="glide__slide">
+                <div class="customer-review-box">
+                  <div class="customer-review-image">
+                    {% if item.image %}
+                      {{ item.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: item.name }}
+                    {% endif %}
+                  </div>
+                  <div class="review_content">
+                    <p class="review-title">{{ item.quote }}</p>
+                    <p class="review-name">{{ item.name }}</p>
+                  </div>
                 </div>
-
-                <div class="review_content">
-                  {% comment %} {% render 'five-stars-icon' %} {% endcomment %}
-                  <p class="review-title">{{ item.settings.text }}</p>
-                  <p class="review-para">
-                    {{ item.settings.review_body }}
-                  </p>
-                  <p class="review-name">{{ item.settings.name }}</p>
-
-                  {% comment %} <p class="review-check">Verified customer <span></span></p> {% endcomment %}
+              </li>
+            {% endfor %}
+          {%- else -%}
+            {% for item in section.blocks %}
+              <li class="glide__slide">
+                <div class="customer-review-box">
+                  <div class="customer-review-image">
+                    {% if item.settings.image %}
+                      {{ item.settings.image | image_url: width: 350, height: 410, format: 'webp' | image_tag }}
+                    {% endif %}
+                    {% if item.settings.video %}
+                      {{ item.settings.video | video_tag: image_size: '1100x', autoplay: false, loop: false, controls: false, muted: false }}
+                      <div class="customer-review-play">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g id="ic/tabler-icon-player-play-filled">
+                            <path id="Vector" d="M10 6.66714V33.3338C9.99992 33.6304 10.079 33.9216 10.229 34.1774C10.379 34.4332 10.5945 34.6443 10.8534 34.789C11.1122 34.9337 11.405 35.0068 11.7015 35.0006C11.998 34.9944 12.2874 34.9092 12.54 34.7538L34.2067 21.4205C34.4493 21.2714 34.6497 21.0625 34.7888 20.814C34.9278 20.5654 35.0008 20.2853 35.0008 20.0005C35.0008 19.7157 34.9278 19.4356 34.7888 19.187C34.6497 18.9384 34.4493 18.7296 34.2067 18.5805L12.54 5.24714C12.2874 5.09174 11.998 5.00656 11.7015 5.00036C11.405 4.99417 11.1122 5.0672 10.8534 5.2119C10.5945 5.35661 10.379 5.56777 10.229 5.82357C10.079 6.07938 9.99992 6.37059 10 6.66714Z" fill="white"/>
+                          </g>
+                        </svg>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="review_content">
+                    <p class="review-title">{{ item.settings.text }}</p>
+                    <p class="review-para">
+                      {{ item.settings.review_body }}
+                    </p>
+                    <p class="review-name">{{ item.settings.name }}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          {% endfor %}
+              </li>
+            {% endfor %}
+          {%- endif -%}
         </ul>
       </div>
       <div class="glide-arrows-bullet__box">
@@ -201,7 +239,7 @@
           </button>
         </div>
         <div class="glide__bullets" data-glide-el="controls[nav]">
-          {% for item in section.blocks %}
+          {% for i in (1..slide_count) %}
             <button class="glide__bullet" type="button" aria-label="Go to slide {{ forloop.index }}" data-glide-dir="={{ forloop.index0 }}"></button>
           {% endfor %}
         </div>

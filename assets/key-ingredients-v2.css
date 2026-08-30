@@ -232,6 +232,7 @@
   cursor: pointer;
   transition: opacity 0.25s ease;
   letter-spacing: normal;
+  text-transform: capitalize;
 }
 
 .key-ingredients-v2__cta-btn:hover {

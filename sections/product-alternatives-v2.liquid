@@ -31,6 +31,9 @@
 
   # Accent: read .value so the basic colour metafield resolves to its string.
   assign base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour | default: '#672666'
+  # Sub-base: the softer tint used for the highlighted Rejuvia column background
+  # (US and UK spellings both supported), falling back to a light neutral.
+  assign subbase = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#f5f5f7'
 
   # Show whenever a comparison metaobject is attached to the product. Presence of
   # the metaobject IS the toggle now, so a product simply shows the table by having
@@ -65,6 +68,7 @@
 <style>
   #shopify-section-{{ section.id }} {
     --palt-v2-base: {{ base }};
+    --palt-v2-subbase: {{ subbase }};
     --palt-v2-icon-size: {{ section.settings.icon_size | default: 84 }}px;
   }
   .palt-v2-section { width: 100%; background-color: {{ section.settings.bg_color | default: '#ffffff' }}; }
@@ -99,15 +103,15 @@
   /* Product columns */
   .palt-v2-col { width: 200px; flex-shrink: 0; display: flex; flex-direction: column; padding: 0 12px; }
 
-  /* Highlighted Rejuvia column — solid base colour, white content */
+  /* Highlighted Rejuvia column — soft sub-base tint, base-colour content */
   .palt-v2-col--highlight {
-    background: var(--palt-v2-base, #672666);
+    background: var(--palt-v2-subbase, #f5f5f7);
     border-radius: 24px; padding: 0 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
   }
-  .palt-v2-col--highlight .palt-v2-col-header { border-bottom: 1px solid rgba(255,255,255,0.18); }
-  .palt-v2-col--highlight .palt-v2-col-name { color: #ffffff; font-weight: 700; }
-  .palt-v2-col--highlight .palt-v2-cell { color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .palt-v2-col--highlight .palt-v2-col-header { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .palt-v2-col--highlight .palt-v2-col-name { color: var(--palt-v2-base, #672666); font-weight: 700; }
+  .palt-v2-col--highlight .palt-v2-cell { color: var(--palt-v2-base, #672666); font-weight: 600; border-bottom: 1px solid rgba(0,0,0,0.08); }
   .palt-v2-col--highlight .palt-v2-cell:last-child { border-bottom: none; }
 
   /* Column header */
@@ -127,10 +131,10 @@
     filter: grayscale(1); -webkit-filter: grayscale(1);
   }
 
-  /* Rejuvia bottle — pops slightly above the rounded column */
+  /* Rejuvia bottle — pops out above the column so ~30% sits on the white above it */
   .palt-v2-rejuvia-bottle {
-    max-height: calc(var(--palt-v2-icon-size, 84px) + 34px); width: auto; object-fit: contain;
-    margin-top: -34px; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.22));
+    max-height: calc(var(--palt-v2-icon-size, 84px) + 72px); width: auto; object-fit: contain;
+    margin-top: -64px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.20));
   }
 
   /* Cell */
@@ -145,15 +149,28 @@
   /* Icons: check / cross rendered from base colour */
   .palt-v2-ic { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; }
   .palt-v2-ic svg { width: 14px; height: 14px; display: block; }
-  /* Rejuvia column: white disc, base-colour check */
-  .palt-v2-ic--rej { background: #ffffff; }
-  .palt-v2-ic--rej svg { stroke: var(--palt-v2-base, #672666); }
+  /* Rejuvia column: filled base disc, white check (reads on the light sub-base column) */
+  .palt-v2-ic--rej { background: var(--palt-v2-base, #672666); }
+  .palt-v2-ic--rej svg { stroke: #ffffff; }
   /* Competitor positive: filled base disc, white check */
   .palt-v2-ic--pos { background: var(--palt-v2-base, #672666); }
   .palt-v2-ic--pos svg { stroke: #ffffff; }
   /* Competitor negative: outlined base circle, base x */
   .palt-v2-ic--cross { border: 2px solid var(--palt-v2-base, #672666); }
   .palt-v2-ic--cross svg { stroke: var(--palt-v2-base, #672666); }
+
+  /* CTA */
+  .palt-v2-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 8px; width: 100%; }
+  .palt-v2-cta-btn {
+    border: none; cursor: pointer; font-family: inherit;
+    background: var(--palt-v2-base, #672666); color: #ffffff;
+    font-size: 18px; font-weight: 700; letter-spacing: normal;
+    padding: 22px 64px; border-radius: 100px; max-width: 100%;
+    transition: opacity .2s ease;
+  }
+  .palt-v2-cta-btn:hover { opacity: .9; }
+  .palt-v2-cta-note { display: flex; align-items: center; gap: 8px; font-size: 15px; line-height: 1; color: #141414; }
+  .palt-v2-cta-note svg { flex-shrink: 0; }
 
   /* Nav (mobile) */
   .palt-v2-dots { display: none; justify-content: center; align-items: center; gap: 8px; }
@@ -274,12 +291,37 @@
       </svg>
     </button>
   </div>
+
+  {%- comment -%} CTA — scrolls up to the product widget; colour follows base_colour {%- endcomment -%}
+  {%- if section.settings.cta_text != blank -%}
+    <div class="palt-v2-cta">
+      <button type="button" class="palt-v2-cta-btn" data-palt-v2-scrolltop>{{ section.settings.cta_text }}</button>
+      {%- if section.settings.cta_subtext != blank -%}
+        <div class="palt-v2-cta-note">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 14 11" fill="none" aria-hidden="true">
+            <path d="M11.6558 0.765634C11.8759 0.556086 12.1688 0.440239 12.4727 0.442538C12.7766 0.444838 13.0677 0.565104 13.2846 0.777959C13.5015 0.990814 13.6273 1.27961 13.6353 1.58341C13.6433 1.8872 13.533 2.18224 13.3277 2.40626L7.0933 10.2031C6.98609 10.3186 6.85671 10.4113 6.71288 10.4756C6.56904 10.5399 6.41372 10.5746 6.25619 10.5775C6.09866 10.5804 5.94215 10.5515 5.79604 10.4926C5.64992 10.4336 5.5172 10.3458 5.40579 10.2344L1.27142 6.10001C1.15628 5.99272 1.06394 5.86335 0.999887 5.7196C0.935837 5.57585 0.901396 5.42067 0.89862 5.26333C0.895844 5.10598 0.924789 4.94968 0.983728 4.80376C1.04267 4.65784 1.13039 4.52529 1.24167 4.41401C1.35295 4.30273 1.4855 4.21501 1.63142 4.15607C1.77734 4.09713 1.93364 4.06818 2.09099 4.07096C2.24833 4.07374 2.40351 4.10818 2.54726 4.17223C2.69101 4.23628 2.82038 4.32862 2.92767 4.44376L6.19954 7.71407L11.6261 0.80001L11.6558 0.765634Z" fill="#FAB851"/>
+          </svg>
+          <span>{{ section.settings.cta_subtext }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 </div>
 
 <script>
 (function() {
     var section = document.querySelector('#shopify-section-{{ section.id }}');
     if (!section) return;
+
+    // CTA: smooth-scroll up to the product widget at the top of the page.
+    section.querySelectorAll('[data-palt-v2-scrolltop]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var target = document.querySelector('[id*="product_widget"]');
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            else { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        });
+    });
+
     var table = section.querySelector('.palt-v2-table');
     var dots = section.querySelectorAll('.palt-v2-dot');
     var cols = section.querySelectorAll('.palt-v2-col:not(.palt-v2-col--highlight)');
@@ -363,7 +405,17 @@
         },
         { "type": "image_picker", "id": "comp_1_image", "label": "Competitor 1 icon" },
         { "type": "image_picker", "id": "comp_2_image", "label": "Competitor 2 icon" },
-        { "type": "image_picker", "id": "comp_3_image", "label": "Competitor 3 icon" }
+        { "type": "image_picker", "id": "comp_3_image", "label": "Competitor 3 icon" },
+        {
+            "type": "header",
+            "content": "Call to action"
+        },
+        {
+            "type": "paragraph",
+            "content": "Button scrolls up to the product widget at the top of the page. Its colour follows custom.base_colour. Leave the button text empty to hide it."
+        },
+        { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia risk-free" },
+        { "type": "text", "id": "cta_subtext", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" }
     ],
     "presets": [
         {

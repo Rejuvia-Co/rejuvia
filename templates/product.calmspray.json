@@ -135,6 +135,21 @@
         "button_url": ""
       }
     },
+    "product_how_to_use_v2": {
+      "type": "product-how-to-use",
+      "name": "Product How To Use",
+      "settings": {
+        "background_color": "#eaeaf7",
+        "heading": "How To Use Rejuvia",
+        "backdrop_color": "#f7edec",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "subheading_size": 17,
+        "subheading_size_mobile": 15,
+        "step_text_size": 18,
+        "step_text_size_mobile": 16
+      }
+    },
     "alternatives_v2_1": {
       "type": "product-alternatives-v2",
       "blocks": {
@@ -355,6 +370,7 @@
     "product_widget_v2",
     "product_intro_v3_A38pUb",
     "key_ingredients_v2_1",
+    "product_how_to_use_v2",
     "alternatives_v2_1",
     "guarantees_v2_1",
     "okendo_reviews_app_1",

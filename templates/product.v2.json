@@ -396,47 +396,13 @@
         "button_url": ""
       }
     },
-    "how_to_use_steps_TfXDLz": {
-      "type": "how-to-use-steps",
-      "blocks": {
-        "step_bfrXXp": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
-            "backdrop_color": "#f7edec",
-            "label": "STEP 1",
-            "text": "<p>Spray <strong>6–8 times</strong> under your tongue or inside your cheek.</p>"
-          }
-        },
-        "step_KcPfam": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
-            "backdrop_color": "#f5f0f0",
-            "label": "STEP 2",
-            "text": "<p>Hold it in your mouth for at least <strong>5–10 seconds</strong>.</p>"
-          }
-        },
-        "step_cxtqnU": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
-            "backdrop_color": "#f7edec",
-            "label": "STEP 3",
-            "text": "<p>Swallow and drift off to sleep.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_bfrXXp",
-        "step_KcPfam",
-        "step_cxtqnU"
-      ],
-      "name": "How To Use (Steps)",
+    "product_how_to_use_v2": {
+      "type": "product-how-to-use",
+      "name": "Product How To Use",
       "settings": {
         "background_color": "#eaeaf7",
         "heading": "How To Use Rejuvia",
-        "subheading": "You should use your Sleep Spray 15–20 minutes before bed for the best results.",
+        "backdrop_color": "#f7edec",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subheading_size": 17,
@@ -667,7 +633,7 @@
     "product_intro_v3_A38pUb",
     "real_stories_v2_aXQec8",
     "key_ingredients_v2_1",
-    "how_to_use_steps_TfXDLz",
+    "product_how_to_use_v2",
     "alternatives_v2_1",
     "guarantees_v2_1",
     "okendo_reviews_app_1",

@@ -32,10 +32,11 @@
   # Accent: read .value so the basic colour metafield resolves to its string.
   assign base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour | default: '#672666'
 
-  # Show only when the toggle is on AND we actually have a table to render.
-  # .value is required: a boolean metafield is a truthy object even when false.
+  # Show whenever a comparison metaobject is attached to the product. Presence of
+  # the metaobject IS the toggle now, so a product simply shows the table by having
+  # one linked in custom.comparison (and hides it by leaving that field empty).
   assign show = false
-  if product.metafields.custom.show_comparison_section.value and cmp != blank
+  if cmp != blank
     assign show = true
   endif
 
@@ -327,7 +328,7 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "The comparison table for the product page. Heading, the Rejuvia column, competitor names, and every row come from the product's custom.comparison metaobject. Colours follow custom.base_colour. Renders only when custom.show_comparison_section is on and a comparison metaobject is attached."
+            "content": "The comparison table for the product page. Heading, the Rejuvia column, competitor names, and every row come from the product's custom.comparison metaobject. Colours follow custom.base_colour. The table renders on any product that has a comparison metaobject attached in custom.comparison; leave that field empty to hide it."
         },
         {
             "type": "text",

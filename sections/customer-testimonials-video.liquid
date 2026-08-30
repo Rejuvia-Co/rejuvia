@@ -1,6 +1,10 @@
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
+/* Accent: the review-bar text, carousel dots, and arrows follow the product's
+   base colour (pink for Calm/Stress, etc.), falling back to the brand purple
+   on pages with no product context (homepage, landers). */
+#shopify-section-{{ section.id }} { --base-colour: {{ product.metafields.custom.base_colour | default: '#672666' }}; }
 /* Carousel controls: identical spec to the press carousel (scoped so the
    non-video testimonials section is untouched). */
 #shopify-section-{{ section.id }} .glide-arrows-bullet__box {
@@ -12,7 +16,7 @@
   flex: none;
   border: none !important; border-radius: 0 !important;
   background: transparent !important;
-  color: #672666; height: auto !important; width: auto;
+  color: var(--base-colour, #672666); height: auto !important; width: auto;
   display: inline-flex; align-items: center; justify-content: center;
   cursor: pointer; padding: 4px !important; box-shadow: none !important;
   transition: opacity .15s ease; left: auto !important; right: auto !important;
@@ -24,7 +28,7 @@
 #shopify-section-{{ section.id }} .glide__arrow path,
 #shopify-section-{{ section.id }} .glide__arrow:hover path,
 #shopify-section-{{ section.id }} .glide__arrow:focus path,
-#shopify-section-{{ section.id }} .glide__arrow:active path { stroke: #672666 !important; }
+#shopify-section-{{ section.id }} .glide__arrow:active path { stroke: var(--base-colour, #672666) !important; }
 #shopify-section-{{ section.id }} .glide__arrow:hover svg,
 #shopify-section-{{ section.id }} .glide__arrow:focus svg,
 #shopify-section-{{ section.id }} .glide__arrow:active svg {
@@ -43,16 +47,16 @@
 }
 #shopify-section-{{ section.id }} .glide__bullet {
   width: 15px; height: 15px; border-radius: 50%;
-  border: 1.5px solid #672666 !important; background: transparent !important;
+  border: 1.5px solid var(--base-colour, #672666) !important; background: transparent !important;
   padding: 0; margin: 0; cursor: pointer; box-shadow: none;
   transition: background .15s ease !important;
 }
-#shopify-section-{{ section.id }} .glide__bullet--active { background: #672666 !important; }
+#shopify-section-{{ section.id }} .glide__bullet--active { background: var(--base-colour, #672666) !important; }
 @media screen and (max-width: 767px) {
   #shopify-section-{{ section.id }} .glide-arrows-bullet__box { margin-top: 24px; gap: 14px; }
   #shopify-section-{{ section.id }} .glide__arrow {
     width: 38px; height: 38px !important; padding: 0 !important;
-    border: 1.5px solid #672666 !important; border-radius: 50% !important;
+    border: 1.5px solid var(--base-colour, #672666) !important; border-radius: 50% !important;
   }
   /* the desktop rule clears border-color; on mobile the circle IS the border,
      so hold it through hover/focus/active (press-carousel behaviour) */
@@ -61,7 +65,7 @@
   #shopify-section-{{ section.id }} .glide__arrow:active {
     opacity: 1;
     background: rgba(0,0,0,0.05) !important;
-    border: 1.5px solid #672666 !important;
+    border: 1.5px solid var(--base-colour, #672666) !important;
     border-radius: 50% !important;
   }
   #shopify-section-{{ section.id }} .glide__arrow svg { width: 18px !important; height: 18px !important; }
@@ -97,7 +101,7 @@
   font-size: {{ section.settings.stars_label_size | default: 18 }}px;
   font-weight: 700;
   line-height: 1.3;
-  color: {{ section.settings.stars_label_color | default: '#672666' }};
+  color: var(--base-colour, {{ section.settings.stars_label_color | default: '#672666' }});
 }
 @media (max-width: 749px) {
   #shopify-section-{{ section.id }} .testimonial-social-proof--pill { padding: 9px 12px; gap: 8px; margin-left: 0; margin-right: auto; }

@@ -33,13 +33,14 @@
   </ul>
   {%- unless pw_benefits_css -%}{%- assign pw_benefits_css = true -%}
   <style>
-    .pw-benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-    .pw-benefit { display: flex; align-items: center; gap: 10px; color: #141414; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 1.35; }
+    /* Row text matches the paragraph description (18px / 1.4 / #171512 on
+       desktop, 16px / 1.6 on mobile) so the list reads as body copy. */
+    .pw-benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .pw-benefit { display: flex; align-items: center; gap: 10px; color: #171512; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 1.4; }
     .pw-benefit__check { display: inline-flex; flex-shrink: 0; color: var(--base-colour, #018C0B); }
-    .pw-benefit__check svg { display: block; }
+    .pw-benefit__check svg { display: block; width: 22px; height: 22px; }
     @media (max-width: 749px) {
-      .pw-benefits { gap: 8px; }
-      .pw-benefit { font-size: 16px; }
+      .pw-benefit { font-size: 16px; line-height: 1.6; }
       .pw-benefit__check svg { width: 18px; height: 18px; }
     }
   </style>

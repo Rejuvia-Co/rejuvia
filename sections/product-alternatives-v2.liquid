@@ -39,9 +39,12 @@
     assign show = true
   endif
 
+  # Field keys are read in both forms: the short handle and the name-derived key
+  # Shopify auto-generates (e.g. "Rejuvia value" -> rejuvia_value), so the section
+  # works whichever the metaobject definition actually uses.
   assign heading = cmp.heading | default: section.settings.heading
-  assign rej_name = cmp.rejuvia_name | default: 'Rejuvia'
-  assign rej_image = cmp.rejuvia_image | default: product.featured_image
+  assign rej_name = cmp.rejuvia_name | default: cmp.rejuvia_column_name | default: 'Rejuvia'
+  assign rej_image = cmp.rejuvia_image | default: cmp.rejuvia_bottle_image | default: product.featured_image
   assign rows = cmp.rows.value
 
   # Count how many competitor columns actually have a name or icon (for the mobile dots).
@@ -200,7 +203,7 @@
       </div>
       {%- for row in rows -%}
         <div class="palt-v2-cell{% if forloop.first %} palt-v2-cell--bold{% endif %}">
-          {%- assign v = row.rejuvia | strip -%}
+          {%- assign v = row.rejuvia | default: row.rejuvia_value | strip -%}
           {%- if v == 'check' -%}
             <span class="palt-v2-ic palt-v2-ic--rej"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           {%- elsif v == 'cross' -%}
@@ -229,9 +232,9 @@
           </div>
           {%- for row in rows -%}
             {%- case i -%}
-              {%- when 0 -%}{%- assign v = row.competitor_1 | strip -%}
-              {%- when 1 -%}{%- assign v = row.competitor_2 | strip -%}
-              {%- when 2 -%}{%- assign v = row.competitor_3 | strip -%}
+              {%- when 0 -%}{%- assign v = row.competitor_1 | default: row.competitor_1_value | strip -%}
+              {%- when 1 -%}{%- assign v = row.competitor_2 | default: row.competitor_2_value | strip -%}
+              {%- when 2 -%}{%- assign v = row.competitor_3 | default: row.competitor_3_value | strip -%}
             {%- endcase -%}
             <div class="palt-v2-cell">
               {%- if v == 'check' -%}

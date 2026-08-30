@@ -529,63 +529,63 @@
         "max_width": 800,
         "padding_top": 100,
         "padding_bottom": 100,
-        "bg_color": "#ffffff",
+        "bg_color": "#EAEAF7",
         "accent_color": "#672666",
         "title_color": "#141414",
         "answer_color": "#5c5c5c"
       }
     },
-    "closing_cta": {
-      "type": "closing-cta",
+    "bogo_content_lst": {
+      "type": "bogo-content",
       "blocks": {
-        "cta_0": {
-          "type": "point",
+        "bullet_1": {
+          "type": "bullet",
           "settings": {
-            "text": "90-day money-back guarantee"
+            "text": "Fall asleep in 10-15 minutes after spraying under your tongue"
           }
         },
-        "cta_1": {
-          "type": "point",
+        "bullet_2": {
+          "type": "bullet",
           "settings": {
-            "text": "Clinically studied ingredients"
+            "text": "Sleep through the entire night without 3am wake-ups"
           }
         },
-        "cta_2": {
-          "type": "point",
+        "bullet_3": {
+          "type": "bullet",
           "settings": {
-            "text": "Made in the USA · cGMP certified"
+            "text": "Wake up refreshed, not groggy, with a non-habit-forming formula"
+          }
+        },
+        "bullet_4": {
+          "type": "bullet",
+          "settings": {
+            "text": "Made with 100% all-natural, clean and safe ingredients"
           }
         }
       },
       "block_order": [
-        "cta_0",
-        "cta_1",
-        "cta_2"
+        "bullet_1",
+        "bullet_2",
+        "bullet_3",
+        "bullet_4"
       ],
       "settings": {
+        "heading": "Fix Your Sleep Once and For All With Rejuvia",
+        "subhead": "Ditch melatonin gummies and sleeping pills with the one sleep solution that actually works when you need it: Rejuvia.",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "subhead_size": 18,
+        "subhead_size_mobile": 18,
+        "bullet_size": 17,
+        "bullet_size_mobile": 17,
         "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
-        "show_stars": true,
-        "stars_color": "#eac78b",
-        "rating_text": "<p>425,000+ Customers</p>",
-        "rating_color": "#141414",
-        "heading": "<p>Better Sleep Is Now a Spray Away</p>",
-        "heading_color": "#141414",
-        "button_text": "Try Rejuvia Risk-Free",
-        "scroll_target": ".product-widget-container",
-        "button_link": "",
+        "image_side": "left",
+        "cta_text": "Try Rejuvia Risk-Free",
+        "cta_link": "",
         "show_guarantee": true,
         "guarantee_text": "90-Day Money-Back Guarantee",
-        "rating_size": 18,
-        "heading_size": 36,
-        "checklist_size": 15,
-        "button_size": 18,
-        "rating_size_mobile": 16,
-        "heading_size_mobile": 28,
-        "checklist_size_mobile": 15,
-        "button_size_mobile": 18,
-        "frame_bg": "#e7e0f4",
-        "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "bg_color": "#fafafa",
+        "accent_color": "#672666"
       }
     }
   },
@@ -598,6 +598,6 @@
     "offer_block",
     "17815436809f47f8ea",
     "faq_center",
-    "closing_cta"
+    "bogo_content_lst"
   ]
 }

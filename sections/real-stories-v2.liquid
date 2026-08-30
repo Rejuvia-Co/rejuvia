@@ -13,7 +13,10 @@
   assign rs_fb = rs.value.facebook_reviews.value
   assign rs_online = rs.value.online_reviews.value
   assign rs_heading = rs.value.heading | default: section.settings.heading
+  # Only the highlighted count belongs in the field; strip the fixed words so
+  # it renders once whether the value is "425,000+" or "Trusted by 425,000+ Sleepers".
   assign rs_trusted = rs.value.trusted_count | default: section.settings.trusted_count
+  assign rs_trusted = rs_trusted | remove: 'Trusted by ' | remove: ' Sleepers' | remove: 'Sleepers' | strip
 
   assign use_fb_meta = false
   if rs_fb != blank and rs_fb.size > 0

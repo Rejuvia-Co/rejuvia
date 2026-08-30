@@ -5,7 +5,7 @@
     Falls back to the section's default_items setting when the metafield is empty.
     Background follows the product's sub-base colour; icon tick follows base_colour.
   endcomment
-  comment Read .value explicitly so basic metafields resolve to their string, not the drop. endcomment
+  # Read .value explicitly so basic metafields resolve to their string, not the drop.
   assign gv2_base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour
 
   assign gv2_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value

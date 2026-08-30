@@ -18,8 +18,13 @@
 {% if template.name == 'index' %}
 	<link rel="preload" href="{{ 'home-components.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="{{ 'home-components.min.css' | asset_url }}"></noscript>
-{% elsif template.name == 'product' %}
-	<link rel="preload" href="{{ 'pdp-components.min.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="{{ 'pdp-components.min.css' | asset_url }}"></noscript>
 {% endif %}
+{% comment %}
+  pdp-components.min.css intentionally no longer loaded on product pages.
+  Verified (live DOM test, all products share product.json): zero elements on
+  the product template match any selector in that bundle, so it contributed no
+  styles here. Its remaining component styles belong to sections
+  (ingredients-section, product-features-ingredients) that aren't rendered on
+  any template, so the bundle is effectively dead. Asset kept for now.
+{% endcomment %}
 

@@ -317,7 +317,7 @@
     "key_ingredients_v2_1": {
       "type": "key-ingredients-v2",
       "settings": {
-        "heading": "The Key Natural Ingredients",
+        "heading": "Key all-natural ingredients",
         "button_label": "View Supplement Label",
         "button_url": ""
       }
@@ -327,7 +327,7 @@
       "name": "Product How To Use",
       "settings": {
         "background_color": "#eaeaf7",
-        "heading": "How To Use Rejuvia",
+        "heading": "How to use Rejuvia",
         "backdrop_color": "#f7edec",
         "heading_size": 36,
         "heading_size_mobile": 26,
@@ -541,7 +541,7 @@
     "feature_products_v2_1": {
       "type": "feature-products-v2",
       "settings": {
-        "heading": "Explore More Rejuvia",
+        "heading": "Explore more Rejuvia",
         "subheading": "<p>Oral sprays for sleep, stress and daily wellness — all absorbed in seconds.</p>",
         "product_limit": 3
       }

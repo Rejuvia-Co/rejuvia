@@ -28,11 +28,13 @@
 }
 
 .key-ingredients-v2__title {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: #141414;
+  /* Match the "How To Use" heading (.hus__heading) exactly. */
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.52px;
+  color: #171512;
   margin: 0;
 }
 
@@ -140,7 +142,8 @@
   }
 
   .key-ingredients-v2__title {
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 1.15;
   }
 
   .key-ingredients-v2__btn--desktop {

@@ -1,170 +1,106 @@
-{{ 'product-how-to-use.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Product How To Use — clean 3-step layout (matches the "How To Use (Steps)"
+  design used on the V2 template), but driven PER PRODUCT by the existing
+  custom.how_to_use metaobject instead of section blocks.
 
-{%- assign how_to_use = product.metafields.custom.how_to_use -%}
+  Metaobject fields used:
+    .value.title      -> heading (falls back to the section setting)
+    .value.subtitle   -> subheading line
+    .value.steps.value (list) -> per step: .image, .description
+  The "STEP n" eyebrow is generated automatically from the step order.
 
-{%- if how_to_use.value != blank -%}
+  Desktop: 3 photo steps in a row. Mobile: one hero photo (first step's image)
+  + three compact rows (64px circle thumb + STEP label + sentence). Static, no JS.
+  Renders nothing when the metaobject has no steps.
+{%- endcomment -%}
 
-<section class="product-how-to-use-section" id="section-{{ section.id }}">
-  <div class="product-how-to-use__container">
-    {%- comment -%} Heading {%- endcomment -%}
-    <div class="product-how-to-use__heading">
-      <h2 class="product-how-to-use__title section-heading">{{ how_to_use.value.title }}</h2>
-      <p class="product-how-to-use__subtitle">{{ how_to_use.value.subtitle }}</p>
+{%- liquid
+  assign how_to_use = product.metafields.custom.how_to_use
+  assign steps = how_to_use.value.steps.value
+  assign uid = 'hus-' | append: section.id
+  assign heading = how_to_use.value.title | default: section.settings.heading
+  assign subheading = how_to_use.value.subtitle
+-%}
+
+{%- if steps != blank and steps.size > 0 -%}
+{%- assign hero = steps.first -%}
+<style>
+  #{{ uid }} {
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+    font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  }
+  #{{ uid }} .hus__inner { max-width: 1200px; margin: 0 auto; padding: 72px 80px; display: flex; flex-direction: column; gap: 48px; box-sizing: border-box; }
+  #{{ uid }} .hus__header { display: flex; flex-direction: column; gap: 10px; text-align: center; align-items: center; }
+  #{{ uid }} .hus__heading { margin: 0; font-size: {{ section.settings.heading_size | default: 36 }}px; font-weight: 700; line-height: 1.2; letter-spacing: -0.52px; color: #171512; }
+  #{{ uid }} .hus__sub { margin: 0; font-size: {{ section.settings.subheading_size | default: 17 }}px; line-height: 1.6; color: #3D2F3C; max-width: 720px; }
+
+  /* Mobile hero — hidden on desktop */
+  #{{ uid }} .hus__hero { display: none; }
+
+  /* Steps grid */
+  #{{ uid }} .hus__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  #{{ uid }} .hus__step { display: flex; flex-direction: column; gap: 18px; }
+  #{{ uid }} .hus__media { aspect-ratio: 16 / 13.2; border-radius: 14px; overflow: hidden; }
+  #{{ uid }} .hus__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
+  #{{ uid }} .hus__body { display: flex; flex-direction: column; gap: 8px; }
+  #{{ uid }} .hus__label { margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #6B5B69; }
+  #{{ uid }} .hus__text { margin: 0; font-size: {{ section.settings.step_text_size | default: 18 }}px; line-height: 1.5; font-weight: 400; color: #232323; text-wrap: pretty; }
+  #{{ uid }} .hus__text p { margin: 0; }
+  #{{ uid }} .hus__text strong { font-weight: 700; }
+
+  @media (max-width: 767px) {
+    #{{ uid }} .hus__inner { padding: 40px 16px 44px; gap: 24px; }
+    #{{ uid }} .hus__heading { font-size: {{ section.settings.heading_size_mobile | default: 26 }}px; line-height: 1.15; }
+    #{{ uid }} .hus__sub { font-size: {{ section.settings.subheading_size_mobile | default: 15 }}px; line-height: 1.55; }
+    #{{ uid }} .hus__hero { display: block; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; }
+    #{{ uid }} .hus__hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+    #{{ uid }} .hus__grid { grid-template-columns: 1fr; gap: 14px; }
+    #{{ uid }} .hus__step { flex-direction: row; align-items: center; gap: 14px; }
+    #{{ uid }} .hus__media { flex: none; width: 64px; height: 64px; aspect-ratio: auto; border-radius: 100px; }
+    #{{ uid }} .hus__media img { object-position: 50% 18%; }
+    #{{ uid }} .hus__body { gap: 2px; }
+    #{{ uid }} .hus__label { font-size: 11px; }
+    #{{ uid }} .hus__text { font-size: {{ section.settings.step_text_size_mobile | default: 16 }}px; line-height: 1.5; font-weight: 400; }
+  }
+</style>
+
+<section id="{{ uid }}" class="hus">
+  <div class="hus__inner">
+    <div class="hus__header">
+      {%- if heading != blank -%}<h2 class="hus__heading">{{ heading }}</h2>{%- endif -%}
+      {%- if subheading != blank -%}<p class="hus__sub">{{ subheading }}</p>{%- endif -%}
     </div>
 
-    {%- comment -%} Content: Image + Steps {%- endcomment -%}
-    <div class="product-how-to-use__content">
-      {%- comment -%} Image Container with all step images {%- endcomment -%}
-      <div class="product-how-to-use__image-wrapper">
-        {%- for step in how_to_use.value.steps.value -%}
-          {%- assign step_index = forloop.index -%}
-          {%- if step.image -%}
-            <div class="product-how-to-use__image-container {% if forloop.first %}is-active{% endif %}"
-                 data-step-image="{{ step_index }}">
-              {{ step.image | image_url: width: 1200 | image_tag:
-                loading: 'lazy',
-                widths: '375, 550, 750, 1100, 1500',
-                class: 'product-how-to-use__image',
-                alt: step.step_title
-              }}
-              <div class="product-how-to-use__decorative-icon {% if step.left_side_svg %}product-how-to-use__decorative-icon--left{% else %}product-how-to-use__decorative-icon--right{% endif %}" aria-hidden="true">
-                {%- if step.svg_icon -%}
-                  {{ step.svg_icon }}
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
+    {%- if hero.image != blank -%}
+      <div class="hus__hero" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
+        <img src="{{ hero.image | image_url: width: 800 }}"
+             srcset="{{ hero.image | image_url: width: 500 }} 500w, {{ hero.image | image_url: width: 800 }} 800w"
+             sizes="100vw"
+             alt="{{ heading | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
       </div>
+    {%- endif -%}
 
-      {%- comment -%} Steps Container {%- endcomment -%}
-      <div class="product-how-to-use__steps">
-        {%- for step in how_to_use.value.steps.value -%}
-          {%- assign step_index = forloop.index -%}
-
-          <div class="product-how-to-use__step {% if forloop.first %}is-active{% endif %}"
-               data-step="{{ step_index }}">
-
-            {%- comment -%} Step Header (always visible) {%- endcomment -%}
-            <button
-              class="product-how-to-use__step-header"
-              type="button"
-              aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-              aria-controls="step-content-{{ section.id }}-{{ step_index }}"
-              data-step-toggle>
-
-              <span class="product-how-to-use__step-title">
-                {%- if step.step_title -%}
-                  <span class="product-how-to-use__step-name">{{ step.step_title }}</span>
-                {%- endif -%}
-              </span>
-
-            </button>
-
-            {%- comment -%} Step Content (accordion panel) {%- endcomment -%}
-            <div
-              class="product-how-to-use__step-content"
-              id="step-content-{{ section.id }}-{{ step_index }}"
-              {% unless forloop.first %}hidden{% endunless %}>
-
-              {%- if step.description -%}
-                <div class="product-how-to-use__step-description">
-                  {{ step.description | newline_to_br }}
-                </div>
-              {%- endif -%}
-
-              {%- comment -%} Tips Section {%- endcomment -%}
-              {%- if step.first_tip_title -%}
-                <div class="product-how-to-use__divider"></div>
-
-                <div class="product-how-to-use__tips {% if step.second_tip_title %}product-how-to-use__tips--two-column{% endif %}">
-                  {%- comment -%} First Tip {%- endcomment -%}
-                  <div class="product-how-to-use__tip">
-                    <div class="product-how-to-use__tip-label">
-                      {%- if step.first_tip_icon_svg -%}
-                        <span class="product-how-to-use__tip-icon" aria-hidden="true">
-                          {{ step.first_tip_icon_svg }}
-                        </span>
-                      {%- endif -%}
-                      <span class="product-how-to-use__tip-title">{{ step.first_tip_title }}</span>
-                    </div>
-                    {%- if step.first_tip_description -%}
-                      <p class="product-how-to-use__tip-description">{{ step.first_tip_description | newline_to_br }}</p>
-                    {%- endif -%}
-                  </div>
-
-                  {%- comment -%} Second Tip (if present) {%- endcomment -%}
-                  {%- if step.second_tip_title -%}
-                    <div class="product-how-to-use__tip">
-                      <div class="product-how-to-use__tip-label">
-                        {%- if step.second_tip_icon_svg -%}
-                          <span class="product-how-to-use__tip-icon" aria-hidden="true">
-                            {{ step.second_tip_icon_svg }}
-                          </span>
-                        {%- endif -%}
-                        <span class="product-how-to-use__tip-title">{{ step.second_tip_title }}</span>
-                      </div>
-                      {%- if step.second_tip_description -%}
-                        <p class="product-how-to-use__tip-description">{{ step.second_tip_description | newline_to_br }}</p>
-                      {%- endif -%}
-                    </div>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-            </div>
+    <div class="hus__grid">
+      {%- for step in steps -%}
+        <div class="hus__step">
+          <div class="hus__media" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
+            {%- if step.image != blank -%}
+              <img class="hus__img"
+                   src="{{ step.image | image_url: width: 800 }}"
+                   srcset="{{ step.image | image_url: width: 128 }} 128w, {{ step.image | image_url: width: 400 }} 400w, {{ step.image | image_url: width: 800 }} 800w"
+                   sizes="(max-width: 767px) 64px, 380px"
+                   alt="{{ step.step_title | default: 'Step' | escape }}" loading="lazy" decoding="async">
+            {%- endif -%}
           </div>
-        {%- endfor -%}
-      </div>
+          <div class="hus__body">
+            <p class="hus__label">STEP {{ forloop.index }}</p>
+            {%- if step.description != blank -%}<div class="hus__text">{{ step.description | newline_to_br }}</div>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
-
-<script>
-  (function() {
-    const section = document.getElementById('section-{{ section.id }}');
-    if (!section) return;
-
-    const stepToggles = section.querySelectorAll('[data-step-toggle]');
-    const stepImages = section.querySelectorAll('[data-step-image]');
-
-    stepToggles.forEach(toggle => {
-      toggle.addEventListener('click', function() {
-        const step = this.closest('.product-how-to-use__step');
-        const content = this.nextElementSibling;
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        const stepNumber = step.getAttribute('data-step');
-
-        // Close all other steps
-        stepToggles.forEach(otherToggle => {
-          if (otherToggle !== this) {
-            const otherStep = otherToggle.closest('.product-how-to-use__step');
-            const otherContent = otherToggle.nextElementSibling;
-
-            otherStep.classList.remove('is-active');
-            otherToggle.setAttribute('aria-expanded', 'false');
-            otherContent.setAttribute('hidden', '');
-          }
-        });
-
-        // Toggle current step
-        if (!isExpanded) {
-          step.classList.add('is-active');
-          this.setAttribute('aria-expanded', 'true');
-          content.removeAttribute('hidden');
-
-          // Change the active image
-          stepImages.forEach(img => {
-            if (img.getAttribute('data-step-image') === stepNumber) {
-              img.classList.add('is-active');
-            } else {
-              img.classList.remove('is-active');
-            }
-          });
-        }
-      });
-    });
-  })();
-</script>
 {%- endif -%}
 
 {% schema %}
@@ -175,12 +111,18 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "This section displays the 'How To Use' instructions from the product's custom.how_to_use metafield. To edit the content, go to the product page in the admin and edit the 'How To Use' metafield. The section will be hidden if no steps are defined."
+      "content": "Content comes from the product's custom.how_to_use metaobject: subtitle, plus each step's image and description. Edit it on the product page in the admin. The section hides itself when no steps are defined."
     },
-    {
-      "type": "paragraph",
-      "content": "**Metafield structure:** custom.how_to_use (metaobject) contains: title, subtitle, and steps (list of step metaobjects). Each step includes: step_title, description, image (file field), svg_icon, left_side_svg, and optional tips (first_tip_title, first_tip_icon_svg, first_tip_description, second_tip_title, second_tip_icon_svg, second_tip_description)."
-    }
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "text", "id": "heading", "label": "Heading fallback", "info": "Used when the metaobject has no title.", "default": "How To Use Rejuvia" },
+    { "type": "color", "id": "backdrop_color", "label": "Photo backdrop", "default": "#F7EDEC" },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 60, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 36 },
+    { "type": "range", "id": "heading_size_mobile", "min": 16, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 26 },
+    { "type": "range", "id": "subheading_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Subheading size (desktop)", "default": 17 },
+    { "type": "range", "id": "subheading_size_mobile", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Subheading size (mobile)", "default": 15 },
+    { "type": "range", "id": "step_text_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Step text size (desktop)", "default": 18 },
+    { "type": "range", "id": "step_text_size_mobile", "min": 11, "max": 24, "step": 1, "unit": "px", "label": "Step text size (mobile)", "default": 16 }
   ],
   "presets": [
     {

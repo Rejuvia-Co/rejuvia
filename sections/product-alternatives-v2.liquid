@@ -361,7 +361,9 @@
     }
 </style>
 
-{% if product.metafields.custom.show_comparison_section %}
+{%- comment -%} .value is required: a boolean metafield is a truthy object even when
+   set to false, so without .value the section would show whenever the field exists. {%- endcomment -%}
+{% if product.metafields.custom.show_comparison_section.value %}
 
 <div class="palt-v2-container">
     <div class="palt-v2-heading">{{ section.settings.heading }}</div>

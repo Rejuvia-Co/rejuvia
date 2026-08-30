@@ -1,7 +1,8 @@
 {%- liquid
   comment
     Items come from the per-product single-line metafield custom.guarantees, a
-    comma-separated list (e.g. "6,500+ 5-Star Reviews, Free US Shipping over $59").
+    PIPE-separated list (e.g. "6,500+ 5-Star Reviews | Free US Shipping Over $59").
+    Pipe, not comma, because the values themselves contain commas (6,500+ / 425,000+).
     Falls back to the section's default_items setting when the metafield is empty.
     Background follows the product's sub-base colour; icon tick follows base_colour.
     Read .value explicitly so basic metafields resolve to their string, not the drop.
@@ -10,7 +11,7 @@
   assign gv2_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
   assign gv2_bg = gv2_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: section.settings.bg_color
   assign items_raw = product.metafields.custom.guarantees.value | default: product.metafields.custom.guarantees | default: section.settings.default_items
-  assign gv2_items = items_raw | split: ','
+  assign gv2_items = items_raw | split: '|'
 -%}
 {% style %}
 .guarantees-v2-section {
@@ -102,14 +103,14 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "Items come from the product's custom.guarantees metafield (a single line, items separated by commas). The list below is the fallback used when that metafield is empty."
+            "content": "Items come from the product's custom.guarantees metafield (a single line, items separated by a pipe | ). The list below is the fallback used when that metafield is empty."
         },
         {
             "type": "textarea",
             "id": "default_items",
             "label": "Default items (fallback)",
-            "info": "Comma-separated, e.g. 6,500+ 5-Star Reviews, Free US Shipping over $59, 425,000+ Happy Customers",
-            "default": "6,500+ 5-Star Reviews, Free US Shipping over $59, 425,000+ Happy Customers"
+            "info": "Separate items with a PIPE | (not a comma — the numbers contain commas). E.g. 6,500+ 5-Star Reviews | Free US Shipping Over $59 | 425,000+ Happy Customers",
+            "default": "6,500+ 5-Star Reviews | Free US Shipping Over $59 | 425,000+ Happy Customers"
         },
         {
             "type": "text",

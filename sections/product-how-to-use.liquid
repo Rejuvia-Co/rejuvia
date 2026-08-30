@@ -23,7 +23,6 @@
 -%}
 
 {%- if steps != blank and steps.size > 0 -%}
-{%- assign hero = steps.first -%}
 <style>
   #{{ uid }} {
     background-color: {{ section.settings.background_color | default: '#ffffff' }};
@@ -71,14 +70,18 @@
       {%- if subheading != blank -%}<p class="hus__sub">{{ subheading }}</p>{%- endif -%}
     </div>
 
-    {%- if hero.image != blank -%}
-      <div class="hus__hero" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
-        <img src="{{ hero.image | image_url: width: 800 }}"
-             srcset="{{ hero.image | image_url: width: 500 }} 500w, {{ hero.image | image_url: width: 800 }} 800w"
-             sizes="100vw"
-             alt="{{ heading | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
-      </div>
-    {%- endif -%}
+    {%- comment -%} Mobile hero = first step's photo. Rendered via a limit:1 loop so the
+       metaobject image field resolves the same way it does in the grid loop below. {%- endcomment -%}
+    {%- for step in steps limit: 1 -%}
+      {%- if step.image != blank -%}
+        <div class="hus__hero" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
+          <img src="{{ step.image | image_url: width: 800 }}"
+               srcset="{{ step.image | image_url: width: 500 }} 500w, {{ step.image | image_url: width: 800 }} 800w"
+               sizes="100vw"
+               alt="{{ heading | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
 
     <div class="hus__grid">
       {%- for step in steps -%}

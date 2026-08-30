@@ -154,6 +154,9 @@
 {%- liquid
   assign vt = product.metafields.custom.testimonials
   assign meta_items = vt.value.testimonials.value
+  if meta_items == blank
+    assign meta_items = vt.value.testimonial.value
+  endif
   assign use_meta = false
   if meta_items != blank and meta_items.size > 0
     assign use_meta = true

@@ -29,11 +29,12 @@
 }
 
 .product-intro-v3__heading {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: #141414;
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.52px;
+  color: #171512;
   margin: 0;
 }
 
@@ -186,7 +187,7 @@
   }
 
   .product-intro-v3__heading {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .product-intro-v3__description {

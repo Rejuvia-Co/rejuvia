@@ -4,5 +4,5 @@
    Lives here, not in the section's inline <style>, because that block is
    gated {% unless request.page_type == 'product' %} and so never renders on
    an actual product page. */
-.pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 16px 0 24px; }
+.pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
 .pw-payments svg { height: 26px; width: auto; }

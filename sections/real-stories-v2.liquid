@@ -13,6 +13,7 @@
   assign rs_fb = rs.value.facebook_reviews.value
   assign rs_online = rs.value.online_reviews.value
   assign rs_heading = rs.value.heading | default: section.settings.heading
+  assign rs_trusted = rs.value.trusted_count | default: section.settings.trusted_count
 
   assign use_fb_meta = false
   if rs_fb != blank and rs_fb.size > 0
@@ -353,7 +354,7 @@
             {% endfor %}
         </div>
         <span class="rs-v2-rating-text">
-            Trusted by <span class="rs-v2-accent">{{ section.settings.trusted_count }}</span> Sleepers
+            Trusted by <span class="rs-v2-accent">{{ rs_trusted }}</span> Sleepers
         </span>
     </div>
 
@@ -540,6 +541,7 @@
             "type": "text",
             "id": "trusted_count",
             "label": "Trusted count",
+            "info": "Fallback only. Product pages use custom.real_stories > trusted_count.",
             "default": "425,000+"
         },
         {

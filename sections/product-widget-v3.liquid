@@ -245,6 +245,10 @@
                     </div>
 
                 {% when 'buy-buttons' %}
+                    {%- comment -%} Ships-by bar between the plan picker and Add to Cart, same as BOGO. {%- endcomment -%}
+                    {%- if section.settings.show_ship_bar -%}
+                      <div class="pw-ship">{% render 'shipping-bar' %}</div>
+                    {%- endif -%}
                     <div class="block-buy-buttons" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                         <form action="{% unless settings.allow_ajax_cart %}/cart/add{% endunless %}" data-productid="{{ currentProduct.id }}"
                             id="{{ product_form_id }}" method="post" class="layout-2 variants add-to-cart-form"
@@ -520,7 +524,8 @@
       { "type": "color", "id": "trusted_check", "label": "Checkmark colour", "default": "#34c759" },
       { "type": "header", "content": "Payment icons (below Add to Cart)" },
       { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
-      { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" }
+      { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+      { "type": "checkbox", "id": "show_ship_bar", "label": "Show ships-by bar (above Add to Cart)", "default": true }
     ],
   "blocks": [
     {

@@ -78,8 +78,8 @@
 /* Mobile: keep the rating line on ONE line ("4.5 Stars | 425,000+ Customers")
    by shrinking stars + text and preventing wrap. */
 @media (max-width: 749px) {
-  .product-widget-container .custom-review-stars { flex-wrap: nowrap !important; gap: 8px !important; }
-  .product-widget-container .custom-review-stars .rating-text { white-space: nowrap !important; font-size: 14px !important; }
+  .product-widget-container .custom-review-stars { flex-wrap: nowrap !important; gap: 6px !important; }
+  .product-widget-container .custom-review-stars .rating-text { white-space: nowrap !important; font-size: 15px !important; position: relative !important; top: 2px !important; }
   .product-widget-container .custom-review-stars .star { height: 15px !important; }
   .product-widget-container .custom-review-stars .star svg { height: 15px !important; width: auto !important; }
 }

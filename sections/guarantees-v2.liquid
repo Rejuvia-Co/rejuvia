@@ -1,7 +1,19 @@
+{%- liquid
+  comment
+    Items come from the per-product single-line metafield custom.guarantees, a
+    comma-separated list (e.g. "6,500+ 5-Star Reviews, Free US Shipping over $59").
+    Falls back to the section's default_items setting when the metafield is empty.
+    Background follows the product's sub-base colour; icon tick follows base_colour.
+  endcomment
+  assign gv2_base = product.metafields.custom.base_colour
+  assign gv2_bg = product.metafields.custom.sub_base_colour | default: section.settings.bg_color
+  assign items_raw = product.metafields.custom.guarantees | default: section.settings.default_items
+  assign gv2_items = items_raw | split: ','
+-%}
 {% style %}
 .guarantees-v2-section {
     width: 100%;
-    background-color: {{ section.settings.bg_color }};
+    background-color: {{ gv2_bg }};
     margin: 32px 0;
 }
 
@@ -66,16 +78,18 @@
 }
 {% endstyle %}
 
-{%- assign gv2_base = product.metafields.custom.base_colour -%}
 <div class="guarantees-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}{% if gv2_base != blank %} style="--base-colour: {{ gv2_base }};"{% endif %}>
-    {% for block in section.blocks %}
-        <div class="guarantees-v2-item" {{ block.shopify_attributes }}>
+    {% for item in gv2_items %}
+        {%- assign item_text = item | strip -%}
+        {%- if item_text != blank -%}
+        <div class="guarantees-v2-item">
             <svg class="guarantees-v2-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
                 <circle cx="11" cy="11" r="11" fill="{{ section.settings.icon_color }}"/>
                 <path d="M6.5 11.5L9.5 14.5L15.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="guarantees-v2-text">{{ block.settings.text }}</span>
+            <span class="guarantees-v2-text">{{ item_text }}</span>
         </div>
+        {%- endif -%}
     {% endfor %}
 </div>
 
@@ -85,6 +99,17 @@
     "class": "guarantees-v2-section",
     "settings": [
         {
+            "type": "paragraph",
+            "content": "Items come from the product's custom.guarantees metafield (a single line, items separated by commas). The list below is the fallback used when that metafield is empty."
+        },
+        {
+            "type": "textarea",
+            "id": "default_items",
+            "label": "Default items (fallback)",
+            "info": "Comma-separated, e.g. 6,500+ 5-Star Reviews, Free US Shipping over $59, 425,000+ Happy Customers",
+            "default": "6,500+ 5-Star Reviews, Free US Shipping over $59, 425,000+ Happy Customers"
+        },
+        {
             "type": "text",
             "id": "anchor_id",
             "label": "Anchor ID",
@@ -93,20 +118,22 @@
         {
             "type": "color",
             "id": "bg_color",
-            "label": "Background color",
+            "label": "Background color (fallback)",
+            "info": "Used when the product's custom.sub_base_colour is empty.",
             "default": "#F8EFE4"
         },
         {
             "type": "color",
             "id": "icon_color",
-            "label": "Icon color",
+            "label": "Icon color (fallback)",
+            "info": "Tick follows the product's base_colour; this is the fallback.",
             "default": "#672666"
         }
     ],
     "blocks": [
         {
             "type": "guarantee",
-            "name": "Guarantee",
+            "name": "Guarantee (legacy — no longer rendered)",
             "settings": [
                 {
                     "type": "text",
@@ -120,21 +147,7 @@
     "presets": [
         {
             "name": "Guarantees V2",
-            "category": "Custom",
-            "blocks": [
-                {
-                    "type": "guarantee",
-                    "settings": { "text": "6,500+ 5-Star Reviews" }
-                },
-                {
-                    "type": "guarantee",
-                    "settings": { "text": "Free US Shipping over $59" }
-                },
-                {
-                    "type": "guarantee",
-                    "settings": { "text": "425,000+ Happy Customers" }
-                }
-            ]
+            "category": "Custom"
         }
     ]
 }

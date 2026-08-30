@@ -399,7 +399,9 @@
       "settings": {
         "heading": "Key all-natural ingredients",
         "button_label": "View Supplement Label",
-        "button_url": ""
+        "button_url": "",
+        "cta_text": "TRY RISK-FREE",
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "product_how_to_use_v2": {
@@ -426,7 +428,9 @@
         "icon_size": 90,
         "comp_1_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
         "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
-        "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png"
+        "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
+        "cta_text": "TRY RISK-FREE",
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "guarantees_v2_1": {

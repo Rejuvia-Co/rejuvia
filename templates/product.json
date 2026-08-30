@@ -422,7 +422,11 @@
       "name": "Alternatives V2",
       "settings": {
         "heading": "Rejuvia is the better way",
-        "icon_size": 90
+        "bg_color": "#ffffff",
+        "icon_size": 90,
+        "comp_1_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
+        "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
+        "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png"
       }
     },
     "guarantees_v2_1": {

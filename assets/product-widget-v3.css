@@ -15,3 +15,6 @@
    page -- so the check stayed the pasted SVG's gold. CSS fill beats the SVG's
    presentation attribute. */
 .guarantee-label-container svg path { fill: var(--base-colour, #EAC78B); }
+/* Spec icons (e.g. the green leaf next to "Fresh Mint") -> product base colour.
+   Scoped to path[stroke] so only stroked icons recolour; fill-based icons keep theirs. */
+.specs-icon svg path[stroke] { stroke: var(--base-colour, #018C0B); }

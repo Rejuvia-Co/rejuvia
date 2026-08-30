@@ -30,15 +30,15 @@
   .product-widget-container .product-wrap .product-info > .block-product-specs,
   .product-widget-container .product-wrap .product-info > .block-description,
   .product-widget-container .product-wrap .product-info > .block-variant-selector,
-  .product-widget-container .product-wrap .product-info > .block-skio-plan-picker-v2 { margin-top: 0 !important; margin-bottom: 20px !important; }
+  .product-widget-container .product-wrap .product-info > .block-skio-plan-picker-v2 { margin-top: 0 !important; margin-bottom: 18px !important; }
   .product-widget-container .product-wrap .product-info > .pw-ship { margin: 0 !important; }
   .product-widget-container .product-wrap .product-info > .block-buy-buttons { margin-top: 0 !important; margin-bottom: 0 !important; }
-  .product-widget-container .product-wrap .product-info > .pw-payments { margin: 20px 0 20px !important; }
-  .product-widget-container .product-wrap .product-info > .block-custom-tabs { margin-top: 0 !important; margin-bottom: 20px !important; }
+  .product-widget-container .product-wrap .product-info > .pw-payments { margin: 18px 0 18px !important; }
+  .product-widget-container .product-wrap .product-info > .block-custom-tabs { margin-top: 0 !important; margin-bottom: 18px !important; }
   .product-widget-container .product-wrap .product-info > .trusted-by { margin-top: 0 !important; }
   .product-widget-container .product-wrap .product-info .variant-selector-v2 { margin-bottom: 0 !important; }
-  .product-widget-container .product-wrap .product-info .block-buy-buttons form { gap: 20px !important; }
-  .product-widget-container .product-wrap .product-info .guarantee-label-container { margin-top: 20px !important; }
+  .product-widget-container .product-wrap .product-info .block-buy-buttons form { gap: 18px !important; }
+  .product-widget-container .product-wrap .product-info .guarantee-label-container { margin-top: 18px !important; }
 }
 @media (max-width: 749px) {
   .product-widget-container .product-wrap .product-info > .block-reviews,

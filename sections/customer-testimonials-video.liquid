@@ -146,13 +146,13 @@
 </noscript>
 
 {%- comment -%}
-  Content source: prefer the per-product metaobject custom.video_testimonials
-  (header, stars_label, testimonials[] -> image/quote/name). Falls back to the
-  section's own settings + blocks when the metaobject is empty, so the live
-  site keeps working until the metaobject is populated in admin.
+  Content source: prefer the per-product metaobject custom.testimonials, a parent
+  object holding header, stars_label, and testimonials[] (each -> image/quote/name).
+  Falls back to the section's own settings + blocks when the metaobject is empty,
+  so the live site keeps working until the metaobject is populated in admin.
 {%- endcomment -%}
 {%- liquid
-  assign vt = product.metafields.custom.video_testimonials
+  assign vt = product.metafields.custom.testimonials
   assign meta_items = vt.value.testimonials.value
   assign use_meta = false
   if meta_items != blank and meta_items.size > 0

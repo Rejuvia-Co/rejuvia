@@ -474,177 +474,19 @@
         "bg_color": "#eaeaf7"
       }
     },
-    "product_comparison_enhanced_G6MmFh": {
-      "type": "product-comparison-enhanced",
-      "blocks": {
-        "product_column_tqfCjx": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "Rejuvia Sleep Spray",
-            "product_icon": "shopify://shop_images/IMG.png",
-            "is_featured": true
-          }
-        },
-        "product_column_Mg4C3p": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "Sleeping Pills",
-            "product_icon": "shopify://shop_images/Sleeping_Pills.png",
-            "is_featured": false
-          }
-        },
-        "product_column_nrXeXp": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "Sleep Gummies",
-            "product_icon": "shopify://shop_images/Sleep_Gummies.png",
-            "is_featured": false
-          }
-        },
-        "product_column_jtRq3f": {
-          "type": "product_column",
-          "settings": {
-            "product_name": "Melatonin Supplements",
-            "product_icon": "shopify://shop_images/natrol-melatonin-60ct-10mgmaximum-tablet-fastdissolve-citrus-047469076689-size.jpg_1.png",
-            "is_featured": false
-          }
-        },
-        "feature_row_HbpnWP": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Absorption Speed",
-            "value_type_col_1": "text",
-            "text_col_1": "Fast (5-10 min)",
-            "value_type_col_2": "text",
-            "text_col_2": "Slow (60-90 min)",
-            "value_type_col_3": "text",
-            "text_col_3": "Slow (60-90 min)",
-            "value_type_col_4": "text",
-            "text_col_4": "Slow (60-90 min)",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_CGXtUe": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Proven Natural Ingredients",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "cross",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_HFKqei": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Non-Habit Forming",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "check",
-            "text_col_3": "",
-            "value_type_col_4": "check",
-            "text_col_4": "",
-            "value_type_col_5": "check",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_HYkECV": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "No Groggy Mornings",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "cross",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_ipC3wC": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Tastes Great",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "check",
-            "text_col_3": "",
-            "value_type_col_4": "check",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_TdJUdL": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Customize Dose",
-            "value_type_col_1": "text",
-            "text_col_1": "Easy spray control",
-            "value_type_col_2": "text",
-            "text_col_2": "Limited",
-            "value_type_col_3": "text",
-            "text_col_3": "Limited",
-            "value_type_col_4": "text",
-            "text_col_4": "Limited",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        },
-        "feature_row_Ytm67T": {
-          "type": "feature_row",
-          "settings": {
-            "feature_name": "Safe for Long-Term Use",
-            "value_type_col_1": "check",
-            "text_col_1": "",
-            "value_type_col_2": "cross",
-            "text_col_2": "",
-            "value_type_col_3": "cross",
-            "text_col_3": "",
-            "value_type_col_4": "cross",
-            "text_col_4": "",
-            "value_type_col_5": "cross",
-            "text_col_5": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_column_tqfCjx",
-        "product_column_Mg4C3p",
-        "product_column_nrXeXp",
-        "product_column_jtRq3f",
-        "feature_row_HbpnWP",
-        "feature_row_CGXtUe",
-        "feature_row_HFKqei",
-        "feature_row_HYkECV",
-        "feature_row_ipC3wC",
-        "feature_row_TdJUdL",
-        "feature_row_Ytm67T"
-      ],
-      "name": "Product Comparison",
+    "product_alternatives_v2_offer": {
+      "type": "product-alternatives-v2",
       "settings": {
-        "show_heading": true,
-        "heading": "Rejuvia Is The Better Way to Sleep",
-        "container_width": 1300,
-        "section_padding_top": 65,
-        "section_padding_bottom": 65,
-        "section_padding_horizontal": 70,
+        "source_product": "sleep-spray",
+        "heading": "Rejuvia is the better way",
         "bg_color": "#ffffff",
-        "mobile_breakpoint": 750
+        "icon_size": 84,
+        "comp_1_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
+        "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
+        "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee",
+        "cta_target": "#offer"
       }
     },
     "17814435248f2fd49e": {
@@ -863,7 +705,7 @@
     "how_to_use_steps_rmUcyN",
     "key_ingredients_v2_XxByCK",
     "guarantee_section_gK7mPq",
-    "product_comparison_enhanced_G6MmFh",
+    "product_alternatives_v2_offer",
     "17814435248f2fd49e",
     "founder_story_v2_Rj7kQp",
     "faq_center_fQVeth",

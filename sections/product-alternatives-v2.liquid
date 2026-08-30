@@ -324,7 +324,7 @@
   {%- comment -%} CTA — scrolls up to the product widget; colour follows base_colour {%- endcomment -%}
   {%- if section.settings.cta_text != blank -%}
     <div class="palt-v2-cta">
-      <button type="button" class="palt-v2-cta-btn" data-palt-v2-scrolltop>{{ section.settings.cta_text }}</button>
+      <button type="button" class="palt-v2-cta-btn" data-palt-v2-scrolltop data-palt-v2-target="{{ section.settings.cta_target | escape }}">{{ section.settings.cta_text }}</button>
       {%- if section.settings.cta_subtext != blank -%}
         <div class="palt-v2-cta-note">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 14 11" fill="none" aria-hidden="true">
@@ -342,10 +342,14 @@
     var section = document.querySelector('#shopify-section-{{ section.id }}');
     if (!section) return;
 
-    // CTA: smooth-scroll up to the product widget at the top of the page.
+    // CTA: smooth-scroll to a configured target (e.g. "#offer" on offer/BOGO pages),
+    // otherwise up to the product widget at the top of the page.
     section.querySelectorAll('[data-palt-v2-scrolltop]').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var target = document.querySelector('[id*="product_widget"]');
+            var sel = btn.getAttribute('data-palt-v2-target');
+            var target = null;
+            if (sel) { try { target = document.querySelector(sel); } catch (e) { target = null; } }
+            if (!target) { target = document.querySelector('[id*="product_widget"]'); }
             if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             else { window.scrollTo({ top: 0, behavior: 'smooth' }); }
         });
@@ -447,10 +451,11 @@
         },
         {
             "type": "paragraph",
-            "content": "Button scrolls up to the product widget at the top of the page. Its colour follows custom.base_colour. Leave the button text empty to hide it."
+            "content": "Button scrolls to the scroll target below (defaults to the product widget at the top of the page). Its colour follows custom.base_colour. Leave the button text empty to hide it."
         },
         { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia risk-free" },
-        { "type": "text", "id": "cta_subtext", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" }
+        { "type": "text", "id": "cta_subtext", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" },
+        { "type": "text", "id": "cta_target", "label": "Scroll target (CSS selector)", "info": "Where the button scrolls. Use #offer on offer/BOGO pages. Leave blank to scroll to the product widget.", "default": "" }
     ],
     "presets": [
         {

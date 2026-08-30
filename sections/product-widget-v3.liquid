@@ -326,6 +326,14 @@
                             </div>
                         </form>
                     </div>
+                    {%- comment -%} Payment icons below Add to Cart, above the accordion --
+                       same content/placement as the BOGO offer block. {%- endcomment -%}
+                    {%- if section.settings.show_payment_icons -%}
+                      {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+                      <div class="pw-payments">
+                        {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+                      </div>
+                    {%- endif -%}
 
                 {% when 'custom-tabs' %}
                     <div class="block-custom-tabs" {{ block.shopify_attributes }}>
@@ -403,6 +411,9 @@
 
 {% unless request.page_type == 'product' %}
 <style>
+  .pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .pw-payments svg { height: 26px; width: auto; }
+
   /* Fix sticky: .content-wrapper has overflow:hidden which breaks position:sticky.
      Only on wider desktop where layout widths properly account for the gap. */
   @media screen and (min-width: 900px) {
@@ -508,7 +519,10 @@
       { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
       { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
       { "type": "color", "id": "trusted_bg", "label": "Bar background", "default": "#f4f4f4" },
-      { "type": "color", "id": "trusted_check", "label": "Checkmark colour", "default": "#34c759" }
+      { "type": "color", "id": "trusted_check", "label": "Checkmark colour", "default": "#34c759" },
+      { "type": "header", "content": "Payment icons (below Add to Cart)" },
+      { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+      { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" }
     ],
   "blocks": [
     {

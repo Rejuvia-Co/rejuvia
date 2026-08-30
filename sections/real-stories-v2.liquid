@@ -445,11 +445,23 @@
     {%- comment -%} Online / Trustpilot Reviews {%- endcomment -%}
     <div class="rs-v2-reviews rs-v2-reviews--tp" data-rs-v2-panel="trustpilot">
         {% if use_online_meta %}
+            {%- comment -%} Stars, badge and avatar colour are the same for every card,
+               so they come from the section settings, not the metaobject. {%- endcomment -%}
+            {%- assign rs_avatar_color = section.settings.tp_avatar_color | default: '#d0ffdd' -%}
+            {%- assign rs_badge = section.settings.tp_badge -%}
+            {%- assign rs_star_count = section.settings.tp_stars | default: 5 -%}
             {% for r in rs_online %}
+                {%- comment -%} Initials are derived from the name (first + last word). {%- endcomment -%}
+                {%- assign name_parts = r.name | strip | split: ' ' -%}
+                {%- assign rs_initials = name_parts.first | slice: 0 | upcase -%}
+                {%- if name_parts.size > 1 -%}
+                    {%- assign rs_last_initial = name_parts.last | slice: 0 | upcase -%}
+                    {%- assign rs_initials = rs_initials | append: rs_last_initial -%}
+                {%- endif -%}
                 <div class="rs-v2-tp-review">
                     <div class="rs-v2-tp-header">
-                        <div class="rs-v2-tp-avatar" style="background-color: {{ r.avatar_color | default: '#d0ffdd' }};">
-                            {{ r.initials }}
+                        <div class="rs-v2-tp-avatar" style="background-color: {{ rs_avatar_color }};">
+                            {{ rs_initials }}
                         </div>
                         <div class="rs-v2-tp-info">
                             <p class="rs-v2-tp-title">{{ r.title }}</p>
@@ -457,16 +469,14 @@
                     </div>
                     <p class="rs-v2-tp-text">{{ r.body }}</p>
                     <div class="rs-v2-tp-stars">
-                        {% assign star_count = r.stars | default: 5 %}
-                        {% for i in (1..star_count) %}
+                        {% for i in (1..rs_star_count) %}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" fill="#00B67A"/><path d="M12 4 L14.35 9.4 L20 9.9 L15.7 13.7 L17 19.4 L12 16.4 L7 19.4 L8.3 13.7 L4 9.9 L9.65 9.4 Z" fill="#ffffff"/></svg>
                         {% endfor %}
                     </div>
                     <div class="rs-v2-tp-footer">
                         <span class="rs-v2-tp-name">{{ r.name }}</span>
-                        {% assign r_badge = r.badge | default: 'Verified' %}
-                        {% if r_badge != blank %}
-                            <span class="rs-v2-tp-badge">{{ r_badge }}</span>
+                        {% if rs_badge != blank %}
+                            <span class="rs-v2-tp-badge">{{ rs_badge }}</span>
                         {% endif %}
                     </div>
                 </div>
@@ -536,7 +546,34 @@
             "type": "richtext",
             "id": "heading",
             "label": "Heading",
+            "info": "Fallback only. Product pages use custom.real_stories > heading.",
             "default": "<p>Real stories from people who <em>have tried everything</em></p>"
+        },
+        {
+            "type": "header",
+            "content": "Online review card style",
+            "info": "Applied to every Online Review card (same for all, so not stored per review)."
+        },
+        {
+            "type": "color",
+            "id": "tp_avatar_color",
+            "label": "Avatar circle color",
+            "default": "#d0ffdd"
+        },
+        {
+            "type": "range",
+            "id": "tp_stars",
+            "label": "Star count",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default": 5
+        },
+        {
+            "type": "text",
+            "id": "tp_badge",
+            "label": "Badge text",
+            "default": "Verified"
         }
     ],
     "blocks": [

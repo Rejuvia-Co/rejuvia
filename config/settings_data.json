@@ -1595,19 +1595,19 @@
               "margin_bottom": 10
             }
           },
+          "description_DLmdKr": {
+            "type": "description",
+            "settings": {
+              "margin_top": 0,
+              "margin_bottom": 24
+            }
+          },
           "product_specs_TprNq9": {
             "type": "product-specs",
             "settings": {
               "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewbox=\"0 0 18 18\" fill=\"none\">\n  <g clip-path=\"url(#clip0_1977_12499)\">\n    <path d=\"M8.80008 15.928C7.39533 15.9323 6.04028 15.4084 5.00369 14.4603C3.96711 13.5123 3.32469 12.2093 3.20387 10.8097C3.08304 9.41015 3.49263 8.0163 4.3514 6.90461C5.21017 5.79291 6.45538 5.04458 7.84008 4.80802C12.4001 3.92802 13.6001 3.51202 15.2001 1.52802C16.0001 3.12802 16.8001 4.87202 16.8001 7.92802C16.8001 12.328 12.9761 15.928 8.80008 15.928Z\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n    <path d=\"M1.59998 16.728C1.59998 14.328 3.07998 12.44 5.66398 11.928C7.59998 11.544 9.59998 10.328 10.4 9.52795\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_1977_12499\">\n      <rect width=\"18\" height=\"18\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
               "custom_text_1": "",
               "custom_text_2": "",
-              "margin_top": 0,
-              "margin_bottom": 24
-            }
-          },
-          "description_DLmdKr": {
-            "type": "description",
-            "settings": {
               "margin_top": 0,
               "margin_bottom": 24
             }
@@ -1682,7 +1682,10 @@
           "trusted_image_2": "shopify://shop_images/customer_13.png",
           "trusted_image_3": "shopify://shop_images/customer_12.png",
           "trusted_bg": "#f4f4f4",
-          "trusted_check": "#34c759"
+          "trusted_check": "#34c759",
+          "show_payment_icons": true,
+          "hidden_payments": "discover,jcb,diners_club",
+          "show_ship_bar": true
         }
       },
       "hero_v2_ypthhg": {
@@ -1745,6 +1748,7 @@
         ],
         "name": "Guarantees V2",
         "settings": {
+          "default_items": "6,500+ 5-Star Reviews | Free US Shipping Over $59 | 425,000+ Happy Customers",
           "anchor_id": "",
           "bg_color": "#eaeaf7",
           "icon_color": "#672666"
@@ -2017,7 +2021,10 @@
         "name": "Real Stories V2",
         "settings": {
           "trusted_count": "425,000+ Sleepers",
-          "heading": "<p>Real stories from customers who <span style=\"text-decoration:underline\"><em>switched to Rejuvia</em></span></p>"
+          "heading": "<p>Real stories from customers who <span style=\"text-decoration:underline\"><em>switched to Rejuvia</em></span></p>",
+          "tp_avatar_color": "#d0ffdd",
+          "tp_stars": 5,
+          "tp_badge": "Verified"
         }
       },
       "what_makes_different_v2_rRVmVL": {
@@ -2246,7 +2253,7 @@
         "name": "Sticky CTA V2",
         "settings": {
           "text": "<p>Join <strong>425,000+</strong> people sleeping the full night</p>",
-          "btn_text": "TRY REJUVIA",
+          "btn_text": "Try Rejuvia",
           "scroll_target": ".product-widget-container",
           "position": "bottom",
           "disable_sticky_header": false,

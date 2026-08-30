@@ -122,6 +122,19 @@
         "show_ship_bar": true
       }
     },
+    "customer_testimonials_video_calm": {
+      "type": "customer-testimonials-video",
+      "settings": {
+        "header": "Join 425,000 Getting Better Sleep With Rejuvia",
+        "stars_label": "Backed By 90M+ Nights of Sleep",
+        "stars_label_size": 18,
+        "stars_label_size_mobile": 15,
+        "stars_label_color": "#672666",
+        "stars_color": "#fab851",
+        "pill_bg": "#ffffff",
+        "bg_color": "#eaeaf7"
+      }
+    },
     "product_intro_v3_A38pUb": {
       "type": "product-intro-v3",
       "name": "Product Intro V3",
@@ -368,6 +381,7 @@
   },
   "order": [
     "product_widget_v2",
+    "customer_testimonials_video_calm",
     "product_intro_v3_A38pUb",
     "key_ingredients_v2_1",
     "product_how_to_use_v2",

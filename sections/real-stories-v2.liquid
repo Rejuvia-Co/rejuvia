@@ -13,10 +13,11 @@
   assign rs_fb = rs.value.facebook_reviews.value
   assign rs_online = rs.value.online_reviews.value
   assign rs_heading = rs.value.heading | default: section.settings.heading
-  # Only the highlighted count belongs in the field; strip the fixed words so
-  # it renders once whether the value is "425,000+" or "Trusted by 425,000+ Sleepers".
+  # The field holds the whole highlighted phrase (e.g. "425,000+ Sleepers" or
+  # "425,000+ Calmer Customers"). Only "Trusted by" is fixed, so strip it if the
+  # value happens to include it; never append a hard-coded noun.
   assign rs_trusted = rs.value.trusted_count | default: section.settings.trusted_count
-  assign rs_trusted = rs_trusted | remove: 'Trusted by ' | remove: ' Sleepers' | remove: 'Sleepers' | strip
+  assign rs_trusted = rs_trusted | remove_first: 'Trusted by ' | strip
 
   assign use_fb_meta = false
   if rs_fb != blank and rs_fb.size > 0
@@ -362,7 +363,7 @@
             {% endfor %}
         </div>
         <span class="rs-v2-rating-text">
-            Trusted by <span class="rs-v2-accent">{{ rs_trusted }}</span> Sleepers
+            Trusted by <span class="rs-v2-accent">{{ rs_trusted }}</span>
         </span>
     </div>
 
@@ -549,8 +550,8 @@
             "type": "text",
             "id": "trusted_count",
             "label": "Trusted count",
-            "info": "Fallback only. Product pages use custom.real_stories > trusted_count.",
-            "default": "425,000+"
+            "info": "The whole phrase after 'Trusted by' (e.g. '425,000+ Sleepers'). Fallback only — product pages use custom.real_stories > trusted_count.",
+            "default": "425,000+ Sleepers"
         },
         {
             "type": "richtext",

@@ -1,7 +1,10 @@
 {%- comment -%}
-  Content source: the per-product metaobject custom.testimonials, a parent object
-  holding header, stars_label, and testimonials[] (each -> image/quote/name).
-  The whole section is hidden unless that metaobject is populated for the product.
+  Content source (in priority order):
+    1. The per-product metaobject custom.testimonials (header, stars_label,
+       testimonials[] each -> image/quote/name) — used on product pages.
+    2. The section's own blocks — used on pages with no product context
+       (BOGO / landing pages, homepage), so the section still renders there.
+  The section is hidden only when BOTH are empty.
 {%- endcomment -%}
 {%- liquid
   assign vt = product.metafields.custom.testimonials
@@ -13,12 +16,29 @@
   if meta_items != blank and meta_items.size > 0
     assign use_meta = true
   endif
-  assign header = vt.value.header
-  assign stars_label = vt.value.stars_label
-  assign slide_count = meta_items.size
+
+  # Fall back to section blocks when there is no product metaobject.
+  assign use_blocks = false
+  if use_meta == false and section.blocks.size > 0
+    assign use_blocks = true
+  endif
+
+  assign show_section = false
+  if use_meta or use_blocks
+    assign show_section = true
+  endif
+
+  assign header = vt.value.header | default: section.settings.header
+  assign stars_label = vt.value.stars_label | default: section.settings.stars_label
+
+  if use_meta
+    assign slide_count = meta_items.size
+  else
+    assign slide_count = section.blocks.size
+  endif
 -%}
 
-{%- if use_meta -%}
+{%- if show_section -%}
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
@@ -188,21 +208,39 @@
     <div id="glide-testimonials-video" class="glide">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-          {% for item in meta_items %}
-            <li class="glide__slide">
-              <div class="customer-review-box">
-                <div class="customer-review-image">
-                  {% if item.image %}
-                    {{ item.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: item.name }}
-                  {% endif %}
+          {% if use_meta %}
+            {% for item in meta_items %}
+              <li class="glide__slide">
+                <div class="customer-review-box">
+                  <div class="customer-review-image">
+                    {% if item.image %}
+                      {{ item.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: item.name }}
+                    {% endif %}
+                  </div>
+                  <div class="review_content">
+                    <p class="review-title">{{ item.quote }}</p>
+                    <p class="review-name">{{ item.name }}</p>
+                  </div>
                 </div>
-                <div class="review_content">
-                  <p class="review-title">{{ item.quote }}</p>
-                  <p class="review-name">{{ item.name }}</p>
+              </li>
+            {% endfor %}
+          {% else %}
+            {% for block in section.blocks %}
+              <li class="glide__slide" {{ block.shopify_attributes }}>
+                <div class="customer-review-box">
+                  <div class="customer-review-image">
+                    {% if block.settings.image %}
+                      {{ block.settings.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: block.settings.name }}
+                    {% endif %}
+                  </div>
+                  <div class="review_content">
+                    <p class="review-title">{{ block.settings.text }}</p>
+                    <p class="review-name">{{ block.settings.name }}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          {% endfor %}
+              </li>
+            {% endfor %}
+          {% endif %}
         </ul>
       </div>
       <div class="glide-arrows-bullet__box">

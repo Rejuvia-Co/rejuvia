@@ -333,9 +333,11 @@
                        section setting so it only appears where enabled (V2 template), not on
                        every product-widget-v3 page. {%- endcomment -%}
                     {%- if section.settings.show_trusted -%}
+                      {%- comment -%} Per-product line via metafield; falls back to the section default. {%- endcomment -%}
+                      {%- assign used_by_line = currentProduct.metafields.custom.used_by_line.value | default: section.settings.trusted_subtext -%}
                       {% render 'trusted-by',
                         title: section.settings.trusted_title,
-                        subtext: section.settings.trusted_subtext,
+                        subtext: used_by_line,
                         image_1: section.settings.trusted_image_1,
                         image_2: section.settings.trusted_image_2,
                         image_3: section.settings.trusted_image_3,

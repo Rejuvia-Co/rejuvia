@@ -1,3 +1,24 @@
+{%- comment -%}
+  Content source: the per-product metaobject custom.testimonials, a parent object
+  holding header, stars_label, and testimonials[] (each -> image/quote/name).
+  The whole section is hidden unless that metaobject is populated for the product.
+{%- endcomment -%}
+{%- liquid
+  assign vt = product.metafields.custom.testimonials
+  assign meta_items = vt.value.testimonials.value
+  if meta_items == blank
+    assign meta_items = vt.value.testimonial.value
+  endif
+  assign use_meta = false
+  if meta_items != blank and meta_items.size > 0
+    assign use_meta = true
+  endif
+  assign header = vt.value.header
+  assign stars_label = vt.value.stars_label
+  assign slide_count = meta_items.size
+-%}
+
+{%- if use_meta -%}
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}
@@ -121,8 +142,11 @@
 @media (max-width: 749px) {
   #shopify-section-{{ section.id }} .reviews_section-title { font-size: 26px; }
 }
-{%- if section.settings.bg_color != blank -%}
-#shopify-section-{{ section.id }} { background: {{ section.settings.bg_color }}; }
+{%- comment -%} Section background follows the product's sub-base colour (a softer
+   tint of the accent), falling back to the section's own bg_color setting. {%- endcomment -%}
+{%- assign section_bg = product.metafields.custom.sub_base_colour | default: section.settings.bg_color -%}
+{%- if section_bg != blank -%}
+#shopify-section-{{ section.id }} { background: {{ section_bg }}; }
 {%- endif -%}
 /* Shorten the review media on mobile so the full section fits on screen */
 @media (max-width: 749px) {
@@ -149,33 +173,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
 </noscript>
 
-{%- comment -%}
-  Content source: prefer the per-product metaobject custom.testimonials, a parent
-  object holding header, stars_label, and testimonials[] (each -> image/quote/name).
-  Falls back to the section's own settings + blocks when the metaobject is empty,
-  so the live site keeps working until the metaobject is populated in admin.
-{%- endcomment -%}
-{%- liquid
-  assign vt = product.metafields.custom.testimonials
-  assign meta_items = vt.value.testimonials.value
-  if meta_items == blank
-    assign meta_items = vt.value.testimonial.value
-  endif
-  assign use_meta = false
-  if meta_items != blank and meta_items.size > 0
-    assign use_meta = true
-  endif
-  if use_meta
-    assign header = vt.value.header
-    assign stars_label = vt.value.stars_label
-    assign slide_count = meta_items.size
-  else
-    assign header = section.settings.header
-    assign stars_label = section.settings.stars_label
-    assign slide_count = section.blocks.size
-  endif
--%}
-
 <div class="customer-testimonials customer-testimonials-video customer-testimonials-container container">
   {%- if stars_label != blank -%}
     <div class="testimonial-social-proof testimonial-social-proof--pill">
@@ -191,52 +188,21 @@
     <div id="glide-testimonials-video" class="glide">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-          {%- if use_meta -%}
-            {% for item in meta_items %}
-              <li class="glide__slide">
-                <div class="customer-review-box">
-                  <div class="customer-review-image">
-                    {% if item.image %}
-                      {{ item.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: item.name }}
-                    {% endif %}
-                  </div>
-                  <div class="review_content">
-                    <p class="review-title">{{ item.quote }}</p>
-                    <p class="review-name">{{ item.name }}</p>
-                  </div>
+          {% for item in meta_items %}
+            <li class="glide__slide">
+              <div class="customer-review-box">
+                <div class="customer-review-image">
+                  {% if item.image %}
+                    {{ item.image | image_url: width: 350, height: 410, format: 'webp' | image_tag: loading: 'lazy', alt: item.name }}
+                  {% endif %}
                 </div>
-              </li>
-            {% endfor %}
-          {%- else -%}
-            {% for item in section.blocks %}
-              <li class="glide__slide">
-                <div class="customer-review-box">
-                  <div class="customer-review-image">
-                    {% if item.settings.image %}
-                      {{ item.settings.image | image_url: width: 350, height: 410, format: 'webp' | image_tag }}
-                    {% endif %}
-                    {% if item.settings.video %}
-                      {{ item.settings.video | video_tag: image_size: '1100x', autoplay: false, loop: false, controls: false, muted: false }}
-                      <div class="customer-review-play">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g id="ic/tabler-icon-player-play-filled">
-                            <path id="Vector" d="M10 6.66714V33.3338C9.99992 33.6304 10.079 33.9216 10.229 34.1774C10.379 34.4332 10.5945 34.6443 10.8534 34.789C11.1122 34.9337 11.405 35.0068 11.7015 35.0006C11.998 34.9944 12.2874 34.9092 12.54 34.7538L34.2067 21.4205C34.4493 21.2714 34.6497 21.0625 34.7888 20.814C34.9278 20.5654 35.0008 20.2853 35.0008 20.0005C35.0008 19.7157 34.9278 19.4356 34.7888 19.187C34.6497 18.9384 34.4493 18.7296 34.2067 18.5805L12.54 5.24714C12.2874 5.09174 11.998 5.00656 11.7015 5.00036C11.405 4.99417 11.1122 5.0672 10.8534 5.2119C10.5945 5.35661 10.379 5.56777 10.229 5.82357C10.079 6.07938 9.99992 6.37059 10 6.66714Z" fill="white"/>
-                          </g>
-                        </svg>
-                      </div>
-                    {% endif %}
-                  </div>
-                  <div class="review_content">
-                    <p class="review-title">{{ item.settings.text }}</p>
-                    <p class="review-para">
-                      {{ item.settings.review_body }}
-                    </p>
-                    <p class="review-name">{{ item.settings.name }}</p>
-                  </div>
+                <div class="review_content">
+                  <p class="review-title">{{ item.quote }}</p>
+                  <p class="review-name">{{ item.name }}</p>
                 </div>
-              </li>
-            {% endfor %}
-          {%- endif -%}
+              </div>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="glide-arrows-bullet__box">
@@ -302,6 +268,7 @@
   });
 });
 </script>
+{%- endif -%}
 
 
 {% schema %}

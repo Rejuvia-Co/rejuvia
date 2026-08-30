@@ -20,12 +20,17 @@
   assign uid = 'hus-' | append: section.id
   assign heading = how_to_use.value.title | default: section.settings.heading
   assign subheading = how_to_use.value.subtitle
+  comment
+    Section background follows the product's sub-base colour (a softer tint of the
+    accent), falling back to the section's own background_color setting.
+  endcomment
+  assign section_bg = product.metafields.custom.sub_base_colour | default: section.settings.background_color | default: '#ffffff'
 -%}
 
 {%- if steps != blank and steps.size > 0 -%}
 <style>
   #{{ uid }} {
-    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+    background-color: {{ section_bg }};
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   }
   #{{ uid }} .hus__inner { max-width: 1200px; margin: 0 auto; padding: 72px 80px; display: flex; flex-direction: column; gap: 48px; box-sizing: border-box; }

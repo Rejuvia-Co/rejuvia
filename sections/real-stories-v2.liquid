@@ -27,12 +27,17 @@
   if rs_online != blank and rs_online.size > 0
     assign use_online_meta = true
   endif
+
+  # Section background follows the product's sub-base colour (US or British key),
+  # falling back to the original light grey on pages with no product context.
+  assign rs_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
+  assign rs_bg = rs_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#fafafa'
 -%}
 
 <style>
 .rs-v2-section {
     width: 100%;
-    background-color: #fafafa;
+    background-color: {{ rs_bg }};
 }
 
 .rs-v2-container {

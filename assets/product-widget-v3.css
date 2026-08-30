@@ -4,10 +4,8 @@
    Lives here, not in the section's inline <style>, because that block is
    gated {% unless request.page_type == 'product' %} and so never renders on
    an actual product page. */
-.pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 18px 0 20px; }  /* 18 top offsets the guarantee line-height so the visual gaps read as equal 20/20 */
+.pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .pw-payments svg { height: 26px; width: auto; }
-
-.pw-ship { margin: 16px 0 0; }  /* bottom is 0: the buy-buttons block already has ~16px above the ATC button, so this makes the visual gap below the bar match the 16px above it */
 
 /* Guarantee check below Add to Cart -> product base colour (green/gold fallback).
    Was in the section's inline <style>, which is gated
@@ -18,3 +16,46 @@
 /* Spec icons (e.g. the green leaf next to "Fresh Mint") -> product base colour.
    Scoped to path[stroke] so only stroked icons recolour; fill-based icons keep theirs. */
 .specs-icon svg path[stroke] { stroke: var(--base-colour, #018C0B); }
+
+/* ---- Uniform vertical rhythm for the product-info column ----------------
+   One consistent gap between every stacked block (desktop 20px, mobile 14px),
+   so the whole buy column reads as an even hierarchy. margin-top is zeroed and
+   the gap carried on margin-bottom to avoid margin-collapse surprises; the
+   ship bar keeps margin:0 (its top gap comes from the plan picker's bottom
+   margin, its bottom gap from the form's own gap above the ATC button). The
+   4-class selectors outrank the older 3-class !important block rules. */
+@media (min-width: 750px) {
+  .product-widget-container .product-wrap .product-info > .block-reviews,
+  .product-widget-container .product-wrap .product-info > .block-title,
+  .product-widget-container .product-wrap .product-info > .block-product-specs,
+  .product-widget-container .product-wrap .product-info > .block-description,
+  .product-widget-container .product-wrap .product-info > .block-variant-selector,
+  .product-widget-container .product-wrap .product-info > .block-skio-plan-picker-v2 { margin-top: 0 !important; margin-bottom: 20px !important; }
+  .product-widget-container .product-wrap .product-info > .pw-ship { margin: 0 !important; }
+  .product-widget-container .product-wrap .product-info > .block-buy-buttons { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .product-widget-container .product-wrap .product-info > .pw-payments { margin: 20px 0 20px !important; }
+  .product-widget-container .product-wrap .product-info > .block-custom-tabs { margin-top: 0 !important; margin-bottom: 20px !important; }
+  .product-widget-container .product-wrap .product-info > .trusted-by { margin-top: 0 !important; }
+  .product-widget-container .product-wrap .product-info .variant-selector-v2 { margin-bottom: 0 !important; }
+  .product-widget-container .product-wrap .product-info .block-buy-buttons form { gap: 20px !important; }
+  .product-widget-container .product-wrap .product-info .guarantee-label-container { margin-top: 20px !important; }
+}
+@media (max-width: 749px) {
+  .product-widget-container .product-wrap .product-info > .block-reviews,
+  .product-widget-container .product-wrap .product-info > .block-title,
+  .product-widget-container .product-wrap .product-info > .block-product-specs,
+  .product-widget-container .product-wrap .product-info > .block-description,
+  .product-widget-container .product-wrap .product-info > .block-variant-selector,
+  .product-widget-container .product-wrap .product-info > .block-skio-plan-picker-v2 { margin-top: 0 !important; margin-bottom: 14px !important; }
+  .product-widget-container .product-wrap .product-info > .pw-ship { margin: 0 !important; }
+  .product-widget-container .product-wrap .product-info > .block-buy-buttons { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .product-widget-container .product-wrap .product-info > .pw-payments { margin: 14px 0 14px !important; }
+  .product-widget-container .product-wrap .product-info > .block-custom-tabs { margin-top: 0 !important; margin-bottom: 14px !important; }
+  .product-widget-container .product-wrap .product-info > .trusted-by { margin-top: 0 !important; }
+  .product-widget-container .product-wrap .product-info .variant-selector-v2 { margin-bottom: 0 !important; }
+  .product-widget-container .product-wrap .product-info .block-buy-buttons form { gap: 14px !important; }
+  .product-widget-container .product-wrap .product-info .guarantee-label-container { margin-top: 14px !important; }
+  /* compress the gallery -> content dead space on mobile (column layout) */
+  .product-widget-container .product-wrap { gap: 16px !important; }
+  .product-widget-container .product-info .product-top { margin-bottom: 0 !important; }
+}

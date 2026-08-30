@@ -140,6 +140,180 @@
       "name": "Product Intro V3",
       "settings": {}
     },
+    "real_stories_v2_aXQec8": {
+      "type": "real-stories-v2",
+      "blocks": {
+        "tp_review_BeeYhA": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "DO",
+            "avatar_color": "#d0ffdd",
+            "title": "Rejuvia is the real deal!! Great family owned business",
+            "text": "I have been increasingly struggling with sleep as I have gotten older, trying OTC options of varying kinds, but with only limited success. I decided to try Rejuvia after seeing their Facebook ad, and am I ever impressed! YES! This spray does everything it claims to. I fall asleep quickly, the taste is great, and I wake up alert and feeling like I'm done sleeping, which hasn't happened in a very long time.",
+            "name": "Debbie Owen",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_xJ9dTN": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "MO",
+            "avatar_color": "#d0ffdd",
+            "title": "Works as promised for me",
+            "text": "Rejuvia is a product that delivers exactly what they promise. The customer service is.prompt and professional. I had a billing question and it was answered in less than two hours.",
+            "name": "Mary Orr",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_Pf6kKT": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "LD",
+            "avatar_color": "#d0ffdd",
+            "title": "Great company and product",
+            "text": "The Rejuvia sleep spray is amazing !! I had tried everything (sleeping meds, melatonin and even Nyquil) to get a good nights sleep. The first night I used Rejuvia it was a game changer . I even got my husband and friends using it now and they all agree it works.",
+            "name": "Lynn D.",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_q66kyY": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "EF",
+            "avatar_color": "#d0ffdd",
+            "title": "I HAD trouble sleeping",
+            "text": "I have trouble sleeping. I bought two of these sleep sprays and I am shocked that 30 minutes before I go to sleep it hits me and it almost makes me conk out in front of the TV. It's the best over the counter sleep solution. You have to give it a try. I had an issue with one of mine and customer service was on it within hours of me sending the email. Great customer service and a great product.",
+            "name": "Ellen Fortney",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_nmDf6b": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "PG",
+            "avatar_color": "#d0ffdd",
+            "title": "Very effective sleep product, great for traveling too",
+            "text": "Great stuff! I can't tell you when I first started using Midnight Bliss, but I can tell you I love it!! I've used 2 containers and I'm ready to order more. I've tried multiple sleep aids and this is by far what works for me! Keep doing what you're doing! I'm a fan!!!",
+            "name": "Pam Gerding",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_UaNHbG": {
+          "type": "tp_review",
+          "settings": {
+            "initials": "MM",
+            "avatar_color": "#d0ffdd",
+            "title": "BEST customer service bar none!!",
+            "text": "I have some serious sleep issues and the Rejuvia does seem to helping, but better than the product is the customer service! One of my sprays was damaged in shipping. I sent one email and BOOM! Louie from Customer Service emailed me back and within two days (mostly because I am terrible at checking email) a replacement was in the mail! Absolutely top notch service!!!",
+            "name": "Melinda Malamoco",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "tp_review_iKajRc": {
+          "type": "tp_review",
+          "disabled": true,
+          "settings": {
+            "initials": "TL",
+            "avatar_color": "#d0ffdd",
+            "title": "Rejuvia is a great product",
+            "text": "I've been using this product for a year now and it truly helps me sleep better. The taste is a little strong but the benefits outweigh it and you get use to it. The customer service is great as well. Just send an email and they get right back to you. I would highly recommend Rejuvia.",
+            "name": "Terry Long",
+            "badge": "Verified",
+            "stars": 5
+          }
+        },
+        "fb_review_fk6iqU": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-26_at_9.12.36_AM.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_fNcUYW": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-26_at_9.13.28_AM.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_kYgQ8W": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.13.42_PM.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_qnn6TY": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.10.36_PM.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_PcAt9J": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/fb_4.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_kDG49h": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/fb_1.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        },
+        "fb_review_LhTFjf": {
+          "type": "fb_review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-23_at_4.11.49_PM.png",
+            "offset_top": 0,
+            "offset_left": 0,
+            "offset_right": 0
+          }
+        }
+      },
+      "block_order": [
+        "tp_review_BeeYhA",
+        "tp_review_xJ9dTN",
+        "tp_review_Pf6kKT",
+        "tp_review_q66kyY",
+        "tp_review_nmDf6b",
+        "tp_review_UaNHbG",
+        "tp_review_iKajRc",
+        "fb_review_fk6iqU",
+        "fb_review_fNcUYW",
+        "fb_review_kYgQ8W",
+        "fb_review_qnn6TY",
+        "fb_review_PcAt9J",
+        "fb_review_kDG49h",
+        "fb_review_LhTFjf"
+      ],
+      "name": "Real Stories V2",
+      "settings": {
+        "trusted_count": "425,000+",
+        "heading": "<p>Real stories from people who <em>have tried everything</em></p>"
+      }
+    },
     "key_ingredients_v2_1": {
       "type": "key-ingredients-v2",
       "settings": {
@@ -383,6 +557,7 @@
     "product_widget_v2",
     "customer_testimonials_video_calm",
     "product_intro_v3_A38pUb",
+    "real_stories_v2_aXQec8",
     "key_ingredients_v2_1",
     "product_how_to_use_v2",
     "alternatives_v2_1",

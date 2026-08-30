@@ -8,3 +8,10 @@
 .pw-payments svg { height: 26px; width: auto; }
 
 .pw-ship { margin: 16px 0 0; }  /* bottom is 0: the buy-buttons block already has ~16px above the ATC button, so this makes the visual gap below the bar match the 16px above it */
+
+/* Guarantee check below Add to Cart -> product base colour (green/gold fallback).
+   Was in the section's inline <style>, which is gated
+   {% unless request.page_type == 'product' %} and never renders on a product
+   page -- so the check stayed the pasted SVG's gold. CSS fill beats the SVG's
+   presentation attribute. */
+.guarantee-label-container svg path { fill: var(--base-colour, #EAC78B); }

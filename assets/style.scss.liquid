@@ -95,8 +95,8 @@ p {margin: 0 0 1em 0;}
 
 
 .shopify-challenge__container {padding: 5em 0; }
-.skip-to-main-content {position: fixed; top: 0; left: 0; overflow: hidden; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; z-index: 9999; @include opacity(0); line-height: 100%; background-color: #000000 !important; color: #ffffff !important; border: 0px !important; -webkit-border-radius: 2000em; -moz-border-radius: 2000em; border-radius: 2000em; font-size: 1em; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 900; text-align: center; text-decoration: none; cursor: pointer; @include transition(none);}
-.skip-to-main-content:focus, .skip-to-main-content:active {width: auto; height: auto; margin: 0; @include opacity(100); padding: 1em 2em;}
+.skip-to-main-content {position: fixed; top: 0; left: 0; overflow: hidden; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; z-index: 9999; opacity: 0; pointer-events: none; clip: rect(0 0 0 0); clip-path: inset(50%); line-height: 100%; background-color: #000000 !important; color: #ffffff !important; border: 0px !important; -webkit-border-radius: 2000em; -moz-border-radius: 2000em; border-radius: 2000em; font-size: 1em; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 900; text-align: center; text-decoration: none; cursor: pointer; transition: none;}
+.skip-to-main-content:focus, .skip-to-main-content:active {width: auto; height: auto; margin: 0; opacity: 1; pointer-events: auto; clip: auto; clip-path: none; padding: 1em 2em;}
 
 /* a {@include animation(0.2s);} */
 //.animation {@include animation(0.2s);}

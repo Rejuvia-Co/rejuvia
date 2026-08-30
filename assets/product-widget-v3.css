@@ -7,4 +7,4 @@
 .pw-payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 18px 0 20px; }  /* 18 top offsets the guarantee line-height so the visual gaps read as equal 20/20 */
 .pw-payments svg { height: 26px; width: auto; }
 
-.pw-ship { margin: 16px 0; }
+.pw-ship { margin: 16px 0 0; }  /* bottom is 0: the buy-buttons block already has ~16px above the ATC button, so this makes the visual gap below the bar match the 16px above it */

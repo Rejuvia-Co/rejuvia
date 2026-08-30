@@ -150,8 +150,16 @@
     display: none;
   }
 
+  /* Order the flex column so the button sits directly below the title on mobile */
+  .key-ingredients-v2__header { order: 1; }
+  .key-ingredients-v2__mobile-btn { order: 2; }
+  .key-ingredients-v2__grid { order: 3; }
+  .key-ingredients-v2__cta { order: 4; }
+
   .key-ingredients-v2__mobile-btn {
     display: flex;
+    justify-content: flex-start;
+    margin-top: -14px;
   }
 
   .key-ingredients-v2__mobile-btn .key-ingredients-v2__btn {

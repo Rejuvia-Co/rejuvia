@@ -191,8 +191,8 @@
     .palt-v2-container { padding: 40px 0; gap: 24px; }
     .palt-v2-heading { font-size: 26px; padding: 0 16px; }
     .palt-v2-section { overflow-x: clip; }
-    /* keep the 56px top padding so the popped bottle stays inside the scroll box (not clipped) */
-    .palt-v2-table { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 56px 16px 0; }
+    /* keep top padding so the popped bottle stays inside the scroll box (not clipped) */
+    .palt-v2-table { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 48px 16px 0; }
     .palt-v2-cta { padding: 0 16px; max-width: 100%; }
     .palt-v2-table::-webkit-scrollbar { display: none; }
     .palt-v2-nav { display: flex; }
@@ -200,7 +200,17 @@
     .palt-v2-labels { min-width: 130px; max-width: 130px; position: sticky; left: 0; background: {{ section.settings.bg_color | default: '#ffffff' }}; z-index: 3; padding-right: 10px; }
     .palt-v2-labels::before { content: ''; position: absolute; top: 0; left: -20px; bottom: 0; width: 20px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.9)); z-index: 4; pointer-events: none; }
     .palt-v2-col { min-width: 150px; }
-    .palt-v2-label { font-size: 14px; }
+
+    /* Tighter, easier-to-scan rows on mobile */
+    .palt-v2-label-header, .palt-v2-col-header { height: 112px; }
+    .palt-v2-col-header { gap: 8px; padding: 12px 0; }
+    .palt-v2-competitor-icon { max-height: 62px; }
+    .palt-v2-rejuvia-bottle { max-height: 112px; margin-top: -40px; }
+    .palt-v2-col-name { font-size: 14px; }
+    .palt-v2-label { font-size: 14px; height: 58px; line-height: 1.25; }
+    .palt-v2-cell { height: 58px; font-size: 15px; }
+    .palt-v2-ic { width: 24px; height: 24px; }
+    .palt-v2-ic svg { width: 13px; height: 13px; }
   }
 </style>
 

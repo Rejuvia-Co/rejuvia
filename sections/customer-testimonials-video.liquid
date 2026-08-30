@@ -17,9 +17,11 @@
     assign use_meta = true
   endif
 
-  # Fall back to section blocks when there is no product metaobject.
+  # Fall back to section blocks ONLY on pages with no product context (homepage,
+  # BOGO/landers). On a product page we never borrow another product's blocks — if
+  # this product has no metaobject the section simply hides.
   assign use_blocks = false
-  if use_meta == false and section.blocks.size > 0
+  if use_meta == false and section.blocks.size > 0 and product == blank
     assign use_blocks = true
   endif
 

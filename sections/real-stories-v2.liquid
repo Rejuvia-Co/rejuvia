@@ -36,8 +36,21 @@
 
   # Trust-pill text colour follows the product's base colour (brand purple fallback).
   assign rs_base = product.metafields.custom.base_colour.value | default: product.metafields.custom.base_colour | default: '#672666'
+
+  # Whole-section guard: on a PRODUCT page we only render when this product has its
+  # own real_stories metaobject — never another product's block fallback. On pages
+  # with no product context (homepage, BOGO) we always render (blocks are the source).
+  assign rs_has_meta = false
+  if use_fb_meta or use_online_meta
+    assign rs_has_meta = true
+  endif
+  assign rs_show = true
+  if product != blank and rs_has_meta == false
+    assign rs_show = false
+  endif
 -%}
 
+{%- if rs_show -%}
 <style>
 .rs-v2-section {
     width: 100%;
@@ -430,7 +443,7 @@
                     </div>
                 {% endif %}
             {% endfor %}
-        {% else %}
+        {% elsif product == blank %}
         {% for block in section.blocks %}
             {% if block.type == 'fb_review' %}
                 <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
@@ -504,7 +517,7 @@
                     </div>
                 </div>
             {% endfor %}
-        {% else %}
+        {% elsif product == blank %}
         {% for block in section.blocks %}
             {% if block.type == 'tp_review' %}
                 <div class="rs-v2-tp-review" {{ block.shopify_attributes }}>
@@ -553,6 +566,7 @@
     });
 })();
 </script>
+{%- endif -%}
 
 {% schema %}
 {

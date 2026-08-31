@@ -124,8 +124,13 @@
         "stars_size": 18,
         "stars_size_mobile": 16,
         "rating_text_size": 18,
+<<<<<<< HEAD
         "rating_text_size_mobile": 18,
         "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
+=======
+        "rating_text_size_mobile": 19,
+        "rating_text": "<p>Used By <strong>425,000+</strong> Customers</p>",
+>>>>>>> e728ccbdcc7fc62fead65b04c8832956c10ae5bc
         "title": "Rejuvia Sleep Spray",
         "subtitle": "For a limited-time, claim your BOGO free offer on our Sleep Spray today",
         "pill_text": "",
@@ -164,7 +169,7 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#34c759"
+        "trusted_check": "#672666"
       }
     },
     "customer_testimonials_video_b39r9z": {
@@ -304,6 +309,7 @@
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
+        "scroll_target": "",
         "show_guarantee": true,
         "guarantee_text": "90-Day Money-Back Guarantee",
         "bg_color": "#fafafa",
@@ -422,7 +428,9 @@
       "settings": {
         "heading": "The key ingredients",
         "button_label": "View Supplement Label",
-        "button_url": ""
+        "button_url": "",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "guarantee_section_gK7mPq": {
@@ -433,6 +441,7 @@
         "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
+        "scroll_target": "",
         "sub_text": "90-Day Money Back Guarantee",
         "bg_color": "#eaeaf7"
       }
@@ -448,8 +457,7 @@
         "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
         "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
         "cta_text": "Try Rejuvia risk-free",
-        "cta_subtext": "90-Day Money-Back Guarantee",
-        "cta_target": "#offer"
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "17814435248f2fd49e": {

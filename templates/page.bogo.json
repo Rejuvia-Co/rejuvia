@@ -122,15 +122,10 @@
         "show_stars": true,
         "stars_color": "#eac78b",
         "stars_size": 18,
-        "stars_size_mobile": 16,
+        "stars_size_mobile": 15,
         "rating_text_size": 18,
-<<<<<<< HEAD
         "rating_text_size_mobile": 18,
-        "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
-=======
-        "rating_text_size_mobile": 19,
-        "rating_text": "<p>Used By <strong>425,000+</strong> Customers</p>",
->>>>>>> e728ccbdcc7fc62fead65b04c8832956c10ae5bc
+        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
         "title": "Rejuvia Sleep Spray",
         "subtitle": "For a limited-time, claim your BOGO free offer on our Sleep Spray today",
         "pill_text": "",

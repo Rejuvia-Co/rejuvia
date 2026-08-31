@@ -291,9 +291,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- if tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.price }}{%- endif -%}
           {%- endcapture -%}
+          {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
           {%- capture tier_compare -%}
-            {%- if tier_variant != blank and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}
-            {%- else -%}{{ b.settings.compare_price }}{%- endif -%}
+            {%- if b.settings.compare_price != blank -%}{{ b.settings.compare_price }}
+            {%- elsif tier_variant != blank and tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}
           {%- endcapture -%}
 
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
@@ -965,7 +966,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {
           "type": "text",
           "id": "compare_price",
-          "label": "Compare-at price (fallback)"
+          "label": "Compare-at price (strikethrough)",
+          "info": "Sets the struck-through price. Overrides the live variant's compare-at. Leave blank to use the live variant's compare-at price."
         },
         {
           "type": "text",

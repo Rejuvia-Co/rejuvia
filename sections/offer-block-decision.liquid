@@ -268,7 +268,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- endif -%}
             {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
             {%- capture tier_price -%}{%- if tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}{%- else -%}{{ b.settings.price }}{%- endif -%}{%- endcapture -%}
-            {%- capture tier_compare -%}{%- if tier_variant != blank -%}{%- if tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}{%- else -%}{{ b.settings.compare_price }}{%- endif -%}{%- endcapture -%}
+            {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
+            {%- capture tier_compare -%}{%- if b.settings.compare_price != blank -%}{{ b.settings.compare_price }}{%- elsif tier_variant != blank and tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}{%- endcapture -%}
             {%- assign paid_n = b.settings.paid_bottles | default: 1 -%}
             {%- assign free_n = b.settings.free_bottles | default: 1 -%}
             {%- assign total_n = paid_n | plus: free_n -%}
@@ -880,7 +881,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {
           "type": "text",
           "id": "compare_price",
-          "label": "Compare-at price (fallback)"
+          "label": "Compare-at price (strikethrough)",
+          "info": "Sets the struck-through price. Overrides the live variant's compare-at. Leave blank to use the live variant's compare-at price."
         },
         {
           "type": "text",

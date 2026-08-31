@@ -20,7 +20,7 @@
             "image_asset": "rejuvia-bundle-b1g1.webp",
             "label": "Buy 1, Get 1 FREE",
             "price": "$30",
-            "compare_price": "$70",
+            "compare_price": "$60",
             "savings_text": "Save $30",
             "free_shipping": false,
             "per_night": "$0.50 Per Night",
@@ -36,7 +36,7 @@
             "image_asset": "rejuvia-bundle-b2g2.webp",
             "label": "Buy 2, Get 2 FREE",
             "price": "$60",
-            "compare_price": "$140",
+            "compare_price": "$120",
             "savings_text": "SAVE $60",
             "free_shipping": true,
             "per_night": "$0.50 Per Night",
@@ -52,7 +52,7 @@
             "image_asset": "rejuvia-bundle-b3g3.webp",
             "label": "Buy 3, Get 3 FREE",
             "price": "$90",
-            "compare_price": "$210",
+            "compare_price": "$180",
             "savings_text": "SAVE $90",
             "free_shipping": true,
             "per_night": "$0.50 Per Night",
@@ -313,6 +313,7 @@
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
+        "scroll_target": "",
         "show_guarantee": true,
         "guarantee_text": "90-Day Money-Back Guarantee",
         "bg_color": "#fafafa",
@@ -431,7 +432,9 @@
       "settings": {
         "heading": "The key ingredients",
         "button_label": "View Supplement Label",
-        "button_url": ""
+        "button_url": "",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "guarantee_section_gK7mPq": {
@@ -442,6 +445,7 @@
         "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
+        "scroll_target": "",
         "sub_text": "90-Day Money Back Guarantee",
         "bg_color": "#eaeaf7"
       }
@@ -457,8 +461,7 @@
         "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
         "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
         "cta_text": "Try Rejuvia risk-free",
-        "cta_subtext": "90-Day Money-Back Guarantee",
-        "cta_target": "#offer"
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "17814435248f2fd49e": {

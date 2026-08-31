@@ -316,7 +316,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
               <span class="ob__tier-prices">
                 {%- if tier_variant != blank -%}
                   <span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>
-                  {%- if tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
+                  {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
+                  {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
+                  {%- elsif tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
                 {%- else -%}
                   {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
                   {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
@@ -561,7 +563,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no Bundle image is picked." },
         { "type": "text", "id": "label", "label": "Title", "default": "Buy 1, Get 1 FREE" },
         { "type": "text", "id": "price", "label": "Price (fallback)", "info": "Shown only if the live variant price can't be resolved.", "default": "$35" },
-        { "type": "text", "id": "compare_price", "label": "Compare-at price (fallback)", "default": "$70" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price (strikethrough)", "info": "Sets the struck-through price. Overrides the live variant's compare-at. Leave blank to use the live variant's compare-at price.", "default": "$70" },
         { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
         { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
         { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62 Per Night" },

@@ -54,14 +54,14 @@
    related items group; the description paragraph is bumped +2px. Appended after
    the rhythm block so these win by source order. */
 @media (min-width: 750px) {
-  .product-widget-container .product-wrap .product-info > .block-reviews { margin-bottom: 18px !important; }
+  .product-widget-container .product-wrap .product-info > .block-reviews { margin-bottom: 18px !important; } .product-widget-container .product-wrap .product-info > .block-title { margin-bottom: 15px !important; }
   .product-widget-container .product-wrap .product-info > .block-description { margin-bottom: 16px !important; }
   .product-widget-container .product-wrap .product-info .block-description,
   .product-widget-container .product-wrap .product-info .block-description p,
   .product-widget-container .product-wrap .product-info .description-container p { font-size: 20px !important; }
 }
 @media (max-width: 749px) {
-  .product-widget-container .product-wrap .product-info > .block-reviews { margin-bottom: 14px !important; }
+  .product-widget-container .product-wrap .product-info > .block-reviews { margin-bottom: 18px !important; } .product-widget-container .product-wrap .product-info > .block-title { margin-bottom: 15px !important; }
   .product-widget-container .product-wrap .product-info > .block-description { margin-bottom: 14px !important; }
   .product-widget-container .product-wrap .product-info .block-description,
   .product-widget-container .product-wrap .product-info .block-description p,

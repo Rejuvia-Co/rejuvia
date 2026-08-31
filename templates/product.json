@@ -27,7 +27,7 @@
           "settings": {
             "custom_title": "",
             "margin_top": 0,
-            "margin_bottom": 10
+            "margin_bottom": 0
           }
         },
         "description_1": {
@@ -110,7 +110,7 @@
         "swatch_tag_content": "",
         "preselected_item": 1,
         "show_trusted": true,
-        "trusted_title": "Used by  425,000+ customers",
+        "trusted_title": "Used by 425,000+ customers",
         "trusted_subtext": "to fall asleep faster and sleep the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
@@ -423,6 +423,7 @@
       "type": "product-alternatives-v2",
       "name": "Alternatives V2",
       "settings": {
+        "source_product": "",
         "heading": "Rejuvia is the better way",
         "bg_color": "#ffffff",
         "icon_size": 90,
@@ -512,7 +513,7 @@
       "type": "feature-products-v2",
       "settings": {
         "heading": "Explore More Rejuvia",
-        "subheading": "<p>Oral sprays for sleep, stress and daily wellness — all absorbed in seconds.</p>",
+        "subheading": "<p>Shop all Rejuvia sublingual oral sprays for sleep, stress and daily wellness.</p>",
         "product_limit": 3
       }
     },

@@ -27,7 +27,7 @@
           "settings": {
             "custom_title": "",
             "margin_top": 0,
-            "margin_bottom": 10
+            "margin_bottom": 0
           }
         },
         "description_1": {
@@ -423,6 +423,7 @@
       "type": "product-alternatives-v2",
       "name": "Alternatives V2",
       "settings": {
+        "source_product": "",
         "heading": "Rejuvia is the better way",
         "bg_color": "#ffffff",
         "icon_size": 90,
@@ -512,7 +513,7 @@
       "type": "feature-products-v2",
       "settings": {
         "heading": "Explore More Rejuvia",
-        "subheading": "<p>Oral sprays for sleep, stress and daily wellness — all absorbed in seconds.</p>",
+        "subheading": "<p>Shop all Rejuvia sublingual oral sprays for sleep, stress and daily wellness.</p>",
         "product_limit": 3
       }
     },

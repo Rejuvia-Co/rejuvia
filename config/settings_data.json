@@ -1687,7 +1687,7 @@
         ],
         "name": "Image with Text V2",
         "settings": {
-          "heading": "<p>Here's why <em>Rejuvia works better</em></p>",
+          "heading": "<p>Why Rejuvia Works <em>3x Better</em></p>",
           "description": "<p>Rejuvia isn't a pill or a gummy. It's a sublingual spray.</p><p>You spray Rejuvia under your tongue, where the tissue is packed with blood vessels. The ingredients absorb directly into your bloodstream. No stomach. No liver. No wasted ingredients.</p><p>More of the formula reaches your body. So you feel it working in minutes, not an hour from now.</p>",
           "image": "shopify://shop_images/Rejuvia_3-16-224311_copy.webp"
         }
@@ -1849,7 +1849,7 @@
         "name": "Real Stories V2",
         "settings": {
           "trusted_count": "425,000+ Sleepers",
-          "heading": "<p>Real Stories From Customers Who <span style=\"text-decoration:underline\"><em>Switched to Rejuvia</em></span></p>",
+          "heading": "<p>Reviews From Customers Who <span style=\"text-decoration:underline\"><em>Made The Switch</em></span></p>",
           "tp_avatar_color": "#d0ffdd",
           "tp_stars": 5,
           "tp_badge": "Verified"
@@ -1859,7 +1859,7 @@
         "type": "what-makes-different-v2",
         "name": "What Makes Different V2",
         "settings": {
-          "heading": "<p>So, why does Rejuvia <em>actually work</em>?</p>",
+          "heading": "<p>How Rejuvia <em>Actually Works</em></p>",
           "subtitle": "Most sleep aids take 45–60 minutes to kick in — if they work at all. Rejuvia's sublingual formula absorbs directly under your tongue and into your bloodstream in minutes.",
           "image": "shopify://shop_images/IMG.png",
           "card_title": "Why oral sprays work better",
@@ -2284,7 +2284,7 @@
           "image": "shopify://shop_images/rejuvia_founders.avif",
           "caption_1": "RC & Mom · 2019",
           "caption_2": "Co-Founders of Rejuvia",
-          "headline": "Rejuvia was originally for my mom. Now it's for everyone.",
+          "headline": "Rejuvia was originally for my mom - now it's for everyone",
           "paragraph_1": "My mom was 55, going through menopause and a whole lot of stress, and couldn't sleep. She'd tried everything and nothing helped. So at the University of Pennsylvania I built her an oral sleep spray with 13 natural sleep ingredients that absorbs under your tongue and works in minutes, not hours.",
           "paragraph_2": "We just wanted to fix her sleep so she could be herself again. And it worked! Five years later, it's the nightly ritual for over 425,000 people — and it all started with my mom.",
           "stat1_number": "100%",

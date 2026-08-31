@@ -53,6 +53,31 @@
       --rj-title-weight: {{ settings.section_title_weight | default: 600 }};
       --rj-title-letter-spacing: {{ settings.section_title_letter_spacing | default: 'normal' }};
     }
+
+    /* Site-wide section-title vertical-metric fix: trims the empty leading/descent
+       space so the title sits optically centred in its line box (fixes the extra
+       gap under headings). Progressive enhancement — ignored where unsupported. */
+    .hero-v2-heading,
+    .rs-v2-heading,
+    .pi-v2-heading,
+    .listicle-v2-heading, .listicle-v2-heading-mobile,
+    .iwt-v2-heading, .iwt-v2-heading-mobile,
+    .wmd-v2-heading, .wmd-v2-heading-mobile,
+    .product-intro-v3__heading,
+    .hus__heading,
+    .fc__title,
+    .gs__title,
+    .pfaq-v2-heading,
+    .fp-v2-heading,
+    .key-ingredients-v2__title,
+    .palt-v2-heading,
+    .fs__headline, .fs__headline--m,
+    .reviews_section-title,
+    .bogo-content__heading, .bogo-content__heading--m,
+    .section-title--h1 {
+      text-box-trim: trim-both;
+      text-box-edge: cap alphabetic;
+    }
   </style>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>

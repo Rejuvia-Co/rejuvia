@@ -1,10 +1,10 @@
-{{ 'product-widget-v2.css' | asset_url | stylesheet_tag }}
+{{ 'product-widget.css' | asset_url | stylesheet_tag }}
 
 {% render 'product-widget-core', section: section %}
 
 {% schema %}
 {
-  "name": "Product Widget V2",
+  "name": "Product Widget",
   "tag": "section",
   "class": "product-widget-section",
   "settings": [
@@ -535,7 +535,7 @@
   ],
   "presets": [
     {
-      "name": "Product Widget V2",
+      "name": "Product Widget",
       "blocks": [
         { "type": "title" },
         { "type": "product-specs" },

@@ -10,7 +10,7 @@
 {
   "sections": {
     "product_widget_v2": {
-      "type": "product-widget-v3",
+      "type": "product-widget-v2",
       "blocks": {
         "okendo_reviews_1": {
           "type": "okendo-reviews",

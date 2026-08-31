@@ -46,12 +46,42 @@
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
 
-  {%- comment -%} Site-wide section-title typography (toggle in Customizer > Theme settings > Fonts > Section Titles). Sections read these vars; each keeps its own font size. {%- endcomment -%}
+  {%- comment -%} Site-wide section-title typography. One toggle (Customizer > Theme settings > Fonts > Section Titles) restyles every section title's font/weight/letter-spacing. Each section keeps its own font SIZE (desktop + mobile). {%- endcomment -%}
   <style>
     :root {
       --rj-title-font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --rj-title-weight: {{ settings.section_title_weight | default: 600 }};
       --rj-title-letter-spacing: {{ settings.section_title_letter_spacing | default: 'normal' }};
+    }
+
+    /* Unify every section title (font family, weight, letter-spacing) from the
+       vars above. `body :is()` + !important guarantees this wins over each
+       section's own rules. Font-size, line-height and color are intentionally
+       NOT set here, so every section keeps its own sizes. */
+    body :is(
+      .hero-v2-heading,
+      .rs-v2-heading,
+      .pi-v2-heading,
+      .listicle-v2-heading, .listicle-v2-heading-mobile,
+      .iwt-v2-heading, .iwt-v2-heading-mobile,
+      .wmd-v2-heading, .wmd-v2-heading-mobile,
+      .product-intro-v3__heading,
+      .hus__heading,
+      .fc__title,
+      .gs__title,
+      .pfaq-v2-heading,
+      .fp-v2-heading,
+      .key-ingredients-v2__title,
+      .palt-v2-heading,
+      .fs__headline, .fs__headline--m,
+      .reviews_section-title,
+      .bogo-content__heading, .bogo-content__heading--m,
+      .section-title--h1,
+      .product-widget-container h1.title
+    ) {
+      font-family: var(--rj-title-font-family, 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif) !important;
+      font-weight: var(--rj-title-weight, 600) !important;
+      letter-spacing: var(--rj-title-letter-spacing, normal) !important;
     }
   </style>
 

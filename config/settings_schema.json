@@ -117,6 +117,33 @@
           }
         ],
         "default": "400"
+      },
+      {
+        "type": "header",
+        "content": "Section Titles"
+      },
+      {
+        "type": "paragraph",
+        "content": "Controls the big heading at the top of content sections site-wide (homepage, product pages, landing pages). Each section keeps its own font size on desktop and mobile."
+      },
+      {
+        "type": "select",
+        "id": "section_title_weight",
+        "label": "Section title weight",
+        "options": [
+          { "value": "400", "label": "400 – Regular" },
+          { "value": "500", "label": "500 – Medium" },
+          { "value": "600", "label": "600 – Semibold" },
+          { "value": "700", "label": "700 – Bold" }
+        ],
+        "default": "600"
+      },
+      {
+        "type": "text",
+        "id": "section_title_letter_spacing",
+        "label": "Section title letter spacing",
+        "default": "normal",
+        "info": "e.g. normal, 0, -0.25px, -0.5px. 'normal' is the default spacing."
       }
     ]
   },

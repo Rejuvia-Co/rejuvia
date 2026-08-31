@@ -46,6 +46,15 @@
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
 
+  {%- comment -%} Site-wide section-title typography (toggle in Customizer > Theme settings > Fonts > Section Titles). Sections read these vars; each keeps its own font size. {%- endcomment -%}
+  <style>
+    :root {
+      --rj-title-font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --rj-title-weight: {{ settings.section_title_weight | default: 600 }};
+      --rj-title-letter-spacing: {{ settings.section_title_letter_spacing | default: 'normal' }};
+    }
+  </style>
+
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
   <!-- jQuery loaded synchronously for inline script compatibility -->

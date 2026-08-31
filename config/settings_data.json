@@ -896,60 +896,6 @@
           "background": ""
         }
       },
-      "product-widget": {
-        "type": "product-widget",
-        "blocks": {
-          "text_XaChAW": {
-            "type": "text",
-            "settings": {
-              "icon": "shopify://shop_images/Flower.svg",
-              "title": "All-Natural"
-            }
-          },
-          "text_cYnjHG": {
-            "type": "text",
-            "settings": {
-              "icon": "shopify://shop_images/SealCheck.svg",
-              "title": "Non-GMO"
-            }
-          },
-          "text_9irMg4": {
-            "type": "text",
-            "settings": {
-              "icon": "shopify://shop_images/Plant.svg",
-              "title": "Mint Flavor"
-            }
-          },
-          "text_PgUME4": {
-            "type": "text",
-            "settings": {
-              "icon": "shopify://shop_images/Flask.svg",
-              "title": "Lab-Tested"
-            }
-          },
-          "skio_plan_picker_nrAYW4": {
-            "type": "skio-plan-picker",
-            "settings": {
-              "start_onetime": false,
-              "onetime_first": false
-            }
-          }
-        },
-        "block_order": [
-          "text_XaChAW",
-          "text_cYnjHG",
-          "text_9irMg4",
-          "text_PgUME4",
-          "skio_plan_picker_nrAYW4"
-        ],
-        "settings": {
-          "hero_heading": "",
-          "selected_product": "sleep-spray",
-          "guarantee_label": "30-DAY MONEY-BACK GUARANTEE",
-          "swatch_tag_content": "BEST VALUE",
-          "preselected_item": 1
-        }
-      },
       "ingredients-section": {
         "type": "ingredients-section",
         "blocks": {
@@ -1404,7 +1350,7 @@
         }
       },
       "product_widget_v2_m3pTph": {
-        "type": "product-widget-v2",
+        "type": "product-widget",
         "blocks": {
           "okendo_reviews_zL8EQC": {
             "type": "okendo-reviews",

@@ -4,10 +4,6 @@
   font-family: "Helvetica Neue", sans-serif;
   padding: 64px 16px;
   overflow: hidden;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50% + 16px);
-  padding-right: calc(50vw - 50% + 16px);
 }
 
 .key-ingredients-v2__container {

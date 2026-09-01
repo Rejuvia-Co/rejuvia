@@ -1,0 +1,402 @@
+/* ============================================================================
+   OKENDO REVIEWS WIDGET — CUSTOM CSS  (reference copy)
+   ----------------------------------------------------------------------------
+   THIS FILE IS NOT LOADED BY THE THEME. It is the custom CSS for the Okendo
+   reviews widget, which is a Shopify APP BLOCK
+   (shopify://apps/okendo/blocks/reviews-widget). Okendo renders the widget from
+   its own hosted app, so this CSS must be pasted into Okendo's admin, not served
+   from the theme.
+
+   WHERE TO PASTE IT:
+     Okendo admin -> Reviews widget -> Custom CSS panel.
+     Select all, delete, paste this whole file (minus this header if you like).
+     This is a FULL REPLACEMENT of the widget's custom CSS block.
+
+   KEPT HERE (in docs/, which Shopify's GitHub sync ignores) only as a versioned
+   reference so we can review/customise it over time. Editing this file does
+   NOT change the live widget — you must re-paste into Okendo for changes to
+   take effect.
+
+   WHAT THIS STYLES (customisations layered on Okendo defaults):
+     - "Rejuvia Reviews" heading matched to the homepage hero heading
+       (uses the site-wide --rj-title-* vars; 28px mobile / 36px desktop).
+     - Reviewer row: name stays bold; "Verified Buyer" relabelled to
+       "Verified Customer" (regular weight) with a gold verified-check badge,
+       flex-centred so name | badge | text align on one line.
+     - Total count "reviews" -> "Reviews" (text-transform: capitalize).
+     - Review date pinned to each card's top-right, level with the stars.
+     - Tighter card padding (20px 30px).
+     - "Show More" button restyled as the white supplement-facts pill
+       (purple border/text, fills purple on hover).
+     - Review media (photos/videos) sits below the review text — this is
+       Okendo's own .oke-w-reviewMinimal-media, positioned via order: -1.
+
+   DORMANT / NOT ACTIVE:
+     - Reviewer avatar with initials (cream circle / black initials): the
+       .oke-w-reviewer-avatar rules are inert until reviewer avatars/initials
+       are enabled in Okendo's widget settings (CSS cannot generate initials).
+     - "Review for {product}" line: intentionally NOT implemented. Okendo does
+       not render the per-review product name in this widget's HTML, so CSS
+       cannot produce it. Would require enabling product display in Okendo.
+
+   Last updated: 2026-08-31
+============================================================================ */
+
+/* Hide Elements */
+div.okeReviews[data-oke-container] .oke-modal .oke-w-reviewer-avatar,
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal-footer,
+div.okeReviews[data-oke-container] .oke-is-small .oke-sortSelect-label {
+    display: none;
+}
+
+/* Reviews Widget > Buttons */
+.okeReviews.oke-w .oke-is-small .oke-button,
+.okeReviews.oke-w .oke-is-small .oke-w-reviews-writeReview,
+.okeReviews.oke-w .oke-is-small .oke-qw-askQuestion {
+    width: 100%;
+}
+
+.okeReviews.oke-w .oke-is-small .oke-w-reviews-writeReview {
+    margin-top: 15px;
+}
+
+.okeReviews.oke-w .oke-is-small .oke-qw-header-askQuestion {
+    margin-left: 0;
+    width: 100%;
+}
+
+/* Reviews Widget > Aggregate */
+div.okeReviews[data-oke-container] .oke-is-small .oke-w-ratingAverageModule--oneLine {
+    flex-direction: column;
+}
+
+/* Reviews Widget > Reviews Controls */
+div.okeReviews[data-oke-container] .oke-select {
+    background-size: unset;
+}
+
+div.okeReviews[data-oke-container] .oke-sortSelect-label {
+    vertical-align: text-top;
+}
+
+div.okeReviews[data-oke-container] .oke-sortSelect {
+    line-height: 1.5;
+}
+
+/* Reviews Widget */
+[data-oke-widget] .oke-w,
+[data-oke-widget] div.okeReviews.oke-w {
+    padding: 25px;
+    max-width: 1000px;
+}
+
+[data-oke-widget] div.okeReviews p:last-child {
+    line-height: 1.8;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer {
+    font-size: 15px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer-name,
+div.okeReviews[data-oke-container] .oke-w-reviewer-verified,
+div.okeReviews[data-oke-container] label {
+    font-weight: 400;
+}
+
+div.okeReviews[data-oke-container] .oke-select {
+    margin-top: -5px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal-footer {
+    justify-content: flex-end;
+}
+
+div.okeReviews[data-oke-container] .oke-helpful,
+div.okeReviews[data-oke-container] .oke-helpful-vote-button--positive:before,
+div.okeReviews[data-oke-container] .oke-helpful-vote-button--negative:before {
+    color: #707070;
+}
+
+div.okeReviews[data-oke-container] .oke-button:not(.oke-is-loading):not(.oke-is-active):hover {
+    box-shadow: none;
+}
+
+/* Show More button — matches the "View Supplement Facts" pill
+   (white pill, purple border/text, fills purple on hover). */
+div.okeReviews[data-oke-container] .oke-showMore-button,
+div.okeReviews[data-oke-container] a.oke-showMore-button.oke-button {
+    background: #ffffff !important;
+    color: #672666 !important;
+    border: 1.5px solid #672666 !important;
+    border-radius: 100px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    padding: 14px 28px !important;
+    box-shadow: none !important;
+    transition: background .15s ease, color .15s ease;
+}
+
+div.okeReviews[data-oke-container] .oke-showMore-button:hover {
+    background: #672666 !important;
+    color: #ffffff !important;
+}
+
+div.okeReviews[data-oke-container] .oke-showMore-button:active {
+    transform: scale(0.98);
+}
+
+/* Media Queries */
+@media all and (max-width: 440px) {
+    .product-item .okeReviews.oke-sr svg {
+        height: 11px;
+    }
+
+    .product-item .okeReviews.oke-sr .oke-sr-count {
+        font-size: 11px;
+        letter-spacing: 0;
+    }
+}
+
+/* Show More button — mobile sizing (matches supplement pill) */
+@media all and (max-width: 749px) {
+    div.okeReviews[data-oke-container] .oke-showMore-button {
+        padding: 13px 24px !important;
+        font-size: 15px !important;
+    }
+}
+
+/* Theme Update 240702 */
+/* Hide Elements */
+div.okeReviews[data-oke-container] .oke-w-ratingAverageModule-count,
+div.okeReviews[data-oke-container] .oke-w-reviewer-verified-icon,
+div.okeReviews[data-oke-container] .oke-sortSelect-label {
+    display: none;
+}
+
+/* Text Styling */
+/* Review date — pinned to the card's top-right, aligned with the stars row
+   (top/right match the card padding). */
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal-date {
+    font-size: 14px !important;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    margin: 0;
+}
+
+:root {
+    --oke-text-small: 14px;
+}
+
+div.okeReviews[data-oke-container] p {
+    font-size: 16px;
+}
+
+div.okeReviews[data-oke-container] .oke-reviewContent-title {
+    font-size: 18px;
+}
+
+/* Aggregate */
+div.okeReviews[data-oke-container] .oke-w-ratingAverageModule-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-ratingAverageModule-rating-average {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* "Rejuvia Reviews" heading — matches the homepage hero heading
+   (font family / weight / letter-spacing driven by the site-wide
+   --rj-title-* vars; colour #141414; 28px mobile, 36px desktop). */
+div.okeReviews[data-oke-container] .oke-w-header:after {
+    content: 'Rejuvia Reviews';
+    display: flex;
+    font-size: 28px;
+    font-family: var(--rj-title-font-family, 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif);
+    font-weight: var(--rj-title-weight, 600);
+    line-height: 1.4;
+    letter-spacing: var(--rj-title-letter-spacing, normal);
+    color: #141414;
+    text-transform: none;
+    justify-content: center;
+}
+
+/* Reviews Widget > Reviews Main > Controls */
+div.okeReviews[data-oke-container] .oke-w-reviews-count:before {
+    content: '';
+}
+
+/* Capitalise "reviews" -> "Reviews" in the total count (e.g. "7,121 Reviews") */
+div.okeReviews[data-oke-container] .oke-w-reviews-count {
+    text-transform: capitalize;
+}
+
+div.okeReviews[data-oke-container] .oke-sortSelect:before {
+    content: 'Sort:';
+    display: inline-block;
+    font-size: 14px;
+    padding-top: 5px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+div.okeReviews[data-oke-container] .oke-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='13' height='7' viewBox='0 0 13 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.650635 1L6.32534 6L12 1' stroke='black'/%3E%3C/svg%3E%0A");
+    background-position: 100% 30%;
+    margin-top: 5px !important;
+    padding-left: 0;
+}
+
+/* Reviews Widget > Reviews Main */
+div.okeReviews[data-oke-container] .oke-w-reviews-main--nav-divider {
+    border: 0;
+}
+
+/* Review card — tighter vertical padding (was 30px all round).
+   position:relative so the date can be pinned to the top-right corner. */
+div.okeReviews[data-oke-container] .oke-w-reviews-list-item {
+    border: 1px solid #0000001a;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 20px 30px;
+    position: relative;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviews-list-item:first-child {
+    margin-top: 0;
+}
+
+div.okeReviews[data-oke-container] .oke-w-header-content-block {
+    margin-bottom: 0;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal-media {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 10px;
+    order: -1;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal {
+    display: flex;
+    flex-direction: column;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewMinimal .oke-w-reviewMinimal-content {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Reviewer avatar with initials — cream circle, black initials, sits to the
+   LEFT of the name. NOTE: this only appears once "reviewer avatars/initials"
+   are enabled in Okendo's widget settings — CSS cannot generate a customer's
+   initials, Okendo has to render them. Until then these rules are inert. */
+div.okeReviews[data-oke-container] .oke-w-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #F8EFE4;
+    color: #141414;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+/* Reviewer name stays bold. The verified label is regular weight, relabelled
+   "Verified Customer", and prefixed with a gold verified check badge, so the
+   row reads:  Name  |  (check)  Verified Customer.
+   (font-size:0 collapses the original "Verified Buyer" text node so :after
+   can replace it.) */
+div.okeReviews[data-oke-container] .oke-w-reviewer-name {
+    font-weight: 700 !important;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer-verified {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400 !important;
+    font-size: 0 !important;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer-verified:before {
+    content: '|';
+    color: #00296166;
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 8px;
+}
+
+div.okeReviews[data-oke-container] .oke-w-reviewer-verified:after {
+    content: 'Verified Customer';
+    font-size: 15px;
+    font-weight: 400;
+    padding-left: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23EAC78B' d='m23 12-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82 1.89 3.2L12 21.04l3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12z'/%3E%3Cpath fill='%23ffffff' d='M10.09 16.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z'/%3E%3C/svg%3E") no-repeat left center;
+    background-size: 15px 15px;
+}
+
+/* Media Queries */
+@media all and (min-width: 750px) {
+    div.okeReviews[data-oke-container] .oke-w-ratingAverageModule-rating svg {
+        height: 24px;
+    }
+
+    div.okeReviews[data-oke-container] .oke-w-ratingAverageModule-rating-average {
+        font-size: 32px;
+    }
+
+    div.okeReviews[data-oke-container] .oke-w-header:after {
+        font-size: 36px;
+    }
+
+    div.okeReviews[data-oke-container] div,
+    div.okeReviews[data-oke-container] .oke-sortSelect:before {
+        font-size: 16px;
+    }
+
+    :root {
+        --oke-text-small: 16px;
+    }
+
+    div.okeReviews[data-oke-container] p {
+        font-size: 18px;
+    }
+
+    div.okeReviews[data-oke-container] .oke-reviewContent-title {
+        font-size: 24px;
+    }
+
+    /* keep the relabelled verified text in step with the 16px desktop reviewer size */
+    div.okeReviews[data-oke-container] .oke-w-reviewer-verified:before,
+    div.okeReviews[data-oke-container] .oke-w-reviewer-verified:after {
+        font-size: 16px;
+    }
+}

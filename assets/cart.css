@@ -731,9 +731,11 @@ main:has(#cart.cart-page) {
     color: #ffffff;
 }
 
-/* Centered label with the arrow pinned to the right edge */
-.cart-checkout__btn { position: relative; }
-.cart-checkout__btn-arrow { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); }
+/* Centered label with the arrow tucked right next to it. A left spacer the
+   width of the arrow keeps the label optically centered. */
+.cart-checkout__btn { gap: 10px; }
+.cart-checkout__btn::before { content: ""; display: block; width: 20px; flex: 0 0 auto; }
+.cart-checkout__btn-arrow { flex: 0 0 auto; }
 
 /* Money-back guarantee under the checkout button (fixed purple icon) */
 .cart-checkout__guarantee {
@@ -741,7 +743,7 @@ main:has(#cart.cart-page) {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin-top: 12px;
+    margin-top: -4px;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 14px;
     color: #141414;

@@ -217,7 +217,7 @@
                                                 {%- assign discount_percent_rounded = discount_percent | round -%}
 
                                                 <span class="cart-item__discount">
-                                                    <span>-{{ discount_percent_rounded }}%</span>
+                                                    <span>{{ discount_percent_rounded }}% OFF</span>
                                                 </span>
 
                                                 <div class="cart-item__price-stack">
@@ -263,6 +263,25 @@
                                 <span class="cart-checkout__value">{{ cart.items_subtotal_price | money }}</span>
                             </div>
 
+                            {%- comment -%} Total compare-at savings across the cart (matches the per-item discount pills). {%- endcomment -%}
+                            {%- assign cart_savings = 0 -%}
+                            {%- for item in cart.items -%}
+                                {%- assign i_compare = item.variant.compare_at_price | default: 0 -%}
+                                {%- if i_compare > 0 -%}
+                                    {%- assign i_full = i_compare | times: item.quantity -%}
+                                    {%- if i_full > item.line_price -%}
+                                        {%- assign i_save = i_full | minus: item.line_price -%}
+                                        {%- assign cart_savings = cart_savings | plus: i_save -%}
+                                    {%- endif -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                            {%- if cart_savings > 0 -%}
+                                <div class="cart-checkout__row savings">
+                                    <span class="cart-checkout__label">Savings</span>
+                                    <span class="cart-checkout__value cart-checkout__value--savings">{{ cart_savings | money_without_trailing_zeros }} OFF</span>
+                                </div>
+                            {%- endif -%}
+
                             {%- if cart.cart_level_discount_applications.size > 0 -%}
                                 {%- for discount in cart.cart_level_discount_applications -%}
                                     <div class="cart-checkout__row savings">
@@ -289,14 +308,14 @@
 
                             <div class="cart-promo" data-cart-promo>
                                 <button type="button" class="cart-promo__toggle" aria-expanded="false">
-                                    <span>Have a promo code?</span>
+                                    <span>Have a discount code?</span>
                                     <svg class="cart-promo__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 9L12 15L18 9" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </button>
                                 <div class="cart-promo__panel" hidden>
                                     <div class="cart-promo__field">
-                                        <input type="text" class="cart-promo__input" placeholder="Promo code" aria-label="Promo code" autocomplete="off" />
+                                        <input type="text" class="cart-promo__input" placeholder="Discount code" aria-label="Discount code" autocomplete="off" />
                                         <button type="button" class="cart-promo__apply">Apply</button>
                                     </div>
                                     <p class="cart-promo__error" role="alert" hidden>
@@ -305,7 +324,7 @@
                                             <path d="M12 8V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                                             <circle cx="12" cy="16" r="0.9" fill="currentColor"/>
                                         </svg>
-                                        <span class="cart-promo__error-text">Invalid promo code.</span>
+                                        <span class="cart-promo__error-text">Invalid discount code.</span>
                                     </p>
                                 </div>
                             </div>
@@ -322,8 +341,13 @@
                             {%- endif -%}
 
                             <button type="submit" class="cart-checkout__btn" name="checkout">
-                                Go to Checkout
+                                <span>Go to Checkout</span>
+                                <svg class="cart-checkout__btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </button>
+                            <div class="cart-checkout__guarantee">
+                                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" aria-hidden="true"><path d="M11.3892 1.7555C11.6093 1.54595 11.9022 1.43011 12.2061 1.43241C12.51 1.43471 12.8011 1.55497 13.018 1.76783C13.2349 1.98068 13.3607 2.26948 13.3687 2.57327C13.3767 2.87707 13.2664 3.17211 13.0611 3.39613L6.82669 11.193C6.71949 11.3085 6.59011 11.4011 6.44627 11.4655C6.30244 11.5298 6.14712 11.5644 5.98959 11.5673C5.83205 11.5703 5.67555 11.5414 5.52944 11.4824C5.38332 11.4235 5.2506 11.3357 5.13919 11.2243L1.00482 7.08988C0.889682 6.98259 0.797335 6.85322 0.733285 6.70947C0.669235 6.56572 0.634795 6.41054 0.632018 6.25319C0.629242 6.09585 0.658187 5.93955 0.717126 5.79363C0.776065 5.64771 0.863791 5.51516 0.975071 5.40388C1.08635 5.2926 1.2189 5.20488 1.36482 5.14594C1.51074 5.087 1.66704 5.05805 1.82438 5.06083C1.98173 5.0636 2.13691 5.09805 2.28066 5.1621C2.42441 5.22614 2.55378 5.31849 2.66107 5.43363L5.93294 8.70394L11.3595 1.78988L11.3892 1.7555Z" fill="currentColor"/></svg>
+                                <span>90-Day Money-Back Guarantee</span>
+                            </div>
                         </div>
                     </div>
                 </div>

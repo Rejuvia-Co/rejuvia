@@ -731,6 +731,23 @@ main:has(#cart.cart-page) {
     color: #ffffff;
 }
 
+/* Centered label with the arrow pinned to the right edge */
+.cart-checkout__btn { position: relative; }
+.cart-checkout__btn-arrow { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); }
+
+/* Money-back guarantee under the checkout button (fixed purple icon) */
+.cart-checkout__guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: #141414;
+}
+.cart-checkout__guarantee svg { color: #672666; flex-shrink: 0; }
+
 /* ==========================================================================
    Tablet (750–1099px)
    ========================================================================== */

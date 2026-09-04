@@ -104,3 +104,6 @@
   .product-widget-container .custom-review-stars .star { height: 15px !important; }
   .product-widget-container .custom-review-stars .star svg { height: 15px !important; width: auto !important; }
 }
+
+/* Match the add-to-cart button font to the sticky CTA button (Helvetica Neue, medium weight, capitalized) */
+.product-widget-container .add-to-cart-form button.btn.custom_button_font{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif !important;font-weight:500 !important;text-transform:capitalize !important;letter-spacing:normal !important;}

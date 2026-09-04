@@ -98,6 +98,27 @@
     cursor: not-allowed;
 }
 
+/* Button + guarantee group. On desktop only the button shows (guarantee + the
+   on-button price are mobile-only); on mobile it becomes a centered stack. */
+.psc-v2-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.psc-v2-btn-price { display: none; }
+.psc-v2-guarantee {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #141414;
+    white-space: nowrap;
+}
+.psc-v2-guarantee svg { color: var(--base-colour, #672666); flex-shrink: 0; }
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
     .psc-v2-inner {
@@ -112,11 +133,19 @@
     .psc-v2-variant {
         font-size: 19px;
     }
+    /* Mobile: just one big centered button (title/price hidden), price on the
+       button, and the guarantee line under it. */
+    .psc-v2-inner { justify-content: center; }
+    .psc-v2-info { display: none; }
+    .psc-v2-cta-group { width: 100%; align-items: stretch; }
     .psc-v2-btn {
         min-width: auto;
         padding: 18px 32px !important;
         font-size: 16px !important;
+        width: 100%;
     }
+    .psc-v2-btn-price { display: inline; }
+    .psc-v2-guarantee { display: flex; }
 }
 </style>
 
@@ -129,10 +158,17 @@
                 <p class="psc-v2-title">{{ product.title }}</p>
                 <p class="psc-v2-variant skio-update-price" data-psc-v2-price>{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</p>
             </div>
-            <button type="button" class="psc-v2-btn" data-psc-v2-btn>
-                <span data-psc-v2-btn-text>Add to cart</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0;"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            <div class="psc-v2-cta-group">
+                <button type="button" class="psc-v2-btn" data-psc-v2-btn>
+                    <span data-psc-v2-btn-text>Add to cart</span>
+                    <span class="psc-v2-btn-price" data-psc-v2-btn-price>({{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }})</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0;"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="psc-v2-guarantee">
+                    <svg width="14" height="13" viewBox="0 0 14 13" fill="none" aria-hidden="true"><path d="M11.3892 1.7555C11.6093 1.54595 11.9022 1.43011 12.2061 1.43241C12.51 1.43471 12.8011 1.55497 13.018 1.76783C13.2349 1.98068 13.3607 2.26948 13.3687 2.57327C13.3767 2.87707 13.2664 3.17211 13.0611 3.39613L6.82669 11.193C6.71949 11.3085 6.59011 11.4011 6.44627 11.4655C6.30244 11.5298 6.14712 11.5644 5.98959 11.5673C5.83205 11.5703 5.67555 11.5414 5.52944 11.4824C5.38332 11.4235 5.2506 11.3357 5.13919 11.2243L1.00482 7.08988C0.889682 6.98259 0.797335 6.85322 0.733285 6.70947C0.669235 6.56572 0.634795 6.41054 0.632018 6.25319C0.629242 6.09585 0.658187 5.93955 0.717126 5.79363C0.776065 5.64771 0.863791 5.51516 0.975071 5.40388C1.08635 5.2926 1.2189 5.20488 1.36482 5.14594C1.51074 5.087 1.66704 5.05805 1.82438 5.06083C1.98173 5.0636 2.13691 5.09805 2.28066 5.1621C2.42441 5.22614 2.55378 5.31849 2.66107 5.43363L5.93294 8.70394L11.3595 1.78988L11.3892 1.7555Z" fill="currentColor"/></svg>
+                    <span>90-Day Money-Back Guarantee</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -194,6 +230,18 @@
     /* Sync variant name from product widget variant selector */
     var variantEl = sticky.querySelector('[data-psc-v2-variant]');
     var priceEl = sticky.querySelector('[data-psc-v2-price]');
+
+    /* Mirror the (subscription-aware) price into the on-button price shown on
+       mobile. priceEl is updated both by our listeners and directly by Skio,
+       so observe it rather than duplicating the price logic. */
+    var btnPriceEl = sticky.querySelector('[data-psc-v2-btn-price]');
+    function syncBtnPrice() {
+        if (btnPriceEl && priceEl) { btnPriceEl.textContent = '(' + priceEl.textContent.trim() + ')'; }
+    }
+    syncBtnPrice();
+    if (priceEl && btnPriceEl && window.MutationObserver) {
+        new MutationObserver(syncBtnPrice).observe(priceEl, { childList: true, characterData: true, subtree: true });
+    }
 
     document.addEventListener('variant:changed', function(e) {
         if (priceEl && e.detail.price) {

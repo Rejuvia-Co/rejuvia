@@ -275,7 +275,7 @@
         "bullet_3": {
           "type": "bullet",
           "settings": {
-            "text": "Wake up refreshed, not groggy, with a non-habit-forming formula"
+            "text": "Wake up refreshed, not groggy — with a non-habit-forming formula"
           }
         },
         "bullet_4": {
@@ -293,7 +293,7 @@
       ],
       "settings": {
         "heading": "Fix Your Sleep Once and For All With Rejuvia",
-        "subhead": "Ditch melatonin gummies and sleeping pills with the one sleep solution that actually works when you need it: Rejuvia.",
+        "subhead": "Trade your melatonin gummies or sleeping pills for the sublingual sleep spray 425,000 people use every night.",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subhead_size": 18,
@@ -602,19 +602,19 @@
         "point_dCFWPJ": {
           "type": "point",
           "settings": {
-            "text": "90-day money-back guarantee"
+            "text": "Fall asleep in 10–15 minutes"
           }
         },
         "point_hnPm76": {
           "type": "point",
           "settings": {
-            "text": "Clinically-backed ingredients"
+            "text": "13 natural, non-habit-forming ingredients"
           }
         },
         "point_XmNjEf": {
           "type": "point",
           "settings": {
-            "text": "Made in the USA"
+            "text": "100% Made in the USA"
           }
         }
       },
@@ -628,9 +628,9 @@
         "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
         "show_stars": true,
         "stars_color": "#eac78b",
-        "rating_text": "<p>Trusted by <strong>425,000+</strong> Customers</p>",
+        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
         "rating_color": "#000000",
-        "heading": "<p>The Sleep You Deserve Is Now a Spray Away</p>",
+        "heading": "<p>Fall Asleep 3x Faster With Rejuvia </p>",
         "heading_color": "#000000",
         "button_text": "Try Rejuvia Risk-Free",
         "scroll_target": "#offer",

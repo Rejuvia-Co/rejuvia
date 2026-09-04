@@ -119,6 +119,10 @@
 }
 .psc-v2-guarantee svg { color: var(--base-colour, #672666); flex-shrink: 0; }
 
+/* Center the button label; pin the arrow to the right edge so the text reads centered */
+.psc-v2-btn { position: relative; }
+.psc-v2-btn > svg { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
     .psc-v2-inner {

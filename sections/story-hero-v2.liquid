@@ -151,20 +151,24 @@ main.content-wrapper { overflow: visible !important; }
 
 {%- if section.settings.image_desktop != blank -%}
 <div class="story-hero-v2-bg story-hero-v2-bg--desktop{% unless has_mobile_image %} story-hero-v2-bg--mobile-fallback{% endunless %}" aria-hidden="true">
-    <img src="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+    <img src="{{ section.settings.image_desktop | image_url: width: 2000, format: 'webp' }}"
+         srcset="{{ section.settings.image_desktop | image_url: width: 1000, format: 'webp' }} 1000w, {{ section.settings.image_desktop | image_url: width: 1400, format: 'webp' }} 1400w, {{ section.settings.image_desktop | image_url: width: 1800, format: 'webp' }} 1800w, {{ section.settings.image_desktop | image_url: width: 2000, format: 'webp' }} 2000w"
+         sizes="100vw"
          width="{{ section.settings.image_desktop.width }}"
          height="{{ section.settings.image_desktop.height }}"
          alt="{{ section.settings.image_desktop.alt }}"
-         loading="eager" decoding="async">
+         loading="eager" fetchpriority="high" decoding="async">
 </div>
 {%- endif -%}
 {% if has_mobile_image %}
     <div class="story-hero-v2-bg story-hero-v2-bg--mobile" aria-hidden="true">
-        <img src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+        <img src="{{ section.settings.image_mobile | image_url: width: 1000, format: 'webp' }}"
+             srcset="{{ section.settings.image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.image_mobile | image_url: width: 800, format: 'webp' }} 800w, {{ section.settings.image_mobile | image_url: width: 1000, format: 'webp' }} 1000w"
+             sizes="100vw"
              width="{{ section.settings.image_mobile.width }}"
              height="{{ section.settings.image_mobile.height }}"
              alt="{{ section.settings.image_mobile.alt | default: '' }}"
-             loading="eager" decoding="async">
+             loading="eager" fetchpriority="high" decoding="async">
     </div>
 {% endif %}
 

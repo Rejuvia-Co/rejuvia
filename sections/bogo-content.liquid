@@ -17,8 +17,8 @@
       <div class="bogo-content__bed">
         {%- if section.settings.image != blank -%}
           <img class="bogo-content__img"
-               src="{{ section.settings.image | image_url: width: 1200 }}"
-               srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               src="{{ section.settings.image | image_url: width: 1200, format: 'webp' }}"
+               srcset="{{ section.settings.image | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.image | image_url: width: 900, format: 'webp' }} 900w, {{ section.settings.image | image_url: width: 1200, format: 'webp' }} 1200w"
                sizes="(max-width: 760px) 90vw, 540px"
                width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}"
                alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}" loading="lazy" decoding="async">

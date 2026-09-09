@@ -64,7 +64,7 @@
              srcset="{{ hero.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ hero.settings.image | image_url: width: 800, format: 'webp' }} 800w"
              sizes="100vw"
              width="{{ hero.settings.image.width }}" height="{{ hero.settings.image.height }}"
-             alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
+             alt="{{ hero.settings.label | default: 'How to use Rejuvia' | escape }}" loading="lazy" decoding="async">
       </div>
     {%- endif -%}
 

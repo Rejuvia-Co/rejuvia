@@ -258,14 +258,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
       <div class="ob__gallery-inner">
       <div class="ob__main">
-        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000 }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high">{%- endif -%}
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" srcset="{{ main_image | image_url: width: 500, format: 'webp' }} 500w, {{ main_image | image_url: width: 700, format: 'webp' }} 700w, {{ main_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ main_image | image_url: width: 1400, format: 'webp' }} 1400w" sizes="(max-width: 900px) 100vw, 480px" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gallery_product.images.size > 1 -%}
         <div class="ob__thumbs-row">
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
             {%- for img in gallery_product.images -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy" decoding="async"></button>
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -379,7 +379,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     if (!thumbs.length) return;
     idx = (i + thumbs.length) % thumbs.length;
     var t = thumbs[idx];
-    if (mainImg) mainImg.src = t.getAttribute('data-full');
+    if (mainImg) { mainImg.removeAttribute('srcset'); mainImg.removeAttribute('sizes'); mainImg.src = t.getAttribute('data-full'); }
     thumbs.forEach(function (x) { x.classList.remove('is-active'); });
     t.classList.add('is-active');
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });

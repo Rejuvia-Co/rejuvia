@@ -232,6 +232,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                    src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
                    srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
                    sizes="(max-width: 900px) 92vw, {{ section.settings.gallery_width | default: 500 }}px"
+                   width="{{ b.settings.image.width }}" height="{{ b.settings.image.height }}"
                    alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
             {%- endif -%}

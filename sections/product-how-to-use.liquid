@@ -80,10 +80,11 @@
     {%- for step in steps limit: 1 -%}
       {%- if step.image != blank -%}
         <div class="hus__hero" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
-          <img src="{{ step.image | image_url: width: 800 }}"
-               srcset="{{ step.image | image_url: width: 500 }} 500w, {{ step.image | image_url: width: 800 }} 800w"
+          <img src="{{ step.image | image_url: width: 800, format: 'webp' }}"
+               srcset="{{ step.image | image_url: width: 500, format: 'webp' }} 500w, {{ step.image | image_url: width: 800, format: 'webp' }} 800w"
                sizes="100vw"
-               alt="{{ heading | default: 'How to use Rejuvia' | escape }}" loading="eager" decoding="async">
+               width="{{ step.image.width }}" height="{{ step.image.height }}"
+               alt="{{ heading | default: 'How to use Rejuvia' | escape }}" loading="lazy" decoding="async">
         </div>
       {%- endif -%}
     {%- endfor -%}
@@ -94,9 +95,10 @@
           <div class="hus__media" style="background: {{ section.settings.backdrop_color | default: '#F7EDEC' }};">
             {%- if step.image != blank -%}
               <img class="hus__img"
-                   src="{{ step.image | image_url: width: 800 }}"
-                   srcset="{{ step.image | image_url: width: 128 }} 128w, {{ step.image | image_url: width: 400 }} 400w, {{ step.image | image_url: width: 800 }} 800w"
+                   src="{{ step.image | image_url: width: 800, format: 'webp' }}"
+                   srcset="{{ step.image | image_url: width: 128, format: 'webp' }} 128w, {{ step.image | image_url: width: 400, format: 'webp' }} 400w, {{ step.image | image_url: width: 800, format: 'webp' }} 800w"
                    sizes="(max-width: 767px) 64px, 380px"
+                   width="{{ step.image.width }}" height="{{ step.image.height }}"
                    alt="{{ step.step_title | default: 'Step' | escape }}" loading="lazy" decoding="async">
             {%- endif -%}
           </div>

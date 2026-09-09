@@ -264,7 +264,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endfor -%}
       <div class="ob__gallery-inner">
       <div class="ob__main">
-        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" srcset="{{ main_image | image_url: width: 500, format: 'webp' }} 500w, {{ main_image | image_url: width: 700, format: 'webp' }} 700w, {{ main_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ main_image | image_url: width: 1400, format: 'webp' }} 1400w" sizes="(max-width: 900px) 100vw, 480px" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gal_count > 1 -%}
         <div class="ob__thumbs-row">
@@ -415,7 +415,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     if (!thumbs.length) return;
     idx = (i + thumbs.length) % thumbs.length;
     var t = thumbs[idx];
-    if (mainImg) mainImg.src = t.getAttribute('data-full');
+    if (mainImg) { mainImg.removeAttribute('srcset'); mainImg.removeAttribute('sizes'); mainImg.src = t.getAttribute('data-full'); }
     thumbs.forEach(function (x) { x.classList.remove('is-active'); });
     t.classList.add('is-active');
     dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });

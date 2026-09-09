@@ -330,7 +330,8 @@
                   <h2 class="faq-title title-color">Ingredients</h2>
                   <div class="title-color tab_content" style="font-size:16px;">
                       {% if product.metafields.custom.ingredients_image.value != blank %}
-                        <img src="{{ product.metafields.custom.ingredients_image.value  | img_url: 'master'}}" loading="lazy" decoding="async">
+                        {%- assign ingredients_img = product.metafields.custom.ingredients_image.value -%}
+                        <img src="{{ ingredients_img | image_url: width: 800, format: 'webp' }}" srcset="{{ ingredients_img | image_url: width: 400, format: 'webp' }} 400w, {{ ingredients_img | image_url: width: 800, format: 'webp' }} 800w, {{ ingredients_img | image_url: width: 1100, format: 'webp' }} 1100w" sizes="(max-width: 900px) 92vw, 700px" width="{{ ingredients_img.width }}" height="{{ ingredients_img.height }}" alt="{{ product.title | escape }} ingredients" loading="lazy" decoding="async">
                       {% else %}
                         {{ product.metafields.tabs.ingredients }}
                       {% endif %}
@@ -427,12 +428,12 @@
                     {% endif %}
                     <div class="eg-productR-image">
                         <div class="eg-background-product"></div>
-                        <img src="{{ relatedProduct.featured_image | img_url: '400x' }}" alt="{{ relatedProduct.title }}" loading="lazy" decoding="async">
+                        <img src="{{ relatedProduct.featured_image | image_url: width: 400, format: 'webp' }}" alt="{{ relatedProduct.title | escape }}" loading="lazy" decoding="async">
                     </div>
                     <div class="eg-productR-info">
                         <div class="eg-reviews">
                             {{ relatedProduct.metafields.okendo.StarRatingSnippet }}
-                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                            <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20" height="20" alt="" aria-hidden="true" loading="lazy" decoding="async">
                         </div>
                         <div class="productR-info_title">
                             <span>{{ relatedProduct.title }}</span>
@@ -457,7 +458,7 @@
                             <div class="boundle-related__products--wrap">
                                 {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
                                     <div class="boundle-related__products--product">
-                                        <img src="{{ product_ref.featured_image | img_url: '50x50' }}" loading="lazy" decoding="async">
+                                        <img src="{{ product_ref.featured_image | image_url: width: 50, height: 50, crop: 'center', format: 'webp' }}" width="50" height="50" alt="{{ product_ref.title | escape }}" loading="lazy" decoding="async">
                                         <div>
                                             {{ product_ref.title }}
                                         </div>

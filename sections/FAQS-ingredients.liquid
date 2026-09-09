@@ -183,7 +183,7 @@
         </div>
         <div class="faq-testimonial-person">
             <div class="faq-testimonial-firma">
-                <img src="{{ 'signature.svg' | asset_url }}" width="" height="" loading="lazy" decoding="async">
+                <img src="{{ 'signature.svg' | asset_url }}" width="241" height="82" alt="{{ section.settings.name | default: '' | escape }} signature" loading="lazy" decoding="async">
             </div>
             <div class="faq-testimonial-persona">
                 <p>- {{ section.settings.name }}</p>
@@ -198,11 +198,11 @@
                 <div class="faq-question-into">
                     {{ block.settings.question }}
                 </div>
-                <img src="{{ 'Plus.svg' | asset_url }}" width="20px" height="20px" class="plus-icon icon-faq-ingredients" loading="lazy" decoding="async">
-                <img src="{{ 'Less.svg' | asset_url }}" width="20px" height="20px" class="less-icon icon-faq-ingredients" style="display: none;" loading="lazy" decoding="async">
+                <img src="{{ 'Plus.svg' | asset_url }}" width="20" height="20" alt="" class="plus-icon icon-faq-ingredients" loading="lazy" decoding="async">
+                <img src="{{ 'Less.svg' | asset_url }}" width="20" height="20" alt="" class="less-icon icon-faq-ingredients" style="display: none;" loading="lazy" decoding="async">
                 
                 <div class="faq-content" id="faq-{{ block.id }}" style="{% if forloop.first %}display: flex;{% else %}display: none;{% endif %}">
-                    <div class="faq-image" style="background-image: url({{ block.settings.image | img_url: '80x80' }});"></div>
+                    <div class="faq-image" style="background-image: url({{ block.settings.image | image_url: width: 160, height: 160, crop: 'center', format: 'webp' }});"></div>
                     <div class="faq-answer">
                         {{ block.settings.answer }}
                     </div>

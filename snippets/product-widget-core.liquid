@@ -58,7 +58,7 @@
                             <div class="eg-productR-info">
                                 <div class="eg-reviews">
                                 {{ relatedProduct.metafields.okendo.StarRatingSnippet }}
-                                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20px" height="20px" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                                <img src="{{ 'ArrowLeft-Menu_mobile.svg' | asset_url }}" width="20" height="20" alt="" aria-hidden="true" loading="lazy" decoding="async">
                                 </div>
                                 <div class="productR-info_title">
                                 <span>{{ relatedProduct.title }}</span>
@@ -83,7 +83,7 @@
                                 <div class="boundle-related__products--wrap">
                                     {% for product_ref in relatedProduct.metafields.custom.boundle_products.value %}
                                     <div class="boundle-related__products--product">
-                                    <img src="{{ product_ref.featured_image | image_url: width: 50, height: 50, crop: 'center', format: 'webp' }}" loading="lazy" decoding="async">
+                                    <img src="{{ product_ref.featured_image | image_url: width: 50, height: 50, crop: 'center', format: 'webp' }}" width="50" height="50" alt="{{ product_ref.title | escape }}" loading="lazy" decoding="async">
                                     <div>
                                         {{ product_ref.title }}
                                     </div>
@@ -364,7 +364,7 @@
                     </div>
                     {% elsif settings.CustomImage != blank %}
                     <div class="block-custom-image custom-image-badge" {{ block.shopify_attributes }}>
-                        <img src="{{ settings.CustomImage | image_url: width: 400, format: 'webp' }}" loading="lazy" decoding="async">
+                        <img src="{{ settings.CustomImage | image_url: width: 400, format: 'webp' }}" alt="" loading="lazy" decoding="async">
                     </div>
                     {% endif %}
 

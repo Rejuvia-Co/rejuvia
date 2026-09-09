@@ -242,9 +242,9 @@
     <div class="palt-v2-col palt-v2-col--highlight">
       <div class="palt-v2-col-header">
         {%- if rej_image != blank -%}
-          <img class="palt-v2-rejuvia-bottle" src="{{ rej_image | image_url: width: 220 }}"
-               srcset="{{ rej_image | image_url: width: 220 }} 220w, {{ rej_image | image_url: width: 440 }} 440w"
-               sizes="200px" alt="{{ rej_name | escape }}" loading="lazy" decoding="async">
+          <img class="palt-v2-rejuvia-bottle" src="{{ rej_image | image_url: width: 220, format: 'webp' }}"
+               srcset="{{ rej_image | image_url: width: 220, format: 'webp' }} 220w, {{ rej_image | image_url: width: 440, format: 'webp' }} 440w"
+               sizes="200px" width="{{ rej_image.width }}" height="{{ rej_image.height }}" alt="{{ rej_name | escape }}" loading="lazy" decoding="async">
         {%- endif -%}
         <span class="palt-v2-col-name">{{ rej_name }}</span>
       </div>
@@ -273,7 +273,7 @@
         <div class="palt-v2-col">
           <div class="palt-v2-col-header">
             {%- if cicon != blank -%}
-              <img class="palt-v2-competitor-icon" src="{{ cicon | image_url: width: 200 }}" alt="{{ cname | escape }}" loading="lazy" decoding="async">
+              <img class="palt-v2-competitor-icon" src="{{ cicon | image_url: width: 200, format: 'webp' }}" width="{{ cicon.width }}" height="{{ cicon.height }}" alt="{{ cname | escape }}" loading="lazy" decoding="async">
             {%- endif -%}
             <span class="palt-v2-col-name">{{ cname }}</span>
           </div>

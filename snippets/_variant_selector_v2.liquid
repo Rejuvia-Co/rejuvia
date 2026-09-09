@@ -59,9 +59,9 @@
         {% comment %} Image {% endcomment %}
         <div class="variant-selector__image">
           {% if variant.featured_image %}
-            <img src="{{ variant.featured_image | img_url: '150x150' }}" alt="{{ variant.title }}" loading="lazy" decoding="async">
+            <img src="{{ variant.featured_image | image_url: width: 150, height: 150, crop: 'center', format: 'webp' }}" width="150" height="150" alt="{{ variant.title | escape }}" loading="lazy" decoding="async">
           {% else %}
-            <img src="{{ currentProduct.featured_image | img_url: '150x150' }}" alt="{{ variant.title }}" loading="lazy" decoding="async">
+            <img src="{{ currentProduct.featured_image | image_url: width: 150, height: 150, crop: 'center', format: 'webp' }}" width="150" height="150" alt="{{ variant.title | escape }}" loading="lazy" decoding="async">
           {% endif %}
         </div>
 

@@ -256,11 +256,11 @@
         {% endif %}
         <div class="science-v2-quote-footer">
 {% if section.settings.signature_image != blank %}
-    <img decoding="async" class="science-v2-quote-signature"
+    <img class="science-v2-quote-signature"
          src="{{ section.settings.signature_image | image_url: width: 400, format: 'webp' }}"
          width="{{ section.settings.signature_image.width }}"
          height="{{ section.settings.signature_image.height }}"
-         alt="{{ section.settings.author_name | default: 'Signature' }}"
+         alt="{{ section.settings.author_name | default: 'Signature' | escape }}"
          loading="lazy" decoding="async">
 {% endif %}
             {% if section.settings.author_name != blank or section.settings.author_title != blank %}

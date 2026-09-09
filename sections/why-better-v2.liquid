@@ -101,8 +101,8 @@
     <div class="why-better-v2-chart{% if section.settings.chart_image_mobile == blank %} why-better-v2-chart--only-desktop{% endif %}">
         {% if section.settings.chart_image != blank %}
             <div class="why-better-v2-chart--desktop">
-                <img decoding="async" src="{{ section.settings.chart_image | image_url: width: 1200, format: 'webp' }}"
-                     alt="{{ section.settings.chart_image.alt | default: 'Absorption comparison chart' }}"
+                <img src="{{ section.settings.chart_image | image_url: width: 1200, format: 'webp' }}"
+                     alt="{{ section.settings.chart_image.alt | default: 'Absorption comparison chart' | escape }}"
                      width="{{ section.settings.chart_image.width }}"
                      height="{{ section.settings.chart_image.height }}"
                      loading="lazy" decoding="async">
@@ -110,8 +110,8 @@
         {% endif %}
         {% if section.settings.chart_image_mobile != blank %}
             <div class="why-better-v2-chart--mobile">
-                <img decoding="async" src="{{ section.settings.chart_image_mobile | image_url: width: 800, format: 'webp' }}"
-                     alt="{{ section.settings.chart_image_mobile.alt | default: 'Absorption comparison chart' }}"
+                <img src="{{ section.settings.chart_image_mobile | image_url: width: 800, format: 'webp' }}"
+                     alt="{{ section.settings.chart_image_mobile.alt | default: 'Absorption comparison chart' | escape }}"
                      width="{{ section.settings.chart_image_mobile.width }}"
                      height="{{ section.settings.chart_image_mobile.height }}"
                      loading="lazy" decoding="async">

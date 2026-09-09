@@ -196,7 +196,9 @@
 <div class="page-cta-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
     {%- if section.settings.image != blank -%}
     <div class="page-cta-v2-bg" aria-hidden="true">
-<img src="{{ section.settings.image | image_url: width: 1400 }}"
+<img src="{{ section.settings.image | image_url: width: 1400, format: 'webp' }}"
+     srcset="{{ section.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ section.settings.image | image_url: width: 1100, format: 'webp' }} 1100w, {{ section.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
+     sizes="100vw"
      width="{{ section.settings.image.width }}"
      height="{{ section.settings.image.height }}"
      alt=""
@@ -246,7 +248,9 @@
 
 {% if section.settings.image != blank %}
     <img class="page-cta-v2-mobile-image"
-         src="{{ section.settings.image | image_url: width: 900 }}"
+         src="{{ section.settings.image | image_url: width: 900, format: 'webp' }}"
+         srcset="{{ section.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ section.settings.image | image_url: width: 700, format: 'webp' }} 700w, {{ section.settings.image | image_url: width: 900, format: 'webp' }} 900w"
+         sizes="100vw"
          width="{{ section.settings.image.width }}"
          height="{{ section.settings.image.height }}"
          alt=""

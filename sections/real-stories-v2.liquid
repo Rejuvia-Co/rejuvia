@@ -422,12 +422,12 @@
                 {%- assign fb_img = fb.screenshot -%}
                 {% if fb_img != blank %}
                     <div class="rs-v2-fb-review">
-                        <img src="{{ fb_img | image_url: width: 800, format: 'webp' }}" alt="Facebook review" loading="lazy" decoding="async">
+                        <img src="{{ fb_img | image_url: width: 800, format: 'webp' }}" srcset="{{ fb_img | image_url: width: 400, format: 'webp' }} 400w, {{ fb_img | image_url: width: 585, format: 'webp' }} 585w, {{ fb_img | image_url: width: 800, format: 'webp' }} 800w, {{ fb_img | image_url: width: 1200, format: 'webp' }} 1200w" sizes="(max-width: 900px) 100vw, 585px" width="{{ fb_img.width }}" height="{{ fb_img.height }}" alt="{{ fb.name | default: 'Facebook review' | escape }}" loading="lazy" decoding="async">
                     </div>
                 {% elsif fb.comment != blank %}
                     <div class="rs-v2-fb-text">
                         {% if fb.avatar != blank %}
-                            <img class="rs-v2-fb-avatar" src="{{ fb.avatar | image_url: width: 72, format: 'webp' }}" alt="{{ fb.name }}" loading="lazy" decoding="async">
+                            <img class="rs-v2-fb-avatar" src="{{ fb.avatar | image_url: width: 72, format: 'webp' }}" width="36" height="36" alt="{{ fb.name | escape }}" loading="lazy" decoding="async">
                         {% else %}
                             <div class="rs-v2-fb-avatar-placeholder"></div>
                         {% endif %}
@@ -448,18 +448,21 @@
         {% for block in section.blocks %}
             {% if block.type == 'fb_review' %}
                 <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
-                    {%- assign fb_img_url = block.settings.image | image_url: width: 800, format: 'webp' -%}
-                    {% if fb_img_url != blank %}
+                    {%- assign fb_img = block.settings.image -%}
+                    {% if fb_img != blank %}
                         <img
-                            src="{{ fb_img_url }}"
-                            alt="Facebook review"
+                            src="{{ fb_img | image_url: width: 800, format: 'webp' }}"
+                            srcset="{{ fb_img | image_url: width: 400, format: 'webp' }} 400w, {{ fb_img | image_url: width: 585, format: 'webp' }} 585w, {{ fb_img | image_url: width: 800, format: 'webp' }} 800w, {{ fb_img | image_url: width: 1200, format: 'webp' }} 1200w"
+                            sizes="(max-width: 900px) 100vw, 585px"
+                            width="{{ fb_img.width }}" height="{{ fb_img.height }}"
+                            alt="{{ block.settings.image.alt | default: 'Facebook review' | escape }}"
                             loading="lazy" decoding="async">
                     {% endif %}
                 </div>
             {% elsif block.type == 'fb_text_review' %}
                 <div class="rs-v2-fb-text" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
                     {% if block.settings.avatar != blank %}
-                        <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72, format: 'webp' }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
+                        <img class="rs-v2-fb-avatar" src="{{ block.settings.avatar | image_url: width: 72, format: 'webp' }}" width="36" height="36" alt="{{ block.settings.name | escape }}" loading="lazy" decoding="async">
                     {% else %}
                         <div class="rs-v2-fb-avatar-placeholder"></div>
                     {% endif %}

@@ -402,7 +402,10 @@
                     {% if block.settings.image != blank %}
                         <img
                             src="{{ block.settings.image | image_url: width: 600, format: 'webp' }}"
-                            alt="{{ block.settings.title }}"
+                            srcset="{{ block.settings.image | image_url: width: 300, format: 'webp' }} 300w, {{ block.settings.image | image_url: width: 600, format: 'webp' }} 600w, {{ block.settings.image | image_url: width: 900, format: 'webp' }} 900w"
+                            sizes="(max-width: 900px) 92vw, 480px"
+                            width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                            alt="{{ block.settings.title | escape }}"
                             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
                     {% endif %}
                 </div>

@@ -199,8 +199,9 @@
             <img
                 src="{{ section.settings.image | image_url: width: 800, format: 'webp' }}"
                 srcset="{{ section.settings.image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.image | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ section.settings.image | image_url: width: 1200, format: 'webp' }} 1200w"
-                sizes="(max-width: 900px) 92vw, 400px"
-                alt="{{ section.settings.image.alt | default: 'Product image' }}"
+                sizes="(max-width: 900px) 92vw, 550px"
+                width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}"
+                alt="{{ section.settings.image.alt | default: 'Product image' | escape }}"
                 loading="lazy" decoding="async">
         {% endif %}
     </div>

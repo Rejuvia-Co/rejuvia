@@ -30,11 +30,17 @@
       </div>
       {% if intro.image != blank %}
         <img src="{{ intro.image | image_url: width: 800, format: 'webp' }}"
-             alt="{{ currentProduct.title }}"
+             srcset="{{ intro.image | image_url: width: 400, format: 'webp' }} 400w, {{ intro.image | image_url: width: 600, format: 'webp' }} 600w, {{ intro.image | image_url: width: 800, format: 'webp' }} 800w"
+             sizes="(max-width: 900px) 92vw, 460px"
+             width="{{ intro.image.width }}" height="{{ intro.image.height }}"
+             alt="{{ currentProduct.title | escape }}"
              loading="lazy" decoding="async">
       {% elsif currentProduct.featured_image %}
         <img src="{{ currentProduct.featured_image | image_url: width: 800, format: 'webp' }}"
-             alt="{{ currentProduct.title }}"
+             srcset="{{ currentProduct.featured_image | image_url: width: 400, format: 'webp' }} 400w, {{ currentProduct.featured_image | image_url: width: 600, format: 'webp' }} 600w, {{ currentProduct.featured_image | image_url: width: 800, format: 'webp' }} 800w"
+             sizes="(max-width: 900px) 92vw, 460px"
+             width="{{ currentProduct.featured_image.width }}" height="{{ currentProduct.featured_image.height }}"
+             alt="{{ currentProduct.title | escape }}"
              loading="lazy" decoding="async">
       {% endif %}
     </div>

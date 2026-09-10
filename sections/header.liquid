@@ -412,8 +412,8 @@
             <a href="{{ product.url }}" class="mega-menu-v2__card">
               <div class="mega-menu-v2__card-image">
                 <img
-                  src="{{ product.featured_image | img_url: '300x' }}"
-                  alt="{{ product.title }}"
+                  src="{{ product.featured_image | image_url: width: 350, format: 'webp' }}"
+                  alt="{{ product.title | escape }}"
                   loading="lazy"
                   width="175"
                   height="175"

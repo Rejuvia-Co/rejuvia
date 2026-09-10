@@ -45,10 +45,14 @@
     {% if article.image %}
       <img
         class="featured-image"
-        fetchpirority="high"
+        fetchpriority="high"
         loading="eager"
-        src="{{ article.image | img_url: '1296x' }}"
-        alt="{{ article.title }}" decoding="async">
+        src="{{ article.image | image_url: width: 1296, format: 'webp' }}"
+        srcset="{{ article.image | image_url: width: 600, format: 'webp' }} 600w, {{ article.image | image_url: width: 900, format: 'webp' }} 900w, {{ article.image | image_url: width: 1296, format: 'webp' }} 1296w, {{ article.image | image_url: width: 1600, format: 'webp' }} 1600w"
+        sizes="100vw"
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+        alt="{{ article.title | escape }}" decoding="async">
     {% endif %}
     <div class="article-content__box">
       <div class="content">

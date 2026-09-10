@@ -13,8 +13,13 @@
   <meta charset="UTF-8">
 
   <!-- Preconnect to improve CDN connection times -->
-  <link rel="preconnect" href="https://api.skio.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.skio.com" crossorigin>
+  {%- comment -%} Skio's subscription plan-picker only renders on the product page,
+    so warm its rules API connection there only (site-wide it just wasted a socket
+    on every non-PDP page and counted against the browser's preconnect budget).
+    crossorigin is correct here: get-rules-by-domain is a CORS fetch. {%- endcomment -%}
+  {%- if template.name == 'product' -%}
+    <link rel="preconnect" href="https://api.skio.com" crossorigin>
+  {%- endif -%}
 
 <!-- Theme settings for JavaScript -->
   <script>

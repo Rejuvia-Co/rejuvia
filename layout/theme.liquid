@@ -87,14 +87,17 @@
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
-  <!-- jQuery loaded synchronously for inline script compatibility -->
-  <!-- Positioned late in head to minimize render blocking -->
+  <!-- jQuery stays synchronous: many inline scripts call $() during parse
+       (product widget, cart, FAQs, account menu). Positioned late in head. -->
   <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-  <script src="{{ 'custom.js' | asset_url }}"></script>
 
-  <!-- ProductJs must load before inline product scripts -->
-  <script src="{{ 'vendor.js' | asset_url }}"></script>
-  <script src="{{ 'ProductJs.js' | asset_url }}"></script>
+  <!-- vendor (Slick/tingle/PhotoSwipe), ProductJs and custom sliders are only
+       used inside $(document).ready / $(function(){}) callbacks, which fire at
+       DOMContentLoaded — strictly after deferred scripts execute. So defer them
+       off the critical render path (~228KB) without breaking any inline caller. -->
+  <script src="{{ 'vendor.js' | asset_url }}" defer></script>
+  <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
+  <script src="{{ 'custom.js' | asset_url }}" defer></script>
 
   {{ content_for_header }}
 

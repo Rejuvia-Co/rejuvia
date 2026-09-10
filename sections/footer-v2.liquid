@@ -421,11 +421,11 @@
                 {% if section.settings.logo != blank %}
                     <a href="{{ routes.root_url }}">
 <img class="footer-v2-logo"
-     src="{{ section.settings.logo | image_url: width: 400 }}"
+     src="{{ section.settings.logo | image_url: width: 400, format: 'webp' }}"
      width="{{ section.settings.logo.width }}"
      height="{{ section.settings.logo.height }}"
      loading="lazy"
-     alt="{{ shop.name }}" decoding="async">                    </a>
+     alt="{{ shop.name | escape }}" decoding="async">                    </a>
                 {% endif %}
                 <div class="footer-v2-socials">
                     {% if settings.instagram_link != blank %}

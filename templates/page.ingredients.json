@@ -26,7 +26,7 @@
       "settings": {
         "anchor_id": "ingredients-benefits",
         "product": "sleep-spray",
-        "heading": "All-natural sleep ingredients",
+        "heading": "100% Clean, All-Natural Sleep Ingredients",
         "button_label": "View Supplement Label"
       }
     },
@@ -73,6 +73,7 @@
       ],
       "name": "Guarantees V2",
       "settings": {
+        "default_items": "6,500+ 5-Star Reviews | Free US Shipping Over $59 | 425,000+ Happy Customers",
         "anchor_id": "",
         "bg_color": "#eaeaf7",
         "icon_color": "#672666"
@@ -85,7 +86,7 @@
         "anchor_id": "ingredients-oral-sprays",
         "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "heading": "<p>Why are oral sprays more effective?</p>",
+        "heading": "<p>Oral Sprays Can Be Up To 4-5x More Effective</p>",
         "description": "<p>Unlike gummies or pills that have to survive your entire digestive system, Rejuvia absorbs directly under your tongue — straight into your bloodstream. No stomach. No liver. No wasted ingredients. </p><p>The tissue under your tongue is densely packed with blood vessels, allowing active ingredients to bypass the digestive process entirely. That means more of the formula reaches your body intact, at full potency, exactly when you need it.</p>",
         "chart_image": "shopify://shop_images/rejuvia_absorption_graph.webp",
         "chart_image_mobile": "shopify://shop_images/rejuvia_absorption_graph.webp"

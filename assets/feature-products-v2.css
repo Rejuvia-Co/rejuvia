@@ -21,11 +21,10 @@
 }
 
 .fp-v2-heading {
-  font-family: 'HelveticaNeueL', "Helvetica Neue", sans-serif;
+  /* Font family / weight / letter-spacing come from the global
+     --rj-title-* system (theme.liquid). Only size/line-height/color local. */
   font-size: 36px;
-  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.52px;
   color: #171512;
   margin: 0;
   text-align: center;

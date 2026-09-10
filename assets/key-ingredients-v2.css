@@ -27,12 +27,11 @@
 }
 
 .key-ingredients-v2__title {
-  /* Match the "How To Use" heading (.hus__heading) exactly. */
-  font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  /* Font family / weight / letter-spacing come from the global
+     --rj-title-* system (theme.liquid); this matches .hus__heading via that
+     same system. Only size/line-height/color local. */
   font-size: 36px;
-  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.52px;
   color: #171512;
   margin: 0;
 }

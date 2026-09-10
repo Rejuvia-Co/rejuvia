@@ -750,6 +750,18 @@ main:has(#cart.cart-page) {
 }
 .cart-checkout__guarantee svg { color: #672666; flex-shrink: 0; }
 
+/* Payment icons under the guarantee — mirrors the product buy box (.pw-payments).
+   Self-contained here because product-widget.css (where .pw-payments lives) doesn't
+   load on the cart page. Same look on mobile + desktop. */
+.cart-checkout__payments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.cart-checkout__payments svg { height: 26px; width: auto; }
+
 /* ==========================================================================
    Tablet (750–1099px)
    ========================================================================== */

@@ -77,17 +77,21 @@
         gap: 32px;
     }
 
+    /* Mobile order: title -> image -> paragraph. Unwrap the copy (display:contents)
+       so the heading and description become flex items of the container, letting the
+       chart sit between them. */
     .why-better-v2-copy {
-        gap: 16px;
-        order: 1;
+        display: contents;
     }
+
+    .why-better-v2-heading { order: 1; font-size: 26px; }
 
     .why-better-v2-chart {
         order: 2;
         width: 100%;
     }
 
-    .why-better-v2-heading { font-size: 26px; }
+    .why-better-v2-description { order: 3; }
 
     .why-better-v2-chart--desktop { display: none; }
     .why-better-v2-chart--mobile { display: block; }

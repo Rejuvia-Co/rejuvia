@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "bogo_o2_header": {
-      "type": "bogo-o2-header",
+    "bogo02_header": {
+      "type": "bogo02-header",
       "settings": {}
     },
     "offer_block_C9tJiM": {
@@ -668,7 +668,7 @@
     }
   },
   "order": [
-    "bogo_o2_header",
+    "bogo02_header",
     "offer_block_C9tJiM",
     "customer_testimonials_video_b39r9z",
     "bogo_content_lp1",

@@ -1,8 +1,8 @@
 {%- comment -%}
-  BOGO-O2 minimal header.
+  BOGO02 minimal header.
 
-  Used only on the page.bogo-o2 template. It hides the site's global header +
-  announcement bar on this page (scoped to body.bogo-o2 so it can never affect
+  Used only on the page.bogo02 template. It hides the site's global header +
+  announcement bar on this page (scoped to body.bogo02 so it can never affect
   any other page), and renders a plain, non-sticky white bar with a centered
   black Rejuvia logo — a distraction-free landing-page header for both mobile
   and desktop.
@@ -12,12 +12,12 @@
   /* Hide the site's global announcement bar + main header/nav on THIS page only.
      Scoped to the template's body class (from template.suffix) as a safety belt
      on top of the section only rendering here. */
-  body.bogo-o2 #shopify-section-header-top,
-  body.bogo-o2 header[role="banner"] {
+  body.bogo02 #shopify-section-header-top,
+  body.bogo02 header[role="banner"] {
     display: none !important;
   }
 
-  .bogo-o2-logobar {
+  .bogo02-logobar {
     width: 100%;
     background: {{ section.settings.bg_color | default: '#ffffff' }};
     display: flex;
@@ -27,40 +27,40 @@
     box-sizing: border-box;
   }
 
-  .bogo-o2-logobar .logo-rejuvia-svg {
+  .bogo02-logobar .logo-rejuvia-svg {
     width: {{ section.settings.logo_width | default: 164 }}px;
     height: auto;
     display: block;
   }
 
-  .bogo-o2-logobar .logo-rejuvia-svg path {
+  .bogo02-logobar .logo-rejuvia-svg path {
     fill: {{ section.settings.logo_color | default: '#141414' }};
   }
 
   @media (max-width: 749px) {
-    .bogo-o2-logobar {
+    .bogo02-logobar {
       padding: {{ section.settings.padding_v_mobile | default: 16 }}px 16px;
     }
-    .bogo-o2-logobar .logo-rejuvia-svg {
+    .bogo02-logobar .logo-rejuvia-svg {
       width: {{ section.settings.logo_width_mobile | default: 150 }}px;
     }
   }
 {% endstyle %}
 
-<div class="bogo-o2-logobar">
-  <span class="bogo-o2-logo" aria-label="{{ shop.name }}">
+<div class="bogo02-logobar">
+  <span class="bogo02-logo" aria-label="{{ shop.name }}">
     {% render 'logo-rejuvia' %}
   </span>
 </div>
 
 {% schema %}
 {
-  "name": "BOGO-O2 Header",
-  "class": "bogo-o2-header-section",
+  "name": "BOGO02 Header",
+  "class": "bogo02-header-section",
   "settings": [
     {
       "type": "paragraph",
-      "content": "Minimal landing-page header: hides the site's nav on this page and shows a centered logo. Used on the BOGO-O2 template."
+      "content": "Minimal landing-page header: hides the site's nav on this page and shows a centered logo. Used on the BOGO02 template."
     },
     {
       "type": "color",
@@ -117,7 +117,7 @@
   ],
   "presets": [
     {
-      "name": "BOGO-O2 Header",
+      "name": "BOGO02 Header",
       "category": "Custom"
     }
   ]

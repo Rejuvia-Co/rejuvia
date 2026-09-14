@@ -6,7 +6,7 @@ html { scroll-behavior: smooth; }
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
 }
-.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 56px 64px; }
+.cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 56px 64px; border-bottom: 1px solid #000; }
 .cta-{{ section.id }} .cta__card {
   max-width: 1200px; margin: 0 auto;
   border-radius: 26px; overflow: hidden;

@@ -20,16 +20,6 @@
         "image": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
       }
     },
-    "key_ingredients_page_v2_c96YaM": {
-      "type": "key-ingredients-page-v2",
-      "name": "Key Ingredients Page V2",
-      "settings": {
-        "anchor_id": "ingredients-benefits",
-        "product": "sleep-spray",
-        "heading": "100% Clean, All-Natural Sleep Ingredients",
-        "button_label": "View Supplement Label"
-      }
-    },
     "guarantees_v2_ABV7Ti": {
       "type": "guarantees-v2",
       "blocks": {
@@ -77,6 +67,16 @@
         "anchor_id": "",
         "bg_color": "#eaeaf7",
         "icon_color": "#672666"
+      }
+    },
+    "key_ingredients_page_v2_c96YaM": {
+      "type": "key-ingredients-page-v2",
+      "name": "Key Ingredients Page V2",
+      "settings": {
+        "anchor_id": "ingredients-benefits",
+        "product": "sleep-spray",
+        "heading": "100% Clean, All-Natural Sleep Ingredients",
+        "button_label": "View Supplement Label"
       }
     },
     "why_better_v2_Ny6pzj": {
@@ -173,8 +173,8 @@
   },
   "order": [
     "hero_ingredients_v2_PynYUG",
-    "key_ingredients_page_v2_c96YaM",
     "guarantees_v2_ABV7Ti",
+    "key_ingredients_page_v2_c96YaM",
     "why_better_v2_Ny6pzj",
     "science_v2_wgkJq7",
     "page_cta_v2_HdCPMi"

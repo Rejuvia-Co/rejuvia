@@ -11,48 +11,12 @@
   "sections": {
     "main": {
       "type": "page-404",
-      "blocks": {
-        "p4": {
-          "type": "product",
-          "settings": {
-            "product": "sleep-spray"
-          }
-        },
-        "p3": {
-          "type": "product",
-          "settings": {
-            "product": "oral-stress-spray"
-          }
-        },
-        "p1": {
-          "type": "product",
-          "settings": {
-            "product": "vitamin-d3-k2-spray"
-          }
-        },
-        "p2": {
-          "type": "product",
-          "settings": {
-            "product": "lutein"
-          }
-        }
-      },
-      "block_order": [
-        "p4",
-        "p3",
-        "p1",
-        "p2"
-      ],
       "settings": {
         "badge_text": "404 · Page not found",
         "headline": "This page drifted off to sleep",
         "subtitle": "<p>We couldn't find the page you were looking for — but a better night's sleep is still just a spray away.</p>",
         "cta_text": "Continue Shopping",
         "cta_link": "/",
-        "grid_eyebrow": "Premium supplements",
-        "grid_heading": "Shop our oral sprays",
-        "collection": "more-products",
-        "products_limit": 4,
         "show_flourish": true,
         "bg_color": "#ffffff",
         "accent_color": "#672666"

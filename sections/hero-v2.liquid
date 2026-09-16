@@ -186,7 +186,15 @@
 }
 
 .hero-v2-image-inner img {
-    position: relative;
+    /* Pin to the bottom of the fixed-aspect inner box so the image sits flush
+       with the bottom of the lavender backdrop. In normal flow it was
+       top-anchored and, being ~5px shorter than the box, left a gap below.
+       The inner box height comes from its aspect-ratio, so absolute
+       positioning the image doesn't collapse it. Applies mobile + desktop. */
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: block;
     width: 90%;
     height: auto;

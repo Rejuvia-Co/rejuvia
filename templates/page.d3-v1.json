@@ -5,7 +5,7 @@
       "settings": {}
     },
     "offer_block_d3": {
-      "type": "offer-block-d3",
+      "type": "offer-block-d3v1",
       "blocks": {
         "tier_1": {
           "type": "tier",

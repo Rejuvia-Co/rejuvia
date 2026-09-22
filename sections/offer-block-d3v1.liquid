@@ -238,7 +238,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
             {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" width="{{ img.width }}" height="{{ img.height }}" alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>

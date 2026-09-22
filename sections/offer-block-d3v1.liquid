@@ -111,7 +111,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__tier-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
 .ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
 .ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }
-.ob__off { display: inline-flex; align-items: center; justify-content: center; align-self: center; font-family: var(--font-ui); font-size: 16px; font-weight: 700; line-height: 1; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 6px 11px 5px; white-space: nowrap; text-transform: uppercase; }
+.ob__off { display: inline-flex; align-items: center; justify-content: center; align-self: center; font-family: var(--font-ui); font-size: 16px; font-weight: 700; line-height: 1; color: #000000; background: #f4e4b8; border-radius: 100px; padding: 6px 11px 5px; white-space: nowrap; text-transform: uppercase; }
 .ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
 .ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
@@ -120,7 +120,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* CTA (pill) */
 .ob__cta-wrap { margin-top: 22px; }
-.ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
+.ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; text-transform: uppercase; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
 .ob__buy:hover { opacity: 0.9; }
 .ob__buy:disabled { cursor: default; }
 .ob__spinner { display: none; width: 24px; height: 24px; border: 2.5px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: ob-spin .6s linear infinite; }
@@ -316,7 +316,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
           <div class="ob__assurances">
             {%- if section.settings.guarantee_text != blank -%}
-              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
+              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.2l2.4 2.4 4.6-5" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
             {%- endif -%}
             {%- if section.settings.onetime_text != blank -%}
               <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4h-4" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 16" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20v-4h4" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>

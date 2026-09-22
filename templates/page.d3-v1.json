@@ -562,7 +562,7 @@
       "settings": {
         "accent_color": "#018e1c",
         "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> D3+K2 Sprays</p>",
-        "btn_text": "Get Offer",
+        "btn_text": "Get My Offer",
         "scroll_target": "#offer",
         "position": "bottom",
         "disable_sticky_header": false,

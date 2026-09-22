@@ -630,7 +630,7 @@
       "name": "Sticky CTA (Bogo)",
       "settings": {
         "text": "<p>Get Your Welcome Kit</p>",
-        "btn_text": "Get Offer",
+        "btn_text": "Get My Offer",
         "scroll_target": "#offer",
         "position": "bottom",
         "disable_sticky_header": false,

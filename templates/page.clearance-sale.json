@@ -664,7 +664,7 @@
       "settings": {
         "accent_color": "#672666",
         "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
-        "btn_text": "Get Offer",
+        "btn_text": "Get My Offer",
         "scroll_target": "#offer",
         "position": "bottom",
         "disable_sticky_header": false,

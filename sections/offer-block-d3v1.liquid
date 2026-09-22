@@ -480,99 +480,450 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   "tag": "section",
   "max_blocks": 16,
   "settings": [
-    { "type": "header", "content": "Gallery" },
-    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
-    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
-    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Gallery sticky offset (desktop)", "default": 24 },
-    { "type": "header", "content": "Header" },
-    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
-    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
-    { "type": "range", "id": "stars_size", "min": 12, "max": 32, "step": 1, "unit": "px", "label": "Star size (desktop)", "default": 20 },
-    { "type": "range", "id": "stars_size_mobile", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Star size (mobile)", "default": 20 },
-    { "type": "range", "id": "rating_text_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Review bar text size (desktop)", "default": 18 },
-    { "type": "range", "id": "rating_text_size_mobile", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Review bar text size (mobile)", "default": 18 },
-    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>425,000+ customers</strong></p>" },
-    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Vitamin D3+K2 Spray" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Support immunity, bone strength, and heart health." },
-    { "type": "header", "content": "Badge pill (above review line)" },
-    { "type": "text", "id": "pill_text", "label": "Pill text", "info": "Leave blank to hide." },
-    { "type": "range", "id": "pill_size", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Pill text size (desktop)", "default": 14 },
-    { "type": "range", "id": "pill_size_mobile", "min": 9, "max": 22, "step": 1, "unit": "px", "label": "Pill text size (mobile)", "default": 13 },
-    { "type": "color", "id": "pill_color", "label": "Pill text color", "default": "#ffffff" },
-    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#018e1c" },
-    { "type": "header", "content": "Header spacing" },
-    { "type": "range", "id": "header_gap", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (desktop)", "default": 12 },
-    { "type": "range", "id": "header_gap_mobile", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (mobile)", "default": 12 },
-    { "type": "header", "content": "Offer cards" },
-    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "default": 2 },
-    { "type": "header", "content": "Call to action" },
-    { "type": "text", "id": "button_text", "label": "Button text", "default": "SUBSCRIBE & SAVE" },
-    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
-    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee line icon" },
-    { "type": "text", "id": "onetime_text", "label": "Second assurance line", "default": "Cancel or Skip Anytime" },
-    { "type": "image_picker", "id": "onetime_icon", "label": "Second assurance line icon" },
-    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
-    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
-    { "type": "header", "content": "Typography" },
-    { "type": "range", "id": "title_size", "min": 28, "max": 64, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 44 },
-    { "type": "range", "id": "title_size_mobile", "min": 22, "max": 48, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 34 },
-    { "type": "range", "id": "subtitle_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Subtitle size (desktop)", "default": 22 },
-    { "type": "range", "id": "subtitle_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size (mobile)", "default": 18 },
-    { "type": "range", "id": "tier_title_size", "min": 16, "max": 34, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 26 },
-    { "type": "range", "id": "tier_title_size_mobile", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 20 },
-    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
-    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 18 },
-    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 18 },
-    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 18 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" },
-    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
-    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio, tag)", "default": "#018e1c" },
-    { "type": "color", "id": "selected_bg", "label": "Selected variant background", "default": "#eaf4ec" },
-    { "type": "header", "content": "Trusted-by bar (under accordions)" },
-    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
-    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Trusted by 425K+ customers" },
-    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who choose Rejuvia for daily immunity, bone and heart support." },
-    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
-    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
-    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
-    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
-    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#018e1c" }
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Gallery product",
+      "info": "Main image + thumbnails pull from this product's images."
+    },
+    {
+      "type": "color",
+      "id": "image_bg",
+      "label": "Image background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "sticky_offset",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Gallery sticky offset (desktop)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show stars",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars color",
+      "default": "#EAC78B"
+    },
+    {
+      "type": "range",
+      "id": "stars_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Star size (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "stars_size_mobile",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Star size (mobile)",
+      "default": 20
+    },
+    {
+      "type": "richtext",
+      "id": "rating_text",
+      "label": "Review bar text",
+      "info": "Bold text renders in the accent color.",
+      "default": "<p>Trusted by <strong>425,000+ customers</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Rejuvia Vitamin D3+K2 Spray"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Support immunity, bone strength, and heart health."
+    },
+    {
+      "type": "header",
+      "content": "Badge pill (above review line)"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill text",
+      "info": "Leave blank to hide."
+    },
+    {
+      "type": "color",
+      "id": "pill_color",
+      "label": "Pill text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "pill_bg",
+      "label": "Pill background",
+      "default": "#018e1c"
+    },
+    {
+      "type": "header",
+      "content": "Header spacing"
+    },
+    {
+      "type": "header",
+      "content": "Offer cards"
+    },
+    {
+      "type": "range",
+      "id": "default_tier",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Pre-selected box (by position)",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SUBSCRIBE & SAVE"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee line",
+      "default": "90-Day Money Back Guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_icon",
+      "label": "Guarantee line icon"
+    },
+    {
+      "type": "text",
+      "id": "onetime_text",
+      "label": "Second assurance line",
+      "default": "Cancel or Skip Anytime"
+    },
+    {
+      "type": "image_picker",
+      "id": "onetime_icon",
+      "label": "Second assurance line icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hidden_payments",
+      "label": "Hide payment icons",
+      "info": "Comma-separated, e.g. discover,jcb,diners_club",
+      "default": "discover,jcb,diners_club"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 28,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size (desktop)",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Title size (mobile)",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size (desktop)",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size (mobile)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "tier_title_size_mobile",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Tier title size (mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "tab_body_size_mobile",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion answer size (mobile)",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (button, titles, radio, tag)",
+      "default": "#018e1c"
+    },
+    {
+      "type": "color",
+      "id": "selected_bg",
+      "label": "Selected variant background",
+      "default": "#eaf4ec"
+    },
+    {
+      "type": "header",
+      "content": "Trusted-by bar (under accordions)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trusted",
+      "label": "Show trusted-by bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trusted_title",
+      "label": "Title",
+      "default": "Trusted by 425K+ customers"
+    },
+    {
+      "type": "textarea",
+      "id": "trusted_subtext",
+      "label": "Subtext",
+      "default": "who choose Rejuvia for daily immunity, bone and heart support."
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "trusted_image_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "color",
+      "id": "trusted_bg",
+      "label": "Trusted-by background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "trusted_check",
+      "label": "Checkmark color",
+      "default": "#018e1c"
+    }
   ],
   "blocks": [
     {
       "type": "tier",
       "name": "Offer tier",
       "settings": [
-        { "type": "product", "id": "product", "label": "Product", "info": "The product that owns this tier's variant." },
-        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "The single-bottle variant added to cart (used for both the subscription base and the free one-time units)." },
-        { "type": "text", "id": "selling_plan", "label": "Selling plan ID (subscription)", "info": "Skio/Shopify selling plan ID applied to the BASE units. Leave blank for a one-time base." },
-        { "type": "text", "id": "base_qty", "label": "Base quantity (subscription)", "info": "How many units are added as a subscription.", "default": "1" },
-        { "type": "text", "id": "free_qty", "label": "Free quantity (one-time)", "info": "How many free one-time units are added. Zeroed at checkout by the discount code below.", "default": "0" },
-        { "type": "text", "id": "discount_code", "label": "Discount code", "info": "Applied at checkout (e.g. D3B2G1FREE). Leave blank for no code." },
-        { "type": "image_picker", "id": "image", "label": "Bundle image" },
-        { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no Bundle image is picked." },
-        { "type": "text", "id": "label", "label": "Title", "default": "Buy 2, Get 1 FREE" },
-        { "type": "text", "id": "price", "label": "Price", "info": "Displayed price (e.g. subscription total). Overrides the live variant price.", "default": "$62.40" },
-        { "type": "text", "id": "compare_price", "label": "Compare-at price (strikethrough)", "default": "$117" },
-        { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. SAVE $55. Leave blank to hide." },
-        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
-        { "type": "text", "id": "per_night", "label": "Per-day text", "default": "" },
-        { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
-        { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Green" }, { "value": "gold", "label": "Gold" } ], "default": "brand" }
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "The product that owns this tier's variant."
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "The single-bottle variant added to cart (used for both the subscription base and the free one-time units)."
+        },
+        {
+          "type": "text",
+          "id": "selling_plan",
+          "label": "Selling plan ID (subscription)",
+          "info": "Skio/Shopify selling plan ID applied to the BASE units. Leave blank for a one-time base."
+        },
+        {
+          "type": "text",
+          "id": "base_qty",
+          "label": "Base quantity (subscription)",
+          "info": "How many units are added as a subscription.",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "free_qty",
+          "label": "Free quantity (one-time)",
+          "info": "How many free one-time units are added. Zeroed at checkout by the discount code below.",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount code",
+          "info": "Applied at checkout (e.g. D3B2G1FREE). Leave blank for no code."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bundle image"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Bundle image (theme asset fallback)",
+          "info": "Filename in assets/, used if no Bundle image is picked."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Title",
+          "default": "Buy 2, Get 1 FREE"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "info": "Displayed price (e.g. subscription total). Overrides the live variant price.",
+          "default": "$62.40"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare-at price (strikethrough)",
+          "default": "$117"
+        },
+        {
+          "type": "text",
+          "id": "savings_text",
+          "label": "Discount pill",
+          "info": "e.g. SAVE $55. Leave blank to hide."
+        },
+        {
+          "type": "checkbox",
+          "id": "free_shipping",
+          "label": "Show \"+ FREE Shipping\"",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "per_night",
+          "label": "Per-day text",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Corner tag",
+          "info": "e.g. MOST POPULAR"
+        },
+        {
+          "type": "select",
+          "id": "tag_style",
+          "label": "Tag style",
+          "options": [
+            {
+              "value": "brand",
+              "label": "Green"
+            },
+            {
+              "value": "gold",
+              "label": "Gold"
+            }
+          ],
+          "default": "brand"
+        }
       ]
     },
     {
       "type": "tab",
       "name": "Accordion row",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "content", "label": "Content" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
       ]
     }
   ],
   "presets": [
-    { "name": "Offer Block (D3)", "category": "Rejuvia" }
+    {
+      "name": "Offer Block (D3)",
+      "category": "Rejuvia"
+    }
   ]
 }
 {% endschema %}

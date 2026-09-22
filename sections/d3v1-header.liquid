@@ -57,6 +57,11 @@
   /* Founder story: opening quote mark + signature/name in green (were mauve/black) */
   body.d3-v1 .fs__quote { color: #018e1c !important; }
   body.d3-v1 .fs__name  { color: #018e1c !important; }
+
+  /* Footer background — this page only (the footer section is shared, so scope to
+     body.d3-v1). Editable via the "Footer background (this page)" setting below.
+     Footer text is dark (#141414), so a white background stays readable. */
+  body.d3-v1 .footer-v2 { background-color: {{ section.settings.footer_bg | default: '#ffffff' }} !important; }
 {% endstyle %}
 
 <div class="d3v1-logobar">
@@ -85,6 +90,13 @@
       "id": "logo_color",
       "label": "Logo color",
       "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "footer_bg",
+      "label": "Footer background (this page)",
+      "info": "Overrides the footer background on the D3 page only. Default white.",
+      "default": "#ffffff"
     },
     {
       "type": "range",

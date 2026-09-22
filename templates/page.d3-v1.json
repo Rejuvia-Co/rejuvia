@@ -17,7 +17,7 @@
             "free_qty": "0",
             "discount_code": "",
             "image_asset": "d3-bundle-1.webp",
-            "label": "Buy 1",
+            "label": "Buy One Spray",
             "price": "$31.20",
             "compare_price": "$39",
             "savings_text": "SAVE 20%",
@@ -127,19 +127,19 @@
         "image_bg": "#ffffff",
         "sticky_offset": 100,
         "show_stars": true,
-        "stars_color": "#eac78b",
+        "stars_color": "#018e1c",
         "stars_size": 18,
         "stars_size_mobile": 15,
-        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
-        "title": "Rejuvia Vitamin D3+K2 Spray",
-        "subtitle": "For a limited time, subscribe & save on the daily D3+K2 spray that absorbs in minutes.",
+        "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
+        "title": "Vitamin D3 plus K2 spray",
+        "subtitle": "For a limited time, claim your buy two, get one free offer on our vitamin D3 spray today.",
         "pill_text": "",
         "pill_color": "#ffffff",
         "pill_bg": "#018e1c",
         "default_tier": 2,
-        "button_text": "SUBSCRIBE & SAVE",
+        "button_text": "Buy Now",
         "guarantee_text": "90-Day Money Back Guarantee",
-        "guarantee_icon": "shopify://shop_images/SealCheck.svg",
+        "guarantee_icon": "",
         "onetime_text": "Cancel or Skip Anytime",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
@@ -338,42 +338,10 @@
         "step_text_size_mobile": 16
       }
     },
-    "key_ingredients_v2_d3": {
-      "type": "key-ingredients-v2",
-      "blocks": {
-        "override_d3": {
-          "type": "override",
-          "settings": {
-            "match_title": "Vitamin D3",
-            "description": "<p>Most people don't get nearly enough. Your skin makes vitamin D from sunlight, but spending 90% of the day indoors leaves most of us short. Our plant-based D3 (2,000 IU) helps your body absorb calcium and supports strong bones, a healthy immune system, muscle function, and steady all-day energy.</p>"
-          }
-        },
-        "override_k2": {
-          "type": "override",
-          "settings": {
-            "match_title": "Vitamin K2",
-            "description": "<p>Clinically-studied K2VITAL® — the bioavailable form used in research. K2 is the partner D3 needs: it directs the calcium your body absorbs into your bones and teeth, and away from your arteries. Pairing 120 mcg of bioactive K2 with D3 is what makes the whole system actually work.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "override_d3",
-        "override_k2"
-      ],
-      "name": "Key Ingredients V2",
-      "settings": {
-        "product": "vitamin-d3-k2-spray",
-        "heading": "The key ingredients",
-        "button_label": "View Supplement Label",
-        "button_url": "",
-        "cta_text": "Try Rejuvia risk-free",
-        "cta_subtext": "90-Day Money-Back Guarantee"
-      }
-    },
     "guarantee_section_d3": {
       "type": "guarantee-section",
       "settings": {
-        "icon": "shopify://shop_images/SealCheck.svg",
+        "icon": "",
         "title": "90-Day Money-Back Guarantee",
         "description": "Not feeling the difference within 90 days? You're covered by our guarantee, no questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
@@ -549,8 +517,8 @@
       "settings": {
         "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
         "show_stars": true,
-        "stars_color": "#eac78b",
-        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
+        "stars_color": "#018e1c",
+        "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
         "rating_color": "#000000",
         "heading": "<p>Get Your Vitamin D Right With Rejuvia</p>",
         "heading_color": "#000000",
@@ -594,7 +562,6 @@
     "bogo_content_d3",
     "press_carousel_d3",
     "how_to_use_steps_d3",
-    "key_ingredients_v2_d3",
     "guarantee_section_d3",
     "product_alternatives_v2_d3",
     "founder_story_v2_d3",

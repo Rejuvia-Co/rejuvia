@@ -309,7 +309,8 @@
       </svg>
     </button>
     <div class="palt-v2-dots" data-palt-v2-dots>
-      {%- for i in (1..comp_count) -%}
+      {%- comment -%} comp_count competitors + 1 for the Rejuvia (highlight) column, so it's reachable. {%- endcomment -%}
+      {%- for i in (0..comp_count) -%}
         <div class="palt-v2-dot{% if forloop.first %} is-active{% endif %}"></div>
       {%- endfor -%}
     </div>
@@ -358,7 +359,7 @@
 
     var table = section.querySelector('.palt-v2-table');
     var dots = section.querySelectorAll('.palt-v2-dot');
-    var cols = section.querySelectorAll('.palt-v2-col:not(.palt-v2-col--highlight)');
+    var cols = section.querySelectorAll('.palt-v2-col');
     if (!table || cols.length === 0) return;
 
     var currentIndex = 0;
@@ -456,7 +457,7 @@
         },
         { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia risk-free" },
         { "type": "text", "id": "cta_subtext", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" },
-        { "type": "text", "id": "cta_target", "label": "Scroll target (CSS selector)", "info": "Where the button scrolls. Use #offer on offer/BOGO pages. Leave blank to scroll to the product widget.", "default": "" }
+        { "type": "text", "id": "cta_target", "label": "Scroll target (CSS selector)", "info": "Where the button scrolls. Use #offer on offer/BOGO pages. Leave blank to scroll to the product widget." }
     ],
     "presets": [
         {

@@ -46,6 +46,17 @@
       width: {{ section.settings.logo_width_mobile | default: 150 }}px;
     }
   }
+
+  /* ---- D3-page-only colour overrides for SHARED sections (green theme) ----
+     Scoped to body.d3-v1 so no other page that uses these sections is affected.
+     Rendered from this D3-only header section, applies to the whole D3 page. */
+
+  /* "Get Your Vitamin D Right — The Easy Way" (bogo-content): bullet check circles green (were plum) */
+  body.d3-v1 .bogo-content__check { background: #018e1c !important; }
+
+  /* Founder story: opening quote mark + signature/name in green (were mauve/black) */
+  body.d3-v1 .fs__quote { color: #018e1c !important; }
+  body.d3-v1 .fs__name  { color: #018e1c !important; }
 {% endstyle %}
 
 <div class="d3v1-logobar">

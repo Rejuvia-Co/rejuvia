@@ -39,7 +39,7 @@
             "compare_price": "",
             "savings_text": "",
             "free_shipping": false,
-            "per_night": "$0.83 Per Serving",
+            "per_night": "$24.99 Per Bottle",
             "tag": "",
             "tag_style": "brand"
           }
@@ -58,8 +58,8 @@
             "price": "$49.98",
             "compare_price": "$74.97",
             "savings_text": "SAVE $24.99",
-            "free_shipping": true,
-            "per_night": "$0.56 Per Serving",
+            "free_shipping": false,
+            "per_night": "$16.66 Per Bottle",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -78,8 +78,8 @@
             "price": "$74.97",
             "compare_price": "$124.95",
             "savings_text": "SAVE $49.98",
-            "free_shipping": true,
-            "per_night": "$0.50 Per Serving",
+            "free_shipping": false,
+            "per_night": "$14.99 Per Bottle",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }

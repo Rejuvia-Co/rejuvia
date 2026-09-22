@@ -35,7 +35,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   --ob-disc-text: #018e1c;
   --ob-disc-bg: #dcf5df;
   --ob-divider: rgba(0,0,0,0.1);
-  --ob-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
+  --ob-gold: #EAC78B; /* fixed gold for the "gold" tier tag — independent of stars_color */
   --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   --font-ui: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -64,8 +64,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__buybox { grid-area: buybox; min-width: 0; }
 
 /* Gallery */
-.ob__main { position: relative; width: 100%; display: grid; place-items: center; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
-.ob__main img { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
+/* Fixed stage sized to the featured image's aspect ratio (set inline on .ob__main),
+   capped at 440x440. Every gallery image object-fit:contain's into the SAME box, so
+   switching thumbnails no longer changes the displayed size (first image was bigger
+   because images were height-normalized with width:auto). */
+.ob__main { position: relative; width: 100%; max-width: 440px; max-height: 440px; margin: 0 auto; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
+.ob__main img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .ob__thumbs-row { --ob-thumb: 96px; --ob-tgap: 10px; display: flex; align-items: center; justify-content: center; gap: var(--ob-tgap); }
 .ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
 .ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
@@ -160,8 +164,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; padding: 0 16px; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 }}px; }
   .ob__gallery-inner { position: static; }
-  .ob__main { min-height: 0; }
-  .ob__main img { width: 100%; height: auto; max-height: none; }
+  .ob__main { min-height: 0; max-width: 100%; max-height: none; }
   .ob__arrow { width: 40px; height: 40px; }
   .ob__arrow svg { width: 17px; height: 17px; }
   .ob__thumbs-row { --ob-thumb: 56px; --ob-tgap: 8px; margin-left: -6px; margin-right: -6px; }
@@ -230,7 +233,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- unless variant_img_ids contains ikey -%}{%- assign gal_count = gal_count | plus: 1 -%}{%- endunless -%}
       {%- endfor -%}
       <div class="ob__gallery-inner">
-      <div class="ob__main">
+      <div class="ob__main"{% if main_image != blank and main_image.width and main_image.height %} style="aspect-ratio: {{ main_image.width }} / {{ main_image.height }};"{% endif %}>
         {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" srcset="{{ main_image | image_url: width: 500, format: 'webp' }} 500w, {{ main_image | image_url: width: 700, format: 'webp' }} 700w, {{ main_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ main_image | image_url: width: 1400, format: 'webp' }} 1400w" sizes="(max-width: 900px) 100vw, 480px" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gal_count > 1 -%}

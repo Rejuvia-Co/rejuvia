@@ -36,10 +36,10 @@
             "image_asset": "d3-bundle-1.webp",
             "label": "Buy One Spray",
             "price": "$24.99",
-            "compare_price": "",
+            "compare_price": "$39.99",
             "savings_text": "",
             "free_shipping": false,
-            "per_night": "$24.99 Per Bottle",
+            "per_night": "",
             "tag": "",
             "tag_style": "brand"
           }
@@ -59,7 +59,7 @@
             "compare_price": "$74.97",
             "savings_text": "SAVE $24.99",
             "free_shipping": false,
-            "per_night": "$16.66 Per Bottle",
+            "per_night": "$16.66 Per Spray",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -79,7 +79,7 @@
             "compare_price": "$124.95",
             "savings_text": "SAVE $49.98",
             "free_shipping": false,
-            "per_night": "$14.99 Per Bottle",
+            "per_night": "$14.99 Per Spray",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }

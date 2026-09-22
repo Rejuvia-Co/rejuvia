@@ -62,6 +62,11 @@
      body.d3-v1). Editable via the "Footer background (this page)" setting below.
      Footer text is dark (#141414), so a white background stays readable. */
   body.d3-v1 .footer-v2 { background-color: {{ section.settings.footer_bg | default: '#ffffff' }} !important; }
+
+  /* Uppercase the closing-CTA and sticky-CTA buttons on this page to match the
+     offer block's "BUY NOW". Both are shared sections, so scope to body.d3-v1. */
+  body.d3-v1 .cta__btn,
+  body.d3-v1 .sticky-cta-bogo-btn { text-transform: uppercase !important; }
 {% endstyle %}
 
 <div class="d3v1-logobar">

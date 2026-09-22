@@ -27,8 +27,8 @@
         "tier_1": {
           "type": "tier",
           "settings": {
-            "product": "vitamin-d3-k2-spray",
-            "variant_id": "46819555311836",
+            "product": "vitamin-d3-k2-spray-1",
+            "variant_id": "52563142901980",
             "selling_plan": "29054009564",
             "base_qty": "1",
             "free_qty": "0",
@@ -47,8 +47,8 @@
         "tier_2": {
           "type": "tier",
           "settings": {
-            "product": "vitamin-d3-k2-spray",
-            "variant_id": "46819555311836",
+            "product": "vitamin-d3-k2-spray-1",
+            "variant_id": "52563142934748",
             "selling_plan": "29054009564",
             "base_qty": "2",
             "free_qty": "1",
@@ -67,8 +67,8 @@
         "tier_3": {
           "type": "tier",
           "settings": {
-            "product": "vitamin-d3-k2-spray",
-            "variant_id": "46819555311836",
+            "product": "vitamin-d3-k2-spray-1",
+            "variant_id": "52563142967516",
             "selling_plan": "29054009564",
             "base_qty": "3",
             "free_qty": "2",

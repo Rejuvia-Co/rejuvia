@@ -1,7 +1,7 @@
 {% style %}
 html { scroll-behavior: smooth; }
 .cta-{{ section.id }} {
-  --cta-accent: #672666;
+  --cta-accent: {{ section.settings.accent_color | default: '#672666' }};
   --cta-lav: {{ section.settings.panel_bg | default: '#FFFFFF' }};
   --cta-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
   font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
@@ -170,6 +170,7 @@ html { scroll-behavior: smooth; }
     { "type": "image_picker", "id": "image", "label": "Product image" },
     { "type": "header", "content": "Review bar" },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, check, bold text)", "default": "#672666" },
     { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
     { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in brand purple (like Hero V2).", "default": "<p>Backed by <strong>425,000+ customers</strong></p>" },
     { "type": "color", "id": "rating_color", "label": "Review bar text color", "default": "#141414" },

@@ -1,0 +1,125 @@
+{%- comment -%}
+  D3 V1 minimal header.
+
+  Used only on the page.d3-v1 template. It hides the site's global header +
+  announcement bar on this page (scoped to body.d3-v1 so it can never affect
+  any other page), and renders a plain, non-sticky white bar with a centered
+  Rejuvia logo — a distraction-free landing-page header for both mobile and
+  desktop. Mirrors bogo02-header, scoped to the D3 template's body class.
+{%- endcomment -%}
+
+{% style %}
+  /* Hide the site's global announcement bar + main header/nav on THIS page only.
+     Scoped to the template's body class (from template.suffix) as a safety belt
+     on top of the section only rendering here. */
+  body.d3-v1 #shopify-section-header-top,
+  body.d3-v1 header[role="banner"] {
+    display: none !important;
+  }
+
+  .d3v1-logobar {
+    width: 100%;
+    background: {{ section.settings.bg_color | default: '#ffffff' }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ section.settings.padding_v | default: 22 }}px 16px;
+    box-sizing: border-box;
+  }
+
+  .d3v1-logobar .logo-rejuvia-svg {
+    width: {{ section.settings.logo_width | default: 164 }}px;
+    height: auto;
+    display: block;
+  }
+
+  .d3v1-logobar .logo-rejuvia-svg path {
+    fill: {{ section.settings.logo_color | default: '#141414' }};
+  }
+
+  @media (max-width: 749px) {
+    .d3v1-logobar {
+      padding: {{ section.settings.padding_v_mobile | default: 16 }}px 16px;
+    }
+    .d3v1-logobar .logo-rejuvia-svg {
+      width: {{ section.settings.logo_width_mobile | default: 150 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="d3v1-logobar">
+  <span class="d3v1-logo" aria-label="{{ shop.name }}">
+    {% render 'logo-rejuvia' %}
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "D3 V1 Header",
+  "class": "d3v1-header-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Minimal landing-page header: hides the site's nav on this page and shows a centered logo. Used on the D3 V1 template."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo color",
+      "default": "#141414"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 240,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo width (desktop)",
+      "default": 164
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "min": 90,
+      "max": 220,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo width (mobile)",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "padding_v",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding (desktop)",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "padding_v_mobile",
+      "min": 6,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding (mobile)",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "D3 V1 Header",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -32,7 +32,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #672666;
+  background: {{ section.settings.accent_color | default: '#672666' }};
   color: #ffffff;
   font-family: inherit;
   font-weight: 500;
@@ -63,7 +63,7 @@
 }
 {% endstyle %}
 
-{%- capture gs_ring_check -%}<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#5d215f" stroke-width="3" fill="none"/><path d="M15 24.5l6 6 12-13" stroke="#5d215f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>{%- endcapture -%}
+{%- capture gs_ring_check -%}<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="{{ section.settings.accent_color | default: '#5d215f' }}" stroke-width="3" fill="none"/><path d="M15 24.5l6 6 12-13" stroke="{{ section.settings.accent_color | default: '#5d215f' }}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>{%- endcapture -%}
 {%- capture gs_gold_check -%}<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12.5l5 5 11-12" stroke="#fab851" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
 
 <section class="gs-{{ section.id }}">
@@ -134,7 +134,8 @@
     { "type": "image_picker", "id": "sub_icon", "label": "Sub icon (below button)", "info": "Optional. Defaults to a gold checkmark." },
     { "type": "text", "id": "sub_text", "label": "Sub text (below button)", "default": "60-Day Money-Back Guarantee" },
     { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" }
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button + check ring)", "default": "#672666" }
   ],
   "presets": [
     { "name": "Guarantee Section", "category": "Rejuvia" }

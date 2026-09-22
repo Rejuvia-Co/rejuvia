@@ -1,0 +1,632 @@
+{
+  "sections": {
+    "d3v1_header": {
+      "type": "d3v1-header",
+      "settings": {}
+    },
+    "offer_block_d3": {
+      "type": "offer-block-d3",
+      "blocks": {
+        "tier_1": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555311836",
+            "selling_plan": "29054009564",
+            "base_qty": "1",
+            "free_qty": "0",
+            "discount_code": "",
+            "image_asset": "d3-bundle-1.webp",
+            "label": "Buy 1",
+            "price": "$31.20",
+            "compare_price": "$39",
+            "savings_text": "SAVE 20%",
+            "free_shipping": false,
+            "per_night": "$1.04 Per Day",
+            "tag": "",
+            "tag_style": "brand"
+          }
+        },
+        "tier_2": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555311836",
+            "selling_plan": "29054009564",
+            "base_qty": "2",
+            "free_qty": "1",
+            "discount_code": "D3B2G1FREE",
+            "image_asset": "d3-bundle-2plus1.webp",
+            "label": "Buy 2, Get 1 FREE",
+            "price": "$62.40",
+            "compare_price": "$117",
+            "savings_text": "SAVE $54.60",
+            "free_shipping": true,
+            "per_night": "$0.69 Per Day",
+            "tag": "MOST POPULAR",
+            "tag_style": "brand"
+          }
+        },
+        "tier_3": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555311836",
+            "selling_plan": "29054009564",
+            "base_qty": "3",
+            "free_qty": "2",
+            "discount_code": "D3B3G2FREE",
+            "image_asset": "d3-bundle-3plus2.webp",
+            "label": "Buy 3, Get 2 FREE",
+            "price": "$93.60",
+            "compare_price": "$195",
+            "savings_text": "SAVE $101.40",
+            "free_shipping": true,
+            "per_night": "$0.62 Per Day",
+            "tag": "BEST VALUE",
+            "tag_style": "gold"
+          }
+        },
+        "tab_guarantee": {
+          "type": "tab",
+          "settings": {
+            "title": "90-Day Guarantee",
+            "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind every Rejuvia product. It's risk-free to try — if you're not happy, reach out and we'll make it right. No questions asked.</p>"
+          }
+        },
+        "tab_why": {
+          "type": "tab",
+          "settings": {
+            "title": "Why Rejuvia Works",
+            "content": "<p>Most vitamin D products are capsules, softgels, or gummies — which means they have to survive your digestive system first. Over the next 60–90 minutes your stomach breaks them down, and much of the vitamin is lost before it ever reaches your bloodstream. Vitamin D is fat-soluble too, so how much you actually absorb from a pill can vary from person to person.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the vitamins absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body takes in up to <strong>75% more</strong> compared to gummies and pills, so far more of the D3 and K2 on the label becomes the D3 and K2 your body actually gets to use.</p><p>Better absorption, better ingredients.</p>"
+          }
+        },
+        "tab_shipping": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All orders ship within one business day from our warehouse in Chicago. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2–3 business days.</p>"
+          }
+        },
+        "tab_safe": {
+          "type": "tab",
+          "settings": {
+            "title": "Is Rejuvia Safe?",
+            "content": "<p>Yes. Rejuvia's D3+K2 spray is made with clean, all-natural ingredients — <strong>vegan, non-GMO, and made in a cGMP-compliant facility</strong> in the USA.</p><p>Every batch is <strong>triple lab-tested for purity and potency</strong>, with a Certificate of Analysis accessible via a QR code on the packaging. No artificial colors and no unnecessary fillers.</p>"
+          }
+        },
+        "tab_ingredients": {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>Two actives in a clean base: <strong>Vitamin D3 (2,000 IU / 50 mcg)</strong> and <strong>Vitamin K2 as clinically-studied K2VITAL® (120 mcg)</strong>, in a base of purified water, organic cane sugar, and organic peppermint flavor.</p><p>D3 and K2 work as a team — D3 helps your body absorb calcium, and K2 directs that calcium into your bones and away from your arteries.</p>"
+          }
+        },
+        "tab_faq": {
+          "type": "tab",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "content": "<p><strong>Why D3 and K2 together?</strong></p><p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®.</p><p><strong>How is this better than a D3 pill?</strong></p><p>Most vitamin D comes as a capsule or softgel that has to survive digestion, where a good portion is broken down before it's ever absorbed. Our spray goes under your tongue and absorbs directly, so your body gets what it needs faster and more efficiently.</p><p><strong>Can I take it every day?</strong></p><p>Yes — it's made for daily use. A few sprays each morning is all it takes, and it's non-habit-forming with no dependency or tolerance buildup.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural peppermint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of daily use. Each spray tube contains 240 total spritzes and our suggested dosage is 6–8 spritzes per day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tier_1",
+        "tier_2",
+        "tier_3",
+        "tab_guarantee",
+        "tab_why",
+        "tab_shipping",
+        "tab_safe",
+        "tab_ingredients",
+        "tab_faq"
+      ],
+      "name": "Offer Block (D3)",
+      "settings": {
+        "product": "vitamin-d3-k2-spray",
+        "image_bg": "#ffffff",
+        "sticky_offset": 100,
+        "show_stars": true,
+        "stars_color": "#eac78b",
+        "stars_size": 18,
+        "stars_size_mobile": 15,
+        "rating_text_size": 18,
+        "rating_text_size_mobile": 18,
+        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
+        "title": "Rejuvia Vitamin D3+K2 Spray",
+        "subtitle": "For a limited time, subscribe & save on the daily D3+K2 spray that absorbs in minutes.",
+        "pill_text": "",
+        "pill_size": 14,
+        "pill_size_mobile": 13,
+        "pill_color": "#ffffff",
+        "pill_bg": "#018e1c",
+        "header_gap": 12,
+        "header_gap_mobile": 12,
+        "default_tier": 2,
+        "button_text": "SUBSCRIBE & SAVE",
+        "guarantee_text": "90-Day Money Back Guarantee",
+        "guarantee_icon": "shopify://shop_images/SealCheck.svg",
+        "onetime_text": "Cancel or Skip Anytime",
+        "show_payment_icons": true,
+        "hidden_payments": "discover,jcb,diners_club",
+        "title_size": 44,
+        "title_size_mobile": 34,
+        "subtitle_size": 22,
+        "subtitle_size_mobile": 18,
+        "tier_title_size": 26,
+        "tier_title_size_mobile": 20,
+        "tab_title_size": 20,
+        "tab_title_size_mobile": 18,
+        "tab_body_size": 18,
+        "tab_body_size_mobile": 18,
+        "section_bg": "#ffffff",
+        "card_bg": "#ffffff",
+        "accent_color": "#018e1c",
+        "selected_bg": "#eaf4ec",
+        "show_trusted": true,
+        "trusted_title": "Used by 425,000+ customers",
+        "trusted_subtext": "for daily immunity, bone strength and heart support.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#018e1c"
+      }
+    },
+    "customer_testimonials_video_d3": {
+      "type": "customer-testimonials-video",
+      "settings": {
+        "product": "vitamin-d3-k2-spray",
+        "header": "Join 425,000+ Trusting Rejuvia Every Day",
+        "stars_label": "6,500+ 5-Star Reviews",
+        "stars_label_size": 18,
+        "stars_label_size_mobile": 15,
+        "stars_label_color": "#018e1c",
+        "stars_color": "#fab851",
+        "pill_bg": "#ffffff",
+        "accent_color": "#018e1c",
+        "bg_color": "#eaf4ec"
+      }
+    },
+    "bogo_content_d3": {
+      "type": "bogo-content",
+      "blocks": {
+        "bullet_1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Absorbs under your tongue in minutes — no pills to swallow"
+          }
+        },
+        "bullet_2": {
+          "type": "bullet",
+          "settings": {
+            "text": "D3 + K2 together, so calcium goes to your bones, not your arteries"
+          }
+        },
+        "bullet_3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Clinically-studied K2VITAL® with 2,000 IU of Vitamin D3"
+          }
+        },
+        "bullet_4": {
+          "type": "bullet",
+          "settings": {
+            "text": "100% all-natural, vegan and non-GMO — made in the USA"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_1",
+        "bullet_2",
+        "bullet_3",
+        "bullet_4"
+      ],
+      "settings": {
+        "heading": "Get Your Vitamin D Right — The Easy Way",
+        "subhead": "Trade your D3 softgels and gummies for the sublingual spray Rejuvia customers take every morning.",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "subhead_size": 18,
+        "subhead_size_mobile": 18,
+        "bullet_size": 17,
+        "bullet_size_mobile": 17,
+        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "image_side": "left",
+        "cta_text": "Try Rejuvia Risk-Free",
+        "cta_link": "",
+        "scroll_target": "#offer",
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Money-Back Guarantee",
+        "bg_color": "#fafafa",
+        "accent_color": "#018e1c"
+      }
+    },
+    "press_carousel_d3": {
+      "type": "press-carousel",
+      "blocks": {
+        "quote_inc": {
+          "type": "quote",
+          "settings": {
+            "quote": "Rejuvia was recently ranked #228 on the Inc. 5000 list of fast-growing private companies in America",
+            "logo": "shopify://shop_images/logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_2": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia's sprays are all-natural and absorb as fast and effectively as anything else out there.\"",
+            "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_3": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"An easy, no-pill way to stay on top of the vitamins most of us just don't get enough of.\"",
+            "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_4": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia has built a loyal following by making its supplements genuinely easy to take every day.\"",
+            "logo": "shopify://shop_images/forbes_rejuvia_logo.png",
+            "logo_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "quote_inc",
+        "quote_2",
+        "quote_3",
+        "quote_4"
+      ],
+      "name": "Press Carousel",
+      "settings": {
+        "bg_color": "#eaf4ec",
+        "text_color": "#000000",
+        "control_color": "#018e1c",
+        "quote_size_desktop": 20,
+        "quote_size_mobile": 20,
+        "logo_max_height": 48,
+        "autoplay": false,
+        "autoplay_seconds": 6,
+        "max_width": 1160,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "how_to_use_steps_d3": {
+      "type": "how-to-use-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+            "backdrop_color": "#eaf4ec",
+            "label": "STEP 1",
+            "text": "<p>Spray Rejuvia 6–8 times under your tongue or inside your cheek</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
+            "backdrop_color": "#f0f7f1",
+            "label": "STEP 2",
+            "text": "<p>Hold Rejuvia in your mouth for at least 5–10 seconds</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
+            "backdrop_color": "#eaf4ec",
+            "label": "STEP 3",
+            "text": "<p>Swallow — once a day, every day</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "name": "How To Use (Steps)",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "How To Use Rejuvia D3+K2",
+        "subheading": "Use once daily, in the morning, for the best results",
+        "heading_size": 36,
+        "heading_size_mobile": 26,
+        "subheading_size": 18,
+        "subheading_size_mobile": 16,
+        "step_text_size": 18,
+        "step_text_size_mobile": 16
+      }
+    },
+    "key_ingredients_v2_d3": {
+      "type": "key-ingredients-v2",
+      "blocks": {
+        "override_d3": {
+          "type": "override",
+          "settings": {
+            "match_title": "Vitamin D3",
+            "description": "<p>Most people don't get nearly enough. Your skin makes vitamin D from sunlight, but spending 90% of the day indoors leaves most of us short. Our plant-based D3 (2,000 IU) helps your body absorb calcium and supports strong bones, a healthy immune system, muscle function, and steady all-day energy.</p>"
+          }
+        },
+        "override_k2": {
+          "type": "override",
+          "settings": {
+            "match_title": "Vitamin K2",
+            "description": "<p>Clinically-studied K2VITAL® — the bioavailable form used in research. K2 is the partner D3 needs: it directs the calcium your body absorbs into your bones and teeth, and away from your arteries. Pairing 120 mcg of bioactive K2 with D3 is what makes the whole system actually work.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "override_d3",
+        "override_k2"
+      ],
+      "name": "Key Ingredients V2",
+      "settings": {
+        "product": "vitamin-d3-k2-spray",
+        "heading": "The key ingredients",
+        "button_label": "View Supplement Label",
+        "button_url": "",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee"
+      }
+    },
+    "guarantee_section_d3": {
+      "type": "guarantee-section",
+      "settings": {
+        "icon": "shopify://shop_images/SealCheck.svg",
+        "title": "90-Day Money-Back Guarantee",
+        "description": "Not feeling the difference within 90 days? You're covered by our guarantee, no questions asked.",
+        "button_text": "Try Rejuvia Risk-Free",
+        "button_link": "#offer",
+        "scroll_target": "",
+        "sub_text": "90-Day Money Back Guarantee",
+        "bg_color": "#eaf4ec",
+        "accent_color": "#018e1c"
+      }
+    },
+    "product_alternatives_v2_d3": {
+      "type": "product-alternatives-v2",
+      "settings": {
+        "source_product": "vitamin-d3-k2-spray",
+        "heading": "Rejuvia is the smarter way to take Vitamin D",
+        "bg_color": "#ffffff",
+        "icon_size": 84,
+        "comp_1_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_7.png",
+        "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
+        "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee"
+      }
+    },
+    "okendo_reviews_d3": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_d3": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_d3"
+      ],
+      "settings": {}
+    },
+    "founder_story_v2_d3": {
+      "type": "founder-story-v2",
+      "name": "Founder Story V2",
+      "settings": {
+        "caption_1": "RC & Mom · 2019",
+        "caption_2": "Founders of Rejuvia",
+        "headline": "Started For My Mom, Now For Everyone",
+        "paragraph_1": "My mom was 55, going through menopause, and struggling — she'd tried everything and nothing helped. So at the University of Pennsylvania I built her first oral spray with natural ingredients that absorb under your tongue and work in minutes, not hours.",
+        "paragraph_2": "That obsession with better absorption is why every Rejuvia spray — including our D3+K2 — is sublingual. Five years later, it's the daily ritual for over 425,000 people, and it all started with my mom.",
+        "stat1_number": "100%",
+        "stat1_label": "Made in the USA",
+        "stat2_number": "8 yrs",
+        "stat2_label": "Family business",
+        "stat3_number": "425K+",
+        "stat3_label": "Customers nationwide",
+        "founder_name": "RC Williams",
+        "founder_title": "Co-Founder, CEO of Rejuvia",
+        "headline_size": 30,
+        "body_size": 18,
+        "stat_num_size": 28,
+        "stat_label_size": 14,
+        "name_size": 19,
+        "title_size": 15,
+        "headline_size_mobile": 24,
+        "body_size_mobile": 18,
+        "stat_num_size_mobile": 20,
+        "stat_label_size_mobile": 14,
+        "name_size_mobile": 18,
+        "title_size_mobile": 16,
+        "section_bg": "#eaf4ec",
+        "card_bg": "#ffffff",
+        "accent_color": "#018e1c",
+        "band_from": "#eaf4ec",
+        "band_to": "#f4fbf5",
+        "image_shadow_color": "#0a2a12"
+      }
+    },
+    "faq_center_d3": {
+      "type": "faq-center",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every first order is backed by our 90-Day Money-Back Guarantee. Try Rejuvia risk-free — if you're not happy, send it back for a full refund, no questions asked.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why D3 and K2 together?",
+            "answer": "<p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®. Taking D3 without K2 means you're only getting half the picture.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How is this better than a D3 pill?",
+            "answer": "<p>Most vitamin D comes as a capsule or softgel that has to survive digestion, where a good portion is broken down before it's ever absorbed. Our spray goes under your tongue and absorbs directly, so your body gets what it needs faster and more efficiently than pills.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it every day?",
+            "answer": "<p>Yes — it's made for daily use. A few sprays each morning is all it takes, and it's non-habit-forming with no dependency or tolerance buildup.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is it?",
+            "answer": "<p>A light, pleasant natural peppermint taste that most customers genuinely enjoy.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Are Rejuvia's sprays third-party tested?",
+            "answer": "<p>Yes. All of our products are independently triple lab-tested for purity and potency each batch. Each product comes with a Certificate of Analysis, accessible via a QR code on the packaging.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle last?",
+            "answer": "<p>Roughly one month of daily use. Each spray tube contains 240 total spritzes and our suggested dosage is 6–8 spritzes under your tongue per day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7"
+      ],
+      "name": "FAQ Center",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions",
+        "subheading": "",
+        "sub_size": 18,
+        "sub_size_mobile": 16,
+        "open_first": true,
+        "title_size": 36,
+        "title_size_mobile": 28,
+        "question_size": 20,
+        "answer_size": 18,
+        "max_width": 800,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "bg_color": "#ffffff",
+        "accent_color": "#018e1c",
+        "title_color": "#141414",
+        "answer_color": "#5c5c5c"
+      }
+    },
+    "closing_cta_d3": {
+      "type": "closing-cta",
+      "blocks": {
+        "point_1": {
+          "type": "point",
+          "settings": {
+            "text": "Absorbs in minutes — no pills to swallow"
+          }
+        },
+        "point_2": {
+          "type": "point",
+          "settings": {
+            "text": "Clinically-studied K2VITAL® + 2,000 IU D3"
+          }
+        },
+        "point_3": {
+          "type": "point",
+          "settings": {
+            "text": "100% Made in the USA"
+          }
+        }
+      },
+      "block_order": [
+        "point_1",
+        "point_2",
+        "point_3"
+      ],
+      "name": "Closing CTA",
+      "settings": {
+        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "show_stars": true,
+        "stars_color": "#eac78b",
+        "rating_text": "<p><strong>4.5</strong> | Over <strong>425,000+</strong> Customers</p>",
+        "rating_color": "#000000",
+        "heading": "<p>Get Your Vitamin D Right With Rejuvia</p>",
+        "heading_color": "#000000",
+        "button_text": "Try Rejuvia Risk-Free",
+        "scroll_target": "#offer",
+        "button_link": "",
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Money-Back Guarantee",
+        "rating_size": 18,
+        "heading_size": 36,
+        "checklist_size": 18,
+        "button_size": 18,
+        "rating_size_mobile": 16,
+        "heading_size_mobile": 26,
+        "checklist_size_mobile": 16,
+        "button_size_mobile": 18,
+        "accent_color": "#018e1c",
+        "frame_bg": "#eaf4ec",
+        "panel_bg": "#ffffff",
+        "checklist_color": "#141414"
+      }
+    },
+    "sticky_cta_d3": {
+      "type": "sticky-cta-bogo",
+      "name": "Sticky CTA (Bogo)",
+      "settings": {
+        "accent_color": "#018e1c",
+        "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> D3+K2 Sprays</p>",
+        "btn_text": "Get Offer",
+        "scroll_target": "#offer",
+        "position": "bottom",
+        "disable_sticky_header": false,
+        "show_after": 500
+      }
+    }
+  },
+  "order": [
+    "d3v1_header",
+    "offer_block_d3",
+    "customer_testimonials_video_d3",
+    "bogo_content_d3",
+    "press_carousel_d3",
+    "how_to_use_steps_d3",
+    "key_ingredients_v2_d3",
+    "guarantee_section_d3",
+    "product_alternatives_v2_d3",
+    "okendo_reviews_d3",
+    "founder_story_v2_d3",
+    "faq_center_d3",
+    "closing_cta_d3",
+    "sticky_cta_d3"
+  ]
+}

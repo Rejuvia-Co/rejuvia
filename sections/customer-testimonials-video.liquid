@@ -7,6 +7,9 @@
   The section is hidden only when BOTH are empty.
 {%- endcomment -%}
 {%- liquid
+  # Allow a landing-page template to point this section at a specific product
+  # (otherwise it uses the current product context, which is blank on a page).
+  assign product = section.settings.product | default: product
   assign vt = product.metafields.custom.testimonials
   assign meta_items = vt.value.testimonials.value
   if meta_items == blank
@@ -47,7 +50,7 @@
 /* Accent: the review-bar text, carousel dots, and arrows follow the product's
    base colour (pink for Calm/Stress, etc.), falling back to the brand purple
    on pages with no product context (homepage, landers). */
-#shopify-section-{{ section.id }} { --base-colour: {{ product.metafields.custom.base_colour | default: '#672666' }}; }
+#shopify-section-{{ section.id }} { --base-colour: {{ product.metafields.custom.base_colour | default: section.settings.accent_color | default: '#672666' }}; }
 /* Carousel controls: identical spec to the press carousel (scoped so the
    non-video testimonials section is untouched). */
 #shopify-section-{{ section.id }} .glide-arrows-bullet__box {
@@ -320,6 +323,12 @@
   "class": "customer-testimonials-section",
   "settings": [
     {
+      "type": "product",
+      "id": "product",
+      "label": "Product (for landing pages)",
+      "info": "Optional. On a page template set this to pull the product's testimonials metaobject + accent colour. Leave blank on product pages."
+    },
+    {
       "type": "text",
       "id": "header",
       "label": "Header"
@@ -367,6 +376,13 @@
       "id": "pill_bg",
       "label": "Pill background",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent colour (review text, dots, arrows)",
+      "info": "Used on pages with no product context (landers). A connected product's base colour still wins.",
+      "default": "#672666"
     },
     {
       "type": "color",

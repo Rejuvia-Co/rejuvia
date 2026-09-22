@@ -1,0 +1,576 @@
+{%- comment -%}
+  Offer Block (D3) — a fork of `offer-block` for the D3 V1 landing page.
+
+  Differences vs. the sleep-spray offer-block:
+    • Each tier can add a SUBSCRIPTION base (qty + selling plan) PLUS a number
+      of FREE one-time units of the same variant, then apply a discount code at
+      checkout that zeroes the free one-time units.
+    • Buy 1  -> base_qty 1, free_qty 0 (subscription, no code)
+    • Buy 2 Get 1 Free -> base_qty 2 (sub) + free_qty 1 (one-time) + code
+    • Buy 3 Get 2 Free -> base_qty 3 (sub) + free_qty 2 (one-time) + code
+    • Tag "brand" color follows the accent (green) instead of the hardcoded plum.
+  Everything else (gallery, accordion, trusted-by, layout) mirrors offer-block.
+{%- endcomment -%}
+{% style %}
+html { scroll-behavior: smooth; }
+body.ob-offer-visible .sticky-cta-v2-section,
+body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important; }
+@media (min-width: 901px) {
+  main:has(.ob-{{ section.id }}), .content-wrapper:has(.ob-{{ section.id }}) { overflow-x: clip; overflow-y: visible; }
+  #shopify-section-{{ section.id }} { overflow-x: clip; overflow-y: visible; }
+}
+.ob-{{ section.id }} {
+  --ob-accent: {{ section.settings.accent_color | default: '#018e1c' }};
+  --ob-plum-900: {{ section.settings.accent_color | default: '#018e1c' }};
+  --ob-plum-800: {{ section.settings.accent_color | default: '#018e1c' }};
+  --ob-ink: #141414;
+  --ob-sub: #3a3a3a;
+  --ob-pernight: #8c8c92;
+  --ob-struck: #b7b7be;
+  --ob-sel-bg: {{ section.settings.selected_bg | default: '#eaf4ec' }};
+  --ob-border: #dcdce2;
+  --ob-border-m: {{ section.settings.accent_color | default: '#018e1c' }};
+  --ob-disc-text: #018e1c;
+  --ob-disc-bg: #dcf5df;
+  --ob-divider: rgba(0,0,0,0.1);
+  --ob-gold: {{ section.settings.stars_color | default: '#EAC78B' }};
+  --font-display: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
+  --font-ui: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: {{ section.settings.section_bg | default: '#ffffff' }};
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.ob-{{ section.id }} *, .ob-{{ section.id }} *::before, .ob-{{ section.id }} *::after {
+  text-transform: none;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+.ob-{{ section.id }} .ob__assurance { text-transform: uppercase; }
+.ob__card {
+  max-width: 1280px; margin: 0 auto; padding: 48px 24px;
+  background: {{ section.settings.card_bg | default: 'transparent' }};
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas: "gallery header" "gallery buybox";
+  column-gap: 56px; row-gap: 16px; align-items: start;
+}
+.ob__header { grid-area: header; min-width: 0; }
+.ob__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
+.ob__gallery-inner { position: sticky; top: {{ section.settings.sticky_offset | default: 24 }}px; display: flex; flex-direction: column; gap: 16px; }
+.ob__buybox { grid-area: buybox; min-width: 0; }
+
+/* Gallery */
+.ob__main { position: relative; width: 100%; display: grid; place-items: center; overflow: hidden; background: {{ section.settings.image_bg | default: 'transparent' }}; }
+.ob__main img { max-width: 100%; max-height: 440px; width: auto; height: auto; display: block; }
+.ob__thumbs-row { --ob-thumb: 96px; --ob-tgap: 10px; display: flex; align-items: center; justify-content: center; gap: var(--ob-tgap); }
+.ob__dots { display: flex; justify-content: center; gap: 7px; margin-top: 2px; }
+.ob__dot { width: 8px; height: 8px; border-radius: 50%; background: #d6cad6; transition: background .15s ease; }
+.ob__dot.is-active { background: var(--ob-accent); }
+.ob__cta-wrap .ship-bar--stack { margin-top: -8px; margin-bottom: 14px; }
+.ob__arrow { flex-shrink: 0; width: 46px; height: 46px; border: none; background: none; color: var(--ob-accent); display: grid; place-items: center; cursor: pointer; transition: opacity .15s; }
+.ob__arrow:hover { opacity: .55; }
+.ob__thumbs { display: flex; gap: var(--ob-tgap); overflow-x: auto; flex: 0 1 auto; min-width: 0;
+  max-width: min(100%, calc(var(--ob-thumb) * 4 + var(--ob-tgap) * 3));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; -ms-overflow-style: none; }
+.ob__thumbs::-webkit-scrollbar { display: none; }
+.ob__thumb { flex: 0 0 auto; width: 96px; height: 96px; border-radius: 11px; overflow: hidden; border: 1.5px solid var(--ob-border); background: {{ section.settings.image_bg | default: '#f0f7f1' }}; cursor: pointer; padding: 0; scroll-snap-align: start; }
+.ob__thumb.is-active { border: 2px solid var(--ob-accent); }
+.ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Header */
+.ob__badge { display: inline-flex; align-items: center; background: {{ section.settings.pill_bg | default: '#018e1c' }}; color: {{ section.settings.pill_color | default: '#ffffff' }}; font-family: var(--font-display); font-weight: 700; font-size: {{ section.settings.pill_size | default: 14 }}px; line-height: 1; padding: 9px 20px; border-radius: 100px; margin-bottom: 12px; white-space: nowrap; }
+.ob__rating { display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ob__stars { display: inline-flex; gap: 0; flex-shrink: 0; }
+.ob__stars svg { width: {{ section.settings.stars_size | default: 20 }}px; height: {{ section.settings.stars_size | default: 20 }}px; display: block; margin: 0 -1px; }
+.ob__rating-text { font-family: var(--font-body); font-size: {{ section.settings.rating_text_size | default: 18 }}px; font-weight: 400; color: var(--ob-ink); }
+.ob__rating-text strong { font-weight: 700; color: var(--ob-accent); }
+.ob__rating-text p { margin: 0; display: inline; }
+.ob__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 52 }}px; font-weight: 700; line-height: 1.05; letter-spacing: -0.6px; color: var(--ob-ink); margin: 0 0 10px; }
+.ob__subtitle { font-family: var(--font-body); font-size: {{ section.settings.subtitle_size | default: 24 }}px; line-height: 1.35; color: var(--ob-sub); margin: 0; }
+.ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title { margin-bottom: {{ section.settings.header_gap | default: 12 }}px; }
+
+/* Offer cards */
+.ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 0; }
+.ob__tier { position: relative; display: flex; align-items: center; gap: 28px; background: #fff; border: 1.5px solid var(--ob-border); border-radius: 13px; padding: 28px 30px; cursor: pointer; transition: background .15s ease, border-color .15s ease; box-sizing: border-box; }
+.ob__tier.is-selected { border-color: var(--ob-accent); box-shadow: inset 0 0 0 1.5px var(--ob-accent); background: var(--ob-sel-bg); }
+.ob__tier input { position: absolute; opacity: 0; pointer-events: none; }
+.ob__radio { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ob-accent); position: relative; }
+.ob__tier.is-selected .ob__radio::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--ob-accent); }
+.ob__tier-img { flex-shrink: 0; width: 112px; height: auto; }
+.ob__tier-body { min-width: 0; display: flex; flex-direction: column; gap: 15px; }
+.ob__tier-title { font-family: var(--font-display); font-size: {{ section.settings.tier_title_size | default: 26 }}px; font-weight: 700; color: var(--ob-accent); line-height: 1.1; white-space: nowrap; }
+.ob__tier-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
+.ob__price { font-size: 29px; font-weight: 700; color: var(--ob-ink); }
+.ob__struck { font-size: 21px; font-weight: 400; color: var(--ob-struck); text-decoration: line-through; }
+.ob__off { display: inline-flex; align-items: center; justify-content: center; align-self: center; font-family: var(--font-ui); font-size: 16px; font-weight: 700; line-height: 1; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 6px 11px 5px; white-space: nowrap; text-transform: uppercase; }
+.ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
+.ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
+.ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
+.ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
+.ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
+
+/* CTA (pill) */
+.ob__cta-wrap { margin-top: 22px; }
+.ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
+.ob__buy:hover { opacity: 0.9; }
+.ob__buy:disabled { cursor: default; }
+.ob__spinner { display: none; width: 24px; height: 24px; border: 2.5px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: ob-spin .6s linear infinite; }
+.ob__buy.is-loading { justify-content: center; }
+.ob__buy.is-loading .ob__buy-label, .ob__buy.is-loading svg { display: none; }
+.ob__buy.is-loading .ob__spinner { display: block; }
+@keyframes ob-spin { to { transform: rotate(360deg); } }
+
+.ob__assurances { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
+.ob__assurance { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.ob__assurance svg { width: 17px; height: 17px; flex-shrink: 0; }
+.ob__assurance-icon { width: 17px; height: 17px; flex-shrink: 0; object-fit: contain; display: block; }
+.ob__payments { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.ob__payments svg { height: 26px; width: auto; }
+
+/* Accordion */
+.ob__tabs { margin-top: 22px; border-bottom: 1px solid var(--ob-divider); }
+.ob__tab { border-top: 1px solid var(--ob-divider); }
+.ob__tab-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-display); font-size: {{ section.settings.tab_title_size | default: 20 }}px; font-weight: 500; color: #171512; line-height: 1.4; }
+.ob__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.ob__tab-chevron { flex-shrink: 0; width: 20px; height: 20px; color: var(--ob-accent); transition: transform .22s ease; }
+.ob__tab.is-open .ob__tab-chevron { transform: rotate(180deg); }
+.ob__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.ob__tab.is-open .ob__tab-a { grid-template-rows: 1fr; }
+.ob__tab-a-inner { overflow: hidden; }
+.ob__tab-body { padding: 0 4px 28px; font-family: var(--font-body); font-size: {{ section.settings.tab_body_size | default: 18 }}px; line-height: 1.6; color: var(--ob-sub); }
+.ob__tab-body p { margin: 0 0 12px; }
+.ob__tab-body p:last-child { margin-bottom: 0; }
+.ob__tab-body strong { color: var(--ob-ink); font-weight: 700; }
+
+@media (max-width: 900px) {
+  .ob-{{ section.id }} { overflow-x: clip; }
+  .ob__buybox, .ob__tabs, .ob__tab-q { min-width: 0; max-width: 100%; }
+  .ob__card { display: flex; flex-direction: column; gap: 16px; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
+  .ob-{{ section.id }} .ob__header { order: -1; text-align: center; }
+  .ob-{{ section.id }} .ob__badge { font-size: {{ section.settings.pill_size_mobile | default: 13 }}px; }
+  .ob-{{ section.id }} .ob__rating { justify-content: center; }
+  .ob-{{ section.id }} .ob__stars svg { width: {{ section.settings.stars_size_mobile | default: 20 }}px; height: {{ section.settings.stars_size_mobile | default: 20 }}px; }
+  .ob-{{ section.id }} .ob__rating-text { font-size: {{ section.settings.rating_text_size_mobile | default: 18 }}px; }
+  .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; text-align: center; }
+  .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: center; padding: 0 16px; }
+  .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 }}px; }
+  .ob__gallery-inner { position: static; }
+  .ob__main { min-height: 0; }
+  .ob__main img { width: 100%; height: auto; max-height: none; }
+  .ob__arrow { width: 40px; height: 40px; }
+  .ob__arrow svg { width: 17px; height: 17px; }
+  .ob__thumbs-row { --ob-thumb: 56px; --ob-tgap: 8px; margin-left: -6px; margin-right: -6px; }
+  .ob__thumb { width: 56px; height: 56px; border-radius: 9px; }
+  .ob__tiers { gap: 18px; margin-top: 0; }
+  .ob__tier { gap: 18px; padding: 16px 16px 16px 14px; border: 1.6px solid var(--ob-border-m); }
+  .ob__tier-body { gap: 10px; }
+  .ob__tier-img { width: 83px; margin-left: -7px; }
+  .ob__tier-title { font-size: {{ section.settings.tier_title_size_mobile | default: 21 }}px; white-space: normal; }
+  .ob__price { font-size: 24px; }
+  .ob__struck { font-size: 18px; }
+  .ob__off { font-size: 14px; padding: 5px 10px 4px; }
+  .ob__ship { font-size: 15px; }
+  .ob__pernight { font-size: 18px; }
+  .ob__tag { font-size: 12px; }
+  .ob__buy { font-size: 18px; padding: 20px 28px; }
+  .ob__tier-prices { gap: 7px; flex-wrap: wrap; white-space: normal; }
+  .ob__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 18 }}px; padding: 24px 2px; }
+  .ob__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 17 }}px; }
+}
+@media (min-width: 901px) {
+  .ob-{{ section.id }} .ob__header,
+  .ob-{{ section.id }} .ob__title,
+  .ob-{{ section.id }} .ob__subtitle { text-align: left; }
+  .ob-{{ section.id }} .ob__rating { justify-content: flex-start; }
+}
+{% endstyle %}
+
+{%- capture ob_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
+{%- capture ob_chevron -%}<svg class="ob__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
+
+{%- assign gallery_product = section.settings.product -%}
+
+<section class="ob-{{ section.id }}" id="ob-{{ section.id }}">
+  <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
+  <div class="ob__card">
+
+    <div class="ob__header">
+      {%- if section.settings.pill_text != blank -%}
+        <span class="ob__badge">{{ section.settings.pill_text }}</span>
+      {%- endif -%}
+      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
+        <div class="ob__rating">
+          {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="ob__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="ob__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="ob__gallery">
+      {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
+      {%- assign hero_img_id = gallery_product.featured_image.id -%}
+      {%- assign variant_img_ids = ',' -%}
+      {%- for v in gallery_product.variants -%}
+        {%- if v.featured_image != blank -%}
+          {%- unless v.featured_image.id == hero_img_id -%}
+            {%- assign variant_img_ids = variant_img_ids | append: v.featured_image.id | append: ',' -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- assign gal_count = 0 -%}
+      {%- for img in gallery_product.images -%}
+        {%- capture ikey -%},{{ img.id }},{%- endcapture -%}
+        {%- unless variant_img_ids contains ikey -%}{%- assign gal_count = gal_count | plus: 1 -%}{%- endunless -%}
+      {%- endfor -%}
+      <div class="ob__gallery-inner">
+      <div class="ob__main">
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" srcset="{{ main_image | image_url: width: 500, format: 'webp' }} 500w, {{ main_image | image_url: width: 700, format: 'webp' }} 700w, {{ main_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ main_image | image_url: width: 1400, format: 'webp' }} 1400w" sizes="(max-width: 900px) 100vw, 480px" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
+      </div>
+      {%- if gallery_product != blank and gal_count > 1 -%}
+        <div class="ob__thumbs-row">
+          <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="ob__thumbs">
+            {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
+            {%- endfor -%}
+          </div>
+          <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+        <div class="ob__dots" aria-hidden="true">
+          {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}<span class="ob__dot{% if img == main_image %} is-active{% endif %}" data-ob-dot></span>{%- endunless -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ob__buybox">
+      <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- assign tier_n = 0 -%}
+        {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+          {%- assign tier_n = tier_n | plus: 1 -%}
+          {%- assign tier_sel = false -%}
+          {%- if tier_n == section.settings.default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
+          {%- assign vid = b.settings.variant_id | strip -%}
+          {%- assign tier_variant = blank -%}
+          {%- if vid != blank -%}
+            {%- assign srcprod = b.settings.product | default: gallery_product -%}
+            {%- if srcprod != blank -%}
+              {%- for v in srcprod.variants -%}
+                {%- assign vstr = v.id | append: '' -%}
+                {%- if vstr == vid -%}{%- assign tier_variant = v -%}{%- break -%}{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
+          {%- assign base_qty = b.settings.base_qty | default: 1 -%}
+          {%- assign free_qty = b.settings.free_qty | default: 0 -%}
+          <label class="ob__tier{% if tier_sel %} is-selected{% endif %}"
+            data-variant="{{ vid }}"
+            data-base-qty="{{ base_qty }}"
+            data-free-qty="{{ free_qty }}"
+            data-plan="{{ b.settings.selling_plan | strip }}"
+            data-code="{{ b.settings.discount_code | strip }}"
+            {{ b.shopify_attributes }}>
+            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" {% if tier_sel %}checked{% endif %}>
+            {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
+            <span class="ob__radio" aria-hidden="true"></span>
+            {%- if b.settings.image != blank -%}
+              <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290, format: 'webp' }}" width="290" height="320" alt="" decoding="async" loading="lazy">
+            {%- elsif b.settings.image_asset != blank -%}
+              <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" width="290" height="320" alt="" decoding="async" loading="lazy">
+            {%- endif -%}
+            <span class="ob__tier-body">
+              <span class="ob__tier-title">{{ b.settings.label }}</span>
+              <span class="ob__tier-prices">
+                {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>
+                {%- elsif tier_variant != blank -%}<span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>{%- endif -%}
+                {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
+                {%- elsif tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
+                {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
+              </span>
+              {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
+              {%- if b.settings.per_night != blank -%}<span class="ob__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
+            </span>
+          </label>
+        {%- endif -%}{%- endfor -%}
+      </div>
+
+      <div class="ob__cta-wrap">
+        {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
+        <button type="button" class="ob__buy" data-ob-buy>
+          <span class="ob__spinner" aria-hidden="true"></span>
+          <span class="ob__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+
+        {%- if section.settings.guarantee_text != blank or section.settings.onetime_text != blank -%}
+          <div class="ob__assurances">
+            {%- if section.settings.guarantee_text != blank -%}
+              <span class="ob__assurance">{%- if section.settings.guarantee_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.guarantee_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z" stroke="#4a4a4a" stroke-width="1.6" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.guarantee_text }}</span>
+            {%- endif -%}
+            {%- if section.settings.onetime_text != blank -%}
+              <span class="ob__assurance">{%- if section.settings.onetime_icon != blank -%}<img class="ob__assurance-icon" src="{{ section.settings.onetime_icon | image_url: width: 60 }}" alt="" width="17" height="17" loading="lazy" decoding="async">{%- else -%}<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4h-4" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 16" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20v-4h4" stroke="{{ section.settings.accent_color | default: '#018e1c' }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}{{ section.settings.onetime_text }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_payment_icons -%}
+          {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+          <div class="ob__payments">
+            {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- assign has_tabs = false -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_tabs -%}
+        <div class="ob__tabs">
+          {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
+            <div class="ob__tab" {{ b.shopify_attributes }}>
+              <button type="button" class="ob__tab-q" aria-expanded="false"><span>{{ b.settings.title }}</span>{{ ob_chevron }}</button>
+              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
+            </div>
+          {%- endif -%}{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_trusted -%}
+        {% render 'trusted-by',
+          title: section.settings.trusted_title,
+          subtext: section.settings.trusted_subtext,
+          image_1: section.settings.trusted_image_1,
+          image_2: section.settings.trusted_image_2,
+          image_3: section.settings.trusted_image_3,
+          bg_color: section.settings.trusted_bg,
+          check_color: section.settings.trusted_check %}
+      {%- endif -%}
+    </div>
+  </div>
+  {% render 'supplement-label-popup', product: section.settings.product %}
+</section>
+
+<script>
+(function () {
+  var sec = document.getElementById('ob-{{ section.id }}');
+  if (!sec) return;
+
+  /* Tier selection */
+  sec.querySelectorAll('.ob__tier input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      sec.querySelectorAll('.ob__tier').forEach(function (t) { t.classList.remove('is-selected'); });
+      input.closest('.ob__tier').classList.add('is-selected');
+    });
+  });
+  if (!sec.querySelector('.ob__tier input[type="radio"]:checked')) {
+    var firstInput = sec.querySelector('.ob__tier input[type="radio"]');
+    if (firstInput) { firstInput.checked = true; firstInput.closest('.ob__tier').classList.add('is-selected'); }
+  }
+
+  /* Gallery */
+  var mainImg = sec.querySelector('[data-ob-main]');
+  var thumbs = [].slice.call(sec.querySelectorAll('[data-ob-thumb]'));
+  var dots = [].slice.call(sec.querySelectorAll('[data-ob-dot]'));
+  var idx = 0;
+  thumbs.forEach(function (t, i) { if (t.classList.contains('is-active')) idx = i; });
+  function setImg(i) {
+    if (!thumbs.length) return;
+    idx = (i + thumbs.length) % thumbs.length;
+    var t = thumbs[idx];
+    if (mainImg) { mainImg.removeAttribute('srcset'); mainImg.removeAttribute('sizes'); mainImg.src = t.getAttribute('data-full'); }
+    thumbs.forEach(function (x) { x.classList.remove('is-active'); });
+    t.classList.add('is-active');
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
+  var prev = sec.querySelector('[data-ob-prev]'), next = sec.querySelector('[data-ob-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  var galMain = sec.querySelector('.ob__main');
+  if (galMain && thumbs.length > 1) {
+    var gsx = null, gsy = null;
+    galMain.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; gsx = t.clientX; gsy = t.clientY;
+    }, { passive: true });
+    galMain.addEventListener('touchend', function (e) {
+      if (gsx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - gsx, dy = t.clientY - gsy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { setImg(dx < 0 ? idx + 1 : idx - 1); }
+      gsx = null; gsy = null;
+    }, { passive: true });
+  }
+
+  /* Accordion — one open at a time */
+  var tabs = sec.querySelectorAll('.ob__tab');
+  sec.querySelectorAll('.ob__tab-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.closest('.ob__tab');
+      var willOpen = !tab.classList.contains('is-open');
+      tabs.forEach(function (t) { t.classList.remove('is-open'); var b = t.querySelector('.ob__tab-q'); if (b) b.setAttribute('aria-expanded', 'false'); });
+      if (willOpen) { tab.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Buy Now -> build cart (subscription base + free one-time units), apply
+     discount code, go to checkout. */
+  var buy = sec.querySelector('[data-ob-buy]');
+  if (buy) {
+    window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
+    buy.addEventListener('click', function () {
+      var sel = sec.querySelector('.ob__tier input[type="radio"]:checked');
+      if (!sel) return;
+      var label = sel.closest('.ob__tier');
+      var variantId = parseInt(label.getAttribute('data-variant'), 10);
+      if (!variantId) return;
+      var baseQty = parseInt(label.getAttribute('data-base-qty'), 10) || 1;
+      var freeQty = parseInt(label.getAttribute('data-free-qty'), 10) || 0;
+      var planRaw = (label.getAttribute('data-plan') || '').trim();
+      var plan = planRaw ? parseInt(planRaw, 10) : null;
+      var code = (label.getAttribute('data-code') || '').trim();
+
+      var items = [];
+      var baseItem = { id: variantId, quantity: baseQty };
+      if (plan) { baseItem.selling_plan = plan; }
+      items.push(baseItem);
+      if (freeQty > 0) { items.push({ id: variantId, quantity: freeQty }); }
+
+      buy.disabled = true; buy.classList.add('is-loading');
+
+      var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
+
+      fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+        .then(function () {
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: items })
+          });
+        })
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
+        .catch(function () { window.location.href = checkoutUrl; });
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var vis = entries[0].isIntersecting;
+      document.body.classList.toggle('ob-offer-visible', vis);
+      document.querySelectorAll('.sticky-cta-v2-section').forEach(function (el) {
+        if (vis) { el.style.setProperty('display', 'none', 'important'); }
+        else { el.style.removeProperty('display'); }
+      });
+    }, { threshold: 0 });
+    io.observe(sec);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Offer Block (D3)",
+  "tag": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "header", "content": "Gallery" },
+    { "type": "product", "id": "product", "label": "Gallery product", "info": "Main image + thumbnails pull from this product's images." },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#ffffff" },
+    { "type": "range", "id": "sticky_offset", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Gallery sticky offset (desktop)", "default": 24 },
+    { "type": "header", "content": "Header" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#EAC78B" },
+    { "type": "range", "id": "stars_size", "min": 12, "max": 32, "step": 1, "unit": "px", "label": "Star size (desktop)", "default": 20 },
+    { "type": "range", "id": "stars_size_mobile", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Star size (mobile)", "default": 20 },
+    { "type": "range", "id": "rating_text_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Review bar text size (desktop)", "default": 18 },
+    { "type": "range", "id": "rating_text_size_mobile", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Review bar text size (mobile)", "default": 18 },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>425,000+ customers</strong></p>" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Vitamin D3+K2 Spray" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Support immunity, bone strength, and heart health." },
+    { "type": "header", "content": "Badge pill (above review line)" },
+    { "type": "text", "id": "pill_text", "label": "Pill text", "info": "Leave blank to hide." },
+    { "type": "range", "id": "pill_size", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Pill text size (desktop)", "default": 14 },
+    { "type": "range", "id": "pill_size_mobile", "min": 9, "max": 22, "step": 1, "unit": "px", "label": "Pill text size (mobile)", "default": 13 },
+    { "type": "color", "id": "pill_color", "label": "Pill text color", "default": "#ffffff" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#018e1c" },
+    { "type": "header", "content": "Header spacing" },
+    { "type": "range", "id": "header_gap", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (desktop)", "default": 12 },
+    { "type": "range", "id": "header_gap_mobile", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (mobile)", "default": 12 },
+    { "type": "header", "content": "Offer cards" },
+    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "default": 2 },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "SUBSCRIBE & SAVE" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee line icon" },
+    { "type": "text", "id": "onetime_text", "label": "Second assurance line", "default": "Cancel or Skip Anytime" },
+    { "type": "image_picker", "id": "onetime_icon", "label": "Second assurance line icon" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "title_size", "min": 28, "max": 64, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 44 },
+    { "type": "range", "id": "title_size_mobile", "min": 22, "max": 48, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 34 },
+    { "type": "range", "id": "subtitle_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Subtitle size (desktop)", "default": 22 },
+    { "type": "range", "id": "subtitle_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Subtitle size (mobile)", "default": 18 },
+    { "type": "range", "id": "tier_title_size", "min": 16, "max": 34, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 26 },
+    { "type": "range", "id": "tier_title_size_mobile", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 20 },
+    { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 20 },
+    { "type": "range", "id": "tab_title_size_mobile", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Accordion title size (mobile)", "default": 18 },
+    { "type": "range", "id": "tab_body_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Accordion answer size (desktop)", "default": 18 },
+    { "type": "range", "id": "tab_body_size_mobile", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Accordion answer size (mobile)", "default": 18 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent (button, titles, radio, tag)", "default": "#018e1c" },
+    { "type": "color", "id": "selected_bg", "label": "Selected variant background", "default": "#eaf4ec" },
+    { "type": "header", "content": "Trusted-by bar (under accordions)" },
+    { "type": "checkbox", "id": "show_trusted", "label": "Show trusted-by bar", "default": true },
+    { "type": "text", "id": "trusted_title", "label": "Title", "default": "Trusted by 425K+ customers" },
+    { "type": "textarea", "id": "trusted_subtext", "label": "Subtext", "default": "who choose Rejuvia for daily immunity, bone and heart support." },
+    { "type": "image_picker", "id": "trusted_image_1", "label": "Avatar 1" },
+    { "type": "image_picker", "id": "trusted_image_2", "label": "Avatar 2" },
+    { "type": "image_picker", "id": "trusted_image_3", "label": "Avatar 3" },
+    { "type": "color", "id": "trusted_bg", "label": "Trusted-by background", "default": "#f4f4f4" },
+    { "type": "color", "id": "trusted_check", "label": "Checkmark color", "default": "#018e1c" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Offer tier",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product", "info": "The product that owns this tier's variant." },
+        { "type": "text", "id": "variant_id", "label": "Variant ID", "info": "The single-bottle variant added to cart (used for both the subscription base and the free one-time units)." },
+        { "type": "text", "id": "selling_plan", "label": "Selling plan ID (subscription)", "info": "Skio/Shopify selling plan ID applied to the BASE units. Leave blank for a one-time base." },
+        { "type": "text", "id": "base_qty", "label": "Base quantity (subscription)", "info": "How many units are added as a subscription.", "default": "1" },
+        { "type": "text", "id": "free_qty", "label": "Free quantity (one-time)", "info": "How many free one-time units are added. Zeroed at checkout by the discount code below.", "default": "0" },
+        { "type": "text", "id": "discount_code", "label": "Discount code", "info": "Applied at checkout (e.g. D3B2G1FREE). Leave blank for no code." },
+        { "type": "image_picker", "id": "image", "label": "Bundle image" },
+        { "type": "text", "id": "image_asset", "label": "Bundle image (theme asset fallback)", "info": "Filename in assets/, used if no Bundle image is picked." },
+        { "type": "text", "id": "label", "label": "Title", "default": "Buy 2, Get 1 FREE" },
+        { "type": "text", "id": "price", "label": "Price", "info": "Displayed price (e.g. subscription total). Overrides the live variant price.", "default": "$62.40" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price (strikethrough)", "default": "$117" },
+        { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. SAVE $55. Leave blank to hide." },
+        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
+        { "type": "text", "id": "per_night", "label": "Per-day text", "default": "" },
+        { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
+        { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Green" }, { "value": "gold", "label": "Gold" } ], "default": "brand" }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Offer Block (D3)", "category": "Rejuvia" }
+  ]
+}
+{% endschema %}

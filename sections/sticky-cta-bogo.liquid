@@ -76,7 +76,7 @@ body.ob-offer-visible .sticky-cta-bogo-section--top {
 
 .sticky-cta-bogo-text strong {
     font-weight: 700;
-    color: #672666;
+    color: {{ section.settings.accent_color | default: '#672666' }};
 }
 
 .sticky-cta-bogo-btn {
@@ -85,7 +85,7 @@ body.ob-offer-visible .sticky-cta-bogo-section--top {
     justify-content: center;
     width: 300px;
     padding: 24px 32px;
-    background: #672666;
+    background: {{ section.settings.accent_color | default: '#672666' }};
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -215,6 +215,12 @@ body.ob-offer-visible .sticky-cta-bogo-section--top {
     "name": "Sticky CTA (Bogo)",
     "class": "sticky-cta-bogo-section",
     "settings": [
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent colour (button + bold text)",
+            "default": "#672666"
+        },
         {
             "type": "richtext",
             "id": "text",

@@ -1,6 +1,6 @@
 {{ 'key-ingredients-v2.css' | asset_url | stylesheet_tag }}
 
-{% assign currentProduct = product %}
+{% assign currentProduct = section.settings.product | default: product %}
 {% assign base_colour = currentProduct.metafields.custom.base_colour %}
 {% assign ingredients = currentProduct.metafields.custom.key_ingredients.value %}
 
@@ -31,7 +31,22 @@
             {% if ingredient.title != blank %}
               <h3 class="key-ingredients-v2__card-title">{{ ingredient.title }}</h3>
             {% endif %}
-            {% if ingredient.description != blank %}
+            {%- comment -%} Optional per-ingredient description override (for landing pages
+                where the shared metaobject copy isn't right for this product). Matches an
+                override block by ingredient title, case-insensitive. {%- endcomment -%}
+            {%- assign desc_override = blank -%}
+            {%- assign it = ingredient.title | downcase | strip -%}
+            {%- for ob in section.blocks -%}
+              {%- if ob.type == 'override' -%}
+                {%- assign obt = ob.settings.match_title | downcase | strip -%}
+                {%- if obt != blank and obt == it and ob.settings.description != blank -%}
+                  {%- assign desc_override = ob.settings.description -%}{%- break -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {% if desc_override != blank %}
+              <div class="key-ingredients-v2__card-desc">{{ desc_override }}</div>
+            {% elsif ingredient.description != blank %}
               <div class="key-ingredients-v2__card-desc">{{ ingredient.description | metafield_tag }}</div>
             {% endif %}
           </div>
@@ -88,6 +103,12 @@
       "content": "Ingredients from product metafield custom.key_ingredients (list of metaobjects with image, title, description). Section hidden when metafield is empty."
     },
     {
+      "type": "product",
+      "id": "product",
+      "label": "Product (for landing pages)",
+      "info": "Optional. On a page template there is no product context, so set this to pull ingredients + accent colour from a specific product. On a product page, leave blank to use the current product."
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
@@ -114,6 +135,17 @@
     },
     { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia risk-free" },
     { "type": "text", "id": "cta_subtext", "label": "Guarantee line", "default": "90-Day Money-Back Guarantee" }
+  ],
+  "blocks": [
+    {
+      "type": "override",
+      "name": "Description override",
+      "settings": [
+        { "type": "paragraph", "content": "Overrides one ingredient's description (e.g. on a landing page where the shared metaobject copy isn't right for this product). Leave unused on product pages." },
+        { "type": "text", "id": "match_title", "label": "Ingredient title to match", "info": "Must match the ingredient's title exactly (case-insensitive), e.g. Vitamin D3." },
+        { "type": "richtext", "id": "description", "label": "Replacement description" }
+      ]
+    }
   ],
   "presets": [
     {

@@ -36,9 +36,9 @@
             "label": "Buy One Spray",
             "price": "$31.20",
             "compare_price": "$39",
-            "savings_text": "SAVE 20%",
+            "savings_text": "",
             "free_shipping": false,
-            "per_night": "$1.04 Per Day",
+            "per_night": "$1.04 Per Serving",
             "tag": "",
             "tag_style": "brand"
           }
@@ -58,7 +58,7 @@
             "compare_price": "$117",
             "savings_text": "SAVE $54.60",
             "free_shipping": true,
-            "per_night": "$0.69 Per Day",
+            "per_night": "$0.69 Per Serving",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -78,7 +78,7 @@
             "compare_price": "$195",
             "savings_text": "SAVE $101.40",
             "free_shipping": true,
-            "per_night": "$0.62 Per Day",
+            "per_night": "$0.62 Per Serving",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }

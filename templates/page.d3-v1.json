@@ -297,7 +297,7 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_3.webp",
             "backdrop_color": "#eaf4ec",
             "label": "STEP 1",
             "text": "<p>Spray 8 times under your tongue or inside your cheek. That's one full serving (2,000 IU D3 + 120 mcg K2).</p>"
@@ -306,7 +306,7 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_1.webp",
             "backdrop_color": "#f0f7f1",
             "label": "STEP 2",
             "text": "<p>Hold it in your mouth for 5–10 seconds.</p>"
@@ -315,7 +315,7 @@
         "step_3": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_2.webp",
             "backdrop_color": "#eaf4ec",
             "label": "STEP 3",
             "text": "<p>Swallow. Same time every day works best. Lots of customers keep it next to their toothbrush.</p>"

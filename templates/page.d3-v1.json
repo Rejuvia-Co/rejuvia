@@ -11,6 +11,7 @@
   "sections": {
     "d3v1_header": {
       "type": "d3v1-header",
+      "disabled": true,
       "settings": {
         "bg_color": "#ffffff",
         "logo_color": "#141414",
@@ -441,8 +442,8 @@
       "settings": {
         "default_items": "6,500+ 5-Star Reviews | 425,000+ Happy Customers | Rated 4.5 Stars",
         "anchor_id": "",
-        "bg_color": "#EAF4EC",
-        "icon_color": "#018E1C"
+        "bg_color": "#eaf4ec",
+        "icon_color": "#018e1c"
       }
     },
     "faq_center_d3": {

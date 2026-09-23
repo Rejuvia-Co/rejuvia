@@ -11,15 +11,14 @@
   "sections": {
     "d3v1_header": {
       "type": "d3v1-header",
-      "disabled": true,
       "settings": {
-        "bg_color": "#ffffff",
+        "bg_color": "#EAF4EC",
         "logo_color": "#141414",
         "footer_bg": "#ffffff",
-        "logo_width": 164,
-        "logo_width_mobile": 150,
-        "padding_v": 22,
-        "padding_v_mobile": 16
+        "logo_width": 150,
+        "logo_width_mobile": 140,
+        "padding_v": 20,
+        "padding_v_mobile": 14
       }
     },
     "offer_block_d3": {

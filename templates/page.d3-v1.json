@@ -419,6 +419,22 @@
         "image_shadow_color": "#0a2a12"
       }
     },
+    "1790127294806ff5b8": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_7UKPcQ": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_7UKPcQ"
+      ],
+      "settings": {}
+    },
     "faq_center_d3": {
       "type": "faq-center",
       "blocks": {
@@ -581,6 +597,7 @@
     "guarantee_section_d3",
     "product_alternatives_v2_d3",
     "founder_story_v2_d3",
+    "1790127294806ff5b8",
     "faq_center_d3",
     "closing_cta_d3",
     "sticky_cta_d3"

@@ -223,7 +223,7 @@
         "subhead_size_mobile": 18,
         "bullet_size": 17,
         "bullet_size_mobile": 17,
-        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "image": "shopify://shop_images/D3_IMG_11.webp",
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
@@ -557,7 +557,7 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "image": "shopify://shop_images/D3_IMG_3.webp",
         "show_stars": true,
         "accent_color": "#018e1c",
         "stars_color": "#018e1c",

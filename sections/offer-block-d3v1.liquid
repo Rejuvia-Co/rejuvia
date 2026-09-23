@@ -274,12 +274,21 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
           {%- assign base_qty = b.settings.base_qty | default: 1 -%}
           {%- assign free_qty = b.settings.free_qty | default: 0 -%}
+          {%- comment -%} Dollars off = compare_price - price, floored to whole $, for the Buy Now CTA. {%- endcomment -%}
+          {%- assign off_amt = 0 -%}
+          {%- if b.settings.compare_price != blank and b.settings.price != blank -%}
+            {%- assign cf = b.settings.compare_price | remove: '$' | remove: ',' | plus: 0.0 -%}
+            {%- assign pf = b.settings.price | remove: '$' | remove: ',' | plus: 0.0 -%}
+            {%- assign diff = cf | minus: pf -%}
+            {%- if diff > 0 -%}{%- assign off_amt = diff | floor -%}{%- endif -%}
+          {%- endif -%}
           <label class="ob__tier{% if tier_sel %} is-selected{% endif %}"
             data-variant="{{ vid }}"
             data-base-qty="{{ base_qty }}"
             data-free-qty="{{ free_qty }}"
             data-plan="{{ b.settings.selling_plan | strip }}"
             data-code="{{ b.settings.discount_code | strip }}"
+            data-off="{{ off_amt }}"
             {{ b.shopify_attributes }}>
             <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
@@ -296,7 +305,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 {%- elsif tier_variant != blank -%}<span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>{%- endif -%}
                 {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
                 {%- elsif tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
-                {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
+                {%- comment -%} Savings pill hidden per request; the discount is shown in the Buy Now CTA instead. {%- endcomment -%}
               </span>
               {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
               {%- if b.settings.per_night != blank -%}<span class="ob__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
@@ -366,16 +375,27 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   if (!sec) return;
 
   /* Tier selection */
+  var buyLabelEl = sec.querySelector('.ob__buy-label');
+  var buyBaseText = buyLabelEl ? buyLabelEl.textContent.trim() : 'Buy Now';
+  function updateBuyLabel(tier) {
+    if (!buyLabelEl || !tier) return;
+    var off = parseInt(tier.getAttribute('data-off'), 10) || 0;
+    buyLabelEl.textContent = off > 0 ? (buyBaseText + ' ($' + off + ' OFF)') : buyBaseText;
+  }
   sec.querySelectorAll('.ob__tier input[type="radio"]').forEach(function (input) {
     input.addEventListener('change', function () {
       sec.querySelectorAll('.ob__tier').forEach(function (t) { t.classList.remove('is-selected'); });
-      input.closest('.ob__tier').classList.add('is-selected');
+      var tier = input.closest('.ob__tier');
+      tier.classList.add('is-selected');
+      updateBuyLabel(tier);
     });
   });
-  if (!sec.querySelector('.ob__tier input[type="radio"]:checked')) {
+  var checkedInput = sec.querySelector('.ob__tier input[type="radio"]:checked');
+  if (!checkedInput) {
     var firstInput = sec.querySelector('.ob__tier input[type="radio"]');
-    if (firstInput) { firstInput.checked = true; firstInput.closest('.ob__tier').classList.add('is-selected'); }
+    if (firstInput) { firstInput.checked = true; firstInput.closest('.ob__tier').classList.add('is-selected'); checkedInput = firstInput; }
   }
+  if (checkedInput) updateBuyLabel(checkedInput.closest('.ob__tier'));
 
   /* Gallery */
   var mainImg = sec.querySelector('[data-ob-main]');

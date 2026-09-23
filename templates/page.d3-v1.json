@@ -435,6 +435,16 @@
       ],
       "settings": {}
     },
+    "guarantees_v2_mfH4ti": {
+      "type": "guarantees-v2",
+      "name": "Guarantees V2",
+      "settings": {
+        "default_items": "6,500+ 5-Star Reviews | 425,000+ Happy Customers | Rated 4.5 Stars",
+        "anchor_id": "",
+        "bg_color": "#EAF4EC",
+        "icon_color": "#018E1C"
+      }
+    },
     "faq_center_d3": {
       "type": "faq-center",
       "blocks": {
@@ -598,6 +608,7 @@
     "product_alternatives_v2_d3",
     "founder_story_v2_d3",
     "1790127294806ff5b8",
+    "guarantees_v2_mfH4ti",
     "faq_center_d3",
     "closing_cta_d3",
     "sticky_cta_d3"

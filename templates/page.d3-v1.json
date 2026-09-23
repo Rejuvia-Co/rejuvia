@@ -523,22 +523,16 @@
             "text": "8 sublingual sprays, once a day"
           }
         },
-        "point_2": {
-          "type": "point",
-          "settings": {
-            "text": "2,000 IU D3 + 120 mcg K2"
-          }
-        },
         "point_3": {
           "type": "point",
           "settings": {
-            "text": "Supports healthy bones, teeth and immune function"
+            "text": "Supports energy, immunity and healthy bones"
           }
         },
         "point_xqwFWe": {
           "type": "point",
           "settings": {
-            "text": "Light spearmint-vanilla taste, water-based, no added sugar"
+            "text": "Spearmint-vanilla taste, water-based"
           }
         },
         "point_Y9VP6B": {
@@ -550,13 +544,12 @@
         "point_zh6HDt": {
           "type": "point",
           "settings": {
-            "text": "Vegan, non-GMO, triple lab tested, made in the USA"
+            "text": "Vegan, non-GMO, made in the USA"
           }
         }
       },
       "block_order": [
         "point_1",
-        "point_2",
         "point_3",
         "point_xqwFWe",
         "point_Y9VP6B",

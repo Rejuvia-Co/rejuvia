@@ -256,6 +256,7 @@
       ],
       "name": "Video Testimonials",
       "settings": {
+        "product": "",
         "header": "Join 425,000 Getting Better Sleep",
         "stars_label": "Backed By 90 Million Nights of Sleep",
         "stars_label_size": 18,
@@ -263,6 +264,7 @@
         "stars_label_color": "#672666",
         "stars_color": "#fab851",
         "pill_bg": "#ffffff",
+        "accent_color": "#672666",
         "bg_color": "#eaeaf7"
       }
     },
@@ -313,6 +315,7 @@
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
+        "scroll_target": "",
         "show_guarantee": true,
         "guarantee_text": "90-Day Money-Back Guarantee",
         "bg_color": "#fafafa",
@@ -398,9 +401,12 @@
       "type": "key-ingredients-v2",
       "name": "Key Ingredients V2",
       "settings": {
+        "product": "",
         "heading": "The key ingredients",
         "button_label": "View Supplement Label",
-        "button_url": ""
+        "button_url": "",
+        "cta_text": "Try Rejuvia risk-free",
+        "cta_subtext": "90-Day Money-Back Guarantee"
       }
     },
     "product_alternatives_v2_offer": {
@@ -426,8 +432,10 @@
         "description": "Not sleeping better within 90 days? You are covered by our guarantee. No questions asked.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
+        "scroll_target": "",
         "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7"
+        "bg_color": "#eaeaf7",
+        "accent_color": "#672666"
       }
     },
     "17814435248f2fd49e": {
@@ -477,6 +485,9 @@
         "title_size_mobile": 16,
         "section_bg": "#eaeaf7",
         "card_bg": "#ffffff",
+        "accent_color": "#672666",
+        "band_from": "#eaeaf7",
+        "band_to": "#f9f2ff",
         "image_shadow_color": "#2a0e2a"
       }
     },
@@ -600,8 +611,9 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
+        "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
+        "accent_color": "#672666",
         "stars_color": "#eac78b",
         "rating_text": "<p>Trusted by <strong>425,000+</strong> Customers</p>",
         "rating_color": "#000000",
@@ -629,6 +641,7 @@
       "type": "sticky-cta-bogo",
       "name": "Sticky CTA (Bogo)",
       "settings": {
+        "accent_color": "#672666",
         "text": "<p>Get Your Welcome Kit</p>",
         "btn_text": "Get My Offer",
         "scroll_target": "#offer",

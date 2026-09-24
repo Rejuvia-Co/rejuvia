@@ -669,7 +669,7 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "image": "",
+        "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
         "accent_color": "#672666",
         "stars_color": "#eac78b",

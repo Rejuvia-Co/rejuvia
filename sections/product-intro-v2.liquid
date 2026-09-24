@@ -121,6 +121,11 @@
 .pi-v2-tab-image img {
     max-width: 100%;
     max-height: 100%;
+    /* height:auto lets the image keep its aspect ratio from the width/height
+       attributes. Without it, a large source (e.g. 4500x4500) whose parent has
+       an auto height on mobile renders at its literal pixel height, creating a
+       huge blank gap above the accordion. */
+    height: auto;
     object-fit: contain;
 }
 

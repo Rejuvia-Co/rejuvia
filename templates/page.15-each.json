@@ -633,6 +633,7 @@
       ],
       "name": "Closing CTA",
       "settings": {
+        "footer_bg": "#ffffff",
         "review_stars": 5,
         "review_heading": "Excellent product, excellent family service",
         "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",

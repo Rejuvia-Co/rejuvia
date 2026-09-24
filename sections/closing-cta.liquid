@@ -59,16 +59,38 @@ html { scroll-behavior: smooth; }
 .cta-{{ section.id }} .cta__guarantee img { width: 18px; height: 18px; object-fit: contain; display: block; }
 .cta-{{ section.id }} .cta__guarantee svg { width: 18px; height: 18px; display: block; flex-shrink: 0; }
 
+/* Featured review — sits inside the frame, below the card */
+.cta-{{ section.id }} .cta__review {
+  max-width: 1200px; margin: 24px auto 0; box-sizing: border-box;
+  background: {{ section.settings.review_bg | default: '#F8EFE4' }};
+  border-radius: 26px; padding: 48px 64px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;
+}
+.cta-{{ section.id }} .cta__review-stars { display: inline-flex; gap: 3px; }
+.cta-{{ section.id }} .cta__review-stars svg { width: 20px; height: 19px; display: block; }
+.cta-{{ section.id }} .cta__review-heading {
+  font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700; font-size: {{ section.settings.review_heading_size | default: 24 }}px; line-height: 1.2;
+  letter-spacing: -0.4px; color: var(--cta-accent); margin: 0;
+}
+.cta-{{ section.id }} .cta__review-quote {
+  margin: 0; max-width: 760px; font-size: {{ section.settings.review_text_size | default: 20 }}px;
+  line-height: 1.5; color: #141414; quotes: none;
+}
+.cta-{{ section.id }} .cta__review-cite {
+  font-style: normal; font-weight: 700; font-size: 16px; color: var(--cta-accent); margin-top: 2px;
+}
+
 .cta-{{ section.id }} .cta__photo { position: relative; height: 500px; background-size: cover; background-position: 50% 42%; background-repeat: no-repeat; background-color: var(--cta-lav); }
 .cta-{{ section.id }} .cta__seam { position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(90deg,
     var(--cta-lav) 0%,
-    var(--cta-lav) 3%,
-    color-mix(in srgb, var(--cta-lav) 80%, transparent) 11%,
-    color-mix(in srgb, var(--cta-lav) 52%, transparent) 20%,
-    color-mix(in srgb, var(--cta-lav) 28%, transparent) 30%,
-    color-mix(in srgb, var(--cta-lav) 12%, transparent) 38%,
-    color-mix(in srgb, var(--cta-lav) 0%, transparent) 47%); }
+    var(--cta-lav) 2%,
+    color-mix(in srgb, var(--cta-lav) 80%, transparent) 7%,
+    color-mix(in srgb, var(--cta-lav) 52%, transparent) 13%,
+    color-mix(in srgb, var(--cta-lav) 28%, transparent) 19%,
+    color-mix(in srgb, var(--cta-lav) 12%, transparent) 24%,
+    color-mix(in srgb, var(--cta-lav) 0%, transparent) 30%); }
 
 @media (max-width: 767px) {
   .cta-{{ section.id }} .cta__frame { background: {{ section.settings.frame_bg | default: '#E7E0F4' }}; padding: 16px; }
@@ -85,8 +107,12 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__btn { padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
   .cta-{{ section.id }} .cta__guarantee { font-size: 15px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
-  .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 120px;
-    background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 50%, transparent) 42%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
+  .cta-{{ section.id }} .cta__review { padding: 32px 22px; margin-top: 16px; border-radius: 20px; gap: 14px; }
+  .cta-{{ section.id }} .cta__review-stars svg { width: 17px; height: 16px; }
+  .cta-{{ section.id }} .cta__review-heading { font-size: {{ section.settings.review_heading_size_mobile | default: 20 }}px; }
+  .cta-{{ section.id }} .cta__review-quote { font-size: {{ section.settings.review_text_size_mobile | default: 16 }}px; }
+  .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 84px;
+    background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 45%, transparent) 45%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
 }
 {% endstyle %}
 
@@ -140,6 +166,21 @@ html { scroll-behavior: smooth; }
         <span class="cta__seam"></span>
       </div>
     </div>
+
+    {%- if section.settings.review_text != blank -%}
+      <div class="cta__review">
+        {%- if section.settings.review_stars > 0 -%}
+          <span role="img" class="cta__review-stars" aria-label="{{ section.settings.review_stars }} out of 5 stars">
+            {%- for i in (1..section.settings.review_stars) -%}{{ cta_star }}{%- endfor -%}
+          </span>
+        {%- endif -%}
+        {%- if section.settings.review_heading != blank -%}<p class="cta__review-heading">{{ section.settings.review_heading }}</p>{%- endif -%}
+        <blockquote class="cta__review-quote">{{ section.settings.review_text }}</blockquote>
+        {%- if section.settings.review_name != blank or section.settings.review_location != blank -%}
+          <cite class="cta__review-cite">{{ section.settings.review_name }}{% if section.settings.review_name != blank and section.settings.review_location != blank %}, {% endif %}{{ section.settings.review_location }}</cite>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -197,7 +238,14 @@ html { scroll-behavior: smooth; }
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "frame_bg", "label": "Section background", "default": "#E7E0F4" },
     { "type": "color", "id": "panel_bg", "label": "Card background (behind text)", "default": "#FFFFFF" },
-    { "type": "color", "id": "checklist_color", "label": "Checklist text color", "default": "#141414" }
+    { "type": "color", "id": "checklist_color", "label": "Checklist text color", "default": "#141414" },
+    { "type": "header", "content": "Featured review", "info": "Shows a single testimonial below the card. Hidden until Review quote is filled in." },
+    { "type": "range", "id": "review_stars", "min": 0, "max": 5, "step": 1, "label": "Stars", "default": 5 },
+    { "type": "text", "id": "review_heading", "label": "Review headline", "info": "Short punchy line above the quote, e.g. \"Sleep that actually works\"." },
+    { "type": "richtext", "id": "review_text", "label": "Review quote" },
+    { "type": "text", "id": "review_name", "label": "Reviewer name" },
+    { "type": "text", "id": "review_location", "label": "Reviewer location" },
+    { "type": "color", "id": "review_bg", "label": "Review background", "default": "#F8EFE4" }
   ],
   "blocks": [
     {

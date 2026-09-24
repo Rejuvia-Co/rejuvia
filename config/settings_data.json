@@ -1591,7 +1591,7 @@
         "settings": {
           "heading": "<p>The real issue isn't what you took — it's how your body <em>absorbed it</em></p>",
           "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed. <strong>It's not a bad product — it's a bad absorption mechanism.</strong></p><p>Rejuvia skips all of that. A spray under your tongue absorbs straight into your bloodstream — no stomach, no waiting, no waste.</p>",
-          "graph_image": "shopify://shop_images/rejuvia_absorption_graph.webp"
+          "graph_image": "shopify://shop_images/sleepspray5_webp.webp"
         }
       },
       "image_text_v2_EEfUyt": {
@@ -1824,7 +1824,8 @@
           "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
           "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
           "cta_text": "Try Rejuvia risk-free",
-          "cta_subtext": "90-Day Money-Back Guarantee"
+          "cta_subtext": "90-Day Money-Back Guarantee",
+          "cta_target": ""
         }
       },
       "faqs_v2_BYWkfd": {
@@ -2256,6 +2257,9 @@
           "title_size_mobile": 13,
           "section_bg": "#ffffff",
           "card_bg": "#eaeaf7",
+          "accent_color": "#672666",
+          "band_from": "#eaeaf7",
+          "band_to": "#f9f2ff",
           "image_shadow_color": "#2a0e2a"
         }
       },
@@ -2405,6 +2409,7 @@
         ],
         "name": "Video Testimonials",
         "settings": {
+          "product": "",
           "header": "Join 425,000 Getting Better Sleep With Rejuvia",
           "stars_label": "Backed By 90M+ Nights of Sleep",
           "stars_label_size": 18,
@@ -2412,6 +2417,7 @@
           "stars_label_color": "#672666",
           "stars_color": "#fab851",
           "pill_bg": "#ffffff",
+          "accent_color": "#672666",
           "bg_color": "#eaeaf7"
         }
       },
@@ -2479,7 +2485,8 @@
           "button_link": "#offer",
           "scroll_target": ".product-widget-container",
           "sub_text": "90-Day Money Back Guarantee",
-          "bg_color": "#eaeaf7"
+          "bg_color": "#eaeaf7",
+          "accent_color": "#672666"
         }
       },
       "how_to_use_steps_home": {

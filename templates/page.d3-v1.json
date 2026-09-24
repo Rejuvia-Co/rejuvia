@@ -11,15 +11,14 @@
   "sections": {
     "d3v1_header": {
       "type": "d3v1-header",
-      "disabled": true,
       "settings": {
-        "bg_color": "#ffffff",
+        "bg_color": "#eaf4ec",
         "logo_color": "#141414",
         "footer_bg": "#ffffff",
-        "logo_width": 164,
-        "logo_width_mobile": 150,
-        "padding_v": 22,
-        "padding_v_mobile": 16
+        "logo_width": 150,
+        "logo_width_mobile": 140,
+        "padding_v": 20,
+        "padding_v_mobile": 14
       }
     },
     "offer_block_d3": {
@@ -124,7 +123,7 @@
           "type": "tab",
           "settings": {
             "title": "Frequently Asked Questions",
-            "content": "<p><strong>Why D3 and K2 together?</strong></p><p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®.</p><p><strong>How is this better than a D3 pill?</strong></p><p>Most vitamin D comes as a capsule or softgel that has to survive digestion, where a good portion is broken down before it's ever absorbed. Our spray goes under your tongue and absorbs directly, so your body gets what it needs faster and more efficiently.</p><p><strong>Can I take it every day?</strong></p><p>Yes — it's made for daily use. A few sprays each morning is all it takes, and it's non-habit-forming with no dependency or tolerance buildup.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural peppermint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of daily use. Each spray tube contains 240 total spritzes and our suggested dosage is 6–8 spritzes per day.</p>"
+            "content": "<p><strong>Why D3 and K2 together?</strong></p><p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®.</p><p><strong>How is this better than a D3 pill?</strong></p><p>Most vitamin D comes as a capsule or softgel that has to survive digestion, where a good portion is broken down before it's ever absorbed. Our spray goes under your tongue and absorbs directly, so your body gets what it needs faster and more efficiently.</p><p><strong>Can I take it every day?</strong></p><p>Yes — it's made for daily use. A few sprays each morning is all it takes, and it's non-habit-forming with no dependency or tolerance buildup.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of daily use. Each spray tube contains 240 total spritzes and our suggested dosage is 6–8 spritzes per day.</p>"
           }
         }
       },
@@ -149,8 +148,8 @@
         "stars_size": 18,
         "stars_size_mobile": 14,
         "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
-        "title": "Vitamin D3+K2 Oral Spray",
-        "subtitle": "Powerful support for energy, immunity and strong bones",
+        "title": "Vitamin D3 + K2 Sublingual Spray",
+        "subtitle": "2,000+ IU (50mcg) D3 + 120mcg K2 in 8 quick, daily sprays under your tongue. No pills, capsules, or droppers.",
         "pill_text": "",
         "pill_color": "#ffffff",
         "pill_bg": "#018e1c",
@@ -163,7 +162,7 @@
         "title_size": 40,
         "title_size_mobile": 32,
         "subtitle_size": 21,
-        "subtitle_size_mobile": 17,
+        "subtitle_size_mobile": 16,
         "tier_title_size_mobile": 19,
         "tab_body_size_mobile": 18,
         "section_bg": "#ffffff",
@@ -172,7 +171,7 @@
         "selected_bg": "#eaf4ec",
         "show_trusted": true,
         "trusted_title": "Used by 425,000+ customers",
-        "trusted_subtext": "for daily immunity, bone strength and heart support.",
+        "trusted_subtext": "for daily energy, immunity and bone strength",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
@@ -201,44 +200,30 @@
         "bullet_1": {
           "type": "bullet",
           "settings": {
-            "text": "Absorbs under your tongue in minutes — no pills to swallow"
+            "text": "2,000 IU (50 mcg) of Vitamin D3"
           }
         },
         "bullet_2": {
           "type": "bullet",
           "settings": {
-            "text": "D3 + K2 together, so calcium goes to your bones, not your arteries"
-          }
-        },
-        "bullet_3": {
-          "type": "bullet",
-          "settings": {
-            "text": "Clinically-studied K2VITAL® with 2,000 IU of Vitamin D3"
-          }
-        },
-        "bullet_4": {
-          "type": "bullet",
-          "settings": {
-            "text": "100% all-natural, vegan and non-GMO — made in the USA"
+            "text": "120 mcg of Vitamin K2 as K2VITAL®"
           }
         }
       },
       "block_order": [
         "bullet_1",
-        "bullet_2",
-        "bullet_3",
-        "bullet_4"
+        "bullet_2"
       ],
       "settings": {
-        "heading": "Get Your Vitamin D Right — The Easy Way",
-        "subhead": "Trade your D3 softgels and gummies for the sublingual spray Rejuvia customers take every morning.",
+        "heading": "Here's Why D3 And K2 Belong Together",
+        "subhead": "D3 helps your body absorb calcium from your food. K2 helps your body use that calcium, by activating the proteins that bind it into your bones. One gets the calcium in. The other helps put it to work.\nThat's why every daily serving pairs:",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subhead_size": 18,
         "subhead_size_mobile": 18,
         "bullet_size": 17,
         "bullet_size_mobile": 17,
-        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "image": "shopify://shop_images/D3_IMG_11.webp",
         "image_side": "left",
         "cta_text": "Try Rejuvia Risk-Free",
         "cta_link": "",
@@ -312,28 +297,28 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_1.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_3.webp",
             "backdrop_color": "#eaf4ec",
             "label": "STEP 1",
-            "text": "<p>Spray Rejuvia 6–8 times under your tongue or inside your cheek</p>"
+            "text": "<p>Spray 8 times under your tongue or inside your cheek.</p>"
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_2.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_1.webp",
             "backdrop_color": "#f0f7f1",
             "label": "STEP 2",
-            "text": "<p>Hold Rejuvia in your mouth for at least 5–10 seconds</p>"
+            "text": "<p>Hold it in your mouth for 5–10 seconds.</p>"
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/how_to_use_rejuvia_3.webp",
+            "image": "shopify://shop_images/D3_IMG_WOMAN_2.webp",
             "backdrop_color": "#eaf4ec",
             "label": "STEP 3",
-            "text": "<p>Swallow — once a day, every day</p>"
+            "text": "<p>Swallow. Same time every day works best.</p>"
           }
         }
       },
@@ -346,7 +331,7 @@
       "settings": {
         "background_color": "#ffffff",
         "heading": "How To Use Rejuvia D3+K2",
-        "subheading": "Use once daily, in the morning, for the best results",
+        "subheading": "Once a day, at whatever time you'll remember",
         "heading_size": 36,
         "heading_size_mobile": 26,
         "subheading_size": 18,
@@ -358,8 +343,8 @@
     "guarantee_section_d3": {
       "type": "guarantee-section",
       "settings": {
-        "title": "90-Day Money-Back Guarantee",
-        "description": "Not feeling the difference within 90 days? You're covered by our guarantee, no questions asked.",
+        "title": "Try It For 90 Days Risk-Free",
+        "description": "Take it every day for 90 days. If it's not for you, reach out and we'll refund your first order. No hoops.",
         "button_text": "Try Rejuvia Risk-Free",
         "button_link": "#offer",
         "scroll_target": "",
@@ -459,7 +444,7 @@
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Why D3 and K2 together?",
+            "question": "Is 2,000 IU of D3 enough?",
             "answer": "<p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®. Taking D3 without K2 means you're only getting half the picture.</p>"
           }
         },
@@ -535,38 +520,52 @@
         "point_1": {
           "type": "point",
           "settings": {
-            "text": "Absorbs in minutes — no pills to swallow"
-          }
-        },
-        "point_2": {
-          "type": "point",
-          "settings": {
-            "text": "Clinically-studied K2VITAL® + 2,000 IU D3"
+            "text": "8 sublingual sprays, once a day"
           }
         },
         "point_3": {
           "type": "point",
           "settings": {
-            "text": "100% Made in the USA"
+            "text": "Supports energy, immunity and healthy bones"
+          }
+        },
+        "point_xqwFWe": {
+          "type": "point",
+          "settings": {
+            "text": "Light mint-vanilla taste, water-based"
+          }
+        },
+        "point_Y9VP6B": {
+          "type": "point",
+          "settings": {
+            "text": "Fits in a pocket, purse or carry-on"
+          }
+        },
+        "point_zh6HDt": {
+          "type": "point",
+          "settings": {
+            "text": "Vegan, non-GMO, made in the USA"
           }
         }
       },
       "block_order": [
         "point_1",
-        "point_2",
-        "point_3"
+        "point_3",
+        "point_xqwFWe",
+        "point_Y9VP6B",
+        "point_zh6HDt"
       ],
       "name": "Closing CTA",
       "settings": {
-        "image": "shopify://shop_images/rejuvia-products-005-d3k2-spray-001-CC.png",
+        "image": "shopify://shop_images/D3_IMG_3.webp",
         "show_stars": true,
         "accent_color": "#018e1c",
         "stars_color": "#018e1c",
-        "rating_text": "<p>4.5 Stars | <strong>425,000+</strong> Customers</p>",
+        "rating_text": "<p>4.4 Stars | <strong>425,000+</strong> Customers</p>",
         "rating_color": "#000000",
-        "heading": "<p>Get Your Vitamin D Right With Rejuvia</p>",
+        "heading": "<p>Get Your Vitamin D Right. The Easy Way.</p>",
         "heading_color": "#000000",
-        "button_text": "Try Rejuvia Risk-Free",
+        "button_text": "Try It Risk-Free",
         "scroll_target": "#offer",
         "button_link": "",
         "show_guarantee": true,

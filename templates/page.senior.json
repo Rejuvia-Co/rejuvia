@@ -126,9 +126,9 @@
         "rating_text_size": 16,
         "rating_text_size_mobile": 16,
         "rating_text": "<p>Used By <strong>425,000+</strong> Customers</p>",
-        "title": "Rejuvia Sleep Spray",
-        "subtitle": "Fall asleep in minutes and sleep through the entire night",
-        "pill_text": "Senior Citizen Buy One Get One FREE",
+        "title": "Rejuvia Sleep Spray: Senior Citizen BOGO",
+        "subtitle": "Claim your exclusive Senior Citizen BOGO deal on Rejuvia today",
+        "pill_text": "",
         "pill_size": 16,
         "pill_size_mobile": 14,
         "pill_color": "#ffffff",
@@ -143,8 +143,8 @@
         "onetime_text": "One-Time Purchase (Not a Subscription)",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "title_size": 44,
-        "title_size_mobile": 34,
+        "title_size": 40,
+        "title_size_mobile": 30,
         "subtitle_size": 18,
         "subtitle_size_mobile": 18,
         "tier_title_size": 26,
@@ -256,6 +256,7 @@
       ],
       "name": "Video Testimonials",
       "settings": {
+        "product": "",
         "header": "Join 425,000 Getting Better Sleep With Rejuvia",
         "stars_label": "Backed By 90 Million Nights of Sleep",
         "stars_label_size": 18,
@@ -263,6 +264,7 @@
         "stars_label_color": "#672666",
         "stars_color": "#fab851",
         "pill_bg": "#ffffff",
+        "accent_color": "#672666",
         "bg_color": "#eaeaf7"
       }
     },
@@ -430,6 +432,7 @@
       "type": "key-ingredients-v2",
       "name": "Key Ingredients V2",
       "settings": {
+        "product": "",
         "heading": "The key ingredients",
         "button_label": "View Supplement Label",
         "button_url": "",
@@ -447,7 +450,8 @@
         "button_link": "#offer",
         "scroll_target": "",
         "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7"
+        "bg_color": "#eaeaf7",
+        "accent_color": "#672666"
       }
     },
     "product_alternatives_v2_offer": {
@@ -461,7 +465,8 @@
         "comp_2_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_6.png",
         "comp_3_image": "shopify://shop_images/REJUVIA_2.0_WEB_FINAL_GRAPHICS_8.png",
         "cta_text": "Try Rejuvia risk-free",
-        "cta_subtext": "90-Day Money-Back Guarantee"
+        "cta_subtext": "90-Day Money-Back Guarantee",
+        "cta_target": ""
       }
     },
     "17814435248f2fd49e": {
@@ -511,6 +516,9 @@
         "title_size_mobile": 16,
         "section_bg": "#eaeaf7",
         "card_bg": "#ffffff",
+        "accent_color": "#672666",
+        "band_from": "#eaeaf7",
+        "band_to": "#f9f2ff",
         "image_shadow_color": "#2a0e2a"
       }
     },
@@ -634,8 +642,9 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "image": "shopify://shop_images/rejuvia_spray_in_clouds.webp",
+        "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
+        "accent_color": "#672666",
         "stars_color": "#eac78b",
         "rating_text": "<p>Trusted by <strong>425,000+</strong> Customers</p>",
         "rating_color": "#000000",
@@ -663,6 +672,7 @@
       "type": "sticky-cta-bogo",
       "name": "Sticky CTA (Bogo)",
       "settings": {
+        "accent_color": "#672666",
         "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
         "btn_text": "Get My Offer",
         "scroll_target": "#offer",

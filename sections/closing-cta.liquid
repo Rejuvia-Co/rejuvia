@@ -115,11 +115,6 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__seam { inset: 0 0 auto 0; height: 84px;
     background: linear-gradient(180deg, var(--cta-lav) 0%, var(--cta-lav) 6%, color-mix(in srgb, var(--cta-lav) 45%, transparent) 45%, color-mix(in srgb, var(--cta-lav) 0%, transparent) 100%); }
 }
-{%- if section.settings.footer_bg != blank -%}
-  /* Footer background for THIS page only. This CSS is inlined wherever this
-     section renders, so the override never reaches pages without it. */
-  .footer-v2 { background-color: {{ section.settings.footer_bg }} !important; }
-{%- endif -%}
 {% endstyle %}
 
 {%- capture cta_gold_check -%}<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12.5l5 5 11-12" stroke="#fab851" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
@@ -245,7 +240,6 @@ html { scroll-behavior: smooth; }
     { "type": "color", "id": "frame_bg", "label": "Section background", "default": "#E7E0F4" },
     { "type": "color", "id": "panel_bg", "label": "Card background (behind text)", "default": "#FFFFFF" },
     { "type": "color", "id": "checklist_color", "label": "Checklist text color", "default": "#141414" },
-    { "type": "color", "id": "footer_bg", "label": "Footer background (this page)", "info": "Optional. Overrides the site footer background on this page only. Leave blank for the default." },
     { "type": "header", "content": "Featured review", "info": "Shows a single testimonial below the card. Hidden until Review quote is filled in." },
     { "type": "range", "id": "review_stars", "min": 0, "max": 5, "step": 1, "label": "Stars", "default": 5 },
     { "type": "text", "id": "review_heading", "label": "Review headline", "info": "Short punchy line above the quote, e.g. \"Sleep that actually works\"." },

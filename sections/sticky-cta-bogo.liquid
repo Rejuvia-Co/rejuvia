@@ -122,6 +122,11 @@ body.ob-offer-visible .sticky-cta-bogo-section--top {
         line-height: 1;
     }
 }
+{%- if section.settings.footer_bg != blank -%}
+/* Footer background for THIS page only. This CSS is inlined with the sticky CTA,
+   which renders on every offer page, so the override never reaches other pages. */
+.footer-v2 { background-color: {{ section.settings.footer_bg }} !important; }
+{%- endif -%}
 </style>
 
 <div class="sticky-cta-bogo-bar">
@@ -265,6 +270,12 @@ body.ob-offer-visible .sticky-cta-bogo-section--top {
             "step": 50,
             "default": 500,
             "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "footer_bg",
+            "label": "Footer background (this page)",
+            "info": "Optional. Overrides the site footer background on this page only. Leave blank for the default."
         }
     ],
     "presets": [

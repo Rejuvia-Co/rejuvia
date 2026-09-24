@@ -87,9 +87,23 @@
         "bg_color": "#ffffff",
         "accent_color": "#672666",
         "heading": "<p>Oral Sprays Can Be Up To 4-5x More Effective</p>",
-        "description": "<p>Unlike gummies or pills that have to survive your entire digestive system, Rejuvia absorbs directly under your tongue — straight into your bloodstream. No stomach. No liver. No wasted ingredients. </p><p>The tissue under your tongue is densely packed with blood vessels, allowing active ingredients to bypass the digestive process entirely. That means more of the formula reaches your body intact, at full potency, exactly when you need it.</p>",
-        "chart_image": "shopify://shop_images/rejuvia_absorption_graph.webp",
-        "chart_image_mobile": "shopify://shop_images/rejuvia_absorption_graph.webp"
+        "description": "<p>Unlike gummies or pills that have to survive your entire digestive system, Rejuvia absorbs directly under your tongue — straight into your bloodstream. No stomach. No liver. No wasted ingredients.&nbsp;</p><p>The tissue under your tongue is densely packed with blood vessels, allowing active ingredients to bypass the digestive process entirely. That means more of the formula reaches your body intact, at full potency, exactly when you need it.</p>",
+        "chart_image": "shopify://shop_images/sleepspray1.webp",
+        "chart_image_mobile": "shopify://shop_images/sleepspray1.webp"
+      }
+    },
+    "guarantee_section_ing": {
+      "type": "guarantee-section",
+      "settings": {
+        "icon": "shopify://shop_images/SealCheck.svg",
+        "title": "90-Day Money-Back Guarantee",
+        "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
+        "button_text": "Try Rejuvia Risk-Free",
+        "button_link": "shopify://products/sleep-spray",
+        "scroll_target": "",
+        "sub_text": "90-Day Money Back Guarantee",
+        "bg_color": "#eaeaf7",
+        "accent_color": "#672666"
       }
     },
     "science_v2_wgkJq7": {
@@ -168,19 +182,6 @@
         "btn_text": "Sleep Better Tonight",
         "btn_url": "shopify://products/sleep-spray",
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
-      }
-    },
-    "guarantee_section_ing": {
-      "type": "guarantee-section",
-      "settings": {
-        "icon": "shopify://shop_images/SealCheck.svg",
-        "title": "90-Day Money-Back Guarantee",
-        "description": "Not sleeping better within 90 days? You're covered by our guarantee, no questions asked.",
-        "button_text": "Try Rejuvia Risk-Free",
-        "button_link": "shopify://products/sleep-spray",
-        "scroll_target": "",
-        "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7"
       }
     }
   },

@@ -64,7 +64,8 @@ html { scroll-behavior: smooth; }
   max-width: 900px; margin: 24px auto 0; box-sizing: border-box;
   background: {{ section.settings.review_bg | default: '#ffffff' }};
   border-radius: 26px; padding: 48px 64px; box-shadow: 0 3px 20px rgba(0, 0, 0, 0.05);
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;
+  /* Featured review shows on mobile only (re-enabled in the mobile media query). */
+  display: none; flex-direction: column; align-items: center; text-align: center; gap: 18px;
 }
 .cta-{{ section.id }} .cta__review-stars { display: inline-flex; gap: 3px; }
 .cta-{{ section.id }} .cta__review-stars svg { width: 20px; height: 19px; display: block; }
@@ -107,7 +108,7 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .cta__btn { padding: 18px 32px; font-size: {{ section.settings.button_size_mobile | default: 18 }}px; }
   .cta-{{ section.id }} .cta__guarantee { font-size: 15px; }
   .cta-{{ section.id }} .cta__photo { height: 360px; }
-  .cta-{{ section.id }} .cta__review { padding: 32px 22px; margin-top: 16px; border-radius: 20px; gap: 14px; }
+  .cta-{{ section.id }} .cta__review { display: flex; padding: 32px 22px; margin-top: 16px; border-radius: 20px; gap: 14px; }
   .cta-{{ section.id }} .cta__review-stars svg { width: 17px; height: 16px; }
   .cta-{{ section.id }} .cta__review-heading { font-size: {{ section.settings.review_heading_size_mobile | default: 20 }}px; }
   .cta-{{ section.id }} .cta__review-quote { font-size: {{ section.settings.review_text_size_mobile | default: 16 }}px; }

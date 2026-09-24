@@ -62,8 +62,8 @@ html { scroll-behavior: smooth; }
 /* Featured review — sits inside the frame, below the card */
 .cta-{{ section.id }} .cta__review {
   max-width: 1200px; margin: 24px auto 0; box-sizing: border-box;
-  background: {{ section.settings.review_bg | default: '#F8EFE4' }};
-  border-radius: 26px; padding: 48px 64px;
+  background: {{ section.settings.review_bg | default: '#ffffff' }};
+  border-radius: 26px; padding: 48px 64px; box-shadow: 0 3px 20px rgba(0, 0, 0, 0.05);
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;
 }
 .cta-{{ section.id }} .cta__review-stars { display: inline-flex; gap: 3px; }
@@ -245,7 +245,7 @@ html { scroll-behavior: smooth; }
     { "type": "richtext", "id": "review_text", "label": "Review quote" },
     { "type": "text", "id": "review_name", "label": "Reviewer name" },
     { "type": "text", "id": "review_location", "label": "Reviewer location" },
-    { "type": "color", "id": "review_bg", "label": "Review background", "default": "#F8EFE4" }
+    { "type": "color", "id": "review_bg", "label": "Review background", "default": "#ffffff" }
   ],
   "blocks": [
     {

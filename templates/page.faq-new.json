@@ -439,13 +439,6 @@
             "heading": "How do I update my payment method?",
             "subheading": "You can update your payment method easily by: \n<br> <br> \n<b> 1. </b> Logging in to your <b> Rejuvia Account </b>  and clicking <b> Subscriptions </b> then<b> Manage Subscriptions. </b>\n<br> <br> \n<b> 2. </b>  Click <b> Edit Payment</b> and you'll receive a verification email.\n<br> <br> \n<b>3. </b> Follow the steps on the following page to update your payment method!"
           }
-        },
-        "faq_b8J8He": {
-          "type": "faq",
-          "settings": {
-            "heading": "Can I cancel an order after it has shipped?",
-            "subheading": "While you can always cancel or delay an order before its charge date, we are unable to cancel an order once it has been processed. You can check your account for shipping details."
-          }
         }
       },
       "block_order": [
@@ -457,8 +450,7 @@
         "faq_hgckRk",
         "faq_QiBzgJ",
         "faq_jKJ7a6",
-        "faq_JQ8erh",
-        "faq_b8J8He"
+        "faq_JQ8erh"
       ],
       "settings": {
         "id": "section-5",

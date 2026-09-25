@@ -329,7 +329,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       </div>
 
       <div class="obs__cta-wrap">
-        <button type="button" class="obs__buy" data-obs-buy>
+        <button type="button" class="obs__buy" data-obs-buy data-obs-discount="{{ section.settings.checkout_discount_code | strip }}">
           <span class="obs__spinner" aria-hidden="true"></span>
           <span class="obs__buy-label" data-obs-cta-label>{{ section.settings.button_prefix | default: 'BUY NOW —' }}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -500,6 +500,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
+      var code = (buy.getAttribute('data-obs-discount') || '').trim();
+      var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
       buy.disabled = true; buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
         .then(function () {
@@ -509,8 +511,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             body: JSON.stringify({ items: [item] })
           });
         })
-        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = '/checkout'; })
-        .catch(function () { window.location.href = '/cart/' + id + ':' + qty; });
+        .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
+        .catch(function () { window.location.href = '/cart/' + id + ':' + qty + (code ? ('?discount=' + encodeURIComponent(code)) : ''); });
     });
   }
 
@@ -750,6 +752,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Button label prefix",
       "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.",
       "default": "BUY NOW —"
+    },
+    {
+      "type": "text",
+      "id": "checkout_discount_code",
+      "label": "Auto-apply discount code",
+      "info": "Optional. If set, Buy Now sends the customer to checkout with this code already applied (e.g. a military 10% off code). Leave blank for no code."
     },
     {
       "type": "text",

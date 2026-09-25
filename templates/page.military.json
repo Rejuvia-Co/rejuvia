@@ -151,6 +151,7 @@
       ],
       "name": "Offer Block SUB",
       "settings": {
+        "use_manual_prices": true,
         "checkout_discount_code": "MILITARY10",
         "product": "sleep-spray-copy",
         "gallery_bg": "#f8efe4",

@@ -289,7 +289,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- if vid == blank and srcprod != blank -%}{%- assign vid = srcprod.selected_or_first_available_variant.id -%}{%- endif -%}
 
           {%- capture tier_price -%}
-            {%- if tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
+            {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{{ b.settings.price }}
+            {%- elsif tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.price }}{%- endif -%}
           {%- endcapture -%}
           {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
@@ -758,6 +759,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "id": "checkout_discount_code",
       "label": "Auto-apply discount code",
       "info": "Optional. If set, Buy Now sends the customer to checkout with this code already applied (e.g. a military 10% off code). Leave blank for no code."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_manual_prices",
+      "label": "Use typed tier prices (ignore live variant price)",
+      "info": "Turn on when the displayed price should differ from the variant's real price — e.g. a page that auto-applies an extra discount at checkout. Uses each tier's Price field.",
+      "default": false
     },
     {
       "type": "text",

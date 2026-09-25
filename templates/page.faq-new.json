@@ -14,6 +14,10 @@
       "settings": {
         "heading": "Frequently Asked Questions",
         "title_color": "#141414",
+        "subheading": "<p>Don't see your question? We'd love to help. Email us at <em>hello@rejuvia.co!</em></p>",
+        "accent_color": "#672666",
+        "sub_size": 18,
+        "sub_size_mobile": 16,
         "padding_top": 32,
         "padding_bottom": 64
       }
@@ -499,7 +503,7 @@
           "type": "faq",
           "settings": {
             "heading": "Does Rejuvia offer free shipping?",
-            "subheading": "We currently offer free shipping on all orders above $79 and all subscription orders (both your first subscription order and all subsequent subscription orders). We are working hard on improving our shipping costs so we can offer free shipping on all orders in the future."
+            "subheading": "We currently offer free shipping on all orders above $59 and all subscription orders (both your first subscription order and all subsequent subscription orders). We are working hard on improving our shipping costs so we can offer free shipping on all orders in the future."
           }
         },
         "faq_VbnVgw": {

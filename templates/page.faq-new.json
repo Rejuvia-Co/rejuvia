@@ -505,13 +505,6 @@
             "subheading": "This happens more than you'd think — carriers sometimes mark packages delivered a day or two early, or leave them with a neighbor or building office. Check around your delivery area and give it 48 hours. If it still hasn't shown up, email hello@rejuvia.co and we'll send a replacement or refund — you won't be left paying for a package you never received."
           }
         },
-        "faq_zNWpEX": {
-          "type": "faq",
-          "settings": {
-            "heading": "Can I modify or cancel my order?",
-            "subheading": "One-time orders can be modified or cancelled only before a packing slip has been created. Once a packing slip is generated and the order enters fulfillment, we're unable to change or cancel it. Subscription orders can be paused, skipped, rescheduled, or cancelled any time before your next charge date through your account. Email hello@rejuvia.co as early as possible and we'll do our best to help."
-          }
-        },
         "faq_NfjWXh": {
           "type": "faq",
           "settings": {
@@ -546,7 +539,6 @@
         "faq_TECRnP",
         "faq_9rBggX",
         "faq_VbnVgw",
-        "faq_zNWpEX",
         "faq_NfjWXh",
         "faq_Fktpba",
         "faq_pfgneJ",

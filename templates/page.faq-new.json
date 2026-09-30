@@ -14,6 +14,10 @@
       "settings": {
         "heading": "Frequently Asked Questions",
         "title_color": "#141414",
+        "subheading": "<p>Don't see your question? We'd love to help. Email us at <em>hello@rejuvia.co!</em></p>",
+        "accent_color": "#672666",
+        "sub_size": 18,
+        "sub_size_mobile": 16,
         "padding_top": 32,
         "padding_bottom": 64
       }
@@ -435,13 +439,6 @@
             "heading": "How do I update my payment method?",
             "subheading": "You can update your payment method easily by: \n<br> <br> \n<b> 1. </b> Logging in to your <b> Rejuvia Account </b>  and clicking <b> Subscriptions </b> then<b> Manage Subscriptions. </b>\n<br> <br> \n<b> 2. </b>  Click <b> Edit Payment</b> and you'll receive a verification email.\n<br> <br> \n<b>3. </b> Follow the steps on the following page to update your payment method!"
           }
-        },
-        "faq_b8J8He": {
-          "type": "faq",
-          "settings": {
-            "heading": "Can I cancel an order after it has shipped?",
-            "subheading": "While you can always cancel or delay an order before its charge date, we are unable to cancel an order once it has been processed. You can check your account for shipping details."
-          }
         }
       },
       "block_order": [
@@ -453,8 +450,7 @@
         "faq_hgckRk",
         "faq_QiBzgJ",
         "faq_jKJ7a6",
-        "faq_JQ8erh",
-        "faq_b8J8He"
+        "faq_JQ8erh"
       ],
       "settings": {
         "id": "section-5",
@@ -499,7 +495,7 @@
           "type": "faq",
           "settings": {
             "heading": "Does Rejuvia offer free shipping?",
-            "subheading": "We currently offer free shipping on all orders above $79 and all subscription orders (both your first subscription order and all subsequent subscription orders). We are working hard on improving our shipping costs so we can offer free shipping on all orders in the future."
+            "subheading": "We currently offer free shipping on all orders above $59 and all subscription orders (both your first subscription order and all subsequent subscription orders). We are working hard on improving our shipping costs so we can offer free shipping on all orders in the future."
           }
         },
         "faq_VbnVgw": {
@@ -507,13 +503,6 @@
           "settings": {
             "heading": "Tracking says my package was delivered, but I don't have it. What now?",
             "subheading": "This happens more than you'd think — carriers sometimes mark packages delivered a day or two early, or leave them with a neighbor or building office. Check around your delivery area and give it 48 hours. If it still hasn't shown up, email hello@rejuvia.co and we'll send a replacement or refund — you won't be left paying for a package you never received."
-          }
-        },
-        "faq_zNWpEX": {
-          "type": "faq",
-          "settings": {
-            "heading": "Can I modify or cancel my order?",
-            "subheading": "One-time orders can be modified or cancelled only before a packing slip has been created. Once a packing slip is generated and the order enters fulfillment, we're unable to change or cancel it. Subscription orders can be paused, skipped, rescheduled, or cancelled any time before your next charge date through your account. Email hello@rejuvia.co as early as possible and we'll do our best to help."
           }
         },
         "faq_NfjWXh": {
@@ -550,7 +539,6 @@
         "faq_TECRnP",
         "faq_9rBggX",
         "faq_VbnVgw",
-        "faq_zNWpEX",
         "faq_NfjWXh",
         "faq_Fktpba",
         "faq_pfgneJ",

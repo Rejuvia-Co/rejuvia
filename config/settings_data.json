@@ -1483,7 +1483,7 @@
         "settings": {
           "bg_color": "#ffffff",
           "accent_color": "#672666",
-          "rating_text": "<p>Trusted By <strong>425,000+</strong> Customers</p>",
+          "rating_text": "<p>Trusted By <strong>450,000+</strong> Customers</p>",
           "heading": "<p>Fall Asleep <span style=\"text-decoration:underline\"><em><strong>3x Faster</strong></em></span> Tonight With Rejuvia</p>",
           "description": "Fall asleep faster, sleep through the night and wake up feeling energized with Rejuvia. Trusted and used by over 425,000 deep-sleeping customers.",
           "btn_text": "Try Risk-Free",
@@ -1523,7 +1523,7 @@
         ],
         "name": "Guarantees V2",
         "settings": {
-          "default_items": "6,500+ 5-Star Reviews | Free US Shipping Over $59 | 425,000+ Happy Customers",
+          "default_items": "6,500+ 5-Star Reviews | Free US Shipping Over $59 | 450,000+ Happy Customers",
           "anchor_id": "",
           "bg_color": "#eaeaf7",
           "icon_color": "#672666"
@@ -1795,7 +1795,7 @@
         ],
         "name": "Real Stories V2",
         "settings": {
-          "trusted_count": "425,000+ Sleepers",
+          "trusted_count": "450,000+ Sleepers",
           "heading": "<p>Reviews From Customers Who <span style=\"text-decoration:underline\"><em>Made The Switch</em></span></p>",
           "tp_avatar_color": "#d0ffdd",
           "tp_stars": 5,
@@ -2239,7 +2239,7 @@
           "stat1_label": "Made in the USA",
           "stat2_number": "8 yrs",
           "stat2_label": "Family business",
-          "stat3_number": "425K+",
+          "stat3_number": "450K+",
           "stat3_label": "Customers nationwide",
           "founder_name": "RC Williams",
           "founder_title": "Co-Founder, CEO of Rejuvia",
@@ -2410,7 +2410,7 @@
         "name": "Video Testimonials",
         "settings": {
           "product": "",
-          "header": "Join 425,000 Getting Better Sleep With Rejuvia",
+          "header": "Join 450,000 Getting Better Sleep With Rejuvia",
           "stars_label": "Backed By 90M+ Nights of Sleep",
           "stars_label_size": 18,
           "stars_label_size_mobile": 15,

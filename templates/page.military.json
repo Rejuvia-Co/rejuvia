@@ -69,7 +69,7 @@
             "price": "$54",
             "compare_price": "$120",
             "savings_text": "SAVE $66",
-            "free_shipping": true,
+            "free_shipping": false,
             "badge": "MOST POPULAR",
             "badge_style": "plum"
           }
@@ -151,8 +151,6 @@
       ],
       "name": "Offer Block SUB",
       "settings": {
-        "use_manual_prices": true,
-        "checkout_discount_code": "MILITARY10",
         "product": "sleep-spray-copy",
         "gallery_bg": "#f8efe4",
         "gallery_fit": "cover",
@@ -164,7 +162,7 @@
         "reviews_label": "<p><strong>7,500+</strong> trusted reviews</p>",
         "customers_label": "<p><strong>450,000+</strong> customers</p>",
         "headline": "Military Discount: Extra 10% Off + Up To 3 Bottles FREE",
-        "subtitle": "Thank you for your service \u2014 take an extra 10% off today's Buy One, Get One FREE offer on Rejuvia\u2122 Sleep Spray (just $13.50 per spray).",
+        "subtitle": "Thank you for your service — take an extra 10% off today's Buy One, Get One FREE offer on Rejuvia™ Sleep Spray (just $13.50 per spray).",
         "headline_size": 42,
         "headline_size_mobile": 29,
         "subtitle_size": 18,
@@ -175,6 +173,8 @@
         "tier_title_size": 22,
         "tier_title_size_mobile": 17,
         "button_prefix": "BUY NOW —",
+        "checkout_discount_code": "MILITARY10",
+        "use_manual_prices": true,
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "onetime_text": "One-Time Purchase (No Subscriptions)",
@@ -671,10 +671,6 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "review_stars": 5,
-        "review_heading": "Excellent product, excellent family service",
-        "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",
-        "review_name": "Susann M Thoens",
         "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
         "accent_color": "#672666",
@@ -698,21 +694,27 @@
         "button_size_mobile": 18,
         "frame_bg": "#eaeaf7",
         "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "checklist_color": "#141414",
+        "review_stars": 5,
+        "review_heading": "Excellent product, excellent family service",
+        "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",
+        "review_name": "Susann M Thoens",
+        "review_location": "",
+        "review_bg": "#ffffff"
       }
     },
     "sticky_cta_v2_WgFy7H": {
       "type": "sticky-cta-bogo",
       "name": "Sticky CTA (Bogo)",
       "settings": {
-        "footer_bg": "#ffffff",
         "accent_color": "#672666",
         "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
         "btn_text": "Get My Offer",
         "scroll_target": "#offer",
         "position": "bottom",
         "disable_sticky_header": false,
-        "show_after": 500
+        "show_after": 500,
+        "footer_bg": "#ffffff"
       }
     }
   },

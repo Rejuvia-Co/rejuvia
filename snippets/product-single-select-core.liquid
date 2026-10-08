@@ -573,6 +573,11 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      /* The form keeps .add-to-cart-form so product-sticky-cta-v2 can find its
+         button, but modern-interactions.js also listens for that class on
+         document and alerts "You must select a ." (no input[name=id] here).
+         Stop the event before it bubbles up to that handler. */
+      e.stopPropagation();
       var t = selected();
       if (!t) return;
       var variantId = parseInt(t.getAttribute('data-variant'), 10);

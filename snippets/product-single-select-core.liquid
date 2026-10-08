@@ -166,16 +166,32 @@
                         if b.type == 'tier'
                           assign pl_count = pl_count | plus: 1
                           if pl_count == pl_default
+                            comment
+                              Same cart-variant rule as the tier rows below.
+                            endcomment
+                            assign pl_variant = unit_variant
+                            assign pl_qty = b.settings.paid_qty
+                            assign pl_vid = b.settings.variant_id | strip
+                            if pl_vid != blank
+                              for v in currentProduct.variants
+                                assign vstr = v.id | append: ''
+                                if vstr == pl_vid
+                                  assign pl_variant = v
+                                  assign pl_qty = 1
+                                  break
+                                endif
+                              endfor
+                            endif
                             assign pl_plan = b.settings.selling_plan | strip
-                            assign pl_unit = unit_price
-                            for alloc in unit_variant.selling_plan_allocations
+                            assign pl_unit = pl_variant.price
+                            for alloc in pl_variant.selling_plan_allocations
                               assign astr = alloc.selling_plan.id | append: ''
                               if astr == pl_plan
                                 assign pl_unit = alloc.price
                                 break
                               endif
                             endfor
-                            assign pl_price = pl_unit | times: b.settings.paid_qty
+                            assign pl_price = pl_unit | times: pl_qty
                             assign pl_strike = b.settings.paid_qty | plus: b.settings.free_qty | times: unit_price
                             assign pl_pill = b.settings.price_pill | strip
                             break
@@ -246,13 +262,35 @@
                             assign total_qty = paid_qty | plus: free_qty
 
                             comment
-                              Per-unit price from the tier's Skio plan; one-time price when no plan is set.
+                              What goes in the cart. Default: paid_qty of the 1-pack on the plan + free_qty
+                              one-time units (zeroed by the tier's code). With a pack variant set: one pack
+                              on the plan, nothing else -- the free units are already inside the pack, and
+                              paid/free only drive what the row shows.
+                            endcomment
+                            assign cart_variant = unit_variant
+                            assign cart_qty = paid_qty
+                            assign cart_free = free_qty
+                            assign pack_vid = b.settings.variant_id | strip
+                            if pack_vid != blank
+                              for v in currentProduct.variants
+                                assign vstr = v.id | append: ''
+                                if vstr == pack_vid
+                                  assign cart_variant = v
+                                  assign cart_qty = 1
+                                  assign cart_free = 0
+                                  break
+                                endif
+                              endfor
+                            endif
+
+                            comment
+                              Price from the tier's Skio plan on the cart variant; one-time price when no plan is set.
                             endcomment
                             assign plan_id = b.settings.selling_plan | strip
-                            assign per_unit_price = unit_price
+                            assign per_unit_price = cart_variant.price
                             assign plan_found = false
                             if plan_id != blank
-                              for alloc in unit_variant.selling_plan_allocations
+                              for alloc in cart_variant.selling_plan_allocations
                                 assign astr = alloc.selling_plan.id | append: ''
                                 if astr == plan_id
                                   assign per_unit_price = alloc.price
@@ -262,7 +300,7 @@
                               endfor
                             endif
 
-                            assign tier_price = per_unit_price | times: paid_qty
+                            assign tier_price = per_unit_price | times: cart_qty
                             assign tier_strike = unit_price | times: total_qty
                             assign tier_save_pct = 0
                             if tier_strike > tier_price
@@ -301,10 +339,10 @@
                             endif
                           -%}
                           <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ b.shopify_attributes }}
-                                 data-variant="{{ unit_variant.id }}"
+                                 data-variant="{{ cart_variant.id }}"
                                  data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
-                                 data-paid="{{ paid_qty }}"
-                                 data-free="{{ free_qty }}"
+                                 data-paid="{{ cart_qty }}"
+                                 data-free="{{ cart_free }}"
                                  data-code="{{ b.settings.discount_code | strip | escape }}"
                                  data-total="{{ tier_price }}"
                                  data-price-fmt="{{ tier_price | money | escape }}"
@@ -360,10 +398,13 @@
                           </label>
 
                           {%- if request.design_mode -%}
-                            {%- if plan_id != blank and plan_found == false -%}
-                              <p class="pss-editor-warn">Tier {{ tier_n }}: selling plan {{ plan_id }} isn't on the 1-pack variant -- showing the one-time price.</p>
+                            {%- if plan_id == blank -%}
+                              <p class="pss-editor-warn">Tier {{ tier_n }}: no Skio selling plan set -- showing the one-time price.</p>
                             {%- endif -%}
-                            {%- if free_qty > 0 and b.settings.discount_code == blank -%}
+                            {%- if plan_id != blank and plan_found == false -%}
+                              <p class="pss-editor-warn">Tier {{ tier_n }}: selling plan {{ plan_id }} isn't on variant {{ cart_variant.title }} -- showing the one-time price.</p>
+                            {%- endif -%}
+                            {%- if cart_free > 0 and b.settings.discount_code == blank -%}
                               <p class="pss-editor-warn">Tier {{ tier_n }}: no discount code set -- the {{ free_qty }} free unit(s) will be charged at checkout.</p>
                             {%- endif -%}
                           {%- endif -%}

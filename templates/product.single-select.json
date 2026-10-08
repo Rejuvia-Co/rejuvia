@@ -71,7 +71,8 @@
             "badge_style": "purple",
             "image_asset": "sleep-spray-tier-1.png",
             "perks": "{servings} servings, delivered every month\nFREE US shipping on every order\nSkip, pause or cancel anytime",
-            "price_pill": ""
+            "price_pill": "",
+            "variant_id": ""
           }
         },
         "tier_2": {
@@ -80,13 +81,14 @@
             "label": "3 Sleep Sprays",
             "paid_qty": 2,
             "free_qty": 1,
-            "selling_plan": "33875755228",
-            "discount_code": "SLEEPB2G1FREE",
+            "selling_plan": "33875853532",
+            "discount_code": "",
             "badge": "MOST POPULAR",
             "badge_style": "purple",
             "image_asset": "sleep-spray-tier-3.png",
-            "perks": "Buy {paid}, Get {free} FREE today\nOnly {per_unit} per spray\nFREE US shipping · cancel anytime",
-            "price_pill": "BUY 2, GET 1 FREE"
+            "perks": "Buy {paid}, Get {free} FREE\nOnly {per_unit} per spray\nFREE US shipping · cancel anytime",
+            "price_pill": "BUY 2, GET 1 FREE",
+            "variant_id": "45415440089308"
           }
         },
         "tier_3": {
@@ -96,12 +98,13 @@
             "paid_qty": 4,
             "free_qty": 2,
             "selling_plan": "33875787996",
-            "discount_code": "SLEEPB4G2FREE",
+            "discount_code": "",
             "badge": "BEST VALUE",
             "badge_style": "gold",
             "image_asset": "sleep-spray-tier-6.png",
-            "perks": "Buy {paid}, Get {free} FREE today\nOnly {per_unit} per spray\nFREE US shipping · cancel anytime",
-            "price_pill": "BUY 4, GET 2 FREE"
+            "perks": "Buy {paid}, Get {free} FREE\nOnly {per_unit} per spray\nFREE US shipping · cancel anytime",
+            "price_pill": "BUY 4, GET 2 FREE",
+            "variant_id": "52094398595292"
           }
         },
         "custom_tabs_1": {

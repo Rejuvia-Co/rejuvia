@@ -420,7 +420,7 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "Adds Paid quantity of the 1-pack on the Skio plan below, plus Free quantity as one-time units that the discount code makes $0. Price, strikethrough, SAVE %, per-spray, free value and servings are all calculated."
+          "content": "Default: adds Paid quantity of the 1-pack on the Skio plan, plus Free quantity as one-time units that the discount code makes $0. With a pack variant set: adds that one pack on the plan instead (no code needed) -- Paid/Free then only drive what the row shows. Price, strikethrough, SAVE %, per-spray, free value and servings are all calculated."
         },
         {
           "type": "text",
@@ -448,15 +448,21 @@
         },
         {
           "type": "text",
+          "id": "variant_id",
+          "label": "Pack variant ID (optional)",
+          "info": "e.g. the 90 Servings variant for a 3-spray tier. Blank = build the tier from the 1-pack."
+        },
+        {
+          "type": "text",
           "id": "selling_plan",
           "label": "Skio selling plan ID",
-          "info": "Price per unit comes from this plan's price on the 1-pack variant. Blank = one-time price, no subscription."
+          "info": "Price comes from this plan on the pack variant (or the 1-pack when no pack is set). Blank = one-time price, no subscription."
         },
         {
           "type": "text",
           "id": "discount_code",
           "label": "Discount code",
-          "info": "Applied at checkout. Must make the free units $0. Required when Free quantity > 0."
+          "info": "Only for 1-pack tiers with Free quantity > 0: must make the free units $0. Not needed with a pack variant."
         },
         {
           "type": "text",

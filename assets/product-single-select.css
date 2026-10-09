@@ -436,8 +436,8 @@
   .pss .pss-price__now { font-size: clamp(20px, 6.4vw, 24px); }
   .pss .pss-price__was { font-size: clamp(15px, 4.8vw, 18px); }
   .pss .pss-price__pill { padding: 6px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
-  .pss .block-product-specs .pw-benefits { gap: 8px 10px; }
-  .pss .block-product-specs .pw-benefit { gap: 7px; font-size: 15px; line-height: 1.35; }
+  .pss .block-product-specs .pw-benefits { grid-template-columns: auto auto; justify-content: start; gap: 8px 14px; }
+  .pss .block-product-specs .pw-benefit { gap: 6px; font-size: clamp(13px, 3.75vw, 15px); line-height: 1.35; white-space: nowrap; }
   .pss .block-product-specs .pw-benefit__check svg { width: 17px; height: 17px; }
   .pss .pss-urgency { font-size: 13.5px; }
   .pss .pss-divider__text { font-size: 12px; }

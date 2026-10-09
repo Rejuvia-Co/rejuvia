@@ -102,7 +102,7 @@
         "trusted_check": "#34c759",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "sale_label": "SUMMER SALE",
+        "sale_label": "FALL SALE",
         "auto_badge_2": "MOST POPULAR",
         "auto_badge_3": "BEST VALUE",
         "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
@@ -508,8 +508,8 @@
     "product_sticky_bar": {
       "type": "product-sticky-bar",
       "settings": {
-        "rating_text": "<b>4.6</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
-        "cta_text": "Save Up To 59% Today",
+        "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+        "cta_text": "Save Up To {max_save}% Today",
         "pill_text": "2M SPRAYS SOLD",
         "cta_action": "scroll",
         "scroll_target": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container",
@@ -517,7 +517,9 @@
         "pill_bg": "#EAC78B",
         "pill_text_color": "#2b0f2c",
         "bg_color": "#f4eef7",
-        "cta_color": "#672666"
+        "cta_color": "#672666",
+        "cta_fallback": "Shop Now",
+        "rating_fallback": "4.6"
       }
     }
   },

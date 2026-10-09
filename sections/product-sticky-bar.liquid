@@ -11,9 +11,23 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign psb_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
-  assign psb_bg = psb_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: section.settings.bg_color
-  assign psb_cta = product.metafields.custom.base_colour | default: section.settings.cta_color
+  comment
+    On product pages this is the page's product; elsewhere (homepage) the section's Product setting.
+  endcomment
+  assign bar_product = product | default: section.settings.product
+  assign psb_bg = bar_product.metafields.custom.sub_base_color.value | default: bar_product.metafields.custom.sub_base_colour.value
+  assign psb_bg = psb_bg | default: bar_product.metafields.custom.sub_base_color | default: bar_product.metafields.custom.sub_base_colour | default: section.settings.bg_color
+  assign psb_cta = bar_product.metafields.custom.base_colour | default: section.settings.cta_color
+
+  comment
+    The rating token in the rating line = this product's Okendo average (same data
+    as the buy box's review bar), one decimal. Falls back to the setting when there's none.
+  endcomment
+  assign psb_rating = bar_product.metafields.okendo.summaryData.reviewAverageValue | plus: 0 | round: 1
+  if psb_rating == 0
+    assign psb_rating = section.settings.rating_fallback
+  endif
+  assign psb_rating_text = section.settings.rating_text | replace: '{rating}', psb_rating
 -%}
 
 <style>
@@ -139,12 +153,12 @@
               <svg viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/></svg>
             {%- endfor -%}
           </span>
-          <span class="psb__text">{{ section.settings.rating_text }}</span>
+          <span class="psb__text">{{ psb_rating_text }}</span>
         </div>
       {%- endif -%}
       <button type="button" class="psb__cta" data-psb-cta>
         {%- if section.settings.pill_text != blank -%}<span class="psb__pill">{{ section.settings.pill_text }}</span>{%- endif -%}
-        {{ section.settings.cta_text }}
+        <span data-psb-cta-text>{%- if section.settings.cta_text contains '{max_save}' -%}{{ section.settings.cta_fallback }}{%- else -%}{{ section.settings.cta_text }}{%- endif -%}</span>
       </button>
     </div>
   </div>
@@ -158,9 +172,16 @@
   /* Show once the product widget is fully scrolled past; hide on scroll-up
      (so it never stacks with the header) and while the footer is on screen. */
   var lastY = window.scrollY;
+  /* Hidden while the buy box is on screen (and above it on product pages, where
+     it sits at the top). On the homepage, where the buy box is further down, it
+     also shows once the visitor has scrolled past the first screen. */
   function eligible() {
     var widget = document.querySelector('.product-widget-container');
-    if (widget && widget.getBoundingClientRect().bottom >= 0) return false;
+    if (widget) {
+      var r = widget.getBoundingClientRect();
+      if (r.bottom >= 0 && r.top < window.innerHeight) return false;
+    }
+    if (window.scrollY < {{ section.settings.show_after | default: 500 }}) return false;
     var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
     if (footer && footer.getBoundingClientRect().top < window.innerHeight) return false;
     return true;
@@ -177,6 +198,15 @@
   check();
 
   var cta = bar.querySelector('[data-psb-cta]');
+
+  /* "{max_save}" in the button text = this product's best SAVE %, published by
+     the product widget on .pss-tiers. */
+  var ctaText = {{ section.settings.cta_text | json }};
+  var maxEl = document.querySelector('[data-pss-max-save]');
+  var maxSave = maxEl ? parseInt(maxEl.getAttribute('data-pss-max-save'), 10) : 0;
+  if (ctaText.indexOf('{max_save}') !== -1 && maxSave > 0) {
+    bar.querySelector('[data-psb-cta-text]').textContent = ctaText.replace('{max_save}', maxSave);
+  }
   var action = {{ section.settings.cta_action | json }};
   var targets = {{ section.settings.scroll_target | json }}.split(',');
   cta.addEventListener('click', function () {
@@ -208,17 +238,67 @@
       "type": "paragraph",
       "content": "Fixed to the bottom of the screen after the product widget is scrolled past. Bar background = product's custom.sub_base_color; button + stars = custom.base_colour."
     },
-    { "type": "inline_richtext", "id": "rating_text", "label": "Rating line", "default": "<b>4.6</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers" },
-    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Save Up To 59% Today" },
-    { "type": "text", "id": "pill_text", "label": "Pill text (on the button)", "default": "2M SPRAYS SOLD" },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (non-product pages, e.g. homepage)",
+      "info": "Colours, rating and best SAVE % come from this product. Product pages always use their own product."
+    },
+    {
+      "type": "range",
+      "id": "show_after",
+      "label": "Show after scrolling (px)",
+      "min": 0,
+      "max": 2000,
+      "step": 50,
+      "default": 500
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating_text",
+      "label": "Rating line",
+      "default": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+      "info": "{rating} = this product's Okendo star rating (e.g. 4.3)."
+    },
+    {
+      "type": "text",
+      "id": "rating_fallback",
+      "label": "Rating when the product has no Okendo reviews",
+      "default": "4.6"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Save Up To {max_save}% Today",
+      "info": "{max_save} = this product's best SAVE % from the buy box (e.g. 59 on Sleep Spray, 40 on Lutein)."
+    },
+    {
+      "type": "text",
+      "id": "cta_fallback",
+      "label": "Button text when the product has no SAVE %",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill text (on the button)",
+      "default": "2M SPRAYS SOLD"
+    },
     {
       "type": "select",
       "id": "cta_action",
       "label": "Button action",
       "default": "scroll",
       "options": [
-        { "value": "scroll", "label": "Scroll up to the offer" },
-        { "value": "add_to_cart", "label": "Add to cart (press the widget's buy button)" }
+        {
+          "value": "scroll",
+          "label": "Scroll up to the offer"
+        },
+        {
+          "value": "add_to_cart",
+          "label": "Add to cart (press the widget's buy button)"
+        }
       ]
     },
     {
@@ -227,13 +307,47 @@
       "label": "Scroll target (CSS selectors, first match wins)",
       "default": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container"
     },
-    { "type": "header", "content": "Colours" },
-    { "type": "color", "id": "text_color", "label": "Rating text", "default": "#141414" },
-    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#EAC78B" },
-    { "type": "color", "id": "pill_text_color", "label": "Pill text", "default": "#2b0f2c" },
-    { "type": "color", "id": "bg_color", "label": "Bar background fallback", "info": "Used when the product has no sub_base_color.", "default": "#f4eef7" },
-    { "type": "color", "id": "cta_color", "label": "Button fallback", "info": "Used when the product has no base_colour.", "default": "#672666" }
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Rating text",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "pill_bg",
+      "label": "Pill background",
+      "default": "#EAC78B"
+    },
+    {
+      "type": "color",
+      "id": "pill_text_color",
+      "label": "Pill text",
+      "default": "#2b0f2c"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bar background fallback",
+      "info": "Used when the product has no sub_base_color.",
+      "default": "#f4eef7"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "Button fallback",
+      "info": "Used when the product has no base_colour.",
+      "default": "#672666"
+    }
   ],
-  "presets": [{ "name": "Product Sticky Bar" }]
+  "presets": [
+    {
+      "name": "Product Sticky Bar"
+    }
+  ]
 }
 {% endschema %}

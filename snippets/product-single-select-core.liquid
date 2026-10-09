@@ -87,6 +87,7 @@
       assign pl_price = unit_price
       assign pl_strike = unit_price
       assign pl_pill = ''
+      assign max_save = 0
     -%}
     {%- capture tier_rows_html -%}
       {%- for i in (1..tier_total) -%}
@@ -247,6 +248,10 @@
             assign free_noun = unit_noun_plural
           endif
 
+          if tier_save_pct > max_save
+            assign max_save = tier_save_pct
+          endif
+
           assign tier_sel = false
           if i == default_tier
             assign tier_sel = true
@@ -274,7 +279,7 @@
           <span class="pss-tier__row">
             <span class="pss-tier__radio" aria-hidden="true"></span>
             {%- if tier_img != blank -%}
-              <span class="pss-tier__img"><img src="{{ tier_img }}" width="160" height="160" alt="" loading="lazy" decoding="async"></span>
+              <span class="pss-tier__img"><img src="{{ tier_img }}" width="160" height="160" alt="" loading="eager" decoding="async"></span>
             {%- endif -%}
             <span class="pss-tier__info">
               <span class="pss-tier__name">{{ t_label }}</span>
@@ -294,6 +299,7 @@
             <span class="pss-tier__perks">
               {%- for line in perk_lines -%}
                 {%- assign perk = line | strip -%}
+                {%- if perk contains '{frequency}' and frequency_str == blank -%}{%- assign perk = '' -%}{%- endif -%}
                 {%- if perk != blank -%}
                   {%- assign perk = perk | replace: '{per_unit}', tier_per_spray_money | replace: '{paid}', paid_str | replace: '{free}', free_str | replace: '{servings}', servings_str | replace: '{frequency}', frequency_str -%}
                   <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
@@ -470,7 +476,7 @@
                         <div class="pss-divider"><span></span><span class="pss-divider__text">{{ block.settings.header_text }}</span><span></span></div>
                       {%- endif -%}
 
-                      <div class="pss-tiers" role="radiogroup" aria-label="{{ block.settings.header_text | default: 'Choose your supply' | escape }}">
+                      <div class="pss-tiers" data-pss-max-save="{{ max_save }}" role="radiogroup" aria-label="{{ block.settings.header_text | default: 'Choose your supply' | escape }}">
                         {{ tier_rows_html }}
 
                         {%- if section.settings.one_time_display == 'block' -%}
@@ -562,6 +568,17 @@
 </div>
 
 {% render 'supplement-label-popup', product: currentProduct %}
+
+{%- comment -%} Off product pages (homepage), main.content-wrapper has overflow:hidden, which
+   disables the desktop sticky gallery. clip clips the same way without breaking sticky
+   (same fix the old widget used). {%- endcomment -%}
+{%- unless request.page_type == 'product' -%}
+<style>
+  @media screen and (min-width: 901px) {
+    main.content-wrapper { overflow: clip; }
+  }
+</style>
+{%- endunless -%}
 
 <script>
 (function () {

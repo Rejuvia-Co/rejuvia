@@ -458,5 +458,5 @@
   .pss .pss-tier__band-pill { font-size: 12px; }
   .pss .pss-buy { height: 62px; font-size: 15px; }
   .pss .pss-buyonce__link { font-size: 17px; }
-  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; text-wrap: balance; }
+  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 10px 12px; border-radius: 12px; font-size: 14px; }
 }

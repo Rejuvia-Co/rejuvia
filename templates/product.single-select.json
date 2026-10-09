@@ -60,57 +60,6 @@
             "guarantee_bar": "<b>Less than 1%</b> of customers claim our money‑back guarantee"
           }
         },
-        "tier_1": {
-          "type": "tier",
-          "settings": {
-            "label": "1 Sleep Spray",
-            "paid_qty": 1,
-            "free_qty": 0,
-            "selling_plan": "33875722460",
-            "discount_code": "",
-            "badge": "",
-            "badge_style": "purple",
-            "image_asset": "sleep-spray-tier-1.png",
-            "perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
-            "price_pill": "",
-            "variant_id": "",
-            "band_style": "purple"
-          }
-        },
-        "tier_2": {
-          "type": "tier",
-          "settings": {
-            "label": "3 Sleep Sprays",
-            "paid_qty": 3,
-            "free_qty": 0,
-            "selling_plan": "33875853532",
-            "discount_code": "",
-            "badge": "MOST POPULAR",
-            "badge_style": "purple",
-            "image_asset": "sleep-spray-tier-3.png",
-            "perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
-            "price_pill": "",
-            "variant_id": "45415440089308",
-            "band_style": "purple"
-          }
-        },
-        "tier_3": {
-          "type": "tier",
-          "settings": {
-            "label": "6 Sleep Sprays",
-            "paid_qty": 6,
-            "free_qty": 0,
-            "selling_plan": "33875787996",
-            "discount_code": "",
-            "badge": "BEST VALUE",
-            "badge_style": "gold",
-            "image_asset": "sleep-spray-tier-6.png",
-            "perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
-            "price_pill": "",
-            "variant_id": "52094398595292",
-            "band_style": "lavender"
-          }
-        },
         "custom_tabs_1": {
           "type": "custom-tabs",
           "settings": {}
@@ -130,9 +79,6 @@
         "price_line_1",
         "product_specs_1",
         "supply_selector_1",
-        "tier_1",
-        "tier_2",
-        "tier_3",
         "custom_tabs_1"
       ],
       "settings": {
@@ -156,7 +102,11 @@
         "trusted_check": "#34c759",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "sale_label": "FALL SALE"
+        "sale_label": "FALL SALE",
+        "auto_badge_2": "MOST POPULAR",
+        "auto_badge_3": "BEST VALUE",
+        "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
+        "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray"
       }
     },
     "customer_testimonials_video_sleep": {

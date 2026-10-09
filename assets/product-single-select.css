@@ -382,11 +382,11 @@
 /* ---- Proof bar (under payment icons) ---- */
 .pss .product-wrap .product-info > .pss-proof {
   margin: 0 0 18px !important;
-  padding: 14px 10px;
-  border-radius: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
   background: #efe5f3;
   color: #171512;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
   text-align: center;
 }
@@ -441,5 +441,5 @@
   .pss .pss-tier__band-pill { font-size: 12px; }
   .pss .pss-buy { height: 54px; font-size: 15px; }
   .pss .pss-buyonce__link { font-size: 17px; }
-  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 12px 8px; border-radius: 12px; font-size: 14.5px; }
+  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; text-wrap: balance; }
 }

@@ -1,0 +1,642 @@
+{%- comment -%}
+  Single-select buy box for the product template (sections/product-single-select).
+  Gallery, review bar, title, benefit list, accordion, trusted-by bar and payment
+  icons are the same markup/snippets as product-widget-core; only the plan
+  picker is new.
+
+  Cart mechanism is the BOGO/D3 one (offer-block-d3v1): every tier adds
+  `paid_qty` of the 1-pack variant on the tier's Skio plan, plus `free_qty`
+  one-time units that the tier's discount code zeroes at checkout.
+
+  Every number on a tier row is derived, nothing is typed:
+    unit price  = 1-pack's allocation price for the tier's selling plan
+    price       = unit price x paid_qty
+    strike      = 1-pack one-time price x (paid_qty + free_qty)
+    save %      = (strike - price) / strike
+    per spray   = price / (paid_qty + free_qty)
+    free value  = 1-pack one-time price x free_qty
+    servings    = custom.variant_servings x paid_qty
+{%- endcomment -%}
+
+<div class="templateProduct product-widget-container pss">
+    {% assign currentProduct = section.settings.selected_product %}
+    {% if currentProduct == blank %}
+        {% assign currentProduct = product %}
+    {% endif %}
+
+    {% assign base_colour = currentProduct.metafields.custom.base_colour %}
+
+    {%- liquid
+      comment
+        The 1-pack variant every tier is built from. Defaults to the first variant.
+      endcomment
+      assign unit_variant = currentProduct.variants.first
+      assign unit_vid = section.settings.unit_variant_id | strip
+      if unit_vid != blank
+        for v in currentProduct.variants
+          assign vstr = v.id | append: ''
+          if vstr == unit_vid
+            assign unit_variant = v
+            break
+          endif
+        endfor
+      endif
+      assign unit_price = unit_variant.price
+
+      assign servings_raw = unit_variant.metafields.custom.variant_servings | default: '30 Servings'
+      assign unit_servings = servings_raw | remove: ' Servings' | remove: ' servings' | plus: 0
+      if unit_servings == 0
+        assign unit_servings = 30
+      endif
+
+      assign unit_noun = section.settings.unit_noun | default: 'Spray'
+      assign unit_noun_plural = section.settings.unit_noun_plural | default: 'Sprays'
+    -%}
+
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+
+            <div class="gallery-wrapper">
+                <div class="gallery-inner">
+                    {%- render '_product_gallery_v2', currentProduct: currentProduct, show_bundle_text: section.settings.show_bundle_text -%}
+                </div>
+            </div>
+
+            <div class="product-info">
+
+            {%- if quickView != true -%}
+            {%- render 'structured_data', data: 'product' -%}
+            {%- endif -%}
+
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+                {% when 'title' %}
+                    <div class="block-title" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <h1 class="title">{% if block.settings.custom_title != blank %}{{ block.settings.custom_title }}{% else %}{{ currentProduct.title }}{% endif %}</h1>
+                    </div>
+
+                {% when 'product-specs' %}
+                    {%- comment -%} Replaced the "Fresh Mint • 30 Nights" spec line with a
+                       Gruns-style checkmark benefit list driven by custom.key_benefits.
+                       Renders nothing when the metafield is empty. {%- endcomment -%}
+                    {%- assign key_benefits = currentProduct.metafields.custom.key_benefits.value -%}
+                    {%- if key_benefits and key_benefits.size > 0 -%}
+                    <div class="block-product-specs" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        {% render 'product-benefits', product: currentProduct %}
+                    </div>
+                    {%- endif -%}
+
+                {% when 'okendo-reviews' %}
+                    <div class="block-reviews" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <div class="review-summary">
+                            {% assign reviewRating = currentProduct.metafields.okendo.summaryData.reviewAverageValue | plus: 0 %}
+                            {% assign reviewCount = currentProduct.metafields.okendo.summaryData.reviewCount | plus: 0 %}
+                            {% assign fullStars = reviewRating | floor %}
+                            {% assign remainder = reviewRating | minus: fullStars %}
+
+                            {% assign hasHalfStar = 0 %}
+                            {% if remainder >= 0.25 and remainder < 0.75 %}
+                                {% assign hasHalfStar = 1 %}
+                            {% elsif remainder >= 0.75 %}
+                                {% assign fullStars = fullStars | plus: 1 %}
+                            {% endif %}
+
+                            {% assign emptyStars = 5 | minus: fullStars | minus: hasHalfStar %}
+
+                            <div class="custom-review-stars" style="--star-color: {{ block.settings.star_color }}; --empty-star-color: {{ block.settings.empty_star_color }};">
+                                <span class="stars-container">
+                                    {% for i in (1..fullStars) %}
+                                    <span class="star full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    {% endfor %}
+
+                                    {% if hasHalfStar == 1 %}
+                                    <span class="star half">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <defs>
+                                                <linearGradient id="half-star-{{ block.id }}">
+                                                    <stop offset="50%" stop-color="currentColor"/>
+                                                    <stop offset="50%" stop-color="var(--empty-star-color, #ddd)"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="url(#half-star-{{ block.id }})"/>
+                                        </svg>
+                                    </span>
+                                    {% endif %}
+
+                                    {% for i in (1..emptyStars) %}
+                                    <span class="star empty">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    {% endfor %}
+                                </span>
+
+                                <span class="rating-text">
+                                    <strong>{{ reviewRating }}</strong> Stars <span class="rating-divider">|</span> <strong>450,000+</strong> Customers
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                {% when 'description' %}
+                    <div class="block-description description-container" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <p>{{ currentProduct.description }}</p>
+                    </div>
+
+                {% when 'price-line' %}
+                    {%- comment -%} Price / strike / pill for the selected tier. Server-renders the
+                       default tier (same pick as the selector); the script below swaps it on change. {%- endcomment -%}
+                    {%- liquid
+                      assign pl_count = 0
+                      assign pl_default = 1
+                      for b in section.blocks
+                        if b.type == 'supply-selector'
+                          assign pl_default = b.settings.default_tier
+                        endif
+                      endfor
+                      assign pl_price = unit_price
+                      assign pl_strike = unit_price
+                      assign pl_pill = ''
+                      for b in section.blocks
+                        if b.type == 'tier'
+                          assign pl_count = pl_count | plus: 1
+                          if pl_count == pl_default
+                            comment
+                              Same cart-variant rule as the tier rows below.
+                            endcomment
+                            assign pl_variant = unit_variant
+                            assign pl_qty = b.settings.paid_qty
+                            assign pl_vid = b.settings.variant_id | strip
+                            if pl_vid != blank
+                              for v in currentProduct.variants
+                                assign vstr = v.id | append: ''
+                                if vstr == pl_vid
+                                  assign pl_variant = v
+                                  assign pl_qty = 1
+                                  break
+                                endif
+                              endfor
+                            endif
+                            assign pl_plan = b.settings.selling_plan | strip
+                            assign pl_unit = pl_variant.price
+                            for alloc in pl_variant.selling_plan_allocations
+                              assign astr = alloc.selling_plan.id | append: ''
+                              if astr == pl_plan
+                                assign pl_unit = alloc.price
+                                break
+                              endif
+                            endfor
+                            assign pl_price = pl_unit | times: pl_qty
+                            assign pl_strike = b.settings.paid_qty | plus: b.settings.free_qty | times: unit_price
+                            assign pl_pill = b.settings.price_pill | strip
+                            if pl_pill == blank and pl_strike > pl_price and section.settings.sale_label != blank
+                              assign pl_pct = pl_strike | minus: pl_price | times: 100.0 | divided_by: pl_strike | round
+                              assign pl_pill = section.settings.sale_label | append: ' - ' | append: pl_pct | append: '% OFF'
+                            endif
+                            break
+                          endif
+                        endif
+                      endfor
+                    -%}
+                    <div class="pss-price" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                      <span class="pss-price__now" data-pss-price-now>{{ pl_price | money }}</span>
+                      <s class="pss-price__was" data-pss-price-was{% if pl_strike <= pl_price %} hidden{% endif %}>{{ pl_strike | money }}</s>
+                      <span class="pss-price__pill" data-pss-price-pill{% if pl_pill == blank %} hidden{% endif %}>{{ pl_pill }}</span>
+                    </div>
+
+                {% when 'supply-selector' %}
+                    {%- liquid
+                      assign ship_ts = 'now' | date: '%s' | plus: 86400
+                      assign ship_date = ship_ts | date: '%a, %b %-d'
+                      assign ship_day = ship_ts | date: '%-d' | plus: 0
+                      assign ship_day_mod = ship_day | modulo: 10
+                      assign ord = 'th'
+                      if ship_day < 11 or ship_day > 13
+                        case ship_day_mod
+                          when 1
+                            assign ord = 'st'
+                          when 2
+                            assign ord = 'nd'
+                          when 3
+                            assign ord = 'rd'
+                        endcase
+                      endif
+                      assign ship_date_ord = ship_date | append: ord
+
+                      assign tier_count = 0
+                      for b in section.blocks
+                        if b.type == 'tier'
+                          assign tier_count = tier_count | plus: 1
+                        endif
+                      endfor
+                      assign default_tier = block.settings.default_tier
+                      if default_tier > tier_count
+                        assign default_tier = tier_count
+                      endif
+                    -%}
+
+                    {%- comment -%} Urgency strip -- sits directly under the benefit list, above the divider. {%- endcomment -%}
+                    {%- if block.settings.urgency_text != blank -%}
+                      {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
+                      {%- capture ship_date_ord_bold -%}<b>{{ ship_date_ord }}</b>{%- endcapture -%}
+                      {%- assign urgency = block.settings.urgency_text | replace: '{date_ord}', ship_date_ord_bold | replace: '{date}', ship_date_bold -%}
+                      <div class="pss-urgency" role="note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#672666" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+                        <span data-pss-urgency>{{ urgency }}</span>
+                      </div>
+                    {%- endif -%}
+
+                    <div class="pss-supply" {{ block.shopify_attributes }}>
+                      {%- if block.settings.header_text != blank -%}
+                        <div class="pss-divider"><span></span><span class="pss-divider__text">{{ block.settings.header_text }}</span><span></span></div>
+                      {%- endif -%}
+
+                      <div class="pss-tiers" role="radiogroup" aria-label="{{ block.settings.header_text | default: 'Choose your supply' | escape }}">
+                        {%- assign tier_n = 0 -%}
+                        {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+                          {%- liquid
+                            assign tier_n = tier_n | plus: 1
+                            assign paid_qty = b.settings.paid_qty | default: 1
+                            assign free_qty = b.settings.free_qty | default: 0
+                            assign total_qty = paid_qty | plus: free_qty
+
+                            comment
+                              What goes in the cart. Default: paid_qty of the 1-pack on the plan. With a pack
+                              variant set: that one pack on the plan (paid_qty = sprays in the pack, for the
+                              maths). Free offer (off at launch): free_qty one-time 1-packs on top, which the
+                              tier's discount code makes $0.
+                            endcomment
+                            assign cart_variant = unit_variant
+                            assign cart_qty = paid_qty
+                            assign cart_free = free_qty
+                            assign pack_vid = b.settings.variant_id | strip
+                            if pack_vid != blank
+                              for v in currentProduct.variants
+                                assign vstr = v.id | append: ''
+                                if vstr == pack_vid
+                                  assign cart_variant = v
+                                  assign cart_qty = 1
+                                  break
+                                endif
+                              endfor
+                            endif
+
+                            comment
+                              Price from the tier's Skio plan on the cart variant; one-time price when no plan is set.
+                            endcomment
+                            assign plan_id = b.settings.selling_plan | strip
+                            assign per_unit_price = cart_variant.price
+                            assign plan_found = false
+                            assign plan_name = ''
+                            if plan_id != blank
+                              for alloc in cart_variant.selling_plan_allocations
+                                assign astr = alloc.selling_plan.id | append: ''
+                                if astr == plan_id
+                                  assign per_unit_price = alloc.price
+                                  assign plan_found = true
+                                  assign plan_name = alloc.selling_plan.name
+                                  break
+                                endif
+                              endfor
+                            endif
+
+                            assign tier_price = per_unit_price | times: cart_qty
+                            assign tier_strike = unit_price | times: total_qty
+                            assign tier_save_pct = 0
+                            if tier_strike > tier_price
+                              assign tier_save_pct = tier_strike | minus: tier_price | times: 100.0 | divided_by: tier_strike | round
+                            endif
+                            assign tier_per_spray = tier_price | times: 1.0 | divided_by: total_qty | round
+                            assign tier_free_value = unit_price | times: free_qty
+                            comment
+                              Servings count the paid sprays only (free ones show in the band).
+                            endcomment
+                            assign tier_servings = unit_servings | times: paid_qty
+
+                            comment
+                              Price-line pill: the tier's own text if set, else "<sale label> - <SAVE %> OFF".
+                            endcomment
+                            assign tier_pill = b.settings.price_pill | strip
+                            if tier_pill == blank and tier_save_pct > 0 and section.settings.sale_label != blank
+                              assign tier_pill = section.settings.sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'
+                            endif
+
+                            comment
+                              String forms for the perk tokens ({per_unit} {paid} {free} {servings}).
+                            endcomment
+                            assign tier_per_spray_money = tier_per_spray | money
+                            assign paid_str = paid_qty | append: ''
+                            assign free_str = free_qty | append: ''
+                            assign servings_str = tier_servings | append: ''
+                            assign frequency_str = plan_name | downcase
+
+                            if free_qty == 1
+                              assign free_noun = unit_noun
+                            else
+                              assign free_noun = unit_noun_plural
+                            endif
+
+                            assign tier_sel = false
+                            if tier_n == default_tier
+                              assign tier_sel = true
+                            endif
+
+                            assign tier_img = blank
+                            if b.settings.image != blank
+                              assign tier_img = b.settings.image | image_url: width: 160, format: 'webp'
+                            elsif b.settings.image_asset != blank
+                              assign tier_img = b.settings.image_asset | asset_url
+                            elsif unit_variant.featured_image
+                              assign tier_img = unit_variant.featured_image | image_url: width: 160, format: 'webp'
+                            endif
+                          -%}
+                          <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ b.shopify_attributes }}
+                                 data-variant="{{ cart_variant.id }}"
+                                 data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
+                                 data-paid="{{ cart_qty }}"
+                                 data-free="{{ cart_free }}"
+                                 data-free-variant="{{ unit_variant.id }}"
+                                 data-code="{{ b.settings.discount_code | strip | escape }}"
+                                 data-total="{{ tier_price }}"
+                                 data-price-fmt="{{ tier_price | money | escape }}"
+                                 data-strike-fmt="{% if tier_strike > tier_price %}{{ tier_strike | money | escape }}{% endif %}"
+                                 data-pill="{{ tier_pill | escape }}"
+                                 data-title="{{ b.settings.label | escape }}">
+                            <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="{{ tier_n }}"{% if tier_sel %} checked{% endif %}>
+                            {%- if b.settings.badge != blank -%}
+                              <span class="pss-tier__tag pss-tier__tag--{{ b.settings.badge_style | default: 'purple' }}">{{ b.settings.badge }}</span>
+                            {%- endif -%}
+                            <span class="pss-tier__row">
+                              <span class="pss-tier__radio" aria-hidden="true"></span>
+                              {%- if tier_img != blank -%}
+                                <span class="pss-tier__img"><img src="{{ tier_img }}" width="160" height="160" alt="" loading="lazy" decoding="async"></span>
+                              {%- endif -%}
+                              <span class="pss-tier__info">
+                                <span class="pss-tier__name">{{ b.settings.label }}</span>
+                                <span class="pss-tier__meta">
+                                  {%- if tier_save_pct > 0 -%}<span class="pss-tier__chip">SAVE {{ tier_save_pct }}%</span>{%- endif -%}
+                                  <span class="pss-tier__serv">{{ tier_servings }} servings</span>
+                                </span>
+                              </span>
+                              <span class="pss-tier__prices">
+                                <span class="pss-tier__price">{{ tier_price | money }}</span>
+                                {%- if tier_strike > tier_price -%}<s class="pss-tier__strike">{{ tier_strike | money }}</s>{%- endif -%}
+                              </span>
+                            </span>
+
+                            {%- if b.settings.perks != blank -%}
+                              {%- assign perk_lines = b.settings.perks | newline_to_br | split: '<br />' -%}
+                              <span class="pss-tier__perks">
+                                {%- for line in perk_lines -%}
+                                  {%- assign perk = line | strip -%}
+                                  {%- if perk != blank -%}
+                                    {%- assign perk = perk | replace: '{per_unit}', tier_per_spray_money | replace: '{paid}', paid_str | replace: '{free}', free_str | replace: '{servings}', servings_str | replace: '{frequency}', frequency_str -%}
+                                    <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </span>
+                            {%- endif -%}
+
+                            {%- if free_qty > 0 -%}
+                              <span class="pss-tier__band pss-tier__band--{{ b.settings.band_style | default: 'purple' }}">
+                                {%- if section.settings.band_image != blank -%}
+                                  <span class="pss-tier__band-img"><img src="{{ section.settings.band_image | image_url: width: 72, format: 'webp' }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
+                                {%- elsif section.settings.band_image_asset != blank -%}
+                                  <span class="pss-tier__band-img"><img src="{{ section.settings.band_image_asset | asset_url }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
+                                {%- endif -%}
+                                <span class="pss-tier__band-txt">+{{ free_qty }} FREE {{ free_noun }}</span>
+                                <span class="pss-tier__band-pill">FREE! <s>{{ tier_free_value | money_without_trailing_zeros }}</s></span>
+                              </span>
+                            {%- endif -%}
+                          </label>
+
+                          {%- if request.design_mode -%}
+                            {%- if plan_id == blank -%}
+                              <p class="pss-editor-warn">Tier {{ tier_n }}: no Skio selling plan set -- showing the one-time price.</p>
+                            {%- endif -%}
+                            {%- if plan_id != blank and plan_found == false -%}
+                              <p class="pss-editor-warn">Tier {{ tier_n }}: selling plan {{ plan_id }} isn't on variant {{ cart_variant.title }} -- showing the one-time price.</p>
+                            {%- endif -%}
+                            {%- if cart_free > 0 and b.settings.discount_code == blank -%}
+                              <p class="pss-editor-warn">Tier {{ tier_n }}: no discount code set -- the {{ free_qty }} free unit(s) will be charged at checkout.</p>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endif -%}{%- endfor -%}
+
+                        {%- if section.settings.one_time_display == 'block' -%}
+                          <label class="pss-tier pss-tier--onetime"
+                                 data-variant="{{ unit_variant.id }}" data-plan="" data-paid="1" data-free="0"
+                                 data-code="" data-total="{{ unit_price }}" data-onetime="true"
+                                 data-price-fmt="{{ unit_price | money | escape }}" data-strike-fmt="" data-pill=""
+                                 data-title="{{ section.settings.one_time_title | escape }}">
+                            <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="onetime">
+                            <span class="pss-tier__row">
+                              <span class="pss-tier__radio" aria-hidden="true"></span>
+                              <span class="pss-tier__info">
+                                <span class="pss-tier__name">{{ section.settings.one_time_title }}</span>
+                                <span class="pss-tier__meta pss-tier__meta--onetime"><span class="pss-tier__serv">{{ unit_servings }} servings{% if section.settings.one_time_shipping != blank %} · {{ section.settings.one_time_shipping }}{% endif %}</span></span>
+                              </span>
+                              <span class="pss-tier__prices"><span class="pss-tier__price">{{ unit_price | money }}</span></span>
+                            </span>
+                          </label>
+                        {%- endif -%}
+                      </div>
+                    </div>
+
+                    <div class="block-buy-buttons pss-cta-wrap">
+                      {%- comment -%} A real form with a submit button so product-sticky-cta-v2's
+                         "click the main form's submit button" hook drives this CTA too. {%- endcomment -%}
+                      <form class="add-to-cart-form pss-form" action="/cart/add" method="post" data-pss-form>
+                        <button type="submit" class="pss-buy" data-pss-buy>
+                          <span class="pss-buy__spinner" aria-hidden="true"></span>
+                          <span class="pss-buy__label">{{ block.settings.button_text | default: 'BUY NOW' }}</span>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                      </form>
+
+                      {%- if block.settings.guarantee_label != blank -%}
+                      <div class="guarantee-label-container">
+                        {% if block.settings.guarantee_icon_svg != blank %}
+                          {{ block.settings.guarantee_icon_svg }}
+                        {% else %}
+                          {% render 'icon-return' %}
+                        {% endif %}
+                        {{ block.settings.guarantee_label }}
+                      </div>
+                      {%- endif -%}
+                      {%- if section.settings.one_time_display == 'block' and block.settings.one_time_label != blank -%}
+                        <div class="guarantee-label-container pss-onetime-note" data-pss-onetime-note hidden>{{ block.settings.one_time_label }}</div>
+                      {%- endif -%}
+                    </div>
+
+                    {%- if section.settings.show_payment_icons -%}
+                      {%- assign hidden_pay = section.settings.hidden_payments | default: '' | downcase | replace: ' ', '' | split: ',' -%}
+                      <div class="pw-payments">
+                        {%- for type in shop.enabled_payment_types -%}{%- unless hidden_pay contains type -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endunless -%}{%- endfor -%}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if block.settings.guarantee_bar != blank -%}
+                      <div class="pss-proof">{{ block.settings.guarantee_bar }}</div>
+                    {%- endif -%}
+
+                {% when 'custom-tabs' %}
+                    <div class="block-custom-tabs" {{ block.shopify_attributes }}>
+                        {%- render '_custom_tabs_products-new', product: currentProduct -%}
+                    </div>
+                    {%- if section.settings.show_trusted -%}
+                      {%- assign used_by_line = currentProduct.metafields.custom.used_by_line.value | default: section.settings.trusted_subtext -%}
+                      {% render 'trusted-by',
+                        title: section.settings.trusted_title,
+                        subtext: used_by_line,
+                        image_1: section.settings.trusted_image_1,
+                        image_2: section.settings.trusted_image_2,
+                        image_3: section.settings.trusted_image_3,
+                        bg_color: section.settings.trusted_bg,
+                        check_color: section.settings.trusted_check %}
+                    {%- endif -%}
+                    {%- if section.settings.one_time_display == 'link' -%}
+                      <div class="pss-buyonce">
+                        <a href="/cart/{{ unit_variant.id }}:1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ unit_variant.id }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ unit_price | money }}</a>
+                      </div>
+                    {%- endif -%}
+
+                {% when '@app' %}
+                    {%- render block -%}
+
+                {% endcase %}
+            {% endfor %}
+
+            </div>
+    </div>
+</div>
+
+{% render 'supplement-label-popup', product: currentProduct %}
+
+<script>
+(function () {
+  var root = document.getElementById('product-item-{{ currentProduct.id }}');
+  if (!root) return;
+  var tiers = Array.prototype.slice.call(root.querySelectorAll('.pss-tier'));
+  var form = root.querySelector('[data-pss-form]');
+  var buy = root.querySelector('[data-pss-buy]');
+  var onetimeNote = root.querySelector('[data-pss-onetime-note]');
+  var buyOnce = root.querySelector('[data-pss-buyonce]');
+
+  function selected() {
+    for (var i = 0; i < tiers.length; i++) { if (tiers[i].querySelector('input').checked) return tiers[i]; }
+    return tiers[0];
+  }
+
+  /* Tells product-sticky-cta-v2 (and anything else listening) the selected
+     tier's price, in cents, the same event the classic variant selector fires. */
+  function announce(t) {
+    if (!t) return;
+    document.dispatchEvent(new CustomEvent('variant:changed', {
+      detail: { variantId: t.getAttribute('data-variant'), price: parseInt(t.getAttribute('data-total'), 10), title: t.getAttribute('data-title') }
+    }));
+  }
+
+  var priceNow = root.querySelector('[data-pss-price-now]');
+  var priceWas = root.querySelector('[data-pss-price-was]');
+  var pricePill = root.querySelector('[data-pss-price-pill]');
+
+  /* Price line under the description mirrors the selected tier (values are
+     server-formatted on each row, so no money formatting happens here). */
+  function syncPriceLine(t) {
+    if (!t || !priceNow) return;
+    var was = t.getAttribute('data-strike-fmt') || '';
+    var pill = t.getAttribute('data-pill') || '';
+    priceNow.textContent = t.getAttribute('data-price-fmt');
+    if (priceWas) { priceWas.textContent = was; priceWas.hidden = !was; }
+    if (pricePill) { pricePill.textContent = pill; pricePill.hidden = !pill; }
+  }
+
+  function sync() {
+    var cur = selected();
+    tiers.forEach(function (t) { t.classList.toggle('is-selected', t === cur); });
+    if (onetimeNote) { onetimeNote.hidden = !(cur && cur.getAttribute('data-onetime') === 'true'); }
+    syncPriceLine(cur);
+    announce(cur);
+  }
+  tiers.forEach(function (t) { t.querySelector('input').addEventListener('change', sync); });
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', sync); } else { sync(); }
+
+  /* Build the cart (paid units on the plan + free one-time units), clear the
+     old cart, then go to checkout with the tier's discount code applied --
+     same flow as offer-block-d3v1. */
+  function checkout(items, code, btn) {
+    var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
+    if (btn) { btn.disabled = true; btn.classList.add('is-loading'); }
+    fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
+      .then(function () {
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: items })
+        });
+      })
+      .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
+      .catch(function () {
+        if (btn) { btn.disabled = false; btn.classList.remove('is-loading'); }
+        window.location.href = checkoutUrl;
+      });
+  }
+
+  window.addEventListener('pageshow', function () {
+    if (buy) { buy.disabled = false; buy.classList.remove('is-loading'); }
+  });
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      /* The form keeps .add-to-cart-form so product-sticky-cta-v2 can find its
+         button, but modern-interactions.js also listens for that class on
+         document and alerts "You must select a ." (no input[name=id] here).
+         Stop the event before it bubbles up to that handler. */
+      e.stopPropagation();
+      var t = selected();
+      if (!t) return;
+      var variantId = parseInt(t.getAttribute('data-variant'), 10);
+      if (!variantId) return;
+      var paid = parseInt(t.getAttribute('data-paid'), 10) || 1;
+      var free = parseInt(t.getAttribute('data-free'), 10) || 0;
+      var plan = parseInt(t.getAttribute('data-plan'), 10) || null;
+      var base = { id: variantId, quantity: paid };
+      if (plan) { base.selling_plan = plan; }
+      var items = [base];
+      /* Free units are always the 1-pack, even when the paid line is a 90/180 pack. */
+      var freeVariant = parseInt(t.getAttribute('data-free-variant'), 10) || variantId;
+      if (free > 0) { items.push({ id: freeVariant, quantity: free }); }
+      checkout(items, (t.getAttribute('data-code') || '').trim(), buy);
+    });
+  }
+
+  if (buyOnce) {
+    buyOnce.addEventListener('click', function (e) {
+      e.preventDefault();
+      checkout([{ id: parseInt(buyOnce.getAttribute('data-variant'), 10), quantity: 1 }], '', null);
+    });
+  }
+
+  /* {cutoff} in the urgency copy: now + 1 hour, pinned to Eastern (same as offer-block-sub). */
+  var urgency = root.querySelector('[data-pss-urgency]');
+  if (urgency && urgency.innerHTML.indexOf('{cutoff}') !== -1) {
+    var cutoff;
+    try {
+      cutoff = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true
+      }).format(new Date(Date.now() + 3600000)) + ' ET';
+    } catch (err) {
+      var d = new Date(Date.now() + 3600000);
+      cutoff = (d.getHours() % 12 || 12) + ':' + ('0' + d.getMinutes()).slice(-2) + (d.getHours() < 12 ? ' AM' : ' PM');
+    }
+    urgency.innerHTML = urgency.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>');
+  }
+})();
+</script>

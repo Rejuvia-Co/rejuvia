@@ -3,6 +3,20 @@
    trusted-by and payment icons come from there unchanged. This file only adds
    the layout deltas and the new supply selector. */
 
+/* ---- Product colours ----
+   Accent = product custom.base_colour (published as --base-colour on .product-wrap);
+   tints are mixed from it so every product gets its own palette. Tint = custom.sub_base_color. */
+.pss .product-wrap {
+  --pss-accent: var(--base-colour, #5F2A63);
+  --pss-accent-dark: color-mix(in srgb, var(--pss-accent) 72%, #000);
+  --pss-accent-50: color-mix(in srgb, var(--pss-accent) 4%, #fff);
+  --pss-accent-150: color-mix(in srgb, var(--pss-accent) 15%, #fff);
+  --pss-accent-200: color-mix(in srgb, var(--pss-accent) 20%, #fff);
+  --pss-accent-250: color-mix(in srgb, var(--pss-accent) 27%, #fff);
+  --pss-accent-350: color-mix(in srgb, var(--pss-accent) 38%, #fff);
+  --pss-tint: var(--sub-base-colour, #efe5f3);
+}
+
 /* ---- Layout: 50/50 split on desktop, gallery sticky on desktop only ---- */
 @media screen and (min-width: 901px) {
   .pss .product-wrap {
@@ -52,7 +66,7 @@
   font-weight: 800;
   font-size: 32px;
   line-height: 1.1;
-  color: #5d215f;
+  color: var(--pss-accent);
 }
 .pss .pss-price__was {
   font-weight: 700;
@@ -63,7 +77,7 @@
 .pss .pss-price__pill {
   padding: 8px 14px;
   border-radius: 8px;
-  background: #5d215f;
+  background: var(--pss-accent);
   color: #fff;
   font-weight: 800;
   font-size: 15px;
@@ -88,10 +102,10 @@
   gap: 11px;
   margin: 0 0 22px;
   padding: 12px 16px;
-  border: 1.5px dashed #cbb6cc;
+  border: 1.5px dashed var(--pss-accent-350);
   border-radius: 14px;
-  background: #f9f6fc;
-  color: #4c1c4f;
+  background: var(--pss-accent-50);
+  color: var(--pss-accent-dark);
   font-size: 16px;
   line-height: 1.35;
   text-align: left;
@@ -108,13 +122,13 @@
 .pss .pss-divider > span:not(.pss-divider__text) {
   flex: 1;
   height: 1px;
-  background: #d9cfe0;
+  background: var(--pss-accent-200);
 }
 .pss .pss-divider__text {
   font-weight: 800;
   font-size: 13px;
   letter-spacing: 1.3px;
-  color: #5F2A63;
+  color: var(--pss-accent);
   white-space: nowrap;
 }
 
@@ -129,7 +143,7 @@
   position: relative;
   display: block;
   margin: 0;
-  border: 1.5px solid #e3ddea;
+  border: 1.5px solid var(--pss-accent-150);
   border-radius: 12px;
   background: #fff;
   color: #171512;
@@ -147,8 +161,8 @@
 .pss .pss-tier.is-selected {
   /* Keep the row from shifting when the border grows 1.5px -> 2px. */
   margin: -0.5px;
-  border: 2px solid #5F2A63;
-  background: #faf7fd;
+  border: 2px solid var(--pss-accent);
+  background: var(--pss-accent-50);
 }
 .pss .pss-tier__input {
   position: absolute;
@@ -158,7 +172,7 @@
   pointer-events: none;
 }
 .pss .pss-tier:has(.pss-tier__input:focus-visible) {
-  outline: 2px solid #5F2A63;
+  outline: 2px solid var(--pss-accent);
   outline-offset: 3px;
 }
 
@@ -175,8 +189,8 @@
   letter-spacing: .4px;
   white-space: nowrap;
 }
-.pss .pss-tier__tag--purple { background: #5F2A63; color: #fff; }
-.pss .pss-tier__tag--gold { background: #EAC78B; color: #4c1c4f; }
+.pss .pss-tier__tag--purple { background: var(--pss-accent); color: #fff; }
+.pss .pss-tier__tag--gold { background: #EAC78B; color: var(--pss-accent-dark); }
 
 .pss .pss-tier__row {
   display: flex;
@@ -190,12 +204,12 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #cfc9dd;
+  border: 2px solid var(--pss-accent-250);
   background: #fff;
 }
 .pss .pss-tier.is-selected .pss-tier__radio {
-  border-color: #5F2A63;
-  background: #5F2A63;
+  border-color: var(--pss-accent);
+  background: var(--pss-accent);
   box-shadow: inset 0 0 0 3.5px #fff;
 }
 .pss .pss-tier__img {
@@ -276,21 +290,21 @@
   line-height: 1.35;
   color: #4a4550;
 }
-.pss .pss-tier__perk b { color: #5F2A63; margin-right: 4px; }
+.pss .pss-tier__perk b { color: var(--pss-accent); margin-right: 4px; }
 .pss .pss-tier.is-selected .pss-tier__band {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 9px 16px;
   border-radius: 0 0 10px 10px;
-  background: #5d215f;
+  background: var(--pss-accent);
   color: #fff;
   font-size: 15.5px;
 }
 .pss .pss-tier.is-selected .pss-tier__band--lavender {
-  border-top: 1px solid #e3d5ea;
-  background: #efe5f3;
-  color: #4c1c4f;
+  border-top: 1px solid var(--pss-accent-200);
+  background: var(--pss-tint);
+  color: var(--pss-accent-dark);
 }
 .pss .pss-tier__band-img {
   flex: none;
@@ -303,7 +317,7 @@
   border-radius: 6px;
   background: #fff;
 }
-.pss .pss-tier__band--lavender .pss-tier__band-img { border: 1px solid #e3d5ea; }
+.pss .pss-tier__band--lavender .pss-tier__band-img { border: 1px solid var(--pss-accent-200); }
 .pss .pss-tier__band-img img { display: block; width: 30px; height: 30px; object-fit: contain; }
 .pss .pss-tier__band-txt { font-weight: 800; white-space: nowrap; }
 .pss .pss-tier__band-pill {
@@ -313,7 +327,7 @@
   padding: 4px 9px;
   border-radius: 5px;
   background: #EAC78B;
-  color: #4c1c4f;
+  color: var(--pss-accent-dark);
   font-weight: 800;
   font-size: 13px;
   white-space: nowrap;
@@ -350,7 +364,7 @@
   padding: 0 24px;
   border: 0;
   border-radius: 100px;
-  background: #5d215f;
+  background: var(--pss-accent);
   color: #fff;
   font-family: inherit;
   font-weight: 800;
@@ -361,7 +375,7 @@
   box-shadow: 0 6px 18px rgba(45,21,48,.16);
   transition: background 160ms cubic-bezier(.22,1,.36,1);
 }
-.pss .pss-buy:hover { background: #4a1a4c; }
+.pss .pss-buy:hover { filter: brightness(.9); }
 .pss .pss-buy svg { flex-shrink: 0; }
 .pss .pss-buy__spinner {
   display: none;
@@ -384,7 +398,7 @@
   margin: 0 0 18px !important;
   padding: 10px 16px;
   border-radius: 12px;
-  background: #efe5f3;
+  background: var(--pss-tint);
   color: #171512;
   font-size: 15px;
   line-height: 1.35;
@@ -410,7 +424,7 @@
   text-underline-offset: 7px;
   transition: color 160ms cubic-bezier(.22,1,.36,1);
 }
-.pss .pss-buyonce__link:hover { color: #5F2A63; }
+.pss .pss-buyonce__link:hover { color: var(--pss-accent); }
 
 /* ---- Mobile ---- */
 @media screen and (max-width: 749px) {

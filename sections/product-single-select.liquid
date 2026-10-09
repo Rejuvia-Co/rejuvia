@@ -25,6 +25,42 @@
       "content": "Pricing source"
     },
     {
+      "type": "paragraph",
+      "content": "Tiers: when this section has no Tier blocks, it builds one tier per product variant -- price from each variant's custom.preselected_selling_plan, sprays = variant servings / 30, title \"N <name>s\", where name = the product's custom.tier_title metafield or its title. Add Tier blocks to override (e.g. Sleep Spray's template)."
+    },
+    {
+      "type": "text",
+      "id": "auto_badge_2",
+      "label": "Auto tiers: tag on 2nd tier",
+      "default": "MOST POPULAR"
+    },
+    {
+      "type": "text",
+      "id": "auto_badge_3",
+      "label": "Auto tiers: tag on 3rd tier (gold)",
+      "default": "BEST VALUE"
+    },
+    {
+      "type": "textarea",
+      "id": "auto_perks",
+      "label": "Auto tiers: perks",
+      "default": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
+      "info": "Tokens: {per_unit}, {servings}, {frequency}."
+    },
+    {
+      "type": "text",
+      "id": "tier_image_handles",
+      "label": "Auto tiers: products with tier images in the theme",
+      "default": "lutein,vitamin-d3-k2-spray,oral-stress-spray",
+      "info": "Comma-separated handles. Their rows use assets/tier-<handle>-<sprays>.png; other products use the variant image."
+    },
+    {
+      "type": "textarea",
+      "id": "tier_title_overrides",
+      "label": "Auto tiers: tier name overrides",
+      "info": "One per line as handle: Name, e.g. vitamin-d3-k2-spray: D3+K2 Spray. Rows read \"1 D3+K2 Spray\", \"2 D3+K2 Spray\"... exactly as typed (no plural s)."
+    },
+    {
       "type": "text",
       "id": "unit_variant_id",
       "label": "1-pack variant ID",
@@ -392,7 +428,7 @@
           "min": 1,
           "max": 4,
           "step": 1,
-          "default": 2
+          "default": 1
         },
         {
           "type": "header",

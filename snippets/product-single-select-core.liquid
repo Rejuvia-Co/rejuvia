@@ -25,6 +25,10 @@
     {% endif %}
 
     {% assign base_colour = currentProduct.metafields.custom.base_colour %}
+    {%- liquid
+      assign sub_base = currentProduct.metafields.custom.sub_base_color.value | default: currentProduct.metafields.custom.sub_base_colour.value
+      assign sub_base = sub_base | default: currentProduct.metafields.custom.sub_base_color | default: currentProduct.metafields.custom.sub_base_colour
+    -%}
 
     {%- liquid
       comment
@@ -53,7 +57,279 @@
       assign unit_noun_plural = section.settings.unit_noun_plural | default: 'Sprays'
     -%}
 
-    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default"{% if base_colour != blank %} style="--base-colour: {{ base_colour }};"{% endif %}>
+
+    {%- comment -%}
+      Tiers are worked out once here and used by both the price line and the rows.
+      Source: the section's Tier blocks when it has any (e.g. Sleep Spray's template),
+      otherwise the product's own variants -- one tier per variant, on that variant's
+      custom.preselected_selling_plan. That's what lets this be the default product
+      widget without typing tiers in per product.
+    {%- endcomment -%}
+    {%- liquid
+      assign tier_blocks = section.blocks | where: 'type', 'tier'
+      assign auto_tiers = false
+      assign tier_total = tier_blocks.size
+      if tier_total == 0
+        assign auto_tiers = true
+        assign tier_total = currentProduct.variants.size
+      endif
+      assign default_tier = 1
+      for b in section.blocks
+        if b.type == 'supply-selector'
+          assign default_tier = b.settings.default_tier
+        endif
+      endfor
+      if default_tier > tier_total
+        assign default_tier = tier_total
+      endif
+      assign image_handles = section.settings.tier_image_handles | remove: ' ' | split: ','
+
+      assign pl_price = unit_price
+      assign pl_strike = unit_price
+      assign pl_pill = ''
+    -%}
+    {%- capture tier_rows_html -%}
+      {%- for i in (1..tier_total) -%}
+        {%- liquid
+          assign idx = i | minus: 1
+          if auto_tiers
+            comment
+              Auto: one tier per variant. Sprays = variant servings / 1-pack servings.
+            endcomment
+            assign v = currentProduct.variants[idx]
+            assign v_serv = v.metafields.custom.variant_servings | default: v.title | remove: ' Servings' | remove: ' servings' | plus: 0
+            assign paid_qty = v_serv | divided_by: unit_servings
+            if paid_qty < 1
+              assign paid_qty = 1
+            endif
+            assign free_qty = 0
+            assign cart_variant = v
+            assign cart_qty = 1
+            assign cart_free = 0
+            assign plan_id = v.metafields.custom.preselected_selling_plan | append: '' | strip
+            comment
+              Row name: optional product metafield custom.tier_title (e.g. "D3+K2 Spray"), else the product title.
+            endcomment
+            assign tier_noun = currentProduct.metafields.custom.tier_title | default: currentProduct.title
+            assign t_label = paid_qty | append: ' ' | append: tier_noun
+            if paid_qty > 1
+              assign t_label = t_label | append: 's'
+            endif
+            comment
+              Section setting "handle: Name" lines win, used exactly as typed (no plural "s").
+            endcomment
+            assign title_overrides = section.settings.tier_title_overrides | newline_to_br | split: '<br />'
+            for line in title_overrides
+              assign o_handle = line | split: ':' | first | strip
+              if o_handle == currentProduct.handle
+                assign o_name = line | remove_first: o_handle | remove_first: ':' | strip
+                if o_name != blank
+                  assign t_label = paid_qty | append: ' ' | append: o_name
+                endif
+              endif
+            endfor
+            assign t_attrs = ''
+            assign t_code = ''
+            assign t_pill = ''
+            assign t_band = 'purple'
+            assign t_perks = section.settings.auto_perks
+            assign t_badge = ''
+            assign t_badge_style = 'purple'
+            if i == 2
+              assign t_badge = section.settings.auto_badge_2
+            elsif i == 3
+              assign t_badge = section.settings.auto_badge_3
+              assign t_badge_style = 'gold'
+            endif
+            assign tier_img = blank
+            if image_handles contains currentProduct.handle
+              assign tier_img = 'tier-' | append: currentProduct.handle | append: '-' | append: paid_qty | append: '.png' | asset_url
+            elsif v.featured_image
+              assign tier_img = v.featured_image | image_url: width: 160, format: 'webp'
+            elsif currentProduct.featured_image
+              assign tier_img = currentProduct.featured_image | image_url: width: 160, format: 'webp'
+            endif
+          else
+            comment
+              Tier blocks. Default cart: paid_qty of the 1-pack on the plan. With a pack
+              variant set: that one pack on the plan (paid_qty = sprays in the pack, for the
+              maths). Free offer (off at launch): free_qty one-time 1-packs on top, which the
+              tier's discount code makes $0.
+            endcomment
+            assign b = tier_blocks[idx]
+            assign paid_qty = b.settings.paid_qty | default: 1
+            assign free_qty = b.settings.free_qty | default: 0
+            assign cart_variant = unit_variant
+            assign cart_qty = paid_qty
+            assign cart_free = free_qty
+            assign pack_vid = b.settings.variant_id | strip
+            if pack_vid != blank
+              for v in currentProduct.variants
+                assign vstr = v.id | append: ''
+                if vstr == pack_vid
+                  assign cart_variant = v
+                  assign cart_qty = 1
+                  break
+                endif
+              endfor
+            endif
+            assign plan_id = b.settings.selling_plan | strip
+            assign t_label = b.settings.label
+            assign t_attrs = b.shopify_attributes
+            assign t_code = b.settings.discount_code | strip
+            assign t_pill = b.settings.price_pill | strip
+            assign t_band = b.settings.band_style
+            assign t_perks = b.settings.perks
+            assign t_badge = b.settings.badge
+            assign t_badge_style = b.settings.badge_style
+            assign tier_img = blank
+            if b.settings.image != blank
+              assign tier_img = b.settings.image | image_url: width: 160, format: 'webp'
+            elsif b.settings.image_asset != blank
+              assign tier_img = b.settings.image_asset | asset_url
+            elsif unit_variant.featured_image
+              assign tier_img = unit_variant.featured_image | image_url: width: 160, format: 'webp'
+            endif
+          endif
+          assign total_qty = paid_qty | plus: free_qty
+
+          comment
+            Price from the tier's Skio plan on the cart variant; one-time price when no plan is set.
+          endcomment
+          assign per_unit_price = cart_variant.price
+          assign plan_found = false
+          assign plan_name = ''
+          if plan_id != blank
+            for alloc in cart_variant.selling_plan_allocations
+              assign astr = alloc.selling_plan.id | append: ''
+              if astr == plan_id
+                assign per_unit_price = alloc.price
+                assign plan_found = true
+                assign plan_name = alloc.selling_plan.name
+                break
+              endif
+            endfor
+          endif
+
+          assign tier_price = per_unit_price | times: cart_qty
+          assign tier_strike = unit_price | times: total_qty
+          assign tier_save_pct = 0
+          if tier_strike > tier_price
+            assign tier_save_pct = tier_strike | minus: tier_price | times: 100.0 | divided_by: tier_strike | round
+          endif
+          assign tier_per_spray = tier_price | times: 1.0 | divided_by: total_qty | round
+          assign tier_free_value = unit_price | times: free_qty
+          comment
+            Servings count the paid sprays only (free ones show in the band).
+          endcomment
+          assign tier_servings = unit_servings | times: paid_qty
+
+          comment
+            Price-line pill: the tier's own text if set, else "<sale label> - <SAVE %> OFF".
+          endcomment
+          assign tier_pill = t_pill
+          if tier_pill == blank and tier_save_pct > 0 and section.settings.sale_label != blank
+            assign tier_pill = section.settings.sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'
+          endif
+
+          comment
+            String forms for the perk tokens ({per_unit} {paid} {free} {servings}).
+          endcomment
+          assign tier_per_spray_money = tier_per_spray | money
+          assign paid_str = paid_qty | append: ''
+          assign free_str = free_qty | append: ''
+          assign servings_str = tier_servings | append: ''
+          assign frequency_str = plan_name | downcase
+
+          if free_qty == 1
+            assign free_noun = unit_noun
+          else
+            assign free_noun = unit_noun_plural
+          endif
+
+          assign tier_sel = false
+          if i == default_tier
+            assign tier_sel = true
+            assign pl_price = tier_price
+            assign pl_strike = tier_strike
+            assign pl_pill = tier_pill
+          endif
+        -%}
+        <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ t_attrs }}
+               data-variant="{{ cart_variant.id }}"
+               data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
+               data-paid="{{ cart_qty }}"
+               data-free="{{ cart_free }}"
+               data-free-variant="{{ unit_variant.id }}"
+               data-code="{{ t_code | escape }}"
+               data-total="{{ tier_price }}"
+               data-price-fmt="{{ tier_price | money | escape }}"
+               data-strike-fmt="{% if tier_strike > tier_price %}{{ tier_strike | money | escape }}{% endif %}"
+               data-pill="{{ tier_pill | escape }}"
+               data-title="{{ t_label | escape }}">
+          <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="{{ i }}"{% if tier_sel %} checked{% endif %}>
+          {%- if t_badge != blank -%}
+            <span class="pss-tier__tag pss-tier__tag--{{ t_badge_style | default: 'purple' }}">{{ t_badge }}</span>
+          {%- endif -%}
+          <span class="pss-tier__row">
+            <span class="pss-tier__radio" aria-hidden="true"></span>
+            {%- if tier_img != blank -%}
+              <span class="pss-tier__img"><img src="{{ tier_img }}" width="160" height="160" alt="" loading="lazy" decoding="async"></span>
+            {%- endif -%}
+            <span class="pss-tier__info">
+              <span class="pss-tier__name">{{ t_label }}</span>
+              <span class="pss-tier__meta">
+                {%- if tier_save_pct > 0 -%}<span class="pss-tier__chip">SAVE {{ tier_save_pct }}%</span>{%- endif -%}
+                <span class="pss-tier__serv">{{ tier_servings }} servings</span>
+              </span>
+            </span>
+            <span class="pss-tier__prices">
+              <span class="pss-tier__price">{{ tier_price | money }}</span>
+              {%- if tier_strike > tier_price -%}<s class="pss-tier__strike">{{ tier_strike | money }}</s>{%- endif -%}
+            </span>
+          </span>
+
+          {%- if t_perks != blank -%}
+            {%- assign perk_lines = t_perks | newline_to_br | split: '<br />' -%}
+            <span class="pss-tier__perks">
+              {%- for line in perk_lines -%}
+                {%- assign perk = line | strip -%}
+                {%- if perk != blank -%}
+                  {%- assign perk = perk | replace: '{per_unit}', tier_per_spray_money | replace: '{paid}', paid_str | replace: '{free}', free_str | replace: '{servings}', servings_str | replace: '{frequency}', frequency_str -%}
+                  <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </span>
+          {%- endif -%}
+
+          {%- if free_qty > 0 -%}
+            <span class="pss-tier__band pss-tier__band--{{ t_band | default: 'purple' }}">
+              {%- if section.settings.band_image != blank -%}
+                <span class="pss-tier__band-img"><img src="{{ section.settings.band_image | image_url: width: 72, format: 'webp' }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
+              {%- elsif section.settings.band_image_asset != blank -%}
+                <span class="pss-tier__band-img"><img src="{{ section.settings.band_image_asset | asset_url }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
+              {%- endif -%}
+              <span class="pss-tier__band-txt">+{{ free_qty }} FREE {{ free_noun }}</span>
+              <span class="pss-tier__band-pill">FREE! <s>{{ tier_free_value | money_without_trailing_zeros }}</s></span>
+            </span>
+          {%- endif -%}
+        </label>
+
+        {%- if request.design_mode -%}
+          {%- if plan_id == blank -%}
+            <p class="pss-editor-warn">Tier {{ i }}: no Skio selling plan set -- showing the one-time price.</p>
+          {%- endif -%}
+          {%- if plan_id != blank and plan_found == false -%}
+            <p class="pss-editor-warn">Tier {{ i }}: selling plan {{ plan_id }} isn't on variant {{ cart_variant.title }} -- showing the one-time price.</p>
+          {%- endif -%}
+          {%- if cart_free > 0 and t_code == blank -%}
+            <p class="pss-editor-warn">Tier {{ i }}: no discount code set -- the {{ free_qty }} free unit(s) will be charged at checkout.</p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    <div id="product-item-{{ currentProduct.id }}" class="product-wrap container product-template-default" style="{% if base_colour != blank %}--base-colour: {{ base_colour }};{% endif %}{% if sub_base != blank %} --sub-base-colour: {{ sub_base }};{% endif %}">
 
             <div class="gallery-wrapper">
                 <div class="gallery-inner">
@@ -151,58 +427,6 @@
                 {% when 'price-line' %}
                     {%- comment -%} Price / strike / pill for the selected tier. Server-renders the
                        default tier (same pick as the selector); the script below swaps it on change. {%- endcomment -%}
-                    {%- liquid
-                      assign pl_count = 0
-                      assign pl_default = 1
-                      for b in section.blocks
-                        if b.type == 'supply-selector'
-                          assign pl_default = b.settings.default_tier
-                        endif
-                      endfor
-                      assign pl_price = unit_price
-                      assign pl_strike = unit_price
-                      assign pl_pill = ''
-                      for b in section.blocks
-                        if b.type == 'tier'
-                          assign pl_count = pl_count | plus: 1
-                          if pl_count == pl_default
-                            comment
-                              Same cart-variant rule as the tier rows below.
-                            endcomment
-                            assign pl_variant = unit_variant
-                            assign pl_qty = b.settings.paid_qty
-                            assign pl_vid = b.settings.variant_id | strip
-                            if pl_vid != blank
-                              for v in currentProduct.variants
-                                assign vstr = v.id | append: ''
-                                if vstr == pl_vid
-                                  assign pl_variant = v
-                                  assign pl_qty = 1
-                                  break
-                                endif
-                              endfor
-                            endif
-                            assign pl_plan = b.settings.selling_plan | strip
-                            assign pl_unit = pl_variant.price
-                            for alloc in pl_variant.selling_plan_allocations
-                              assign astr = alloc.selling_plan.id | append: ''
-                              if astr == pl_plan
-                                assign pl_unit = alloc.price
-                                break
-                              endif
-                            endfor
-                            assign pl_price = pl_unit | times: pl_qty
-                            assign pl_strike = b.settings.paid_qty | plus: b.settings.free_qty | times: unit_price
-                            assign pl_pill = b.settings.price_pill | strip
-                            if pl_pill == blank and pl_strike > pl_price and section.settings.sale_label != blank
-                              assign pl_pct = pl_strike | minus: pl_price | times: 100.0 | divided_by: pl_strike | round
-                              assign pl_pill = section.settings.sale_label | append: ' - ' | append: pl_pct | append: '% OFF'
-                            endif
-                            break
-                          endif
-                        endif
-                      endfor
-                    -%}
                     <div class="pss-price" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
                       <span class="pss-price__now" data-pss-price-now>{{ pl_price | money }}</span>
                       <s class="pss-price__was" data-pss-price-was{% if pl_strike <= pl_price %} hidden{% endif %}>{{ pl_strike | money }}</s>
@@ -228,16 +452,6 @@
                       endif
                       assign ship_date_ord = ship_date | append: ord
 
-                      assign tier_count = 0
-                      for b in section.blocks
-                        if b.type == 'tier'
-                          assign tier_count = tier_count | plus: 1
-                        endif
-                      endfor
-                      assign default_tier = block.settings.default_tier
-                      if default_tier > tier_count
-                        assign default_tier = tier_count
-                      endif
                     -%}
 
                     {%- comment -%} Urgency strip -- sits directly under the benefit list, above the divider. {%- endcomment -%}
@@ -246,7 +460,7 @@
                       {%- capture ship_date_ord_bold -%}<b>{{ ship_date_ord }}</b>{%- endcapture -%}
                       {%- assign urgency = block.settings.urgency_text | replace: '{date_ord}', ship_date_ord_bold | replace: '{date}', ship_date_bold -%}
                       <div class="pss-urgency" role="note">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#672666" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
                         <span data-pss-urgency>{{ urgency }}</span>
                       </div>
                     {%- endif -%}
@@ -257,176 +471,7 @@
                       {%- endif -%}
 
                       <div class="pss-tiers" role="radiogroup" aria-label="{{ block.settings.header_text | default: 'Choose your supply' | escape }}">
-                        {%- assign tier_n = 0 -%}
-                        {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
-                          {%- liquid
-                            assign tier_n = tier_n | plus: 1
-                            assign paid_qty = b.settings.paid_qty | default: 1
-                            assign free_qty = b.settings.free_qty | default: 0
-                            assign total_qty = paid_qty | plus: free_qty
-
-                            comment
-                              What goes in the cart. Default: paid_qty of the 1-pack on the plan. With a pack
-                              variant set: that one pack on the plan (paid_qty = sprays in the pack, for the
-                              maths). Free offer (off at launch): free_qty one-time 1-packs on top, which the
-                              tier's discount code makes $0.
-                            endcomment
-                            assign cart_variant = unit_variant
-                            assign cart_qty = paid_qty
-                            assign cart_free = free_qty
-                            assign pack_vid = b.settings.variant_id | strip
-                            if pack_vid != blank
-                              for v in currentProduct.variants
-                                assign vstr = v.id | append: ''
-                                if vstr == pack_vid
-                                  assign cart_variant = v
-                                  assign cart_qty = 1
-                                  break
-                                endif
-                              endfor
-                            endif
-
-                            comment
-                              Price from the tier's Skio plan on the cart variant; one-time price when no plan is set.
-                            endcomment
-                            assign plan_id = b.settings.selling_plan | strip
-                            assign per_unit_price = cart_variant.price
-                            assign plan_found = false
-                            assign plan_name = ''
-                            if plan_id != blank
-                              for alloc in cart_variant.selling_plan_allocations
-                                assign astr = alloc.selling_plan.id | append: ''
-                                if astr == plan_id
-                                  assign per_unit_price = alloc.price
-                                  assign plan_found = true
-                                  assign plan_name = alloc.selling_plan.name
-                                  break
-                                endif
-                              endfor
-                            endif
-
-                            assign tier_price = per_unit_price | times: cart_qty
-                            assign tier_strike = unit_price | times: total_qty
-                            assign tier_save_pct = 0
-                            if tier_strike > tier_price
-                              assign tier_save_pct = tier_strike | minus: tier_price | times: 100.0 | divided_by: tier_strike | round
-                            endif
-                            assign tier_per_spray = tier_price | times: 1.0 | divided_by: total_qty | round
-                            assign tier_free_value = unit_price | times: free_qty
-                            comment
-                              Servings count the paid sprays only (free ones show in the band).
-                            endcomment
-                            assign tier_servings = unit_servings | times: paid_qty
-
-                            comment
-                              Price-line pill: the tier's own text if set, else "<sale label> - <SAVE %> OFF".
-                            endcomment
-                            assign tier_pill = b.settings.price_pill | strip
-                            if tier_pill == blank and tier_save_pct > 0 and section.settings.sale_label != blank
-                              assign tier_pill = section.settings.sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'
-                            endif
-
-                            comment
-                              String forms for the perk tokens ({per_unit} {paid} {free} {servings}).
-                            endcomment
-                            assign tier_per_spray_money = tier_per_spray | money
-                            assign paid_str = paid_qty | append: ''
-                            assign free_str = free_qty | append: ''
-                            assign servings_str = tier_servings | append: ''
-                            assign frequency_str = plan_name | downcase
-
-                            if free_qty == 1
-                              assign free_noun = unit_noun
-                            else
-                              assign free_noun = unit_noun_plural
-                            endif
-
-                            assign tier_sel = false
-                            if tier_n == default_tier
-                              assign tier_sel = true
-                            endif
-
-                            assign tier_img = blank
-                            if b.settings.image != blank
-                              assign tier_img = b.settings.image | image_url: width: 160, format: 'webp'
-                            elsif b.settings.image_asset != blank
-                              assign tier_img = b.settings.image_asset | asset_url
-                            elsif unit_variant.featured_image
-                              assign tier_img = unit_variant.featured_image | image_url: width: 160, format: 'webp'
-                            endif
-                          -%}
-                          <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ b.shopify_attributes }}
-                                 data-variant="{{ cart_variant.id }}"
-                                 data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
-                                 data-paid="{{ cart_qty }}"
-                                 data-free="{{ cart_free }}"
-                                 data-free-variant="{{ unit_variant.id }}"
-                                 data-code="{{ b.settings.discount_code | strip | escape }}"
-                                 data-total="{{ tier_price }}"
-                                 data-price-fmt="{{ tier_price | money | escape }}"
-                                 data-strike-fmt="{% if tier_strike > tier_price %}{{ tier_strike | money | escape }}{% endif %}"
-                                 data-pill="{{ tier_pill | escape }}"
-                                 data-title="{{ b.settings.label | escape }}">
-                            <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="{{ tier_n }}"{% if tier_sel %} checked{% endif %}>
-                            {%- if b.settings.badge != blank -%}
-                              <span class="pss-tier__tag pss-tier__tag--{{ b.settings.badge_style | default: 'purple' }}">{{ b.settings.badge }}</span>
-                            {%- endif -%}
-                            <span class="pss-tier__row">
-                              <span class="pss-tier__radio" aria-hidden="true"></span>
-                              {%- if tier_img != blank -%}
-                                <span class="pss-tier__img"><img src="{{ tier_img }}" width="160" height="160" alt="" loading="lazy" decoding="async"></span>
-                              {%- endif -%}
-                              <span class="pss-tier__info">
-                                <span class="pss-tier__name">{{ b.settings.label }}</span>
-                                <span class="pss-tier__meta">
-                                  {%- if tier_save_pct > 0 -%}<span class="pss-tier__chip">SAVE {{ tier_save_pct }}%</span>{%- endif -%}
-                                  <span class="pss-tier__serv">{{ tier_servings }} servings</span>
-                                </span>
-                              </span>
-                              <span class="pss-tier__prices">
-                                <span class="pss-tier__price">{{ tier_price | money }}</span>
-                                {%- if tier_strike > tier_price -%}<s class="pss-tier__strike">{{ tier_strike | money }}</s>{%- endif -%}
-                              </span>
-                            </span>
-
-                            {%- if b.settings.perks != blank -%}
-                              {%- assign perk_lines = b.settings.perks | newline_to_br | split: '<br />' -%}
-                              <span class="pss-tier__perks">
-                                {%- for line in perk_lines -%}
-                                  {%- assign perk = line | strip -%}
-                                  {%- if perk != blank -%}
-                                    {%- assign perk = perk | replace: '{per_unit}', tier_per_spray_money | replace: '{paid}', paid_str | replace: '{free}', free_str | replace: '{servings}', servings_str | replace: '{frequency}', frequency_str -%}
-                                    <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
-                                  {%- endif -%}
-                                {%- endfor -%}
-                              </span>
-                            {%- endif -%}
-
-                            {%- if free_qty > 0 -%}
-                              <span class="pss-tier__band pss-tier__band--{{ b.settings.band_style | default: 'purple' }}">
-                                {%- if section.settings.band_image != blank -%}
-                                  <span class="pss-tier__band-img"><img src="{{ section.settings.band_image | image_url: width: 72, format: 'webp' }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
-                                {%- elsif section.settings.band_image_asset != blank -%}
-                                  <span class="pss-tier__band-img"><img src="{{ section.settings.band_image_asset | asset_url }}" width="72" height="72" alt="" loading="lazy" decoding="async"></span>
-                                {%- endif -%}
-                                <span class="pss-tier__band-txt">+{{ free_qty }} FREE {{ free_noun }}</span>
-                                <span class="pss-tier__band-pill">FREE! <s>{{ tier_free_value | money_without_trailing_zeros }}</s></span>
-                              </span>
-                            {%- endif -%}
-                          </label>
-
-                          {%- if request.design_mode -%}
-                            {%- if plan_id == blank -%}
-                              <p class="pss-editor-warn">Tier {{ tier_n }}: no Skio selling plan set -- showing the one-time price.</p>
-                            {%- endif -%}
-                            {%- if plan_id != blank and plan_found == false -%}
-                              <p class="pss-editor-warn">Tier {{ tier_n }}: selling plan {{ plan_id }} isn't on variant {{ cart_variant.title }} -- showing the one-time price.</p>
-                            {%- endif -%}
-                            {%- if cart_free > 0 and b.settings.discount_code == blank -%}
-                              <p class="pss-editor-warn">Tier {{ tier_n }}: no discount code set -- the {{ free_qty }} free unit(s) will be charged at checkout.</p>
-                            {%- endif -%}
-                          {%- endif -%}
-                        {%- endif -%}{%- endfor -%}
+                        {{ tier_rows_html }}
 
                         {%- if section.settings.one_time_display == 'block' -%}
                           <label class="pss-tier pss-tier--onetime"

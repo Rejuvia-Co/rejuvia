@@ -106,7 +106,8 @@
         "auto_badge_2": "MOST POPULAR",
         "auto_badge_3": "BEST VALUE",
         "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
-        "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray"
+        "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray",
+        "frequency_labels": "1: monthly\n2: bi-monthly\n3: quarterly\n6: semi-annually"
       }
     },
     "customer_testimonials_video_sleep": {

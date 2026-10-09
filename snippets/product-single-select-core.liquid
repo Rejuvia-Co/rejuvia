@@ -240,7 +240,21 @@
           assign paid_str = paid_qty | append: ''
           assign free_str = free_qty | append: ''
           assign servings_str = tier_servings | append: ''
+          comment
+            Delivery wording by number of sprays (section setting, e.g. "3: quarterly"),
+            not the Skio plan name. Falls back to the plan name; blank when there's no plan.
+          endcomment
           assign frequency_str = plan_name | downcase
+          assign freq_lines = section.settings.frequency_labels | newline_to_br | split: '<br />'
+          for fl in freq_lines
+            assign fl_n = fl | split: ':' | first | strip
+            if fl_n == paid_str
+              assign frequency_str = fl | remove_first: fl_n | remove_first: ':' | strip
+            endif
+          endfor
+          if plan_found == false
+            assign frequency_str = ''
+          endif
 
           if free_qty == 1
             assign free_noun = unit_noun

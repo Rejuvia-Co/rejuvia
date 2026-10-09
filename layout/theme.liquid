@@ -34,8 +34,8 @@
   <link rel="canonical" href="{{ canonical_url }}" />
   <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
 
-  {%- include 'fb_open_graph' -%}
-  {%- include 'fonts' -%}
+  {%- render 'fb_open_graph' -%}
+  {%- render 'fonts' -%}
   {% render 'head-styles' %}
 
   <style>
@@ -79,7 +79,7 @@
   </style>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-  <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+  <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
   <script src="{{ 'vendor.js' | asset_url }}" defer></script>
   <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
   <script src="{{ 'custom.js' | asset_url }}" defer></script>

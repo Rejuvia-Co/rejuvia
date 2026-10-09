@@ -257,18 +257,20 @@
 {%- endif -%}
 
 <script>
-  $('.section-{{ section.id }} .accordion').click(function (e) {
-    e.preventDefault();
-    let $this = $(this);
-    if ($this.next().hasClass('show')) {
-      $this.next().removeClass('show');
-      $this.removeClass('active');
-      $this.attr('aria-expanded', 'false');
-    } else {
-      $this.next().addClass('show');
-      $this.addClass('active');
-      $this.attr('aria-expanded', 'true');
-    }
+  document.addEventListener('DOMContentLoaded', function () {
+    $('.section-{{ section.id }} .accordion').click(function (e) {
+      e.preventDefault();
+      let $this = $(this);
+      if ($this.next().hasClass('show')) {
+        $this.next().removeClass('show');
+        $this.removeClass('active');
+        $this.attr('aria-expanded', 'false');
+      } else {
+        $this.next().addClass('show');
+        $this.addClass('active');
+        $this.attr('aria-expanded', 'true');
+      }
+    });
   });
   
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

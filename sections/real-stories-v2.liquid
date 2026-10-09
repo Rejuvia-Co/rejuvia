@@ -13,8 +13,8 @@
   assign rs_fb = rs.value.facebook_reviews.value
   assign rs_online = rs.value.online_reviews.value
   assign rs_heading = rs.value.heading | default: section.settings.heading
-  # The field holds the whole highlighted phrase (e.g. "450,000+ Sleepers" or
-  # "450,000+ Calmer Customers"). Only "Trusted by" is fixed, so strip it if the
+  # The field holds the whole highlighted phrase (e.g. "500,000+ Sleepers" or
+  # "500,000+ Calmer Customers"). Only "Trusted by" is fixed, so strip it if the
   # value happens to include it; never append a hard-coded noun.
   assign rs_trusted = rs.value.trusted_count | default: section.settings.trusted_count
   assign rs_trusted = rs_trusted | remove_first: 'Trusted by ' | strip
@@ -580,8 +580,8 @@
             "type": "text",
             "id": "trusted_count",
             "label": "Trusted count",
-            "info": "The whole phrase after 'Trusted by' (e.g. '450,000+ Sleepers'). Fallback only — product pages use custom.real_stories > trusted_count.",
-            "default": "450,000+ Sleepers"
+            "info": "The whole phrase after 'Trusted by' (e.g. '500,000+ Sleepers'). Fallback only — product pages use custom.real_stories > trusted_count.",
+            "default": "500,000+ Sleepers"
         },
         {
             "type": "richtext",

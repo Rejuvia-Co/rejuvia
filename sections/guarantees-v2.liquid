@@ -2,7 +2,7 @@
   comment
     Items come from the per-product single-line metafield custom.guarantees, a
     PIPE-separated list (e.g. "7,500+ 5-Star Reviews | Free US Shipping Over $59").
-    Pipe, not comma, because the values themselves contain commas (7,500+ / 450,000+).
+    Pipe, not comma, because the values themselves contain commas (7,500+ / 500,000+).
     Falls back to the section's default_items setting when the metafield is empty.
     Background follows the product's sub-base colour; icon tick follows base_colour.
     Read .value explicitly so basic metafields resolve to their string, not the drop.
@@ -109,8 +109,8 @@
             "type": "textarea",
             "id": "default_items",
             "label": "Default items (fallback)",
-            "info": "Separate items with a PIPE | (not a comma — the numbers contain commas). E.g. 7,500+ 5-Star Reviews | Free US Shipping Over $59 | 450,000+ Happy Customers",
-            "default": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 450,000+ Happy Customers"
+            "info": "Separate items with a PIPE | (not a comma — the numbers contain commas). E.g. 7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
+            "default": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers"
         },
         {
             "type": "text",

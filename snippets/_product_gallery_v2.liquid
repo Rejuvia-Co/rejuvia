@@ -154,7 +154,7 @@
                sizes="(max-width: 900px) 100vw, 500px"
                width="{{ img.width }}" height="{{ img.height }}"
                alt="{{ media.alt | escape }}"
-               {% if i == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+               {% if i == 1 %}loading="eager"{% if request.page_type == 'product' %} fetchpriority="high"{% endif %}{% else %}loading="lazy"{% endif %}
                decoding="async">
         {%- endunless -%}
       {%- endif -%}

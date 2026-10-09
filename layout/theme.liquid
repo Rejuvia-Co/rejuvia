@@ -1,36 +1,26 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-  
-{% render 'skio-head' %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% include 'dataLayer-allPages' %}
+  {% render 'skio-head' %}
 
   <meta name="robots" content="index,follow" />
   <meta name="p:domain_verify" content="5bf1b1953f372700ea99b8077d51896f" />
   <meta name="facebook-domain-verification" content="83oi8yqil0ha2pgr9sit7bgxfv8dcr" />
   <meta name="google-site-verification" content="XM6h9jLMM-HNdEytyhvpQtsP3_rgxIxUHyL6FS3qGmY" />
-  <meta charset="UTF-8">
 
-  <!-- Preconnect to improve CDN connection times -->
-  {%- comment -%} Skio's subscription plan-picker only renders on the product page,
-    so warm its rules API connection there only (site-wide it just wasted a socket
-    on every non-PDP page and counted against the browser's preconnect budget).
-    crossorigin is correct here: get-rules-by-domain is a CORS fetch. {%- endcomment -%}
   {%- if template.name == 'product' -%}
     <link rel="preconnect" href="https://api.skio.com" crossorigin>
   {%- endif -%}
 
-<!-- Theme settings for JavaScript -->
   <script>
     window.THEME_SETTINGS = {
       allow_ajax_cart: {{ settings.allow_ajax_cart | json }}
     };
-
   </script>
-
-  <!-- Modern interactions - vanilla JS, loads immediately -->
-  <script src="{{ 'modern-interactions.js' | asset_url }}"></script>
+  <script src="{{ 'modern-interactions.js' | asset_url }}" defer></script>
 
   {%- if template == 'index' -%}
     <title>{{ page_title }}</title>
@@ -41,7 +31,6 @@
   {%- endif -%}
 
   <meta name="description" content="{{ page_description | default: page_title }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="{{ canonical_url }}" />
   <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
 
@@ -49,18 +38,12 @@
   {%- include 'fonts' -%}
   {% render 'head-styles' %}
 
-  {%- comment -%} Site-wide section-title typography. One toggle (Customizer > Theme settings > Fonts > Section Titles) restyles every section title's font/weight/letter-spacing. Each section keeps its own font SIZE (desktop + mobile). {%- endcomment -%}
   <style>
     :root {
       --rj-title-font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --rj-title-weight: {{ settings.section_title_weight | default: 600 }};
       --rj-title-letter-spacing: {{ settings.section_title_letter_spacing | default: 'normal' }};
     }
-
-    /* Unify every section title (font family, weight, letter-spacing) from the
-       vars above. `body :is()` + !important guarantees this wins over each
-       section's own rules. Font-size, line-height and color are intentionally
-       NOT set here, so every section keeps its own sizes. */
     body :is(
       .hero-v2-heading,
       .rs-v2-heading,
@@ -96,15 +79,7 @@
   </style>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-
-  <!-- jQuery stays synchronous: many inline scripts call $() during parse
-       (product widget, cart, FAQs, account menu). Positioned late in head. -->
   <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-
-  <!-- vendor (Slick/tingle/PhotoSwipe), ProductJs and custom sliders are only
-       used inside $(document).ready / $(function(){}) callbacks, which fire at
-       DOMContentLoaded — strictly after deferred scripts execute. So defer them
-       off the critical render path (~228KB) without breaking any inline caller. -->
   <script src="{{ 'vendor.js' | asset_url }}" defer></script>
   <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
   <script src="{{ 'custom.js' | asset_url }}" defer></script>
@@ -119,15 +94,14 @@
 
   {%- render 'structured_data', data: 'shop' -%}
 
-  {% if template contains 'page.ingredients' %}
-  <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
-  {% endif %}
+  {%- if template contains 'page.ingredients' -%}
+    <link rel="stylesheet" href="{{ 'page-ingredients.css' | asset_url }}">
+  {%- endif -%}
 
-  {% if template contains 'cart' %}
-  <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'okendo-cart.css' | asset_url }}">
-  {% endif %}
-
+  {%- if template contains 'cart' -%}
+    <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'okendo-cart.css' | asset_url }}">
+  {%- endif -%}
 </head>
 
 <body class="template{{ template | split: '.' | first | camelize }}{% if customer %} customer-logged-in{% endif %} {{ template.suffix }} template--{{ template.name }} {% if template.name == 'cart' and cart.item_count == 0 %} template--{{ template.name }}--empty {% endif %}">
@@ -142,34 +116,19 @@
     </main>
     {% sections 'footer-group' %}
 
-
     <div id="loading-overlay">
       <div class="loader"></div>
     </div>
   </div>
 
-  {%- if settings.grid_product_image_behavior == "thumbs_swatches" -%}
-    {%- if template == 'product' and settings.show_related_products -%}
-      {%- include 'thumbs_swatches_js' -%}
-    {%- elsif template == "index" or template == 'search' or template == 'collection' -%}
-      {%- include 'thumbs_swatches_js' -%}
-    {%- endif -%}
-  {%- endif -%}
-  {%- if template contains 'product' or template contains 'collection' or template == "index" -%}
-    {%- include 'photoswipe' -%}
-  {%- endif -%}
-
   {% render 'content_for_footer' %}
 
-  <!-- Initialize add to cart with settings -->
   <script>
-    if (window.ModernInteractions) {
-      {%- if settings.allow_ajax_cart -%}
-        window.ModernInteractions.initAddToCart(true);
-      {%- else -%}
-        window.ModernInteractions.initAddToCart(false);
-      {%- endif -%}
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.ModernInteractions) {
+        window.ModernInteractions.initAddToCart({{ settings.allow_ajax_cart | json }});
+      }
+    });
   </script>
 </body>
 </html>

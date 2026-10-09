@@ -44,12 +44,12 @@
         {%- for part in (1..total_pages) -%}
           {%- if total_pages <= 4 -%}
 
-            <a href="{{ '/blogs/' | append: blog.title | downcase | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
+            <a href="{{ '/blogs/' | append: blog.handle | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
               <span>{{ part }}</span>
             </a>
           {%- else -%}
             {%- if part == 1 or part == total_pages or part == current_page or part == previous_page or part == next_page -%}
-              <a href="{{ '/blogs/' | append: blog.title | downcase | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
+              <a href="{{ '/blogs/' | append: blog.handle | append: '?page=' | append: part }}" class="{% if part == current_page %}active{% endif %}">
                 <span>{{ part }}</span>
               </a>
             {%- elsif part == before_previous_page or part == after_next_page -%}

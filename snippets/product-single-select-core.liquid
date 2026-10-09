@@ -449,12 +449,12 @@
                     </div>
 
                     <div class="block-buy-buttons pss-cta-wrap">
-                      {%- comment -%} A real form with a submit button so product-sticky-cta-v2's
+                      {%- comment -%} A real form with a submit button so the sticky bar's
                          "click the main form's submit button" hook drives this CTA too. {%- endcomment -%}
                       <form class="add-to-cart-form pss-form" action="/cart/add" method="post" data-pss-form>
                         <button type="submit" class="pss-buy" data-pss-buy>
                           <span class="pss-buy__spinner" aria-hidden="true"></span>
-                          <span class="pss-buy__label">{{ block.settings.button_text | default: 'BUY NOW' }}</span>
+                          <span class="pss-buy__label">{{ block.settings.button_text | default: 'ADD TO CART' }}</span>
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                       </form>
@@ -502,7 +502,7 @@
                     {%- endif -%}
                     {%- if section.settings.one_time_display == 'link' -%}
                       <div class="pss-buyonce">
-                        <a href="/cart/{{ unit_variant.id }}:1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ unit_variant.id }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ unit_price | money }}</a>
+                        <a href="/cart/add?id={{ unit_variant.id }}&quantity=1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ unit_variant.id }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ unit_price | money }}</a>
                       </div>
                     {%- endif -%}
 
@@ -533,7 +533,7 @@
     return tiers[0];
   }
 
-  /* Tells product-sticky-cta-v2 (and anything else listening) the selected
+  /* Tells any sticky bar (or anything else listening) the selected
      tier's price, in cents, the same event the classic variant selector fires. */
   function announce(t) {
     if (!t) return;
@@ -567,24 +567,21 @@
   tiers.forEach(function (t) { t.querySelector('input').addEventListener('change', sync); });
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', sync); } else { sync(); }
 
-  /* Build the cart (paid units on the plan + free one-time units), clear the
-     old cart, then go to checkout with the tier's discount code applied --
-     same flow as offer-block-d3v1. */
-  function checkout(items, code, btn) {
-    var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
+  /* Add the tier to the cart (paid units on the plan + any free one-time
+     units) and go to the cart page, with the tier's discount code applied
+     when it has one. Doesn't empty the cart first, so anything already in it stays. */
+  function addAndGoToCart(items, code, btn) {
+    var cartUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/cart') : '/cart';
     if (btn) { btn.disabled = true; btn.classList.add('is-loading'); }
-    fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
-      .then(function () {
-        return fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: items })
-        });
-      })
-      .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: items })
+    })
+      .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = cartUrl; })
       .catch(function () {
         if (btn) { btn.disabled = false; btn.classList.remove('is-loading'); }
-        window.location.href = checkoutUrl;
+        window.location.href = cartUrl;
       });
   }
 
@@ -595,7 +592,7 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      /* The form keeps .add-to-cart-form so product-sticky-cta-v2 can find its
+      /* The form keeps .add-to-cart-form so the sticky bar's add-to-cart mode can find its
          button, but modern-interactions.js also listens for that class on
          document and alerts "You must select a ." (no input[name=id] here).
          Stop the event before it bubbles up to that handler. */
@@ -613,14 +610,14 @@
       /* Free units are always the 1-pack, even when the paid line is a 90/180 pack. */
       var freeVariant = parseInt(t.getAttribute('data-free-variant'), 10) || variantId;
       if (free > 0) { items.push({ id: freeVariant, quantity: free }); }
-      checkout(items, (t.getAttribute('data-code') || '').trim(), buy);
+      addAndGoToCart(items, (t.getAttribute('data-code') || '').trim(), buy);
     });
   }
 
   if (buyOnce) {
     buyOnce.addEventListener('click', function (e) {
       e.preventDefault();
-      checkout([{ id: parseInt(buyOnce.getAttribute('data-variant'), 10), quantity: 1 }], '', null);
+      addAndGoToCart([{ id: parseInt(buyOnce.getAttribute('data-variant'), 10), quantity: 1 }], '', null);
     });
   }
 

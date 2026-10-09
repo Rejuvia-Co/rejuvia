@@ -92,12 +92,12 @@
   border-radius: 14px;
   background: #f9f6fc;
   color: #4c1c4f;
-  font-size: 14.5px;
+  font-size: 16px;
   line-height: 1.35;
   text-align: left;
 }
 .pss .pss-urgency svg { flex: none; width: 20px; height: 20px; }
-.pss .pss-urgency b { font-weight: 700; }
+.pss .pss-urgency b { font-weight: 700; white-space: nowrap; }
 
 /* ---- Divider ---- */
 .pss .pss-divider {
@@ -382,14 +382,13 @@
 /* ---- Proof bar (under payment icons) ---- */
 .pss .product-wrap .product-info > .pss-proof {
   margin: 0 0 18px !important;
-  padding: 14px 16px;
+  padding: 14px 10px;
   border-radius: 14px;
   background: #efe5f3;
   color: #171512;
   font-size: 16px;
   line-height: 1.35;
   text-align: center;
-  text-wrap: balance;
 }
 .pss .pss-proof b,
 .pss .pss-proof strong { font-weight: 800; }
@@ -426,7 +425,7 @@
   .pss .block-product-specs .pw-benefits { gap: 8px 10px; }
   .pss .block-product-specs .pw-benefit { gap: 7px; font-size: 15px; line-height: 1.35; }
   .pss .block-product-specs .pw-benefit__check svg { width: 17px; height: 17px; }
-  .pss .pss-urgency { font-size: 12.5px; }
+  .pss .pss-urgency { font-size: 13.5px; }
   .pss .pss-divider__text { font-size: 12px; }
   .pss .pss-tier__row { gap: 10px; padding: 12px; }
   .pss .pss-tier__radio { width: 18px; height: 18px; }
@@ -442,5 +441,5 @@
   .pss .pss-tier__band-pill { font-size: 12px; }
   .pss .pss-buy { height: 54px; font-size: 15px; }
   .pss .pss-buyonce__link { font-size: 17px; }
-  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 12px 14px; border-radius: 12px; font-size: 14.5px; }
+  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 12px 8px; border-radius: 12px; font-size: 14.5px; }
 }

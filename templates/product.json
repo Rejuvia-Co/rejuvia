@@ -517,10 +517,19 @@
         "product_limit": 3
       }
     },
-    "product_sticky_cta_v2_1": {
-      "type": "product-sticky-cta-v2",
+    "product_sticky_bar": {
+      "type": "product-sticky-bar",
       "settings": {
-        "trigger_selector": ".product-widget-container .block-buy-buttons"
+        "rating_text": "<b>4.6</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+        "cta_text": "Save Up To 59% Today",
+        "pill_text": "2M SPRAYS SOLD",
+        "cta_action": "scroll",
+        "scroll_target": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container",
+        "text_color": "#141414",
+        "pill_bg": "#EAC78B",
+        "pill_text_color": "#2b0f2c",
+        "bg_color": "#f4eef7",
+        "cta_color": "#672666"
       }
     }
   },
@@ -536,6 +545,6 @@
     "okendo_reviews_app_1",
     "product_faqs_v2_jpe98j",
     "feature_products_v2_1",
-    "product_sticky_cta_v2_1"
+    "product_sticky_bar"
   ]
 }

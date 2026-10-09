@@ -1,0 +1,239 @@
+{%- comment -%}
+  Product sticky bar (Grüns-style): rating line + big CTA with a "sold" pill.
+  Fixed to the bottom of the screen on desktop and mobile. Appears once the
+  product widget has scrolled out of view, hides on scroll-up and over the
+  footer. Replaces the old product-sticky-cta-v2 bar.
+  The .psb class also switches on the header's hide-on-scroll (sections/header.liquid).
+
+  Colours follow the product:
+    bar background = custom.sub_base_color (or sub_base_colour)
+    CTA + stars    = custom.base_colour
+{%- endcomment -%}
+
+{%- liquid
+  assign psb_bg = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value
+  assign psb_bg = psb_bg | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: section.settings.bg_color
+  assign psb_cta = product.metafields.custom.base_colour | default: section.settings.cta_color
+-%}
+
+<style>
+.psb {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform .4s ease;
+}
+.psb.is-visible { transform: translateY(0); }
+.psb__bar {
+  pointer-events: auto;
+  background: var(--psb-bg);
+  box-shadow: 0 -4px 18px -4px rgba(0, 0, 0, .14);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--psb-text);
+}
+.psb__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px max(48px, env(safe-area-inset-right)) 18px max(48px, env(safe-area-inset-left));
+}
+
+/* Rating line: stars + one line of text */
+.psb__rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  white-space: nowrap;
+}
+.psb__stars { display: inline-flex; gap: 2px; flex: none; color: var(--psb-cta); }
+.psb__stars svg { display: block; width: 20px; height: 18px; }
+.psb__text {
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: .1px;
+}
+.psb__text b, .psb__text strong { font-weight: 800; }
+
+/* CTA with the pill sitting on its top edge */
+.psb__cta {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 440px;
+  height: 68px;
+  margin: 0;
+  padding: 0 40px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--psb-cta);
+  color: #fff;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .1px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter .16s cubic-bezier(.22,1,.36,1);
+}
+.psb__cta:hover { filter: brightness(1.08); }
+.psb__pill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: var(--psb-pill-bg);
+  color: var(--psb-pill-text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Mobile: CTA on top (full width), rating line under it */
+@media (max-width: 749px) {
+  .psb__inner {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 14px;
+    padding: 24px 18px max(14px, env(safe-area-inset-bottom));
+  }
+  .psb__cta {
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    padding: 0 20px;
+    font-size: 19px;
+  }
+  .psb__pill { font-size: 12px; padding: 3px 12px; }
+  .psb__rating { justify-content: center; gap: 6px; }
+  /* Stars + "4.6 stars | 7,500+ reviews | 500,000+ customers" on one line down to 360px. */
+  .psb__stars { gap: 1px; }
+  .psb__stars svg { width: clamp(10px, 3vw, 15px); height: auto; }
+  .psb__text { font-size: clamp(11px, 3.25vw, 15px); }
+}
+</style>
+
+<div class="psb" data-psb
+     style="--psb-bg: {{ psb_bg }}; --psb-cta: {{ psb_cta }}; --psb-text: {{ section.settings.text_color }}; --psb-pill-bg: {{ section.settings.pill_bg }}; --psb-pill-text: {{ section.settings.pill_text_color }};">
+  <div class="psb__bar">
+    <div class="psb__inner">
+      {%- if section.settings.rating_text != blank -%}
+        <div class="psb__rating">
+          <span class="psb__stars" aria-hidden="true">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 18 16" fill="none"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="currentColor"/></svg>
+            {%- endfor -%}
+          </span>
+          <span class="psb__text">{{ section.settings.rating_text }}</span>
+        </div>
+      {%- endif -%}
+      <button type="button" class="psb__cta" data-psb-cta>
+        {%- if section.settings.pill_text != blank -%}<span class="psb__pill">{{ section.settings.pill_text }}</span>{%- endif -%}
+        {{ section.settings.cta_text }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var bar = document.querySelector('[data-psb]');
+  if (!bar) return;
+
+  /* Show once the product widget is fully scrolled past; hide on scroll-up
+     (so it never stacks with the header) and while the footer is on screen. */
+  var lastY = window.scrollY;
+  function eligible() {
+    var widget = document.querySelector('.product-widget-container');
+    if (widget && widget.getBoundingClientRect().bottom >= 0) return false;
+    var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
+    if (footer && footer.getBoundingClientRect().top < window.innerHeight) return false;
+    return true;
+  }
+  function check() {
+    var y = window.scrollY, delta = y - lastY;
+    lastY = y;
+    if (!eligible()) { bar.classList.remove('is-visible'); return; }
+    if (delta > 4) bar.classList.add('is-visible');
+    else if (delta < -4) bar.classList.remove('is-visible');
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+  check();
+
+  var cta = bar.querySelector('[data-psb-cta]');
+  var action = {{ section.settings.cta_action | json }};
+  var targets = {{ section.settings.scroll_target | json }}.split(',');
+  cta.addEventListener('click', function () {
+    if (action === 'add_to_cart') {
+      /* Same as the old bar: press the product widget's own buy button. */
+      var mainBtn = document.querySelector('.product-widget-container .add-to-cart-form button[type="submit"]')
+                 || document.querySelector('.add-to-cart-form button.btn');
+      if (mainBtn) { mainBtn.click(); return; }
+    }
+    /* Scroll back up to the offer selector (first target that exists). */
+    for (var i = 0; i < targets.length; i++) {
+      var el = targets[i].trim() && document.querySelector(targets[i].trim());
+      if (el) {
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
+        bar.classList.remove('is-visible');
+        return;
+      }
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Sticky Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Fixed to the bottom of the screen after the product widget is scrolled past. Bar background = product's custom.sub_base_color; button + stars = custom.base_colour."
+    },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating line", "default": "<b>4.6</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers" },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Save Up To 59% Today" },
+    { "type": "text", "id": "pill_text", "label": "Pill text (on the button)", "default": "2M SPRAYS SOLD" },
+    {
+      "type": "select",
+      "id": "cta_action",
+      "label": "Button action",
+      "default": "scroll",
+      "options": [
+        { "value": "scroll", "label": "Scroll up to the offer" },
+        { "value": "add_to_cart", "label": "Add to cart (press the widget's buy button)" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "scroll_target",
+      "label": "Scroll target (CSS selectors, first match wins)",
+      "default": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container"
+    },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "text_color", "label": "Rating text", "default": "#141414" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#EAC78B" },
+    { "type": "color", "id": "pill_text_color", "label": "Pill text", "default": "#2b0f2c" },
+    { "type": "color", "id": "bg_color", "label": "Bar background fallback", "info": "Used when the product has no sub_base_color.", "default": "#f4eef7" },
+    { "type": "color", "id": "cta_color", "label": "Button fallback", "info": "Used when the product has no base_colour.", "default": "#672666" }
+  ],
+  "presets": [{ "name": "Product Sticky Bar" }]
+}
+{% endschema %}

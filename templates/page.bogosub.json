@@ -15,7 +15,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Rejuvia_sleep_offer.webp"
+            "image": "shopify://shop_images/sleep_spray_bogo.webp"
           }
         },
         "slide_3": {
@@ -162,13 +162,13 @@
         "reviews_label": "<p><strong>7,500+</strong> trusted reviews</p>",
         "customers_label": "<p><strong>500,000+</strong> customers</p>",
         "headline": "Save Up To 50% Off + Get Up To 3 Bottles FREE",
-        "subtitle": "With today's Buy One, Get One FREE on Rejuvia™ Sleep Spray (<b>$15/spray</b>)",
+        "subtitle": "With today's Buy One, Get One FREE on Rejuvia™ Sleep Spray ($15/spray)",
         "headline_size": 42,
         "headline_size_mobile": 29,
         "subtitle_size": 18,
         "subtitle_size_mobile": 15,
         "urgency_text": "Order within the next hour — by {cutoff} — and it ships by {date}",
-        "default_tier": 2,
+        "default_tier": 1,
         "add_quantity": 2,
         "tier_title_size": 22,
         "tier_title_size_mobile": 19,
@@ -401,6 +401,8 @@
         "quote_size_desktop": 20,
         "quote_size_mobile": 20,
         "logo_max_height": 48,
+        "logo_max_width": 130,
+        "mute_logos": true,
         "autoplay": false,
         "autoplay_seconds": 6,
         "max_width": 1160,

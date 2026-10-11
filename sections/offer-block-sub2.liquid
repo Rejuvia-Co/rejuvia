@@ -282,7 +282,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
       {%- assign pbnc = pb_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
       {%- assign pb_pct = 0 -%}{%- if pbnc > pbnp and pbnc > 0 -%}{%- assign pb_pct = pbnc | minus: pbnp | times: 100.0 | divided_by: pbnc | round -%}{%- endif -%}
-      {%- capture pb_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - $15/Spray{%- endif -%}{%- endcapture -%}
+      {%- capture pb_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
       {%- if section.settings.show_pricebar -%}
       <div class="obs__pricebar">
         <span class="obs__pb-price" data-obs-pb-price>{{ pb_price | strip }}</span>
@@ -381,7 +381,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign tnp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign tnc = tier_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign tpct = 0 -%}{%- if tnc > tnp and tnc > 0 -%}{%- assign tpct = tnc | minus: tnp | times: 100.0 | divided_by: tnc | round -%}{%- endif -%}
-          {%- capture tier_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - $15/Spray{%- endif -%}{%- endcapture -%}
+          {%- capture tier_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
 
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"

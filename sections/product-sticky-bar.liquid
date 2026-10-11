@@ -176,9 +176,27 @@
      it sits at the top). On the homepage, where the buy box is further down, it
      also shows once the visitor has scrolled past the first screen. */
   var revealSel = {{ section.settings.reveal_after_selector | default: '' | json }};
+  var persist = {{ section.settings.persist_visible | default: false | json }};
+  function footerVisible() {
+    var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
+    return !!(footer && footer.getBoundingClientRect().top < window.innerHeight);
+  }
   function eligible() {
-    /* Offer/landing pages: only reveal once the viewer is 50% past a chosen
-       section (e.g. the 2nd content block). */
+    if (persist) {
+      /* Offer/landing pages: show once the anchor (e.g. the offer's Buy Now
+         button) is fully scrolled past the top of the screen; hide again if it
+         scrolls back into view or the footer appears. Stays put while scrolling
+         up (the site nav never comes back in its place). */
+      if (revealSel) {
+        var a = document.querySelector(revealSel);
+        if (!a) return false;
+        if (a.getBoundingClientRect().bottom > 0) return false;
+      }
+      if (footerVisible()) return false;
+      return true;
+    }
+    /* Legacy (product/homepage) behavior: reveal once 50% past a chosen section
+       and once the product widget has scrolled out of view. */
     if (revealSel) {
       var ra = document.querySelector(revealSel);
       if (!ra) return false;
@@ -191,14 +209,14 @@
       if (r.bottom >= 0 && r.top < window.innerHeight) return false;
     }
     if (window.scrollY < {{ section.settings.show_after | default: 500 }}) return false;
-    var footer = document.querySelector('.footer-v2') || document.querySelector('footer');
-    if (footer && footer.getBoundingClientRect().top < window.innerHeight) return false;
+    if (footerVisible()) return false;
     return true;
   }
   function check() {
     var y = window.scrollY, delta = y - lastY;
     lastY = y;
     if (!eligible()) { bar.classList.remove('is-visible'); return; }
+    if (persist) { bar.classList.add('is-visible'); return; }
     if (delta > 4) bar.classList.add('is-visible');
     else if (delta < -4) bar.classList.remove('is-visible');
   }
@@ -273,7 +291,14 @@
       "type": "text",
       "id": "reveal_after_selector",
       "label": "Reveal after 50% past this element (CSS selector)",
-      "info": "Optional. The bar stays hidden until the viewer scrolls halfway past this element, e.g. #shopify-section-<id> of the 2nd section. Leave blank for the default behavior."
+      "info": "Optional. The bar stays hidden until the viewer scrolls halfway past this element, e.g. #shopify-section-<id> of the 2nd section. Leave blank for the default behavior. When 'Stay visible on scroll-up' is on, this is the anchor element (e.g. the offer's Buy Now button) — the bar shows once it is fully scrolled past and hides when it returns."
+    },
+    {
+      "type": "checkbox",
+      "id": "persist_visible",
+      "label": "Stay visible on scroll-up (offer pages)",
+      "info": "The bar appears once the anchor element above is scrolled fully past the top, stays put in both scroll directions, and only hides over the offer section (the anchor) and the footer.",
+      "default": false
     },
     {
       "type": "inline_richtext",

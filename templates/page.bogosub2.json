@@ -188,14 +188,17 @@
         "tab_body_size_mobile": 16,
         "show_trusted": true,
         "trusted_title": "Trusted by 500K+ customers",
-        "trusted_subtext": "who use Rejuvia to fall asleep faster and sleep the full night",
+        "trusted_subtext": "who use Rejuvia to sleep through the entire night",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
         "trusted_check": "#34c759",
         "section_bg": "#ffffff",
-        "social_text": "<p>Used Nightly By Michelle R. and <strong>500k+</strong> Others</p>"
+        "social_text": "<p>Used Nightly By Michelle R. and <strong>500k+</strong> Others</p>",
+        "scarcity_label": "",
+        "scarcity_text": "Selling Out Fast Due To High Demand",
+        "outcome_title": "After 6-8 sprays under your tongue..."
       }
     },
     "customer_testimonials_video_b39r9z": {
@@ -719,7 +722,8 @@
         "cta_fallback": "Claim Your BOGO Offer",
         "pill_text": "BUY ONE GET ONE FREE",
         "cta_action": "scroll",
-        "scroll_target": "#offer"
+        "scroll_target": "#offer",
+        "reveal_after_selector": "#shopify-section-customer_testimonials_video_b39r9z"
       }
     }
   },

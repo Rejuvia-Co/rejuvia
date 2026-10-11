@@ -175,7 +175,17 @@
   /* Hidden while the buy box is on screen (and above it on product pages, where
      it sits at the top). On the homepage, where the buy box is further down, it
      also shows once the visitor has scrolled past the first screen. */
+  var revealSel = {{ section.settings.reveal_after_selector | default: '' | json }};
   function eligible() {
+    /* Offer/landing pages: only reveal once the viewer is 50% past a chosen
+       section (e.g. the 2nd content block). */
+    if (revealSel) {
+      var ra = document.querySelector(revealSel);
+      if (ra) {
+        var rr = ra.getBoundingClientRect();
+        if (rr.top + rr.height / 2 > 0) return false;
+      }
+    }
     var widget = document.querySelector('.product-widget-container');
     if (widget) {
       var r = widget.getBoundingClientRect();
@@ -259,6 +269,12 @@
       "label": "Keep the site header hidden on scroll (don't reveal on scroll-up)",
       "info": "For offer/landing pages where the sticky bar replaces the nav. The header still shows at the very top.",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "reveal_after_selector",
+      "label": "Reveal after 50% past this element (CSS selector)",
+      "info": "Optional. The bar stays hidden until the viewer scrolls halfway past this element, e.g. #shopify-section-<id> of the 2nd section. Leave blank for the default behavior."
     },
     {
       "type": "inline_richtext",

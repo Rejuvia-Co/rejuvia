@@ -24,6 +24,12 @@
             "image": "shopify://shop_images/sleep-spray-review.webp"
           }
         },
+        "slide_rWW9c6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep-spray-quality.webp"
+          }
+        },
         "slide_2": {
           "type": "slide",
           "settings": {
@@ -136,6 +142,7 @@
       "block_order": [
         "slide_1",
         "slide_3",
+        "slide_rWW9c6",
         "slide_2",
         "slide_4",
         "slide_5",
@@ -151,7 +158,6 @@
       ],
       "name": "Offer Block SUB",
       "settings": {
-        "open_first_tab": false,
         "product": "sleep-spray-copy",
         "gallery_bg": "#f8efe4",
         "gallery_fit": "cover",
@@ -159,7 +165,7 @@
         "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#fab851",
-        "rating_label": "Excellent <strong>4.5</strong>",
+        "rating_label": "Excellent 4.5",
         "reviews_label": "<p><strong>7,500+</strong> Reviews</p>",
         "customers_label": "<p><strong>500,000+</strong> Customers</p>",
         "headline": "Buy One, Get One Free — Fall Asleep in 10 Minutes",
@@ -174,6 +180,7 @@
         "tier_title_size": 22,
         "tier_title_size_mobile": 21,
         "button_prefix": "BUY NOW —",
+        "open_first_tab": false,
         "checkout_discount_code": "",
         "use_manual_prices": false,
         "guarantee_text": "90-Day Money Back Guarantee",

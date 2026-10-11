@@ -171,7 +171,7 @@
         "default_tier": 1,
         "add_quantity": 2,
         "tier_title_size": 22,
-        "tier_title_size_mobile": 19,
+        "tier_title_size_mobile": 21,
         "button_prefix": "BUY NOW —",
         "checkout_discount_code": "",
         "use_manual_prices": false,

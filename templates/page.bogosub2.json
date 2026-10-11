@@ -187,7 +187,7 @@
         "scarcity_percent": 89,
         "checkout_discount_code": "",
         "use_manual_prices": false,
-        "guarantee_text": "90-Day Money Back Guarantee",
+        "guarantee_text": "90-Day Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "onetime_text": "One-Time Purchase (No Subscriptions)",
         "show_payment_icons": true,

@@ -185,9 +185,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__lowstock { margin: 2px 0; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #c0392b; }
 
 /* v2: guarantee line under CTA */
-.obs__cta-guarantee { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
-.obs__cta-g-item { display: inline-flex; align-items: center; gap: 7px; }
-.obs__cta-sep { width: 1px; height: 13px; background: #cfc9d6; flex: none; }
+.obs__cta-guarantee { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 18px; margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.obs__cta-g-item { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
 .obs__cta-guarantee svg { flex: none; }
 
 /* v2: stock scarcity bar under CTA */
@@ -217,6 +216,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__pb-struck { font-size: clamp(17px, 5.4vw, 21px); }
   .obs__pb-pill { padding: 5px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
   .obs__outcome-item { font-size: 17px; }
+  .obs__servings { font-size: 14px; }
+  .obs__cta-guarantee { gap: 13px; font-size: 12px; }
   .obs__urgency { font-size: 14px; padding: 11px 13px; margin-top: 16px; }
   .obs__tiers { gap: 14px; margin-top: 14px; }
   .obs__row { gap: 10px; padding: 12px; }
@@ -434,9 +435,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#4a4a4a" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-5" stroke-linecap="round"/></svg>
                 <span>{{ section.settings.guarantee_text }}</span>
               </span>
-            {%- endif -%}
-            {%- if section.settings.guarantee_text != blank and section.settings.guarantee_text_2 != blank -%}
-              <span class="obs__cta-sep" aria-hidden="true"></span>
             {%- endif -%}
             {%- if section.settings.guarantee_text_2 != blank -%}
               <span class="obs__cta-g-item">
@@ -905,7 +903,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "type": "text",
       "id": "guarantee_text",
       "label": "Trust line 1",
-      "default": "90-Day Money Back Guarantee"
+      "default": "90-Day Guarantee"
     },
     {
       "type": "text",

@@ -51,7 +51,7 @@
             "label": "Buy 1, Get 1 FREE",
             "image_asset": "rejuvia-bundle-b1g1.webp",
             "price": "$30",
-            "compare_price": "",
+            "compare_price": "$60",
             "savings_text": "SAVE $30",
             "free_shipping": false,
             "badge": "",

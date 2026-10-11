@@ -60,12 +60,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
    this restores it so only the active slide renders */
 .obs__main img[data-obs-main][hidden] { display: none; }
 .obs__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
-.obs__arrow { flex: none; width: 30px; height: 30px; border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background .14s ease; }
-.obs__arrow:hover { background: #f6eef6; }
-.obs__arrow svg { width: 14px; height: 14px; display: block; }
+.obs__arrow { flex: none; width: 28px; height: 28px; border: none; background: none; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: color .14s ease; }
+.obs__arrow:hover { color: #4a1a4c; }
+.obs__arrow svg { width: 18px; height: 18px; display: block; }
 .obs__thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; max-width: 100%; }
 .obs__thumbs::-webkit-scrollbar { display: none; }
-.obs__thumb { flex: none; width: 48px; height: 48px; border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
+.obs__thumb { flex: none; width: 57px; height: 57px; border: 1px solid #e9e4f0; border-radius: 12px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
 .obs__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .obs__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
 .obs__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
@@ -125,9 +125,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 @keyframes obs-spin { to { transform: rotate(360deg); } }
 
 /* ---- Sub-CTA trust rows ---- */
-.obs__trust { --tt: uppercase; --ls: .6px; display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-top: 16px; font-size: 11px; font-weight: 700; color: #4a4550; }
+.obs__trust { --tt: uppercase; --ls: .6px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 16px; font-size: 13px; font-weight: 700; color: #4a4550; }
 .obs__trust span.obs__check { color: #672666; }
-.obs__trust-item { display: inline-flex; align-items: center; gap: 6px; }
+.obs__trust-item { display: inline-flex; align-items: center; gap: 5px; }
 .obs__trust-item img { width: 15px; height: 15px; object-fit: contain; display: block; }
 .obs__payments { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
 .obs__payments svg { height: 24px; width: auto; display: block; }
@@ -179,7 +179,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__ship { font-size: 12px; }
   .obs__badge { right: 12px; font-size: 9.5px; }
   .obs__buy { height: 58px; font-size: 17px; --ls: 1.1px; box-shadow: none; }
-  .obs__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; --ls: .5px; }
+  .obs__trust { flex-direction: column; align-items: center; gap: 6px; font-size: 12.5px; --ls: .5px; }
   .obs__payments { gap: 5px; margin-top: 10px; }
   .obs__payments svg { height: 22px; }
   .obs__proof { padding: 13px 14px; gap: 12px; }

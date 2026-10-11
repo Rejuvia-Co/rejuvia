@@ -15,7 +15,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/sleep_spray_bogo.webp"
+            "image": "shopify://shop_images/sleep_spray.webp"
           }
         },
         "slide_3": {
@@ -151,21 +151,20 @@
       ],
       "name": "Offer Block SUB",
       "settings": {
-        "open_first_tab": false,
         "product": "sleep-spray-copy",
-        "gallery_bg": "#f8efe4",
+        "gallery_bg": "#FFFFFF",
         "gallery_fit": "cover",
         "gallery_width": 560,
         "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#fab851",
-        "rating_label": "Excellent <strong>4.5</strong>",
+        "rating_label": "Excellent 4.5",
         "reviews_label": "<p><strong>7,500+</strong> Reviews</p>",
         "customers_label": "<p><strong>500,000+</strong> Customers</p>",
-        "headline": "Fall Asleep in 10 Minutes and Sleep Through the Night",
-        "subtitle": "$15 a spray. One-time purchase, backed by our 90-day money-back guarantee.",
-        "headline_size": 35,
-        "headline_size_mobile": 20,
+        "headline": "Fall Asleep in 10–15 Minutes With Rejuvia's All-Natural Sleep Spray",
+        "subtitle": "It's incredible how effective the Rejuvia Sleep Spray is. Try it risk-free with our one-time purchase BOGO offer until stock runs out.",
+        "headline_size": 36,
+        "headline_size_mobile": 21,
         "subtitle_size": 18,
         "subtitle_size_mobile": 14,
         "urgency_text": "Order within the next hour — by {cutoff} — and it ships by {date}",
@@ -174,6 +173,15 @@
         "tier_title_size": 22,
         "tier_title_size_mobile": 21,
         "button_prefix": "BUY NOW —",
+        "open_first_tab": false,
+        "show_pricebar": true,
+        "sale_label": "FALL SALE",
+        "social_text": "<p>Used Nightly By Michelle R. and <strong>500k+</strong> Other Customers</p>",
+        "outcome_title": "After just 6-8 squirts under your tongue...",
+        "outcome_items": "Quiet your mind and calm stress\nFall asleep in 10–15 minutes\nSleep through the full night\nWake up with refreshing energy",
+        "scarcity_label": "",
+        "scarcity_text": "Selling Out Fast Due To High Demand",
+        "scarcity_percent": 89,
         "checkout_discount_code": "",
         "use_manual_prices": false,
         "guarantee_text": "90-Day Money Back Guarantee",
@@ -194,11 +202,7 @@
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
         "trusted_check": "#34c759",
-        "section_bg": "#ffffff",
-        "social_text": "<p>Used Nightly By Michelle R. and <strong>500k+</strong> Others</p>",
-        "scarcity_label": "",
-        "scarcity_text": "Selling Out Fast Due To High Demand",
-        "outcome_title": "After 6-8 sprays under your tongue..."
+        "section_bg": "#ffffff"
       }
     },
     "customer_testimonials_video_b39r9z": {
@@ -716,6 +720,7 @@
         "product": "sleep-spray-copy",
         "show_after": 500,
         "lock_header_hidden": true,
+        "reveal_after_selector": "[id*=\"customer_testimonials_video\"]",
         "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
         "rating_fallback": "4.5",
         "cta_text": "Claim Your BOGO Offer",
@@ -723,7 +728,11 @@
         "pill_text": "BUY ONE GET ONE FREE",
         "cta_action": "scroll",
         "scroll_target": "#offer",
-        "reveal_after_selector": "[id*=\"customer_testimonials_video\"]"
+        "text_color": "#141414",
+        "pill_bg": "#eac78b",
+        "pill_text_color": "#2b0f2c",
+        "bg_color": "#f4eef7",
+        "cta_color": "#672666"
       }
     }
   },

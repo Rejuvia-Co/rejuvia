@@ -151,6 +151,7 @@
       ],
       "name": "Offer Block SUB",
       "settings": {
+        "open_first_tab": false,
         "product": "sleep-spray-copy",
         "gallery_bg": "#f8efe4",
         "gallery_fit": "cover",

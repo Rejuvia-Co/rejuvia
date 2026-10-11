@@ -380,8 +380,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign tab_n = 0 -%}
           {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
             {%- assign tab_n = tab_n | plus: 1 -%}
-            <div class="obs__tab{% if tab_n == 1 %} is-open{% endif %}" {{ b.shopify_attributes }}>
-              <button type="button" class="obs__tab-q" aria-expanded="{% if tab_n == 1 %}true{% else %}false{% endif %}"><span>{{ b.settings.title }}</span>{{ obs_chevron }}</button>
+            {%- assign tab_open = false -%}{%- if tab_n == 1 and section.settings.open_first_tab -%}{%- assign tab_open = true -%}{%- endif -%}
+            <div class="obs__tab{% if tab_open %} is-open{% endif %}" {{ b.shopify_attributes }}>
+              <button type="button" class="obs__tab-q" aria-expanded="{% if tab_open %}true{% else %}false{% endif %}"><span>{{ b.settings.title }}</span>{{ obs_chevron }}</button>
               <div class="obs__tab-a"><div class="obs__tab-a-inner"><div class="obs__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
             </div>
           {%- endif -%}{%- endfor -%}
@@ -758,6 +759,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Button label prefix",
       "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.",
       "default": "BUY NOW —"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first_tab",
+      "label": "Open first accordion by default",
+      "default": true
     },
     {
       "type": "text",

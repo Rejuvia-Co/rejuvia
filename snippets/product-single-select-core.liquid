@@ -221,6 +221,16 @@
           assign tier_per_spray = tier_price | times: 1.0 | divided_by: total_qty | round
           assign tier_free_value = unit_price | times: free_qty
           comment
+            Free-shipping checkmark on tiers whose total clears the store's
+            free-shipping threshold (section setting, default $59). tier_price
+            is in cents, so compare against threshold * 100.
+          endcomment
+          assign free_ship_threshold_cents = section.settings.free_ship_threshold | default: 59 | times: 100
+          assign tier_free_ship = false
+          if tier_price > free_ship_threshold_cents and section.settings.free_ship_text != blank
+            assign tier_free_ship = true
+          endif
+          comment
             Servings count the paid sprays only (free ones show in the band).
           endcomment
           assign tier_servings = unit_servings | times: paid_qty
@@ -308,7 +318,7 @@
             </span>
           </span>
 
-          {%- if t_perks != blank -%}
+          {%- if t_perks != blank or tier_free_ship -%}
             {%- assign perk_lines = t_perks | newline_to_br | split: '<br />' -%}
             <span class="pss-tier__perks">
               {%- for line in perk_lines -%}
@@ -319,6 +329,9 @@
                   <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
                 {%- endif -%}
               {%- endfor -%}
+              {%- if tier_free_ship -%}
+                <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ section.settings.free_ship_text }}</span>
+              {%- endif -%}
             </span>
           {%- endif -%}
 

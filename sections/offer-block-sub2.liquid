@@ -104,7 +104,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__bundle { flex: none; width: 96px; height: auto; object-fit: contain; display: block; }
 .obs__tinfo { flex: 1; min-width: 0; text-align: left; }
 .obs__tname { --ls: -.3px; display: block; font-size: {{ section.settings.tier_title_size | default: 21 }}px; font-weight: 800; color: #672666; line-height: 1.2; white-space: nowrap; }
-.obs__servings { display: block; font-size: 13.5px; font-weight: 300; font-style: italic; color: #6a6673; line-height: 1.2; margin-top: 5px; }
+.obs__servings { display: block; font-size: 15px; font-weight: 300; font-style: italic; color: #6a6673; line-height: 1.2; margin-top: 5px; }
 .obs__prices { display: flex; align-items: center; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
 .obs__price { font-size: 29px; font-weight: 800; color: #171512; line-height: 1; }
 .obs__struck { font-size: 21px; color: #a9a3b2; text-decoration: line-through; }
@@ -176,16 +176,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* v2: outcome checklist */
 .obs__outcome { margin-top: 18px; }
-.obs__outcome-title { margin: 0 0 10px; font-size: 16px; font-weight: 800; color: #171512; }
+.obs__outcome-title { margin: 0 0 10px; font-size: 18px; font-weight: 800; color: #171512; }
 .obs__outcome-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-.obs__outcome-item { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.35; color: #171512; }
+.obs__outcome-item { display: flex; align-items: flex-start; gap: 10px; font-size: 17px; line-height: 1.35; color: #171512; }
 .obs__outcome-check { flex: none; margin-top: 1px; }
 
 /* v2: low-stock label above tiers */
 .obs__lowstock { margin: 2px 0; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #c0392b; }
 
 /* v2: guarantee line under CTA */
-.obs__cta-guarantee { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.obs__cta-guarantee { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
+.obs__cta-g-item { display: inline-flex; align-items: center; gap: 7px; }
+.obs__cta-sep { width: 1px; height: 13px; background: #cfc9d6; flex: none; }
 .obs__cta-guarantee svg { flex: none; }
 
 /* v2: stock scarcity bar under CTA */
@@ -214,7 +216,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__pb-price { font-size: clamp(23px, 7.2vw, 28px); }
   .obs__pb-struck { font-size: clamp(17px, 5.4vw, 21px); }
   .obs__pb-pill { padding: 5px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
-  .obs__outcome-item { font-size: 15px; }
+  .obs__outcome-item { font-size: 17px; }
   .obs__urgency { font-size: 14px; padding: 11px 13px; margin-top: 16px; }
   .obs__tiers { gap: 14px; margin-top: 14px; }
   .obs__row { gap: 10px; padding: 12px; }
@@ -425,10 +427,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
 
-        {%- if section.settings.guarantee_text != blank -%}
+        {%- if section.settings.guarantee_text != blank or section.settings.guarantee_text_2 != blank -%}
           <div class="obs__cta-guarantee">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#4a4a4a" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-5" stroke-linecap="round"/></svg>
-            <span>{{ section.settings.guarantee_text }}</span>
+            {%- if section.settings.guarantee_text != blank -%}
+              <span class="obs__cta-g-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#4a4a4a" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-5" stroke-linecap="round"/></svg>
+                <span>{{ section.settings.guarantee_text }}</span>
+              </span>
+            {%- endif -%}
+            {%- if section.settings.guarantee_text != blank and section.settings.guarantee_text_2 != blank -%}
+              <span class="obs__cta-sep" aria-hidden="true"></span>
+            {%- endif -%}
+            {%- if section.settings.guarantee_text_2 != blank -%}
+              <span class="obs__cta-g-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#4a4a4a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M5.5 5.5l13 13"/></svg>
+                <span>{{ section.settings.guarantee_text_2 }}</span>
+              </span>
+            {%- endif -%}
           </div>
         {%- endif -%}
 
@@ -891,6 +906,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "id": "guarantee_text",
       "label": "Trust line 1",
       "default": "90-Day Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text_2",
+      "label": "Trust line 2 (after divider)",
+      "default": "No Subscriptions"
     },
     {
       "type": "image_picker",

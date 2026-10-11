@@ -181,7 +181,7 @@
         "onetime_text": "One-Time Purchase (No Subscriptions)",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "proof_text": "<p><strong>Less than 1%</strong> of customers ever claim our 90-day money-back guarantee.</p>",
+        "proof_text": "",
         "tab_title_size": 20,
         "tab_title_size_mobile": 19,
         "tab_body_size": 17,

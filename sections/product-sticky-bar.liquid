@@ -181,10 +181,9 @@
        section (e.g. the 2nd content block). */
     if (revealSel) {
       var ra = document.querySelector(revealSel);
-      if (ra) {
-        var rr = ra.getBoundingClientRect();
-        if (rr.bottom > 0) return false;
-      }
+      if (!ra) return false;
+      var rr = ra.getBoundingClientRect();
+      if (rr.top + rr.height / 2 > 0) return false;
     }
     var widget = document.querySelector('.product-widget-container');
     if (widget) {

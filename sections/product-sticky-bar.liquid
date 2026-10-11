@@ -142,7 +142,7 @@
 }
 </style>
 
-<div class="psb" data-psb
+<div class="psb" data-psb{% if section.settings.lock_header_hidden %} data-psb-no-reveal{% endif %}
      style="--psb-bg: {{ psb_bg }}; --psb-cta: {{ psb_cta }}; --psb-text: {{ section.settings.text_color }}; --psb-pill-bg: {{ section.settings.pill_bg }}; --psb-pill-text: {{ section.settings.pill_text_color }};">
   <div class="psb__bar">
     <div class="psb__inner">
@@ -252,6 +252,13 @@
       "max": 2000,
       "step": 50,
       "default": 500
+    },
+    {
+      "type": "checkbox",
+      "id": "lock_header_hidden",
+      "label": "Keep the site header hidden on scroll (don't reveal on scroll-up)",
+      "info": "For offer/landing pages where the sticky bar replaces the nav. The header still shows at the very top.",
+      "default": false
     },
     {
       "type": "inline_richtext",

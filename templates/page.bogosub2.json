@@ -707,17 +707,18 @@
       }
     },
     "sticky_cta_v2_WgFy7H": {
-      "type": "sticky-cta-bogo",
-      "name": "Sticky CTA (Bogo)",
+      "type": "product-sticky-bar",
       "settings": {
-        "accent_color": "#672666",
-        "text": "<p>Claim Your <span style=\"text-decoration:underline\"><strong>FREE</strong></span> Sprays</p>",
-        "btn_text": "Get My Offer",
-        "scroll_target": "#offer",
-        "position": "bottom",
-        "disable_sticky_header": false,
+        "product": "sleep-spray-copy",
         "show_after": 500,
-        "footer_bg": "#ffffff"
+        "lock_header_hidden": true,
+        "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+        "rating_fallback": "4.5",
+        "cta_text": "Claim Your BOGO Offer",
+        "cta_fallback": "Claim Your BOGO Offer",
+        "pill_text": "BUY ONE GET ONE FREE",
+        "cta_action": "scroll",
+        "scroll_target": "#offer"
       }
     }
   },

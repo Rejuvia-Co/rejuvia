@@ -114,7 +114,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* ---- CTA (purple, with arrow) ---- */
 .obs__cta-wrap { margin-top: 18px; }
-.obs__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #672666; color: #fff; font-family: inherit; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; margin-top: 14px; transition: opacity .25s ease; }
+.obs__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #672666; color: #fff; font-family: inherit; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
 .obs__buy:hover { opacity: 0.9; }
 .obs__buy:active { opacity: 0.9; }
 .obs__buy:disabled { cursor: default; }
@@ -159,7 +159,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs-{{ section.id }} { overflow-x: clip; }
   .obs__wrap { display: flex; flex-direction: column; padding: 18px 16px; }
   .obs__left-inner { position: static; gap: 0; }
-  .obs__reviewbar { justify-content: center; gap: 7px; font-size: 14px; }
+  .obs__reviewbar { justify-content: center; gap: 7px; font-size: 16px; }
+  .obs__reviewbar .obs__stars,
+  .obs__reviewbar .obs__rb-strong,
+  .obs__reviewbar .obs__rb-sep-reviews { display: none; }
+  .obs__reviewbar .obs__rb-customers { order: 1; }
+  .obs__reviewbar .obs__rb-sep-customers { order: 2; }
+  .obs__reviewbar .obs__rb-reviews { order: 3; }
   .obs__reviewbar .obs__stars svg { width: 12px; height: 12px; }
   .obs__rb-hide-mobile { display: none; }
   .obs__headline { font-size: {{ section.settings.headline_size_mobile | default: 29 }}px; line-height: 1.06; --ls: -1.1px; text-align: center; }
@@ -211,12 +217,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- if section.settings.show_stars -%}<span class="obs__stars" role="img" aria-label="5 stars">{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}</span>{%- endif -%}
         {%- if section.settings.rating_label != blank -%}<span class="obs__rb-strong">{{ section.settings.rating_label }}</span>{%- endif -%}
         {%- if section.settings.reviews_label != blank -%}
-          <span class="obs__rb-sep" aria-hidden="true">|</span>
-          <span>{{ section.settings.reviews_label }}</span>
+          <span class="obs__rb-sep obs__rb-sep-reviews" aria-hidden="true">|</span>
+          <span class="obs__rb-reviews">{{ section.settings.reviews_label }}</span>
         {%- endif -%}
         {%- if section.settings.customers_label != blank -%}
-          <span class="obs__rb-sep obs__rb-hide-mobile" aria-hidden="true">|</span>
-          <span class="obs__rb-hide-mobile">{{ section.settings.customers_label }}</span>
+          <span class="obs__rb-sep obs__rb-sep-customers" aria-hidden="true">|</span>
+          <span class="obs__rb-customers">{{ section.settings.customers_label }}</span>
         {%- endif -%}
       </div>
       {%- if section.settings.headline != blank -%}<h2 class="obs__headline">{{ section.settings.headline }}</h2>{%- endif -%}

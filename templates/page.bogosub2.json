@@ -723,7 +723,7 @@
         "pill_text": "BUY ONE GET ONE FREE",
         "cta_action": "scroll",
         "scroll_target": "#offer",
-        "reveal_after_selector": "#shopify-section-customer_testimonials_video_b39r9z"
+        "reveal_after_selector": "[id*=\"customer_testimonials_video\"]"
       }
     }
   },

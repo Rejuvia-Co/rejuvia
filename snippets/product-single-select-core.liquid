@@ -321,6 +321,10 @@
           {%- if t_perks != blank or tier_free_ship -%}
             {%- assign perk_lines = t_perks | newline_to_br | split: '<br />' -%}
             <span class="pss-tier__perks">
+              {%- comment -%} Free-shipping checkmark sits 2nd: after the first perk, before the rest. {%- endcomment -%}
+              {%- if perk_lines.size == 0 and tier_free_ship -%}
+                <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ section.settings.free_ship_text }}</span>
+              {%- endif -%}
               {%- for line in perk_lines -%}
                 {%- assign perk = line | strip -%}
                 {%- if perk contains '{frequency}' and frequency_str == blank -%}{%- assign perk = '' -%}{%- endif -%}
@@ -328,10 +332,10 @@
                   {%- assign perk = perk | replace: '{per_unit}', tier_per_spray_money | replace: '{paid}', paid_str | replace: '{free}', free_str | replace: '{servings}', servings_str | replace: '{frequency}', frequency_str -%}
                   <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ perk }}</span>
                 {%- endif -%}
+                {%- if forloop.first and tier_free_ship -%}
+                  <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ section.settings.free_ship_text }}</span>
+                {%- endif -%}
               {%- endfor -%}
-              {%- if tier_free_ship -%}
-                <span class="pss-tier__perk"><b aria-hidden="true">✓</b> {{ section.settings.free_ship_text }}</span>
-              {%- endif -%}
             </span>
           {%- endif -%}
 

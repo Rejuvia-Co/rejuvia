@@ -183,7 +183,7 @@
       var ra = document.querySelector(revealSel);
       if (ra) {
         var rr = ra.getBoundingClientRect();
-        if (rr.top + rr.height / 2 > 0) return false;
+        if (rr.bottom > 0) return false;
       }
     }
     var widget = document.querySelector('.product-widget-container');

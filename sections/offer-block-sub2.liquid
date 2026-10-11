@@ -156,7 +156,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* ---- Mobile ---- */
 /* v2: social proof row (replaces review bar) */
-.obs__social { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.obs__social { display: flex; align-items: center; justify-content: flex-start; gap: 12px; }
 .obs__social-avatars { position: relative; display: inline-flex; flex-shrink: 0; }
 .obs__social-av { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; background: #e3e3e3; margin-left: -10px; display: block; }
 .obs__social-av:first-child { margin-left: 0; }
@@ -197,7 +197,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs-{{ section.id }} { overflow-x: clip; }
   .obs__wrap { display: flex; flex-direction: column; padding: 18px 16px; }
   .obs__left-inner { position: static; gap: 0; }
-  .obs__social { justify-content: center; gap: 10px; }
+  .obs__social { justify-content: flex-start; gap: 10px; }
   .obs__social-text { font-size: 14px; }
   .obs__headline { font-size: {{ section.settings.headline_size_mobile | default: 20 }}px; line-height: 1.3; letter-spacing: 0; text-align: left; }
   .obs__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 13.5 }}px; text-align: left; padding: 0; margin-top: 8px; }

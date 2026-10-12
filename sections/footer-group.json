@@ -52,9 +52,9 @@
         "disclaimer": "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease. Discontinue use and consult with your health care professional if you experience any adverse reaction to this product.",
         "terms_url": "shopify://policies/terms-of-service",
         "privacy_url": "shopify://policies/privacy-policy",
-        "shipping_url": "shopify://policies/shipping-policy",
-        "refund_url": "shopify://policies/refund-policy",
-        "contact_email": "hello@rejuvia.co",
+        "shipping_url": "/policies/shipping-policy",
+        "refund_url": "/policies/refund-policy",
+        "contact_url": "/pages/contact",
         "show_payment_methods": true
       }
     }

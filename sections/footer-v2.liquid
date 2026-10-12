@@ -538,8 +538,8 @@
                     {% if section.settings.refund_url != blank %}
                         <a href="{{ section.settings.refund_url }}">Refund Policy</a>
                     {% endif %}
-                    {% if section.settings.contact_email != blank %}
-                        <a href="mailto:{{ section.settings.contact_email }}">Contact</a>
+                    {% if section.settings.contact_url != blank %}
+                        <a href="{{ section.settings.contact_url }}">Contact</a>
                     {% endif %}
                 </div>
             </div>
@@ -671,10 +671,9 @@
             "label": "Refund Policy URL"
         },
         {
-            "type": "text",
-            "id": "contact_email",
-            "label": "Contact email (footer link)",
-            "default": "hello@rejuvia.co"
+            "type": "url",
+            "id": "contact_url",
+            "label": "Contact page URL"
         },
         {
             "type": "checkbox",

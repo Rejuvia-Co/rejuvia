@@ -1,0 +1,149 @@
+{{ 'clean-formula-v2.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg = section.settings.bg_color | default: '#eaeaf7'
+  assign accent = section.settings.accent_color | default: '#672666'
+  assign img = section.settings.image
+-%}
+
+<section class="clean-formula-v2"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %} style="background:{{ bg }};--clean-accent:{{ accent }};">
+  <div class="clean-formula-v2__container">
+
+    <div class="clean-formula-v2__media">
+      {%- if img != blank -%}
+        <img
+          src="{{ img | image_url: width: 1200, format: 'webp' }}"
+          srcset="{{ img | image_url: width: 600, format: 'webp' }} 600w, {{ img | image_url: width: 1200, format: 'webp' }} 1200w"
+          sizes="(max-width: 749px) 100vw, 600px"
+          alt="{{ section.settings.image_alt | default: img.alt | default: 'Rejuvia oral sprays among lab glassware' | escape }}"
+          width="{{ img.width }}"
+          height="{{ img.height }}"
+          loading="lazy"
+          decoding="async">
+      {%- endif -%}
+    </div>
+
+    <div class="clean-formula-v2__content">
+      <div class="clean-formula-v2__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="clean-formula-v2__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="clean-formula-v2__intro">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="clean-formula-v2__list">
+          {%- for block in section.blocks -%}
+            <div class="clean-formula-v2__item{% if block.settings.description_mobile != blank %} clean-formula-v2__item--has-mobile{% endif %}" {{ block.shopify_attributes }}>
+              <span class="clean-formula-v2__check" style="background:{{ accent }};" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"></path></svg>
+              </span>
+              <div class="clean-formula-v2__item-body">
+                {%- if block.settings.title != blank -%}
+                  <div class="clean-formula-v2__item-title">{{ block.settings.title }}</div>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="clean-formula-v2__item-desc clean-formula-v2__item-desc--desktop">{{ block.settings.description }}</p>
+                {%- endif -%}
+                {%- if block.settings.description_mobile != blank -%}
+                  <p class="clean-formula-v2__item-desc clean-formula-v2__item-desc--mobile">{{ block.settings.description_mobile }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Clean Formula V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Used with hero nav links (e.g. clean-formula → #clean-formula)."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#eaeaf7"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (check circle)",
+      "default": "#672666"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Nothing hidden. Nothing extra.</p>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Intro",
+      "default": "We held every ingredient to the same standard we'd hold anything we give our own family."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Rejuvia oral sprays among lab glassware"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Checklist item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "description_mobile",
+          "label": "Description (mobile)",
+          "info": "Optional. Shorter version shown on mobile only. Falls back to the desktop description."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Clean Formula V2",
+      "category": "Custom",
+      "blocks": [
+        { "type": "item", "settings": { "title": "No GMOs, gluten or dairy", "description": "Non-GMO botanicals, no wheat, barley or rye, and no milk derivatives. 100% vegan." } },
+        { "type": "item", "settings": { "title": "All natural", "description": "13+ natural sleep herbs and botanicals. No fillers or artificial additives." } },
+        { "type": "item", "settings": { "title": "No artificial sweeteners", "description": "No sucralose, aspartame or saccharin — and no chemical aftertaste." } },
+        { "type": "item", "settings": { "title": "cGMP certified", "description": "Made in the USA following current Good Manufacturing Practices." } },
+        { "type": "item", "settings": { "title": "Triple lab tested", "description": "Every batch is independently tested three times for purity, potency and contaminants before it ships.", "description_mobile": "Every batch is independently tested three times for purity, potency and contaminants." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

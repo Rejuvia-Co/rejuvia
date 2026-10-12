@@ -79,6 +79,64 @@
         "button_label": "View Supplement Label"
       }
     },
+    "clean_formula_v2_Rn8kPq": {
+      "type": "clean-formula-v2",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "No GMOs, gluten or dairy",
+            "description": "Non-GMO botanicals, no wheat, barley or rye, and no milk derivatives. 100% vegan."
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "All natural",
+            "description": "13+ natural sleep herbs and botanicals. No fillers or artificial additives."
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "No artificial sweeteners",
+            "description": "No sucralose, aspartame or saccharin — and no chemical aftertaste."
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "cGMP certified",
+            "description": "Made in the USA following current Good Manufacturing Practices."
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "Triple lab tested",
+            "description": "Every batch is independently tested three times for purity, potency and contaminants before it ships.",
+            "description_mobile": "Every batch is independently tested three times for purity, potency and contaminants."
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ],
+      "name": "Clean Formula V2",
+      "settings": {
+        "anchor_id": "clean-formula",
+        "bg_color": "#eaeaf7",
+        "accent_color": "#672666",
+        "heading": "<p>Nothing hidden. Nothing extra.</p>",
+        "description": "We held every ingredient to the same standard we'd hold anything we give our own family.",
+        "image": "shopify://shop_images/clean-lab-sprays.webp",
+        "image_alt": "Rejuvia oral sprays among lab glassware"
+      }
+    },
     "why_better_v2_Ny6pzj": {
       "type": "why-better-v2",
       "name": "Why Better V2",
@@ -189,6 +247,7 @@
     "hero_ingredients_v2_PynYUG",
     "guarantees_v2_ABV7Ti",
     "key_ingredients_page_v2_c96YaM",
+    "clean_formula_v2_Rn8kPq",
     "why_better_v2_Ny6pzj",
     "guarantee_section_ing",
     "science_v2_wgkJq7",

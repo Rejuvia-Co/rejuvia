@@ -1,0 +1,178 @@
+/* Clean Formula V2 — ingredients page "Nothing hidden. Nothing extra." */
+
+.clean-formula-v2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #141414;
+  /* Full-bleed band like .key-ingredients-v2 */
+  padding: 64px 16px;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 16px);
+  padding-right: calc(50vw - 50% + 16px);
+}
+
+.clean-formula-v2__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: stretch;
+}
+
+/* Image */
+.clean-formula-v2__media {
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.clean-formula-v2__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content column */
+.clean-formula-v2__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+
+.clean-formula-v2__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clean-formula-v2__title {
+  /* Font family / weight / letter-spacing come from the global --rj-title-*
+     system (theme.liquid). Only size / line-height / color are local. */
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #171512;
+  text-wrap: balance;
+}
+
+.clean-formula-v2__title p { margin: 0; font: inherit; color: inherit; }
+
+.clean-formula-v2__intro {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+/* Checklist */
+.clean-formula-v2__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  /* No column-gap: the 40px gutter lives in the columns' side padding instead,
+     so the row dividers run edge to edge and meet in the middle as one full
+     line (like the top divider and the full-width last row). */
+  column-gap: 0;
+  border-top: 1px solid #cfcae3;
+}
+
+.clean-formula-v2__item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid #cfcae3;
+}
+
+/* Desktop 2-column: recreate the 40px gutter with padding (20px each side of
+   the centre line) so the hairlines stay continuous across the full width. */
+@media (min-width: 1000px) {
+  .clean-formula-v2__item:nth-child(odd):not(:last-child) { padding-right: 20px; }
+  .clean-formula-v2__item:nth-child(even) { padding-left: 20px; }
+}
+
+/* If the list has an odd number of items, the last one spans both columns. */
+.clean-formula-v2__item:last-child:nth-child(odd) {
+  grid-column: span 2;
+}
+
+.clean-formula-v2__check {
+  width: 28px;
+  height: 28px;
+  border-radius: 100px;
+  background: #672666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clean-formula-v2__check svg { display: block; }
+
+.clean-formula-v2__item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clean-formula-v2__item-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.clean-formula-v2__item-desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.clean-formula-v2__item-desc--mobile { display: none; }
+
+/* ===================== Tablet (750–999px) ===================== */
+@media (min-width: 750px) and (max-width: 999px) {
+  /* Keep the 2-column split, but drop the checklist to one column. */
+  .clean-formula-v2__list { grid-template-columns: minmax(0, 1fr); }
+  .clean-formula-v2__item:last-child:nth-child(odd) { grid-column: auto; }
+}
+
+/* ===================== Mobile (≤749px) ===================== */
+@media (max-width: 749px) {
+  .clean-formula-v2 { padding: 40px 16px; }
+
+  .clean-formula-v2__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  /* Order: header -> image -> checklist */
+  .clean-formula-v2__header { order: 1; gap: 10px; }
+  .clean-formula-v2__media  { order: 2; aspect-ratio: 1 / 1; min-height: 0; }
+  .clean-formula-v2__list   { order: 3; grid-template-columns: minmax(0, 1fr); }
+
+  /* Unwrap the content column so header / image / list order freely. */
+  .clean-formula-v2__content { display: contents; }
+
+  .clean-formula-v2__title { font-size: 26px; }
+  .clean-formula-v2__intro { font-size: 16px; }
+
+  .clean-formula-v2__item {
+    grid-template-columns: 24px minmax(0, 1fr);
+    padding: 16px 0;
+  }
+  .clean-formula-v2__item:last-child:nth-child(odd) { grid-column: auto; }
+
+  .clean-formula-v2__check { width: 24px; height: 24px; }
+  .clean-formula-v2__check svg { width: 12px; height: 12px; }
+
+  .clean-formula-v2__item-title { line-height: 1.3; }
+
+  /* Shorter description on the last item for mobile, when provided. */
+  .clean-formula-v2__item-desc--desktop { display: block; }
+  .clean-formula-v2__item-desc--mobile  { display: none; }
+  .clean-formula-v2__item--has-mobile .clean-formula-v2__item-desc--desktop { display: none; }
+  .clean-formula-v2__item--has-mobile .clean-formula-v2__item-desc--mobile  { display: block; }
+}

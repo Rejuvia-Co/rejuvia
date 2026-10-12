@@ -368,9 +368,9 @@
   color: #fff;
   font-family: inherit;
   font-weight: 800;
-  font-size: 16px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+  font-size: 17px;
+  letter-spacing: .2px;
+  text-transform: none;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(45,21,48,.16);
   transition: background 160ms cubic-bezier(.22,1,.36,1);
@@ -452,7 +452,7 @@
   .pss .pss-tier__serv { font-size: 13px; }
   .pss .pss-tier__price { font-size: 17px; }
   .pss .pss-tier__strike { font-size: 12px; }
-  .pss .pss-tier.is-selected .pss-tier__perks { padding: 0 12px 12px 40px; font-size: 14px; }
+  .pss .pss-tier.is-selected .pss-tier__perks { padding: 0 12px 12px 40px; font-size: 15px; }
   .pss .pss-tier.is-selected .pss-tier__band { padding: 9px 12px; font-size: 12.5px; }
   .pss .pss-tier__tag { font-size: 10.5px; }
   .pss .pss-tier__band-pill { font-size: 12px; }

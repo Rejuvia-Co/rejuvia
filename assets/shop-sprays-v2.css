@@ -172,6 +172,10 @@
     gap: 12px;
     overflow-x: auto;
     padding: 0 16px;
+    /* Keep the first card's 16px gutter when snapping (otherwise mandatory
+       snap pulls the first card flush to the edge, clipping it off-screen). */
+    scroll-padding-left: 16px;
+    scroll-padding-right: 16px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;

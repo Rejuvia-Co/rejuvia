@@ -24,6 +24,12 @@
             "image": "shopify://shop_images/sleep-spray-review.webp"
           }
         },
+        "slide_XeJHzH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_SleepSpray_HowToUseIconsA-Cream_PDPGallery_HowTo_AllCohorts_MostAware_InternalAI_BOGOSub_NoOffer_1x1_v3_10122026.webp"
+          }
+        },
         "slide_rWW9c6": {
           "type": "slide",
           "settings": {
@@ -145,6 +151,7 @@
       "block_order": [
         "slide_1",
         "slide_3",
+        "slide_XeJHzH",
         "slide_rWW9c6",
         "slide_2",
         "slide_4",

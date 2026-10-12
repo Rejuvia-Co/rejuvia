@@ -1,0 +1,38 @@
+{%- comment -%}
+  Formats an integer with thousands separators (handles up to 999,999,999).
+  Usage: {% render 'rj-thousands', n: 6266 %} -> 6,266
+{%- endcomment -%}
+{%- liquid
+  assign num = n | default: 0 | plus: 0
+  assign out = num | append: ''
+  if num >= 1000000
+    assign millions = num | divided_by: 1000000
+    assign rem = num | modulo: 1000000
+    assign thousands = rem | divided_by: 1000
+    assign ones = rem | modulo: 1000
+    assign t = thousands | append: ''
+    if thousands < 10
+      assign t = '00' | append: t
+    elsif thousands < 100
+      assign t = '0' | append: t
+    endif
+    assign o = ones | append: ''
+    if ones < 10
+      assign o = '00' | append: o
+    elsif ones < 100
+      assign o = '0' | append: o
+    endif
+    assign out = millions | append: ',' | append: t | append: ',' | append: o
+  elsif num >= 1000
+    assign thousands = num | divided_by: 1000
+    assign ones = num | modulo: 1000
+    assign o = ones | append: ''
+    if ones < 10
+      assign o = '00' | append: o
+    elsif ones < 100
+      assign o = '0' | append: o
+    endif
+    assign out = thousands | append: ',' | append: o
+  endif
+-%}
+{{- out -}}

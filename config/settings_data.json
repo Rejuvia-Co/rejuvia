@@ -527,50 +527,56 @@
       "header": {
         "type": "header",
         "blocks": {
-          "mega_menu_q8hRMc": {
-            "type": "mega_menu",
+          "prod_sleep": {
+            "type": "product",
             "settings": {
-              "menu_item_handle": "products",
-              "product_1": "sleep-spray",
-              "product_1_desc": "Fall asleep faster and wake feeling restored",
-              "product_2": "oral-stress-spray",
-              "product_2_desc": "Calm your mind during the day, sleep deeply at night",
-              "product_3": "vitamin-d3-k2-spray",
-              "product_3_desc": "Support immunity, bone strength, and heart health",
-              "product_4": "lutein",
-              "product_4_desc": "Protect eye tissues and filter blue light",
-              "product_5": "",
-              "product_5_desc": "",
-              "benefit_1_text": "Free U.S. Shipping Over $59",
-              "benefit_2_text": "7,500+ 5-Star Reviews",
-              "benefit_3_text": "Family-Founded Business"
+              "product": "sleep-spray",
+              "short_line": "Fall asleep faster, wake restored",
+              "description": "Fall asleep faster and wake feeling restored",
+              "badge_text": "#1 BEST SELLER"
             }
           },
-          "mobile_menu_links_nav": {
-            "type": "mobile-menu-links",
+          "prod_calm": {
+            "type": "product",
             "settings": {
-              "first_label": "Ingredients",
-              "first_url": "shopify://pages/ingredients",
-              "second_label": "Reviews",
-              "second_url": "shopify://pages/reviews",
-              "third_label": "FAQs",
-              "third_url": "shopify://pages/rejuvia-faqs",
-              "fourth_label": "Login",
-              "fourth_url": "https://www.rejuvia.co/a/account/login"
+              "product": "oral-stress-spray",
+              "short_line": "Calm by day, deep sleep at night",
+              "description": "Calm your mind during the day, sleep deeply at night",
+              "badge_text": ""
+            }
+          },
+          "prod_d3": {
+            "type": "product",
+            "settings": {
+              "product": "vitamin-d3-k2-spray",
+              "short_line": "Immunity, bones & heart health",
+              "description": "Support immunity, bone strength, and heart health",
+              "badge_text": ""
             }
           }
         },
         "block_order": [
-          "mega_menu_q8hRMc",
-          "mobile_menu_links_nav"
+          "prod_sleep",
+          "prod_calm",
+          "prod_d3"
         ],
         "settings": {
-          "logo_width": 164,
-          "logo_width_mobile": 164,
-          "nav_font_size": 20,
-          "nav_font_size_mobile": 20,
-          "bg_color": "#eaeaf7",
-          "menu_desktop": "header-navigation",
+          "logo_width": 150,
+          "logo_width_mobile": 132,
+          "products_label": "Products",
+          "link_1_label": "Customer Reviews",
+          "link_1_url": "shopify://pages/reviews",
+          "link_2_label": "Ingredients",
+          "link_2_url": "shopify://pages/ingredients",
+          "link_3_label": "FAQs",
+          "link_3_url": "shopify://pages/rejuvia-faqs",
+          "account_label": "Sign In",
+          "cta_label": "Shop Sleep Spray",
+          "cta_url": "shopify://products/sleep-spray",
+          "shopnow_label": "SHOP NOW",
+          "trust_1": "7,500+ 5-Star Reviews",
+          "trust_2": "Free U.S. Shipping Over $59",
+          "trust_3": "Family-Founded Business",
           "behavior": "static",
           "behavior_mobile": "static"
         }

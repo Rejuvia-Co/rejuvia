@@ -1,681 +1,629 @@
+{%- liquid
+  assign purple = '#672666'
+  assign purple_dark = '#4E1C4E'
+  assign ink = '#141414'
+  assign body_gray = '#3D3A36'
+  assign muted = '#5B5866'
+  assign strike = '#8A8594'
+  assign hairline = '#E7E4F0'
+  assign hairline_in = '#EAE7F1'
+  assign tile_bg = '#F7F6FB'
+  assign star_gold = '#EAC78B'
+
+  assign product_blocks = section.blocks | where: 'type', 'product'
+  assign account_url = '/a/account/login'
+  if customer
+    assign account_url = '/account'
+  endif
+-%}
+
 <style>
-  /* ===== Header Nav V2 ===== */
   html, body { overflow: visible !important; overflow-x: hidden; }
   #page > header { z-index: 110; }
+  .main-header { background: #fff; }
 
-  .main-header {
-    background: transparent;
-  }
-
-
+  /* ===== Header Nav V3 — full-bleed white, attached to top ===== */
   #header.header {
-    background: transparent;
+    --rjnav-h: 84px;
+    background: #fff;
     border: none;
+    border-bottom: 1px solid {{ hairline }};
     width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    margin-bottom: -10px;
-    padding: 12px 32px 24px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     position: sticky;
     top: 0;
     z-index: 110;
     transition: transform 0.3s ease;
-    will-change: transform;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: {{ ink }};
   }
+  #header.header.is-hidden { transform: translateY(-100%); }
 
-  #header.header.is-hidden {
-    transform: translateY(-100%);
-  }
-
-
-
-  #header .main-content {
-    background: {{ section.settings.bg_color | default: '#EAEAF7' }};
-    border-radius: 10px;
-    box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-    padding: 12px 32px;
+  #header .rjnav-bar {
+    height: var(--rjnav-h);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    padding: 0 48px;
+    gap: 64px;
     position: relative;
+    z-index: 3;
+    background: #fff;
   }
-
 
   /* Logo */
-  #header .logo {
-    flex-shrink: 0;
-    width: auto;
-    max-width: none;
-    margin: 0;
-    line-height: 0;
-  }
+  #header .rjnav-logo { flex-shrink: 0; line-height: 0; display: block; }
+  #header .rjnav-logo .logo-rejuvia-svg { width: {{ section.settings.logo_width | default: 150 }}px; height: auto; display: block; }
+  #header .rjnav-logo .logo-rejuvia-svg path { fill: {{ ink }}; }
 
-  #header .logo .logo-rejuvia-svg {
-    width: {{ section.settings.logo_width | default: 164 }}px;
-    height: auto;
-    display: block;
-  }
-
-  #header .logo .logo-rejuvia-svg path {
-    fill: #141414;
-  }
-
-  /* Nav links container */
-  #header .nav-wrapper {
-    width: auto;
-    flex: 1;
+  /* Nav links */
+  #header .rjnav-links {
     display: flex;
-    justify-content: center;
-  }
-
-  #header .nav-wrapper .utils-wrap {
-    display: none;
-  }
-
-  /* Menu items */
-  #header .main-menu {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0;
-  }
-
-  #header .main-menu .item {
-    margin: 0;
-    border: none;
+    align-items: stretch;
+    gap: 36px;
+    height: var(--rjnav-h);
     font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0;
-    text-transform: none;
-    line-height: 1;
-    position: relative;
   }
-
-  #header .main-menu .item a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center;
-    padding: 12px 24px;
-    border-radius: 80px;
-    color: #141414;
-    font-size: {{ section.settings.nav_font_size | default: 20 }}px;
-    font-weight: 400;
-    line-height: 1;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-    text-decoration: none;
-  }
-
-  #header .main-menu .item a:hover {
-    color: #141414;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.4);
-  }
-
-  #header .main-menu .item.has-dropdown--mega:hover > a,
-  #header .main-menu .item.has-dropdown--mega.menu-open > a {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
-  }
-
-  /* Hide old SVG icons in menu */
-  #header .main-menu .item a svg.icon,
-  #header .main-menu .item a svg.icon-dropdown {
-    display: none !important;
-  }
-
-  /* Chevron */
-  #header .main-menu .item .nav-chevron {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 6px;
-    transition: transform 0.2s ease;
-  }
-
-  #header .main-menu .item .nav-chevron svg {
-    width: 20px;
-    height: 12px;
-  }
-
-  #header .main-menu .item.menu-open .nav-chevron {
-    transform: rotate(180deg);
-  }
-
-  /* Hide old submenus */
-  #header .main-menu .has-dropdown .submenu {
-    display: none !important;
-  }
-
-  /* Mega menu panel — base hide/show rules inlined to prevent FOUC
-     before the async stylesheet loads. */
-  #header .menu-desktop {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    transform: translateY(100%);
-    display: flex;
-    flex-direction: column;
-    max-height: 0;
-    opacity: 0;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-    transition: opacity 0s linear 0s, max-height 0.2s linear, z-index 0.2s linear, pointer-events 0.2s linear;
-  }
-
-  #header .menu-desktop.open {
-    max-height: 600px;
-    opacity: 1;
-    z-index: 1;
-    pointer-events: auto;
-    transition: opacity 0.2s linear 0.2s, max-height 0.2s linear, z-index 0.2s linear, pointer-events 0.2s linear;
-  }
-
-  /* Right side: account + cart */
-  #header .navigator-right {
-    width: auto;
-    flex-shrink: 0;
-  }
-
-  #header .navigator-right .btn {
-    display: none;
-  }
-
-  .nav-v2-icons {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .nav-v2-account {
+  #header .rjnav-link {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 20px;
-    border-radius: 80px;
-    color: #141414;
-    font-size: {{ section.settings.nav_font_size | default: 20 }}px;
-    font-weight: 400;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: normal;
     white-space: nowrap;
+    color: {{ ink }};
     text-decoration: none;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 transparent;
+    transition: color .2s, box-shadow .2s;
   }
-
-  .nav-v2-account:hover {
+  #header .rjnav-link:hover,
+  #header .rjnav-link:focus-visible,
+  #header .rjnav-link.is-active {
+    color: {{ purple }};
+    box-shadow: inset 0 -2px 0 {{ purple }};
     text-decoration: none;
-    color: #141414;
-    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+  }
+  #header .rjnav-link--products { font-weight: 600; }
+  #header .rjnav-chevron { display: inline-flex; transition: transform .25s; }
+  #header .rjnav-link--products[aria-expanded="true"] .rjnav-chevron { transform: rotate(180deg); }
+
+  /* Right cluster */
+  #header .rjnav-right { margin-left: auto; display: flex; align-items: center; gap: 24px; font-size: 16px; }
+  #header .rjnav-account { display: flex; align-items: center; gap: 8px; white-space: nowrap; color: {{ ink }}; text-decoration: none; transition: color .2s; }
+  #header .rjnav-account:hover { color: {{ purple }}; }
+  #header .rjnav-account svg { width: 22px; height: 22px; }
+  #header .rjnav-cta {
+    white-space: nowrap; flex-shrink: 0; background: {{ purple }}; color: #fff; font-weight: 600; font-size: 15px;
+    padding: 11px 20px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
+  }
+  #header .rjnav-cta:hover { background: {{ purple_dark }}; color: #fff; transform: translateY(-1px); }
+  #header .rjnav-carticon { position: relative; display: flex; color: {{ ink }}; transition: color .2s; }
+  #header .rjnav-carticon:hover { color: {{ purple }}; }
+  #header .rjnav-carticon svg { width: 26px; height: 26px; }
+  #header .rjnav-cart-count {
+    position: absolute; top: -7px; right: -9px; background: {{ purple }}; color: #fff; font-size: 11px; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   }
 
-  .nav-v2-account svg {
-    width: 23px;
-    height: 23px;
-    flex-shrink: 0;
+  /* Overlay */
+  #header .rjnav-overlay {
+    position: fixed; left: 0; right: 0; top: var(--rjnav-h); height: calc(100vh - var(--rjnav-h));
+    background: #2A1830; opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 1;
   }
+  #header.rjnav-open .rjnav-overlay { opacity: .32; pointer-events: auto; }
 
-  .nav-v2-icons .cart-wrap svg {
-    width: 23px;
-    height: 23px;
+  /* Mega menu */
+  #header .rjnav-mega {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 2;
+    background: #fff; border-bottom: 1px solid {{ hairline }}; box-shadow: 0 18px 40px rgba(45,21,48,.14);
+    opacity: 0; transform: translateY(-8px); pointer-events: none;
+    transition: opacity .28s cubic-bezier(.22,1,.36,1), transform .28s cubic-bezier(.22,1,.36,1);
   }
+  #header.rjnav-open .rjnav-mega { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #header .rjnav-mega-inner { max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 480px minmax(0,1fr); gap: 40px; }
 
-  .nav-v2-icons .cart-wrap {
-    display: flex;
-    align-items: center;
-    position: relative;
+  /* Left: product list */
+  #header .rjnav-plist { display: flex; flex-direction: column; gap: 6px; }
+  #header .rjnav-prow {
+    color: inherit; text-decoration: none; display: grid; grid-template-columns: 88px minmax(0,1fr) auto; gap: 16px;
+    align-items: center; padding: 12px 16px 12px 12px; border-radius: 14px; background: transparent; transition: background .2s;
   }
+  #header .rjnav-prow.is-active { background: var(--rjnav-tint, #F4EEF5); }
+  #header .rjnav-pthumb { width: 88px; height: 88px; background: #fff; border: 1px solid {{ hairline }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; overflow: hidden; }
+  #header .rjnav-pthumb img { width: 78px; height: 78px; object-fit: contain; display: block; }
+  #header .rjnav-ptext { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  #header .rjnav-badge { align-self: flex-start; white-space: nowrap; background: {{ purple }}; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 3px 8px; border-radius: 100px; }
+  #header .rjnav-pname { font-size: 18px; font-weight: 700; white-space: nowrap; }
+  #header .rjnav-pshort { font-size: 14px; color: {{ muted }}; }
+  #header .rjnav-pprice { font-size: 16px; font-weight: 700; white-space: nowrap; color: {{ ink }}; align-self: center; }
 
-  .cart-wrap { position: relative; }
+  /* Trust list */
+  #header .rjnav-trust { margin-top: 14px; padding-top: 18px; border-top: 1px solid {{ hairline_in }}; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: {{ body_gray }}; }
+  #header .rjnav-trust span { display: flex; align-items: center; gap: 10px; }
+  #header .rjnav-trust svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-  .cart-wrap .count {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    min-width: 16px;
-    height: 16px;
-    background: #5d215f;
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
-    border-radius: 50%;
-    padding: 1px 4px 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Right: preview panels */
+  #header .rjnav-preview { position: relative; }
+  #header .rjnav-panel {
+    display: none; background: var(--rjnav-tint, #F4EEF5); border-radius: 18px; min-height: 420px; padding: 20px;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; gap: 8px; transition: background .3s;
   }
-
-  /* Star ratings */
-  .mega-menu-v2__card-stars svg path {
-    fill: #EAC78B;
+  #header .rjnav-panel.is-active { display: grid; }
+  #header .rjnav-panel-img { background: #fff; border-radius: 14px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  #header .rjnav-panel-img img { width: 86%; height: 86%; object-fit: contain; display: block; }
+  #header .rjnav-panel-info { display: flex; flex-direction: column; gap: 14px; padding: 12px 28px 12px 24px; }
+  #header .rjnav-panel-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  #header .rjnav-panel-rating .rjnav-stars { display: flex; gap: 0; }
+  #header .rjnav-panel-rating .rjnav-stars svg { width: 16px; height: 16px; display: block; }
+  #header .rjnav-panel-rating .rjnav-rcount { color: {{ muted }}; white-space: nowrap; }
+  #header .rjnav-panel-name { font-size: 34px; font-weight: 700; letter-spacing: -.01em; line-height: 1.05; }
+  #header .rjnav-panel-desc { font-size: 16px; line-height: 1.5; color: {{ body_gray }}; text-wrap: pretty; }
+  #header .rjnav-panel-price { display: flex; align-items: baseline; gap: 10px; }
+  #header .rjnav-panel-now { font-size: 24px; font-weight: 700; color: {{ ink }}; }
+  #header .rjnav-panel-was { font-size: 16px; color: {{ strike }}; text-decoration: line-through; }
+  #header .rjnav-shopnow {
+    align-self: stretch; max-width: 340px; box-sizing: border-box; text-align: center; margin-top: 6px; white-space: nowrap;
+    background: var(--rjnav-base, {{ purple }}); color: #fff; font-size: 18px; font-weight: 600; letter-spacing: .06em;
+    padding: 19px 32px; border-radius: 100px; text-decoration: none; transition: background .3s, transform .2s;
   }
+  #header .rjnav-shopnow:hover { color: #fff; transform: translateY(-1px); }
 
-  /* Trait icons */
-  .mega-menu-v2__trait-icon {
-    min-width: 20px;
-    min-height: 20px;
-    display: flex;
-    align-items: center;
-  }
+  /* Mobile bar + menu (hidden on desktop) */
+  #header .rjnav-mbar { display: none; }
+  #header .rjnav-mmenu { display: none; }
 
-  .mega-menu-v2__trait-icon svg {
-    width: 20px;
-    height: 20px;
-  }
+  /* ===================== Mobile (<= 989px) ===================== */
+  @media (max-width: 989px) {
+    #header.header { --rjnav-h: 64px; }
+    #header .rjnav-bar, #header .rjnav-mega, #header .rjnav-overlay { display: none !important; }
 
-  /* Hidden utility bar */
-  #header .utility-bar {
-    display: none;
-  }
-
-  .hidden {
-    display: none !important;
-  }
-
-  /* Desktop: show nav, hide mobile */
-  #header .navigator-mobile {
-    display: none;
-  }
-
-
-  /* ===== Responsive ===== */
-  @media all and (max-width: 1200px) {
-    #header .main-menu .item a {
-      padding: 12px 14px;
+    #header .rjnav-mbar {
+      display: flex; height: var(--rjnav-h); align-items: center; justify-content: space-between; padding: 0 18px; background: #fff;
     }
-  }
-
-  @media all and (max-width: 1099px) {
-    #header .main-menu .item a {
-      padding: 12px 12px;
+    #header .rjnav-mbar .rjnav-logo .logo-rejuvia-svg { width: {{ section.settings.logo_width_mobile | default: 132 }}px; }
+    #header .rjnav-mright { display: flex; align-items: center; gap: 20px; }
+    #header .rjnav-mright .rjnav-carticon svg { width: 30px; height: 30px; }
+    #header .rjnav-mright .rjnav-cart-count { top: -6px; right: -8px; }
+    #header .rjnav-mtoggle {
+      width: 44px; height: 44px; margin-right: -8px; display: flex; align-items: center; justify-content: center;
+      background: none; border: none; color: {{ ink }}; cursor: pointer; padding: 0;
     }
-  }
+    #header .rjnav-mtoggle svg { width: 32px; height: 32px; }
+    #header .rjnav-mtoggle .rjnav-icon-close { display: none; }
+    #header.rjnav-mopen .rjnav-mtoggle .rjnav-icon-open { display: none; }
+    #header.rjnav-mopen .rjnav-mtoggle .rjnav-icon-close { display: block; }
 
-  /* ===== Mobile ===== */
-  @media all and (max-width: 1024px) {
-    #header.header {
-      padding: 6px 12px 0;
-      margin-bottom: 0;
+    #header .rjnav-mmenu {
+      display: flex; flex-direction: column; position: fixed; left: 0; right: 0; top: var(--rjnav-h); height: calc(100vh - var(--rjnav-h));
+      background: #fff; z-index: 105; overflow-y: auto;
+      opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease;
     }
+    #header.rjnav-mopen .rjnav-mmenu { opacity: 1; visibility: visible; }
 
-    #header .main-content {
-      display: none !important;
+    #header .rjnav-mcards { padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid {{ hairline_in }}; }
+    #header .rjnav-mcard {
+      color: inherit; text-decoration: none; position: relative; display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 14px;
+      align-items: center; border: 1px solid {{ hairline }}; border-radius: 12px; padding: 10px 14px 10px 10px;
     }
-
-    #header .navigator-mobile {
-      display: flex !important;
-      background: {{ section.settings.bg_color | default: '#EAEAF7' }};
-      border-radius: 10px;
-      box-shadow: 0px 3px 16px -3px rgba(0, 0, 0, 0.06);
-      height: 64px;
-      padding: 0 22px;
-      align-items: center;
-      justify-content: space-between;
+    #header .rjnav-mcard:active { background: var(--rjnav-tint, #F4EEF5); }
+    #header .rjnav-mcard--featured { border: 1.5px solid {{ purple }}; padding: 9.5px 14px 9.5px 9.5px; }
+    #header .rjnav-mcard--featured:active { background: #F4EEF5; }
+    #header .rjnav-mcard-tag {
+      position: absolute; top: -1.5px; right: -1.5px; white-space: nowrap; background: {{ purple }}; color: #fff; font-size: 10px;
+      font-weight: 700; letter-spacing: .06em; padding: 4px 9px; border-radius: 0 12px 0 10px;
     }
+    #header .rjnav-mcard-imgwrap { width: 76px; height: 76px; display: flex; align-items: center; justify-content: center; }
+    #header .rjnav-mcard-imgwrap img { width: 74px; height: 74px; object-fit: contain; display: block; }
+    #header .rjnav-mcard--featured .rjnav-mcard-imgwrap img { width: 84px; height: 84px; }
+    #header .rjnav-mcard-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    #header .rjnav-mcard-rating { display: flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+    #header .rjnav-mcard-rating .rjnav-stars { display: flex; gap: 1px; }
+    #header .rjnav-mcard-rating .rjnav-stars svg { width: 12px; height: 12px; display: block; }
+    #header .rjnav-mcard-rating .rjnav-rcount { color: {{ muted }}; }
+    #header .rjnav-mcard-name { font-size: 19px; font-weight: 700; white-space: nowrap; }
+    #header .rjnav-mcard-short { font-size: 13px; color: {{ muted }}; }
 
-    #header .navigator-mobile .logo {
-      flex: 1;
+    #header .rjnav-mlinks { padding: 0 18px; display: flex; flex-direction: column; }
+    #header .rjnav-mlink {
+      color: {{ ink }}; text-decoration: none; display: flex; justify-content: space-between; align-items: center;
+      height: 56px; border-bottom: 1px solid {{ hairline_in }}; font-size: 18px;
     }
+    #header .rjnav-mlink svg { width: 18px; height: 18px; }
 
-    #header .navigator-mobile .logo .logo-rejuvia-svg {
-      width: {{ section.settings.logo_width_mobile | default: 164 }}px;
-      height: auto;
-    }
+    #header .rjnav-mcta { margin: 16px 18px 0; background: {{ purple }}; color: #fff; text-align: center; font-size: 16px; font-weight: 600; padding: 16px; border-radius: 100px; text-decoration: none; }
+    #header .rjnav-mcta:active { background: {{ purple_dark }}; color: #fff; }
 
-    .navigator-mobile__right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+    #header .rjnav-mtrust { margin-top: auto; padding: 16px 18px 22px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; text-align: center; font-size: 12px; line-height: 1.3; color: {{ body_gray }}; }
+    #header .rjnav-mtile { display: flex; flex-direction: column; align-items: center; gap: 6px; background: {{ tile_bg }}; border-radius: 12px; padding: 12px 6px; }
+    #header .rjnav-mtile svg { width: 22px; height: 22px; }
 
-    .navigator-mobile__right .cart-wrap,
-    .navigator-mobile__right .btn-open-mobile-menu,
-    .navigator-mobile__right .close {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Equal fixed box for the toggle icons so swapping hamburger <-> X never shifts the layout */
-    .navigator-mobile__right .btn-open-mobile-menu,
-    .navigator-mobile__right .close {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-    }
-
-    .navigator-mobile__right svg {
-      width: 30px;
-      height: 30px;
-    }
-
-    #menu-mobile { display: block; }
+    body.rjnav-lock { overflow: hidden; }
   }
 </style>
 
-<div id="header" class="header nav-v2 {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile">
-    {%- comment -%} Desktop nav bar {%- endcomment -%}
-    <div class="main-content flex align-items-center justify-content-between">
-      <a href="/" class="logo">
-        {% render 'logo-rejuvia' %}
-      </a>
-      <div class="nav-wrapper">
-        <nav class="main-menu flex align-items-center" role="navigation">
-          {% render 'mega-menu', menu: section.settings.menu_desktop.links %}
-        </nav>
-      </div>
-      <div class="nav-v2-icons">
-        <a class="nav-v2-account" href="{% if customer %}/account{% else %}/a/account/login{% endif %}" title="My Account" aria-label="My Account">
-          {% render 'icon-account' %}
-          Sign In
-        </a>
-        <a class="flex cart-wrap" href="/cart" title="Bag" aria-label="Cart">
-          {% render 'icon-cart' %}
-          {% if cart.item_count > 0 %}<span class="count">{{ cart.item_count }}</span>{% endif %}
-        </a>
-      </div>
+{%- comment -%} Reusable gold star + trust icons {%- endcomment -%}
+{%- capture star_svg -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" fill="{{ star_gold }}"/></svg>{%- endcapture -%}
+{%- capture icon_star_outline -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ purple }}" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>{%- endcapture -%}
+{%- capture icon_box -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ purple }}" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>{%- endcapture -%}
+{%- capture icon_heart -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ purple }}" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.3C19.5 15.4 12 20 12 20z"/></svg>{%- endcapture -%}
+{%- assign trust_icons = icon_star_outline | append: '|||' | append: icon_box | append: '|||' | append: icon_heart | split: '|||' -%}
+{%- capture icon_cart -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>{%- endcapture -%}
+{%- capture icon_user -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="10" r="3.2"/><path d="M6.2 18.6c1.3-2.2 3.4-3.4 5.8-3.4s4.5 1.2 5.8 3.4"/></svg>{%- endcapture -%}
+
+<div id="header" class="header nav-v3 fixed-pending {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile" data-rjnav>
+
+  {%- comment -%} ===== Desktop bar ===== {%- endcomment -%}
+  <div class="rjnav-bar">
+    <a href="/" class="rjnav-logo" aria-label="Rejuvia home">{% render 'logo-rejuvia' %}</a>
+
+    <nav class="rjnav-links" role="navigation" aria-label="Main">
+      <button type="button" class="rjnav-link rjnav-link--products" data-rjnav-trigger aria-haspopup="true" aria-expanded="false" aria-controls="rjnav-mega">
+        {{ section.settings.products_label | default: 'Products' }}
+        <span class="rjnav-chevron"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+      </button>
+      {%- if section.settings.link_1_label != blank -%}<a class="rjnav-link" href="{{ section.settings.link_1_url }}" data-rjnav-close>{{ section.settings.link_1_label }}</a>{%- endif -%}
+      {%- if section.settings.link_2_label != blank -%}<a class="rjnav-link" href="{{ section.settings.link_2_url }}" data-rjnav-close>{{ section.settings.link_2_label }}</a>{%- endif -%}
+      {%- if section.settings.link_3_label != blank -%}<a class="rjnav-link" href="{{ section.settings.link_3_url }}" data-rjnav-close>{{ section.settings.link_3_label }}</a>{%- endif -%}
+    </nav>
+
+    <div class="rjnav-right" data-rjnav-close>
+      <a class="rjnav-account" href="{{ account_url }}" aria-label="Sign in">{{ icon_user }}{{ section.settings.account_label | default: 'Sign In' }}</a>
+      <a class="rjnav-cta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Sleep Spray' }}</a>
+      <a class="rjnav-carticon" href="/cart" aria-label="Cart">{{ icon_cart }}{% if cart.item_count > 0 %}<span class="rjnav-cart-count">{{ cart.item_count }}</span>{% endif %}</a>
     </div>
+  </div>
 
-    {%- comment -%} Mobile nav bar {%- endcomment -%}
-    <div class="navigator-mobile">
-      <a href="/" class="logo">
-        {% render 'logo-rejuvia' %}
-      </a>
-      <div class="navigator-mobile__right">
-        <a class="cart-wrap" href="/cart" title="Bag" aria-label="Cart">
-          {% render 'icon-cart' %}
-          {% if cart.item_count > 0 %}<span class="count">{{ cart.item_count }}</span>{% endif %}
-        </a>
-        <a href="#" class="btn-open-mobile-menu" aria-label="Open menu" role="button">{% render 'icon-hamburger' %}</a>
-        <a class="close hidden" aria-label="Close menu" role="button">{% render 'icon-close_button' %}</a>
+  {%- comment -%} ===== Overlay + Mega menu ===== {%- endcomment -%}
+  <div class="rjnav-overlay" data-rjnav-close aria-hidden="true"></div>
+
+  <div class="rjnav-mega" id="rjnav-mega" role="region" aria-label="Products">
+    <div class="rjnav-mega-inner">
+      {%- comment -%} Left: product rows {%- endcomment -%}
+      <div class="rjnav-plist">
+        {%- for block in product_blocks -%}
+          {%- assign product = block.settings.product -%}
+          {%- if product == blank -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign base = product.metafields.custom.base_colour | default: purple
+            assign tint = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#F4EEF5'
+            assign sub_price = nil
+            for v in product.variants
+              for alloc in v.selling_plan_allocations
+                if sub_price == nil or alloc.price < sub_price
+                  assign sub_price = alloc.price
+                endif
+              endfor
+            endfor
+            if sub_price == nil
+              assign now_price = product.price
+            else
+              assign now_price = sub_price
+            endif
+          -%}
+          <a href="{{ product.url }}" class="rjnav-prow{% if forloop.first %} is-active{% endif %}" data-rjnav-row data-index="{{ forloop.index0 }}" style="--rjnav-tint: {{ tint }};">
+            <span class="rjnav-pthumb"><img src="{{ product.featured_image | image_url: width: 180, format: 'webp' }}" alt="{{ product.title | escape }}" width="78" height="78" loading="lazy" decoding="async"></span>
+            <span class="rjnav-ptext">
+              {%- if block.settings.badge_text != blank -%}<span class="rjnav-badge">{{ block.settings.badge_text }}</span>{%- endif -%}
+              <span class="rjnav-pname">{{ product.title }}</span>
+              <span class="rjnav-pshort">{{ block.settings.short_line }}</span>
+            </span>
+            <span class="rjnav-pprice">{{ now_price | money }}</span>
+          </a>
+        {%- endfor -%}
+
+        <div class="rjnav-trust">
+          {%- for i in (0..2) -%}
+            {%- assign t_field = 'trust_' | append: forloop.index -%}
+            {%- assign t_text = section.settings[t_field] -%}
+            {%- if t_text != blank -%}<span>{{ trust_icons[i] }}{{ t_text }}</span>{%- endif -%}
+          {%- endfor -%}
+        </div>
       </div>
-    </div>
 
-    {%- comment -%} Mobile menu dropdown {%- endcomment -%}
-    {%- include 'menu_mobile' -%}
-
-    {% for block in section.blocks %}
-      {% if block.type == 'mega_menu' %}
-    <div class="menu-desktop menu-desktop-v2 hidden" data-menu-handle="{{ block.settings.menu_item_handle }}" {{ block.shopify_attributes }}>
-      <div class="mega-menu-v2__products">
-        {%- assign product_fields = 'product_1,product_2,product_3,product_4,product_5' | split: ',' -%}
-        {%- assign desc_fields = 'product_1_desc,product_2_desc,product_3_desc,product_4_desc,product_5_desc' | split: ',' -%}
-        {%- for i in (0..4) -%}
-          {%- assign prod_field = product_fields[i] -%}
-          {%- assign desc_field = desc_fields[i] -%}
-          {%- if block.settings[prod_field] != blank -%}
-            {%- assign product = all_products[block.settings[prod_field]] -%}
-            <a href="{{ product.url }}" class="mega-menu-v2__card">
-              <div class="mega-menu-v2__card-image">
-                <img
-                  src="{{ product.featured_image | image_url: width: 350, format: 'webp' }}"
-                  alt="{{ product.title | escape }}"
-                  loading="lazy"
-                  width="175"
-                  height="175"
-                decoding="async">
-              </div>
-              <div class="mega-menu-v2__card-content">
-                <div class="mega-menu-v2__card-rating">
-                  <div class="mega-menu-v2__card-stars">
-                    {% render 'icon-star-rating' %}
-                    {% render 'icon-star-rating' %}
-                    {% render 'icon-star-rating' %}
-                    {% render 'icon-star-rating' %}
-                    {% render 'icon-star-rating' %}
-                  </div>
-                  <span class="mega-menu-v2__card-rating-text">
-                    <strong>{% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewAverageValue | round: 1 }}{% else %}5.0{% endif %}</strong>&nbsp;<span class="mega-menu-v2__card-rating-count">({% if product.metafields.okendo.summaryData.reviewCount > 0 %}{{ product.metafields.okendo.summaryData.reviewCount | append: ' Reviews' }}{% else %}Reviews{% endif %})</span>
-                  </span>
+      {%- comment -%} Right: preview panels (one per product, first active) {%- endcomment -%}
+      <div class="rjnav-preview">
+        {%- for block in product_blocks -%}
+          {%- assign product = block.settings.product -%}
+          {%- if product == blank -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign base = product.metafields.custom.base_colour | default: purple
+            assign tint = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#F4EEF5'
+            assign rating = product.metafields.okendo.summaryData.reviewAverageValue | default: 0.0 | plus: 0.0
+            assign review_count = product.metafields.okendo.summaryData.reviewCount | default: 0 | plus: 0
+            assign sub_price = nil
+            for v in product.variants
+              for alloc in v.selling_plan_allocations
+                if sub_price == nil or alloc.price < sub_price
+                  assign sub_price = alloc.price
+                endif
+              endfor
+            endfor
+            if sub_price == nil
+              assign now_price = product.price
+              assign was_price = product.compare_at_price
+            else
+              assign now_price = sub_price
+              assign was_price = product.price
+            endif
+          -%}
+          <div class="rjnav-panel{% if forloop.first %} is-active{% endif %}" data-rjnav-panel data-index="{{ forloop.index0 }}" style="--rjnav-tint: {{ tint }}; --rjnav-base: {{ base }};">
+            <div class="rjnav-panel-img"><img src="{{ product.featured_image | image_url: width: 600, format: 'webp' }}" alt="{{ product.title | escape }}" loading="lazy" decoding="async"></div>
+            <div class="rjnav-panel-info">
+              {%- if review_count > 0 -%}
+                <div class="rjnav-panel-rating">
+                  <span class="rjnav-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+                  <b>{{ rating | round: 1 }}</b>
+                  <span class="rjnav-rcount">({% render 'rj-thousands', n: review_count %} reviews)</span>
                 </div>
-                <h3 class="mega-menu-v2__card-title">{{ product.title }}</h3>
-                <p class="mega-menu-v2__card-desc">{{ block.settings[desc_field] }}</p>
+              {%- endif -%}
+              <div class="rjnav-panel-name">{{ product.title }}</div>
+              <div class="rjnav-panel-desc">{{ block.settings.description }}</div>
+              <div class="rjnav-panel-price">
+                <span class="rjnav-panel-now">{{ now_price | money }}</span>
+                {%- if was_price != blank and was_price > now_price -%}<span class="rjnav-panel-was">{{ was_price | money }}</span>{%- endif -%}
               </div>
-            </a>
-          {%- endif -%}
+              <a href="{{ product.url }}" class="rjnav-shopnow">{{ section.settings.shopnow_label | default: 'SHOP NOW' }}</a>
+            </div>
+          </div>
         {%- endfor -%}
       </div>
-      <div class="mega-menu-v2__traits">
-        {% if block.settings.benefit_1_text != blank %}
-        <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-shipping' %}</span>
-          <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_1_text }}</span>
-        </div>
-        {% endif %}
-        {% if block.settings.benefit_2_text != blank %}
-        <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-reviews' %}</span>
-          <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_2_text }}</span>
-        </div>
-        {% endif %}
-        {% if block.settings.benefit_3_text != blank %}
-        <div class="mega-menu-v2__trait">
-          <span class="mega-menu-v2__trait-icon">{% render 'icon-benefit-family' %}</span>
-          <span class="mega-menu-v2__trait-label">{{ block.settings.benefit_3_text }}</span>
-        </div>
-        {% endif %}
-      </div>
     </div>
-      {% endif %}
-    {% endfor %}
+  </div>
+
+  {%- comment -%} ===== Mobile bar ===== {%- endcomment -%}
+  <div class="rjnav-mbar">
+    <a href="/" class="rjnav-logo" aria-label="Rejuvia home">{% render 'logo-rejuvia' %}</a>
+    <div class="rjnav-mright">
+      <a class="rjnav-carticon" href="/cart" aria-label="Cart">{{ icon_cart }}{% if cart.item_count > 0 %}<span class="rjnav-cart-count">{{ cart.item_count }}</span>{% endif %}</a>
+      <button type="button" class="rjnav-mtoggle" data-rjnav-mtoggle aria-label="Open menu" aria-expanded="false" aria-controls="rjnav-mmenu">
+        <span class="rjnav-icon-open"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+        <span class="rjnav-icon-close"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+      </button>
+    </div>
+  </div>
+
+  {%- comment -%} ===== Mobile menu ===== {%- endcomment -%}
+  <div class="rjnav-mmenu" id="rjnav-mmenu">
+    <div class="rjnav-mcards">
+      {%- for block in product_blocks -%}
+        {%- assign product = block.settings.product -%}
+        {%- if product == blank -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign tint = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#F4EEF5'
+          assign rating = product.metafields.okendo.summaryData.reviewAverageValue | default: 0.0 | plus: 0.0
+          assign review_count = product.metafields.okendo.summaryData.reviewCount | default: 0 | plus: 0
+          assign is_featured = false
+          if block.settings.badge_text != blank
+            assign is_featured = true
+          endif
+        -%}
+        <a href="{{ product.url }}" class="rjnav-mcard{% if is_featured %} rjnav-mcard--featured{% endif %}" style="--rjnav-tint: {{ tint }};">
+          {%- if is_featured -%}<span class="rjnav-mcard-tag">{{ block.settings.badge_text }}</span>{%- endif -%}
+          <span class="rjnav-mcard-imgwrap"><img src="{{ product.featured_image | image_url: width: 180, format: 'webp' }}" alt="{{ product.title | escape }}" loading="lazy" decoding="async"></span>
+          <span class="rjnav-mcard-text">
+            {%- if review_count > 0 -%}
+              <span class="rjnav-mcard-rating"><span class="rjnav-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span><b>{{ rating | round: 1 }}</b><span class="rjnav-rcount">({% render 'rj-thousands', n: review_count %})</span></span>
+            {%- endif -%}
+            <span class="rjnav-mcard-name">{{ product.title }}</span>
+            <span class="rjnav-mcard-short">{{ block.settings.short_line }}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    <div class="rjnav-mlinks">
+      {%- if section.settings.link_1_label != blank -%}<a class="rjnav-mlink" href="{{ section.settings.link_1_url }}">{{ section.settings.link_1_label }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>{%- endif -%}
+      {%- if section.settings.link_2_label != blank -%}<a class="rjnav-mlink" href="{{ section.settings.link_2_url }}">{{ section.settings.link_2_label }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>{%- endif -%}
+      {%- if section.settings.link_3_label != blank -%}<a class="rjnav-mlink" href="{{ section.settings.link_3_url }}">{{ section.settings.link_3_label }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>{%- endif -%}
+      <a class="rjnav-mlink" href="{{ account_url }}">{{ section.settings.account_label | default: 'Sign In' }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <a class="rjnav-mcta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Sleep Spray' }}</a>
+
+    <div class="rjnav-mtrust">
+      {%- for i in (0..2) -%}
+        {%- assign t_field = 'trust_' | append: forloop.index -%}
+        {%- assign t_text = section.settings[t_field] -%}
+        {%- if t_text != blank -%}<div class="rjnav-mtile">{{ trust_icons[i] }}{{ t_text }}</div>{%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
 </div>
 
 <script>
-  (function() {
-    var header = document.getElementById('header');
-    if (!header) return;
+(function () {
+  var header = document.getElementById('header');
+  if (!header) return;
+  var DESKTOP_MQ = window.matchMedia('(min-width: 990px)');
+  var trigger = header.querySelector('[data-rjnav-trigger]');
+  var rows = [].slice.call(header.querySelectorAll('[data-rjnav-row]'));
+  var panels = [].slice.call(header.querySelectorAll('[data-rjnav-panel]'));
+  var closeEls = [].slice.call(header.querySelectorAll('[data-rjnav-close]'));
+  var closeTimer = null;
 
-    /* Hide header on scroll down, show on scroll up — only on pages that have
-       a BOTTOM sticky CTA bar (homepage, product pages). Top sticky bars don't
-       need this because they live in the same space as the header.
-       The --bottom modifier on .sticky-cta-v2-section is added by that section's
-       own inline script at DOMContentLoaded, so we recheck after the DOM is ready. */
-    var HIDE_ON_SCROLL = false;
-    var NO_REVEAL = false;
-    function refreshHideOnScroll() {
-      HIDE_ON_SCROLL = !!document.querySelector('.sticky-cta-v2-section--bottom, .sticky-cta-bogo-section--bottom, .psb');
-      NO_REVEAL = !!document.querySelector('[data-psb-no-reveal]');
+  function setActive(i) {
+    rows.forEach(function (r, n) { r.classList.toggle('is-active', n === i); });
+    panels.forEach(function (p, n) { p.classList.toggle('is-active', n === i); });
+  }
+  function openMenu() {
+    if (!DESKTOP_MQ.matches) return;
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    if (header.classList.contains('rjnav-open')) return;
+    setActive(0);
+    header.classList.add('rjnav-open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    if (!header.classList.contains('rjnav-open')) return;
+    header.classList.remove('rjnav-open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  }
+  function closeSoon() {
+    if (closeTimer) clearTimeout(closeTimer);
+    closeTimer = setTimeout(closeMenu, 150);
+  }
+  function cancelClose() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+  }
+
+  if (trigger) {
+    trigger.addEventListener('mouseenter', openMenu);
+    trigger.addEventListener('focus', openMenu);
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (header.classList.contains('rjnav-open')) closeMenu(); else openMenu();
+    });
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        if (header.classList.contains('rjnav-open')) closeMenu(); else openMenu();
+      }
+    });
+  }
+
+  // Keep open while pointer is within the mega menu; close shortly after leaving.
+  var mega = header.querySelector('.rjnav-mega');
+  if (mega) {
+    mega.addEventListener('mouseenter', cancelClose);
+    mega.addEventListener('mouseleave', closeSoon);
+  }
+  if (trigger) {
+    trigger.addEventListener('mouseleave', closeSoon);
+    trigger.addEventListener('mouseenter', cancelClose);
+  }
+
+  // Entering any other nav link / right cluster / overlay closes the menu.
+  closeEls.forEach(function (el) { el.addEventListener('mouseenter', closeMenu); });
+
+  // Preview switching on hover / focus of a product row.
+  rows.forEach(function (row, i) {
+    row.addEventListener('mouseenter', function () { setActive(i); });
+    row.addEventListener('focus', function () { setActive(i); });
+  });
+
+  // Esc closes the desktop menu.
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('rjnav-open')) {
+      closeMenu();
+      if (trigger) trigger.focus();
     }
-    refreshHideOnScroll();
-    document.addEventListener('DOMContentLoaded', refreshHideOnScroll);
-    window.addEventListener('load', refreshHideOnScroll);
+  });
 
-    var oldScrollY = 0;
-    var ticking = false;
-    var HIDE_THRESHOLD = 100;
-    var MIN_DELTA = 4;
+  // Close if focus leaves the header entirely (keyboard tab-out).
+  header.addEventListener('focusout', function (e) {
+    if (!header.contains(e.relatedTarget)) closeMenu();
+  });
 
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function() {
-        var scrollY = window.scrollY;
-        var delta = scrollY - oldScrollY;
+  // ===== Mobile menu =====
+  var mToggle = header.querySelector('[data-rjnav-mtoggle]');
+  function openMobile() {
+    header.classList.add('rjnav-mopen');
+    document.body.classList.add('rjnav-lock');
+    if (mToggle) { mToggle.setAttribute('aria-expanded', 'true'); mToggle.setAttribute('aria-label', 'Close menu'); }
+  }
+  function closeMobile() {
+    header.classList.remove('rjnav-mopen');
+    document.body.classList.remove('rjnav-lock');
+    if (mToggle) { mToggle.setAttribute('aria-expanded', 'false'); mToggle.setAttribute('aria-label', 'Open menu'); }
+  }
+  if (mToggle) {
+    mToggle.addEventListener('click', function () {
+      if (header.classList.contains('rjnav-mopen')) closeMobile(); else openMobile();
+    });
+  }
+  // Close mobile menu when a link inside it is tapped.
+  var mmenu = header.querySelector('.rjnav-mmenu');
+  if (mmenu) {
+    mmenu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) closeMobile();
+    });
+  }
+  // Reset menu state when crossing the breakpoint.
+  DESKTOP_MQ.addEventListener('change', function () {
+    closeMenu();
+    closeMobile();
+  });
 
-        if (scrollY > 1) {
-          header.classList.add('is-ticky');
-        } else {
-          header.classList.remove('is-ticky');
-        }
+  // ===== Sticky hide-on-scroll (preserved behavior for bottom sticky CTAs) =====
+  var HIDE_ON_SCROLL = false, NO_REVEAL = false;
+  function refreshHideOnScroll() {
+    HIDE_ON_SCROLL = !!document.querySelector('.sticky-cta-v2-section--bottom, .sticky-cta-bogo-section--bottom, .psb');
+    NO_REVEAL = !!document.querySelector('[data-psb-no-reveal]');
+  }
+  refreshHideOnScroll();
+  document.addEventListener('DOMContentLoaded', refreshHideOnScroll);
+  window.addEventListener('load', refreshHideOnScroll);
 
-        if (oldScrollY > scrollY) {
-          document.body.classList.add('sticky-header');
-        } else {
-          document.body.classList.remove('sticky-header');
-        }
-
-        if (HIDE_ON_SCROLL) {
-          if (scrollY < HIDE_THRESHOLD) {
-            header.classList.remove('is-hidden');
-          } else if (delta > MIN_DELTA) {
-            header.classList.add('is-hidden');
-          } else if (delta < -MIN_DELTA && !NO_REVEAL) {
-            header.classList.remove('is-hidden');
-          }
-        }
-
-        oldScrollY = scrollY;
-        ticking = false;
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    header.classList.remove('fixed-pending');
-  })();
+  var oldScrollY = 0, ticking = false, HIDE_THRESHOLD = 100, MIN_DELTA = 4;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var scrollY = window.scrollY;
+      var delta = scrollY - oldScrollY;
+      if (scrollY > 1) header.classList.add('is-ticky'); else header.classList.remove('is-ticky');
+      if (oldScrollY > scrollY) document.body.classList.add('sticky-header'); else document.body.classList.remove('sticky-header');
+      if (HIDE_ON_SCROLL && !header.classList.contains('rjnav-mopen')) {
+        if (scrollY < HIDE_THRESHOLD) header.classList.remove('is-hidden');
+        else if (delta > MIN_DELTA) { header.classList.add('is-hidden'); closeMenu(); }
+        else if (delta < -MIN_DELTA && !NO_REVEAL) header.classList.remove('is-hidden');
+      }
+      oldScrollY = scrollY;
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  header.classList.remove('fixed-pending');
+})();
 </script>
 
 {% schema %}
-  {
-    "name": "Header",
-    "class": "main-header",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Logo"
-      },
-      {
-        "type": "range",
-        "id": "logo_width",
-        "min": 100,
-        "max": 280,
-        "step": 2,
-        "unit": "px",
-        "label": "Logo width (desktop)",
-        "default": 164
-      },
-      {
-        "type": "range",
-        "id": "logo_width_mobile",
-        "min": 80,
-        "max": 220,
-        "step": 2,
-        "unit": "px",
-        "label": "Logo width (mobile)",
-        "default": 164
-      },
-      {
-        "type": "header",
-        "content": "Navigation text"
-      },
-      {
-        "type": "range",
-        "id": "nav_font_size",
-        "min": 12,
-        "max": 28,
-        "step": 1,
-        "unit": "px",
-        "label": "Nav text size (desktop)",
-        "default": 20
-      },
-      {
-        "type": "range",
-        "id": "nav_font_size_mobile",
-        "min": 12,
-        "max": 28,
-        "step": 1,
-        "unit": "px",
-        "label": "Nav text size (mobile menu)",
-        "default": 20
-      },
-      {
-        "type": "header",
-        "content": "Colors"
-      },
-      {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Background color",
-        "info": "Applied to desktop nav and mobile nav bar.",
-        "default": "#EAEAF7"
-      },
-      {
-        "type": "link_list",
-        "id": "menu_desktop",
-        "label": "Navigation Menu"
-      },
-      {
-        "type": "header",
-        "content": "Desktop"
-      },
-      {
-        "type": "select",
-        "id": "behavior",
-        "label": "Behavior",
-        "options": [
-          { "value": "static", "label": "Static" },
-          { "value": "fixed", "label": "Fixed" }
-        ],
-        "default": "static"
-      },
-      {
-        "type": "header",
-        "content": "Mobile"
-      },
-      {
-        "type": "select",
-        "id": "behavior_mobile",
-        "label": "Behavior (Mobile)",
-        "options": [
-          { "value": "static", "label": "Static" },
-          { "value": "fixed", "label": "Fixed" }
-        ],
-        "default": "static"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "mega_menu",
-        "name": "Mega Menu",
-        "limit": 3,
-        "settings": [
-          {
-            "type": "text",
-            "id": "menu_item_handle",
-            "label": "Menu item handle",
-            "info": "Handle of the nav link this mega menu belongs to (e.g. 'products')"
-          },
-          {
-            "type": "header",
-            "content": "Products"
-          },
-          { "type": "product", "id": "product_1", "label": "Product 1" },
-          { "type": "text", "id": "product_1_desc", "label": "Product 1 description" },
-          { "type": "product", "id": "product_2", "label": "Product 2" },
-          { "type": "text", "id": "product_2_desc", "label": "Product 2 description" },
-          { "type": "product", "id": "product_3", "label": "Product 3" },
-          { "type": "text", "id": "product_3_desc", "label": "Product 3 description" },
-          { "type": "product", "id": "product_4", "label": "Product 4" },
-          { "type": "text", "id": "product_4_desc", "label": "Product 4 description" },
-          { "type": "product", "id": "product_5", "label": "Product 5" },
-          { "type": "text", "id": "product_5_desc", "label": "Product 5 description" },
-          {
-            "type": "header",
-            "content": "Footer Benefits"
-          },
-          { "type": "text", "id": "benefit_1_text", "label": "Benefit 1 text", "default": "Free Same-Day Shipping" },
-          { "type": "text", "id": "benefit_2_text", "label": "Benefit 2 text", "default": "3,000+ 5-Star Reviews" },
-          { "type": "text", "id": "benefit_3_text", "label": "Benefit 3 text", "default": "Family-Founded Brand" }
-        ]
-      },
-      {
-        "type": "mobile-menu-links",
-        "name": "Mobile Menu Links",
-        "limit": 1,
-        "settings": [
-          { "type": "text", "id": "first_label", "label": "Link 1 Label" },
-          { "type": "url", "id": "first_url", "label": "Link 1 URL" },
-          { "type": "text", "id": "second_label", "label": "Link 2 Label" },
-          { "type": "url", "id": "second_url", "label": "Link 2 URL" },
-          { "type": "text", "id": "third_label", "label": "Link 3 Label" },
-          { "type": "url", "id": "third_url", "label": "Link 3 URL" },
-          { "type": "text", "id": "fourth_label", "label": "Link 4 Label" },
-          { "type": "url", "id": "fourth_url", "label": "Link 4 URL" }
-        ]
-      }
-    ]
-  }
+{
+  "name": "Header",
+  "class": "main-header",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "range", "id": "logo_width", "min": 100, "max": 240, "step": 2, "unit": "px", "label": "Logo width (desktop)", "default": 150 },
+    { "type": "range", "id": "logo_width_mobile", "min": 80, "max": 200, "step": 2, "unit": "px", "label": "Logo width (mobile)", "default": 132 },
+    { "type": "header", "content": "Nav links" },
+    { "type": "text", "id": "products_label", "label": "Products label", "default": "Products" },
+    { "type": "text", "id": "link_1_label", "label": "Link 1 label", "default": "Customer Reviews" },
+    { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
+    { "type": "text", "id": "link_2_label", "label": "Link 2 label", "default": "Ingredients" },
+    { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
+    { "type": "text", "id": "link_3_label", "label": "Link 3 label", "default": "FAQs" },
+    { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
+    { "type": "header", "content": "Right cluster" },
+    { "type": "text", "id": "account_label", "label": "Account label", "default": "Sign In" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop Sleep Spray" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" },
+    { "type": "text", "id": "shopnow_label", "label": "Preview button label", "default": "SHOP NOW" },
+    { "type": "header", "content": "Trust items (menu + mobile tiles)" },
+    { "type": "text", "id": "trust_1", "label": "Trust 1 (star icon)", "default": "7,500+ 5-Star Reviews" },
+    { "type": "text", "id": "trust_2", "label": "Trust 2 (box icon)", "default": "Free U.S. Shipping Over $59" },
+    { "type": "text", "id": "trust_3", "label": "Trust 3 (heart icon)", "default": "Family-Founded Business" },
+    { "type": "header", "content": "Behavior (legacy)" },
+    { "type": "text", "id": "behavior", "label": "Desktop behavior", "default": "static" },
+    { "type": "text", "id": "behavior_mobile", "label": "Mobile behavior", "default": "static" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "short_line", "label": "Short line" },
+        { "type": "text", "id": "description", "label": "Preview description" },
+        { "type": "text", "id": "badge_text", "label": "Badge / featured tag", "info": "e.g. #1 BEST SELLER. Setting this marks the product as the featured (Sleep) card on mobile." }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
 {% endschema %}

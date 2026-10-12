@@ -103,6 +103,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__bundle { flex: none; width: 96px; height: auto; object-fit: contain; display: block; }
 .obs__tinfo { flex: 1; min-width: 0; text-align: left; }
 .obs__tname { --ls: -.3px; display: block; font-size: {{ section.settings.tier_title_size | default: 21 }}px; font-weight: 800; color: #672666; line-height: 1.2; white-space: nowrap; }
+.obs__servings { display: block; font-size: 15px; font-weight: 400; font-style: italic; color: #5c5866; line-height: 1.2; margin-top: 5px; }
 .obs__prices { display: flex; align-items: center; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
 .obs__price { font-size: 29px; font-weight: 800; color: #171512; line-height: 1; }
 .obs__struck { font-size: 21px; color: #a9a3b2; text-decoration: line-through; }
@@ -182,6 +183,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__struck { font-size: 18px; }
   .obs__save { font-size: 14px; padding: 5px 10px 4px; }
   .obs__ship { font-size: 12px; }
+  .obs__servings { font-size: 14px; }
   .obs__badge { right: 16px; font-size: 12px; }
   .obs__buy { font-size: 18px; padding: 20px 28px; }
   .obs__trust { gap: 8px; }
@@ -328,6 +330,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- if b.settings.savings_text != blank -%}<span class="obs__save">{{ b.settings.savings_text }}</span>{%- endif -%}
                 </span>
                 {%- if b.settings.free_shipping -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
+                {%- if b.settings.servings_text != blank -%}<span class="obs__servings">{{ b.settings.servings_text }}</span>{%- endif -%}
               </span>
             </span>
           </label>
@@ -1004,6 +1007,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "label": "Savings pill",
           "info": "e.g. SAVE $30. Leave blank to hide.",
           "default": "SAVE $30"
+        },
+        {
+          "type": "text",
+          "id": "servings_text",
+          "label": "Servings / supply line",
+          "info": "e.g. 60 Servings (2 Month-Supply). Leave blank to hide."
         },
         {
           "type": "checkbox",

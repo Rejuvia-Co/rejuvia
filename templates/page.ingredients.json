@@ -86,7 +86,7 @@
         "item_1": {
           "type": "item",
           "settings": {
-            "title": "No GMOs, gluten or dairy",
+            "title": "No GMOs, Gluten or Dairy",
             "description": "Non-GMO botanicals, no wheat, barley or rye, and no milk derivatives. 100% vegan.",
             "description_mobile": ""
           }
@@ -94,7 +94,7 @@
         "item_2": {
           "type": "item",
           "settings": {
-            "title": "All natural",
+            "title": "All Natural",
             "description": "13+ natural sleep herbs and botanicals. No fillers or artificial additives.",
             "description_mobile": ""
           }
@@ -102,7 +102,7 @@
         "item_3": {
           "type": "item",
           "settings": {
-            "title": "No artificial sweeteners",
+            "title": "No Artificial Sweeteners",
             "description": "No sucralose, aspartame or saccharin — and no chemical aftertaste.",
             "description_mobile": ""
           }
@@ -110,7 +110,7 @@
         "item_4": {
           "type": "item",
           "settings": {
-            "title": "cGMP certified",
+            "title": "cGMP Certified",
             "description": "Made in the USA following current Good Manufacturing Practices.",
             "description_mobile": ""
           }
@@ -118,7 +118,7 @@
         "item_5": {
           "type": "item",
           "settings": {
-            "title": "Triple lab tested",
+            "title": "Triple Lab Tested",
             "description": "Every batch is independently tested three times for purity, potency and contaminants before it ships.",
             "description_mobile": "Every batch is independently tested three times for purity, potency and contaminants."
           }
@@ -134,9 +134,9 @@
       "name": "Clean Formula V2",
       "settings": {
         "anchor_id": "clean-formula",
-        "bg_color": "#f5f5fb",
+        "bg_color": "#ffffff",
         "accent_color": "#672666",
-        "heading": "<p>Nothing hidden. Nothing extra.</p>",
+        "heading": "<p>No Hidden or Extra Ingredients</p>",
         "description": "We held every ingredient to the same standard we'd hold anything we give our own family.",
         "image": "shopify://shop_images/clean-lab-sprays.webp",
         "image_alt": "Rejuvia oral sprays among lab glassware"

@@ -1,0 +1,213 @@
+/* Shop The Sprays V2 — 4 product cards on the ingredients page */
+
+.shop-sprays-v2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #141414;
+  background: #fff;
+  /* Full-bleed band like .key-ingredients-v2 */
+  padding: 64px 16px;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 16px);
+  padding-right: calc(50vw - 50% + 16px);
+}
+
+.shop-sprays-v2__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid */
+.shop-sprays-v2__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Card */
+.shop-sprays-v2__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Image tile */
+.shop-sprays-v2__media {
+  position: relative;
+  display: block;
+}
+
+.shop-sprays-v2__tile {
+  background: #fff;
+  border: 1px solid #e3e0ee;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.shop-sprays-v2__tile img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: block;
+}
+
+.shop-sprays-v2__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #672666;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 100px;
+  line-height: 1;
+}
+
+/* Info stack */
+.shop-sprays-v2__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shop-sprays-v2__rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.shop-sprays-v2__stars {
+  display: flex;
+  gap: 1px;
+}
+
+.shop-sprays-v2__stars svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.shop-sprays-v2__rating-text {
+  font-size: 14px;
+  color: #141414;
+  white-space: nowrap;
+}
+
+.shop-sprays-v2__rating-text strong { font-weight: 600; }
+.shop-sprays-v2__rating-count { color: #5a5664; }
+
+.shop-sprays-v2__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #171512;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.shop-sprays-v2__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.shop-sprays-v2__price-now {
+  font-size: 20px;
+  font-weight: 600;
+  color: #171512;
+}
+
+.shop-sprays-v2__price-was {
+  font-size: 18px;
+  color: #8a8597;
+  text-decoration: line-through;
+}
+
+.shop-sprays-v2__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+/* Dots (mobile only) */
+.shop-sprays-v2__dots { display: none; }
+
+/* Title hover — desktop, pointer devices only */
+@media (hover: hover) and (min-width: 750px) {
+  .shop-sprays-v2__title:hover { text-decoration: underline; }
+}
+
+/* ===================== Mobile (≤749px) ===================== */
+@media (max-width: 749px) {
+  .shop-sprays-v2 {
+    /* Full-bleed to the viewport edges; the track adds its own 16px gutter so
+       cards can bleed off-screen on swipe. */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+  }
+
+  .shop-sprays-v2__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Horizontal swipe row */
+  .shop-sprays-v2__grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 0 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .shop-sprays-v2__grid::-webkit-scrollbar { display: none; }
+
+  .shop-sprays-v2__card {
+    width: 270px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    gap: 12px;
+  }
+
+  .shop-sprays-v2__stars svg { width: 14px; height: 14px; }
+
+  .shop-sprays-v2__title { font-size: 18px; }
+  .shop-sprays-v2__price-now { font-size: 18px; }
+  .shop-sprays-v2__price-was { font-size: 16px; }
+
+  /* Dots */
+  .shop-sprays-v2__dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+  .shop-sprays-v2__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 100px;
+    background: #cfcae3;
+    padding: 0;
+    border: 0;
+    transition: width .2s ease, background .2s ease;
+  }
+  .shop-sprays-v2__dot.is-active {
+    width: 20px;
+    background: #672666;
+  }
+}

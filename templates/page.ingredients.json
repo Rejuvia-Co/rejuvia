@@ -190,6 +190,25 @@
         "spray_stat_label": "more bioavailability than pills and gummies"
       }
     },
+    "shop_sprays_v2_Tq4wZc": {
+      "type": "shop-sprays-v2",
+      "blocks": {
+        "prod_sleep": { "type": "product", "settings": { "product": "sleep-spray", "description": "Fall asleep faster and wake feeling restored.", "badge_text": "Best Seller" } },
+        "prod_calm": { "type": "product", "settings": { "product": "oral-stress-spray", "description": "Calm your mind during the day, sleep deeply at night." } },
+        "prod_d3k2": { "type": "product", "settings": { "product": "vitamin-d3-k2-spray", "description": "Support immunity, bone strength, and heart health." } },
+        "prod_lutein": { "type": "product", "settings": { "product": "lutein", "description": "Protect eye tissues and filter blue light." } }
+      },
+      "block_order": [
+        "prod_sleep",
+        "prod_calm",
+        "prod_d3k2",
+        "prod_lutein"
+      ],
+      "name": "Shop The Sprays V2",
+      "settings": {
+        "anchor_id": "shop-sprays"
+      }
+    },
     "guarantee_section_ing": {
       "type": "guarantee-section",
       "settings": {
@@ -290,6 +309,7 @@
     "clean_formula_v2_Rn8kPq",
     "why_better_v2_Ny6pzj",
     "absorption_compare_v2_Kd7mXa",
+    "shop_sprays_v2_Tq4wZc",
     "guarantee_section_ing",
     "science_v2_wgkJq7",
     "page_cta_v2_HdCPMi"

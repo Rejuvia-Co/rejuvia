@@ -1,0 +1,217 @@
+{{ 'shop-sprays-v2.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign star_fill = '#eac78b'
+  assign star_empty = '#e3e0ee'
+  assign product_blocks = section.blocks | where: 'type', 'product'
+-%}
+
+<section
+  class="shop-sprays-v2"
+  {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %}
+  data-shop-sprays>
+  <div class="shop-sprays-v2__container">
+
+    <div class="shop-sprays-v2__grid" data-shop-sprays-track>
+      {%- for block in product_blocks -%}
+        {%- assign product = block.settings.product -%}
+        {%- if product == blank -%}{%- continue -%}{%- endif -%}
+
+        {%- liquid
+          # ---- Price: lowest subscription (selling plan) price, strike the one-time ----
+          assign sub_price = nil
+          for variant in product.variants
+            for alloc in variant.selling_plan_allocations
+              if sub_price == nil or alloc.price < sub_price
+                assign sub_price = alloc.price
+              endif
+            endfor
+          endfor
+          if sub_price == nil
+            assign now_price = product.price
+            assign was_price = product.compare_at_price
+          else
+            assign now_price = sub_price
+            assign was_price = product.price
+          endif
+
+          # ---- Rating (Okendo) ----
+          assign rating = product.metafields.okendo.summaryData.reviewAverageValue | default: 0.0 | plus: 0.0
+          assign review_count = product.metafields.okendo.summaryData.reviewCount | default: 0 | plus: 0
+
+          # Thousands separator for the review count (handles up to one comma)
+          assign count_str = review_count | append: ''
+          if review_count >= 1000
+            assign thousands = review_count | divided_by: 1000
+            assign rem = review_count | modulo: 1000
+            assign rem_str = rem | append: ''
+            assign rem_len = rem_str | size
+            if rem_len == 1
+              assign rem_str = '00' | append: rem_str
+            elsif rem_len == 2
+              assign rem_str = '0' | append: rem_str
+            endif
+            assign count_str = thousands | append: ',' | append: rem_str
+          endif
+        -%}
+
+        <div class="shop-sprays-v2__card" data-shop-sprays-card>
+          <a class="shop-sprays-v2__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+            <div class="shop-sprays-v2__tile">
+              {%- if product.featured_image != blank -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 600, format: 'webp' }}"
+                  srcset="{{ product.featured_image | image_url: width: 300, format: 'webp' }} 300w, {{ product.featured_image | image_url: width: 600, format: 'webp' }} 600w"
+                  sizes="(max-width: 749px) 270px, 280px"
+                  alt="{{ product.title | escape }}"
+                  width="{{ product.featured_image.width }}"
+                  height="{{ product.featured_image.height }}"
+                  loading="lazy"
+                  decoding="async">
+              {%- endif -%}
+            </div>
+            {%- if block.settings.badge_text != blank -%}
+              <span class="shop-sprays-v2__badge">{{ block.settings.badge_text }}</span>
+            {%- endif -%}
+          </a>
+
+          <div class="shop-sprays-v2__info">
+            {%- if review_count > 0 -%}
+              <div class="shop-sprays-v2__rating">
+                <span class="shop-sprays-v2__stars" role="img" aria-label="{{ rating | round: 1 }} out of 5 stars">
+                  {%- for i in (1..5) -%}
+                    {%- liquid
+                      assign fill = rating | minus: forloop.index0
+                      if fill < 0
+                        assign fill = 0
+                      elsif fill > 1
+                        assign fill = 1
+                      endif
+                      assign pct = fill | times: 100 | round
+                      assign gid = 'ss-' | append: block.id | append: '-' | append: forloop.index
+                    -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      {%- if pct > 0 and pct < 100 -%}
+                        <defs><linearGradient id="{{ gid }}"><stop offset="{{ pct }}%" stop-color="{{ star_fill }}"/><stop offset="{{ pct }}%" stop-color="{{ star_empty }}"/></linearGradient></defs>
+                        <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" fill="url(#{{ gid }})"/>
+                      {%- elsif pct == 100 -%}
+                        <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" fill="{{ star_fill }}"/>
+                      {%- else -%}
+                        <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" fill="{{ star_empty }}"/>
+                      {%- endif -%}
+                    </svg>
+                  {%- endfor -%}
+                </span>
+                <span class="shop-sprays-v2__rating-text"><strong>{{ rating | round: 1 }}</strong> <span class="shop-sprays-v2__rating-count">({{ count_str }} reviews)</span></span>
+              </div>
+            {%- endif -%}
+
+            <a class="shop-sprays-v2__title" href="{{ product.url }}">{{ block.settings.title | default: product.title }}</a>
+
+            <div class="shop-sprays-v2__price">
+              <span class="shop-sprays-v2__price-now">{{ now_price | money }}</span>
+              {%- if was_price != blank and was_price > now_price -%}
+                <span class="shop-sprays-v2__price-was">{{ was_price | money }}</span>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.description != blank -%}
+              <p class="shop-sprays-v2__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if product_blocks.size > 1 -%}
+      <div class="shop-sprays-v2__dots" data-shop-sprays-dots aria-hidden="true">
+        {%- for block in product_blocks -%}
+          {%- if block.settings.product != blank -%}
+            <button type="button" class="shop-sprays-v2__dot{% if forloop.first %} is-active{% endif %}" tabindex="-1"></button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    if (!root || !root.hasAttribute('data-shop-sprays')) {
+      var all = document.querySelectorAll('[data-shop-sprays]');
+      root = all[all.length - 1];
+    }
+    if (!root) return;
+    var track = root.querySelector('[data-shop-sprays-track]');
+    var dots = root.querySelectorAll('[data-shop-sprays-dots] .shop-sprays-v2__dot');
+    var cards = root.querySelectorAll('[data-shop-sprays-card]');
+    if (!track || !dots.length || !cards.length) return;
+
+    function setActive(i) {
+      dots.forEach(function (d, n) { d.classList.toggle('is-active', n === i); });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = Array.prototype.indexOf.call(cards, entry.target);
+            if (idx > -1) setActive(idx);
+          }
+        });
+      }, { root: track, threshold: 0.6 });
+      cards.forEach(function (c) { io.observe(c); });
+    } else {
+      track.addEventListener('scroll', function () {
+        var cw = cards[0].offsetWidth + 12;
+        setActive(Math.round(track.scrollLeft / cw));
+      }, { passive: true });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Shop The Sprays V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add one block per product. Price (lowest subscription), compare-at (one-time), rating and image are pulled live from each product. Okendo review data comes from the product's okendo metafields."
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Used with hero nav links (e.g. shop → #shop)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "title", "label": "Title override", "info": "Optional. Defaults to the product title." },
+        { "type": "text", "id": "description", "label": "Description" },
+        { "type": "text", "id": "badge_text", "label": "Badge", "info": "Optional. e.g. BEST SELLER. Leave empty to hide." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Shop The Sprays V2",
+      "category": "Custom",
+      "blocks": [
+        { "type": "product", "settings": { "description": "Fall asleep faster and wake feeling restored.", "badge_text": "Best Seller" } },
+        { "type": "product", "settings": { "description": "Calm your mind during the day, sleep deeply at night." } },
+        { "type": "product", "settings": { "description": "Support immunity, bone strength, and heart health." } },
+        { "type": "product", "settings": { "description": "Protect eye tissues and filter blue light." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

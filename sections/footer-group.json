@@ -43,7 +43,7 @@
       ],
       "name": "Footer V2",
       "settings": {
-        "bg_color": "#eaeaf7",
+        "bg_color": "#f5f5fb",
         "text_color": "#141414",
         "logo": "shopify://shop_images/Logo_1.svg",
         "newsletter_title": "Join Our Newsletter",

@@ -937,7 +937,7 @@
         "settings": {
           "default_items": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
           "anchor_id": "",
-          "bg_color": "#eaeaf7",
+          "bg_color": "#f5f5fb",
           "icon_color": "#672666"
         }
       },
@@ -1563,10 +1563,10 @@
           "stat_label_size_mobile": 12,
           "name_size_mobile": 16,
           "title_size_mobile": 13,
-          "section_bg": "#eaeaf7",
+          "section_bg": "#f5f5fb",
           "card_bg": "#ffffff",
           "accent_color": "#672666",
-          "band_from": "#eaeaf7",
+          "band_from": "#f5f5fb",
           "band_to": "#f9f2ff",
           "image_shadow_color": "#2a0e2a"
         }
@@ -1624,7 +1624,7 @@
         ],
         "name": "Press Carousel",
         "settings": {
-          "bg_color": "#eaeaf7",
+          "bg_color": "#f5f5fb",
           "text_color": "#000000",
           "control_color": "#672666",
           "quote_size_desktop": 17,
@@ -1728,7 +1728,7 @@
           "stars_color": "#fab851",
           "pill_bg": "#ffffff",
           "accent_color": "#672666",
-          "bg_color": "#eaeaf7"
+          "bg_color": "#f5f5fb"
         }
       },
       "bogo_content_home": {
@@ -1795,7 +1795,7 @@
           "button_link": "#offer",
           "scroll_target": ".product-widget-container",
           "sub_text": "90-Day Money Back Guarantee",
-          "bg_color": "#eaeaf7",
+          "bg_color": "#f5f5fb",
           "accent_color": "#672666"
         }
       },
@@ -1837,7 +1837,7 @@
         ],
         "name": "How To Use (Steps)",
         "settings": {
-          "background_color": "#eaeaf7",
+          "background_color": "#f5f5fb",
           "heading": "How To Use Rejuvia",
           "subheading": "Use 15–20 minutes before bed for the best results",
           "heading_size": 36,

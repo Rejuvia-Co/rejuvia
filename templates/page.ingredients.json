@@ -383,22 +383,59 @@
         "author_title": "Founder"
       }
     },
-    "page_cta_v2_HdCPMi": {
-      "type": "page-cta-v2",
-      "name": "Page CTA V2",
+    "page_faqs_v2_Fq5nxc": {
+      "type": "page-faqs-v2",
+      "blocks": {
+        "faq_ingredients": {
+          "type": "faq",
+          "settings": {
+            "question": "What's actually in Rejuvia?",
+            "answer": "<p>Rejuvia is a clean, all-natural blend of 13+ sleep herbs and botanicals. Every ingredient was chosen for a specific reason, backed by research, and included at a dose that actually does something — no fillers, no proprietary blends hiding weak doses, and nothing artificial. You can see the full breakdown in the supplement label above.</p>"
+          }
+        },
+        "faq_safety": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia safe?",
+            "answer": "<p>Yes. Rejuvia is made in the USA in a cGMP-certified facility, and every batch is independently lab-tested three times for purity, potency, and contaminants before it ships. It's non-habit-forming. As with any supplement, if you're pregnant, nursing, taking medication, or managing a medical condition, check with your doctor before use.</p>"
+          }
+        },
+        "faq_grogginess": {
+          "type": "faq",
+          "settings": {
+            "question": "Will it make me groggy in the morning?",
+            "answer": "<p>No. Rejuvia is formulated to help you fall asleep faster and stay asleep, then wake up feeling restored — not groggy or foggy. Because it's non-habit-forming, you can use it only on the nights you need it.</p>"
+          }
+        },
+        "faq_dietary": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia vegan, gluten-free, and non-GMO?",
+            "answer": "<p>Yes. Rejuvia is 100% vegan, gluten-free, and made with non-GMO botanicals — no wheat, barley, rye, or dairy, and no artificial sweeteners, colors, or fillers.</p>"
+          }
+        },
+        "faq_usage": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I use it, and how fast does it work?",
+            "answer": "<p>Spray 6–8 times under your tongue about 15 minutes before bed. Holding it under your tongue lets the ingredients absorb directly into your bloodstream, so more of the formula reaches your body — and faster — than a pill or gummy that has to pass through digestion.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_ingredients",
+        "faq_safety",
+        "faq_grogginess",
+        "faq_dietary",
+        "faq_usage"
+      ],
+      "name": "Page FAQs",
       "settings": {
-        "anchor_id": "",
-        "bg_color": "#f5f5fb",
-        "accent_color": "#672666",
-        "stars_color": "#eac78b",
-        "image": "shopify://shop_images/Rejuvia_Hero_Image.webp",
-        "show_stars": true,
-        "quote": "<p>“Rejuvia is my go to! <strong>I can’t live without it.</strong> I don’t need it every night, but it's always there when I need some help with sleep. It's great for traveling too!\"</p>",
-        "author_name": "Katie C.",
-        "author_role": "Verified Purchase",
-        "btn_text": "Sleep Better Tonight",
-        "btn_url": "shopify://products/sleep-spray",
-        "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
+        "anchor_id": "faqs",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666"
       }
     }
   },
@@ -412,6 +449,6 @@
     "shop_sprays_v2_Tq4wZc",
     "guarantee_section_ing",
     "science_v2_wgkJq7",
-    "page_cta_v2_HdCPMi"
+    "page_faqs_v2_Fq5nxc"
   ]
 }

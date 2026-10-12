@@ -45,7 +45,7 @@
 {%- endfor -%}
 
 <style>
-  .pgal { --pgal-thumb: 70px; --pgal-gap: 8px; }
+  .pgal { --pgal-thumb: 78px; --pgal-gap: 8px; }
 
   .pgal__main {
     /* Desktop: 93.5% of the gallery column -- the full-width square read as
@@ -76,13 +76,14 @@
   .pgal__thumbrow { display: flex; align-items: center; justify-content: center; gap: var(--pgal-gap); margin-top: 12px; }
 
   .pgal__arrow {
-    flex: none; width: 30px; height: 30px;
-    border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: var(--base-colour, #672666);
+    /* No circle — bare chevrons. The box is just the (generous) hit target. */
+    flex: none; width: 34px; height: 34px;
+    border: 0; border-radius: 0; background: transparent; color: var(--base-colour, #672666);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; padding: 0; transition: background .14s ease;
+    cursor: pointer; padding: 0; transition: opacity .14s ease;
   }
-  .pgal__arrow:hover { background: #f6eef6; }
-  .pgal__arrow svg { width: 14px; height: 14px; display: block; }
+  .pgal__arrow:hover { opacity: .6; }
+  .pgal__arrow svg { width: 22px; height: 22px; display: block; }
 
   /* Desktop shows every thumb; mobile keeps the five-visible cap. */
   .pgal__thumbs {
@@ -107,20 +108,18 @@
   .pgal__thumb.is-active { border: 1.5px solid var(--base-colour, #672666); background: #fff; }
 
   .pgal__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
-  .pgal__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
+  .pgal__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sub-base-colour, #ddd7e6); transition: background .14s ease; }
   .pgal__dot.is-active { background: var(--base-colour, #672666); }
 
   @media screen and (max-width: 749px) {
-    /* Touch sizing. The old row was 5 thumbs @48 + 30px arrows = 348px inside
-       343px, i.e. already overflowing, which is why the arrows were awkward
-       to hit. Four visible thumbs buys the room: 4x54 + 3 gaps + 2x40 arrows
-       + 2 gaps = 336px, so the swatches grow 48 -> 54, the arrows 30 -> 40
-       (a proper touch target) and it still fits with room to spare. */
-    .pgal { --pgal-thumb: 54px; }
+    /* Touch sizing. Four visible thumbs keeps the row inside the column:
+       4x60 + 3 gaps + 2x40 arrow hit-targets + 2 gaps = 360px. The chevrons
+       are bare (no circle) but keep a 40px tap area. */
+    .pgal { --pgal-thumb: 60px; }
     .pgal__main { max-width: 100%; border-radius: 14px; }
     .pgal__thumbs { max-width: min(100%, calc(var(--pgal-thumb) * 4 + var(--pgal-gap) * 3)); }
     .pgal__arrow { width: 40px; height: 40px; }
-    .pgal__arrow svg { width: 17px; height: 17px; }
+    .pgal__arrow svg { width: 24px; height: 24px; }
     .pgal__dots { gap: 6px; margin-top: 12px; }
     .pgal__dot { width: 9px; height: 9px; }
 
@@ -176,9 +175,9 @@
               {%- assign t = t | plus: 1 -%}
               {%- assign img = media.preview_image -%}
               <button type="button" class="pgal__thumb{% if t == 1 %} is-active{% endif %}" data-pgal-thumb aria-label="View image {{ t }}">
-                <img src="{{ img | image_url: width: 120, format: 'webp' }}"
-                     srcset="{{ img | image_url: width: 120, format: 'webp' }} 120w, {{ img | image_url: width: 180, format: 'webp' }} 180w"
-                     sizes="56px" width="56" height="56"
+                <img src="{{ img | image_url: width: 160, format: 'webp' }}"
+                     srcset="{{ img | image_url: width: 160, format: 'webp' }} 160w, {{ img | image_url: width: 240, format: 'webp' }} 240w"
+                     sizes="80px" width="80" height="80"
                      alt="" loading="lazy" decoding="async">
               </button>
             {%- endunless -%}

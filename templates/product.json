@@ -509,9 +509,9 @@
     "product_sticky_bar": {
       "type": "product-sticky-bar",
       "settings": {
-        "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+        "rating_text": "<b>{rating}</b> Stars | <b>7,500+</b> Reviews | <b>500,000+</b> Customers",
         "cta_text": "Save Up To {max_save}% Today",
-        "pill_text": "2M SPRAYS SOLD",
+        "pill_text": "2M+ Sprays Sold",
         "cta_action": "scroll",
         "scroll_target": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container",
         "text_color": "#141414",

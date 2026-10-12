@@ -740,7 +740,7 @@
         "lock_header_hidden": true,
         "reveal_after_selector": ".obs__buy",
         "persist_visible": true,
-        "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+        "rating_text": "<b>{rating}</b> Stars | <b>7,500+</b> Reviews | <b>500,000+</b> Customers",
         "rating_fallback": "4.5",
         "cta_text": "Claim Your BOGO Offer",
         "cta_fallback": "Claim Your BOGO Offer",

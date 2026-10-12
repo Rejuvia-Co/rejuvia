@@ -140,7 +140,7 @@
   #header .rjnav-pthumb { width: 88px; height: 88px; background: #fff; border: 1px solid {{ hairline }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; overflow: hidden; }
   #header .rjnav-pthumb img { width: 78px; height: 78px; object-fit: contain; display: block; }
   #header .rjnav-ptext { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  #header .rjnav-badge { align-self: flex-start; white-space: nowrap; background: {{ purple }}; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 3px 8px; border-radius: 100px; }
+  #header .rjnav-badge { align-self: flex-start; white-space: nowrap; background: {{ purple }}; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 1.5px 8px; border-radius: 100px; line-height: 1.4; }
   #header .rjnav-pname { font-size: 18px; font-weight: 700; white-space: nowrap; }
   #header .rjnav-pshort { font-size: 14px; color: {{ muted }}; }
   #header .rjnav-pprice { font-size: 16px; font-weight: 700; white-space: nowrap; color: {{ ink }}; align-self: center; }
@@ -207,7 +207,7 @@
     }
     #header .rjnav-mbar .rjnav-logo .logo-rejuvia-svg { width: {{ section.settings.logo_width_mobile | default: 132 }}px; }
     #header .rjnav-mright { display: flex; align-items: center; gap: 20px; }
-    #header .rjnav-mright .rjnav-carticon svg { width: 30px; height: 30px; }
+    #header .rjnav-mright .rjnav-carticon svg { width: 27px; height: 27px; }
     #header .rjnav-mright .rjnav-cart-count { top: -6px; right: -8px; }
     #header .rjnav-mtoggle {
       width: 44px; height: 44px; margin-right: -8px; display: flex; align-items: center; justify-content: center;
@@ -219,15 +219,17 @@
     #header.rjnav-mopen .rjnav-mtoggle .rjnav-icon-close { display: block; }
 
     #header .rjnav-mmenu {
-      display: flex; flex-direction: column; position: fixed; left: 0; right: 0; top: var(--rjnav-h); height: calc(100vh - var(--rjnav-h));
-      background: #fff; z-index: 105; overflow-y: auto;
+      display: flex; flex-direction: column; position: fixed; left: 0; right: 0; top: var(--rjnav-h);
+      height: calc(100vh - var(--rjnav-h));
+      height: calc(100dvh - var(--rjnav-h));
+      background: #fff; z-index: 105; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
       opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease;
     }
     #header.rjnav-mopen .rjnav-mmenu { opacity: 1; visibility: visible; }
 
     #header .rjnav-mcards { padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid {{ hairline_in }}; }
     #header .rjnav-mcard {
-      color: inherit; text-decoration: none; position: relative; display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 14px;
+      color: inherit; text-decoration: none; position: relative; display: grid; grid-template-columns: 92px minmax(0,1fr); gap: 14px;
       align-items: center; border: 1px solid {{ hairline }}; border-radius: 12px; padding: 10px 14px 10px 10px;
     }
     #header .rjnav-mcard:active { background: var(--rjnav-tint, #F4EEF5); }
@@ -237,16 +239,16 @@
       position: absolute; top: -1.5px; right: -1.5px; white-space: nowrap; background: {{ purple }}; color: #fff; font-size: 10px;
       font-weight: 700; letter-spacing: .06em; padding: 4px 9px; border-radius: 0 12px 0 10px;
     }
-    #header .rjnav-mcard-imgwrap { width: 76px; height: 76px; display: flex; align-items: center; justify-content: center; }
-    #header .rjnav-mcard-imgwrap img { width: 74px; height: 74px; object-fit: contain; display: block; }
-    #header .rjnav-mcard--featured .rjnav-mcard-imgwrap img { width: 84px; height: 84px; }
+    #header .rjnav-mcard-imgwrap { width: 92px; height: 92px; display: flex; align-items: center; justify-content: center; }
+    #header .rjnav-mcard-imgwrap img { width: 90px; height: 90px; object-fit: contain; display: block; }
+    #header .rjnav-mcard--featured .rjnav-mcard-imgwrap img { width: 100px; height: 100px; }
     #header .rjnav-mcard-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-    #header .rjnav-mcard-rating { display: flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
-    #header .rjnav-mcard-rating .rjnav-stars { display: flex; gap: 1px; }
-    #header .rjnav-mcard-rating .rjnav-stars svg { width: 12px; height: 12px; display: block; }
+    #header .rjnav-mcard-rating { display: flex; align-items: center; gap: 6px; font-size: 14px; white-space: nowrap; }
+    #header .rjnav-mcard-rating .rjnav-stars { display: flex; gap: 0; }
+    #header .rjnav-mcard-rating .rjnav-stars svg { width: 13px; height: 13px; display: block; }
     #header .rjnav-mcard-rating .rjnav-rcount { color: {{ muted }}; }
-    #header .rjnav-mcard-name { font-size: 19px; font-weight: 700; white-space: nowrap; }
-    #header .rjnav-mcard-short { font-size: 13px; color: {{ muted }}; }
+    #header .rjnav-mcard-name { font-size: 21px; font-weight: 700; white-space: nowrap; }
+    #header .rjnav-mcard-short { font-size: 15px; color: {{ muted }}; }
 
     #header .rjnav-mlinks { padding: 0 18px; display: flex; flex-direction: column; }
     #header .rjnav-mlink {
@@ -272,7 +274,7 @@
 {%- capture icon_people -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ purple }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><path d="M16 5.2a3 3 0 0 1 0 5.6"/><path d="M17.6 14c2.2.5 3.7 2.4 3.7 4.8"/></svg>{%- endcapture -%}
 {%- capture icon_heart -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ purple }}" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.3C19.5 15.4 12 20 12 20z"/></svg>{%- endcapture -%}
 {%- assign trust_icons = icon_star_outline | append: '|||' | append: icon_people | append: '|||' | append: icon_heart | split: '|||' -%}
-{%- capture icon_cart -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>{%- endcapture -%}
+{%- capture icon_cart -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>{%- endcapture -%}
 {%- capture icon_user -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="10" r="3.2"/><path d="M6.2 18.6c1.3-2.2 3.4-3.4 5.8-3.4s4.5 1.2 5.8 3.4"/></svg>{%- endcapture -%}
 
 <div id="header" class="header nav-v3 fixed-pending {{ section.settings.behavior }}-desktop {{ section.settings.behavior_mobile }}-mobile" data-rjnav>
@@ -424,7 +426,7 @@
         -%}
         <a href="{{ product.url }}" class="rjnav-mcard{% if is_featured %} rjnav-mcard--featured{% endif %}" style="--rjnav-tint: {{ tint }};">
           {%- if is_featured -%}<span class="rjnav-mcard-tag">{{ block.settings.badge_text | replace: '#1 ', '' | replace: '#1', '' }}</span>{%- endif -%}
-          <span class="rjnav-mcard-imgwrap"><img src="{{ product.featured_image | image_url: width: 180, format: 'webp' }}" alt="{{ product.title | escape }}" loading="lazy" decoding="async"></span>
+          <span class="rjnav-mcard-imgwrap"><img src="{{ product.featured_image | image_url: width: 300, format: 'webp' }}" srcset="{{ product.featured_image | image_url: width: 200, format: 'webp' }} 200w, {{ product.featured_image | image_url: width: 300, format: 'webp' }} 300w, {{ product.featured_image | image_url: width: 400, format: 'webp' }} 400w" sizes="100px" alt="{{ product.title | escape }}" loading="lazy" decoding="async"></span>
           <span class="rjnav-mcard-text">
             {%- if review_count > 0 -%}
               <span class="rjnav-mcard-rating"><span class="rjnav-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span><b>{{ rating | round: 1 }}</b><span class="rjnav-rcount">({% render 'rj-thousands', n: review_count %})</span></span>

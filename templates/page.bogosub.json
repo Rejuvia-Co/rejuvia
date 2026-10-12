@@ -182,7 +182,7 @@
         "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#fab851",
-        "rating_label": "Excellent 4.5",
+        "rating_label": "<b>4.5</b> Stars",
         "reviews_label": "<p><strong>7,500+</strong> Reviews</p>",
         "customers_label": "<p><strong>500K+</strong> Customers</p>",
         "headline": "Buy One, Get One Free — Fall Asleep in 10 Minutes",

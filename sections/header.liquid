@@ -69,6 +69,7 @@
     font-size: 18px;
   }
   #header .rjnav-link {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -80,17 +81,36 @@
     padding: 0;
     font: inherit;
     cursor: pointer;
-    box-shadow: inset 0 0 0 transparent;
-    transition: color .2s, box-shadow .2s;
+    transition: color .2s;
   }
+  /* Highlight bar sits just under the label (not at the bottom of the bar):
+     thick + fully rounded, AG1-style. */
+  #header .rjnav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.7em);
+    height: 4px;
+    border-radius: 100px;
+    background: {{ purple }};
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  /* Keep the bar under the word, clear of the chevron, on the Products trigger. */
+  #header .rjnav-link--products::after { right: 21px; }
   #header .rjnav-link:hover,
   #header .rjnav-link:focus-visible,
   #header .rjnav-link.is-active {
     color: {{ purple }};
-    box-shadow: inset 0 -2px 0 {{ purple }};
     text-decoration: none;
     outline: none;
   }
+  #header .rjnav-link:hover::after,
+  #header .rjnav-link:focus-visible::after,
+  #header .rjnav-link.is-active::after,
+  #header .rjnav-link--products[aria-expanded="true"]::after { opacity: 1; }
+  #header .rjnav-link--products[aria-expanded="true"] { color: {{ purple }}; }
   #header .rjnav-link--products { font-weight: 400; }
   #header .rjnav-chevron { display: inline-flex; transition: transform .25s; }
   #header .rjnav-link--products[aria-expanded="true"] .rjnav-chevron { transform: rotate(180deg); }

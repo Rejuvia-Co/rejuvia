@@ -846,9 +846,18 @@
         "settings": {
           "selected_product": "sleep-spray",
           "show_bundle_text": false,
+          "auto_badge_2": "MOST POPULAR",
+          "auto_badge_3": "BEST VALUE",
+          "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
+          "frequency_labels": "1: monthly\n2: bi-monthly\n3: quarterly\n6: semi-annually",
+          "free_ship_text": "FREE U.S. Shipping",
+          "free_ship_threshold": 59,
+          "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray",
+          "tier_title_overrides": "",
           "unit_variant_id": "",
           "unit_noun": "Spray",
           "unit_noun_plural": "Sprays",
+          "sale_label": "FALL SALE",
           "band_image_asset": "sleep-spray-tier-1.png",
           "one_time_display": "link",
           "one_time_link_text": "Buy once",
@@ -863,13 +872,7 @@
           "trusted_bg": "#f4f4f4",
           "trusted_check": "#34c759",
           "show_payment_icons": true,
-          "hidden_payments": "discover,jcb,diners_club",
-          "sale_label": "FALL SALE",
-          "auto_badge_2": "MOST POPULAR",
-          "auto_badge_3": "BEST VALUE",
-          "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
-          "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray",
-          "frequency_labels": "1: monthly\n2: bi-monthly\n3: quarterly\n6: semi-annually"
+          "hidden_payments": "discover,jcb,diners_club"
         }
       },
       "hero_v2_ypthhg": {
@@ -1627,13 +1630,13 @@
           "quote_size_desktop": 17,
           "quote_size_mobile": 17,
           "logo_max_height": 32,
+          "logo_max_width": 130,
+          "mute_logos": true,
           "autoplay": true,
           "autoplay_seconds": 6,
           "max_width": 1160,
           "padding_top": 44,
-          "padding_bottom": 44,
-          "logo_max_width": 130,
-          "mute_logos": true
+          "padding_bottom": 44
         }
       },
       "customer_testimonials_video_home": {
@@ -1848,20 +1851,23 @@
       "sticky_bar_home": {
         "type": "product-sticky-bar",
         "settings": {
+          "product": "sleep-spray",
+          "show_after": 500,
+          "lock_header_hidden": false,
+          "reveal_after_selector": "",
+          "persist_visible": false,
           "rating_text": "<b>{rating}</b> stars | <b>7,500+</b> reviews | <b>500,000+</b> customers",
+          "rating_fallback": "4.6",
           "cta_text": "Save Up To {max_save}% Today",
+          "cta_fallback": "Shop Now",
           "pill_text": "2M SPRAYS SOLD",
           "cta_action": "scroll",
           "scroll_target": ".product-widget-container .block-variant-selector, .product-widget-container .pss-supply, .product-widget-container",
           "text_color": "#141414",
-          "pill_bg": "#EAC78B",
+          "pill_bg": "#eac78b",
           "pill_text_color": "#2b0f2c",
           "bg_color": "#f4eef7",
-          "cta_color": "#672666",
-          "cta_fallback": "Shop Now",
-          "rating_fallback": "4.6",
-          "product": "sleep-spray",
-          "show_after": 500
+          "cta_color": "#672666"
         }
       }
     },
@@ -1904,6 +1910,11 @@
       },
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
+        "disabled": false,
+        "settings": {}
+      },
+      "2786716548061469553": {
+        "type": "shopify://apps/applovin/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
         "disabled": false,
         "settings": {}
       }

@@ -17,7 +17,8 @@
         "accent_color": "#672666",
         "heading": "<p>Wondering what's actually in rejuvia?</p>",
         "description": "No surprises here. Rejuvia is made with a clean, all-natural blend of sleep herbs and botanicals. Nothing else. Every ingredient was chosen for a specific reason, backed by clinical research, and included at a dose that actually does something. No fillers, no proprietary blends hiding weak doses, no ingredients you need a chemistry degree to pronounce.",
-        "image": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
+        "image": "shopify://shop_images/image.webp",
+        "image_mobile": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
       }
     },
     "guarantees_v2_ABV7Ti": {
@@ -86,28 +87,32 @@
           "type": "item",
           "settings": {
             "title": "No GMOs, gluten or dairy",
-            "description": "Non-GMO botanicals, no wheat, barley or rye, and no milk derivatives. 100% vegan."
+            "description": "Non-GMO botanicals, no wheat, barley or rye, and no milk derivatives. 100% vegan.",
+            "description_mobile": ""
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
             "title": "All natural",
-            "description": "13+ natural sleep herbs and botanicals. No fillers or artificial additives."
+            "description": "13+ natural sleep herbs and botanicals. No fillers or artificial additives.",
+            "description_mobile": ""
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
             "title": "No artificial sweeteners",
-            "description": "No sucralose, aspartame or saccharin — and no chemical aftertaste."
+            "description": "No sucralose, aspartame or saccharin — and no chemical aftertaste.",
+            "description_mobile": ""
           }
         },
         "item_4": {
           "type": "item",
           "settings": {
             "title": "cGMP certified",
-            "description": "Made in the USA following current Good Manufacturing Practices."
+            "description": "Made in the USA following current Good Manufacturing Practices.",
+            "description_mobile": ""
           }
         },
         "item_5": {
@@ -153,15 +158,78 @@
     "absorption_compare_v2_Kd7mXa": {
       "type": "absorption-compare-v2",
       "blocks": {
-        "pill_1": { "type": "pill_step", "settings": { "title": "Swallowed", "description": "Travels all the way down to your stomach.", "dose_percent": 100 } },
-        "pill_2": { "type": "pill_step", "settings": { "title": "Broken Down By Stomach Acid", "description": "Harsh acids start breaking the active ingredients apart.", "dose_percent": 65 } },
-        "pill_3": { "type": "pill_step", "settings": { "title": "Filtered By The Liver", "description": "The liver strips out even more before it can be used.", "dose_percent": 38 } },
-        "pill_4": { "type": "pill_step", "settings": { "title": "What's Left Reaches Your Blood", "description": "Slowly — and at a fraction of the original dose.", "dose_percent": 20 } },
-        "spray_1": { "type": "spray_step", "settings": { "title": "Sprayed Under The Tongue", "description": "Lands on tissue packed with tiny blood vessels.", "dose_percent": 100 } },
-        "spray_2": { "type": "spray_step", "settings": { "title": "Straight Into Your Bloodstream", "description": "No stomach, no liver, no detours. Full potency, in minutes.", "dose_percent": 100 } },
-        "benefit_1": { "type": "benefit", "settings": { "icon": "drop", "title": "Reaches You Intact", "text": "More of every dose gets to work" } },
-        "benefit_2": { "type": "benefit", "settings": { "icon": "moon", "title": "Works Faster", "text": "Asleep in 10–15 minutes" } },
-        "benefit_3": { "type": "benefit", "settings": { "icon": "bypass", "title": "Easy On Your Stomach", "text": "Nothing to digest" } }
+        "pill_1": {
+          "type": "pill_step",
+          "settings": {
+            "title": "Swallowed",
+            "description": "Travels all the way down to your stomach.",
+            "dose_percent": 100
+          }
+        },
+        "pill_2": {
+          "type": "pill_step",
+          "settings": {
+            "title": "Broken Down By Stomach Acid",
+            "description": "Harsh acids start breaking the active ingredients apart.",
+            "dose_percent": 65
+          }
+        },
+        "pill_3": {
+          "type": "pill_step",
+          "settings": {
+            "title": "Filtered By The Liver",
+            "description": "The liver strips out even more before it can be used.",
+            "dose_percent": 38
+          }
+        },
+        "pill_4": {
+          "type": "pill_step",
+          "settings": {
+            "title": "What's Left Reaches Your Blood",
+            "description": "Slowly — and at a fraction of the original dose.",
+            "dose_percent": 20
+          }
+        },
+        "spray_1": {
+          "type": "spray_step",
+          "settings": {
+            "title": "Sprayed Under The Tongue",
+            "description": "Lands on tissue packed with tiny blood vessels.",
+            "dose_percent": 100
+          }
+        },
+        "spray_2": {
+          "type": "spray_step",
+          "settings": {
+            "title": "Straight Into Your Bloodstream",
+            "description": "No stomach, no liver, no detours. Full potency, in minutes.",
+            "dose_percent": 100
+          }
+        },
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "title": "Reaches You Intact",
+            "text": "More of every dose gets to work"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "moon",
+            "title": "Works Faster",
+            "text": "Asleep in 10–15 minutes"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "bypass",
+            "title": "Easy On Your Stomach",
+            "text": "Nothing to digest"
+          }
+        }
       },
       "block_order": [
         "pill_1",
@@ -193,10 +261,42 @@
     "shop_sprays_v2_Tq4wZc": {
       "type": "shop-sprays-v2",
       "blocks": {
-        "prod_sleep": { "type": "product", "settings": { "product": "sleep-spray", "description": "Fall asleep faster and wake feeling restored.", "badge_text": "Best Seller" } },
-        "prod_calm": { "type": "product", "settings": { "product": "oral-stress-spray", "description": "Calm your mind during the day, sleep deeply at night." } },
-        "prod_d3k2": { "type": "product", "settings": { "product": "vitamin-d3-k2-spray", "description": "Support immunity, bone strength, and heart health." } },
-        "prod_lutein": { "type": "product", "settings": { "product": "lutein", "description": "Protect eye tissues and filter blue light." } }
+        "prod_sleep": {
+          "type": "product",
+          "settings": {
+            "product": "sleep-spray",
+            "title": "",
+            "description": "Fall asleep faster and wake feeling restored.",
+            "badge_text": "Best Seller"
+          }
+        },
+        "prod_calm": {
+          "type": "product",
+          "settings": {
+            "product": "oral-stress-spray",
+            "title": "",
+            "description": "Calm your mind during the day, sleep deeply at night.",
+            "badge_text": ""
+          }
+        },
+        "prod_d3k2": {
+          "type": "product",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "title": "",
+            "description": "Support immunity, bone strength, and heart health.",
+            "badge_text": ""
+          }
+        },
+        "prod_lutein": {
+          "type": "product",
+          "settings": {
+            "product": "lutein",
+            "title": "",
+            "description": "Protect eye tissues and filter blue light.",
+            "badge_text": ""
+          }
+        }
       },
       "block_order": [
         "prod_sleep",

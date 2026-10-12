@@ -37,7 +37,7 @@
 
 /* Text column */
 .fs-{{ section.id }} .fs__text { flex: 1; min-width: 0; }
-.fs-{{ section.id }} .fs__quote { font-family: Georgia, serif; font-size: 76px; line-height: 0.5; display: block; height: 40px; color: var(--fs-mauve); }
+.fs-{{ section.id }} .fs__quote { font-family: Georgia, serif; font-size: 58px; line-height: 1; display: block; height: auto; color: var(--fs-mauve); margin: 0 0 6px; }
 .fs-{{ section.id }} .fs__headline--m { display: none; }
 .fs-{{ section.id }} .fs__headline { font-size: 36px; line-height: 1.2; color: #171512; margin: 0 0 18px; } /* family/weight/letter-spacing from global --rj-title-* (theme.liquid) */
 .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 }}px; line-height: 1.62; color: var(--fs-body); max-width: 700px; margin: 0 0 16px; }
@@ -57,24 +57,24 @@
 .fs-{{ section.id }} .fs__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--fs-mauve); flex-shrink: 0; }
 .fs-{{ section.id }} .fs__attr { font-size: {{ section.settings.title_size | default: 15 }}px; font-style: italic; color: var(--fs-muted); }
 
-/* Desktop: full-bleed gradient section (like "How To Use"), content centered.
-   The gradient (band_from -> band_to) spans the full width; the band becomes a
-   plain centered content column with no card/border-radius. */
+/* Desktop: full-bleed section in the site's solid lavender (section_bg), content
+   centered. The band becomes a plain centered content column (no card, no
+   gradient, no clipping of the decorative quote). */
 @media (min-width: 768px) {
-  .fs-{{ section.id }} {
-    background: linear-gradient(150deg, {{ section.settings.band_from | default: '#eaeaf7' }}, {{ section.settings.band_to | default: '#f9f2ff' }});
-  }
-  .fs-{{ section.id }} .fs__wrap { max-width: 1300px; padding: 84px 40px; }
+  .fs-{{ section.id }} .fs__wrap { max-width: 1240px; padding: 80px 48px; }
   .fs-{{ section.id }} .fs__band {
     background: transparent;
     border-radius: 0;
     box-shadow: none;
+    overflow: visible;
+    align-items: center;
+    gap: 76px;
     padding: 0;
-    gap: 72px;
   }
-  .fs-{{ section.id }} .fs__photo { width: 320px; height: 382px; }
-  .fs-{{ section.id }} .fs__headline { font-size: 40px; }
-  .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 | plus: 1 }}px; max-width: 760px; }
+  .fs-{{ section.id }} .fs__polaroid { margin: 0; }
+  .fs-{{ section.id }} .fs__photo { width: 318px; height: 380px; }
+  .fs-{{ section.id }} .fs__headline { font-size: 40px; margin: 0 0 20px; }
+  .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 | plus: 1 }}px; max-width: 740px; }
 }
 
 /* Mobile: full-bleed lavender section, centered */
@@ -85,10 +85,10 @@
     align-items: center;
     text-align: center;
     gap: 0;
-    background: linear-gradient(150deg, {{ section.settings.band_from | default: '#eaeaf7' }}, {{ section.settings.band_to | default: '#f9f2ff' }});
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
-    padding: 36px 26px;
+    padding: 40px 24px;
   }
   .fs-{{ section.id }} .fs__polaroid { padding: 10px 10px 14px; box-shadow: 0 14px 28px -12px rgba(40,12,40,0.4); margin-bottom: 24px; }
   .fs-{{ section.id }} .fs__photo { width: 200px; height: 200px; }

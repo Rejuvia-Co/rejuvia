@@ -65,7 +65,7 @@
       "settings": {
         "default_items": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
         "anchor_id": "",
-        "bg_color": "#eaeaf7",
+        "bg_color": "#f5f5fb",
         "icon_color": "#672666"
       }
     },
@@ -129,7 +129,7 @@
       "name": "Clean Formula V2",
       "settings": {
         "anchor_id": "clean-formula",
-        "bg_color": "#eaeaf7",
+        "bg_color": "#f5f5fb",
         "accent_color": "#672666",
         "heading": "<p>Nothing hidden. Nothing extra.</p>",
         "description": "We held every ingredient to the same standard we'd hold anything we give our own family.",
@@ -200,7 +200,7 @@
         "button_link": "shopify://products/sleep-spray",
         "scroll_target": "",
         "sub_text": "90-Day Money Back Guarantee",
-        "bg_color": "#eaeaf7",
+        "bg_color": "#f5f5fb",
         "accent_color": "#672666"
       }
     },

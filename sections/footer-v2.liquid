@@ -261,8 +261,9 @@
 
 .footer-v2-bottom-left {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     font-size: 16px;
     color: #141414;
 }
@@ -274,7 +275,9 @@
 
 .footer-v2-legal-links {
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 13px;
 }
 
 .footer-v2-payment-icons {
@@ -529,6 +532,15 @@
                     {% if section.settings.privacy_url != blank %}
                         <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
                     {% endif %}
+                    {% if section.settings.shipping_url != blank %}
+                        <a href="{{ section.settings.shipping_url }}">Shipping Policy</a>
+                    {% endif %}
+                    {% if section.settings.refund_url != blank %}
+                        <a href="{{ section.settings.refund_url }}">Refund Policy</a>
+                    {% endif %}
+                    {% if section.settings.contact_email != blank %}
+                        <a href="mailto:{{ section.settings.contact_email }}">Contact</a>
+                    {% endif %}
                 </div>
             </div>
             {% if section.settings.show_payment_methods %}
@@ -647,6 +659,22 @@
             "type": "url",
             "id": "privacy_url",
             "label": "Privacy Policy URL"
+        },
+        {
+            "type": "url",
+            "id": "shipping_url",
+            "label": "Shipping Policy URL"
+        },
+        {
+            "type": "url",
+            "id": "refund_url",
+            "label": "Refund Policy URL"
+        },
+        {
+            "type": "text",
+            "id": "contact_email",
+            "label": "Contact email (footer link)",
+            "default": "hello@rejuvia.co"
         },
         {
             "type": "checkbox",

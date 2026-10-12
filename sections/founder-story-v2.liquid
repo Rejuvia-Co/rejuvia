@@ -57,6 +57,26 @@
 .fs-{{ section.id }} .fs__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--fs-mauve); flex-shrink: 0; }
 .fs-{{ section.id }} .fs__attr { font-size: {{ section.settings.title_size | default: 15 }}px; font-style: italic; color: var(--fs-muted); }
 
+/* Desktop: full-bleed gradient section (like "How To Use"), content centered.
+   The gradient (band_from -> band_to) spans the full width; the band becomes a
+   plain centered content column with no card/border-radius. */
+@media (min-width: 768px) {
+  .fs-{{ section.id }} {
+    background: linear-gradient(150deg, {{ section.settings.band_from | default: '#eaeaf7' }}, {{ section.settings.band_to | default: '#f9f2ff' }});
+  }
+  .fs-{{ section.id }} .fs__wrap { max-width: 1300px; padding: 84px 40px; }
+  .fs-{{ section.id }} .fs__band {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    gap: 72px;
+  }
+  .fs-{{ section.id }} .fs__photo { width: 320px; height: 382px; }
+  .fs-{{ section.id }} .fs__headline { font-size: 40px; }
+  .fs-{{ section.id }} .fs__p { font-size: {{ section.settings.body_size | default: 18 | plus: 1 }}px; max-width: 760px; }
+}
+
 /* Mobile: full-bleed lavender section, centered */
 @media (max-width: 767px) {
   .fs-{{ section.id }} .fs__wrap { max-width: none; padding: 0; }

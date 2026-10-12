@@ -465,12 +465,251 @@
         "btn_url": "shopify://products/sleep-spray",
         "guarantee_text": "90-Day Risk-Free Money-Back Guarantee"
       }
+    },
+    "product_single_select_reviews": {
+      "type": "product-single-select",
+      "blocks": {
+        "okendo_reviews_zL8EQC": {
+          "type": "okendo-reviews",
+          "settings": {
+            "reviews_anchor": "shopify-product-reviews",
+            "star_color": "#eac78b",
+            "empty_star_color": "#dddddd",
+            "margin_top": 0,
+            "margin_bottom": 5
+          }
+        },
+        "title_q8haTq": {
+          "type": "title",
+          "settings": {
+            "custom_title": "Sleep Spray",
+            "margin_top": 0,
+            "margin_bottom": 10
+          }
+        },
+        "description_DLmdKr": {
+          "type": "description",
+          "settings": {
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "price_line_1": {
+          "type": "price-line",
+          "settings": {
+            "margin_top": 0,
+            "margin_bottom": 18
+          }
+        },
+        "product_specs_TprNq9": {
+          "type": "product-specs",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewbox=\"0 0 18 18\" fill=\"none\">\n  <g clip-path=\"url(#clip0_1977_12499)\">\n    <path d=\"M8.80008 15.928C7.39533 15.9323 6.04028 15.4084 5.00369 14.4603C3.96711 13.5123 3.32469 12.2093 3.20387 10.8097C3.08304 9.41015 3.49263 8.0163 4.3514 6.90461C5.21017 5.79291 6.45538 5.04458 7.84008 4.80802C12.4001 3.92802 13.6001 3.51202 15.2001 1.52802C16.0001 3.12802 16.8001 4.87202 16.8001 7.92802C16.8001 12.328 12.9761 15.928 8.80008 15.928Z\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n    <path d=\"M1.59998 16.728C1.59998 14.328 3.07998 12.44 5.66398 11.928C7.59998 11.544 9.59998 10.328 10.4 9.52795\" stroke=\"#018C0B\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_1977_12499\">\n      <rect width=\"18\" height=\"18\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+            "custom_text_1": "",
+            "custom_text_2": "",
+            "margin_top": 0,
+            "margin_bottom": 24
+          }
+        },
+        "supply_selector_1": {
+          "type": "supply-selector",
+          "settings": {
+            "urgency_text": "Order within the next hour for guaranteed fast shipping by {date_ord}",
+            "header_text": "CHOOSE YOUR SUPPLY",
+            "default_tier": 1,
+            "button_text": "ADD TO CART",
+            "guarantee_label": "90-Day Money-Back Guarantee",
+            "guarantee_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"13\" viewbox=\"0 0 14 13\" fill=\"none\">\n  <path d=\"M11.3892 1.7555C11.6093 1.54595 11.9022 1.43011 12.2061 1.43241C12.51 1.43471 12.8011 1.55497 13.018 1.76783C13.2349 1.98068 13.3607 2.26948 13.3687 2.57327C13.3767 2.87707 13.2664 3.17211 13.0611 3.39613L6.82669 11.193C6.71949 11.3085 6.59011 11.4011 6.44627 11.4655C6.30244 11.5298 6.14712 11.5644 5.98959 11.5673C5.83205 11.5703 5.67555 11.5414 5.52944 11.4824C5.38332 11.4235 5.2506 11.3357 5.13919 11.2243L1.00482 7.08988C0.889682 6.98259 0.797335 6.85322 0.733285 6.70947C0.669235 6.56572 0.634795 6.41054 0.632018 6.25319C0.629242 6.09585 0.658187 5.93955 0.717126 5.79363C0.776065 5.64771 0.863791 5.51516 0.975071 5.40388C1.08635 5.2926 1.2189 5.20488 1.36482 5.14594C1.51074 5.087 1.66704 5.05805 1.82438 5.06083C1.98173 5.0636 2.13691 5.09805 2.28066 5.1621C2.42441 5.22614 2.55378 5.31849 2.66107 5.43363L5.93294 8.70394L11.3595 1.78988L11.3892 1.7555Z\" fill=\"#EAC78B\"></path>\n</svg>",
+            "one_time_label": "ONE-TIME PURCHASE (NOT A SUBSCRIPTION)",
+            "guarantee_bar": "<b>Less than 1%</b> of customers claim our money‑back guarantee"
+          }
+        },
+        "custom_tabs_EHqYn3": {
+          "type": "custom-tabs",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "okendo_reviews_zL8EQC",
+        "title_q8haTq",
+        "description_DLmdKr",
+        "price_line_1",
+        "product_specs_TprNq9",
+        "supply_selector_1",
+        "custom_tabs_EHqYn3"
+      ],
+      "settings": {
+        "selected_product": "sleep-spray",
+        "show_bundle_text": false,
+        "auto_badge_2": "MOST POPULAR",
+        "auto_badge_3": "BEST VALUE",
+        "auto_perks": "{per_unit} per spray\n{servings} Servings, delivered {frequency}",
+        "frequency_labels": "1: monthly\n2: bi-monthly\n3: quarterly\n6: semi-annually",
+        "free_ship_text": "FREE U.S. Shipping",
+        "free_ship_threshold": 59,
+        "tier_image_handles": "lutein,vitamin-d3-k2-spray,oral-stress-spray,sleep-spray",
+        "tier_title_overrides": "",
+        "unit_variant_id": "",
+        "unit_noun": "Spray",
+        "unit_noun_plural": "Sprays",
+        "sale_label": "FALL SALE",
+        "band_image_asset": "sleep-spray-tier-1.png",
+        "one_time_display": "link",
+        "one_time_link_text": "Buy once",
+        "one_time_title": "One-time Purchase",
+        "one_time_shipping": "+ $4.79 shipping",
+        "show_trusted": true,
+        "trusted_title": "Used by  500,000+ customers",
+        "trusted_subtext": "to fall asleep faster and sleep the full night.",
+        "trusted_image_1": "shopify://shop_images/customer_1.png",
+        "trusted_image_2": "shopify://shop_images/customer_13.png",
+        "trusted_image_3": "shopify://shop_images/customer_12.png",
+        "trusted_bg": "#f4f4f4",
+        "trusted_check": "#34c759",
+        "show_payment_icons": true,
+        "hidden_payments": "discover,jcb,diners_club"
+      },
+      "name": "Product Single Select"
+    },
+    "press_carousel_reviews": {
+      "type": "press-carousel",
+      "blocks": {
+        "quote_8qj3Lr": {
+          "type": "quote",
+          "settings": {
+            "quote": "Rejuvia was recently ranked #228 on the Inc. 5000 list of America's fastest-growing companies",
+            "logo": "shopify://shop_images/logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_N9h3U4": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia is all-natural and the spray works as fast and effectively as anything else out there.\"",
+            "logo": "shopify://shop_images/rejuvia_scary_mommy_logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_pVGafC": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Finally, I found something to take the edge off at night before I head to bed. I'm sleeping better than ever.\"",
+            "logo": "shopify://shop_images/rejuvia_womens_health_logo_svg.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_aQhgPB": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Shockingly effective. Knocks you out for the night and keeps you asleep until the morning.\"",
+            "logo": "shopify://shop_images/forbes_rejuvia_logo.png",
+            "logo_alt": ""
+          }
+        },
+        "quote_NV7DGK": {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Rejuvia works as advertised. It's highly effective, safe and natural.\"",
+            "logo": "shopify://shop_images/rejuvia_bustle_lgoo_svg.png",
+            "logo_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "quote_8qj3Lr",
+        "quote_N9h3U4",
+        "quote_pVGafC",
+        "quote_aQhgPB",
+        "quote_NV7DGK"
+      ],
+      "name": "Press Carousel",
+      "settings": {
+        "bg_color": "#f5f5fb",
+        "text_color": "#000000",
+        "control_color": "#672666",
+        "quote_size_desktop": 17,
+        "quote_size_mobile": 17,
+        "logo_max_height": 32,
+        "logo_max_width": 130,
+        "mute_logos": true,
+        "autoplay": true,
+        "autoplay_seconds": 6,
+        "max_width": 1160,
+        "padding_top": 44,
+        "padding_bottom": 44
+      }
+    },
+    "page_faqs_reviews": {
+      "type": "page-faqs-v2",
+      "blocks": {
+        "faq_works": {
+          "type": "faq",
+          "settings": {
+            "question": "Does Rejuvia actually work, or is it just hype?",
+            "answer": "<p>It's helped over 500,000 customers fall asleep faster and stay asleep, with 7,500+ verified 5-star reviews. Rejuvia's sublingual spray delivers 13+ natural sleep botanicals directly into your bloodstream under your tongue, so they go to work faster than a pill or gummy. And if it doesn't work for you, you're covered by our 90-day money-back guarantee.</p>"
+          }
+        },
+        "faq_guarantee": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Then you don't pay for it. Every order is backed by our 90-Day Money-Back Guarantee: try Rejuvia for up to 90 nights, and if you're not sleeping better, reach out for a full refund. No questions asked.</p>"
+          }
+        },
+        "faq_safe": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia safe and non-habit-forming?",
+            "answer": "<p>Yes. Rejuvia is non-habit-forming, made in the USA in a cGMP-certified facility, and every batch is independently lab-tested three times for purity and potency. It's drug-free and made with natural botanicals. As with any supplement, if you're pregnant, nursing, or taking medication, check with your doctor first.</p>"
+          }
+        },
+        "faq_different": {
+          "type": "faq",
+          "settings": {
+            "question": "I've tried other sleep aids that didn't work. How is this different?",
+            "answer": "<p>Most pills and gummies have to survive your stomach and liver, so you lose much of the dose before it ever reaches you. Rejuvia absorbs under your tongue, straight into your bloodstream, so more of the formula reaches you, faster. Many customers who'd \"tried everything\" say Rejuvia is the first thing that actually worked.</p>"
+          }
+        },
+        "faq_howlong": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Many people fall asleep within 10–15 minutes the very first night. For others it takes a week or two of consistent use to feel the full effect, so we recommend giving it at least 7–10 nights. Either way, you have 90 days to decide.</p>"
+          }
+        },
+        "faq_groggy": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I feel groggy in the morning?",
+            "answer": "<p>No. Rejuvia is formulated to help you fall asleep and stay asleep, then wake up feeling refreshed, not groggy or hungover. You can use it only on the nights you need it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_works",
+        "faq_guarantee",
+        "faq_safe",
+        "faq_different",
+        "faq_howlong",
+        "faq_groggy"
+      ],
+      "name": "Page FAQs",
+      "settings": {
+        "anchor_id": "faqs",
+        "heading": "Frequently Asked Questions",
+        "open_first": true,
+        "bg_color": "#ffffff",
+        "accent_color": "#672666"
+      }
     }
   },
   "order": [
     "story_hero_v2_Br9RWF",
     "story_reviews_v2_WNr7Wz",
     "1719859380da8d7058",
+    "product_single_select_reviews",
+    "press_carousel_reviews",
+    "page_faqs_reviews",
     "page_cta_v2_pPLqyN"
   ]
 }

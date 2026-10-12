@@ -54,7 +54,6 @@
         "privacy_url": "shopify://policies/privacy-policy",
         "shipping_url": "/policies/shipping-policy",
         "refund_url": "/policies/refund-policy",
-        "contact_url": "/pages/contact",
         "show_payment_methods": true
       }
     }

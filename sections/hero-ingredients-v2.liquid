@@ -105,11 +105,12 @@
 .hero-ingredients-v2-image-wrap {
     flex: 1 1 0;
     min-width: 0;
-    align-self: stretch;
+    /* True 1:1 box so a square hero image fits fully without cropping. */
+    align-self: center;
+    aspect-ratio: 1 / 1;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    min-height: 480px;
 }
 
 .hero-ingredients-v2-image-wrap img {

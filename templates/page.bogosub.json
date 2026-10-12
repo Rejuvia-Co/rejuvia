@@ -59,7 +59,7 @@
             "price": "$30",
             "compare_price": "$60",
             "savings_text": "SAVE $30",
-            "servings_text": "60 Servings (2 Month-Supply)",
+            "servings_text": "60 Servings (2-Month Supply)",
             "free_shipping": false,
             "badge": "",
             "badge_style": "plum"
@@ -76,7 +76,7 @@
             "price": "$60",
             "compare_price": "$120",
             "savings_text": "SAVE $60",
-            "servings_text": "120 Servings (4 Month-Supply)",
+            "servings_text": "120 Servings (4-Month Supply)",
             "free_shipping": true,
             "badge": "MOST POPULAR",
             "badge_style": "plum"
@@ -93,7 +93,7 @@
             "price": "$90",
             "compare_price": "$180",
             "savings_text": "SAVE $90",
-            "servings_text": "180 Servings (6 Month-Supply)",
+            "servings_text": "180 Servings (6-Month Supply)",
             "free_shipping": true,
             "badge": "BEST VALUE",
             "badge_style": "gold"

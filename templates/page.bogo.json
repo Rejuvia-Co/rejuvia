@@ -24,7 +24,7 @@
             "savings_text": "Save $30",
             "free_shipping": false,
             "per_night": "",
-            "servings_text": "60 Servings (2 Month-Supply)",
+            "servings_text": "60 Servings (2-Month Supply)",
             "tag": "",
             "tag_style": "brand"
           }
@@ -41,7 +41,7 @@
             "savings_text": "SAVE $60",
             "free_shipping": true,
             "per_night": "",
-            "servings_text": "120 Servings (4 Month-Supply)",
+            "servings_text": "120 Servings (4-Month Supply)",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -58,7 +58,7 @@
             "savings_text": "SAVE $90",
             "free_shipping": true,
             "per_night": "",
-            "servings_text": "180 Servings (6 Month-Supply)",
+            "servings_text": "180 Servings (6-Month Supply)",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }

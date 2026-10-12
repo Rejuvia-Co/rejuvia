@@ -230,6 +230,14 @@
   gap: 16px;
 }
 
+/* Desktop: anchor the three benefits across the row — first flush-left,
+   middle centered, last flush-right — so they read balanced under the cards. */
+@media (min-width: 750px) {
+  .abs-cmp-v2__benefit:nth-child(3n + 1) { justify-content: flex-start; }
+  .abs-cmp-v2__benefit:nth-child(3n + 2) { justify-content: center; }
+  .abs-cmp-v2__benefit:nth-child(3n) { justify-content: flex-end; }
+}
+
 .abs-cmp-v2__benefit-icon {
   flex-shrink: 0;
   width: 48px;

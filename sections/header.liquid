@@ -20,7 +20,10 @@
 <style>
   html, body { overflow: visible !important; overflow-x: hidden; }
   #page > header { z-index: 110; }
-  .main-header { background: #fff; }
+  /* The Shopify section wrapper must stay transparent: the parent <header> is
+     sticky, so a white wrapper would remain as an empty bar when #header hides
+     on scroll (translateY(-100%)). The bar's own white comes from #header. */
+  .main-header { background: transparent; }
 
   /* ===== Header Nav V3 — full-bleed white, attached to top ===== */
   #header.header {

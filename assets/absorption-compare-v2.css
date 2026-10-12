@@ -1,0 +1,312 @@
+/* Absorption Compare V2 — "Better Ingredients. Better Absorption." */
+
+.abs-cmp-v2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #141414;
+  /* Full-bleed band like .key-ingredients-v2 */
+  padding: 64px 16px;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 16px);
+  padding-right: calc(50vw - 50% + 16px);
+}
+
+.abs-cmp-v2__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Header */
+.abs-cmp-v2__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.abs-cmp-v2__title {
+  /* Family / weight / letter-spacing from the global --rj-title-* system. */
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #171512;
+  text-wrap: balance;
+}
+
+.abs-cmp-v2__title p { margin: 0; font: inherit; color: inherit; }
+
+.abs-cmp-v2__subhead {
+  margin: 0;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+/* Comparison grid */
+.abs-cmp-v2__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.abs-cmp-v2__card {
+  border-radius: 10px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.abs-cmp-v2__card--pills {
+  background: #fff;
+  color: #141414;
+  --ac-desc: #5a5664;
+  --ac-ring: #8a8597;
+  --ac-line: #d8d5e0;
+  --ac-track: #eeecf3;
+  --ac-fill: #8a8597;
+  --ac-divider: #e3e0ee;
+  --ac-stat: #5a5664;
+  --ac-chip: #f1f0f5;
+}
+
+.abs-cmp-v2__card--spray {
+  color: #fff;
+  --ac-desc: #fff;
+  --ac-ring: #fff;
+  --ac-line: rgba(255, 255, 255, .35);
+  --ac-track: rgba(255, 255, 255, .2);
+  --ac-fill: #fff;
+  --ac-divider: rgba(255, 255, 255, .3);
+  --ac-stat: #fff;
+  --ac-chip: #fff;
+}
+
+/* Card header */
+.abs-cmp-v2__card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.abs-cmp-v2__chip {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  background: var(--ac-chip);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.abs-cmp-v2__card--pills .abs-cmp-v2__chip-icon { width: 40px; height: 40px; }
+.abs-cmp-v2__card--spray .abs-cmp-v2__chip-icon { width: 46px; height: 46px; }
+
+.abs-cmp-v2__card-title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Steps */
+.abs-cmp-v2__steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.abs-cmp-v2__step {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.abs-cmp-v2__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.abs-cmp-v2__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
+  border: 2.5px solid var(--ac-ring);
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+.abs-cmp-v2__step:last-child .abs-cmp-v2__dot {
+  border: 0;
+  background: var(--ac-ring);
+}
+
+.abs-cmp-v2__line {
+  flex: 1;
+  width: 2px;
+  background: var(--ac-line);
+}
+
+.abs-cmp-v2__step:last-child .abs-cmp-v2__line { display: none; }
+
+.abs-cmp-v2__step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 22px;
+}
+
+.abs-cmp-v2__step:last-child .abs-cmp-v2__step-body { padding-bottom: 0; }
+
+.abs-cmp-v2__step-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.abs-cmp-v2__step-desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ac-desc);
+}
+
+/* Dose bar */
+.abs-cmp-v2__bar {
+  height: 6px;
+  border-radius: 100px;
+  background: var(--ac-track);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.abs-cmp-v2__bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--ac-fill);
+  width: var(--ac-dose, 100%);
+}
+
+/* Card footer */
+.abs-cmp-v2__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--ac-divider);
+  padding-top: 20px;
+}
+
+.abs-cmp-v2__stat {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ac-stat);
+}
+
+.abs-cmp-v2__stat-label {
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--ac-stat);
+}
+
+/* Benefits */
+.abs-cmp-v2__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.abs-cmp-v2__benefit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.abs-cmp-v2__benefit-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.abs-cmp-v2__benefit-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.abs-cmp-v2__benefit-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.abs-cmp-v2__benefit-text {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Optional dose-bar reveal animation */
+@media (prefers-reduced-motion: no-preference) {
+  .abs-cmp-v2--animate .abs-cmp-v2__bar-fill {
+    width: 100%;
+    transition: width 600ms cubic-bezier(.22, 1, .36, 1);
+  }
+  .abs-cmp-v2--animate.abs-cmp-v2--in-view .abs-cmp-v2__bar-fill {
+    width: var(--ac-dose, 100%);
+  }
+}
+
+/* ===================== Mobile (≤749px) ===================== */
+@media (max-width: 749px) {
+  .abs-cmp-v2 { padding: 40px 16px; }
+
+  .abs-cmp-v2__container { gap: 20px; }
+
+  .abs-cmp-v2__header {
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+  }
+  .abs-cmp-v2__title { font-size: 26px; }
+  .abs-cmp-v2__subhead { font-size: 16px; }
+
+  .abs-cmp-v2__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .abs-cmp-v2__card { padding: 22px; gap: 20px; }
+
+  .abs-cmp-v2__chip { width: 44px; height: 44px; }
+  .abs-cmp-v2__card--pills .abs-cmp-v2__chip-icon { width: 32px; height: 32px; }
+  .abs-cmp-v2__card--spray .abs-cmp-v2__chip-icon { width: 36px; height: 36px; }
+
+  .abs-cmp-v2__card-title { font-size: 19px; }
+
+  .abs-cmp-v2__step { gap: 12px; }
+  .abs-cmp-v2__step-title { font-size: 17px; }
+  .abs-cmp-v2__step-desc { font-size: 15px; }
+  .abs-cmp-v2__step-body { padding-bottom: 16px; }
+
+  .abs-cmp-v2__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .abs-cmp-v2__stat { font-size: 30px; }
+
+  .abs-cmp-v2__benefits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-top: 8px;
+  }
+  .abs-cmp-v2__benefit { gap: 14px; }
+  .abs-cmp-v2__benefit-icon { width: 40px; height: 40px; }
+  .abs-cmp-v2__benefit-title { font-size: 17px; }
+  .abs-cmp-v2__benefit-text { font-size: 15px; }
+}

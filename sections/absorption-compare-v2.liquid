@@ -1,0 +1,315 @@
+{{ 'absorption-compare-v2.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg = section.settings.bg_color | default: '#f5f5fb'
+  assign accent = section.settings.accent_color | default: '#672666'
+
+  assign pill_steps = section.blocks | where: 'type', 'pill_step'
+  assign spray_steps = section.blocks | where: 'type', 'spray_step'
+  assign benefits = section.blocks | where: 'type', 'benefit'
+
+  assign root_class = 'abs-cmp-v2'
+  if section.settings.animate
+    assign root_class = 'abs-cmp-v2 abs-cmp-v2--animate'
+  endif
+-%}
+
+<section
+  class="{{ root_class }}"
+  {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %}
+  style="background:{{ bg }};"
+  data-abs-cmp>
+  <div class="abs-cmp-v2__container">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="abs-cmp-v2__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="abs-cmp-v2__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="abs-cmp-v2__subhead">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="abs-cmp-v2__grid">
+
+      {%- comment -%} Pills & Gummies card {%- endcomment -%}
+      <div class="abs-cmp-v2__card abs-cmp-v2__card--pills">
+        <div class="abs-cmp-v2__card-head">
+          <span class="abs-cmp-v2__chip">
+            {%- render 'icon-rj', icon_name: 'pill', icon_class: 'abs-cmp-v2__chip-icon', icon_accent: accent -%}
+          </span>
+          <div class="abs-cmp-v2__card-title">{{ section.settings.pill_title | default: 'Pills & Gummies' }}</div>
+        </div>
+
+        {%- if pill_steps.size > 0 -%}
+          <div class="abs-cmp-v2__steps">
+            {%- for block in pill_steps -%}
+              <div class="abs-cmp-v2__step" {{ block.shopify_attributes }}>
+                <div class="abs-cmp-v2__rail">
+                  <span class="abs-cmp-v2__dot"></span>
+                  <span class="abs-cmp-v2__line"></span>
+                </div>
+                <div class="abs-cmp-v2__step-body">
+                  {%- if block.settings.title != blank -%}
+                    <div class="abs-cmp-v2__step-title">{{ block.settings.title }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <p class="abs-cmp-v2__step-desc">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                  <div class="abs-cmp-v2__bar">
+                    <div class="abs-cmp-v2__bar-fill" style="--ac-dose:{{ block.settings.dose_percent | default: 100 }}%;"></div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="abs-cmp-v2__footer">
+          <span class="abs-cmp-v2__stat">{{ section.settings.pill_stat | default: 'Up to 80%' }}</span>
+          <span class="abs-cmp-v2__stat-label">{{ section.settings.pill_stat_label | default: 'of ingredients lost in digestion' }}</span>
+        </div>
+      </div>
+
+      {%- comment -%} Rejuvia Oral Spray card {%- endcomment -%}
+      <div class="abs-cmp-v2__card abs-cmp-v2__card--spray" style="background:{{ accent }};">
+        <div class="abs-cmp-v2__card-head">
+          <span class="abs-cmp-v2__chip">
+            {%- render 'icon-rj', icon_name: 'spray', icon_class: 'abs-cmp-v2__chip-icon', icon_accent: accent -%}
+          </span>
+          <div class="abs-cmp-v2__card-title">{{ section.settings.spray_title | default: 'Rejuvia Oral Spray' }}</div>
+        </div>
+
+        {%- if spray_steps.size > 0 -%}
+          <div class="abs-cmp-v2__steps">
+            {%- for block in spray_steps -%}
+              <div class="abs-cmp-v2__step" {{ block.shopify_attributes }}>
+                <div class="abs-cmp-v2__rail">
+                  <span class="abs-cmp-v2__dot"></span>
+                  <span class="abs-cmp-v2__line"></span>
+                </div>
+                <div class="abs-cmp-v2__step-body">
+                  {%- if block.settings.title != blank -%}
+                    <div class="abs-cmp-v2__step-title">{{ block.settings.title }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <p class="abs-cmp-v2__step-desc">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                  <div class="abs-cmp-v2__bar">
+                    <div class="abs-cmp-v2__bar-fill" style="--ac-dose:{{ block.settings.dose_percent | default: 100 }}%;"></div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="abs-cmp-v2__footer">
+          <span class="abs-cmp-v2__stat">{{ section.settings.spray_stat | default: 'Up to 85%' }}</span>
+          <span class="abs-cmp-v2__stat-label">{{ section.settings.spray_stat_label | default: 'more bioavailability than pills and gummies' }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    {%- if benefits.size > 0 -%}
+      <div class="abs-cmp-v2__benefits">
+        {%- for block in benefits -%}
+          <div class="abs-cmp-v2__benefit" {{ block.shopify_attributes }}>
+            {%- render 'icon-rj', icon_name: block.settings.icon, icon_class: 'abs-cmp-v2__benefit-icon', icon_accent: accent -%}
+            <div class="abs-cmp-v2__benefit-body">
+              {%- if block.settings.title != blank -%}
+                <div class="abs-cmp-v2__benefit-title">{{ block.settings.title }}</div>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="abs-cmp-v2__benefit-text">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{%- if section.settings.animate -%}
+  <script>
+    (function () {
+      var el = document.currentScript && document.currentScript.previousElementSibling;
+      if (!el) { el = document.querySelector('[data-abs-cmp].abs-cmp-v2--animate:not(.abs-cmp-v2--in-view)'); }
+      if (!el) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.classList.add('abs-cmp-v2--in-view');
+        return;
+      }
+      if (!('IntersectionObserver' in window)) {
+        el.classList.add('abs-cmp-v2--in-view');
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('abs-cmp-v2--in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      io.observe(el);
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Absorption Compare V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Used with hero nav links (e.g. absorption → #absorption)."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f5f5fb"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (spray card / icons)",
+      "default": "#672666"
+    },
+    {
+      "type": "checkbox",
+      "id": "animate",
+      "label": "Animate dose bars on scroll",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Better Ingredients. Better Absorption.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "It was never what you took — it's how your body absorbed it."
+    },
+    {
+      "type": "header",
+      "content": "Pills & Gummies card"
+    },
+    {
+      "type": "text",
+      "id": "pill_title",
+      "label": "Title",
+      "default": "Pills & Gummies"
+    },
+    {
+      "type": "text",
+      "id": "pill_stat",
+      "label": "Footer stat",
+      "default": "Up to 80%"
+    },
+    {
+      "type": "text",
+      "id": "pill_stat_label",
+      "label": "Footer label",
+      "default": "of ingredients lost in digestion"
+    },
+    {
+      "type": "header",
+      "content": "Rejuvia Oral Spray card"
+    },
+    {
+      "type": "text",
+      "id": "spray_title",
+      "label": "Title",
+      "default": "Rejuvia Oral Spray"
+    },
+    {
+      "type": "text",
+      "id": "spray_stat",
+      "label": "Footer stat",
+      "default": "Up to 85%"
+    },
+    {
+      "type": "text",
+      "id": "spray_stat_label",
+      "label": "Footer label",
+      "default": "more bioavailability than pills and gummies"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pill_step",
+      "name": "Pills step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "description", "label": "Description" },
+        { "type": "range", "id": "dose_percent", "label": "Dose remaining (%)", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 100 }
+      ]
+    },
+    {
+      "type": "spray_step",
+      "name": "Spray step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "description", "label": "Description" },
+        { "type": "range", "id": "dose_percent", "label": "Dose remaining (%)", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 100 }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "drop", "label": "Drop" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "bypass", "label": "Bypass" },
+            { "value": "spray", "label": "Spray" },
+            { "value": "pill", "label": "Pill" }
+          ],
+          "default": "drop"
+        },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Absorption Compare V2",
+      "category": "Custom",
+      "blocks": [
+        { "type": "pill_step", "settings": { "title": "Swallowed", "description": "Travels all the way down to your stomach.", "dose_percent": 100 } },
+        { "type": "pill_step", "settings": { "title": "Broken Down By Stomach Acid", "description": "Harsh acids start breaking the active ingredients apart.", "dose_percent": 65 } },
+        { "type": "pill_step", "settings": { "title": "Filtered By The Liver", "description": "The liver strips out even more before it can be used.", "dose_percent": 38 } },
+        { "type": "pill_step", "settings": { "title": "What's Left Reaches Your Blood", "description": "Slowly — and at a fraction of the original dose.", "dose_percent": 20 } },
+        { "type": "spray_step", "settings": { "title": "Sprayed Under The Tongue", "description": "Lands on tissue packed with tiny blood vessels.", "dose_percent": 100 } },
+        { "type": "spray_step", "settings": { "title": "Straight Into Your Bloodstream", "description": "No stomach, no liver, no detours. Full potency, in minutes.", "dose_percent": 100 } },
+        { "type": "benefit", "settings": { "icon": "drop", "title": "Reaches You Intact", "text": "More of every dose gets to work" } },
+        { "type": "benefit", "settings": { "icon": "moon", "title": "Works Faster", "text": "Asleep in 10–15 minutes" } },
+        { "type": "benefit", "settings": { "icon": "bypass", "title": "Easy On Your Stomach", "text": "Nothing to digest" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

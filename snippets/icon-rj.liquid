@@ -1,0 +1,25 @@
+{%- comment -%}
+  Rejuvia brand icons (64x64 viewBox), colors baked in.
+  Params:
+    icon_name   - spray | pill | drop | moon | bypass
+    icon_class  - class applied to the <svg> (size controlled in CSS)
+    icon_accent - purple fill, defaults to brand #672666
+  The spray icon always sits on a white chip; its label uses the accent.
+{%- endcomment -%}
+{%- liquid
+  assign name = icon_name | default: 'drop'
+  assign accent = icon_accent | default: '#672666'
+  assign cls = icon_class | default: ''
+-%}
+{%- case name -%}
+{%- when 'spray' -%}
+<svg class="{{ cls }}" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rjGold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b8892f"/><stop offset=".45" stop-color="#f3d58a"/><stop offset="1" stop-color="#b8892f"/></linearGradient></defs><rect x="27.5" y="3" width="9" height="7" rx="1.5" fill="url(#rjGold)"/><circle cx="32" cy="6" r="1.2" fill="#fff"/><rect x="26.5" y="10" width="11" height="5" rx="1" fill="url(#rjGold)"/><rect x="24" y="15" width="16" height="46" rx="4" fill="#fff" stroke="#cfcae3" stroke-width="1.5"/><rect x="24.75" y="22" width="14.5" height="32" fill="{{ accent }}"/><path d="M32 33 Q32 38 37 38 Q32 38 32 43 Q32 38 27 38 Q32 38 32 33Z" fill="url(#rjGold)"/><path d="M49 3 Q49 9 55 9 Q49 9 49 15 Q49 9 43 9 Q49 9 49 3Z" fill="#b088a8"/><path d="M57 15 Q57 19 61 19 Q57 19 57 23 Q57 19 53 19 Q57 19 57 15Z" fill="#b088a8"/><circle cx="47" cy="20" r="1.8" fill="#b088a8"/></svg>
+{%- when 'pill' -%}
+<svg class="{{ cls }}" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(-35 32 32)"><rect x="10" y="22" width="44" height="20" rx="10" fill="none" stroke="#8a8597" stroke-width="3.5"/><path d="M32 22 L32 42" stroke="#8a8597" stroke-width="3.5"/><path d="M10 32 a10 10 0 0 1 10 -10 L32 22 L32 42 L20 42 a10 10 0 0 1 -10 -10Z" fill="#8a8597" opacity=".35"/></g></svg>
+{%- when 'moon' -%}
+<svg class="{{ cls }}" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M38 7 A26 26 0 1 0 58 42 A21 21 0 1 1 38 7Z" fill="{{ accent }}"/><path d="M44 16 Q44 25 53 25 Q44 25 44 34 Q44 25 35 25 Q44 25 44 16Z" fill="#b088a8"/><path d="M33 31 Q33 36 38 36 Q33 36 33 41 Q33 36 28 36 Q33 36 33 31Z" fill="#b088a8"/></svg>
+{%- when 'bypass' -%}
+<svg class="{{ cls }}" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="46" r="9" fill="none" stroke="#b088a8" stroke-width="3" stroke-dasharray="4 4"/><path d="M9 48 C9 14 55 14 55 44" fill="none" stroke="{{ accent }}" stroke-width="4.5" stroke-linecap="round"/><path d="M47 38 L55 47 L62 37" fill="none" stroke="{{ accent }}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- else -%}
+<svg class="{{ cls }}" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M30 8 C30 8 13 28 13 39 a17 17 0 0 0 34 0 C47 28 30 8 30 8Z" fill="{{ accent }}"/><path d="M35 33 Q35 40 42 40 Q35 40 35 47 Q35 40 28 40 Q35 40 35 33Z" fill="#fff"/><path d="M53 10 Q53 16 59 16 Q53 16 53 22 Q53 16 47 16 Q53 16 53 10Z" fill="#b088a8"/></svg>
+{%- endcase -%}

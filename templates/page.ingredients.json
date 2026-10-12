@@ -150,6 +150,46 @@
         "chart_image_mobile": "shopify://shop_images/sleepspray1.webp"
       }
     },
+    "absorption_compare_v2_Kd7mXa": {
+      "type": "absorption-compare-v2",
+      "blocks": {
+        "pill_1": { "type": "pill_step", "settings": { "title": "Swallowed", "description": "Travels all the way down to your stomach.", "dose_percent": 100 } },
+        "pill_2": { "type": "pill_step", "settings": { "title": "Broken Down By Stomach Acid", "description": "Harsh acids start breaking the active ingredients apart.", "dose_percent": 65 } },
+        "pill_3": { "type": "pill_step", "settings": { "title": "Filtered By The Liver", "description": "The liver strips out even more before it can be used.", "dose_percent": 38 } },
+        "pill_4": { "type": "pill_step", "settings": { "title": "What's Left Reaches Your Blood", "description": "Slowly — and at a fraction of the original dose.", "dose_percent": 20 } },
+        "spray_1": { "type": "spray_step", "settings": { "title": "Sprayed Under The Tongue", "description": "Lands on tissue packed with tiny blood vessels.", "dose_percent": 100 } },
+        "spray_2": { "type": "spray_step", "settings": { "title": "Straight Into Your Bloodstream", "description": "No stomach, no liver, no detours. Full potency, in minutes.", "dose_percent": 100 } },
+        "benefit_1": { "type": "benefit", "settings": { "icon": "drop", "title": "Reaches You Intact", "text": "More of every dose gets to work" } },
+        "benefit_2": { "type": "benefit", "settings": { "icon": "moon", "title": "Works Faster", "text": "Asleep in 10–15 minutes" } },
+        "benefit_3": { "type": "benefit", "settings": { "icon": "bypass", "title": "Easy On Your Stomach", "text": "Nothing to digest" } }
+      },
+      "block_order": [
+        "pill_1",
+        "pill_2",
+        "pill_3",
+        "pill_4",
+        "spray_1",
+        "spray_2",
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ],
+      "name": "Absorption Compare V2",
+      "settings": {
+        "anchor_id": "absorption",
+        "bg_color": "#f5f5fb",
+        "accent_color": "#672666",
+        "animate": true,
+        "heading": "<p>Better Ingredients. Better Absorption.</p>",
+        "subheading": "It was never what you took — it's how your body absorbed it.",
+        "pill_title": "Pills & Gummies",
+        "pill_stat": "Up to 80%",
+        "pill_stat_label": "of ingredients lost in digestion",
+        "spray_title": "Rejuvia Oral Spray",
+        "spray_stat": "Up to 85%",
+        "spray_stat_label": "more bioavailability than pills and gummies"
+      }
+    },
     "guarantee_section_ing": {
       "type": "guarantee-section",
       "settings": {
@@ -249,6 +289,7 @@
     "key_ingredients_page_v2_c96YaM",
     "clean_formula_v2_Rn8kPq",
     "why_better_v2_Ny6pzj",
+    "absorption_compare_v2_Kd7mXa",
     "guarantee_section_ing",
     "science_v2_wgkJq7",
     "page_cta_v2_HdCPMi"

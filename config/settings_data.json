@@ -988,13 +988,46 @@
           "struck_color": "#a9a4b6"
         }
       },
-      "listicle_v2_N8G8nM": {
-        "type": "listicle-v2",
-        "name": "Listicle V2",
+      "absorption_v2_home": {
+        "type": "absorption-v2",
+        "blocks": {
+          "benefit_stomach": {
+            "type": "benefit",
+            "settings": {
+              "icon": "stomach",
+              "title": "Skips Your Stomach",
+              "description": "No acid or enzymes breaking it down."
+            }
+          },
+          "benefit_clock": {
+            "type": "benefit",
+            "settings": {
+              "icon": "clock",
+              "title": "Works In Minutes",
+              "description": "Asleep in 10–15 minutes, not 45+."
+            }
+          },
+          "benefit_drop": {
+            "type": "benefit",
+            "settings": {
+              "icon": "drop",
+              "title": "Nothing Wasted",
+              "description": "More of every spray reaches your bloodstream."
+            }
+          }
+        },
+        "block_order": [
+          "benefit_stomach",
+          "benefit_clock",
+          "benefit_drop"
+        ],
         "settings": {
-          "heading": "<p>The real issue isn't what you took — it's how your body <em>absorbed it</em></p>",
-          "description": "<p>Every pill, capsule, and gummy has to survive your stomach — acid, enzymes, your liver — before anything reaches your bloodstream. Most of it doesn't make it.</p><p>A 5mg melatonin gummy might deliver 1mg to where it's actually needed. <strong>It's not a bad product — it's a bad absorption mechanism.</strong></p><p>Rejuvia skips all of that. A spray under your tongue absorbs straight into your bloodstream — no stomach, no waiting, no waste.</p>",
-          "graph_image": "shopify://shop_images/sleepspray5_webp.webp"
+          "heading": "<p>It's Not What You Took. It's How You <em>Absorbed It.</em></p>",
+          "subhead": "Pills and gummies lose up to 80% to digestion. Rejuvia absorbs under your tongue instead.",
+          "image": "shopify://shop_images/sleepspray5_webp.webp",
+          "bg_color": "#ffffff",
+          "accent_color": "#672666",
+          "icon_bg": "#f3eef6"
         }
       },
       "image_text_v2_EEfUyt": {
@@ -1866,7 +1899,7 @@
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
       "tried_everything_v2_home",
-      "listicle_v2_N8G8nM",
+      "absorption_v2_home",
       "press_carousel_QDazA4",
       "image_text_v2_EEfUyt",
       "real_stories_v2_CKGqJy",

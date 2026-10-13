@@ -56,15 +56,15 @@
   }
 
   .ing-hero__heading {
-    /* Existing brand heading stack (no serif) per handoff. */
+    /* Matches the homepage hero H1 exactly: family / weight / tracking come from
+       the global --rj-title-* system; size + line-height + colour mirror it
+       (36px desktop, 26px at <=900px). */
     margin: 0;
-    font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    font-size: 46px;
-    line-height: 1.08;
-    letter-spacing: -.01em;
-    color: {{ section.settings.heading_color | default: '#2a1830' }};
+    font-size: 36px;
+    line-height: 1.4;
+    color: {{ section.settings.heading_color | default: '#141414' }};
   }
+  @media (max-width: 900px) { .ing-hero__heading { font-size: 26px; } }
   .ing-hero__heading p { margin: 0; font: inherit; color: inherit; }
   /* Accent words: purple + underlined, not italic — matches the homepage hero. */
   .ing-hero__heading em,
@@ -132,7 +132,6 @@
       box-shadow: 0 14px 32px rgba(45,21,48,.14);
     }
     .ing-hero__eyebrow { font-size: 14px; }
-    .ing-hero__heading { font-size: 32px; line-height: 1.1; }
     .ing-hero__body { font-size: 15px; line-height: 1.5; }
     .ing-hero__pills { display: none; } /* desktop only per design */
 
@@ -233,7 +232,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "INGREDIENTS" },
     { "type": "richtext", "id": "heading", "label": "Heading", "info": "Italic/underline markup renders as the purple accent (underlined, not italic).", "default": "<p>Every Ingredient <em>Earns Its Place</em></p>" },
     { "type": "richtext", "id": "body", "label": "Body", "default": "<p>No fillers, no proprietary blends hiding weak doses. Just clean, research-backed botanicals that absorb under your tongue.</p>" },
-    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#2a1830" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#141414" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#672666" },
     { "type": "color", "id": "page_bg", "label": "Page background", "default": "#ffffff" },
     { "type": "header", "content": "Trust bar" },

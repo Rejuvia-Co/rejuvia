@@ -30,10 +30,11 @@
     padding-bottom: 36px; border-bottom: 1px solid {{ card_border }};
   }
   .srv2__head-text { display: flex; flex-direction: column; gap: 12px; }
-  .srv2__title {
-    margin: 0; font-size: 48px; line-height: 1.05; letter-spacing: -.02em; font-weight: 700;
-    color: #141414;
-  }
+  /* Matches the homepage hero H1 (.hero-v2-heading): HelveticaNeueL / 600 /
+     normal tracking come from the global --rj-title-* system; size + line-height
+     + colour below mirror it exactly (36px desktop, 26px at <=900px). */
+  .srv2__title { margin: 0; font-size: 36px; line-height: 1.4; color: #141414; text-transform: none; }
+  @media (max-width: 900px) { .srv2__title { font-size: 26px; } }
   .srv2__rating { display: flex; align-items: center; gap: 10px; font-size: 17px; flex-wrap: wrap; }
   .srv2__rating-stars { display: inline-flex; gap: 2px; color: {{ stars_color }}; }
   .srv2__rating-stars svg { width: 18px; height: 16px; display: block; }
@@ -165,7 +166,6 @@
   @media (max-width: 749px) {
     .srv2__wrap { padding: 26px 0 32px; }
     .srv2__head { flex-direction: column; align-items: stretch; gap: 16px; padding: 0 18px 20px; }
-    .srv2__title { font-size: 32px; }
     .srv2__rating { font-size: 15px; }
     .srv2__rating-desc { display: none; }
     .srv2__rating-desc--mobile { display: inline; }

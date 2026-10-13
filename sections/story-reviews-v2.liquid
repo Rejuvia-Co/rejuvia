@@ -339,6 +339,36 @@
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
+
+        {%- comment -%}
+          Calm + D3+K2 reviews are rendered here in the section itself. They are
+          real verbatim reviews pulled from the Calm and D3+K2 product pages.
+          They live in code (not customizer blocks) because the page template
+          JSON does not sync to the live theme. Fields per record:
+          product~~initials~~avatarBg~~name~~title~~body  (records split by @@).
+        {%- endcomment -%}
+        {%- capture srv2_extra -%}calm~~JS~~#FDE7C8~~John S.~~Helped me greatly~~Calm Spray has helped me greatly through a really challenging season — and the Sleep Spray has been a blessing!@@calm~~MC~~#FBE0EA~~Madeleine C.~~Calm and focused~~I feel calm and focused during the day, and it helps me fall asleep and actually sleep through the night!@@calm~~LC~~#DDF3E4~~Lauren C.~~Really calms my thoughts down~~Really calms my thoughts down! Fast acting in 15 mins, 8 pumps is my magic number. Highly recommended!@@calm~~AR~~#FFF3C4~~Audra R.~~So thankful~~Within about 10 minutes I felt a huge relax in my shoulders, then my whole mind and body. So thankful!@@calm~~TM~~#E6E0F5~~Tiffany M.~~Grounded and present~~Works instantly to calm me down and helps me stay grounded and present.@@calm~~RR~~#FDE7C8~~Rita R.~~The best we've tried~~These sprays help my husband and me relax, fall asleep faster and sleep more deeply than anything we've tried.@@d3~~RW~~#FBE0EA~~Ronnie W.~~Love it!~~Finally a vitamin D3+K2 product I remember to take, a few sprays under my tongue and I'm done, love it!@@d3~~BF~~#DDF3E4~~Bluma F.~~An easy way to get my Vit D~~This is just an easy way to get my Vit D.@@d3~~LZ~~#FFF3C4~~Loesha Z.~~Fresh and clean~~Great way to get my vitamins. Tastes fresh and clean.@@d3~~JG~~#E6E0F5~~Julie G.~~Easy daily vitamin D~~Easy way to get a supply of daily vitamin D. Tastes good and I take it with my sleep spray at night.@@d3~~RW~~#FDE7C8~~Ronald W.~~Great for travel~~So convenient and great for travel.@@d3~~BH~~#FBE0EA~~Brian H.~~Highly satisfied~~Got this to increase my K2 and D3 intake. I am highly satisfied with the product and plan to add to my regimen. 5 stars!{%- endcapture -%}
+        {%- assign srv2_extra_list = srv2_extra | split: '@@' -%}
+        {%- for rec in srv2_extra_list -%}
+          {%- assign f = rec | split: '~~' -%}
+          {%- if f[0] == 'd3' -%}{%- assign etag = 'D3+K2' -%}{%- assign ebase = '#1B8546' -%}{%- assign etint = '#E7F4EB' -%}{%- else -%}{%- assign etag = 'CALM' -%}{%- assign ebase = '#C23A57' -%}{%- assign etint = '#FBEBEF' -%}{%- endif -%}
+          <div class="srv2__card is-clamped" data-srv-card data-product="{{ f[0] }}">
+            <div class="srv2__card-top">
+              <span class="srv2__stars" aria-label="5 stars">{%- for i in (1..5) -%}{{ star_svg }}{%- endfor -%}</span>
+              <span class="srv2__tag" style="background:{{ etint }};color:{{ ebase }}">{{ etag }}</span>
+            </div>
+            <div class="srv2__card-title">{{ f[4] }}</div>
+            <div class="srv2__card-body"><p>{{ f[5] }}</p></div>
+            <button type="button" class="srv2__more" data-srv-more hidden>Read more</button>
+            <div class="srv2__card-foot">
+              <span class="srv2__avatar" style="background:{{ f[2] }}">{{ f[1] }}</span>
+              <div class="srv2__foot-meta">
+                <span class="srv2__foot-name">{{ f[3] }}</span>
+                <span class="srv2__foot-verified">{{ check_svg }}Verified buyer</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
       </div>
       <div class="srv2__fade" aria-hidden="true"></div>
     </div>

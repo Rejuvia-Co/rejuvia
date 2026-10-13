@@ -50,7 +50,7 @@
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: 15px;
-    letter-spacing: .18em;
+    letter-spacing: .08em;
     text-transform: uppercase;
     color: {{ accent }};
   }
@@ -66,8 +66,16 @@
     color: {{ section.settings.heading_color | default: '#2a1830' }};
   }
   .ing-hero__heading p { margin: 0; font: inherit; color: inherit; }
+  /* Accent words: purple + underlined, not italic — matches the homepage hero. */
   .ing-hero__heading em,
-  .ing-hero__heading .accent { color: {{ accent }}; font-style: italic; }
+  .ing-hero__heading u,
+  .ing-hero__heading [style*="underline"],
+  .ing-hero__heading .accent {
+    color: {{ accent }};
+    font-style: normal;
+    text-decoration: underline;
+    text-underline-offset: 0.08em;
+  }
 
   .ing-hero__body {
     margin: 0;
@@ -223,7 +231,7 @@
     { "type": "text", "id": "focal_mobile", "label": "Focal point — mobile", "default": "50% 50%" },
     { "type": "header", "content": "Panel copy" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "INGREDIENTS" },
-    { "type": "richtext", "id": "heading", "label": "Heading", "info": "Wrap the accent words in italics to colour them.", "default": "<p>Every ingredient <em>earns its place.</em></p>" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "info": "Italic/underline markup renders as the purple accent (underlined, not italic).", "default": "<p>Every Ingredient <em>Earns Its Place.</em></p>" },
     { "type": "richtext", "id": "body", "label": "Body", "default": "<p>No fillers, no proprietary blends hiding weak doses. Just clean, research-backed botanicals that absorb under your tongue.</p>" },
     { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#2a1830" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#672666" },

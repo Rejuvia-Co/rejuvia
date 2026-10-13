@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "hero_ingredients_v2_PynYUG": {
+      "type": "hero-ingredients-v2",
+      "name": "Hero Ingredients V2",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "heading": "<p>Wondering what's actually in rejuvia?</p>",
+        "description": "No surprises here. Rejuvia is made with a clean, all-natural blend of sleep herbs and botanicals. Nothing else. Every ingredient was chosen for a specific reason, backed by clinical research, and included at a dose that actually does something. No fillers, no proprietary blends hiding weak doses, no ingredients you need a chemistry degree to pronounce.",
+        "image": "shopify://shop_images/images.higgs.webp",
+        "image_mobile": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
+      }
+    },
+
     "guarantees_v2_ABV7Ti": {
       "type": "guarantees-v2",
       "blocks": {

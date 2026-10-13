@@ -36,6 +36,12 @@
             "image": "shopify://shop_images/Rejuvia_SleepSpray_CompareR2-02LavenderCard-StopSwallowing_PDPGallery_Comparison_AllCohorts_ProblemAware_InternalAI_BOGOSub_NoOffer_1x1_v1_10122026.webp"
           }
         },
+        "slide_jLqxYf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/servings.webp"
+          }
+        },
         "slide_2": {
           "type": "slide",
           "settings": {
@@ -153,6 +159,7 @@
         "slide_3",
         "slide_NmwqBi",
         "slide_8GKyjF",
+        "slide_jLqxYf",
         "slide_2",
         "slide_4",
         "slide_5",

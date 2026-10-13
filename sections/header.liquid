@@ -120,6 +120,22 @@
   #header .rjnav-account { display: flex; align-items: center; gap: 8px; white-space: nowrap; color: {{ ink }}; text-decoration: none; transition: color .2s; }
   #header .rjnav-account:hover { color: {{ purple }}; }
   #header .rjnav-account svg { width: 22px; height: 22px; }
+  /* Same rounded highlight bar as the nav links, under the "Sign In" text. */
+  #header .rjnav-account-label { position: relative; }
+  #header .rjnav-account-label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.95em);
+    height: 4px;
+    border-radius: 100px;
+    background: {{ purple }};
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  #header .rjnav-account:hover .rjnav-account-label::after,
+  #header .rjnav-account:focus-visible .rjnav-account-label::after { opacity: 1; }
   #header .rjnav-cta {
     white-space: nowrap; flex-shrink: 0; background: {{ purple }}; color: #fff; font-weight: 600; font-size: 15px;
     padding: 11px 20px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
@@ -314,7 +330,7 @@
     </nav>
 
     <div class="rjnav-right" data-rjnav-close>
-      <a class="rjnav-account" href="{{ account_url }}" aria-label="Sign in">{{ icon_user }}{{ section.settings.account_label | default: 'Sign In' }}</a>
+      <a class="rjnav-account" href="{{ account_url }}" aria-label="Sign in">{{ icon_user }}<span class="rjnav-account-label">{{ section.settings.account_label | default: 'Sign In' }}</span></a>
       <a class="rjnav-cta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Sleep Spray' }}</a>
       <a class="rjnav-carticon" href="/cart" aria-label="Cart">{{ icon_cart }}{% if cart.item_count > 0 %}<span class="rjnav-cart-count">{{ cart.item_count }}</span>{% endif %}</a>
     </div>

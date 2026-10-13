@@ -170,7 +170,7 @@
     .srv2__rating { font-size: 15px; gap: 8px; }
     .srv2__rating-sep--cust, .srv2__rating-item--cust { display: none; }
     .srv2__toggle {
-      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); padding: 4px; gap: 2px; border-radius: 100px;
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); padding: 4px; gap: 2px; border-radius: 100px;
     }
     .srv2__seg { justify-content: center; font-size: 13px; padding: 12px 2px; gap: 5px; }
     .srv2__seg-dot { width: 7px; height: 7px; }
@@ -205,6 +205,15 @@
 {%- comment -%} Shared SVGs {%- endcomment -%}
 {%- capture star_svg -%}<svg viewBox="0 0 18 16" fill="currentColor" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z"/></svg>{%- endcapture -%}
 {%- capture check_svg -%}<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#672666"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>{%- endcapture -%}
+{%- comment -%} Header rating stars, with a half star for the fractional part (e.g. 4.5 = 4 full + 1 half). {%- endcomment -%}
+{%- assign rv = section.settings.rating_value | default: '4.5' | plus: 0.0 -%}
+{%- assign rfull = rv | floor -%}
+{%- assign rrem = rv | minus: rfull -%}
+{%- assign rhalf = 0 -%}
+{%- if rrem >= 0.75 -%}{%- assign rfull = rfull | plus: 1 -%}{%- elsif rrem >= 0.25 -%}{%- assign rhalf = 1 -%}{%- endif -%}
+{%- assign rempty = 5 | minus: rfull | minus: rhalf -%}
+{%- capture star_half -%}<svg viewBox="0 0 18 16" aria-hidden="true"><defs><linearGradient id="srv2half-{{ section.id }}" x1="0" y1="0" x2="1" y2="0"><stop offset="50%" stop-color="{{ stars_color }}"/><stop offset="50%" stop-color="#d9d4e0"/></linearGradient></defs><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="url(#srv2half-{{ section.id }})"/></svg>{%- endcapture -%}
+{%- capture star_empty -%}<svg viewBox="0 0 18 16" fill="#d9d4e0" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z"/></svg>{%- endcapture -%}
 
 <div class="srv2__wrap"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
 
@@ -213,7 +222,7 @@
     <div class="srv2__head-text">
       {%- if section.settings.heading != blank -%}<h1 class="srv2__title">{{ section.settings.heading }}</h1>{%- endif -%}
       <div class="srv2__rating">
-        <span class="srv2__rating-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <span class="srv2__rating-stars">{%- if rfull > 0 -%}{%- for i in (1..rfull) -%}{{ star_svg }}{%- endfor -%}{%- endif -%}{%- if rhalf == 1 -%}{{ star_half }}{%- endif -%}{%- if rempty > 0 -%}{%- for i in (1..rempty) -%}{{ star_empty }}{%- endfor -%}{%- endif -%}</span>
         <span class="srv2__rating-item"><b>{{ section.settings.rating_value | default: '4.5' }}</b> {{ section.settings.label_stars | default: 'Stars' }}</span>
         <span class="srv2__rating-sep" aria-hidden="true"></span>
         <span class="srv2__rating-item"><b>{{ section.settings.reviews_value | default: '7,500+' }}</b> {{ section.settings.label_reviews | default: 'Reviews' }}</span>
@@ -224,8 +233,7 @@
 
     {%- if section.settings.show_toggle -%}
       <div class="srv2__toggle" role="tablist" data-srv-toggle>
-        <button type="button" class="srv2__seg is-active" role="tab" data-filter="all"><span class="srv2__seg-dot" style="background:#141414"></span><span class="srv2__seg-full">All Products</span><span class="srv2__seg-short">All</span></button>
-        <button type="button" class="srv2__seg" role="tab" data-filter="sleep"><span class="srv2__seg-dot" style="background:#672666"></span><span class="srv2__seg-full">Sleep Spray</span><span class="srv2__seg-short">Sleep</span></button>
+        <button type="button" class="srv2__seg is-active" role="tab" data-filter="sleep"><span class="srv2__seg-dot" style="background:#672666"></span><span class="srv2__seg-full">Sleep Spray</span><span class="srv2__seg-short">Sleep</span></button>
         <button type="button" class="srv2__seg" role="tab" data-filter="calm"><span class="srv2__seg-dot" style="background:#C23A57"></span><span class="srv2__seg-full">Calm Spray</span><span class="srv2__seg-short">Calm</span></button>
         <button type="button" class="srv2__seg" role="tab" data-filter="d3"><span class="srv2__seg-dot" style="background:#1B8546"></span><span class="srv2__seg-full">D3+K2 Spray</span><span class="srv2__seg-short">D3+K2</span></button>
       </div>
@@ -347,7 +355,7 @@
   var MOBILE = function () { return window.matchMedia('(max-width: 749px)').matches; };
   var MOBILE_LIMIT = 6, DESK_LIMIT = 12;
 
-  var state = { filter: 'all', expanded: false };
+  var state = { filter: 'sleep', expanded: false };
 
   var toggle = root.querySelector('[data-srv-toggle]');
   var segs = toggle ? [].slice.call(toggle.querySelectorAll('.srv2__seg')) : [];
@@ -361,7 +369,8 @@
   function cardMatches(card, f) {
     var p = card.getAttribute('data-product') || 'sleep';
     if (f === 'all') return true;
-    if (f === 'sleep') return p === 'sleep'; // brand/photos tagged sleep show; brand hidden
+    // No "All" tab: Sleep is the default and also carries brand / service reviews.
+    if (f === 'sleep') return p === 'sleep' || p === 'brand';
     return p === f; // calm / d3
   }
 

@@ -1,777 +1,564 @@
+{%- comment -%}
+  Customer Reviews gallery (direction 1e). Reuses the existing review / video /
+  image blocks and their content: compact header + product toggle, a Video
+  Reviews carousel, then a Written Reviews masonry. The toggle filters both,
+  client-side, via each block's product tag. Okendo is a separate section.
+
+  Block types kept from the previous version so saved content maps 1:1:
+    review  — avatar_initials/avatar_color, stars, title, body, author_name, badge_type, (+product)
+    video   — video_file, thumbnail, quote, author, video_url  (all Sleep)
+    image   — image, alt, (+product)   customer-photo tile
+{%- endcomment -%}
+
+{%- liquid
+  assign stars_color = section.settings.stars_color | default: '#d9a94e'
+  assign card_border = '#EAE7F1'
+-%}
+
 {% style %}
-.story-reviews-v2-section {
-    width: 100%;
-    background-color: {{ section.settings.bg_color }};
-}
-
-.story-reviews-v2-container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 32px 64px 64px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    box-sizing: border-box;
+  .srv2 {
+    background: {{ section.settings.bg_color | default: '#ffffff' }};
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-/* ---- Filter pills ---- */
-.story-reviews-v2-filters {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.story-reviews-v2-filter {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 32px;
-    background: rgba(255, 255, 255, 0.8);
     color: #141414;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    border: none;
-    border-radius: 80px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow-x: clip;
+  }
+  .srv2__wrap { max-width: 1240px; margin: 0 auto; padding: 48px 16px 80px; }
+
+  /* ---------- Compact header ---------- */
+  .srv2__head {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;
+    padding-bottom: 36px; border-bottom: 1px solid {{ card_border }};
+  }
+  .srv2__head-text { display: flex; flex-direction: column; gap: 12px; }
+  .srv2__title {
+    margin: 0; font-size: 48px; line-height: 1.05; letter-spacing: -.02em; font-weight: 700;
+    color: #141414;
+  }
+  .srv2__rating { display: flex; align-items: center; gap: 10px; font-size: 17px; flex-wrap: wrap; }
+  .srv2__rating-stars { display: inline-flex; gap: 2px; color: {{ stars_color }}; }
+  .srv2__rating-stars svg { width: 18px; height: 16px; display: block; }
+  .srv2__rating b { font-weight: 700; }
+  .srv2__rating-desc { color: #5b5866; }
+  .srv2__rating-desc--mobile { display: none; }
+
+  /* Toggle (segmented control) */
+  .srv2__toggle { display: inline-flex; background: #F7F6FB; border-radius: 100px; padding: 5px; gap: 4px; }
+  .srv2__seg {
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;
+    padding: 12px 22px; border: 0; border-radius: 100px; background: transparent; color: #5b5866;
+    transition: background .25s, color .25s;
+  }
+  .srv2__seg-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .srv2__seg.is-active { background: #fff; color: #141414; box-shadow: 0 1px 3px rgba(45,21,48,.08); }
+  .srv2__seg-short { display: none; }
+
+  /* ---------- Video Reviews ---------- */
+  .srv2__videos { padding: 48px 0 56px; border-bottom: 1px solid {{ card_border }}; display: flex; flex-direction: column; gap: 24px; }
+  .srv2__videos[hidden] { display: none; }
+  .srv2__sec-head { display: flex; justify-content: space-between; align-items: center; }
+  .srv2__h2 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -.01em; }
+  .srv2__arrows { display: flex; gap: 10px; }
+  .srv2__arrow {
+    width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #E3DAD0; background: #fff;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;
+    transition: opacity .2s;
+  }
+  .srv2__arrow svg { width: 18px; height: 18px; }
+  .srv2__arrow:disabled { cursor: default; opacity: .35; }
+
+  .srv2__vtrack-wrap { overflow: hidden; }
+  .srv2__vtrack { display: flex; gap: 20px; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+  .srv2__vcard { width: 295px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+  .srv2__vcard[hidden] { display: none; }
+
+  .srv2__vmedia {
+    position: relative; height: 368px; border-radius: 16px; overflow: hidden; background: #EEE9F0;
     cursor: pointer;
+  }
+  .srv2__vmedia video, .srv2__vmedia img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+  .srv2__vplay {
+    position: absolute; left: 16px; bottom: 16px; width: 52px; height: 52px; border-radius: 50%;
+    background: #fff; border: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(45,21,48,.25); color: #672666; padding: 0;
+  }
+  .srv2__vplay svg { width: 18px; height: 18px; margin-left: 3px; }
+  .srv2__vmedia.is-playing .srv2__vplay { display: none; }
+  .srv2__vmeta { display: flex; flex-direction: column; gap: 8px; padding: 0 2px; }
+  .srv2__vquote { font-size: 18px; font-weight: 600; line-height: 1.3; text-wrap: pretty; }
+  .srv2__vby { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5b5866; }
+  .srv2__vby b { color: #141414; }
+  .srv2__vcheck { display: inline-flex; align-items: center; gap: 5px; }
+  .srv2__vcheck svg { width: 14px; height: 14px; }
+
+  .srv2__dots { display: none; }
+
+  /* ---------- Written Reviews ---------- */
+  .srv2__written { padding-top: 48px; display: flex; flex-direction: column; gap: 24px; }
+  .srv2__empty { background: #F7F6FB; border-radius: 16px; padding: 48px; text-align: center; font-size: 17px; color: #3d3a36; }
+  .srv2__empty[hidden] { display: none; }
+
+  .srv2__masonry-wrap { position: relative; }
+  .srv2__masonry { columns: 3; column-gap: 20px; }
+  .srv2__masonry-wrap.is-collapsed { max-height: 1500px; overflow: hidden; }
+  .srv2__fade {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 180px;
+    background: linear-gradient(rgba(255,255,255,0), {{ section.settings.bg_color | default: '#ffffff' }} 85%);
+    pointer-events: none;
+  }
+  .srv2__masonry-wrap:not(.is-collapsed) .srv2__fade { display: none; }
+
+  .srv2__card {
+    break-inside: avoid; margin-bottom: 20px;
+    background: #fff; border: 1px solid {{ card_border }}; border-radius: 16px; padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .srv2__card[hidden], .srv2__photo[hidden] { display: none; }
+  .srv2__card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .srv2__stars { display: inline-flex; gap: 2px; color: {{ stars_color }}; }
+  .srv2__stars svg { width: 17px; height: 15px; display: block; }
+  .srv2__tag {
+    font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 5px 10px; border-radius: 100px;
     white-space: nowrap;
-    transition: background-color 0.2s ease;
-    font-family: inherit;
-}
+  }
+  .srv2__card-title { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .srv2__card-body {
+    font-size: 16px; line-height: 1.55; color: #3d3a36;
+    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .srv2__card-body p { margin: 0 0 .6em; }
+  .srv2__card-body p:last-child { margin-bottom: 0; }
+  .srv2__card.is-clamped .srv2__card-body { -webkit-line-clamp: 6; }
+  .srv2__more {
+    align-self: flex-start; font-size: 15px; font-weight: 600; color: #672666; cursor: pointer;
+    background: 0; border: 0; padding: 0; margin-top: -2px;
+  }
+  .srv2__card-foot { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid #F0EDF4; }
+  .srv2__avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; overflow: hidden;
+  }
+  .srv2__avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .srv2__foot-meta { display: flex; flex-direction: column; gap: 1px; }
+  .srv2__foot-name { font-size: 15px; font-weight: 700; }
+  .srv2__foot-verified { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: #5b5866; }
+  .srv2__foot-verified svg { width: 13px; height: 13px; }
 
-.story-reviews-v2-filter.is-active {
-    background: {{ section.settings.filter_active_bg }};
-}
+  .srv2__photo { break-inside: avoid; margin-bottom: 20px; position: relative; border-radius: 16px; overflow: hidden; }
+  .srv2__photo img { display: block; width: 100%; height: auto; }
+  .srv2__photo-chip {
+    position: absolute; left: 14px; bottom: 14px; background: rgba(255,255,255,.92);
+    font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .srv2__photo-chip svg { width: 13px; height: 13px; }
 
-/* ---- Masonry grid ---- */
-.story-reviews-v2-grid {
-    column-count: 3;
-    column-gap: 24px;
-}
+  .srv2__showmore {
+    align-self: center; margin-top: -8px; position: relative;
+    background: #fff; border: 1.5px solid #672666; color: #672666; font-weight: 600; font-size: 16px;
+    padding: 15px 40px; border-radius: 100px; cursor: pointer; transition: background .2s;
+  }
+  .srv2__showmore:hover { background: #F4EEF5; }
+  .srv2__showmore[hidden] { display: none; }
 
-.story-reviews-v2-card {
-    break-inside: avoid;
-    margin-bottom: 24px;
-    display: block;
-}
-
-/* Text review card */
-.story-reviews-v2-review {
-    background: {{ section.settings.card_bg_color }};
-    border-radius: 10px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.story-reviews-v2-review-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-}
-
-.story-reviews-v2-avatar {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eaeaf7;
-}
-
-.story-reviews-v2-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.story-reviews-v2-avatar-text {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.03em;
-    color: #141414;
-    margin: 0;
-}
-
-.story-reviews-v2-review-meta {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.story-reviews-v2-stars {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.story-reviews-v2-stars svg { width: 19.2px; height: 18px; display: block; }
-
-.story-reviews-v2-review-title {
-    margin: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.4;
-    color: #141414;
-}
-
-.story-reviews-v2-review-body {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #141414;
-}
-
-.story-reviews-v2-review-body p { margin: 0 0 0.75em; }
-.story-reviews-v2-review-body p:last-child { margin-bottom: 0; }
-
-.story-reviews-v2-review-author {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    color: #141414;
-}
-
-.story-reviews-v2-review-name {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1;
-    color: #141414;
-}
-
-.story-reviews-v2-author-divider {
-    width: 1px;
-    height: 15px;
-    background: #d6d3de;
-}
-
-.story-reviews-v2-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1;
-    color: #141414;
-}
-
-.story-reviews-v2-badge--verified {
-    letter-spacing: 0;
-}
-
-.story-reviews-v2-verified-icon {
-    width: 17px;
-    height: 17px;
-    display: block;
-    flex-shrink: 0;
-}
-
-/* Video card */
-.story-reviews-v2-video {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 480px;
-    padding: 24px;
-    border-radius: 10px;
-    overflow: hidden;
-    color: #fff;
-    text-decoration: none;
-    box-sizing: border-box;
-}
-
-.story-reviews-v2-video-bg,
-.story-reviews-v2-video-media {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #141414;
-}
-
-.story-reviews-v2-video-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.story-reviews-v2-video-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 55%);
-}
-
-.story-reviews-v2-video.is-playing .story-reviews-v2-video-overlay,
-.story-reviews-v2-video.is-playing .story-reviews-v2-video-content {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-}
-
-.story-reviews-v2-video-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    width: 100%;
-}
-
-.story-reviews-v2-video-text {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.story-reviews-v2-video-quote {
-    margin: 0;
-    font-size: 26px;
-    font-weight: 500;
-    line-height: 1.3;
-}
-
-.story-reviews-v2-video-author {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
-}
-
-.story-reviews-v2-video-play {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.16);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: transform 0.2s ease;
-}
-
-.story-reviews-v2-video-play:hover { transform: scale(1.05); }
-
-.story-reviews-v2-video-play svg {
-    width: 30px;
-    height: 30px;
-    color: {{ section.settings.video_play_color | default: '#672666' }};
-    display: block;
-}
-
-/* Image card */
-.story-reviews-v2-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #eaeaf7;
-}
-
-.story-reviews-v2-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* ---- Filter state (hide cards by data-type) ---- */
-.story-reviews-v2-section[data-filter="written"] .story-reviews-v2-card:not([data-type="review"]) { display: none; }
-.story-reviews-v2-section[data-filter="video"] .story-reviews-v2-card:not([data-type="video"]) { display: none; }
-
-/* ===================== Tablet ===================== */
-@media (max-width: 1100px) {
-    .story-reviews-v2-grid { column-count: 2; }
-}
-
-/* ===================== Mobile ===================== */
-@media (max-width: 749px) {
-    .story-reviews-v2-container {
-        padding: 24px 16px;
-        gap: 24px;
+  /* ---------- Mobile ---------- */
+  @media (max-width: 749px) {
+    .srv2__wrap { padding: 26px 0 32px; }
+    .srv2__head { flex-direction: column; align-items: stretch; gap: 16px; padding: 0 18px 20px; }
+    .srv2__title { font-size: 32px; }
+    .srv2__rating { font-size: 15px; }
+    .srv2__rating-desc { display: none; }
+    .srv2__rating-desc--mobile { display: inline; }
+    .srv2__toggle {
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); padding: 4px; gap: 2px; border-radius: 100px;
     }
+    .srv2__seg { justify-content: center; font-size: 13px; padding: 12px 2px; gap: 5px; }
+    .srv2__seg-dot { width: 7px; height: 7px; }
+    .srv2__seg-full { display: none; }
+    .srv2__seg-short { display: inline; }
 
-    .story-reviews-v2-filters { gap: 6px; }
+    .srv2__videos { padding: 28px 0 32px; gap: 16px; }
+    .srv2__sec-head { padding: 0 18px; }
+    .srv2__h2 { font-size: 22px; }
+    .srv2__arrows { display: none; }
+    .srv2__vtrack-wrap { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scroll-padding-left: 18px; }
+    .srv2__vtrack-wrap::-webkit-scrollbar { display: none; }
+    .srv2__vtrack { transform: none !important; gap: 12px; padding: 0 18px; }
+    .srv2__vcard { width: 236px; gap: 12px; scroll-snap-align: start; }
+    .srv2__vmedia { height: 296px; border-radius: 14px; }
+    .srv2__vplay { width: 46px; height: 46px; }
+    .srv2__vquote { font-size: 16px; }
+    .srv2__dots { display: flex; justify-content: center; gap: 6px; padding-top: 4px; }
+    .srv2__dot { width: 7px; height: 7px; border-radius: 7px; background: #D9CEDC; transition: width .25s, background .25s; }
+    .srv2__dot.is-active { width: 20px; background: #672666; }
 
-    .story-reviews-v2-filter { padding: 12px 24px; }
-
-    .story-reviews-v2-grid { column-count: 1; }
-
-    .story-reviews-v2-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-    }
-
-    .story-reviews-v2-avatar-text { font-size: 16.67px; }
-
-    .story-reviews-v2-stars svg { width: 17.07px; height: 16px; }
-
-    .story-reviews-v2-review-title { font-size: 18px; }
-
-    .story-reviews-v2-video {
-        height: 400px;
-    }
-
-    .story-reviews-v2-video-quote { font-size: 22px; }
-
-    .story-reviews-v2-video-play { width: 50px; height: 50px; }
-    .story-reviews-v2-video-play svg { width: 25px; height: 25px; }
-}
+    .srv2__written { padding: 28px 18px 0; gap: 14px; }
+    .srv2__masonry { columns: 1; }
+    .srv2__masonry-wrap.is-collapsed { max-height: none; } /* mobile clamps by count, not height */
+    .srv2__masonry-wrap:not(.is-mobile-expanded) .srv2__fade { display: none; }
+    .srv2__card { border-radius: 14px; padding: 18px; }
+    .srv2__showmore { width: calc(100% - 0px); padding: 15px; }
+    .srv2__empty { padding: 28px 20px; border-radius: 14px; font-size: 15px; }
+  }
 {% endstyle %}
 
-<div class="story-reviews-v2-container"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
-    {% if section.settings.show_filters %}
-        <div class="story-reviews-v2-filters" role="tablist">
-            <button type="button" class="story-reviews-v2-filter is-active" role="tab" data-filter="all">{{ section.settings.filter_all_label }}</button>
-            <button type="button" class="story-reviews-v2-filter" role="tab" data-filter="written">{{ section.settings.filter_written_label }}</button>
-            <button type="button" class="story-reviews-v2-filter" role="tab" data-filter="video">{{ section.settings.filter_video_label }}</button>
-        </div>
-    {% endif %}
+{%- comment -%} Shared SVGs {%- endcomment -%}
+{%- capture star_svg -%}<svg viewBox="0 0 18 16" fill="currentColor" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z"/></svg>{%- endcapture -%}
+{%- capture check_svg -%}<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#672666"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>{%- endcapture -%}
 
-    <div class="story-reviews-v2-grid">
-        {% for block in section.blocks %}
-            {% case block.type %}
+<div class="srv2__wrap"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id }}"{% endif %}>
 
-            {% when 'review' %}
-                <div class="story-reviews-v2-card" data-type="review" {{ block.shopify_attributes }}>
-                    <div class="story-reviews-v2-review">
-                        <div class="story-reviews-v2-review-header">
-                            {% if block.settings.avatar_image != blank %}
-                                <div class="story-reviews-v2-avatar">
-                                    <img src="{{ block.settings.avatar_image | image_url: width: 120 }}"
-                                         srcset="{{ block.settings.avatar_image | image_url: width: 100 }} 100w,
-                                                 {{ block.settings.avatar_image | image_url: width: 120 }} 120w"
-                                         sizes="60px"
-                                         width="60" height="60"
-                                         alt="{{ block.settings.author_name | default: 'Reviewer' }}"
-                                         loading="lazy"
-                                         decoding="async">
-                                </div>
-                            {% elsif block.settings.avatar_initials != blank %}
-                                <div class="story-reviews-v2-avatar" style="background: {{ block.settings.avatar_color | default: '#eaeaf7' }};">
-                                    <span class="story-reviews-v2-avatar-text">{{ block.settings.avatar_initials }}</span>
-                                </div>
-                            {% endif %}
-                            <div class="story-reviews-v2-review-meta">
-                                {%- assign star_color = block.settings.stars_color | default: section.settings.stars_color -%}
-                                <div class="story-reviews-v2-stars" aria-label="{{ block.settings.stars | default: 5 }} stars">
-                                    {% assign star_count = block.settings.stars | default: 5 %}
-                                    {% for i in (1..star_count) %}
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ star_color }}"/></svg>
-                                    {% endfor %}
-                                </div>
-                                {% if block.settings.title != blank %}
-                                    <h3 class="story-reviews-v2-review-title">{{ block.settings.title }}</h3>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        {% if block.settings.body != blank %}
-                            <div class="story-reviews-v2-review-body">{{ block.settings.body }}</div>
-                        {% endif %}
-
-                        <div class="story-reviews-v2-review-author">
-                            {% if block.settings.author_name != blank %}
-                                <span class="story-reviews-v2-review-name">{{ block.settings.author_name }}</span>
-                            {% endif %}
-                            {% if block.settings.badge_type == 'verified' or block.settings.badge_type == 'unprompted' %}
-                                {% if block.settings.author_name != blank %}
-                                    <span class="story-reviews-v2-author-divider" aria-hidden="true"></span>
-                                {% endif %}
-                                <span class="story-reviews-v2-badge story-reviews-v2-badge--verified">
-                                    <svg class="story-reviews-v2-verified-icon" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M12.0 0.8 L14.54 3.36 L18.06 2.58 L18.8 6.11 L22.19 7.35 L20.91 10.72 L23.09 13.59 L20.19 15.74 L20.46 19.33 L16.87 19.57 L15.16 22.75 L12.0 21.0 L8.84 22.75 L7.13 19.57 L3.54 19.33 L3.81 15.74 L0.91 13.59 L3.09 10.72 L1.81 7.35 L5.2 6.11 L5.94 2.58 L9.46 3.36 Z" fill="#e3b85a"/>
-                                        <path d="M8 12.4l2.6 2.6L16.2 9" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    <span>Verified Customer</span>
-                                </span>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-
-            {% when 'video' %}
-                {%- assign video_file = block.settings.video_file -%}
-                {%- if block.settings.thumbnail != blank -%}
-                    {%- assign video_poster = block.settings.thumbnail | image_url: width: 800 -%}
-                {%- elsif video_file != blank and video_file.preview_image != blank -%}
-                    {%- assign video_poster = video_file.preview_image | image_url: width: 800 -%}
-                {%- else -%}
-                    {%- assign video_poster = '' -%}
-                {%- endif -%}
-                <div class="story-reviews-v2-card" data-type="video" {{ block.shopify_attributes }}>
-                    <div class="story-reviews-v2-video" data-story-video>
-                        {% if video_file != blank %}
-                            <video class="story-reviews-v2-video-media"
-                                   playsinline
-                                   muted
-                                   preload="metadata"
-                                   {% if video_poster != blank %}poster="{{ video_poster }}"{% endif %}
-                                   data-story-video-media>
-                                {% for source in video_file.sources %}
-                                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                                {% endfor %}
-                            </video>
-                        {% elsif video_poster != blank %}
-                            {%- assign poster_img = block.settings.thumbnail | default: video_file.preview_image -%}
-                            <div class="story-reviews-v2-video-bg">
-                                {% if poster_img != blank %}
-                                    <img src="{{ poster_img | image_url: width: 800 }}"
-                                         srcset="{{ poster_img | image_url: width: 400 }} 400w,
-                                                 {{ poster_img | image_url: width: 800 }} 800w,
-                                                 {{ poster_img | image_url: width: 1200 }} 1200w"
-                                         sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                                         width="{{ poster_img.width }}"
-                                         height="{{ poster_img.height }}"
-                                         alt="{{ block.settings.author | default: 'Video review' }}"
-                                         loading="lazy"
-                                         decoding="async">
-                                {% else %}
-                                    <img src="{{ video_poster }}"
-                                         width="{{ video_file.preview_image.width }}"
-                                         height="{{ video_file.preview_image.height }}"
-                                         alt="{{ block.settings.author | default: 'Video review' }}"
-                                         loading="lazy"
-                                         decoding="async">
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                        <div class="story-reviews-v2-video-overlay"></div>
-                        <div class="story-reviews-v2-video-content">
-                            <div class="story-reviews-v2-video-text">
-                                {% if block.settings.quote != blank %}
-                                    <p class="story-reviews-v2-video-quote">{{ block.settings.quote }}</p>
-                                {% endif %}
-                                {% if block.settings.author != blank %}
-                                    <p class="story-reviews-v2-video-author">{{ block.settings.author }}</p>
-                                {% endif %}
-                            </div>
-                            <button type="button" class="story-reviews-v2-video-play"
-                                    data-story-video-play
-                                    {% if video_file == blank and block.settings.video_url != blank %}data-external-url="{{ block.settings.video_url }}"{% endif %}
-                                    aria-label="Play video">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                                    <path d="M6.25 6.25013C6.24987 5.81025 6.36581 5.37811 6.5861 4.99737C6.8064 4.61662 7.12326 4.30074 7.50469 4.08163C7.88612 3.86251 8.3186 3.74791 8.75849 3.7494C9.19837 3.7509 9.63007 3.86843 10.01 4.09013L25.0062 12.8376C25.3847 13.0572 25.6989 13.3723 25.9174 13.7514C26.136 14.1305 26.2512 14.5603 26.2515 14.9978C26.2519 15.4354 26.1375 15.8653 25.9196 16.2448C25.7017 16.6242 25.3881 16.9399 25.01 17.1601L10.01 25.9101C9.63007 26.1318 9.19837 26.2494 8.75849 26.2509C8.3186 26.2524 7.88612 26.1378 7.50469 25.9186C7.12326 25.6995 6.8064 25.3836 6.5861 25.0029C6.36581 24.6221 6.24987 24.19 6.25 23.7501V6.25013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            {% when 'image' %}
-                <div class="story-reviews-v2-card" data-type="image" {{ block.shopify_attributes }}>
-                    <div class="story-reviews-v2-image">
-                        {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url: width: 800 }}"
-                                 srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
-                                         {{ block.settings.image | image_url: width: 800 }} 800w,
-                                         {{ block.settings.image | image_url: width: 1200 }} 1200w"
-                                 sizes="(max-width: 749px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                                 width="{{ block.settings.image.width }}"
-                                 height="{{ block.settings.image.height }}"
-                                 alt="{{ block.settings.alt | default: '' }}"
-                                 loading="lazy"
-                                 decoding="async">
-                        {% endif %}
-                    </div>
-                </div>
-
-            {% endcase %}
-        {% endfor %}
+  {%- comment -%} ---------- Compact header ---------- {%- endcomment -%}
+  <div class="srv2__head">
+    <div class="srv2__head-text">
+      {%- if section.settings.heading != blank -%}<h1 class="srv2__title">{{ section.settings.heading }}</h1>{%- endif -%}
+      <div class="srv2__rating">
+        <span class="srv2__rating-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+        <b>{{ section.settings.rating_value | default: '4.5' }}</b>
+        {%- if section.settings.rating_text != blank -%}<span class="srv2__rating-desc">· {{ section.settings.rating_text }}</span>{%- endif -%}
+        {%- if section.settings.rating_text_mobile != blank -%}<span class="srv2__rating-desc srv2__rating-desc--mobile">· {{ section.settings.rating_text_mobile }}</span>{%- endif -%}
+      </div>
     </div>
+
+    {%- if section.settings.show_toggle -%}
+      <div class="srv2__toggle" role="tablist" data-srv-toggle>
+        <button type="button" class="srv2__seg is-active" role="tab" data-filter="all"><span class="srv2__seg-dot" style="background:#141414"></span><span class="srv2__seg-full">All Products</span><span class="srv2__seg-short">All</span></button>
+        <button type="button" class="srv2__seg" role="tab" data-filter="sleep"><span class="srv2__seg-dot" style="background:#672666"></span><span class="srv2__seg-full">Sleep Spray</span><span class="srv2__seg-short">Sleep</span></button>
+        <button type="button" class="srv2__seg" role="tab" data-filter="calm"><span class="srv2__seg-dot" style="background:#C23A57"></span><span class="srv2__seg-full">Calm Spray</span><span class="srv2__seg-short">Calm</span></button>
+        <button type="button" class="srv2__seg" role="tab" data-filter="d3"><span class="srv2__seg-dot" style="background:#1B8546"></span><span class="srv2__seg-full">D3+K2 Spray</span><span class="srv2__seg-short">D3+K2</span></button>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ---------- Video Reviews (all Sleep) ---------- {%- endcomment -%}
+  {%- assign video_blocks = section.blocks | where: 'type', 'video' -%}
+  {%- if video_blocks.size > 0 -%}
+    <div class="srv2__videos" data-srv-videos>
+      <div class="srv2__sec-head">
+        <h2 class="srv2__h2">{{ section.settings.video_heading | default: 'Video Reviews' }}</h2>
+        <div class="srv2__arrows">
+          <button type="button" class="srv2__arrow" data-srv-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="srv2__arrow" data-srv-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="srv2__vtrack-wrap" data-srv-vwrap>
+        <div class="srv2__vtrack" data-srv-vtrack>
+          {%- for block in video_blocks -%}
+            {%- assign video_file = block.settings.video_file -%}
+            {%- if block.settings.thumbnail != blank -%}
+              {%- assign poster = block.settings.thumbnail | image_url: width: 760 -%}
+            {%- elsif video_file != blank and video_file.preview_image != blank -%}
+              {%- assign poster = video_file.preview_image | image_url: width: 760 -%}
+            {%- else -%}
+              {%- assign poster = '' -%}
+            {%- endif -%}
+            <div class="srv2__vcard" {{ block.shopify_attributes }}>
+              <div class="srv2__vmedia" data-srv-video>
+                {%- if video_file != blank -%}
+                  <video class="srv2__vmedia-el" playsinline muted preload="metadata" {% if poster != blank %}poster="{{ poster }}"{% endif %} data-srv-video-el>
+                    {%- for source in video_file.sources -%}<source src="{{ source.url }}" type="{{ source.mime_type }}">{%- endfor -%}
+                  </video>
+                {%- elsif poster != blank -%}
+                  <img src="{{ poster }}" alt="{{ block.settings.author | default: 'Video review' | escape }}" loading="lazy" decoding="async">
+                {%- endif -%}
+                <button type="button" class="srv2__vplay" data-srv-play {% if video_file == blank and block.settings.video_url != blank %}data-external-url="{{ block.settings.video_url }}"{% endif %} aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"></path></svg>
+                </button>
+              </div>
+              <div class="srv2__vmeta">
+                {%- if block.settings.quote != blank -%}<div class="srv2__vquote">{{ block.settings.quote }}</div>{%- endif -%}
+                <div class="srv2__vby"><b>{{ block.settings.author }}</b><span class="srv2__vcheck">{{ check_svg }}Verified buyer</span></div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="srv2__dots" data-srv-dots></div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ---------- Written Reviews ---------- {%- endcomment -%}
+  <div class="srv2__written" data-srv-written>
+    <div class="srv2__sec-head"><h2 class="srv2__h2">{{ section.settings.written_heading | default: 'Written Reviews' }}</h2></div>
+    <div class="srv2__empty" data-srv-empty hidden></div>
+    <div class="srv2__masonry-wrap is-collapsed" data-srv-mwrap>
+      <div class="srv2__masonry" data-srv-masonry>
+        {%- assign av_palette = '#FDE7C8,#FBE0EA,#DDF3E4,#FFF3C4,#E6E0F5' | split: ',' -%}
+        {%- assign ai = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            {%- assign prod = block.settings.product | default: 'sleep' -%}
+            {%- case prod -%}
+              {%- when 'calm' -%}{%- assign tag_label = 'CALM' -%}{%- assign tag_base = '#C23A57' -%}{%- assign tag_tint = '#FBEBEF' -%}
+              {%- when 'd3' -%}{%- assign tag_label = 'D3+K2' -%}{%- assign tag_base = '#1B8546' -%}{%- assign tag_tint = '#E7F4EB' -%}
+              {%- when 'brand' -%}{%- assign tag_label = 'REJUVIA' -%}{%- assign tag_base = '#3d3a36' -%}{%- assign tag_tint = '#F2F0F5' -%}
+              {%- else -%}{%- assign tag_label = 'SLEEP' -%}{%- assign tag_base = '#672666' -%}{%- assign tag_tint = '#F4EEF5' -%}
+            {%- endcase -%}
+            {%- assign blen = block.settings.body | strip_html | size -%}
+            {%- assign av_color = block.settings.avatar_color | default: av_palette[ai] -%}
+            {%- assign star_count = block.settings.stars | default: 5 -%}
+            <div class="srv2__card{% if blen > 220 %} is-clamped{% endif %}" data-srv-card data-product="{{ prod }}" {{ block.shopify_attributes }}>
+              <div class="srv2__card-top">
+                <span class="srv2__stars" aria-label="{{ star_count }} stars">{%- for i in (1..star_count) -%}{{ star_svg }}{%- endfor -%}</span>
+                <span class="srv2__tag" style="background:{{ tag_tint }};color:{{ tag_base }}">{{ tag_label }}</span>
+              </div>
+              {%- if block.settings.title != blank -%}<div class="srv2__card-title">{{ block.settings.title }}</div>{%- endif -%}
+              {%- if block.settings.body != blank -%}<div class="srv2__card-body">{{ block.settings.body }}</div>{%- endif -%}
+              {%- if blen > 220 -%}<button type="button" class="srv2__more" data-srv-more>Read more</button>{%- endif -%}
+              <div class="srv2__card-foot">
+                <span class="srv2__avatar" style="background:{{ av_color }}">
+                  {%- if block.settings.avatar_image != blank -%}<img src="{{ block.settings.avatar_image | image_url: width: 80 }}" width="36" height="36" alt="{{ block.settings.author_name | escape }}" loading="lazy">{%- else -%}{{ block.settings.avatar_initials }}{%- endif -%}
+                </span>
+                <div class="srv2__foot-meta">
+                  {%- if block.settings.author_name != blank -%}<span class="srv2__foot-name">{{ block.settings.author_name }}</span>{%- endif -%}
+                  <span class="srv2__foot-verified">{{ check_svg }}Verified buyer</span>
+                </div>
+              </div>
+            </div>
+            {%- assign ai = ai | plus: 1 -%}
+          {%- elsif block.type == 'image' -%}
+            {%- assign prod = block.settings.product | default: 'sleep' -%}
+            {%- if block.settings.image != blank -%}
+              <div class="srv2__photo" data-srv-card data-srv-photo data-product="{{ prod }}" {{ block.shopify_attributes }}>
+                <img src="{{ block.settings.image | image_url: width: 760 }}"
+                     srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 760 }} 760w"
+                     sizes="(max-width: 749px) 100vw, 400px"
+                     width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.alt | default: 'Customer photo' | escape }}" loading="lazy" decoding="async">
+                <span class="srv2__photo-chip">{{ check_svg }}Customer photo</span>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="srv2__fade" aria-hidden="true"></div>
+    </div>
+    <button type="button" class="srv2__showmore" data-srv-showmore hidden>Show More Reviews</button>
+  </div>
 </div>
 
 <script>
-(function() {
-    var section = document.querySelector('.story-reviews-v2-section');
-    if (!section) return;
-    var filters = section.querySelectorAll('.story-reviews-v2-filter');
-    if (filters.length === 0) return;
+(function () {
+  var root = document.currentScript.closest('.srv2') || document.querySelector('.srv2');
+  if (!root) return;
 
-    filters.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var type = btn.getAttribute('data-filter');
-            filters.forEach(function(b) { b.classList.remove('is-active'); });
-            btn.classList.add('is-active');
-            if (type === 'all') {
-                section.removeAttribute('data-filter');
-            } else {
-                section.setAttribute('data-filter', type);
-            }
-        });
-    });
+  var VKEY = 'sleep'; // videos are all Sleep
+  var MOBILE = function () { return window.matchMedia('(max-width: 749px)').matches; };
+  var MOBILE_LIMIT = 6, DESK_LIMIT = 12;
 
-    /* Play video inline; pause any other playing video in the section */
-    function pauseAllExcept(current) {
-        section.querySelectorAll('[data-story-video]').forEach(function(wrap) {
-            var media = wrap.querySelector('[data-story-video-media]');
-            if (!media || media === current) return;
-            media.pause();
-            media.controls = false;
-            wrap.classList.remove('is-playing');
-        });
+  var state = { filter: 'all', expanded: false };
+
+  var toggle = root.querySelector('[data-srv-toggle]');
+  var segs = toggle ? [].slice.call(toggle.querySelectorAll('.srv2__seg')) : [];
+  var videosWrap = root.querySelector('[data-srv-videos]');
+  var cards = [].slice.call(root.querySelectorAll('[data-srv-card]')); // written items (review + photo)
+  var mwrap = root.querySelector('[data-srv-mwrap]');
+  var empty = root.querySelector('[data-srv-empty]');
+  var showmore = root.querySelector('[data-srv-showmore]');
+
+  /* ---------- Filter + collapse ---------- */
+  function cardMatches(card, f) {
+    var p = card.getAttribute('data-product') || 'sleep';
+    if (f === 'all') return true;
+    if (f === 'sleep') return p === 'sleep'; // brand/photos tagged sleep show; brand hidden
+    return p === f; // calm / d3
+  }
+
+  function apply() {
+    var f = state.filter;
+
+    // Videos: only when the filter can contain Sleep content
+    if (videosWrap) {
+      var showVideos = (f === 'all' || f === VKEY);
+      videosWrap.hidden = !showVideos;
     }
 
-    section.querySelectorAll('[data-story-video-play]').forEach(function(playBtn) {
-        playBtn.addEventListener('click', function() {
-            var externalUrl = playBtn.getAttribute('data-external-url');
-            if (externalUrl) {
-                window.open(externalUrl, '_blank', 'noopener');
-                return;
-            }
-            var wrap = playBtn.closest('[data-story-video]');
-            if (!wrap) return;
-            var media = wrap.querySelector('[data-story-video-media]');
-            if (!media) return;
-            pauseAllExcept(media);
-            media.controls = true;
-            media.muted = false;
-            wrap.classList.add('is-playing');
-            var p = media.play();
-            if (p && typeof p.catch === 'function') p.catch(function() {});
-        });
+    // Written: show matches, honor collapse
+    var visible = [];
+    cards.forEach(function (c) {
+      if (cardMatches(c, f)) visible.push(c); else c.hidden = true;
     });
 
-    /* When any <video> starts playing (controls or otherwise), pause the rest */
-    section.querySelectorAll('[data-story-video-media]').forEach(function(media) {
-        media.addEventListener('play', function() { pauseAllExcept(media); });
-        media.addEventListener('pause', function() {
-            var wrap = media.closest('[data-story-video]');
-            if (wrap && media.paused && !media.ended) {
-                /* Keep is-playing class while paused so UI stays out of the way */
-            }
-        });
-        media.addEventListener('ended', function() {
-            var wrap = media.closest('[data-story-video]');
-            if (wrap) wrap.classList.remove('is-playing');
-            media.controls = false;
-        });
+    var mobile = MOBILE();
+    var limit = mobile ? MOBILE_LIMIT : DESK_LIMIT;
+    visible.forEach(function (c, i) {
+      if (!state.expanded && mobile && i >= MOBILE_LIMIT) { c.hidden = true; }
+      else { c.hidden = false; }
     });
+
+    // Empty state
+    if (empty) {
+      if (visible.length === 0) {
+        var name = f === 'calm' ? 'Calm Spray' : f === 'd3' ? 'D3+K2 Spray' : f === 'sleep' ? 'Sleep Spray' : 'These';
+        empty.textContent = name + ' reviews are on the way — check back soon.';
+        empty.hidden = false;
+      } else { empty.hidden = true; }
+    }
+
+    // Collapse / show-more button
+    var hasMore = visible.length > limit;
+    if (showmore) {
+      showmore.hidden = !hasMore;
+      showmore.textContent = state.expanded ? 'Show Fewer Reviews' : 'Show More Reviews';
+    }
+    if (mwrap) {
+      if (mobile) {
+        mwrap.classList.remove('is-collapsed');
+        mwrap.classList.toggle('is-mobile-expanded', state.expanded || !hasMore);
+      } else {
+        mwrap.classList.toggle('is-collapsed', hasMore && !state.expanded);
+        mwrap.classList.add('is-mobile-expanded');
+      }
+    }
+
+    if (videosWrap && !videosWrap.hidden) layoutVideos();
+  }
+
+  segs.forEach(function (s) {
+    s.addEventListener('click', function () {
+      segs.forEach(function (b) { b.classList.remove('is-active'); });
+      s.classList.add('is-active');
+      state.filter = s.getAttribute('data-filter');
+      state.expanded = false;
+      apply();
+    });
+  });
+
+  if (showmore) showmore.addEventListener('click', function () { state.expanded = !state.expanded; apply(); });
+
+  /* ---------- Read more ---------- */
+  [].slice.call(root.querySelectorAll('[data-srv-more]')).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.srv2__card');
+      if (!card) return;
+      var clamped = card.classList.toggle('is-clamped');
+      btn.textContent = clamped ? 'Read more' : 'Show less';
+    });
+  });
+
+  /* ---------- Video carousel (desktop) ---------- */
+  var vtrack = root.querySelector('[data-srv-vtrack]');
+  var vwrap = root.querySelector('[data-srv-vwrap]');
+  var prevBtn = root.querySelector('[data-srv-prev]');
+  var nextBtn = root.querySelector('[data-srv-next]');
+  var vcards = vtrack ? [].slice.call(vtrack.querySelectorAll('.srv2__vcard')) : [];
+  var vi = 0, STEP = 315; // 295 card + 20 gap
+
+  function visibleCount() {
+    if (!vwrap || !vcards.length) return 4;
+    return Math.max(1, Math.floor((vwrap.clientWidth + 20) / STEP));
+  }
+  function layoutVideos() {
+    if (!vtrack || MOBILE()) { if (vtrack) vtrack.style.transform = ''; return; }
+    var maxI = Math.max(0, vcards.length - visibleCount());
+    if (vi > maxI) vi = maxI;
+    vtrack.style.transform = 'translateX(-' + (vi * STEP) + 'px)';
+    if (prevBtn) prevBtn.disabled = vi <= 0;
+    if (nextBtn) nextBtn.disabled = vi >= maxI;
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function () { vi = Math.max(0, vi - 1); layoutVideos(); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { vi = vi + 1; layoutVideos(); });
+
+  /* Mobile dots */
+  var dotsWrap = root.querySelector('[data-srv-dots]');
+  if (dotsWrap && vcards.length) {
+    vcards.forEach(function () { var d = document.createElement('span'); d.className = 'srv2__dot'; dotsWrap.appendChild(d); });
+    var dots = [].slice.call(dotsWrap.children);
+    function setDot(i) { dots.forEach(function (d, j) { d.classList.toggle('is-active', j === i); }); }
+    setDot(0);
+    if (vwrap) vwrap.addEventListener('scroll', function () {
+      var max = vwrap.scrollWidth - vwrap.clientWidth;
+      var i = max <= 0 ? 0 : Math.round(vwrap.scrollLeft / max * (vcards.length - 1));
+      setDot(i);
+    }, { passive: true });
+  }
+
+  /* ---------- Inline video play ---------- */
+  function pauseAllExcept(cur) {
+    root.querySelectorAll('[data-srv-video-el]').forEach(function (m) {
+      if (m === cur) return; m.pause(); m.controls = false;
+      var w = m.closest('[data-srv-video]'); if (w) w.classList.remove('is-playing');
+    });
+  }
+  root.querySelectorAll('[data-srv-play]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var ext = btn.getAttribute('data-external-url');
+      if (ext) { window.open(ext, '_blank', 'noopener'); return; }
+      var wrap = btn.closest('[data-srv-video]'); if (!wrap) return;
+      var media = wrap.querySelector('[data-srv-video-el]'); if (!media) return;
+      pauseAllExcept(media);
+      media.controls = true; media.muted = false; wrap.classList.add('is-playing');
+      var p = media.play(); if (p && p.catch) p.catch(function () {});
+    });
+  });
+  root.querySelectorAll('[data-srv-video-el]').forEach(function (m) {
+    m.addEventListener('play', function () { pauseAllExcept(m); });
+    m.addEventListener('ended', function () { var w = m.closest('[data-srv-video]'); if (w) w.classList.remove('is-playing'); m.controls = false; });
+  });
+
+  window.addEventListener('resize', function () { apply(); }, { passive: true });
+  apply();
 })();
 </script>
 
 {% schema %}
 {
-    "name": "Story Reviews V2",
-    "class": "story-reviews-v2-section",
-    "settings": [
-        {
-            "type": "text",
-            "id": "anchor_id",
-            "label": "Anchor ID",
-            "info": "Optional."
-        },
-        {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Background color",
-            "default": "#ffffff"
-        },
-        {
-            "type": "color",
-            "id": "card_bg_color",
-            "label": "Review card background",
-            "default": "#FAFAFA"
-        },
-        {
-            "type": "color",
-            "id": "stars_color",
-            "label": "Stars color",
-            "default": "#EAC78B"
-        },
-        {
-            "type": "header",
-            "content": "Filters"
-        },
-        {
-            "type": "checkbox",
-            "id": "show_filters",
-            "label": "Show filter pills",
-            "default": true
-        },
-        {
-            "type": "color",
-            "id": "filter_active_bg",
-            "label": "Active filter background",
-            "default": "#EAEAF7"
-        },
-        {
-            "type": "text",
-            "id": "filter_all_label",
-            "label": "All label",
-            "default": "All"
-        },
-        {
-            "type": "text",
-            "id": "filter_written_label",
-            "label": "Written reviews label",
-            "default": "Written Reviews"
-        },
-        {
-            "type": "text",
-            "id": "filter_video_label",
-            "label": "Video reviews label",
-            "default": "Video Reviews"
-        }
-    ],
-    "blocks": [
-        {
-            "type": "review",
-            "name": "Review",
-            "settings": [
-                {
-                    "type": "image_picker",
-                    "id": "avatar_image",
-                    "label": "Avatar image",
-                    "info": "Optional. Falls back to initials below."
-                },
-                {
-                    "type": "text",
-                    "id": "avatar_initials",
-                    "label": "Avatar initials",
-                    "default": "JC"
-                },
-                {
-                    "type": "color",
-                    "id": "avatar_color",
-                    "label": "Avatar background",
-                    "default": "#FFDBE8"
-                },
-                {
-                    "type": "range",
-                    "id": "stars",
-                    "label": "Stars",
-                    "min": 1,
-                    "max": 5,
-                    "step": 1,
-                    "default": 5
-                },
-                {
-                    "type": "color",
-                    "id": "stars_color",
-                    "label": "Stars color",
-                    "info": "Overrides the section default."
-                },
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Review title"
-                },
-                {
-                    "type": "richtext",
-                    "id": "body",
-                    "label": "Review body"
-                },
-                {
-                    "type": "text",
-                    "id": "author_name",
-                    "label": "Author name"
-                },
-                {
-                    "type": "select",
-                    "id": "badge_type",
-                    "label": "Badge",
-                    "options": [
-                        { "value": "none", "label": "None" },
-                        { "value": "unprompted", "label": "Verified" },
-                        { "value": "verified", "label": "Verified Purchase" }
-                    ],
-                    "default": "unprompted"
-                }
-            ]
-        },
-        {
-            "type": "video",
-            "name": "Video review",
-            "settings": [
-                {
-                    "type": "video",
-                    "id": "video_file",
-                    "label": "Video (MP4)",
-                    "info": "Uploads via Shopify. Preview image is auto-generated (1st frame)."
-                },
-                {
-                    "type": "image_picker",
-                    "id": "thumbnail",
-                    "label": "Custom thumbnail",
-                    "info": "Optional. Overrides the auto-generated preview image."
-                },
-                {
-                    "type": "text",
-                    "id": "quote",
-                    "label": "Quote",
-                    "default": "\u201CTry it \u2013 you\u2019ll like it.\u201D"
-                },
-                {
-                    "type": "text",
-                    "id": "author",
-                    "label": "Author",
-                    "default": "Hylan S."
-                },
-                {
-                    "type": "url",
-                    "id": "video_url",
-                    "label": "External video URL",
-                    "info": "Used as fallback if no MP4 is uploaded — opens in a new tab."
-                }
-            ]
-        },
-        {
-            "type": "image",
-            "name": "Image",
-            "settings": [
-                {
-                    "type": "image_picker",
-                    "id": "image",
-                    "label": "Image"
-                },
-                {
-                    "type": "text",
-                    "id": "alt",
-                    "label": "Alt text"
-                }
-            ]
-        }
-    ],
-    "max_blocks": 40,
-    "presets": [
-        {
-            "name": "Story Reviews V2",
-            "category": "Custom"
-        }
-    ]
+  "name": "Story Reviews V2",
+  "class": "srv2",
+  "settings": [
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "info": "Optional." },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "stars_color", "label": "Stars color", "default": "#d9a94e" },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Customer Reviews" },
+    { "type": "text", "id": "rating_value", "label": "Rating value", "default": "4.5" },
+    { "type": "text", "id": "rating_text", "label": "Rating line (desktop)", "default": "7,500+ verified reviews · 500,000+ customers" },
+    { "type": "text", "id": "rating_text_mobile", "label": "Rating line (mobile)", "default": "7,500+ verified reviews" },
+    { "type": "header", "content": "Sections" },
+    { "type": "checkbox", "id": "show_toggle", "label": "Show product toggle", "default": true },
+    { "type": "text", "id": "video_heading", "label": "Video section heading", "default": "Video Reviews" },
+    { "type": "text", "id": "written_heading", "label": "Written section heading", "default": "Written Reviews" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "select", "id": "product", "label": "Product", "options": [ { "value": "sleep", "label": "Sleep Spray" }, { "value": "calm", "label": "Calm Spray" }, { "value": "d3", "label": "D3+K2 Spray" }, { "value": "brand", "label": "Rejuvia (brand / service)" } ], "default": "sleep" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Avatar image", "info": "Optional. Falls back to initials." },
+        { "type": "text", "id": "avatar_initials", "label": "Avatar initials", "default": "JC" },
+        { "type": "color", "id": "avatar_color", "label": "Avatar background", "default": "#E6E0F5" },
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "color", "id": "stars_color", "label": "Stars color", "info": "Overrides the section default." },
+        { "type": "text", "id": "title", "label": "Review title" },
+        { "type": "richtext", "id": "body", "label": "Review body" },
+        { "type": "text", "id": "author_name", "label": "Author name" },
+        { "type": "select", "id": "badge_type", "label": "Badge", "options": [ { "value": "none", "label": "None" }, { "value": "unprompted", "label": "Verified" }, { "value": "verified", "label": "Verified Purchase" } ], "default": "unprompted" }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video review",
+      "settings": [
+        { "type": "video", "id": "video_file", "label": "Video (MP4)", "info": "Uploads via Shopify. Preview image is auto-generated (1st frame)." },
+        { "type": "image_picker", "id": "thumbnail", "label": "Custom thumbnail", "info": "Optional. Overrides the auto-generated preview image." },
+        { "type": "text", "id": "quote", "label": "Quote", "default": "“Try it – you’ll like it.”" },
+        { "type": "text", "id": "author", "label": "Author", "default": "Hylan S." },
+        { "type": "url", "id": "video_url", "label": "External video URL", "info": "Used as fallback if no MP4 is uploaded — opens in a new tab." }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Customer photo",
+      "settings": [
+        { "type": "select", "id": "product", "label": "Product", "options": [ { "value": "sleep", "label": "Sleep Spray" }, { "value": "calm", "label": "Calm Spray" }, { "value": "d3", "label": "D3+K2 Spray" }, { "value": "brand", "label": "Rejuvia (brand)" } ], "default": "sleep" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text" }
+      ]
+    }
+  ],
+  "max_blocks": 60,
+  "presets": [ { "name": "Story Reviews V2", "category": "Custom" } ]
 }
 {% endschema %}

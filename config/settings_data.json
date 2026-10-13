@@ -947,60 +947,45 @@
           "icon_color": "#672666"
         }
       },
-      "product_intro_v2_mcmr7P": {
-        "type": "product-intro-v2",
+      "tried_everything_v2_home": {
+        "type": "tried-everything-v2",
         "blocks": {
-          "tab_MBEqta": {
-            "type": "tab",
+          "struck_gummies": {
+            "type": "struck",
             "settings": {
-              "title": "Melatonin Gummies",
-              "content": "<p>A gummy has to survive your entire digestive system before it can do anything. Stomach acid, liver processing, 45+ minutes of waiting — and by the time it reaches your bloodstream, up to 80% of the active ingredients are gone. You're paying for 100% and absorbing 20%.</p>",
-              "image": "shopify://shop_images/melatonin_gummy_comparison.webp",
-              "hide_image_bg": true,
-              "full_width_image": true,
-              "badge_text": "",
-              "badge_position_desktop": "bottom-right",
-              "badge_position_mobile": "top-left"
+              "text": "Melatonin gummies."
             }
           },
-          "tab_iLBcRm": {
-            "type": "tab",
+          "struck_pills": {
+            "type": "struck",
             "settings": {
-              "title": "Sleeping Pills",
-              "content": "<p>Sleeping pills are dosed high on purpose — the manufacturers know most of it won't survive your stomach. So you overdose to get a fraction of the effect, and your body spends the next morning processing the rest. That's the grogginess. It's not you, it's the delivery method.</p>",
-              "image": "shopify://shop_images/sleeping_pill_comparison.webp",
-              "hide_image_bg": true,
-              "full_width_image": true,
-              "badge_text": "",
-              "badge_position_desktop": "top-right",
-              "badge_position_mobile": "top-right"
+              "text": "Sleeping pills."
             }
           },
-          "tab_TfaWen": {
-            "type": "tab",
+          "struck_mixes": {
+            "type": "struck",
             "settings": {
-              "title": "Natural Remedies",
-              "content": "<p>The ingredients are real — the doses aren't. Too small, absorbed too slowly to actually shift your sleep. You feel calmer for 20 minutes, then you're staring at the ceiling at 2 a.m. wondering why \"natural\" never works.</p>",
-              "image": "shopify://shop_images/natural_products_comparison.webp",
-              "hide_image_bg": true,
-              "full_width_image": true,
-              "badge_text": "",
-              "badge_icon": "shopify://shop_images/Frame_4.svg",
-              "badge_position_desktop": "bottom-left",
-              "badge_position_mobile": "top-right"
+              "text": "Drink mixes."
             }
           }
         },
         "block_order": [
-          "tab_MBEqta",
-          "tab_iLBcRm",
-          "tab_TfaWen"
+          "struck_gummies",
+          "struck_pills",
+          "struck_mixes"
         ],
-        "name": "Product Intro V2",
         "settings": {
-          "heading": "<p>You've tried everything, yet <span style=\"text-decoration:underline\"><em>nothing stuck</em></span></p>",
-          "description": "<p>And we're not surprised. Every gummy and pill loses up to 50% its efficacy in your digestive system before it ever reaches your bloodstream. Rejuvia, though, absorbs directly under your tongue — so the ingredients kick in on arrival.</p>",
-          "accent_color": "#672666"
+          "final_line": "Rejuvia.",
+          "lead": "Rejuvia is the first-ever under-the-tongue sleep spray that works in 10–15 minutes.",
+          "body": "Gummies, pills and drink mixes all have to survive your stomach first. Two sprays under your tongue skip it — straight into your bloodstream, no waste.",
+          "body_mobile": "Gummies, pills and drink mixes all have to survive your stomach first. Two sprays under your tongue skip it.",
+          "btn_text": "Shop Sleep Spray",
+          "btn_url": "/products/sleep-spray",
+          "guarantee_text": "90-Day Money-Back Guarantee",
+          "bg_color": "#f5f5fb",
+          "accent_color": "#672666",
+          "accent_hover": "#4a1b49",
+          "struck_color": "#a9a4b6"
         }
       },
       "listicle_v2_N8G8nM": {
@@ -1880,7 +1865,7 @@
     "content_for_index": [
       "hero_v2_ypthhg",
       "guarantees_v2_h3tcz4",
-      "product_intro_v2_mcmr7P",
+      "tried_everything_v2_home",
       "listicle_v2_N8G8nM",
       "press_carousel_QDazA4",
       "image_text_v2_EEfUyt",

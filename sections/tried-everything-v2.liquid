@@ -1,0 +1,249 @@
+{%- comment -%}
+  Homepage "You've tried everything" (direction 1e): a struck-out typographic
+  headline (gummies / pills / drink mixes → Rejuvia.), the Sleep Spray bottle,
+  a short intro and a CTA + guarantee. Static — replaces Product Intro V2's
+  tabbed comparison.
+
+  Desktop (>=990px): 3-column grid, headline | bottle | copy + CTA.
+  Below 990px: headline → [copy | bottle] row → CTA + guarantee.
+  Headline lines never wrap (white-space: nowrap + fluid size).
+{%- endcomment -%}
+
+{%- liquid
+  assign accent = section.settings.accent_color | default: '#672666'
+  if section.settings.image != blank
+    assign bottle_src = section.settings.image | image_url: width: 400, format: 'webp'
+    assign bottle_w = section.settings.image.width
+    assign bottle_h = section.settings.image.height
+  else
+    assign bottle_src = 'sleep-spray-bottle.webp' | asset_url
+    assign bottle_w = 140
+    assign bottle_h = 1000
+  endif
+-%}
+
+{% style %}
+  .tev2-section { background: {{ section.settings.bg_color | default: '#f5f5fb' }}; overflow-x: clip; }
+
+  .tev2 {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 72px 40px;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) 190px minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas:
+      "head bottle ."
+      "head bottle copy"
+      "head bottle cta"
+      "head bottle .";
+    column-gap: 48px;
+    align-items: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #141414;
+  }
+
+  /* Family / weight / tracking come from the global --rj-title-* system. */
+  .tev2__heading {
+    grid-area: head;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: clamp(34px, 3.75vw, 48px);
+    line-height: 1.12;
+    color: #171512;
+  }
+  .tev2__line {
+    display: block;
+    white-space: nowrap;
+    color: {{ section.settings.struck_color | default: '#a9a4b6' }};
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+  }
+  .tev2__line--final { color: {{ accent }}; text-decoration: none; }
+
+  .tev2__bottle { grid-area: bottle; display: flex; justify-content: center; }
+  .tev2__bottle img {
+    display: block;
+    height: 420px;
+    width: auto;
+    transform: rotate(14deg);
+    filter: drop-shadow(0 24px 30px rgba(45, 21, 48, .2));
+  }
+
+  .tev2__copy { grid-area: copy; display: flex; flex-direction: column; gap: 20px; }
+  .tev2__lead {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: #171512;
+    text-wrap: pretty;
+  }
+  .tev2__body {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #141414;
+    text-wrap: pretty;
+  }
+  .tev2__body--mobile { display: none; }
+
+  .tev2__cta { grid-area: cta; display: flex; flex-direction: column; align-items: stretch; gap: 16px; margin-top: 24px; }
+  .tev2__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 66px;
+    padding: 0 24px;
+    background-color: {{ accent }};
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background-color .2s ease;
+  }
+  .tev2__btn:hover,
+  .tev2__btn:focus-visible { background-color: {{ section.settings.accent_hover | default: '#4a1b49' }}; color: #fff; }
+
+  .tev2__guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #141414;
+  }
+  .tev2__guarantee svg { width: 18px; height: 14px; flex-shrink: 0; }
+
+  /* Mobile/tablet: headline → [copy | bottle] → CTA */
+  .tev2__row { display: contents; }
+
+  @media (max-width: 989px) {
+    .tev2 {
+      max-width: 600px;
+      padding: 40px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+    .tev2__heading { gap: 4px; font-size: clamp(28px, 8.8vw, 40px); line-height: 1.15; }
+    .tev2__line { text-decoration-thickness: 2px; }
+
+    .tev2__row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 76px;
+      gap: 14px;
+      align-items: center;
+    }
+    .tev2__heading, .tev2__copy, .tev2__bottle, .tev2__cta { grid-area: auto; }
+    .tev2__copy { gap: 12px; }
+    .tev2__lead { font-size: 18px; }
+    .tev2__body { font-size: 16px; }
+    .tev2__body--desktop { display: none; }
+    .tev2__body--mobile { display: block; }
+
+    .tev2__bottle img { height: 240px; transform: rotate(10deg); filter: none; }
+
+    .tev2__cta { margin-top: 0; }
+    .tev2__btn { height: 60px; }
+  }
+{% endstyle %}
+
+<div class="tev2">
+  <h2 class="tev2__heading">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.text != blank -%}
+        <span class="tev2__line" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if section.settings.final_line != blank -%}
+      <span class="tev2__line tev2__line--final">{{ section.settings.final_line }}</span>
+    {%- endif -%}
+  </h2>
+
+  <div class="tev2__row">
+    <div class="tev2__copy">
+      {%- if section.settings.lead != blank -%}
+        <p class="tev2__lead">{{ section.settings.lead }}</p>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="tev2__body tev2__body--desktop">{{ section.settings.body }}</p>
+        <p class="tev2__body tev2__body--mobile">{{ section.settings.body_mobile | default: section.settings.body }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="tev2__bottle">
+      <img src="{{ bottle_src }}"
+           alt="{{ section.settings.image.alt | default: 'Rejuvia Sleep Spray' | escape }}"
+           width="{{ bottle_w }}" height="{{ bottle_h }}"
+           loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  {%- if section.settings.btn_text != blank -%}
+    <div class="tev2__cta">
+      <a class="tev2__btn" href="{{ section.settings.btn_url | default: '/products/sleep-spray' }}">{{ section.settings.btn_text }}</a>
+      {%- if section.settings.guarantee_text != blank -%}
+        <div class="tev2__guarantee">
+          <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M2 7.5l4.5 4.5L16 2" stroke="#f5b14c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>{{ section.settings.guarantee_text }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Tried Everything V2",
+  "class": "tev2-section",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "header", "content": "Headline" },
+    { "type": "paragraph", "content": "Add a block per struck-out line. Keep lines short — they never wrap." },
+    { "type": "text", "id": "final_line", "label": "Final line (accent colour)", "default": "Rejuvia." },
+    { "type": "header", "content": "Copy" },
+    { "type": "textarea", "id": "lead", "label": "Lead line", "default": "Rejuvia is the first-ever under-the-tongue sleep spray that works in 10–15 minutes." },
+    { "type": "textarea", "id": "body", "label": "Body (desktop)", "default": "Gummies, pills and drink mixes all have to survive your stomach first. Two sprays under your tongue skip it — straight into your bloodstream, no waste." },
+    { "type": "textarea", "id": "body_mobile", "label": "Body (mobile)", "info": "Shorter copy below 990px. Falls back to the desktop body.", "default": "Gummies, pills and drink mixes all have to survive your stomach first. Two sprays under your tongue skip it." },
+    { "type": "header", "content": "Bottle image" },
+    { "type": "image_picker", "id": "image", "label": "Bottle image", "info": "Transparent, upright bottle. Leave empty to use the built-in Sleep Spray bottle." },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "btn_text", "label": "Button label", "default": "Shop Sleep Spray" },
+    { "type": "url", "id": "btn_url", "label": "Button link", "info": "Defaults to the Sleep Spray page." },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money-Back Guarantee" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#f5f5fb" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#672666" },
+    { "type": "color", "id": "accent_hover", "label": "Button hover", "default": "#4a1b49" },
+    { "type": "color", "id": "struck_color", "label": "Struck-out text", "default": "#a9a4b6" }
+  ],
+  "blocks": [
+    {
+      "type": "struck",
+      "name": "Struck-out line",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Melatonin gummies." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tried Everything V2",
+      "category": "Custom",
+      "blocks": [
+        { "type": "struck", "settings": { "text": "Melatonin gummies." } },
+        { "type": "struck", "settings": { "text": "Sleeping pills." } },
+        { "type": "struck", "settings": { "text": "Drink mixes." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

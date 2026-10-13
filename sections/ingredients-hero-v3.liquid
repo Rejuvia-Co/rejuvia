@@ -1,270 +1,291 @@
 {%- comment -%}
-  Ingredients page hero (direction 1b): full-bleed lab photo with a frosted
-  glass panel of copy, then a plum trust bar of range-wide claims.
+  Ingredients page hero (direction 2a): copy on the left, the scattered-sprays
+  shot on the right, and a 2×2 grid of range-wide trust tiles under the copy
+  (replaces the old separate guarantees check-row).
 
-  Fonts: the brand's existing heading stack (no serif) per the handoff decision.
-  Images: separate desktop / mobile pickers (mobile falls back to desktop).
+  Heading mirrors the homepage hero H1 exactly (.hero-v2-heading): family /
+  weight / tracking from the global --rj-title-* system, 36px desktop / 26px
+  at <=900px, line-height 1.4, #141414. Underlined / bold / italic words render
+  in the accent colour, same as "3x Faster" on the homepage.
+
+  Mobile order: eyebrow → H1 → image → body → trust tiles.
 {%- endcomment -%}
 
 {%- liquid
-  assign trust_bg = section.settings.trust_bg | default: '#3A1840'
   assign accent = section.settings.accent_color | default: '#672666'
 -%}
 
 {% style %}
-  .ing-hero-section { background: {{ section.settings.page_bg | default: '#ffffff' }}; overflow-x: clip; }
+  @font-face {
+    font-family: 'Helvetica LT Cond';
+    src: url('{{ "HelveticaLTStd-BlkCond.woff2" | asset_url }}') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .ing-hero-section { background: {{ section.settings.bg_color | default: '#ffffff' }}; overflow-x: clip; }
 
   .ing-hero {
-    position: relative;
-    height: {{ section.settings.height_desktop | default: 640 }}px;
-    overflow: hidden;
-  }
-  .ing-hero__media { position: absolute; inset: 0; margin: 0; }
-  .ing-hero__media img {
-    width: 100%; height: 100%; object-fit: cover;
-    object-position: {{ section.settings.focal_desktop | default: '50% 50%' }};
-    display: block;
-  }
-
-  .ing-hero__panel {
-    position: absolute;
-    left: 96px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 540px;
-    max-width: calc(100% - 192px);
-    box-sizing: border-box;
-    background: rgba(255,255,255,.8);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border-radius: 24px;
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    box-shadow: 0 18px 40px rgba(45,21,48,.12);
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 72px 0 88px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 600px);
+    grid-template-rows: 1fr auto auto auto auto 1fr;
+    grid-template-areas:
+      ".       media"
+      "eyebrow media"
+      "title   media"
+      "body    media"
+      "trust   media"
+      ".       media";
+    column-gap: 80px;
+    align-items: start;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #141414;
   }
 
   .ing-hero__eyebrow {
-    font-family: 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: .08em;
+    grid-area: eyebrow;
+    font-family: 'Helvetica LT Cond', 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: .16em;
     text-transform: uppercase;
     color: {{ accent }};
   }
 
+  /* --- Heading: identical to .hero-v2-heading --- */
   .ing-hero__heading {
-    /* Matches the homepage hero H1 exactly: family / weight / tracking come from
-       the global --rj-title-* system; size + line-height + colour mirror it
-       (36px desktop, 26px at <=900px). */
-    margin: 0;
+    grid-area: title;
+    margin: 24px 0 0;
     font-size: 36px;
     line-height: 1.4;
-    color: {{ section.settings.heading_color | default: '#141414' }};
+    color: #141414;
+    text-transform: none;
   }
-  @media (max-width: 900px) { .ing-hero__heading { font-size: 26px; } }
-  .ing-hero__heading p { margin: 0; font: inherit; color: inherit; }
-  /* Accent words: purple + underlined, not italic — matches the homepage hero. */
+  .ing-hero__heading p {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    text-transform: inherit;
+  }
   .ing-hero__heading em,
   .ing-hero__heading u,
-  .ing-hero__heading [style*="underline"],
-  .ing-hero__heading .accent {
+  .ing-hero__heading [style*="underline"] {
     color: {{ accent }};
     font-style: normal;
-    text-decoration: underline;
-    text-underline-offset: 0.08em;
   }
 
   .ing-hero__body {
-    margin: 0;
+    grid-area: body;
+    margin-top: 24px;
+    max-width: 540px;
     font-size: 18px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: #3d3a36;
+    text-wrap: pretty;
   }
-  .ing-hero__body p { margin: 0 0 .6em; }
-  .ing-hero__body p:last-child { margin-bottom: 0; }
+  .ing-hero__body p { margin: 0; }
+  .ing-hero__body p + p { margin-top: 12px; }
 
-  .ing-hero__pills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .ing-hero__pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 15px; font-weight: 600;
-    padding: 10px 16px; border-radius: 100px;
+  .ing-hero__media {
+    grid-area: media;
+    align-self: center;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
   }
-  .ing-hero__pill-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .ing-hero__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  /* --- Trust bar --- */
+  /* --- Trust tiles --- */
   .ing-hero__trust {
-    background: {{ trust_bg }};
-    color: #fff;
+    grid-area: trust;
+    margin-top: 32px;
+    max-width: 540px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: 28px 48px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
   }
-  .ing-hero__trust-item {
-    display: flex; align-items: center; justify-content: center; gap: 14px;
-    text-align: center;
+  .ing-hero__tile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: {{ section.settings.tile_bg | default: '#F7F6FB' }};
+    border-radius: 12px;
+    padding: 16px 18px;
   }
-  .ing-hero__trust-item + .ing-hero__trust-item { border-left: 1px solid rgba(255,255,255,.18); }
-  .ing-hero__trust-item svg { flex: none; width: 34px; height: 34px; }
-  .ing-hero__trust-label { font-size: 18px; font-weight: 600; }
+  .ing-hero__tile-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: {{ accent }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ing-hero__tile-icon svg { width: 22px; height: 22px; display: block; }
+  .ing-hero__tile-label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #141414;
+  }
 
-  /* ===================== Mobile ===================== */
-  @media (max-width: 749px) {
-    .ing-hero { height: auto; overflow: visible; }
-    .ing-hero__media { position: static; display: block; }
-    .ing-hero__media img {
-      height: {{ section.settings.height_mobile | default: 330 }}px;
-      object-position: {{ section.settings.focal_mobile | default: '50% 50%' }};
-    }
-    .ing-hero__panel {
-      position: static;
-      transform: none;
-      width: auto;
-      max-width: none;
-      margin: -56px 14px 0;
-      background: rgba(255,255,255,.92);
-      border-radius: 20px;
-      padding: 26px 22px;
-      gap: 14px;
-      box-shadow: 0 14px 32px rgba(45,21,48,.14);
-    }
-    .ing-hero__eyebrow { font-size: 14px; }
-    .ing-hero__body { font-size: 15px; line-height: 1.5; }
-    .ing-hero__pills { display: none; } /* desktop only per design */
+  @media (max-width: 1300px) {
+    .ing-hero { padding-left: 24px; padding-right: 24px; column-gap: 56px; }
+  }
+  @media (max-width: 1100px) {
+    .ing-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 44%); column-gap: 40px; }
+  }
 
-    .ing-hero__trust {
-      margin-top: 24px;
-      padding: 18px 6px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+  @media (max-width: 900px) {
+    .ing-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 32px 18px 36px;
     }
-    .ing-hero__trust-item { flex-direction: column; gap: 8px; padding: 0 4px; }
-    .ing-hero__trust-item svg { width: 26px; height: 26px; }
-    .ing-hero__trust-label { font-size: 12px; line-height: 1.25; }
+    .ing-hero__eyebrow { font-size: 13px; }
+    .ing-hero__heading { margin: 0; font-size: 26px; }
+    .ing-hero__media { aspect-ratio: auto; }
+    .ing-hero__media img { height: auto; }
+    .ing-hero__body { margin: 0; max-width: none; font-size: 16px; line-height: 1.55; }
+    .ing-hero__trust { margin: 0; max-width: none; gap: 8px; }
+    .ing-hero__tile { gap: 10px; padding: 12px; }
+    .ing-hero__tile-icon { width: 36px; height: 36px; }
+    .ing-hero__tile-icon svg { width: 18px; height: 18px; }
+    .ing-hero__tile-label { font-size: 14px; line-height: 1.2; }
   }
 {% endstyle %}
 
-{%- comment -%} Icon set for the trust bar (gold line icons). {%- endcomment -%}
-{%- capture icon_leaf -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.icon_color | default: '#eac78b' }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19c3-4 6-7 10-9"/></svg>{%- endcapture -%}
-{%- capture icon_shield -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.icon_color | default: '#eac78b' }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></svg>{%- endcapture -%}
-{%- capture icon_factory -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.icon_color | default: '#eac78b' }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h13l-2 4 2 4H5"/><path d="M8 7h2M8 9.5h2"/></svg>{%- endcapture -%}
-{%- capture icon_flask -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.icon_color | default: '#eac78b' }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/></svg>{%- endcapture -%}
-
 <div class="ing-hero">
+  {%- if section.settings.eyebrow != blank -%}
+    <div class="ing-hero__eyebrow">{{ section.settings.eyebrow }}</div>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h1 class="ing-hero__heading">{{ section.settings.heading }}</h1>
+  {%- endif -%}
+
   {%- if section.settings.image != blank -%}
     <picture class="ing-hero__media">
-      {%- assign m_img = section.settings.image_mobile | default: section.settings.image -%}
-      <source media="(max-width: 749px)"
-        srcset="{{ m_img | image_url: width: 600, format: 'webp' }} 600w,
-                {{ m_img | image_url: width: 900, format: 'webp' }} 900w,
-                {{ m_img | image_url: width: 1200, format: 'webp' }} 1200w"
-        sizes="100vw">
-      <img src="{{ section.settings.image | image_url: width: 1600, format: 'webp' }}"
-           srcset="{{ section.settings.image | image_url: width: 1000, format: 'webp' }} 1000w,
-                   {{ section.settings.image | image_url: width: 1600, format: 'webp' }} 1600w,
-                   {{ section.settings.image | image_url: width: 2200, format: 'webp' }} 2200w"
-           sizes="100vw"
-           alt="{{ section.settings.image.alt | default: 'Rejuvia sprays in a clean lab' | escape }}"
+      {%- if section.settings.image_mobile != blank -%}
+        <source media="(max-width: 900px)"
+          srcset="{{ section.settings.image_mobile | image_url: width: 500, format: 'webp' }} 500w,
+                  {{ section.settings.image_mobile | image_url: width: 800, format: 'webp' }} 800w,
+                  {{ section.settings.image_mobile | image_url: width: 1100, format: 'webp' }} 1100w"
+          sizes="100vw">
+      {%- endif -%}
+      <img src="{{ section.settings.image | image_url: width: 1200, format: 'webp' }}"
+           srcset="{{ section.settings.image | image_url: width: 500, format: 'webp' }} 500w,
+                   {{ section.settings.image | image_url: width: 800, format: 'webp' }} 800w,
+                   {{ section.settings.image | image_url: width: 1200, format: 'webp' }} 1200w,
+                   {{ section.settings.image | image_url: width: 1600, format: 'webp' }} 1600w"
+           sizes="(max-width: 900px) 100vw, 600px"
+           alt="{{ section.settings.image.alt | default: 'Rejuvia Sleep, Calm, D3+K2 and Lutein sprays' | escape }}"
            width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}"
            loading="eager" fetchpriority="high" decoding="async">
     </picture>
   {%- endif -%}
 
-  <div class="ing-hero__panel">
-    {%- if section.settings.eyebrow != blank -%}
-      <div class="ing-hero__eyebrow">{{ section.settings.eyebrow }}</div>
-    {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h1 class="ing-hero__heading">{{ section.settings.heading }}</h1>
-    {%- endif -%}
-    {%- if section.settings.body != blank -%}
-      <div class="ing-hero__body">{{ section.settings.body }}</div>
-    {%- endif -%}
+  {%- if section.settings.body != blank -%}
+    <div class="ing-hero__body">{{ section.settings.body }}</div>
+  {%- endif -%}
 
-    {%- assign pill_blocks = section.blocks | where: 'type', 'pill' -%}
-    {%- if pill_blocks.size > 0 -%}
-      <div class="ing-hero__pills">
-        {%- for block in pill_blocks -%}
-          <span class="ing-hero__pill" style="background: {{ block.settings.bg_color }}; color: {{ block.settings.base_color }};" {{ block.shopify_attributes }}>
-            <span class="ing-hero__pill-dot" style="background: {{ block.settings.base_color }};"></span>{{ block.settings.label }}
+  {%- if section.blocks.size > 0 -%}
+    <div class="ing-hero__trust">
+      {%- for block in section.blocks -%}
+        <div class="ing-hero__tile" {{ block.shopify_attributes }}>
+          <span class="ing-hero__tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              {%- case block.settings.icon -%}
+                {%- when 'shield' -%}<path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6zM8.8 12.2l2.2 2.2 4.4-4.6"/>
+                {%- when 'flag' -%}<path d="M5 21V4M5 4h13l-2 4 2 4H5M8 7h2M8 9.5h2"/>
+                {%- when 'flask' -%}<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M7.5 14h9"/>
+                {%- else -%}<path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15M5 19c3-4 6-7 10-9"/>
+              {%- endcase -%}
+            </svg>
           </span>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-  </div>
-</div>
-
-<div class="ing-hero__trust">
-  {%- for i in (1..4) -%}
-    {%- assign label_key = 'trust_' | append: i -%}
-    {%- assign icon_key = 'trust_icon_' | append: i -%}
-    {%- assign label = section.settings[label_key] -%}
-    {%- assign icon = section.settings[icon_key] -%}
-    {%- if label != blank -%}
-      <div class="ing-hero__trust-item">
-        {%- case icon -%}
-          {%- when 'shield' -%}{{ icon_shield }}
-          {%- when 'factory' -%}{{ icon_factory }}
-          {%- when 'flask' -%}{{ icon_flask }}
-          {%- else -%}{{ icon_leaf }}
-        {%- endcase -%}
-        <span class="ing-hero__trust-label">{{ label }}</span>
-      </div>
-    {%- endif -%}
-  {%- endfor -%}
+          <span class="ing-hero__tile-label">{{ block.settings.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
 {
-  "name": "Ingredients Hero V3",
+  "name": "Ingredients Hero",
   "class": "ing-hero-section",
+  "max_blocks": 6,
   "settings": [
-    { "type": "header", "content": "Hero image" },
-    { "type": "image_picker", "id": "image", "label": "Hero image (desktop)" },
-    { "type": "image_picker", "id": "image_mobile", "label": "Hero image (mobile)", "info": "Optional. Shown at 749px and below. Falls back to the desktop image." },
-    { "type": "range", "id": "height_desktop", "label": "Image height — desktop (px)", "min": 420, "max": 820, "step": 10, "default": 640 },
-    { "type": "range", "id": "height_mobile", "label": "Image height — mobile (px)", "min": 240, "max": 480, "step": 10, "default": 330 },
-    { "type": "text", "id": "focal_desktop", "label": "Focal point — desktop", "info": "CSS object-position, e.g. 50% 50%", "default": "50% 50%" },
-    { "type": "text", "id": "focal_mobile", "label": "Focal point — mobile", "default": "50% 50%" },
-    { "type": "header", "content": "Panel copy" },
+    { "type": "header", "content": "Copy" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "INGREDIENTS" },
-    { "type": "richtext", "id": "heading", "label": "Heading", "info": "Italic/underline markup renders as the purple accent (underlined, not italic).", "default": "<p>Every Ingredient <em>Earns Its Place</em></p>" },
-    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>No fillers, no proprietary blends hiding weak doses. Just clean, research-backed botanicals that absorb under your tongue.</p>" },
-    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#141414" },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Styled like the homepage hero. Underline / bold / italic words show in the accent colour.",
+      "default": "<p>Wondering What's Actually In <span style=\"text-decoration:underline\"><em><strong>Rejuvia?</strong></em></span></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>A clean, all-natural blend — each ingredient chosen for a reason and dosed to actually do something. No fillers, no proprietary blends.</p>"
+    },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Hero image (mobile)", "info": "Optional. Shown at 900px and below. Falls back to the main image." },
+    { "type": "header", "content": "Colours" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#672666" },
-    { "type": "color", "id": "page_bg", "label": "Page background", "default": "#ffffff" },
-    { "type": "header", "content": "Trust bar" },
-    { "type": "color", "id": "trust_bg", "label": "Trust bar background", "default": "#3A1840" },
-    { "type": "color", "id": "icon_color", "label": "Icon color", "default": "#eac78b" },
-    { "type": "text", "id": "trust_1", "label": "Claim 1 label", "default": "100% All-Natural" },
-    { "type": "select", "id": "trust_icon_1", "label": "Claim 1 icon", "options": [ { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "factory", "label": "Factory" }, { "value": "flask", "label": "Flask" } ], "default": "leaf" },
-    { "type": "text", "id": "trust_2", "label": "Claim 2 label", "default": "cGMP Certified" },
-    { "type": "select", "id": "trust_icon_2", "label": "Claim 2 icon", "options": [ { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "factory", "label": "Factory" }, { "value": "flask", "label": "Flask" } ], "default": "shield" },
-    { "type": "text", "id": "trust_3", "label": "Claim 3 label", "default": "100% Made in USA" },
-    { "type": "select", "id": "trust_icon_3", "label": "Claim 3 icon", "options": [ { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "factory", "label": "Factory" }, { "value": "flask", "label": "Flask" } ], "default": "factory" },
-    { "type": "text", "id": "trust_4", "label": "Claim 4 label", "default": "Triple Lab Tested" },
-    { "type": "select", "id": "trust_icon_4", "label": "Claim 4 icon", "options": [ { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "factory", "label": "Factory" }, { "value": "flask", "label": "Flask" } ], "default": "flask" }
+    { "type": "color", "id": "tile_bg", "label": "Trust tile background", "default": "#F7F6FB" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" }
   ],
   "blocks": [
     {
-      "type": "pill",
-      "name": "Product pill (desktop)",
+      "type": "trust",
+      "name": "Trust tile",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Sleep" },
-        { "type": "color", "id": "base_color", "label": "Text / dot color", "default": "#672666" },
-        { "type": "color", "id": "bg_color", "label": "Background", "default": "#F4EEF5" }
+        { "type": "text", "id": "label", "label": "Label", "default": "100% All-Natural" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield check" },
+            { "value": "flag", "label": "Flag" },
+            { "value": "flask", "label": "Flask" }
+          ],
+          "default": "leaf"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Ingredients Hero V3",
+      "name": "Ingredients Hero",
+      "category": "Custom",
       "blocks": [
-        { "type": "pill", "settings": { "label": "Sleep", "base_color": "#672666", "bg_color": "#F4EEF5" } },
-        { "type": "pill", "settings": { "label": "Calm", "base_color": "#C23A57", "bg_color": "#FBEBEF" } },
-        { "type": "pill", "settings": { "label": "D3+K2", "base_color": "#1B8546", "bg_color": "#E7F4EB" } }
+        { "type": "trust", "settings": { "label": "100% All-Natural", "icon": "leaf" } },
+        { "type": "trust", "settings": { "label": "cGMP Certified", "icon": "shield" } },
+        { "type": "trust", "settings": { "label": "100% Made in USA", "icon": "flag" } },
+        { "type": "trust", "settings": { "label": "Triple Lab Tested", "icon": "flask" } }
       ]
     }
   ]

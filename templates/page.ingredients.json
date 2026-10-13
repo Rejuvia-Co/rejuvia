@@ -9,64 +9,52 @@
  */
 {
   "sections": {
-    "hero_ingredients_v2_PynYUG": {
-      "type": "hero-ingredients-v2",
-      "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#672666",
-        "heading": "<p>Wondering what's actually in rejuvia?</p>",
-        "description": "No surprises here. Rejuvia is made with a clean, all-natural blend of sleep herbs and botanicals. Nothing else. Every ingredient was chosen for a specific reason, backed by clinical research, and included at a dose that actually does something. No fillers, no proprietary blends hiding weak doses, no ingredients you need a chemistry degree to pronounce.",
-        "image": "shopify://shop_images/image_bc1a5a40-48b9-470f-8130-7dcf218ac7dc.webp",
-        "image_mobile": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
-      }
-    },
-    "guarantees_v2_ABV7Ti": {
-      "type": "guarantees-v2",
+    "ingredients_hero_main": {
+      "type": "ingredients-hero-v3",
       "blocks": {
-        "guarantee_bL8jmY": {
-          "type": "guarantee",
+        "trust_natural": {
+          "type": "trust",
           "settings": {
-            "text": "Made in the USA"
+            "label": "100% All-Natural",
+            "icon": "leaf"
           }
         },
-        "guarantee_mnDPbG": {
-          "type": "guarantee",
+        "trust_cgmp": {
+          "type": "trust",
           "settings": {
-            "text": "Triple-Lab Tested"
+            "label": "cGMP Certified",
+            "icon": "shield"
           }
         },
-        "guarantee_rtUkcM": {
-          "type": "guarantee",
+        "trust_usa": {
+          "type": "trust",
           "settings": {
-            "text": "100% Vegan"
+            "label": "100% Made in USA",
+            "icon": "flag"
           }
         },
-        "guarantee_gqzCm4": {
-          "type": "guarantee",
+        "trust_lab": {
+          "type": "trust",
           "settings": {
-            "text": "Non-GMO"
-          }
-        },
-        "guarantee_Mpjyw3": {
-          "type": "guarantee",
-          "settings": {
-            "text": "Gluten-Free"
+            "label": "Triple Lab Tested",
+            "icon": "flask"
           }
         }
       },
       "block_order": [
-        "guarantee_bL8jmY",
-        "guarantee_mnDPbG",
-        "guarantee_rtUkcM",
-        "guarantee_gqzCm4",
-        "guarantee_Mpjyw3"
+        "trust_natural",
+        "trust_cgmp",
+        "trust_usa",
+        "trust_lab"
       ],
-      "name": "Guarantees V2",
       "settings": {
-        "default_items": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
-        "anchor_id": "",
-        "bg_color": "#f5f5fb",
-        "icon_color": "#672666"
+        "eyebrow": "INGREDIENTS",
+        "heading": "<p>Wondering What's Actually In <span style=\"text-decoration:underline\"><em><strong>Rejuvia?</strong></em></span></p>",
+        "body": "<p>A clean, all-natural blend — each ingredient chosen for a reason and dosed to actually do something. No fillers, no proprietary blends.</p>",
+        "image": "shopify://shop_images/image_bc1a5a40-48b9-470f-8130-7dcf218ac7dc.webp",
+        "accent_color": "#672666",
+        "tile_bg": "#F7F6FB",
+        "bg_color": "#ffffff"
       }
     },
     "key_ingredients_page_v2_c96YaM": {
@@ -470,8 +458,7 @@
     }
   },
   "order": [
-    "hero_ingredients_v2_PynYUG",
-    "guarantees_v2_ABV7Ti",
+    "ingredients_hero_main",
     "key_ingredients_page_v2_c96YaM",
     "clean_formula_v2_Rn8kPq",
     "why_better_v2_Ny6pzj",

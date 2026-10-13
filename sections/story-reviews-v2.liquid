@@ -35,12 +35,12 @@
      + colour below mirror it exactly (36px desktop, 26px at <=900px). */
   .srv2__title { margin: 0; font-size: 36px; line-height: 1.4; color: #141414; text-transform: none; }
   @media (max-width: 900px) { .srv2__title { font-size: 26px; } }
-  .srv2__rating { display: flex; align-items: center; gap: 10px; font-size: 17px; flex-wrap: wrap; }
-  .srv2__rating-stars { display: inline-flex; gap: 2px; color: {{ stars_color }}; }
-  .srv2__rating-stars svg { width: 18px; height: 16px; display: block; }
-  .srv2__rating b { font-weight: 700; }
-  .srv2__rating-desc { color: #5b5866; }
-  .srv2__rating-desc--mobile { display: none; }
+  .srv2__rating { display: flex; align-items: center; gap: 12px; font-size: 18px; flex-wrap: wrap; }
+  .srv2__rating-stars { display: inline-flex; gap: 2px; color: {{ stars_color }}; margin-right: 2px; }
+  .srv2__rating-stars svg { width: 19px; height: 17px; display: block; }
+  .srv2__rating-item { color: #6b6b6b; white-space: nowrap; }
+  .srv2__rating-item b { color: #141414; font-weight: 700; }
+  .srv2__rating-sep { width: 1px; height: 18px; background: #d6d1de; display: inline-block; }
 
   /* Toggle (segmented control) */
   .srv2__toggle { display: inline-flex; background: #F7F6FB; border-radius: 100px; padding: 5px; gap: 4px; }
@@ -134,6 +134,7 @@
     align-self: flex-start; font-size: 15px; font-weight: 600; color: #672666; cursor: pointer;
     background: 0; border: 0; padding: 0; margin-top: -2px;
   }
+  .srv2__more[hidden] { display: none; }
   .srv2__card-foot { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid #F0EDF4; }
   .srv2__avatar {
     width: 36px; height: 36px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
@@ -166,9 +167,8 @@
   @media (max-width: 749px) {
     .srv2__wrap { padding: 26px 0 32px; }
     .srv2__head { flex-direction: column; align-items: stretch; gap: 16px; padding: 0 18px 20px; }
-    .srv2__rating { font-size: 15px; }
-    .srv2__rating-desc { display: none; }
-    .srv2__rating-desc--mobile { display: inline; }
+    .srv2__rating { font-size: 15px; gap: 8px; }
+    .srv2__rating-sep--cust, .srv2__rating-item--cust { display: none; }
     .srv2__toggle {
       display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); padding: 4px; gap: 2px; border-radius: 100px;
     }
@@ -214,9 +214,11 @@
       {%- if section.settings.heading != blank -%}<h1 class="srv2__title">{{ section.settings.heading }}</h1>{%- endif -%}
       <div class="srv2__rating">
         <span class="srv2__rating-stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
-        <b>{{ section.settings.rating_value | default: '4.5' }}</b>
-        {%- if section.settings.rating_text != blank -%}<span class="srv2__rating-desc">· {{ section.settings.rating_text }}</span>{%- endif -%}
-        {%- if section.settings.rating_text_mobile != blank -%}<span class="srv2__rating-desc srv2__rating-desc--mobile">· {{ section.settings.rating_text_mobile }}</span>{%- endif -%}
+        <span class="srv2__rating-item"><b>{{ section.settings.rating_value | default: '4.5' }}</b> {{ section.settings.label_stars | default: 'Stars' }}</span>
+        <span class="srv2__rating-sep" aria-hidden="true"></span>
+        <span class="srv2__rating-item"><b>{{ section.settings.reviews_value | default: '7,500+' }}</b> {{ section.settings.label_reviews | default: 'Reviews' }}</span>
+        <span class="srv2__rating-sep srv2__rating-sep--cust" aria-hidden="true"></span>
+        <span class="srv2__rating-item srv2__rating-item--cust"><b>{{ section.settings.customers_value | default: '500K+' }}</b> {{ section.settings.label_customers | default: 'Customers' }}</span>
       </div>
     </div>
 
@@ -294,17 +296,16 @@
               {%- when 'brand' -%}{%- assign tag_label = 'REJUVIA' -%}{%- assign tag_base = '#3d3a36' -%}{%- assign tag_tint = '#F2F0F5' -%}
               {%- else -%}{%- assign tag_label = 'SLEEP' -%}{%- assign tag_base = '#672666' -%}{%- assign tag_tint = '#F4EEF5' -%}
             {%- endcase -%}
-            {%- assign blen = block.settings.body | strip_html | size -%}
             {%- assign av_color = block.settings.avatar_color | default: av_palette[ai] -%}
             {%- assign star_count = block.settings.stars | default: 5 -%}
-            <div class="srv2__card{% if blen > 220 %} is-clamped{% endif %}" data-srv-card data-product="{{ prod }}" {{ block.shopify_attributes }}>
+            <div class="srv2__card is-clamped" data-srv-card data-product="{{ prod }}" {{ block.shopify_attributes }}>
               <div class="srv2__card-top">
                 <span class="srv2__stars" aria-label="{{ star_count }} stars">{%- for i in (1..star_count) -%}{{ star_svg }}{%- endfor -%}</span>
                 <span class="srv2__tag" style="background:{{ tag_tint }};color:{{ tag_base }}">{{ tag_label }}</span>
               </div>
               {%- if block.settings.title != blank -%}<div class="srv2__card-title">{{ block.settings.title }}</div>{%- endif -%}
               {%- if block.settings.body != blank -%}<div class="srv2__card-body">{{ block.settings.body }}</div>{%- endif -%}
-              {%- if blen > 220 -%}<button type="button" class="srv2__more" data-srv-more>Read more</button>{%- endif -%}
+              <button type="button" class="srv2__more" data-srv-more hidden>Read more</button>
               <div class="srv2__card-foot">
                 <span class="srv2__avatar" style="background:{{ av_color }}">
                   {%- if block.settings.avatar_image != blank -%}<img src="{{ block.settings.avatar_image | image_url: width: 80 }}" width="36" height="36" alt="{{ block.settings.author_name | escape }}" loading="lazy">{%- else -%}{{ block.settings.avatar_initials }}{%- endif -%}
@@ -426,12 +427,37 @@
 
   if (showmore) showmore.addEventListener('click', function () { state.expanded = !state.expanded; apply(); });
 
-  /* ---------- Read more ---------- */
+  /* ---------- Read more ----------
+     Only show the toggle when the body actually overflows the 6-line clamp.
+     Measured live (char-count heuristics were wrong — a short review could
+     trip the old threshold and show a button that did nothing). */
+  function detectClamp(card) {
+    var body = card.querySelector('.srv2__card-body');
+    var btn = card.querySelector('[data-srv-more]');
+    if (!body || !btn) return;
+    var wasHidden = card.hidden;
+    if (wasHidden) card.hidden = false;
+    var userExpanded = card.getAttribute('data-expanded') === '1';
+    card.classList.add('is-clamped');
+    var overflow = (body.scrollHeight - body.clientHeight) > 2;
+    if (overflow) {
+      btn.hidden = false;
+      if (userExpanded) { card.classList.remove('is-clamped'); btn.textContent = 'Show less'; }
+      else { btn.textContent = 'Read more'; }
+    } else {
+      btn.hidden = true;
+      card.classList.remove('is-clamped');
+    }
+    if (wasHidden) card.hidden = true;
+  }
+  function detectClamps() { cards.forEach(detectClamp); }
+
   [].slice.call(root.querySelectorAll('[data-srv-more]')).forEach(function (btn) {
     btn.addEventListener('click', function () {
       var card = btn.closest('.srv2__card');
       if (!card) return;
       var clamped = card.classList.toggle('is-clamped');
+      card.setAttribute('data-expanded', clamped ? '0' : '1');
       btn.textContent = clamped ? 'Read more' : 'Show less';
     });
   });
@@ -451,12 +477,13 @@
   function layoutVideos() {
     if (!vtrack || MOBILE()) { if (vtrack) vtrack.style.transform = ''; return; }
     var maxI = Math.max(0, vcards.length - visibleCount());
-    if (vi > maxI) vi = maxI;
+    /* Loop: past the last page wraps to the first, and before the first wraps
+       to the last — no dead ends. */
+    if (vi > maxI) vi = 0;
+    if (vi < 0) vi = maxI;
     vtrack.style.transform = 'translateX(-' + (vi * STEP) + 'px)';
-    if (prevBtn) prevBtn.disabled = vi <= 0;
-    if (nextBtn) nextBtn.disabled = vi >= maxI;
   }
-  if (prevBtn) prevBtn.addEventListener('click', function () { vi = Math.max(0, vi - 1); layoutVideos(); });
+  if (prevBtn) prevBtn.addEventListener('click', function () { vi = vi - 1; layoutVideos(); });
   if (nextBtn) nextBtn.addEventListener('click', function () { vi = vi + 1; layoutVideos(); });
 
   /* Mobile dots */
@@ -497,8 +524,10 @@
     m.addEventListener('ended', function () { var w = m.closest('[data-srv-video]'); if (w) w.classList.remove('is-playing'); m.controls = false; });
   });
 
-  window.addEventListener('resize', function () { apply(); }, { passive: true });
+  window.addEventListener('resize', function () { detectClamps(); apply(); }, { passive: true });
   apply();
+  detectClamps();
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(detectClamps); }
 })();
 </script>
 
@@ -513,8 +542,11 @@
     { "type": "header", "content": "Header" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Customer Reviews" },
     { "type": "text", "id": "rating_value", "label": "Rating value", "default": "4.5" },
-    { "type": "text", "id": "rating_text", "label": "Rating line (desktop)", "default": "7,500+ verified reviews · 500,000+ customers" },
-    { "type": "text", "id": "rating_text_mobile", "label": "Rating line (mobile)", "default": "7,500+ verified reviews" },
+    { "type": "text", "id": "label_stars", "label": "Rating label", "default": "Stars" },
+    { "type": "text", "id": "reviews_value", "label": "Reviews count", "default": "7,500+" },
+    { "type": "text", "id": "label_reviews", "label": "Reviews label", "default": "Reviews" },
+    { "type": "text", "id": "customers_value", "label": "Customers count", "default": "500K+" },
+    { "type": "text", "id": "label_customers", "label": "Customers label (desktop only)", "default": "Customers" },
     { "type": "header", "content": "Sections" },
     { "type": "checkbox", "id": "show_toggle", "label": "Show product toggle", "default": true },
     { "type": "text", "id": "video_heading", "label": "Video section heading", "default": "Video Reviews" },

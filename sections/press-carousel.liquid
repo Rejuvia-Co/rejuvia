@@ -20,7 +20,7 @@
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   }
   #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
-  #{{ uid }} .pc__window { overflow: hidden; clip-path: inset(0 1px 0 0); /* hides the next slide's divider at the edge */ }
+  #{{ uid }} .pc__window { overflow: hidden; clip-path: inset(0 2px); /* hides dividers at both outer edges — only the ones between visible slides show */ }
   #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
   #{{ uid }} .pc__slide { flex: 0 0 33.3333%; min-width: 0; box-sizing: border-box; padding: 4px 36px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 18px; }
   /* Hairline dividers between the three visible quotes (desktop). */

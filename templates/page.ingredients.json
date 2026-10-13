@@ -9,18 +9,6 @@
  */
 {
   "sections": {
-    "hero_ingredients_v2_PynYUG": {
-      "type": "hero-ingredients-v2",
-      "name": "Hero Ingredients V2",
-      "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#672666",
-        "heading": "<p>Wondering what's actually in rejuvia?</p>",
-        "description": "No surprises here. Rejuvia is made with a clean, all-natural blend of sleep herbs and botanicals. Nothing else. Every ingredient was chosen for a specific reason, backed by clinical research, and included at a dose that actually does something. No fillers, no proprietary blends hiding weak doses, no ingredients you need a chemistry degree to pronounce.",
-        "image": "shopify://shop_images/image_bc1a5a40-48b9-470f-8130-7dcf218ac7dc.webp",
-        "image_mobile": "shopify://shop_images/rejuvia_sleep_spray_in_sky.webp"
-      }
-    },
     "guarantees_v2_ABV7Ti": {
       "type": "guarantees-v2",
       "blocks": {
@@ -468,10 +456,66 @@
         "title_color": "#171512",
         "answer_color": "#3a3a3a"
       }
+    },
+    "ingredients_hero_v3_main": {
+      "type": "ingredients-hero-v3",
+      "blocks": {
+        "pill_sleep": {
+          "type": "pill",
+          "settings": {
+            "label": "Sleep",
+            "base_color": "#672666",
+            "bg_color": "#F4EEF5"
+          }
+        },
+        "pill_calm": {
+          "type": "pill",
+          "settings": {
+            "label": "Calm",
+            "base_color": "#C23A57",
+            "bg_color": "#FBEBEF"
+          }
+        },
+        "pill_d3": {
+          "type": "pill",
+          "settings": {
+            "label": "D3+K2",
+            "base_color": "#1B8546",
+            "bg_color": "#E7F4EB"
+          }
+        }
+      },
+      "block_order": [
+        "pill_sleep",
+        "pill_calm",
+        "pill_d3"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/clean-lab-sprays.webp",
+        "image_mobile": "shopify://shop_images/clean-lab-sprays.webp",
+        "height_desktop": 640,
+        "height_mobile": 330,
+        "eyebrow": "INGREDIENTS",
+        "heading": "<p>Every ingredient <em>earns its place.</em></p>",
+        "body": "<p>No fillers, no proprietary blends hiding weak doses. Just clean, research-backed botanicals that absorb under your tongue.</p>",
+        "heading_color": "#2a1830",
+        "accent_color": "#672666",
+        "page_bg": "#ffffff",
+        "trust_bg": "#3A1840",
+        "icon_color": "#eac78b",
+        "trust_1": "100% All-Natural",
+        "trust_icon_1": "leaf",
+        "trust_2": "cGMP Certified",
+        "trust_icon_2": "shield",
+        "trust_3": "100% Made in USA",
+        "trust_icon_3": "factory",
+        "trust_4": "Triple Lab Tested",
+        "trust_icon_4": "flask"
+      }
     }
   },
   "order": [
-    "hero_ingredients_v2_PynYUG",
+    "ingredients_hero_v3_main",
     "guarantees_v2_ABV7Ti",
     "key_ingredients_page_v2_c96YaM",
     "clean_formula_v2_Rn8kPq",

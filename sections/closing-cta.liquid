@@ -87,7 +87,9 @@ html { scroll-behavior: smooth; }
 
 @media (max-width: 749px) {
   .cta-{{ section.id }} .fcta__inner { padding: 40px 16px; }
-  .cta-{{ section.id }} .fcta__grid { display: flex; flex-direction: column; gap: 20px; }
+  /* Flex column must reset align-items from the desktop grid's `center`, or items
+     that aren't full-width (reviewer, guarantee, CTA group) get horizontally centered. */
+  .cta-{{ section.id }} .fcta__grid { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
   .cta-{{ section.id }} .fcta__rating { order: 1; font-size: 14px; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
   .cta-{{ section.id }} .fcta__quote { order: 2; font-size: 22px; line-height: 1.35; }
   .cta-{{ section.id }} .fcta__reviewer { order: 3; }

@@ -75,15 +75,21 @@ html { scroll-behavior: smooth; }
 
 .cta-{{ section.id }} .fcta__divider { grid-column: 2; height: 1px; background: #e8e6ee; }
 
-.cta-{{ section.id }} .fcta__cta-group { grid-column: 2; display: flex; flex-direction: column; gap: 14px; }
+.cta-{{ section.id }} .fcta__cta-group { grid-column: 2; display: flex; flex-direction: column; gap: 12px; }
+/* Button matches the comparison section above (.palt-v2-cta-btn) exactly — same on mobile + desktop. */
 .cta-{{ section.id }} .fcta__cta {
-  background: {{ accent }}; color: #fff; text-decoration: none; font-size: 17px; font-weight: 500;
-  height: 66px; display: flex; align-items: center; justify-content: center; border-radius: 100px;
-  transition: background .15s ease; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 24px 32px;
+  background: {{ accent }}; color: #fff; text-decoration: none;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px; font-weight: 500; line-height: 1.4; letter-spacing: normal;
+  text-transform: capitalize;
+  border: none; border-radius: 100px; cursor: pointer;
+  transition: opacity 0.25s ease;
 }
-.cta-{{ section.id }} .fcta__cta:hover { background: {{ accent_hover }}; color: #fff; }
-.cta-{{ section.id }} .fcta__guarantee { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; color: #141414; }
-.cta-{{ section.id }} .fcta__guarantee svg { flex: none; }
+.cta-{{ section.id }} .fcta__cta:hover { opacity: 0.9; color: #fff; }
+.cta-{{ section.id }} .fcta__guarantee { display: flex; align-items: flex-start; justify-content: center; gap: 6px; font-size: 14px; line-height: 1; color: #141414; }
+.cta-{{ section.id }} .fcta__guarantee svg { flex: none; width: 14px; height: 11px; margin-top: 1px; }
 
 @media (max-width: 749px) {
   .cta-{{ section.id }} .fcta__inner { padding: 40px 16px; }
@@ -102,8 +108,6 @@ html { scroll-behavior: smooth; }
   }
   .cta-{{ section.id }} .fcta__divider { display: none; }
   .cta-{{ section.id }} .fcta__cta-group { order: 5; align-items: stretch; }
-  /* CTA matches the comparison section above: full-width pill, padding-based height. */
-  .cta-{{ section.id }} .fcta__cta { height: auto; padding: 24px 32px; font-size: 18px; text-transform: capitalize; }
   /* Reviewer + guarantee left-align with the review quote. */
   .cta-{{ section.id }} .fcta__reviewer { justify-content: flex-start; }
   .cta-{{ section.id }} .fcta__guarantee { margin-top: 2px; justify-content: flex-start; align-items: flex-start; gap: 6px; font-size: 14px; }

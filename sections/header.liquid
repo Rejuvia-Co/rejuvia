@@ -209,7 +209,8 @@
   #header .rjnav-panel-was { font-size: 16px; color: {{ strike }}; text-decoration: line-through; }
   #header .rjnav-shopnow {
     align-self: stretch; max-width: 340px; box-sizing: border-box; text-align: center; margin-top: 6px; white-space: nowrap;
-    background: var(--rjnav-base, {{ purple }}); color: #fff; font-size: 18px; font-weight: 600; letter-spacing: .06em;
+    background: var(--rjnav-base, {{ purple }}); color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: normal; line-height: 1.4;
     padding: 19px 32px; border-radius: 100px; text-decoration: none; transition: background .3s, transform .2s;
   }
   #header .rjnav-shopnow:hover { color: #fff; transform: translateY(-1px); }
@@ -419,7 +420,7 @@
                 <span class="rjnav-panel-now">{{ now_price | money }}</span>
                 {%- if was_price != blank and was_price > now_price -%}<span class="rjnav-panel-was">{{ was_price | money }}</span>{%- endif -%}
               </div>
-              <a href="{{ product.url }}" class="rjnav-shopnow">{{ section.settings.shopnow_label | default: 'SHOP NOW' }}</a>
+              <a href="{{ product.url }}" class="rjnav-shopnow">{{ section.settings.shopnow_label | default: 'Shop Now' }}</a>
             </div>
           </div>
         {%- endfor -%}
@@ -657,13 +658,13 @@
     { "type": "url", "id": "link_1_url", "label": "Link 1 URL" },
     { "type": "text", "id": "link_2_label", "label": "Link 2 label", "default": "Ingredients" },
     { "type": "url", "id": "link_2_url", "label": "Link 2 URL" },
-    { "type": "text", "id": "link_3_label", "label": "Link 3 label", "default": "" },
+    { "type": "text", "id": "link_3_label", "label": "Link 3 label", "info": "Leave blank to hide this link." },
     { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
     { "type": "header", "content": "Right cluster" },
     { "type": "text", "id": "account_label", "label": "Account label", "default": "Sign In" },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop Sleep Spray" },
     { "type": "url", "id": "cta_url", "label": "CTA URL" },
-    { "type": "text", "id": "shopnow_label", "label": "Preview button label", "default": "SHOP NOW" },
+    { "type": "text", "id": "shopnow_label", "label": "Preview button label", "default": "Shop Now" },
     { "type": "header", "content": "Trust items (menu + mobile tiles)" },
     { "type": "text", "id": "trust_1", "label": "Trust 1 (star icon)", "default": "7,500+ 5-Star Reviews" },
     { "type": "text", "id": "trust_2", "label": "Trust 2 (customers icon)", "default": "500,000+ Happy Customers" },

@@ -306,7 +306,11 @@ html { scroll-behavior: smooth; }
 
 {%- else -%}
   {%- comment -%} ===== NEW Final CTA (BOGO) design ===== {%- endcomment -%}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+  {%- if section.settings.show_callout -%}
+    {%- comment -%} Subset Caveat to just the callout's glyphs (a few KB instead of the full font). {%- endcomment -%}
+    {%- capture caveat_text -%}{{ section.settings.callout_line_1 }}{{ section.settings.callout_line_2 }}{%- endcapture -%}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap&text={{ caveat_text | url_encode | replace: '+', '%20' }}">
+  {%- endif -%}
   {%- capture fcta_star -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6c.4 0 .8.2 1 .6l2.5 5.1 5.6.8c.9.1 1.2 1.2.6 1.8l-4 3.9 1 5.6c.1.9-.8 1.5-1.6 1.1L12 18.9l-5 2.6c-.8.4-1.7-.2-1.6-1.1l1-5.6-4-3.9c-.6-.6-.3-1.7.6-1.8l5.6-.8 2.5-5.1c.2-.4.6-.6 1-.6Z" fill="#FFB547" stroke="#FFB547" stroke-width="1.2" stroke-linejoin="round"/></svg>{%- endcapture -%}
 
   <section class="cta-{{ section.id }}">
@@ -328,8 +332,10 @@ html { scroll-behavior: smooth; }
             {%- else -%}
               {%- comment -%} Default composited BOGO bottles shipped as theme assets. {%- endcomment -%}
               <picture>
+                <source media="(max-width: 749px)" type="image/webp" srcset="{{ 'bogo-bottles-mobile.webp' | asset_url }}">
                 <source media="(max-width: 749px)" srcset="{{ 'bogo-bottles-mobile.png' | asset_url }}">
-                <img src="{{ 'bogo-bottles-desktop.png' | asset_url }}" alt="Rejuvia Sleep Spray — buy one, get one free" loading="lazy" width="1100" height="1100">
+                <source type="image/webp" srcset="{{ 'bogo-bottles-desktop.webp' | asset_url }}">
+                <img src="{{ 'bogo-bottles-desktop.png' | asset_url }}" alt="Rejuvia Sleep Spray — buy one, get one free" loading="lazy" decoding="async" width="1100" height="1100">
               </picture>
             {%- endif -%}
 
@@ -361,7 +367,7 @@ html { scroll-behavior: smooth; }
           {%- assign rev_name = 'Susann M Thoens' -%}
           {%- assign rev_since = section.settings.reviewer_since | default: 'Verified Customer' -%}
           <div class="fcta__reviewer">
-            <img class="fcta__avatar" src="{% if section.settings.reviewer_photo != blank %}{{ section.settings.reviewer_photo | image_url: width: 120 }}{% else %}{{ 'reviewer-avatar.jpg' | asset_url }}{% endif %}" width="44" height="44" alt="{{ rev_name | escape }}" loading="lazy" decoding="async">
+            <img class="fcta__avatar" src="{% if section.settings.reviewer_photo != blank %}{{ section.settings.reviewer_photo | image_url: width: 96 }}{% else %}{{ 'reviewer-avatar.jpg' | asset_url }}{% endif %}" width="44" height="44" alt="{{ rev_name | escape }}" loading="lazy" decoding="async">
             <div class="fcta__reviewer-meta">
               <span class="fcta__reviewer-name">&ndash; {{ rev_name }}</span>
               <span class="fcta__reviewer-since">{{ rev_since }}</span>

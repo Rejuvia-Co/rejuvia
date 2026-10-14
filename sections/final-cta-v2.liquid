@@ -1,0 +1,250 @@
+{%- comment -%}
+  Final CTA (direction 4b) — the last section on the FB ad / BOGO landing pages.
+  Review-led close: floating BOGO bottles image + handwritten "Buy One, Get One
+  Free!" callout on the left; rating bar, quote, reviewer, CTA and guarantee on
+  the right. Images are pre-composited transparent PNGs (bottles + shadows +
+  glow), so the section background is white.
+
+  Callout/arrow positions are CSS custom properties — retune them here if the
+  image is swapped.
+{%- endcomment -%}
+
+{%- liquid
+  assign accent = section.settings.accent_color | default: '#672666'
+  assign accent_hover = section.settings.accent_hover | default: '#4a1b49'
+-%}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+
+{% style %}
+  .fcta-section { background: {{ section.settings.bg_color | default: '#ffffff' }}; }
+
+  .fcta {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 72px 40px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #141414;
+    box-sizing: border-box;
+  }
+
+  .fcta__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    column-gap: 64px;
+    row-gap: 26px;
+    align-items: center;
+  }
+
+  /* Image box — spans the right column's rows, vertically centered. */
+  .fcta__media {
+    grid-column: 1;
+    grid-row: 1 / span 5;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    /* Callout / arrow positions (desktop). */
+    --callout-x: 66%; --callout-y: 72%; --callout-size: 40px;
+    --arrow-x: 67%; --arrow-y: 46%;
+  }
+  .fcta__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  .fcta__callout {
+    position: absolute;
+    left: var(--callout-x); top: var(--callout-y);
+    z-index: 3;
+    transform: rotate(-7deg);
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: var(--callout-size);
+    line-height: .95;
+    color: {{ accent }};
+    white-space: nowrap;
+  }
+  .fcta__arrow {
+    position: absolute;
+    left: var(--arrow-x); top: var(--arrow-y);
+    z-index: 3;
+    overflow: visible;
+  }
+
+  .fcta__rating { grid-column: 2; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 18px; color: #3d3a36; }
+  .fcta__stars { display: inline-flex; gap: 2px; }
+  .fcta__stars svg { width: 18px; height: 18px; display: block; }
+  .fcta__rate-item b { font-weight: 700; color: #171512; }
+  .fcta__rate-sep { width: 1px; height: 18px; background: #d6d3de; display: inline-block; }
+
+  .fcta__quote {
+    grid-column: 2;
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #171512;
+    text-wrap: pretty;
+  }
+
+  .fcta__reviewer { grid-column: 2; display: flex; align-items: center; gap: 12px; }
+  .fcta__reviewer img { width: 44px; height: 44px; border-radius: 100px; object-fit: cover; object-position: 50% 45%; display: block; flex: none; }
+  .fcta__reviewer-meta { display: flex; flex-direction: column; gap: 2px; }
+  .fcta__reviewer-name { font-size: 16px; font-weight: 600; }
+  .fcta__reviewer-since { font-size: 14px; color: #5a5664; }
+
+  .fcta__divider { grid-column: 2; height: 1px; background: #e8e6ee; }
+
+  .fcta__cta-group { grid-column: 2; display: flex; flex-direction: column; gap: 14px; }
+  .fcta__cta {
+    background: {{ accent }};
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    transition: background .15s ease;
+  }
+  .fcta__cta:hover { background: {{ accent_hover }}; color: #fff; }
+  .fcta__guarantee { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; color: #141414; }
+  .fcta__guarantee svg { flex: none; }
+
+  /* ===================== Mobile ===================== */
+  @media (max-width: 749px) {
+    .fcta { padding: 40px 16px; }
+    .fcta__grid { display: flex; flex-direction: column; gap: 20px; }
+
+    .fcta__rating { order: 1; font-size: 14px; gap: 10px; flex-wrap: nowrap; white-space: nowrap; }
+    .fcta__quote { order: 2; font-size: 22px; line-height: 1.35; }
+    .fcta__reviewer { order: 3; }
+    .fcta__reviewer img { width: 40px; height: 40px; }
+    .fcta__reviewer-name { font-size: 15px; }
+    .fcta__reviewer-since { font-size: 13px; }
+    .fcta__media {
+      order: 4;
+      aspect-ratio: auto;
+      height: {{ section.settings.image_mobile_height | default: 280 }}px;
+      --callout-x: 63%; --callout-y: 68%; --callout-size: 27px;
+      --arrow-x: 66%; --arrow-y: 40%;
+    }
+    .fcta__divider { display: none; }
+    .fcta__cta-group { order: 5; }
+    .fcta__cta { height: 60px; }
+    .fcta__guarantee { margin-top: -4px; }
+
+    /* mobile rating drops the "4.5 Stars" segment + its separator */
+    .fcta__rate-item--stars, .fcta__rate-sep--stars { display: none; }
+  }
+{% endstyle %}
+
+{%- capture star_svg -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6c.4 0 .8.2 1 .6l2.5 5.1 5.6.8c.9.1 1.2 1.2.6 1.8l-4 3.9 1 5.6c.1.9-.8 1.5-1.6 1.1L12 18.9l-5 2.6c-.8.4-1.7-.2-1.6-1.1l1-5.6-4-3.9c-.6-.6-.3-1.7.6-1.8l5.6-.8 2.5-5.1c.2-.4.6-.6 1-.6Z" fill="#FFB547" stroke="#FFB547" stroke-width="1.2" stroke-linejoin="round"/></svg>{%- endcapture -%}
+
+<div class="fcta">
+  <div class="fcta__grid">
+
+    {%- comment -%} Image box with BOGO callout + arrow {%- endcomment -%}
+    <div class="fcta__media" role="img" aria-label="{{ section.settings.callout_line_1 }} {{ section.settings.callout_line_2 }}">
+      {%- if section.settings.image_desktop != blank -%}
+        <picture>
+          {%- assign m_img = section.settings.image_mobile | default: section.settings.image_desktop -%}
+          <source media="(max-width: 749px)" srcset="{{ m_img | image_url: width: 700, format: 'webp' }} 700w, {{ m_img | image_url: width: 1000, format: 'webp' }} 1000w" sizes="100vw">
+          <img src="{{ section.settings.image_desktop | image_url: width: 1100, format: 'webp' }}"
+               srcset="{{ section.settings.image_desktop | image_url: width: 700, format: 'webp' }} 700w, {{ section.settings.image_desktop | image_url: width: 1100, format: 'webp' }} 1100w"
+               sizes="(max-width: 749px) 100vw, 480px"
+               alt="Rejuvia Sleep Spray — buy one, get one free" loading="lazy"
+               width="1100" height="1100">
+        </picture>
+      {%- endif -%}
+
+      {%- if section.settings.show_callout -%}
+        <svg class="fcta__arrow" width="80" height="110" viewBox="0 0 80 110" fill="none" aria-hidden="true">
+          <path d="M66 104c10-14 4-26-6-28-9-2-12 8-4 10 10 3 14-16 6-34C55 34 36 20 12 12" stroke="{{ accent }}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 12l17-1M12 12l6 15" stroke="{{ accent }}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {%- if section.settings.callout_line_1 != blank or section.settings.callout_line_2 != blank -%}
+          <div class="fcta__callout">{{ section.settings.callout_line_1 }}<br>{{ section.settings.callout_line_2 }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Rating bar {%- endcomment -%}
+    <div class="fcta__rating">
+      <span class="fcta__stars">{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}</span>
+      <span class="fcta__rate-item fcta__rate-item--stars"><b>{{ section.settings.stars_value | default: '4.5' }}</b> Stars</span>
+      <span class="fcta__rate-sep fcta__rate-sep--stars" aria-hidden="true"></span>
+      <span class="fcta__rate-item"><b>{{ section.settings.reviews_value | default: '7,500+' }}</b> Reviews</span>
+      <span class="fcta__rate-sep" aria-hidden="true"></span>
+      <span class="fcta__rate-item"><b>{{ section.settings.customers_value | default: '500K+' }}</b> Customers</span>
+    </div>
+
+    {%- comment -%} Quote {%- endcomment -%}
+    {%- if section.settings.quote != blank -%}
+      <p class="fcta__quote">{{ section.settings.quote }}</p>
+    {%- endif -%}
+
+    {%- comment -%} Reviewer {%- endcomment -%}
+    <div class="fcta__reviewer">
+      {%- if section.settings.reviewer_photo != blank -%}
+        <img src="{{ section.settings.reviewer_photo | image_url: width: 88 }}" width="44" height="44" alt="{{ section.settings.reviewer_name | escape }}" loading="lazy" decoding="async">
+      {%- endif -%}
+      <div class="fcta__reviewer-meta">
+        {%- if section.settings.reviewer_name != blank -%}<span class="fcta__reviewer-name">{{ section.settings.reviewer_name }}</span>{%- endif -%}
+        {%- if section.settings.reviewer_since != blank -%}<span class="fcta__reviewer-since">{{ section.settings.reviewer_since }}</span>{%- endif -%}
+      </div>
+    </div>
+
+    <div class="fcta__divider" aria-hidden="true"></div>
+
+    {%- comment -%} CTA + guarantee {%- endcomment -%}
+    <div class="fcta__cta-group">
+      {%- if section.settings.cta_text != blank -%}
+        <a class="fcta__cta" href="{{ section.settings.cta_url | default: '#' }}">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+      {%- if section.settings.guarantee_text != blank -%}
+        <div class="fcta__guarantee">
+          <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2 7.5l4.5 4.5L16 2" stroke="#f5b14c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {{ section.settings.guarantee_text }}
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Final CTA (BOGO)",
+  "class": "fcta-section",
+  "settings": [
+    { "type": "header", "content": "Image (transparent PNG — bottles + shadows pre-composited)" },
+    { "type": "image_picker", "id": "image_desktop", "label": "Image — desktop", "info": "Square (e.g. 1100x1100)." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Image — mobile", "info": "Optional. Falls back to the desktop image." },
+    { "type": "range", "id": "image_mobile_height", "label": "Mobile image height", "min": 200, "max": 400, "step": 10, "unit": "px", "default": 280 },
+    { "type": "header", "content": "Handwritten callout" },
+    { "type": "checkbox", "id": "show_callout", "label": "Show handwritten callout", "default": true },
+    { "type": "text", "id": "callout_line_1", "label": "Callout line 1", "default": "Buy One," },
+    { "type": "text", "id": "callout_line_2", "label": "Callout line 2", "default": "Get One Free!" },
+    { "type": "header", "content": "Rating bar" },
+    { "type": "text", "id": "stars_value", "label": "Rating value", "default": "4.5" },
+    { "type": "text", "id": "reviews_value", "label": "Reviews count", "default": "7,500+" },
+    { "type": "text", "id": "customers_value", "label": "Customers count", "default": "500K+" },
+    { "type": "header", "content": "Quote" },
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "\"I've tried every gummy and pill out there. This is the first thing that actually puts me to sleep — and I wake up clear.\"" },
+    { "type": "header", "content": "Reviewer" },
+    { "type": "image_picker", "id": "reviewer_photo", "label": "Reviewer photo" },
+    { "type": "text", "id": "reviewer_name", "label": "Reviewer name", "default": "Michelle M." },
+    { "type": "text", "id": "reviewer_since", "label": "Reviewer subline", "default": "Verified Customer Since 2023" },
+    { "type": "header", "content": "CTA + guarantee" },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Try Rejuvia Risk-Free" },
+    { "type": "url", "id": "cta_url", "label": "Button link" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "90-Day Money-Back Guarantee" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#672666" },
+    { "type": "color", "id": "accent_hover", "label": "Accent hover", "default": "#4a1b49" }
+  ],
+  "presets": [
+    { "name": "Final CTA (BOGO)" }
+  ]
+}
+{% endschema %}

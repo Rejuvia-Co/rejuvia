@@ -515,72 +515,21 @@
       }
     },
     "closing_cta_d3": {
-      "type": "closing-cta",
-      "blocks": {
-        "point_1": {
-          "type": "point",
-          "settings": {
-            "text": "8 sublingual sprays, once a day"
-          }
-        },
-        "point_3": {
-          "type": "point",
-          "settings": {
-            "text": "Supports energy, immunity and healthy bones"
-          }
-        },
-        "point_xqwFWe": {
-          "type": "point",
-          "settings": {
-            "text": "Light mint-vanilla taste, water-based"
-          }
-        },
-        "point_Y9VP6B": {
-          "type": "point",
-          "settings": {
-            "text": "Fits in a pocket, purse or carry-on"
-          }
-        },
-        "point_zh6HDt": {
-          "type": "point",
-          "settings": {
-            "text": "Vegan, non-GMO, made in the USA"
-          }
-        }
-      },
-      "block_order": [
-        "point_1",
-        "point_3",
-        "point_xqwFWe",
-        "point_Y9VP6B",
-        "point_zh6HDt"
-      ],
-      "name": "Closing CTA",
+      "type": "final-cta-v2",
       "settings": {
-        "image": "shopify://shop_images/D3_IMG_3.webp",
-        "show_stars": true,
-        "accent_color": "#018e1c",
-        "stars_color": "#018e1c",
-        "rating_text": "<p>4.4 Stars | <strong>500,000+</strong> Customers</p>",
-        "rating_color": "#000000",
-        "heading": "<p>Get Your Vitamin D Right. The Easy Way.</p>",
-        "heading_color": "#000000",
-        "button_text": "Try It Risk-Free",
-        "scroll_target": "#offer",
-        "button_link": "",
-        "show_guarantee": true,
+        "show_callout": true,
+        "callout_line_1": "Buy One,",
+        "callout_line_2": "Get One Free!",
+        "stars_value": "4.5",
+        "reviews_value": "7,500+",
+        "customers_value": "500K+",
+        "cta_text": "Try It Risk-Free",
+        "cta_url": "#offer",
         "guarantee_text": "90-Day Money-Back Guarantee",
-        "rating_size": 18,
-        "heading_size": 36,
-        "checklist_size": 18,
-        "button_size": 18,
-        "rating_size_mobile": 16,
-        "heading_size_mobile": 26,
-        "checklist_size_mobile": 16,
-        "button_size_mobile": 18,
-        "frame_bg": "#eaf4ec",
-        "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "accent_hover": "#4a1b49",
+        "image_mobile_height": 280
       }
     },
     "sticky_cta_d3": {

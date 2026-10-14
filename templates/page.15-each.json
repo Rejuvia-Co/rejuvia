@@ -605,62 +605,24 @@
       }
     },
     "closing_cta_ThzKQ3": {
-      "type": "closing-cta",
-      "blocks": {
-        "point_dCFWPJ": {
-          "type": "point",
-          "settings": {
-            "text": "Fall asleep in 10–15 minutes"
-          }
-        },
-        "point_hnPm76": {
-          "type": "point",
-          "settings": {
-            "text": "13 natural, non-habit-forming ingredients"
-          }
-        },
-        "point_XmNjEf": {
-          "type": "point",
-          "settings": {
-            "text": "100% Made in the USA"
-          }
-        }
-      },
-      "block_order": [
-        "point_dCFWPJ",
-        "point_hnPm76",
-        "point_XmNjEf"
-      ],
-      "name": "Closing CTA",
+      "type": "final-cta-v2",
       "settings": {
-        "review_stars": 5,
-        "review_heading": "Excellent product, excellent family service",
-        "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",
-        "review_name": "Susann M Thoens",
-        "image": "shopify://shop_images/sleepspray5_webp.webp",
-        "show_stars": true,
-        "accent_color": "#672666",
-        "stars_color": "#eac78b",
-        "rating_text": "<p><strong>4.5</strong> |&nbsp;Over <strong>500,000+</strong>&nbsp;Customers</p>",
-        "rating_color": "#000000",
-        "heading": "<p>Fall Asleep 3x Faster With Rejuvia&nbsp;</p>",
-        "heading_color": "#000000",
-        "button_text": "Try Rejuvia Risk-Free",
-        "scroll_target": "#offer",
-        "button_link": "",
-        "show_guarantee": true,
+        "show_callout": true,
+        "callout_line_1": "Buy One,",
+        "callout_line_2": "Get One Free!",
+        "stars_value": "4.5",
+        "reviews_value": "7,500+",
+        "customers_value": "500K+",
+        "cta_text": "Try Rejuvia Risk-Free",
+        "cta_url": "#offer",
         "guarantee_text": "90-Day Money-Back Guarantee",
-        "rating_size": 18,
-        "heading_size": 36,
-        "checklist_size": 18,
-        "button_size": 18,
-        "rating_size_mobile": 16,
-        "heading_size_mobile": 26,
-        "checklist_size_mobile": 16,
-        "button_size_mobile": 18,
-        "frame_bg": "#eaeaf7",
-        "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "bg_color": "#ffffff",
+        "accent_color": "#672666",
+        "accent_hover": "#4a1b49",
+        "image_mobile_height": 280,
+        "quote": "“The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!”",
+        "reviewer_name": "Susann M Thoens",
+        "reviewer_since": "Verified Customer"
       }
     },
     "sticky_cta_v2_WgFy7H": {

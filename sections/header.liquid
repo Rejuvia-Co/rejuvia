@@ -136,11 +136,11 @@
   }
   #header .rjnav-account:hover .rjnav-account-label::after,
   #header .rjnav-account:focus-visible .rjnav-account-label::after { opacity: 1; }
-  /* Type matches the hero CTA (.hero-v2-btn): Helvetica Neue 500 / 18px / normal tracking / 1.4. */
+  /* Hero CTA type (Helvetica Neue 500, normal tracking, 1.4) at a compact 16px for the nav bar. */
   #header .rjnav-cta {
     white-space: nowrap; flex-shrink: 0; background: {{ purple }}; color: #fff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1.4;
-    padding: 10px 22px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500; font-size: 16px; letter-spacing: normal; line-height: 1.4;
+    padding: 11px 24px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
   }
   #header .rjnav-cta:hover { background: {{ purple_dark }}; color: #fff; transform: translateY(-1px); }
   #header .rjnav-carticon { position: relative; display: flex; color: {{ ink }}; transition: color .2s; }
@@ -334,7 +334,7 @@
 
     <div class="rjnav-right" data-rjnav-close>
       <a class="rjnav-account" href="{{ account_url }}" aria-label="Sign in">{{ icon_user }}<span class="rjnav-account-label">{{ section.settings.account_label | default: 'Sign In' }}</span></a>
-      <a class="rjnav-cta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Sleep Spray' }}</a>
+      <a class="rjnav-cta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Now' }}</a>
       <a class="rjnav-carticon" href="/cart" aria-label="Cart">{{ icon_cart }}{% if cart.item_count > 0 %}<span class="rjnav-cart-count">{{ cart.item_count }}</span>{% endif %}</a>
     </div>
   </div>
@@ -484,7 +484,7 @@
       <a class="rjnav-mlink" href="{{ account_url }}">{{ section.settings.account_label | default: 'Sign In' }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
     </div>
 
-    <a class="rjnav-mcta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Sleep Spray' }}</a>
+    <a class="rjnav-mcta" href="{{ section.settings.cta_url | default: '/products/sleep-spray' }}">{{ section.settings.cta_label | default: 'Shop Now' }}</a>
 
     <div class="rjnav-mtrust">
       {%- for i in (0..2) -%}
@@ -662,7 +662,7 @@
     { "type": "url", "id": "link_3_url", "label": "Link 3 URL" },
     { "type": "header", "content": "Right cluster" },
     { "type": "text", "id": "account_label", "label": "Account label", "default": "Sign In" },
-    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop Sleep Spray" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop Now" },
     { "type": "url", "id": "cta_url", "label": "CTA URL" },
     { "type": "text", "id": "shopnow_label", "label": "Preview button label", "default": "Shop Now" },
     { "type": "header", "content": "Trust items (menu + mobile tiles)" },

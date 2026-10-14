@@ -16,7 +16,8 @@
     <div class="grid__item one-third small--one-whole">
       <a href="{{ collection.url }}">
         <div class="col">
-          <div class="bg ease-animation-slow lazyload" style="background-image: url({{ 'placeholder.png' | asset_url }})" {% if collection.image != blank %}data-bgset="{% include 'lazy_src', image: collection.image %}"{% else %}data-bgset="{% include 'lazy_src', image: collection.products.first.images.first %}"{% endif %}></div>
+          {%- assign col_img = collection.image | default: collection.products.first.featured_image -%}
+          <div class="bg ease-animation-slow" style="background-image: url({% if col_img != blank %}{{ col_img | image_url: width: 900 }}{% else %}{{ 'placeholder.png' | asset_url }}{% endif %})"></div>
           <div class="overlay ease-animation-slow  flex justify-content-center align-items-center">
             <div class="wrap">
               <div class="title">{{collection.title}}</div>

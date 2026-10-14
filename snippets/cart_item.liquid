@@ -8,7 +8,7 @@
         {%- else -%}
         {%- assign variantImg = item.product.featured_image -%}
         {%- endif -%}
-        <img class="lazyload" data-sizes="auto" src="{%- include 'image_placeholder', image: variantImg -%}" data-srcset="{%- include 'lazy_src', image: variantImg -%}" alt="{{ item.product.title }}" loading="lazy" decoding="async">
+        <img src="{{ variantImg | image_url: width: 240 }}" srcset="{{ variantImg | image_url: width: 240 }} 1x, {{ variantImg | image_url: width: 480 }} 2x" alt="{{ item.product.title | escape }}" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="grid__item three-quarters info">

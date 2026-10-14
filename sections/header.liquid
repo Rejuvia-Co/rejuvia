@@ -136,9 +136,11 @@
   }
   #header .rjnav-account:hover .rjnav-account-label::after,
   #header .rjnav-account:focus-visible .rjnav-account-label::after { opacity: 1; }
+  /* Type matches the hero CTA (.hero-v2-btn): Helvetica Neue 500 / 18px / normal tracking / 1.4. */
   #header .rjnav-cta {
-    white-space: nowrap; flex-shrink: 0; background: {{ purple }}; color: #fff; font-weight: 600; font-size: 15px;
-    padding: 11px 20px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
+    white-space: nowrap; flex-shrink: 0; background: {{ purple }}; color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1.4;
+    padding: 10px 22px; border-radius: 100px; text-decoration: none; transition: background .2s, transform .2s;
   }
   #header .rjnav-cta:hover { background: {{ purple_dark }}; color: #fff; transform: translateY(-1px); }
   #header .rjnav-carticon { position: relative; display: flex; color: {{ ink }}; transition: color .2s; }
@@ -293,7 +295,7 @@
     }
     #header .rjnav-mlink svg { width: 18px; height: 18px; }
 
-    #header .rjnav-mcta { margin: 16px 18px 0; background: {{ purple }}; color: #fff; text-align: center; font-size: 16px; font-weight: 600; padding: 16px; border-radius: 100px; text-decoration: none; }
+    #header .rjnav-mcta { margin: 16px 18px 0; background: {{ purple }}; color: #fff; text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: normal; line-height: 1.4; padding: 16px; border-radius: 100px; text-decoration: none; }
     #header .rjnav-mcta:active { background: {{ purple_dark }}; color: #fff; }
 
     #header .rjnav-mtrust { margin-top: auto; padding: 16px 18px 22px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; text-align: center; font-size: 12px; line-height: 1.3; color: {{ body_gray }}; }

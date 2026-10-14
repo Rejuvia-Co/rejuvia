@@ -44,6 +44,8 @@ html { scroll-behavior: smooth; }
 }
 .cta-{{ section.id }} .fcta__media {
   grid-column: 1; grid-row: 1 / span 5; position: relative; aspect-ratio: 1 / 1;
+  /* Nudge the bottles + callout left so the group is centered in its column. */
+  transform: translateX(-40px);
   --callout-x: 66%; --callout-y: 72%; --callout-size: 40px;
   --arrow-x: 67%; --arrow-y: 46%;
 }
@@ -104,14 +106,14 @@ html { scroll-behavior: smooth; }
   .cta-{{ section.id }} .fcta__reviewer-since { font-size: 13px; }
   .cta-{{ section.id }} .fcta__media {
     order: 4; aspect-ratio: auto; height: {{ section.settings.image_mobile_height | default: 280 }}px;
+    transform: translateX(-16px);
     --callout-x: 63%; --callout-y: 68%; --callout-size: 27px; --arrow-x: 66%; --arrow-y: 40%;
   }
   .cta-{{ section.id }} .fcta__divider { display: none; }
   .cta-{{ section.id }} .fcta__cta-group { order: 5; align-items: stretch; }
-  /* Reviewer + guarantee left-align with the review quote. */
+  /* Reviewer left-aligns with the review quote; guarantee stays centered under the button. */
   .cta-{{ section.id }} .fcta__reviewer { justify-content: flex-start; }
-  .cta-{{ section.id }} .fcta__guarantee { margin-top: 2px; justify-content: flex-start; align-items: flex-start; gap: 6px; font-size: 14px; }
-  .cta-{{ section.id }} .fcta__guarantee svg { margin-top: 1px; }
+  .cta-{{ section.id }} .fcta__guarantee { margin-top: 2px; }
   .cta-{{ section.id }} .fcta__rate-item--stars, .cta-{{ section.id }} .fcta__rate-sep--stars { display: none; }
 }
 
@@ -355,15 +357,14 @@ html { scroll-behavior: smooth; }
           {%- comment -%} Quote — hardcoded (not a setting) so it always renders live; stored setting values don't deploy/update via GitHub sync. {%- endcomment -%}
           <div class="fcta__quote">&ldquo;It WORKS!!! It&rsquo;s been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.&rdquo;</div>
 
-          {%- comment -%} Reviewer {%- endcomment -%}
-          {%- assign rev_name = section.settings.review_name | default: section.settings.reviewer_name -%}
+          {%- comment -%} Reviewer — circular photo + name hardcoded (with picker override) so the testimonial is consistent and always renders live. {%- endcomment -%}
+          {%- assign rev_name = 'Susann M Thoens' -%}
+          {%- assign rev_since = section.settings.reviewer_since | default: 'Verified Customer' -%}
           <div class="fcta__reviewer">
-            {%- if section.settings.reviewer_photo != blank -%}
-              <img src="{{ section.settings.reviewer_photo | image_url: width: 88 }}" width="44" height="44" alt="{{ rev_name | escape }}" loading="lazy" decoding="async">
-            {%- endif -%}
+            <img class="fcta__avatar" src="{% if section.settings.reviewer_photo != blank %}{{ section.settings.reviewer_photo | image_url: width: 120 }}{% else %}{{ 'reviewer-avatar.jpg' | asset_url }}{% endif %}" width="44" height="44" alt="{{ rev_name | escape }}" loading="lazy" decoding="async">
             <div class="fcta__reviewer-meta">
-              {%- if rev_name != blank -%}<span class="fcta__reviewer-name">{{ rev_name }}</span>{%- endif -%}
-              {%- if section.settings.reviewer_since != blank -%}<span class="fcta__reviewer-since">{{ section.settings.reviewer_since }}</span>{%- endif -%}
+              <span class="fcta__reviewer-name">&ndash; {{ rev_name }}</span>
+              <span class="fcta__reviewer-since">{{ rev_since }}</span>
             </div>
           </div>
 

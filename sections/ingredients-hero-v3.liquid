@@ -8,7 +8,7 @@
   at <=900px, line-height 1.4, #141414. Underlined / bold / italic words render
   in the accent colour, same as "3x Faster" on the homepage.
 
-  Mobile order: eyebrow → H1 → image → body → trust tiles.
+  Mobile order: H1 → image → body → trust tiles.
 {%- endcomment -%}
 
 {%- liquid
@@ -16,14 +16,6 @@
 -%}
 
 {% style %}
-  @font-face {
-    font-family: 'Helvetica LT Cond';
-    src: url('{{ "HelveticaLTStd-BlkCond.woff2" | asset_url }}') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-  }
-
   .ing-hero-section { background: {{ section.settings.bg_color | default: '#ffffff' }}; overflow-x: clip; }
 
   .ing-hero {
@@ -44,17 +36,6 @@
     align-items: start;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #141414;
-  }
-
-  .ing-hero__eyebrow {
-    grid-area: eyebrow;
-    font-family: 'Helvetica LT Cond', 'HelveticaNeueL', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-transform: uppercase;
-    color: {{ accent }};
   }
 
   /* --- Heading: identical to .hero-v2-heading --- */
@@ -159,7 +140,6 @@
       gap: 18px;
       padding: 32px 18px 36px;
     }
-    .ing-hero__eyebrow { font-size: 13px; }
     .ing-hero__heading { margin: 0; font-size: 26px; }
     .ing-hero__media { aspect-ratio: auto; }
     .ing-hero__media img { height: auto; }

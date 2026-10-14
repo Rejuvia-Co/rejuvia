@@ -154,6 +154,14 @@
                alt="Rejuvia Sleep Spray — buy one, get one free" loading="lazy"
                width="1100" height="1100">
         </picture>
+      {%- else -%}
+        {%- comment -%} Default composited BOGO bottles shipped as theme assets. {%- endcomment -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ 'bogo-bottles-mobile.png' | asset_url }}">
+          <img src="{{ 'bogo-bottles-desktop.png' | asset_url }}"
+               alt="Rejuvia Sleep Spray — buy one, get one free" loading="lazy"
+               width="1100" height="1100">
+        </picture>
       {%- endif -%}
 
       {%- if section.settings.show_callout -%}

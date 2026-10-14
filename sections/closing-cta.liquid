@@ -99,9 +99,13 @@ html { scroll-behavior: smooth; }
     --callout-x: 63%; --callout-y: 68%; --callout-size: 27px; --arrow-x: 66%; --arrow-y: 40%;
   }
   .cta-{{ section.id }} .fcta__divider { display: none; }
-  .cta-{{ section.id }} .fcta__cta-group { order: 5; }
-  .cta-{{ section.id }} .fcta__cta { height: 60px; }
-  .cta-{{ section.id }} .fcta__guarantee { margin-top: -4px; }
+  .cta-{{ section.id }} .fcta__cta-group { order: 5; align-items: stretch; }
+  /* CTA matches the comparison section above: full-width pill, padding-based height. */
+  .cta-{{ section.id }} .fcta__cta { height: auto; padding: 24px 32px; font-size: 18px; text-transform: capitalize; }
+  /* Reviewer + guarantee left-align with the review quote. */
+  .cta-{{ section.id }} .fcta__reviewer { justify-content: flex-start; }
+  .cta-{{ section.id }} .fcta__guarantee { margin-top: 2px; justify-content: flex-start; align-items: flex-start; gap: 6px; font-size: 14px; }
+  .cta-{{ section.id }} .fcta__guarantee svg { margin-top: 1px; }
   .cta-{{ section.id }} .fcta__rate-item--stars, .cta-{{ section.id }} .fcta__rate-sep--stars { display: none; }
 }
 
@@ -342,8 +346,8 @@ html { scroll-behavior: smooth; }
             <span class="fcta__rate-item"><b>{{ section.settings.customers_value | default: '500K+' }}</b> Customers</span>
           </div>
 
-          {%- comment -%} Quote — hardcoded default so it renders live on every offer page (per-page review_text settings don't deploy via GitHub sync). {%- endcomment -%}
-          <div class="fcta__quote">{{ section.settings.quote | default: "“It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.”" }}</div>
+          {%- comment -%} Quote — hardcoded (not a setting) so it always renders live; stored setting values don't deploy/update via GitHub sync. {%- endcomment -%}
+          <div class="fcta__quote">&ldquo;It WORKS!!! It&rsquo;s been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.&rdquo;</div>
 
           {%- comment -%} Reviewer {%- endcomment -%}
           {%- assign rev_name = section.settings.review_name | default: section.settings.reviewer_name -%}
@@ -419,7 +423,6 @@ html { scroll-behavior: smooth; }
     { "type": "image_picker", "id": "reviewer_photo", "label": "Reviewer photo" },
     { "type": "text", "id": "reviewer_name", "label": "Reviewer name (fallback)", "info": "Used only if 'Reviewer name' under Featured review is empty." },
     { "type": "text", "id": "reviewer_since", "label": "Reviewer subline", "default": "Verified Customer" },
-    { "type": "textarea", "id": "quote", "label": "Quote", "default": "“It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.”", "info": "The testimonial shown in the BOGO close." },
     { "type": "header", "content": "Shared — image (D3+K2 card)" },
     { "type": "image_picker", "id": "image", "label": "Product image (D3+K2 card only)" },
     { "type": "header", "content": "Review bar (D3+K2 card)" },

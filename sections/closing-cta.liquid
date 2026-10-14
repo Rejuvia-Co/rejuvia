@@ -343,7 +343,7 @@ html { scroll-behavior: smooth; }
           </div>
 
           {%- comment -%} Quote — hardcoded default so it renders live on every offer page (per-page review_text settings don't deploy via GitHub sync). {%- endcomment -%}
-          <div class="fcta__quote">{{ section.settings.quote | default: "It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work." }}</div>
+          <div class="fcta__quote">{{ section.settings.quote | default: "“It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.”" }}</div>
 
           {%- comment -%} Reviewer {%- endcomment -%}
           {%- assign rev_name = section.settings.review_name | default: section.settings.reviewer_name -%}
@@ -419,7 +419,7 @@ html { scroll-behavior: smooth; }
     { "type": "image_picker", "id": "reviewer_photo", "label": "Reviewer photo" },
     { "type": "text", "id": "reviewer_name", "label": "Reviewer name (fallback)", "info": "Used only if 'Reviewer name' under Featured review is empty." },
     { "type": "text", "id": "reviewer_since", "label": "Reviewer subline", "default": "Verified Customer" },
-    { "type": "textarea", "id": "quote", "label": "Quote", "default": "It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.", "info": "The testimonial shown in the BOGO close." },
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "“It WORKS!!! It's been a miracle for me. I had tried everything for my sleep and Rejuvia is the ONLY product to truly work.”", "info": "The testimonial shown in the BOGO close." },
     { "type": "header", "content": "Shared — image (D3+K2 card)" },
     { "type": "image_picker", "id": "image", "label": "Product image (D3+K2 card only)" },
     { "type": "header", "content": "Review bar (D3+K2 card)" },

@@ -60,7 +60,7 @@
   /* --- Heading: identical to .hero-v2-heading --- */
   .ing-hero__heading {
     grid-area: title;
-    margin: 24px 0 0;
+    margin: 0;
     font-size: 36px;
     line-height: 1.4;
     color: #141414;
@@ -173,13 +173,8 @@
 {% endstyle %}
 
 <div class="ing-hero">
-  {%- if section.settings.eyebrow != blank -%}
-    <div class="ing-hero__eyebrow">{{ section.settings.eyebrow }}</div>
-  {%- endif -%}
-
-  {%- if section.settings.heading != blank -%}
-    <h1 class="ing-hero__heading">{{ section.settings.heading }}</h1>
-  {%- endif -%}
+  {%- comment -%} Eyebrow removed and heading hardcoded so they render live (template-JSON settings don't deploy via GitHub sync). {%- endcomment -%}
+  <h1 class="ing-hero__heading">Clean, 100% All-Natural and <span style="text-decoration:underline"><em><strong>Clinically-Backed</strong></em></span> Ingredients</h1>
 
   {%- if section.settings.image != blank -%}
     <picture class="ing-hero__media">

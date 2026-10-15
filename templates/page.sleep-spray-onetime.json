@@ -59,7 +59,7 @@
           "settings": {
             "urgency_text": "Order within the next hour for guaranteed fast shipping by {date_ord}",
             "header_text": "CHOOSE YOUR SUPPLY",
-            "default_tier": 1,
+            "default_tier": 2,
             "button_text": "Add to Cart",
             "guarantee_label": "90-Day Money-Back Guarantee",
             "guarantee_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"13\" viewbox=\"0 0 14 13\" fill=\"none\">\n  <path d=\"M11.3892 1.7555C11.6093 1.54595 11.9022 1.43011 12.2061 1.43241C12.51 1.43471 12.8011 1.55497 13.018 1.76783C13.2349 1.98068 13.3607 2.26948 13.3687 2.57327C13.3767 2.87707 13.2664 3.17211 13.0611 3.39613L6.82669 11.193C6.71949 11.3085 6.59011 11.4011 6.44627 11.4655C6.30244 11.5298 6.14712 11.5644 5.98959 11.5673C5.83205 11.5703 5.67555 11.5414 5.52944 11.4824C5.38332 11.4235 5.2506 11.3357 5.13919 11.2243L1.00482 7.08988C0.889682 6.98259 0.797335 6.85322 0.733285 6.70947C0.669235 6.56572 0.634795 6.41054 0.632018 6.25319C0.629242 6.09585 0.658187 5.93955 0.717126 5.79363C0.776065 5.64771 0.863791 5.51516 0.975071 5.40388C1.08635 5.2926 1.2189 5.20488 1.36482 5.14594C1.51074 5.087 1.66704 5.05805 1.82438 5.06083C1.98173 5.0636 2.13691 5.09805 2.28066 5.1621C2.42441 5.22614 2.55378 5.31849 2.66107 5.43363L5.93294 8.70394L11.3595 1.78988L11.3892 1.7555Z\" fill=\"#EAC78B\"></path>\n</svg>",
@@ -502,7 +502,75 @@
         "title_color": "#171512",
         "answer_color": "#3a3a3a",
         "product": "sleep-spray"
-      }
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel Rejuvia working?",
+            "answer": "<p>Most people feel it the first or second night. Because the spray absorbs under your tongue, it skips your stomach completely and gets to work in about 10-15 minutes instead of the 60-90 minutes pills and gummies take. That said, if you've been dealing with bad sleep for years, give it a full 7-10 nights of consistent use. The ingredients build on each other and the deeper, full-night sleep typically kicks in by the end of week one.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I wake up groggy in the morning?",
+            "answer": "<p>No, and this is the #1 reason people switch to Rejuvia. We use a low 2mg dose of melatonin (most gummies pack 5-10mg, which is what causes the morning hangover) paired with 12 natural sleep herbs that calm your mind without knocking you out cold. You'll wake up rested, not foggy.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Rejuvia habit-forming? Will I become dependent on it?",
+            "answer": "<p>Not at all. Rejuvia is non-habit-forming, and you can use it every night or only when you need it. Most of our customers use it nightly as part of their wind-down routine because they love how they feel, not because they have to. Plenty of customers also use it 3-4 nights a week or only when travel and stress throw off their sleep.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What's actually in Rejuvia? Is it just melatonin?",
+            "answer": "<p>Nope, and that's the whole point. Most sleep products are just a big dose of melatonin and call it a day. Rejuvia has 13 all-natural ingredients working together: a low 2mg of melatonin, plus 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew. That's why it works on falling asleep, staying asleep, and waking up refreshed instead of just one of the three.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>You're covered by our 90-day money-back guarantee on your first order, no questions asked. If you try Rejuvia for a few weeks and don't love it, just email us at <a href=\"mailto:hello@rejuvia.co\">hello@rejuvia.co</a> and we'll refund you. We'd rather earn your trust than hold your money.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this a subscription?",
+            "answer": "<p>No. Every option on this page is a one-time purchase, not a subscription. You pay once for the sprays you choose, and you'll never be charged again or sent anything automatically. When you're running low, just come back and reorder.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle last and when will my order arrive?",
+            "answer": "<p>Each bottle has 240 sprays, which lasts about 30-35 nights at the recommended 6-8 sprays per night. We ship every order within 24 hours and most orders arrive within 2-3 business days.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavor is Rejuvia?",
+            "answer": "<p>Rejuvia oral sprays have a refreshing, all-natural mint flavoring. It's noticeable and refreshing but mild — if you don't love mint, it's not overpowering.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ]
     },
     "feature_products_v2_1": {
       "type": "feature-products-v2",

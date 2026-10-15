@@ -113,8 +113,10 @@
 {% endstyle %}
 
 {% assign faqs = product.metafields.custom.faqs.value %}
+{%- comment -%} FAQ blocks, when added (e.g. a landing page that needs its own answers), replace the product's FAQs. {%- endcomment -%}
+{%- assign faq_blocks = section.blocks | where: 'type', 'faq' -%}
 
-{% if faqs != blank %}
+{% if faqs != blank or faq_blocks.size > 0 %}
 {%- assign pfaq_base = product.metafields.custom.base_colour -%}
 <section id="pfaq-{{ section.id }}"{% if pfaq_base != blank %} style="--base-colour: {{ pfaq_base }};"{% endif %} class="pfaq-v2-section">
   <div class="pfaq-v2-container">
@@ -129,6 +131,19 @@
     {%- endif -%}
 
     <div class="pfaq-v2-list">
+      {%- if faq_blocks.size > 0 -%}
+      {% for b in faq_blocks %}
+        <div class="pfaq-v2-item{% if section.settings.open_first and forloop.first %} is-open{% endif %}" data-pfaq-v2-item {{ b.shopify_attributes }}>
+          <button class="pfaq-v2-question" type="button" aria-expanded="{% if section.settings.open_first and forloop.first %}true{% else %}false{% endif %}">
+            <span>{{ b.settings.question }}</span>
+            <svg class="pfaq-v2-question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="pfaq-v2-answer">
+            <div class="pfaq-v2-answer-inner"><div class="metafield-rich_text_field">{{ b.settings.answer }}</div></div>
+          </div>
+        </div>
+      {% endfor %}
+      {%- else -%}
       {% for faq in faqs %}
         <div class="pfaq-v2-item{% if section.settings.open_first and forloop.first %} is-open{% endif %}" data-pfaq-v2-item>
           <button class="pfaq-v2-question" type="button" aria-expanded="{% if section.settings.open_first and forloop.first %}true{% else %}false{% endif %}">
@@ -140,6 +155,7 @@
           </div>
         </div>
       {% endfor %}
+      {%- endif -%}
     </div>
 
     {%- if section.settings.footer_text != blank -%}
@@ -204,6 +220,16 @@
     { "type": "color", "id": "accent_color", "label": "Accent (icon, italics)", "default": "#672666" },
     { "type": "color", "id": "title_color", "label": "Title & question colour", "default": "#171512" },
     { "type": "color", "id": "answer_color", "label": "Answer colour", "default": "#3a3a3a" }
+  ]
+  ,"blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
   ]
 }
 {% endschema %}

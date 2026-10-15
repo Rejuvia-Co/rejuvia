@@ -1,3 +1,5 @@
+{%- comment -%} Product source: this section's Product setting, else the page's product (product pages leave it blank). {%- endcomment -%}
+{%- assign product = section.settings.product | default: product -%}
 {%- comment -%}
   Product FAQs — same design as the homepage "FAQ Center" section
   (centred single column, chevron icon, one open at a time), but the items
@@ -176,6 +178,7 @@
   "name": "Product FAQs",
   "tag": "section",
   "settings": [
+    {"type": "product", "id": "product", "label": "Product", "info": "Leave blank on product pages. Set it when this section is used on a page (e.g. a landing page)."},
     {
       "type": "paragraph",
       "content": "FAQ items come from product metafield custom.faqs (list of metaobjects with question + answer fields). Section hidden when the metafield is empty."

@@ -1,3 +1,5 @@
+{%- comment -%} Product source: this section's Product setting, else the page's product (product pages leave it blank). {%- endcomment -%}
+{%- assign product = section.settings.product | default: product -%}
 {%- liquid
   comment
     Items come from the per-product single-line metafield custom.guarantees, a
@@ -101,6 +103,7 @@
     "name": "Guarantees V2",
     "class": "guarantees-v2-section",
     "settings": [
+    {"type": "product", "id": "product", "label": "Product", "info": "Leave blank on product pages. Set it when this section is used on a page (e.g. a landing page)."},
         {
             "type": "paragraph",
             "content": "Items come from the product's custom.guarantees metafield (a single line, items separated by a pipe | ). The list below is the fallback used when that metafield is empty."

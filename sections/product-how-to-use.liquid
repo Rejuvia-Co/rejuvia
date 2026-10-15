@@ -1,3 +1,5 @@
+{%- comment -%} Product source: this section's Product setting, else the page's product (product pages leave it blank). {%- endcomment -%}
+{%- assign product = section.settings.product | default: product -%}
 {%- comment -%}
   Product How To Use — clean 3-step layout (matches the "How To Use (Steps)"
   design used on the V2 template), but driven PER PRODUCT by the existing
@@ -119,6 +121,7 @@
   "tag": "section",
   "class": "product-how-to-use",
   "settings": [
+    {"type": "product", "id": "product", "label": "Product", "info": "Leave blank on product pages. Set it when this section is used on a page (e.g. a landing page)."},
     {
       "type": "paragraph",
       "content": "Content comes from the product's custom.how_to_use metaobject: subtitle, plus each step's image and description. Edit it on the product page in the admin. The section hides itself when no steps are defined."

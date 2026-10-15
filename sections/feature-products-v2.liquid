@@ -1,3 +1,5 @@
+{%- comment -%} Product source: this section's Product setting, else the page's product (product pages leave it blank). {%- endcomment -%}
+{%- assign product = section.settings.product | default: product -%}
 {{ 'feature-products-v2.css' | asset_url | stylesheet_tag }}
 
 {% assign featured = product.metafields.custom.feature_products.value %}
@@ -130,6 +132,7 @@
   "name": "Feature Products V2",
   "tag": "section",
   "settings": [
+    {"type": "product", "id": "product", "label": "Product", "info": "Leave blank on product pages. Set it when this section is used on a page (e.g. a landing page)."},
     {
       "type": "paragraph",
       "content": "Products come from product metafield custom.feature_products (list of products). Optional per-product metafields: custom.base_colour (accent), custom.card_description, custom.card_tags (comma-separated)."

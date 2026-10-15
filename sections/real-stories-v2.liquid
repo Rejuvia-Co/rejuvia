@@ -1,3 +1,5 @@
+{%- comment -%} Product source: this section's Product setting, else the page's product (product pages leave it blank). {%- endcomment -%}
+{%- assign product = section.settings.product | default: product -%}
 {%- comment -%}
   Content source (per tab, in priority order):
     1. The per-product metaobject custom.real_stories — parent object holding
@@ -576,6 +578,7 @@
     "name": "Real Stories V2",
     "class": "rs-v2-section",
     "settings": [
+    {"type": "product", "id": "product", "label": "Product", "info": "Leave blank on product pages. Set it when this section is used on a page (e.g. a landing page)."},
         {
             "type": "text",
             "id": "trusted_count",

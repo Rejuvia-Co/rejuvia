@@ -195,6 +195,16 @@
           assign total_qty = paid_qty | plus: free_qty
 
           comment
+            One-time-only mode (section setting "One-time purchase only"): every tier is
+            priced and added to the cart at the variant's one-time price (no Skio plan),
+            and the delivery wording is dropped from the perks.
+          endcomment
+          if section.settings.one_time_display == 'only'
+            assign plan_id = ''
+            assign t_perks = t_perks | replace: ', delivered {frequency}', '' | replace: ' delivered {frequency}', ''
+          endif
+
+          comment
             Price from the tier's Skio plan on the cart variant; one-time price when no plan is set.
           endcomment
           assign per_unit_price = cart_variant.price
@@ -553,6 +563,8 @@
                       {%- endif -%}
                       {%- if section.settings.one_time_display == 'block' and block.settings.one_time_label != blank -%}
                         <div class="guarantee-label-container pss-onetime-note" data-pss-onetime-note hidden>{{ block.settings.one_time_label }}</div>
+                      {%- elsif section.settings.one_time_display == 'only' and block.settings.one_time_label != blank -%}
+                        <div class="guarantee-label-container pss-onetime-note">{{ block.settings.one_time_label }}</div>
                       {%- endif -%}
                     </div>
 

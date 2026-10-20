@@ -229,7 +229,6 @@
     "checkout_accent_color": "#d50057",
     "checkout_button_color": "#d50057",
     "checkout_error_color": "#d93535",
-    "checkout_layout": "onepage",
     "cart_item_bg_color": "#f9f9f9",
     "cart_item_border_color": "#ddd",
     "blog_layout": "list",
@@ -941,6 +940,7 @@
         ],
         "name": "Guarantees V2",
         "settings": {
+          "product": "",
           "default_items": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
           "anchor_id": "",
           "bg_color": "#f5f5fb",
@@ -996,7 +996,7 @@
             "settings": {
               "icon": "stomach",
               "title": "Skips Your Stomach",
-              "description": "No acid or enzymes breaking it down."
+              "description": "No acid or enzymes breaking it down"
             }
           },
           "benefit_clock": {
@@ -1004,7 +1004,7 @@
             "settings": {
               "icon": "clock",
               "title": "Works In Minutes",
-              "description": "Asleep in 10–15 minutes, not 45+."
+              "description": "Asleep in 10–15 minutes, not 45+"
             }
           },
           "benefit_drop": {
@@ -1012,7 +1012,7 @@
             "settings": {
               "icon": "drop",
               "title": "Nothing Wasted",
-              "description": "More of every spray reaches your bloodstream."
+              "description": "More of every spray reaches your bloodstream"
             }
           }
         },
@@ -1231,6 +1231,7 @@
         ],
         "name": "Real Stories V2",
         "settings": {
+          "product": "",
           "trusted_count": "500,000+ Sleepers",
           "heading": "<p>Reviews From Customers Who <span style=\"text-decoration:underline\"><em>Made The Switch</em></span></p>",
           "tp_avatar_color": "#d0ffdd",

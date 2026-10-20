@@ -75,6 +75,11 @@
       },
       "order_payment_collection": {
         "pay_now": "Add To My Order!"
+      },
+      "ucp": {
+        "totals": {
+          "subtotal": "Our Guarantee"
+        }
       }
     },
     "article": {

@@ -29,9 +29,12 @@
 }
 
 .footer-v2-logo {
-    max-width: 180px;
+    display: block;
+    width: 180px;
+    max-width: 100%;
     height: auto;
 }
+.footer-v2-logo .logo-rejuvia-svg { display: block; width: 100%; height: auto; }
 
 .footer-v2-socials {
     display: flex;
@@ -320,7 +323,7 @@
         order: 1;
     }
     .footer-v2-brand .footer-v2-logo {
-        max-width: 160px;
+        width: 160px;
     }
     .footer-v2-brand .footer-v2-socials {
         display: none;
@@ -421,15 +424,8 @@
         <div class="footer-v2-top">
             {%- comment -%} Logo + Socials {%- endcomment -%}
             <div class="footer-v2-brand">
-                {% if section.settings.logo != blank %}
-                    <a href="{{ routes.root_url }}">
-<img class="footer-v2-logo"
-     src="{{ section.settings.logo | image_url: width: 400, format: 'webp' }}"
-     width="{{ section.settings.logo.width }}"
-     height="{{ section.settings.logo.height }}"
-     loading="lazy"
-     alt="{{ shop.name | escape }}" decoding="async">                    </a>
-                {% endif %}
+                {%- comment -%} Same code-drawn logo as the nav (carries the ® mark), instead of an uploaded image. {%- endcomment -%}
+                <a href="{{ routes.root_url }}" class="footer-v2-logo" aria-label="{{ shop.name | escape }} home">{% render 'logo-rejuvia' %}</a>
                 <div class="footer-v2-socials">
                     {% if settings.instagram_link != blank %}
                         <a href="{{ settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
@@ -613,11 +609,7 @@
             "type": "header",
             "content": "Brand"
         },
-        {
-            "type": "image_picker",
-            "id": "logo",
-            "label": "Logo"
-        },
+        {"type": "image_picker", "id": "logo", "label": "Logo", "info": "Not used: the footer shows the theme's built-in logo (with the ® mark), same as the header."},
         {
             "type": "header",
             "content": "Newsletter"

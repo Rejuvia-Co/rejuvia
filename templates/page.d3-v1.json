@@ -22,161 +22,214 @@
       }
     },
     "offer_block_d3": {
-      "type": "offer-block-d3v1",
+      "type": "offer-block-sub2",
       "blocks": {
-        "tier_1": {
-          "type": "tier",
+        "slide_d3_1": {
+          "type": "slide",
           "settings": {
-            "product": "vitamin-d3-k2-spray-1",
-            "variant_id": "52563142901980",
-            "selling_plan": "33801208028",
-            "base_qty": "1",
-            "free_qty": "0",
-            "discount_code": "",
-            "image_asset": "d3-bundle-1.webp",
-            "label": "Buy One Spray",
-            "price": "$24.99",
-            "compare_price": "$39.99",
-            "savings_text": "",
-            "free_shipping": false,
-            "per_night": "",
-            "tag": "",
-            "tag_style": "brand"
+            "image": "shopify://shop_images/hf_20260828_191015_19ae9b74-7000-4953-b19b-78b40cbbf7fa.webp"
           }
         },
-        "tier_2": {
-          "type": "tier",
+        "slide_d3_2": {
+          "type": "slide",
           "settings": {
-            "product": "vitamin-d3-k2-spray-1",
-            "variant_id": "52563142901980",
-            "selling_plan": "33801240796",
-            "base_qty": "2",
-            "free_qty": "1",
-            "discount_code": "D3B2G1FREE",
-            "image_asset": "d3-bundle-2plus1.webp",
-            "label": "Buy 2, Get 1 FREE",
-            "price": "$49.98",
-            "compare_price": "$74.97",
-            "savings_text": "$24.99 OFF",
-            "free_shipping": false,
-            "per_night": "$16.66 Per Spray",
-            "tag": "MOST POPULAR",
-            "tag_style": "brand"
+            "image": "shopify://shop_images/hf_20260828_191208_829022ab-acca-4241-8a3b-95a22e0dc24d.webp"
           }
         },
-        "tier_3": {
-          "type": "tier",
+        "slide_d3_3": {
+          "type": "slide",
           "settings": {
-            "product": "vitamin-d3-k2-spray-1",
-            "variant_id": "52563142901980",
-            "selling_plan": "33801273564",
-            "base_qty": "3",
-            "free_qty": "2",
-            "discount_code": "D3B3G2FREE",
-            "image_asset": "d3-bundle-3plus2.webp",
-            "label": "Buy 3, Get 2 FREE",
-            "price": "$74.97",
-            "compare_price": "$124.95",
-            "savings_text": "$49.98 OFF",
-            "free_shipping": false,
-            "per_night": "$14.99 Per Spray",
-            "tag": "BEST VALUE",
-            "tag_style": "gold"
+            "image": "shopify://shop_images/hf_20260828_191259_b2ee050f-39fa-47b4-8191-338bf56ed8e5.webp"
           }
         },
-        "tab_guarantee": {
+        "slide_d3_4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260828_191025_f636a006-b760-475f-aa0e-b6d025785c14.webp"
+          }
+        },
+        "slide_d3_5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260828_191054_cc3d7637-1583-4cae-850f-2e418a992d64.webp"
+          }
+        },
+        "tier_d3_1": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555311836",
+            "quantity": 1,
+            "selling_plan": "33875722460",
+            "label": "1 D3+K2 Spray",
+            "image_asset": "tier-vitamin-d3-k2-spray-1.png",
+            "price": "",
+            "compare_price": "$39",
+            "savings_text": "SAVE 28%",
+            "servings_text": "30 Servings · Delivered Monthly",
+            "free_shipping": false,
+            "badge": "",
+            "badge_style": "plum"
+          }
+        },
+        "tier_d3_2": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555344604",
+            "quantity": 1,
+            "selling_plan": "33875853532",
+            "label": "2 D3+K2 Sprays",
+            "image_asset": "tier-vitamin-d3-k2-spray-2.png",
+            "price": "",
+            "compare_price": "$78",
+            "savings_text": "SAVE 36%",
+            "servings_text": "60 Servings · Delivered Every 2 Months",
+            "free_shipping": false,
+            "badge": "MOST POPULAR",
+            "badge_style": "plum"
+          }
+        },
+        "tier_d3_3": {
+          "type": "tier",
+          "settings": {
+            "product": "vitamin-d3-k2-spray",
+            "variant_id": "46819555377372",
+            "quantity": 1,
+            "selling_plan": "33875886300",
+            "label": "3 D3+K2 Sprays",
+            "image_asset": "tier-vitamin-d3-k2-spray-3.png",
+            "price": "",
+            "compare_price": "$117",
+            "savings_text": "SAVE 42%",
+            "servings_text": "90 Servings · Delivered Every 3 Months",
+            "free_shipping": true,
+            "badge": "BEST VALUE",
+            "badge_style": "gold"
+          }
+        },
+        "tab_d3_1": {
           "type": "tab",
           "settings": {
             "title": "90-Day Guarantee",
             "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind every Rejuvia product. It's risk-free to try — if you're not happy, reach out and we'll make it right. No questions asked.</p>"
           }
         },
-        "tab_why": {
+        "tab_d3_2": {
           "type": "tab",
           "settings": {
-            "title": "How Rejuvia Absorbs 90% Better",
-            "content": "<p>Most vitamin D comes as a capsule, softgel, or gummy — which means it has to survive your digestive system first. Over the next 60–90 minutes your stomach breaks it down, and a good portion of the vitamin is lost before it ever reaches your bloodstream. Vitamin D is fat-soluble, too, so how much you actually absorb from a pill can vary a lot from person to person.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the vitamins absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body takes in up to <strong>90% more</strong> than gummies and pills, so far more of the D3 and K2 on the label becomes the D3 and K2 your body actually gets to use.</p><p>Same vitamins — far better delivery.</p>"
+            "title": "Why a Spray?",
+            "content": "<p>Most vitamin D comes as a capsule, softgel or gummy you have to swallow. Rejuvia is a sublingual spray: 8 quick sprays under your tongue, with no pills to swallow, no water, no dropper and no sugary gummies.</p><p>It's water-based, not oily, and easy to take every day. Clinical studies show vitamin D sprays raise vitamin D levels as well as capsules.</p>"
           }
         },
-        "tab_shipping": {
+        "tab_d3_3": {
           "type": "tab",
           "settings": {
             "title": "Shipping & Returns",
             "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All orders ship within one business day from our warehouse in Chicago. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2–3 business days.</p>"
           }
         },
-        "tab_safe": {
+        "tab_d3_4": {
           "type": "tab",
           "settings": {
             "title": "Why Both D3 and K2?",
-            "content": "<p>Vitamin D3 and K2 are a team, and they work best together.</p><p>D3 is what lets your body absorb calcium from your food. But absorbing calcium is only half the job — on its own, that calcium can end up in the wrong places, like your arteries and soft tissue, instead of your bones.</p><p>That's where K2 comes in. K2 activates the proteins that direct calcium into your bones and teeth and keep it out of your arteries. Take D3 by itself and you raise calcium absorption without telling your body where to put it. Pair it with K2 and the whole system works the way it's meant to.</p><p>That's why every Rejuvia spray combines <strong>2,000 IU (50 mcg) of D3</strong> with <strong>120 mcg of clinically-studied K2VITAL®</strong> — the two nutrients that make each other work.</p>"
+            "content": "<p>Vitamin D3 and K2 work as a team.</p><p>D3 helps your body absorb calcium. K2 helps your body use it: it activates proteins that help bind calcium to bone.</p><p>That's why every Rejuvia spray pairs <strong>2,000 IU (50 mcg) of D3</strong> with <strong>120 mcg of K2VITAL®</strong>, a clinically studied form of K2 (MK-7, the long-lasting form). Most basic D3 softgels skip the K2.</p>"
           }
         },
-        "tab_ingredients": {
+        "tab_d3_5": {
           "type": "tab",
           "settings": {
             "title": "Ingredients",
-            "content": "<p>Two actives in a clean base: <strong>Vitamin D3 (2,000 IU / 50 mcg)</strong> and <strong>Vitamin K2 as clinically-studied K2VITAL® (120 mcg)</strong>, in a base of purified water, organic cane sugar, and organic peppermint flavor.</p><p>D3 and K2 work as a team — D3 helps your body absorb calcium, and K2 directs that calcium into your bones and away from your arteries.</p>"
+            "content": "<p>Two actives in a clean base: <strong>Vitamin D3 (2,000 IU / 50 mcg)</strong> and <strong>Vitamin K2 as clinically studied K2VITAL® (120 mcg)</strong>, in a base of purified water, organic cane sugar, and organic peppermint flavor.</p><p>D3 helps your body absorb calcium, and K2 helps your body use it.</p>"
           }
         },
-        "tab_faq": {
+        "tab_d3_6": {
           "type": "tab",
           "settings": {
             "title": "Frequently Asked Questions",
-            "content": "<p><strong>Why D3 and K2 together?</strong></p><p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps direct that calcium into your bones and away from your arteries — which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of bioactive K2VITAL®.</p><p><strong>How is this better than a D3 pill?</strong></p><p>Most vitamin D comes as a capsule or softgel that has to survive digestion, where a good portion is broken down before it's ever absorbed. Our spray goes under your tongue and absorbs directly, so your body gets what it needs faster and more efficiently.</p><p><strong>Can I take it every day?</strong></p><p>Yes — it's made for daily use. A few sprays each morning is all it takes, and it's non-habit-forming with no dependency or tolerance buildup.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>Roughly one month of daily use. Each spray tube contains 240 total spritzes and our suggested dosage is 6–8 spritzes per day.</p>"
+            "content": "<p><strong>Why D3 and K2 together?</strong></p><p>They work as a team. Vitamin D3 helps your body absorb calcium, and K2 helps your body use it, which is why we pair 2,000 IU (50 mcg) of D3 with 120 mcg of K2VITAL®.</p><p><strong>Is this a subscription?</strong></p><p>Yes. Each option ships automatically at the discounted price: 1 spray every 4 weeks, 2 sprays every 2 months, or 3 sprays every 3 months. You can pause, skip or cancel anytime from your account.</p><p><strong>Can I take it every day?</strong></p><p>Yes, it's made for daily use. 8 quick sprays a day is all it takes.</p><p><strong>What flavor is it?</strong></p><p>A light, pleasant natural mint taste that most customers genuinely enjoy.</p><p><strong>How long does one bottle last?</strong></p><p>About one month. Each bottle has 240 sprays, and one serving is 8 sprays a day (30 servings).</p><p><strong>Can I take it if I'm on a blood thinner?</strong></p><p>If you take a blood-thinning medication, talk to your doctor before using any product with vitamin K.</p>"
           }
         }
       },
       "block_order": [
-        "tier_1",
-        "tier_2",
-        "tier_3",
-        "tab_guarantee",
-        "tab_why",
-        "tab_shipping",
-        "tab_safe",
-        "tab_ingredients",
-        "tab_faq"
+        "slide_d3_1",
+        "slide_d3_2",
+        "slide_d3_3",
+        "slide_d3_4",
+        "slide_d3_5",
+        "tier_d3_1",
+        "tier_d3_2",
+        "tier_d3_3",
+        "tab_d3_1",
+        "tab_d3_2",
+        "tab_d3_3",
+        "tab_d3_4",
+        "tab_d3_5",
+        "tab_d3_6"
       ],
-      "name": "Offer Block (D3)",
+      "name": "Offer Block (BOGO Sub layout) — D3",
       "settings": {
-        "product": "vitamin-d3-k2-spray-1",
-        "image_bg": "#ffffff",
+        "product": "vitamin-d3-k2-spray",
+        "gallery_bg": "#ffffff",
+        "gallery_fit": "cover",
+        "gallery_width": 560,
         "sticky_offset": 100,
         "show_stars": true,
         "stars_color": "#018e1c",
-        "stars_size": 18,
-        "stars_size_mobile": 14,
-        "rating_text": "<p>4.5 Stars | <strong>500,000+</strong> Customers</p>",
-        "title": "Vitamin D3 + K2 Sublingual Spray",
-        "subtitle": "2,000+ IU (50mcg) D3 + 120mcg K2 in 8 quick, daily sprays under your tongue. No pills, capsules, or droppers.",
-        "pill_text": "",
-        "pill_color": "#ffffff",
-        "pill_bg": "#018e1c",
+        "rating_label": "Excellent 4.5",
+        "reviews_label": "<p><strong>7,500+</strong> Reviews</p>",
+        "customers_label": "<p><strong>500,000+</strong> Customers</p>",
+        "headline": "Your Daily Vitamin D3 + K2 in 8 Quick Sprays. No Pills to Swallow.",
+        "subtitle": "2,000 IU (50 mcg) of D3 plus 120 mcg of K2VITAL® in 8 quick sprays under your tongue. No pills, no water, no dropper. Easy to take every day.",
+        "headline_size": 36,
+        "headline_size_mobile": 23,
+        "subtitle_size": 18,
+        "subtitle_size_mobile": 16,
+        "urgency_text": "Order in the next hour — by {cutoff} — to guarantee shipping by {date}",
         "default_tier": 2,
-        "button_text": "BUY NOW",
-        "guarantee_text": "90-Day, 100% Money Back Guarantee",
-        "onetime_text": "Easily Cancel, No Commitment",
+        "add_quantity": 1,
+        "tier_title_size": 22,
+        "tier_title_size_mobile": 21,
+        "button_prefix": "BUY NOW —",
+        "open_first_tab": false,
+        "show_pricebar": true,
+        "sale_label": "FALL SALE",
+        "social_text": "<p>From Rejuvia, Trusted by <strong>500k+</strong> Customers</p>",
+        "outcome_title": "With just 8 quick sprays under your tongue each day...",
+        "outcome_items": "Supports healthy bones and teeth\nSupports healthy immune function\nSupports normal muscle function",
+        "scarcity_label": "",
+        "scarcity_text": "Selling Out Fast Due To High Demand",
+        "scarcity_percent": 89,
+        "checkout_discount_code": "",
+        "use_manual_prices": false,
+        "guarantee_text": "90-Day Guarantee",
+        "guarantee_text_2": "Cancel Anytime",
+        "guarantee_icon": "shopify://shop_images/SealCheck.svg",
+        "onetime_text": "Subscribe & Save, Cancel Anytime",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "title_size": 40,
-        "title_size_mobile": 32,
-        "subtitle_size": 21,
-        "subtitle_size_mobile": 16,
-        "tier_title_size_mobile": 19,
-        "tab_body_size_mobile": 18,
-        "section_bg": "#ffffff",
-        "card_bg": "#ffffff",
-        "accent_color": "#018e1c",
-        "selected_bg": "#eaf4ec",
+        "proof_text": "",
+        "tab_title_size": 20,
+        "tab_title_size_mobile": 19,
+        "tab_body_size": 17,
+        "tab_body_size_mobile": 16,
         "show_trusted": true,
-        "trusted_title": "Used by 500,000+ customers",
-        "trusted_subtext": "for daily energy, immunity and bone strength",
+        "trusted_title": "Trusted by 500K+ customers",
+        "trusted_subtext": "who use Rejuvia every day",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#018e1c"
+        "trusted_check": "#018e1c",
+        "section_bg": "#ffffff",
+        "pill_format": "FALL SALE - {pct}% OFF",
+        "accent_color": "#018e1c",
+        "accent_dark": "#016612",
+        "badge_color": "#018e1c",
+        "selected_bg": "#eaf4ec",
+        "tint_bg": "#f3faf4",
+        "tint_border": "#8fcf9b",
+        "track_color": "#e2efe4"
       }
     },
     "customer_testimonials_video_d3": {

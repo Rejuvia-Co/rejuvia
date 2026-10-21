@@ -7,8 +7,10 @@
      panel. Purple CTA with an arrow. No Facebook review block.
    - Gallery images come from section blocks uploaded in the customizer,
      NOT from a product's media.
-   - Buy Now adds a one-time purchase, same as the BOGO template. The
-     subscription path (per-tier Skio selling plan) is removed for now.
+   - Buy Now adds a one-time purchase, same as the BOGO template, unless a
+     tier sets a Skio selling plan (priced from the plan, added on it).
+   - Colours default to the plum palette; the Colours settings override
+     them per page (e.g. green on the D3 page).
 
   Lifted unchanged from the existing BOGO template: payment icons,
   sub-CTA trust rows, the six-row
@@ -21,6 +23,16 @@
 {%- endcomment -%}
 
 {% style %}
+{%- comment -%} Optional colour overrides (Colours settings). Unset = the default plum values below. {%- endcomment -%}
+.obs-{{ section.id }} {
+  {%- if section.settings.accent_color != blank -%} --obs-accent: {{ section.settings.accent_color }};{%- endif -%}
+  {%- if section.settings.accent_dark != blank -%} --obs-accent-dark: {{ section.settings.accent_dark }};{%- endif -%}
+  {%- if section.settings.badge_color != blank -%} --obs-badge: {{ section.settings.badge_color }};{%- endif -%}
+  {%- if section.settings.selected_bg != blank -%} --obs-selected: {{ section.settings.selected_bg }};{%- endif -%}
+  {%- if section.settings.tint_bg != blank -%} --obs-tint: {{ section.settings.tint_bg }};{%- endif -%}
+  {%- if section.settings.tint_border != blank -%} --obs-tint-border: {{ section.settings.tint_border }};{%- endif -%}
+  {%- if section.settings.track_color != blank -%} --obs-track: {{ section.settings.track_color }};{%- endif -%}
+}
 html { scroll-behavior: smooth; }
 body.ob-offer-visible .sticky-cta-v2-section,
 body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important; }
@@ -61,17 +73,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
    this restores it so only the active slide renders */
 .obs__main img[data-obs-main][hidden] { display: none; }
 .obs__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
-.obs__arrow { flex: none; width: 28px; height: 28px; border: none; background: none; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: color .14s ease; }
-.obs__arrow:hover { color: #4a1a4c; }
+.obs__arrow { flex: none; width: 28px; height: 28px; border: none; background: none; color: var(--obs-accent, #672666); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: color .14s ease; }
+.obs__arrow:hover { color: var(--obs-accent-dark, #4a1a4c); }
 .obs__arrow svg { width: 18px; height: 18px; display: block; }
 .obs__thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; max-width: 100%; }
 .obs__thumbs::-webkit-scrollbar { display: none; }
 .obs__thumb { flex: none; width: 57px; height: 57px; border: 1px solid #e9e4f0; border-radius: 12px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; padding: 0; }
 .obs__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.obs__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
+.obs__thumb.is-active { border: 1.5px solid var(--obs-accent, #672666); background: #fff; }
 .obs__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
 .obs__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
-.obs__dot.is-active { background: #672666; }
+.obs__dot.is-active { background: var(--obs-accent, #672666); }
 
 /* ---- Review bar ---- */
 .obs__reviewbar { display: flex; align-items: center; gap: 10px; font-size: 16px; color: #4a4550; flex-wrap: wrap; }
@@ -87,23 +99,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__subtitle { font-size: {{ section.settings.subtitle_size | default: 18 }}px; line-height: 1.45; color: #4a4550; margin: 18px 0 0; }
 
 /* ---- Urgency strip ---- */
-.obs__urgency { display: flex; align-items: center; gap: 10px; border: 1.5px dashed #b79ab8; background: #faf7fd; border-radius: 12px; padding: 12px 16px; margin-top: 18px; font-size: 14px; line-height: 1.35; color: #4c1c4f; }
+.obs__urgency { display: flex; align-items: center; gap: 10px; border: 1.5px dashed var(--obs-tint-border, #b79ab8); background: var(--obs-tint, #faf7fd); border-radius: 12px; padding: 12px 16px; margin-top: 18px; font-size: 14px; line-height: 1.35; color: var(--obs-accent-dark, #4c1c4f); }
 .obs__urgency svg { flex: none; width: 20px; height: 20px; }
 .obs__urgency b { font-weight: 800; }
 
 /* ---- Tier rows (real bundle photography, no pictograms) ---- */
 .obs__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
 .obs__tier { position: relative; display: block; background: #fff; border: 1.5px solid #e6e1ee; border-radius: 12px; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
-.obs__tier.is-selected { border-color: #672666; box-shadow: inset 0 0 0 1.5px #672666; background: #f4ecf7; }
+.obs__tier.is-selected { border-color: var(--obs-accent, #672666); box-shadow: inset 0 0 0 1.5px var(--obs-accent, #672666); background: var(--obs-selected, #f4ecf7); }
 .obs__tier input { position: absolute; opacity: 0; pointer-events: none; }
 .obs__row { display: flex; align-items: center; gap: 16px; padding: 14px 18px; }
 .obs__radio { flex: none; width: 20px; height: 20px; border: 2px solid #cfc9dd; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
-.obs__tier.is-selected .obs__radio { border-color: #672666; }
-.obs__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #672666; opacity: 0; transition: opacity .18s ease; }
+.obs__tier.is-selected .obs__radio { border-color: var(--obs-accent, #672666); }
+.obs__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--obs-accent, #672666); opacity: 0; transition: opacity .18s ease; }
 .obs__tier.is-selected .obs__radio::after { opacity: 1; }
 .obs__bundle { flex: none; width: 96px; height: auto; object-fit: contain; display: block; }
 .obs__tinfo { flex: 1; min-width: 0; text-align: left; }
-.obs__tname { --ls: -.3px; display: block; font-size: {{ section.settings.tier_title_size | default: 21 }}px; font-weight: 800; color: #672666; line-height: 1.2; white-space: nowrap; }
+.obs__tname { --ls: -.3px; display: block; font-size: {{ section.settings.tier_title_size | default: 21 }}px; font-weight: 800; color: var(--obs-accent, #672666); line-height: 1.2; white-space: nowrap; }
 .obs__servings { display: block; font-size: 15px; font-weight: 400; font-style: italic; color: #5c5866; line-height: 1.2; margin-top: 5px; }
 .obs__prices { display: flex; align-items: center; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
 .obs__price { font-size: 29px; font-weight: 800; color: #171512; line-height: 1; }
@@ -111,12 +123,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__save { display: inline-flex; align-items: center; justify-content: center; line-height: 1; background: #eefaf0; color: #018e1c; font-weight: 800; font-size: 16px; padding: 6px 11px 5px; border-radius: 100px; white-space: nowrap; }
 .obs__ship { display: block; font-size: 13.5px; font-weight: 800; color: #171512; margin-top: 6px; }
 .obs__badge { position: absolute; top: -13px; right: 16px; font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; z-index: 1; }
-.obs__badge--plum { background: #5d215f; color: #fff; }
-.obs__badge--gold { background: #EAC78B; color: #4c1c4f; }
+.obs__badge--plum { background: var(--obs-badge, #5d215f); color: #fff; }
+.obs__badge--gold { background: #EAC78B; color: var(--obs-accent-dark, #4c1c4f); }
 
 /* ---- CTA (purple, with arrow) ---- */
 .obs__cta-wrap { margin-top: 18px; }
-.obs__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #672666; color: #fff; font-family: inherit; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
+.obs__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--obs-accent, #672666); color: #fff; font-family: inherit; font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
 .obs__buy:hover { opacity: 0.9; }
 .obs__buy:active { opacity: 0.9; }
 .obs__buy:disabled { cursor: default; }
@@ -128,7 +140,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* ---- Sub-CTA trust rows ---- */
 .obs__trust { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 16px; }
-.obs__trust span.obs__check { color: #672666; }
+.obs__trust span.obs__check { color: var(--obs-accent, #672666); }
 .obs__trust-item { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
 .obs__trust-item img { width: 17px; height: 17px; object-fit: contain; display: block; }
 .obs__payments { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
@@ -137,7 +149,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Guarantee proof ---- */
 .obs__proof { display: flex; align-items: center; gap: 14px; background: #F8EFE4; border-radius: 12px; padding: 14px 18px; margin-top: 16px; }
 .obs__proof svg { flex: none; width: 32px; height: 32px; }
-.obs__proof-text { font-size: 14px; line-height: 1.4; color: #4c1c4f; }
+.obs__proof-text { font-size: 14px; line-height: 1.4; color: var(--obs-accent-dark, #4c1c4f); }
 .obs__proof-text b, .obs__proof-text strong { font-weight: 800; }
 .obs__proof-text p { margin: 0; }
 
@@ -146,7 +158,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__tab { border-bottom: 1px solid #e6e2ec; }
 .obs__tab-q { --ls: -.2px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 4px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: {{ section.settings.tab_title_size | default: 20 }}px; font-weight: 800; color: #171512; line-height: 1.3; }
 .obs__tab-q > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
-.obs__chev { flex: none; width: 20px; height: 20px; color: #672666; transition: transform .22s ease; }
+.obs__chev { flex: none; width: 20px; height: 20px; color: var(--obs-accent, #672666); transition: transform .22s ease; }
 .obs__tab.is-open .obs__chev { transform: rotate(180deg); }
 .obs__tab-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1); }
 .obs__tab.is-open .obs__tab-a { grid-template-rows: 1fr; }
@@ -169,10 +181,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* v2: top price bar (reflects selected tier) */
 .obs__pricebar { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.obs__pb-price { font-size: 32px; font-weight: 800; color: #672666; line-height: 1.1; }
+.obs__pb-price { font-size: 32px; font-weight: 800; color: var(--obs-accent, #672666); line-height: 1.1; }
 .obs__pb-struck { font-size: 26px; font-weight: 700; color: #8a8a8a; text-decoration: line-through; }
 .obs__pb-struck[hidden] { display: none; }
-.obs__pb-pill { font-size: 15px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; color: #fff; background: #672666; padding: 6px 14px; border-radius: 8px; white-space: nowrap; }
+.obs__pb-pill { font-size: 15px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; color: #fff; background: var(--obs-accent, #672666); padding: 6px 14px; border-radius: 8px; white-space: nowrap; }
 
 /* v2: outcome checklist */
 .obs__outcome { margin-top: 18px; }
@@ -194,7 +206,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__scarcity-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
 .obs__scarcity-text { font-size: 13px; font-weight: 700; color: #c0392b; }
 .obs__scarcity-pct { font-size: 13px; font-weight: 800; color: #171512; }
-.obs__scarcity-track { height: 8px; border-radius: 100px; background: #eee6ef; overflow: hidden; }
+.obs__scarcity-track { height: 8px; border-radius: 100px; background: var(--obs-track, #eee6ef); overflow: hidden; }
 .obs__scarcity-fill { display: block; height: 100%; border-radius: 100px; background: linear-gradient(90deg, #e0893f, #c0392b); }
 
 @media (max-width: 900px) {
@@ -279,15 +291,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign psrc = b.settings.product | default: section.settings.product -%}
         {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
         {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+        {%- assign pplan = b.settings.selling_plan | strip -%}{%- assign pplan_price = blank -%}
+        {%- if pplan != blank and pv != blank -%}{%- for al in pv.selling_plan_allocations -%}{%- assign alid = al.selling_plan.id | append: '' -%}{%- if alid == pplan -%}{%- assign pplan_price = al.price -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
         {%- if ptn == section.settings.default_tier -%}
-          {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{%- assign pb_price = b.settings.price -%}{%- elsif pv != blank -%}{%- assign pb_price = pv.price | money_without_trailing_zeros -%}{%- else -%}{%- assign pb_price = b.settings.price -%}{%- endif -%}
-          {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pv != blank and pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
+          {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{%- assign pb_price = b.settings.price -%}{%- elsif pplan_price != blank -%}{%- assign pb_price = pplan_price | money_without_trailing_zeros -%}{%- elsif pv != blank -%}{%- assign pb_price = pv.price | money_without_trailing_zeros -%}{%- else -%}{%- assign pb_price = b.settings.price -%}{%- endif -%}
+          {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pplan_price != blank and pv.price > pplan_price -%}{%- assign pb_compare = pv.price | money_without_trailing_zeros -%}{%- elsif pv != blank and pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
         {%- endif -%}
       {%- endif -%}{%- endfor -%}
       {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
       {%- assign pbnc = pb_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
       {%- assign pb_pct = 0 -%}{%- if pbnc > pbnp and pbnc > 0 -%}{%- assign pb_pct = pbnc | minus: pbnp | times: 100.0 | divided_by: pbnc | round -%}{%- endif -%}
-      {%- capture pb_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
+      {%- capture pb_pill -%}{%- if section.settings.pill_format != blank -%}{%- unless section.settings.pill_format contains '{pct}' and pb_pct == 0 -%}{{ section.settings.pill_format | replace: '{pct}', pb_pct }}{%- endunless -%}{%- elsif section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
       {%- if section.settings.show_pricebar -%}
       <div class="obs__pricebar">
         <span class="obs__pb-price" data-obs-pb-price>{{ pb_price | strip }}</span>
@@ -348,7 +362,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
         {%- assign urgency = section.settings.urgency_text | replace: '{date}', ship_date_bold | replace: '{today}', today_date -%}
         <div class="obs__urgency" role="note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#672666" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" style="stroke: var(--obs-accent, #672666)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
           <span data-obs-urgency>{{ urgency }}</span>
         </div>
       {%- endif -%}
@@ -372,21 +386,26 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- endfor -%}
           {%- endif -%}
           {%- if vid == blank and srcprod != blank -%}{%- assign vid = srcprod.selected_or_first_available_variant.id -%}{%- endif -%}
+          {%- comment -%} Optional Skio selling plan: priced from the plan and added to the cart on it. Blank = one-time. {%- endcomment -%}
+          {%- assign tplan = b.settings.selling_plan | strip -%}{%- assign tplan_price = blank -%}{%- assign tplan_ok = '' -%}
+          {%- if tplan != blank and tier_variant != blank -%}{%- for al in tier_variant.selling_plan_allocations -%}{%- assign alid = al.selling_plan.id | append: '' -%}{%- if alid == tplan -%}{%- assign tplan_price = al.price -%}{%- assign tplan_ok = tplan -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
 
           {%- capture tier_price -%}
             {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{{ b.settings.price }}
+            {%- elsif tplan_price != blank -%}{{ tplan_price | money_without_trailing_zeros }}
             {%- elsif tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.price }}{%- endif -%}
           {%- endcapture -%}
           {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
           {%- capture tier_compare -%}
             {%- if b.settings.compare_price != blank -%}{{ b.settings.compare_price }}
+            {%- elsif tplan_price != blank and tier_variant.price > tplan_price -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- elsif tier_variant != blank and tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}
           {%- endcapture -%}
           {%- assign tnp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign tnc = tier_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign tpct = 0 -%}{%- if tnc > tnp and tnc > 0 -%}{%- assign tpct = tnc | minus: tnp | times: 100.0 | divided_by: tnc | round -%}{%- endif -%}
-          {%- capture tier_pill -%}{%- if section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
+          {%- capture tier_pill -%}{%- if section.settings.pill_format != blank -%}{%- unless section.settings.pill_format contains '{pct}' and tpct == 0 -%}{{ section.settings.pill_format | replace: '{pct}', tpct }}{%- endunless -%}{%- elsif section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - BOGO FREE{%- endif -%}{%- endcapture -%}
 
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"
@@ -394,6 +413,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                    data-compare="{{ tier_compare | strip }}"
                    data-pill="{{ tier_pill | strip }}"
                    data-qty="{{ b.settings.quantity | default: section.settings.add_quantity | default: 1 }}"
+                   data-plan="{{ tplan_ok }}"
                    {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.badge != blank -%}
               <span class="obs__badge obs__badge--{{ b.settings.badge_style | default: 'plum' }}">{{ b.settings.badge }}</span>
@@ -464,7 +484,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
         {%- if section.settings.proof_text != blank -%}
           <div class="obs__proof">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4c1c4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/><circle cx="12" cy="15.6" r="1.15" fill="#4c1c4f" stroke="none"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" style="stroke: var(--obs-accent-dark, #4c1c4f)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/><circle cx="12" cy="15.6" r="1.15" style="fill: var(--obs-accent-dark, #4c1c4f)" stroke="none"/></svg>
             <span class="obs__proof-text">{{ section.settings.proof_text }}</span>
           </div>
         {%- endif -%}
@@ -608,7 +628,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     });
   });
 
-  /* ---- Buy Now: add the selected variant, then checkout (one-time purchase) ---- */
+  /* ---- Buy Now: add the selected variant (on its Skio plan when the tier has one), then checkout ---- */
   var buy = sec.querySelector('[data-obs-buy]');
   if (buy) {
     window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
@@ -618,6 +638,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
+      var plan = parseInt(sel.getAttribute('data-plan'), 10);
+      if (plan) { item.selling_plan = plan; }
       var code = (buy.getAttribute('data-obs-discount') || '').trim();
       var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
       buy.disabled = true; buy.classList.add('is-loading');
@@ -877,15 +899,70 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Open first accordion by default",
       "default": true
     },
-    { "type": "header", "content": "SUB2 — price bar, social proof, outcome, scarcity" },
-    { "type": "checkbox", "id": "show_pricebar", "label": "Show top price bar", "default": true },
-    { "type": "text", "id": "sale_label", "label": "Sale pill text (price bar)", "default": "FALL SALE" },
-    { "type": "richtext", "id": "social_text", "label": "Social proof line (top)", "info": "Shown beside the avatar cluster; replaces the star review bar.", "default": "<p>Used nightly by <strong>500K+</strong> customers</p>" },
-    { "type": "text", "id": "outcome_title", "label": "Outcome checklist title", "default": "In your first week" },
-    { "type": "textarea", "id": "outcome_items", "label": "Outcome checklist items", "info": "One per line; each shows a green check.", "default": "Fall asleep in 10–15 minutes\nWake up clear-headed, not groggy\nSleep through the night\nStop relying on melatonin pills" },
-    { "type": "text", "id": "scarcity_label", "label": "Low-stock label (above tiers)", "default": "LOW STOCK — SELLING FAST" },
-    { "type": "text", "id": "scarcity_text", "label": "Scarcity text (under CTA)", "default": "Selling out fast — limited quantities" },
-    { "type": "range", "id": "scarcity_percent", "min": 50, "max": 99, "step": 1, "unit": "%", "label": "Percent sold", "default": 89 },
+    {
+      "type": "header",
+      "content": "SUB2 — price bar, social proof, outcome, scarcity"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pricebar",
+      "label": "Show top price bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sale_label",
+      "label": "Sale pill text (price bar)",
+      "default": "FALL SALE"
+    },
+    {
+      "type": "text",
+      "id": "pill_format",
+      "label": "Sale pill text",
+      "info": "Optional. Replaces '<sale label> - BOGO FREE'. Use {pct} for the tier's saving, e.g. 'FALL SALE - {pct}% OFF'."
+    },
+    {
+      "type": "richtext",
+      "id": "social_text",
+      "label": "Social proof line (top)",
+      "info": "Shown beside the avatar cluster; replaces the star review bar.",
+      "default": "<p>Used nightly by <strong>500K+</strong> customers</p>"
+    },
+    {
+      "type": "text",
+      "id": "outcome_title",
+      "label": "Outcome checklist title",
+      "default": "In your first week"
+    },
+    {
+      "type": "textarea",
+      "id": "outcome_items",
+      "label": "Outcome checklist items",
+      "info": "One per line; each shows a green check.",
+      "default": "Fall asleep in 10–15 minutes\nWake up clear-headed, not groggy\nSleep through the night\nStop relying on melatonin pills"
+    },
+    {
+      "type": "text",
+      "id": "scarcity_label",
+      "label": "Low-stock label (above tiers)",
+      "default": "LOW STOCK — SELLING FAST"
+    },
+    {
+      "type": "text",
+      "id": "scarcity_text",
+      "label": "Scarcity text (under CTA)",
+      "default": "Selling out fast — limited quantities"
+    },
+    {
+      "type": "range",
+      "id": "scarcity_percent",
+      "min": 50,
+      "max": 99,
+      "step": 1,
+      "unit": "%",
+      "label": "Percent sold",
+      "default": 89
+    },
     {
       "type": "text",
       "id": "checkout_discount_code",
@@ -1053,6 +1130,46 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "id": "section_bg",
       "label": "Section background",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colours",
+      "info": "Leave blank to keep the default plum palette."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (buttons, selected tier, prices)"
+    },
+    {
+      "type": "color",
+      "id": "accent_dark",
+      "label": "Accent dark (hover, badge text, icons)"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge background (accent style)"
+    },
+    {
+      "type": "color",
+      "id": "selected_bg",
+      "label": "Selected tier background"
+    },
+    {
+      "type": "color",
+      "id": "tint_bg",
+      "label": "Urgency strip background"
+    },
+    {
+      "type": "color",
+      "id": "tint_border",
+      "label": "Urgency strip border"
+    },
+    {
+      "type": "color",
+      "id": "track_color",
+      "label": "Scarcity bar track"
     }
   ],
   "blocks": [
@@ -1093,6 +1210,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "label": "Quantity added",
           "info": "Overrides the section default.",
           "default": 2
+        },
+        {
+          "type": "text",
+          "id": "selling_plan",
+          "label": "Skio selling plan ID (optional)",
+          "info": "Leave blank for a one-time purchase. Set it to price the tier from that plan and add it to the cart as a subscription."
         },
         {
           "type": "text",
@@ -1156,7 +1279,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "options": [
             {
               "value": "plum",
-              "label": "Plum"
+              "label": "Accent (plum unless the Colours settings change it)"
             },
             {
               "value": "gold",

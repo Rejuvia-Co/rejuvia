@@ -21,7 +21,7 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/sleep-spray-review.webp"
+            "image": "shopify://shop_images/image_64d0e784-3e5e-4d8b-8727-7e1e87e85752.webp"
           }
         },
         "slide_XeJHzH": {
@@ -705,6 +705,14 @@
       ],
       "name": "Closing CTA",
       "settings": {
+        "image_mobile_height": 280,
+        "show_callout": true,
+        "callout_line_1": "Buy One,",
+        "callout_line_2": "Get One Free!",
+        "stars_value": "4.5",
+        "reviews_value": "7,500+",
+        "customers_value": "500K+",
+        "reviewer_since": "Verified Customer",
         "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
         "accent_color": "#672666",

@@ -190,7 +190,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__pernight { font-size: 18px; }
   .ob__servings { font-size: 14px; }
   .ob__tag { font-size: 12px; }
-  .ob__buy { font-size: 18px; padding: 20px 28px; }
+  .ob__buy { font-size: clamp(15px, 4.6vw, 18px); padding: 20px; }
   .ob__tier-prices { gap: 7px; flex-wrap: wrap; white-space: normal; }
   .ob__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 18 }}px; padding: 24px 2px; }
   .ob__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 17 }}px; }
@@ -343,7 +343,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
         <button type="button" class="ob__buy" data-ob-buy data-ob-discount="{{ section.settings.checkout_discount_code | strip }}">
           <span class="ob__spinner" aria-hidden="true"></span>
-          <span class="ob__buy-label">{{ section.settings.button_text | default: 'Buy Now' }}</span>
+          <span class="ob__buy-label" data-ob-cta-label>{{ section.settings.button_text | default: 'Buy Now' }}</span>
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
 
@@ -399,11 +399,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   var sec = document.getElementById('ob-{{ section.id }}');
   if (!sec) return;
 
+  /* Button label: optionally "<button text> — <selected tier's price>" (setting: Show selected price in button) */
+  var ctaLabel = sec.querySelector('[data-ob-cta-label]');
+  var ctaText = {{ section.settings.button_text | default: 'Buy Now' | json }};
+  var ctaShowPrice = {{ section.settings.button_show_price | json }};
+  function syncCta() {
+    if (!ctaShowPrice || !ctaLabel) return;
+    var sel = sec.querySelector('.ob__tier input[type="radio"]:checked');
+    var price = sel && sel.closest('.ob__tier').querySelector('.ob__price');
+    if (price && price.textContent.trim()) { ctaLabel.textContent = ctaText + ' \u2014 ' + price.textContent.trim(); }
+  }
+
   /* Tier selection */
   sec.querySelectorAll('.ob__tier input[type="radio"]').forEach(function (input) {
     input.addEventListener('change', function () {
       sec.querySelectorAll('.ob__tier').forEach(function (t) { t.classList.remove('is-selected'); });
       input.closest('.ob__tier').classList.add('is-selected');
+      syncCta();
     });
   });
   /* Ensure exactly one box is selected on load */
@@ -411,6 +423,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     var firstInput = sec.querySelector('.ob__tier input[type="radio"]');
     if (firstInput) { firstInput.checked = true; firstInput.closest('.ob__tier').classList.add('is-selected'); }
   }
+  syncCta();
 
   /* Gallery */
   var mainImg = sec.querySelector('[data-ob-main]');
@@ -529,6 +542,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Call to action" },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "How many units of the selected box are added to cart. Set to 2 for a native Buy-One-Get-One flow (pair with a Shopify automatic Buy X Get Y discount). Leave at 1 for standard behavior.", "default": 1 },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
+    { "type": "checkbox", "id": "button_show_price", "label": "Show selected price in button", "info": "Adds the selected tier's price after the button text, e.g. ONE-TIME PURCHASE — $30.", "default": false },
     { "type": "text", "id": "checkout_discount_code", "label": "Auto-apply discount code", "info": "Optional. If set, Buy Now sends the customer to checkout with this code already applied (e.g. a senior 10% off code). Leave blank for no code." },
     { "type": "checkbox", "id": "use_manual_prices", "label": "Use typed tier prices (ignore live variant price)", "info": "Turn on when the displayed price should differ from the variant's real price -- e.g. a page that auto-applies an extra discount at checkout. Uses each tier's Price field.", "default": false },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },

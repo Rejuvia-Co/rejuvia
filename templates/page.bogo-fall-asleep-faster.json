@@ -137,7 +137,7 @@
         "header_gap_mobile": 12,
         "default_tier": 1,
         "add_quantity": 2,
-        "button_text": "BUY NOW",
+        "button_text": "ONE-TIME PURCHASE",
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "onetime_text": "One-Time Purchase (Not a Subscription)",
@@ -164,7 +164,8 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#672666"
+        "trusted_check": "#672666",
+        "button_show_price": true
       }
     },
     "customer_testimonials_video_b39r9z": {

@@ -172,7 +172,7 @@
         "add_quantity": 2,
         "tier_title_size": 22,
         "tier_title_size_mobile": 17,
-        "button_prefix": "BUY NOW —",
+        "button_prefix": "ONE-TIME PURCHASE —",
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "onetime_text": "One-Time Purchase (No Subscriptions)",

@@ -10,92 +10,143 @@
 {
   "sections": {
     "offer_block_C9tJiM": {
-      "type": "offer-block",
+      "type": "offer-block-sub2",
       "blocks": {
-        "tier_izybTY": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep_spray_bogo_hero.webp"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep-spray-review.webp"
+          }
+        },
+        "slide_NmwqBi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_SleepSpray_HowToUseIconsA-Cream_PDPGallery_HowTo_AllCohorts_MostAware_InternalAI_BOGOSub_NoOffer_1x1_v3_10122026.webp"
+          }
+        },
+        "slide_8GKyjF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rejuvia_SleepSpray_CompareR2-02LavenderCard-StopSwallowing_PDPGallery_Comparison_AllCohorts_ProblemAware_InternalAI_BOGOSub_NoOffer_1x1_v1_10122026.webp"
+          }
+        },
+        "slide_jLqxYf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/servings.webp"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep-spray-benefits.webp"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep-spray-ingredients.webp"
+          }
+        },
+        "slide_5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/sleep-spray-money-back-guarantee.webp"
+          }
+        },
+        "tier_1": {
           "type": "tier",
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671027932",
-            "image_asset": "rejuvia-bundle-b1g1.webp",
+            "quantity": 2,
             "label": "Buy 1, Get 1 FREE",
+            "image_asset": "rejuvia-bundle-b1g1.webp",
             "price": "$30",
             "compare_price": "$60",
-            "savings_text": "Save $30",
+            "savings_text": "SAVE $30",
+            "servings_text": "60 Servings (2-Month Supply)",
             "free_shipping": false,
-            "per_night": "$0.50 Per Night",
-            "tag": "",
-            "tag_style": "brand"
+            "badge": "",
+            "badge_style": "plum"
           }
         },
-        "tier_8en7iz": {
+        "tier_2": {
           "type": "tier",
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671060700",
-            "image_asset": "rejuvia-bundle-b2g2.webp",
+            "quantity": 2,
             "label": "Buy 2, Get 2 FREE",
+            "image_asset": "rejuvia-bundle-b2g2.webp",
             "price": "$60",
             "compare_price": "$120",
             "savings_text": "SAVE $60",
+            "servings_text": "120 Servings (4-Month Supply)",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
-            "tag": "MOST POPULAR",
-            "tag_style": "brand"
+            "badge": "MOST POPULAR",
+            "badge_style": "plum"
           }
         },
-        "tier_T7JQdb": {
+        "tier_3": {
           "type": "tier",
           "settings": {
             "product": "sleep-spray-copy",
             "variant_id": "46763671093468",
-            "image_asset": "rejuvia-bundle-b3g3.webp",
+            "quantity": 2,
             "label": "Buy 3, Get 3 FREE",
+            "image_asset": "rejuvia-bundle-b3g3.webp",
             "price": "$90",
             "compare_price": "$180",
             "savings_text": "SAVE $90",
+            "servings_text": "180 Servings (6-Month Supply)",
             "free_shipping": true,
-            "per_night": "$0.50 Per Night",
-            "tag": "BEST VALUE",
-            "tag_style": "gold"
+            "badge": "BEST VALUE",
+            "badge_style": "gold"
           }
         },
-        "tab_kAdU4M": {
+        "tab_travel_1": {
           "type": "tab",
           "settings": {
             "title": "90-Day Guarantee",
             "content": "<p>As a family-run business, we offer a <strong>90-day money-back guarantee</strong> on your first order.</p><p>We stand behind our products no matter what. It is risk-free to try Rejuvia and all orders are backed by our 90-day guarantee. No questions asked.</p>"
           }
         },
-        "tab_MwDWnL": {
+        "tab_travel_2": {
           "type": "tab",
           "settings": {
             "title": "Why Rejuvia Works",
             "content": "<p>Most sleep products are pills or gummies, which means they have to survive your digestive system. Over 60–90 minutes your stomach breaks them down, destroying much of the active ingredients before they ever reach your bloodstream.</p><p>Rejuvia is a sublingual spray. You spray it under your tongue, where the ingredients absorb directly into your bloodstream — no digestion, no waiting, no waste. Your body absorbs up to <strong>75% more</strong> of the active sleep compounds compared to gummies and pills, which is why most customers are asleep within 10–15 minutes instead of 60–90.</p><p></p><p>Better absorption, better ingredients.</p>"
           }
         },
-        "tab_VPYtfC": {
+        "tab_travel_3": {
           "type": "tab",
           "settings": {
             "title": "Shipping & Returns",
             "content": "<p>Rejuvia is 100% made in the USA and ships from the USA. All Rejuvia orders ship within one business day from either our warehouse in Chicago or Las Vegas. We offer free shipping on all orders over $59.</p><p>99% of all Rejuvia orders arrive within 2-3 business days.</p>"
           }
         },
-        "tab_UUNhhe": {
+        "tab_travel_4": {
           "type": "tab",
           "settings": {
             "title": "Is Rejuvia Safe?",
             "content": "<p>Yes. Rejuvia is <strong>drug-free, non-habit-forming, and made with 100% natural ingredients.</strong> Because it works with your body's natural sleep cycle instead of overriding it, there's no tolerance buildup, no dependency, and no withdrawal.</p><p>Every batch is <strong>triple lab-tested for purity</strong> — no artificial dyes, added sugars, synthetic fillers, or mystery compounds.</p>"
           }
         },
-        "tab_7c8d3h": {
+        "tab_travel_5": {
           "type": "tab",
           "settings": {
             "title": "Ingredients",
             "content": "<p>Rejuvia is a blend of <strong>13 natural sleep ingredients:</strong> melatonin (just 2mg), 5-HTP, valerian root, passionflower, chamomile, lemon balm, skullcap, magnolia bark, hops, cramp bark, ginkgo biloba, peppermint, and feverfew.</p><p>No fillers. No junk. No drugs. Just clean, naturally-sourced ingredients designed to quiet a racing mind and deliver deep, restorative sleep.</p>"
           }
         },
-        "tab_aTHNXH": {
+        "tab_travel_6": {
           "type": "tab",
           "settings": {
             "title": "Frequently Asked Questions",
@@ -104,67 +155,79 @@
         }
       },
       "block_order": [
-        "tier_izybTY",
-        "tier_8en7iz",
-        "tier_T7JQdb",
-        "tab_kAdU4M",
-        "tab_MwDWnL",
-        "tab_VPYtfC",
-        "tab_UUNhhe",
-        "tab_7c8d3h",
-        "tab_aTHNXH"
+        "slide_1",
+        "slide_3",
+        "slide_NmwqBi",
+        "slide_8GKyjF",
+        "slide_jLqxYf",
+        "slide_2",
+        "slide_4",
+        "slide_5",
+        "tier_1",
+        "tier_2",
+        "tier_3",
+        "tab_travel_1",
+        "tab_travel_2",
+        "tab_travel_3",
+        "tab_travel_4",
+        "tab_travel_5",
+        "tab_travel_6"
       ],
-      "name": "Offer Block",
+      "name": "Offer Block (BOGO Sub layout) — Travel",
       "settings": {
-        "product": "sleep-spray",
-        "image_bg": "#ffffff",
+        "product": "sleep-spray-copy",
+        "gallery_bg": "#ffffff",
+        "gallery_fit": "cover",
+        "gallery_width": 560,
         "sticky_offset": 100,
         "show_stars": true,
-        "stars_color": "#eac78b",
-        "stars_size": 18,
-        "stars_size_mobile": 15,
-        "rating_text_size": 18,
-        "rating_text_size_mobile": 18,
-        "rating_text": "<p><strong>4.5</strong> | Over <strong>500,000+</strong> Customers</p>",
-        "title": "Sleep Through Your Flight with Rejuvia",
-        "subtitle": "For a limited-time, claim your BOGO free offer on our Sleep Spray today",
-        "pill_text": "",
-        "pill_size": 14,
-        "pill_size_mobile": 13,
-        "pill_color": "#ffffff",
-        "pill_bg": "#5d215f",
-        "header_gap": 12,
-        "header_gap_mobile": 12,
+        "stars_color": "#fab851",
+        "rating_label": "Excellent 4.5",
+        "reviews_label": "<p><strong>7,500+</strong> Reviews</p>",
+        "customers_label": "<p><strong>500,000+</strong> Customers</p>",
+        "headline": "Sleep Like You're in First Class With Rejuvia",
+        "subtitle": "Spray it under your tongue before takeoff and drift off in 10–15 minutes, on red-eyes, long-haul flights and in unfamiliar hotel rooms. Try it risk-free today as long as stock is still available.",
+        "headline_size": 36,
+        "headline_size_mobile": 23,
+        "subtitle_size": 18,
+        "subtitle_size_mobile": 16,
+        "urgency_text": "Order in the next hour — by {cutoff} — to guarantee shipping by {date}",
         "default_tier": 2,
         "add_quantity": 2,
-        "button_text": "BUY NOW",
-        "guarantee_text": "90-Day Money Back Guarantee",
+        "tier_title_size": 22,
+        "tier_title_size_mobile": 21,
+        "button_prefix": "BUY NOW —",
+        "open_first_tab": false,
+        "show_pricebar": true,
+        "sale_label": "FALL SALE",
+        "social_text": "<p>Used Nightly By Michelle R. and <strong>500k+</strong> Others</p>",
+        "outcome_title": "After just 6-8 sprays under your tongue before your flight...",
+        "outcome_items": "Fall asleep in your seat or a new hotel bed\nSleep through the flight and the full night\nLand rested and wake up refreshed, not groggy",
+        "scarcity_label": "",
+        "scarcity_text": "Selling Out Fast Due To High Demand",
+        "scarcity_percent": 89,
+        "checkout_discount_code": "",
+        "use_manual_prices": false,
+        "guarantee_text": "90-Day Guarantee",
+        "guarantee_text_2": "No Subscriptions",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
-        "onetime_text": "One-Time Purchase (Not a Subscription)",
+        "onetime_text": "One-Time Purchase (No Subscriptions)",
         "show_payment_icons": true,
         "hidden_payments": "discover,jcb,diners_club",
-        "title_size": 44,
-        "title_size_mobile": 34,
-        "subtitle_size": 22,
-        "subtitle_size_mobile": 18,
-        "tier_title_size": 26,
-        "tier_title_size_mobile": 20,
+        "proof_text": "",
         "tab_title_size": 20,
-        "tab_title_size_mobile": 18,
-        "tab_body_size": 18,
-        "tab_body_size_mobile": 18,
-        "section_bg": "#ffffff",
-        "card_bg": "#ffffff",
-        "accent_color": "#672666",
-        "selected_bg": "#f4ecf7",
+        "tab_title_size_mobile": 19,
+        "tab_body_size": 17,
+        "tab_body_size_mobile": 16,
         "show_trusted": true,
-        "trusted_title": "Used by  500,000+ customers",
+        "trusted_title": "Used by 500,000+ customers",
         "trusted_subtext": "to fall asleep faster and sleep the full night.",
         "trusted_image_1": "shopify://shop_images/customer_1.png",
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#672666"
+        "trusted_check": "#34c759",
+        "section_bg": "#ffffff"
       }
     },
     "customer_testimonials_video_b39r9z": {

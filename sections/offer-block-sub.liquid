@@ -294,9 +294,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- endfor -%}
           {%- endif -%}
           {%- if vid == blank and srcprod != blank -%}{%- assign vid = srcprod.selected_or_first_available_variant.id -%}{%- endif -%}
+          {%- comment -%} Optional Skio selling plan: priced from the plan (first-order price x quantity) and added to the cart on it. Blank = one-time. {%- endcomment -%}
+          {%- assign tqty = b.settings.quantity | default: section.settings.add_quantity | default: 1 -%}
+          {%- assign tplan = b.settings.selling_plan | strip -%}{%- assign tplan_total = blank -%}{%- assign tplan_ok = '' -%}
+          {%- if tplan != blank and tier_variant != blank -%}{%- for al in tier_variant.selling_plan_allocations -%}{%- assign alid = al.selling_plan.id | append: '' -%}{%- if alid == tplan -%}{%- assign tplan_total = al.price | times: tqty -%}{%- assign tplan_ok = tplan -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
 
           {%- capture tier_price -%}
             {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{{ b.settings.price }}
+            {%- elsif tplan_total != blank -%}{{ tplan_total | money_without_trailing_zeros }}
             {%- elsif tier_variant != blank -%}{{ tier_variant.price | money_without_trailing_zeros }}
             {%- else -%}{{ b.settings.price }}{%- endif -%}
           {%- endcapture -%}
@@ -310,6 +315,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"
                    data-price="{{ tier_price | strip }}"
                    data-qty="{{ b.settings.quantity | default: section.settings.add_quantity | default: 1 }}"
+                   data-plan="{{ tplan_ok }}"{% if tplan != blank and tplan_ok == blank %} data-plan-missing="true"{% endif %}
                    {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.badge != blank -%}
               <span class="obs__badge obs__badge--{{ b.settings.badge_style | default: 'plum' }}">{{ b.settings.badge }}</span>
@@ -500,7 +506,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     });
   });
 
-  /* ---- Buy Now: add the selected variant, then checkout (one-time purchase) ---- */
+  /* ---- Buy Now: add the selected variant (on its Skio plan when the tier has one), then checkout ---- */
   var buy = sec.querySelector('[data-obs-buy]');
   if (buy) {
     window.addEventListener('pageshow', function () { buy.disabled = false; buy.classList.remove('is-loading'); });
@@ -510,6 +516,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
+      /* A tier that names a Skio plan the product doesn't have must never fall back to a one-time sale. */
+      if (sel.getAttribute('data-plan-missing') === 'true') { alert('Sorry, this offer is unavailable right now. Please contact support.'); return; }
+      var plan = parseInt(sel.getAttribute('data-plan'), 10);
+      if (plan) { item.selling_plan = plan; }
       var code = (buy.getAttribute('data-obs-discount') || '').trim();
       var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
       buy.disabled = true; buy.classList.add('is-loading');
@@ -522,7 +532,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           });
         })
         .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
-        .catch(function () { window.location.href = '/cart/' + id + ':' + qty + (code ? ('?discount=' + encodeURIComponent(code)) : ''); });
+        .catch(function () { window.location.href = plan ? '/cart' : ('/cart/' + id + ':' + qty + (code ? ('?discount=' + encodeURIComponent(code)) : '')); });
     });
   }
 
@@ -971,6 +981,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "info": "Overrides the section default.",
           "default": 2
         },
+        { "type": "text", "id": "selling_plan", "label": "Skio selling plan ID (optional)", "info": "Blank = one-time purchase. Set it to price the tier from that plan (first-order price x quantity) and add it as a subscription." },
         {
           "type": "text",
           "id": "label",

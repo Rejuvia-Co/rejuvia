@@ -354,7 +354,16 @@
             assign tint = product.metafields.custom.sub_base_color.value | default: product.metafields.custom.sub_base_colour.value | default: product.metafields.custom.sub_base_color | default: product.metafields.custom.sub_base_colour | default: '#F4EEF5'
             assign sub_price = nil
             for v in product.variants
+              comment
+                Only the variant's product-page plan (custom.preselected_selling_plan) counts, so
+                landing-page-only Skio plans (e.g. the $15.99 intro) never set the displayed price.
+              endcomment
+              assign pre_plan = v.metafields.custom.preselected_selling_plan | append: '' | strip
               for alloc in v.selling_plan_allocations
+                assign alloc_id = alloc.selling_plan.id | append: ''
+                if pre_plan != blank and alloc_id != pre_plan
+                  continue
+                endif
                 if sub_price == nil or alloc.price < sub_price
                   assign sub_price = alloc.price
                 endif
@@ -390,7 +399,16 @@
             assign review_count = product.metafields.okendo.summaryData.reviewCount | default: 0 | plus: 0
             assign sub_price = nil
             for v in product.variants
+              comment
+                Only the variant's product-page plan (custom.preselected_selling_plan) counts, so
+                landing-page-only Skio plans (e.g. the $15.99 intro) never set the displayed price.
+              endcomment
+              assign pre_plan = v.metafields.custom.preselected_selling_plan | append: '' | strip
               for alloc in v.selling_plan_allocations
+                assign alloc_id = alloc.selling_plan.id | append: ''
+                if pre_plan != blank and alloc_id != pre_plan
+                  continue
+                endif
                 if sub_price == nil or alloc.price < sub_price
                   assign sub_price = alloc.price
                 endif

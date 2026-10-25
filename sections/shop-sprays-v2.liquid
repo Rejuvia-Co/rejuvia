@@ -21,7 +21,16 @@
           # ---- Price: lowest subscription (selling plan) price, strike the one-time ----
           assign sub_price = nil
           for variant in product.variants
+            comment
+              Only the variant's product-page plan (custom.preselected_selling_plan) counts, so
+              landing-page-only Skio plans (e.g. the $15.99 intro) never set the displayed price.
+            endcomment
+            assign pre_plan = variant.metafields.custom.preselected_selling_plan | append: '' | strip
             for alloc in variant.selling_plan_allocations
+              assign alloc_id = alloc.selling_plan.id | append: ''
+              if pre_plan != blank and alloc_id != pre_plan
+                continue
+              endif
               if sub_price == nil or alloc.price < sub_price
                 assign sub_price = alloc.price
               endif

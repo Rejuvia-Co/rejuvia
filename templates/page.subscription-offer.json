@@ -637,7 +637,7 @@
           "type": "faq",
           "settings": {
             "question": "Is this a subscription?",
-            "answer": "<p>No. Rejuvia is a one-time purchase, not an automatic subscription.</p>"
+            "answer": "<p>Yes. Your first order is $15.99, $29.98 or $44.99, then it renews automatically at the regular subscription price: $27.99 every 4 weeks, $55.98 every 8 weeks or $67.99 every 12 weeks. You can pause, skip or cancel anytime from your account.</p>"
           }
         },
         "faq_jynxhn": {
@@ -710,8 +710,8 @@
       "settings": {
         "image_mobile_height": 280,
         "show_callout": true,
-        "callout_line_1": "Buy One,",
-        "callout_line_2": "Get One Free!",
+        "callout_line_1": "Just $15.99",
+        "callout_line_2": "to Start!",
         "stars_value": "4.5",
         "reviews_value": "7,500+",
         "customers_value": "500K+",
@@ -758,9 +758,9 @@
         "persist_visible": true,
         "rating_text": "<b>{rating}</b> Stars | <b>7,500+</b> Reviews | <b>500,000+</b> Customers",
         "rating_fallback": "4.5",
-        "cta_text": "Claim Your BOGO Offer",
-        "cta_fallback": "Claim Your BOGO Offer",
-        "pill_text": "BUY ONE GET ONE FREE",
+        "cta_text": "Claim Your Offer",
+        "cta_fallback": "Claim Your Offer",
+        "pill_text": "JUST $15.99 TO START",
         "cta_action": "scroll",
         "scroll_target": "#offer",
         "text_color": "#141414",

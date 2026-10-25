@@ -206,7 +206,7 @@
         "add_quantity": 2,
         "tier_title_size": 22,
         "tier_title_size_mobile": 21,
-        "button_prefix": "ONE-TIME PURCHASE —",
+        "button_prefix": "BUY NOW —",
         "open_first_tab": false,
         "checkout_discount_code": "",
         "use_manual_prices": false,

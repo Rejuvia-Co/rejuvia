@@ -89,6 +89,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__urgency { display: flex; align-items: center; gap: 10px; border: 1.5px dashed #b79ab8; background: #faf7fd; border-radius: 12px; padding: 12px 16px; margin-top: 18px; font-size: 14px; line-height: 1.35; color: #4c1c4f; }
 .obs__urgency svg { flex: none; width: 20px; height: 20px; }
 .obs__urgency b { font-weight: 800; }
+.obs__tiers + .obs__urgency { margin-top: 16px; }
 
 /* ---- Tier rows (real bundle photography, no pictograms) ---- */
 .obs__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
@@ -266,7 +267,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="obs__buybox">
 
-      {%- comment -%} Urgency strip. {date} is rendered server-side; {cutoff} is filled in on load. {%- endcomment -%}
+      {%- comment -%} Urgency strip. {date} is rendered server-side; {cutoff} is filled in on load. Shown above or below the tiers per urgency_position. {%- endcomment -%}
+      {%- capture obs_urgency -%}
       {%- if section.settings.urgency_text != blank -%}
         {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
         {%- assign urgency = section.settings.urgency_text | replace: '{date}', ship_date_bold | replace: '{today}', today_date -%}
@@ -275,6 +277,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span data-obs-urgency>{{ urgency }}</span>
         </div>
       {%- endif -%}
+      {%- endcapture -%}
+      {%- unless section.settings.urgency_position == 'below' -%}{{ obs_urgency }}{%- endunless -%}
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
@@ -342,6 +346,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           </label>
         {%- endif -%}{%- endfor -%}
       </div>
+
+      {%- if section.settings.urgency_position == 'below' -%}{{ obs_urgency }}{%- endif -%}
 
       <div class="obs__cta-wrap">
         <button type="button" class="obs__buy" data-obs-buy data-obs-discount="{{ section.settings.checkout_discount_code | strip }}">
@@ -718,6 +724,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Urgency copy",
       "info": "Tokens: {date} = next-day ship date (rendered bold), {today} = today's date, {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.",
       "default": "Order within the next hour — by {cutoff} — to guarantee shipping by {date}"
+    },
+    {
+      "type": "select",
+      "id": "urgency_position",
+      "label": "Urgency strip position",
+      "options": [
+        { "value": "above", "label": "Above the bundles" },
+        { "value": "below", "label": "Between the bundles and the button" }
+      ],
+      "default": "above"
     },
     {
       "type": "header",

@@ -35,10 +35,10 @@
         "terms_of_service": "Terms of Service"
       },
       "general": {
-        "pay_now_button_label": "Pay Now",
+        "pay_now_button_label": "Complete Purchase",
         "continue_to_shipping_method": "Continue To Shipping →",
         "continue_to_payment_method": "Continue To Payment →",
-        "complete_purchase_button_label": "Pay Now",
+        "complete_purchase_button_label": "Complete Purchase",
         "back_to_contact_information": "Return to Information",
         "back_to_shipping_method": "Return to Shipping"
       },

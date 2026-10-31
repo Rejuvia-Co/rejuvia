@@ -24,6 +24,7 @@
             "savings_text": "Save $33",
             "free_shipping": false,
             "per_night": "$0.45 Per Night",
+            "servings_text": "",
             "tag": "",
             "tag_style": "brand"
           }
@@ -38,8 +39,9 @@
             "price": "$54",
             "compare_price": "$120",
             "savings_text": "SAVE $66",
-            "free_shipping": true,
+            "free_shipping": false,
             "per_night": "$0.45 Per Night",
+            "servings_text": "",
             "tag": "MOST POPULAR",
             "tag_style": "brand"
           }
@@ -56,6 +58,7 @@
             "savings_text": "SAVE $99",
             "free_shipping": true,
             "per_night": "$0.45 Per Night",
+            "servings_text": "",
             "tag": "BEST VALUE",
             "tag_style": "gold"
           }
@@ -127,8 +130,6 @@
         "rating_text_size_mobile": 16,
         "rating_text": "<p>Used By <strong>500,000+</strong> Customers</p>",
         "title": "Nurse Discount: Extra 10% Off + Up To 3 Bottles FREE",
-        "checkout_discount_code": "NURSE10",
-        "use_manual_prices": true,
         "subtitle": "Nurses only: you take care of everyone else. Claim your buy one, get one free + an extra 10% off and fall asleep in 15 minutes after your next shift.",
         "pill_text": "",
         "pill_size": 16,
@@ -140,6 +141,9 @@
         "default_tier": 1,
         "add_quantity": 2,
         "button_text": "BUY NOW",
+        "button_show_price": true,
+        "checkout_discount_code": "NURSE10",
+        "use_manual_prices": true,
         "guarantee_text": "90-Day Money Back Guarantee",
         "guarantee_icon": "shopify://shop_images/SealCheck.svg",
         "onetime_text": "One-Time Purchase (Not a Subscription)",
@@ -166,8 +170,7 @@
         "trusted_image_2": "shopify://shop_images/customer_13.png",
         "trusted_image_3": "shopify://shop_images/customer_12.png",
         "trusted_bg": "#f4f4f4",
-        "trusted_check": "#34c759",
-        "button_show_price": true
+        "trusted_check": "#34c759"
       }
     },
     "customer_testimonials_video_b39r9z": {
@@ -375,6 +378,8 @@
         "quote_size_desktop": 20,
         "quote_size_mobile": 20,
         "logo_max_height": 48,
+        "logo_max_width": 130,
+        "mute_logos": true,
         "autoplay": false,
         "autoplay_seconds": 6,
         "max_width": 1160,
@@ -645,10 +650,14 @@
       ],
       "name": "Closing CTA",
       "settings": {
-        "review_stars": 5,
-        "review_heading": "Excellent product, excellent family service",
-        "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",
-        "review_name": "Susann M Thoens",
+        "image_mobile_height": 280,
+        "show_callout": true,
+        "callout_line_1": "Buy One,",
+        "callout_line_2": "Get One Free!",
+        "stars_value": "4.5",
+        "reviews_value": "7,500+",
+        "customers_value": "500K+",
+        "reviewer_since": "Verified Customer",
         "image": "shopify://shop_images/sleepspray5_webp.webp",
         "show_stars": true,
         "accent_color": "#672666",
@@ -672,7 +681,13 @@
         "button_size_mobile": 18,
         "frame_bg": "#eaeaf7",
         "panel_bg": "#ffffff",
-        "checklist_color": "#141414"
+        "checklist_color": "#141414",
+        "review_stars": 5,
+        "review_heading": "Excellent product, excellent family service",
+        "review_text": "<p>The sleep spray is a game changer in my life. I fall asleep easily and have no foggy head in the morning. Rejuvia's customer service is impeccable too, and I know they are a family-run business. My original order actually got lost by USPS and they immediately sent me a replacement with expedited shipping. Now, that is rare! Truly exceptional company!</p>",
+        "review_name": "Susann M Thoens",
+        "review_location": "",
+        "review_bg": "#ffffff"
       }
     },
     "sticky_cta_v2_WgFy7H": {

@@ -249,8 +249,18 @@
             Price-line pill: the tier's own text if set, else "<sale label> - <SAVE %> OFF".
           endcomment
           assign tier_pill = t_pill
-          if tier_pill == blank and tier_save_pct > 0 and section.settings.sale_label != blank
-            assign tier_pill = section.settings.sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'
+          assign sale_label = section.settings.sale_label
+          comment
+            Halloween one-day swap on the product page only (store time, Oct 31 2026).
+          endcomment
+          if template.name == 'product' and sale_label != blank
+            assign today = 'now' | date: '%Y-%m-%d'
+            if today == '2026-10-31'
+              assign sale_label = 'HALLOWEEN SALE'
+            endif
+          endif
+          if tier_pill == blank and tier_save_pct > 0 and sale_label != blank
+            assign tier_pill = sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'
           endif
 
           comment

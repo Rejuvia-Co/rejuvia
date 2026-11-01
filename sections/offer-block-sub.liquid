@@ -210,10 +210,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- comment -%} Gallery slides come from customizer blocks, not a product {%- endcomment -%}
 {%- assign slides = section.blocks | where: 'type', 'slide' -%}
 {%- comment -%} Slot 1 of the gallery on every BOGO page is the "Buy 1, Get 1 FREE, $15 each" hero, a theme asset (set in code because Shopify reverts template JSON from git). {%- endcomment -%}
-{%- assign bh_src = 'bogo-hero-15-each-1000.webp' | asset_url -%}
-{%- capture bh_srcset -%}{{ 'bogo-hero-15-each-500.webp' | asset_url }} 500w, {{ 'bogo-hero-15-each-800.webp' | asset_url }} 800w, {{ 'bogo-hero-15-each-1000.webp' | asset_url }} 1000w, {{ 'bogo-hero-15-each-1400.webp' | asset_url }} 1400w{%- endcapture -%}
-{%- assign bh_thumb = 'bogo-hero-15-each-500.webp' | asset_url -%}
+{%- assign bh_name = 'bogo-hero-15-each' -%}
 {%- assign bh_alt = 'Rejuvia Sleep Spray: Buy 1, Get 1 FREE, $15 each. Fall asleep in 15 minutes, wake up refreshed.' -%}
+{%- if template.suffix == 'military' or template.suffix == 'nurse' or template.suffix == 'senior' -%}
+  {%- comment -%} Discount pages get their own hero: bogo-hero-military|nurse|senior-*.webp ($13.50 each) {%- endcomment -%}
+  {%- assign bh_name = 'bogo-hero-' | append: template.suffix -%}
+  {%- assign bh_alt = 'Rejuvia Sleep Spray: Buy 1, Get 1 FREE, $13.50 each with the ' | append: template.suffix | append: ' discount. Fall asleep in 15 minutes, wake up refreshed.' -%}
+{%- endif -%}
+{%- assign bh_src = bh_name | append: '-1000.webp' | asset_url -%}
+{%- capture bh_srcset -%}{{ bh_name | append: '-500.webp' | asset_url }} 500w, {{ bh_name | append: '-800.webp' | asset_url }} 800w, {{ bh_name | append: '-1000.webp' | asset_url }} 1000w, {{ bh_name | append: '-1400.webp' | asset_url }} 1400w{%- endcapture -%}
+{%- assign bh_thumb = bh_name | append: '-500.webp' | asset_url -%}
 
 <section class="obs obs-{{ section.id }}" id="obs-{{ section.id }}">
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>

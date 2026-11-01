@@ -288,9 +288,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="ob__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- if section.settings.title != blank -%}<h2 class="ob__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- comment -%} The military BOGO page (/pages/military-bogo) runs on the senior template; only its headline, subtitle, pill and checkout code differ, set here because template JSON edits don't deploy. {%- endcomment -%}
+      {%- assign ob_kind = template.suffix -%}
+      {%- assign ob_title = section.settings.title -%}{%- assign ob_subtitle = section.settings.subtitle -%}{%- assign ob_code = section.settings.checkout_discount_code | strip -%}
+      {%- if page.handle == 'military-bogo' -%}
+        {%- assign ob_kind = 'military' -%}
+        {%- assign ob_title = 'Military Discount: Extra 10% Off + Up To 3 Bottles FREE' -%}
+        {%- capture ob_subtitle -%}Thank you for your service — take an extra 10% off today's Buy One, Get One FREE offer on Rejuvia® Sleep Spray (just $13.50 per spray).{%- endcapture -%}
+        {%- assign ob_code = 'MILITARY10' -%}
+      {%- endif -%}
+      {%- if ob_title != blank -%}<h2 class="ob__title">{{ ob_title }}</h2>{%- endif -%}
       {%- comment -%} Pill label: the audience pages name their discount; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}
-      {%- case template.suffix -%}
+      {%- case ob_kind -%}
         {%- when 'military' -%}{%- assign pb_label = 'MILITARY DISCOUNT' -%}
         {%- when 'senior' -%}{%- assign pb_label = 'SENIOR DISCOUNT' -%}
         {%- when 'nurse' -%}{%- assign pb_label = 'NURSE DISCOUNT' -%}
@@ -300,8 +309,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
-      {%- comment -%} Nurse and senior pre-select the first box (Buy 1, Get 1 FREE) {%- endcomment -%}
-      {%- if template.suffix == 'nurse' or template.suffix == 'senior' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
+      {%- comment -%} Nurse, senior and military pre-select the first box (Buy 1, Get 1 FREE) {%- endcomment -%}
+      {%- if ob_kind == 'nurse' or ob_kind == 'senior' or ob_kind == 'military' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
       {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
         {%- assign ptn = ptn | plus: 1 -%}
@@ -333,13 +342,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <span class="ob__pb-pill" data-ob-pb-pill{% if pb_pill == blank %} hidden{% endif %}>{{ pb_pill }}</span>
       </div>
       {%- endif -%}
-      {%- if section.settings.subtitle != blank -%}<p class="ob__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+      {%- if ob_subtitle != blank -%}<p class="ob__subtitle">{{ ob_subtitle }}</p>{%- endif -%}
     </div>
 
     <div class="ob__gallery">
       <div class="ob__gallery-inner">
         {%- comment -%} Same gallery (design + images) as /pages/bogo on every BOGO page {%- endcomment -%}
-        {%- render 'bogo-gallery', id: section.id, alt: section.settings.title -%}
+        {%- render 'bogo-gallery', id: section.id, alt: ob_title -%}
       </div>
     </div>
 
@@ -413,7 +422,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       <div class="ob__cta-wrap">
         {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
-        <button type="button" class="ob__buy" data-ob-buy data-ob-discount="{{ section.settings.checkout_discount_code | strip }}">
+        <button type="button" class="ob__buy" data-ob-buy data-ob-discount="{{ ob_code }}">
           <span class="ob__spinner" aria-hidden="true"></span>
           <span class="ob__buy-label" data-ob-cta-label>{{ section.settings.button_text | default: 'Buy Now' }}</span>
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>

@@ -230,8 +230,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- assign today_date = 'now' | date: '%a, %b %-d' -%}
 
 
-{%- comment -%} Gallery slides come from customizer blocks, not a product {%- endcomment -%}
-{%- assign slides = section.blocks | where: 'type', 'slide' -%}
+{%- comment -%} Gallery: the same /pages/bogo image list on every BOGO page (snippets/bogo-gallery-files) {%- endcomment -%}
+{%- capture bogo_gallery_list -%}{%- render 'bogo-gallery-files' -%}{%- endcapture -%}
+{%- assign bogo_gallery = bogo_gallery_list | strip | split: '|' -%}
 
 <section class="obs obs-{{ section.id }}" id="obs-{{ section.id }}">
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
@@ -260,11 +261,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- else -%}{%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
       {%- endcase -%}
       {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
-      {%- comment -%} Pre-select the middle box on BOGO pages; /pages/bogo (page.bogosub) pre-selects the first box and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- comment -%} Pre-select the middle box on BOGO pages; /pages/bogo (page.bogosub) and military pre-select the first box (Buy 1, Get 1 FREE); /pages/bogo and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
-      {%- if pb_per_spray -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
+      {%- if pb_per_spray or template.suffix == 'military' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
       {%- assign pb_sprays = 0 -%}
       {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
@@ -308,32 +309,32 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     <div class="obs__gallery">
       <div class="obs__left-inner">
         <div class="obs__main">
-          {%- for b in slides -%}
-            {%- if b.settings.image != blank -%}
+          {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}
+            {%- if gimg != blank -%}
               <img data-obs-main{% unless forloop.first %} hidden{% endunless %}
-                   src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
-                   srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
+                   src="{{ gimg | image_url: width: 1000, format: 'webp' }}"
+                   srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
                    sizes="(max-width: 900px) 92vw, 560px"
-                   width="{{ b.settings.image.width }}" height="{{ b.settings.image.height }}"
-                   alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
+                   width="{{ gimg.width }}" height="{{ gimg.height }}"
+                   alt="{{ section.settings.headline | strip_html | escape }}"
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
             {%- endif -%}
           {%- endfor -%}
         </div>
-        {%- if slides.size > 1 -%}
+        {%- if bogo_gallery.size > 1 -%}
           <div class="obs__thumbrow">
             <button type="button" class="obs__arrow" data-obs-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
             <div class="obs__thumbs">
-              {%- for b in slides -%}
-                {%- if b.settings.image != blank -%}
-                  <button type="button" class="obs__thumb{% if forloop.first %} is-active{% endif %}" data-obs-thumb aria-label="View image {{ forloop.index }}"><img src="{{ b.settings.image | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
+              {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}
+                {%- if gimg != blank -%}
+                  <button type="button" class="obs__thumb{% if forloop.first %} is-active{% endif %}" data-obs-thumb aria-label="View image {{ forloop.index }}"><img src="{{ gimg | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
                 {%- endif -%}
               {%- endfor -%}
             </div>
             <button type="button" class="obs__arrow" data-obs-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
           </div>
           <div class="obs__dots" aria-hidden="true">
-            {%- for b in slides -%}{%- if b.settings.image != blank -%}<span class="obs__dot{% if forloop.first %} is-active{% endif %}" data-obs-dot></span>{%- endif -%}{%- endfor -%}
+            {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}{%- if gimg != blank -%}<span class="obs__dot{% if forloop.first %} is-active{% endif %}" data-obs-dot></span>{%- endif -%}{%- endfor -%}
           </div>
         {%- endif -%}
       </div>

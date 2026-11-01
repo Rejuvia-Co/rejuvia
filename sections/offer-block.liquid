@@ -469,9 +469,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
 
       {%- if section.settings.show_trusted -%}
+        {%- comment -%} Trusted-by line under "Used by 500,000+ customers": each audience page names the result that matters most to them. {%- endcomment -%}
+        {%- assign ob_tb_sub = section.settings.trusted_subtext -%}
+        {%- case page.handle -%}
+          {%- when 'senior-citizen-bogo' -%}{%- assign ob_tb_sub = 'to fall asleep faster and get right back to sleep after the 3am bathroom trip.' -%}
+          {%- when 'military-bogo' -%}{%- assign ob_tb_sub = 'to fall asleep faster and wake up clear, not groggy.' -%}
+          {%- when 'nurse-bogo' -%}{%- assign ob_tb_sub = 'to fall asleep faster after any shift, even when you sleep during the day.' -%}
+        {%- endcase -%}
         {% render 'trusted-by',
           title: section.settings.trusted_title,
-          subtext: section.settings.trusted_subtext,
+          subtext: ob_tb_sub,
           image_1: section.settings.trusted_image_1,
           image_2: section.settings.trusted_image_2,
           image_3: section.settings.trusted_image_3,

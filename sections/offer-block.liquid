@@ -288,7 +288,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="ob__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} The military BOGO page (/pages/military-bogo) runs on the senior template; only its headline, subtitle, pill and checkout code differ, set here because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} The military and nurse BOGO pages (/pages/military-bogo, /pages/nurse-bogo) run on the senior template; only their headline, subtitle, pill and checkout code differ, set here because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign ob_kind = template.suffix -%}
       {%- assign ob_title = section.settings.title -%}{%- assign ob_subtitle = section.settings.subtitle -%}{%- assign ob_code = section.settings.checkout_discount_code | strip -%}
       {%- if page.handle == 'military-bogo' -%}
@@ -296,6 +296,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign ob_title = 'Military Discount: Extra 10% Off + Up To 3 Bottles FREE' -%}
         {%- capture ob_subtitle -%}Thank you for your service — take an extra 10% off today's Buy One, Get One FREE offer on Rejuvia® Sleep Spray (just $13.50 per spray).{%- endcapture -%}
         {%- assign ob_code = 'MILITARY10' -%}
+      {%- elsif page.handle == 'nurse-bogo' -%}
+        {%- assign ob_kind = 'nurse' -%}
+        {%- assign ob_title = 'Nurse Discount: Extra 10% Off + Up To 3 Bottles FREE' -%}
+        {%- assign ob_subtitle = 'Nurses only: you take care of everyone else. Claim your buy one, get one free + an extra 10% off and fall asleep in 15 minutes after your next shift.' -%}
+        {%- assign ob_code = 'NURSE10' -%}
       {%- endif -%}
       {%- if ob_title != blank -%}<h2 class="ob__title">{{ ob_title }}</h2>{%- endif -%}
       {%- comment -%} Pill label: the audience pages name their discount; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}

@@ -209,6 +209,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 {%- comment -%} Gallery slides come from customizer blocks, not a product {%- endcomment -%}
 {%- assign slides = section.blocks | where: 'type', 'slide' -%}
+{%- comment -%} Slot 1 of the gallery on every BOGO page is the "Buy 1, Get 1 FREE, $15 each" hero, a theme asset (set in code because Shopify reverts template JSON from git). {%- endcomment -%}
+{%- assign bh_src = 'bogo-hero-15-each-1000.webp' | asset_url -%}
+{%- capture bh_srcset -%}{{ 'bogo-hero-15-each-500.webp' | asset_url }} 500w, {{ 'bogo-hero-15-each-800.webp' | asset_url }} 800w, {{ 'bogo-hero-15-each-1000.webp' | asset_url }} 1000w, {{ 'bogo-hero-15-each-1400.webp' | asset_url }} 1400w{%- endcapture -%}
+{%- assign bh_thumb = 'bogo-hero-15-each-500.webp' | asset_url -%}
+{%- assign bh_alt = 'Rejuvia Sleep Spray: Buy 1, Get 1 FREE, $15 each. Fall asleep in 15 minutes, wake up refreshed.' -%}
 
 <section class="obs obs-{{ section.id }}" id="obs-{{ section.id }}">
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
@@ -236,12 +241,21 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <div class="obs__main">
           {%- for b in slides -%}
             {%- if b.settings.image != blank -%}
-              <img data-obs-main{% unless forloop.first %} hidden{% endunless %}
+              {%- if forloop.first -%}
+              <img data-obs-main
+                   src="{{ bh_src }}"
+                   srcset="{{ bh_srcset }}"
+                   sizes="(max-width: 900px) 92vw, {{ section.settings.gallery_width | default: 500 }}px"
+                   width="2000" height="2000"
+                   alt="{{ bh_alt | escape }}"
+              {%- else -%}
+              <img data-obs-main hidden
                    src="{{ b.settings.image | image_url: width: 1000, format: 'webp' }}"
                    srcset="{{ b.settings.image | image_url: width: 500, format: 'webp' }} 500w, {{ b.settings.image | image_url: width: 800, format: 'webp' }} 800w, {{ b.settings.image | image_url: width: 1000, format: 'webp' }} 1000w, {{ b.settings.image | image_url: width: 1400, format: 'webp' }} 1400w"
                    sizes="(max-width: 900px) 92vw, {{ section.settings.gallery_width | default: 500 }}px"
                    width="{{ b.settings.image.width }}" height="{{ b.settings.image.height }}"
                    alt="{{ b.settings.image.alt | default: section.settings.headline | strip_html | escape }}"
+              {%- endif %}
                    {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
             {%- endif -%}
           {%- endfor -%}
@@ -252,7 +266,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <div class="obs__thumbs">
               {%- for b in slides -%}
                 {%- if b.settings.image != blank -%}
-                  <button type="button" class="obs__thumb{% if forloop.first %} is-active{% endif %}" data-obs-thumb aria-label="View image {{ forloop.index }}"><img src="{{ b.settings.image | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
+                  <button type="button" class="obs__thumb{% if forloop.first %} is-active{% endif %}" data-obs-thumb aria-label="View image {{ forloop.index }}"><img src="{% if forloop.first %}{{ bh_thumb }}{% else %}{{ b.settings.image | image_url: width: 160, format: 'webp' }}{% endif %}" alt=""" loading="lazy" decoding="async"></button>
                 {%- endif -%}
               {%- endfor -%}
             </div>

@@ -252,6 +252,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}
       </div>
       {%- if section.settings.headline != blank -%}<h2 class="obs__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+      {%- comment -%} Pill label: the audience pages name their discount; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}
+      {%- case template.suffix -%}
+        {%- when 'military' -%}{%- assign pb_label = 'MILITARY DISCOUNT' -%}
+        {%- when 'senior' -%}{%- assign pb_label = 'SENIOR DISCOUNT' -%}
+        {%- when 'nurse' -%}{%- assign pb_label = 'NURSE DISCOUNT' -%}
+        {%- else -%}{%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
+      {%- endcase -%}
       {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
       {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
@@ -275,7 +282,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign pb_pill = '' -%}
       {%- if pbnc > pbnp and pbnp > 0 -%}
         {%- assign pb_pct = pbnc | minus: pbnp | times: 100.0 | divided_by: pbnc | round -%}
-        {%- assign pb_pill = section.settings.sale_label | default: 'FALL SALE' | append: ' - ' | append: pb_pct | append: '% OFF' -%}
+        {%- assign pb_pill = pb_label | append: ' - ' | append: pb_pct | append: '% OFF' -%}
       {%- else -%}
         {%- assign pb_compare = '' -%}
       {%- endif -%}
@@ -516,7 +523,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   var pbPrice = sec.querySelector('[data-obs-pb-price]');
   var pbStruck = sec.querySelector('[data-obs-pb-struck]');
   var pbPill = sec.querySelector('[data-obs-pb-pill]');
-  var pbLabel = {{ section.settings.sale_label | default: 'FALL SALE' | json }};
+  var pbLabel = {{ pb_label | json }};
   function pbNum(s) { return parseFloat(String(s || '').replace(/[^0-9.]/g, '')) || 0; }
   function syncPricebar() {
     var sel = sec.querySelector('.obs__tier input[type="radio"]:checked');

@@ -248,7 +248,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- if section.settings.headline != blank -%}<h2 class="obs__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+      {%- comment -%} The anniversary and welcome-kit pages run on the /pages/bogo template and differ only in headline and subtitle, set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
+      {%- if page.handle == 'anniversary-sale' -%}
+        {%- assign obs_headline = 'Anniversary Sale - Up To 3 FREE Sprays Today' -%}
+        {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 3 FREE Sleep Sprays with your order. Limited-time.{%- endcapture -%}
+      {%- elsif page.handle == 'welcome-kit' -%}
+        {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}
+        {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
+      {%- endif -%}
+      {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
       {%- comment -%} Pill label: the audience pages name their discount, anniversary says ANNIVERSARY SALE; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}
       {%- case template.suffix -%}
         {%- when 'military' -%}{%- assign pb_label = 'MILITARY DISCOUNT' -%}
@@ -300,12 +309,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <span class="obs__pb-pill" data-obs-pb-pill{% if pb_pill == blank %} hidden{% endif %}>{{ pb_pill }}</span>
       </div>
       {%- endif -%}
-      {%- if section.settings.subtitle != blank -%}<p class="obs__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+      {%- if obs_subtitle != blank -%}<p class="obs__subtitle">{{ obs_subtitle }}</p>{%- endif -%}
     </div>
 
     <div class="obs__gallery">
       <div class="obs__left-inner">
-        {%- render 'bogo-gallery', id: section.id, alt: section.settings.headline -%}
+        {%- render 'bogo-gallery', id: section.id, alt: obs_headline -%}
       </div>
     </div>
 

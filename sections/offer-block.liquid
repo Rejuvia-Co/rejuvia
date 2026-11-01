@@ -457,12 +457,25 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- assign has_tabs = false -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
+      {%- comment -%} Audience pages add one line to the top of "Why Rejuvia Works" and one question to the top of the FAQ tab; the rest of each tab is unchanged. {%- endcomment -%}
+      {%- assign ob_why_lead = '' -%}{%- assign ob_faq_lead = '' -%}
+      {%- case page.handle -%}
+        {%- when 'senior-citizen-bogo' -%}
+          {%- assign ob_why_lead = '<p>No pills to swallow: just 6–8 sprays under your tongue.</p>' -%}
+          {%- capture ob_faq_lead -%}<p><strong>Is it really just $13.50 a bottle?</strong></p><p>Yes. Your extra 10% senior discount comes off automatically at checkout, so Buy 1, Get 1 FREE works out to $13.50 a bottle, about 45¢ a night. It's a one-time purchase, not a subscription.</p>{%- endcapture -%}
+        {%- when 'military-bogo' -%}
+          {%- assign ob_why_lead = '<p>Works the same at home, on deployment or across time zones: 6–8 sprays under your tongue, and most people are asleep in 10–15 minutes.</p>' -%}
+          {%- assign ob_faq_lead = '<p><strong>Who gets the military discount?</strong></p><p>Everyone who has served: active duty and veterans. Your extra 10% comes off automatically at checkout.</p>' -%}
+        {%- when 'nurse-bogo' -%}
+          {%- assign ob_why_lead = '<p>Coming off a night shift? It works whenever you need to sleep, day or night, and the low 2mg dose means you wake up clear for your next shift.</p>' -%}
+          {%- capture ob_faq_lead -%}<p><strong>I work nights. Can I use it during the day?</strong></p><p>Yes. Use 6–8 sprays whenever you're ready to sleep, day or night. With just 2mg of melatonin, you wake up clear, not groggy.</p>{%- endcapture -%}
+      {%- endcase -%}
       {%- if has_tabs -%}
         <div class="ob__tabs">
           {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
             <div class="ob__tab" {{ b.shopify_attributes }}>
               <button type="button" class="ob__tab-q" aria-expanded="false"><span>{{ b.settings.title }}</span>{{ ob_chevron }}</button>
-              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
+              <div class="ob__tab-a"><div class="ob__tab-a-inner"><div class="ob__tab-body">{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'why rejuvia works' -%}{{ ob_why_lead }}{%- elsif tab_t contains 'frequently asked' -%}{{ ob_faq_lead }}{%- endif -%}{{ b.settings.content }}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
             </div>
           {%- endif -%}{%- endfor -%}
         </div>

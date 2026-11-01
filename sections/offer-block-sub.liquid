@@ -84,6 +84,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* ---- Offer headline ---- */
 .obs__headline { --ls: -1.4px; font-size: {{ section.settings.headline_size | default: 42 }}px; line-height: 1.04; font-weight: 800; color: #171512; margin: 10px 0 0; }
 .obs__subtitle { font-size: {{ section.settings.subtitle_size | default: 16.5 }}px; line-height: 1.35; color: #4a4550; margin: 9px 0 0; }
+.obs__pricebar { display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.obs__pricebar > [hidden] { display: none; }
+.obs__pb-price { font-size: 32px; font-weight: 800; color: #672666; line-height: 1.1; }
+.obs__pb-struck { font-size: 26px; font-weight: 700; color: #8a8a8a; }
+.obs__pb-pill { font-size: 15px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; color: #fff; background: #672666; padding: 6px 14px; border-radius: 8px; white-space: nowrap; }
 
 /* ---- Urgency strip ---- */
 .obs__urgency { display: flex; align-items: center; gap: 10px; border: 1.5px dashed #b79ab8; background: #faf7fd; border-radius: 12px; padding: 12px 16px; margin-top: 18px; font-size: 14px; line-height: 1.35; color: #4c1c4f; }
@@ -172,6 +177,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__headline { font-size: {{ section.settings.headline_size_mobile | default: 29 }}px; line-height: 1.06; --ls: -1.1px; text-align: left; margin-top: 5px; }
   .obs__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 13.5 }}px; text-align: left; padding: 0; margin-top: 5px; }
   .obs__gallery { order: 1; }
+  .obs__pricebar { gap: 6px; margin-top: 6px; }
+  .obs__pb-price { font-size: clamp(20px, 6.4vw, 24px); }
+  .obs__pb-struck { font-size: clamp(15px, 4.8vw, 18px); }
+  .obs__pb-pill { padding: 6px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
   .obs__thumbrow { margin-top: 6px; }
   .obs__header { order: 2; margin-top: 16px; }
   .obs__buybox { order: 3; margin-top: 2px; }
@@ -240,6 +249,40 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}
       </div>
       {%- if section.settings.headline != blank -%}<h2 class="obs__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+      {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
+      {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+      {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
+      {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
+      {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
+        {%- assign ptn = ptn | plus: 1 -%}
+        {%- if ptn == ob_default_tier -%}
+          {%- assign psrc = b.settings.product | default: section.settings.product -%}
+          {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
+          {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+          {%- assign pqty = b.settings.quantity | default: section.settings.add_quantity | default: 1 -%}
+          {%- assign pplan = b.settings.selling_plan | strip -%}{%- assign pplan_total = blank -%}
+          {%- if pplan != blank and pv != blank -%}{%- for al in pv.selling_plan_allocations -%}{%- assign alid = al.selling_plan.id | append: '' -%}{%- if alid == pplan -%}{%- assign pplan_total = al.price | times: pqty -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+          {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{%- assign pb_price = b.settings.price -%}{%- elsif pplan_total != blank -%}{%- assign pb_price = pplan_total | money_without_trailing_zeros -%}{%- elsif pv != blank -%}{%- assign pb_price = pv.price | money_without_trailing_zeros -%}{%- else -%}{%- assign pb_price = b.settings.price -%}{%- endif -%}
+          {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pv != blank and pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
+        {%- endif -%}
+      {%- endif -%}{%- endfor -%}
+      {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
+      {%- assign pbnc = pb_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
+      {%- assign pb_pill = '' -%}
+      {%- if pbnc > pbnp and pbnp > 0 -%}
+        {%- assign pb_pct = pbnc | minus: pbnp | times: 100.0 | divided_by: pbnc | round -%}
+        {%- assign pb_pill = section.settings.sale_label | default: 'FALL SALE' | append: ' - ' | append: pb_pct | append: '% OFF' -%}
+      {%- else -%}
+        {%- assign pb_compare = '' -%}
+      {%- endif -%}
+      {%- if pb_price != blank -%}
+      <div class="obs__pricebar">
+        <span class="obs__pb-price" data-obs-pb-price>{{ pb_price | strip }}</span>
+        <s class="obs__pb-struck" data-obs-pb-struck{% if pb_compare == blank %} hidden{% endif %}>{{ pb_compare | strip }}</s>
+        <span class="obs__pb-pill" data-obs-pb-pill{% if pb_pill == blank %} hidden{% endif %}>{{ pb_pill }}</span>
+      </div>
+      {%- endif -%}
       {%- if section.settings.subtitle != blank -%}<p class="obs__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
     </div>
 
@@ -303,9 +346,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
-        {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
-        {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-        {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign tier_n = tier_n | plus: 1 -%}
@@ -468,6 +508,26 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     var first = sec.querySelector('.obs__tier input[type="radio"]');
     if (first) { first.checked = true; first.closest('.obs__tier').classList.add('is-selected'); }
   }
+
+  /* Price bar mirrors the selected box: its price, strikethrough and "<sale label> - X% OFF". */
+  var pbPrice = sec.querySelector('[data-obs-pb-price]');
+  var pbStruck = sec.querySelector('[data-obs-pb-struck]');
+  var pbPill = sec.querySelector('[data-obs-pb-pill]');
+  var pbLabel = {{ section.settings.sale_label | default: 'FALL SALE' | json }};
+  function pbNum(s) { return parseFloat(String(s || '').replace(/[^0-9.]/g, '')) || 0; }
+  function syncPricebar() {
+    var sel = sec.querySelector('.obs__tier input[type="radio"]:checked');
+    if (!sel || !pbPrice) return;
+    var tier = sel.closest('.obs__tier');
+    var p = tier.querySelector('.obs__price'), c = tier.querySelector('.obs__struck');
+    var pt = p ? p.textContent.trim() : '', ct = c ? c.textContent.trim() : '';
+    var np = pbNum(pt), nc = pbNum(ct), off = nc > np && np > 0;
+    pbPrice.textContent = pt;
+    pbStruck.textContent = off ? ct : ''; pbStruck.hidden = !off;
+    pbPill.textContent = off ? pbLabel + ' - ' + Math.round((nc - np) * 100 / nc) + '% OFF' : ''; pbPill.hidden = !off;
+  }
+  sec.addEventListener('change', function (e) { if (e.target.closest('.obs__tier')) syncPricebar(); });
+  syncPricebar();
   syncCta();
 
   /* ---- Urgency cutoff: current time + 1 hour, pinned to America/New_York so
@@ -697,6 +757,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "id": "subtitle",
       "label": "Subtitle",
       "default": "With today's Buy One, Get One FREE subscription offer on Rejuvia® Sleep Spray"
+    },
+    {
+      "type": "text",
+      "id": "sale_label",
+      "label": "Price bar sale label",
+      "info": "Shown in the price bar pill as \"<label> - X% OFF\".",
+      "default": "FALL SALE"
     },
     {
       "type": "range",

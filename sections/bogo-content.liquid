@@ -4,30 +4,42 @@
   image treatment (contained product vs lifestyle cover) are configurable.
 {%- endcomment -%}
 
-{%- comment -%} Persona landing pages: own heading/subhead and first two bullets; other pages use the settings. {%- endcomment -%}
+{%- comment -%} Persona landing pages: own heading/subhead and all four bullets; other pages use the settings. {%- endcomment -%}
 {%- assign bc_heading = section.settings.heading -%}
 {%- assign bc_sub = section.settings.subhead -%}
 {%- assign bc_b1 = '' -%}
 {%- assign bc_b2 = '' -%}
+{%- assign bc_b3 = '' -%}
+{%- assign bc_b4 = '' -%}
 {%- case page.handle -%}
   {%- when 'senior-citizen-bogo' -%}
     {%- assign bc_heading = 'Sleep Through the Night Again, Without Swallowing Another Pill' -%}
     {%- capture bc_sub -%}Ditch the melatonin gummies and sleeping pills. Just 6–8 sprays under your tongue and most people are asleep in 10–15 minutes, with nothing to swallow.{%- endcapture -%}
     {%- assign bc_b1 = 'Fall asleep in 10-15 minutes, no pills to swallow' -%}
     {%- assign bc_b2 = 'Get right back to sleep after the 3am bathroom trip' -%}
+    {%- assign bc_b3 = 'Wake up clear, not groggy, with a gentle 2mg dose' -%}
+    {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
   {%- when 'military-bogo' -%}
     {%- capture bc_heading -%}Switch Off at Night and Wake Up Ready, Wherever You're Stationed{%- endcapture -%}
     {%- capture bc_sub -%}Years of staying on alert don't switch off at bedtime. Just 6–8 sprays under your tongue and most people are asleep in 10–15 minutes, then up clear for the morning.{%- endcapture -%}
     {%- assign bc_b1 = 'Fall asleep in 10-15 minutes, at home, on deployment or across time zones' -%}
+    {%- assign bc_b2 = 'Sleep through the entire night without 3am wake-ups' -%}
+    {%- assign bc_b3 = 'Wake up clear and ready, not groggy, with a low 2mg dose' -%}
+    {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
   {%- when 'nurse-bogo' -%}
     {%- assign bc_heading = 'Finally Sleep After Any Shift, Day or Night' -%}
     {%- capture bc_sub -%}Twelve-hour shifts, flipped schedules and a mind that won't shut off. Just 6–8 sprays under your tongue and most people are asleep in 10–15 minutes, whenever your shift ends.{%- endcapture -%}
     {%- assign bc_b1 = 'Fall asleep in 10-15 minutes after any shift, even during the day' -%}
+    {%- assign bc_b2 = 'Stay asleep until your alarm, even with the sun up' -%}
+    {%- assign bc_b3 = 'Wake up clear for your next shift, not groggy, with a low 2mg dose' -%}
+    {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
   {%- when 'travel-bogo' -%}
     {%- assign bc_heading = 'Beat Jet Lag and Sleep in Any Time Zone' -%}
     {%- capture bc_sub -%}Red-eyes, hotel rooms and a body clock that's hours behind. Just 6–8 sprays under your tongue and most people are asleep in 10–15 minutes, on local time.{%- endcapture -%}
     {%- assign bc_b1 = 'Fall asleep in 10-15 minutes in any hotel room or time zone' -%}
     {%- assign bc_b2 = 'Beat jet lag and sleep on your new schedule from the first night' -%}
+    {%- assign bc_b3 = 'Wake up clear and ready for the day ahead, not groggy' -%}
+    {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
 {%- endcase -%}
 
 <section
@@ -70,6 +82,8 @@
             {%- assign bc_text = block.settings.text -%}
             {%- if bc_n == 1 and bc_b1 != '' -%}{%- assign bc_text = bc_b1 -%}{%- endif -%}
             {%- if bc_n == 2 and bc_b2 != '' -%}{%- assign bc_text = bc_b2 -%}{%- endif -%}
+            {%- if bc_n == 3 and bc_b3 != '' -%}{%- assign bc_text = bc_b3 -%}{%- endif -%}
+            {%- if bc_n == 4 and bc_b4 != '' -%}{%- assign bc_text = bc_b4 -%}{%- endif -%}
             <li class="bogo-content__bullet" {{ block.shopify_attributes }}>
               <span class="bogo-content__check" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.4 5.3 10.5 12 3.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>

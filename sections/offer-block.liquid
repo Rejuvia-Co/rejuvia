@@ -336,17 +336,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="ob__gallery">
       {%- assign main_image = gallery_product.featured_image | default: gallery_product.images.first -%}
-      {%- comment -%} Slot 1 of the gallery on every BOGO page is the "Buy 1, Get 1 FREE, $15 each" hero, a theme asset (set in code because Shopify reverts template JSON from git). {%- endcomment -%}
-      {%- assign bh_name = 'bogo-hero-15-each' -%}
-      {%- assign bh_alt = 'Rejuvia Sleep Spray: Buy 1, Get 1 FREE, $15 each. Fall asleep in 15 minutes, wake up refreshed.' -%}
-      {%- if template.suffix == 'military' or template.suffix == 'nurse' or template.suffix == 'senior' -%}
-        {%- comment -%} Discount pages get their own hero: bogo-hero-military|nurse|senior-*.webp ($13.50 each) {%- endcomment -%}
-        {%- assign bh_name = 'bogo-hero-' | append: template.suffix -%}
-        {%- assign bh_alt = 'Rejuvia Sleep Spray: Buy 1, Get 1 FREE, $13.50 each with the ' | append: template.suffix | append: ' discount. Fall asleep in 15 minutes, wake up refreshed.' -%}
-      {%- endif -%}
-      {%- assign bh_src = bh_name | append: '-1000.webp' | asset_url -%}
-      {%- capture bh_srcset -%}{{ bh_name | append: '-500.webp' | asset_url }} 500w, {{ bh_name | append: '-800.webp' | asset_url }} 800w, {{ bh_name | append: '-1000.webp' | asset_url }} 1000w, {{ bh_name | append: '-1400.webp' | asset_url }} 1400w{%- endcapture -%}
-      {%- assign bh_thumb = bh_name | append: '-500.webp' | asset_url -%}
       {%- comment -%}
 
         Drop the variant images (the 2-pack / 3-pack shots) from the carousel --
@@ -387,15 +376,15 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- endfor -%}
       <div class="ob__gallery-inner">
-      <div class="ob__main"{% if main_image != blank and main_image.width and main_image.height %} style="aspect-ratio: 1 / 1;"{% endif %}>
-        {%- if main_image != blank -%}<img data-ob-main src="{{ bh_src }}" srcset="{{ bh_srcset }}" sizes="(max-width: 900px) 100vw, 560px" width="2000" height="2000" alt="{{ bh_alt | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
+      <div class="ob__main"{% if main_image != blank and main_image.width and main_image.height %} style="aspect-ratio: {{ main_image.width }} / {{ main_image.height }};"{% endif %}>
+        {%- if main_image != blank -%}<img data-ob-main src="{{ main_image | image_url: width: 1000, format: 'webp' }}" srcset="{{ main_image | image_url: width: 500, format: 'webp' }} 500w, {{ main_image | image_url: width: 700, format: 'webp' }} 700w, {{ main_image | image_url: width: 1000, format: 'webp' }} 1000w, {{ main_image | image_url: width: 1400, format: 'webp' }} 1400w" sizes="(max-width: 900px) 100vw, 560px" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ gallery_product.title | default: section.settings.title | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gal_count > 1 -%}
         <div class="ob__thumbs-row">
           <button type="button" class="ob__arrow" data-ob-prev aria-label="Previous"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="ob__thumbs">
             {%- for img in gallery_product.images -%}{%- capture ikey -%},{{ img.id }},{%- endcapture -%}{%- unless variant_img_ids contains ikey -%}
-              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{% if img == main_image %}{{ bh_src }}{% else %}{{ img | image_url: width: 1000, format: 'webp' }}{% endif %}" aria-label="View image {{ forloop.index }}">{% if img == main_image %}<img src="{{ bh_thumb }}" width="2000" height="2000"{% else %}<img src="{{ img | image_url: width: 200, format: 'webp' }}" width="{{ img.width }}" height="{{ img.height }}"{% endif %} alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
+              <button type="button" class="ob__thumb{% if img == main_image %} is-active{% endif %}" data-ob-thumb data-full="{{ img | image_url: width: 1000, format: 'webp' }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 200, format: 'webp' }}" width="{{ img.width }}" height="{{ img.height }}" alt="" loading="lazy" decoding="async"></button>{%- endunless -%}
             {%- endfor -%}
           </div>
           <button type="button" class="ob__arrow" data-ob-next aria-label="Next"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>

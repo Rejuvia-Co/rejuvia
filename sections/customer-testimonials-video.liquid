@@ -34,6 +34,17 @@
   endif
 
   assign header = vt.value.header | default: section.settings.header
+  # Persona landing pages get their own header (no group counts: only the 500,000+ total is real).
+  case page.handle
+    when 'senior-citizen-bogo'
+      assign header = 'Seniors Like You Are Sleeping Better With Rejuvia'
+    when 'military-bogo'
+      assign header = 'Service Members and Veterans Are Sleeping Better With Rejuvia'
+    when 'nurse-bogo'
+      assign header = 'Nurses Like You Are Sleeping Better With Rejuvia'
+    when 'travel-bogo'
+      assign header = 'Frequent Flyers Are Beating Jet Lag With Rejuvia'
+  endcase
   assign stars_label = vt.value.stars_label | default: section.settings.stars_label
 
   if use_meta

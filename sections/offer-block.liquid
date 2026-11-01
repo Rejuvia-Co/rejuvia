@@ -207,8 +207,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__reviewbar .ob__rb-sep-customers { order: 2; }
   .ob__reviewbar .ob__rb-reviews { order: 3; }
   .ob-{{ section.id }} .ob__reviewbar .ob__stars svg { width: 12px; height: 12px; }
-  /* 33px on mobile to match /pages/bogo (fixed in code: template JSON edits don't deploy). */
-  .ob-{{ section.id }} .ob__title { font-size: 33px; letter-spacing: -1px; text-align: left; }
+  /* 30px on mobile to match /pages/bogo (fixed in code: template JSON edits don't deploy). */
+  .ob-{{ section.id }} .ob__title { font-size: 30px; letter-spacing: -1px; text-align: left; }
   .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: left; padding: 0; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 }}px; }
   .ob__gallery-inner { position: static; }

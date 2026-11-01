@@ -300,9 +300,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
       {%- if obs_subtitle != blank -%}<p class="obs__subtitle">{{ obs_subtitle }}</p>{%- endif -%}
       {%- comment -%} Top price bar: default tier price + compare + sale pill; JS updates on tier change {%- endcomment -%}
-      {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
-      {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-      {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
+      {%- comment -%} Pre-select the first box (Buy 1, Get 1 FREE); the price-bar pill reads the selected box's price per spray ("$15 PER SPRAY"). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign ob_default_tier = 1 -%}
       {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
         {%- assign ptn = ptn | plus: 1 -%}
@@ -312,6 +311,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign pplan = b.settings.selling_plan | strip -%}{%- assign pplan_price = blank -%}
         {%- if pplan != blank and pv != blank -%}{%- for al in pv.selling_plan_allocations -%}{%- assign alid = al.selling_plan.id | append: '' -%}{%- if alid == pplan -%}{%- assign pplan_price = al.price -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
         {%- if ptn == ob_default_tier -%}
+          {%- assign pb_words = b.settings.label | remove: ',' | split: ' ' -%}{%- assign pb_sprays = 0 -%}
+          {%- if pb_words[0] == 'Buy' -%}{%- assign pb_sprays = pb_words[1] | plus: 0 | times: 2 -%}{%- endif -%}
           {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{%- assign pb_price = b.settings.price -%}{%- elsif pplan_price != blank -%}{%- assign pb_price = pplan_price | money_without_trailing_zeros -%}{%- elsif pv != blank -%}{%- assign pb_price = pv.price | money_without_trailing_zeros -%}{%- else -%}{%- assign pb_price = b.settings.price -%}{%- endif -%}
           {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pplan_price != blank and pv.price > pplan_price -%}{%- assign pb_compare = pv.price | money_without_trailing_zeros -%}{%- elsif pv != blank and pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
         {%- endif -%}
@@ -320,6 +321,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign pbnc = pb_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
       {%- assign pb_pct = 0 -%}{%- if pbnc > pbnp and pbnc > 0 -%}{%- assign pb_pct = pbnc | minus: pbnp | times: 100.0 | divided_by: pbnc | round -%}{%- endif -%}
       {%- capture pb_pill -%}{%- if section.settings.pill_format != blank -%}{%- unless section.settings.pill_format contains '{pct}' and pb_pct == 0 -%}{%- assign pill_out = section.settings.pill_format | replace: '{pct}', pb_pct -%}{{ pill_out }}{%- endunless -%}{%- elsif section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - {% if pb_pct > 0 %}{{ pb_pct }}% OFF{% else %}BOGO FREE{% endif %}{%- endif -%}{%- endcapture -%}
+      {%- if pb_sprays > 0 and pbnp > 0 -%}{%- assign pb_pill = pbnp | times: 100 | divided_by: pb_sprays | round | money_without_trailing_zeros | append: ' PER SPRAY' -%}{%- endif -%}
       {%- if section.settings.show_pricebar -%}
       <div class="obs__pricebar">
         <span class="obs__pb-price" data-obs-pb-price>{{ pb_price | strip }}</span>
@@ -397,6 +399,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign tnc = tier_compare | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign tpct = 0 -%}{%- if tnc > tnp and tnc > 0 -%}{%- assign tpct = tnc | minus: tnp | times: 100.0 | divided_by: tnc | round -%}{%- endif -%}
           {%- capture tier_pill -%}{%- if section.settings.pill_format != blank -%}{%- unless section.settings.pill_format contains '{pct}' and tpct == 0 -%}{%- assign pill_out = section.settings.pill_format | replace: '{pct}', tpct -%}{{ pill_out }}{%- endunless -%}{%- elsif section.settings.sale_label != blank -%}{{ section.settings.sale_label }} - {% if tpct > 0 %}{{ tpct }}% OFF{% else %}BOGO FREE{% endif %}{%- endif -%}{%- endcapture -%}
+          {%- assign t_words = b.settings.label | remove: ',' | split: ' ' -%}
+          {%- if t_words[0] == 'Buy' and tnp > 0 -%}{%- assign t_sprays = t_words[1] | plus: 0 | times: 2 -%}{%- if t_sprays > 0 -%}{%- assign tier_pill = tnp | times: 100 | divided_by: t_sprays | round | money_without_trailing_zeros | append: ' PER SPRAY' -%}{%- endif -%}{%- endif -%}
 
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"
@@ -849,7 +853,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "min": 1,
       "max": 6,
       "step": 1,
-      "label": "Pre-selected tier (by position)", "info": "Not used: the middle box is always pre-selected (set in code).",
+      "label": "Pre-selected tier (by position)", "info": "Not used: the first box is always pre-selected (set in code).",
       "default": 2
     },
     {

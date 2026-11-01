@@ -180,7 +180,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__pricebar { gap: 6px; }
   .ob__pb-price { font-size: clamp(20px, 6.4vw, 24px); }
   .ob__pb-struck { font-size: clamp(15px, 4.8vw, 18px); }
-  .ob__pb-pill { padding: 6px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
+  /* Pill is exactly as tall as the price line (price font x 1.1), with no extra top/bottom padding. */
+  .ob__pb-pill { display: inline-flex; align-items: center; box-sizing: border-box; height: calc(clamp(20px, 6.4vw, 24px) * 1.1); line-height: 1; padding: 0 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
   .ob__main { min-height: 0; max-width: 100%; max-height: none; }
   /* Fill the gallery width on mobile. The base rule is width:auto with a
      max-height, so a square image capped at 320px tall also rendered 320px

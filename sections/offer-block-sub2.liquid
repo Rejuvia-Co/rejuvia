@@ -183,7 +183,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__pricebar { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
 .obs__pb-price { font-size: 32px; font-weight: 800; color: var(--obs-accent, #672666); line-height: 1.1; }
 .obs__pb-struck { font-size: 26px; font-weight: 700; color: #8a8a8a; text-decoration: line-through; }
-.obs__pb-struck[hidden] { display: none; }
+.obs__pb-struck[hidden], .obs__pb-pill[hidden] { display: none; }
 .obs__pb-pill { font-size: 15px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; color: #fff; background: var(--obs-accent, #672666); padding: 6px 14px; border-radius: 8px; white-space: nowrap; }
 
 /* v2: outcome checklist */
@@ -226,7 +226,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__pricebar { margin-top: 12px; }
   .obs__pb-price { font-size: clamp(23px, 7.2vw, 28px); }
   .obs__pb-struck { font-size: clamp(17px, 5.4vw, 21px); }
-  .obs__pb-pill { padding: 5px 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
+  /* Pill is exactly as tall as the price line (price font x 1.1), with no extra top/bottom padding. */
+  .obs__pb-pill { display: inline-flex; align-items: center; box-sizing: border-box; height: calc(clamp(23px, 7.2vw, 28px) * 1.1); line-height: 1; padding: 0 8px; border-radius: 6px; font-size: clamp(10px, 2.95vw, 11.5px); letter-spacing: .2px; }
   .obs__outcome-item { font-size: 17px; }
   .obs__servings { font-size: 14px; }
   .obs__cta-guarantee { gap: 13px; font-size: 12px; }

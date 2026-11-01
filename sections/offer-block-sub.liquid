@@ -95,6 +95,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__urgency svg { flex: none; width: 20px; height: 20px; }
 .obs__urgency b { font-weight: 800; }
 .obs__tiers + .obs__urgency { margin-top: 16px; }
+.obs__urgency--m { display: none; }
 
 /* ---- Tier rows (real bundle photography, no pictograms) ---- */
 .obs__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
@@ -185,6 +186,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__header { order: 2; margin-top: 16px; }
   .obs__buybox { order: 3; margin-top: 2px; }
   .obs__urgency { font-size: 14px; padding: 11px 13px; margin-top: 16px; }
+  .obs__urgency--m { display: flex; }
+  .obs__urgency--d { display: none; }
   .obs__tiers { gap: 14px; margin-top: 14px; }
   .obs__row { gap: 10px; padding: 12px; }
   .obs__bundle { width: 76px; height: auto; }
@@ -213,7 +216,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- capture obs_chevron -%}<svg class="obs__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
 
 {%- assign ship_ts = 'now' | date: '%s' | plus: 86400 -%}
-{%- assign ship_date = ship_ts | date: '%a, %b %-d' -%}
+{%- assign ship_date = ship_ts | date: '%A, %b %-d' -%}
 {%- assign today_date = 'now' | date: '%a, %b %-d' -%}
 
 
@@ -331,18 +334,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="obs__buybox">
 
-      {%- comment -%} Urgency strip. {date} is rendered server-side; {cutoff} is filled in on load. Shown above or below the tiers per urgency_position. {%- endcomment -%}
+      {%- comment -%} Urgency strip. {date} is rendered server-side; {cutoff} is filled in on load. Shown above or below the tiers per urgency_position on desktop; always above on mobile. {%- endcomment -%}
       {%- capture obs_urgency -%}
-      {%- if section.settings.urgency_text != blank -%}
+      {%- if section.settings.urgency_copy != blank -%}
         {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
-        {%- assign urgency = section.settings.urgency_text | replace: '{date}', ship_date_bold | replace: '{today}', today_date -%}
-        <div class="obs__urgency" role="note">
+        {%- assign urgency = section.settings.urgency_copy | replace: '{date}', ship_date_bold | replace: '{today}', today_date -%}
+        <div class="obs__urgency URGPOS" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="#672666" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
           <span data-obs-urgency>{{ urgency }}</span>
         </div>
       {%- endif -%}
       {%- endcapture -%}
-      {%- unless section.settings.urgency_position == 'below' -%}{{ obs_urgency }}{%- endunless -%}
+      {%- if section.settings.urgency_position == 'below' -%}{{ obs_urgency | replace: 'URGPOS', 'obs__urgency--m' }}{%- else -%}{{ obs_urgency | replace: ' URGPOS', '' }}{%- endif -%}
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
@@ -411,7 +414,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}{%- endfor -%}
       </div>
 
-      {%- if section.settings.urgency_position == 'below' -%}{{ obs_urgency }}{%- endif -%}
+      {%- if section.settings.urgency_position == 'below' -%}{{ obs_urgency | replace: 'URGPOS', 'obs__urgency--d' }}{%- endif -%}
 
       <div class="obs__cta-wrap">
         <button type="button" class="obs__buy" data-obs-buy data-obs-discount="{{ section.settings.checkout_discount_code | strip }}">
@@ -532,8 +535,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
   /* ---- Urgency cutoff: current time + 1 hour, pinned to America/New_York so
          it reads honestly for shoppers outside Eastern time. ---- */
-  var urgency = sec.querySelector('[data-obs-urgency]');
-  if (urgency && urgency.innerHTML.indexOf('{cutoff}') !== -1) {
+  var urgencies = sec.querySelectorAll('[data-obs-urgency]');
+  if (urgencies.length && urgencies[0].innerHTML.indexOf('{cutoff}') !== -1) {
     var cutoff;
     try {
       cutoff = new Intl.DateTimeFormat('en-US', {
@@ -546,7 +549,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     }
     /* innerHTML, not textContent: textContent would strip the <b> around the
        ship date. cutoff is generated from Intl, so there is nothing to escape. */
-    urgency.innerHTML = urgency.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>');
+    urgencies.forEach(function (u) { u.innerHTML = u.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>'); });
   }
 
   /* ---- Gallery (customizer images) ---- */
@@ -812,9 +815,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     {
       "type": "textarea",
       "id": "urgency_text",
-      "label": "Urgency copy",
-      "info": "Tokens: {date} = next-day ship date (rendered bold), {today} = today's date, {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.",
+      "label": "Urgency copy (old, not used)",
+      "info": "Replaced by the setting below.",
       "default": "Order within the next hour — by {cutoff} — to guarantee shipping by {date}"
+    },
+    {
+      "type": "textarea",
+      "id": "urgency_copy",
+      "label": "Urgency copy",
+      "info": "Tokens: {date} = next-day ship date, e.g. Monday, Nov 2 (rendered bold), {today} = today's date, {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.",
+      "default": "Order by {cutoff} to guarantee your order ships by {date}"
     },
     {
       "type": "select",

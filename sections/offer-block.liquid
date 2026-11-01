@@ -124,6 +124,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* CTA (pill) */
 .ob__cta-wrap { margin-top: 22px; }
+/* Mobile-only urgency line above the first box (replaces the ships-by pill there). */
+.ob__urgency { display: none; align-items: center; gap: 10px; border: 1.5px dashed color-mix(in srgb, var(--ob-accent) 45%, #fff); background: color-mix(in srgb, var(--ob-accent) 5%, #fff); border-radius: 12px; padding: 11px 13px; margin: 0 0 14px; font-size: 14px; line-height: 1.35; color: var(--ob-ink); }
+.ob__urgency svg { flex: none; width: 20px; height: 20px; stroke: var(--ob-accent); }
+.ob__urgency b { font-weight: 800; }
 .ob__buy { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ob-accent); color: #fff; font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: normal; line-height: 1; padding: 24px 32px; border: none; border-radius: 100px; cursor: pointer; transition: opacity .25s ease; }
 .ob__buy:hover { opacity: 0.9; }
 .ob__buy:disabled { cursor: default; }
@@ -171,6 +175,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: left; padding: 0; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 }}px; }
   .ob__gallery-inner { position: static; }
+  .ob__urgency { display: flex; }
+  .ob__cta-wrap .ship-bar { display: none; }
   .ob__pricebar { gap: 6px; }
   .ob__pb-price { font-size: clamp(20px, 6.4vw, 24px); }
   .ob__pb-struck { font-size: clamp(15px, 4.8vw, 18px); }
@@ -346,6 +352,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     </div>
 
     <div class="ob__buybox">
+      {%- if section.settings.urgency_copy != blank -%}
+        {%- assign ob_ship_date = 'now' | date: '%s' | plus: 86400 | date: '%A, %b %-d' -%}
+        {%- capture ob_ship_bold -%}<b>{{ ob_ship_date }}</b>{%- endcapture -%}
+        <div class="ob__urgency" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+          <span data-ob-urgency>{{ section.settings.urgency_copy | replace: '{date}', ob_ship_bold }}</span>
+        </div>
+      {%- endif -%}
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
@@ -499,6 +513,22 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   }
   sec.addEventListener('change', function (e) { if (e.target.closest('.ob__tier')) syncPricebar(); });
   syncPricebar();
+
+  /* Urgency cutoff: current time + 1 hour, pinned to America/New_York (same as the other BOGO sections). */
+  var urgency = sec.querySelector('[data-ob-urgency]');
+  if (urgency && urgency.innerHTML.indexOf('{cutoff}') !== -1) {
+    var cutoff;
+    try {
+      cutoff = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true
+      }).format(new Date(Date.now() + 3600000)) + ' ET';
+    } catch (e) {
+      var d = new Date(Date.now() + 3600000);
+      var h = d.getHours() % 12 || 12, m = ('0' + d.getMinutes()).slice(-2);
+      cutoff = h + ':' + m + (d.getHours() < 12 ? ' AM' : ' PM');
+    }
+    urgency.innerHTML = urgency.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>');
+  }
   syncCta();
 
   /* Gallery */
@@ -604,6 +634,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>500,000+ customers</strong></p>" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
+    { "type": "textarea", "id": "urgency_copy", "label": "Mobile urgency line (above the boxes)", "info": "Tokens: {date} = next-day ship date, e.g. Monday, Nov 2 (bold), {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.", "default": "Order by {cutoff} to guarantee your order ships by {date}" },
     { "type": "text", "id": "sale_label", "label": "Price bar sale label", "info": "Shown in the price bar pill as \"<label> - X% OFF\".", "default": "FALL SALE" },
     { "type": "header", "content": "Badge pill (above review line)" },
     { "type": "text", "id": "pill_text", "label": "Pill text", "info": "Leave blank to hide. Left-aligned on desktop, centered on mobile." },

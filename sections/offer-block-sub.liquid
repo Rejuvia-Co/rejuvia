@@ -282,11 +282,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+        {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+        {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign tier_n = tier_n | plus: 1 -%}
           {%- assign tier_sel = false -%}
-          {%- if tier_n == section.settings.default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
+          {%- if tier_n == ob_default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
 
           {%- assign vid = b.settings.variant_id | strip -%}
           {%- assign srcprod = b.settings.product | default: section.settings.product -%}
@@ -745,7 +748,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "min": 1,
       "max": 6,
       "step": 1,
-      "label": "Pre-selected tier (by position)",
+      "label": "Pre-selected tier (by position)", "info": "Not used: the middle box is always pre-selected (set in code).",
       "default": 2
     },
     {

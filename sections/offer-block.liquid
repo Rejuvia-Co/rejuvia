@@ -291,11 +291,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="ob__buybox">
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+        {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+        {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign tier_n = tier_n | plus: 1 -%}
           {%- assign tier_sel = false -%}
-          {%- if tier_n == section.settings.default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
+          {%- if tier_n == ob_default_tier -%}{%- assign tier_sel = true -%}{%- endif -%}
           {%- assign vid = b.settings.variant_id | strip -%}
           {%- assign tier_variant = blank -%}
           {%- if vid != blank -%}
@@ -538,7 +541,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "range", "id": "header_gap", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (desktop)", "info": "Space between the pill, review line, title, and subtitle.", "default": 12 },
     { "type": "range", "id": "header_gap_mobile", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (mobile)", "default": 12 },
     { "type": "header", "content": "Offer cards" },
-    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "info": "1 = first box (e.g. Buy 1, Get 1 Free).", "default": 1 },
+    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "info": "Not used: the middle box is always pre-selected (set in code).", "default": 1 },
     { "type": "header", "content": "Call to action" },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "How many units of the selected box are added to cart. Set to 2 for a native Buy-One-Get-One flow (pair with a Shopify automatic Buy X Get Y discount). Leave at 1 for standard behavior.", "default": 1 },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },

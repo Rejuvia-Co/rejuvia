@@ -288,8 +288,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}
         {%- if section.settings.social_text != blank -%}<span class="obs__social-text">{{ section.settings.social_text }}</span>{%- endif -%}
       </div>
-      {%- if section.settings.headline != blank -%}<h2 class="obs__headline">{{ section.settings.headline }}</h2>{%- endif -%}
-      {%- if section.settings.subtitle != blank -%}<p class="obs__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+      {%- comment -%} The travel and menopause pages run on the bogosub2 template and differ only in headline and subtitle, set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
+      {%- if page.handle == 'travel-bogo' -%}
+        {%- capture obs_headline -%}Sleep Like You're in First Class With Rejuvia{%- endcapture -%}
+        {%- capture obs_subtitle -%}Spray it under your tongue before takeoff and drift off in 10–15 minutes, on red-eyes, long-haul flights and in unfamiliar hotel rooms. Try it risk-free today as long as stock is still available.{%- endcapture -%}
+      {%- elsif page.handle == 'menopause-bogo' -%}
+        {%- capture obs_headline -%}Sleep Like You Did Before Menopause with Rejuvia{%- endcapture -%}
+        {%- capture obs_subtitle -%}Rejuvia started as a sleep spray for our founder's mom, who couldn't sleep going through menopause. 6-8 sprays under your tongue and you drift off in 10–15 minutes. Try it risk-free today as long as stock is still available.{%- endcapture -%}
+      {%- endif -%}
+      {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
+      {%- if obs_subtitle != blank -%}<p class="obs__subtitle">{{ obs_subtitle }}</p>{%- endif -%}
       {%- comment -%} Top price bar: default tier price + compare + sale pill; JS updates on tier change {%- endcomment -%}
       {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
@@ -322,7 +331,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="obs__gallery">
       <div class="obs__left-inner">
-        {%- render 'bogo-gallery', id: section.id, alt: section.settings.headline -%}
+        {%- render 'bogo-gallery', id: section.id, alt: obs_headline -%}
       </div>
     </div>
 

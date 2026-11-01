@@ -491,22 +491,30 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- for b in section.blocks -%}{%- if b.type == 'tab' and b.settings.title != blank -%}{%- assign has_tabs = true -%}{%- endif -%}{%- endfor -%}
       {%- if has_tabs -%}
         <div class="obs__tabs">
+          {%- comment -%} Travel page: a jet-lag line atop 'Why Rejuvia Works' and a travel question atop the FAQ tab. {%- endcomment -%}
+          {%- assign obs_why_lead = '' -%}{%- assign obs_faq_lead = '' -%}
+          {%- if page.handle == 'travel-bogo' -%}
+            {%- assign obs_why_lead = '<p>Flying overnight or landing in a new time zone? 6–8 sprays under your tongue and most people are asleep in 10–15 minutes on local time, and the low 2mg dose means you wake up clear, not groggy.</p>' -%}
+            {%- capture obs_faq_lead -%}<p><strong>Can I use it on a flight?</strong></p><p>Yes. Use 6–8 sprays under your tongue once you're settled in, and most people are asleep in 10–15 minutes. At your destination, use it at bedtime on local time to beat jet lag and wake up clear.</p>{%- endcapture -%}
+          {%- endif -%}
           {%- assign tab_n = 0 -%}
           {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
             {%- assign tab_n = tab_n | plus: 1 -%}
             {%- assign tab_open = false -%}{%- if tab_n == 1 and section.settings.open_first_tab -%}{%- assign tab_open = true -%}{%- endif -%}
             <div class="obs__tab{% if tab_open %} is-open{% endif %}" {{ b.shopify_attributes }}>
               <button type="button" class="obs__tab-q" aria-expanded="{% if tab_open %}true{% else %}false{% endif %}"><span>{{ b.settings.title }}</span>{{ obs_chevron }}</button>
-              <div class="obs__tab-a"><div class="obs__tab-a-inner"><div class="obs__tab-body">{{ b.settings.content }}{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
+              <div class="obs__tab-a"><div class="obs__tab-a-inner"><div class="obs__tab-body">{%- assign tab_t = b.settings.title | downcase -%}{%- if tab_t contains 'why rejuvia works' -%}{{ obs_why_lead }}{%- elsif tab_t contains 'frequently asked' -%}{{ obs_faq_lead }}{%- endif -%}{{ b.settings.content }}{%- if tab_t contains 'ingredient' -%}{% render 'supplement-label-button', product: section.settings.product %}{%- endif -%}</div></div></div>
             </div>
           {%- endif -%}{%- endfor -%}
         </div>
       {%- endif -%}
 
       {%- if section.settings.show_trusted -%}
+        {%- assign obs_tb_sub = section.settings.trusted_subtext -%}
+        {%- if page.handle == 'travel-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to beat jet lag and fall asleep in any time zone' -%}{%- endif -%}
         {% render 'trusted-by',
           title: section.settings.trusted_title,
-          subtext: section.settings.trusted_subtext,
+          subtext: obs_tb_sub,
           image_1: section.settings.trusted_image_1,
           image_2: section.settings.trusted_image_2,
           image_3: section.settings.trusted_image_3,

@@ -91,6 +91,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__rating-text { font-family: var(--font-body); font-size: {{ section.settings.rating_text_size | default: 18 }}px; font-weight: 400; color: var(--ob-ink); }
 .ob__rating-text strong { font-weight: 700; color: var(--ob-accent); }
 .ob__rating-text p { margin: 0; display: inline; }
+/* Review bar, same as /pages/bogo: stars | 4.5 Stars | 7,500+ Reviews | 500K+ Customers.
+   Mobile drops the rating label and leads with customers. */
+.ob__reviewbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif; font-size: 16px; color: #4a4550; margin-bottom: 12px; }
+.ob__reviewbar .ob__stars { gap: 1.5px; }
+.ob__reviewbar .ob__stars svg { width: 15px; height: 15px; margin: 0; }
+.ob__rb-sep { color: #d9d3e0; }
+.ob__reviewbar strong, .ob__reviewbar b { color: #171512; font-weight: 800; }
+.ob__reviewbar p { margin: 0; display: inline; }
 .ob__title { font-family: var(--font-display); font-size: {{ section.settings.title_size | default: 52 }}px; font-weight: 700; line-height: 1.05; letter-spacing: -0.6px; color: var(--ob-ink); margin: 0 0 10px; }
 .ob__pricebar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
 .ob__pricebar > [hidden] { display: none; }
@@ -117,7 +125,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__off { display: inline-flex; align-items: center; justify-content: center; align-self: center; font-family: var(--font-ui); font-size: 16px; font-weight: 700; line-height: 1; color: var(--ob-disc-text); background: var(--ob-disc-bg); border-radius: 100px; padding: 6px 11px 5px; white-space: nowrap; text-transform: uppercase; }
 .ob__ship { font-size: 18px; font-weight: 700; color: var(--ob-ink); }
 .ob__pernight { font-size: 20px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
-.ob__servings { font-size: 16px; font-weight: 400; font-style: italic; color: var(--ob-pernight); }
+.ob__servings { font-size: 16px; font-weight: 400; font-style: italic; color: #5c5866; }
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; }
 .ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
 .ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
@@ -175,6 +183,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__rating { justify-content: flex-start; }
   .ob-{{ section.id }} .ob__stars svg { width: {{ section.settings.stars_size_mobile | default: 20 }}px; height: {{ section.settings.stars_size_mobile | default: 20 }}px; }
   .ob-{{ section.id }} .ob__rating-text { font-size: {{ section.settings.rating_text_size_mobile | default: 18 }}px; }
+  .ob__reviewbar { gap: 7px; }
+  .ob__reviewbar .ob__rb-strong, .ob__reviewbar .ob__rb-sep-reviews { display: none; }
+  .ob__reviewbar .ob__rb-customers { order: 1; }
+  .ob__reviewbar .ob__rb-sep-customers { order: 2; }
+  .ob__reviewbar .ob__rb-reviews { order: 3; }
+  .ob-{{ section.id }} .ob__reviewbar .ob__stars svg { width: 12px; height: 12px; }
   .ob-{{ section.id }} .ob__title { font-size: {{ section.settings.title_size_mobile | default: 40 }}px; letter-spacing: -1px; text-align: left; }
   .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: left; padding: 0; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 }}px; }
@@ -229,6 +243,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {% endstyle %}
 
 {%- capture ob_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#EAC78B' }}"/></svg>{%- endcapture -%}
+{%- comment -%} Review-bar star: the /pages/bogo gold. {%- endcomment -%}
+{%- capture ob_rb_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="#fab851"/></svg>{%- endcapture -%}
 {%- capture ob_chevron -%}<svg class="ob__tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>{%- endcapture -%}
 
 {%- assign gallery_product = section.settings.product -%}
@@ -241,12 +257,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if section.settings.pill_text != blank -%}
         <span class="ob__badge">{{ section.settings.pill_text }}</span>
       {%- endif -%}
-      {%- if section.settings.show_stars or section.settings.rating_text != blank -%}
-        <div class="ob__rating">
-          {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}{{ ob_star }}</span>{%- endif -%}
-          {%- if section.settings.rating_text != blank -%}<span class="ob__rating-text">{{ section.settings.rating_text }}</span>{%- endif -%}
-        </div>
-      {%- endif -%}
+      <div class="ob__rating ob__reviewbar">
+        {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}</span>{%- endif -%}
+        {%- if section.settings.rb_rating != blank -%}<span class="ob__rb-strong">{{ section.settings.rb_rating }}</span>{%- endif -%}
+        {%- if section.settings.rb_reviews != blank -%}
+          <span class="ob__rb-sep ob__rb-sep-reviews" aria-hidden="true">|</span>
+          <span class="ob__rb-reviews">{{ section.settings.rb_reviews }}</span>
+        {%- endif -%}
+        {%- if section.settings.rb_customers != blank -%}
+          <span class="ob__rb-sep ob__rb-sep-customers" aria-hidden="true">|</span>
+          <span class="ob__rb-customers">{{ section.settings.rb_customers }}</span>
+        {%- endif -%}
+      </div>
       {%- if section.settings.title != blank -%}<h2 class="ob__title">{{ section.settings.title }}</h2>{%- endif -%}
       {%- comment -%} Pill label: the audience pages name their discount; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}
       {%- case template.suffix -%}
@@ -419,8 +441,15 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
               </span>
               {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
-              {%- if b.settings.per_night != blank -%}<span class="ob__pernight">{{ b.settings.per_night }}</span>{%- endif -%}
-              {%- if b.settings.servings_text != blank -%}<span class="ob__servings">{{ b.settings.servings_text }}</span>{%- endif -%}
+              {%- comment -%} Third line is the servings/supply line, as on /pages/bogo (per-night text no longer shown).
+                   When blank, derived from the "Buy N, Get N" label (2N bottles x 30 servings). {%- endcomment -%}
+              {%- assign t_serv = b.settings.servings_text -%}
+              {%- if t_serv == blank -%}
+                {%- assign t_words = b.settings.label | remove: ',' | split: ' ' -%}
+                {%- assign t_n = t_words[1] | plus: 0 -%}
+                {%- if t_n > 0 -%}{%- capture t_serv -%}{{ t_n | times: 60 }} Servings ({{ t_n | times: 2 }}-Month Supply){%- endcapture -%}{%- endif -%}
+              {%- endif -%}
+              {%- if t_serv != blank -%}<span class="ob__servings">{{ t_serv }}</span>{%- endif -%}
             </span>
           </label>
         {%- endif -%}{%- endfor -%}
@@ -648,7 +677,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "range", "id": "stars_size_mobile", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Star size (mobile)", "default": 20 },
     { "type": "range", "id": "rating_text_size", "min": 12, "max": 26, "step": 1, "unit": "px", "label": "Review bar text size (desktop)", "default": 18 },
     { "type": "range", "id": "rating_text_size_mobile", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Review bar text size (mobile)", "default": 18 },
-    { "type": "richtext", "id": "rating_text", "label": "Review bar text", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>500,000+ customers</strong></p>" },
+    { "type": "text", "id": "rb_rating", "label": "Review bar: rating label", "info": "Hidden on mobile.", "default": "4.5 Stars" },
+    { "type": "richtext", "id": "rb_reviews", "label": "Review bar: reviews", "default": "<p><strong>7,500+</strong> Reviews</p>" },
+    { "type": "richtext", "id": "rb_customers", "label": "Review bar: customers", "default": "<p><strong>500K+</strong> Customers</p>" },
+    { "type": "richtext", "id": "rating_text", "label": "Review bar text (old, not used)", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>500,000+ customers</strong></p>" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
     { "type": "textarea", "id": "urgency_copy", "label": "Mobile urgency line (above the boxes)", "info": "Tokens: {date} = next-day ship date, e.g. Monday, Nov 2 (bold), {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.", "default": "Order by {cutoff} to guarantee your order ships by {date}" },
@@ -717,7 +749,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         { "type": "text", "id": "compare_price", "label": "Compare-at price (strikethrough)", "info": "Sets the struck-through price. Overrides the live variant's compare-at. Leave blank to use the live variant's compare-at price.", "default": "$70" },
         { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
         { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
-        { "type": "text", "id": "per_night", "label": "Per-night text", "default": "$0.62 Per Night" },
+        { "type": "text", "id": "per_night", "label": "Per-night text (old, not used)", "default": "$0.62 Per Night" },
         { "type": "text", "id": "servings_text", "label": "Servings / supply line", "info": "e.g. 60 Servings (2-Month Supply). Leave blank to hide." },
         { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
         { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "brand" }

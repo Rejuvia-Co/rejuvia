@@ -447,8 +447,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
               {%- if t_serv == blank -%}
                 {%- assign t_words = b.settings.label | remove: ',' | split: ' ' -%}
                 {%- assign t_n = t_words[1] | plus: 0 -%}
-                {%- if t_n > 0 -%}{%- capture t_serv -%}{{ t_n | times: 60 }} Servings ({{ t_n | times: 2 }}-Month Supply){%- endcapture -%}{%- endif -%}
+                {%- if t_n > 0 -%}{%- capture t_serv -%}{{ t_n | times: 2 }}-Month Supply{%- endcapture -%}{%- endif -%}
               {%- endif -%}
+              {%- if t_serv contains '(' -%}{%- assign t_serv = t_serv | split: '(' | last | remove: ')' | strip -%}{%- endif -%}
               {%- if t_serv != blank -%}<span class="ob__servings">{{ t_serv }}</span>{%- endif -%}
             </span>
           </label>
@@ -750,7 +751,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
         { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
         { "type": "text", "id": "per_night", "label": "Per-night text (old, not used)", "default": "$0.62 Per Night" },
-        { "type": "text", "id": "servings_text", "label": "Servings / supply line", "info": "e.g. 60 Servings (2-Month Supply). Leave blank to hide." },
+        { "type": "text", "id": "servings_text", "label": "Servings / supply line", "info": "e.g. 2-Month Supply. Leave blank to derive it from the label." },
         { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
         { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "brand" }
       ]

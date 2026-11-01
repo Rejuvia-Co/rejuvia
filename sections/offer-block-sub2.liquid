@@ -466,7 +466,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- if b.settings.savings_text != blank -%}<span class="obs__save">{{ b.settings.savings_text }}</span>{%- endif -%}
                 </span>
                 {%- if b.settings.free_shipping -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
-                {%- if b.settings.servings_text != blank -%}<span class="obs__servings">{{ b.settings.servings_text }}</span>{%- endif -%}
+                {%- assign t_serv = b.settings.servings_text -%}
+                {%- if t_serv contains '(' -%}{%- assign t_serv = t_serv | split: '(' | last | remove: ')' | strip -%}{%- endif -%}
+                {%- if t_serv != blank -%}<span class="obs__servings">{{ t_serv }}</span>{%- endif -%}
               </span>
             </span>
           </label>
@@ -1304,7 +1306,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "type": "text",
           "id": "servings_text",
           "label": "Servings / supply line",
-          "info": "e.g. 60 Servings (2-Month Supply). Leave blank to hide."
+          "info": "e.g. 2-Month Supply. Leave blank to hide."
         },
         {
           "type": "checkbox",
@@ -1365,7 +1367,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "image_asset": "rejuvia-bundle-b1g1.webp",
             "price": "$30",
             "savings_text": "SAVE $30",
-            "servings_text": "60 Servings (2-Month Supply)",
+            "servings_text": "2-Month Supply",
             "quantity": 2,
             "variant_id": "46763671027932"
           }
@@ -1378,7 +1380,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "price": "$60",
             "compare_price": "$90",
             "savings_text": "SAVE $60",
-            "servings_text": "120 Servings (4-Month Supply)",
+            "servings_text": "4-Month Supply",
             "free_shipping": true,
             "badge": "MOST POPULAR",
             "badge_style": "plum",
@@ -1394,7 +1396,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             "price": "$90",
             "compare_price": "$135",
             "savings_text": "SAVE $90",
-            "servings_text": "180 Servings (6-Month Supply)",
+            "servings_text": "6-Month Supply",
             "free_shipping": true,
             "badge": "BEST VALUE",
             "badge_style": "gold",

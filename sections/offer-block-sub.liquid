@@ -271,13 +271,18 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- else -%}{%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
       {%- endcase -%}
       {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
-      {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- comment -%} Pre-select the middle box on BOGO pages; /pages/bogo (page.bogosub) pre-selects the first box and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
+      {%- if pb_per_spray -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
+      {%- assign pb_sprays = 0 -%}
       {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
         {%- assign ptn = ptn | plus: 1 -%}
         {%- if ptn == ob_default_tier -%}
+          {%- assign pb_words = b.settings.label | remove: ',' | split: ' ' -%}
+          {%- assign pb_sprays = pb_words[1] | plus: 0 | times: 2 -%}
           {%- assign psrc = b.settings.product | default: section.settings.product -%}
           {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
           {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
@@ -296,6 +301,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign pb_pill = pb_label | append: ' - ' | append: pb_pct | append: '% OFF' -%}
       {%- else -%}
         {%- assign pb_compare = '' -%}
+      {%- endif -%}
+      {%- if pb_per_spray and pb_sprays > 0 and pbnp > 0 -%}
+        {%- assign pb_each = pbnp | times: 100 | divided_by: pb_sprays | round | money_without_trailing_zeros -%}
+        {%- assign pb_pill = pb_each | append: ' PER SPRAY' -%}
       {%- endif -%}
       {%- if pb_price != blank -%}
       <div class="obs__pricebar">
@@ -544,6 +553,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   var pbStruck = sec.querySelector('[data-obs-pb-struck]');
   var pbPill = sec.querySelector('[data-obs-pb-pill]');
   var pbLabel = {{ pb_label | json }};
+  var pbPerSpray = {{ pb_per_spray | json }};
   function pbNum(s) { return parseFloat(String(s || '').replace(/[^0-9.]/g, '')) || 0; }
   function syncPricebar() {
     var sel = sec.querySelector('.obs__tier input[type="radio"]:checked');
@@ -555,6 +565,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     pbPrice.textContent = pt;
     pbStruck.textContent = off ? ct : ''; pbStruck.hidden = !off;
     pbPill.textContent = off ? pbLabel + ' - ' + Math.round((nc - np) * 100 / nc) + '% OFF' : ''; pbPill.hidden = !off;
+    if (pbPerSpray) {
+      var tn = tier.querySelector('.obs__tname'), m = tn && tn.textContent.match(/Buy\s+(\d+)/i);
+      if (m && np > 0) { var each = np / (2 * parseInt(m[1], 10)); pbPill.textContent = '$' + (each % 1 ? each.toFixed(2) : each) + ' PER SPRAY'; pbPill.hidden = false; }
+    }
   }
   sec.addEventListener('change', function (e) { if (e.target.closest('.obs__tier')) syncPricebar(); });
   syncPricebar();

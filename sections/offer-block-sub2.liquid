@@ -60,7 +60,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
    common desktop case; the product page is fluid, this stays capped). The
    wrap grows 1120 -> 1190 by the same 70px so the buy-box column keeps its
    574px instead of being squeezed. */
-.obs__wrap { max-width: 1190px; margin: 0 auto; padding: 36px; display: grid; grid-template-columns: {{ section.settings.gallery_width | default: 500 }}px minmax(0, 1fr); grid-template-areas: "gallery header" "gallery buybox"; column-gap: 44px; row-gap: 0; align-items: start; }
+.obs__wrap { max-width: 1190px; margin: 0 auto; padding: 36px; display: grid; grid-template-columns: 560px minmax(0, 1fr); grid-template-areas: "gallery header" "gallery buybox"; column-gap: 44px; row-gap: 0; align-items: start; }
 .obs__header { grid-area: header; min-width: 0; }
 .obs__gallery { grid-area: gallery; min-width: 0; align-self: stretch; }
 .obs__buybox { grid-area: buybox; min-width: 0; }
@@ -270,9 +270,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 {%- assign today_date = 'now' | date: '%a, %b %-d' -%}
 
 
-{%- comment -%} Gallery: the same /pages/bogo image list on every BOGO page (snippets/bogo-gallery-files) {%- endcomment -%}
-{%- capture bogo_gallery_list -%}{%- render 'bogo-gallery-files' -%}{%- endcapture -%}
-{%- assign bogo_gallery = bogo_gallery_list | strip | split: '|' -%}
 
 <section class="obs obs-{{ section.id }}" id="obs-{{ section.id }}">
   <span id="offer" aria-hidden="true" style="display:block;scroll-margin-top:80px;"></span>
@@ -325,35 +322,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
     <div class="obs__gallery">
       <div class="obs__left-inner">
-        <div class="obs__main">
-          {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}
-            {%- if gimg != blank -%}
-              <img data-obs-main{% unless forloop.first %} hidden{% endunless %}
-                   src="{{ gimg | image_url: width: 1000, format: 'webp' }}"
-                   srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
-                   sizes="(max-width: 900px) 92vw, {{ section.settings.gallery_width | default: 500 }}px"
-                   width="{{ gimg.width }}" height="{{ gimg.height }}"
-                   alt="{{ section.settings.headline | strip_html | escape }}"
-                   {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-        {%- if bogo_gallery.size > 1 -%}
-          <div class="obs__thumbrow">
-            <button type="button" class="obs__arrow" data-obs-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <div class="obs__thumbs">
-              {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}
-                {%- if gimg != blank -%}
-                  <button type="button" class="obs__thumb{% if forloop.first %} is-active{% endif %}" data-obs-thumb aria-label="View image {{ forloop.index }}"><img src="{{ gimg | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-            <button type="button" class="obs__arrow" data-obs-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-          </div>
-          <div class="obs__dots" aria-hidden="true">
-            {%- for gname in bogo_gallery -%}{%- assign gimg = images[gname] -%}{%- if gimg != blank -%}<span class="obs__dot{% if forloop.first %} is-active{% endif %}" data-obs-dot></span>{%- endif -%}{%- endfor -%}
-          </div>
-        {%- endif -%}
+        {%- render 'bogo-gallery', id: section.id, alt: section.settings.headline -%}
       </div>
     </div>
 

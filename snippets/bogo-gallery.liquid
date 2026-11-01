@@ -1,0 +1,97 @@
+{%- comment -%}
+  The one image gallery for every BOGO page: /pages/bogo's design and images (snippets/bogo-gallery-files).
+  Rendered by offer-block, offer-block-sub and offer-block-sub2, so the gallery is identical everywhere;
+  change it here, not in the sections.
+  Params: id (the section id, for scoping), alt (string, image alt text).
+  Self-contained: own bgal__ styles + script, scoped to this instance's wrapper.
+{%- endcomment -%}
+{%- capture bgal_list -%}{%- render 'bogo-gallery-files' -%}{%- endcapture -%}
+{%- assign bgal_files = bgal_list | strip | split: '|' -%}
+{%- assign bgal_id = 'bgal-' | append: id -%}
+<style>
+  .bgal__main { position: relative; background: #F8EFE4; border-radius: 16px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; }
+  .bgal__main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bgal__main img[hidden] { display: none; }
+  .bgal__thumbrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
+  .bgal__arrow { flex: none; width: 28px; height: 28px; border: none; background: none; color: #672666; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: color .14s ease; }
+  .bgal__arrow:hover { color: #4a1a4c; }
+  .bgal__arrow svg { width: 18px; height: 18px; display: block; }
+  .bgal__thumbs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; max-width: 100%; }
+  .bgal__thumbs::-webkit-scrollbar { display: none; }
+  .bgal__thumb { flex: none; width: 57px; height: 57px; border: 1px solid #e9e4f0; border-radius: 12px; background: #f3f0f9; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; cursor: pointer; }
+  .bgal__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bgal__thumb.is-active { border: 1.5px solid #672666; background: #fff; }
+  .bgal__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
+  .bgal__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
+  .bgal__dot.is-active { background: #672666; }
+  @media (max-width: 900px) {
+    .bgal__thumbrow { margin-top: 6px; }
+  }
+</style>
+<div class="bgal" id="{{ bgal_id }}">
+  <div class="bgal__main">
+    {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}
+      {%- if gimg != blank -%}
+        <img data-bgal-main{% unless forloop.first %} hidden{% endunless %}
+             src="{{ gimg | image_url: width: 1000, format: 'webp' }}"
+             srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
+             sizes="(max-width: 900px) 92vw, 560px"
+             width="{{ gimg.width }}" height="{{ gimg.height }}"
+             alt="{{ alt | strip_html | escape }}"
+             {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  {%- if bgal_files.size > 1 -%}
+    <div class="bgal__thumbrow">
+      <button type="button" class="bgal__arrow" data-bgal-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="bgal__thumbs">
+        {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}
+          {%- if gimg != blank -%}
+            <button type="button" class="bgal__thumb{% if forloop.first %} is-active{% endif %}" data-bgal-thumb aria-label="View image {{ forloop.index }}"><img src="{{ gimg | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <button type="button" class="bgal__arrow" data-bgal-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+    <div class="bgal__dots" aria-hidden="true">
+      {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}{%- if gimg != blank -%}<span class="bgal__dot{% if forloop.first %} is-active{% endif %}" data-bgal-dot></span>{%- endif -%}{%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+<script>
+(function () {
+  var root = document.getElementById('{{ bgal_id }}');
+  if (!root) return;
+  var mains = [].slice.call(root.querySelectorAll('[data-bgal-main]'));
+  var thumbs = [].slice.call(root.querySelectorAll('[data-bgal-thumb]'));
+  var dots = [].slice.call(root.querySelectorAll('[data-bgal-dot]'));
+  var idx = 0;
+  function setImg(i) {
+    if (!mains.length) return;
+    idx = (i + mains.length) % mains.length;
+    mains.forEach(function (img, j) { img.hidden = j !== idx; });
+    thumbs.forEach(function (t, j) { t.classList.toggle('is-active', j === idx); });
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    var t = thumbs[idx];
+    if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  thumbs.forEach(function (t, i) { t.addEventListener('click', function () { setImg(i); }); });
+  var prev = root.querySelector('[data-bgal-prev]'), next = root.querySelector('[data-bgal-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Mobile: horizontal-dominant swipe only, so vertical scrolling is never hijacked */
+  var main = root.querySelector('.bgal__main');
+  if (main && mains.length > 1) {
+    var sx = null, sy = null;
+    main.addEventListener('touchstart', function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+    main.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) setImg(dx < 0 ? idx + 1 : idx - 1);
+      sx = null; sy = null;
+    }, { passive: true });
+  }
+})();
+</script>

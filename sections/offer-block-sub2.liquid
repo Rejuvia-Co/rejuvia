@@ -195,6 +195,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
 /* v2: low-stock label above tiers */
 .obs__lowstock { margin: 2px 0; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #c0392b; }
+/* Low-stock bar above the tiers: purple caps between two light-purple rules. */
+.obs__stock { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.obs__stock::before, .obs__stock::after { content: ""; flex: 1; height: 3px; border-radius: 2px; background: var(--obs-tint-border, #c9b0ca); }
+.obs__stock span { flex: none; font-weight: 800; font-size: 20px; line-height: 1.2; letter-spacing: .01em; text-transform: uppercase; color: var(--obs-accent, #672666); }
+.obs__stock + .obs__tiers { margin-top: 14px; }
 
 /* v2: guarantee line under CTA */
 .obs__cta-guarantee { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 18px; margin-top: 10px; font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #4a4a4a; }
@@ -232,6 +237,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__servings { font-size: 14px; }
   .obs__cta-guarantee { gap: 13px; font-size: 12px; }
   .obs__urgency { font-size: 14px; padding: 11px 13px; margin-top: 16px; }
+  .obs__stock { gap: 12px; margin-top: 16px; }
+  .obs__stock span { font-size: clamp(15px, 4.5vw, 18px); }
   .obs__tiers { gap: 14px; margin-top: 14px; }
   .obs__row { gap: 10px; padding: 12px; }
   .obs__bundle { width: 76px; height: auto; }
@@ -392,6 +399,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
 
       {%- if section.settings.scarcity_label != blank -%}<div class="obs__lowstock">{{ section.settings.scarcity_label }}</div>{%- endif -%}
+      {%- if section.settings.stock_bar != blank -%}<div class="obs__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
@@ -971,6 +979,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Outcome checklist items",
       "info": "One per line; each shows a green check.",
       "default": "Fall asleep in 10–15 minutes\nWake up clear-headed, not groggy\nSleep through the night\nStop relying on melatonin pills"
+    },
+    {
+      "type": "text",
+      "id": "stock_bar",
+      "label": "Low-stock bar (above the tiers)",
+      "info": "Leave blank to hide.",
+      "default": "LOW STOCK - SELLING FAST"
     },
     {
       "type": "text",

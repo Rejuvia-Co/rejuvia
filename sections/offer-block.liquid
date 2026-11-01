@@ -125,6 +125,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 /* CTA (pill) */
 .ob__cta-wrap { margin-top: 22px; }
 /* Mobile-only urgency line above the first box (replaces the ships-by pill there). */
+/* Low-stock bar above the boxes: purple caps between two light-purple rules. */
+.ob__stock { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; }
+.ob__stock::before, .ob__stock::after { content: ""; flex: 1; height: 3px; border-radius: 2px; background: color-mix(in srgb, var(--ob-accent) 35%, #fff); }
+.ob__stock span { flex: none; font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.2; letter-spacing: .01em; text-transform: uppercase; color: var(--ob-accent); }
 .ob__urgency { display: none; align-items: center; gap: 10px; border: 1.5px dashed color-mix(in srgb, var(--ob-accent) 45%, #fff); background: color-mix(in srgb, var(--ob-accent) 5%, #fff); border-radius: 12px; padding: 11px 13px; margin: 0 0 14px; font-size: 14px; line-height: 1.35; color: var(--ob-ink); }
 .ob__urgency svg { flex: none; width: 20px; height: 20px; stroke: var(--ob-accent); }
 .ob__urgency b { font-weight: 800; }
@@ -176,6 +180,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 }}px; }
   .ob__gallery-inner { position: static; }
   .ob__urgency { display: flex; }
+  .ob__stock { gap: 12px; margin-bottom: 14px; }
+  .ob__stock span { font-size: clamp(15px, 4.5vw, 18px); }
   .ob__cta-wrap .ship-bar { display: none; }
   .ob__pricebar { gap: 6px; }
   .ob__pb-price { font-size: clamp(20px, 6.4vw, 24px); }
@@ -370,6 +376,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span data-ob-urgency>{{ ob_urgency }}</span>
         </div>
       {%- endif -%}
+      {%- if section.settings.stock_bar != blank -%}<div class="ob__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
@@ -645,6 +652,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
     { "type": "textarea", "id": "urgency_copy", "label": "Mobile urgency line (above the boxes)", "info": "Tokens: {date} = next-day ship date, e.g. Monday, Nov 2 (bold), {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.", "default": "Order by {cutoff} to guarantee your order ships by {date}" },
+    { "type": "text", "id": "stock_bar", "label": "Low-stock bar (above the boxes)", "info": "Leave blank to hide.", "default": "LOW STOCK - SELLING FAST" },
     { "type": "text", "id": "sale_label", "label": "Price bar sale label", "info": "Shown in the price bar pill as \"<label> - X% OFF\".", "default": "FALL SALE" },
     { "type": "header", "content": "Badge pill (above review line)" },
     { "type": "text", "id": "pill_text", "label": "Pill text", "info": "Leave blank to hide. Left-aligned on desktop, centered on mobile." },

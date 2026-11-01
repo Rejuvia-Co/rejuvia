@@ -258,20 +258,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
       {%- endif -%}
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
-      {%- comment -%} Pill label: the audience pages name their discount, anniversary says ANNIVERSARY SALE; every other BOGO page uses the sale label (FALL SALE). Keyed on the page template in code because template JSON edits don't deploy. {%- endcomment -%}
-      {%- case template.suffix -%}
-        {%- when 'military' -%}{%- assign pb_label = 'MILITARY DISCOUNT' -%}
-        {%- when 'senior' -%}{%- assign pb_label = 'SENIOR DISCOUNT' -%}
-        {%- when 'nurse' -%}{%- assign pb_label = 'NURSE DISCOUNT' -%}
-        {%- when 'anniversary' -%}{%- assign pb_label = 'ANNIVERSARY SALE' -%}
-        {%- else -%}{%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
-      {%- endcase -%}
+      {%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
       {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
-      {%- comment -%} Pre-select the middle box on BOGO pages; /pages/bogo (page.bogosub) and military pre-select the first box (Buy 1, Get 1 FREE); /pages/bogo and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- comment -%} Pre-select the middle box; page.bogosub (bogo, anniversary-sale, welcome-kit) pre-selects the first box (Buy 1, Get 1 FREE) and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
-      {%- if pb_per_spray or template.suffix == 'military' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
+      {%- if pb_per_spray -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
       {%- assign pb_sprays = 0 -%}
       {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}

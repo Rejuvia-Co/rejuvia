@@ -44,6 +44,8 @@
       assign header = 'Join 30,000 Nurses Getting Better Sleep With Rejuvia'
     when 'travel-bogo'
       assign header = 'Join 225,000 Travelers Beating Jet Lag With Rejuvia'
+    when 'menopause-bogo'
+      assign header = 'Women Going Through Menopause Are Sleeping Better With Rejuvia'
   endcase
   assign stars_label = vt.value.stars_label | default: section.settings.stars_label
 

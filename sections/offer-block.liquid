@@ -83,6 +83,24 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__thumb.is-active { border: 2px solid var(--ob-accent); }
 .ob__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
+/* Desktop gallery matches /pages/bogo: 560px column, square 560px stage
+   (rounded, cream, images cover), 57px thumbs with 28px arrows. */
+@media (min-width: 901px) {
+  .ob__card { grid-template-columns: 560px minmax(0,1fr); }
+  .ob__gallery-inner { gap: 0; }
+  .ob__main { max-width: none; max-height: none; aspect-ratio: 1 / 1; border-radius: 16px; background: #F8EFE4; }
+  .ob__main img { object-fit: cover; }
+  .ob__thumbs-row { --ob-thumb: 57px; --ob-tgap: 8px; margin-top: 12px; }
+  .ob__thumbs { max-width: 100%; scroll-snap-type: none; }
+  .ob__thumb { width: 57px; height: 57px; border-radius: 12px; border: 1px solid #e9e4f0; background: #f3f0f9; }
+  .ob__thumb.is-active { border: 1.5px solid var(--ob-accent); background: #fff; }
+  .ob__thumb img { object-fit: cover; }
+  .ob__arrow { width: 28px; height: 28px; }
+  .ob__arrow svg { width: 18px; height: 18px; }
+  .ob__dots { gap: 5px; margin-top: 10px; }
+  .ob__dot { width: 6px; height: 6px; }
+}
+
 /* Header */
 .ob__badge { display: inline-flex; align-items: center; background: {{ section.settings.pill_bg | default: '#5d215f' }}; color: {{ section.settings.pill_color | default: '#ffffff' }}; font-family: var(--font-display); font-weight: 700; font-size: {{ section.settings.pill_size | default: 14 }}px; line-height: 1; padding: 9px 20px; border-radius: 100px; margin-bottom: 12px; white-space: nowrap; }
 .ob__rating { display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -259,7 +277,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endif -%}
       <div class="ob__rating ob__reviewbar">
         {%- if section.settings.show_stars -%}<span role="img" class="ob__stars" aria-label="5 stars">{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}{{ ob_rb_star }}</span>{%- endif -%}
-        {%- if section.settings.rb_rating != blank -%}<span class="ob__rb-strong">{{ section.settings.rb_rating }}</span>{%- endif -%}
+        {%- if section.settings.rb_rating != blank -%}{%- assign rb_num = section.settings.rb_rating | split: ' ' | first -%}<span class="ob__rb-strong"><strong>{{ rb_num }}</strong> {{ section.settings.rb_rating | remove_first: rb_num | strip }}</span>{%- endif -%}
         {%- if section.settings.rb_reviews != blank -%}
           <span class="ob__rb-sep ob__rb-sep-reviews" aria-hidden="true">|</span>
           <span class="ob__rb-reviews">{{ section.settings.rb_reviews }}</span>
@@ -369,7 +387,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- endfor -%}
       <div class="ob__gallery-inner">
       <div class="ob__main"{% if main_image != blank and main_image.width and main_image.height %} style="aspect-ratio: 1 / 1;"{% endif %}>
-        {%- if main_image != blank -%}<img data-ob-main src="{{ bh_src }}" srcset="{{ bh_srcset }}" sizes="(max-width: 900px) 100vw, 480px" width="2000" height="2000" alt="{{ bh_alt | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
+        {%- if main_image != blank -%}<img data-ob-main src="{{ bh_src }}" srcset="{{ bh_srcset }}" sizes="(max-width: 900px) 100vw, 560px" width="2000" height="2000" alt="{{ bh_alt | escape }}" loading="eager" fetchpriority="high" decoding="async">{%- endif -%}
       </div>
       {%- if gallery_product != blank and gal_count > 1 -%}
         <div class="ob__thumbs-row">

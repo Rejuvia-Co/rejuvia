@@ -385,8 +385,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <span class="obs__row">
               <span class="obs__radio" aria-hidden="true"></span>
               {%- if t_gift -%}
-                {%- comment -%} Buy 3 box: 3 + 3 Sleep Sprays with the Calm Spray tucked behind, banner reads GET 4 FREE {%- endcomment -%}
-                <img class="obs__bundle" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="660" height="640" alt="" loading="lazy" decoding="async">
+                {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a Calm Spray (alternating down, up, down, up), banner reads GET 4 FREE {%- endcomment -%}
+                <img class="obs__bundle" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="624" height="627" alt="" loading="lazy" decoding="async">
               {%- elsif b.settings.image != blank -%}
                 <img class="obs__bundle" src="{{ b.settings.image | image_url: width: 320, format: 'webp' }}" alt="" loading="lazy" decoding="async">
               {%- elsif b.settings.image_asset != blank -%}

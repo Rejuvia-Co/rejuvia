@@ -248,7 +248,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} The anniversary, welcome-kit and 3am pages run on the /pages/bogo template and differ in headline and subtitle (the 3am page also in its trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} The anniversary, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'anniversary-sale' -%}
         {%- assign obs_headline = 'Anniversary Sale - Up To 3 FREE Sprays Today' -%}
@@ -256,6 +256,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- elsif page.handle == 'welcome-kit' -%}
         {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}
         {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
+      {%- elsif page.handle == 'nightshift-bogo' -%}
+        {%- assign obs_headline = 'The Night Shift Discount: Buy 1, Get 1 FREE' -%}
+        {%- capture obs_subtitle -%}For everyone who works while the rest of us sleep. Get home at 7am and be asleep in 10–15 minutes, then wake up clear for your next shift. Just $15 a bottle, with a 90-day money-back guarantee.{%- endcapture -%}
       {%- elsif page.handle == '3am-wake-up-bogo' -%}
         {%- assign obs_headline = 'Stop Waking Up at 3AM: Buy 1, Get 1 FREE' -%}
         {%- capture obs_subtitle -%}Wide awake at 3am doing the sleep math? 6–8 sprays under your tongue at bedtime and you're asleep in 10–15 minutes, then sleep straight through to morning. Just $15 a bottle, about 50¢ a night, with a 90-day money-back guarantee.{%- endcapture -%}
@@ -451,7 +454,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if has_tabs -%}
         <div class="obs__tabs">
           {%- assign obs_why_lead = '' -%}{%- assign obs_faq_lead = '' -%}
-          {%- if page.handle == '3am-wake-up-bogo' -%}
+          {%- if page.handle == 'nightshift-bogo' -%}
+            {%- assign obs_why_lead = '<p>Your bedtime is when the sun comes up. The spray absorbs under your tongue, straight into your bloodstream, so most people are asleep in 10–15 minutes instead of the 45–60 it takes pills and gummies.</p>' -%}
+            {%- capture obs_faq_lead -%}<p><strong>Will it leave me groggy for my next shift?</strong></p><p>No. Rejuvia uses 2mg of melatonin, not the 10–12mg in many gummies, so you wake up clear, not foggy on the drive in. Use 6–8 sprays under your tongue whenever you're ready to sleep, day or night.</p>{%- endcapture -%}
+          {%- elsif page.handle == '3am-wake-up-bogo' -%}
             {%- assign obs_why_lead = '<p>Built for the 3am wake-up: 6–8 sprays under your tongue at bedtime, asleep in 10–15 minutes, and sleep straight through to your alarm. The low 2mg dose means you wake up clear, not groggy.</p>' -%}
             {%- capture obs_faq_lead -%}<p><strong>Will it stop my 3am wake-ups?</strong></p><p>Waking up in the middle of the night is the #1 sleep problem our customers tell us about, and it's what Rejuvia is made for. Use 6–8 sprays under your tongue at bedtime and sleep straight through to morning. If you're still waking up at 3am, you get every penny back for 90 days.</p>{%- endcapture -%}
           {%- endif -%}
@@ -469,7 +475,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- if section.settings.show_trusted -%}
         {%- assign obs_tb_sub = section.settings.trusted_subtext -%}
-        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- endif -%}
+        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- elsif page.handle == 'nightshift-bogo' -%}{%- assign obs_tb_sub = 'who now fall asleep fast, even when their bedtime is 8am' -%}{%- endif -%}
         {% render 'trusted-by',
           title: section.settings.trusted_title,
           subtext: obs_tb_sub,

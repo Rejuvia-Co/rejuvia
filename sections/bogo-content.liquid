@@ -54,6 +54,13 @@
     {%- assign bc_b2 = 'Fall asleep in 10-15 minutes after spraying under your tongue' -%}
     {%- assign bc_b3 = 'Wake up clear, not groggy, with a gentle 2mg dose' -%}
     {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
+  {%- when 'nightshift-bogo' -%}
+    {%- assign bc_heading = 'Get Home at 7am. Asleep by 7:15.' -%}
+    {%- capture bc_sub -%}Sunlight through the blinds, the neighbor's mower, the family up and about. Just 6–8 sprays under your tongue and you're asleep in 10–15 minutes, even with the world awake.{%- endcapture -%}
+    {%- assign bc_b1 = 'Fall asleep in 10-15 minutes, even in the middle of the day' -%}
+    {%- assign bc_b2 = 'Stay asleep through daylight, noise and the family being up' -%}
+    {%- assign bc_b3 = 'Wake up clear for your next shift with 2mg, not the 10-12mg in many gummies' -%}
+    {%- assign bc_b4 = 'Non-habit-forming, made with 13 all-natural ingredients' -%}
 {%- endcase -%}
 
 <section

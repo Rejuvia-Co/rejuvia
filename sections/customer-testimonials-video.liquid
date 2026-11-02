@@ -48,6 +48,8 @@
       assign header = 'Women Going Through Menopause Are Sleeping Better With Rejuvia'
     when '3am-wake-up-bogo'
       assign header = 'Join 500,000+ Sleeping Straight Through the Night With Rejuvia'
+    when 'nightshift-bogo'
+      assign header = 'Night Shift Workers Are Sleeping Better With Rejuvia'
   endcase
   assign stars_label = vt.value.stars_label | default: section.settings.stars_label
 

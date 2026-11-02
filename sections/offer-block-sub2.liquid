@@ -328,6 +328,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- if pb_words[0] == 'Buy' -%}{%- assign pb_sprays = pb_words[1] | plus: 0 | times: 2 -%}{%- endif -%}
           {%- if section.settings.use_manual_prices and b.settings.price != blank -%}{%- assign pb_price = b.settings.price -%}{%- elsif pplan_price != blank -%}{%- assign pb_price = pplan_price | money_without_trailing_zeros -%}{%- elsif pv != blank -%}{%- assign pb_price = pv.price | money_without_trailing_zeros -%}{%- else -%}{%- assign pb_price = b.settings.price -%}{%- endif -%}
           {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pplan_price != blank and pv.price > pplan_price -%}{%- assign pb_compare = pv.price | money_without_trailing_zeros -%}{%- elsif pv != blank and pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
+          {%- if pb_words[0] == 'Buy' and pb_words[1] == '3' -%}{%- assign pb_compare = '$207' -%}{%- endif -%}
         {%- endif -%}
       {%- endif -%}{%- endfor -%}
       {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
@@ -410,6 +411,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
           {%- assign t_lw = b.settings.label | remove: ',' | split: ' ' -%}
           {%- assign t_gift = false -%}{%- if t_lw[0] == 'Buy' and t_lw[1] == '3' -%}{%- assign t_gift = true -%}{%- endif -%}
+          {%- comment -%} Buy 3, Get 4 strikethrough: $207 (set in code, since template JSON edits do not deploy). {%- endcomment -%}
+          {%- if t_gift -%}{%- assign tier_compare = '$207' -%}{%- endif -%}
           {%- assign t_label = b.settings.label -%}{%- if t_gift -%}{%- assign t_label = t_label | replace: 'Get 3', 'Get 4' -%}{%- endif -%}
           <label class="obs__tier{% if tier_sel %} is-selected{% endif %}{% if t_gift or b.settings.badge != blank %} obs__tier--badged{% endif %}{% if t_gift %} obs__tier--gift{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"

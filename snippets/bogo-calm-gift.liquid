@@ -1,0 +1,18 @@
+{%- comment -%}
+  Free Calm Spray gift on the Buy 3 box of the bogosub and bogosub2 BOGO pages (not the senior template).
+  part: burst renders the pink FREE GIFT starburst that replaces BEST VALUE; strip renders the blush gift strip docked under the box.
+  value: the struck-through value shown in the strip, e.g. $45 (the live Calm Spray price).
+  The Calm Spray itself is added to the cart by the Buy Now script and made free at checkout by an automatic Buy X Get Y discount.
+{%- endcomment -%}
+{%- if part == 'burst' -%}
+  <span class="obs__burst" aria-hidden="true"><span class="obs__burst-bg"></span><span class="obs__burst-txt">FREE<br>GIFT</span></span>
+{%- else -%}
+  <span class="obs__gift">
+    <img class="obs__gift-img" src="{{ 'rejuvia-calm-bottle.png' | asset_url }}" width="33" height="240" alt="Calm Spray" loading="lazy" decoding="async">
+    <span class="obs__gift-txt">
+      <span class="obs__gift-title">+ FREE Extra Gift: Calm Spray</span>
+      <span class="obs__gift-sub">Added to your order automatically</span>
+    </span>
+    <span class="obs__gift-price">{%- if value != blank -%}<s>{{ value }}</s>{%- endif -%}<span>FREE</span></span>
+  </span>
+{%- endif -%}

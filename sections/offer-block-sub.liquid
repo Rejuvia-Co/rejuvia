@@ -365,9 +365,13 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- assign t_save = b.settings.savings_text -%}{%- assign t_su = t_save | upcase -%}
                   {%- assign t_sp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- assign t_sc = tc | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
                   {%- if t_su contains 'SAVE $' and t_sc > t_sp and t_sp > 0 -%}{%- assign t_save = t_sc | minus: t_sp | times: 100 | round | money_without_trailing_zeros | prepend: 'SAVE ' -%}{%- endif -%}
+                  {%- comment -%} The pill shows the price per spray (box price / bottles, from the Buy N, Get N label), e.g. $14/SPRAY; falls back to the savings text. {%- endcomment -%}
+                  {%- assign t_pw = b.settings.label | remove: ',' | split: ' ' -%}{%- assign t_pn = t_pw[1] | plus: 0 | times: 2 -%}
+                  {%- if t_pw[0] == 'Buy' and t_pn > 0 and t_sp > 0 -%}{%- assign t_save = t_sp | times: 100 | divided_by: t_pn | round | money_without_trailing_zeros | append: '/SPRAY' -%}{%- endif -%}
                   {%- if t_save != blank -%}<span class="obs__save">{{ t_save }}</span>{%- endif -%}
                 </span>
-                {%- if b.settings.free_shipping -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
+                {%- comment -%} + FREE Shipping only on boxes priced over $59 (the free shipping threshold), worked out from the live price. {%- endcomment -%}
+                {%- if t_sp > 59 -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
                 {%- comment -%} Supply line ("2-Month Supply"): an older "60 Servings (2-Month Supply)" value shows just the part in brackets; when blank, derived from the "Buy N, Get N" label. {%- endcomment -%}
                 {%- assign t_serv = b.settings.servings_text -%}
                 {%- if t_serv == blank -%}

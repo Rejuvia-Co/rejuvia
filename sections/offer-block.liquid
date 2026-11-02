@@ -402,12 +402,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
                   {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
                 {%- endif -%}
+                {%- if t_sp == 0 -%}{%- assign t_sp = b.settings.price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- endif -%}
                 {%- comment -%} Bigger boxes: a SAVE $X badge is worked out from the strikethrough minus the live price. {%- endcomment -%}
                 {%- assign t_save = b.settings.savings_text -%}{%- assign t_su = t_save | upcase -%}
                 {%- if tier_n > 1 and t_su contains 'SAVE $' and t_sc > t_sp and t_sp > 0 -%}{%- assign t_save = t_sc | minus: t_sp | times: 100 | round | money_without_trailing_zeros | prepend: 'SAVE ' -%}{%- endif -%}
                 {%- if t_save != blank -%}<span class="ob__off">{{ t_save }}</span>{%- endif -%}
               </span>
-              {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
+              {%- comment -%} + FREE Shipping only on boxes priced over $59 (the free shipping threshold), worked out from the live price. {%- endcomment -%}
+              {%- if t_sp > 59 -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
               {%- comment -%} Third line is the servings/supply line, as on /pages/bogo (per-night text no longer shown).
                    When blank, derived from the "Buy N, Get N" label (2N bottles x 30 servings). {%- endcomment -%}
               {%- assign t_serv = b.settings.servings_text -%}

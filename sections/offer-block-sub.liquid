@@ -3,8 +3,8 @@
 
   Differences from offer-block:
    - The headline IS the offer, not the product name; adds a review bar,
-     the ships-by bar above Buy Now (as on the senior page), and a guarantee-proof
-     panel. Purple CTA with an arrow. No Facebook review block.
+     and the ships-by bar above Buy Now (as on the senior page).
+     Purple CTA with an arrow. No Facebook review block.
    - Gallery images come from section blocks uploaded in the customizer,
      NOT from a product's media.
    - Buy Now adds a one-time purchase, same as the BOGO template. The
@@ -144,11 +144,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__payments svg { height: 24px; width: auto; display: block; }
 
 /* ---- Guarantee proof ---- */
-.obs__proof { display: flex; align-items: center; gap: 14px; background: #F8EFE4; border-radius: 12px; padding: 14px 18px; margin-top: 16px; }
-.obs__proof svg { flex: none; width: 32px; height: 32px; }
-.obs__proof-text { font-size: 14px; line-height: 1.4; color: #4c1c4f; }
-.obs__proof-text b, .obs__proof-text strong { font-weight: 800; }
-.obs__proof-text p { margin: 0; }
 
 /* ---- Accordion (same behaviour as the BOGO template) ---- */
 .obs__tabs { margin-top: 26px; border-top: 1px solid #e6e2ec; }
@@ -207,9 +202,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__trust { gap: 8px; }
   .obs__payments { gap: 5px; margin-top: 10px; }
   .obs__payments svg { height: 22px; }
-  .obs__proof { padding: 13px 14px; gap: 12px; }
-  .obs__proof svg { width: 28px; height: 28px; }
-  .obs__proof-text { font-size: 13px; }
   .obs__tabs { margin-top: 18px; }
   .obs__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 19 }}px; }
   .obs__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 16 }}px; }
@@ -419,12 +411,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           </div>
         {%- endif -%}
 
-        {%- if section.settings.proof_text != blank -%}
-          <div class="obs__proof">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#4c1c4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/><circle cx="12" cy="15.6" r="1.15" fill="#4c1c4f" stroke="none"/></svg>
-            <span class="obs__proof-text">{{ section.settings.proof_text }}</span>
-          </div>
-        {%- endif -%}
       </div>
 
       {%- assign has_tabs = false -%}

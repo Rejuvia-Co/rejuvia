@@ -378,7 +378,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                    data-plan="{{ tplan_ok }}"{% if tplan != blank and tplan_ok == blank %} data-plan-missing="true"{% endif %}
                    {% if t_gift %}data-gift="{{ calm_id }}" {% endif %}{% if tier_sel %}checked{% endif %}>
             {%- if t_gift -%}
-              <span class="obs__badge obs__badge--gift">FREE GIFT</span>
+              <span class="obs__badge obs__badge--gift">+ FREE EXTRA GIFT</span>
             {%- elsif b.settings.badge != blank -%}
               <span class="obs__badge obs__badge--{{ b.settings.badge_style | default: 'plum' }}">{{ b.settings.badge }}</span>
             {%- endif -%}

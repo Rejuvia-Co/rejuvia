@@ -87,6 +87,8 @@
       assign pl_price = unit_price
       assign pl_strike = unit_price
       assign pl_pill = ''
+      assign pl_once_variant = unit_variant
+      assign pl_once_price = unit_price
       assign max_save = 0
     -%}
     {%- capture tier_rows_html -%}
@@ -287,16 +289,25 @@
             assign max_save = tier_save_pct
           endif
 
+          comment
+            Buy once link: the cart variant of this tier at its one-time price (no plan).
+          endcomment
+          assign once_price = cart_variant.price | times: cart_qty
+
           assign tier_sel = false
           if i == default_tier
             assign tier_sel = true
             assign pl_price = tier_price
             assign pl_strike = tier_strike
             assign pl_pill = tier_pill
+            assign pl_once_variant = cart_variant
+            assign pl_once_price = once_price
           endif
         -%}
         <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ t_attrs }}
                data-variant="{{ cart_variant.id }}"
+               data-once-qty="{{ cart_qty }}"
+               data-once-fmt="{{ once_price | money | escape }}"
                data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
                data-paid="{{ cart_qty }}"
                data-free="{{ cart_free }}"
@@ -597,7 +608,7 @@
                     {%- endif -%}
                     {%- if section.settings.one_time_display == 'link' -%}
                       <div class="pss-buyonce">
-                        <a href="/cart/add?id={{ unit_variant.id }}&quantity=1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ unit_variant.id }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ unit_price | money }}</a>
+                        <a href="/cart/add?id={{ pl_once_variant.id }}&quantity=1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ pl_once_variant.id }}" data-qty="1" data-label="{{ section.settings.one_time_link_text | default: 'Buy once' | escape }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ pl_once_price | money }}</a>
                       </div>
                     {%- endif -%}
 
@@ -663,11 +674,22 @@
     if (pricePill) { pricePill.textContent = pill; pricePill.hidden = !pill; }
   }
 
+  /* "Buy once" link follows the selected tier: its variant, one-time, at the one-time price. */
+  function syncBuyOnce(t) {
+    if (!buyOnce || !t || !t.getAttribute('data-once-fmt')) return;
+    var id = t.getAttribute('data-variant'), qty = t.getAttribute('data-once-qty') || '1';
+    buyOnce.setAttribute('data-variant', id);
+    buyOnce.setAttribute('data-qty', qty);
+    buyOnce.setAttribute('href', '/cart/add?id=' + id + '&quantity=' + qty);
+    buyOnce.textContent = buyOnce.getAttribute('data-label') + ' - ' + t.getAttribute('data-once-fmt');
+  }
+
   function sync() {
     var cur = selected();
     tiers.forEach(function (t) { t.classList.toggle('is-selected', t === cur); });
     if (onetimeNote) { onetimeNote.hidden = !(cur && cur.getAttribute('data-onetime') === 'true'); }
     syncPriceLine(cur);
+    syncBuyOnce(cur);
     announce(cur);
   }
   tiers.forEach(function (t) { t.querySelector('input').addEventListener('change', sync); });
@@ -723,7 +745,7 @@
   if (buyOnce) {
     buyOnce.addEventListener('click', function (e) {
       e.preventDefault();
-      addAndGoToCart([{ id: parseInt(buyOnce.getAttribute('data-variant'), 10), quantity: 1 }], '', null);
+      addAndGoToCart([{ id: parseInt(buyOnce.getAttribute('data-variant'), 10), quantity: parseInt(buyOnce.getAttribute('data-qty'), 10) || 1 }], '', null);
     });
   }
 

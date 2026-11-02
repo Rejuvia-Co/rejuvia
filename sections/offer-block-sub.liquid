@@ -99,27 +99,43 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__stock + .obs__tiers { margin-top: 14px; }
 
 /* ---- Tier rows (real bundle photography, no pictograms) ---- */
-.obs__tiers { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
-.obs__tier { position: relative; display: block; background: #fff; border: 1.5px solid #e6e1ee; border-radius: 12px; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
-.obs__tier.is-selected { border-color: #672666; box-shadow: inset 0 0 0 1.5px #672666; background: #f4ecf7; }
+/* Box spacing, image sizes and single-line price row from the Nov 2026 tier redesign (18-20px between boxes leaves room for the badges). */
+.obs__tiers { display: flex; flex-direction: column; gap: 20px; margin-top: 18px; }
+/* padding: 0 overrides the theme-wide label padding (1em 0 .5em), so the gift strip reaches the box edges; that spacing now lives in .obs__row. */
+.obs__tier { position: relative; display: block; padding: 0; background: #fff; border: 2px solid #e3dfe7; border-radius: 12px; cursor: pointer; transition: background .18s cubic-bezier(.22,1,.36,1), border-color .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
+.obs__tier.is-selected { border-color: #672666; box-shadow: none; background: #f6ecf7; }
 .obs__tier input { position: absolute; opacity: 0; pointer-events: none; }
-.obs__row { display: flex; align-items: center; gap: 18px; padding: 18px 22px; }
+.obs__row { display: grid; grid-template-columns: 20px 124px minmax(0, 1fr); align-items: center; column-gap: 14px; padding: 26px 18px 19px; box-sizing: border-box; }
+.obs__tier--badged .obs__row { padding: 24px 18px 19px; }
+.obs__tier--gift .obs__row { padding-bottom: 12px; }
 .obs__radio { flex: none; width: 20px; height: 20px; border: 2px solid #cfc9dd; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color .18s ease; }
 .obs__tier.is-selected .obs__radio { border-color: #672666; }
 .obs__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #672666; opacity: 0; transition: opacity .18s ease; }
 .obs__tier.is-selected .obs__radio::after { opacity: 1; }
-.obs__bundle { flex: none; width: 96px; height: auto; object-fit: contain; display: block; }
+.obs__bundle { width: 100%; height: 104px; object-fit: contain; display: block; }
+.obs__tier--gift .obs__bundle { height: 98px; }
 .obs__tinfo { flex: 1; min-width: 0; text-align: left; }
 .obs__tname { --ls: -.3px; display: block; font-size: {{ section.settings.tier_title_size | default: 21 }}px; font-weight: 800; color: #672666; line-height: 1.2; white-space: nowrap; }
 .obs__servings { display: block; font-size: 15px; font-weight: 400; font-style: italic; color: #5c5866; line-height: 1.2; margin-top: 5px; }
-.obs__prices { display: flex; align-items: center; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
+.obs__prices { display: flex; align-items: center; gap: 8px; margin-top: 5px; flex-wrap: nowrap; white-space: nowrap; }
 .obs__price { font-size: 29px; font-weight: 800; color: #171512; line-height: 1; }
 .obs__struck { font-size: 21px; color: #a9a3b2; text-decoration: line-through; }
-.obs__save { display: inline-flex; align-items: center; justify-content: center; line-height: 1; background: #eefaf0; color: #018e1c; font-weight: 800; font-size: 16px; padding: 6px 11px 5px; border-radius: 100px; white-space: nowrap; }
+.obs__save { display: inline-flex; align-items: center; justify-content: center; line-height: 1; background: #eefaf0; color: #018e1c; font-weight: 800; font-size: 15px; padding: 7px 10px 6px; border-radius: 100px; white-space: nowrap; }
 .obs__ship { display: block; font-size: 13.5px; font-weight: 800; color: #171512; margin-top: 6px; }
 .obs__badge { position: absolute; top: -13px; right: 16px; font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; z-index: 1; }
 .obs__badge--plum { background: #5d215f; color: #fff; }
 .obs__badge--gold { background: #EAC78B; color: #4c1c4f; }
+
+/* Free Calm Spray gift on the Buy 3 box: hot pink FREE GIFT pill (replaces BEST VALUE) and the blush strip docked under the box, inside the click target. */
+.obs__badge--gift { background: #d1235f; color: #fff; }
+.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #fce9f0; border-top: 1.5px dashed #eba6be; border-radius: 0 0 10px 10px; }
+.obs__gift-img { flex: none; width: auto; height: 86px; transform: rotate(45deg); margin: -14px 20px; filter: drop-shadow(0 2px 3px rgba(45,21,48,.2)); }
+.obs__gift-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; text-align: left; }
+.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #b0174c; white-space: nowrap; }
+.obs__gift-sub { font-size: 13.5px; line-height: 1.25; color: #5b4e5d; }
+.obs__gift-price { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; line-height: 1.1; }
+.obs__gift-price s { font-weight: 700; font-size: 15px; color: #b5b0ba; }
+.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #b0174c; }
 
 /* ---- CTA (purple, with arrow) ---- */
 .obs__cta-wrap { margin-top: 18px; }
@@ -187,17 +203,27 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .obs__buybox { order: 3; margin-top: 2px; }
   .obs__stock { gap: 12px; margin-top: 16px; }
   .obs__stock span { font-size: clamp(11px, 3.2vw, 12.5px); }
-  .obs__tiers { gap: 14px; margin-top: 14px; }
-  .obs__row { gap: 10px; padding: 12px; }
-  .obs__bundle { width: 76px; height: auto; }
+  .obs__tiers { gap: 18px; margin-top: 16px; }
+  .obs__row { grid-template-columns: 18px clamp(78px, 22vw, 96px) minmax(0, 1fr); column-gap: 8px; padding: 24px 14px 17px; }
+  .obs__tier--badged .obs__row { padding: 23px 14px 17px; }
+  .obs__tier--gift .obs__row { padding-bottom: 10px; }
+  .obs__radio { width: 18px; height: 18px; }
+  .obs__bundle { height: 86px; object-position: left center; }
+  .obs__tier--gift .obs__bundle { height: 82px; }
   .obs__tname { font-size: {{ section.settings.tier_title_size_mobile | default: 17 }}px; }
-  .obs__prices { gap: 8px; }
-  .obs__price { font-size: 24px; }
-  .obs__struck { font-size: 18px; }
-  .obs__save { font-size: 14px; padding: 5px 10px 4px; }
+  .obs__prices { gap: 6px; }
+  .obs__price { font-size: clamp(21px, 6.4vw, 25px); }
+  .obs__struck { font-size: clamp(15px, 4.6vw, 18px); }
+  .obs__save { font-size: clamp(10.5px, 3.15vw, 12.5px); padding: 6px 8px; }
   .obs__ship { font-size: 14px; }
   .obs__servings { font-size: 14px; }
-  .obs__badge { right: 16px; font-size: 12px; }
+  .obs__badge { top: -12px; right: 14px; font-size: 11.5px; padding: 5px 11px; }
+  .obs__gift { gap: 8px; padding: 6px 14px 6px 10px; }
+  .obs__gift-img { height: 62px; margin: -8px 12px; }
+  .obs__gift-title { font-size: clamp(13px, 3.9vw, 15px); }
+  .obs__gift-sub { font-size: 12px; }
+  .obs__gift-price s { font-size: 13px; }
+  .obs__gift-price span { font-size: 15px; }
   .obs__buy { font-size: clamp(15px, 4.6vw, 18px); padding: 24px 20px; }
   .obs__trust { gap: 8px; }
   .obs__payments { gap: 5px; margin-top: 10px; }
@@ -234,8 +260,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- comment -%} The anniversary, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'anniversary-sale' -%}
-        {%- assign obs_headline = 'Anniversary Sale - Up To 3 FREE Sprays Today' -%}
-        {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 3 FREE Sleep Sprays with your order. Limited-time.{%- endcapture -%}
+        {%- assign obs_headline = 'Anniversary Sale - Up To 4 FREE Sprays Today' -%}
+        {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 4 FREE Sprays with your order. Limited-time.{%- endcapture -%}
       {%- elsif page.handle == 'welcome-kit' -%}
         {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}
         {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
@@ -260,7 +286,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign ptn = ptn | plus: 1 -%}
         {%- if ptn == ob_default_tier -%}
           {%- assign pb_words = b.settings.label | remove: ',' | split: ' ' -%}
-          {%- assign pb_sprays = pb_words[1] | plus: 0 | times: 2 -%}
+          {%- assign pb_sprays = pb_words[1] | plus: 0 | times: 2 -%}{%- if pb_words[0] == 'Buy' and pb_words[1] == '3' -%}{%- assign pb_sprays = pb_sprays | plus: 1 -%}{%- endif -%}
           {%- assign psrc = b.settings.product | default: section.settings.product -%}
           {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
           {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
@@ -305,6 +331,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if section.settings.stock_bar != blank -%}<div class="obs__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
+      {%- comment -%} The Buy 3 box gets a free Calm Spray (30 Servings): it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the Calm Spray line, made free at checkout by an automatic Buy X Get Y discount. Strip value is the live Calm Spray price. {%- endcomment -%}
+      {%- assign calm_id = 44328103608540 -%}{%- assign calm_value = '$45' -%}{%- assign calm_p = all_products['oral-stress-spray'] -%}
+      {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
@@ -339,24 +368,32 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- elsif tier_variant != blank and tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}
           {%- endcapture -%}
 
-          <label class="obs__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
+          {%- assign t_lw = b.settings.label | remove: ',' | split: ' ' -%}
+          {%- assign t_gift = false -%}{%- if t_lw[0] == 'Buy' and t_lw[1] == '3' -%}{%- assign t_gift = true -%}{%- endif -%}
+          {%- assign t_label = b.settings.label -%}{%- if t_gift -%}{%- assign t_label = t_label | replace: 'Get 3', 'Get 4' -%}{%- endif -%}
+          <label class="obs__tier{% if tier_sel %} is-selected{% endif %}{% if t_gift or b.settings.badge != blank %} obs__tier--badged{% endif %}{% if t_gift %} obs__tier--gift{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="obs-{{ section.id }}" value="{{ vid }}"
                    data-price="{{ tier_price | strip }}"
                    data-qty="{{ b.settings.quantity | default: section.settings.add_quantity | default: 1 }}"
                    data-plan="{{ tplan_ok }}"{% if tplan != blank and tplan_ok == blank %} data-plan-missing="true"{% endif %}
-                   {% if tier_sel %}checked{% endif %}>
-            {%- if b.settings.badge != blank -%}
+                   {% if t_gift %}data-gift="{{ calm_id }}" {% endif %}{% if tier_sel %}checked{% endif %}>
+            {%- if t_gift -%}
+              <span class="obs__badge obs__badge--gift">+ FREE EXTRA GIFT</span>
+            {%- elsif b.settings.badge != blank -%}
               <span class="obs__badge obs__badge--{{ b.settings.badge_style | default: 'plum' }}">{{ b.settings.badge }}</span>
             {%- endif -%}
             <span class="obs__row">
               <span class="obs__radio" aria-hidden="true"></span>
-              {%- if b.settings.image != blank -%}
+              {%- if t_gift -%}
+                {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a Calm Spray (alternating down, up, down, up), banner reads GET 4 FREE {%- endcomment -%}
+                <img class="obs__bundle" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="624" height="627" alt="" loading="lazy" decoding="async">
+              {%- elsif b.settings.image != blank -%}
                 <img class="obs__bundle" src="{{ b.settings.image | image_url: width: 320, format: 'webp' }}" alt="" loading="lazy" decoding="async">
               {%- elsif b.settings.image_asset != blank -%}
                 <img class="obs__bundle" src="{{ b.settings.image_asset | asset_url }}" alt="" loading="lazy" decoding="async">
               {%- endif -%}
               <span class="obs__tinfo">
-                <span class="obs__tname">{{ b.settings.label }}</span>
+                <span class="obs__tname">{{ t_label }}</span>
                 <span class="obs__prices">
                   <span class="obs__price">{{ tier_price | strip }}</span>
                   {%- assign tc = tier_compare | strip -%}
@@ -366,7 +403,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- assign t_sp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- assign t_sc = tc | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
                   {%- if t_su contains 'SAVE $' and t_sc > t_sp and t_sp > 0 -%}{%- assign t_save = t_sc | minus: t_sp | times: 100 | round | money_without_trailing_zeros | prepend: 'SAVE ' -%}{%- endif -%}
                   {%- comment -%} The pill shows the price per spray (box price / bottles, from the Buy N, Get N label), e.g. $14/SPRAY; falls back to the savings text. {%- endcomment -%}
-                  {%- assign t_pw = b.settings.label | remove: ',' | split: ' ' -%}{%- assign t_pn = t_pw[1] | plus: 0 | times: 2 -%}
+                  {%- assign t_pw = b.settings.label | remove: ',' | split: ' ' -%}{%- assign t_pn = t_pw[1] | plus: 0 | times: 2 -%}{%- if t_gift -%}{%- assign t_pn = t_pn | plus: 1 -%}{%- endif -%}
                   {%- if t_pw[0] == 'Buy' and t_pn > 0 and t_sp > 0 -%}{%- assign t_save = t_sp | times: 100 | divided_by: t_pn | round | money_without_trailing_zeros | append: '/SPRAY' -%}{%- endif -%}
                   {%- if t_save != blank -%}<span class="obs__save">{{ t_save }}</span>{%- endif -%}
                 </span>
@@ -383,6 +420,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 {%- if t_serv != blank -%}<span class="obs__servings">{{ t_serv }}</span>{%- endif -%}
               </span>
             </span>
+            {%- if t_gift -%}{%- render 'bogo-calm-gift', part: 'strip', value: calm_value -%}{%- endif -%}
           </label>
         {%- endif -%}{%- endfor -%}
       </div>
@@ -507,7 +545,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     pbPill.textContent = off ? pbLabel + ' - ' + Math.round((nc - np) * 100 / nc) + '% OFF' : ''; pbPill.hidden = !off;
     if (pbPerSpray) {
       var tn = tier.querySelector('.obs__tname'), m = tn && tn.textContent.match(/Buy\s+(\d+)/i);
-      if (m && np > 0) { var each = np / (2 * parseInt(m[1], 10)); pbPill.textContent = '$' + (each % 1 ? each.toFixed(2) : each) + ' PER SPRAY'; pbPill.hidden = false; }
+      if (m && np > 0) { var each = np / (2 * parseInt(m[1], 10) + (sel.hasAttribute('data-gift') ? 1 : 0)); pbPill.textContent = '$' + (each % 1 ? each.toFixed(2) : each) + ' PER SPRAY'; pbPill.hidden = false; }
     }
   }
   sec.addEventListener('change', function (e) { if (e.target.closest('.obs__tier')) syncPricebar(); });
@@ -571,6 +609,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
+      /* Buy 3 box: also add one Calm Spray, made free at checkout by the automatic Buy X Get Y discount. */
+      var gift = parseInt(sel.getAttribute('data-gift'), 10);
       /* A tier that names a Skio plan the product doesn't have must never fall back to a one-time sale. */
       if (sel.getAttribute('data-plan-missing') === 'true') { alert('Sorry, this offer is unavailable right now. Please contact support.'); return; }
       var plan = parseInt(sel.getAttribute('data-plan'), 10);
@@ -583,11 +623,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           return fetch('/cart/add.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: [item] })
+            body: JSON.stringify({ items: gift ? [item, { id: gift, quantity: 1 }] : [item] })
           });
         })
         .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
-        .catch(function () { window.location.href = plan ? '/cart' : ('/cart/' + id + ':' + qty + (code ? ('?discount=' + encodeURIComponent(code)) : '')); });
+        .catch(function () { window.location.href = plan ? '/cart' : ('/cart/' + id + ':' + qty + (gift ? (',' + gift + ':1') : '') + (code ? ('?discount=' + encodeURIComponent(code)) : '')); });
     });
   }
 

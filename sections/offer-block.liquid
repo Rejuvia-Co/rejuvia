@@ -320,7 +320,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign psrc = b.settings.product | default: gallery_product -%}
           {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
           {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
-          {%- if pv != blank and section.settings.use_manual_prices != true -%}
+          {%- assign pb_manual = section.settings.use_manual_prices -%}{%- if ptn > 1 -%}{%- assign pb_manual = false -%}{%- endif -%}
+          {%- if pv != blank and pb_manual != true -%}
             {%- assign pb_price = pv.price | money_without_trailing_zeros -%}
             {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
           {%- else -%}
@@ -374,8 +375,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- endif -%}
           {%- endif -%}
           {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
+          {%- comment -%} The extra 10% code (SENIOR10, MILITARY10, NURSE10) applies to the first box only. The bigger boxes show and charge the live variant price, with no code. Done in code because template JSON edits do not deploy. {%- endcomment -%}
+          {%- assign t_manual = section.settings.use_manual_prices -%}{%- assign t_code = ob_code -%}
+          {%- if tier_n > 1 -%}{%- assign t_manual = false -%}{%- assign t_code = '' -%}{%- endif -%}
           <label class="ob__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
-            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" {% if tier_sel %}checked{% endif %}>
+            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
             {%- if b.settings.image != blank -%}
@@ -386,7 +390,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <span class="ob__tier-body">
               <span class="ob__tier-title">{{ b.settings.label }}</span>
               <span class="ob__tier-prices">
-                {%- if tier_variant != blank and section.settings.use_manual_prices != true -%}
+                {%- assign t_sp = 0 -%}{%- assign t_sc = 0 -%}
+                {%- if tier_variant != blank and t_manual != true -%}
+                  {%- assign t_sp = tier_variant.price | divided_by: 100.0 -%}
+                  {%- if b.settings.compare_price != blank -%}{%- assign t_sc = b.settings.compare_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- elsif tier_variant.compare_at_price -%}{%- assign t_sc = tier_variant.compare_at_price | divided_by: 100.0 -%}{%- endif -%}
                   <span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>
                   {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
                   {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
@@ -395,7 +402,10 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
                   {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>{%- endif -%}
                 {%- endif -%}
-                {%- if b.settings.savings_text != blank -%}<span class="ob__off">{{ b.settings.savings_text }}</span>{%- endif -%}
+                {%- comment -%} Bigger boxes: a SAVE $X badge is worked out from the strikethrough minus the live price. {%- endcomment -%}
+                {%- assign t_save = b.settings.savings_text -%}{%- assign t_su = t_save | upcase -%}
+                {%- if tier_n > 1 and t_su contains 'SAVE $' and t_sc > t_sp and t_sp > 0 -%}{%- assign t_save = t_sc | minus: t_sp | times: 100 | round | money_without_trailing_zeros | prepend: 'SAVE ' -%}{%- endif -%}
+                {%- if t_save != blank -%}<span class="ob__off">{{ t_save }}</span>{%- endif -%}
               </span>
               {%- if b.settings.free_shipping -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
               {%- comment -%} Third line is the servings/supply line, as on /pages/bogo (per-night text no longer shown).
@@ -596,7 +606,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var sel = sec.querySelector('.ob__tier input[type="radio"]:checked');
       if (!sel || !sel.value) return;
       var id = parseInt(sel.value, 10);
-      var code = (buy.getAttribute('data-ob-discount') || '').trim();
+      var code = (sel.getAttribute('data-code') || '').trim();
       var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
       buy.disabled = true; buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })

@@ -361,7 +361,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                   <span class="obs__price">{{ tier_price | strip }}</span>
                   {%- assign tc = tier_compare | strip -%}
                   {%- if tc != blank -%}<span class="obs__struck">{{ tc }}</span>{%- endif -%}
-                  {%- if b.settings.savings_text != blank -%}<span class="obs__save">{{ b.settings.savings_text }}</span>{%- endif -%}
+                  {%- comment -%} A SAVE $X badge is worked out from the strikethrough minus the live price, so it follows variant price changes (template JSON edits do not deploy). {%- endcomment -%}
+                  {%- assign t_save = b.settings.savings_text -%}{%- assign t_su = t_save | upcase -%}
+                  {%- assign t_sp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- assign t_sc = tc | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
+                  {%- if t_su contains 'SAVE $' and t_sc > t_sp and t_sp > 0 -%}{%- assign t_save = t_sc | minus: t_sp | times: 100 | round | money_without_trailing_zeros | prepend: 'SAVE ' -%}{%- endif -%}
+                  {%- if t_save != blank -%}<span class="obs__save">{{ t_save }}</span>{%- endif -%}
                 </span>
                 {%- if b.settings.free_shipping -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
                 {%- comment -%} Supply line ("2-Month Supply"): an older "60 Servings (2-Month Supply)" value shows just the part in brackets; when blank, derived from the "Buy N, Get N" label. {%- endcomment -%}

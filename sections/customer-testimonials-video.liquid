@@ -60,7 +60,21 @@
   endif
 -%}
 
-{%- if show_section -%}
+{%- comment -%}
+  BOGO page templates: this slot (right under the offer) shows the Comments section
+  (snippets/comments.liquid, real Facebook comments) instead of "Join 500,000...".
+  Done in code because template JSON edits don't deploy from git.
+{%- endcomment -%}
+{%- assign show_comments = false -%}
+{%- if template.name == 'page' -%}
+  {%- case template.suffix -%}
+    {%- when 'senior', 'bogosub', 'bogosub2', 'bogotest' -%}{%- assign show_comments = true -%}
+  {%- endcase -%}
+{%- endif -%}
+
+{%- if show_comments -%}
+{%- render 'comments' -%}
+{%- elsif show_section -%}
 {{ 'sections-reviews.css' | asset_url | stylesheet_tag }}
 
 {% style %}

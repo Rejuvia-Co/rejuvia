@@ -19,6 +19,8 @@
     padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
     font-family: 'HelveticaNeueL', 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif;
   }
+  /* Headline: same type as the Comments section title, sized down to sit over the quotes. */
+  #{{ uid }} .pc__headline { margin: 0 auto 36px; max-width: {{ section.settings.max_width }}px; text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: -0.015em; color: #000; text-transform: none; text-wrap: balance; }
   #{{ uid }} .pc__viewport { position: relative; max-width: {{ section.settings.max_width }}px; margin: 0 auto; }
   #{{ uid }} .pc__window { overflow: hidden; clip-path: inset(0 2px); /* hides dividers at both outer edges — only the ones between visible slides show */ }
   #{{ uid }} .pc__track { display: flex; align-items: stretch; transition: transform .4s cubic-bezier(.22,1,.36,1); }
@@ -64,6 +66,7 @@
 
   @media screen and (max-width: 767px) {
     #{{ uid }} { padding: 34px 16px; }
+    #{{ uid }} .pc__headline { font-size: 26px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 24px; padding: 0 4px; }
     #{{ uid }} .pc__track { align-items: flex-start; }
     #{{ uid }} .pc__slide { flex: 0 0 100%; padding: 0 28px; justify-content: center; gap: 14px; }
     #{{ uid }} .pc__slide + .pc__slide { border-left: 0; }
@@ -81,6 +84,10 @@
 </style>
 
 <section id="{{ uid }}" class="pc" aria-roledescription="carousel" aria-label="{{ section.settings.aria_label | default: 'Press quotes' | escape }}">
+  {%- comment -%} Headline shows on the homepage only (the BOGO and story pages use this section without it). {%- endcomment -%}
+  {%- if template.name == 'index' and section.settings.headline != blank -%}
+    <h2 class="pc__headline">{{ section.settings.headline }}</h2>
+  {%- endif -%}
   <div class="pc__viewport">
 
     <div class="pc__window">
@@ -212,6 +219,12 @@
   "tag": "section",
   "class": "press-carousel-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline (homepage)",
+      "default": "Trusted By 500K+ Customers From Across The Country"
+    },
     {
       "type": "color",
       "id": "bg_color",

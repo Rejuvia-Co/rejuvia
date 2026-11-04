@@ -147,6 +147,20 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; }
 .ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
 .ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
+/* Free Calm Spray gift on the Buy 3 box (same design as the BOGO pages): hot pink FREE GIFT pill (replaces BEST VALUE) and the blush strip docked under the box, inside the click target.
+   The box wraps so the strip takes a full-width second line; side margins stop 1.5px short of the edge so the selected inset outline stays visible. */
+.ob__tag--gift { background: #d1235f; color: #fff; }
+.ob__tier--gift { flex-wrap: wrap; row-gap: 14px; padding-bottom: 1.5px; }
+.ob__tier--gift .ob__tier-body { flex: 1 1 0; }
+.ob__tier--gift .obs__gift { flex: 0 0 calc(100% + 57px); margin: 0 -28.5px; box-sizing: border-box; border-radius: 0 0 11px 11px; }
+.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #fce9f0; border-top: 1.5px dashed #eba6be; }
+.obs__gift-img { flex: none; width: auto; height: 86px; transform: rotate(45deg); margin: -14px 20px; filter: drop-shadow(0 2px 3px rgba(45,21,48,.2)); }
+.obs__gift-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; text-align: left; }
+.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #b0174c; white-space: nowrap; }
+.obs__gift-sub { font-size: 13.5px; line-height: 1.25; color: #5b4e5d; }
+.obs__gift-price { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; line-height: 1.1; }
+.obs__gift-price s { font-weight: 700; font-size: 15px; color: #b5b0ba; }
+.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #b0174c; }
 
 /* CTA (pill) */
 .ob__cta-wrap { margin-top: 22px; }
@@ -241,10 +255,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob__pernight { font-size: 18px; }
   .ob__servings { font-size: 14px; }
   .ob__tag { font-size: 12px; }
+  .ob__tier--gift { row-gap: 10px; padding-bottom: 1.6px; }
+  .ob__tier--gift .obs__gift { flex-basis: calc(100% + 26.8px); margin: 0 -14.4px 0 -12.4px; }
+  .obs__gift { gap: 8px; padding: 6px 14px 6px 10px; }
+  .obs__gift-img { height: 62px; margin: -8px 12px; }
+  .obs__gift-title { font-size: clamp(13px, 3.9vw, 15px); }
+  .obs__gift-sub { font-size: 12px; }
+  .obs__gift-price s { font-size: 13px; }
+  .obs__gift-price span { font-size: 15px; }
   .ob__buy { font-size: clamp(15px, 4.6vw, 18px); padding: 24px 20px; }
   .ob__tier-prices { gap: 7px; flex-wrap: wrap; white-space: normal; }
   .ob__tab-q { font-size: {{ section.settings.tab_title_size_mobile | default: 18 }}px; padding: 24px 2px; }
   .ob__tab-body { font-size: {{ section.settings.tab_body_size_mobile | default: 17 }}px; }
+}
+/* Very narrow phones (under 350px): let the gift title wrap so the strip stays inside the box. */
+@media (max-width: 349px) {
+  .obs__gift-title { white-space: normal; }
+  .ob__tier--gift .obs__gift { flex-shrink: 1; min-width: 0; }
 }
 /* Header: left-aligned on desktop */
 @media (min-width: 901px) {
@@ -327,6 +354,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- else -%}
             {%- assign pb_price = b.settings.price -%}{%- assign pb_compare = b.settings.compare_price -%}
           {%- endif -%}
+          {%- assign pb_lw = b.settings.label | remove: ',' | split: ' ' -%}
+          {%- if pb_lw[0] == 'Buy' and pb_lw[1] == '3' -%}{%- assign pb_compare = '$207' -%}{%- endif -%}
         {%- endif -%}
       {%- endif -%}{%- endfor -%}
       {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
@@ -358,6 +387,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     <div class="ob__buybox">
       {%- if section.settings.stock_bar != blank -%}<div class="ob__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
+        {%- comment -%} The Buy 3 box gets a free Calm Spray (30 Servings), as on the BOGO pages: it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the Calm Spray line, made free at checkout by an automatic Buy X Get Y discount. No extra 10% code on this box (it stays $81). Strip value is the live Calm Spray price. {%- endcomment -%}
+        {%- assign calm_id = 44328103608540 -%}{%- assign calm_value = '$45' -%}{%- assign calm_p = all_products['oral-stress-spray'] -%}
+        {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
           {%- assign tier_n = tier_n | plus: 1 -%}
@@ -378,25 +410,33 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- comment -%} The extra 10% code (SENIOR10, MILITARY10, NURSE10) applies to the first box only. The bigger boxes show and charge the live variant price, with no code. Done in code because template JSON edits do not deploy. {%- endcomment -%}
           {%- assign t_manual = section.settings.use_manual_prices -%}{%- assign t_code = ob_code -%}
           {%- if tier_n > 1 -%}{%- assign t_manual = false -%}{%- assign t_code = '' -%}{%- endif -%}
-          <label class="ob__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
-            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if tier_sel %}checked{% endif %}>
-            {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
+          {%- assign t_lw = b.settings.label | remove: ',' | split: ' ' -%}
+          {%- assign t_gift = false -%}{%- if t_lw[0] == 'Buy' and t_lw[1] == '3' -%}{%- assign t_gift = true -%}{%- assign t_code = '' -%}{%- endif -%}
+          {%- assign t_label = b.settings.label -%}{%- if t_gift -%}{%- assign t_label = t_label | replace: 'Get 3', 'Get 4' -%}{%- endif -%}
+          <label class="ob__tier{% if tier_sel %} is-selected{% endif %}{% if t_gift %} ob__tier--gift{% endif %}" {{ b.shopify_attributes }}>
+            <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if t_gift %}data-gift="{{ calm_id }}" {% endif %}{% if tier_sel %}checked{% endif %}>
+            {%- if t_gift -%}<span class="ob__tag ob__tag--gift">+ FREE EXTRA GIFT</span>
+            {%- elsif b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
-            {%- if b.settings.image != blank -%}
+            {%- if t_gift -%}
+              {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a Calm Spray, banner reads GET 4 FREE {%- endcomment -%}
+              <img class="ob__tier-img" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="624" height="627" alt="" decoding="async" loading="lazy">
+            {%- elsif b.settings.image != blank -%}
               <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290, format: 'webp' }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- elsif b.settings.image_asset != blank -%}
               <img class="ob__tier-img" src="{{ b.settings.image_asset | asset_url }}" width="290" height="320" alt="" decoding="async" loading="lazy">
             {%- endif -%}
             <span class="ob__tier-body">
-              <span class="ob__tier-title">{{ b.settings.label }}</span>
+              <span class="ob__tier-title">{{ t_label }}</span>
               <span class="ob__tier-prices">
                 {%- assign t_sp = 0 -%}{%- assign t_sc = 0 -%}
                 {%- if tier_variant != blank and t_manual != true -%}
                   {%- assign t_sp = tier_variant.price | divided_by: 100.0 -%}
                   {%- if b.settings.compare_price != blank -%}{%- assign t_sc = b.settings.compare_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- elsif tier_variant.compare_at_price -%}{%- assign t_sc = tier_variant.compare_at_price | divided_by: 100.0 -%}{%- endif -%}
                   <span class="ob__price">{{ tier_variant.price | money_without_trailing_zeros }}</span>
-                  {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. {%- endcomment -%}
-                  {%- if b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
+                  {%- comment -%} Block's compare-at field wins when set (editable strikethrough); otherwise use the live variant's compare-at. The Buy 3 gift box shows $207. {%- endcomment -%}
+                  {%- if t_gift -%}{%- assign t_sc = 207.0 -%}<span class="ob__struck">$207</span>
+                  {%- elsif b.settings.compare_price != blank -%}<span class="ob__struck">{{ b.settings.compare_price }}</span>
                   {%- elsif tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}<span class="ob__struck">{{ tier_variant.compare_at_price | money_without_trailing_zeros }}</span>{%- endif -%}
                 {%- else -%}
                   {%- if b.settings.price != blank -%}<span class="ob__price">{{ b.settings.price }}</span>{%- endif -%}
@@ -421,6 +461,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
               {%- if t_serv contains '(' -%}{%- assign t_serv = t_serv | split: '(' | last | remove: ')' | strip -%}{%- endif -%}
               {%- if t_serv != blank -%}<span class="ob__servings">{{ t_serv }}</span>{%- endif -%}
             </span>
+            {%- if t_gift -%}{%- render 'bogo-calm-gift', part: 'strip', value: calm_value -%}{%- endif -%}
           </label>
         {%- endif -%}{%- endfor -%}
       </div>
@@ -609,12 +650,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       if (!sel || !sel.value) return;
       var id = parseInt(sel.value, 10);
       var code = (sel.getAttribute('data-code') || '').trim();
+      var gift = parseInt(sel.getAttribute('data-gift'), 10);
+      var item = { id: id, quantity: {{ section.settings.add_quantity | default: 1 }} };
       var checkoutUrl = code ? ('/discount/' + encodeURIComponent(code) + '?redirect=/checkout') : '/checkout';
       buy.disabled = true; buy.classList.add('is-loading');
       fetch('/cart/clear.js', { method: 'POST', headers: { 'Content-Type': 'application/json' } })
-        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: id, quantity: {{ section.settings.add_quantity | default: 1 }} }] }) }); })
+        .then(function () { return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: gift ? [item, { id: gift, quantity: 1 }] : [item] }) }); })
         .then(function (r) { if (!r.ok) throw new Error('add failed'); window.location.href = checkoutUrl; })
-        .catch(function () { window.location.href = '/cart/' + id + ':{{ section.settings.add_quantity | default: 1 }}' + (code ? ('?discount=' + encodeURIComponent(code)) : ''); });
+        .catch(function () { window.location.href = '/cart/' + id + ':{{ section.settings.add_quantity | default: 1 }}' + (gift ? (',' + gift + ':1') : '') + (code ? ('?discount=' + encodeURIComponent(code)) : ''); });
     });
   }
 

@@ -2,6 +2,7 @@
   The one image gallery for every BOGO page: /pages/bogo's design and images (snippets/bogo-gallery-files).
   Rendered by offer-block, offer-block-sub and offer-block-sub2, so the gallery is identical everywhere;
   change it here, not in the sections.
+  Entries prefixed theme: are theme assets ({name}-1400/-800/-160.webp in assets/), not Shopify Files.
   Params: id (the section id, for scoping), alt (string, image alt text).
   Self-contained: own bgal__ styles + script, scoped to this instance's wrapper.
 {%- endcomment -%}
@@ -31,7 +32,16 @@
 <div class="bgal" id="{{ bgal_id }}">
   <div class="bgal__main">
     {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}
-      {%- if gimg != blank -%}
+      {%- if gname contains 'theme:' -%}
+        {%- assign gasset = gname | remove: 'theme:' -%}
+        <img data-bgal-main{% unless forloop.first %} hidden{% endunless %}
+             src="{{ gasset | append: '-1400.webp' | asset_url }}"
+             srcset="{{ gasset | append: '-800.webp' | asset_url }} 800w, {{ gasset | append: '-1400.webp' | asset_url }} 1400w"
+             sizes="(max-width: 900px) 92vw, 560px"
+             width="1400" height="1400"
+             alt="{{ alt | strip_html | escape }}"
+             {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+      {%- elsif gimg != blank -%}
         <img data-bgal-main{% unless forloop.first %} hidden{% endunless %}
              src="{{ gimg | image_url: width: 1000, format: 'webp' }}"
              srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
@@ -47,7 +57,9 @@
       <button type="button" class="bgal__arrow" data-bgal-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
       <div class="bgal__thumbs">
         {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}
-          {%- if gimg != blank -%}
+          {%- if gname contains 'theme:' -%}
+            <button type="button" class="bgal__thumb{% if forloop.first %} is-active{% endif %}" data-bgal-thumb aria-label="View image {{ forloop.index }}"><img src="{{ gname | remove: 'theme:' | append: '-160.webp' | asset_url }}" alt="" loading="lazy" decoding="async"></button>
+          {%- elsif gimg != blank -%}
             <button type="button" class="bgal__thumb{% if forloop.first %} is-active{% endif %}" data-bgal-thumb aria-label="View image {{ forloop.index }}"><img src="{{ gimg | image_url: width: 160, format: 'webp' }}" alt="" loading="lazy" decoding="async"></button>
           {%- endif -%}
         {%- endfor -%}
@@ -55,7 +67,7 @@
       <button type="button" class="bgal__arrow" data-bgal-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
     <div class="bgal__dots" aria-hidden="true">
-      {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}{%- if gimg != blank -%}<span class="bgal__dot{% if forloop.first %} is-active{% endif %}" data-bgal-dot></span>{%- endif -%}{%- endfor -%}
+      {%- for gname in bgal_files -%}{%- assign gimg = images[gname] -%}{%- if gimg != blank or gname contains 'theme:' -%}<span class="bgal__dot{% if forloop.first %} is-active{% endif %}" data-bgal-dot></span>{%- endif -%}{%- endfor -%}
     </div>
   {%- endif -%}
 </div>

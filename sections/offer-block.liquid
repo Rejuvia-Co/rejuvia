@@ -147,20 +147,20 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; }
 .ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
 .ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
-/* Free Calm Spray gift on the Buy 3 box (same design as the BOGO pages): hot pink FREE GIFT pill (replaces BEST VALUE) and the blush strip docked under the box, inside the click target.
+/* Free D3+K2 Spray gift on the Buy 3 box (same design as the BOGO pages): hot pink FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target.
    The box wraps so the strip takes a full-width second line; side margins stop 1.5px short of the edge so the selected inset outline stays visible. */
 .ob__tag--gift { background: #d1235f; color: #fff; }
 .ob__tier--gift { flex-wrap: wrap; row-gap: 14px; padding-bottom: 1.5px; }
 .ob__tier--gift .ob__tier-body { flex: 1 1 0; }
 .ob__tier--gift .obs__gift { flex: 0 0 calc(100% + 57px); margin: 0 -28.5px; box-sizing: border-box; border-radius: 0 0 11px 11px; }
-.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #fce9f0; border-top: 1.5px dashed #eba6be; }
+.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #eaf4ec; border-top: 1.5px dashed #9fcfa8; }
 .obs__gift-img { flex: none; width: auto; height: 86px; transform: rotate(45deg); margin: -14px 20px; filter: drop-shadow(0 2px 3px rgba(45,21,48,.2)); }
 .obs__gift-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; text-align: left; }
-.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #b0174c; white-space: nowrap; }
+.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #018e1c; white-space: nowrap; }
 .obs__gift-sub { font-size: 13.5px; line-height: 1.25; color: #5b4e5d; }
 .obs__gift-price { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; line-height: 1.1; }
 .obs__gift-price s { font-weight: 700; font-size: 15px; color: #b5b0ba; }
-.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #b0174c; }
+.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #018e1c; }
 
 /* CTA (pill) */
 .ob__cta-wrap { margin-top: 22px; }
@@ -387,8 +387,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     <div class="ob__buybox">
       {%- if section.settings.stock_bar != blank -%}<div class="ob__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
-        {%- comment -%} The Buy 3 box gets a free Calm Spray (30 Servings), as on the BOGO pages: it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the Calm Spray line, made free at checkout by an automatic Buy X Get Y discount. No extra 10% code on this box (it stays $81). Strip value is the live Calm Spray price. {%- endcomment -%}
-        {%- assign calm_id = 44328103608540 -%}{%- assign calm_value = '$45' -%}{%- assign calm_p = all_products['oral-stress-spray'] -%}
+        {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings), as on the BOGO pages: it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. No extra 10% code on this box (it stays $81). Strip value is the live D3+K2 Spray price. {%- endcomment -%}
+        {%- assign calm_id = 46819555311836 -%}{%- assign calm_value = '$39' -%}{%- assign calm_p = all_products['vitamin-d3-k2-spray'] -%}
         {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
         {%- assign tier_n = 0 -%}
         {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
@@ -419,7 +419,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- elsif b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
             {%- if t_gift -%}
-              {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a Calm Spray, banner reads GET 4 FREE {%- endcomment -%}
+              {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a D3+K2 Spray, banner reads GET 4 FREE {%- endcomment -%}
               <img class="ob__tier-img" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="624" height="627" alt="" decoding="async" loading="lazy">
             {%- elsif b.settings.image != blank -%}
               <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290, format: 'webp' }}" width="290" height="320" alt="" decoding="async" loading="lazy">

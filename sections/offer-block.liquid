@@ -147,9 +147,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__tag { position: absolute; top: -13px; right: 16px; font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 1; padding: 7px 12px 5px; border-radius: 100px; white-space: nowrap; }
 .ob__tag--brand { background: var(--ob-plum-800); color: #fff; }
 .ob__tag--gold { background: var(--ob-gold); color: var(--ob-ink); }
-/* Free D3+K2 Spray gift on the Buy 3 box (same design as the BOGO pages): hot pink FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target.
+/* Free D3+K2 Spray gift on the Buy 3 box (same design as the BOGO pages): green FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target.
    The box wraps so the strip takes a full-width second line; side margins stop 1.5px short of the edge so the selected inset outline stays visible. */
-.ob__tag--gift { background: #d1235f; color: #fff; }
+.ob__tag--gift { background: #018e1c; color: #fff; }
 .ob__tier--gift { flex-wrap: wrap; row-gap: 14px; padding-bottom: 1.5px; }
 .ob__tier--gift .ob__tier-body { flex: 1 1 0; }
 .ob__tier--gift .obs__gift { flex: 0 0 calc(100% + 57px); margin: 0 -28.5px; box-sizing: border-box; border-radius: 0 0 11px 11px; }
@@ -387,7 +387,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     <div class="ob__buybox">
       {%- if section.settings.stock_bar != blank -%}<div class="ob__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       <div class="ob__tiers" role="radiogroup" aria-label="Choose your bundle">
-        {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings), as on the BOGO pages: it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. No extra 10% code on this box (it stays $81). Strip value is the live D3+K2 Spray price. {%- endcomment -%}
+        {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings), as on the BOGO pages: it reads Buy 3, Get 4 FREE, shows the green FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. No extra 10% code on this box (it stays $81). Strip value is the live D3+K2 Spray price. {%- endcomment -%}
         {%- assign calm_id = 46819555311836 -%}{%- assign calm_value = '$39' -%}{%- assign calm_p = all_products['vitamin-d3-k2-spray'] -%}
         {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
         {%- assign tier_n = 0 -%}

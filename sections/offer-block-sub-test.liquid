@@ -126,8 +126,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__badge--plum { background: #5d215f; color: #fff; }
 .obs__badge--gold { background: #EAC78B; color: #4c1c4f; }
 
-/* Free D3+K2 Spray gift on the Buy 3 box: hot pink FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target. */
-.obs__badge--gift { background: #d1235f; color: #fff; }
+/* Free D3+K2 Spray gift on the Buy 3 box: green FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target. */
+.obs__badge--gift { background: #018e1c; color: #fff; }
 .obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #eaf4ec; border-top: 1.5px dashed #9fcfa8; border-radius: 0 0 10px 10px; }
 .obs__gift-img { flex: none; width: auto; height: 86px; transform: rotate(45deg); margin: -14px 20px; filter: drop-shadow(0 2px 3px rgba(45,21,48,.2)); }
 .obs__gift-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; text-align: left; }
@@ -332,7 +332,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if section.settings.stock_bar != blank -%}<div class="obs__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
 
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
-      {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings): it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. Strip value is the live D3+K2 Spray price. {%- endcomment -%}
+      {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings): it reads Buy 3, Get 4 FREE, shows the green FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. Strip value is the live D3+K2 Spray price. {%- endcomment -%}
       {%- assign calm_id = 46819555311836 -%}{%- assign calm_value = '$39' -%}{%- assign calm_p = all_products['vitamin-d3-k2-spray'] -%}
       {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">

@@ -296,8 +296,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   <div class="obs__wrap">
 
     <div class="obs__header">
-      {%- comment -%} bogo-sub uses the senior page's review bar (stars | 4.5 Stars | 7,500+ Reviews | 500K+ Customers; mobile: stars, 500K+ Customers | 7,500+ Reviews) instead of the avatar line. {%- endcomment -%}
-      {%- if page.handle == 'bogo-sub' -%}
+      {%- comment -%} bogo-sub, travel and menopause use the senior page's review bar (stars | 4.5 Stars | 7,500+ Reviews | 500K+ Customers; mobile: stars, 500K+ Customers | 7,500+ Reviews) instead of the avatar line. {%- endcomment -%}
       <div class="obs__reviewbar obs__reviewbar--senior">
         <span role="img" class="obs__stars" aria-label="5 stars">{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}</span>
         <span class="obs__rb-strong"><strong>4.5</strong> Stars</span>
@@ -306,20 +305,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         <span class="obs__rb-sep obs__rb-sep-customers" aria-hidden="true">|</span>
         <span class="obs__rb-customers"><strong>500K+</strong> Customers</span>
       </div>
-      {%- else -%}
-      <div class="obs__social">
-        {%- if section.settings.trusted_image_1 != blank or section.settings.trusted_image_2 != blank or section.settings.trusted_image_3 != blank -%}
-          <span class="obs__social-avatars">
-            {%- for n in (1..3) -%}
-              {%- case n -%}{%- when 1 -%}{%- assign si = section.settings.trusted_image_1 -%}{%- when 2 -%}{%- assign si = section.settings.trusted_image_2 -%}{%- when 3 -%}{%- assign si = section.settings.trusted_image_3 -%}{%- endcase -%}
-              {%- if si != blank -%}<img class="obs__social-av" src="{{ si | image_url: width: 96 }}" width="34" height="34" alt="" loading="lazy" decoding="async">{%- endif -%}
-            {%- endfor -%}
-            <span class="obs__social-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-          </span>
-        {%- endif -%}
-        {%- if section.settings.social_text != blank -%}<span class="obs__social-text">{{ section.settings.social_text }}</span>{%- endif -%}
-      </div>
-      {%- endif -%}
       {%- comment -%} The travel and menopause pages run on the bogosub2 template and differ only in headline and subtitle, set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'travel-bogo' -%}

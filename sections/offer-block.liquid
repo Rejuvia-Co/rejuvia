@@ -313,16 +313,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign ob_kind = template.suffix -%}
       {%- assign ob_title = section.settings.title -%}{%- assign ob_subtitle = section.settings.subtitle -%}{%- assign ob_code = section.settings.checkout_discount_code | strip -%}
       {%- if page.handle == 'senior-citizen-bogo' -%}
-        {%- assign ob_title = 'Your Senior Discount: Buy 1, Get 1 FREE + An Extra 10% Off' -%}
+        {%- assign ob_title = 'Rejuvia Sleep Spray Senior Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}Seniors only: just $13.50 a bottle, about 45¢ a night. Asleep in about 15 minutes, right back to sleep after the 3am bathroom trip, or every penny back for 90 days.{%- endcapture -%}
       {%- elsif page.handle == 'military-bogo' -%}
         {%- assign ob_kind = 'military' -%}
-        {%- assign ob_title = 'Your Military Discount: Buy 1, Get 1 FREE + An Extra 10% Off' -%}
+        {%- assign ob_title = 'Rejuvia Sleep Spray Military Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}Thank you to everyone who served, active duty and veterans. Just $13.50 a bottle: asleep in about 15 minutes, wake up clear, not groggy. 90-day money-back guarantee.{%- endcapture -%}
         {%- assign ob_code = 'MILITARY10' -%}
       {%- elsif page.handle == 'nurse-bogo' -%}
         {%- assign ob_kind = 'nurse' -%}
-        {%- assign ob_title = 'Your Nurse Discount: Buy 1, Get 1 FREE + An Extra 10% Off' -%}
+        {%- assign ob_title = 'Rejuvia Sleep Spray Nurse Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}You take care of everyone else. Tonight it's your turn: asleep in about 15 minutes after any shift, day or night, and wake up clear. Just $13.50 a bottle, 90-day money-back guarantee.{%- endcapture -%}
         {%- assign ob_code = 'NURSE10' -%}
       {%- endif -%}

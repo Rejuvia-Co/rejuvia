@@ -1,13 +1,13 @@
 {%- comment -%}
-  Free D3+K2 Spray gift on the Buy 3 box of the BOGO pages (offer-block-sub) and the senior, military and nurse pages (offer-block).
-  Renders the light green gift strip docked under the box.
-  value: the struck-through value shown in the strip, e.g. $45 (the live D3+K2 Spray price).
-  The D3+K2 Spray itself is added to the cart by the Buy Now script and made free at checkout by an automatic Buy X Get Y discount.
+  Free Calm Spray gift on the Buy 3 box of the BOGO pages (offer-block-sub) and the senior, military and nurse pages (offer-block).
+  Renders the blush gift strip docked under the box.
+  value: the struck-through value shown in the strip, e.g. $45 (the live Calm Spray price).
+  The Calm Spray itself is added to the cart by the Buy Now script and made free at checkout by an automatic Buy X Get Y discount.
 {%- endcomment -%}
   <span class="obs__gift">
-    <img class="obs__gift-img" src="{{ 'rejuvia-d3k2-bottle.png' | asset_url }}" width="83" height="600" alt="D3+K2 Spray" loading="lazy" decoding="async">
+    <img class="obs__gift-img" src="{{ 'rejuvia-calm-bottle.png' | asset_url }}" width="83" height="600" alt="Calm Spray" loading="lazy" decoding="async">
     <span class="obs__gift-txt">
-      <span class="obs__gift-title">+ FREE Extra Gift: D3+K2 Spray</span>
+      <span class="obs__gift-title">+ FREE Extra Gift: Calm Spray</span>
       <span class="obs__gift-sub">Added to your order automatically</span>
     </span>
     <span class="obs__gift-price">{%- if value != blank -%}<s>{{ value }}</s>{%- endif -%}<span>FREE</span></span>

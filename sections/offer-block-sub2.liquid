@@ -128,16 +128,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__badge--plum { background: var(--obs-badge, #5d215f); color: #fff; }
 .obs__badge--gold { background: #EAC78B; color: var(--obs-accent-dark, #4c1c4f); }
 
-/* Free D3+K2 Spray gift on the Buy 3 box: green (#018e1c) FREE GIFT pill (replaces BEST VALUE) and the light green strip docked under the box, inside the click target. */
-.obs__badge--gift { background: #018e1c; color: #fff; }
-.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #eaf4ec; border-top: 1.5px dashed #9fcfa8; border-radius: 0 0 10px 10px; }
+/* Free Calm Spray gift on the Buy 3 box: hot pink FREE GIFT pill (replaces BEST VALUE) and the blush strip docked under the box, inside the click target. */
+.obs__badge--gift { background: #d1235f; color: #fff; }
+.obs__gift { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #fce9f0; border-top: 1.5px dashed #eba6be; border-radius: 0 0 10px 10px; }
 .obs__gift-img { flex: none; width: auto; height: 86px; transform: rotate(45deg); margin: -14px 20px; filter: drop-shadow(0 2px 3px rgba(45,21,48,.2)); }
 .obs__gift-txt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; text-align: left; }
-.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #018e1c; white-space: nowrap; }
+.obs__gift-title { font-weight: 800; font-size: 15.5px; line-height: 1.2; color: #b0174c; white-space: nowrap; }
 .obs__gift-sub { font-size: 13.5px; line-height: 1.25; color: #5b4e5d; }
 .obs__gift-price { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; line-height: 1.1; }
 .obs__gift-price s { font-weight: 700; font-size: 15px; color: #b5b0ba; }
-.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #018e1c; }
+.obs__gift-price span { font-weight: 800; font-size: 17.5px; color: #b0174c; }
 
 /* ---- CTA (purple, with arrow) ---- */
 .obs__cta-wrap { margin-top: 18px; }
@@ -366,8 +366,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- if section.settings.scarcity_label != blank -%}<div class="obs__lowstock">{{ section.settings.scarcity_label }}</div>{%- endif -%}
       {%- if section.settings.stock_bar != blank -%}<div class="obs__stock" role="note"><span>{{ section.settings.stock_bar }}</span></div>{%- endif -%}
       {%- comment -%} Tier rows — each carries its own variant + Skio selling plan {%- endcomment -%}
-      {%- comment -%} The Buy 3 box gets a free D3+K2 Spray (30 Servings): it reads Buy 3, Get 4 FREE, shows the green FREE GIFT pill and gift strip, and Buy Now adds the D3+K2 Spray line, made free at checkout by an automatic Buy X Get Y discount. Strip value is the live D3+K2 Spray price. {%- endcomment -%}
-      {%- assign calm_id = 46819555311836 -%}{%- assign calm_value = '$39' -%}{%- assign calm_p = all_products['vitamin-d3-k2-spray'] -%}
+      {%- comment -%} The Buy 3 box gets a free Calm Spray (30 Servings): it reads Buy 3, Get 4 FREE, shows the hot pink FREE GIFT pill and gift strip, and Buy Now adds the Calm Spray line, made free at checkout by an automatic Buy X Get Y discount. Strip value is the live Calm Spray price. {%- endcomment -%}
+      {%- assign calm_id = 44328103608540 -%}{%- assign calm_value = '$45' -%}{%- assign calm_p = all_products['oral-stress-spray'] -%}
       {%- if calm_p != blank -%}{%- for v in calm_p.variants -%}{%- if v.id == calm_id -%}{%- assign calm_value = v.price | money_without_trailing_zeros -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
       <div class="obs__tiers" role="radiogroup" aria-label="Choose your bundle">
         {%- assign tier_n = 0 -%}
@@ -430,7 +430,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             <span class="obs__row">
               <span class="obs__radio" aria-hidden="true"></span>
               {%- if t_gift -%}
-                {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a D3+K2 Spray (alternating down, up, down, up), banner reads GET 4 FREE {%- endcomment -%}
+                {%- comment -%} Buy 3 box: 3 Sleep Sprays + 3 Sleep Sprays and a Calm Spray (alternating down, up, down, up), banner reads GET 4 FREE {%- endcomment -%}
                 <img class="obs__bundle" src="{{ 'rejuvia-bundle-b3g4.webp' | asset_url }}" width="624" height="627" alt="" loading="lazy" decoding="async">
               {%- elsif b.settings.image != blank -%}
                 <img class="obs__bundle" src="{{ b.settings.image | image_url: width: 320, format: 'webp' }}" alt="" loading="lazy" decoding="async">
@@ -648,7 +648,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       var id = parseInt(sel.value, 10);
       var qty = parseInt(sel.getAttribute('data-qty'), 10) || 1;
       var item = { id: id, quantity: qty };
-      /* Buy 3 box: also add one D3+K2 Spray, made free at checkout by the automatic Buy X Get Y discount. */
+      /* Buy 3 box: also add one Calm Spray, made free at checkout by the automatic Buy X Get Y discount. */
       var gift = parseInt(sel.getAttribute('data-gift'), 10);
       var plan = parseInt(sel.getAttribute('data-plan'), 10);
       if (plan) { item.selling_plan = plan; }

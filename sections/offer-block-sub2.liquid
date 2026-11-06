@@ -93,6 +93,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__rb-sep { color: #d9d3e0; }
 .obs__reviewbar strong, .obs__reviewbar b { color: #171512; font-weight: 800; }
 .obs__reviewbar p { margin: 0; display: inline; }
+.obs__reviewbar--senior { font-family: 'Helvetica Neue', Arimo, Helvetica, Arial, sans-serif; margin-bottom: 12px; }
 
 /* ---- Offer headline ---- */
 .obs__headline { font-size: {{ section.settings.headline_size | default: 35 }}px; line-height: 1.12; letter-spacing: -0.2px; font-weight: 700; color: #171512; margin: 12px 0 0; }
@@ -225,6 +226,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .obs__scarcity-fill { display: block; height: 100%; border-radius: 100px; background: linear-gradient(90deg, #e0893f, #c0392b); }
 
 @media (max-width: 900px) {
+  .obs__reviewbar--senior { gap: 7px; margin-bottom: 6px; }
+  .obs__reviewbar--senior .obs__rb-strong, .obs__reviewbar--senior .obs__rb-sep-reviews { display: none; }
+  .obs__reviewbar--senior .obs__rb-customers { order: 1; }
+  .obs__reviewbar--senior .obs__rb-sep-customers { order: 2; }
+  .obs__reviewbar--senior .obs__rb-reviews { order: 3; }
+  .obs__reviewbar--senior .obs__stars svg { width: 12px; height: 12px; }
   .obs-{{ section.id }} { overflow-x: clip; }
   .obs__wrap { display: flex; flex-direction: column; padding: 18px 16px; }
   .obs__left-inner { position: static; gap: 0; }
@@ -289,6 +296,17 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   <div class="obs__wrap">
 
     <div class="obs__header">
+      {%- comment -%} bogo-sub uses the senior page's review bar (stars | 4.5 Stars | 7,500+ Reviews | 500K+ Customers; mobile: stars, 500K+ Customers | 7,500+ Reviews) instead of the avatar line. {%- endcomment -%}
+      {%- if page.handle == 'bogo-sub' -%}
+      <div class="obs__reviewbar obs__reviewbar--senior">
+        <span role="img" class="obs__stars" aria-label="5 stars">{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}{{ obs_star }}</span>
+        <span class="obs__rb-strong"><strong>4.5</strong> Stars</span>
+        <span class="obs__rb-sep obs__rb-sep-reviews" aria-hidden="true">|</span>
+        <span class="obs__rb-reviews"><strong>7,500+</strong> Reviews</span>
+        <span class="obs__rb-sep obs__rb-sep-customers" aria-hidden="true">|</span>
+        <span class="obs__rb-customers"><strong>500K+</strong> Customers</span>
+      </div>
+      {%- else -%}
       <div class="obs__social">
         {%- if section.settings.trusted_image_1 != blank or section.settings.trusted_image_2 != blank or section.settings.trusted_image_3 != blank -%}
           <span class="obs__social-avatars">
@@ -301,6 +319,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}
         {%- if section.settings.social_text != blank -%}<span class="obs__social-text">{{ section.settings.social_text }}</span>{%- endif -%}
       </div>
+      {%- endif -%}
       {%- comment -%} The travel and menopause pages run on the bogosub2 template and differ only in headline and subtitle, set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'travel-bogo' -%}

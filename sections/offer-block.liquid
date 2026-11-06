@@ -340,7 +340,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
       {%- comment -%} Nurse, senior and military pre-select the first box (Buy 1, Get 1 FREE) {%- endcomment -%}
       {%- if ob_kind == 'nurse' or ob_kind == 'senior' or ob_kind == 'military' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
-      {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}
+      {%- assign pb_price = '' -%}{%- assign pb_compare = '' -%}{%- assign ptn = 0 -%}{%- assign pb_sprays = 0 -%}
       {%- for b in section.blocks -%}{%- if b.type == 'tier' -%}
         {%- assign ptn = ptn | plus: 1 -%}
         {%- if ptn == ob_default_tier -%}
@@ -356,6 +356,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- endif -%}
           {%- assign pb_lw = b.settings.label | remove: ',' | split: ' ' -%}
           {%- if pb_lw[0] == 'Buy' and pb_lw[1] == '3' -%}{%- assign pb_compare = '$207' -%}{%- endif -%}
+          {%- if pb_lw[0] == 'Buy' -%}{%- assign pb_sprays = pb_lw[1] | plus: 0 | times: 2 -%}{%- if pb_lw[1] == '3' -%}{%- assign pb_sprays = pb_sprays | plus: 1 -%}{%- endif -%}{%- endif -%}
         {%- endif -%}
       {%- endif -%}{%- endfor -%}
       {%- assign pbnp = pb_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
@@ -366,6 +367,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- assign pb_pill = pb_label | append: ' - ' | append: pb_pct | append: '% OFF' -%}
       {%- else -%}
         {%- assign pb_compare = '' -%}
+      {%- endif -%}
+      {%- comment -%} Pill reads "$X PER SPRAY" (box price / bottles, Buy 3 counts the free gift), like the bogosub price bar. {%- endcomment -%}
+      {%- if pb_sprays > 0 and pbnp > 0 -%}
+        {%- assign pb_each = pbnp | times: 100 | divided_by: pb_sprays | round | money_without_trailing_zeros -%}
+        {%- assign pb_pill = pb_each | append: ' PER SPRAY' -%}
       {%- endif -%}
       {%- if pb_price != blank -%}
       <div class="ob__pricebar">
@@ -587,6 +593,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     pbPrice.textContent = pt;
     pbStruck.textContent = off ? ct : ''; pbStruck.hidden = !off;
     pbPill.textContent = off ? pbLabel + ' - ' + Math.round((nc - np) * 100 / nc) + '% OFF' : ''; pbPill.hidden = !off;
+    var tn = tier.querySelector('.ob__tier-title'), m = tn && tn.textContent.match(/Buy\s+(\d+)/i);
+    if (m && np > 0) { var each = np / (2 * parseInt(m[1], 10) + (sel.hasAttribute('data-gift') ? 1 : 0)); pbPill.textContent = '$' + (each % 1 ? each.toFixed(2) : each) + ' PER SPRAY'; pbPill.hidden = false; }
   }
   sec.addEventListener('change', function (e) { if (e.target.closest('.ob__tier')) syncPricebar(); });
   syncPricebar();

@@ -126,6 +126,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 .ob__subtitle { font-family: var(--font-body); font-size: {{ section.settings.subtitle_size | default: 24 }}px; line-height: 1.35; color: var(--ob-sub); margin: 0; }
 /* Uniform, editable spacing between the four header items (pill, review, title, subtitle) */
 .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap | default: 12 }}px; }
+.ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap | default: 12 | plus: 6 }}px; }
 
 /* Offer cards */
 .ob__tiers { display: flex; flex-direction: column; gap: 22px; margin-top: 0; }
@@ -221,6 +222,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
   .ob-{{ section.id }} .ob__title { font-size: 30px; letter-spacing: -1px; text-align: left; }
   .ob-{{ section.id }} .ob__subtitle { font-size: {{ section.settings.subtitle_size_mobile | default: 20 }}px; text-align: left; padding: 0; }
   .ob-{{ section.id }} .ob__badge, .ob-{{ section.id }} .ob__rating, .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 }}px; }
+  .ob-{{ section.id }} .ob__title, .ob-{{ section.id }} .ob__pricebar { margin-bottom: {{ section.settings.header_gap_mobile | default: 12 | divided_by: 2 | plus: 6 }}px; }
   .ob__gallery-inner { position: static; }
   .ob__stock { gap: 12px; margin-bottom: 14px; }
   .ob__stock span { font-size: clamp(11px, 3.2vw, 12.5px); }

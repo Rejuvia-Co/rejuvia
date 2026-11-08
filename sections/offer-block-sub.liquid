@@ -257,11 +257,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} The anniversary, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} The anniversary, Black Friday, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'anniversary-sale' -%}
         {%- assign obs_headline = 'Anniversary Sale - Up To 4 FREE Sprays Today' -%}
         {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 4 FREE Sprays with your order. Limited-time.{%- endcapture -%}
+      {%- elsif page.handle == 'black-friday' -%}
+        {%- assign obs_headline = 'Black Friday Sale: Buy 1, Get 1 FREE' -%}
+        {%- assign obs_subtitle = 'For Black Friday only, claim your BOGO on Rejuvia Sleep Spray to get the best sleep of your entire life.' -%}
       {%- elsif page.handle == 'welcome-kit' -%}
         {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}
         {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
@@ -273,7 +276,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- capture obs_subtitle -%}Wide awake at 3am doing the sleep math? 6–8 sprays under your tongue at bedtime and you're asleep in 10–15 minutes, then sleep straight through to morning. Just $15 a bottle, about 50¢ a night, with a 90-day money-back guarantee.{%- endcapture -%}
       {%- endif -%}
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
-      {%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}
+      {%- assign pb_label = section.settings.sale_label | default: 'FALL SALE' -%}{%- if page.handle == 'black-friday' -%}{%- assign pb_label = 'BLACK FRIDAY' -%}{%- endif -%}
       {%- comment -%} Price bar (same as the product page) between title and subtitle: the pre-selected box's price, strikethrough and "<sale label> - X% OFF" pill, worked out the same way as the box rows below. The script updates it when another box is picked. {%- endcomment -%}
       {%- comment -%} Pre-select the middle box; page.bogosub (bogo, anniversary-sale, welcome-kit) pre-selects the first box (Buy 1, Get 1 FREE) and its pill reads "$15 PER SPRAY" (selected box's price / bottles). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
       {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' -%}{%- assign pb_per_spray = true -%}{%- endif -%}

@@ -68,7 +68,7 @@
 {%- assign show_comments = false -%}
 {%- if template.name == 'page' -%}
   {%- case template.suffix -%}
-    {%- when 'senior', 'bogosub', 'bogosub2', 'bogotest' -%}{%- assign show_comments = true -%}
+    {%- when 'senior', 'bogosub', 'bogosub2', 'bogotest', 'bogo-product' -%}{%- assign show_comments = true -%}
   {%- endcase -%}
   {%- comment -%} /pages/bogo keeps the original "Join 500,000..." section for now (Comments hidden there). {%- endcomment -%}
   {%- if page.handle == 'bogo' -%}{%- assign show_comments = false -%}{%- endif -%}

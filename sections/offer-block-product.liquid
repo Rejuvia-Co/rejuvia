@@ -43,7 +43,6 @@ html { scroll-behavior: smooth; }
 .obp__arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: 0; padding: 0; background: rgba(255,255,255,.94); box-shadow: 0 2px 8px rgba(0,0,0,.12); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2; }
 .obp__arrow--prev { left: 10px; }
 .obp__arrow--next { right: 10px; }
-.obp__count { position: absolute; right: 12px; top: 12px; background: rgba(17,17,17,.72); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 100px; z-index: 2; }
 .obp__thumbs { display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; }
 .obp__thumbs::-webkit-scrollbar { display: none; }
 .obp__thumb { flex: none; width: 76px; height: 76px; border-radius: 10px; background: #f3eef5; border: 2px solid transparent; padding: 0; overflow: hidden; cursor: pointer; }
@@ -97,10 +96,10 @@ html { scroll-behavior: smooth; }
 .obp__tname { font-size: 17px; font-weight: 700; color: #672666; line-height: 1.15; }
 .obp__tmeta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .obp__per { background: #e7f6eb; color: #1b8a3a; font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 100px; }
-.obp__supply { font-size: 12px; color: #666; font-style: italic; }
-.obp__tprice { display: flex; flex-direction: column; align-items: flex-end; flex: none; }
-.obp__tprice span:first-child { font-size: 21px; font-weight: 700; color: #111; }
-.obp__tprice s { font-size: 13px; color: #9a9a9a; }
+.obp__supply { font-size: 12px; color: #666; font-style: normal; font-weight: 400; }
+.obp__tprice { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px; flex: none; }
+.obp__tprice span:first-child { font-size: 21px; font-weight: 700; color: #111; line-height: 1.1; }
+.obp__tprice s { font-size: 13px; color: #9a9a9a; line-height: 1.1; }
 .obp__perks { display: none; flex-direction: column; border-top: 1px dashed #e0bfd0; border-radius: 0 0 11px 11px; overflow: hidden; }
 .obp__tier.is-selected .obp__perks { display: flex; }
 .obp__perk { display: flex; align-items: center; gap: 10px; padding: 9px 14px; background: #f8f3f8; }
@@ -159,8 +158,10 @@ html { scroll-behavior: smooth; }
   .obp__wrap { display: flex; flex-direction: column; gap: 18px; padding: 12px 0 24px; }
   .obp__gal { position: static; width: 100%; padding: 0 12px; }
   .obp__box { width: 100%; padding: 0 18px; }
-  .obp__inc img { width: 44px; height: 44px; }
-  .obp__inc-t { font-size: 14px; }
+  .obp__inc { padding: 7px 12px 7px 7px; gap: 7px; border-radius: 0 0 12px 0; }
+  .obp__inc img { width: 34px; height: 34px; }
+  .obp__inc-t { font-size: 11.5px; }
+  .obp__inc-s { font-size: 10px; }
   .obp__sold { font-size: 15px; }
   .obp__thumb { width: 60px; height: 60px; }
   .obp__title { font-size: 32px; }
@@ -171,8 +172,6 @@ html { scroll-behavior: smooth; }
 {%- if sleep_img == blank -%}{%- assign sleep_img = section.settings.product.featured_image -%}{%- endif -%}
 {%- capture obp_gal_list -%}{%- render 'bogo-gallery-files' -%}{%- endcapture -%}
 {%- assign obp_files = obp_gal_list | strip | split: '|' -%}
-{%- assign obp_slide_count = 0 -%}{%- if sleep_img != blank -%}{%- assign obp_slide_count = 1 -%}{%- endif -%}
-{%- for gname in obp_files -%}{%- if gname contains 'theme:' or images[gname] != blank -%}{%- assign obp_slide_count = obp_slide_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
 
 {%- assign av1 = section.settings.trusted_image_1 | default: images['customer_1.png'] -%}
 {%- assign av2 = section.settings.trusted_image_2 | default: images['customer_13.png'] -%}
@@ -211,7 +210,6 @@ html { scroll-behavior: smooth; }
         </div>
         <button type="button" class="obp__arrow obp__arrow--prev" data-obp-prev aria-label="Previous image"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="obp__arrow obp__arrow--next" data-obp-next aria-label="Next image"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2l5 5-5 5" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <span class="obp__count" data-obp-count>1 / {{ obp_slide_count }}</span>
       </div>
       <div class="obp__thumbs">
         {%- assign th_n = 0 -%}
@@ -394,16 +392,14 @@ html { scroll-behavior: smooth; }
   var sec = document.getElementById('obp-{{ section.id }}');
   if (!sec) return;
 
-  /* ---- Gallery: swipeable scroll-snap track, arrows, counter, thumbs ---- */
+  /* ---- Gallery: swipeable scroll-snap track, arrows, thumbs ---- */
   var track = sec.querySelector('[data-obp-track]');
-  var count = sec.querySelector('[data-obp-count]');
   var thumbs = sec.querySelectorAll('[data-obp-thumb]');
   var total = track ? track.children.length : 0;
   function cur() { return track && track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0; }
   function go(i) { if (!track || !total) return; i = (i + total) % total; track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' }); }
   function syncGal() {
     var i = cur();
-    if (count) count.textContent = (i + 1) + ' / ' + total;
     thumbs.forEach(function (t, k) { t.classList.toggle('is-active', k === i); });
     var at = thumbs[i];
     if (at && at.parentNode) { var p = at.parentNode; var l = at.offsetLeft - (p.clientWidth - at.offsetWidth) / 2; p.scrollTo({ left: l, behavior: 'smooth' }); }

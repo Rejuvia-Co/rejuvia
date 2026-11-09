@@ -1,6 +1,6 @@
 {%- comment -%}
   Offer Block PRODUCT: the BOGO offer section from the "BOGO Redesign" mock (design 2a), on the page.bogo-product template.
-  Gallery (new hero slide with Inc. 5000 tab + 1M+ pill, then the shared BOGO slides from bogo-gallery-files), and a product-page
+  Gallery (new hero slide with Inc. 5000 tab + 2M+ pill, then the shared BOGO slides from bogo-gallery-files), and a product-page
   style buy box: top bar, proof, title + live price, scarcity card, tiers with perks, Buy Now, delivery dates, guarantee,
   payment icons, accordion, trusted-by pill.
   Reused from offer-block-sub: tier variant/price logic, the Buy 3 -> Get 4 free Calm Spray gift, Buy Now cart logic,
@@ -198,7 +198,7 @@ html { scroll-behavior: smooth; }
                 <img src="{{ 'inc5000.png' | asset_url }}" alt="Inc. 5000" width="56" height="56">
                 <div class="obp__inc-txt"><span class="obp__inc-t">America's Fastest-Growing<br>Sleep Spray</span><span class="obp__inc-s">Inc. 5000 · #228</span></div>
               </div>
-              <div class="obp__sold"><span class="obp__sold-star">★</span><strong>1M+</strong><span>Sprays Sold</span></div>
+              <div class="obp__sold"><span class="obp__sold-star">★</span><strong>2M+</strong><span>Sprays Sold</span></div>
             </div>
           {%- endif -%}
           {%- for gname in obp_files -%}{%- assign gimg = images[gname] -%}

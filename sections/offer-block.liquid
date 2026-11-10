@@ -314,7 +314,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign psrc = b.settings.product | default: gallery_product -%}
           {%- assign pv = blank -%}{%- assign pvid = b.settings.variant_id | strip -%}
           {%- if pvid != blank and psrc != blank -%}{%- for v in psrc.variants -%}{%- assign vs = v.id | append: '' -%}{%- if vs == pvid -%}{%- assign pv = v -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
-          {%- assign pb_manual = section.settings.use_manual_prices -%}{%- if ptn > 1 -%}{%- assign pb_manual = false -%}{%- endif -%}
+          {%- assign pb_manual = section.settings.use_manual_prices -%}
           {%- if pv != blank and pb_manual != true -%}
             {%- assign pb_price = pv.price | money_without_trailing_zeros -%}
             {%- if b.settings.compare_price != blank -%}{%- assign pb_compare = b.settings.compare_price -%}{%- elsif pv.compare_at_price and pv.compare_at_price > pv.price -%}{%- assign pb_compare = pv.compare_at_price | money_without_trailing_zeros -%}{%- endif -%}
@@ -376,9 +376,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- endif -%}
           {%- endif -%}
           {%- if vid == blank and b.settings.product != blank -%}{%- assign vid = b.settings.product.selected_or_first_available_variant.id -%}{%- endif -%}
-          {%- comment -%} The extra 10% code (SENIOR10, MILITARY10, NURSE10) applies to the first box only. The bigger boxes show and charge the live variant price, with no code. Done in code because template JSON edits do not deploy. {%- endcomment -%}
+          {%- comment -%} The extra 10% code (SENIOR10, MILITARY10, NURSE10, set by page handle) applies to every box, and each box shows its 10%-off price ($27 / $54 / $81 from the template's manual prices). The codes stack with the automatic Buy N, Get N discounts. {%- endcomment -%}
           {%- assign t_manual = section.settings.use_manual_prices -%}{%- assign t_code = ob_code -%}
-          {%- if tier_n > 1 -%}{%- assign t_manual = false -%}{%- assign t_code = '' -%}{%- endif -%}
           <label class="ob__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if tier_sel %}checked{% endif %}>
             {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}

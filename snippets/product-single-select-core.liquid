@@ -493,37 +493,6 @@
                     </div>
 
                 {% when 'supply-selector' %}
-                    {%- liquid
-                      assign ship_ts = 'now' | date: '%s' | plus: 86400
-                      assign ship_date = ship_ts | date: '%a, %b %-d'
-                      assign ship_day = ship_ts | date: '%-d' | plus: 0
-                      assign ship_day_mod = ship_day | modulo: 10
-                      assign ord = 'th'
-                      if ship_day < 11 or ship_day > 13
-                        case ship_day_mod
-                          when 1
-                            assign ord = 'st'
-                          when 2
-                            assign ord = 'nd'
-                          when 3
-                            assign ord = 'rd'
-                        endcase
-                      endif
-                      assign ship_date_ord = ship_date | append: ord
-
-                    -%}
-
-                    {%- comment -%} Urgency strip -- sits directly under the benefit list, above the divider. {%- endcomment -%}
-                    {%- if block.settings.urgency_text != blank -%}
-                      {%- capture ship_date_bold -%}<b>{{ ship_date }}</b>{%- endcapture -%}
-                      {%- capture ship_date_ord_bold -%}<b>{{ ship_date_ord }}</b>{%- endcapture -%}
-                      {%- assign urgency = block.settings.urgency_text | replace: '{date_ord}', ship_date_ord_bold | replace: '{date}', ship_date_bold -%}
-                      <div class="pss-urgency" role="note">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
-                        <span data-pss-urgency>{{ urgency }}</span>
-                      </div>
-                    {%- endif -%}
-
                     <div class="pss-supply" {{ block.shopify_attributes }}>
                       {%- if block.settings.header_text != blank -%}
                         <div class="pss-divider"><span></span><span class="pss-divider__text">{{ block.settings.header_text }}</span><span></span></div>
@@ -553,6 +522,8 @@
                     </div>
 
                     <div class="block-buy-buttons pss-cta-wrap">
+                      {%- comment -%} Same "Ships by" bar as the BOGO pages, between the tiers and the CTA. {%- endcomment -%}
+                      {% render 'shipping-bar', extra_class: 'ship-bar--stack' %}
                       {%- comment -%} A real form with a submit button so the sticky bar's
                          "click the main form's submit button" hook drives this CTA too. {%- endcomment -%}
                       <form class="add-to-cart-form pss-form" action="/cart/add" method="post" data-pss-form>
@@ -746,19 +717,5 @@
     });
   }
 
-  /* {cutoff} in the urgency copy: now + 1 hour, pinned to Eastern (same as offer-block-sub). */
-  var urgency = root.querySelector('[data-pss-urgency]');
-  if (urgency && urgency.innerHTML.indexOf('{cutoff}') !== -1) {
-    var cutoff;
-    try {
-      cutoff = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true
-      }).format(new Date(Date.now() + 3600000)) + ' ET';
-    } catch (err) {
-      var d = new Date(Date.now() + 3600000);
-      cutoff = (d.getHours() % 12 || 12) + ':' + ('0' + d.getMinutes()).slice(-2) + (d.getHours() < 12 ? ' AM' : ' PM');
-    }
-    urgency.innerHTML = urgency.innerHTML.replace('{cutoff}', '<b>' + cutoff + '</b>');
-  }
 })();
 </script>

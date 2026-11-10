@@ -68,10 +68,9 @@
 {%- assign show_comments = false -%}
 {%- if template.name == 'page' -%}
   {%- case template.suffix -%}
-    {%- when 'senior', 'bogo', 'bogotest', 'bogo-product' -%}{%- assign show_comments = true -%}
+    {%- when 'senior', 'bogotest', 'bogo-product' -%}{%- assign show_comments = true -%}
   {%- endcase -%}
-  {%- comment -%} /pages/bogo keeps the original "Join 500,000..." section for now (Comments hidden there). {%- endcomment -%}
-  {%- if page.handle == 'bogo' -%}{%- assign show_comments = false -%}{%- endif -%}
+  {%- comment -%} The bogo template (all 11 BOGO pages) keeps the "Join 500,000..." reviews section, no Comments. {%- endcomment -%}
 {%- endif -%}
 
 {%- if show_comments -%}

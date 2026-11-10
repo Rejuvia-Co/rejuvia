@@ -212,7 +212,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} The anniversary, Black Friday, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} Every BOGO page (anniversary, Black Friday, welcome-kit, 3am, night shift, bogo-sub, listicle, fall-asleep-faster, travel, menopause) runs on this section and differs in headline and subtitle (3am, night shift, travel and menopause also in their trusted-by line and tab leads below; bogo-sub, listicle and fall-asleep-faster keep the old bogosub2 trusted-by line), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'anniversary-sale' -%}
         {%- assign obs_headline = 'Anniversary Sale - Up To 3 FREE Sprays Today' -%}
@@ -229,10 +229,19 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- elsif page.handle == '3am-wake-up-bogo' -%}
         {%- assign obs_headline = 'Stop Waking Up at 3AM: Buy 1, Get 1 FREE' -%}
         {%- capture obs_subtitle -%}Wide awake at 3am doing the sleep math? 6–8 sprays under your tongue at bedtime and you're asleep in 10–15 minutes, then sleep straight through to morning. Just $15 a bottle, about 50¢ a night, with a 90-day money-back guarantee.{%- endcapture -%}
+      {%- elsif page.handle == 'bogo-sub' or page.handle == 'rejuvia-introduction-listicle' or page.handle == 'bogo-fall-asleep-faster' -%}
+        {%- assign obs_headline = 'Claim Your Buy One, Get One Free on Rejuvia Today' -%}
+        {%- assign obs_subtitle = 'Free sprays automatically added to your cart. One-time purchase, backed by our 90-day money-back guarantee.' -%}
+      {%- elsif page.handle == 'travel-bogo' -%}
+        {%- capture obs_headline -%}Sleep Like You're in First Class With Rejuvia{%- endcapture -%}
+        {%- capture obs_subtitle -%}Spray it under your tongue before takeoff and drift off in 10–15 minutes, on red-eyes, long-haul flights and in unfamiliar hotel rooms. Try it risk-free today as long as stock is still available.{%- endcapture -%}
+      {%- elsif page.handle == 'menopause-bogo' -%}
+        {%- capture obs_headline -%}Sleep Like You Did Before Menopause with Rejuvia{%- endcapture -%}
+        {%- capture obs_subtitle -%}Rejuvia started as a sleep spray for our founder's mom, who couldn't sleep going through menopause. 6-8 sprays under your tongue and you drift off in 10–15 minutes. Try it risk-free today as long as stock is still available.{%- endcapture -%}
       {%- endif -%}
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
-      {%- comment -%} Pre-select the middle box; page.bogosub (bogo, anniversary-sale, welcome-kit) pre-selects the first box (Buy 1, Get 1 FREE). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
-      {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
+      {%- comment -%} Pre-select the middle box; page.bogo / page.bogosub pre-select the first box (Buy 1, Get 1 FREE). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' or template.suffix == 'bogo' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
       {%- if pb_per_spray -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
@@ -362,6 +371,12 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- elsif page.handle == '3am-wake-up-bogo' -%}
             {%- assign obs_why_lead = '<p>Built for the 3am wake-up: 6–8 sprays under your tongue at bedtime, asleep in 10–15 minutes, and sleep straight through to your alarm. The low 2mg dose means you wake up clear, not groggy.</p>' -%}
             {%- capture obs_faq_lead -%}<p><strong>Will it stop my 3am wake-ups?</strong></p><p>Waking up in the middle of the night is the #1 sleep problem our customers tell us about, and it's what Rejuvia is made for. Use 6–8 sprays under your tongue at bedtime and sleep straight through to morning. If you're still waking up at 3am, you get every penny back for 90 days.</p>{%- endcapture -%}
+          {%- elsif page.handle == 'travel-bogo' -%}
+            {%- assign obs_why_lead = '<p>Flying overnight or landing in a new time zone? 6–8 sprays under your tongue and most people are asleep in 10–15 minutes on local time, and the low 2mg dose means you wake up clear, not groggy.</p>' -%}
+            {%- capture obs_faq_lead -%}<p><strong>Can I use it on a flight?</strong></p><p>Yes. Use 6–8 sprays under your tongue once you're settled in, and most people are asleep in 10–15 minutes. At your destination, use it at bedtime on local time to beat jet lag and wake up clear.</p>{%- endcapture -%}
+          {%- elsif page.handle == 'menopause-bogo' -%}
+            {%- assign obs_why_lead = '<p>Wide awake at 3am, too warm to settle? The spray goes under your tongue, so there is nothing to swallow, and most people are asleep in 10–15 minutes.</p>' -%}
+            {%- capture obs_faq_lead -%}<p><strong>Will it work for me since menopause?</strong></p><p>Rejuvia started as a sleep spray for our founder's mom, who couldn't sleep going through menopause. 6–8 sprays under your tongue and most people are asleep in 10–15 minutes, and with just 2mg of melatonin you wake up clear, not groggy. If it doesn't work for you, you get every penny back for 90 days.</p>{%- endcapture -%}
           {%- endif -%}
           {%- assign tab_n = 0 -%}
           {%- for b in section.blocks -%}{%- if b.type == 'tab' -%}
@@ -377,7 +392,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- if section.settings.show_trusted -%}
         {%- assign obs_tb_sub = section.settings.trusted_subtext -%}
-        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- elsif page.handle == 'nightshift-bogo' -%}{%- assign obs_tb_sub = 'who now fall asleep fast, even when their bedtime is 8am' -%}{%- endif -%}
+        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- elsif page.handle == 'nightshift-bogo' -%}{%- assign obs_tb_sub = 'who now fall asleep fast, even when their bedtime is 8am' -%}{%- elsif page.handle == 'travel-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to beat jet lag and fall asleep in any time zone' -%}{%- elsif page.handle == 'menopause-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to fall asleep faster and get right back to sleep after a 3am wake-up' -%}{%- elsif page.handle == 'bogo-sub' or page.handle == 'rejuvia-introduction-listicle' or page.handle == 'bogo-fall-asleep-faster' -%}{%- assign obs_tb_sub = 'who use Rejuvia to sleep through the entire night' -%}{%- endif -%}
         {% render 'trusted-by',
           title: section.settings.trusted_title,
           subtext: obs_tb_sub,

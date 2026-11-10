@@ -394,19 +394,6 @@
 .pss .pss-onetime-note[hidden] { display: none; }
 .pss .product-wrap .product-info > .pw-payments { margin: 18px 0 !important; }
 
-/* ---- Proof bar (under payment icons) ---- */
-.pss .product-wrap .product-info > .pss-proof {
-  margin: 0 0 18px !important;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: var(--pss-tint);
-  color: #171512;
-  font-size: 15px;
-  line-height: 1.35;
-  text-align: center;
-}
-.pss .pss-proof b,
-.pss .pss-proof strong { font-weight: 800; }
 
 /* ---- Buy once link (under trusted-by) ---- */
 .pss .pss-buyonce {
@@ -459,5 +446,4 @@
   .pss .pss-tier__band-pill { font-size: 12px; }
   .pss .pss-buy { font-size: 18px; }
   .pss .pss-buyonce__link { font-size: 17px; }
-  .pss .product-wrap .product-info > .pss-proof { margin: 0 0 14px !important; padding: 10px 12px; border-radius: 12px; font-size: 14px; }
 }

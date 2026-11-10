@@ -174,7 +174,8 @@ html { scroll-behavior: smooth; }
 {%- assign sleep_img = images['sleep-spray.webp'] -%}
 {%- if sleep_img == blank -%}{%- assign sleep_img = section.settings.product.featured_image -%}{%- endif -%}
 {%- capture obp_gal_list -%}{%- render 'bogo-gallery-files' -%}{%- endcapture -%}
-{%- assign obp_files = obp_gal_list | strip | split: '|' -%}
+{%- comment -%} Skip the shared Inc. 5000 first slide: this page already opens with its own Inc. 5000 hero. {%- endcomment -%}
+{%- assign obp_files = obp_gal_list | strip | remove: 'sleep_spray_bogo_hero_inc5000.webp|' | split: '|' -%}
 
 {%- assign av1 = section.settings.trusted_image_1 | default: images['customer_1.png'] -%}
 {%- assign av2 = section.settings.trusted_image_2 | default: images['customer_13.png'] -%}

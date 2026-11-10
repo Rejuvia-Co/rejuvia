@@ -292,7 +292,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
             {%- elsif tier_variant != blank and tier_variant.compare_at_price and tier_variant.compare_at_price > tier_variant.price -%}{{ tier_variant.compare_at_price | money_without_trailing_zeros }}{%- endif -%}
           {%- endcapture -%}
 
-          {%- comment -%} Tier box: the /pages/bogo-og design. SAVE $X = strikethrough minus live price; + FREE Shipping on box 3 only; per night = box price over 2N bottles x 30 nights. {%- endcomment -%}
+          {%- comment -%} Tier box: the /pages/bogo-og design. SAVE $X = strikethrough minus live price; + FREE Shipping on boxes 2 and 3 (both clear the $59 threshold); per night = box price over 2N bottles x 30 nights. {%- endcomment -%}
           {%- assign tc = tier_compare | strip -%}
           {%- assign t_sp = tier_price | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}{%- assign t_sc = tc | replace: '$','' | replace: ',','' | strip | plus: 0.0 -%}
           {%- assign t_save = b.settings.savings_text -%}{%- assign t_su = t_save | upcase -%}
@@ -319,7 +319,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 {%- if tc != blank -%}<span class="obs__struck">{{ tc }}</span>{%- endif -%}
                 {%- if t_save != blank -%}<span class="obs__save">{{ t_save }}</span>{%- endif -%}
               </span>
-              {%- if tier_n == 3 -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
+              {%- if tier_n >= 2 -%}<span class="obs__ship">+ FREE Shipping</span>{%- endif -%}
               {%- if t_night != blank -%}<span class="obs__pernight">{{ t_night }}</span>{%- endif -%}
             </span>
           </label>

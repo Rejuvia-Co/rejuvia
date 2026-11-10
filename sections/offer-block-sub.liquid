@@ -225,8 +225,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- comment -%} The anniversary, Black Friday, welcome-kit, 3am and night shift pages run on the /pages/bogo template and differ in headline and subtitle (the 3am and night shift pages also in their trusted-by line and tab leads below), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'anniversary-sale' -%}
-        {%- assign obs_headline = 'Anniversary Sale - Up To 4 FREE Sprays Today' -%}
-        {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 4 FREE Sprays with your order. Limited-time.{%- endcapture -%}
+        {%- assign obs_headline = 'Anniversary Sale - Up To 3 FREE Sprays Today' -%}
+        {%- capture obs_subtitle -%}With Rejuvia's Anniversary Sale today, get up to 3 FREE Sprays with your order. Limited-time.{%- endcapture -%}
       {%- elsif page.handle == 'black-friday' -%}
         {%- assign obs_headline = 'Black Friday Sale: Buy 1, Get 1 FREE' -%}
         {%- assign obs_subtitle = 'For Black Friday only, claim your BOGO on Rejuvia Sleep Spray to get the best sleep of your entire life.' -%}

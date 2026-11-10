@@ -29,7 +29,7 @@
             "price": "$60",
             "compare_price": "$140",
             "savings_text": "SAVE $60",
-            "free_shipping": true,
+            "free_shipping": false,
             "per_night": "$0.50 Per Night",
             "tag": "MOST POPULAR",
             "tag_style": "brand"

@@ -335,7 +335,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- else -%}
         {%- assign pb_compare = '' -%}
       {%- endif -%}
-      {%- comment -%} Pill reads "$X PER SPRAY" (box price / bottles), like the bogosub price bar. {%- endcomment -%}
+      {%- comment -%} Pill reads "$X PER SPRAY" (box price / bottles), like the old BOGO price bar. {%- endcomment -%}
       {%- if pb_sprays > 0 and pbnp > 0 -%}
         {%- assign pb_each = pbnp | times: 100 | divided_by: pb_sprays | round | money_without_trailing_zeros -%}
         {%- assign pb_pill = pb_each | append: ' PER SPRAY' -%}

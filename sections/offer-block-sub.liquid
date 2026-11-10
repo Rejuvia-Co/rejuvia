@@ -240,8 +240,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- capture obs_subtitle -%}Rejuvia started as a sleep spray for our founder's mom, who couldn't sleep going through menopause. 6-8 sprays under your tongue and you drift off in 10–15 minutes. Try it risk-free today as long as stock is still available.{%- endcapture -%}
       {%- endif -%}
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
-      {%- comment -%} Pre-select the middle box; page.bogo / page.bogosub pre-select the first box (Buy 1, Get 1 FREE). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
-      {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogosub' or template.suffix == 'bogo' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
+      {%- comment -%} Pre-select the middle box; page.bogo pre-selects the first box (Buy 1, Get 1 FREE). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign pb_per_spray = false -%}{%- if template.suffix == 'bogo' -%}{%- assign pb_per_spray = true -%}{%- endif -%}
       {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
       {%- if pb_per_spray -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}

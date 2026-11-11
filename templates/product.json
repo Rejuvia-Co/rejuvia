@@ -57,7 +57,6 @@
         "supply_selector_1": {
           "type": "supply-selector",
           "settings": {
-            "urgency_text": "Order within the next hour for guaranteed fast shipping by {date_ord}",
             "header_text": "CHOOSE YOUR SUPPLY",
             "default_tier": 1,
             "button_text": "Add to Cart",

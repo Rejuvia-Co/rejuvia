@@ -229,7 +229,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- elsif page.handle == '3am-wake-up-bogo' -%}
         {%- assign obs_headline = 'Stop Waking Up at 3AM: Buy 1, Get 1 FREE' -%}
         {%- capture obs_subtitle -%}Wide awake at 3am doing the sleep math? 6–8 sprays under your tongue at bedtime and you're asleep in 10–15 minutes, then sleep straight through to morning. Just $15 a bottle, about 50¢ a night, with a 90-day money-back guarantee.{%- endcapture -%}
-      {%- elsif page.handle == 'bogo-sub' or page.handle == 'rejuvia-introduction-listicle' or page.handle == 'bogo-fall-asleep-faster' -%}
+      {%- elsif page.handle == 'rejuvia-introduction-listicle' or page.handle == 'bogo-fall-asleep-faster' -%}
         {%- assign obs_headline = 'Claim Your Buy One, Get One Free on Rejuvia Today' -%}
         {%- assign obs_subtitle = 'Free sprays automatically added to your cart. One-time purchase, backed by our 90-day money-back guarantee.' -%}
       {%- elsif page.handle == 'travel-bogo' -%}
@@ -702,39 +702,11 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "default": 13.5
     },
     {
-      "type": "header",
-      "content": "Urgency strip"
-    },
-    {
-      "type": "textarea",
-      "id": "urgency_text",
-      "label": "Urgency copy (old, not used)",
-      "info": "Replaced by the setting below.",
-      "default": "Order within the next hour — by {cutoff} — to guarantee shipping by {date}"
-    },
-    {
       "type": "text",
       "id": "stock_bar",
       "label": "Low-stock bar (above the tiers)",
       "info": "Leave blank to hide.",
       "default": "LOW STOCK - SELLING FAST"
-    },
-    {
-      "type": "textarea",
-      "id": "urgency_copy",
-      "label": "Urgency copy",
-      "info": "Tokens: {date} = next-day ship date, e.g. Monday, Nov 2 (rendered bold), {today} = today's date, {cutoff} = live cutoff time (now + 1 hour, Eastern). Leave blank to hide.",
-      "default": "Order by {cutoff} to guarantee your order ships by {date}"
-    },
-    {
-      "type": "select",
-      "id": "urgency_position",
-      "label": "Urgency strip position",
-      "options": [
-        { "value": "above", "label": "Above the bundles" },
-        { "value": "below", "label": "Between the bundles and the button" }
-      ],
-      "default": "above"
     },
     {
       "type": "header",

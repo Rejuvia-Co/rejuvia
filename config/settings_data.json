@@ -539,7 +539,7 @@
             "type": "product",
             "settings": {
               "product": "oral-stress-spray",
-              "short_line": "Calm your racing thoughts and stress",
+              "short_line": "Calm racing thoughts and stress",
               "description": "Calm your racing thoughts and stress during the day",
               "badge_text": ""
             }
@@ -548,8 +548,8 @@
             "type": "product",
             "settings": {
               "product": "vitamin-d3-k2-spray",
-              "short_line": "Immunity, bones & heart health",
-              "description": "Support immunity, bone strength, and heart health",
+              "short_line": "Support bone and muscle strength",
+              "description": "Support bone health and muscle strength",
               "badge_text": ""
             }
           }
@@ -563,7 +563,7 @@
           "logo_width": 150,
           "logo_width_mobile": 132,
           "products_label": "Products",
-          "link_1_label": "Reviews",
+          "link_1_label": "Customer Reviews",
           "link_1_url": "shopify://pages/reviews",
           "link_2_label": "Ingredients",
           "link_2_url": "shopify://pages/ingredients",

@@ -409,7 +409,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
                 {%- if t_save != blank -%}<span class="ob__off">{{ t_save }}</span>{%- endif -%}
               </span>
               {%- if tier_n == 3 -%}<span class="ob__ship">+ FREE Shipping</span>{%- endif -%}
-              {%- comment -%} Per night = box price over 2N bottles x 30 nights, from the "Buy N, Get N" label (as on /pages/bogo-og). {%- endcomment -%}
+              {%- comment -%} Per night = box price over 2N bottles x 30 nights, from the "Buy N, Get N" label (the retired bogo-og design). {%- endcomment -%}
               {%- assign t_pw = b.settings.label | remove: ',' | split: ' ' -%}{%- assign t_nights = t_pw[1] | plus: 0 | times: 60 -%}
               {%- if t_pw[0] == 'Buy' and t_nights > 0 and t_sp > 0 -%}<span class="ob__pernight">{{ t_sp | times: 100 | divided_by: t_nights | round | money }} Per Night</span>{%- endif -%}
             </span>

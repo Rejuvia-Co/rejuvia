@@ -118,9 +118,9 @@
             <a class="shop-sprays-v2__title" href="{{ product.url }}">{{ block.settings.title | default: product.title }}</a>
 
             <div class="shop-sprays-v2__price">
-              <span class="shop-sprays-v2__price-now">{{ now_price | money }}</span>
+              <span class="shop-sprays-v2__price-now">{{ now_price | money_without_trailing_zeros }}</span>
               {%- if was_price != blank and was_price > now_price -%}
-                <span class="shop-sprays-v2__price-was">{{ was_price | money }}</span>
+                <span class="shop-sprays-v2__price-was">{{ was_price | money_without_trailing_zeros }}</span>
               {%- endif -%}
             </div>
 

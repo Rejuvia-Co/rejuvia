@@ -259,7 +259,7 @@
           comment
             String forms for the perk tokens ({per_unit} {paid} {free} {servings}).
           endcomment
-          assign tier_per_spray_money = tier_per_spray | money
+          assign tier_per_spray_money = tier_per_spray | money_without_trailing_zeros
           assign paid_str = paid_qty | append: ''
           assign free_str = free_qty | append: ''
           assign servings_str = tier_servings | append: ''
@@ -307,15 +307,15 @@
         <label class="pss-tier{% if tier_sel %} is-selected{% endif %}{% if free_qty > 0 %} has-band{% endif %}" {{ t_attrs }}
                data-variant="{{ cart_variant.id }}"
                data-once-qty="{{ cart_qty }}"
-               data-once-fmt="{{ once_price | money | escape }}"
+               data-once-fmt="{{ once_price | money_without_trailing_zeros | escape }}"
                data-plan="{% if plan_found %}{{ plan_id }}{% endif %}"
                data-paid="{{ cart_qty }}"
                data-free="{{ cart_free }}"
                data-free-variant="{{ unit_variant.id }}"
                data-code="{{ t_code | escape }}"
                data-total="{{ tier_price }}"
-               data-price-fmt="{{ tier_price | money | escape }}"
-               data-strike-fmt="{% if tier_strike > tier_price %}{{ tier_strike | money | escape }}{% endif %}"
+               data-price-fmt="{{ tier_price | money_without_trailing_zeros | escape }}"
+               data-strike-fmt="{% if tier_strike > tier_price %}{{ tier_strike | money_without_trailing_zeros | escape }}{% endif %}"
                data-pill="{{ tier_pill | escape }}"
                data-title="{{ t_label | escape }}">
           <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="{{ i }}"{% if tier_sel %} checked{% endif %}>
@@ -335,8 +335,8 @@
               </span>
             </span>
             <span class="pss-tier__prices">
-              <span class="pss-tier__price">{{ tier_price | money }}</span>
-              {%- if tier_strike > tier_price -%}<s class="pss-tier__strike">{{ tier_strike | money }}</s>{%- endif -%}
+              <span class="pss-tier__price">{{ tier_price | money_without_trailing_zeros }}</span>
+              {%- if tier_strike > tier_price -%}<s class="pss-tier__strike">{{ tier_strike | money_without_trailing_zeros }}</s>{%- endif -%}
             </span>
           </span>
 
@@ -487,8 +487,8 @@
                     {%- comment -%} Price / strike / pill for the selected tier. Server-renders the
                        default tier (same pick as the selector); the script below swaps it on change. {%- endcomment -%}
                     <div class="pss-price" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                      <span class="pss-price__now" data-pss-price-now>{{ pl_price | money }}</span>
-                      <s class="pss-price__was" data-pss-price-was{% if pl_strike <= pl_price %} hidden{% endif %}>{{ pl_strike | money }}</s>
+                      <span class="pss-price__now" data-pss-price-now>{{ pl_price | money_without_trailing_zeros }}</span>
+                      <s class="pss-price__was" data-pss-price-was{% if pl_strike <= pl_price %} hidden{% endif %}>{{ pl_strike | money_without_trailing_zeros }}</s>
                       <span class="pss-price__pill" data-pss-price-pill{% if pl_pill == blank %} hidden{% endif %}>{{ pl_pill }}</span>
                     </div>
 
@@ -505,7 +505,7 @@
                           <label class="pss-tier pss-tier--onetime"
                                  data-variant="{{ unit_variant.id }}" data-plan="" data-paid="1" data-free="0"
                                  data-code="" data-total="{{ unit_price }}" data-onetime="true"
-                                 data-price-fmt="{{ unit_price | money | escape }}" data-strike-fmt="" data-pill=""
+                                 data-price-fmt="{{ unit_price | money_without_trailing_zeros | escape }}" data-strike-fmt="" data-pill=""
                                  data-title="{{ section.settings.one_time_title | escape }}">
                             <input type="radio" class="pss-tier__input" name="pss-tier-{{ section.id }}" value="onetime">
                             <span class="pss-tier__row">
@@ -514,7 +514,7 @@
                                 <span class="pss-tier__name">{{ section.settings.one_time_title }}</span>
                                 <span class="pss-tier__meta pss-tier__meta--onetime"><span class="pss-tier__serv">{{ unit_servings }} servings{% if section.settings.one_time_shipping != blank %} · {{ section.settings.one_time_shipping }}{% endif %}</span></span>
                               </span>
-                              <span class="pss-tier__prices"><span class="pss-tier__price">{{ unit_price | money }}</span></span>
+                              <span class="pss-tier__prices"><span class="pss-tier__price">{{ unit_price | money_without_trailing_zeros }}</span></span>
                             </span>
                           </label>
                         {%- endif -%}
@@ -576,7 +576,7 @@
                     {%- endif -%}
                     {%- if section.settings.one_time_display == 'link' -%}
                       <div class="pss-buyonce">
-                        <a href="/cart/add?id={{ pl_once_variant.id }}&quantity=1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ pl_once_variant.id }}" data-qty="1" data-label="{{ section.settings.one_time_link_text | default: 'Buy once' | escape }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ pl_once_price | money }}</a>
+                        <a href="/cart/add?id={{ pl_once_variant.id }}&quantity=1" class="pss-buyonce__link" data-pss-buyonce data-variant="{{ pl_once_variant.id }}" data-qty="1" data-label="{{ section.settings.one_time_link_text | default: 'Buy once' | escape }}">{{ section.settings.one_time_link_text | default: 'Buy once' }} - {{ pl_once_price | money_without_trailing_zeros }}</a>
                       </div>
                     {%- endif -%}
 

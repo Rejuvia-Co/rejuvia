@@ -276,12 +276,14 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="ob__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} The senior, military and nurse BOGO pages all run on the senior template; their headline and subtitle (and military/nurse's pill and checkout code) are set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} The senior, military and nurse BOGO pages all run on the persona template (renamed from senior Nov 12; their kind and code are keyed on page URL so the template name doesn't matter); their headline and subtitle (and military/nurse's pill and checkout code) are set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign ob_kind = template.suffix -%}
       {%- assign ob_title = section.settings.title -%}{%- assign ob_subtitle = section.settings.subtitle -%}{%- assign ob_code = section.settings.checkout_discount_code | strip -%}
       {%- if page.handle == 'senior-citizen-bogo' -%}
+        {%- assign ob_kind = 'senior' -%}
         {%- assign ob_title = 'Rejuvia Sleep Spray Senior Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}Seniors only: just $13.50 a bottle, about 45¢ a night. Asleep in about 15 minutes, right back to sleep after the 3am bathroom trip, or every penny back for 90 days.{%- endcapture -%}
+        {%- assign ob_code = 'SENIOR10' -%}
       {%- elsif page.handle == 'military-bogo' -%}
         {%- assign ob_kind = 'military' -%}
         {%- assign ob_title = 'Rejuvia Sleep Spray Military Discount: BOGO Free + 10% OFF' -%}

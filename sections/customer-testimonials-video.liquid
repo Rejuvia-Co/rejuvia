@@ -68,7 +68,7 @@
 {%- assign show_comments = false -%}
 {%- if template.name == 'page' -%}
   {%- case template.suffix -%}
-    {%- when 'senior' -%}{%- assign show_comments = true -%}
+    {%- when 'senior', 'persona' -%}{%- assign show_comments = true -%}
   {%- endcase -%}
   {%- comment -%} The bogo template (all 11 BOGO pages) keeps the "Join 500,000..." reviews section, no Comments. {%- endcomment -%}
 {%- endif -%}

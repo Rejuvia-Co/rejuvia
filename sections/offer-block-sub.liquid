@@ -212,7 +212,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} Every BOGO page (anniversary, Black Friday, welcome-kit, 3am, night shift, bogo-sub, listicle, fall-asleep-faster, travel, menopause) runs on this section and differs in headline and subtitle (3am, night shift, travel and menopause also in their trusted-by line and tab leads below; bogo-sub, listicle and fall-asleep-faster keep the old bogosub2 trusted-by line), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} Every BOGO page (anniversary, Black Friday, welcome-kit, 3am, night shift, bogo-sub, listicle, fall-asleep-faster, travel, menopause) runs on this section and differs in headline and subtitle (3am, night shift, travel and menopause also in their trusted-by line and tab leads below; fall-asleep-faster keeps the old bogosub2 trusted-by line), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'black-friday' -%}
         {%- assign obs_headline = 'Black Friday Sale: Buy 1, Get 1 FREE' -%}
@@ -389,7 +389,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
 
       {%- if section.settings.show_trusted -%}
         {%- assign obs_tb_sub = section.settings.trusted_subtext -%}
-        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- elsif page.handle == 'nightshift-bogo' -%}{%- assign obs_tb_sub = 'who now fall asleep fast, even when their bedtime is 8am' -%}{%- elsif page.handle == 'travel-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to beat jet lag and fall asleep in any time zone' -%}{%- elsif page.handle == 'menopause-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to fall asleep faster and get right back to sleep after a 3am wake-up' -%}{%- elsif page.handle == 'bogo-sub' or page.handle == 'rejuvia-introduction-listicle' or page.handle == 'bogo-fall-asleep-faster' -%}{%- assign obs_tb_sub = 'who use Rejuvia to sleep through the entire night' -%}{%- endif -%}
+        {%- if page.handle == '3am-wake-up-bogo' -%}{%- assign obs_tb_sub = 'who now sleep straight through the night, without the 3am wake-ups' -%}{%- elsif page.handle == 'nightshift-bogo' -%}{%- assign obs_tb_sub = 'who now fall asleep fast, even when their bedtime is 8am' -%}{%- elsif page.handle == 'travel-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to beat jet lag and fall asleep in any time zone' -%}{%- elsif page.handle == 'menopause-bogo' -%}{%- assign obs_tb_sub = 'who use Rejuvia to fall asleep faster and get right back to sleep after a 3am wake-up' -%}{%- elsif page.handle == 'bogo-fall-asleep-faster' -%}{%- assign obs_tb_sub = 'who use Rejuvia to sleep through the entire night' -%}{%- endif -%}
         {% render 'trusted-by',
           title: section.settings.trusted_title,
           subtext: obs_tb_sub,
@@ -563,17 +563,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     },
     {
       "type": "range",
-      "id": "gallery_width",
-      "min": 360,
-      "max": 640,
-      "step": 5,
-      "unit": "px",
-      "label": "Gallery column width (old, not used)",
-      "info": "Fixed at 560px to match /pages/bogo.",
-      "default": 560
-    },
-    {
-      "type": "range",
       "id": "sticky_offset",
       "min": 0,
       "max": 140,
@@ -618,24 +607,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "default": "<p><strong>500K+</strong> Customers</p>"
     },
     {
-      "type": "text",
-      "id": "rating_label",
-      "label": "Rating label (old, not used)",
-      "default": "Excellent 4.5"
-    },
-    {
-      "type": "richtext",
-      "id": "reviews_label",
-      "label": "Reviews label (old, not used)",
-      "default": "<p><strong>7,500+</strong> trusted reviews</p>"
-    },
-    {
-      "type": "richtext",
-      "id": "customers_label",
-      "label": "Customers label (old, not used)",
-      "default": "<p><strong>500,000+</strong> customers</p>"
-    },
-    {
       "type": "header",
       "content": "Offer headline"
     },
@@ -652,71 +623,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "default": "With today's Buy One, Get One FREE subscription offer on Rejuvia® Sleep Spray"
     },
     {
-      "type": "text",
-      "id": "sale_label",
-      "label": "Price bar sale label",
-      "info": "Shown in the price bar pill as \"<label> - X% OFF\".",
-      "default": "FALL SALE"
-    },
-    {
-      "type": "range",
-      "id": "headline_size",
-      "min": 26,
-      "max": 56,
-      "step": 1,
-      "unit": "px",
-      "label": "Headline size (desktop)",
-      "default": 42
-    },
-    {
-      "type": "range",
-      "id": "headline_size_mobile",
-      "min": 20,
-      "max": 40,
-      "step": 1,
-      "unit": "px",
-      "label": "Headline size (mobile)",
-      "default": 29
-    },
-    {
-      "type": "range",
-      "id": "subtitle_size",
-      "min": 12,
-      "max": 24,
-      "step": 0.5,
-      "unit": "px",
-      "label": "Subtitle size (desktop)",
-      "default": 16.5
-    },
-    {
-      "type": "range",
-      "id": "subtitle_size_mobile",
-      "min": 11,
-      "max": 20,
-      "step": 0.5,
-      "unit": "px",
-      "label": "Subtitle size (mobile)",
-      "default": 13.5
-    },
-    {
-      "type": "text",
-      "id": "stock_bar",
-      "label": "Low-stock bar (above the tiers)",
-      "info": "Leave blank to hide.",
-      "default": "LOW STOCK - SELLING FAST"
-    },
-    {
       "type": "header",
       "content": "Offer"
-    },
-    {
-      "type": "range",
-      "id": "default_tier",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "label": "Pre-selected tier (by position)", "info": "Not used: the middle box is always pre-selected (set in code).",
-      "default": 2
     },
     {
       "type": "range",
@@ -729,35 +637,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "default": 2
     },
     {
-      "type": "range",
-      "id": "tier_title_size",
-      "min": 15,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "label": "Tier title size (desktop)",
-      "default": 21
-    },
-    {
-      "type": "range",
-      "id": "tier_title_size_mobile",
-      "min": 13,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Tier title size (mobile)",
-      "default": 17
-    },
-    {
       "type": "header",
       "content": "Call to action"
-    },
-    {
-      "type": "text",
-      "id": "button_prefix",
-      "label": "Button label prefix",
-      "info": "The selected tier's price is appended live, e.g. “BUY NOW — $60”.",
-      "default": "BUY NOW —"
     },
     {
       "type": "checkbox",
@@ -812,17 +693,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "label": "Hide payment icons",
       "info": "Comma-separated, e.g. discover,jcb,diners_club",
       "default": "discover,jcb,diners_club"
-    },
-    {
-      "type": "header",
-      "content": "Guarantee proof"
-    },
-    {
-      "type": "richtext",
-      "id": "proof_text",
-      "label": "Proof copy",
-      "info": "Leave blank to hide.",
-      "default": "<p><strong>Less than 1%</strong> of customers ever claim our 90-day money-back guarantee.</p>"
     },
     {
       "type": "header",
@@ -1004,18 +874,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           "label": "Savings pill",
           "info": "e.g. SAVE $30. Leave blank to hide.",
           "default": "SAVE $30"
-        },
-        {
-          "type": "text",
-          "id": "servings_text",
-          "label": "Servings / supply line",
-          "info": "e.g. 2-Month Supply. Leave blank to derive it from the label."
-        },
-        {
-          "type": "checkbox",
-          "id": "free_shipping",
-          "label": "Show \"+ FREE Shipping\"",
-          "default": false
         },
         {
           "type": "text",

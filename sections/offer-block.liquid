@@ -270,30 +270,23 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         {%- endif -%}
       </div>
       {%- comment -%} The senior, military and nurse BOGO pages all run on the persona template (renamed from senior Nov 12; their kind and code are keyed on page URL so the template name doesn't matter); their headline and subtitle (and military/nurse's pill and checkout code) are set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
-      {%- assign ob_kind = template.suffix -%}
       {%- assign ob_title = section.settings.title -%}{%- assign ob_subtitle = section.settings.subtitle -%}{%- assign ob_code = section.settings.checkout_discount_code | strip -%}
       {%- if page.handle == 'senior-citizen-bogo' -%}
-        {%- assign ob_kind = 'senior' -%}
         {%- assign ob_title = 'Rejuvia Sleep Spray Senior Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}Seniors only: just $13.50 a bottle, about 45¢ a night. Asleep in about 15 minutes, right back to sleep after the 3am bathroom trip, or every penny back for 90 days.{%- endcapture -%}
         {%- assign ob_code = 'SENIOR10' -%}
       {%- elsif page.handle == 'military-bogo' -%}
-        {%- assign ob_kind = 'military' -%}
         {%- assign ob_title = 'Rejuvia Sleep Spray Military Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}Thank you to everyone who served, active duty and veterans. Just $13.50 a bottle: asleep in about 15 minutes, wake up clear, not groggy. 90-day money-back guarantee.{%- endcapture -%}
         {%- assign ob_code = 'MILITARY10' -%}
       {%- elsif page.handle == 'nurse-bogo' -%}
-        {%- assign ob_kind = 'nurse' -%}
         {%- assign ob_title = 'Rejuvia Sleep Spray Nurse Discount: BOGO Free + 10% OFF' -%}
         {%- capture ob_subtitle -%}You take care of everyone else. Tonight it's your turn: asleep in about 15 minutes after any shift, day or night, and wake up clear. Just $13.50 a bottle, 90-day money-back guarantee.{%- endcapture -%}
         {%- assign ob_code = 'NURSE10' -%}
       {%- endif -%}
       {%- if ob_title != blank -%}<h2 class="ob__title">{{ ob_title }}</h2>{%- endif -%}
-      {%- comment -%} Pre-select the middle box on every BOGO page. Done in code, not the Pre-selected setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
-      {%- assign ob_tier_count = 0 -%}{%- for b in section.blocks -%}{%- if b.type == 'tier' -%}{%- assign ob_tier_count = ob_tier_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-      {%- assign ob_default_tier = ob_tier_count | plus: 1 | divided_by: 2 -%}
-      {%- comment -%} Nurse, senior and military pre-select the first box (Buy 1, Get 1 FREE) {%- endcomment -%}
-      {%- if ob_kind == 'nurse' or ob_kind == 'senior' or ob_kind == 'military' -%}{%- assign ob_default_tier = 1 -%}{%- endif -%}
+      {%- comment -%} Every audience page (senior, military, nurse) pre-selects the first box (Buy 1, Get 1 FREE). Done in code, not a setting, because Shopify reverts template JSON edits from git. {%- endcomment -%}
+      {%- assign ob_default_tier = 1 -%}
       {%- if ob_subtitle != blank -%}<p class="ob__subtitle">{{ ob_subtitle }}</p>{%- endif -%}
     </div>
 
@@ -564,10 +557,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "text", "id": "rb_rating", "label": "Review bar: rating label", "info": "Hidden on mobile.", "default": "4.5 Stars" },
     { "type": "richtext", "id": "rb_reviews", "label": "Review bar: reviews", "default": "<p><strong>7,500+</strong> Reviews</p>" },
     { "type": "richtext", "id": "rb_customers", "label": "Review bar: customers", "default": "<p><strong>500K+</strong> Customers</p>" },
-    { "type": "richtext", "id": "rating_text", "label": "Review bar text (old, not used)", "info": "Bold text renders in the accent color.", "default": "<p>Trusted by <strong>500,000+ customers</strong></p>" },
     { "type": "text", "id": "title", "label": "Title", "default": "Rejuvia Sleep Spray" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fall Asleep in Minutes. Sleep The Full Night." },
-    { "type": "text", "id": "stock_bar", "label": "Low-stock bar (above the boxes)", "info": "Leave blank to hide.", "default": "LOW STOCK - SELLING FAST" },
     { "type": "header", "content": "Badge pill (above review line)" },
     { "type": "text", "id": "pill_text", "label": "Pill text", "info": "Leave blank to hide. Left-aligned on desktop, centered on mobile." },
     { "type": "range", "id": "pill_size", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Pill text size (desktop)", "default": 14 },
@@ -577,12 +568,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "header", "content": "Header spacing" },
     { "type": "range", "id": "header_gap", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (desktop)", "info": "Space between the pill, review line, title, and subtitle.", "default": 12 },
     { "type": "range", "id": "header_gap_mobile", "min": 0, "max": 40, "step": 1, "unit": "px", "label": "Gap between header items (mobile)", "default": 12 },
-    { "type": "header", "content": "Offer cards" },
-    { "type": "range", "id": "default_tier", "min": 1, "max": 6, "step": 1, "label": "Pre-selected box (by position)", "info": "Not used: the middle box is always pre-selected (set in code).", "default": 1 },
     { "type": "header", "content": "Call to action" },
     { "type": "range", "id": "add_quantity", "min": 1, "max": 4, "step": 1, "label": "Quantity added per selection", "info": "How many units of the selected box are added to cart. Set to 2 for a native Buy-One-Get-One flow (pair with a Shopify automatic Buy X Get Y discount). Leave at 1 for standard behavior.", "default": 1 },
-    { "type": "text", "id": "button_text", "label": "Button text", "default": "Buy Now" },
-    { "type": "checkbox", "id": "button_show_price", "label": "Show selected price in button", "info": "Adds the selected tier's price after the button text, e.g. ONE-TIME PURCHASE — $30.", "default": false },
     { "type": "text", "id": "checkout_discount_code", "label": "Auto-apply discount code", "info": "Optional. If set, Buy Now sends the customer to checkout with this code already applied (e.g. a senior 10% off code). Leave blank for no code." },
     { "type": "checkbox", "id": "use_manual_prices", "label": "Use typed tier prices (ignore live variant price)", "info": "Turn on when the displayed price should differ from the variant's real price -- e.g. a page that auto-applies an extra discount at checkout. Uses each tier's Price field.", "default": false },
     { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "90-Day Money Back Guarantee" },
@@ -593,7 +580,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
     { "type": "text", "id": "hidden_payments", "label": "Hide payment icons", "info": "Comma-separated, e.g. discover,jcb,diners_club", "default": "discover,jcb,diners_club" },
     { "type": "header", "content": "Typography" },
     { "type": "range", "id": "title_size", "min": 28, "max": 64, "step": 1, "unit": "px", "label": "Title size (desktop)", "default": 52 },
-    { "type": "range", "id": "title_size_mobile", "min": 22, "max": 48, "step": 1, "unit": "px", "label": "Title size (mobile)", "default": 40 },
     { "type": "range", "id": "tier_title_size", "min": 16, "max": 34, "step": 1, "unit": "px", "label": "Tier title size (desktop)", "default": 26 },
     { "type": "range", "id": "tier_title_size_mobile", "min": 14, "max": 28, "step": 1, "unit": "px", "label": "Tier title size (mobile)", "default": 21 },
     { "type": "range", "id": "tab_title_size", "min": 14, "max": 30, "step": 1, "unit": "px", "label": "Accordion title size (desktop)", "default": 24 },
@@ -628,9 +614,6 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
         { "type": "text", "id": "price", "label": "Price (fallback)", "info": "Shown only if the live variant price can't be resolved.", "default": "$35" },
         { "type": "text", "id": "compare_price", "label": "Compare-at price (strikethrough)", "info": "Sets the struck-through price. Overrides the live variant's compare-at. Leave blank to use the live variant's compare-at price.", "default": "$70" },
         { "type": "text", "id": "savings_text", "label": "Discount pill", "info": "e.g. 52% OFF or Save $70. Leave blank to hide." },
-        { "type": "checkbox", "id": "free_shipping", "label": "Show \"+ FREE Shipping\"", "default": false },
-        { "type": "text", "id": "per_night", "label": "Per-night text (old, not used)", "default": "$0.62 Per Night" },
-        { "type": "text", "id": "servings_text", "label": "Servings / supply line", "info": "e.g. 2-Month Supply. Leave blank to derive it from the label." },
         { "type": "text", "id": "tag", "label": "Corner tag", "info": "e.g. MOST POPULAR" },
         { "type": "select", "id": "tag_style", "label": "Tag style", "options": [ { "value": "brand", "label": "Plum" }, { "value": "gold", "label": "Gold" } ], "default": "brand" }
       ]

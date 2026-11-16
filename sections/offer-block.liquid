@@ -325,7 +325,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign t_manual = section.settings.use_manual_prices -%}{%- assign t_code = ob_code -%}
           <label class="ob__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if tier_sel %}checked{% endif %}>
-            {%- if b.settings.tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ b.settings.tag }}</span>{%- endif -%}
+            {%- comment -%} Persona pages: the Buy 3, Get 3 box's BEST VALUE tag names the persona (SENIOR / VETERAN / NURSE FAVORITE). {%- endcomment -%}
+            {%- assign ob_tag = b.settings.tag -%}
+            {%- if ob_tag == 'BEST VALUE' -%}
+              {%- case page.handle -%}
+                {%- when 'senior-citizen-bogo', 'senior-2' -%}{%- assign ob_tag = 'SENIOR FAVORITE' -%}
+                {%- when 'military-bogo' -%}{%- assign ob_tag = 'VETERAN FAVORITE' -%}
+                {%- when 'nurse-bogo' -%}{%- assign ob_tag = 'NURSE FAVORITE' -%}
+              {%- endcase -%}
+            {%- endif -%}
+            {%- if ob_tag != blank -%}<span class="ob__tag ob__tag--{{ b.settings.tag_style | default: 'brand' }}">{{ ob_tag }}</span>{%- endif -%}
             <span class="ob__radio" aria-hidden="true"></span>
             {%- if b.settings.image != blank -%}
               <img class="ob__tier-img" src="{{ b.settings.image | image_url: width: 290, format: 'webp' }}" width="290" height="320" alt="" decoding="async" loading="lazy">

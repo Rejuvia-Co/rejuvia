@@ -325,9 +325,9 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           {%- assign t_manual = section.settings.use_manual_prices -%}{%- assign t_code = ob_code -%}
           <label class="ob__tier{% if tier_sel %} is-selected{% endif %}" {{ b.shopify_attributes }}>
             <input type="radio" name="ob-{{ section.id }}" value="{{ vid }}" data-code="{{ t_code }}" {% if tier_sel %}checked{% endif %}>
-            {%- comment -%} Persona pages: the Buy 3, Get 3 box's BEST VALUE tag names the persona (SENIOR / VETERAN / NURSE FAVORITE). {%- endcomment -%}
+            {%- comment -%} Persona pages: the Buy 2, Get 2 box's MOST POPULAR tag names the persona (SENIOR / VETERAN / NURSE FAVORITE); Buy 3, Get 3 keeps BEST VALUE. {%- endcomment -%}
             {%- assign ob_tag = b.settings.tag -%}
-            {%- if ob_tag == 'BEST VALUE' -%}
+            {%- if ob_tag == 'MOST POPULAR' -%}
               {%- case page.handle -%}
                 {%- when 'senior-citizen-bogo', 'senior-2' -%}{%- assign ob_tag = 'SENIOR FAVORITE' -%}
                 {%- when 'military-bogo' -%}{%- assign ob_tag = 'VETERAN FAVORITE' -%}

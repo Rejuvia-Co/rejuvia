@@ -212,13 +212,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
           <span class="obs__rb-customers">{{ section.settings.rb_customers }}</span>
         {%- endif -%}
       </div>
-      {%- comment -%} Every BOGO page (bogo-2, anniversary, Black Friday, welcome-kit, 3am, night shift, bogo-sub, listicle, fall-asleep-faster, travel, menopause) runs on this section and differs in headline and subtitle (3am, night shift, travel and menopause also in their trusted-by line and tab leads below; fall-asleep-faster keeps the old bogosub2 trusted-by line), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
+      {%- comment -%} Every BOGO page (bogo-2, bogo-mom, anniversary, Black Friday, welcome-kit, 3am, night shift, bogo-sub, listicle, fall-asleep-faster, travel, menopause) runs on this section and differs in headline and subtitle (3am, night shift, travel and menopause also in their trusted-by line and tab leads below; fall-asleep-faster keeps the old bogosub2 trusted-by line), set here by page URL because template JSON edits don't deploy. {%- endcomment -%}
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'black-friday' -%}
         {%- assign obs_headline = 'Black Friday Sale: Buy 1, Get 1 FREE' -%}
         {%- assign obs_subtitle = 'For Black Friday only, claim your BOGO on Rejuvia Sleep Spray to get the best sleep of your entire life.' -%}
       {%- elsif page.handle == 'bogo-2' -%}
         {%- assign obs_headline = "Try America's Fastest Growing Sleep Spray - Buy 1, Get 1 FREE" -%}
+        {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Buy 1, get 1 free on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
+      {%- elsif page.handle == 'bogo-mom' -%}
+        {%- assign obs_headline = "Try The Sleep Spray That Solved My Mom's Sleep - Buy 1, Get 1 FREE" -%}
         {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Buy 1, get 1 free on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
       {%- elsif page.handle == 'welcome-kit' -%}
         {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}

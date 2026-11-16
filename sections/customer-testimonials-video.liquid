@@ -36,7 +36,7 @@
   assign header = vt.value.header | default: section.settings.header
   # Persona landing pages get their own header (group counts supplied by RC).
   case page.handle
-    when 'senior-citizen-bogo'
+    when 'senior-citizen-bogo', 'senior-2'
       assign header = 'Join 500,000+ Seniors Getting Better Sleep With Rejuvia'
     when 'military-bogo'
       assign header = 'Join 50,000 Service Members Getting Better Sleep With Rejuvia'

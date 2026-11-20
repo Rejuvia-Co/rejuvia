@@ -824,7 +824,6 @@
           "supply_selector_1": {
             "type": "supply-selector",
             "settings": {
-              "urgency_text": "Order within the next hour for guaranteed fast shipping by {date_ord}",
               "header_text": "CHOOSE YOUR SUPPLY",
               "default_tier": 1,
               "button_text": "Add to Cart",
@@ -1335,8 +1334,6 @@
           "sub_size": 18,
           "sub_size_mobile": 16,
           "open_first": false,
-          "title_size": 36,
-          "title_size_mobile": 26,
           "question_size": 20,
           "answer_size": 18,
           "max_width": 800,
@@ -1521,8 +1518,7 @@
         "type": "key-ingredients-v2",
         "settings": {
           "heading": "The key ingredients",
-          "button_label": "View Supplement Label",
-          "button_url": ""
+          "button_label": "View Supplement Label"
         }
       },
       "image-text-v2": {
@@ -1568,13 +1564,11 @@
           "stat3_label": "Customers nationwide",
           "founder_name": "RC Williams",
           "founder_title": "Co-Founder, CEO of Rejuvia",
-          "headline_size": 30,
           "body_size": 18,
           "stat_num_size": 28,
           "stat_label_size": 14,
           "name_size": 19,
           "title_size": 15,
-          "headline_size_mobile": 22,
           "body_size_mobile": 15,
           "stat_num_size_mobile": 20,
           "stat_label_size_mobile": 12,
@@ -1583,8 +1577,6 @@
           "section_bg": "#f5f5fb",
           "card_bg": "#ffffff",
           "accent_color": "#672666",
-          "band_from": "#f5f5fb",
-          "band_to": "#f9f2ff",
           "image_shadow_color": "#2a0e2a"
         }
       },
@@ -1925,14 +1917,9 @@
         "disabled": false,
         "settings": {}
       },
-      "17676059084223943535": {
-        "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
-        "disabled": false,
-        "settings": {}
-      },
       "2786716548061469553": {
         "type": "shopify://apps/applovin/blocks/app-embed/baa0f014-62ea-462f-a8aa-a94befb1cbad",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }

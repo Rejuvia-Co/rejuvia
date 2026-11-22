@@ -35,8 +35,12 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   assign rj_heading = heading | default: 'Real Reviews From 500,000+ Sleepers'
   assign rj_sub = subheading
   if subheading == nil
-    assign rj_sub = '4.5 Stars From 8,500+ Verified Reviews'
+    assign rj_sub = '4.5 Stars | 8,500+ Verified Customer Reviews'
   endif
+  if rj_sub == '4.5 Stars From 8,500+ Verified Reviews'
+    assign rj_sub = '4.5 Stars | 8,500+ Verified Customer Reviews'
+  endif
+  assign rj_sub = rj_sub | escape | replace: '4.5', '<strong>4.5</strong>' | replace: '8,500+', '<strong>8,500+</strong>' | replace: ' | ', ' <span class="rj-rev__sep">|</span> '
   assign rj_initial = initial | default: 6 | plus: 0
   assign rj_variant = variant | default: 'section'
 -%}
@@ -54,7 +58,9 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   /* Family / weight / letter-spacing come from the global --rj-title-* system (theme.liquid), like every BOGO section heading. */
   .rj-rev__title { font-size: 36px; line-height: 1.2; color: #171512; margin: 0 0 14px; text-wrap: balance; }
   .rj-rev__rating { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 14px; }
-  .rj-rev__sub { font-size: 20px; line-height: 1.3; color: #171512; margin: 0; }
+  .rj-rev__sub { font-size: 17px; line-height: 1.3; color: #171512; margin: 0; }
+  .rj-rev__sub strong { font-weight: 700; }
+  .rj-rev__sep { color: #b9b3aa; margin: 0 4px; }
   .rj-rev__hstars { display: inline-flex; gap: 3px; }
   .rj-rev__hstars svg { width: 24px; height: 24px; }
 
@@ -80,7 +86,7 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   @media (max-width: 600px) {
     .rj-rev { padding: 44px 16px; }
     .rj-rev__title { font-size: 26px; line-height: 1.15; }
-    .rj-rev__sub { font-size: 17px; }
+    .rj-rev__sub { font-size: 15px; }
     .rj-rev__hstars svg { width: 20px; height: 20px; }
     .rj-rev__card { padding: 22px 20px 18px; }
     .rj-rev__ctitle { font-size: 19px; }

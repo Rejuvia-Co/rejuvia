@@ -475,21 +475,13 @@
         "cta_target": ""
       }
     },
-    "17814435248f2fd49e": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_zwN3ex": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_zwN3ex"
-      ],
-      "settings": {}
+    "static_reviews_rj": {
+      "type": "static-reviews",
+      "settings": {
+        "heading": "Real Customers. Real Sleep.",
+        "subheading": "Straight from verified Rejuvia customers.",
+        "initial": 6
+      }
     },
     "founder_story_v2_Rj7kQp": {
       "type": "founder-story-v2",
@@ -720,7 +712,7 @@
     "key_ingredients_v2_XxByCK",
     "guarantee_section_gK7mPq",
     "product_alternatives_v2_offer",
-    "17814435248f2fd49e",
+    "static_reviews_rj",
     "founder_story_v2_Rj7kQp",
     "faq_center_fQVeth",
     "closing_cta_ThzKQ3",

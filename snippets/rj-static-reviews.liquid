@@ -1,0 +1,128 @@
+{%- comment -%}
+  Static reviews — replaces the Okendo widget on the BOGO pages (bogo / senior / persona).
+  Rendered from sections/product-alternatives-v2.liquid so it deploys with code, not template JSON.
+
+  EDITING: one review per block below, fields separated by "||":
+    Name || Date || Title || Body
+  Date is optional: leave it empty and the date is hidden. Order = display order.
+  The first 6 show; "Show more reviews" reveals the rest 6 at a time.
+{%- endcomment -%}
+
+{%- capture rj_reviews -%}
+Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with something original to say about your product that you haven't already heard, but it simply comes down to one simple thing: it truly works! To anyone thinking of purchasing I would say do it, don't hesitate! I will be placing my next order soon.
+^^Deborah S. C.|| ||Middle of the night sleep||Was skeptical about this product, but after a couple nights of using it, I am convinced. At my age, getting up for the restroom two or three times during the night is not unusual. I spray this and I am right back to sleep instead of lying awake at 2 or 4 o'clock in the morning because I can't go back to sleep. Thank you for this product. I will be ordering again.
+^^Christina A.|| ||Surprisingly Effective!||I am on quite a few medications and have always had issues with sleeping. I really didn't think this would work because I've tried melatonin and heavy sleeping pills and nothing really worked well. But this? It works. I do fall asleep faster and I do sleep longer than I have in years, and I'm so glad I saw the ad.
+^^Zondra E.|| ||Best Sleep Spray||I was skeptical when I first heard about this product. I am now a firm believer in it! From the very first night I loved the taste and ease of using this spray. I will be a customer from now on!
+^^Janet P. D.|| ||It works!||After trying many products out there that never worked, I was amazed that this one really does. I just use seven sprays under my tongue before I go to sleep and it works great. I still take one Advil PM to help with pain and give me some insurance. I will probably try and drop that soon. I just hesitate as I'm enjoying my sleep so much now. If you're debating whether to try it, I would say by all means try it!
+^^Tina L.|| ||Finally something that works||I've had trouble sleeping for decades, and nothing has worked until now. I absolutely love this sleep spray. It tastes good and knocks me right out in minutes. I highly recommend it if you have trouble falling asleep.
+^^Gail R. B.|| ||Best sleep||Just 8 sprays and it's nitey nite, y'all. Never fails. If you really need to rest, this should do the trick. I've struggled to sleep for many years and tried different things to help me fall asleep, but my mind wouldn't shut off. This does the trick. Thanks.
+^^Nicole A.|| ||It really works!||I'm a long-term Goli and Olly melatonin user, along with taking magnesium glycinate and L-theanine before bed. I found this and it is working well!! I like the combination of supplements this spray provides in sublingual form. I'm literally feeling sleepy within minutes of taking this. I sleep well all night and don't wake till my alarm goes off. If I do wake up for some reason around 2 or 3 am, one spray under the tongue does the trick, with no morning grogginess.
+^^Mynde C.|| ||This is helping me actually fall asleep!||Oh my gosh, I love this stuff!! It is helping me not be reliant on sleeping pills to sleep. Sometimes, if I wake up in the middle of the night, I might need a few sprays to help me go back to sleep, but I like this spray because it's not pharmaceutical.
+^^Doug P.|| ||Great product!||Really works well. I use way fewer heavy sleeping pills and find this puts me to sleep in minutes!
+^^Kay C.|| ||Wonderful product||This product has helped me fall asleep and STAY asleep. Bravo!
+^^Christopher K.|| ||Sleep aid||Really like it! I've tried many different things and this is the only thing that doesn't make me drowsy the next day, and it definitely helps me sleep all night.
+^^Lonnie P. L.|| ||Calm sleep, alert mornings||My wife is a teacher and needs focus and energy after a day with 2nd graders. Rejuvia has allowed both of us to get a calm sleep that helps us be alert and ready to go for the next day's challenges. If you wake up at 2 or 3 AM and are not in the military, this product may give you some relief. It certainly has us. Thank you.
+^^Gina A.|| ||It Works||I took this with me on a Europe trip to help me sleep despite the time difference, fearing I would have jet lag. Two pumps and I slept really well through the night, and I've continued back at home.
+^^Phyllis G.|| ||Got to try it! You will like it!! 😁||I really like this sleep spray. It's so easy to use and has a unique taste! It works great and has no side effects the next day!
+^^Rita M.|| ||Sleep spray||I love this product. I've never slept so well. I would definitely tell my friends.
+^^Joyce W.|| ||Love it||I have reviewed before. I am still using this at night. I take a sleeping pill every night that hardly works anymore. I can spray 3 times after it and finally fall asleep. That's good for me. I love this spray and will continue to use it. It doesn't bother me at all.
+^^Holly G.|| ||Loving the Sleep Spray||This has been amazing for me. It does exactly what it says and I sleep like a baby.
+{%- endcapture -%}
+
+{%- assign rj_list = rj_reviews | split: '^^' -%}
+
+<style>
+  /* Hide the Okendo app section on these pages; static reviews replace it. */
+  [id$="__17814435248f2fd49e"] { display: none !important; }
+
+  .rj-rev { background: #faf8f5; padding: 64px 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1f1f1f; }
+  .rj-rev__wrap { max-width: 860px; margin: 0 auto; }
+  .rj-rev__head { text-align: center; margin-bottom: 36px; }
+  .rj-rev__stars-lg { display: inline-flex; gap: 4px; margin-bottom: 10px; }
+  .rj-rev__stars-lg svg { width: 26px; height: 26px; }
+  .rj-rev__title { font-size: clamp(28px, 4vw, 38px); font-weight: 700; line-height: 1.15; margin: 0 0 8px; color: #1f1f1f; }
+  .rj-rev__sub { font-size: 17px; color: #555; margin: 0; }
+
+  .rj-rev__list { display: grid; gap: 18px; }
+  .rj-rev__card { background: #fff; border: 1px solid #e6e2dc; border-radius: 14px; padding: 28px 30px 24px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+  .rj-rev__card[hidden] { display: none; }
+  .rj-rev__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .rj-rev__stars { display: inline-flex; gap: 3px; }
+  .rj-rev__stars svg { width: 20px; height: 20px; }
+  .rj-rev__date { font-size: 14px; color: #6b6b6b; white-space: nowrap; }
+  .rj-rev__ctitle { font-size: 21px; font-weight: 700; line-height: 1.3; margin: 0 0 10px; color: #1f1f1f; }
+  .rj-rev__body { font-size: 17px; line-height: 1.65; color: #333; margin: 0 0 20px; }
+  .rj-rev__foot { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 16px; border-top: 1px solid #f0ece6; font-size: 15px; }
+  .rj-rev__name { font-weight: 700; color: #1f1f1f; }
+  .rj-rev__div { width: 1px; height: 16px; background: #d9d4cc; }
+  .rj-rev__ver { display: inline-flex; align-items: center; gap: 6px; color: #555; }
+  .rj-rev__ver svg { width: 17px; height: 17px; flex: none; }
+
+  .rj-rev__more-wrap { text-align: center; margin-top: 28px; }
+  .rj-rev__more { appearance: none; background: #fff; color: #1f1f1f; border: 1.5px solid #1f1f1f; border-radius: 999px; padding: 14px 34px; font: 600 16px/1 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor: pointer; transition: background .15s, color .15s; }
+  .rj-rev__more:hover { background: #1f1f1f; color: #fff; }
+
+  @media (max-width: 600px) {
+    .rj-rev { padding: 44px 16px; }
+    .rj-rev__card { padding: 22px 20px 18px; }
+    .rj-rev__ctitle { font-size: 19px; }
+    .rj-rev__body { font-size: 16px; }
+  }
+</style>
+
+{%- capture rj_star -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>{%- endcapture -%}
+
+<section class="rj-rev" id="reviews" aria-label="Customer reviews">
+  <div class="rj-rev__wrap">
+    <div class="rj-rev__head">
+      <div class="rj-rev__stars-lg" aria-label="5 out of 5 stars">{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}</div>
+      <h2 class="rj-rev__title">Real Customers. Real Sleep.</h2>
+      <p class="rj-rev__sub">Straight from verified Rejuvia customers.</p>
+    </div>
+
+    <div class="rj-rev__list" data-rj-rev-list>
+      {%- for r in rj_list -%}
+        {%- assign f = r | strip | split: '||' -%}
+        {%- assign r_name = f[0] | strip -%}
+        {%- assign r_date = f[1] | strip -%}
+        {%- assign r_title = f[2] | strip -%}
+        {%- assign r_body = f[3] | strip -%}
+        {%- if r_name == blank -%}{%- continue -%}{%- endif -%}
+        <article class="rj-rev__card"{% if forloop.index > 6 %} hidden{% endif %}>
+          <div class="rj-rev__top">
+            <div class="rj-rev__stars" aria-label="5 out of 5 stars">{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}</div>
+            {%- if r_date != blank -%}<span class="rj-rev__date">{{ r_date }}</span>{%- endif -%}
+          </div>
+          <h3 class="rj-rev__ctitle">{{ r_title }}</h3>
+          <p class="rj-rev__body">{{ r_body }}</p>
+          <div class="rj-rev__foot">
+            <span class="rj-rev__name">{{ r_name }}</span>
+            <span class="rj-rev__div" aria-hidden="true"></span>
+            <span class="rj-rev__ver">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 0l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L10 20l-2.4-1.8-3 .2-.9-2.9L1.2 13.8l1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z"/><path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.3 10.2l2.5 2.5 4.9-5"/></svg>
+              Verified Customer
+            </span>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if rj_list.size > 6 -%}
+      <div class="rj-rev__more-wrap">
+        <button type="button" class="rj-rev__more" data-rj-rev-more>Show more reviews</button>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var btn = document.querySelector('[data-rj-rev-more]');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var hidden = document.querySelectorAll('[data-rj-rev-list] .rj-rev__card[hidden]');
+      for (var i = 0; i < hidden.length && i < 6; i++) hidden[i].removeAttribute('hidden');
+      if (hidden.length <= 6) btn.parentNode.remove();
+    });
+  })();
+</script>

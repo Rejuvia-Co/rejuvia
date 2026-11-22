@@ -398,6 +398,13 @@
 </script>
 {%- endif -%}
 
+{%- if template.name == 'page' -%}
+  {%- case template.suffix -%}
+    {%- when 'bogo', 'senior', 'persona' -%}
+      {%- render 'rj-static-reviews' -%}
+  {%- endcase -%}
+{%- endif -%}
+
 {% schema %}
 {
     "name": "Product Alternatives V2",

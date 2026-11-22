@@ -32,10 +32,10 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 {%- assign rj_list = rj_reviews | split: '^^' -%}
 {%- liquid
   # Params (all optional): heading, subheading, initial (cards shown before "Show more"), variant ('section' | 'fallback')
-  assign rj_heading = heading | default: 'Real Customers. Real Sleep.'
+  assign rj_heading = heading | default: 'Real Reviews From 500,000+ Sleepers'
   assign rj_sub = subheading
   if subheading == nil
-    assign rj_sub = 'Straight from verified Rejuvia customers.'
+    assign rj_sub = '4.5 Stars From 8,500+ Verified Reviews'
   endif
   assign rj_initial = initial | default: 6 | plus: 0
   assign rj_variant = variant | default: 'section'
@@ -51,10 +51,14 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   .rj-rev { background: #faf8f5; padding: 64px 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1f1f1f; }
   .rj-rev__wrap { max-width: 860px; margin: 0 auto; }
   .rj-rev__head { text-align: center; margin-bottom: 36px; }
-  .rj-rev__stars-lg { display: inline-flex; gap: 4px; margin-bottom: 10px; }
-  .rj-rev__stars-lg svg { width: 26px; height: 26px; }
-  .rj-rev__title { font-size: clamp(28px, 4vw, 38px); font-weight: 700; line-height: 1.15; margin: 0 0 8px; color: #1f1f1f; }
-  .rj-rev__sub { font-size: 17px; color: #555; margin: 0; }
+  /* Family / weight / letter-spacing come from the global --rj-title-* system (theme.liquid), like every BOGO section heading. */
+  .rj-rev__title { font-size: 36px; line-height: 1.2; color: #171512; margin: 0 0 14px; text-wrap: balance; }
+  .rj-rev__rating { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 14px; }
+  .rj-rev__sub { font-size: 20px; line-height: 1.3; color: #171512; margin: 0; }
+  .rj-rev__boxes { display: inline-flex; gap: 3px; }
+  .rj-rev__box { width: 30px; height: 30px; background: #dcdce6; position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; }
+  .rj-rev__box::before { content: ''; position: absolute; inset: 0 auto 0 0; width: var(--fill, 100%); background: #4fb57f; }
+  .rj-rev__box svg { position: relative; width: 22px; height: 22px; }
 
   .rj-rev__list { display: grid; gap: 18px; }
   .rj-rev__card { background: #fff; border: 1px solid #e6e2dc; border-radius: 14px; padding: 28px 30px 24px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
@@ -77,6 +81,10 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 
   @media (max-width: 600px) {
     .rj-rev { padding: 44px 16px; }
+    .rj-rev__title { font-size: 26px; line-height: 1.15; }
+    .rj-rev__sub { font-size: 17px; }
+    .rj-rev__box { width: 26px; height: 26px; }
+    .rj-rev__box svg { width: 19px; height: 19px; }
     .rj-rev__card { padding: 22px 20px 18px; }
     .rj-rev__ctitle { font-size: 19px; }
     .rj-rev__body { font-size: 16px; }
@@ -88,9 +96,15 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 <section class="rj-rev rj-rev--{{ rj_variant }}"{% if rj_variant == 'section' %} id="reviews"{% endif %} aria-label="Customer reviews" data-rj-rev>
   <div class="rj-rev__wrap">
     <div class="rj-rev__head">
-      <div class="rj-rev__stars-lg" aria-label="5 out of 5 stars">{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}</div>
       <h2 class="rj-rev__title">{{ rj_heading }}</h2>
-      {%- if rj_sub != blank -%}<p class="rj-rev__sub">{{ rj_sub }}</p>{%- endif -%}
+      <div class="rj-rev__rating">
+        {%- if rj_sub != blank -%}<p class="rj-rev__sub">{{ rj_sub }}</p>{%- endif -%}
+        <span class="rj-rev__boxes" role="img" aria-label="4.5 out of 5 stars">
+          {%- for i in (1..5) -%}
+            <span class="rj-rev__box"{% if i == 5 %} style="--fill: 50%"{% endif %}><svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#fff" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg></span>
+          {%- endfor -%}
+        </span>
+      </div>
     </div>
 
     <div class="rj-rev__list" data-rj-rev-list>

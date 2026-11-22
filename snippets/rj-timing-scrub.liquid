@@ -5,10 +5,34 @@
   git deploy can't reliably change, so layout/theme.liquid pipes the finished page
   through here. Usage directions ("15–20 minutes before bed") and competitor
   digestion times are intentionally left alone.
-  Reviews that state a timing are skipped in the review sections themselves
-  (customer-testimonials-video, real-stories-v2, story-reviews-v2, page-cta-v2).
+  Theme-written reviews that state a timing are reworded here too, and the
+  "How fast does Rejuvia work?" FAQ entry is removed.
 {%- endcomment -%}
 {{- doc
+    | replace: '<p><strong>How fast does Rejuvia work?</strong></p><p>Most customers can fall asleep within 10–15 minutes after using Rejuvia at night.</p>', ''
+    | replace: '<p><strong>How fast does Rejuvia work?</strong></p><p>Most customers can fall asleep within 10-15 minutes after using Rejuvia at night.</p>', ''
+    | replace: '<p><strong>How fast does Rejuvia work?</strong></p><p>Most customers fall asleep fast after using Rejuvia at night.</p>', ''
+    | replace: '<p><strong>How fast does Rejuvia work?</strong></p><p>Most customers fall asleep fast after using Rejuvia at night.</p>', ''
+    | replace: '<p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10–15 minutes of their nightly sprays.</p>', ''
+    | replace: '<p><strong>How fast does it work?</strong></p><p>Most customers fall asleep within 10-15 minutes of their nightly sprays.</p>', ''
+    | replace: '<p><strong>How fast does it work?</strong></p><p>Most customers fall asleep fast of their nightly sprays.</p>', ''
+    | replace: '<p><strong>How fast does it work?</strong></p><p>Most customers fall asleep fast of their nightly sprays.</p>', ''
+    | replace: "I'm sound asleep in 15 minutes. I hope they sell it forever!!", 'I am sound asleep like a light!! I hope they sell it forever!'
+    | replace: 'I&#39;m sound asleep in 15 minutes. I hope they sell it forever!!', 'I am sound asleep like a light!! I hope they sell it forever!'
+    | replace: "It's lights out for me after just 15-20 minutes with Rejuvia.", "It's lights out for me every night with Rejuvia."
+    | replace: 'It&#39;s lights out for me after just 15-20 minutes with Rejuvia.', 'It&#39;s lights out for me every night with Rejuvia.'
+    | replace: 'I spray 7 times under my tongue and I fall asleep in 15-20 minutes.', 'I spray 7 times under my tongue and I fall asleep like a baby.'
+    | replace: "This spray and I'm asleep in 10 minutes.", "This spray and I'm out like a light."
+    | replace: 'This spray and I&#39;m asleep in 10 minutes.', 'This spray and I&#39;m out like a light.'
+    | replace: 'use it about 30 minutes before bedtime.', 'use it before bedtime.'
+    | replace: 'It actually does help me get to sleep within 10 or 15 minutes.', 'It actually does help me get to sleep.'
+    | replace: 'Within about 10 minutes I felt a huge relax', 'I felt a huge relax'
+    | replace: 'Fast acting in 15 mins, 8 pumps', 'Fast acting, 8 pumps'
+    | replace: "Within 20 minutes I'm feeling more relaxed", "A few sprays and I'm feeling more relaxed"
+    | replace: 'Within 20 minutes I&#39;m feeling more relaxed', 'A few sprays and I&#39;m feeling more relaxed'
+    | replace: 'and within minutes I feel calmer!', 'and I feel calmer!'
+    | replace: 'and within minutes I feel calm again.', 'and I feel calm again.'
+    | replace: 'I’m asleep within minutes.', 'I’m out like a light.'
     | replace: 'Most people feel it the first or second night. Because the spray absorbs under your tongue, it skips your stomach completely and gets to work in about 10-15 minutes instead of the 60-90 minutes pills and gummies take.', 'Because the spray absorbs under your tongue, it skips your stomach completely and gets to work faster than pills and gummies.'
     | replace: 'Most people feel it the first or second night. Because the spray absorbs under your tongue, it skips your stomach completely and gets to work in about 10–15 minutes instead of the 60–90 minutes pills and gummies take.', 'Because the spray absorbs under your tongue, it skips your stomach completely and gets to work faster than pills and gummies.'
     | replace: 'gets to work in about 10-15 minutes instead of the 60-90 minutes pills and gummies take.', 'gets to work faster than pills and gummies.'

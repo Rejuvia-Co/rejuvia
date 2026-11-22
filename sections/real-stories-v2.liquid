@@ -420,7 +420,6 @@
     <div class="rs-v2-reviews is-active" data-rs-v2-panel="facebook">
         {% if use_fb_meta %}
             {% for fb in rs_fb %}
-                {%- assign rj_t = fb.comment | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
                 {%- assign fb_img = fb.screenshot -%}
                 {% if fb_img != blank %}
                     <div class="rs-v2-fb-review">
@@ -448,7 +447,6 @@
             {% endfor %}
         {% elsif product == blank %}
         {% for block in section.blocks %}
-            {%- assign rj_t = block.settings.comment | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
             {% if block.type == 'fb_review' %}
                 <div class="rs-v2-fb-review" style="margin-top: {{ block.settings.offset_top }}px; padding-left: {{ block.settings.offset_left }}px; padding-right: {{ block.settings.offset_right }}px;" {{ block.shopify_attributes }}>
                     {%- assign fb_img = block.settings.image -%}
@@ -494,8 +492,6 @@
             {%- assign rs_badge = section.settings.tp_badge -%}
             {%- assign rs_star_count = section.settings.tp_stars | default: 5 -%}
             {% for r in rs_online %}
-                {%- assign rj_rt = r.title | append: ' ' | append: r.body -%}
-                {%- assign rj_t = rj_rt | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
                 {%- comment -%} Initials are derived from the name (first + last word). {%- endcomment -%}
                 {%- assign name_parts = r.name | strip | split: ' ' -%}
                 {%- assign rs_initials = name_parts.first | slice: 0 | upcase -%}
@@ -528,8 +524,6 @@
             {% endfor %}
         {% elsif product == blank %}
         {% for block in section.blocks %}
-            {%- assign rj_bt = block.settings.title | append: ' ' | append: block.settings.text -%}
-            {%- assign rj_t = rj_bt | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
             {% if block.type == 'tp_review' %}
                 <div class="rs-v2-tp-review" {{ block.shopify_attributes }}>
                     <div class="rs-v2-tp-header">

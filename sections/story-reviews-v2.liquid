@@ -296,8 +296,6 @@
         {%- assign av_palette = '#FDE7C8,#FBE0EA,#DDF3E4,#FFF3C4,#E6E0F5' | split: ',' -%}
         {%- assign ai = 0 -%}
         {%- for block in section.blocks -%}
-          {%- assign rj_bt = block.settings.title | append: ' ' | append: block.settings.body -%}
-          {%- assign rj_t = rj_bt | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
           {%- if block.type == 'review' -%}
             {%- assign prod = block.settings.product | default: 'sleep' -%}
             {%- case prod -%}
@@ -353,8 +351,6 @@
         {%- assign srv2_extra_list = srv2_extra | split: '@@' -%}
         {%- for rec in srv2_extra_list -%}
           {%- assign f = rec | split: '~~' -%}
-          {%- assign rj_bt = f[4] | append: ' ' | append: f[5] -%}
-          {%- assign rj_t = rj_bt | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
           {%- if f[0] == 'd3' -%}{%- assign etag = 'D3+K2' -%}{%- assign ebase = '#1B8546' -%}{%- assign etint = '#E7F4EB' -%}{%- else -%}{%- assign etag = 'CALM' -%}{%- assign ebase = '#C23A57' -%}{%- assign etint = '#FBEBEF' -%}{%- endif -%}
           <div class="srv2__card is-clamped" data-srv-card data-product="{{ f[0] }}">
             <div class="srv2__card-top">

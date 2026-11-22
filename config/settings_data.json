@@ -573,7 +573,7 @@
           "cta_label": "Shop Now",
           "cta_url": "shopify://products/sleep-spray",
           "shopnow_label": "Shop Now",
-          "trust_1": "7,500+ 5-Star Reviews",
+          "trust_1": "8,500+ 5-Star Reviews",
           "trust_2": "500,000+ Happy Customers",
           "trust_3": "Family-Founded Business",
           "behavior": "static",
@@ -940,7 +940,7 @@
         "name": "Guarantees V2",
         "settings": {
           "product": "",
-          "default_items": "7,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
+          "default_items": "8,500+ 5-Star Reviews | Free US Shipping Over $59 | 500,000+ Happy Customers",
           "anchor_id": "",
           "bg_color": "#f5f5fb",
           "icon_color": "#672666"
@@ -1865,7 +1865,7 @@
           "lock_header_hidden": false,
           "reveal_after_selector": "",
           "persist_visible": false,
-          "rating_text": "<b>{rating}</b> Stars | <b>7,500+</b> Reviews | <b>500,000+</b> Customers",
+          "rating_text": "<b>{rating}</b> Stars | <b>8,500+</b> Reviews | <b>500,000+</b> Customers",
           "rating_fallback": "4.6",
           "cta_text": "Save Up To {max_save}% Today",
           "cta_fallback": "Shop Now",

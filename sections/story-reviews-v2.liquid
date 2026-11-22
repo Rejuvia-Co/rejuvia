@@ -225,7 +225,7 @@
         <span class="srv2__rating-stars">{%- if rfull > 0 -%}{%- for i in (1..rfull) -%}{{ star_svg }}{%- endfor -%}{%- endif -%}{%- if rhalf == 1 -%}{{ star_half }}{%- endif -%}{%- if rempty > 0 -%}{%- for i in (1..rempty) -%}{{ star_empty }}{%- endfor -%}{%- endif -%}</span>
         <span class="srv2__rating-item"><b>{{ section.settings.rating_value | default: '4.5' }}</b> {{ section.settings.label_stars | default: 'Stars' }}</span>
         <span class="srv2__rating-sep" aria-hidden="true"></span>
-        <span class="srv2__rating-item"><b>{{ section.settings.reviews_value | default: '7,500+' }}</b> {{ section.settings.label_reviews | default: 'Reviews' }}</span>
+        <span class="srv2__rating-item"><b>{{ section.settings.reviews_value | default: '8,500+' }}</b> {{ section.settings.label_reviews | default: 'Reviews' }}</span>
         <span class="srv2__rating-sep srv2__rating-sep--cust" aria-hidden="true"></span>
         <span class="srv2__rating-item srv2__rating-item--cust"><b>{{ section.settings.customers_value | default: '500K+' }}</b> {{ section.settings.label_customers | default: 'Customers' }}</span>
       </div>
@@ -582,7 +582,7 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Customer Reviews" },
     { "type": "text", "id": "rating_value", "label": "Rating value", "default": "4.5" },
     { "type": "text", "id": "label_stars", "label": "Rating label", "default": "Stars" },
-    { "type": "text", "id": "reviews_value", "label": "Reviews count", "default": "7,500+" },
+    { "type": "text", "id": "reviews_value", "label": "Reviews count", "default": "8,500+" },
     { "type": "text", "id": "label_reviews", "label": "Reviews label", "default": "Reviews" },
     { "type": "text", "id": "customers_value", "label": "Customers count", "default": "500K+" },
     { "type": "text", "id": "label_customers", "label": "Customers label (desktop only)", "default": "Customers" },

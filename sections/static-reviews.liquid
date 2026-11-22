@@ -5,7 +5,6 @@
 {%- endcomment -%}
 {%- render 'rj-static-reviews',
   heading: section.settings.heading,
-  subheading: section.settings.subheading,
   initial: section.settings.initial,
   variant: 'section'
 -%}
@@ -17,7 +16,6 @@
   "class": "rj-static-reviews-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real Reviews From 500,000+ Sleepers" },
-    { "type": "text", "id": "subheading", "label": "Rating line", "default": "4.5 Stars | 8,500+ Verified Customer Reviews" },
     { "type": "range", "id": "initial", "label": "Reviews shown before \"Show more\"", "min": 3, "max": 18, "step": 3, "default": 6 },
     { "type": "paragraph", "content": "Edit, reorder or date the reviews in snippets/rj-static-reviews.liquid." }
   ],

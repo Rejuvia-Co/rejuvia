@@ -31,16 +31,8 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
 
 {%- assign rj_list = rj_reviews | split: '^^' -%}
 {%- liquid
-  # Params (all optional): heading, subheading, initial (cards shown before "Show more"), variant ('section' | 'fallback')
+  # Params (all optional): heading, initial (cards shown before "Show more"), variant ('section' | 'fallback')
   assign rj_heading = heading | default: 'Real Reviews From 500,000+ Sleepers'
-  assign rj_sub = subheading
-  if subheading == nil
-    assign rj_sub = '4.5 Stars | 8,500+ Verified Customer Reviews'
-  endif
-  if rj_sub == '4.5 Stars From 8,500+ Verified Reviews'
-    assign rj_sub = '4.5 Stars | 8,500+ Verified Customer Reviews'
-  endif
-  assign rj_sub = rj_sub | escape | replace: '4.5', '<strong>4.5</strong>' | replace: '8,500+', '<strong>8,500+</strong>' | replace: ' | ', ' <span class="rj-rev__sep">|</span> '
   assign rj_initial = initial | default: 6 | plus: 0
   assign rj_variant = variant | default: 'section'
 -%}
@@ -57,13 +49,13 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
   .rj-rev__head { text-align: center; margin-bottom: 36px; }
   /* Family / weight / letter-spacing come from the global --rj-title-* system (theme.liquid), like every BOGO section heading. */
   .rj-rev__title { font-size: 36px; line-height: 1.2; color: #171512; margin: 0; text-wrap: balance; }
-  .rj-rev__rating { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 14px; }
   .rj-rev__head .rj-rev__title { display: block; }
-  .rj-rev__sub { font-size: 17px; line-height: 1.3; color: #171512; margin: 0; }
-  .rj-rev__sub strong { font-weight: 700; }
-  .rj-rev__sep { color: #b9b3aa; margin: 0 4px; }
-  .rj-rev__hstars { display: inline-flex; gap: 3px; }
-  .rj-rev__hstars svg { width: 24px; height: 24px; }
+  /* Review bar: same as the offer section's (offer-block-sub .obs__reviewbar), centered. */
+  .rj-rev__rb { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; color: #4a4550; flex-wrap: wrap; margin: 0 0 14px; }
+  .rj-rev__rb-stars { display: inline-flex; gap: 1.5px; flex-shrink: 0; }
+  .rj-rev__rb-stars svg { width: 15px; height: 15px; display: block; }
+  .rj-rev__rb-sep { color: #d9d3e0; }
+  .rj-rev__rb strong { color: #171512; font-weight: 800; }
 
   .rj-rev__list { display: grid; gap: 18px; }
   .rj-rev__card { background: #fff; border: 1px solid #e6e2dc; border-radius: 14px; padding: 28px 30px 24px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
@@ -87,8 +79,12 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
   @media (max-width: 600px) {
     .rj-rev { padding: 44px 16px; }
     .rj-rev__title { font-size: 26px; line-height: 1.15; }
-    .rj-rev__sub { font-size: 15px; }
-    .rj-rev__hstars svg { width: 20px; height: 20px; }
+    .rj-rev__rb { gap: 7px; }
+    .rj-rev__rb-rating, .rj-rev__rb-sep-reviews { display: none; }
+    .rj-rev__rb-customers { order: 1; }
+    .rj-rev__rb-sep-customers { order: 2; }
+    .rj-rev__rb-reviews { order: 3; }
+    .rj-rev__rb-stars svg { width: 12px; height: 12px; }
     .rj-rev__card { padding: 22px 20px 18px; }
     .rj-rev__ctitle { font-size: 19px; }
     .rj-rev__body { font-size: 16px; }
@@ -97,12 +93,17 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
 
 {%- capture rj_star -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>{%- endcapture -%}
 
+{%- capture rj_rb_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg>{%- endcapture -%}
 <section class="rj-rev rj-rev--{{ rj_variant }}"{% if rj_variant == 'section' %} id="reviews"{% endif %} aria-label="Customer reviews" data-rj-rev>
   <div class="rj-rev__wrap">
     <div class="rj-rev__head">
-      <div class="rj-rev__rating">
-        <span class="rj-rev__hstars" role="img" aria-label="4.5 out of 5 stars">{%- for i in (1..4) -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>{%- endfor -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#e3ddd2" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/><path fill="#E2B55A" style="clip-path: inset(0 50% 0 0)" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg></span>
-        {%- if rj_sub != blank -%}<p class="rj-rev__sub">{{ rj_sub }}</p>{%- endif -%}
+      <div class="rj-rev__rb">
+        <span class="rj-rev__rb-stars" role="img" aria-label="5 stars">{{ rj_rb_star }}{{ rj_rb_star }}{{ rj_rb_star }}{{ rj_rb_star }}{{ rj_rb_star }}</span>
+        <span class="rj-rev__rb-rating"><strong>4.5</strong> Stars</span>
+        <span class="rj-rev__rb-sep rj-rev__rb-sep-reviews" aria-hidden="true">|</span>
+        <span class="rj-rev__rb-reviews"><strong>7,500+</strong> Reviews</span>
+        <span class="rj-rev__rb-sep rj-rev__rb-sep-customers" aria-hidden="true">|</span>
+        <span class="rj-rev__rb-customers"><strong>500K+</strong> Customers</span>
       </div>
       <h2 class="rj-rev__title">{{ rj_heading }}</h2>
     </div>

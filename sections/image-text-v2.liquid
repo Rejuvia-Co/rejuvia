@@ -183,9 +183,14 @@
                     {% if forloop.first == false %}
                         <div class="iwt-v2-divider"></div>
                     {% endif %}
+                    {%- comment -%} No time-to-sleep stats: a "minutes" stat shows the low-dose stat instead. {%- endcomment -%}
+                    {%- assign rj_num = block.settings.number -%}
+                    {%- assign rj_label = block.settings.label -%}
+                    {%- assign rj_t = rj_label | downcase -%}
+                    {%- if rj_t contains 'minute' -%}{%- assign rj_num = '2mg' -%}{%- assign rj_label = 'Low-Dose Melatonin' -%}{%- endif -%}
                     <div class="iwt-v2-stat" {{ block.shopify_attributes }}>
-                        <span class="iwt-v2-stat-num">{{ block.settings.number }}</span>
-                        <span class="iwt-v2-stat-label">{{ block.settings.label }}</span>
+                        <span class="iwt-v2-stat-num">{{ rj_num }}</span>
+                        <span class="iwt-v2-stat-label">{{ rj_label }}</span>
                     </div>
                 {% endfor %}
             </div>
@@ -256,7 +261,6 @@
             "blocks": [
                 { "type": "stat", "settings": { "number": "13+", "label": "Natural ingredients" } },
                 { "type": "stat", "settings": { "number": "2mg", "label": "Low-dose melatonin" } },
-                { "type": "stat", "settings": { "number": "15", "label": "Minutes to sleep" } },
                 { "type": "stat", "settings": { "number": "0", "label": "Zero grogginess" } }
             ]
         }

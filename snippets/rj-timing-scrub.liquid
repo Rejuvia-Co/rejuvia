@@ -1,0 +1,77 @@
+{%- comment -%}
+  Sitewide scrub of specific-timing claims ("asleep in 10–15 minutes", "works in
+  minutes", "from the first night"…). Meta flags timed sleep claims, and much of this
+  copy lives in template JSON, settings_data, metafields and SEO descriptions that a
+  git deploy can't reliably change, so layout/theme.liquid pipes the finished page
+  through here. Usage directions ("15–20 minutes before bed") and competitor
+  digestion times are intentionally left alone.
+  Reviews that state a timing are skipped in the review sections themselves
+  (customer-testimonials-video, real-stories-v2, story-reviews-v2, page-cta-v2).
+{%- endcomment -%}
+{{- doc
+    | replace: 'Most people feel it the first or second night. Because the spray absorbs under your tongue, it skips your stomach completely and gets to work in about 10-15 minutes instead of the 60-90 minutes pills and gummies take.', 'Because the spray absorbs under your tongue, it skips your stomach completely and gets to work faster than pills and gummies.'
+    | replace: 'Most people feel it the first or second night. Because the spray absorbs under your tongue, it skips your stomach completely and gets to work in about 10–15 minutes instead of the 60–90 minutes pills and gummies take.', 'Because the spray absorbs under your tongue, it skips your stomach completely and gets to work faster than pills and gummies.'
+    | replace: 'gets to work in about 10-15 minutes instead of the 60-90 minutes pills and gummies take.', 'gets to work faster than pills and gummies.'
+    | replace: 'gets to work in about 10–15 minutes instead of the 60–90 minutes pills and gummies take.', 'gets to work faster than pills and gummies.'
+    | replace: 'Many people fall asleep within 10-15 minutes the very first night.', 'Many people notice a difference quickly.'
+    | replace: 'Many people fall asleep within 10–15 minutes the very first night.', 'Many people notice a difference quickly.'
+    | replace: 'which is why most customers are asleep within 10-15 minutes instead of 60-90.', 'which is why most customers fall asleep faster than with pills.'
+    | replace: 'which is why most customers are asleep within 10–15 minutes instead of 60–90.', 'which is why most customers fall asleep faster than with pills.'
+    | replace: 'Most customers can fall asleep within 10-15 minutes after using Rejuvia at night.', 'Most customers fall asleep fast after using Rejuvia at night.'
+    | replace: 'Most customers can fall asleep within 10–15 minutes after using Rejuvia at night.', 'Most customers fall asleep fast after using Rejuvia at night.'
+    | replace: 'Most customers fall asleep within 10-15 minutes of their nightly sprays.', 'Most customers fall asleep fast after their nightly sprays.'
+    | replace: 'Most customers fall asleep within 10–15 minutes of their nightly sprays.', 'Most customers fall asleep fast after their nightly sprays.'
+    | replace: 'Most customers feel calm and drift off within 10-15 minutes, instead of the 60-90 minutes pills can take.', 'Most customers feel calm and drift off fast, without waiting on a pill to digest.'
+    | replace: 'Most customers feel calm and drift off within 10–15 minutes, instead of the 60–90 minutes pills can take.', 'Most customers feel calm and drift off fast, without waiting on a pill to digest.'
+    | replace: 'so most people are asleep in 10-15 minutes instead of the 45-60 it takes pills and gummies.', 'so most people fall asleep faster than with pills and gummies.'
+    | replace: 'so most people are asleep in 10–15 minutes instead of the 45–60 it takes pills and gummies.', 'so most people fall asleep faster than with pills and gummies.'
+    | replace: 'so you&#39;re asleep in 10-15 minutes, not an hour.', 'so you&#39;re asleep fast.'
+    | replace: 'so you&#39;re asleep in 10–15 minutes, not an hour.', 'so you&#39;re asleep fast.'
+    | replace: "so you're asleep in 10-15 minutes, not an hour.", "so you're asleep fast."
+    | replace: "so you're asleep in 10–15 minutes, not an hour.", "so you're asleep fast."
+    | replace: 'so you’re asleep in 10-15 minutes, not an hour.', 'so you’re asleep fast.'
+    | replace: 'so you’re asleep in 10–15 minutes, not an hour.', 'so you’re asleep fast.'
+    | replace: 'calm kicks in fast — in minutes, not hours — without', 'calm kicks in fast, without'
+    | replace: 'most people feel their mind settle within minutes — not the hour-plus a pill or gummy takes.', 'most people feel their mind settle fast, without the long wait of a pill or gummy.'
+    | replace: 'so you feel it working in minutes, not an hour.', 'so you feel it working fast.'
+    | replace: 'Rejuvia gets them there in minutes —', 'Rejuvia gets them there fast —'
+    | replace: 'that works in 10-15 minutes.', 'that works fast.'
+    | replace: 'that works in 10–15 minutes.', 'that works fast.'
+    | replace: 'works under your tongue in 10-15 minutes', 'works fast under your tongue'
+    | replace: 'works under your tongue in 10–15 minutes', 'works fast under your tongue'
+    | replace: 'works in minutes, not hours', 'works fast, with no pills to digest'
+    | replace: 'Works in 10-15 minutes, not 90', 'Works fast, no pills to digest'
+    | replace: 'Works in 10–15 minutes, not 90', 'Works fast, no pills to digest'
+    | replace: 'Asleep in 10-15 minutes, not 45+', 'Asleep fast, no pills to digest'
+    | replace: 'Asleep in 10–15 minutes, not 45+', 'Asleep fast, no pills to digest'
+    | replace: 'Fall asleep in 10-15 minutes', 'Fall asleep fast'
+    | replace: 'Fall asleep in 10–15 minutes', 'Fall asleep fast'
+    | replace: 'most people are asleep in 10-15 minutes', 'most people fall asleep fast'
+    | replace: 'most people are asleep in 10–15 minutes', 'most people fall asleep fast'
+    | replace: 'Asleep in 10-15 minutes', 'Asleep fast'
+    | replace: 'Asleep in 10–15 minutes', 'Asleep fast'
+    | replace: 'asleep in 10-15 minutes', 'asleep fast'
+    | replace: 'asleep in 10–15 minutes', 'asleep fast'
+    | replace: 'asleep within 10-15 minutes', 'asleep fast'
+    | replace: 'asleep within 10–15 minutes', 'asleep fast'
+    | replace: 'drift off in 10-15 minutes', 'drift off fast'
+    | replace: 'drift off in 10–15 minutes', 'drift off fast'
+    | replace: 'drift off within 10-15 minutes', 'drift off fast'
+    | replace: 'drift off within 10–15 minutes', 'drift off fast'
+    | replace: 'asleep in about 15 minutes', 'asleep fast'
+    | replace: 'asleep in minutes', 'asleep fast'
+    | replace: 'kick in within minutes', 'kick in fast'
+    | replace: 'feel the effects within minutes', 'feel the effects fast'
+    | replace: 'feel the calm settle in within minutes', 'feel the calm settle in fast'
+    | replace: 'Absorbs sublingually in minutes', 'Absorbs sublingually, fast'
+    | replace: 'Absorbs in Minutes', 'Absorbs Fast'
+    | replace: 'Works In Minutes', 'Works Fast'
+    | replace: 'Full potency, in minutes.', 'Full potency, fast.'
+    | replace: 'calms me down in minutes.', 'calms me down.'
+    | replace: 'within the first or second night of use', 'quickly'
+    | replace: ' from the first night', ''
+    | replace: 'Fast (5-10 min)', 'Fast'
+    | replace: 'Fast (5–10 min)', 'Fast'
+    | replace: 'Slow (60-90 min)', 'Slow'
+    | replace: 'Slow (60–90 min)', 'Slow'
+-}}

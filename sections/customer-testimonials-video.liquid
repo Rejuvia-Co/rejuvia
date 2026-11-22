@@ -53,10 +53,26 @@
   endcase
   assign stars_label = vt.value.stars_label | default: section.settings.stars_label
 
+  # Reviews that give a specific timing ("asleep in 15 minutes", "first night")
+  # are skipped (not allowed in our ads/landing pages); count only the kept ones.
+  assign slide_count = 0
   if use_meta
-    assign slide_count = meta_items.size
+    for item in meta_items
+      assign rj_t = item.quote | downcase
+      unless rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night'
+        assign slide_count = slide_count | plus: 1
+      endunless
+    endfor
   else
-    assign slide_count = section.blocks.size
+    for block in section.blocks
+      assign rj_t = block.settings.text | downcase
+      unless rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night'
+        assign slide_count = slide_count | plus: 1
+      endunless
+    endfor
+  endif
+  if slide_count == 0
+    assign show_section = false
   endif
 -%}
 
@@ -249,6 +265,7 @@
         <ul class="glide__slides">
           {% if use_meta %}
             {% for item in meta_items %}
+              {%- assign rj_t = item.quote | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
               <li class="glide__slide">
                 <div class="customer-review-box">
                   <div class="customer-review-image">
@@ -265,6 +282,7 @@
             {% endfor %}
           {% else %}
             {% for block in section.blocks %}
+              {%- assign rj_t = block.settings.text | downcase -%}{%- if rj_t contains 'minute' or rj_t contains ' mins' or rj_t contains ' min ' or rj_t contains 'first night' -%}{%- continue -%}{%- endif -%}
               <li class="glide__slide" {{ block.shopify_attributes }}>
                 <div class="customer-review-box">
                   <div class="customer-review-image">

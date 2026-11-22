@@ -1,3 +1,6 @@
+{%- comment -%} The whole page is captured and passed through rj-timing-scrub, which removes
+  specific-timing sleep claims (see that snippet). {%- endcomment -%}
+{%- capture rj_doc -%}
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -130,3 +133,5 @@
   </script>
 </body>
 </html>
+{%- endcapture -%}
+{%- render 'rj-timing-scrub', doc: rj_doc -%}

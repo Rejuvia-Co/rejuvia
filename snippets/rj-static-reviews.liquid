@@ -30,10 +30,23 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 {%- endcapture -%}
 
 {%- assign rj_list = rj_reviews | split: '^^' -%}
+{%- liquid
+  # Params (all optional): heading, subheading, initial (cards shown before "Show more"), variant ('section' | 'fallback')
+  assign rj_heading = heading | default: 'Real Customers. Real Sleep.'
+  assign rj_sub = subheading
+  if subheading == nil
+    assign rj_sub = 'Straight from verified Rejuvia customers.'
+  endif
+  assign rj_initial = initial | default: 6 | plus: 0
+  assign rj_variant = variant | default: 'section'
+-%}
 
 <style>
   /* Hide the Okendo app section on these pages; static reviews replace it. */
   [id$="__17814435248f2fd49e"] { display: none !important; }
+
+  /* The auto-inserted fallback copy steps aside once the Static Reviews section is on the page. */
+  body:has(.rj-rev--section) .rj-rev--fallback { display: none !important; }
 
   .rj-rev { background: #faf8f5; padding: 64px 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1f1f1f; }
   .rj-rev__wrap { max-width: 860px; margin: 0 auto; }
@@ -72,12 +85,12 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 
 {%- capture rj_star -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>{%- endcapture -%}
 
-<section class="rj-rev" id="reviews" aria-label="Customer reviews">
+<section class="rj-rev rj-rev--{{ rj_variant }}"{% if rj_variant == 'section' %} id="reviews"{% endif %} aria-label="Customer reviews" data-rj-rev>
   <div class="rj-rev__wrap">
     <div class="rj-rev__head">
       <div class="rj-rev__stars-lg" aria-label="5 out of 5 stars">{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}</div>
-      <h2 class="rj-rev__title">Real Customers. Real Sleep.</h2>
-      <p class="rj-rev__sub">Straight from verified Rejuvia customers.</p>
+      <h2 class="rj-rev__title">{{ rj_heading }}</h2>
+      {%- if rj_sub != blank -%}<p class="rj-rev__sub">{{ rj_sub }}</p>{%- endif -%}
     </div>
 
     <div class="rj-rev__list" data-rj-rev-list>
@@ -88,7 +101,7 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
         {%- assign r_title = f[2] | strip -%}
         {%- assign r_body = f[3] | strip -%}
         {%- if r_name == blank -%}{%- continue -%}{%- endif -%}
-        <article class="rj-rev__card"{% if forloop.index > 6 %} hidden{% endif %}>
+        <article class="rj-rev__card"{% if forloop.index > rj_initial %} hidden{% endif %}>
           <div class="rj-rev__top">
             <div class="rj-rev__stars" aria-label="5 out of 5 stars">{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}{{ rj_star }}</div>
             {%- if r_date != blank -%}<span class="rj-rev__date">{{ r_date }}</span>{%- endif -%}
@@ -107,7 +120,7 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
       {%- endfor -%}
     </div>
 
-    {%- if rj_list.size > 6 -%}
+    {%- if rj_list.size > rj_initial -%}
       <div class="rj-rev__more-wrap">
         <button type="button" class="rj-rev__more" data-rj-rev-more>Show more reviews</button>
       </div>
@@ -117,12 +130,18 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 
 <script>
   (function () {
-    var btn = document.querySelector('[data-rj-rev-more]');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var hidden = document.querySelectorAll('[data-rj-rev-list] .rj-rev__card[hidden]');
-      for (var i = 0; i < hidden.length && i < 6; i++) hidden[i].removeAttribute('hidden');
-      if (hidden.length <= 6) btn.parentNode.remove();
+    document.querySelectorAll('[data-rj-rev]').forEach(function (root) {
+      if (root.dataset.rjRevInit) return;
+      root.dataset.rjRevInit = '1';
+      if (root.classList.contains('rj-rev--fallback') && document.querySelector('.rj-rev--section')) { root.remove(); return; }
+      var btn = root.querySelector('[data-rj-rev-more]');
+      if (!btn) return;
+      var step = {{ rj_initial }};
+      btn.addEventListener('click', function () {
+        var hidden = root.querySelectorAll('.rj-rev__card[hidden]');
+        for (var i = 0; i < hidden.length && i < step; i++) hidden[i].removeAttribute('hidden');
+        if (hidden.length <= step) btn.parentNode.remove();
+      });
     });
   })();
 </script>

@@ -401,7 +401,7 @@
 {%- if template.name == 'page' -%}
   {%- case template.suffix -%}
     {%- when 'bogo', 'senior', 'persona' -%}
-      {%- render 'rj-static-reviews' -%}
+      {%- render 'rj-static-reviews', variant: 'fallback' -%}
   {%- endcase -%}
 {%- endif -%}
 

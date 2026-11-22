@@ -5,7 +5,7 @@
   EDITING: one review per block below, fields separated by "||":
     Name || Date || Title || Body
   Date is optional: leave it empty and the date is hidden. Order = display order.
-  The first 6 show; "Show more reviews" reveals the rest 6 at a time.
+  The first 6 show; "Show More Reviews" reveals the rest 6 at a time.
 {%- endcomment -%}
 
 {%- capture rj_reviews -%}
@@ -63,11 +63,11 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   .rj-rev__list { display: grid; gap: 18px; }
   .rj-rev__card { background: #fff; border: 1px solid #e6e2dc; border-radius: 14px; padding: 28px 30px 24px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
   .rj-rev__card[hidden] { display: none; }
-  .rj-rev__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .rj-rev__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
   .rj-rev__stars { display: inline-flex; gap: 3px; }
   .rj-rev__stars svg { width: 20px; height: 20px; }
   .rj-rev__date { font-size: 14px; color: #6b6b6b; white-space: nowrap; }
-  .rj-rev__ctitle { font-size: 21px; font-weight: 700; line-height: 1.3; margin: 0 0 10px; color: #1f1f1f; }
+  .rj-rev__ctitle { font-size: 21px; font-weight: 700; line-height: 1.25; margin: 0 0 10px; color: #1f1f1f; }
   .rj-rev__body { font-size: 17px; line-height: 1.65; color: #333; margin: 0 0 20px; }
   .rj-rev__foot { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 16px; border-top: 1px solid #f0ece6; font-size: 15px; }
   .rj-rev__name { font-weight: 700; color: #1f1f1f; }
@@ -76,8 +76,8 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
   .rj-rev__ver svg { width: 17px; height: 17px; flex: none; }
 
   .rj-rev__more-wrap { text-align: center; margin-top: 28px; }
-  .rj-rev__more { appearance: none; background: #fff; color: #1f1f1f; border: 1.5px solid #1f1f1f; border-radius: 999px; padding: 14px 34px; font: 600 16px/1 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor: pointer; transition: background .15s, color .15s; }
-  .rj-rev__more:hover { background: #1f1f1f; color: #fff; }
+  .rj-rev__more { appearance: none; background: #fff; color: #672666; border: 1.5px solid #672666; border-radius: 999px; padding: 14px 34px; font: 600 16px/1 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor: pointer; transition: background .15s, color .15s; }
+  .rj-rev__more:hover, .rj-rev__more:active, .rj-rev__more:focus-visible { background: #672666; color: #fff; border-color: #672666; outline: none; }
 
   @media (max-width: 600px) {
     .rj-rev { padding: 44px 16px; }
@@ -126,7 +126,7 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
             <span class="rj-rev__name">{{ r_name }}</span>
             <span class="rj-rev__div" aria-hidden="true"></span>
             <span class="rj-rev__ver">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 0l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L10 20l-2.4-1.8-3 .2-.9-2.9L1.2 13.8l1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z"/><path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.3 10.2l2.5 2.5 4.9-5"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E2B55A"/><path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.3 10.2l2.5 2.5 4.9-5"/></svg>
               Verified Customer
             </span>
           </div>
@@ -136,7 +136,7 @@ Jane H.|| ||It TRULY works!||Love the product! Been trying to come up with somet
 
     {%- if rj_list.size > rj_initial -%}
       <div class="rj-rev__more-wrap">
-        <button type="button" class="rj-rev__more" data-rj-rev-more>Show more reviews</button>
+        <button type="button" class="rj-rev__more" data-rj-rev-more>Show More Reviews</button>
       </div>
     {%- endif -%}
   </div>

@@ -61,7 +61,7 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
   .rj-rev__card { background: #fff; border: 1px solid #e6e2dc; border-radius: 14px; padding: 28px 30px 24px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
   .rj-rev__card[hidden] { display: none; }
   .rj-rev__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-  .rj-rev__stars { display: inline-flex; gap: 3px; }
+  .rj-rev__stars { display: inline-flex; gap: 1.5px; }
   .rj-rev__stars svg { width: 20px; height: 20px; }
   .rj-rev__date { font-size: 14px; color: #6b6b6b; white-space: nowrap; }
   .rj-rev__ctitle { font-size: 21px; font-weight: 700; line-height: 1.25; margin: 0 0 10px; color: #1f1f1f; }
@@ -93,7 +93,7 @@ Jane H.||2 hours ago||It TRULY works!||Love the product! Been trying to come up 
 
 {%- capture rj_star -%}<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="#E2B55A" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>{%- endcapture -%}
 
-{%- capture rj_rb_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#fab851' }}"/></svg>{%- endcapture -%}
+{%- capture rj_rb_star -%}<svg viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.85124 15.9392C3.43952 16.1504 2.97233 15.7803 3.05553 15.3078L3.94083 10.2626L0.183091 6.68298C-0.167831 6.34806 0.0145632 5.73581 0.484948 5.66968L5.70931 4.9273L8.03883 0.31199C8.24895 -0.103997 8.81747 -0.103997 9.0276 0.31199L11.3571 4.9273L16.5815 5.66968C17.0519 5.73581 17.2343 6.34806 16.8823 6.68298L13.1256 10.2626L14.0109 15.3078C14.0941 15.7803 13.6269 16.1504 13.2152 15.9392L8.53161 13.5329L3.85124 15.9392Z" fill="{{ section.settings.stars_color | default: '#E2B55A' }}"/></svg>{%- endcapture -%}
 <section class="rj-rev rj-rev--{{ rj_variant }}"{% if rj_variant == 'section' %} id="reviews"{% endif %} aria-label="Customer reviews" data-rj-rev>
   <div class="rj-rev__wrap">
     <div class="rj-rev__head">

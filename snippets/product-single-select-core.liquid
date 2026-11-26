@@ -256,7 +256,7 @@
             Every page with this widget (product page, homepage, story, one-time): the templates still hold FALL SALE (template JSON edits don't deploy), so swap it here.
           endcomment
           if sale_label == 'FALL SALE'
-            assign sale_label = 'HOLIDAY SALE'
+            assign sale_label = 'BLACK FRIDAY SALE'
           endif
           if tier_pill == blank and tier_save_pct > 0 and sale_label != blank
             assign tier_pill = sale_label | append: ' - ' | append: tier_save_pct | append: '% OFF'

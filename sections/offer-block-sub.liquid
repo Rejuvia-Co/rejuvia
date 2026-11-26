@@ -223,16 +223,16 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- assign obs_headline = section.settings.headline -%}{%- assign obs_subtitle = section.settings.subtitle -%}
       {%- if page.handle == 'black-friday' -%}
         {%- assign obs_headline = 'Black Friday Sale: Buy 1, Get 1 FREE' -%}
-        {%- assign obs_subtitle = 'For Black Friday only, claim your BOGO on Rejuvia Sleep Spray to get the best sleep of your entire life.' -%}
+        {%- assign obs_subtitle = 'For a limited time, claim our Black Friday BOGO free offer on Rejuvia Sleep Spray to get the best sleep of your entire life.' -%}
       {%- elsif page.handle == 'bogo-2' -%}
         {%- assign obs_headline = "Try America's Fastest Growing Sleep Spray - Buy 1, Get 1 FREE" -%}
-        {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Buy 1, get 1 free on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
+        {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Claim our Black Friday BOGO free offer on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
       {%- elsif page.handle == 'bogo-mom' -%}
         {%- assign obs_headline = "Try The Sleep Spray That Solved My Mom's Sleep - Buy 1, Get 1 FREE" -%}
-        {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Buy 1, get 1 free on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
+        {%- capture obs_subtitle -%}6-8 sprays under your tongue and you'll be asleep in minutes. Claim our Black Friday BOGO free offer on a one-time purchase with our 90-day guarantee.{%- endcapture -%}
       {%- elsif page.handle == 'welcome-kit' -%}
         {%- assign obs_headline = 'Rejuvia Welcome Kit' -%}
-        {%- assign obs_subtitle = 'For a limited-time, claim your BOGO free offer on our Welcome Kit today' -%}
+        {%- assign obs_subtitle = 'For a limited time, claim our Black Friday BOGO free offer on our Welcome Kit today!' -%}
       {%- elsif page.handle == 'nightshift-bogo' -%}
         {%- assign obs_headline = 'The Night Shift Discount: Buy 1, Get 1 FREE' -%}
         {%- capture obs_subtitle -%}For everyone who works while the rest of us sleep. Get home at 7am and be asleep in 10–15 minutes, then wake up clear for your next shift. Just $15 a bottle, with a 90-day money-back guarantee.{%- endcapture -%}
@@ -248,6 +248,8 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       {%- elsif page.handle == 'menopause-bogo' -%}
         {%- capture obs_headline -%}Sleep Like You Did Before Menopause with Rejuvia{%- endcapture -%}
         {%- capture obs_subtitle -%}Rejuvia started as a sleep spray for our founder's mom, who couldn't sleep going through menopause. 6-8 sprays under your tongue and you drift off in 10–15 minutes. Try it risk-free today as long as stock is still available.{%- endcapture -%}
+      {%- else -%}
+        {%- assign obs_subtitle = 'For a limited time, claim our Black Friday BOGO free offer on our Sleep Spray today!' -%}
       {%- endif -%}
       {%- if obs_headline != blank -%}<h2 class="obs__headline">{{ obs_headline }}</h2>{%- endif -%}
       {%- comment -%} Pre-select the middle box; page.bogo pre-selects the first box (Buy 1, Get 1 FREE). Done in code, not the settings, because Shopify reverts template JSON edits from git. {%- endcomment -%}
@@ -633,7 +635,7 @@ body.ob-offer-visible #shopify-section-sticky-cta-v2 { display: none !important;
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "With today's Buy One, Get One FREE subscription offer on Rejuvia® Sleep Spray"
+      "default": "For a limited time, claim our Black Friday BOGO free offer on our Sleep Spray today!"
     },
     {
       "type": "header",

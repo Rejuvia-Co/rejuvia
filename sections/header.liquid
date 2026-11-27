@@ -43,6 +43,12 @@
     color: {{ ink }};
   }
   #header.header.is-hidden { transform: translateY(-100%); }
+  /* The sticky <header> + section wrapper stay pinned at the top (85px) after
+     #header slides away, and were swallowing clicks on whatever sat under them.
+     Let clicks pass through the wrappers; only the nav itself takes them. */
+  #page > header, #page > header > .main-header { pointer-events: none; }
+  #header.header { pointer-events: auto; }
+  #header.header.is-hidden { pointer-events: none; }
 
   #header .rjnav-bar {
     height: var(--rjnav-h);

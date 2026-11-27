@@ -1,0 +1,16 @@
+{%- if settings.share_prod_on_twitter or settings.share_prod_on_facebook or settings.share_prod_on_pinterest -%}
+<div class="sharing flex align-items-center justify-content-between">
+  <label>Share this product:</label>
+  <div class="flex align-items-center justify-content-center">
+    {%- if settings.share_prod_on_facebook -%}
+    <a target="_blank" class="facebook-share" aria-label="Share this product on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}">{% include 'icons', icon: 'facebook' %}</a>
+    {%- endif -%}
+    {%- if settings.share_prod_on_twitter -%}
+    <a target="_blank" class="twitter-share" aria-label="Share this product on Twitter" href="https://twitter.com/share?url={{ shop.url }}{{ product.url }}">{% include 'icons', icon: 'twitter' %}</a>
+    {%- endif -%}
+    {%- if settings.share_prod_on_pinterest -%}
+    <a target="_blank" class="pinterest-share" aria-label="Share this product on Pinterest" href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | product_img_url: 'original' }}&description={{ product.title | strip_html | escape | replace: ' ', '%20' }}">{% include 'icons', icon: 'pinterest' %}</a>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}

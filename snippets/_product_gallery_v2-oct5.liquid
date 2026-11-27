@@ -1,0 +1,286 @@
+{%- comment -%}
+  Product gallery — the BOGOSub (offer-block-sub) gallery design, driven by
+  the product's own media instead of customizer blocks.
+
+  Structure: one square main image with the rest stacked behind it and hidden,
+  a centred thumb strip with prev/next arrows, and dots. Identical on mobile
+  and desktop — the design needs no breakpoint of its own; the surrounding
+  column just gets narrower.
+
+  Replaces the old Slick carousel. ProductJs still runs, but every one of its
+  gallery hooks is guarded on `.main-images .slick-track` existing, so with no
+  Slick markup they all no-op. Quick-view is unaffected: it renders the older
+  _product_gallery snippet, not this one.
+
+  Deliberately dropped: zoom / lightbox, and variant-linked image switching.
+
+  Variant images are filtered OUT of the gallery — the 3-pack and 6-pack shots
+  are already shown in the variant selector, so repeating them here adds
+  nothing. The product's own featured image is kept even though the base
+  variant also points at it; on every product it is position 1, the hero.
+
+  JS is ES5-level on purpose (no optional chaining / nullish coalescing) —
+  those are whole-file syntax errors on the older webviews this audience uses.
+{%- endcomment -%}
+
+{%- assign hero_id = currentProduct.featured_media.id -%}
+{%- assign variant_media_ids = ',' -%}
+{%- for v in currentProduct.variants -%}
+  {%- if v.featured_media != blank -%}
+    {%- unless v.featured_media.id == hero_id -%}
+      {%- assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ',' -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Pass 1: how many images survive the filter? {%- endcomment -%}
+{%- assign gallery_count = 0 -%}
+{%- for media in currentProduct.media -%}
+  {%- if media.media_type == 'image' -%}
+    {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+    {%- unless variant_media_ids contains mkey -%}
+      {%- assign gallery_count = gallery_count | plus: 1 -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  .pgal { --pgal-thumb: 70px; --pgal-gap: 8px; }
+
+  .pgal__main {
+    /* Desktop: 93.5% of the gallery column -- the full-width square read as
+       oversized next to the buy box. Mobile stays full width below. */
+    max-width: 93.5%;
+    margin: 0 auto;
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .pgal__main img[data-pgal-main] { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* The rule above sets display:block, which overrides the hidden attribute —
+     this restores it so only the active image renders. */
+  .pgal__main img[data-pgal-main][hidden] { display: none; }
+
+  .pgal__bundle {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    text-align: center; pointer-events: none;
+  }
+
+  .pgal__thumbrow { display: flex; align-items: center; justify-content: center; gap: var(--pgal-gap); margin-top: 12px; }
+
+  .pgal__arrow {
+    flex: none; width: 30px; height: 30px;
+    border: 1px solid #e3ddea; border-radius: 50%; background: #fff; color: var(--base-colour, #672666);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0; transition: background .14s ease;
+  }
+  .pgal__arrow:hover { background: #f6eef6; }
+  .pgal__arrow svg { width: 14px; height: 14px; display: block; }
+
+  /* Desktop shows every thumb; mobile keeps the five-visible cap. */
+  .pgal__thumbs {
+    display: flex; gap: var(--pgal-gap);
+    /* No scroll-behavior: smooth. Animating the strip means a fast run of
+       arrow clicks keeps restarting the animation, so the active thumb lags
+       behind the main image. An instant jump reads as snappier and is what
+       the arrows need. Finger-scrolling the strip is unaffected. */
+    overflow-x: auto;
+    scrollbar-width: none; -ms-overflow-style: none;
+    max-width: 100%;
+  }
+  .pgal__thumbs::-webkit-scrollbar { display: none; }
+
+  .pgal__thumb {
+    flex: none; width: var(--pgal-thumb); height: var(--pgal-thumb);
+    border: 1px solid #e9e4f0; border-radius: 10px; background: #f3f0f9;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; cursor: pointer; padding: 0;
+  }
+  .pgal__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pgal__thumb.is-active { border: 1.5px solid var(--base-colour, #672666); background: #fff; }
+
+  .pgal__dots { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
+  .pgal__dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd7e6; transition: background .14s ease; }
+  .pgal__dot.is-active { background: var(--base-colour, #672666); }
+
+  @media screen and (max-width: 749px) {
+    /* Touch sizing. The old row was 5 thumbs @48 + 30px arrows = 348px inside
+       343px, i.e. already overflowing, which is why the arrows were awkward
+       to hit. Four visible thumbs buys the room: 4x54 + 3 gaps + 2x40 arrows
+       + 2 gaps = 336px, so the swatches grow 48 -> 54, the arrows 30 -> 40
+       (a proper touch target) and it still fits with room to spare. */
+    .pgal { --pgal-thumb: 54px; }
+    .pgal__main { max-width: 100%; border-radius: 14px; }
+    .pgal__thumbs { max-width: min(100%, calc(var(--pgal-thumb) * 4 + var(--pgal-gap) * 3)); }
+    .pgal__arrow { width: 40px; height: 40px; }
+    .pgal__arrow svg { width: 17px; height: 17px; }
+    .pgal__dots { gap: 6px; margin-top: 12px; }
+    .pgal__dot { width: 9px; height: 9px; }
+
+    /* .product-wrap stacks here and its 30px row-gap becomes dead space
+       between the gallery dots and the review bar. This stylesheet only
+       ships on pages that render this snippet. */
+    .product-wrap { row-gap: 16px; }
+  }
+</style>
+
+<div class="pgal" data-pgal>
+  <div class="pgal__main">
+    {%- if currentProduct.metafields.custom.boundle and show_bundle_text -%}
+      <div class="pgal__bundle boundle-text">{{ currentProduct.metafields.custom.boundle_text }}</div>
+    {%- endif -%}
+
+    {%- assign i = 0 -%}
+    {%- for media in currentProduct.media -%}
+      {%- if media.media_type == 'image' -%}
+        {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+        {%- unless variant_media_ids contains mkey -%}
+          {%- assign i = i | plus: 1 -%}
+          {%- assign img = media.preview_image -%}
+          {%- comment -%} Image 1 is the LCP element: real src/srcset so the preload scanner fetches it from the HTML, eager and high priority. The rest stay lazy until the warm-up. {%- endcomment -%}
+          <img data-pgal-main{% unless i == 1 %} hidden{% endunless %}
+               src="{{ img | image_url: width: 1000, format: 'webp' }}"
+               srcset="{{ img | image_url: width: 500, format: 'webp' }} 500w,
+                       {{ img | image_url: width: 700, format: 'webp' }} 700w,
+                       {{ img | image_url: width: 1000, format: 'webp' }} 1000w,
+                       {{ img | image_url: width: 1400, format: 'webp' }} 1400w"
+               sizes="(max-width: 900px) 100vw, 500px"
+               width="{{ img.width }}" height="{{ img.height }}"
+               alt="{{ media.alt | escape }}"
+               {% if i == 1 %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+               decoding="async">
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if gallery_count > 1 -%}
+    <div class="pgal__thumbrow">
+      <button type="button" class="pgal__arrow" data-pgal-prev aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <div class="pgal__thumbs">
+        {%- assign t = 0 -%}
+        {%- for media in currentProduct.media -%}
+          {%- if media.media_type == 'image' -%}
+            {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+            {%- unless variant_media_ids contains mkey -%}
+              {%- assign t = t | plus: 1 -%}
+              {%- assign img = media.preview_image -%}
+              <button type="button" class="pgal__thumb{% if t == 1 %} is-active{% endif %}" data-pgal-thumb aria-label="View image {{ t }}">
+                <img src="{{ img | image_url: width: 120, format: 'webp' }}"
+                     srcset="{{ img | image_url: width: 120, format: 'webp' }} 120w, {{ img | image_url: width: 180, format: 'webp' }} 180w"
+                     sizes="56px" width="56" height="56"
+                     alt="" loading="lazy" decoding="async">
+              </button>
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <button type="button" class="pgal__arrow" data-pgal-next aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div class="pgal__dots" aria-hidden="true">
+      {%- assign dn = 0 -%}
+      {%- for media in currentProduct.media -%}
+        {%- if media.media_type == 'image' -%}
+          {%- capture mkey -%},{{ media.id }},{%- endcapture -%}
+          {%- unless variant_media_ids contains mkey -%}
+            {%- assign dn = dn | plus: 1 -%}
+            <span class="pgal__dot{% if dn == 1 %} is-active{% endif %}" data-pgal-dot></span>
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pgal]');
+  if (!root) return;
+
+  var mains  = [].slice.call(root.querySelectorAll('[data-pgal-main]'));
+  var thumbs = [].slice.call(root.querySelectorAll('[data-pgal-thumb]'));
+  var dots   = [].slice.call(root.querySelectorAll('[data-pgal-dot]'));
+  if (mains.length < 2) return;
+
+  var strip = root.querySelector('.pgal__thumbs');
+  var idx = 0;
+
+  /* Scroll the strip by hand rather than with scrollIntoView. Two reasons:
+     scrollIntoView did not move this horizontal container at all (arrowing
+     past the fifth thumb left the active one highlighted off-screen), and it
+     can also scroll the page vertically as a side effect. This only ever
+     touches strip.scrollLeft. */
+  function keepThumbVisible(t) {
+    if (!t || !strip) return;
+    /* Rect deltas, not offsetLeft: .pgal__thumbs is position:static, so a
+       thumb's offsetParent is the body and offsetLeft measures from the page
+       edge, not from the strip's scroll origin. Rects are relative to the
+       viewport for both, so the difference is always the right nudge. */
+    var tr = t.getBoundingClientRect();
+    var sr = strip.getBoundingClientRect();
+    if (tr.left < sr.left) strip.scrollLeft -= (sr.left - tr.left);
+    else if (tr.right > sr.right) strip.scrollLeft += (tr.right - sr.right);
+  }
+
+  function setImg(i) {
+    idx = (i + mains.length) % mains.length;
+    mains.forEach(function (img, j) { img.hidden = j !== idx; });
+    thumbs.forEach(function (t, j) { t.classList.toggle('is-active', j === idx); });
+    dots.forEach(function (d, j) { d.classList.toggle('is-active', j === idx); });
+    keepThumbVisible(thumbs[idx]);
+  }
+
+  thumbs.forEach(function (t, i) {
+    t.addEventListener('click', function () { setImg(i); });
+  });
+
+  /* Snappiness: images 2+ ship as loading="lazy" so they never compete with
+     the LCP image. But a lazy image inside display:none is never fetched at
+     all, so the first click on each thumb would wait on a cold request.
+     Once `load` has fired the LCP is settled, so flip them to eager and let
+     them download in the background, then decode them off the main thread.
+     By the time anyone clicks a thumb the image is already painted. */
+  function warmImages() {
+    mains.forEach(function (img) {
+      if (img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+      if (img.decode) { img.decode().catch(function () {}); }
+    });
+  }
+  if (document.readyState === 'complete') warmImages();
+  else window.addEventListener('load', warmImages);
+
+  var prev = root.querySelector('[data-pgal-prev]');
+  var next = root.querySelector('[data-pgal-next]');
+  if (prev) prev.addEventListener('click', function () { setImg(idx - 1); });
+  if (next) next.addEventListener('click', function () { setImg(idx + 1); });
+
+  /* Horizontal-dominant swipe only, so vertical page scrolling is never hijacked. */
+  var main = root.querySelector('.pgal__main');
+  if (main) {
+    var sx = null, sy = null;
+    main.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; sx = t.clientX; sy = t.clientY;
+    }, { passive: true });
+    main.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) setImg(dx < 0 ? idx + 1 : idx - 1);
+      sx = null; sy = null;
+    }, { passive: true });
+  }
+})();
+</script>

@@ -1320,8 +1320,12 @@ export class SkioPlanPicker extends LitElement {
   }
 
   renderSubscriptionIncludes(group) {
-    const includes = this.options?.subscription_includes;
+    let includes = this.options?.subscription_includes;
     if (!includes || !includes.length) return '';
+    // 1 Month (first variant) subscriptions don't ship free: drop the shipping line
+    if (this.selectedVariant?.id == this.product?.variants?.[0]?.id) {
+      includes = includes.filter(item => item.type !== 'shipping');
+    }
 
     return html`
       <div class="skio-includes">

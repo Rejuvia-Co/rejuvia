@@ -110,6 +110,7 @@
 
 /* Center the label with the arrow tucked next to it (left spacer balances the arrow) */
 .product-widget-container .add-to-cart-form button.btn.custom_button_font{font-size:20px !important;}
+@media (max-width:749px){.product-widget-container .add-to-cart-form button.btn.custom_button_font{font-size:22px !important;}}
 .product-widget-container .add-to-cart-form button.btn.custom_button_font > span{width:100%;justify-content:center;gap:10px;margin-top:0 !important;}
 .product-widget-container .add-to-cart-form button.btn.custom_button_font > span::before{content:"";display:block;width:22px;flex:0 0 auto;}
 .product-widget-container .add-to-cart-form button.btn.custom_button_font svg{flex:0 0 auto;width:22px;height:22px;}

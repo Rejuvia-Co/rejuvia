@@ -781,7 +781,7 @@ export class SkioPlanPicker extends LitElement {
            signalled by the border, radio and background instead. */
         .skio-sub-top__title,
         .group-title {
-          font-size: 17px;
+          font-size: 18px;
           font-weight: 400;
           line-height: 1.4;
         }
@@ -818,7 +818,7 @@ export class SkioPlanPicker extends LitElement {
           font-size: 15px;
         }
         .skio-includes__item-name {
-          font-size: 16px;
+          font-size: 17px;
         }
         .skio-includes__item-image {
           width: 36px;
@@ -857,10 +857,13 @@ export class SkioPlanPicker extends LitElement {
           padding: 12px 10px;
         }
         .skio-includes__item-name {
-          font-size: 14px;
+          font-size: 16px;
         }
-        .skio-sub-top__title {
-          font-size: 15px;
+        /* Subscribe + one-time titles share one size; 16px is the largest
+           that keeps "Subscribe (40% OFF)" + Save pill + price on one line at 375px. */
+        .skio-sub-top__title,
+        .group-title {
+          font-size: 16px;
         }
         .skio-sub-top__price {
           font-size: 17px;
@@ -870,6 +873,11 @@ export class SkioPlanPicker extends LitElement {
       @media only screen and (max-width: 380px) {
         .skio-plan-picker .group-label {
           padding: 10px 8px;
+        }
+        /* 360px phones: 15px already wrapped the subscribe title; 14px keeps it on one line. */
+        .skio-sub-top__title,
+        .group-title {
+          font-size: 14px;
         }
         .skio-includes__item-image {
           width: 32px;

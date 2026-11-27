@@ -106,7 +106,7 @@
 }
 
 /* Match the add-to-cart button font to the sticky CTA button (Helvetica Neue, medium weight, capitalized) */
-.product-widget-container .add-to-cart-form button.btn.custom_button_font{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif !important;font-weight:500 !important;text-transform:capitalize !important;letter-spacing:normal !important;}
+.product-widget-container .add-to-cart-form button.btn.custom_button_font{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif !important;font-weight:500 !important;text-transform:capitalize !important;letter-spacing:0.02em !important;}
 
 /* Center the label with the arrow tucked next to it (left spacer balances the arrow) */
 .product-widget-container .add-to-cart-form button.btn.custom_button_font{font-size:20px !important;}

@@ -53,7 +53,20 @@
         {% if variant.metafields.custom.variant_badge != blank %}
           {% assign badge_text_color = variant.metafields.custom.badge_text_color | default: '#ffffff' %}
           {% assign badge_bg_color = variant.metafields.custom.badge_bg_color | default: '#61bd67' %}
-          <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ variant.metafields.custom.variant_badge }}</span>
+          {%- comment -%} Pill % = this variant's subscription price (its preselected Skio plan) vs its one-time price. Falls back to the metafield text if no plan price is found. {%- endcomment -%}
+          {%- assign vs_plan_id = variant.metafields.custom.preselected_selling_plan | append: '' -%}
+          {%- assign vs_sub_price = nil -%}
+          {%- for alloc in variant.selling_plan_allocations -%}
+            {%- assign vs_aid = alloc.selling_plan.id | append: '' -%}
+            {%- if vs_aid == vs_plan_id -%}{%- assign vs_sub_price = alloc.price -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if vs_sub_price and variant.price > vs_sub_price -%}
+            {%- assign vs_pct = variant.price | minus: vs_sub_price | times: 100.0 | divided_by: variant.price | round -%}
+            {%- capture vs_badge -%}{{ vs_pct }}% OFF{%- endcapture -%}
+          {%- else -%}
+            {%- assign vs_badge = variant.metafields.custom.variant_badge -%}
+          {%- endif -%}
+          <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ vs_badge }}</span>
         {% endif %}
 
         {% comment %} Image {% endcomment %}

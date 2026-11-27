@@ -27,7 +27,12 @@
   if psb_rating == 0
     assign psb_rating = section.settings.rating_fallback
   endif
-  assign psb_rating_text = section.settings.rating_text | replace: '{rating}', psb_rating
+  comment
+    Short counts (8.5K+ / 500K+) are forced in code so they win over any saved
+    template value; the shorter line lets the mobile text run ~1px larger.
+  endcomment
+  assign psb_rating_text = section.settings.rating_text | replace: '{rating}', psb_rating | replace: '8,500+', '8.5K+' | replace: '500,000+', '500K+'
+  assign psb_cta_text = section.settings.cta_text | replace: 'Save Up To {max_save}% Today', 'Get Up To 40% OFF'
 -%}
 
 <style>
@@ -137,8 +142,8 @@
   .psb__rating { justify-content: center; gap: 6px; }
   /* Stars + "4.6 stars | 8,500+ reviews | 500,000+ customers" on one line down to 360px. */
   .psb__stars { gap: 1px; }
-  .psb__stars svg { width: clamp(10px, 3vw, 15px); height: auto; }
-  .psb__text { font-size: clamp(11px, 3.25vw, 15px); }
+  .psb__stars svg { width: clamp(10px, 2.8vw, 15px); height: auto; }
+  .psb__text { font-size: clamp(12px, 3.5vw, 16px); }
 }
 </style>
 
@@ -158,7 +163,7 @@
       {%- endif -%}
       <button type="button" class="psb__cta" data-psb-cta>
         {%- if section.settings.pill_text != blank -%}<span class="psb__pill">{{ section.settings.pill_text }}</span>{%- endif -%}
-        <span data-psb-cta-text>{%- if section.settings.cta_text contains '{max_save}' -%}{{ section.settings.cta_fallback }}{%- else -%}{{ section.settings.cta_text }}{%- endif -%}</span>
+        <span data-psb-cta-text>{%- if psb_cta_text contains '{max_save}' -%}{{ section.settings.cta_fallback }}{%- else -%}{{ psb_cta_text }}{%- endif -%}</span>
       </button>
     </div>
   </div>
@@ -228,7 +233,7 @@
 
   /* "{max_save}" in the button text = this product's best SAVE %, published by
      the product widget on .pss-tiers. */
-  var ctaText = {{ section.settings.cta_text | json }};
+  var ctaText = {{ psb_cta_text | json }};
   var maxEl = document.querySelector('[data-pss-max-save]');
   var maxSave = maxEl ? parseInt(maxEl.getAttribute('data-pss-max-save'), 10) : 0;
   if (ctaText.indexOf('{max_save}') !== -1 && maxSave > 0) {
@@ -304,7 +309,7 @@
       "type": "inline_richtext",
       "id": "rating_text",
       "label": "Rating line",
-      "default": "<b>{rating}</b> Stars | <b>8,500+</b> Reviews | <b>500,000+</b> Customers",
+      "default": "<b>{rating}</b> Stars | <b>8.5K+</b> Reviews | <b>500K+</b> Customers",
       "info": "{rating} = this product's Okendo star rating (e.g. 4.3)."
     },
     {
@@ -317,7 +322,7 @@
       "type": "text",
       "id": "cta_text",
       "label": "Button text",
-      "default": "Save Up To {max_save}% Today",
+      "default": "Get Up To 40% OFF",
       "info": "{max_save} = this product's best SAVE % from the buy box (e.g. 59 on Sleep Spray, 40 on Lutein)."
     },
     {

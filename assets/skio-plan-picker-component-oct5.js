@@ -1273,14 +1273,14 @@ export class SkioPlanPicker extends LitElement {
 
         return html`
         <div class="group-container subs-group-container ${this.selectedSellingPlanGroup == group ? 'group-container--selected' : ''}"
-             @click=${() => this.selectSellingPlanGroup(group)}>
+             @click=${() => { this.userChoseOnetime = false; this.selectSellingPlanGroup(group) }}>
           <input
             id="group-${index}-${this.key}"
             class="group-input"
             name="skio-group-${this.key}"
             type="radio"
             value="${group.id}"
-            @change=${() => this.selectSellingPlanGroup(group)}
+            @change=${() => { this.userChoseOnetime = false; this.selectSellingPlanGroup(group) }}
             ?checked=${this.selectedSellingPlanGroup == group}
           />
 
@@ -1398,7 +1398,7 @@ export class SkioPlanPicker extends LitElement {
         ? html`
         <div
           class="group-container ${this.selectedSellingPlanGroup == null ? ' group-container--selected' : ''} ${!this.options?.onetime_first ? 'group-container--last' : ''}"
-          @click=${() => this.selectSellingPlanGroup(null)}
+          @click=${() => { this.userChoseOnetime = true; this.selectSellingPlanGroup(null) }}
         >
           <input
             id="one-time-${this.key}"
@@ -1407,7 +1407,7 @@ export class SkioPlanPicker extends LitElement {
             type="radio"
             value="One time purchase"
             ?checked=${!this.selectedSellingPlanGroup}
-            @change=${() => this.selectSellingPlanGroup(null)}
+            @change=${() => { this.userChoseOnetime = true; this.selectSellingPlanGroup(null) }}
           />
 
           <label class="group-label" for="one-time-${this.key}">
@@ -1601,7 +1601,11 @@ export class SkioPlanPicker extends LitElement {
           group.selected = !!isAnyPlanSelected
         })
 
-        if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || preselectedId || this.selectedSellingPlan) {
+        // oct5 fix: if the shopper is on One Time and changes quantity, keep One Time
+        // (preselected/URL plans used to force Subscribe back on every variant change).
+        if (this.variantChanged && this.userChoseOnetime && this.product.requires_selling_plan != true) {
+          this.selectSellingPlanGroup(null)
+        } else if ((!this.variantChanged && this.options?.start_onetime == false) || this.product.requires_selling_plan == true || urlSelectedSellingPlanId || preselectedId || this.selectedSellingPlan) {
           let selectedSellingPlanGroup = this.availableSellingPlanGroups.find(group => group.selected) || this.availableSellingPlanGroups[0]
           let selectedSellingPlanId = selectedSellingPlanGroup.selected_selling_plan.id
           this.selectSellingPlan(selectedSellingPlanId)

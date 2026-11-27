@@ -1265,7 +1265,7 @@ export class SkioPlanPicker extends LitElement {
           : '';
         const subTitle = this.options?.subscription_title || 'Subscribe & ';
         const titleText = discountLabel ? `Subscribe (${discountLabel} OFF)` : subTitle;
-        const comparePrice = this.selectedVariant?.compare_at_price || this.selectedVariant?.price;
+        const comparePrice = this.selectedVariant?.price; // strikethrough = one-time price
         const salePrice = this.price(group.selected_selling_plan);
         const hasCompare = this.options?.show_compare_price && comparePrice > this.price(group.selected_selling_plan, false);
         // Savings pill: one-time purchase price minus the subscription price for this plan
@@ -1352,7 +1352,7 @@ export class SkioPlanPicker extends LitElement {
       ? this.selectedVariant.title
       : (item.name || this.product?.title);
     const name = isVariant ? variantTitle : item.name;
-    const originalPrice = isVariant ? this.money(this.selectedVariant?.compare_at_price || this.selectedVariant?.price) : item.original_price;
+    const originalPrice = isVariant ? this.money(this.selectedVariant?.price) : item.original_price;
     const salePrice = isVariant ? this.price(group.selected_selling_plan) : item.sale_price;
     const isFree = !isVariant && (item.sale_price === 'FREE' || item.type === 'guarantee');
 

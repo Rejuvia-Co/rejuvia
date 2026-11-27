@@ -138,7 +138,7 @@
                     {%- assign key_benefits = currentProduct.metafields.custom.key_benefits.value -%}
                     {%- if key_benefits and key_benefits.size > 0 -%}
                     <div class="block-product-specs" style="margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                        {% render 'product-benefits', product: currentProduct %}
+                        {% render 'product-benefits-oct5', product: currentProduct %}
                     </div>
                     {%- endif -%}
 

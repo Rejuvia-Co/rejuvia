@@ -82,10 +82,13 @@
     }
   </style>
 
+  {%- comment -%} BOGO / senior / persona landing pages use only vanilla-JS sections: skip jQuery + its plugins there (~70KB gz). {%- endcomment -%}
+  {%- unless template.suffix == 'bogo' or template.suffix == 'senior' or template.suffix == 'persona' -%}
   <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
   <script src="{{ 'vendor.js' | asset_url }}" defer></script>
   <script src="{{ 'ProductJs.js' | asset_url }}" defer></script>
   <script src="{{ 'custom.js' | asset_url }}" defer></script>
+  {%- endunless -%}
 
   {{ content_for_header }}
 

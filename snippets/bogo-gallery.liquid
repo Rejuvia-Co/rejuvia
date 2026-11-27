@@ -44,7 +44,7 @@
       {%- elsif gimg != blank -%}
         <img data-bgal-main{% unless forloop.first %} hidden{% endunless %}
              src="{{ gimg | image_url: width: 1000, format: 'webp' }}"
-             srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
+             srcset="{{ gimg | image_url: width: 500, format: 'webp' }} 500w, {{ gimg | image_url: width: 800, format: 'webp' }} 800w, {{ gimg | image_url: width: 1000, format: 'webp' }} 1000w, {{ gimg | image_url: width: 1120, format: 'webp' }} 1120w, {{ gimg | image_url: width: 1400, format: 'webp' }} 1400w"
              sizes="(max-width: 900px) 92vw, 560px"
              width="{{ gimg.width }}" height="{{ gimg.height }}"
              alt="{{ alt | strip_html | escape }}"

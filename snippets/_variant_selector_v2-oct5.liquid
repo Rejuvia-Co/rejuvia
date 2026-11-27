@@ -49,11 +49,12 @@
            data-variant-title="{{ variant.title }}"
            data-variant-index="{{ forloop.index }}">
 
-        {% comment %} Badge from variant metafield {% endcomment %}
-        {% if variant.metafields.custom.variant_badge != blank %}
-          {% assign badge_text_color = variant.metafields.custom.badge_text_color | default: '#ffffff' %}
-          {% assign badge_bg_color = variant.metafields.custom.badge_bg_color | default: '#61bd67' %}
-          {%- comment -%} Pill % = this variant's subscription price (its preselected Skio plan) vs its one-time price. Falls back to the metafield text if no plan price is found. {%- endcomment -%}
+        {%- comment -%}
+          % OFF pill: every pack except the first (1 Month). % = this variant's subscription
+          price (its preselected Skio plan) vs its one-time price. The plan picker JS keeps the
+          selected pack's pill equal to the "Subscribe (X% OFF)" label. Colours from metafields.
+        {%- endcomment -%}
+        {%- unless forloop.first -%}
           {%- assign vs_plan_id = variant.metafields.custom.preselected_selling_plan | append: '' -%}
           {%- assign vs_sub_price = nil -%}
           {%- for alloc in variant.selling_plan_allocations -%}
@@ -61,13 +62,12 @@
             {%- if vs_aid == vs_plan_id -%}{%- assign vs_sub_price = alloc.price -%}{%- endif -%}
           {%- endfor -%}
           {%- if vs_sub_price and variant.price > vs_sub_price -%}
+            {%- assign badge_text_color = variant.metafields.custom.badge_text_color | default: '#ffffff' -%}
+            {%- assign badge_bg_color = variant.metafields.custom.badge_bg_color | default: '#61bd67' -%}
             {%- assign vs_pct = variant.price | minus: vs_sub_price | times: 100.0 | divided_by: variant.price | round -%}
-            {%- capture vs_badge -%}{{ vs_pct }}% OFF{%- endcapture -%}
-          {%- else -%}
-            {%- assign vs_badge = variant.metafields.custom.variant_badge -%}
+            <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ vs_pct }}% OFF</span>
           {%- endif -%}
-          <span class="variant-selector__badge" style="background-color: {{ badge_bg_color }}; color: {{ badge_text_color }};">{{ vs_badge }}</span>
-        {% endif %}
+        {%- endunless -%}
 
         {% comment %} Image {% endcomment %}
         <div class="variant-selector__image">

@@ -1566,6 +1566,17 @@ export class SkioPlanPicker extends LitElement {
     document.querySelectorAll(`[skio-subscription-content]`).forEach(el => {
       el.style.display = this.selectedSellingPlan ? 'block' : 'none'
     })
+
+    // Keep the selected pack's % OFF pill equal to the "Subscribe (X% OFF)" label
+    const plan = this.selectedSellingPlan || this.availableSellingPlanGroups?.[0]?.selected_selling_plan
+    if (plan && this.selectedVariant) {
+      const d = this.discount(plan)
+      if (d && d.percent > 0 && d.percent !== Infinity) {
+        document.querySelectorAll(`.variant-selector__option[data-variant-id="${this.selectedVariant.id}"] .variant-selector__badge`).forEach(el => {
+          el.textContent = d.percent + '% OFF'
+        })
+      }
+    }
   }
 
   // SECTION: Utility Functions

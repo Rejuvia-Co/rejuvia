@@ -1881,7 +1881,7 @@ export class SkioPlanPicker extends LitElement {
     }
 
     const price = this.selectedVariant.price
-    const compareAtPrice = this.selectedVariant.compare_at_price && this.selectedVariant.compare_at_price > price ? this.selectedVariant.compare_at_price : price
+    const compareAtPrice = price // discount % measured against this variant's one-time price
 
     switch (price_adjustment.value_type) {
       case 'percentage':

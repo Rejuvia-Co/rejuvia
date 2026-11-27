@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeHTML } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js'
+import { LitElement, html, css, unsafeHTML } from 'https://cdn.jsdelivr.net/gh/lit/dist@3.3.3/all/lit-all.min.js'
 
 /**
  * Skio Universal Plan Picker
@@ -1457,8 +1457,6 @@ export class SkioPlanPicker extends LitElement {
           )
       )
 
-      console.log('Skio selling_plans:', this.availableSellingPlanGroups.flatMap(g => g.selling_plans).map(p => ({id: p.id, name: p.name, discount: this.discount(p).percent + '%'})));
-
       if (this.options?.combine_groups) {
         this.availableSellingPlanGroups = [
           {
@@ -1580,10 +1578,7 @@ export class SkioPlanPicker extends LitElement {
   }
 
   // SECTION: Utility Functions
-  log(...args) {
-    args.unshift(`%c[skio plan picker][${this.key}]`, 'color: #8770f2;')
-    console.log.apply(console, args)
-  }
+  log() {} // debug logging off in production
 
   error(...args) {
     args.unshift(`%c [skio plan picker][${this.key}]`, 'color: #ff0000')
@@ -1666,7 +1661,6 @@ export class SkioPlanPicker extends LitElement {
     this.selectedSellingPlan = group?.selected_selling_plan
 
     if(group){
-      console.log("It is subscription");
       const additional_product = document.querySelector(".additional-product__wrap");
       const variantsFree = document.querySelectorAll(".subscription-text");
       if(additional_product){
@@ -1821,7 +1815,6 @@ export class SkioPlanPicker extends LitElement {
 
   // Runs a fetch request to add the selectedVariant to the cart with the passed quantity and selectedSellingPlan
   addToCart(quantity) {
-    console.log("addToCart(quantity)", "TEEEEEEEESSSSSSSSSTTTTTTTTT")
     const items = [
       {
         id: this.selectedVariant.id,

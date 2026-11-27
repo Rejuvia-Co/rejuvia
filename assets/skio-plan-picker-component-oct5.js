@@ -1807,6 +1807,7 @@ export class SkioPlanPicker extends LitElement {
 
   // SECTION: Additional Functionality
   updateURLParams() {
+    return // keep the address bar clean: don't write ?selling_plan= (the plan goes to cart via the form)
     const url = new URL(window.location.href)
 
     if (this.selectedSellingPlan) {
